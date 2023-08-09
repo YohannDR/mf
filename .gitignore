@@ -1,0 +1,15 @@
+/src/**/*.s
+/data/*
+
+*.gba
+*.elf
+*.dump
+*.o
+*.map
+*.bin
+
+*.exe
+
+include/**/*.s
+tools/*.txt
+.vscode
