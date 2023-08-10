@@ -55,7 +55,9 @@ SECTIONS {
         src/fixed_point.o(.text);
         src/callbacks.o(.text);
 
-        asm/disasm_0x08000230.o(.text);
+        asm/disasm_0x08000c28.o(.text);
+        asm/syscalls.o(.text);
+        asm/disasm_0x08004bcc.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);

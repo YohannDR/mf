@@ -1,4 +1,5 @@
 #include "syscall_wrappers.h"
+#include "syscalls.h"
 
 void CallLZ77UncompVram(const void *src, void *dst)
 {

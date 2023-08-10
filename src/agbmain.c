@@ -1,5 +1,5 @@
 #include "globals.h"
-#include "syscall_wrappers.h"
+#include "syscalls.h"
 
 /**
  * @brief 230 | 568 | Main game loop

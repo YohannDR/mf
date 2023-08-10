@@ -3,8 +3,6 @@
 
 #include "types.h"
 
-#define SYSCALL(num) asm("svc " #num)
-
 void CallLZ77UncompVram(const void *src, void *dst);
 void CallLZ77UncompWram(const void *src, void *dst);
 void TestDivArm(void);
