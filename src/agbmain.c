@@ -1,5 +1,9 @@
 #include "globals.h"
 
+/**
+ * @brief 230 | 568 | Main game loop
+ * 
+ */
 void AgbMain(void)
 {
     InitializeGame();

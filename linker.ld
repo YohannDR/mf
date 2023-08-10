@@ -10,8 +10,10 @@ SECTIONS {
     } >ewram
 
     iwram (NOLOAD) : ALIGN(4) {
+        . = 0x00000000; gDebugFlag = .;
         . = 0x00000002; gFrameCounter16Bit = .;
         . = 0x00000020; gRebootGame = .;
+        . = 0x00000025; gDisableSoftReset = .;
         . = 0x00000b84; gPauseScreenFlag = .;
         . = 0x00000bdc; gCurrentCutscene = .;
         . = 0x00000bde; gMainGameMode = .;
@@ -21,6 +23,9 @@ SECTIONS {
         . = 0x00000be4; gClearedEveryFrame = .;
         . = 0x00000be5; gFrameCounter8Bit = .;
         . = 0x00000be6; gVBlankRequestFlag = .;
+        . = 0x000011e8; gButtonInput = .;
+        . = 0x000011ea; gButtonInputCopy = .;
+        . = 0x000011ec; gChangedInput = .;
         . = 0x00001242; gUnk_03001242 = .;
     } >iwram
 
@@ -29,6 +34,7 @@ SECTIONS {
         asm/crt0.o(.text);
         asm/intr_main.o(.text);
         src/agbmain.o(.text);
+        src/init_game.o(.text);
         asm/disasm_0x08000230.o(.text);
     } >rom
 

@@ -17,6 +17,12 @@ extern u8 gCurrentCutscene;
 extern u8 gUnk_03000be3;
 extern u8 gUnk_03001242;
 
+extern u8 gDebugFlag;
+extern u16 gButtonInput;
+extern u16 gButtonInputCopy;
+extern u16 gChangedInput;
+extern u8 gDisableSoftReset;
+
 #define GAME_MODE_TITLE 0
 #define GAME_MODE_IN_GAME 1
 #define GAME_MODE_SOFT_RESET 2
