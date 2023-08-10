@@ -1,4 +1,5 @@
 #include "globals.h"
+#include "syscall_wrappers.h"
 
 /**
  * @brief 230 | 568 | Main game loop
@@ -343,7 +344,7 @@ void AgbMain(void)
 
         gVBlankRequestFlag &= ~1;
         do {
-            asm("swi #2");
+            SYSCALL(2);
         } while (!(gVBlankRequestFlag & 1));
     }
 }

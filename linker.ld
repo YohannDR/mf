@@ -37,6 +37,7 @@ SECTIONS {
         src/agbmain.o(.text);
         src/init_game.o(.text);
         src/softreset.o(.text);
+        src/syscall_wrappers.o(.text);
         asm/disasm_0x08000230.o(.text);
     } >rom
 
