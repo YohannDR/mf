@@ -24,6 +24,9 @@ extern u16 gButtonInputCopy;
 extern u16 gChangedInput;
 extern u8 gDisableSoftReset;
 
+extern u8 gInterruptCode[512];
+extern void* gInterruptCodePointer;
+
 #define GAME_MODE_TITLE 0
 #define GAME_MODE_IN_GAME 1
 #define GAME_MODE_SOFT_RESET 2

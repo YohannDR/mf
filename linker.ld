@@ -24,10 +24,14 @@ SECTIONS {
         . = 0x00000be4; gClearedEveryFrame = .;
         . = 0x00000be5; gFrameCounter8Bit = .;
         . = 0x00000be6; gVBlankRequestFlag = .;
+        . = 0x00000be8; gInterruptCode = .;
+        . = 0x00000de8; gOamData = .;
         . = 0x000011e8; gButtonInput = .;
         . = 0x000011ea; gButtonInputCopy = .;
         . = 0x000011ec; gChangedInput = .;
+        . = 0x000011ee; gNextOamSlot = .;
         . = 0x00001242; gUnk_03001242 = .;
+        . = 0x00007ffc; gInterruptCodePointer = .;
     } >iwram
 
     rom : ALIGN(2) {
@@ -39,6 +43,7 @@ SECTIONS {
         src/softreset.o(.text);
         src/syscall_wrappers.o(.text);
         src/update_input.o(.text);
+        src/init_helpers.o(.text);
         asm/disasm_0x08000230.o(.text);
     } >rom
 
