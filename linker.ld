@@ -15,6 +15,7 @@ SECTIONS {
         . = 0x00000020; gRebootGame = .;
         . = 0x00000025; gDisableSoftReset = .;
         . = 0x00000b84; gPauseScreenFlag = .;
+        . = 0x00000b8f; gUnk_03000B8F = .;
         . = 0x00000bdc; gCurrentCutscene = .;
         . = 0x00000bde; gMainGameMode = .;
         . = 0x00000be0; gSubGameMode1 = .;
@@ -35,6 +36,7 @@ SECTIONS {
         asm/intr_main.o(.text);
         src/agbmain.o(.text);
         src/init_game.o(.text);
+        src/softreset.o(.text);
         asm/disasm_0x08000230.o(.text);
     } >rom
 

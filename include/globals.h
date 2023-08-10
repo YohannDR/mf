@@ -16,6 +16,7 @@ extern s8 gPauseScreenFlag;
 extern u8 gCurrentCutscene;
 extern u8 gUnk_03000be3;
 extern u8 gUnk_03001242;
+extern u8 gUnk_03000B8F;
 
 extern u8 gDebugFlag;
 extern u16 gButtonInput;

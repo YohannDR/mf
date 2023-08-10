@@ -17,7 +17,7 @@ void AgbMain(void)
             break;
 
         UpdateInput();
-        SoftResetCheck();
+        SoftresetCheck();
 
         gFrameCounter8Bit++;
         gFrameCounter16Bit++;

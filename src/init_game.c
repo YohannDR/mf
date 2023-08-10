@@ -2,7 +2,7 @@
 #include "gba.h"
 #include "macros.h"
 
-void Softreset_VBlank(void);
+#include "softreset.h"
 
 /**
  * @brief 798 | 118 | Initializes the game
@@ -26,9 +26,13 @@ void InitializeGame(void)
     write16(REG_IME, TRUE);
     InitializeAudio();
 
-    write16(REG_IE, 0x2401);
+    write16(REG_IE, IF_VBLANK | IF_DMA2 | IF_GAMEPAK);
     write16(REG_DISPSTAT, DSTAT_IF_VBLANK);
-    write16(REG_WAITCNT, 0x45B4);
+    write16(REG_WAITCNT, WAIT_SRAM_4CYCLES | WAIT_BANK0_3CYCLES
+        | WAIT_BANK0_SUBSEQUENT_1CYCLE
+        | WAIT_BANK1_3CYCLES | WAIT_BANK1_SUBSEQUENT_1CYCLE
+        | WAIT_BANK2_3CYCLES | WAIT_BANK2_SUBSEQUENT_1CYCLE
+        | WAIT_GAMEPACK_CGB);
 
     gSubGameMode1 = 0;
     gSubGameMode2 = 0;
