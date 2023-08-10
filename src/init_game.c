@@ -19,7 +19,7 @@ void InitializeGame(void)
 
     ClearGfxRam();
     LoadInterruptCode();
-    SetVBlankCodePointer(Softreset_VBlank);
+    CallbackSetVBlank(Softreset_VBlank);
 
     unk_7eea4();
 

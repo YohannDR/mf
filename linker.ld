@@ -31,6 +31,9 @@ SECTIONS {
         . = 0x000011ec; gChangedInput = .;
         . = 0x000011ee; gNextOamSlot = .;
         . = 0x00001242; gUnk_03001242 = .;
+        . = 0x000019c4; gVBlankCallback = .;
+        . = 0x000019c8; gHBlankCallback = .;
+        . = 0x000019cc; gVCountCallback = .;
 
         . = 0x00005408; src/libgcc/fp-bit-base.o(.bss);
         . = 0x00005420; src/libgcc/float.o(.bss);
@@ -50,7 +53,10 @@ SECTIONS {
         src/update_input.o(.text);
         src/init_helpers.o(.text);
         src/fixed_point.o(.text);
+        src/callbacks.o(.text);
+
         asm/disasm_0x08000230.o(.text);
+
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);
         src/libgcc/fp-bit-base.o(.text);
