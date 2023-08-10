@@ -31,7 +31,12 @@ SECTIONS {
         . = 0x000011ec; gChangedInput = .;
         . = 0x000011ee; gNextOamSlot = .;
         . = 0x00001242; gUnk_03001242 = .;
+
+        . = 0x00005408; src/libgcc/fp-bit-base.o(.bss);
+        . = 0x00005420; src/libgcc/float.o(.bss);
+
         . = 0x00007ffc; gInterruptCodePointer = .;
+        
     } >iwram
 
     rom : ALIGN(2) {
@@ -44,7 +49,14 @@ SECTIONS {
         src/syscall_wrappers.o(.text);
         src/update_input.o(.text);
         src/init_helpers.o(.text);
+        src/fixed_point.o(.text);
         asm/disasm_0x08000230.o(.text);
+        asm/libgcc.o(.text);
+        asm/disasm_0x080a374c.o(.text);
+        src/libgcc/fp-bit-base.o(.text);
+        src/libgcc/float.o(.text);
+        src/libgcc/libgcc.o(.text);
+        asm/memset.o(.text);
     } >rom
 
     .rodata : ALIGN(2) {
