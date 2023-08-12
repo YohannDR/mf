@@ -64,7 +64,6 @@ SECTIONS {
         src/libgcc/fp-bit-base.o(.text);
         src/libgcc/float.o(.text);
         src/libgcc/libgcc.o(.text);
-        asm/memset.o(.text);
     } >rom
 
     .rodata : ALIGN(2) {

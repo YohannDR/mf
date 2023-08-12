@@ -160,6 +160,9 @@ typedef unsigned long size_t;
 #define UNALIGNED(X, Y) \
   (((long)X & (sizeof (long) - 1)) | ((long)Y & (sizeof (long) - 1)))
 
+#define UNALIGNED_SINGLE(X) \
+  ((long)X & (sizeof (long) - 1))
+
 /* How many bytes are copied each iteration of the 4X unrolled loop.  */
 #define BIGBLOCKSIZE    (sizeof (long) << 2)
 
@@ -210,6 +213,61 @@ memcpy (void *dest, const void *src, size_t len0)
 
   while (len--)
     *cdest++ = *csrc++;
+
+  return dest;
+}
+
+void *
+memset (void *dest, int val, size_t len0)
+{
+  int value = val;
+  char *cdest = dest;
+  long *aligned_dest;
+  int long_val;
+
+  int len = len0;
+  int l;
+
+  /* If the size is small, or either SRC or DST is unaligned,
+     then punt into the byte copy loop.  This should be rare.  */
+  if (len0 >= LITTLEBLOCKSIZE && !UNALIGNED_SINGLE (cdest))
+  {
+    aligned_dest = (long*)cdest;
+
+    value &= 0xFF;
+    long_val = value;
+    long_val |= value << 8;
+    long_val |= long_val << 16;
+
+      /* Copy 4X long words at a time if possible.  */
+      while (len >= BIGBLOCKSIZE)
+	{
+	  *aligned_dest++ = long_val;
+	  *aligned_dest++ = long_val;
+	  *aligned_dest++ = long_val;
+	  *aligned_dest++ = long_val;
+	  len -= BIGBLOCKSIZE;
+	}
+
+        /* Copy one long word at a time if possible.  */
+      while (len >= LITTLEBLOCKSIZE)
+	{
+	  *aligned_dest++ = long_val;
+	  len -= LITTLEBLOCKSIZE;
+	}
+
+      /* Pick up any residual with a byte copier.  */
+      cdest = (char*)aligned_dest;
+  }
+
+  while (1)
+  {
+    l = len--;
+    if (l == 0)
+        break;
+
+    *cdest++ = value;
+  }
 
   return dest;
 }
