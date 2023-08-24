@@ -15,6 +15,7 @@ SECTIONS {
         . = 0x00000020; gRebootGame = .;
         . = 0x00000025; gDisableSoftReset = .;
         . = 0x00000140; gSpriteData = .;
+        . = 0x000007a4; gPreviousVerticalCollisionCheck = .;
         . = 0x000007a5; gPreviousCollisionCheck = .;
         . = 0x000007a6; gIgnoreSamusAndSpriteCollision = .;
         . = 0x00000b84; gPauseScreenFlag = .;

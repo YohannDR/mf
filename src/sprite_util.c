@@ -6,8 +6,9 @@
 #include "data/sprite_data.h"
 #include "data/samus_data.h"
 
-#include "constants/sprite.h"
+#include "constants/clipdata.h"
 #include "constants/samus.h"
+#include "constants/sprite.h"
 
 #include "structs/samus.h"
 
@@ -397,7 +398,7 @@ void SamusAndSpriteCollision(void)
                 {
                     CheckCollisionAtPosition(spriteTop + ONE_SUB_PIXEL + gSamusData.drawDistanceTop, samusX);
 
-                    if (gPreviousCollisionCheck == 0)
+                    if (gPreviousCollisionCheck == COLLISION_AIR)
                     {
                         gSamusData.yPosition = spriteTop + ONE_SUB_PIXEL;
 
@@ -409,7 +410,7 @@ void SamusAndSpriteCollision(void)
                 {
                     CheckCollisionAtPosition(spriteBottom - gSamusData.drawDistanceTop, samusX);
 
-                    if (gPreviousCollisionCheck == 0)
+                    if (gPreviousCollisionCheck == COLLISION_AIR)
                     {
                         gSamusData.yPosition = spriteBottom - gSamusData.drawDistanceTop;
 
@@ -423,12 +424,12 @@ void SamusAndSpriteCollision(void)
                     {
                         CheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
-                        if (gPreviousCollisionCheck == 0)
+                        if (gPreviousCollisionCheck == COLLISION_AIR)
                         {
                             CheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                 spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
-                            if (gPreviousCollisionCheck == 0 || SamusCheckMorphed())
+                            if (gPreviousCollisionCheck == COLLISION_AIR || SamusCheckMorphed())
                             {
                                 gSamusData.xPosition = spriteLeft - gSamusData.drawDistanceRight;
 
@@ -441,12 +442,12 @@ void SamusAndSpriteCollision(void)
                     {
                         CheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
-                        if (gPreviousCollisionCheck == 0)
+                        if (gPreviousCollisionCheck == COLLISION_AIR)
                         {
                             CheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                 spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
-                            if (gPreviousCollisionCheck == 0 || SamusCheckMorphed())
+                            if (gPreviousCollisionCheck == COLLISION_AIR || SamusCheckMorphed())
                             {
                                 gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;
 
@@ -473,7 +474,7 @@ void SamusAndSpriteCollision(void)
                     {
                         CheckCollisionAtPosition(spriteTop + ONE_SUB_PIXEL + gSamusData.drawDistanceTop, samusX);
 
-                        if (gPreviousCollisionCheck == 0)
+                        if (gPreviousCollisionCheck == COLLISION_AIR)
                         {
                             gSamusData.yPosition = spriteTop + ONE_SUB_PIXEL;
 
@@ -485,7 +486,7 @@ void SamusAndSpriteCollision(void)
                     {
                         CheckCollisionAtPosition(spriteBottom - gSamusData.drawDistanceTop, samusX);
 
-                        if (gPreviousCollisionCheck == 0)
+                        if (gPreviousCollisionCheck == COLLISION_AIR)
                         {
                             gSamusData.yPosition = spriteBottom - gSamusData.drawDistanceTop;
 
@@ -499,12 +500,12 @@ void SamusAndSpriteCollision(void)
                         {
                             CheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
-                            if (gPreviousCollisionCheck == 0)
+                            if (gPreviousCollisionCheck == COLLISION_AIR)
                             {
                                 CheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                     spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
-                                if (gPreviousCollisionCheck == 0 || SamusCheckMorphed())
+                                if (gPreviousCollisionCheck == COLLISION_AIR || SamusCheckMorphed())
                                 {
                                     gSamusData.xPosition = spriteLeft - gSamusData.drawDistanceRight;
 
@@ -517,12 +518,12 @@ void SamusAndSpriteCollision(void)
                         {
                             CheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
-                            if (gPreviousCollisionCheck == 0)
+                            if (gPreviousCollisionCheck == COLLISION_AIR)
                             {
                                 CheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                     spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
-                                if (gPreviousCollisionCheck == 0 || SamusCheckMorphed())
+                                if (gPreviousCollisionCheck == COLLISION_AIR || SamusCheckMorphed())
                                 {
                                     gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;
 
@@ -754,14 +755,14 @@ void SamusAndSpriteCollision(void)
                         {
                             CheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
-                            if (gPreviousCollisionCheck == 0)
+                            if (gPreviousCollisionCheck == COLLISION_AIR)
                                 gSamusData.xPosition = spriteLeft - gSamusData.drawDistanceRight;
                         }
                         else
                         {
                             CheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
-                            if (gPreviousCollisionCheck == 0)
+                            if (gPreviousCollisionCheck == COLLISION_AIR)
                                 gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;
                         }
 
@@ -773,7 +774,7 @@ void SamusAndSpriteCollision(void)
                         {
                             CheckCollisionAtPosition(samusY + ONE_SUB_PIXEL + gSamusData.drawDistanceTop, samusX);
 
-                            if (gPreviousCollisionCheck == 0)
+                            if (gPreviousCollisionCheck == COLLISION_AIR)
                             {
                                 if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                                     gSamusData.direction = KEY_RIGHT;
@@ -795,14 +796,14 @@ void SamusAndSpriteCollision(void)
                         {
                             CheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
-                            if (gPreviousCollisionCheck == 0)
+                            if (gPreviousCollisionCheck == COLLISION_AIR)
                                 gSamusData.xPosition = spriteLeft - gSamusData.drawDistanceRight;
                         }
                         else
                         {
                             CheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
-                            if (gPreviousCollisionCheck == 0)
+                            if (gPreviousCollisionCheck == COLLISION_AIR)
                                 gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;
                         }
 
@@ -991,4 +992,65 @@ void SamusAndSpriteCollision(void)
         if (gSpriteData[i].ignoreSamusCollisionTimer != 0)
             gSpriteData[i].ignoreSamusCollisionTimer--;
     }
+}
+
+/**
+ * @brief 11058 | 11c | Checks the vertical collision at the position
+ * 
+ * @param yPosition Y Position
+ * @param xPosition X Position
+ * @return u16 Block top position
+ */
+u16 SpriteUtilCheckVerticalCollisionAtPosition(u16 yPosition, u16 xPosition)
+{
+    s16 blockTop;
+    u32 clipdata;
+
+    clipdata = ClipdataProcess(yPosition, xPosition);
+
+    if (clipdata & CLIPDATA_TYPE_SOLID_FLAG)
+        gPreviousVerticalCollisionCheck = COLLISION_SOLID;
+    else
+        gPreviousVerticalCollisionCheck = COLLISION_AIR;
+
+    switch (LOW_BYTE(clipdata))
+    {
+        case CLIPDATA_TYPE_RIGHT_STEEP_FLOOR_SLOPE:
+            blockTop = (yPosition & BLOCK_POSITION_FLAG) - ((xPosition & SUB_PIXEL_POSITION_FLAG) - SUB_PIXEL_POSITION_FLAG);
+            gPreviousVerticalCollisionCheck = COLLISION_RIGHT_STEEP_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_RIGHT_LOWER_SLIGHT_FLOOR_SLOPE:
+            blockTop = (yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) - SUB_PIXEL_POSITION_FLAG);
+            gPreviousVerticalCollisionCheck = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_RIGHT_UPPER_SLIGHT_FLOOR_SLOPE:
+            blockTop = ((yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) - (SUB_PIXEL_POSITION_FLAG / 2)));
+            gPreviousVerticalCollisionCheck = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_STEEP_FLOOR_SLOPE:
+            blockTop = (yPosition & BLOCK_POSITION_FLAG) | (xPosition & SUB_PIXEL_POSITION_FLAG);
+            gPreviousVerticalCollisionCheck = COLLISION_LEFT_STEEP_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_LOWER_SLIGHT_FLOOR_SLOPE:
+            blockTop = (yPosition & BLOCK_POSITION_FLAG) | (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) + (SUB_PIXEL_POSITION_FLAG / 2)); 
+            gPreviousVerticalCollisionCheck = COLLISION_LEFT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_UPPER_SLIGHT_FLOOR_SLOPE:
+            blockTop = (yPosition & BLOCK_POSITION_FLAG) | (xPosition & SUB_PIXEL_POSITION_FLAG) / 2; 
+            gPreviousVerticalCollisionCheck = COLLISION_LEFT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_PASS_THROUGH_BOTTOM:
+            gPreviousVerticalCollisionCheck = COLLISION_PASS_THROUGH_BOTTOM;
+
+        default:
+            blockTop = yPosition & BLOCK_POSITION_FLAG;
+    }
+
+    return blockTop;
 }

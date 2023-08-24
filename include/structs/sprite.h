@@ -57,5 +57,6 @@ extern u8 gSpritesetSpriteGfxSlots[MAX_AMOUNT_OF_SPRITE_TYPES];
 
 extern u8 gIgnoreSamusAndSpriteCollision;
 extern u8 gPreviousCollisionCheck;
+extern u8 gPreviousVerticalCollisionCheck;
 
 #endif /* SPRITE_STRUCTS_H */
