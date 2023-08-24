@@ -21,7 +21,7 @@ void InitializeGame(void)
     LoadInterruptCode();
     CallbackSetVBlank(Softreset_VBlank);
 
-    unk_7eea4();
+    Sram_ReadAll();
 
     write16(REG_IME, TRUE);
     InitializeAudio();

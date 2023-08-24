@@ -2,8 +2,8 @@
 
     .syntax unified
 
-	thumb_func_start EraseSRAM_Unused
-EraseSRAM_Unused: @ 0x08000C28
+	thumb_func_start EraseSram_Unused
+EraseSram_Unused: @ 0x08000C28
 	push {r4, r5, lr}
 	sub sp, #4
 	ldr r1, _08000C54 @ =0x0000FFFF
@@ -19,7 +19,7 @@ EraseSRAM_Unused: @ 0x08000C28
 	ldr r1, _08000C5C @ =0x0E000100
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl SRAMWrite
+	bl SramWrite
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -29,8 +29,8 @@ _08000C54: .4byte 0x0000FFFF
 _08000C58: .4byte 0x02038100
 _08000C5C: .4byte 0x0E000100
 
-	thumb_func_start EraseSRAM
-EraseSRAM: @ 0x08000C60
+	thumb_func_start EraseSram
+EraseSram: @ 0x08000C60
 	push {r4, r5, lr}
 	sub sp, #4
 	ldr r1, _08000C90 @ =0x0000FFFF
@@ -47,7 +47,7 @@ EraseSRAM: @ 0x08000C60
 	lsls r1, r1, #0x14
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl SRAMWrite
+	bl SramWrite
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -64,7 +64,7 @@ unk_c98: @ 0x08000C98
 	lsls r1, r1, #0x14
 	adds r0, r4, #0
 	movs r2, #0x80
-	bl SRAMWriteChecked
+	bl SramWriteChecked
 	ldr r2, _08000CC8 @ =0x040000D4
 	str r4, [r2]
 	ldr r0, _08000CCC @ =0x0203F100
@@ -74,7 +74,7 @@ unk_c98: @ 0x08000C98
 	ldr r1, [r2, #8]
 	ldr r1, _08000CD4 @ =0x0E007100
 	movs r2, #0x80
-	bl SRAMWriteChecked
+	bl SramWriteChecked
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -91,7 +91,7 @@ unk_cd8: @ 0x08000CD8
 	ldr r0, _08000CE8 @ =0x02038080
 	ldr r1, _08000CEC @ =0x0E000080
 	movs r2, #0x80
-	bl SRAMWriteChecked
+	bl SramWriteChecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -104,7 +104,7 @@ unk_cf0: @ 0x08000CF0
 	ldr r0, _08000D00 @ =0x0203F100
 	ldr r1, _08000D04 @ =0x0E007100
 	movs r2, #0x80
-	bl SRAMWriteChecked
+	bl SramWriteChecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -125,7 +125,7 @@ WriteMostRecentFileToGamePak: @ 0x08000D08
 	ldr r1, [r1]
 	movs r2, #0x90
 	lsls r2, r2, #5
-	bl SRAMWrite
+	bl SramWrite
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -147,7 +147,7 @@ unk_d34: @ 0x08000D34
 	ldr r1, [r1]
 	movs r2, #0x90
 	lsls r2, r2, #5
-	bl SRAMWrite
+	bl SramWrite
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -162,7 +162,7 @@ ReadAllGamePakSRAM: @ 0x08000D60
 	ldr r1, _08000D78 @ =0x02038200
 	movs r2, #0xfc
 	lsls r2, r2, #7
-	bl SRAMWriteUnckecked
+	bl SramWriteUnckecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -183,7 +183,7 @@ ReadMostRecentFileFromGamePak: @ 0x08000D7C
 	ldr r1, [r1]
 	movs r2, #0x90
 	lsls r2, r2, #5
-	bl SRAMWriteUnckecked
+	bl SramWriteUnckecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -199,11 +199,11 @@ unk_da8: @ 0x08000DA8
 	ldr r1, _08000DC8 @ =0x02038000
 	movs r2, #0x80
 	lsls r2, r2, #1
-	bl SRAMWriteUnckecked
+	bl SramWriteUnckecked
 	ldr r0, _08000DCC @ =0x0E007100
 	ldr r1, _08000DD0 @ =0x0203F100
 	movs r2, #0x80
-	bl SRAMWriteUnckecked
+	bl SramWriteUnckecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -217,7 +217,7 @@ unk_dd4: @ 0x08000DD4
 	ldr r0, _08000DE4 @ =0x0203F000
 	ldr r1, _08000DE8 @ =0x0E007000
 	movs r2, #0x40
-	bl SRAMWriteChecked
+	bl SramWriteChecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -237,7 +237,7 @@ unk_dec: @ 0x08000DEC
 	ldr r1, [r0]
 	adds r0, r2, #0
 	movs r2, #0x40
-	bl SRAMWriteChecked
+	bl SramWriteChecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -250,7 +250,7 @@ unk_e14: @ 0x08000E14
 	ldr r0, _08000E24 @ =0x0203FFF0
 	ldr r1, _08000E28 @ =0x0E007FF0
 	movs r2, #0x10
-	bl SRAMWriteChecked
+	bl SramWriteChecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -264,7 +264,7 @@ unk_e2c: @ 0x08000E2C
 	ldr r1, _08000E44 @ =0x0E007800
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl SRAMWriteChecked
+	bl SramWriteChecked
 	pop {r0}
 	bx r0
 	.align 2, 0

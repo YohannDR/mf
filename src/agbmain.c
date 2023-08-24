@@ -1,6 +1,8 @@
 #include "globals.h"
 #include "syscalls.h"
 
+#include "constants/sprite.h"
+
 /**
  * @brief 230 | 568 | Main game loop
  * 
@@ -36,7 +38,7 @@ void AgbMain(void)
                 }
                 else if (gSubGameMode2 == 1)
                 {
-                    if (unk_87610())
+                    if (IntroSubroutine())
                     {
                         gSubGameMode1 = 0;
                         gSubGameMode2 = 4;
@@ -61,7 +63,7 @@ void AgbMain(void)
                     }
                     else if (gPauseScreenFlag == 100)
                     {
-                        unk_718cc();
+                        DemoInit();
                         gSubGameMode1 = 0;
                         gMainGameMode = GAME_MODE_DEMO;
                         gPauseScreenFlag = 0;
@@ -94,7 +96,7 @@ void AgbMain(void)
                     }
                     else if (gPauseScreenFlag == 100)
                     {
-                        unk_718cc();
+                        DemoInit();
                         gSubGameMode1 = 0;
                         gMainGameMode = GAME_MODE_DEMO;
                         gPauseScreenFlag = 0;
@@ -105,7 +107,7 @@ void AgbMain(void)
             case GAME_MODE_FILE_SELECT_OR_INTRO:
                 if (gSubGameMode2 == 0)
                 {
-                    gPauseScreenFlag = unk_9e598();
+                    gPauseScreenFlag = FileSelectSubroutine();
 
                     if (gPauseScreenFlag == 1)
                     {
@@ -130,7 +132,7 @@ void AgbMain(void)
                 }
                 else if (gSubGameMode2 == 1)
                 {
-                    if (NewFileIntro())
+                    if (NewFileIntroSubroutine())
                     {
                         gMainGameMode = GAME_MODE_MAP_SCREEN;
                         gPauseScreenFlag = 1;
@@ -176,7 +178,7 @@ void AgbMain(void)
                 break;
 
             case GAME_MODE_MAP_SCREEN:
-                if (unk_765f8())
+                if (PauseScreenSubroutine())
                 {
                     switch (gPauseScreenFlag)
                     {
@@ -211,7 +213,7 @@ void AgbMain(void)
                 break;
 
             case GAME_MODE_CUTSCENE:
-                if (unk_9994c())
+                if (CutsceneSubroutine())
                 {
                     if (gSubGameMode2 != 0)
                     {
@@ -242,7 +244,7 @@ void AgbMain(void)
                 break;
 
             case GAME_MODE_SA_X_CLOSE_UP:
-                if (unk_9db74())
+                if (SA_XCloseUpSubroutine())
                 {
                     gMainGameMode = GAME_MODE_IN_GAME;
                     gSubGameMode1 = 0;
@@ -263,10 +265,10 @@ void AgbMain(void)
                 break;
 
             case GAME_MODE_GAME_OVER:
-                gSubGameMode2 = unk_9deb4();
+                gSubGameMode2 = GameOverSubroutine();
                 if (gSubGameMode2 == 1)
                 {
-                    if (unk_80968())
+                    if (Sram_ChecLoadSaveFileWithBlank())
                     {
                         gMainGameMode = GAME_MODE_IN_GAME;
                         gPauseScreenFlag = 0;
@@ -289,7 +291,7 @@ void AgbMain(void)
                 break;
 
             case GAME_MODE_ENDING:
-                if (unk_94e84())
+                if (EndingSubroutine())
                 {
                     gMainGameMode = GAME_MODE_CREDITS;
                     gSubGameMode1 = 0;
@@ -305,7 +307,7 @@ void AgbMain(void)
                 break;
 
             case GAME_MODE_CREDITS:
-                if (unk_a1c84())
+                if (CreditsSubroutine())
                     gMainGameMode = GAME_MODE_SOFT_RESET;
                 break;
 
@@ -322,7 +324,7 @@ void AgbMain(void)
                     }
                     else
                     {
-                        unk_718cc();
+                        DemoInit();
                         gMainGameMode = GAME_MODE_DEMO;
                     }
                 }

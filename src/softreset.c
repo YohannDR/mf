@@ -44,7 +44,7 @@ void SoftReset(void)
 
     write16(REG_IME, TRUE);
 
-    unk_6ee24();
+    HazeTransferAndDeactivate();
 
     SET_BACKDROP_COLOR(COLOR_BLACK);
 
@@ -63,7 +63,7 @@ void SoftReset(void)
     LoadInterruptCode();
     CallbackSetVBlank(Softreset_VBlank);
 
-    unk_7eea4();
+    Sram_ReadAll();
 
     write16(REG_IME, TRUE);
     InitializeAudio();
