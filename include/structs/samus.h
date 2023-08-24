@@ -39,6 +39,25 @@ struct SamusData {
     s16 drawDistanceBottom;
 };
 
+struct Equipment {
+    u16 currentEnergy;
+    u16 maxEnergy;
+    u16 currentMissiles;
+    u16 maxMissiles;
+    u8 currentPowerBombs;
+    u8 maxPowerBombs;
+    u8 beamStatus;
+    u8 weaponsStatus;
+    u8 suitMiscStatus;
+    u8 securityHatchLevel;
+    u8 downloadedMaps;
+    u8 lowHealth;
+};
+
 extern struct SamusData gSamusData;
+extern struct Equipment gEquipment;
+
+extern u16 gPreviousXPosition;
+extern u16 gPoseLock;
 
 #endif /* SAMUS_STRUCTS_H */

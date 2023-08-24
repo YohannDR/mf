@@ -55,4 +55,7 @@ extern struct SpriteData gSpriteData[MAX_AMOUNT_OF_SPRITES];
 extern u8 gSpritesetSpriteIds[MAX_AMOUNT_OF_SPRITE_TYPES];
 extern u8 gSpritesetSpriteGfxSlots[MAX_AMOUNT_OF_SPRITE_TYPES];
 
+extern u8 gIgnoreSamusAndSpriteCollision;
+extern u8 gPreviousCollisionCheck;
+
 #endif /* SPRITE_STRUCTS_H */

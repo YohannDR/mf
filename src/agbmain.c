@@ -318,7 +318,7 @@ void AgbMain(void)
                     gUnk_03000be3 = 0;
                     gSubGameMode1 = 0;
 
-                    if (gUnk_03001242 == 0)
+                    if (gDemoState == 0)
                     {
                         gMainGameMode = GAME_MODE_TITLE;
                     }

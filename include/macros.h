@@ -7,6 +7,23 @@
 #define HIGH_SHORT(value) ((value) >> 16)
 
 /**
+ * @brief Performs a modulo (value % mod) operation on a value using the and operation (WARNING only use a value for mod that is divisble by 2)
+ * 
+ * @param value Value
+ * @param mod Modulo
+ */
+#define MOD_AND(value, mod) ((value) & ((mod) - 1))
+
+/**
+ * @brief Multiplies a number by a fraction (num/den)
+ * 
+ * @param value Value
+ * @param num Numerator
+ * @param den Denominator
+ */
+#define FRACT_MUL(value, num, den) ((value) * (num) / (den))
+
+/**
  * @brief Constructs an uint from 2 ushorts (high << 16 | low)
  * 
  * @param high High
@@ -59,6 +76,23 @@
 #define COLOR_MASK 0x1F
 
 #define SET_BACKDROP_COLOR(color) (write16(PALRAM_BASE, (color)))
+
+#define GET_PSPRITE_HEALTH(id) sPrimarySpriteStats[(id)][0]
+#define GET_SSPRITE_HEALTH(id) sSecondarySpriteStats[(id)][0]
+
+#define GET_PSPRITE_DAMAGE(id) sPrimarySpriteStats[(id)][1]
+#define GET_SSPRITE_DAMAGE(id) sSecondarySpriteStats[(id)][1]
+
+#define GET_PSPRITE_SUIT_REDUCTION(id) sPrimarySpriteStats[(id)][2]
+#define GET_SSPRITE_SUIT_REDUCTION(id) sSecondarySpriteStats[(id)][2]
+
+#define SUB_PIXEL_TO_PIXEL(pixel) ((pixel) / SUB_PIXEL_RATIO)
+#define SUB_PIXEL_TO_PIXEL_(pixel) (DIV_SHIFT(pixel, SUB_PIXEL_RATIO))
+#define PIXEL_TO_SUBPIXEL(pixel) ((pixel) * SUB_PIXEL_RATIO)
+#define SUB_PIXEL_TO_BLOCK(pixel) ((pixel) / BLOCK_SIZE)
+#define BLOCK_TO_SUB_PIXEL(block) ((block) * BLOCK_SIZE)
+#define VELOCITY_TO_SUB_PIXEL(velocity) (DIV_SHIFT((velocity), 8))
+#define SUB_PIXEL_TO_VELOCITY(velocity) ((velocity) * 8)
 
 #define INCBIN(...) {0}
 #define INCBIN_U8   INCBIN

@@ -15,7 +15,7 @@ extern u16 gFrameCounter16Bit;
 extern s8 gPauseScreenFlag;
 extern u8 gCurrentCutscene;
 extern u8 gUnk_03000be3;
-extern u8 gUnk_03001242;
+extern u8 gDemoState;
 extern u8 gUnk_03000B8F;
 
 extern u8 gDebugFlag;
@@ -23,6 +23,8 @@ extern u16 gButtonInput;
 extern u16 gButtonInputCopy;
 extern u16 gChangedInput;
 extern u8 gDisableSoftReset;
+
+extern u16 gBg1XPosition;
 
 extern u8 gInterruptCode[512];
 extern void* gInterruptCodePointer;
