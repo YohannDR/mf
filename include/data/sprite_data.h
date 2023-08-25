@@ -13,6 +13,6 @@ extern const s16 sSpritesFallingSpeed[16];
 // ...
 
 extern const u16 sPrimarySpriteStats[PSPRITE_END][7];
-extern const u16 sSecondarySpriteStats[130][4]; // FIXME : use SSPRITE_END
+extern const u16 sSecondarySpriteStats[SSPRITE_END][4];
 
 #endif /* SPRITE_DATA_H */

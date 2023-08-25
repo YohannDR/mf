@@ -55,9 +55,11 @@ struct Equipment {
 };
 
 extern struct SamusData gSamusData;
+extern struct SamusData gSamusDataCopy;
 extern struct Equipment gEquipment;
 
 extern u16 gPreviousXPosition;
 extern u16 gPoseLock;
+extern u16 gPreventMovementTimer;
 
 #endif /* SAMUS_STRUCTS_H */

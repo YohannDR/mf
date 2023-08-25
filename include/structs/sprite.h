@@ -50,10 +50,24 @@ struct SpriteData {
     u8 work5;
 };
 
+struct SubSpriteData {
+    const struct FrameData* pMultiOam;
+    u16 currentAnimationFrame;
+    u8 animationDurationCounter;
+    u16 yPosition;
+    u16 xPosition;
+    u16 health;
+    u8 work0;
+    u8 work1;
+};
+
 extern struct SpriteData gCurrentSprite;
 extern struct SpriteData gSpriteData[MAX_AMOUNT_OF_SPRITES];
 extern u8 gSpritesetSpriteIds[MAX_AMOUNT_OF_SPRITE_TYPES];
 extern u8 gSpritesetSpriteGfxSlots[MAX_AMOUNT_OF_SPRITE_TYPES];
+
+extern struct SubSpriteData gSubSpriteData1;
+extern struct SubSpriteData gSubSpriteData2;
 
 extern u8 gIgnoreSamusAndSpriteCollision;
 extern u8 gPreviousCollisionCheck;

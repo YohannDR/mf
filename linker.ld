@@ -16,6 +16,8 @@ SECTIONS {
         . = 0x00000025; gDisableSoftReset = .;
         . = 0x00000140; gSpriteData = .;
         . = 0x000006bc; gCurrentSprite = .;
+        . = 0x00000784; gSubSpriteData1 = .;
+        . = 0x00000794; gSubSpriteData2 = .;
         . = 0x000007a4; gPreviousVerticalCollisionCheck = .;
         . = 0x000007a5; gPreviousCollisionCheck = .;
         . = 0x000007a6; gIgnoreSamusAndSpriteCollision = .;
@@ -39,8 +41,10 @@ SECTIONS {
         . = 0x00001242; gDemoState = .;
         . = 0x00001243; gPoseLock = .;
         . = 0x00001244; gSamusData = .;
+        . = 0x00001270; gSamusDataCopy = .;
         . = 0x00001310; gEquipment = .;
         . = 0x00001342; gPreviousXPosition = .;
+        . = 0x00001348; gPreventMovementTimer = .;
         . = 0x000019c4; gVBlankCallback = .;
         . = 0x000019c8; gHBlankCallback = .;
         . = 0x000019cc; gVCountCallback = .;

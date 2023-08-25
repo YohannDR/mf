@@ -81,6 +81,13 @@ enum SamusPose {
     SPOSE_NONE
 };
 
+enum SamusStandingStatus {
+    STANDING_GROUND,
+    STANDING_ENEMY,
+    STANDING_MID_AIR,
+    STANDING_NOT_IN_CONTROL
+};
+
 #define SMF_HIGH_JUMP (1 << 0)
 #define SMF_SPEED_BOOSTER (1 << 1)
 #define SMF_SPACE_JUMP (1 << 2)
@@ -95,5 +102,13 @@ enum SamusPose {
 #define BF_PLASMA_BEAM (1 << 2)
 #define BF_WAVE_BEAM (1 << 3)
 #define BF_ICE_BEAM (1 << 4)
+
+#define MBF_MISSILES (1 << 0)
+#define MBF_SUPER_MISSILES (1 << 1)
+#define MBF_ICE_MISSILES (1 << 2)
+#define MBF_DIFFUSION_MISSILES (1 << 3)
+#define MBF_BOMBS (1 << 4)
+#define MBF_POWER_BOMBS (1 << 5)
+#define MBF_ANY_MISSILE (MBF_MISSILES | MBF_SUPER_MISSILES | MBF_ICE_MISSILES | MBF_DIFFUSION_MISSILES)
 
 #endif /* SAMUS_CONSTANTS_H */

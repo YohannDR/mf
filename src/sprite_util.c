@@ -5,6 +5,7 @@
 
 #include "data/sprite_data.h"
 #include "data/samus_data.h"
+#include "data/projectile_data.h"
 
 #include "constants/clipdata.h"
 #include "constants/samus.h"
@@ -392,7 +393,7 @@ void SamusAndSpriteCollision(void)
 
         if (gSpriteData[i].freezeTimer != 0)
         {
-            if (!SamusCheckPassThroughFrozenSprite(i))
+            if (!SpriteUtilSamusCheckPassThroughSprite(i))
             {
                 if (samusY - (QUARTER_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2) < spriteTop)
                 {
@@ -429,7 +430,7 @@ void SamusAndSpriteCollision(void)
                             CheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                 spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
-                            if (gPreviousCollisionCheck == COLLISION_AIR || SamusCheckMorphed())
+                            if (gPreviousCollisionCheck == COLLISION_AIR || SpriteUtilCheckMorphed())
                             {
                                 gSamusData.xPosition = spriteLeft - gSamusData.drawDistanceRight;
 
@@ -447,7 +448,7 @@ void SamusAndSpriteCollision(void)
                             CheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                 spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
-                            if (gPreviousCollisionCheck == COLLISION_AIR || SamusCheckMorphed())
+                            if (gPreviousCollisionCheck == COLLISION_AIR || SpriteUtilCheckMorphed())
                             {
                                 gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;
 
@@ -467,7 +468,7 @@ void SamusAndSpriteCollision(void)
                     break;
 
                 case SSC_SOLID:
-                    if (SamusCheckPassThroughFrozenSprite(i))
+                    if (SpriteUtilSamusCheckPassThroughSprite(i))
                         break;
 
                     if (samusY - (QUARTER_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2) < spriteTop)
@@ -505,7 +506,7 @@ void SamusAndSpriteCollision(void)
                                 CheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                     spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
-                                if (gPreviousCollisionCheck == COLLISION_AIR || SamusCheckMorphed())
+                                if (gPreviousCollisionCheck == COLLISION_AIR || SpriteUtilCheckMorphed())
                                 {
                                     gSamusData.xPosition = spriteLeft - gSamusData.drawDistanceRight;
 
@@ -523,7 +524,7 @@ void SamusAndSpriteCollision(void)
                                 CheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                     spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
-                                if (gPreviousCollisionCheck == COLLISION_AIR || SamusCheckMorphed())
+                                if (gPreviousCollisionCheck == COLLISION_AIR || SpriteUtilCheckMorphed())
                                 {
                                     gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;
 
@@ -539,7 +540,7 @@ void SamusAndSpriteCollision(void)
                     gSpriteData[i].pose = 0x37;
                     
                 case SSC_KNOCKS_BACK_SAMUS:
-                    if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose() && !SamusCheckSudoScrew(i))
+                    if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                             gSamusData.direction = KEY_RIGHT;
@@ -554,7 +555,7 @@ void SamusAndSpriteCollision(void)
                     break;
 
                 case SSC_3:
-                    if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose() && !SamusCheckSudoScrew(i))
+                    if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                             gSamusData.direction = KEY_RIGHT;
@@ -572,7 +573,7 @@ void SamusAndSpriteCollision(void)
                     gSpriteData[i].pose = 0x37;
 
                 case SSC_HURTS_SAMUS:
-                    if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose() && !SamusCheckSudoScrew(i))
+                    if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                             gSamusData.direction = KEY_RIGHT;
@@ -587,7 +588,7 @@ void SamusAndSpriteCollision(void)
                     break;
 
                 case SSC_RIDLEY_TAIL_SERRIS_SEGMENT:
-                    if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose() && !SamusCheckSudoScrew(i))
+                    if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                             gSamusData.direction = KEY_RIGHT;
@@ -624,7 +625,7 @@ void SamusAndSpriteCollision(void)
                     break;
 
                 case SSC_19:
-                    if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose() && !SamusCheckSudoScrew(i))
+                    if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                             gSamusData.direction = KEY_RIGHT;
@@ -718,7 +719,7 @@ void SamusAndSpriteCollision(void)
                 case SSC_YAMEBA:
                     gSpriteData[i].status |= SPRITE_STATUS_SAMUS_COLLIDING;
 
-                    if (gSamusData.invincibilityTimer < 8 && !SamusCheckDamagingPose() && !SamusCheckSudoScrew(i))
+                    if (gSamusData.invincibilityTimer < 8 && !SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
                     {
                         SpriteUtilTakeDamageFromSprite(FALSE, i, 1);
 
@@ -745,7 +746,7 @@ void SamusAndSpriteCollision(void)
                 case SSC_HURTS_SAMUS_SOLID:
                     if (!SamusCheckDamgingPose())
                     {
-                        if (SamusCheckSudoScrew(i))
+                        if (SpriteUtilCheckSudoScrew(i))
                         {
                             gIgnoreSamusAndSpriteCollision = TRUE;
                             break;
@@ -766,7 +767,7 @@ void SamusAndSpriteCollision(void)
                                 gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;
                         }
 
-                        if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose())
+                        if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose())
                         {
                             SpriteUtilTakeDamageFromSprite(TRUE, i, 1);
                         }
@@ -790,7 +791,7 @@ void SamusAndSpriteCollision(void)
                     break;
 
                 case SSC_E:
-                    if (!SamusCheckDamagingPose() && !SamusCheckSudoScrew(i))
+                    if (!SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                         {
@@ -807,7 +808,7 @@ void SamusAndSpriteCollision(void)
                                 gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;
                         }
 
-                        if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose())
+                        if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose())
                         {
                             SpriteUtilTakeDamageFromSprite(TRUE, i, 1);
                         }
@@ -837,7 +838,7 @@ void SamusAndSpriteCollision(void)
                     break;
 
                 case SSC_SA_X_ICE_BEAM:
-                    if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose())
+                    if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose())
                     {
                         if (gEquipment.suitMiscStatus & SMF_VARIA_SUIT)
                             SpriteUtilTakeDamageFromSprite(TRUE, i, 1);
@@ -854,7 +855,7 @@ void SamusAndSpriteCollision(void)
                     break;
 
                 case SSC_SA_X_SUPER_MISSILE:
-                    if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose())
+                    if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose())
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                             gSamusData.direction = KEY_RIGHT;
@@ -870,7 +871,7 @@ void SamusAndSpriteCollision(void)
                     break;
 
                 case SSC_SA_X_POWER_BOMB:
-                    if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose())
+                    if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose())
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                             gSamusData.direction = KEY_RIGHT;
@@ -923,7 +924,7 @@ void SamusAndSpriteCollision(void)
                         }
                     }
 
-                    if (gSamusData.invincibilityTimer == 0 && !SamusCheckDamagingPose() && !SamusCheckSudoScrew(i))
+                    if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                             gSamusData.direction = KEY_RIGHT;
@@ -957,7 +958,7 @@ void SamusAndSpriteCollision(void)
                         }
                     }
 
-                    if (SamusCheckMorphed() || gSamusData.pose == SPOSE_SPACE_JUMPING)
+                    if (SpriteUtilCheckMorphed() || gSamusData.pose == SPOSE_SPACE_JUMPING)
                         SAMUS_SET_POSE(SPOSE_MID_AIR);
 
                     gIgnoreSamusAndSpriteCollision = TRUE;
@@ -1566,4 +1567,1794 @@ u8 SpriteUtilMakeSpriteRotateTowardsTarget(s16 oamRotation, s16 targetY, s16 tar
     }
 
     return oamRotation;
+}
+
+/**
+ * @brief 11934 | 38 | Checks if the animation of the current sprite has ended
+ * 
+ * @return u32 bool, ended
+ */
+u32 SpriteUtilCheckEndOfCurrentSpriteAnimation(void)
+{
+    u8 adc;
+    u16 caf;
+
+    adc = gCurrentSprite.animationDurationCounter;
+    caf = gCurrentSprite.currentAnimationFrame;
+
+    // Get animation duration counter for the next frame
+    adc++;
+
+    // Check if on the next frame, the current animation frame ends
+    if (gCurrentSprite.pOam[caf].timer < adc)
+    {
+        // Get next animation frame
+        caf++;
+
+        // Checks if has a timer of 0, meaning the end of the animation
+        if (gCurrentSprite.pOam[caf].timer == 0)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 1196c | 3c | Checks if the animation of the current sprite has nearly ended
+ * 
+ * @return u32 bool, nearly ended
+ */
+u32 SpriteUtilCheckNearEndOfCurrentSpriteAnimation(void)
+{
+    u8 adc;
+    u16 caf;
+
+    adc = gCurrentSprite.animationDurationCounter;
+    caf = gCurrentSprite.currentAnimationFrame;
+
+    // Get animation duration counter for the next next frame
+    adc++;
+    adc++;
+
+    // Check if on the next frame, the current animation frame ends
+    if (gCurrentSprite.pOam[caf].timer < adc)
+    {
+        // Get next animation frame
+        caf++;
+
+        // Checks if has a timer of 0, meaning the end of the animation
+        if (gCurrentSprite.pOam[caf].timer == 0)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 119a8 | 48 | Checks if the animation of a sprite has ended
+ * 
+ * @param spriteSlot Sprite slot
+ * @return u32 bool, ended
+ */
+u32 SpriteUtilCheckEndOfSpriteAnimation(u8 spriteSlot)
+{
+    u8 adc;
+    u16 caf;
+
+    adc = gSpriteData[spriteSlot].animationDurationCounter;
+    caf = gSpriteData[spriteSlot].currentAnimationFrame;
+
+    // Get animation duration counter for the next frame
+    adc++;
+
+    // Check if on the next frame, the current animation frame ends
+    if (gSpriteData[spriteSlot].pOam[caf].timer < adc)
+    {
+        // Get next animation frame
+        caf++;
+
+        // Checks if has a timer of 0, meaning the end of the animation
+        if (gSpriteData[spriteSlot].pOam[caf].timer == 0)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 119f0 | 4c | Checks if the animation of a sprite has nearly ended
+ * 
+ * @param spriteSlot Sprite slot
+ * @return u32 bool, ended
+ */
+u32 SpriteUtilCheckNearEndOfSpriteAnimation(u8 spriteSlot)
+{
+    u8 adc;
+    u16 caf;
+
+    adc = gSpriteData[spriteSlot].animationDurationCounter;
+    caf = gSpriteData[spriteSlot].currentAnimationFrame;
+
+    // Get animation duration counter for the next next frame
+    adc++;
+    adc++;
+
+    // Check if on the next frame, the current animation frame ends
+    if (gSpriteData[spriteSlot].pOam[caf].timer < adc)
+    {
+        // Get next animation frame
+        caf++;
+
+        // Checks if has a timer of 0, meaning the end of the animation
+        if (gSpriteData[spriteSlot].pOam[caf].timer == 0)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 11a3c | 38 | Checks if the animation of the sub sprite data 1 has ended
+ * 
+ * @return u32 bool, ended
+ */
+u32 SpriteUtilCheckEndOfSubSpriteData1Animation(void)
+{
+    u8 adc;
+    u16 caf;
+
+    adc = gSubSpriteData1.animationDurationCounter;
+    caf = gSubSpriteData1.currentAnimationFrame;
+
+    // Get animation duration counter for the next frame
+    adc++;
+
+    // Check if on the next frame, the current animation frame ends
+    if (gSubSpriteData1.pMultiOam[caf].timer < adc)
+    {
+        // Get next animation frame
+        caf++;
+
+        // Checks if has a timer of 0, meaning the end of the animation
+        if (gSubSpriteData1.pMultiOam[caf].timer == 0)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 11a74 | 3c | Checks if the animation of the sub sprite data 1 has nearly ended
+ * 
+ * @return u32 bool, ended
+ */
+u32 SpriteUtilCheckNearEndOfSubSpriteData1Animation(void)
+{
+    u8 adc;
+    u16 caf;
+
+    adc = gSubSpriteData1.animationDurationCounter;
+    caf = gSubSpriteData1.currentAnimationFrame;
+
+    // Get animation duration counter for the next next frame
+    adc++;
+    adc++;
+
+    // Check if on the next frame, the current animation frame ends
+    if (gSubSpriteData1.pMultiOam[caf].timer < adc)
+    {
+        // Get next animation frame
+        caf++;
+
+        // Checks if has a timer of 0, meaning the end of the animation
+        if (gSubSpriteData1.pMultiOam[caf].timer == 0)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 11ab0 | 38 | Checks if the animation of the sub sprite data 2 has ended
+ * 
+ * @return u32 bool, ended
+ */
+u32 SpriteUtilCheckEndOfSubSpriteData2Animation(void)
+{
+    u8 adc;
+    u16 caf;
+
+    adc = gSubSpriteData2.animationDurationCounter;
+    caf = gSubSpriteData2.currentAnimationFrame;
+
+    // Get animation duration counter for the next frame
+    adc++;
+
+    // Check if on the next frame, the current animation frame ends
+    if (gSubSpriteData2.pMultiOam[caf].timer < adc)
+    {
+        // Get next animation frame
+        caf++;
+
+        // Checks if has a timer of 0, meaning the end of the animation
+        if (gSubSpriteData2.pMultiOam[caf].timer == 0)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 11ae8 | 3c | Checks if the animation of the sub sprite data 1 has nearly ended
+ * 
+ * @return u32 bool, ended
+ */
+u32 SpriteUtilCheckNearEndOfSubSpriteData2Animation(void)
+{
+    u8 adc;
+    u16 caf;
+
+    adc = gSubSpriteData2.animationDurationCounter;
+    caf = gSubSpriteData2.currentAnimationFrame;
+
+    // Get animation duration counter for the next next frame
+    adc++;
+    adc++;
+
+    // Check if on the next frame, the current animation frame ends
+    if (gSubSpriteData2.pMultiOam[caf].timer < adc)
+    {
+        // Get next animation frame
+        caf++;
+
+        // Checks if has a timer of 0, meaning the end of the animation
+        if (gSubSpriteData2.pMultiOam[caf].timer == 0)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 11b24 | 60 | Checks if samus is in range of the current sprite (left or right)
+ * 
+ * @param yRange Y range
+ * @param xRange X range
+ * @return u8 NSLR result
+ */
+u8 SpriteUtilCheckSamusNearSpriteLeftRight(u16 yRange, u16 xRange)
+{
+    u8 result;
+    u16 samusY;
+    u16 samusX;
+    u16 spriteY;
+    u16 spriteX;
+
+    result = NSLR_OUT_OF_RANGE;
+
+    // Get samus center position
+    samusY = gSamusData.yPosition + gSamusData.drawDistanceTop / 2;
+    samusX = gSamusData.xPosition;
+
+    // Get sprite position
+    spriteY = gCurrentSprite.yPosition;
+    spriteX = gCurrentSprite.xPosition;
+
+    // Check Y position
+    if (spriteY > samusY)
+    {
+        // Sprite is below
+        if (spriteY - samusY >= yRange)
+            return NSLR_OUT_OF_RANGE;
+    }
+    else
+    {
+        // Sprite is above
+        if (samusY - spriteY >= yRange)
+            return NSLR_OUT_OF_RANGE;
+    }
+   
+    // Check X position
+    if (spriteX > samusX)
+    {
+        // Sprite is on left
+        if (spriteX - samusX < xRange)
+            result = NSLR_LEFT;
+    }
+    else
+    {
+        // Sprite is on right
+        if (samusX - spriteX < xRange)
+            result = NSLR_RIGHT;
+    }
+
+    return result;
+}
+
+/**
+ * @brief 11b84 | 60 | Checks if samus is in range of the current sprite (above or below)
+ * 
+ * @param yRange Y range
+ * @param xRange X range
+ * @return u8 NSLR result
+ */
+u8 SpriteUtilCheckSamusNearSpriteAboveBelow(u16 yRange, u16 xRange)
+{
+    u8 result;
+    u16 samusY;
+    u16 samusX;
+    u16 spriteY;
+    u16 spriteX;
+
+    result = NSAB_OUT_OF_RANGE;
+
+    // Get samus middle position visually
+    samusY = gSamusData.yPosition + gSamusData.drawDistanceTop / 2;
+    samusX = gSamusData.xPosition;
+
+    // Get sprite position
+    spriteY = gCurrentSprite.yPosition;
+    spriteX = gCurrentSprite.xPosition;
+    
+    // Check X position
+    if (spriteX > samusX)
+    {
+        // Sprite is on left
+        if (spriteX - samusX >= xRange)
+            return NSAB_OUT_OF_RANGE;
+    }
+    else
+    {
+        // Sprite is on right
+        if (samusX - spriteX >= xRange)
+            return NSAB_OUT_OF_RANGE;
+    }
+   
+    // Check Y position
+    if (spriteY > samusY)
+    {
+        // Sprite is below
+        if (spriteY - samusY < yRange)
+            result = NSAB_ABOVE;
+    }
+    else
+    {
+        // Sprite is above
+        if (samusY - spriteY < yRange)
+            result = NSAB_BELOW;
+    }
+
+    return result;
+}
+
+/**
+ * @brief 11be4 | a8 | Checks if samus is in front or behind the current sprite 
+ * 
+ * @param yRange Y range
+ * @param xRangeFront X range (in front)
+ * @param xRangeBehind X range (behind)
+ * @return u8 NSFB result
+ */
+u8 SpriteUtilCheckSamusNearSpriteFrontBehindX(u16 yRange, u16 xRangeFront, u16 xRangeBehind)
+{
+    u8 result;
+    u16 samusY;
+    u16 samusX;
+    u16 spriteY;
+    u16 spriteX;
+    u8 xFlip;
+
+    result = NSFB_OUT_OF_RANGE;
+    xFlip = FALSE;
+
+    // Get samus middle position visually
+    samusY = gSamusData.yPosition + gSamusData.drawDistanceTop / 2;
+    samusX = gSamusData.xPosition;
+
+    // Get sprite position
+    spriteY = gCurrentSprite.yPosition;
+    spriteX = gCurrentSprite.xPosition;
+    
+    // Check Y position
+    if (spriteY > samusY)
+    {
+        // Sprite is below
+        if (spriteY - samusY >= yRange)
+            return NSFB_OUT_OF_RANGE;
+    }
+    else
+    {
+        // Sprite is above
+        if (samusY - spriteY >= yRange)
+            return NSFB_OUT_OF_RANGE;
+    }
+
+    // Get is flipped, this assume that when flipped the sprite faces right
+    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        xFlip = TRUE;
+    
+    // Check X position
+    if (spriteX > samusX)
+    {
+        // Sprite is on right
+        if (xFlip)
+        {
+            // Sprite is facing right
+            if (spriteX - samusX < xRangeBehind)
+                result = NSFB_BEHIND;
+        }
+        else
+        {
+            // Sprite is facing left
+            if (spriteX - samusX < xRangeFront)
+                result = NSFB_IN_FRONT;
+        }
+    }
+    else
+    {
+        // Sprite is on left
+        if (xFlip)
+        {
+            // Sprite is facing right
+            if (samusX - spriteX < xRangeFront)
+                result = NSFB_IN_FRONT;
+        }
+        else
+        {
+            // Sprite is facing left
+            if (samusX - spriteX < xRangeBehind)
+                result = NSFB_BEHIND;
+        }
+    }
+
+    return result;
+}
+
+/**
+ * @brief 11c8c | ac | Checks if samus is in front or behind the current sprite
+ * 
+ * @param xRange X range
+ * @param yRangeFront X range (in front)
+ * @param yRangeBehind Y range (behind)
+ * @return u8 NSFB result
+ */
+u8 SpriteUtilCheckSamusNearSpriteFrontBehindY(u16 xRange, u16 yRangeFront, u16 yRangeBehind)
+{
+    u8 result;
+    u16 samusY;
+    u16 samusX;
+    u16 spriteY;
+    u16 spriteX;
+    u8 yFlip;
+
+    result = NSFB_OUT_OF_RANGE;
+    yFlip = FALSE;
+
+    // Get samus middle position visually
+    samusY = gSamusData.yPosition + gSamusData.drawDistanceTop / 2;
+    samusX = gSamusData.xPosition;
+
+    // Get sprite position
+    spriteY = gCurrentSprite.yPosition;
+    spriteX = gCurrentSprite.xPosition;
+    
+    // Check Y position
+    if (spriteX > samusX)
+    {
+        // Sprite is below
+        if (spriteX - samusX >= xRange)
+            return NSFB_OUT_OF_RANGE;
+    }
+    else
+    {
+        // Sprite is above
+        if (samusX - spriteX >= xRange)
+            return NSFB_OUT_OF_RANGE;
+    }
+
+    // Get is flipped, this assume that when flipped the sprite faces down
+    if (gCurrentSprite.status & SPRITE_STATUS_Y_FLIP)
+        yFlip = TRUE;
+    
+    // Check X position
+    if (spriteY > samusY)
+    {
+        // Sprite is on right
+        if (yFlip)
+        {
+            // Sprite is facing right
+            if (spriteY - samusY < yRangeBehind)
+                result = NSFB_BEHIND;
+        }
+        else
+        {
+            // Sprite is facing left
+            if (spriteY - samusY < yRangeFront)
+                result = NSFB_IN_FRONT;
+        }
+    }
+    else
+    {
+        // Sprite is on left
+        if (yFlip)
+        {
+            // Sprite is facing right
+            if (samusY - spriteY < yRangeFront)
+                result = NSFB_IN_FRONT;
+        }
+        else
+        {
+            // Sprite is facing left
+            if (samusY - spriteY < yRangeBehind)
+                result = NSFB_BEHIND;
+        }
+    }
+
+    return result;
+}
+
+/**
+ * @brief 11d38 | 64 | 
+ * 
+ * @param xRange 
+ * @param yRangeBelow 
+ * @param yRangeAbove 
+ * @return u8 
+ */
+u8 SpriteUtilCheckSamusNearSpriteAboveBelowSeparateRanges(u16 xRange, u16 yRangeBelow, u16 yRangeAbove)
+{
+    u8 result;
+    u16 samusY;
+    u16 samusX;
+    u16 spriteY;
+    u16 spriteX;
+
+    result = NSAB_OUT_OF_RANGE;
+
+    // Get samus middle position visually
+    samusY = gSamusData.yPosition + gSamusData.drawDistanceTop / 2;
+    samusX = gSamusData.xPosition;
+
+    // Get sprite position
+    spriteY = gCurrentSprite.yPosition;
+    spriteX = gCurrentSprite.xPosition;
+    
+    // Check X position
+    if (spriteX > samusX)
+    {
+        // Sprite is on left
+        if (spriteX - samusX >= xRange)
+            return NSAB_OUT_OF_RANGE;
+    }
+    else
+    {
+        // Sprite is on right
+        if (samusX - spriteX >= xRange)
+            return NSAB_OUT_OF_RANGE;
+    }
+   
+    // Check Y position
+    if (spriteY > samusY)
+    {
+        // Sprite is below
+        if (spriteY - samusY < yRangeAbove)
+            result = NSAB_ABOVE;
+    }
+    else
+    {
+        // Sprite is above
+        if (samusY - spriteY < yRangeBelow)
+            result = NSAB_BELOW;
+    }
+
+    return result;
+}
+
+/**
+ * @brief 11d9c | a8 | Handles samus standing on a sprite
+ * 
+ */
+void SpriteUtilSamusStandingOnSprite(void)
+{
+    u8 standing;
+
+    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_ON_TOP)
+    {
+        if (gSamusData.standingStatus != STANDING_ENEMY)
+        {
+            if (gSamusData.standingStatus == STANDING_MID_AIR)
+                SAMUS_SET_POSE(SPOSE_LANDING_REQUEST);
+
+            gSamusData.standingStatus = STANDING_ENEMY;
+        }
+
+        gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_ON_TOP;
+        return;
+    }
+
+    standing = gCurrentSprite.standingOnSprite;
+    if (standing != 0x1)
+    {            
+        if (standing == 0x2)
+        {
+            gCurrentSprite.standingOnSprite = TRUE;
+
+            if (gSamusDataCopy.yPosition <= gSamusData.yPosition)
+            {
+                // Set samus position to be on top of the current sprite
+                gSamusData.yPosition = gCurrentSprite.yPosition + gCurrentSprite.hitboxTop + ONE_SUB_PIXEL;
+            }
+        }
+    }
+    else
+    {
+        // Remove standing on enemy status
+        gCurrentSprite.standingOnSprite = FALSE;
+
+        if (gSamusData.standingStatus == STANDING_ENEMY)
+            gSamusData.standingStatus = STANDING_MID_AIR;
+    }
+}
+
+/**
+ * @brief 11e44 | 60 | Updates the freeze timer of the current sprite
+ * 
+ */
+void SpriteUtilUpdateFreezeTimer(void)
+{
+    u8 freezeTimer;
+
+    if (MOD_AND(gFrameCounter8Bit, 2))
+        gCurrentSprite.freezeTimer--;
+
+    freezeTimer = gCurrentSprite.freezeTimer;
+
+    if (freezeTimer == 0)
+        gCurrentSprite.animationDurationCounter--;
+
+    if (freezeTimer < 46)
+    {
+        if (MOD_AND(freezeTimer, 2))
+        {
+            gCurrentSprite.paletteRow = 15 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+        }
+        else
+        {
+            gCurrentSprite.paletteRow = 0;
+        }
+    }
+}
+
+/**
+ * @brief 11ea4 | 9c | Updates the freeze timer of a specified secondary sprites binded to a primary sprite
+ * 
+ * @param spriteId Secondary sprite id
+ * @param ramSlot Primary sprite slot
+ */
+void SpriteUtilUpdateSecondarySpritesFreezeTimer(u8 spriteId, u8 ramSlot)
+{
+    u8 i;
+
+    if (gCurrentSprite.freezeTimer == 0)
+        return;
+
+    for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+    {
+        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+            continue;
+
+        if (!(gSpriteData[i].properties & SP_SECONDARY_SPRITE))
+            continue;
+
+        if (gSpriteData[i].spriteId != spriteId)
+            continue;
+
+        if (gSpriteData[i].primarySpriteRamSlot != ramSlot)
+            continue;
+
+        if (gSpriteData[i].freezeTimer < gCurrentSprite.freezeTimer && !(gSpriteData[i].properties & SP_DESTROYED))
+        {
+            gSpriteData[i].freezeTimer = gCurrentSprite.freezeTimer;
+            gSpriteData[i].paletteRow = 15 - (gSpriteData[i].spritesetGfxSlot + gSpriteData[i].frozenPaletteRowOffset);
+        }
+    }
+}
+
+/**
+ * @brief 11f40 | 60 | Updates the freeze timer of the primary sprite of the current sprite
+ * 
+ */
+void SpriteUtilUpdatePrimarySpriteFreezeTimer(void)
+{
+    u8 ramSlot;
+
+    if (gCurrentSprite.freezeTimer == 0)
+        return;
+
+    ramSlot = gCurrentSprite.primarySpriteRamSlot;
+
+    if (gSpriteData[ramSlot].freezeTimer < gCurrentSprite.freezeTimer && !(gSpriteData[ramSlot].properties & SP_DESTROYED))
+    {
+        gSpriteData[ramSlot].freezeTimer = gCurrentSprite.freezeTimer;
+        gSpriteData[ramSlot].paletteRow = 15 - (gSpriteData[ramSlot].spritesetGfxSlot + gSpriteData[ramSlot].frozenPaletteRowOffset);
+    }
+}
+
+/**
+ * @brief 11fa0 | 68 | Unfreezes the specified secondary sprites binded to a primary sprite
+ * 
+ * @param spriteId Secondary sprite id
+ * @param ramSlot Primary sprite slot
+ */
+void SpriteUtilUnfreezeSecondarySprites(u8 spriteId, u8 ramSlot)
+{
+    u8 i;
+
+    for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+    {
+        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+            continue;
+
+        if (!(gSpriteData[i].properties & SP_SECONDARY_SPRITE))
+            continue;
+
+        if (gSpriteData[i].spriteId != spriteId)
+            continue;
+
+        if (gSpriteData[i].primarySpriteRamSlot != ramSlot)
+            continue;
+
+        if (gSpriteData[i].freezeTimer != 0)
+        {
+            gSpriteData[i].freezeTimer = 0;
+            gSpriteData[i].paletteRow = 0;
+        }
+    }
+}
+
+/**
+ * @brief 12008 | a4 | To document
+ * 
+ * @param yPosition Y Position
+ * @param xPosition X Position
+ */
+void unk_12008(u16 yPosition, u16 xPosition)
+{
+    u8 properties;
+    u8 timer;
+
+    properties = gCurrentSprite.spritesetSlotAndProperties - 0x20;
+
+    if (properties < 0x30)
+        return;
+
+    if (gCurrentSprite.health != 0)
+        return;
+
+    timer = gCurrentSprite.ignoreSamusCollisionTimer;
+    if (timer < 26)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    if (MOD_AND(timer, 2) == 0)
+        gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+
+    switch (timer)
+    {
+        case 38:
+            SetParticleEffect(yPosition - QUARTER_BLOCK_SIZE, xPosition, 0x26);
+            SoundPlay(0x145);
+            break;
+
+        case 32:
+            SetParticleEffect(yPosition + PIXEL_SIZE * 2, xPosition - (PIXEL_SIZE * 2 + PIXEL_SIZE / 2), 0x26);
+            break;
+
+        case 29:
+            SetParticleEffect(yPosition - PIXEL_SIZE * 2, xPosition + QUARTER_BLOCK_SIZE + PIXEL_SIZE, 0x26);
+            break;
+
+        case 26:
+            SetParticleEffect(yPosition, xPosition, 0x25);
+    }
+}
+
+/**
+ * @brief 120ac | a0 | To document
+ * 
+ * @param yPosition Y Position
+ * @param xPosition X Position
+ */
+void unk_120ac(u16 yPosition, u16 xPosition)
+{
+    u8 properties;
+    u8 timer;
+
+    properties = gCurrentSprite.spritesetSlotAndProperties - 0x20;
+
+    if (properties < 0x30)
+        return;
+
+    if (gCurrentSprite.health != 0)
+        return;
+
+    timer = gCurrentSprite.ignoreSamusCollisionTimer;
+    if (timer < 26)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    if (MOD_AND(timer, 2) == 0)
+        gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+
+    switch (timer)
+    {
+        case 38:
+            SetParticleEffect(yPosition - (HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2), xPosition -(HALF_BLOCK_SIZE - PIXEL_SIZE / 2), 0x25);
+            SoundPlay(0x145);
+            break;
+
+        case 32:
+            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE + PIXEL_SIZE, xPosition + (HALF_BLOCK_SIZE - PIXEL_SIZE / 2), 0x25);
+            break;
+
+        case 29:
+            SetParticleEffect(yPosition, xPosition - QUARTER_BLOCK_SIZE, 0x25);
+            break;
+
+        case 26:
+            SetParticleEffect(yPosition, xPosition, 0x24);
+    }
+}
+
+/**
+ * @brief 1214c | 14 | To document
+ * 
+ * @param yPosition Y Position
+ * @param xPosition X Position
+ */
+void unk_1214c(u16 yPosition, u16 xPosition)
+{
+    SetParticleEffect(yPosition, xPosition, 0x25);
+}
+
+/**
+ * @brief 12160 | 80 | To document
+ * 
+ * @param yPosition Y Position
+ * @param xPosition X Position
+ */
+void unk_12160(u16 yPosition, u16 xPosition)
+{
+    u8 timer;
+
+    timer = gCurrentSprite.ignoreSamusCollisionTimer;
+
+    if (timer > 8)
+        return;
+
+    if (timer == 0)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    if (MOD_AND(timer, 2) == 0)
+        gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+
+    switch (timer)
+    {
+        case 6:
+            SetParticleEffect(yPosition - QUARTER_BLOCK_SIZE, xPosition, 0x26);
+            SoundPlay(0x144);
+            break;
+
+        case 4:
+            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE, xPosition - QUARTER_BLOCK_SIZE, 0x26);
+            break;
+
+        case 2:
+            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE, xPosition + QUARTER_BLOCK_SIZE, 0x25);
+            break;
+    }
+}
+
+/**
+ * @brief 121e0 | f0 | To document
+ * 
+ * @param yPosition Y Position
+ * @param xPosition X Position
+ */
+void unk_121e0(u16 yPosition, u16 xPosition)
+{
+    u8 timer;
+
+    if (gSpriteData[gCurrentSprite.primarySpriteRamSlot].status & SPRITE_STATUS_ENABLE_MOSAIC && gCurrentSprite.ignoreSamusCollisionTimer > 14)
+        gCurrentSprite.ignoreSamusCollisionTimer = 14;
+
+    timer = gCurrentSprite.ignoreSamusCollisionTimer;
+    if (timer > 14)
+        return;
+
+    if (timer == 0)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    if (MOD_AND(timer, 2) == 0)
+        gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+
+    switch (timer)
+    {
+        case 12:
+            SetParticleEffect(yPosition - QUARTER_BLOCK_SIZE, xPosition, 0x26);
+            break;
+
+        case 10:
+            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE, xPosition - QUARTER_BLOCK_SIZE, 0x26);
+            break;
+
+        case 8:
+            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE, xPosition + QUARTER_BLOCK_SIZE, 0x25);
+            break;
+
+        case 6:
+            SetParticleEffect(yPosition + (QUARTER_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2),
+                xPosition - (QUARTER_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2), 0x25);
+            break;
+
+        case 4:
+            SetParticleEffect(yPosition - (HALF_BLOCK_SIZE - PIXEL_SIZE),
+                xPosition - (QUARTER_BLOCK_SIZE + PIXEL_SIZE), 0x25);
+            break;
+
+        case 2:
+            SetParticleEffect(yPosition, xPosition, 0x23);
+            break;
+    }
+}
+
+/**
+ * @brief 122d0 | 34 | To document
+ * 
+ * @param pOam Frame data pointer
+ */
+void unk_122d0(const struct FrameData* pOam)
+{
+    u8 ramSlot;
+
+    ramSlot = gCurrentSprite.work0;
+
+    if (ramSlot != UCHAR_MAX)
+    {
+        gSpriteData[ramSlot].pOam = pOam;
+        gSpriteData[ramSlot].animationDurationCounter = 0;
+        gSpriteData[ramSlot].currentAnimationFrame = 0;
+    }
+}
+
+/**
+ * @brief 12304 | 28 | Sets the oam pointer for a secondary sprite (with the ram slot being in work2)
+ * 
+ * @param pOam Frame data pointer
+ */
+void SpriteUtilSetSecondarySpriteOamPointer(const struct FrameData* pOam)
+{
+    u8 ramSlot;
+
+    ramSlot = gCurrentSprite.work2;
+
+    gSpriteData[ramSlot].pOam = pOam;
+    gSpriteData[ramSlot].animationDurationCounter = 0;
+    gSpriteData[ramSlot].currentAnimationFrame = 0;
+}
+
+/**
+ * @brief 1232c | 14 | Fully refills samus, unused
+ * 
+ */
+void SpriteUtilSetEnergyAndAmmoToMax_Unused(void)
+{
+    gEquipment.currentEnergy = gEquipment.maxEnergy;
+    gEquipment.currentMissiles = gEquipment.maxMissiles;
+    gEquipment.currentPowerBombs = gEquipment.maxPowerBombs;
+}
+
+/**
+ * @brief 12340 | 2c | Refills the energy
+ * 
+ * @return u8 bool, still refilling
+ */
+u8 SpriteUtilRefillEnergy(void)
+{
+    if (gEquipment.currentEnergy < gEquipment.maxEnergy)
+    {
+        gEquipment.currentEnergy += 10;
+
+        if (gEquipment.currentEnergy > gEquipment.maxEnergy)
+            gEquipment.currentEnergy = gEquipment.maxEnergy;
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 1236c | 2c | Refills the missiles
+ * 
+ * @return u8 bool, still refilling
+ */
+u8 SpriteUtilRefillMissiles(void)
+{
+    if (gEquipment.currentMissiles < gEquipment.maxMissiles)
+    {
+        gEquipment.currentMissiles += 10;
+
+        if (gEquipment.currentMissiles > gEquipment.maxMissiles)
+            gEquipment.currentMissiles = gEquipment.maxMissiles;
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 12398 | 2c | Refills the power bombs
+ * 
+ * @return u8 bool, still refilling
+ */
+u8 SpriteUtilRefillPowerBombs(void)
+{
+    if (gEquipment.currentPowerBombs < gEquipment.maxPowerBombs)
+    {
+        gEquipment.currentPowerBombs += 10;
+
+        if (gEquipment.currentPowerBombs > gEquipment.maxPowerBombs)
+            gEquipment.currentPowerBombs = gEquipment.maxPowerBombs;
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 123c4 | 68 | Refills samus with the provided amount
+ * 
+ * @param energy Energy
+ * @param missiles Missiles
+ * @param powerBombs Power bombs
+ */
+void SpriteUtilRefillSamus(u16 energy, u16 missiles, u16 powerBombs)
+{
+    gEquipment.currentEnergy += energy;
+
+    if (gEquipment.currentEnergy > gEquipment.maxEnergy)
+        gEquipment.currentEnergy = gEquipment.maxEnergy;
+
+    if (gEquipment.weaponsStatus & MBF_ANY_MISSILE)
+    {
+        gEquipment.currentMissiles += missiles;
+
+        if (gEquipment.currentMissiles > gEquipment.maxMissiles)
+            gEquipment.currentMissiles = gEquipment.maxMissiles;
+    }
+
+    if (gEquipment.weaponsStatus & MBF_POWER_BOMBS)
+    {
+        gEquipment.currentPowerBombs += powerBombs;
+
+        if (gEquipment.currentPowerBombs > gEquipment.maxPowerBombs)
+            gEquipment.currentPowerBombs = gEquipment.maxPowerBombs;
+    }
+}
+
+/**
+ * @brief 1242c | 74 | Refills samus of one tank of energy and weapons
+ * 
+ */
+void SpriteUtilHealSamusOfOneTank(void)
+{
+    if (gEquipment.currentEnergy != gEquipment.maxEnergy)
+    {
+        gEquipment.currentEnergy += 100;
+
+        if (gEquipment.currentEnergy > gEquipment.maxEnergy)
+            gEquipment.currentEnergy = gEquipment.maxEnergy;
+    }
+
+    if (gEquipment.currentMissiles != gEquipment.maxMissiles && gEquipment.weaponsStatus & MBF_ANY_MISSILE)
+    {
+        gEquipment.currentMissiles += 16;
+
+        if (gEquipment.currentMissiles > gEquipment.maxMissiles)
+            gEquipment.currentMissiles = gEquipment.maxMissiles;
+    }
+
+    if (gEquipment.currentPowerBombs != gEquipment.maxPowerBombs && gEquipment.weaponsStatus & MBF_POWER_BOMBS)
+    {
+        gEquipment.currentPowerBombs += 16;
+
+        if (gEquipment.currentPowerBombs > gEquipment.maxPowerBombs)
+            gEquipment.currentPowerBombs = gEquipment.maxPowerBombs;
+    }
+}
+
+/**
+ * @brief 124a0 | 30 | Checks if samus is full energy and not full missiles
+ * 
+ * @return u8 nol, conditions met
+ */
+u8 SpriteUtilCheckEnergyFullAndMissilesNotFull(void)
+{
+    if (gEquipment.currentEnergy == gEquipment.maxEnergy)
+    {
+        if (gEquipment.weaponsStatus & MBF_ANY_MISSILE && gEquipment.currentMissiles < gEquipment.maxMissiles)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 124d0 | 30 | Checks if samus is full missiles and not full energy
+ * 
+ * @return u8 nol, conditions met
+ */
+u8 SpriteUtilCheckMissilesFullAndEnergyNotFull(void)
+{
+    if (!(gEquipment.weaponsStatus & MBF_ANY_MISSILE))
+        return TRUE;
+
+    if (gEquipment.currentMissiles == gEquipment.maxMissiles && gEquipment.currentEnergy < gEquipment.maxEnergy)
+        return TRUE;
+
+    return FALSE;
+}
+
+/**
+ * @brief 12500 | c4 | Checks if samus should pass through a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @return u32 bool, pass through
+ */
+u32 SpriteUtilSamusCheckPassThroughSprite(u8 spriteSlot)
+{
+    u8 passThrough;
+
+    passThrough = FALSE;
+
+    switch (gSamusData.pose)
+    {
+        case SPOSE_STARTING_SPIN_JUMP:
+        case SPOSE_SPINNING:
+        case SPOSE_STARTING_WALL_JUMP:
+        case SPOSE_WALL_JUMPING:
+        case SPOSE_SPACE_JUMPING:
+            if (gSamusData.chargeBeamCounter >= 0x40) // FIXME define
+            {
+                if (spriteSlot == 0x80)
+                {
+                    passThrough++;
+                    break;
+                }
+
+                if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS))
+                    passThrough++;
+            }
+            break;
+
+        default:
+            if (gSamusData.speedboostingCounter != 0)
+                passThrough++;
+            break;
+
+        case SPOSE_HANGING_ON_LEDGE:
+        case SPOSE_PULLING_YOURSELF_UP_FROM_HANGING:
+        case SPOSE_PULLING_YOURSELF_FORWARD_FROM_HANGING:
+        case SPOSE_PULLING_YOURSELF_INTO_MORPH_BALL_TUNNEL:
+        case SPOSE_SCREW_ATTACKING:
+        case SPOSE_SHINESPARKING:
+            passThrough++;
+    }
+
+    return passThrough;
+}
+
+/**
+ * @brief 125c4 | 5c | Checks if samus is crouching or morphed
+ * 
+ * @return u32 bool, crouched or morphed
+ */
+u32 SpriteUtilCheckCrouchingOrMorphed(void)
+{
+    switch (gSamusData.pose)
+    {
+        case SPOSE_CROUCHING:
+        case SPOSE_TURNING_AROUND_AND_CROUCHING:
+        case SPOSE_SHOOTING_AND_CROUCHING:
+        case SPOSE_MORPHING:
+        case SPOSE_MORPH_BALL:
+        case SPOSE_ROLLING:
+        case SPOSE_UNMORPHING:
+        case SPOSE_MORPH_BALL_MID_AIR:
+        case SPOSE_GETTING_HURT_IN_MORPH_BALL:
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 12620 | 24 | Checks if samus is morphed
+ * 
+ * @return u32 bool, morphed
+ */
+u32 SpriteUtilCheckMorphed(void)
+{
+    switch (gSamusData.pose)
+    {
+        case SPOSE_MORPHING:
+        case SPOSE_MORPH_BALL:
+        case SPOSE_ROLLING:
+        case SPOSE_UNMORPHING:
+        case SPOSE_MORPH_BALL_MID_AIR:
+        case SPOSE_GETTING_HURT_IN_MORPH_BALL:
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 12644 | b4 | Checks if samus is in a state that requires sprite behavior to be stopped
+ * 
+ * @return u32 bool, stop sprites
+ */
+u32 SpriteUtilCheckStopSpritesPose(void)
+{
+    if (gPreventMovementTimer != 0)
+        return TRUE;
+
+    switch (gSamusData.pose)
+    {
+        case SPOSE_ON_SAVE_PAD:
+        case SPOSE_UNLOCKING_SECURITY:
+        case SPOSE_SAVING:
+        case SPOSE_ON_NAVIGATION_PAD:
+        case SPOSE_DOWNLOADING_ABILITY:
+        case SPOSE_FACING_FOREGROUND:
+        case SPOSE_FACING_BACKGROUND:
+        case SPOSE_UNLOCKING_HABITATIONS_DECK:
+        case SPOSE_LOADING_SAVE:
+        case SPOSE_DYING:
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 126f8 | 24 | Checks if samus is in a damaging pose
+ * 
+ * @return u32 bool, damaging pose
+ */
+u32 SpriteUtilCheckDamagingPose(void)
+{
+    u32 damaging;
+
+    damaging = FALSE;
+
+    switch (gSamusData.pose)
+    {
+        case SPOSE_SCREW_ATTACKING:
+        case SPOSE_SHINESPARKING:
+            damaging = TRUE;
+            break;
+
+        default:
+            if (gSamusData.speedboostingCounter != 0)
+                damaging = TRUE;
+    }
+
+    return damaging;
+}
+
+/**
+ * @brief 1271c | a0 | Checks if samus is doing a sudo screw
+ * 
+ * @param spriteSlot Sprite slot
+ * @return u32 bool, sudo screw
+ */
+u32 SpriteUtilCheckSudoScrew(u8 spriteSlot)
+{
+    u8 sudoCrew;
+
+    sudoCrew = FALSE;
+    switch (gSamusData.pose)
+    {
+        case SPOSE_STARTING_SPIN_JUMP:
+        case SPOSE_SPINNING:
+        case SPOSE_STARTING_WALL_JUMP:
+        case SPOSE_WALL_JUMPING:
+        case SPOSE_SPACE_JUMPING:
+            if (gSamusData.chargeBeamCounter >= 0x40) // FIXME define
+            {
+                if (spriteSlot == 0x80)
+                {
+                    sudoCrew++;
+                    break;
+                }
+
+                if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS))
+                    sudoCrew++;
+            }
+    }
+
+    return sudoCrew;
+}
+
+/**
+ * @brief 127bc | 1c | Checks if samus is hanging on ledge
+ * 
+ * @return u32 bool, hanging on ledge
+ */
+u32 SpriteUtilCheckHangingOnLedge(void)
+{
+    switch (gSamusData.pose)
+    {
+        case SPOSE_HANGING_ON_LEDGE:
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 127d8 | 20 | Checks if samus is on a ceiling ladder
+ * 
+ * @return u32 bool, on ceiling ladder
+ */
+u32 SpriteUtilCheckOnCeilingLadder(void)
+{
+    switch (gSamusData.pose)
+    {
+        case SPOSE_HANGING_ON_HORIZONTAL_LADDER:
+        case SPOSE_MOVING_ON_HORIZONTAL_LADDER:
+        case SPOSE_TURNING_AROUND_ON_HORIZONTAL_LADDER:
+        case SPOSE_DELAY_AFTER_SHOOTING_ON_HORIZONTAL_LADDER:
+        case SPOSE_SHOOTING_ON_HORIZONTAL_LADDER:
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 127f8 | 20 | Checks if samus is pulling herself up
+ * 
+ * @return u32 bool, pulling self up
+ */
+u32 SpriteUtilCheckPullingSelfUp(void)
+{
+    switch (gSamusData.pose)
+    {
+        case SPOSE_HANGING_ON_LEDGE:
+        case SPOSE_PULLING_YOURSELF_UP_FROM_HANGING:
+        case SPOSE_PULLING_YOURSELF_FORWARD_FROM_HANGING:
+        case SPOSE_PULLING_YOURSELF_INTO_MORPH_BALL_TUNNEL:
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+/**
+ * @brief 12818 | 40 | Tries to set absorb X flag
+ * 
+ */
+void SpriteUtilTrySetAbsorbXFlag(void)
+{
+    u8 properties;
+
+    if (gCurrentSprite.pose == 0)
+    {
+        properties = gCurrentSprite.spritesetSlotAndProperties;
+
+        if (gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)
+        {
+            gCurrentSprite.properties |= SP_CAN_ABSORB_X;
+            return;
+        }
+
+        if (properties == 16 || properties == 17 || properties == 18 || properties == 19 || properties == 20 || properties == 21 ||
+            properties == 22 || properties == 23 || properties == 24 || properties == 25 || properties == 26 || properties == 27 ||
+            properties == 28 || properties == 29 || properties == 30 || properties == 31)
+        {
+            gCurrentSprite.properties |= SP_CAN_ABSORB_X;
+        }
+    }
+}
+
+/**
+ * @brief 12858 | 50 | Counts the number of a specified secondary sprite
+ * 
+ * @param spriteId Sprite ID
+ * @return u8 count
+ */
+u8 SpriteUtilCountSecondarySprites(u8 spriteId)
+{
+    u8 i;
+    u8 count;
+
+    count = 0;
+    for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+    {
+        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+            continue;
+
+        if (!(gSpriteData[i].properties & SP_SECONDARY_SPRITE))
+            continue;
+
+        if (gSpriteData[i].spriteId == spriteId)
+            count++;
+    }
+
+    return count;
+}
+
+/**
+ * @brief 128a8 | 50 | Counts the number of a specified primary sprite
+ * 
+ * @param spriteId Sprite ID
+ * @return u8 count
+ */
+u8 SpriteUtilCountPrimarySprites(u8 spriteId)
+{
+    u8 i;
+    u8 count;
+
+    count = 0;
+    for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+    {
+        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+            continue;
+
+        if (gSpriteData[i].properties & SP_SECONDARY_SPRITE)
+            continue;
+
+        if (gSpriteData[i].spriteId == spriteId)
+            count++;
+    }
+
+    return count;
+}
+
+/**
+ * @brief 128f8 | 4c | Finds the specified primary sprite
+ * 
+ * @param spriteId Sprite id
+ * @return u8 Sprite ram slot
+ */
+u8 SpriteUtilFindPrimarySprite(u8 spriteId)
+{
+    u8 i;
+    u8 count;
+
+    count = 0;
+    for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+    {
+        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+            continue;
+
+        if (gSpriteData[i].properties & SP_SECONDARY_SPRITE)
+            continue;
+
+        if (gSpriteData[i].spriteId == spriteId)
+            return i;
+    }
+
+    return UCHAR_MAX;
+}
+
+/**
+ * @brief 12944 | 4c | Finds the specified secondary sprite
+ * 
+ * @param spriteId Sprite id
+ * @return u8 Sprite ram slot
+ */
+u8 SpriteUtilFindSecondarySprite(u8 spriteId)
+{
+    u8 i;
+    u8 count;
+
+    count = 0;
+    for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+    {
+        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+            continue;
+
+        if (!(gSpriteData[i].properties & SP_SECONDARY_SPRITE))
+            continue;
+
+        if (gSpriteData[i].spriteId == spriteId)
+            return i;
+    }
+
+    return UCHAR_MAX;
+}
+
+/**
+ * @brief 12990 | 5c | Counts the number of a specified secondary sprite belonging to a specified primary sprite
+ * 
+ * @param spriteId Sprite ID
+ * @param ramSlot Primary sprite ram slot
+ * @return u8 Count
+ */
+u8 SpriteUtilCountSecondarySpriteWithRamSlot(u8 spriteId, u8 ramSlot)
+{
+    u8 i;
+    u8 count;
+
+    count = 0;
+    for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+    {
+        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+            continue;
+
+        if (!(gSpriteData[i].properties & SP_SECONDARY_SPRITE))
+            continue;
+
+        if (gSpriteData[i].spriteId == spriteId && gSpriteData[i].primarySpriteRamSlot == ramSlot)
+            count++;
+    }
+
+    return count;
+}
+
+/**
+ * @brief 129ec | 9c | Moves an eye core X beam
+ * 
+ * @param movement Movement
+ */
+void SpriteUtilMoveEyeCoreXBeam(u8 movement)
+{
+    switch (gCurrentSprite.work0)
+    {
+        case 4:
+            gCurrentSprite.yPosition -= movement;
+            break;
+
+        case 5:
+            gCurrentSprite.yPosition += movement;
+            break;
+
+        case 2:
+            movement = movement * 3 / 4;
+
+            gCurrentSprite.yPosition -= movement;
+
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+                gCurrentSprite.xPosition += movement;
+            else
+                gCurrentSprite.xPosition -= movement;
+            break;
+
+        case 3:
+            movement = movement * 3 / 4;
+
+            gCurrentSprite.yPosition += movement;
+
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+                gCurrentSprite.xPosition += movement;
+            else
+                gCurrentSprite.xPosition -= movement;
+            break;
+
+        default:
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+                gCurrentSprite.xPosition += movement;
+            else
+                gCurrentSprite.xPosition -= movement;
+    }
+}
+
+/**
+ * @brief 12a88 | cc | Moves an eye core X beam part to their starting position
+ * 
+ */
+void SpriteUtilMoveEyeCoreXBeamPart(void)
+{
+    u16 diagonalMovement;
+    u16 straightMovement;
+
+    diagonalMovement = PIXEL_SIZE;
+    straightMovement = PIXEL_SIZE + ONE_SUB_PIXEL;
+
+    switch (gCurrentSprite.work0)
+    {
+        case 3:
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+            {
+                if (gCurrentSprite.roomSlot == 1)
+                {
+                    gCurrentSprite.yPosition -= diagonalMovement;
+                    gCurrentSprite.xPosition += diagonalMovement;
+                }
+                else
+                {
+                    gCurrentSprite.yPosition += diagonalMovement;
+                    gCurrentSprite.xPosition -= diagonalMovement;
+                }
+            }
+            else
+            {
+                if (gCurrentSprite.roomSlot == 1)
+                {
+                    gCurrentSprite.yPosition -= diagonalMovement;
+                    gCurrentSprite.xPosition -= diagonalMovement;
+                }
+                else
+                {
+                    gCurrentSprite.yPosition += diagonalMovement;
+                    gCurrentSprite.xPosition += diagonalMovement;
+                }
+            }
+            break;
+
+        case 2:
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+            {
+                if (gCurrentSprite.roomSlot == 1)
+                {
+                    gCurrentSprite.yPosition -= diagonalMovement;
+                    gCurrentSprite.xPosition -= diagonalMovement;
+                }
+                else
+                {
+                    gCurrentSprite.yPosition += diagonalMovement;
+                    gCurrentSprite.xPosition += diagonalMovement;
+                }
+            }
+            else
+            {
+                if (gCurrentSprite.roomSlot == 1)
+                {
+                    gCurrentSprite.yPosition -= diagonalMovement;
+                    gCurrentSprite.xPosition += diagonalMovement;
+                }
+                else
+                {
+                    gCurrentSprite.yPosition += diagonalMovement;
+                    gCurrentSprite.xPosition -= diagonalMovement;
+                }
+            }
+            break;
+
+        case 4:
+        case 5:
+            if (gCurrentSprite.roomSlot == 1)
+                gCurrentSprite.xPosition -= straightMovement;
+            else
+                gCurrentSprite.xPosition += straightMovement;
+            break;
+
+        case 1:
+        default:
+            if (gCurrentSprite.roomSlot == 1)
+                gCurrentSprite.yPosition -= straightMovement;
+            else
+                gCurrentSprite.yPosition += straightMovement;
+            break;
+    }
+}
+
+/**
+ * @brief 12b54 | 104 | To document
+ * 
+ */
+void unk_12b54(void)
+{
+    u8 offset;
+    u16 diagonalMovement;
+    u16 straightMovement;
+    u8 roomSlot;
+
+    offset = MOD_AND(gCurrentSprite.work1, 8);
+
+    diagonalMovement = sWaveBeamPartVelocity[offset];
+    straightMovement = diagonalMovement * 1.4;
+
+    roomSlot = gCurrentSprite.roomSlot;
+
+    if (offset > 3)
+    {
+        if (roomSlot == 1)
+            roomSlot = 2;
+        else if (roomSlot == 2)
+            roomSlot = 1;
+    }
+
+    switch (gCurrentSprite.work0)
+    {
+        case 3:
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+            {
+                if (roomSlot == 1)
+                {
+                    gCurrentSprite.yPosition -= diagonalMovement;
+                    gCurrentSprite.xPosition += diagonalMovement;
+                }
+                else
+                {
+                    gCurrentSprite.yPosition += diagonalMovement;
+                    gCurrentSprite.xPosition -= diagonalMovement;
+                }
+            }
+            else
+            {
+                if (roomSlot == 1)
+                {
+                    gCurrentSprite.yPosition -= diagonalMovement;
+                    gCurrentSprite.xPosition -= diagonalMovement;
+                }
+                else
+                {
+                    gCurrentSprite.yPosition += diagonalMovement;
+                    gCurrentSprite.xPosition += diagonalMovement;
+                }
+            }
+            break;
+
+        case 2:
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+            {
+                if (roomSlot == 1)
+                {
+                    gCurrentSprite.yPosition -= diagonalMovement;
+                    gCurrentSprite.xPosition -= diagonalMovement;
+                }
+                else
+                {
+                    gCurrentSprite.yPosition += diagonalMovement;
+                    gCurrentSprite.xPosition += diagonalMovement;
+                }
+            }
+            else
+            {
+                if (roomSlot == 1)
+                {
+                    gCurrentSprite.yPosition -= diagonalMovement;
+                    gCurrentSprite.xPosition += diagonalMovement;
+                }
+                else
+                {
+                    gCurrentSprite.yPosition += diagonalMovement;
+                    gCurrentSprite.xPosition -= diagonalMovement;
+                }
+            }
+            break;
+
+        case 4:
+        case 5:
+            if (roomSlot == 1)
+                gCurrentSprite.xPosition -= straightMovement;
+            else
+                gCurrentSprite.xPosition += straightMovement;
+            break;
+
+        case 1:
+        default:
+            if (roomSlot == 1)
+                gCurrentSprite.yPosition -= straightMovement;
+            else
+                gCurrentSprite.yPosition += straightMovement;
+            break;
+    }
 }
