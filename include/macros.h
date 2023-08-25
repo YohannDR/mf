@@ -66,6 +66,11 @@
 // Converts a Q24.8 fixed-point format number to a regular integer
 #define Q_24_8_TO_INT(n) ((s32)((n) >> 8))
 
+#define PI (Q_8_8(.5f))
+
+#define SIN(angle) (sSineTable[angle])
+#define COS(angle) (sSineTable[angle + PI / 2])
+
 #define RED(c) ((c) & COLOR_MASK)
 #define GREEN(c) (((c) & (COLOR_MASK << 5)) >> 5)
 #define BLUE(c) (((c) & (COLOR_MASK << 10)) >> 10)

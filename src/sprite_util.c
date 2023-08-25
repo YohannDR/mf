@@ -1001,9 +1001,9 @@ void SamusAndSpriteCollision(void)
  * @param xPosition X Position
  * @return u16 Block top position
  */
-u16 SpriteUtilCheckVerticalCollisionAtPosition(u16 yPosition, u16 xPosition)
+u32 SpriteUtilCheckVerticalCollisionAtPosition(u16 yPosition, u16 xPosition)
 {
-    s16 blockTop;
+    u16 blockTop;
     u32 clipdata;
 
     clipdata = ClipdataProcess(yPosition, xPosition);
@@ -1016,17 +1016,17 @@ u16 SpriteUtilCheckVerticalCollisionAtPosition(u16 yPosition, u16 xPosition)
     switch (LOW_BYTE(clipdata))
     {
         case CLIPDATA_TYPE_RIGHT_STEEP_FLOOR_SLOPE:
-            blockTop = (yPosition & BLOCK_POSITION_FLAG) - ((xPosition & SUB_PIXEL_POSITION_FLAG) - SUB_PIXEL_POSITION_FLAG);
+            blockTop = (s16)((yPosition & BLOCK_POSITION_FLAG) - ((xPosition & SUB_PIXEL_POSITION_FLAG) - SUB_PIXEL_POSITION_FLAG));
             gPreviousVerticalCollisionCheck = COLLISION_RIGHT_STEEP_FLOOR_SLOPE;
             break;
 
         case CLIPDATA_TYPE_RIGHT_LOWER_SLIGHT_FLOOR_SLOPE:
-            blockTop = (yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) - SUB_PIXEL_POSITION_FLAG);
+            blockTop = (s16)((yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) - SUB_PIXEL_POSITION_FLAG));
             gPreviousVerticalCollisionCheck = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
             break;
 
         case CLIPDATA_TYPE_RIGHT_UPPER_SLIGHT_FLOOR_SLOPE:
-            blockTop = ((yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) - (SUB_PIXEL_POSITION_FLAG / 2)));
+            blockTop = (s16)(((yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) - (SUB_PIXEL_POSITION_FLAG / 2))));
             gPreviousVerticalCollisionCheck = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
             break;
 
@@ -1053,4 +1053,517 @@ u16 SpriteUtilCheckVerticalCollisionAtPosition(u16 yPosition, u16 xPosition)
     }
 
     return blockTop;
+}
+
+/**
+ * @brief 11174 | 128 | Checks the vertical collision at the position, accounts for slopes
+ * 
+ * @param yPosition Y Position
+ * @param xPosition X Position
+ * @return u16 Block top position
+ */
+u16 SpriteUtilCheckVerticalCollisionAtPositionSlopes(u16 yPosition, u16 xPosition)
+{
+    u32 clipdata;
+    u8 collision;
+    u16 blockTop;
+
+    clipdata = ClipdataProcess(yPosition, xPosition);
+
+    if (clipdata & CLIPDATA_TYPE_SOLID_FLAG)
+        collision = COLLISION_SOLID;
+    else
+        collision = COLLISION_AIR;
+
+    clipdata = LOW_BYTE(clipdata);
+    
+    switch (clipdata)
+    {
+        case CLIPDATA_TYPE_RIGHT_STEEP_FLOOR_SLOPE:
+            blockTop = (s16)((yPosition & BLOCK_POSITION_FLAG) - ((xPosition & SUB_PIXEL_POSITION_FLAG) - SUB_PIXEL_POSITION_FLAG));
+            collision = COLLISION_RIGHT_STEEP_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_RIGHT_LOWER_SLIGHT_FLOOR_SLOPE:
+            blockTop = (s16)((yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) - SUB_PIXEL_POSITION_FLAG));
+            collision = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_RIGHT_UPPER_SLIGHT_FLOOR_SLOPE:
+            blockTop = (s16)((yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) - SUB_PIXEL_POSITION_FLAG / 2));
+            collision = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_STEEP_FLOOR_SLOPE:
+            blockTop = (yPosition & BLOCK_POSITION_FLAG) | (xPosition & SUB_PIXEL_POSITION_FLAG);
+            collision = COLLISION_LEFT_STEEP_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_LOWER_SLIGHT_FLOOR_SLOPE:
+            blockTop = (yPosition & BLOCK_POSITION_FLAG) | (((xPosition & SUB_PIXEL_POSITION_FLAG) / 2) + SUB_PIXEL_POSITION_FLAG / 2); 
+            collision = COLLISION_LEFT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_UPPER_SLIGHT_FLOOR_SLOPE:
+            blockTop = (yPosition & BLOCK_POSITION_FLAG) | (xPosition & SUB_PIXEL_POSITION_FLAG) / 2; 
+            collision = COLLISION_LEFT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_PASS_THROUGH_BOTTOM:
+            collision = COLLISION_PASS_THROUGH_BOTTOM;
+            
+        default:
+            blockTop = yPosition & BLOCK_POSITION_FLAG;
+    }
+
+    if (clipdata == CLIPDATA_TYPE_PASS_THROUGH_BOTTOM)
+    {
+        if ((u32)(yPosition - blockTop) < 0x1A)
+            gPreviousVerticalCollisionCheck = collision;
+        else
+            gPreviousVerticalCollisionCheck = COLLISION_AIR;
+    }
+    else
+    {
+        if (yPosition >= blockTop)
+            gPreviousVerticalCollisionCheck = collision;
+        else
+            gPreviousVerticalCollisionCheck = COLLISION_AIR;
+    }
+
+    return blockTop;
+}
+
+/**
+ * @brief 1129c | 74 | To document
+ * 
+ */
+void unk_1129c(void)
+{
+    u16 yPosition;
+    u16 xPosition;
+    u32 blockTop;
+
+    yPosition = gCurrentSprite.yPosition;
+    xPosition = gCurrentSprite.xPosition;
+
+    blockTop = SpriteUtilCheckVerticalCollisionAtPosition(yPosition - PIXEL_SIZE, xPosition);
+
+    if ((gPreviousVerticalCollisionCheck & 0xF) > 1)
+    {
+        gCurrentSprite.yPosition = blockTop;
+        return;
+    }
+
+    blockTop = SpriteUtilCheckVerticalCollisionAtPosition(yPosition, xPosition);
+
+    if ((gPreviousVerticalCollisionCheck & 0xF) > 1)
+    {
+        gCurrentSprite.yPosition = blockTop;
+        return;
+    }
+
+    blockTop = SpriteUtilCheckVerticalCollisionAtPosition(yPosition + PIXEL_SIZE, xPosition);
+
+    if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
+    {
+        gCurrentSprite.yPosition = blockTop;
+    }
+}
+
+/**
+ * @brief 11310 | 80 | To document
+ * 
+ */
+void unk_11310(void)
+{
+    u16 yPosition;
+    u16 xPosition;
+    u32 blockTop;
+
+    yPosition = gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom;
+    xPosition = gCurrentSprite.xPosition;
+
+    blockTop = SpriteUtilCheckVerticalCollisionAtPosition(yPosition - PIXEL_SIZE, xPosition);
+
+    if ((gPreviousVerticalCollisionCheck & 0xF) > 1)
+    {
+        gCurrentSprite.yPosition = blockTop - gCurrentSprite.hitboxBottom;
+        return;
+    }
+
+    blockTop = SpriteUtilCheckVerticalCollisionAtPosition(yPosition, xPosition);
+
+    if ((gPreviousVerticalCollisionCheck & 0xF) > 1)
+    {
+        gCurrentSprite.yPosition = blockTop - gCurrentSprite.hitboxBottom;
+        return;
+    }
+
+    blockTop = SpriteUtilCheckVerticalCollisionAtPosition(yPosition + PIXEL_SIZE, xPosition);
+
+    if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
+    {
+        gCurrentSprite.yPosition = blockTop - gCurrentSprite.hitboxBottom;
+    }
+}
+
+/**
+ * @brief 11390 | 98 | Checks the collision at the position
+ * 
+ * @param yPosition Y Position
+ * @param xPosition X Position
+ */
+void SpriteUtilCheckCollisionAtPosition(u16 yPosition, u16 xPosition)
+{
+    u32 clipdata;
+
+    clipdata = ClipdataProcess(yPosition, xPosition);
+
+    if (clipdata & CLIPDATA_TYPE_SOLID_FLAG)
+        gPreviousCollisionCheck = COLLISION_SOLID;
+    else
+        gPreviousCollisionCheck = COLLISION_AIR;
+
+    switch (LOW_BYTE(clipdata))
+    {
+        case CLIPDATA_TYPE_RIGHT_STEEP_FLOOR_SLOPE:
+            gPreviousCollisionCheck = COLLISION_RIGHT_STEEP_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_RIGHT_LOWER_SLIGHT_FLOOR_SLOPE:
+            gPreviousCollisionCheck = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_RIGHT_UPPER_SLIGHT_FLOOR_SLOPE:
+            gPreviousCollisionCheck = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_STEEP_FLOOR_SLOPE:
+            gPreviousCollisionCheck = COLLISION_LEFT_STEEP_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_LOWER_SLIGHT_FLOOR_SLOPE:
+            gPreviousCollisionCheck = COLLISION_LEFT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_UPPER_SLIGHT_FLOOR_SLOPE:
+            gPreviousCollisionCheck = COLLISION_LEFT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_PASS_THROUGH_BOTTOM:
+            gPreviousCollisionCheck = COLLISION_PASS_THROUGH_BOTTOM;
+    }
+}
+
+/**
+ * @brief 11428 | 70 | Handles the current sprite falling
+ * 
+ */
+void SpriteUtilCurrentSpriteFalling(void)
+{
+    u32 blockTop;
+    s16 movement;
+    u8 offset;
+
+    blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+
+    if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
+    {
+        gCurrentSprite.yPosition = blockTop;
+        gCurrentSprite.pose = 0x7;
+        return;
+    }
+
+    offset = gCurrentSprite.work4;
+    movement = sSpritesFallingSpeed[offset];
+
+    if (movement == SHORT_MAX)
+    {
+        movement = sSpritesFallingSpeed[offset - 1];
+        gCurrentSprite.yPosition += movement;
+    }
+    else
+    {
+        offset++;
+        gCurrentSprite.work4 = offset;
+        gCurrentSprite.yPosition += movement;
+    }
+}
+
+/**
+ * @brief 11498 | 38 | Chooses a random X flip for the current sprite
+ * 
+ */
+void SpriteUtilChooseRandomXFlip(void)
+{
+    if (MOD_AND(gFrameCounter8Bit, 2))
+        gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
+    else
+        gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+}
+
+/**
+ * @brief 114d0 | 3c | Chooses a random X direction for the current sprite
+ * 
+ */
+void SpriteUtilChooseRandomXDirection(void)
+{
+    if (MOD_AND(gFrameCounter8Bit, 2))
+        gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+    else
+        gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+}
+
+/**
+ * @brief 1150c | 30 | Chooses a random X direction for the current sprite based on the room slot
+ * 
+ */
+void SpriteUtilChooseRandomXDirectionRoomSlot(void)
+{
+    if (MOD_AND(gCurrentSprite.roomSlot, 2))
+        gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+    else
+        gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+}
+
+/**
+ * @brief 1153c | 30 | Makes the current sprite face samus (x flip)
+ * 
+ */
+void SpriteUtilMakeSpriteFaceSamusXFlip(void)
+{
+    if (gCurrentSprite.xPosition > gSamusData.xPosition)
+        gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
+    else
+        gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+}
+
+/**
+ * @brief 1156c | 34 | Makes the current sprite face samus (direction)
+ * 
+ */
+void SpriteUtilMakeSpriteFaceSamusDirection(void)
+{
+    if (gCurrentSprite.xPosition > gSamusData.xPosition)
+        gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+    else
+        gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+}
+
+/**
+ * @brief 115a0 | 30 | Makes the current sprite face from samus (x flip)
+ * 
+ */
+void SpriteUtilMakeSpriteFaceAwayFromSamusXFlip(void)
+{
+    if (gCurrentSprite.xPosition > gSamusData.xPosition)
+        gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+    else
+        gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
+}
+
+/**
+ * @brief 115d0 | 34 | Makes the current sprite face from samus (direction)
+ * 
+ */
+void SpriteUtilMakeSpriteFaceAwayFromSamusDirection(void)
+{
+    if (gCurrentSprite.xPosition > gSamusData.xPosition)
+        gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+    else
+        gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+}
+
+/**
+ * @brief 11604 | 98 | To document
+ * 
+ * @param movement Movement
+ */
+void unk_11604(s16 movement)
+{
+    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+
+    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    {
+        if (gPreviousCollisionCheck == COLLISION_RIGHT_STEEP_FLOOR_SLOPE)
+        {
+            movement = FRACT_MUL(movement, 2, 3);
+        }
+        else if (gPreviousCollisionCheck == COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE)
+        {
+            movement = FRACT_MUL(movement, 3, 4);
+        }
+    }
+    else
+    {
+        if (gPreviousCollisionCheck == COLLISION_LEFT_STEEP_FLOOR_SLOPE)
+        {
+            movement = FRACT_MUL(movement, 2, 3);
+        }
+        else if (gPreviousCollisionCheck == COLLISION_LEFT_SLIGHT_FLOOR_SLOPE)
+        {
+            movement = FRACT_MUL(movement, 3, 4);
+        }
+    }
+
+    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        gCurrentSprite.xPosition += movement;
+    else
+        gCurrentSprite.xPosition -= movement;
+}
+
+/**
+ * @brief 1169c | 98 | To document
+ * 
+ * @param movement Movement
+ */
+void unk_1169c(s16 movement)
+{
+    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+
+    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    {
+        if (gPreviousCollisionCheck == COLLISION_RIGHT_STEEP_FLOOR_SLOPE)
+        {
+            movement = FRACT_MUL(movement, 2, 3);
+        }
+        else if (gPreviousCollisionCheck == COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE)
+        {
+            movement = FRACT_MUL(movement, 3, 4);
+        }
+    }
+    else
+    {
+        if (gPreviousCollisionCheck == COLLISION_LEFT_STEEP_FLOOR_SLOPE)
+        {
+            movement = FRACT_MUL(movement, 2, 3);
+        }
+        else if (gPreviousCollisionCheck == COLLISION_LEFT_SLIGHT_FLOOR_SLOPE)
+        {
+            movement = FRACT_MUL(movement, 3, 4);
+        }
+    }
+
+    if (movement == 0)
+        movement = 1;
+
+    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        gCurrentSprite.xPosition += movement;
+    else
+        gCurrentSprite.xPosition -= movement;
+}
+
+u8 SpriteUtilMakeSpriteRotateTowardsTarget(s16 oamRotation, s16 targetY, s16 targetX, s16 spriteY, s16 spriteX)
+{
+    // https://decomp.me/scratch/bwCje
+
+    u8 intensity;
+    s32 targetRotation;
+
+    intensity = Q_8_8(0.01f);
+
+    if (targetY < spriteY)
+    {
+        if (spriteX - BLOCK_SIZE < targetX && spriteX + BLOCK_SIZE > targetX)
+        {
+            targetRotation = PI + PI / 2;
+        }
+        else if (targetX > spriteX)
+        {
+            if (spriteY - targetY < BLOCK_SIZE)
+                targetRotation = 0;
+            else
+                targetRotation = PI + 3 * PI / 4;
+        }
+        else if (spriteY - targetY < BLOCK_SIZE)
+        {
+            targetRotation = PI;
+        }
+        else
+        {
+            targetRotation = PI + HALF_BLOCK_SIZE;
+        }
+    }
+    else
+    {
+        if (spriteX - BLOCK_SIZE < targetX && spriteX + BLOCK_SIZE > targetX)
+        {
+            targetRotation = PI / 2;
+        }
+        else if (targetX > spriteX)
+        {
+            if (targetY - spriteY < BLOCK_SIZE)
+                targetRotation = 0;
+            else
+                targetRotation = PI / 4;
+        }
+        else if (targetY - spriteY < BLOCK_SIZE)
+        {
+            targetRotation = PI;
+        }
+        else
+        {
+            targetRotation = 3 * PI / 4;
+        }
+    }
+
+    if (targetRotation == 0)
+    {
+        if ((u16)(oamRotation - 1) < BLOCK_SIZE * 2 - 1)
+            oamRotation -= intensity;
+        else if (oamRotation > BLOCK_SIZE * 2 - 1)
+            oamRotation += intensity;
+    }
+    else if (targetRotation == PI / 4)
+    {
+        if ((u16)(oamRotation - HALF_BLOCK_SIZE - 1) < BLOCK_SIZE * 2 - 1)
+            oamRotation -= intensity;
+        else if ((u16)(oamRotation - HALF_BLOCK_SIZE) > BLOCK_SIZE * 2 - 1)
+            oamRotation += intensity;
+    }
+    else if (targetRotation == PI / 2)
+    {
+        if ((u16)(oamRotation - BLOCK_SIZE - 1) < BLOCK_SIZE * 2 - 1)
+            oamRotation -= intensity;
+        else if ((u16)(oamRotation - BLOCK_SIZE) > BLOCK_SIZE * 2 - 1)
+            oamRotation += intensity;
+    }
+    else if (targetRotation == 3 * PI / 4)
+    {
+        if ((u16)(oamRotation - (BLOCK_SIZE + HALF_BLOCK_SIZE) - 1) < BLOCK_SIZE * 2 - 1)
+            oamRotation -= intensity;
+        else if ((u16)(oamRotation - (BLOCK_SIZE + HALF_BLOCK_SIZE)) > BLOCK_SIZE * 2 - 1)
+            oamRotation += intensity;
+    }
+    else if (targetRotation == PI)
+    {
+        if ((u16)(oamRotation - 1) < BLOCK_SIZE * 2 - 1)
+            oamRotation += intensity;
+        else if (oamRotation > BLOCK_SIZE * 2)
+            oamRotation -= intensity;
+    }
+    else if (targetRotation == PI + PI / 4)
+    {
+        if ((u16)(oamRotation - HALF_BLOCK_SIZE - 1) < BLOCK_SIZE * 2 - 1)
+            oamRotation += intensity;
+        else if ((u16)(oamRotation - HALF_BLOCK_SIZE - 1) > BLOCK_SIZE * 2 - 1)
+            oamRotation -= intensity;
+    }
+    else if (targetRotation == PI + PI / 2)
+    {
+        if ((u16)(oamRotation - BLOCK_SIZE - 1) < BLOCK_SIZE * 2 - 1)
+            oamRotation += intensity;
+        else if ((u16)(oamRotation - BLOCK_SIZE - 1) > BLOCK_SIZE * 2 - 1)
+            oamRotation -= intensity;
+    }
+    else if (targetRotation == PI + 3 * PI / 4)
+    {
+        if ((u16)(oamRotation - (BLOCK_SIZE + HALF_BLOCK_SIZE) - 1) < BLOCK_SIZE * 2 - 1)
+            oamRotation += intensity;
+        else if ((u16)(oamRotation - (BLOCK_SIZE + HALF_BLOCK_SIZE) - 1) > BLOCK_SIZE * 2 - 1)
+            oamRotation -= intensity;
+    }
+
+    return oamRotation;
 }
