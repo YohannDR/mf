@@ -77,5 +77,8 @@ u8 SpriteUtilCountSecondarySpriteWithRamSlot(u8 spriteId, u8 ramSlot);
 void SpriteUtilMoveEyeCoreXBeam(u8 movement);
 void SpriteUtilMoveEyeCoreXBeamPart(void);
 void unk_12b54(void);
+void SpriteUtilMoveBeamCoreX(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor, u16 soundId);
+void SpriteUtilMoveBeamCoreX_Unused(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor, u16 soundId);
+void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor);
 
 #endif /* SPRITE_UTIL_H */
