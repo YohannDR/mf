@@ -80,5 +80,9 @@ void unk_12b54(void);
 void SpriteUtilMoveBeamCoreX(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor, u16 soundId);
 void SpriteUtilMoveBeamCoreX_Unused(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor, u16 soundId);
 void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor);
+void unk_1343c(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor, u16 soundId);
+void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor);
+void SpriteUtilMoveRidleyFireball(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor);
+void SpriteUtilUpdateStunTimer(void);
 
 #endif /* SPRITE_UTIL_H */

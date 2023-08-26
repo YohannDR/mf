@@ -3819,6 +3819,8 @@ void SpriteUtilMoveBeamCoreX_Unused(u16 dstY, u16 dstX, u8 yVelocity, u8 xVeloci
 
 void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
 {
+    // https://decomp.me/scratch/83paO
+
     u8 turning;
     u16 velocity;
 
@@ -3974,5 +3976,566 @@ void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity,
     {
         gCurrentSprite.status ^= SPRITE_STATUS_SAMUS_DETECTED;
         gCurrentSprite.work4 = 1;
+    }
+}
+
+/**
+ * @brief 1343c | 270 | To document
+ * 
+ * @param dstY Destination Y
+ * @param dstX Destination X
+ * @param yVelocity Y velocity cap
+ * @param xVelocity X velocity cap
+ * @param speedDivisor Speed divisor
+ * @param soundId Sound to play when changing direction
+ */
+void unk_1343c(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor, u16 soundId)
+{
+    u8 turning;
+    u16 velocity;
+
+    turning = FALSE;
+
+    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    {
+        if (gCurrentSprite.work2 == 0)
+        {
+            if (gCurrentSprite.xPosition > dstX - PIXEL_SIZE)
+            {
+                gCurrentSprite.work2 = gCurrentSprite.work3;
+            }
+            else
+            {
+                if (gCurrentSprite.work3 < xVelocity)
+                    gCurrentSprite.work3++;
+
+                gCurrentSprite.xPosition += gCurrentSprite.work3 >> speedDivisor;
+            }
+        }
+        else
+        {
+            gCurrentSprite.work2--;
+
+            if (gCurrentSprite.work2 != 0)
+                gCurrentSprite.xPosition += gCurrentSprite.work2 >> speedDivisor;
+            else
+                turning = TRUE;
+        }
+    }
+    else
+    {
+        if (gCurrentSprite.work2 == 0)
+        {
+            if (gCurrentSprite.xPosition < dstX + PIXEL_SIZE)
+            {
+                gCurrentSprite.work2 = gCurrentSprite.work3;
+            }
+            else
+            {
+                if (gCurrentSprite.work3 < xVelocity)
+                    gCurrentSprite.work3++;
+
+                velocity = gCurrentSprite.work3 >> speedDivisor;
+                if ((gCurrentSprite.xPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work2 = 0;
+                }
+                else
+                    gCurrentSprite.xPosition -= velocity;
+            }
+        }
+        else
+        {
+            gCurrentSprite.work2--;
+
+            if (gCurrentSprite.work2 != 0)
+            {
+                velocity = gCurrentSprite.work2 >> speedDivisor;
+                if ((gCurrentSprite.xPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work2 = 0;
+                }
+                else
+                    gCurrentSprite.xPosition -= velocity;
+            }
+            else
+                turning = TRUE;
+        }
+    }
+
+    if (turning)
+    {
+        gCurrentSprite.status ^= SPRITE_STATUS_FACING_RIGHT;
+
+        gCurrentSprite.unk_8++;
+        if (gCurrentSprite.unk_8 > 3)
+            gCurrentSprite.unk_8 = 0;
+        
+        gCurrentSprite.work3 = 1;
+        SoundPlayNotAlreadyPlaying(soundId);
+    }
+
+    turning = FALSE;
+
+    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    {
+        if (gCurrentSprite.work1 == 0)
+        {
+            if (gCurrentSprite.yPosition > dstY - PIXEL_SIZE)
+            {
+                gCurrentSprite.work1 = gCurrentSprite.work4;
+            }
+            else
+            {
+                if (gCurrentSprite.work4 < yVelocity)
+                    gCurrentSprite.work4++;
+
+                gCurrentSprite.yPosition += gCurrentSprite.work4 >> speedDivisor;
+            }
+        }
+        else
+        {
+            gCurrentSprite.work1--;
+
+            if (gCurrentSprite.work1 != 0)
+                gCurrentSprite.yPosition += gCurrentSprite.work1 >> speedDivisor;
+            else
+                turning = TRUE;
+        }
+    }
+    else
+    {
+        if (gCurrentSprite.work1 == 0)
+        {
+            if (gCurrentSprite.yPosition < dstY + PIXEL_SIZE)
+            {
+                gCurrentSprite.work1 = gCurrentSprite.work4;
+            }
+            else
+            {
+                if (gCurrentSprite.work4 < yVelocity)
+                    gCurrentSprite.work4++;
+
+                velocity = gCurrentSprite.work4 >> speedDivisor;
+                if ((gCurrentSprite.yPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work1 = 0;
+                }
+                else
+                    gCurrentSprite.yPosition -= velocity;
+            }
+        }
+        else
+        {
+            gCurrentSprite.work1--;
+
+            if (gCurrentSprite.work1 != 0)
+            {
+                velocity = gCurrentSprite.work1 >> speedDivisor;
+                if ((gCurrentSprite.yPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work1 = 0;
+                }
+                else
+                    gCurrentSprite.yPosition -= velocity;
+            }
+            else
+                turning = TRUE;
+        }
+    }
+
+    if (turning)
+    {
+        gCurrentSprite.status ^= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.work4 = 1;
+        SoundPlayNotAlreadyPlaying(soundId);
+    }
+}
+
+void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
+{
+    // https://decomp.me/scratch/CZKkD
+
+    u8 turning;
+    u16 velocity;
+
+    turning = FALSE;
+
+    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    {
+        if (gCurrentSprite.work2 == 0)
+        {
+            if (gCurrentSprite.xPosition > dstX - PIXEL_SIZE)
+            {
+                gCurrentSprite.work2 = gCurrentSprite.work3;
+            }
+            else
+            {
+                if (gCurrentSprite.work3 < xVelocity)
+                    gCurrentSprite.work3++;
+
+                gCurrentSprite.xPosition += gCurrentSprite.work3 >> speedDivisor;
+            }
+        }
+        else
+        {
+            gCurrentSprite.work2--;
+
+            if (gCurrentSprite.work2 != 0)
+                gCurrentSprite.xPosition += gCurrentSprite.work2 >> speedDivisor;
+            else
+                turning = TRUE;
+        }
+    }
+    else
+    {
+        if (gCurrentSprite.work2 == 0)
+        {
+            if (gCurrentSprite.xPosition < dstX + PIXEL_SIZE)
+            {
+                gCurrentSprite.work2 = gCurrentSprite.work3;
+            }
+            else
+            {
+                if (gCurrentSprite.work3 < xVelocity)
+                    gCurrentSprite.work3++;
+
+                velocity = gCurrentSprite.work3 >> speedDivisor;
+                if ((gCurrentSprite.xPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work2 = 0;
+                }
+                else
+                    gCurrentSprite.xPosition -= velocity;
+            }
+        }
+        else
+        {
+            gCurrentSprite.work2--;
+
+            if (gCurrentSprite.work2 != 0)
+            {
+                velocity = gCurrentSprite.work2 >> speedDivisor;
+                if ((gCurrentSprite.xPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work2 = 0;
+                }
+                else
+                    gCurrentSprite.xPosition -= velocity;
+            }
+            else
+                turning = TRUE;
+        }
+    }
+
+    if (turning)
+    {
+        gCurrentSprite.status ^= SPRITE_STATUS_FACING_RIGHT;
+
+        gCurrentSprite.unk_8++;
+        if (gCurrentSprite.unk_8 > 3)
+            gCurrentSprite.unk_8 = 0;
+        
+        gCurrentSprite.work3 = 1;
+    }
+
+    turning = FALSE;
+
+    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    {
+        if (gCurrentSprite.work1 == 0)
+        {
+            if (gCurrentSprite.yPosition > dstY - PIXEL_SIZE)
+            {
+                gCurrentSprite.work1 = gCurrentSprite.work4;
+            }
+            else
+            {
+                if (gCurrentSprite.work4 < yVelocity)
+                    gCurrentSprite.work4++;
+
+                gCurrentSprite.yPosition += gCurrentSprite.work4 >> speedDivisor;
+            }
+        }
+        else
+        {
+            gCurrentSprite.work1--;
+
+            if (gCurrentSprite.work1 != 0)
+                gCurrentSprite.yPosition += gCurrentSprite.work1 >> speedDivisor;
+            else
+                turning = TRUE;
+        }
+    }
+    else
+    {
+        if (gCurrentSprite.work1 == 0)
+        {
+            if (gCurrentSprite.yPosition < dstY + PIXEL_SIZE)
+            {
+                gCurrentSprite.work1 = gCurrentSprite.work4;
+            }
+            else
+            {
+                if (gCurrentSprite.work4 < yVelocity)
+                    gCurrentSprite.work4++;
+
+                velocity = gCurrentSprite.work4 >> speedDivisor;
+                if ((gCurrentSprite.yPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work1 = 0;
+                }
+                else
+                    gCurrentSprite.yPosition -= velocity;
+            }
+        }
+        else
+        {
+            gCurrentSprite.work1--;
+
+            if (gCurrentSprite.work1 != 0)
+            {
+                velocity = gCurrentSprite.work1 >> speedDivisor;
+                if ((gCurrentSprite.yPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work1 = 0;
+                }
+                else
+                    gCurrentSprite.yPosition -= velocity;
+            }
+            else
+                turning = TRUE;
+        }
+    }
+
+    if (turning)
+    {
+        gCurrentSprite.status ^= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.work4 = 1;
+    }
+}
+
+void SpriteUtilMoveRidleyFireball(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
+{
+    // https://decomp.me/scratch/oiQHP
+
+    u8 turning;
+    u16 velocity;
+    u8 updatePos;
+
+    turning = FALSE;
+
+    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    {
+        if (gCurrentSprite.work2 == 0)
+        {
+            updatePos = FALSE;
+            if (gCurrentSprite.work3 < xVelocity)
+            {
+                if (gCurrentSprite.xPosition <= dstX - PIXEL_SIZE)
+                {
+                    gCurrentSprite.work3++;
+                    updatePos = TRUE;
+                }
+                else
+                {
+                    gCurrentSprite.work2 = gCurrentSprite.work3;
+                    updatePos = FALSE;
+                }
+            }
+            else
+                updatePos = TRUE;
+
+            if (updatePos)
+                gCurrentSprite.xPosition += gCurrentSprite.work3 >> speedDivisor;
+        }
+        else
+        {
+            gCurrentSprite.work2--;
+
+            if (gCurrentSprite.work2 != 0)
+                gCurrentSprite.xPosition += gCurrentSprite.work2 >> speedDivisor;
+            else
+                turning = TRUE;
+        }
+    }
+    else
+    {
+        if (gCurrentSprite.work2 == 0)
+        {
+            updatePos = FALSE;
+            if (gCurrentSprite.work3 < xVelocity)
+            {
+                if (gCurrentSprite.xPosition <= dstX + PIXEL_SIZE)
+                {
+                    gCurrentSprite.work3++;
+                    updatePos = TRUE;
+                }
+                else
+                {
+                    gCurrentSprite.work2 = gCurrentSprite.work3;
+                    updatePos = FALSE;
+                }
+            }
+            else
+                updatePos = TRUE;
+
+            if (updatePos)
+                gCurrentSprite.xPosition -= gCurrentSprite.work3 >> speedDivisor;
+        }
+        else
+        {
+            gCurrentSprite.work2--;
+
+            if (gCurrentSprite.work2 != 0)
+            {
+                velocity = gCurrentSprite.work2 >> speedDivisor;
+                if ((gCurrentSprite.xPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work2 = 0;
+                }
+                else
+                    gCurrentSprite.xPosition -= velocity;
+            }
+            else
+                turning = TRUE;
+        }
+    }
+
+    if (turning)
+    {
+        gCurrentSprite.status ^= SPRITE_STATUS_FACING_RIGHT;
+        gCurrentSprite.work3 = 1;
+    }
+
+    turning = FALSE;
+
+    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    {
+        if (gCurrentSprite.work1 == 0)
+        {
+            updatePos = FALSE;
+            if (gCurrentSprite.work4 < yVelocity)
+            {
+                if (gCurrentSprite.yPosition <= dstY - PIXEL_SIZE)
+                {
+                    gCurrentSprite.work4++;
+                    updatePos = TRUE;
+                }
+                else
+                {
+                    gCurrentSprite.work1 = gCurrentSprite.work4;
+                    updatePos = FALSE;
+                }
+            }
+            else
+                updatePos = TRUE;
+
+            if (updatePos)
+                gCurrentSprite.yPosition += gCurrentSprite.work4 >> speedDivisor;
+        }
+        else
+        {
+            gCurrentSprite.work1--;
+
+            if (gCurrentSprite.work1 != 0)
+                gCurrentSprite.yPosition += gCurrentSprite.work1 >> speedDivisor;
+            else
+                turning = TRUE;
+        }
+    }
+    else
+    {
+        if (gCurrentSprite.work1 == 0)
+        {
+            updatePos = FALSE;
+            if (gCurrentSprite.work4 < yVelocity)
+            {
+                if (gCurrentSprite.yPosition >= dstY + PIXEL_SIZE)
+                {
+                    gCurrentSprite.work4++;
+                    updatePos = TRUE;
+                }
+                else
+                {
+                    gCurrentSprite.work1 = gCurrentSprite.work4;
+                    updatePos = FALSE;
+                }
+            }
+            else
+                updatePos = TRUE;
+
+            if (updatePos)
+                gCurrentSprite.yPosition -= gCurrentSprite.work4 >> speedDivisor;
+        }
+        else
+        {
+            gCurrentSprite.work1--;
+
+            if (gCurrentSprite.work1 != 0)
+            {
+                velocity = gCurrentSprite.work1 >> speedDivisor;
+                if ((gCurrentSprite.yPosition - velocity) & 0x8000)
+                {
+                    turning = TRUE;
+                    gCurrentSprite.work1 = 0;
+                }
+                else
+                    gCurrentSprite.yPosition -= velocity;
+            }
+            else
+                turning = TRUE;
+        }
+    }
+
+    if (turning)
+    {
+        gCurrentSprite.status ^= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.work4 = 1;
+    }
+}
+
+/**
+ * @brief 13b24 | 74 | Updates the stun flash timer of the current sprite
+ * 
+ */
+void SpriteUtilUpdateStunTimer(void)
+{
+    u8 isft;
+
+    if (!SPRITE_HAS_ISFT(gCurrentSprite))
+        return;
+
+    isft = --gCurrentSprite.invincibilityStunFlashTimer;
+
+    if (MOD_AND(isft, 4) != 0)
+        return;
+
+    if (gCurrentSprite.pose >= 0x5B)
+        return;
+
+    if (isft & 4)
+    {
+        if (gCurrentSprite.health != 0)
+            gCurrentSprite.paletteRow = 13 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+
+        return;
+    }
+
+    if (gCurrentSprite.health != 0)
+    {
+        if (gCurrentSprite.freezeTimer != 0)
+            gCurrentSprite.paletteRow = 15 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+        else
+            gCurrentSprite.paletteRow = 0;
     }
 }

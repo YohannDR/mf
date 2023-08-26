@@ -91,6 +91,15 @@
 #define GET_PSPRITE_SUIT_REDUCTION(id) sPrimarySpriteStats[(id)][2]
 #define GET_SSPRITE_SUIT_REDUCTION(id) sSecondarySpriteStats[(id)][2]
 
+#define SPRITE_HAS_ISFT(sprite) ((sprite).invincibilityStunFlashTimer & 0x7F)
+#define SPRITE_CLEAR_ISFT(sprite) ((sprite).invincibilityStunFlashTimer &= 0x80)
+#define SPRITE_SET_ISFT(sprite, value) ((sprite).invincibilityStunFlashTimer |= (value))
+#define SPRITE_CLEAR_AND_SET_ISFT(sprite, value)\
+{                                               \
+    SPRITE_CLEAR_ISFT(sprite);                  \
+    SPRITE_SET_ISFT(sprite, value);             \
+}
+
 #define SUB_PIXEL_TO_PIXEL(pixel) ((pixel) / SUB_PIXEL_RATIO)
 #define SUB_PIXEL_TO_PIXEL_(pixel) (DIV_SHIFT(pixel, SUB_PIXEL_RATIO))
 #define PIXEL_TO_SUBPIXEL(pixel) ((pixel) * SUB_PIXEL_RATIO)
