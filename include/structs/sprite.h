@@ -6,6 +6,7 @@
 
 #define MAX_AMOUNT_OF_SPRITES 24
 #define MAX_AMOUNT_OF_SPRITE_TYPES 15
+#define ENEMY_ROOM_DATA_SIZE 3
 
 struct SpriteData {
     u16 status;
@@ -63,6 +64,8 @@ struct SubSpriteData {
 
 extern struct SpriteData gCurrentSprite;
 extern struct SpriteData gSpriteData[MAX_AMOUNT_OF_SPRITES];
+extern u8 gSpriteDrawOrder[MAX_AMOUNT_OF_SPRITES];
+
 extern u8 gSpritesetSpriteIds[MAX_AMOUNT_OF_SPRITE_TYPES];
 extern u8 gSpritesetSpriteGfxSlots[MAX_AMOUNT_OF_SPRITE_TYPES];
 
@@ -72,5 +75,22 @@ extern struct SubSpriteData gSubSpriteData2;
 extern u8 gIgnoreSamusAndSpriteCollision;
 extern u8 gPreviousCollisionCheck;
 extern u8 gPreviousVerticalCollisionCheck;
+
+extern u8 gSpriteRandomNumber;
+
+extern u16 gAtmosphericStabilizersOnline;
+extern u16 gNormalXBarrierCoresDestroyed;
+extern u16 gSuperXBarrierCoresDestroyed;
+extern u16 gPowerBombXBarrierCoresDestroyed;
+extern u16 gGadorasDestroyed;
+extern u8 gMissilesHatchDestroyed;
+extern u8 gWaterLowered;
+
+extern u8 gBossWork0;
+extern u8 gBossWork1;
+extern u8 gBossWork2;
+extern u8 gBossWork3;
+extern u8 gBossWork4;
+extern u16 gBossWork5;
 
 #endif /* SPRITE_STRUCTS_H */

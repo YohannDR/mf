@@ -6,6 +6,27 @@
 #define LOW_SHORT(value) ((value) & USHORT_MAX)
 #define HIGH_SHORT(value) ((value) >> 16)
 
+#define OPPOSITE_DIRECTION(dir) ((dir) ^ (KEY_RIGHT | KEY_LEFT))
+#define ARRAY_SIZE(a) ((int)(sizeof((a)) / sizeof((a)[0])))
+#define OFFSET_OF(type, element) ((int)&(((type*)0)->element))
+
+#define CEIL(v) ((int)(((float)v) + .5) == (int)(v) ? ((int)(v)) : (int)(((float)v) + .5))
+
+#define CLAMP(value, min, max)\
+{                             \
+    if (value > (max))        \
+        value = (max);        \
+    else if (value < (min))   \
+        value = (min);        \
+}
+#define CLAMP2(value, min, max)\
+{                              \
+    if (value < (min))         \
+        value = (min);         \
+    else if (value > (max))    \
+        value = (max);         \
+}
+
 /**
  * @brief Performs a modulo (value % mod) operation on a value using the and operation (WARNING only use a value for mod that is divisble by 2)
  * 
@@ -13,6 +34,14 @@
  * @param mod Modulo
  */
 #define MOD_AND(value, mod) ((value) & ((mod) - 1))
+
+/**
+ * @brief Performs a division (value / div) operation on a value using the right shift operation (WARNING only use a value for div that is divisble by 2 and <= 1024)
+ * 
+ * @param value Value
+ * @param div Divisor
+ */
+#define DIV_SHIFT(value, div) ((value) >> ((div) == 2 ? 1 : ((div) == 4 ? 2 : ((div) == 8 ? 3 : ((div) == 16 ? 4 : ((div) == 32 ? 5 : ((div) == 64 ? 6 : ((div) == 128 ? 7 : ((div) == 256 ? 8 : ((div) == 512 ? 9 : ((div) == 1024 ? 10 : 0)))))))))))
 
 /**
  * @brief Multiplies a number by a fraction (num/den)
@@ -107,6 +136,12 @@
 #define BLOCK_TO_SUB_PIXEL(block) ((block) * BLOCK_SIZE)
 #define VELOCITY_TO_SUB_PIXEL(velocity) (DIV_SHIFT((velocity), 8))
 #define SUB_PIXEL_TO_VELOCITY(velocity) ((velocity) * 8)
+
+#define SCREEN_SIZE_X_SUB_PIXEL (PIXEL_TO_SUBPIXEL(SCREEN_SIZE_X))
+#define SCREEN_SIZE_Y_SUB_PIXEL (PIXEL_TO_SUBPIXEL(SCREEN_SIZE_Y))
+
+#define SCREEN_SIZE_X_BLOCKS (SUB_PIXEL_TO_BLOCK(SCREEN_SIZE_X_SUB_PIXEL))
+#define SCREEN_SIZE_Y_BLOCKS (SUB_PIXEL_TO_BLOCK(SCREEN_SIZE_Y_SUB_PIXEL))
 
 #define INCBIN(...) {0}
 #define INCBIN_U8   INCBIN

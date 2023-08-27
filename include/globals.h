@@ -14,7 +14,8 @@ extern u8 gFrameCounter8Bit;
 extern u16 gFrameCounter16Bit;
 extern s8 gPauseScreenFlag;
 extern u8 gCurrentCutscene;
-extern u8 gUnk_03000be3;
+extern s8 gIsLoadingFile;
+extern s8 gUnk_03000be3;
 extern u8 gDemoState;
 extern u8 gUnk_03000B8F;
 
@@ -25,6 +26,12 @@ extern u16 gChangedInput;
 extern u8 gDisableSoftReset;
 
 extern u16 gBg1XPosition;
+extern u16 gBg1YPosition;
+
+extern u8 gCurrentArea;
+extern u8 gSpritesetNumber;
+
+extern u8 gSamusOnTopOfBackgrounds;
 
 extern u8 gInterruptCode[512];
 extern void* gInterruptCodePointer;
@@ -44,5 +51,13 @@ extern void* gInterruptCodePointer;
 #define GAME_MODE_DEMO 12
 #define GAME_MODE_UNKNOWN 13
 #define GAME_MODE_DEBUG 14
+
+// For in game
+
+#define SUB_GAME_MODE_DOOR_TRANSITION 1
+#define SUB_GAME_MODE_PLAYING 2
+#define SUB_GAME_MODE_LOADING_ROOM 3
+#define SUB_GAME_MODE_DYING 5
+#define SUB_GAME_MODE_FREE_MOVEMENT 6
 
 #endif /* GLOBALS_H */

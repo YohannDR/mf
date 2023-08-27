@@ -12,7 +12,7 @@ void SpriteUtilTakeDamageFromYakuzaSlamming(void);
 void SpriteUtilTakeConstantDamageFromYakuza(void);
 void SpriteUtilTakeKnockback(u8 spriteSlot);
 u32 SpriteUtilCheckObjectsTouching(u16 o1Top, u16 o1Bottom, u16 o1Left, u16 o1Right, u16 o2Top, u16 o2Bottom, u16 o2Left, u16 o2Right);
-void SamusAndSpriteCollision(void);
+void SpriteUtilSamusAndSpriteCollision(void);
 u32 SpriteUtilCheckVerticalCollisionAtPosition(u16 yPosition, u16 xPosition);
 u16 SpriteUtilCheckVerticalCollisionAtPositionSlopes(u16 yPosition, u16 xPosition);
 void unk_1129c(void);

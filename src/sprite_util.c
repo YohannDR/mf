@@ -313,7 +313,7 @@ u32 SpriteUtilCheckObjectsTouching(u16 o1Top, u16 o1Bottom, u16 o1Left, u16 o1Ri
  * @brief 10220 | e38 | Handles the collision between samus and the sprites
  * 
  */
-void SamusAndSpriteCollision(void)
+void SpriteUtilSamusAndSpriteCollision(void)
 {
     u16 samusY;
     u16 samusX;
