@@ -1,3 +1,5 @@
 # Blobs
 
-Blob_a4fa4_79ecc8.bin;7314724;0xa4fa4;1
+Blob_a5224_2e4904.bin;2356960;0xa5224;1
+Blob_2e5cae_79a29c.bin;4933102;0x2e5cae;1
+Blob_79afe0_79ecc8.bin;15592;0x79afe0;1

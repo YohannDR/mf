@@ -7,7 +7,7 @@ extern u8 gRebootGame;
 extern u8 gClearedEveryFrame;
 extern vu16 gVBlankRequestFlag;
 extern s16 gMainGameMode;
-extern u16 gSubGameMode1;
+extern s16 gSubGameMode1;
 extern s8 gSubGameMode2;
 
 extern u8 gFrameCounter8Bit;

@@ -27,6 +27,7 @@
 #define SP_IMMUNE_TO_PROJECTILES (1 << 6)
 #define SP_SECONDARY_SPRITE (1 << 7)
 
+#define SPRITE_WEAKNESS_NONE (0 << 0)
 #define SPRITE_WEAKNESS_CHARGE_BEAM (1 << 0)
 #define SPRITE_WEAKNESS_BEAM_AND_BOMBS (1 << 1)
 #define SPRITE_WEAKNESS_SUPER_MISSILES (1 << 2)
@@ -430,7 +431,9 @@ enum SuitDamageReductionType {
     SDRT_80_10,
     SDRT_90_80,
 
-    SDRT_END
+    SDRT_END,
+
+    SDRT_CAN_CREATE_DEBRIS = 1 << 4
 };
 
 enum SuitDamageReduction {
