@@ -5,7 +5,7 @@
 	thumb_func_start SpriteUtilInitLocationText
 SpriteUtilInitLocationText: @ 0x0800FD90
 	push {r4, lr}
-	bl CheckLoadAreaBanner
+	bl LocationTextCheckLoad
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
 	cmp r4, #7

@@ -29,12 +29,28 @@ extern u16 gBg1XPosition;
 extern u16 gBg1YPosition;
 
 extern u8 gCurrentArea;
+extern u8 gCurrentRoom;
 extern u8 gSpritesetNumber;
+
+extern u8 gDisplayLocationName;
 
 extern u8 gSamusOnTopOfBackgrounds;
 
 extern u8 gInterruptCode[512];
 extern void* gInterruptCodePointer;
+
+enum Area {
+    AREA_MAIN_DECK,
+    AREA_SECTOR_1,
+    AREA_SECTOR_2,
+    AREA_SECTOR_3,
+    AREA_SECTOR_4,
+    AREA_SECTOR_5,
+    AREA_SECTOR_6,
+    AREA_DEBUG_1,
+    AREA_DEBUG_2,
+    AREA_DEBUG_3,
+};
 
 #define GAME_MODE_TITLE 0
 #define GAME_MODE_IN_GAME 1

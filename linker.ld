@@ -16,6 +16,8 @@ SECTIONS {
         . = 0x00000020; gRebootGame = .;
         . = 0x00000025; gDisableSoftReset = .;
         . = 0x0000002c; gCurrentArea = .;
+        . = 0x0000002d; gCurrentRoom = .;
+        . = 0x00000030; gDisplayLocationName = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x000000a4; gCurrentRoomEntry = .;
         . = 0x00000140; gSpriteData = .;
@@ -100,7 +102,8 @@ SECTIONS {
         src/sprite.o(.text);
         asm/disasm_0x0800fd90.o(.text);
         src/sprite_debris.o(.text);
-        asm/disasm_0x08014310.o(.text);
+        src/location_text.o(.text);
+        asm/disasm_0x08014884.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);

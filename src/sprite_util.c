@@ -21,7 +21,7 @@ void SpriteUtilInitLocationText(void)
 {
     u8 gfxSlot;
 
-    gfxSlot = CheckLoadAreaBanner();
+    gfxSlot = LocationTextCheckLoad();
 
     if (gfxSlot < 8)
     {
