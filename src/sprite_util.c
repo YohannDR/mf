@@ -71,12 +71,12 @@ void SpriteUtilTakeDamageFromSprite(u8 kbFlag, u8 spriteSlot, u16 dmgMultiplier)
     if (gSpriteData[spriteSlot].properties & SP_SECONDARY_SPRITE)
     {
         damage = GET_SSPRITE_DAMAGE(gSpriteData[spriteSlot].spriteId);
-        reductionType = GET_SSPRITE_SUIT_REDUCTION(gSpriteData[spriteSlot].spriteId) & 3;
+        reductionType = MOD_AND(GET_SSPRITE_SUIT_REDUCTION(gSpriteData[spriteSlot].spriteId), SDRT_END);
     }
     else
     {
         damage = GET_PSPRITE_DAMAGE(gSpriteData[spriteSlot].spriteId);
-        reductionType = GET_PSPRITE_SUIT_REDUCTION(gSpriteData[spriteSlot].spriteId) & 3;
+        reductionType = MOD_AND(GET_PSPRITE_SUIT_REDUCTION(gSpriteData[spriteSlot].spriteId), SDRT_END);
     }
 
     // Apply damage multiplier
@@ -85,11 +85,11 @@ void SpriteUtilTakeDamageFromSprite(u8 kbFlag, u8 spriteSlot, u16 dmgMultiplier)
     // Apply suit reduction, multiply damage by reduction/10
     suitStatus = gEquipment.suitMiscStatus;
     if (suitStatus & SMF_GRAVITY_SUIT)
-        damage = FRACT_MUL(damage, sSuitDamageReductionPercent[reductionType][2], 10);
+        damage = FRACT_MUL(damage, sSuitDamageReductionPercent[reductionType][SDR_GRAVITY_SUIT], 10);
     else if (suitStatus & SMF_VARIA_SUIT)
-        damage = FRACT_MUL(damage, sSuitDamageReductionPercent[reductionType][1], 10);
+        damage = FRACT_MUL(damage, sSuitDamageReductionPercent[reductionType][SDR_VARIA_SUIT], 10);
     else
-        damage = FRACT_MUL(damage, sSuitDamageReductionPercent[reductionType][0], 10);
+        damage = FRACT_MUL(damage, sSuitDamageReductionPercent[reductionType][SDR_POWER_SUIT], 10);
 
     // Force damage
     if (damage == 0)

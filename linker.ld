@@ -12,6 +12,7 @@ SECTIONS {
     iwram (NOLOAD) : ALIGN(4) {
         . = 0x00000000; gDebugFlag = .;
         . = 0x00000002; gFrameCounter16Bit = .;
+        . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
         . = 0x00000020; gRebootGame = .;
         . = 0x00000025; gDisableSoftReset = .;
         . = 0x0000002c; gCurrentArea = .;
@@ -96,6 +97,8 @@ SECTIONS {
         asm/disasm_0x08000c28.o(.text);
         asm/syscalls.o(.text);
         asm/disasm_0x08004bcc.o(.text);
+        asm/disasm_0x0800e7a8.o(.text);
+        asm/disasm_0x0800fd90.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);

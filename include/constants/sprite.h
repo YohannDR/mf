@@ -127,7 +127,7 @@ enum PrimarySpriteId {
     PSPRITE_MOVABLE_PLATFORM_4,
     PSPRITE_MOVABLE_PLATFORM_5,
     PSPRITE_YAKUZA,
-    PSPRITE_CHOZO_STATUS,
+    PSPRITE_CHOZO_STATUE,
     PSPRITE_SCIENTIST,
     PSPRITE_NETTORI,
     PSPRITE_BOX_2,
@@ -422,6 +422,23 @@ enum SamusSpriteCollision {
     SSC_RIDLEY_CLAW_GRABBED,
     SSC_1C,
     SSC_1D
+};
+
+enum SuitDamageReductionType {
+    SDRT_30_10,
+    SDRT_60_30,
+    SDRT_80_10,
+    SDRT_90_80,
+
+    SDRT_END
+};
+
+enum SuitDamageReduction {
+    SDR_POWER_SUIT,
+    SDR_VARIA_SUIT,
+    SDR_GRAVITY_SUIT,
+
+    SDR_END
 };
 
 #define NSLR_OUT_OF_RANGE 0
