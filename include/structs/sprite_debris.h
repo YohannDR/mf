@@ -8,10 +8,10 @@
 
 struct SpriteDebris {
     const struct FrameData* pOam;
-    u16 unk_4;
+    u16 currentAnimationFrame;
     u16 yPosition;
     u16 xPosition;
-    u8 unk_A;
+    u8 animationDurationCounter;
     u8 exists;
     u8 type;
     u8 fallingTimer;

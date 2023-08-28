@@ -37,7 +37,7 @@ void SpriteUpdate(void)
     if (gSubGameMode1 == SUB_GAME_MODE_PLAYING)
     {
         // Update the debris
-        CallUpdateSpriteDebris();
+        SpriteDebrisUpdateAll();
 
         if (!SpriteUtilCheckStopSpritesPose())
         {
@@ -271,7 +271,7 @@ void SpriteDrawAll(void)
     checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_UNKNOWN_10 | SPRITE_STATUS_UNKNOWN_2000;
     drawStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN;
 
-    CallDrawSpriteDebris();
+    SpriteDebrisDrawAll();
     SA_XUpdateGFXAndDraw();
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)

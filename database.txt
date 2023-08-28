@@ -1,5 +1,7 @@
 # Blobs
 
 Blob_a5224_2e4904.bin;2356960;0xa5224;1
-Blob_2e5cae_79a29c.bin;4933102;0x2e5cae;1
+Blob_2e5cae_2e6160.bin;1202;0x2e5cae;1
+Blob_2e6202_3ec038.bin;1072694;0x2e6202;1
+Blob_3ec1a8_79a29c.bin;3858676;0x3ec1a8;1
 Blob_79afe0_79ecc8.bin;15592;0x79afe0;1

@@ -99,6 +99,8 @@ SECTIONS {
         asm/disasm_0x08004bcc.o(.text);
         src/sprite.o(.text);
         asm/disasm_0x0800fd90.o(.text);
+        src/sprite_debris.o(.text);
+        asm/disasm_0x08014310.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);
@@ -110,6 +112,8 @@ SECTIONS {
     .rodata : ALIGN(2) {
         src/data/generic_data.o(.rodata);
         src/data/sprite_data.o(.rodata);
+        src/data/sprite_debris_data.o(.rodata);
+        src/data/particle_data.o(.rodata);
         src/data/engine_pointers.o(.rodata);
     } >rom
 }
