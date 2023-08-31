@@ -23,6 +23,10 @@ SECTIONS {
         . = 0x00000140; gSpriteData = .;
         . = 0x00000680; gSpritesetSpriteIds = .;
         . = 0x0000068f; gSpritesetSpriteGfxSlots = .;
+        . = 0x000006a0; gXParasiteTargetYPosition = .;
+        . = 0x000006a2; gXParasiteTargetXPosition = .;
+        . = 0x000006a4; gAbilityRestingYPosition = .;
+        . = 0x000006a6; gAbilityRestingXPosition = .;
         . = 0x000006ae; gAtmosphericStabilizersOnline = .;
         . = 0x000006b0; gNormalXBarrierCoresDestroyed = .;
         . = 0x000006b2; gSuperXBarrierCoresDestroyed = .;
@@ -103,7 +107,8 @@ SECTIONS {
         asm/disasm_0x0800fd90.o(.text);
         src/sprite_debris.o(.text);
         src/location_text.o(.text);
-        asm/disasm_0x08014884.o(.text);
+        src/sprites_AI/target.o(.text);
+        asm/disasm_0x08014B9C.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);
@@ -116,6 +121,7 @@ SECTIONS {
         src/data/generic_data.o(.rodata);
         src/data/sprite_data.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
+        src/data/sprites/target.o(.rodata);
         src/data/particle_data.o(.rodata);
         src/data/engine_pointers.o(.rodata);
     } >rom

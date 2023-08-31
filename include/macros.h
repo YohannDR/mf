@@ -6,6 +6,10 @@
 #define LOW_SHORT(value) ((value) & USHORT_MAX)
 #define HIGH_SHORT(value) ((value) >> 16)
 
+#define OAM_PART_SIZE 3
+#define OAM_DATA_SIZE(nbrOfParts) (1 + (nbrOfParts) * OAM_PART_SIZE)
+#define GET_OAM_DATA_SIZE(size) (((size) - 1) / OAM_PART_SIZE)
+
 #define OPPOSITE_DIRECTION(dir) ((dir) ^ (KEY_RIGHT | KEY_LEFT))
 #define ARRAY_SIZE(a) ((int)(sizeof((a)) / sizeof((a)[0])))
 #define OFFSET_OF(type, element) ((int)&(((type*)0)->element))

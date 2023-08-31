@@ -444,6 +444,8 @@ enum SuitDamageReduction {
     SDR_END
 };
 
+#define SPRITE_POSE_UNITIALIZED 0
+
 #define NSLR_OUT_OF_RANGE 0
 #define NSLR_LEFT 4
 #define NSLR_RIGHT 8

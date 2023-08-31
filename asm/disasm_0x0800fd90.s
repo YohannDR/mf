@@ -774,7 +774,7 @@ _08010376:
 	adds r0, #1
 	adds r0, r4, r0
 	ldr r1, [sp, #0x14]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r0, _080103BC @ =gPreviousCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -808,7 +808,7 @@ _080103C0:
 	mov r1, r8
 	subs r0, r1, r0
 	ldr r1, [sp, #0x14]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r0, _080103F8 @ =gPreviousCollisionCheck
 	ldrb r1, [r0]
 	cmp r1, #0
@@ -847,7 +847,7 @@ _08010414:
 	ldrsh r0, [r4, r3]
 	adds r1, r1, r0
 	ldr r0, [sp, #0x10]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r5, _0801046C @ =gPreviousCollisionCheck
 	ldrb r6, [r5]
 	cmp r6, #0
@@ -862,7 +862,7 @@ _08010434:
 	movs r3, #0x24
 	ldrsh r2, [r4, r3]
 	adds r1, r1, r2
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801045A
@@ -943,7 +943,7 @@ _08010512:
 	adds r0, #1
 	adds r0, r4, r0
 	ldr r1, [sp, #0x14]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r0, _08010560 @ =gPreviousCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -982,7 +982,7 @@ _08010568:
 	mov r2, r8
 	subs r0, r2, r0
 	ldr r1, [sp, #0x14]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r0, _080105B8 @ =gPreviousCollisionCheck
 	ldrb r1, [r0]
 	cmp r1, #0
@@ -1032,7 +1032,7 @@ _080105CE:
 	ldrsh r0, [r4, r2]
 	adds r1, r1, r0
 	ldr r0, [sp, #0x10]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r5, _0801062C @ =gPreviousCollisionCheck
 	ldrb r6, [r5]
 	cmp r6, #0
@@ -1047,7 +1047,7 @@ _080105F6:
 	movs r3, #0x24
 	ldrsh r2, [r4, r3]
 	adds r1, r1, r2
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801061C
@@ -1075,7 +1075,7 @@ _08010630:
 	ldrsh r0, [r4, r3]
 	adds r1, r1, r0
 	ldr r0, [sp, #0x10]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r5, _080106A8 @ =gPreviousCollisionCheck
 	ldrb r6, [r5]
 	cmp r6, #0
@@ -1091,7 +1091,7 @@ _08010652:
 	movs r3, #0x28
 	ldrsh r2, [r4, r3]
 	adds r1, r1, r2
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801067A
@@ -1704,7 +1704,7 @@ _08010B42:
 	ldrsh r0, [r4, r2]
 	adds r1, r1, r0
 	ldr r0, [sp, #0x10]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r0, _08010B70 @ =gPreviousCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -1725,7 +1725,7 @@ _08010B74:
 	ldrsh r0, [r4, r2]
 	adds r1, r1, r0
 	ldr r0, [sp, #0x10]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r0, _08010BBC @ =gPreviousCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -1759,7 +1759,7 @@ _08010BC0:
 	ldr r2, [sp, #0x10]
 	adds r0, r2, r0
 	ldr r1, [sp, #0x14]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r0, _08010BEC @ =gPreviousCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -1806,7 +1806,7 @@ _08010C12:
 	ldrsh r0, [r4, r2]
 	adds r1, r1, r0
 	ldr r0, [sp, #0x10]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r0, _08010C40 @ =gPreviousCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -1827,7 +1827,7 @@ _08010C44:
 	ldrsh r0, [r4, r2]
 	adds r1, r1, r0
 	ldr r0, [sp, #0x10]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r0, _08010C90 @ =gPreviousCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -2746,8 +2746,8 @@ _08011378:
 _08011388: .4byte gCurrentSprite
 _0801138C: .4byte gPreviousVerticalCollisionCheck
 
-	thumb_func_start CheckCollisionAtPosition
-CheckCollisionAtPosition: @ 0x08011390
+	thumb_func_start SpriteUtilCheckCollisionAtPosition
+SpriteUtilCheckCollisionAtPosition: @ 0x08011390
 	push {lr}
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
@@ -2912,8 +2912,8 @@ _080114C4:
 	.align 2, 0
 _080114CC: .4byte gCurrentSprite
 
-	thumb_func_start SpriteChooseRandomXDirection
-SpriteChooseRandomXDirection: @ 0x080114D0
+	thumb_func_start SpriteUtilChooseRandomXDirection
+SpriteUtilChooseRandomXDirection: @ 0x080114D0
 	push {lr}
 	ldr r0, _080114E8 @ =gFrameCounter8Bit
 	ldrb r1, [r0]
@@ -3089,7 +3089,7 @@ unk_11604: @ 0x08011604
 	ldr r4, _08011638 @ =gCurrentSprite
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrh r1, [r4]
 	movs r0, #0x80
 	lsls r0, r0, #2
@@ -3171,7 +3171,7 @@ unk_1169c: @ 0x0801169C
 	ldr r4, _080116CC @ =gCurrentSprite
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrh r1, [r4]
 	movs r0, #0x40
 	ands r0, r1
@@ -6202,7 +6202,7 @@ MoveBeamCoreX: @ 0x08012C58
 	adds r1, #0x3c
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r5, _08012CE0 @ =gPreviousCollisionCheck
 	ldrb r0, [r5]
 	cmp r0, #0
@@ -6215,7 +6215,7 @@ MoveBeamCoreX: @ 0x08012C58
 	adds r1, #0x3c
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _08012D1E
@@ -6235,7 +6235,7 @@ _08012CE4:
 	subs r1, #0x3c
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r5, _08012D00 @ =gPreviousCollisionCheck
 	ldrb r0, [r5]
 	cmp r0, #0
@@ -6255,7 +6255,7 @@ _08012D04:
 	subs r1, #0x3c
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _08012D24
@@ -6273,7 +6273,7 @@ _08012D24:
 _08012D30:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _08012D42
@@ -6292,7 +6292,7 @@ _08012D42:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldrh r1, [r4, #4]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r5, _08012D8C @ =gPreviousCollisionCheck
 	ldrb r0, [r5]
 	cmp r0, #0
@@ -6305,7 +6305,7 @@ _08012D42:
 	adds r1, #0x28
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _08012DDA
@@ -6321,7 +6321,7 @@ _08012D90:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldrh r1, [r4, #4]
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldr r5, _08012E24 @ =gPreviousCollisionCheck
 	ldrb r0, [r5]
 	cmp r0, #0
@@ -6334,7 +6334,7 @@ _08012D90:
 	adds r1, #0x28
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _08012DDA
@@ -6347,7 +6347,7 @@ _08012DC4:
 	subs r1, #0x28
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl CheckCollisionAtPosition
+	bl SpriteUtilCheckCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _08012DE0

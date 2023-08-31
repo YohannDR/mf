@@ -93,4 +93,9 @@ extern u8 gBossWork3;
 extern u8 gBossWork4;
 extern u16 gBossWork5;
 
+extern u16 gXParasiteTargetYPosition;
+extern u16 gXParasiteTargetXPosition;
+extern u16 gAbilityRestingYPosition;
+extern u16 gAbilityRestingXPosition;
+
 #endif /* SPRITE_STRUCTS_H */

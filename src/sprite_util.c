@@ -397,7 +397,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
             {
                 if (samusY - (QUARTER_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2) < spriteTop)
                 {
-                    CheckCollisionAtPosition(spriteTop + ONE_SUB_PIXEL + gSamusData.drawDistanceTop, samusX);
+                    SpriteUtilCheckCollisionAtPosition(spriteTop + ONE_SUB_PIXEL + gSamusData.drawDistanceTop, samusX);
 
                     if (gPreviousCollisionCheck == COLLISION_AIR)
                     {
@@ -409,7 +409,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                 }
                 else if (samusTop + QUARTER_BLOCK_SIZE > spriteBottom)
                 {
-                    CheckCollisionAtPosition(spriteBottom - gSamusData.drawDistanceTop, samusX);
+                    SpriteUtilCheckCollisionAtPosition(spriteBottom - gSamusData.drawDistanceTop, samusX);
 
                     if (gPreviousCollisionCheck == COLLISION_AIR)
                     {
@@ -423,11 +423,11 @@ void SpriteUtilSamusAndSpriteCollision(void)
                 {
                     if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                     {
-                        CheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
+                        SpriteUtilCheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
                         if (gPreviousCollisionCheck == COLLISION_AIR)
                         {
-                            CheckCollisionAtPosition(samusY - BLOCK_SIZE,
+                            SpriteUtilCheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                 spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
                             if (gPreviousCollisionCheck == COLLISION_AIR || SpriteUtilCheckMorphed())
@@ -441,11 +441,11 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     }
                     else
                     {
-                        CheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
+                        SpriteUtilCheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
                         if (gPreviousCollisionCheck == COLLISION_AIR)
                         {
-                            CheckCollisionAtPosition(samusY - BLOCK_SIZE,
+                            SpriteUtilCheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                 spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
                             if (gPreviousCollisionCheck == COLLISION_AIR || SpriteUtilCheckMorphed())
@@ -473,7 +473,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
 
                     if (samusY - (QUARTER_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2) < spriteTop)
                     {
-                        CheckCollisionAtPosition(spriteTop + ONE_SUB_PIXEL + gSamusData.drawDistanceTop, samusX);
+                        SpriteUtilCheckCollisionAtPosition(spriteTop + ONE_SUB_PIXEL + gSamusData.drawDistanceTop, samusX);
 
                         if (gPreviousCollisionCheck == COLLISION_AIR)
                         {
@@ -485,7 +485,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     }
                     else if (samusTop + QUARTER_BLOCK_SIZE > spriteBottom)
                     {
-                        CheckCollisionAtPosition(spriteBottom - gSamusData.drawDistanceTop, samusX);
+                        SpriteUtilCheckCollisionAtPosition(spriteBottom - gSamusData.drawDistanceTop, samusX);
 
                         if (gPreviousCollisionCheck == COLLISION_AIR)
                         {
@@ -499,11 +499,11 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                         {
-                            CheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
+                            SpriteUtilCheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
                             if (gPreviousCollisionCheck == COLLISION_AIR)
                             {
-                                CheckCollisionAtPosition(samusY - BLOCK_SIZE,
+                                SpriteUtilCheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                     spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
                                 if (gPreviousCollisionCheck == COLLISION_AIR || SpriteUtilCheckMorphed())
@@ -517,11 +517,11 @@ void SpriteUtilSamusAndSpriteCollision(void)
                         }
                         else
                         {
-                            CheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
+                            SpriteUtilCheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
                             if (gPreviousCollisionCheck == COLLISION_AIR)
                             {
-                                CheckCollisionAtPosition(samusY - BLOCK_SIZE,
+                                SpriteUtilCheckCollisionAtPosition(samusY - BLOCK_SIZE,
                                     spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
                                 if (gPreviousCollisionCheck == COLLISION_AIR || SpriteUtilCheckMorphed())
@@ -754,14 +754,14 @@ void SpriteUtilSamusAndSpriteCollision(void)
 
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                         {
-                            CheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
+                            SpriteUtilCheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
                             if (gPreviousCollisionCheck == COLLISION_AIR)
                                 gSamusData.xPosition = spriteLeft - gSamusData.drawDistanceRight;
                         }
                         else
                         {
-                            CheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
+                            SpriteUtilCheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
                             if (gPreviousCollisionCheck == COLLISION_AIR)
                                 gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;
@@ -773,7 +773,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                         }
                         else
                         {
-                            CheckCollisionAtPosition(samusY + ONE_SUB_PIXEL + gSamusData.drawDistanceTop, samusX);
+                            SpriteUtilCheckCollisionAtPosition(samusY + ONE_SUB_PIXEL + gSamusData.drawDistanceTop, samusX);
 
                             if (gPreviousCollisionCheck == COLLISION_AIR)
                             {
@@ -795,14 +795,14 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
                         {
-                            CheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
+                            SpriteUtilCheckCollisionAtPosition(samusY, spriteLeft - gSamusData.drawDistanceRight + gSamusData.drawDistanceLeft);
 
                             if (gPreviousCollisionCheck == COLLISION_AIR)
                                 gSamusData.xPosition = spriteLeft - gSamusData.drawDistanceRight;
                         }
                         else
                         {
-                            CheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
+                            SpriteUtilCheckCollisionAtPosition(samusY, spriteRight - gSamusData.drawDistanceLeft + gSamusData.drawDistanceRight);
 
                             if (gPreviousCollisionCheck == COLLISION_AIR)
                                 gSamusData.xPosition = spriteRight - gSamusData.drawDistanceLeft;

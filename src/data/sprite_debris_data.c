@@ -54,6 +54,3 @@ const s16 sDebris8Velocity[SPRITE_DEBRIS_VELOCITY_ARRAY_SIZE] = {
     20, 24, 24,
     24, 24, 24
 };
-
-const u8 sBlob_2e6202_3ec038[1072694] = INCBIN_U8("data/Blob_2e6202_3ec038.bin");
-
