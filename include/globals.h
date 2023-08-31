@@ -52,6 +52,21 @@ enum Area {
     AREA_DEBUG_3,
 };
 
+struct IoRegisters {
+    u16 dispcnt;
+    u16 bldcnt;
+    u8 bldalpha_eva;
+    u8 bldalpha_evb;
+    u8 winin_L;
+    u8 winin_R;
+    u16 bg0Cnt;
+    u16 bg1Cnt;
+    u16 bg2Cnt;
+    u16 bg3Cnt;
+};
+
+extern struct IoRegisters gIoRegisters;
+
 #define GAME_MODE_TITLE 0
 #define GAME_MODE_IN_GAME 1
 #define GAME_MODE_SOFT_RESET 2

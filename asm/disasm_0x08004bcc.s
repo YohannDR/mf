@@ -17198,7 +17198,7 @@ _0800D2E8:
 	ldrb r0, [r1, #1]
 	cmp r0, #0xc
 	bne _0800D302
-	ldr r0, _0800D3D8 @ =0x03000070
+	ldr r0, _0800D3D8 @ =gIoRegisters
 	ldrh r0, [r0, #0xa]
 	movs r7, #3
 	mov r8, r7
@@ -17313,7 +17313,7 @@ _0800D3BA:
 _0800D3CC: .4byte 0x082E7D60
 _0800D3D0: .4byte 0x0300001A
 _0800D3D4: .4byte 0x03001458
-_0800D3D8: .4byte 0x03000070
+_0800D3D8: .4byte gIoRegisters
 _0800D3DC: .4byte gOamData
 _0800D3E0: .4byte gNextOamSlot
 _0800D3E4: .4byte gBg1XPosition
