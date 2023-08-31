@@ -6,6 +6,6 @@ void TargetSetTargetPosition(void);
 void TargetCircles(void);
 void TargetDiagonal(void);
 void TargetSideways(void);
-void CoreXTarget(void);
+void TargetCoreX(void);
 
 #endif /* TARGET_AI_H */

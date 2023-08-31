@@ -197,7 +197,7 @@ void TargetSideways(void)
  * @brief 14b64 | 38 | Core X target AI
  * 
  */
-void CoreXTarget(void)
+void TargetCoreX(void)
 {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 

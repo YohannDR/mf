@@ -386,7 +386,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0
     },
-    [PSPRITE_SIDEWAYS] = {
+    [PSPRITE_TARGET_SIDEWAYS] = {
         0,
         0,
         SDRT_30_10,

@@ -108,7 +108,8 @@ SECTIONS {
         src/sprite_debris.o(.text);
         src/location_text.o(.text);
         src/sprites_AI/target.o(.text);
-        asm/disasm_0x08014B9C.o(.text);
+        src/sprites_AI/unused_sprites.o(.text);
+        asm/disasm_0x08014BF8.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);
