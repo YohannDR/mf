@@ -3526,8 +3526,8 @@ _08011924:
 	pop {r1}
 	bx r1
 
-	thumb_func_start CheckEndOfCurrentSpriteAnimation
-CheckEndOfCurrentSpriteAnimation: @ 0x08011934
+	thumb_func_start SpriteUtilCheckEndOfCurrentSpriteAnimation
+SpriteUtilCheckEndOfCurrentSpriteAnimation: @ 0x08011934
 	push {lr}
 	ldr r0, _08011960 @ =gCurrentSprite
 	ldrb r1, [r0, #0x1c]

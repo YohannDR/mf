@@ -1155,7 +1155,7 @@ _08005488:
 	ldr r2, _080054A8 @ =gSamusData
 	ldrh r0, [r2, #0x16]
 	strh r0, [r1, #8]
-	ldr r0, _080054AC @ =0x03000044
+	ldr r0, _080054AC @ =gEffectYPosition
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq _08005498
@@ -1170,7 +1170,7 @@ _08005498:
 	.align 2, 0
 _080054A4: .4byte 0x030012F0
 _080054A8: .4byte gSamusData
-_080054AC: .4byte 0x03000044
+_080054AC: .4byte gEffectYPosition
 _080054B0: .4byte 0x03001344
 _080054B4:
 	ldr r4, _080054EC @ =gSamusData
@@ -1225,7 +1225,7 @@ _08005512:
 	ldr r2, _08005540 @ =gSamusData
 	ldrh r0, [r2, #0x16]
 	strh r0, [r1, #8]
-	ldr r0, _08005544 @ =0x03000044
+	ldr r0, _08005544 @ =gEffectYPosition
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq _0800552A
@@ -1243,7 +1243,7 @@ _08005534:
 	.align 2, 0
 _0800553C: .4byte 0x030012F0
 _08005540: .4byte gSamusData
-_08005544: .4byte 0x03000044
+_08005544: .4byte gEffectYPosition
 _08005548: .4byte 0x03001344
 _0800554C: .4byte 0x0000FFC0
 _08005550:
@@ -1532,7 +1532,7 @@ _080057D4:
 	movs r0, #0x8c
 	bl PlaySound
 _080057EC:
-	ldr r0, _08005828 @ =0x03000044
+	ldr r0, _08005828 @ =gEffectYPosition
 	ldrh r0, [r0]
 	ldr r1, _08005824 @ =0x030012F0
 	mov r8, r1
@@ -1565,7 +1565,7 @@ _08005818:
 	mov pc, r0
 	.align 2, 0
 _08005824: .4byte 0x030012F0
-_08005828: .4byte 0x03000044
+_08005828: .4byte gEffectYPosition
 _0800582C: .4byte _08005830
 _08005830: @ jump table
 	.4byte _08005868 @ case 0

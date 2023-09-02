@@ -18,9 +18,11 @@ SECTIONS {
         . = 0x0000002c; gCurrentArea = .;
         . = 0x0000002d; gCurrentRoom = .;
         . = 0x00000030; gDisplayLocationName = .;
+        . = 0x00000044; gEffectYPosition = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000070; gIoRegisters = .;
         . = 0x000000a4; gCurrentRoomEntry = .;
+        . = 0x000000c0; gCurrentAffectingClipdata = .;
         . = 0x00000140; gSpriteData = .;
         . = 0x00000680; gSpritesetSpriteIds = .;
         . = 0x0000068f; gSpritesetSpriteGfxSlots = .;
@@ -110,7 +112,8 @@ SECTIONS {
         src/location_text.o(.text);
         src/sprites_AI/target.o(.text);
         src/sprites_AI/unused_sprites.o(.text);
-        asm/disasm_0x08014BF8.o(.text);
+        src/sprites_AI/bubbles.o(.text);
+        asm/disasm_0x0801503C.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);

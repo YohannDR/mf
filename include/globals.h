@@ -67,6 +67,15 @@ struct IoRegisters {
 
 extern struct IoRegisters gIoRegisters;
 
+extern u16 gEffectYPosition;
+
+struct CurrentAffectingClipdata {
+    u16 movement;
+    u16 hazard;
+};
+
+extern struct CurrentAffectingClipdata gCurrentAffectingClipdata;
+
 #define GAME_MODE_TITLE 0
 #define GAME_MODE_IN_GAME 1
 #define GAME_MODE_SOFT_RESET 2
