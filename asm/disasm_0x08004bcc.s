@@ -19255,7 +19255,7 @@ _0800E388:
 	movs r0, #1
 	bl TransferSamusAndSA_XGraphics
 	ldr r2, _0800E404 @ =0x0400004C
-	ldr r0, _0800E408 @ =0x0300120C
+	ldr r0, _0800E408 @ =gWrittenToMosaic
 	ldrh r0, [r0]
 	lsls r0, r0, #4
 	ldr r1, _0800E40C @ =0x0300120E
@@ -19304,7 +19304,7 @@ _0800E3F8: .4byte 0x02024A00
 _0800E3FC: .4byte 0x0300000E
 _0800E400: .4byte 0xA2600000
 _0800E404: .4byte 0x0400004C
-_0800E408: .4byte 0x0300120C
+_0800E408: .4byte gWrittenToMosaic
 _0800E40C: .4byte 0x0300120E
 _0800E410: .4byte 0x030000C8
 

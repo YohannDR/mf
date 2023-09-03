@@ -23,6 +23,7 @@ SECTIONS {
         . = 0x00000070; gIoRegisters = .;
         . = 0x000000a4; gCurrentRoomEntry = .;
         . = 0x000000c0; gCurrentAffectingClipdata = .;
+        . = 0x00000110; gCurrentPowerBomb = .;
         . = 0x00000140; gSpriteData = .;
         . = 0x00000680; gSpritesetSpriteIds = .;
         . = 0x0000068f; gSpritesetSpriteGfxSlots = .;
@@ -70,6 +71,7 @@ SECTIONS {
         . = 0x000011ea; gButtonInputCopy = .;
         . = 0x000011ec; gChangedInput = .;
         . = 0x000011ee; gNextOamSlot = .;
+        . = 0x0000120c; gWrittenToMosaic = .;
         . = 0x00001228; gBg1XPosition = .;
         . = 0x0000122A; gBg1YPosition = .;
         . = 0x00001242; gDemoState = .;
