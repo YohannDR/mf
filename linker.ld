@@ -47,6 +47,7 @@ SECTIONS {
         . = 0x000007a5; gPreviousCollisionCheck = .;
         . = 0x000007a6; gIgnoreSamusAndSpriteCollision = .;
         . = 0x000007a7; gSpriteDrawOrder = .;
+        . = 0x000007a7; gSaXVision = .;
         . = 0x000007f0; gSpriteRandomNumber = .;
         . = 0x000007f1; gBossWork0 = .;
         . = 0x000007f2; gBossWork1 = .;
@@ -81,6 +82,7 @@ SECTIONS {
         . = 0x00001310; gEquipment = .;
         . = 0x00001342; gPreviousXPosition = .;
         . = 0x00001348; gPreventMovementTimer = .;
+        . = 0x00001458; gSaXData = .;
         . = 0x000019c4; gVBlankCallback = .;
         . = 0x000019c8; gHBlankCallback = .;
         . = 0x000019cc; gVCountCallback = .;
