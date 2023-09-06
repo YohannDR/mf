@@ -88,6 +88,12 @@ enum SamusStandingStatus {
     STANDING_NOT_IN_CONTROL
 };
 
+enum DiagonalAim {
+    DIAG_AIM_NONE,
+    DIAG_AIM_UP,
+    DIAG_AIM_DOWN
+};
+
 #define SMF_HIGH_JUMP (1 << 0)
 #define SMF_SPEED_BOOSTER (1 << 1)
 #define SMF_SPACE_JUMP (1 << 2)
