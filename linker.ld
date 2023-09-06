@@ -20,6 +20,7 @@ SECTIONS {
         . = 0x00000030; gDisplayLocationName = .;
         . = 0x00000044; gEffectYPosition = .;
         . = 0x00000052; gSpritesetNumber = .;
+        . = 0x00000053; gCurrentClipdataAffectingAction = .;
         . = 0x00000070; gIoRegisters = .;
         . = 0x000000a4; gCurrentRoomEntry = .;
         . = 0x000000c0; gCurrentAffectingClipdata = .;

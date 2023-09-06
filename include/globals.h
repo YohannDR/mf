@@ -77,6 +77,7 @@ struct CurrentAffectingClipdata {
 extern struct CurrentAffectingClipdata gCurrentAffectingClipdata;
 
 extern u16 gWrittenToMosaic;
+extern u8 gCurrentClipdataAffectingAction;
 
 #define GAME_MODE_TITLE 0
 #define GAME_MODE_IN_GAME 1

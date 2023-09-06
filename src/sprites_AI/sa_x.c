@@ -1,5 +1,6 @@
 #include "sprites_AI/sa_x.h"
 #include "macros.h"
+#include "globals.h"
 #include "gba.h"
 
 #include "data/sprite_data.h"
@@ -13,6 +14,7 @@
 #include "structs/sprite.h"
 #include "structs/samus.h"
 #include "structs/sa_x.h"
+#include "structs/power_bomb.h"
 
 /**
  * @brief 157cc | 30 | Sets the direction of the SA-X
@@ -1308,77 +1310,470 @@ void SaXIdleBeforeShootingDoor(void)
         gCurrentSprite.pose = 0x43;
 }
 
+/**
+ * @brief 16f74 | 4c | Initializes the SA-X to be shooting a door
+ * 
+ */
 void SaXShootingDoorInit(void)
 {
+    gCurrentSprite.pose = 0x44;
 
+    SpriteUtilSpawnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_NONE, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+        gCurrentSprite.yPosition - (BLOCK_SIZE + QUARTER_BLOCK_SIZE), gCurrentSprite.xPosition - (BLOCK_SIZE + PIXEL_SIZE), 0);
+
+    gSaXData.missilesArmed = FALSE;
+    SaXSetPose(SA_X_POSE_SHOOTING);
 }
 
+/**
+ * @brief 16fc0 | 20 | Handles the SA-X shooting a door
+ * 
+ */
 void SaXShootingDoor(void)
 {
-
+    if (gSaXData.pose == SA_X_POSE_STANDING)
+        gCurrentSprite.pose = 0x45;
 }
 
+/**
+ * @brief 16fe0 | 28 | Initializes the SA-X to be idle after shooting a door
+ * 
+ */
 void SaXIdleAfterShootingDoorInit(void)
 {
+    gCurrentSprite.pose = 0x46;
+    gCurrentSprite.work1 = 24;
+    gCurrentSprite.hitboxTop = -(BLOCK_SIZE * 2 - QUARTER_BLOCK_SIZE / 2);
 
+    SaXSetPose(SA_X_POSE_STANDING);
 }
 
+/**
+ * @brief 17008 | 24 | Handles the SA-X being idle after shooting a door
+ * 
+ */
 void SaXIdleAfterShootingDoor(void)
 {
-
+    gCurrentSprite.work1--;
+    if (gCurrentSprite.work1 == 0)
+        gCurrentSprite.pose = 0x47;
 }
 
+/**
+ * @brief 1702c | 2c | Initializes the SA-X to be walking to a door
+ * 
+ */
 void SaXWalkingToDoorInit(void)
 {
+    gCurrentSprite.pose = 0x48;
+    gCurrentSprite.work3 = 0;
+    gCurrentSprite.hitboxTop = -(BLOCK_SIZE * 2 - QUARTER_BLOCK_SIZE / 2);
 
+    SaXSetPose(SA_X_POSE_WALKING);
 }
 
+/**
+ * @brief 17058 | b8 | Handles the SA-X walking to a door
+ * 
+ */
 void SaXWalkingToDoor(void)
 {
+    if (gSaXVision.inYRange == TRUE)
+    {
+        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.xParasiteTimer = 0;
 
+        if (gSaXVision.unk_1 == FALSE)
+            gCurrentSprite.pose = 0x17;
+        else
+            gCurrentSprite.pose = 0x39;
+
+        return;
+    }
+
+    if (SPRITE_HAS_ISFT(gCurrentSprite))
+    {
+        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.xParasiteTimer = 0;
+
+        if (gSaXVision.samusOnRight == TRUE)
+            gCurrentSprite.pose = 0x39;
+        else
+            gCurrentSprite.pose = 0x17;
+
+        return;
+    }
+
+    unk_11604(sSaXWalkingSpeed[gCurrentSprite.work3 / 8]);
+
+    if (gCurrentSprite.work3 < ARRAY_SIZE(sSaXWalkingSpeed) * 8 - 1)
+        gCurrentSprite.work3++;
+    
+    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
+    if (gPreviousCollisionCheck == COLLISION_SOLID)
+        gCurrentSprite.status = 0;
 }
 
+/**
+ * @brief 17110 | d0 | Initializes an SA-X ice beam sprite
+ * 
+ */
 void SaXBeamInit(void)
 {
+    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.samusCollision = SSC_SA_X_ICE_BEAM;
 
+    gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+    gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+    gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+    gCurrentSprite.hitboxTop = -(QUARTER_BLOCK_SIZE - PIXEL_SIZE);
+    gCurrentSprite.hitboxBottom = QUARTER_BLOCK_SIZE - PIXEL_SIZE;
+    gCurrentSprite.hitboxLeft = -(QUARTER_BLOCK_SIZE - PIXEL_SIZE);
+    gCurrentSprite.hitboxRight = QUARTER_BLOCK_SIZE - PIXEL_SIZE;
+
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
+
+    gCurrentSprite.work1 = 60;
+    gCurrentSprite.work4 = 0;
+
+    gCurrentSprite.pose = 0x2;
+    gCurrentSprite.drawOrder = 3;
+
+    if (gCurrentSprite.roomSlot == DIAG_AIM_NONE)
+    {
+        gCurrentSprite.pOam = sSaXBeamOam_Forward;
+    }
+    else if (gCurrentSprite.roomSlot == DIAG_AIM_UP)
+    {
+        gCurrentSprite.pOam = sSaXBeamOam_Diagonal;
+    }
+    else if (gCurrentSprite.roomSlot == DIAG_AIM_DOWN)
+    {
+        gCurrentSprite.pOam = sSaXBeamOam_Diagonal;
+        gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
+    }
+    else if (gCurrentSprite.roomSlot == 0x80)
+    {
+        gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+        gCurrentSprite.pOam = sSaXBeamOam_Forward;
+        gCurrentSprite.samusCollision = SSC_NONE;
+    }
+    else
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    SoundPlay(0x25C);
 }
 
+/**
+ * @brief 171e0 | 130 | Handles an SA-X ice beam moving
+ * 
+ */
 void SaXBeamMove(void)
 {
+    u8 offset;
+    s16 yMovement;
+    s16 xMovement;
 
+    offset = gCurrentSprite.work4;
+
+    switch (gCurrentSprite.roomSlot)
+    {
+        case DIAG_AIM_UP:
+            gCurrentSprite.yPosition -= (QUARTER_BLOCK_SIZE - ONE_SUB_PIXEL);
+
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+            {
+                gCurrentSprite.xPosition += (QUARTER_BLOCK_SIZE - ONE_SUB_PIXEL);
+
+                yMovement = sSaXBeamDiagonalYMovement[offset];
+                xMovement = yMovement;
+                if (yMovement == SHORT_MAX)
+                {
+                    offset = 0;
+                    yMovement = sSaXBeamDiagonalYMovement[0];
+                    xMovement = yMovement;
+                }
+            }
+            else
+            {
+                gCurrentSprite.xPosition -= (QUARTER_BLOCK_SIZE - ONE_SUB_PIXEL);
+
+                yMovement = sSaXBeamDiagonalYMovement[offset];
+                xMovement = sSaXBeamDiagonalXMovement[offset];
+                if (yMovement == SHORT_MAX)
+                {
+                    offset = 0;
+                    yMovement = sSaXBeamDiagonalYMovement[0];
+                    xMovement = sSaXBeamDiagonalXMovement[0];
+                }
+            }
+
+            gCurrentSprite.work4 = offset + 1;
+            gCurrentSprite.yPosition += yMovement;
+            gCurrentSprite.xPosition += xMovement;
+            break;
+
+        case DIAG_AIM_DOWN:
+            gCurrentSprite.yPosition += (QUARTER_BLOCK_SIZE - ONE_SUB_PIXEL);
+
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+            {
+                gCurrentSprite.xPosition += (QUARTER_BLOCK_SIZE - ONE_SUB_PIXEL);
+
+                yMovement = sSaXBeamDiagonalYMovement[offset];
+                xMovement = sSaXBeamDiagonalXMovement[offset];
+                if (yMovement == SHORT_MAX)
+                {
+                    offset = 0;
+                    yMovement = sSaXBeamDiagonalYMovement[0];
+                    xMovement = sSaXBeamDiagonalXMovement[0];
+                }
+            }
+            else
+            {
+                gCurrentSprite.xPosition -= (QUARTER_BLOCK_SIZE - ONE_SUB_PIXEL);
+
+                yMovement = sSaXBeamDiagonalYMovement[offset];
+                xMovement = yMovement;
+                if (yMovement == SHORT_MAX)
+                {
+                    offset = 0;
+                    yMovement = sSaXBeamDiagonalYMovement[0];
+                    xMovement = yMovement;
+                }
+            }
+
+            gCurrentSprite.work4 = offset + 1;
+            gCurrentSprite.yPosition += yMovement;
+            gCurrentSprite.xPosition += xMovement;
+            break;
+
+        default:
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+                gCurrentSprite.xPosition += QUARTER_BLOCK_SIZE + PIXEL_SIZE;
+            else
+                gCurrentSprite.xPosition -= QUARTER_BLOCK_SIZE + PIXEL_SIZE;
+
+            yMovement = sSaXBeamForwardYMovement[offset];
+            if (yMovement == SHORT_MAX)
+            {
+                offset = 0;
+                yMovement = sSaXBeamForwardYMovement[0];
+            }
+
+            gCurrentSprite.work4 = offset + 1;
+            gCurrentSprite.yPosition += yMovement;
+            break;
+    }
+
+    gCurrentClipdataAffectingAction = 0x6;
+    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+
+    if (!(gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN))
+    {
+        gCurrentSprite.work1--;
+        if (gCurrentSprite.work1 == 0)
+            gCurrentSprite.status = 0;
+    }
 }
 
+/**
+ * @brief 17310 | a8 | Initializes an SA-X super missile sprite
+ * 
+ */
 void SaXMissileInit(void)
 {
+    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.samusCollision = SSC_SA_X_SUPER_MISSILE;
 
+    gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+    gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+    gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+    gCurrentSprite.hitboxTop = -(QUARTER_BLOCK_SIZE - PIXEL_SIZE);
+    gCurrentSprite.hitboxBottom = QUARTER_BLOCK_SIZE - PIXEL_SIZE;
+    gCurrentSprite.hitboxLeft = -(QUARTER_BLOCK_SIZE - PIXEL_SIZE);
+    gCurrentSprite.hitboxRight = QUARTER_BLOCK_SIZE - PIXEL_SIZE;
+
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
+
+    gCurrentSprite.work1 = 60;
+
+    gCurrentSprite.pose = 0x2;
+    gCurrentSprite.drawOrder = 3;
+
+    if (gCurrentSprite.roomSlot == DIAG_AIM_NONE)
+    {
+        gCurrentSprite.pOam = sSaXMissileOam_Forward;
+    }
+    else if (gCurrentSprite.roomSlot == DIAG_AIM_UP)
+    {
+        gCurrentSprite.pOam = sSaXMissileOam_Diagonal;
+    }
+    else if (gCurrentSprite.roomSlot == DIAG_AIM_DOWN)
+    {
+        gCurrentSprite.pOam = sSaXMissileOam_Diagonal;
+        gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
+    }
+    else
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    SoundPlay(0x25D);
 }
 
+/**
+ * @brief 173b8 | 34 | Handles an SA-X super missile exploding
+ * 
+ */
 void SaXMissileExploding(void)
 {
+    gCurrentSprite.status = 0;
+    ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0xD);
+    SoundPlay(0x25E);
 
+    ScreenShakeStartHorizontal(40, 0x80 | 1);
+    ScreenShakeStartVertical(40, 0x80 | 1);
 }
 
+/**
+ * @brief 173ec | ac | Handles an SA-X super missile moving
+ * 
+ */
 void SaXMissileMoving(void)
 {
+    switch (gCurrentSprite.roomSlot)
+    {
+        case DIAG_AIM_UP:
+            gCurrentSprite.yPosition -= SA_X_MISSILE_DIAGONAL_SPEED;
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+                gCurrentSprite.xPosition += SA_X_MISSILE_DIAGONAL_SPEED;
+            else
+                gCurrentSprite.xPosition -= SA_X_MISSILE_DIAGONAL_SPEED;
+            break;
 
+        case DIAG_AIM_DOWN:
+            gCurrentSprite.yPosition += SA_X_MISSILE_DIAGONAL_SPEED;
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+                gCurrentSprite.xPosition += SA_X_MISSILE_DIAGONAL_SPEED;
+            else
+                gCurrentSprite.xPosition -= SA_X_MISSILE_DIAGONAL_SPEED;
+            break;
+
+        default:
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+                gCurrentSprite.xPosition += SA_X_MISSILE_SPEED;
+            else
+                gCurrentSprite.xPosition -= SA_X_MISSILE_SPEED;
+    }
+
+    gCurrentClipdataAffectingAction = 0x8;
+
+    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+
+    if (gPreviousCollisionCheck == COLLISION_SOLID)
+    {
+        SaXMissileExploding();
+        return;
+    }
+
+    if (!(gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN))
+    {
+        gCurrentSprite.work1--;
+        if (gCurrentSprite.work1 == 0)
+            gCurrentSprite.status = 0;
+    }
 }
 
+/**
+ * @brief 17498 | 74 | Initializes an SA-X power bomb sprite
+ * 
+ */
 void SaXPowerBombInit(void)
 {
+    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.samusCollision = SSC_NONE;
 
+    gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
+    gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(0);
+    gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+    gCurrentSprite.hitboxTop = -PIXEL_SIZE;
+    gCurrentSprite.hitboxBottom = PIXEL_SIZE;
+    gCurrentSprite.hitboxLeft = -PIXEL_SIZE;
+    gCurrentSprite.hitboxRight = PIXEL_SIZE;
+
+    gCurrentSprite.pOam = sSaXPowerBombOam_SpinningSlow;
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = 0x2;
+    gCurrentSprite.work1 = 60;
+    gCurrentSprite.bgPriority = 1;
+
+    SoundPlay(0x260);
 }
 
+/**
+ * @brief 1750c | 40 | Handles an SA-X power bomb spinning slowly
+ * 
+ */
 void SaXPowerBombSpinningSlowly(void)
 {
+    gCurrentSprite.ignoreSamusCollisionTimer = 1;
+    
+    gCurrentSprite.work1--;
+    if (gCurrentSprite.work1 == 0)
+    {
+        gCurrentSprite.pOam = sSaXPowerBombOam_SpinningFast;
+        gCurrentSprite.animationDurationCounter = 0;
+        gCurrentSprite.currentAnimationFrame = 0;
 
+        gCurrentSprite.work1 = 60;
+        gCurrentSprite.pose = 0x18;
+    }
 }
 
+/**
+ * @brief 1754c | 50 | Handles an SA-X power bomb spinning quickly
+ * 
+ */
 void SaXPowerBombSpinningQuickly(void)
 {
+    gCurrentSprite.ignoreSamusCollisionTimer = 1;
+    
+    gCurrentSprite.work1--;
+    if (gCurrentSprite.work1 == 0)
+    {
+        PowerBombExplosionStart(gCurrentSprite.xPosition, gCurrentSprite.yPosition, TRUE);
 
+        gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+        gCurrentSprite.samusCollision = SSC_SA_X_POWER_BOMB;
+        gCurrentSprite.pose = 0x1A;
+
+        SoundPlay(0x261);
+    }
 }
 
-void SaXPowerBombSyncWithProjectile(void)
+/**
+ * @brief 1759c | 2c | Handles an SA-X power bomb spinning exploding
+ * 
+ */
+void SaXPowerBombExploding(void)
 {
+    gCurrentSprite.hitboxTop = gCurrentPowerBomb.hitboxTop;
+    gCurrentSprite.hitboxBottom = gCurrentPowerBomb.hitboxBottom;
+    gCurrentSprite.hitboxLeft = gCurrentPowerBomb.hitboxLeft;
+    gCurrentSprite.hitboxRight = gCurrentPowerBomb.hitboxRight;
 
+    if (gCurrentPowerBomb.animationState == 0)
+        gCurrentSprite.status = 0;
 }

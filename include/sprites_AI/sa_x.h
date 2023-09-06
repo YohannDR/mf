@@ -3,6 +3,9 @@
 
 #include "types.h"
 
+#define SA_X_MISSILE_SPEED (HALF_BLOCK_SIZE - PIXEL_SIZE)
+#define SA_X_MISSILE_DIAGONAL_SPEED ((u16)(SA_X_MISSILE_SPEED * .75f))
+
 void SaXSetDirection(void);
 void SaXSeeAndLocateSamus(void);
 u8 unk_15dd4(void);
@@ -57,6 +60,6 @@ void SaXMissileMoving(void);
 void SaXPowerBombInit(void);
 void SaXPowerBombSpinningSlowly(void);
 void SaXPowerBombSpinningQuickly(void);
-void SaXPowerBombSyncWithProjectile(void);
+void SaXPowerBombExploding(void);
 
 #endif /* SA_X_AI_H */
