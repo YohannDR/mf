@@ -61,5 +61,14 @@ void SaXPowerBombInit(void);
 void SaXPowerBombSpinningSlowly(void);
 void SaXPowerBombSpinningQuickly(void);
 void SaXPowerBombExploding(void);
+void LabExplosionInit(void);
+void LabExplosionExploding(void);
+void SaXUpdateGraphics(void);
+u8 SaXUpdateFreezeTimer(void);
+void SaXElevator(void);
+void SaXBeam(void);
+void SaXMissile(void);
+void SaXPowerBomb(void);
+void LabExplosion(void);
 
 #endif /* SA_X_AI_H */

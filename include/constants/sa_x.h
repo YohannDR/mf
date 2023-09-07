@@ -30,4 +30,10 @@ enum SaXPose {
     SA_X_POSE_NONE = UCHAR_MAX
 };
 
+enum SaXScreenFlag {
+    SA_X_SCREEN_FLAG_NOT_PRESENT,
+    SA_X_SCREEN_FLAG_OFF_SCREEN,
+    SA_X_SCREEN_FLAG_ON_SCREEN
+};
+
 #endif /* SA_X_CONSTANTS_H */

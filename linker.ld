@@ -24,6 +24,7 @@ SECTIONS {
         . = 0x00000070; gIoRegisters = .;
         . = 0x000000a4; gCurrentRoomEntry = .;
         . = 0x000000c0; gCurrentAffectingClipdata = .;
+        . = 0x000000dc; gSaXSpawnPosition = .;
         . = 0x00000110; gCurrentPowerBomb = .;
         . = 0x00000140; gSpriteData = .;
         . = 0x00000680; gSpritesetSpriteIds = .;

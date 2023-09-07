@@ -39,5 +39,6 @@ struct SaXVision {
 
 extern struct SaXData gSaXData;
 extern struct SaXVision gSaXVision;
+extern struct RawCoordsX gSaXSpawnPosition;
 
 #endif /* SA_X_STRUCTS_H */
