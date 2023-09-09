@@ -1,4 +1,4 @@
-#include "sprites_AI/sa_x_tro_1.h"
+#include "sprites_AI/sa_x_noc.h"
 #include "sprites_AI/sa_x.h"
 #include "macros.h"
 
