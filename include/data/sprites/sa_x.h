@@ -38,4 +38,12 @@ extern const struct FrameData sSaXPowerBombOam_SpinningFast[7];
 
 extern const struct FrameData sLabExplosionOam_Idle[49];
 
+// ...
+
+extern const u16 sSaXMosaicValues[30];
+
+// ...
+
+extern const s16 sSaXBossKnockbackYMovement[12];
+
 #endif /* SA_X_DATA */
