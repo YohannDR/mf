@@ -3,7 +3,6 @@
 #include "macros.h"
 #include "gba.h"
 #include "globals.h"
-#include "sprite_util.h"
 
 #include "data/sprites/sa_x.h"
 #include "data/sprite_data.h"
