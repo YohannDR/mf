@@ -2,7 +2,7 @@
 
 This is a work in progress decompilation of Metroid - Fusion.
 
-399/3607 functions decompiled (11.06%, 3208 left)
+416/3607 functions decompiled (11.53%, 3191 left)
 
 0x2700/0x6f9d24 bytes of data not in blobs (0.14%, 0x6f7624 left)
 
