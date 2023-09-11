@@ -25,6 +25,13 @@ extern const s16 sSaXJumpYVelocity_2[10];
 extern const s16 sSaXJumpYVelocity_3[18];
 extern const s16 sSaXJumpYVelocity_4[10];
 
+extern const s16 sSaXBossSpinJumpYVelocity_2[11];
+extern const s16 sSaXBossSpinJumpYVelocity_5[18];
+
+extern const s16 sSaXBossJumpYVelocity_1[10];
+extern const s16 sSaXBossJumpYVelocity_2[10];
+extern const s16 sSaXBossJumpYVelocity_3[10];
+
 // ...
 
 extern const struct FrameData sSaXBeamOam_Forward[2];
