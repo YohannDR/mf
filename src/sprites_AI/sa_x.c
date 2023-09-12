@@ -2504,10 +2504,12 @@ void LabExplosionExploding(void)
         gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
 }
 
+/**
+ * @brief 17ac8 | 94 | Updates the graphics of the SA-X
+ * 
+ */
 void SaXUpdateGraphics(void)
 {
-    // https://decomp.me/scratch/EmpZ0
-
     u8 newPose;
     u16 yPosition;
     u16 xPosition;
@@ -2516,30 +2518,21 @@ void SaXUpdateGraphics(void)
 
     gSaXData.yPosition = gCurrentSprite.yPosition;
     gSaXData.xPosition = gCurrentSprite.xPosition;
-    gSaXData.frozen = gCurrentSprite.paletteRow;
+    gSaXData.paletteRow = gCurrentSprite.paletteRow;
 
     newPose = sSaXPoseGfxFunctionPointers[gSaXData.pose]();
     if (newPose != SA_X_POSE_NONE)
         SaXSetPose(newPose);
 
-    if (gCurrentSprite.status & SPRITE_STATUS_EXISTS)
+    if (gCurrentSprite.status & SPRITE_STATUS_EXISTS && !(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)
-        {
-            gSaXData.screenFlag = SA_X_SCREEN_FLAG_NOT_PRESENT;
-            yPosition = USHORT_MAX;
-            xPosition = USHORT_MAX;
-        }
+        if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+            gSaXData.screenFlag = SA_X_SCREEN_FLAG_ON_SCREEN;
         else
-        {
-            if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
-                gSaXData.screenFlag = SA_X_SCREEN_FLAG_ON_SCREEN;
-            else
-                gSaXData.screenFlag = SA_X_SCREEN_FLAG_OFF_SCREEN;
+            gSaXData.screenFlag = SA_X_SCREEN_FLAG_OFF_SCREEN;
 
-            yPosition = gCurrentSprite.yPosition;
-            xPosition = gCurrentSprite.xPosition;
-        }
+        yPosition = gCurrentSprite.yPosition;
+        xPosition = gCurrentSprite.xPosition;
     }
     else
     {

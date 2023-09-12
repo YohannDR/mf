@@ -10,7 +10,7 @@ struct SaXData {
     u8 turning;
     u8 diagonalAim;
     u8 missilesArmed;
-    u8 frozen;
+    u8 paletteRow;
     u8 mosaic;
     u16 direction;
     u16 xPosition;
