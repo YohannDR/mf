@@ -1,5 +1,6 @@
 #include "sa_x.h"
 #include "globals.h"
+#include "macros.h"
 
 #include "data/sprites/sa_x.h"
 
@@ -393,19 +394,232 @@ void SaXSetPose(u8 pose)
     gSaXData.pose = pose;
 }
 
+/**
+ * @brief d170 | 50 | Updates the position of the SA-X (applies the velocity)
+ * 
+ */
 void SaXSetPosition(void)
 {
+    s16 yVelocity;
+    s16 xVelocity;
 
+    if (gSaXData.pose == SA_X_POSE_MID_AIR)
+    {
+        if (gSaXData.yVelocity < -SUB_PIXEL_TO_VELOCITY(QUARTER_BLOCK_SIZE))
+            yVelocity = SUB_PIXEL_TO_VELOCITY(-PIXEL_SIZE / 2);
+        else
+            yVelocity = VELOCITY_TO_SUB_PIXEL(gSaXData.yVelocity);
+
+        gSaXData.yVelocity -= SUB_PIXEL_TO_VELOCITY(ONE_SUB_PIXEL - ONE_SUB_PIXEL / 4.f);
+        gSaXData.yPosition -= yVelocity;
+    }
+
+    xVelocity = VELOCITY_TO_SUB_PIXEL(gSaXData.xVelocity);;
+    gSaXData.xPosition += xVelocity;
 }
 
+/**
+ * @brief d1c0 | 234 | Updates the graphics of the SA-X and draws it
+ * 
+ */
 void SaXUpdateGraphicsAndDraw(void)
 {
+    s32 direction;
+    const struct SaXAnimationData* pAnim;
+    const u8* pGfx;
+    const u16* pPalette;
+    s32 priority;
+    s32 yPosition;
+    s32 xPosition;
+    s32 currSlot;
+    s32 prevSlot;
+    const u16* src;
+    u16* dst;
+    u16 part1;
+    u16 part2;
 
+    gSaXData.animationDurationCounter++;
+
+    if (gSaXData.screenFlag == SA_X_SCREEN_FLAG_NOT_PRESENT || gSaXData.screenFlag == SA_X_SCREEN_FLAG_OFF_SCREEN)
+        return;
+
+    if (gSaXData.direction & KEY_RIGHT)
+        direction = FALSE;
+    else
+        direction = TRUE;
+
+    switch (gSaXData.pose)
+    {
+        case SA_X_POSE_STANDING:
+            if (gSaXData.missilesArmed)
+            {
+                pAnim = sSaXOamDataPointers_Standing_Armed[gSaXData.diagonalAim][direction];
+            }
+            else
+            {
+                pAnim = sSaXOamDataPointers_Standing[gSaXData.diagonalAim][direction];
+            }
+            break;
+
+        case SA_X_POSE_SHOOTING:
+            if (gSaXData.missilesArmed)
+            {
+                pAnim = sSaXOamDataPointers_Shooting_Armed[gSaXData.diagonalAim][direction];
+            }
+            else
+            {
+                pAnim = sSaXOamDataPointers_Shooting[gSaXData.diagonalAim][direction];
+            }
+            break;
+
+        case SA_X_POSE_TURNING:
+            pAnim = sSaXOamDataPointers_Turning[gSaXData.diagonalAim][direction];
+            break;
+
+        default:
+            pAnim = sSaXOamDataPointers[gSaXData.pose][direction];
+    }
+
+    pAnim = &pAnim[gSaXData.currentAnimationFrame];
+
+    gSaXData.pOamFrame = pAnim->pOamFrame;
+
+    pGfx = pAnim->pGraphics;
+
+    gSaXData.topGfxLength = *pGfx++ * 32;
+    gSaXData.bottomGfxLength = *pGfx++ * 32;
+    gSaXData.pTopGfx = pGfx;
+    gSaXData.pBottomGfx = gSaXData.pTopGfx + gSaXData.topGfxLength;
+
+    if (gSaXData.pose == SA_X_POSE_MID_AIR)
+    {
+        pPalette = &sSaXPalette_MidAir[MOD_AND(gSaXData.currentAnimationFrame, 4) * 16];
+    }
+    else if (gSaXData.pose == SA_X_POSE_TRANSFORMING_INTO_MONSTER)
+    {
+        switch (gSaXData.currentAnimationFrame)
+        {
+            case 24:
+            case 26:
+            case 28:
+            case 29:
+            case 30:
+            case 31:
+            case 32:
+            case 33:
+                pPalette = sSaXPalette_TransformingIntoMonster;
+                break;
+
+            default:
+                pPalette = sSaXPalette_Default;
+        }
+    }
+    else
+    {
+        pPalette = sSaXPalette_Default;
+    }
+
+    SetSuitPalette(pPalette, 0, 16, TRUE);
+
+    priority = 2;
+    if (gSamusOnTopOfBackgrounds)
+        priority = 1;
+
+    if (gSaXData.pose == SA_X_POSE_TRANSFORMING_INTO_MONSTER)
+        priority = gIoRegisters.bg1Cnt & 3;
+
+    dst = (u16*)gOamData;
+    dst = (u16*)&gOamData[gNextOamSlot];
+
+    currSlot = gNextOamSlot;
+    prevSlot = gNextOamSlot;
+
+    xPosition = SUB_PIXEL_TO_PIXEL(gSaXData.xPosition) - SUB_PIXEL_TO_PIXEL(gBg1XPosition);
+    yPosition = SUB_PIXEL_TO_PIXEL(gSaXData.yPosition) - SUB_PIXEL_TO_PIXEL(gBg1YPosition) + SUB_PIXEL_TO_PIXEL(QUARTER_BLOCK_SIZE / 2);
+
+    src = gSaXData.pOamFrame;
+    currSlot += *src++;
+
+    for (; prevSlot < currSlot; prevSlot++)
+    {
+        part1 = *src++;
+        *dst++ = part1;
+        gOamData[prevSlot].split.y = part1 + yPosition;
+        gOamData[prevSlot].split.mosaic = gSaXData.mosaic;
+
+        part2 = *src++;
+        *dst++ = part2;
+        gOamData[prevSlot].split.x = MOD_AND(part2 + xPosition, 512);
+
+        *dst++ = *src++;
+
+        gOamData[prevSlot].split.paletteNum += gSaXData.paletteRow;
+        gOamData[prevSlot].split.priority = priority;
+
+        dst++;
+    }
+
+    gNextOamSlot = currSlot;
 }
 
 void SaXUpdateElevatorSprites(u8 spriteSlot)
 {
 
+}
+
+/**
+ * @brief d564 | d4 | Draws the elevator sprites
+ * 
+ */
+void SaXDrawElevatorSprites(void)
+{
+    s32 i;
+    s32 j;
+    u16 yPosition;
+    u16 xPosition;
+    s32 currSlot;
+    s32 prevSlot;
+    const u16* src;
+    u16* dst;
+    u16 part1;
+    u16 part2;
+
+    dst = (u16*)gOamData;
+    dst = (u16*)&gOamData[gNextOamSlot];
+
+    currSlot = gNextOamSlot;
+    prevSlot = gNextOamSlot;
+
+    for (i = 0; i < MAX_AMOUNT_OF_SA_X_ELEVATOR_SPRITES; i++)
+    {
+        if (gSaXElevatorSprites[i].unk_0 <= 1)
+            continue;
+
+        src = gSaXElevatorSprites[i].pOamFrame;
+        currSlot += *src++;
+
+        xPosition = SUB_PIXEL_TO_PIXEL(gSaXElevatorSprites[i].xPosition);
+        yPosition = SUB_PIXEL_TO_PIXEL(gSaXElevatorSprites[i].yPosition);
+
+        for (; prevSlot < currSlot; prevSlot++)
+        {
+            part1 = *src++;
+            *dst++ = part1;
+            gOamData[prevSlot].split.y = part1 + yPosition;
+
+            part2 = *src++;
+            *dst++ = part2;
+            gOamData[prevSlot].split.x = MOD_AND(part2 + xPosition, 512);
+
+            *dst++ = *src++;
+
+            gOamData[prevSlot].split.priority = 0;
+
+            dst++;
+        }
+    }
+
+    gNextOamSlot = currSlot;
 }
 
 u8 unk_d638(void)

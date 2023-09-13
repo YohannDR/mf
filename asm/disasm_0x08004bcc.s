@@ -15455,7 +15455,7 @@ DrawSamus: @ 0x0800C594
 _0800C5B8: .4byte gSamusData
 _0800C5BC: .4byte gNextOamSlot
 _0800C5C0:
-	ldr r0, _0800C6F4 @ =0x0300001A
+	ldr r0, _0800C6F4 @ =gSamusOnTopOfBackgrounds
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0800C5CC
@@ -15615,7 +15615,7 @@ _0800C69C:
 	adds r0, r0, r1
 	b _0800C752
 	.align 2, 0
-_0800C6F4: .4byte 0x0300001A
+_0800C6F4: .4byte gSamusOnTopOfBackgrounds
 _0800C6F8: .4byte gNextOamSlot
 _0800C6FC: .4byte gOamData
 _0800C700: .4byte 0x030012F0
@@ -17185,7 +17185,7 @@ _0800D2CE:
 	bl SetSuitPalette
 	movs r0, #2
 	mov r8, r0
-	ldr r0, _0800D3D0 @ =0x0300001A
+	ldr r0, _0800D3D0 @ =gSamusOnTopOfBackgrounds
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0800D2E8
@@ -17311,7 +17311,7 @@ _0800D3BA:
 	bx r0
 	.align 2, 0
 _0800D3CC: .4byte 0x082E7D60
-_0800D3D0: .4byte 0x0300001A
+_0800D3D0: .4byte gSamusOnTopOfBackgrounds
 _0800D3D4: .4byte gSaXData
 _0800D3D8: .4byte gIoRegisters
 _0800D3DC: .4byte gOamData
@@ -17325,7 +17325,7 @@ _0800D3F0: .4byte 0xFFFFFE00
 SA_XUpdateElevatorSprite: @ 0x0800D3F4
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r1, _0800D444 @ =0x03004C18
+	ldr r1, _0800D444 @ =gSaXElevatorSprites
 	lsls r0, r4, #2
 	adds r0, r0, r4
 	lsls r0, r0, #2
@@ -17366,7 +17366,7 @@ _0800D438:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0800D444: .4byte 0x03004C18
+_0800D444: .4byte gSaXElevatorSprites
 _0800D448: .4byte _0800D44C
 _0800D44C: @ jump table
 	.4byte _0800D474 @ case 0
@@ -17522,7 +17522,7 @@ SA_XDrawElevatorSprites: @ 0x0800D564
 	adds r7, r1, #0
 	adds r5, r7, #0
 	movs r3, #0
-	ldr r0, _0800D62C @ =0x03004C18
+	ldr r0, _0800D62C @ =gSaXElevatorSprites
 	str r0, [sp, #4]
 	str r0, [sp]
 _0800D586:
@@ -17609,7 +17609,7 @@ _0800D608:
 	.align 2, 0
 _0800D624: .4byte gOamData
 _0800D628: .4byte gNextOamSlot
-_0800D62C: .4byte 0x03004C18
+_0800D62C: .4byte gSaXElevatorSprites
 _0800D630: .4byte 0x000001FF
 _0800D634: .4byte 0xFFFFFE00
 
@@ -17781,7 +17781,7 @@ _0800D784: .4byte 0x04000050
 _0800D788:
 	cmp r3, #1
 	bne _0800D79A
-	ldr r0, _0800D7E0 @ =0x03004C18
+	ldr r0, _0800D7E0 @ =gSaXElevatorSprites
 	adds r1, r0, #0
 	adds r1, #0x50
 	movs r2, #0
@@ -17822,7 +17822,7 @@ _0800D7D4:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800D7E0: .4byte 0x03004C18
+_0800D7E0: .4byte gSaXElevatorSprites
 _0800D7E4: .4byte 0x082B4408
 _0800D7E8: .4byte gSaXData
 _0800D7EC: .4byte gSubGameMode1
@@ -17901,7 +17901,7 @@ _0800D880: .4byte 0x06014E60
 _0800D884: .4byte 0x800000D0
 _0800D888:
 	ldr r4, _0800D8B4 @ =0x082B4EC8
-	ldr r3, _0800D8B8 @ =0x03004C18
+	ldr r3, _0800D8B8 @ =gSaXElevatorSprites
 	movs r2, #9
 _0800D88E:
 	adds r1, r3, #0
@@ -17926,7 +17926,7 @@ _0800D8AC:
 	bx r1
 	.align 2, 0
 _0800D8B4: .4byte 0x082B4EC8
-_0800D8B8: .4byte 0x03004C18
+_0800D8B8: .4byte gSaXElevatorSprites
 
 	thumb_func_start SA_XElevatorBlowingUpWall
 SA_XElevatorBlowingUpWall: @ 0x0800D8BC
@@ -18106,7 +18106,7 @@ _0800D9E8:
 	strh r0, [r1, #0xc]
 	movs r0, #0x20
 	strh r0, [r1, #0xe]
-	ldr r3, _0800DA58 @ =0x03004C18
+	ldr r3, _0800DA58 @ =gSaXElevatorSprites
 	ldr r2, _0800DA5C @ =0x082B4EC8
 	adds r1, r3, #0
 	adds r1, #0x50
@@ -18130,13 +18130,13 @@ _0800DA48: .4byte 0x0000FFFC
 _0800DA4C: .4byte 0x0400000E
 _0800DA50: .4byte 0x03000021
 _0800DA54: .4byte 0x030000C8
-_0800DA58: .4byte 0x03004C18
+_0800DA58: .4byte gSaXElevatorSprites
 _0800DA5C: .4byte 0x082B4EC8
 _0800DA60:
 	ldr r1, _0800DA7C @ =0x04000050
 	movs r0, #0xa7
 	strh r0, [r1]
-	ldr r1, _0800DA80 @ =0x03004C18
+	ldr r1, _0800DA80 @ =gSaXElevatorSprites
 	adds r2, r1, #0
 	adds r2, #0x58
 	movs r3, #0
@@ -18149,7 +18149,7 @@ _0800DA60:
 	b _0800DA98
 	.align 2, 0
 _0800DA7C: .4byte 0x04000050
-_0800DA80: .4byte 0x03004C18
+_0800DA80: .4byte gSaXElevatorSprites
 _0800DA84: .4byte 0x0000FFF0
 _0800DA88:
 	ldr r1, _0800DAA0 @ =0x04000050
@@ -18353,7 +18353,7 @@ _0800DC08: .4byte gSaXData
 _0800DC0C:
 	movs r0, #3
 	bl SetSA_XPose
-	ldr r2, _0800DC40 @ =0x03004C18
+	ldr r2, _0800DC40 @ =gSaXElevatorSprites
 	ldr r1, _0800DC44 @ =0x082B4EC8
 	adds r0, r2, #0
 	adds r1, #0xf0
@@ -18376,7 +18376,7 @@ _0800DC0C:
 	strh r0, [r2, #6]
 	b _0800DC7C
 	.align 2, 0
-_0800DC40: .4byte 0x03004C18
+_0800DC40: .4byte gSaXElevatorSprites
 _0800DC44: .4byte 0x082B4EC8
 _0800DC48: .4byte gSaXData
 _0800DC4C: .4byte gBg1XPosition
@@ -18385,7 +18385,7 @@ _0800DC54:
 	adds r6, #1
 	mov r8, r6
 	ldr r4, _0800DC8C @ =0x082B4FCC
-	ldr r3, _0800DC90 @ =0x03004C18
+	ldr r3, _0800DC90 @ =gSaXElevatorSprites
 	movs r2, #6
 _0800DC5E:
 	adds r1, r3, #0
@@ -18413,7 +18413,7 @@ _0800DC7C:
 	bx r1
 	.align 2, 0
 _0800DC8C: .4byte 0x082B4FCC
-_0800DC90: .4byte 0x03004C18
+_0800DC90: .4byte gSaXElevatorSprites
 
 	thumb_func_start SA_XElevatorWalkingOut
 SA_XElevatorWalkingOut: @ 0x0800DC94

@@ -100,15 +100,15 @@ extern const struct SaXAnimationData sSaXAnim_Walking_Right[11];
 
 extern const struct SaXData sSaXDataEmpty;
 
-extern const struct SaXAnimationData* const sSaXOamDataPointers[SA_X_POSE_END];
+extern const struct SaXAnimationData* const sSaXOamDataPointers[SA_X_POSE_END][2];
 
-extern const struct SaXAnimationData* const sSaXOamDataPointers_Standing_Armed[DIAG_AIM_END * 2];
-extern const struct SaXAnimationData* const sSaXOamDataPointers_Standing[DIAG_AIM_END * 2];
+extern const struct SaXAnimationData* const sSaXOamDataPointers_Standing_Armed[DIAG_AIM_END][2];
+extern const struct SaXAnimationData* const sSaXOamDataPointers_Standing[DIAG_AIM_END][2];
 
-extern const struct SaXAnimationData* const sSaXOamDataPointers_Shooting_Armed[DIAG_AIM_END * 2];
-extern const struct SaXAnimationData* const sSaXOamDataPointers_Shooting[DIAG_AIM_END * 2];
+extern const struct SaXAnimationData* const sSaXOamDataPointers_Shooting_Armed[DIAG_AIM_END][2];
+extern const struct SaXAnimationData* const sSaXOamDataPointers_Shooting[DIAG_AIM_END][2];
 
-extern const struct SaXAnimationData* const sSaXOamDataPointers_Turning[DIAG_AIM_END * 2];
+extern const struct SaXAnimationData* const sSaXOamDataPointers_Turning[DIAG_AIM_END][2];
 
 extern const u16 sSaXPalette_MidAir[4 * 16];
 extern const u16 sSaXPalette_TransformingIntoMonster[1 * 16];
@@ -160,5 +160,9 @@ extern const u16 sSaXMosaicValues[30];
 // ...
 
 extern const s16 sSaXBossKnockbackYMovement[12];
+
+// ...
+
+extern const u16 sSaXPalette_Default[2 * 16];
 
 #endif /* SA_X_DATA */
