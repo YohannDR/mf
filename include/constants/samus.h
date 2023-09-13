@@ -91,7 +91,9 @@ enum SamusStandingStatus {
 enum DiagonalAim {
     DIAG_AIM_NONE,
     DIAG_AIM_UP,
-    DIAG_AIM_DOWN
+    DIAG_AIM_DOWN,
+
+    DIAG_AIM_END,
 };
 
 #define SMF_HIGH_JUMP (1 << 0)

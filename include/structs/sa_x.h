@@ -37,6 +37,14 @@ struct SaXVision {
     u8 unk_7;
 };
 
+struct SaXAnimationData {
+    const u8* pGraphics;
+    const u16* pOamFrame;
+    u8 timer;
+};
+
+typedef u8 (*SaXGfxFunc_T)(void);
+
 extern struct SaXData gSaXData;
 extern struct SaXVision gSaXVision;
 extern struct RawCoordsX gSaXSpawnPosition;
