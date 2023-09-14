@@ -165,4 +165,20 @@ extern const s16 sSaXBossKnockbackYMovement[12];
 
 extern const u16 sSaXPalette_Default[2 * 16];
 
+// ...
+
+extern const struct FrameData sSaxElevatorOam_2e8038[3];
+extern const struct FrameData* const sSaXElevatorSpritesOamPointers[10];
+
+// ...
+
+extern const SaXElevatorFunc_T sSaXElevatorFunctionPointers[1];
+extern const SaXElevatorFunc_T sSaXElevatorSubroutinesPointers[6];
+
+extern const struct SaXElevatorSprite sSaXElevatorSpritesBlowingUpWall[13];
+
+// ...
+
+extern const u16 sSaXElevatorRocksAndCloudPal[1 * 16];
+
 #endif /* SA_X_DATA */

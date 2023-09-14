@@ -36,8 +36,17 @@ extern u8 gDisplayLocationName;
 
 extern u8 gSamusOnTopOfBackgrounds;
 
+extern u16 gWrittenToBldy;
+
 extern u8 gInterruptCode[512];
 extern void* gInterruptCodePointer;
+
+struct BackgroundPositions {
+    struct RawCoordsX bg[4];
+    struct RawCoordsX doorTransition;
+};
+
+extern struct BackgroundPositions gBackgroundPositions;
 
 enum Area {
     AREA_MAIN_DECK,

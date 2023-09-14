@@ -14,4 +14,9 @@ extern const struct FrameData sParticleOam_ShinesparkKilled[8];
 
 extern const struct FrameData sSpriteDebrisOam_Cloud1[12];
 
+// ...
+
+extern const struct FrameData sParticleOam_Explosion7[23];
+extern const struct FrameData sParticleOam_Explosion8[9];
+
 #endif /* PARTICLE_DATA_H */

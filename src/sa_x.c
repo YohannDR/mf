@@ -2,9 +2,12 @@
 #include "globals.h"
 #include "macros.h"
 
+#include "data/particle_data.h"
 #include "data/sprites/sa_x.h"
 
 #include "constants/samus.h"
+
+#include "structs/samus.h"
 
 /**
  * @brief cbb8 | 64 | SA-X running gfx subroutine
@@ -398,7 +401,7 @@ void SaXSetPose(u8 pose)
  * @brief d170 | 50 | Updates the position of the SA-X (applies the velocity)
  * 
  */
-void SaXSetPosition(void)
+void SaXUpdatePosition(void)
 {
     s16 yVelocity;
     s16 xVelocity;
@@ -562,9 +565,89 @@ void SaXUpdateGraphicsAndDraw(void)
     gNextOamSlot = currSlot;
 }
 
-void SaXUpdateElevatorSprites(u8 spriteSlot)
+/**
+ * @brief d3f4 | 170 | Updates an SA-X elevator sprite
+ * 
+ * @param spriteSlot Sprite slot
+ */
+void SaXUpdateElevatorSprite(s32 spriteSlot)
 {
+    const struct FrameData* pOam;
 
+    if (gSaXElevatorSprites[spriteSlot].unk_0 != 0 && gSaXElevatorSprites[spriteSlot].unk_2 != 0)
+    {
+        gSaXElevatorSprites[spriteSlot].unk_2--;
+        if (gSaXElevatorSprites[spriteSlot].unk_2 == 0)
+            gSaXElevatorSprites[spriteSlot].unk_0++;
+    }
+
+    if (gSaXElevatorSprites[spriteSlot].unk_0 == 0 || gSaXElevatorSprites[spriteSlot].unk_0 == 1)
+        return;
+
+    switch (gSaXElevatorSprites[spriteSlot].type)
+    {
+        case 0:
+        case 1:
+            gSaXElevatorSprites[spriteSlot].animationDurationCounter++;
+
+            if (gSaXElevatorSprites[spriteSlot].animationDurationCounter < sParticleOam_Explosion7[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer)
+                break;
+
+            gSaXElevatorSprites[spriteSlot].animationDurationCounter = 0;
+            gSaXElevatorSprites[spriteSlot].currentAnimationFrame++;
+
+            if (sParticleOam_Explosion7[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer == 0)
+                gSaXElevatorSprites[spriteSlot].unk_0 = 0;
+            break;
+
+        case 2:
+            gSaXElevatorSprites[spriteSlot].animationDurationCounter++;
+
+            if (gSaXElevatorSprites[spriteSlot].animationDurationCounter < sParticleOam_Explosion8[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer)
+                break;
+
+            gSaXElevatorSprites[spriteSlot].animationDurationCounter = 0;
+            gSaXElevatorSprites[spriteSlot].currentAnimationFrame++;
+
+            if (sParticleOam_Explosion8[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer == 0)
+                gSaXElevatorSprites[spriteSlot].unk_0 = 0;
+            break;
+
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+            gSaXElevatorSprites[spriteSlot].yPosition -= VELOCITY_TO_SUB_PIXEL(gSaXElevatorSprites[spriteSlot].yVelocity);
+            gSaXElevatorSprites[spriteSlot].yVelocity -= SUB_PIXEL_TO_VELOCITY(ONE_SUB_PIXEL - ONE_SUB_PIXEL / 4.f);
+
+            if (gSaXElevatorSprites[spriteSlot].yPosition > BLOCK_SIZE * 7 + ONE_SUB_PIXEL)
+                gSaXElevatorSprites[spriteSlot].unk_0 = 0;
+
+        case 7:
+        case 8:
+            gSaXElevatorSprites[spriteSlot].xPosition += VELOCITY_TO_SUB_PIXEL(gSaXElevatorSprites[spriteSlot].xVelocity);
+            break;
+
+        case 9:
+            gSaXElevatorSprites[spriteSlot].animationDurationCounter++;
+
+            if (gSaXElevatorSprites[spriteSlot].animationDurationCounter >= sSaxElevatorOam_2e8038[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer)
+            {
+                gSaXElevatorSprites[spriteSlot].animationDurationCounter = 0;
+                gSaXElevatorSprites[spriteSlot].currentAnimationFrame++;
+    
+                if (sSaxElevatorOam_2e8038[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer == 0)
+                    gSaXElevatorSprites[spriteSlot].currentAnimationFrame = 0;
+            }
+
+            gSaXElevatorSprites[spriteSlot].xPosition += VELOCITY_TO_SUB_PIXEL(gSaXElevatorSprites[spriteSlot].xVelocity);
+            break;
+    }
+
+    pOam = sSaXElevatorSpritesOamPointers[gSaXElevatorSprites[spriteSlot].type];
+    pOam = &pOam[gSaXElevatorSprites[spriteSlot].currentAnimationFrame];
+    
+    gSaXElevatorSprites[spriteSlot].pOamFrame = pOam->pFrame;
 }
 
 /**
@@ -622,19 +705,157 @@ void SaXDrawElevatorSprites(void)
     gNextOamSlot = currSlot;
 }
 
-u8 unk_d638(void)
+/**
+ * @brief d638 | 5c | To document
+ * 
+ */
+void unk_d638(void)
 {
+    gSaXElevatorData.unk_0 = 1;
+    gNextOamSlot = 0;
 
+    if (sSaXElevatorFunctionPointers[gSaXElevatorData.unk_1]())
+    {
+        gSaXElevatorData.stage = 0;
+        gSaXElevatorData.unk_3 = 0;
+        gSaXElevatorData.unk_4 = 0;
+        gSaXElevatorData.unk_5 = 0;
+        gSaXElevatorData.timer = 0;
+
+        gDisableDrawingSamusAndScrollingFlag = FALSE;
+
+        gSaXData.screenFlag = SA_X_SCREEN_FLAG_NOT_PRESENT;
+        gSubGameMode1 = 0x3;
+    }
 }
 
+/**
+ * @brief d694 | 15c | To document
+ * 
+ * @return u8 bool, ended
+ */
 u8 unk_d694(void)
 {
+    s32 i;
+    u32 ended;
+    u8 newPose;
+    u8 bldalpha;
+    u32 tmp;
 
+    ended = FALSE;
+
+    if (sSaXElevatorSubroutinesPointers[gSaXElevatorData.stage]())
+    {
+        gSaXElevatorData.stage++;
+        gSaXElevatorData.timer = 0;
+    }
+
+    for (i = 0; i < MAX_AMOUNT_OF_SA_X_ELEVATOR_SPRITES - 1; i++)
+        SaXUpdateElevatorSprite(i);
+
+    switch (gSaXElevatorData.unk_4)
+    {
+        case 1:
+            if (gWrittenToBldy < 16)
+            {
+                gWrittenToBldy++;
+                write16(REG_BLDY, gWrittenToBldy);
+            }
+            break;
+
+        case 2:
+            if (gWrittenToBldy != 0)
+            {
+                gWrittenToBldy--;
+                write16(REG_BLDY, gWrittenToBldy);
+            }
+
+            gSaXElevatorData.unk_5++;
+            if (MOD_AND(gSaXElevatorData.unk_5, 8) == 0)
+                gBackgroundPositions.bg[3].x--;
+            break;
+
+        case 3:
+            bldalpha = gSaXElevatorData.unk_5++ / 4;
+            tmp = 16 - bldalpha;
+            write16(REG_BLDALPHA, C_16_2_8(16 - tmp, tmp));
+
+            if (MOD_AND(gSaXElevatorData.unk_5, 4) == 0)
+                gBackgroundPositions.bg[3].x--;
+
+            if (tmp == 0)
+            {
+                gSaXElevatorData.unk_4 = 0;
+                gSaXElevatorData.unk_5 = 0;
+
+                write16(REG_DISPCNT, read16(REG_DISPCNT) & ~(DCNT_BG0 | DCNT_BG3));;
+                write16(REG_BLDCNT, 0);
+            }
+            else if (tmp == 1)
+            {
+                gSaXElevatorSprites[4].unk_0 = 0;
+                gSaXElevatorSprites[5].unk_0 = 0;
+            }
+            break;
+    }
+
+    if (gSaXElevatorData.stage >= ARRAY_SIZE(sSaXElevatorSubroutinesPointers))
+        ended++;
+
+    newPose = sSaXPoseGfxFunctionPointers[gSaXData.pose]();
+    if (newPose != SA_X_POSE_NONE)
+        SaXSetPose(newPose);
+
+    SaXUpdatePosition();
+
+    if (gSubGameMode1 != 0x3)
+    {
+        SaXDrawElevatorSprites();
+        SaXUpdateGraphicsAndDraw();
+    }
+
+    return ended;
 }
 
+/**
+ * @brief d7f0 | cc | Handles the before blowing up the wall part of the SA-X elevator cutscene
+ * 
+ * @return u8 bool, ended
+ */
 u8 SaXElevatorBeforeBlowingUpWall(void)
 {
+    u8 ended;
+    s32 i;
 
+    ended = FALSE;
+
+    switch (gSaXElevatorData.timer++)
+    {
+        case 0:
+            DMA_SET(3, sSaXElevatorRocksAndCloudPal, PALRAM_OBJ + 0x120, C_32_2_16(DMA_ENABLE, ARRAY_SIZE(sSaXElevatorRocksAndCloudPal)));
+            gDisableDrawingSamusAndScrollingFlag++;
+            break;
+
+        case 1:
+            DMA_SET(3, sSaXElevatorGraphics_RocksTop, VRAM_OBJ + 0x4A60, C_32_2_16(DMA_ENABLE, ARRAY_SIZE(sSaXElevatorGraphics_RocksTop) / 2));
+            break;
+
+        case 2:
+            DMA_SET(3, sSaXElevatorGraphics_RocksBottom, VRAM_OBJ + 0x4E60, C_32_2_16(DMA_ENABLE, ARRAY_SIZE(sSaXElevatorGraphics_RocksBottom) / 2));
+            break;
+
+        case 3:
+            for (i = 0; i < MAX_AMOUNT_OF_SA_X_ELEVATOR_SPRITES - 1; i++)
+            {
+                gSaXElevatorSprites[i] = sSaXElevatorSpritesBlowingUpWall[i];
+            }
+
+            gSaXElevatorData.timer = 0;
+            ended = TRUE;
+            break;
+    }
+
+    return ended;
 }
 
 u8 SaXElevatorBlowingUpWall(void)

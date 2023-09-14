@@ -17616,7 +17616,7 @@ _0800D634: .4byte 0xFFFFFE00
 	thumb_func_start unk_d638
 unk_d638: @ 0x0800D638
 	push {r4, r5, lr}
-	ldr r4, _0800D67C @ =0x0300147C
+	ldr r4, _0800D67C @ =gSaXElevatorData
 	movs r5, #0
 	movs r0, #1
 	strb r0, [r4]
@@ -17637,7 +17637,7 @@ unk_d638: @ 0x0800D638
 	strb r5, [r4, #5]
 	movs r1, #0
 	strh r5, [r4, #6]
-	ldr r0, _0800D688 @ =0x0300134A
+	ldr r0, _0800D688 @ =gDisableDrawingSamusAndScrollingFlag
 	strb r1, [r0]
 	ldr r0, _0800D68C @ =gSaXData
 	strb r1, [r0]
@@ -17649,10 +17649,10 @@ _0800D674:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800D67C: .4byte 0x0300147C
+_0800D67C: .4byte gSaXElevatorData
 _0800D680: .4byte gNextOamSlot
 _0800D684: .4byte 0x082B4EAC
-_0800D688: .4byte 0x0300134A
+_0800D688: .4byte gDisableDrawingSamusAndScrollingFlag
 _0800D68C: .4byte gSaXData
 _0800D690: .4byte gSubGameMode1
 
@@ -17661,7 +17661,7 @@ SA_XUpdate: @ 0x0800D694
 	push {r4, r5, r6, lr}
 	movs r6, #0
 	ldr r1, _0800D6D8 @ =0x082B4EB0
-	ldr r4, _0800D6DC @ =0x0300147C
+	ldr r4, _0800D6DC @ =gSaXElevatorData
 	ldrb r0, [r4, #2]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -17682,7 +17682,7 @@ _0800D6B8:
 	adds r4, #1
 	cmp r4, #9
 	ble _0800D6B8
-	ldr r0, _0800D6DC @ =0x0300147C
+	ldr r0, _0800D6DC @ =gSaXElevatorData
 	ldrb r4, [r0, #4]
 	adds r5, r0, #0
 	cmp r4, #2
@@ -17694,13 +17694,13 @@ _0800D6B8:
 	b _0800D79A
 	.align 2, 0
 _0800D6D8: .4byte 0x082B4EB0
-_0800D6DC: .4byte 0x0300147C
+_0800D6DC: .4byte gSaXElevatorData
 _0800D6E0:
 	cmp r4, #3
 	beq _0800D734
 	b _0800D79A
 _0800D6E6:
-	ldr r0, _0800D6F8 @ =0x0300121E
+	ldr r0, _0800D6F8 @ =gWrittenToBldy
 	ldrh r1, [r0]
 	cmp r1, #0xf
 	bhi _0800D79A
@@ -17710,10 +17710,10 @@ _0800D6E6:
 	strh r1, [r0]
 	b _0800D79A
 	.align 2, 0
-_0800D6F8: .4byte 0x0300121E
+_0800D6F8: .4byte gWrittenToBldy
 _0800D6FC: .4byte 0x04000054
 _0800D700:
-	ldr r0, _0800D728 @ =0x0300121E
+	ldr r0, _0800D728 @ =gWrittenToBldy
 	ldrh r1, [r0]
 	cmp r1, #0
 	beq _0800D710
@@ -17729,15 +17729,15 @@ _0800D710:
 	ands r0, r1
 	cmp r0, #0
 	bne _0800D79A
-	ldr r1, _0800D730 @ =0x030000C8
+	ldr r1, _0800D730 @ =gBackgroundPositions
 	ldrh r0, [r1, #0xc]
 	subs r0, #1
 	strh r0, [r1, #0xc]
 	b _0800D79A
 	.align 2, 0
-_0800D728: .4byte 0x0300121E
+_0800D728: .4byte gWrittenToBldy
 _0800D72C: .4byte 0x04000054
-_0800D730: .4byte 0x030000C8
+_0800D730: .4byte gBackgroundPositions
 _0800D734:
 	ldrb r0, [r5, #5]
 	adds r2, r0, #1
@@ -17755,7 +17755,7 @@ _0800D734:
 	ands r2, r4
 	cmp r2, #0
 	bne _0800D75C
-	ldr r1, _0800D77C @ =0x030000C8
+	ldr r1, _0800D77C @ =gBackgroundPositions
 	ldrh r0, [r1, #0xc]
 	subs r0, #1
 	strh r0, [r1, #0xc]
@@ -17775,7 +17775,7 @@ _0800D75C:
 	b _0800D79A
 	.align 2, 0
 _0800D778: .4byte 0x04000052
-_0800D77C: .4byte 0x030000C8
+_0800D77C: .4byte gBackgroundPositions
 _0800D780: .4byte 0x0000F6FF
 _0800D784: .4byte 0x04000050
 _0800D788:
@@ -17831,7 +17831,7 @@ _0800D7EC: .4byte gSubGameMode1
 SA_XElevatorBeforeBlowingUpWall: @ 0x0800D7F0
 	push {r4, r5, r6, r7, lr}
 	movs r3, #0
-	ldr r0, _0800D810 @ =0x0300147C
+	ldr r0, _0800D810 @ =gSaXElevatorData
 	ldrh r1, [r0, #6]
 	adds r2, r1, #1
 	strh r2, [r0, #6]
@@ -17846,7 +17846,7 @@ SA_XElevatorBeforeBlowingUpWall: @ 0x0800D7F0
 	beq _0800D81E
 	b _0800D8AC
 	.align 2, 0
-_0800D810: .4byte 0x0300147C
+_0800D810: .4byte gSaXElevatorData
 _0800D814:
 	cmp r1, #2
 	beq _0800D864
@@ -17862,7 +17862,7 @@ _0800D81E:
 	ldr r0, _0800D844 @ =0x80000010
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r1, _0800D848 @ =0x0300134A
+	ldr r1, _0800D848 @ =gDisableDrawingSamusAndScrollingFlag
 	ldrb r0, [r1]
 	adds r0, #1
 	strb r0, [r1]
@@ -17872,7 +17872,7 @@ _0800D838: .4byte 0x040000D4
 _0800D83C: .4byte 0x082B4E64
 _0800D840: .4byte 0x05000320
 _0800D844: .4byte 0x80000010
-_0800D848: .4byte 0x0300134A
+_0800D848: .4byte gDisableDrawingSamusAndScrollingFlag
 _0800D84C:
 	ldr r1, _0800D858 @ =0x040000D4
 	ldr r0, _0800D85C @ =0x082B4458
@@ -17932,7 +17932,7 @@ _0800D8B8: .4byte gSaXElevatorSprites
 SA_XElevatorBlowingUpWall: @ 0x0800D8BC
 	push {r4, r5, r6, r7, lr}
 	movs r6, #0
-	ldr r4, _0800D8E8 @ =0x0300147C
+	ldr r4, _0800D8E8 @ =gSaXElevatorData
 	ldrh r0, [r4, #6]
 	adds r1, r0, #1
 	strh r1, [r4, #6]
@@ -17954,7 +17954,7 @@ _0800D8D2:
 	beq _0800D954
 	b _0800DAE0
 	.align 2, 0
-_0800D8E8: .4byte 0x0300147C
+_0800D8E8: .4byte gSaXElevatorData
 _0800D8EC:
 	cmp r0, #9
 	beq _0800D998
@@ -18066,7 +18066,7 @@ _0800D9C4:
 	bl UpdateBg1AndSubEventDuringSA_XElevatorCutscene
 	b _0800DAE0
 _0800D9CC:
-	ldr r0, _0800D9DC @ =0x0300121E
+	ldr r0, _0800D9DC @ =gWrittenToBldy
 	strh r6, [r0]
 	ldr r0, _0800D9E0 @ =0x04000054
 	strh r6, [r0]
@@ -18075,7 +18075,7 @@ _0800D9CC:
 	strh r0, [r1]
 	b _0800DA98
 	.align 2, 0
-_0800D9DC: .4byte 0x0300121E
+_0800D9DC: .4byte gWrittenToBldy
 _0800D9E0: .4byte 0x04000054
 _0800D9E4: .4byte 0x04000050
 _0800D9E8:
@@ -18101,7 +18101,7 @@ _0800D9E8:
 	strh r2, [r1]
 	ldr r0, _0800DA50 @ =0x03000021
 	strb r5, [r0]
-	ldr r1, _0800DA54 @ =0x030000C8
+	ldr r1, _0800DA54 @ =gBackgroundPositions
 	movs r0, #0x10
 	strh r0, [r1, #0xc]
 	movs r0, #0x20
@@ -18129,7 +18129,7 @@ _0800DA44: .4byte 0x030011F6
 _0800DA48: .4byte 0x0000FFFC
 _0800DA4C: .4byte 0x0400000E
 _0800DA50: .4byte 0x03000021
-_0800DA54: .4byte 0x030000C8
+_0800DA54: .4byte gBackgroundPositions
 _0800DA58: .4byte gSaXElevatorSprites
 _0800DA5C: .4byte 0x082B4EC8
 _0800DA60:
@@ -18236,7 +18236,7 @@ _0800DB10:
 	.align 2, 0
 _0800DB28: .4byte gBg1XPosition
 _0800DB2C:
-	ldr r4, _0800DB50 @ =0x0300147C
+	ldr r4, _0800DB50 @ =gSaXElevatorData
 	ldrh r0, [r4, #6]
 	adds r1, r0, #1
 	strh r1, [r4, #6]
@@ -18254,7 +18254,7 @@ _0800DB46:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800DB50: .4byte 0x0300147C
+_0800DB50: .4byte gSaXElevatorData
 
 	thumb_func_start SA_XElevatorBeforeJumping
 SA_XElevatorBeforeJumping: @ 0x0800DB54
@@ -18264,7 +18264,7 @@ SA_XElevatorBeforeJumping: @ 0x0800DB54
 	ldrb r0, [r5, #1]
 	cmp r0, #2
 	bne _0800DB82
-	ldr r4, _0800DB90 @ =0x0300147C
+	ldr r4, _0800DB90 @ =gSaXElevatorData
 	ldrh r0, [r4, #6]
 	adds r1, r0, #1
 	strh r1, [r4, #6]
@@ -18287,7 +18287,7 @@ _0800DB82:
 	bx r1
 	.align 2, 0
 _0800DB8C: .4byte gSaXData
-_0800DB90: .4byte 0x0300147C
+_0800DB90: .4byte gSaXElevatorData
 
 	thumb_func_start SA_XElevatorBeforeShootingDoor
 SA_XElevatorBeforeShootingDoor: @ 0x0800DB94
@@ -18319,12 +18319,12 @@ SA_XElevatorBeforeShootingDoor: @ 0x0800DB94
 _0800DBC8: .4byte gSaXData
 _0800DBCC: .4byte gBg1YPosition
 _0800DBD0:
-	ldr r1, _0800DBEC @ =0x0300147C
+	ldr r1, _0800DBEC @ =gSaXElevatorData
 	ldrh r0, [r1, #6]
 	adds r0, #1
 	strh r0, [r1, #6]
 _0800DBD8:
-	ldr r0, _0800DBEC @ =0x0300147C
+	ldr r0, _0800DBEC @ =gSaXElevatorData
 	ldrh r1, [r0, #6]
 	mov ip, r0
 	cmp r1, #0x44
@@ -18335,7 +18335,7 @@ _0800DBD8:
 	beq _0800DBF6
 	b _0800DC7C
 	.align 2, 0
-_0800DBEC: .4byte 0x0300147C
+_0800DBEC: .4byte gSaXElevatorData
 _0800DBF0:
 	cmp r1, #0x50
 	beq _0800DC54
@@ -18419,7 +18419,7 @@ _0800DC90: .4byte gSaXElevatorSprites
 SA_XElevatorWalkingOut: @ 0x0800DC94
 	push {r4, lr}
 	movs r4, #0
-	ldr r0, _0800DCB4 @ =0x0300147C
+	ldr r0, _0800DCB4 @ =gSaXElevatorData
 	ldrh r1, [r0, #6]
 	adds r2, r1, #1
 	strh r2, [r0, #6]
@@ -18433,7 +18433,7 @@ SA_XElevatorWalkingOut: @ 0x0800DC94
 	beq _0800DCC2
 	b _0800DCF8
 	.align 2, 0
-_0800DCB4: .4byte 0x0300147C
+_0800DCB4: .4byte gSaXElevatorData
 _0800DCB8:
 	cmp r1, #0x32
 	beq _0800DCE0
@@ -18533,7 +18533,7 @@ _0800DD78:
 	bl CopyDemoInput
 _0800DD84:
 	bl InitAndLoadGenerics
-	ldr r1, _0800DD9C @ =0x0300147C
+	ldr r1, _0800DD9C @ =gSaXElevatorData
 	ldrb r0, [r1, #2]
 	cmp r0, #0
 	bne _0800DDC8
@@ -18542,7 +18542,7 @@ _0800DD84:
 	.align 2, 0
 _0800DD94: .4byte gUnk_03000be3
 _0800DD98: .4byte gDemoState
-_0800DD9C: .4byte 0x0300147C
+_0800DD9C: .4byte gSaXElevatorData
 _0800DDA0:
 	bl IoWriteRegisters
 	bl unk_6e3c0
@@ -18550,7 +18550,7 @@ _0800DDA0:
 	bne _0800DDAE
 	b _0800DEB8
 _0800DDAE:
-	ldr r0, _0800DDC0 @ =0x0300147C
+	ldr r0, _0800DDC0 @ =gSaXElevatorData
 	ldrb r0, [r0, #2]
 	cmp r0, #0
 	beq _0800DDC8
@@ -18559,7 +18559,7 @@ _0800DDAE:
 	strh r0, [r1]
 	b _0800DEB8
 	.align 2, 0
-_0800DDC0: .4byte 0x0300147C
+_0800DDC0: .4byte gSaXElevatorData
 _0800DDC4: .4byte gSubGameMode1
 _0800DDC8:
 	ldr r1, _0800DDD4 @ =gSubGameMode1
@@ -18673,7 +18673,7 @@ _0800DEB8:
 	lsrs r0, r0, #0x10
 	cmp r0, #1
 	bls _0800DECE
-	ldr r0, _0800DEDC @ =0x0300147C
+	ldr r0, _0800DEDC @ =gSaXElevatorData
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0800DEE0
@@ -18683,14 +18683,14 @@ _0800DECE:
 	b _0800DF48
 	.align 2, 0
 _0800DED8: .4byte gSubGameMode1
-_0800DEDC: .4byte 0x0300147C
+_0800DEDC: .4byte gSaXElevatorData
 _0800DEE0:
 	lsls r0, r1, #0x10
 	cmp r0, #0
 	beq _0800DF48
 	bl UpdateAnimatedGraphicsAndPalette
 	bl SpriteUpdate
-	ldr r0, _0800DF00 @ =0x0300134A
+	ldr r0, _0800DF00 @ =gDisableDrawingSamusAndScrollingFlag
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0800DF04
@@ -18698,7 +18698,7 @@ _0800DEE0:
 	bl CallSamusUpdateGraphics
 	b _0800DF10
 	.align 2, 0
-_0800DF00: .4byte 0x0300134A
+_0800DF00: .4byte gDisableDrawingSamusAndScrollingFlag
 _0800DF04:
 	ldr r0, _0800DF50 @ =0x03000021
 	ldrb r0, [r0]
@@ -18712,7 +18712,7 @@ _0800DF10:
 	bl UpdateParticles
 	bl ProjectileDrawAll_False
 	bl SpriteDrawAll
-	ldr r0, _0800DF54 @ =0x0300134A
+	ldr r0, _0800DF54 @ =gDisableDrawingSamusAndScrollingFlag
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0800DF34
@@ -18730,7 +18730,7 @@ _0800DF48:
 	bx r1
 	.align 2, 0
 _0800DF50: .4byte 0x03000021
-_0800DF54: .4byte 0x0300134A
+_0800DF54: .4byte gDisableDrawingSamusAndScrollingFlag
 
 	thumb_func_start SetInGameVBlankCode
 SetInGameVBlankCode: @ 0x0800DF58
@@ -18769,7 +18769,7 @@ _0800DF90: .4byte VBlankCodeInGame
 TransferSamusAndSA_XGraphics: @ 0x0800DF94
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0800E0D4 @ =0x0300134A
+	ldr r0, _0800E0D4 @ =gDisableDrawingSamusAndScrollingFlag
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0800E074
@@ -18937,7 +18937,7 @@ _0800E0CC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800E0D4: .4byte 0x0300134A
+_0800E0D4: .4byte gDisableDrawingSamusAndScrollingFlag
 _0800E0D8: .4byte 0x0300129C
 _0800E0DC: .4byte 0x040000D4
 _0800E0E0: .4byte 0x06010000
@@ -19052,11 +19052,11 @@ _0800E1BC:
 	strh r0, [r2]
 _0800E1D2:
 	ldr r1, _0800E258 @ =0x04000054
-	ldr r0, _0800E25C @ =0x0300121E
+	ldr r0, _0800E25C @ =gWrittenToBldy
 	ldrh r0, [r0]
 	strh r0, [r1]
 	subs r1, #0x44
-	ldr r2, _0800E260 @ =0x030000C8
+	ldr r2, _0800E260 @ =gBackgroundPositions
 	ldrh r0, [r2]
 	strh r0, [r1]
 	adds r1, #2
@@ -19106,8 +19106,8 @@ _0800E24C: .4byte 0xA2600000
 _0800E250: .4byte 0x03000006
 _0800E254: .4byte 0x04000050
 _0800E258: .4byte 0x04000054
-_0800E25C: .4byte 0x0300121E
-_0800E260: .4byte 0x030000C8
+_0800E25C: .4byte gWrittenToBldy
+_0800E260: .4byte gBackgroundPositions
 _0800E264: .4byte 0x0400001C
 _0800E268: .4byte 0x03000019
 
@@ -19126,7 +19126,7 @@ unk_e26c: @ 0x0800E26C
 	movs r0, #0
 	bl TransferSamusAndSA_XGraphics
 	ldr r1, _0800E2D8 @ =0x04000010
-	ldr r2, _0800E2DC @ =0x030000C8
+	ldr r2, _0800E2DC @ =gBackgroundPositions
 	ldrh r0, [r2]
 	strh r0, [r1]
 	adds r1, #2
@@ -19164,7 +19164,7 @@ _0800E2CC: .4byte 0x040000D4
 _0800E2D0: .4byte gOamData
 _0800E2D4: .4byte 0x84000100
 _0800E2D8: .4byte 0x04000010
-_0800E2DC: .4byte 0x030000C8
+_0800E2DC: .4byte gBackgroundPositions
 _0800E2E0: .4byte 0x0400001C
 _0800E2E4: .4byte 0x03000019
 
@@ -19263,7 +19263,7 @@ _0800E388:
 	orrs r0, r1
 	strh r0, [r2]
 	subs r2, #0x3c
-	ldr r1, _0800E410 @ =0x030000C8
+	ldr r1, _0800E410 @ =gBackgroundPositions
 	ldrh r0, [r1]
 	strh r0, [r2]
 	adds r2, #2
@@ -19306,7 +19306,7 @@ _0800E400: .4byte 0xA2600000
 _0800E404: .4byte 0x0400004C
 _0800E408: .4byte gWrittenToMosaic
 _0800E40C: .4byte 0x0300120E
-_0800E410: .4byte 0x030000C8
+_0800E410: .4byte gBackgroundPositions
 
 	thumb_func_start unk_e414
 unk_e414: @ 0x0800E414
@@ -19345,7 +19345,7 @@ InitAndLoadGenerics: @ 0x0800E420
 	bl ClearGfxRam
 	bl LoadCommonGraphics
 _0800E45A:
-	ldr r0, _0800E4AC @ =0x0300121E
+	ldr r0, _0800E4AC @ =gWrittenToBldy
 	movs r3, #0x10
 	strh r3, [r0]
 	ldr r1, _0800E4B0 @ =gPauseScreenFlag
@@ -19381,7 +19381,7 @@ _0800E49C: .4byte 0x04000200
 _0800E4A0: .4byte 0x0000FFFD
 _0800E4A4: .4byte unk_e414
 _0800E4A8: .4byte gUnk_03000be3
-_0800E4AC: .4byte 0x0300121E
+_0800E4AC: .4byte gWrittenToBldy
 _0800E4B0: .4byte gPauseScreenFlag
 _0800E4B4: .4byte gCurrentCutscene
 _0800E4B8: .4byte 0x04000050
@@ -19525,7 +19525,7 @@ _0800E5BC:
 	ldr r0, _0800E674 @ =gPreventMovementTimer
 	strh r4, [r0]
 _0800E5DE:
-	ldr r1, _0800E678 @ =0x0300121E
+	ldr r1, _0800E678 @ =gWrittenToBldy
 	movs r0, #0xf
 	strh r0, [r1]
 	ldr r1, _0800E648 @ =0x04000006
@@ -19580,7 +19580,7 @@ _0800E668: .4byte 0x02035700
 _0800E66C: .4byte 0x05000300
 _0800E670: .4byte 0x80000080
 _0800E674: .4byte gPreventMovementTimer
-_0800E678: .4byte 0x0300121E
+_0800E678: .4byte gWrittenToBldy
 _0800E67C: .4byte gIsLoadingFile
 _0800E680: .4byte VBlankCodeDuringLoads
 

@@ -24,6 +24,7 @@ SECTIONS {
         . = 0x00000070; gIoRegisters = .;
         . = 0x000000a4; gCurrentRoomEntry = .;
         . = 0x000000c0; gCurrentAffectingClipdata = .;
+        . = 0x000000c8; gBackgroundPositions = .;
         . = 0x000000dc; gSaXSpawnPosition = .;
         . = 0x00000110; gCurrentPowerBomb = .;
         . = 0x00000140; gSpriteData = .;
@@ -75,6 +76,7 @@ SECTIONS {
         . = 0x000011ec; gChangedInput = .;
         . = 0x000011ee; gNextOamSlot = .;
         . = 0x0000120c; gWrittenToMosaic = .;
+        . = 0x0000121e; gWrittenToBldy = .;
         . = 0x00001228; gBg1XPosition = .;
         . = 0x0000122A; gBg1YPosition = .;
         . = 0x00001242; gDemoState = .;
@@ -84,7 +86,9 @@ SECTIONS {
         . = 0x00001310; gEquipment = .;
         . = 0x00001342; gPreviousXPosition = .;
         . = 0x00001348; gPreventMovementTimer = .;
+        . = 0x0000134a; gDisableDrawingSamusAndScrollingFlag = .;
         . = 0x00001458; gSaXData = .;
+        . = 0x0000147c; gSaXElevatorData = .;
         . = 0x000019c4; gVBlankCallback = .;
         . = 0x000019c8; gHBlankCallback = .;
         . = 0x000019cc; gVCountCallback = .;
