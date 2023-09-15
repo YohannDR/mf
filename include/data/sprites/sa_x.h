@@ -98,7 +98,7 @@ extern const struct SaXAnimationData sSaXAnim_CoveredByMetroids[23];
 extern const struct SaXAnimationData sSaXAnim_Walking_Left[11];
 extern const struct SaXAnimationData sSaXAnim_Walking_Right[11];
 
-extern const struct SaXData sSaXDataEmpty;
+extern const struct SaXData sSaXData_Empty;
 
 extern const struct SaXAnimationData* const sSaXOamDataPointers[SA_X_POSE_END][2];
 
@@ -117,6 +117,9 @@ extern const SaXGfxFunc_T sSaXPoseGfxFunctionPointers[SA_X_POSE_END];
 
 extern const u8 sSaXElevatorGraphics_RocksTop[416];
 extern const u8 sSaXElevatorGraphics_RocksBottom[416];
+
+extern const u8 sSaXElevatorGraphics_CloudsTop[704];
+extern const u8 sSaXElevatorGraphics_CloudsBottom[704];
 
 // ...
 
@@ -175,7 +178,8 @@ extern const struct FrameData* const sSaXElevatorSpritesOamPointers[10];
 extern const SaXElevatorFunc_T sSaXElevatorFunctionPointers[1];
 extern const SaXElevatorFunc_T sSaXElevatorSubroutinesPointers[6];
 
-extern const struct SaXElevatorSprite sSaXElevatorSpritesBlowingUpWall[13];
+extern const struct SaXElevatorSprite sSaXElevatorSpritesBlowingUpWall[MAX_AMOUNT_OF_SA_X_ELEVATOR_SPRITES + 2];
+extern const struct SaXElevatorSprite sSaXElevatorSpritesShootingDoor[7];
 
 // ...
 

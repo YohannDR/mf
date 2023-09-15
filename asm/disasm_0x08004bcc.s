@@ -6503,7 +6503,7 @@ _08007DF8: .4byte 0x0000FFC0
 	thumb_func_start SamusPullingYourselfDownToStartHanging_Unused
 SamusPullingYourselfDownToStartHanging_Unused: @ 0x08007DFC
 	push {lr}
-	ldr r0, _08007E18 @ =0x03000021
+	ldr r0, _08007E18 @ =gDisableScrolling
 	movs r1, #1
 	strb r1, [r0]
 	ldr r1, _08007E1C @ =gSamusData
@@ -6516,7 +6516,7 @@ SamusPullingYourselfDownToStartHanging_Unused: @ 0x08007DFC
 	subs r0, #0xc
 	b _08007E24
 	.align 2, 0
-_08007E18: .4byte 0x03000021
+_08007E18: .4byte gDisableScrolling
 _08007E1C: .4byte gSamusData
 _08007E20:
 	ldrh r0, [r1, #0x18]
@@ -8976,7 +8976,7 @@ _08008FFA:
 	bl StopSound
 	b _08009008
 _08009002:
-	ldr r1, _0800901C @ =0x03000021
+	ldr r1, _0800901C @ =gDisableScrolling
 	movs r0, #0
 	strb r0, [r1]
 _08009008:
@@ -8990,7 +8990,7 @@ _08009008:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0800901C: .4byte 0x03000021
+_0800901C: .4byte gDisableScrolling
 _08009020: .4byte _08009024
 _08009024: @ jump table
 	.4byte _08009068 @ case 0
@@ -9940,7 +9940,7 @@ _0800985E:
 	bl unk_3b78
 	b _080098AC
 _08009868:
-	ldr r0, _080098C0 @ =0x03000021
+	ldr r0, _080098C0 @ =gDisableScrolling
 	movs r1, #1
 	strb r1, [r0]
 	ldr r0, _080098C4 @ =0x03000018
@@ -9985,7 +9985,7 @@ _080098AC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080098C0: .4byte 0x03000021
+_080098C0: .4byte gDisableScrolling
 _080098C4: .4byte 0x03000018
 _080098C8: .4byte gPoseLock
 _080098CC: .4byte gSamusData
@@ -17984,7 +17984,7 @@ _0800D910:
 _0800D916:
 	b _0800DAE0
 _0800D918:
-	ldr r1, _0800D938 @ =0x030011F6
+	ldr r1, _0800D938 @ =gSaXElevatorBgCnt
 	ldr r0, _0800D93C @ =0x04000008
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -18000,7 +18000,7 @@ _0800D918:
 	ldr r0, _0800D950 @ =0x06015000
 	b _0800D95C
 	.align 2, 0
-_0800D938: .4byte 0x030011F6
+_0800D938: .4byte gSaXElevatorBgCnt
 _0800D93C: .4byte 0x04000008
 _0800D940: .4byte 0x0400000A
 _0800D944: .4byte 0x0400000E
@@ -18080,7 +18080,7 @@ _0800D9E0: .4byte 0x04000054
 _0800D9E4: .4byte 0x04000050
 _0800D9E8:
 	ldr r4, _0800DA40 @ =0x04000008
-	ldr r3, _0800DA44 @ =0x030011F6
+	ldr r3, _0800DA44 @ =gSaXElevatorBgCnt
 	ldrh r1, [r3]
 	ldr r2, _0800DA48 @ =0x0000FFFC
 	adds r0, r2, #0
@@ -18099,7 +18099,7 @@ _0800D9E8:
 	ldrh r0, [r3, #6]
 	ands r2, r0
 	strh r2, [r1]
-	ldr r0, _0800DA50 @ =0x03000021
+	ldr r0, _0800DA50 @ =gDisableScrolling
 	strb r5, [r0]
 	ldr r1, _0800DA54 @ =gBackgroundPositions
 	movs r0, #0x10
@@ -18125,10 +18125,10 @@ _0800D9E8:
 	b _0800DAE0
 	.align 2, 0
 _0800DA40: .4byte 0x04000008
-_0800DA44: .4byte 0x030011F6
+_0800DA44: .4byte gSaXElevatorBgCnt
 _0800DA48: .4byte 0x0000FFFC
 _0800DA4C: .4byte 0x0400000E
-_0800DA50: .4byte 0x03000021
+_0800DA50: .4byte gDisableScrolling
 _0800DA54: .4byte gBackgroundPositions
 _0800DA58: .4byte gSaXElevatorSprites
 _0800DA5C: .4byte 0x082B4EC8
@@ -18700,7 +18700,7 @@ _0800DEE0:
 	.align 2, 0
 _0800DF00: .4byte gDisableDrawingSamusAndScrollingFlag
 _0800DF04:
-	ldr r0, _0800DF50 @ =0x03000021
+	ldr r0, _0800DF50 @ =gDisableScrolling
 	ldrb r0, [r0]
 	cmp r0, #2
 	bne _0800DF10
@@ -18729,7 +18729,7 @@ _0800DF48:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800DF50: .4byte 0x03000021
+_0800DF50: .4byte gDisableScrolling
 _0800DF54: .4byte gDisableDrawingSamusAndScrollingFlag
 
 	thumb_func_start SetInGameVBlankCode

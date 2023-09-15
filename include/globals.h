@@ -37,6 +37,7 @@ extern u8 gDisplayLocationName;
 extern u8 gSamusOnTopOfBackgrounds;
 
 extern u16 gWrittenToBldy;
+extern u8 gDisableScrolling;
 
 extern u8 gInterruptCode[512];
 extern void* gInterruptCodePointer;

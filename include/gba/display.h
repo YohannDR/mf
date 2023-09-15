@@ -94,6 +94,7 @@
 #define BGCNT_TO_VRAM_TILE_BASE(val) (VRAM_BASE + (val) * BGCNT_VRAM_TILE_SIZE)
 
 #define CREATE_BGCNT(charBase, screenBase, prio, size) ((size) << BGCNT_SCREEN_SIZE_SHIFT | (screenBase) << BGCNT_SCREEN_BASE_BLOCK_SHIFT | (charBase) << BGCNT_CHAR_BASE_BLOCK_SHIFT | (prio))
+#define BGCNT_SET_PRIORITY(bgCnt, prio) (((bgCnt) & ~3) | (prio))
 
 #define BLDCNT_BG0_FIRST_TARGET_PIXEL 0x1
 #define BLDCNT_BG1_FIRST_TARGET_PIXEL 0x2

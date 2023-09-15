@@ -14,6 +14,7 @@ SECTIONS {
         . = 0x00000002; gFrameCounter16Bit = .;
         . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
         . = 0x00000020; gRebootGame = .;
+        . = 0x00000021; gDisableScrolling = .;
         . = 0x00000025; gDisableSoftReset = .;
         . = 0x0000002c; gCurrentArea = .;
         . = 0x0000002d; gCurrentRoom = .;
@@ -75,6 +76,7 @@ SECTIONS {
         . = 0x000011ea; gButtonInputCopy = .;
         . = 0x000011ec; gChangedInput = .;
         . = 0x000011ee; gNextOamSlot = .;
+        . = 0x000011f6; gSaXElevatorBgCnt = .;
         . = 0x0000120c; gWrittenToMosaic = .;
         . = 0x0000121e; gWrittenToBldy = .;
         . = 0x00001228; gBg1XPosition = .;

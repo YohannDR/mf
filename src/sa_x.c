@@ -858,27 +858,256 @@ u8 SaXElevatorBeforeBlowingUpWall(void)
     return ended;
 }
 
+/**
+ * @brief d8bc | 23c | Handles the blowing up wall part of the SA-X elevator cutscene
+ * 
+ * @return u8 bool, ended
+ */
 u8 SaXElevatorBlowingUpWall(void)
 {
+    u8 ended;
 
+    ended = FALSE;
+
+    switch (gSaXElevatorData.timer++)
+    {
+        case 1:
+            gSaXElevatorBgCnt[0] = read16(REG_BG0CNT);
+            gSaXElevatorBgCnt[1] = read16(REG_BG1CNT);
+            gSaXElevatorBgCnt[3] = read16(REG_BG3CNT);
+
+            DMA_SET(3, sSaXElevatorGraphics_CloudsTop, VRAM_OBJ + 0x5000, C_32_2_16(DMA_ENABLE, sizeof(sSaXElevatorGraphics_CloudsTop) / 2));
+            break;
+
+        case 2:
+            DMA_SET(3, sSaXElevatorGraphics_CloudsBottom, VRAM_OBJ + 0x5400, C_32_2_16(DMA_ENABLE, sizeof(sSaXElevatorGraphics_CloudsBottom) / 2));
+            break;
+
+        case 3:
+            write16(REG_DISPCNT, read16(REG_DISPCNT) & ~(DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3));
+            SET_BACKDROP_COLOR(COLOR_WHITE);
+            break;
+
+        case 9:
+            write16(REG_DISPCNT, read16(REG_DISPCNT) | (DCNT_BG1 | DCNT_BG2 | DCNT_BG3));
+            SET_BACKDROP_COLOR(COLOR_BLACK);
+            break;
+
+        case 25:
+            ScreenShakeStartHorizontal(60, 0x1);
+            unk_3b1c(0x226);
+            break;
+
+        case 40:
+            UpdateBg1AndSubEventDuringSaXElevator(0x0);
+            break;
+
+        case 52:
+            gWrittenToBldy = 0;
+            write16(REG_BLDY, 0);
+            write16(REG_BLDCNT, BLDCNT_BG0_FIRST_TARGET_PIXEL | BLDCNT_BG1_FIRST_TARGET_PIXEL | BLDCNT_BG2_FIRST_TARGET_PIXEL |
+                BLDCNT_BG3_FIRST_TARGET_PIXEL | BLDCNT_BACKDROP_FIRST_TARGET_PIXEL | BLDCNT_BRIGHTNESS_INCREASE_EFFECT);
+
+            gSaXElevatorData.unk_4++;
+            break;
+
+        case 100:
+            write16(REG_BG0CNT, BGCNT_SET_PRIORITY(gSaXElevatorBgCnt[0], 3));
+            write16(REG_BG1CNT, BGCNT_SET_PRIORITY(gSaXElevatorBgCnt[1], 1));
+            write16(REG_BG3CNT, BGCNT_SET_PRIORITY(gSaXElevatorBgCnt[3], 0));
+
+            gDisableScrolling = TRUE;
+
+            gBackgroundPositions.bg[3].x = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gBackgroundPositions.bg[3].y = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
+
+            gSaXElevatorSprites[4] = sSaXElevatorSpritesBlowingUpWall[10];
+            gSaXElevatorSprites[5] = sSaXElevatorSpritesBlowingUpWall[11];
+            break;
+
+        case 120:
+            write16(REG_BLDCNT, BLDCNT_BG0_FIRST_TARGET_PIXEL | BLDCNT_BG1_FIRST_TARGET_PIXEL | BLDCNT_BG2_FIRST_TARGET_PIXEL |
+                BLDCNT_BACKDROP_FIRST_TARGET_PIXEL | BLDCNT_BRIGHTNESS_INCREASE_EFFECT);
+
+            gSaXElevatorSprites[4].xVelocity = -SUB_PIXEL_TO_VELOCITY(PIXEL_SIZE / 2);
+            gSaXElevatorSprites[5].xVelocity = SUB_PIXEL_TO_VELOCITY(PIXEL_SIZE / 2);
+
+            gSaXElevatorData.unk_5 = 0;
+            gSaXElevatorData.unk_4++;
+            break;
+
+        case 140:
+            write16(REG_BLDCNT, 0x3F48);
+            write16(REG_BLDALPHA, 16);
+
+            gSaXElevatorData.unk_5 = 0;
+            gSaXElevatorData.unk_4++;
+            break;
+
+        case 160:
+            gSaXData = sSaXData_Empty;
+
+            gSaXData.screenFlag = SA_X_SCREEN_FLAG_ON_SCREEN;
+            gSaXData.pose = SA_X_POSE_WALKING;
+
+            gSaXData.xPosition = gBg1XPosition + (BLOCK_SIZE * 3 - QUARTER_BLOCK_SIZE + PIXEL_SIZE);
+            gSaXData.yPosition = gBg1YPosition + BLOCK_SIZE * 7;
+
+            gSaXData.xVelocity = SUB_PIXEL_TO_VELOCITY(ONE_SUB_PIXEL + ONE_SUB_PIXEL / 2.f);
+
+            gSaXElevatorData.timer = 0;
+            ended = TRUE;
+    }
+
+    return ended;
 }
 
+/**
+ * @brief daf8 | 5c | Handles the SA-X walking part of the SA-X elevator cutscene
+ * 
+ * @return u8 bool, ended
+ */
 u8 SaXElevatorWalkingBeforeTurningToCamera(void)
 {
+    u8 ended;
 
+    ended = FALSE;
+
+    switch (gSaXData.pose)
+    {
+        case SA_X_POSE_WALKING:
+            if (gSaXData.xPosition >= gBg1XPosition + (BLOCK_SIZE * 5 + HALF_BLOCK_SIZE - PIXEL_SIZE / 2))
+            SaXSetPose(SA_X_POSE_STANDING);
+            break;
+
+        case SA_X_POSE_STANDING:
+            if (gSaXElevatorData.timer++ >= 30)
+            {
+                SaXSetPose(SA_X_POSE_TURNING_TOWARDS_CAMERA);
+                gSaXElevatorData.timer = 0;
+                ended = TRUE;
+            }
+    }
+
+    return ended;
 }
 
+/**
+ * @brief db54 | 40 | Handles the SA-X waiting to jump part of the SA-X elevator cutscene
+ * 
+ * @return u8 bool, ended
+ */
 u8 SaXElevatorBeforeJumping(void)
 {
+    u8 ended;
 
+    ended = FALSE;
+
+    switch (gSaXData.pose)
+    {
+        case SA_X_POSE_STANDING:
+            if (gSaXElevatorData.timer++ >= 60)
+            {
+                SaXSetPose(SA_X_POSE_MID_AIR);
+
+                gSaXData.xVelocity = SUB_PIXEL_TO_VELOCITY(PIXEL_SIZE + PIXEL_SIZE / 2);
+                gSaXData.yVelocity = SUB_PIXEL_TO_VELOCITY(QUARTER_BLOCK_SIZE);
+
+                gSaXElevatorData.timer = 0;
+                ended = TRUE;
+            }
+    }
+
+    return ended;
 }
 
 u8 SaXElevatorBeforeShootingDoor(void)
 {
+    // https://decomp.me/scratch/BRs1V
 
+    s32 ended;
+    s32 i;
+
+    ended = FALSE;
+
+    if (gSaXData.pose == SA_X_POSE_MID_AIR)
+    {
+        if (gSaXData.yPosition > gBg1YPosition + (BLOCK_SIZE * 7))
+        {
+            SaXSetPose(SA_X_POSE_LANDING);
+            gSaXData.yPosition = gBg1YPosition + (BLOCK_SIZE * 7);
+        }
+    }
+    else
+    {
+        gSaXElevatorData.timer++;
+    }
+
+    switch (gSaXElevatorData.timer)
+    {
+        case 30:
+            gSaXData.missilesArmed = TRUE;
+            SoundPlay(0x228);
+            break;
+
+        case 68:
+            SaXSetPose(SA_X_POSE_SHOOTING);
+
+            gSaXElevatorSprites[0] = sSaXElevatorSpritesBlowingUpWall[12];
+            gSaXElevatorSprites[0].xPosition = gSaXData.xPosition + BLOCK_SIZE - gBg1XPosition;
+            gSaXElevatorSprites[0].yPosition = gSaXData.yPosition - (BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2) - gBg1YPosition;
+            break;
+
+        case 80:
+            for (i = 0; i < 7; i++)
+            {
+                gSaXElevatorSprites[i] = sSaXElevatorSpritesShootingDoor[i];
+            }
+
+            gSaXElevatorData.timer = 0;
+            ended++;
+    }
+
+    return ended;
 }
 
+/**
+ * @brief dc94 | 90 | Handles the SA-X walking out part of the SA-X elevator cutscene
+ * 
+ * @return u8 bool, ended
+ */
 u8 SaXElevatorWalkingOut(void)
 {
+    s32 ended;
 
+    ended = FALSE;
+
+    switch (gSaXElevatorData.timer++)
+    {
+        case 5:
+            ScreenShakeStartHorizontal(60, 0x1);
+            unk_3b1c(0x227);
+            break;
+
+        case 35:
+            UpdateBg1AndSubEventDuringSaXElevator(0x1);
+            break;
+
+        case 50:
+            gSaXData.missilesArmed = FALSE;
+            break;
+
+        case 100:
+            SaXSetPose(SA_X_POSE_WALKING);
+            gSaXData.xVelocity = SUB_PIXEL_TO_VELOCITY(PIXEL_SIZE / 2 + ONE_SUB_PIXEL / 2.f);
+            break;
+    }
+
+    if (gSaXData.pose == SA_X_POSE_WALKING)
+    {
+        if (gSaXData.xPosition > gBg1XPosition + (BLOCK_SIZE * 15))
+            ended++;
+    }
+
+    return ended;
 }
