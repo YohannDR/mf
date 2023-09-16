@@ -77,5 +77,6 @@ extern struct RawCoordsX gSaXSpawnPosition;
 extern struct SaXElevatorData gSaXElevatorData;
 extern u16 gSaXElevatorBgCnt[4];
 extern struct SaXElevatorSprite gSaXElevatorSprites[MAX_AMOUNT_OF_SA_X_ELEVATOR_SPRITES];
+extern u16 gSaXPalette[2 * 16];
 
 #endif /* SA_X_STRUCTS_H */

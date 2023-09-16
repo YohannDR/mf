@@ -12,6 +12,7 @@ SECTIONS {
     iwram (NOLOAD) : ALIGN(4) {
         . = 0x00000000; gDebugFlag = .;
         . = 0x00000002; gFrameCounter16Bit = .;
+        . = 0x00000019; gWhichBgPositionIsWrittenToBg3Ofs = .;
         . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
         . = 0x00000020; gRebootGame = .;
         . = 0x00000021; gDisableScrolling = .;
@@ -22,7 +23,9 @@ SECTIONS {
         . = 0x00000044; gEffectYPosition = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000053; gCurrentClipdataAffectingAction = .;
+        . = 0x00000064; gUnk_03000064 = .;
         . = 0x00000070; gIoRegisters = .;
+        . = 0x00000084; gBackgroundsData = .;
         . = 0x000000a4; gCurrentRoomEntry = .;
         . = 0x000000c0; gCurrentAffectingClipdata = .;
         . = 0x000000c8; gBackgroundPositions = .;
@@ -85,16 +88,23 @@ SECTIONS {
         . = 0x00001243; gPoseLock = .;
         . = 0x00001244; gSamusData = .;
         . = 0x00001270; gSamusDataCopy = .;
+        . = 0x0000129c; gSamusGraphicsInfo = .;
         . = 0x00001310; gEquipment = .;
         . = 0x00001342; gPreviousXPosition = .;
+        . = 0x00001344; gPreviousYPosition = .;
         . = 0x00001348; gPreventMovementTimer = .;
         . = 0x0000134a; gDisableDrawingSamusAndScrollingFlag = .;
+        . = 0x00001450; gButtonAssignments = .;
         . = 0x00001458; gSaXData = .;
         . = 0x0000147c; gSaXElevatorData = .;
         . = 0x000019c4; gVBlankCallback = .;
         . = 0x000019c8; gHBlankCallback = .;
         . = 0x000019cc; gVCountCallback = .;
         . = 0x00004c18; gSaXElevatorSprites = .;
+        . = 0x00004d1c; gNotPressingUp = .;
+        . = 0x00004d28; gSamusPalette = .;
+        . = 0x00004d88; gSamusPaletteLength = .;
+        . = 0x00004d90; gSaXPalette = .;
 
         . = 0x00005408; src/libgcc/fp-bit-base.o(.bss);
         . = 0x00005420; src/libgcc/float.o(.bss);

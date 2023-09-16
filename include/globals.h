@@ -18,9 +18,11 @@ extern s8 gIsLoadingFile;
 extern s8 gUnk_03000be3;
 extern u8 gDemoState;
 extern u8 gUnk_03000B8F;
+extern u8 gUnk_03000064;
 
 extern u8 gDebugFlag;
 extern u16 gButtonInput;
+extern u8 gNotPressingUp;
 extern u16 gButtonInputCopy;
 extern u16 gChangedInput;
 extern u8 gDisableSoftReset;
@@ -48,6 +50,19 @@ struct BackgroundPositions {
 };
 
 extern struct BackgroundPositions gBackgroundPositions;
+
+struct BackgroundsData {
+    struct {
+        u16* pDecomp;
+        u16 width;
+        u16 height;
+    } backgrounds[3];
+    u16* pClipDecomp;
+    u16 clipdataWidth;
+    u16 clipdataHeight;
+};
+
+extern struct BackgroundsData gBackgroundsData;
 
 enum Area {
     AREA_MAIN_DECK,
@@ -86,6 +101,17 @@ struct CurrentAffectingClipdata {
 
 extern struct CurrentAffectingClipdata gCurrentAffectingClipdata;
 
+struct ButtonAssignments {
+    u16 armMissiles;
+    u16 diagonalAim;
+    u16 swapMissiles;
+    u16 pause;
+};
+
+extern struct ButtonAssignments gButtonAssignments;
+
+extern u8 gWhichBgPositionIsWrittenToBg3Ofs;
+
 extern u16 gWrittenToMosaic;
 extern u8 gCurrentClipdataAffectingAction;
 
@@ -110,6 +136,7 @@ extern u8 gCurrentClipdataAffectingAction;
 #define SUB_GAME_MODE_DOOR_TRANSITION 1
 #define SUB_GAME_MODE_PLAYING 2
 #define SUB_GAME_MODE_LOADING_ROOM 3
+#define SUB_GAME_MODE_SA_X_ELEVATOR 4
 #define SUB_GAME_MODE_DYING 5
 #define SUB_GAME_MODE_FREE_MOVEMENT 6
 

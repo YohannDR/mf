@@ -725,7 +725,7 @@ void unk_d638(void)
         gDisableDrawingSamusAndScrollingFlag = FALSE;
 
         gSaXData.screenFlag = SA_X_SCREEN_FLAG_NOT_PRESENT;
-        gSubGameMode1 = 0x3;
+        gSubGameMode1 = SUB_GAME_MODE_LOADING_ROOM;
     }
 }
 

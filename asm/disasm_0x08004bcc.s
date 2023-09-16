@@ -336,8 +336,8 @@ SetSuitPalette: @ 0x08004E24
 	adds r6, r4, r2
 	cmp r4, r6
 	bge _08004E60
-	ldr r2, _08004E48 @ =0x03004D28
-	ldr r1, _08004E4C @ =0x03004D90
+	ldr r2, _08004E48 @ =gSamusPalette
+	ldr r1, _08004E4C @ =gSaXPalette
 	lsls r0, r4, #1
 	adds r5, r0, r1
 	adds r1, r0, r2
@@ -349,8 +349,8 @@ _08004E3E:
 	strh r0, [r1]
 	b _08004E54
 	.align 2, 0
-_08004E48: .4byte 0x03004D28
-_08004E4C: .4byte 0x03004D90
+_08004E48: .4byte gSamusPalette
+_08004E4C: .4byte gSaXPalette
 _08004E50:
 	ldrh r0, [r3]
 	strh r0, [r5]
@@ -513,7 +513,7 @@ _08004F6E:
 	ldr r1, _08004FD4 @ =gPreviousXPosition
 	ldrh r0, [r4, #0x16]
 	strh r0, [r1]
-	ldr r1, _08004FD8 @ =0x03001344
+	ldr r1, _08004FD8 @ =gPreviousYPosition
 	ldrh r0, [r4, #0x18]
 	strh r0, [r1]
 	ldr r1, _08004FDC @ =0x0828FD00
@@ -553,7 +553,7 @@ _08004FA8:
 _08004FCC: .4byte gSubGameMode1
 _08004FD0: .4byte 0x03001340
 _08004FD4: .4byte gPreviousXPosition
-_08004FD8: .4byte 0x03001344
+_08004FD8: .4byte gPreviousYPosition
 _08004FDC: .4byte 0x0828FD00
 _08004FE0: .4byte 0x0828FD04
 _08004FE4: .4byte 0x0828FD18
@@ -618,7 +618,7 @@ _08005054:
 	movs r0, #0x40
 _0800505C:
 	strh r0, [r3, #6]
-	ldr r0, _0800506C @ =0x03001344
+	ldr r0, _0800506C @ =gPreviousYPosition
 	ldrh r1, [r6, #0x18]
 	ldrh r0, [r0]
 	cmp r1, r0
@@ -626,7 +626,7 @@ _0800505C:
 	movs r0, #0x80
 	b _08005076
 	.align 2, 0
-_0800506C: .4byte 0x03001344
+_0800506C: .4byte gPreviousYPosition
 _08005070:
 	cmp r1, r0
 	bhs _08005078
@@ -1108,7 +1108,7 @@ _08005420:
 	adds r7, r0, #0
 	movs r5, #0xff
 	ands r7, r5
-	ldr r6, _0800545C @ =0x03001344
+	ldr r6, _0800545C @ =gPreviousYPosition
 	ldrh r0, [r6]
 	ldrh r1, [r4, #0x16]
 	bl ClipdataUpdateCurrentAffecting
@@ -1128,7 +1128,7 @@ _08005420:
 	b _08005472
 	.align 2, 0
 _08005458: .4byte gSamusData
-_0800545C: .4byte 0x03001344
+_0800545C: .4byte gPreviousYPosition
 _08005460: .4byte 0x030012F0
 _08005464:
 	ldr r2, _080054A4 @ =0x030012F0
@@ -1161,7 +1161,7 @@ _08005488:
 	beq _08005498
 	b _080052B4
 _08005498:
-	ldr r0, _080054B0 @ =0x03001344
+	ldr r0, _080054B0 @ =gPreviousYPosition
 	ldrh r3, [r2, #0x18]
 	ldrh r2, [r0]
 	cmp r3, r2
@@ -1171,7 +1171,7 @@ _08005498:
 _080054A4: .4byte 0x030012F0
 _080054A8: .4byte gSamusData
 _080054AC: .4byte gEffectYPosition
-_080054B0: .4byte 0x03001344
+_080054B0: .4byte gPreviousYPosition
 _080054B4:
 	ldr r4, _080054EC @ =gSamusData
 	ldrh r0, [r4, #0x18]
@@ -1180,7 +1180,7 @@ _080054B4:
 	adds r7, r0, #0
 	movs r5, #0xff
 	ands r7, r5
-	ldr r6, _080054F0 @ =0x03001344
+	ldr r6, _080054F0 @ =gPreviousYPosition
 	ldrh r0, [r6]
 	ldrh r1, [r4, #0x16]
 	bl ClipdataUpdateCurrentAffecting
@@ -1200,7 +1200,7 @@ _080054B4:
 	b _08005506
 	.align 2, 0
 _080054EC: .4byte gSamusData
-_080054F0: .4byte 0x03001344
+_080054F0: .4byte gPreviousYPosition
 _080054F4: .4byte 0x030012F0
 _080054F8:
 	ldr r2, _0800553C @ =0x030012F0
@@ -1231,7 +1231,7 @@ _08005512:
 	beq _0800552A
 	b _080052B4
 _0800552A:
-	ldr r0, _08005548 @ =0x03001344
+	ldr r0, _08005548 @ =gPreviousYPosition
 	ldrh r3, [r2, #0x18]
 	ldrh r2, [r0]
 	cmp r3, r2
@@ -1244,7 +1244,7 @@ _08005534:
 _0800553C: .4byte 0x030012F0
 _08005540: .4byte gSamusData
 _08005544: .4byte gEffectYPosition
-_08005548: .4byte 0x03001344
+_08005548: .4byte gPreviousYPosition
 _0800554C: .4byte 0x0000FFC0
 _08005550:
 	ldr r0, _08005558 @ =0x0000FFC0
@@ -1393,7 +1393,7 @@ _08005604: @ jump table
 	.4byte _080056C8 @ case 48
 _080056C8:
 	ldr r0, _080056D8 @ =gSamusData
-	ldr r1, _080056DC @ =0x03001344
+	ldr r1, _080056DC @ =gPreviousYPosition
 	ldrh r0, [r0, #0x18]
 	ldrh r1, [r1]
 	cmp r0, r1
@@ -1402,7 +1402,7 @@ _080056C8:
 	b _080056E2
 	.align 2, 0
 _080056D8: .4byte gSamusData
-_080056DC: .4byte 0x03001344
+_080056DC: .4byte gPreviousYPosition
 _080056E0:
 	movs r0, #1
 _080056E2:
@@ -1411,7 +1411,7 @@ _080056E2:
 	b _08005710
 _080056EA:
 	ldr r0, _08005700 @ =gSamusData
-	ldr r1, _08005704 @ =0x03001344
+	ldr r1, _08005704 @ =gPreviousYPosition
 	ldrh r0, [r0, #0x18]
 	ldrh r1, [r1]
 	cmp r0, r1
@@ -1422,7 +1422,7 @@ _080056EA:
 	b _08005710
 	.align 2, 0
 _08005700: .4byte gSamusData
-_08005704: .4byte 0x03001344
+_08005704: .4byte gPreviousYPosition
 _08005708:
 	movs r0, #1
 	movs r1, #4
@@ -1851,7 +1851,7 @@ _08005A70: .4byte 0x0828FD20
 SamusAimCannonStanding: @ 0x08005A74
 	push {lr}
 	ldr r0, _08005A98 @ =gButtonInput
-	ldr r1, _08005A9C @ =0x03001450
+	ldr r1, _08005A9C @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1, #2]
 	ands r0, r2
@@ -1869,7 +1869,7 @@ SamusAimCannonStanding: @ 0x08005A74
 	b _08005ADC
 	.align 2, 0
 _08005A98: .4byte gButtonInput
-_08005A9C: .4byte 0x03001450
+_08005A9C: .4byte gButtonAssignments
 _08005AA0: .4byte gSamusData
 _08005AA4:
 	ldr r1, _08005AC0 @ =gSamusData
@@ -1911,7 +1911,7 @@ _08005ADC:
 SamusAimCannonMidAir: @ 0x08005AE0
 	push {lr}
 	ldr r0, _08005B04 @ =gButtonInput
-	ldr r1, _08005B08 @ =0x03001450
+	ldr r1, _08005B08 @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1, #2]
 	ands r0, r2
@@ -1929,7 +1929,7 @@ SamusAimCannonMidAir: @ 0x08005AE0
 	b _08005B8A
 	.align 2, 0
 _08005B04: .4byte gButtonInput
-_08005B08: .4byte 0x03001450
+_08005B08: .4byte gButtonAssignments
 _08005B0C: .4byte gSamusData
 _08005B10:
 	ldr r1, _08005B2C @ =gSamusData
@@ -2011,7 +2011,7 @@ _08005B90: .4byte gSamusData
 SamusAimCannonRunning: @ 0x08005B94
 	push {r4, lr}
 	ldr r0, _08005BBC @ =gButtonInput
-	ldr r1, _08005BC0 @ =0x03001450
+	ldr r1, _08005BC0 @ =gButtonAssignments
 	ldrh r3, [r0]
 	ldrh r1, [r1, #2]
 	ands r1, r3
@@ -2030,7 +2030,7 @@ SamusAimCannonRunning: @ 0x08005B94
 	b _08005BE2
 	.align 2, 0
 _08005BBC: .4byte gButtonInput
-_08005BC0: .4byte 0x03001450
+_08005BC0: .4byte gButtonAssignments
 _08005BC4: .4byte gSamusData
 _08005BC8:
 	ldr r0, _08005BE8 @ =gSamusData
@@ -2092,7 +2092,7 @@ _08005C22:
 SamusAimCannonHorizontalLadder: @ 0x08005C28
 	push {lr}
 	ldr r0, _08005C44 @ =gButtonInput
-	ldr r1, _08005C48 @ =0x03001450
+	ldr r1, _08005C48 @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1, #2]
 	ands r0, r2
@@ -2106,7 +2106,7 @@ SamusAimCannonHorizontalLadder: @ 0x08005C28
 	b _08005C7A
 	.align 2, 0
 _08005C44: .4byte gButtonInput
-_08005C48: .4byte 0x03001450
+_08005C48: .4byte gButtonAssignments
 _08005C4C: .4byte gSamusData
 _08005C50:
 	movs r0, #0x80
@@ -2583,7 +2583,7 @@ _08005FD0: @ jump table
 	.4byte _080060D8 @ case 51
 _080060A0:
 	ldr r0, _080060C8 @ =gButtonInput
-	ldr r1, _080060CC @ =0x03001450
+	ldr r1, _080060CC @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1]
 	ands r0, r2
@@ -2603,7 +2603,7 @@ _080060A0:
 	b _08006116
 	.align 2, 0
 _080060C8: .4byte gButtonInput
-_080060CC: .4byte 0x03001450
+_080060CC: .4byte gButtonAssignments
 _080060D0: .4byte 0x030012F0
 _080060D4: .4byte gEquipment
 _080060D8:
@@ -2616,7 +2616,7 @@ _080060D8:
 _080060E4: .4byte 0x030012F0
 _080060E8:
 	ldr r0, _08006134 @ =gButtonInput
-	ldr r1, _08006138 @ =0x03001450
+	ldr r1, _08006138 @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1]
 	ands r0, r2
@@ -2656,7 +2656,7 @@ _08006116:
 	b _08006146
 	.align 2, 0
 _08006134: .4byte gButtonInput
-_08006138: .4byte 0x03001450
+_08006138: .4byte gButtonAssignments
 _0800613C: .4byte 0x030012F0
 _08006140: .4byte gEquipment
 _08006144:
@@ -7126,7 +7126,7 @@ _08008286:
 	cmp r0, #0
 	bne _080082A8
 	ldr r7, _080082B0 @ =gButtonInput
-	ldr r0, _080082B4 @ =0x03001450
+	ldr r0, _080082B4 @ =gButtonAssignments
 	ldrh r1, [r7]
 	ldrh r0, [r0, #2]
 	ands r0, r1
@@ -7138,7 +7138,7 @@ _080082A8:
 	b _080083E8
 	.align 2, 0
 _080082B0: .4byte gButtonInput
-_080082B4: .4byte 0x03001450
+_080082B4: .4byte gButtonAssignments
 _080082B8:
 	adds r0, r4, #0
 	adds r0, #0x23
@@ -7488,7 +7488,7 @@ _08008544:
 	b _08008586
 _08008548:
 	ldr r0, _0800857C @ =gButtonInput
-	ldr r1, _08008580 @ =0x03001450
+	ldr r1, _08008580 @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1, #2]
 	ands r0, r2
@@ -7516,7 +7516,7 @@ _08008578:
 	b _08008586
 	.align 2, 0
 _0800857C: .4byte gButtonInput
-_08008580: .4byte 0x03001450
+_08008580: .4byte gButtonAssignments
 _08008584:
 	movs r0, #0xff
 _08008586:
@@ -7956,7 +7956,7 @@ _08008882:
 	cmp r0, #0
 	bne _080088CC
 	ldr r0, _080088C0 @ =gButtonInput
-	ldr r1, _080088C4 @ =0x03001450
+	ldr r1, _080088C4 @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1, #2]
 	ands r0, r2
@@ -7969,7 +7969,7 @@ _080088B4: .4byte 0x082D68EC
 _080088B8: .4byte gSamusData
 _080088BC: .4byte 0x03001330
 _080088C0: .4byte gButtonInput
-_080088C4: .4byte 0x03001450
+_080088C4: .4byte gButtonAssignments
 _080088C8:
 	movs r0, #0x2b
 	b _080088CE
@@ -8019,7 +8019,7 @@ _08008904:
 	.align 2, 0
 _08008918: .4byte gButtonInput
 _0800891C:
-	ldr r0, _08008940 @ =0x03001450
+	ldr r0, _08008940 @ =gButtonAssignments
 	ldrh r0, [r0, #2]
 	ands r0, r2
 	cmp r0, #0
@@ -8038,7 +8038,7 @@ _0800891C:
 	movs r0, #0x2b
 	b _08008946
 	.align 2, 0
-_08008940: .4byte 0x03001450
+_08008940: .4byte gButtonAssignments
 _08008944:
 	movs r0, #0xff
 _08008946:
@@ -9396,7 +9396,7 @@ _08009392:
 	cmp r0, #3
 	bne _080093A8
 _08009396:
-	ldr r1, _080093C8 @ =0x03001344
+	ldr r1, _080093C8 @ =gPreviousYPosition
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
@@ -9423,7 +9423,7 @@ _080093A8:
 	bl PlaySound
 	b _0800941A
 	.align 2, 0
-_080093C8: .4byte 0x03001344
+_080093C8: .4byte gPreviousYPosition
 _080093CC: .4byte 0x0000FFFC
 _080093D0: .4byte gSamusData
 _080093D4: .4byte 0x03001330
@@ -10275,7 +10275,7 @@ _08009B64:
 	cmp r0, #0
 	bne _08009B86
 	ldr r0, _08009B9C @ =gButtonInput
-	ldr r1, _08009BA0 @ =0x03001450
+	ldr r1, _08009BA0 @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1, #2]
 	ands r0, r2
@@ -10296,7 +10296,7 @@ _08009B98:
 	b _08009D6C
 	.align 2, 0
 _08009B9C: .4byte gButtonInput
-_08009BA0: .4byte 0x03001450
+_08009BA0: .4byte gButtonAssignments
 _08009BA4: .4byte gSamusDataCopy
 _08009BA8:
 	ldr r0, _08009BD8 @ =gSamusDataCopy
@@ -10414,7 +10414,7 @@ _08009C74:
 	b _08009D70
 _08009C7C:
 	ldr r0, _08009C9C @ =gButtonInput
-	ldr r1, _08009CA0 @ =0x03001450
+	ldr r1, _08009CA0 @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1, #2]
 	ands r0, r2
@@ -10431,7 +10431,7 @@ _08009C7C:
 	b _08009CA6
 	.align 2, 0
 _08009C9C: .4byte gButtonInput
-_08009CA0: .4byte 0x03001450
+_08009CA0: .4byte gButtonAssignments
 _08009CA4:
 	ldr r0, _08009CB0 @ =0x0000FF60
 _08009CA6:
@@ -11307,7 +11307,7 @@ _0800A410:
 	beq _0800A42E
 	movs r1, #0xfe
 	mov sb, r1
-	ldr r0, _0800A488 @ =0x03001344
+	ldr r0, _0800A488 @ =gPreviousYPosition
 	ldrh r0, [r0]
 	adds r0, #1
 	strh r0, [r5, #0x18]
@@ -11357,7 +11357,7 @@ _0800A464:
 	b _0800A4AC
 	.align 2, 0
 _0800A484: .4byte gPreviousXPosition
-_0800A488: .4byte 0x03001344
+_0800A488: .4byte gPreviousYPosition
 _0800A48C: .4byte 0x0000FFFF
 _0800A490: .4byte 0x0000FFC0
 _0800A494: .4byte 0x03001320
@@ -11789,7 +11789,7 @@ unk_a7b8: @ 0x0800A7B8
 	mov sb, r0
 	cmp r2, #0
 	bne _0800A82C
-	ldr r0, _0800A8F0 @ =0x03001344
+	ldr r0, _0800A8F0 @ =gPreviousYPosition
 	ldrh r0, [r0]
 	add r0, sl
 	lsls r0, r0, #0x10
@@ -11928,7 +11928,7 @@ _0800A8DE:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800A8F0: .4byte 0x03001344
+_0800A8F0: .4byte gPreviousYPosition
 _0800A8F4: .4byte gSamusData
 _0800A8F8: .4byte 0x0828FCF6
 
@@ -12917,7 +12917,7 @@ _0800B094: .4byte 0x03001320
 _0800B098: .4byte gSamusData
 _0800B09C: .4byte 0x0828FCCC
 _0800B0A0:
-	ldr r3, _0800B0D4 @ =0x03001344
+	ldr r3, _0800B0D4 @ =gPreviousYPosition
 	ldrh r0, [r3]
 	mov r4, sb
 	ldrh r4, [r4]
@@ -12942,7 +12942,7 @@ _0800B0A0:
 	strh r0, [r2, #0x18]
 	b _0800B120
 	.align 2, 0
-_0800B0D4: .4byte 0x03001344
+_0800B0D4: .4byte gPreviousYPosition
 _0800B0D8:
 	mov r3, sb
 	ldrh r0, [r3]
@@ -13040,7 +13040,7 @@ _0800B13C:
 _0800B188: .4byte gSamusData
 _0800B18C: .4byte 0x0828FCCC
 _0800B190:
-	ldr r1, _0800B1B8 @ =0x03001344
+	ldr r1, _0800B1B8 @ =gPreviousYPosition
 	ldrh r0, [r1]
 	ldrh r2, [r4]
 	cmp r0, r2
@@ -13060,7 +13060,7 @@ _0800B190:
 	ldrh r0, [r4]
 	b _0800B11E
 	.align 2, 0
-_0800B1B8: .4byte 0x03001344
+_0800B1B8: .4byte gPreviousYPosition
 _0800B1BC:
 	ldrh r0, [r4]
 	adds r0, #0x3f
@@ -13090,7 +13090,7 @@ _0800B1C6:
 	ldrh r0, [r5]
 	cmp r0, #0
 	beq _0800B210
-	ldr r0, _0800B20C @ =0x03001344
+	ldr r0, _0800B20C @ =gPreviousYPosition
 	mov r1, sb
 	ldrh r5, [r1]
 	ldrh r0, [r0]
@@ -13103,7 +13103,7 @@ _0800B202:
 	b _0800B120
 	.align 2, 0
 _0800B208: .4byte 0x0828FCCC
-_0800B20C: .4byte 0x03001344
+_0800B20C: .4byte gPreviousYPosition
 _0800B210:
 	movs r0, #0xff
 _0800B212:
@@ -13482,7 +13482,7 @@ _0800B4DE:
 	strh r1, [r3]
 	adds r2, #0x80
 	adds r0, r0, r2
-	ldr r1, _0800B544 @ =0x03001344
+	ldr r1, _0800B544 @ =gPreviousYPosition
 	ldrh r1, [r1]
 	strh r1, [r0]
 	adds r0, r5, #1
@@ -13522,7 +13522,7 @@ _0800B52E:
 _0800B538: .4byte 0x0300144C
 _0800B53C: .4byte 0x0300134C
 _0800B540: .4byte gPreviousXPosition
-_0800B544: .4byte 0x03001344
+_0800B544: .4byte gPreviousYPosition
 _0800B548: .4byte 0x0300144E
 _0800B54C: .4byte _0800B550
 _0800B550: @ jump table
@@ -13871,7 +13871,7 @@ _0800B872:
 	ldrb r0, [r0]
 	lsls r0, r0, #4
 	adds r6, r6, r0
-	ldr r1, _0800B8DC @ =0x0300129C
+	ldr r1, _0800B8DC @ =gSamusGraphicsInfo
 	ldr r0, [r6, #8]
 	str r0, [r1]
 	ldr r3, [r6]
@@ -13919,7 +13919,7 @@ _0800B8CA:
 	.align 2, 0
 _0800B8D4: .4byte 0x0828D2BC
 _0800B8D8: .4byte 0x0828D8DC
-_0800B8DC: .4byte 0x0300129C
+_0800B8DC: .4byte gSamusGraphicsInfo
 _0800B8E0: .4byte _0800B8E4
 _0800B8E4: @ jump table
 	.4byte _0800B98C @ case 0
@@ -14375,7 +14375,7 @@ _0800BCE0:
 	mov r1, r8
 	cmp r1, #0x3e
 	bne _0800BD60
-	ldr r1, _0800BD20 @ =0x03004D88
+	ldr r1, _0800BD20 @ =gSamusPaletteLength
 	movs r0, #0x40
 	strh r0, [r1]
 	ldr r4, _0800BD24 @ =0x0828DEDC
@@ -14402,7 +14402,7 @@ _0800BD06:
 	.align 2, 0
 _0800BD18: .4byte 0x0828F96C
 _0800BD1C: .4byte 0x0828F984
-_0800BD20: .4byte 0x03004D88
+_0800BD20: .4byte gSamusPaletteLength
 _0800BD24: .4byte 0x0828DEDC
 _0800BD28: .4byte 0x0828DEFC
 _0800BD2C: .4byte 0x030012D8
@@ -14444,21 +14444,21 @@ _0800BD60:
 	cmp r0, #1
 	bhi _0800BD8C
 _0800BD74:
-	ldr r1, _0800BD84 @ =0x03004D88
+	ldr r1, _0800BD84 @ =gSamusPaletteLength
 	movs r0, #0x40
 	strh r0, [r1]
 	ldr r4, _0800BD88 @ =0x0828DDFC
 	b _0800C0AE
 	.align 2, 0
 _0800BD80: .4byte gFrameCounter8Bit
-_0800BD84: .4byte 0x03004D88
+_0800BD84: .4byte gSamusPaletteLength
 _0800BD88: .4byte 0x0828DDFC
 _0800BD8C:
 	mov r1, sb
 	ldrb r0, [r1, #3]
 	cmp r0, #0
 	beq _0800BDB4
-	ldr r1, _0800BDAC @ =0x03004D88
+	ldr r1, _0800BDAC @ =gSamusPaletteLength
 	movs r0, #0x40
 	strh r0, [r1]
 	mov r2, sb
@@ -14470,7 +14470,7 @@ _0800BD8C:
 	ldr r0, _0800BDB0 @ =0x0828E13C
 	b _0800C0AC
 	.align 2, 0
-_0800BDAC: .4byte 0x03004D88
+_0800BDAC: .4byte gSamusPaletteLength
 _0800BDB0: .4byte 0x0828E13C
 _0800BDB4:
 	mov r3, sb
@@ -14527,7 +14527,7 @@ _0800BDDC: @ jump table
 	.4byte _0800BFC0 @ case 30
 	.4byte _0800BF54 @ case 31
 _0800BE5C:
-	ldr r1, _0800BE6C @ =0x03004D88
+	ldr r1, _0800BE6C @ =gSamusPaletteLength
 	movs r0, #0x40
 	strh r0, [r1]
 	ldr r4, _0800BE70 @ =0x0828E0FC
@@ -14536,10 +14536,10 @@ _0800BE5C:
 	movs r2, #0x20
 	b _0800C0C0
 	.align 2, 0
-_0800BE6C: .4byte 0x03004D88
+_0800BE6C: .4byte gSamusPaletteLength
 _0800BE70: .4byte 0x0828E0FC
 _0800BE74:
-	ldr r0, _0800BE94 @ =0x03004D88
+	ldr r0, _0800BE94 @ =gSamusPaletteLength
 	movs r1, #0x40
 	strh r1, [r0]
 	mov r0, ip
@@ -14556,7 +14556,7 @@ _0800BE74:
 	ldr r4, _0800BE9C @ =0x0828DDDC
 	b _0800BED4
 	.align 2, 0
-_0800BE94: .4byte 0x03004D88
+_0800BE94: .4byte gSamusPaletteLength
 _0800BE98: .4byte gEquipment
 _0800BE9C: .4byte 0x0828DDDC
 _0800BEA0:
@@ -14602,7 +14602,7 @@ _0800BED4:
 _0800BEE4: .4byte 0x0828DE3C
 _0800BEE8: .4byte 0x0828DE7C
 _0800BEEC:
-	ldr r1, _0800BF10 @ =0x03004D88
+	ldr r1, _0800BF10 @ =gSamusPaletteLength
 	movs r0, #0x20
 	strh r0, [r1]
 	mov r0, ip
@@ -14621,7 +14621,7 @@ _0800BEEC:
 	ldr r0, _0800BF18 @ =0x0828F87C
 	b _0800BF48
 	.align 2, 0
-_0800BF10: .4byte 0x03004D88
+_0800BF10: .4byte gSamusPaletteLength
 _0800BF14: .4byte gEquipment
 _0800BF18: .4byte 0x0828F87C
 _0800BF1C:
@@ -14655,7 +14655,7 @@ _0800BF48:
 	.align 2, 0
 _0800BF50: .4byte 0x0828F6FC
 _0800BF54:
-	ldr r1, _0800BF6C @ =0x03004D88
+	ldr r1, _0800BF6C @ =gSamusPaletteLength
 	movs r0, #0x40
 	strh r0, [r1]
 	ldr r0, _0800BF70 @ =gEquipment
@@ -14667,7 +14667,7 @@ _0800BF54:
 	ldr r1, _0800BF74 @ =0x0828EA8C
 	b _0800BF9A
 	.align 2, 0
-_0800BF6C: .4byte 0x03004D88
+_0800BF6C: .4byte gSamusPaletteLength
 _0800BF70: .4byte gEquipment
 _0800BF74: .4byte 0x0828EA8C
 _0800BF78:
@@ -14708,7 +14708,7 @@ _0800BF9A:
 _0800BFB8: .4byte 0x0828E93C
 _0800BFBC: .4byte 0x0828E61C
 _0800BFC0:
-	ldr r0, _0800BFE8 @ =0x03004D88
+	ldr r0, _0800BFE8 @ =gSamusPaletteLength
 	movs r1, #0x40
 	strh r1, [r0]
 	mov r1, ip
@@ -14730,7 +14730,7 @@ _0800BFD6:
 	ldr r4, _0800BFF8 @ =0x0828DE9C
 	b _0800C0AE
 	.align 2, 0
-_0800BFE8: .4byte 0x03004D88
+_0800BFE8: .4byte gSamusPaletteLength
 _0800BFEC: .4byte 0x030012D8
 _0800BFF0: .4byte gFrameCounter8Bit
 _0800BFF4: .4byte 0x0828DEBC
@@ -15205,7 +15205,7 @@ _0800C3B0:
 	ands r0, r3
 	cmp r0, #0
 	beq _0800C3E0
-	ldr r1, _0800C3D8 @ =0x0300129C
+	ldr r1, _0800C3D8 @ =gSamusGraphicsInfo
 	ldr r4, _0800C3DC @ =0xFFFFFF00
 	adds r0, r3, r4
 	strh r0, [r1, #0x24]
@@ -15213,10 +15213,10 @@ _0800C3B0:
 	b _0800C3E6
 	.align 2, 0
 _0800C3D4: .4byte 0x0828D8DC
-_0800C3D8: .4byte 0x0300129C
+_0800C3D8: .4byte gSamusGraphicsInfo
 _0800C3DC: .4byte 0xFFFFFF00
 _0800C3E0:
-	ldr r0, _0800C404 @ =0x0300129C
+	ldr r0, _0800C404 @ =gSamusGraphicsInfo
 	strh r3, [r0, #0x24]
 	adds r3, r0, #0
 _0800C3E6:
@@ -15235,7 +15235,7 @@ _0800C3E6:
 	strh r0, [r3, #0x22]
 	b _0800C40E
 	.align 2, 0
-_0800C404: .4byte 0x0300129C
+_0800C404: .4byte gSamusGraphicsInfo
 _0800C408: .4byte 0xFFFFFE00
 _0800C40C:
 	strh r1, [r3, #0x22]
@@ -15380,7 +15380,7 @@ _0800C4D6:
 	stm r1!, {r5, r6, r7}
 	ldm r0!, {r2, r3}
 	stm r1!, {r2, r3}
-	ldr r0, _0800C58C @ =0x0300129C
+	ldr r0, _0800C58C @ =gSamusGraphicsInfo
 	ldr r4, _0800C558 @ =0x0828D258
 	adds r1, r4, #0
 	movs r2, #0x3c
@@ -15429,7 +15429,7 @@ _0800C57C: .4byte gUnk_03000be3
 _0800C580: .4byte gEquipment
 _0800C584: .4byte 0x0828D2AC
 _0800C588: .4byte 0x0828D280
-_0800C58C: .4byte 0x0300129C
+_0800C58C: .4byte gSamusGraphicsInfo
 _0800C590: .4byte 0x030012D8
 
 	thumb_func_start DrawSamus
@@ -15659,14 +15659,14 @@ _0800C752:
 	lsrs r0, r0, #0x10
 	mov ip, r0
 _0800C756:
-	ldr r0, _0800C9B4 @ =0x0300129C
+	ldr r0, _0800C9B4 @ =gSamusGraphicsInfo
 	ldrh r1, [r0, #0x26]
 	movs r0, #0x80
 	lsls r0, r0, #6
 	ands r0, r1
 	cmp r0, #0
 	beq _0800C7D0
-	ldr r1, _0800C9B4 @ =0x0300129C
+	ldr r1, _0800C9B4 @ =gSamusGraphicsInfo
 	ldr r4, [r1, #0x28]
 	ldrh r0, [r4]
 	adds r4, #2
@@ -15722,7 +15722,7 @@ _0800C784:
 	cmp r6, r7
 	blo _0800C784
 _0800C7D0:
-	ldr r2, _0800C9B4 @ =0x0300129C
+	ldr r2, _0800C9B4 @ =gSamusGraphicsInfo
 	ldr r4, [r2]
 	ldrb r0, [r4]
 	adds r0, r7, r0
@@ -15778,7 +15778,7 @@ _0800C7F0:
 	cmp r6, r7
 	blo _0800C7F0
 _0800C83C:
-	ldr r2, _0800C9B4 @ =0x0300129C
+	ldr r2, _0800C9B4 @ =gSamusGraphicsInfo
 	ldrh r1, [r2, #0x26]
 	movs r0, #0x80
 	lsls r0, r0, #5
@@ -15864,7 +15864,7 @@ _0800C8B8:
 	cmp r0, #0
 	blt _0800C99A
 _0800C8E2:
-	ldr r2, _0800C9B4 @ =0x0300129C
+	ldr r2, _0800C9B4 @ =gSamusGraphicsInfo
 	ldr r4, [r2]
 	ldrb r0, [r4]
 	adds r0, r7, r0
@@ -15971,7 +15971,7 @@ _0800C99A:
 	bx r0
 	.align 2, 0
 _0800C9B0: .4byte 0xFFFE0000
-_0800C9B4: .4byte 0x0300129C
+_0800C9B4: .4byte gSamusGraphicsInfo
 _0800C9B8: .4byte gOamData
 _0800C9BC: .4byte 0x000001FF
 _0800C9C0: .4byte 0xFFFFFE00
@@ -18573,7 +18573,7 @@ _0800DDD8:
 	bl DemoMainLoop
 	bl IoWriteRegisters
 	ldr r0, _0800DE30 @ =gChangedInput
-	ldr r1, _0800DE34 @ =0x03001450
+	ldr r1, _0800DE34 @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1, #6]
 	ands r0, r2
@@ -18601,7 +18601,7 @@ _0800DE04:
 	ands r0, r1
 	cmp r0, #0
 	bne _0800DE20
-	ldr r1, _0800DE44 @ =0x03004D1C
+	ldr r1, _0800DE44 @ =gNotPressingUp
 	movs r0, #1
 	strb r0, [r1]
 _0800DE20:
@@ -18614,11 +18614,11 @@ _0800DE20:
 	b _0800DE54
 	.align 2, 0
 _0800DE30: .4byte gChangedInput
-_0800DE34: .4byte 0x03001450
+_0800DE34: .4byte gButtonAssignments
 _0800DE38: .4byte gSubGameMode1
 _0800DE3C: .4byte gPauseScreenFlag
 _0800DE40: .4byte gButtonInput
-_0800DE44: .4byte 0x03004D1C
+_0800DE44: .4byte gNotPressingUp
 _0800DE48: .4byte gPreventMovementTimer
 _0800DE4C:
 	bl SamusUpdatePhysics
@@ -18773,7 +18773,7 @@ TransferSamusAndSA_XGraphics: @ 0x0800DF94
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0800E074
-	ldr r3, _0800E0D8 @ =0x0300129C
+	ldr r3, _0800E0D8 @ =gSamusGraphicsInfo
 	ldrh r0, [r3, #8]
 	cmp r0, #0
 	beq _0800DFC0
@@ -18873,11 +18873,11 @@ _0800E056:
 	cmp r4, #0
 	beq _0800E074
 	ldr r2, _0800E0DC @ =0x040000D4
-	ldr r0, _0800E0F8 @ =0x03004D28
+	ldr r0, _0800E0F8 @ =gSamusPalette
 	str r0, [r2]
 	ldr r0, _0800E0FC @ =0x05000200
 	str r0, [r2, #4]
-	ldr r0, _0800E100 @ =0x03004D88
+	ldr r0, _0800E100 @ =gSamusPaletteLength
 	ldrh r0, [r0]
 	lsrs r0, r0, #1
 	movs r1, #0x80
@@ -18925,7 +18925,7 @@ _0800E0B8:
 	cmp r4, #0
 	beq _0800E0CC
 	ldr r1, _0800E0DC @ =0x040000D4
-	ldr r0, _0800E110 @ =0x03004D90
+	ldr r0, _0800E110 @ =gSaXPalette
 	str r0, [r1]
 	ldr r0, _0800E114 @ =0x05000300
 	str r0, [r1, #4]
@@ -18938,7 +18938,7 @@ _0800E0CC:
 	bx r0
 	.align 2, 0
 _0800E0D4: .4byte gDisableDrawingSamusAndScrollingFlag
-_0800E0D8: .4byte 0x0300129C
+_0800E0D8: .4byte gSamusGraphicsInfo
 _0800E0DC: .4byte 0x040000D4
 _0800E0E0: .4byte 0x06010000
 _0800E0E4: .4byte 0x06010400
@@ -18946,13 +18946,13 @@ _0800E0E8: .4byte 0x06010280
 _0800E0EC: .4byte 0x06010680
 _0800E0F0: .4byte 0x06010800
 _0800E0F4: .4byte 0x06010C00
-_0800E0F8: .4byte 0x03004D28
+_0800E0F8: .4byte gSamusPalette
 _0800E0FC: .4byte 0x05000200
-_0800E100: .4byte 0x03004D88
+_0800E100: .4byte gSamusPaletteLength
 _0800E104: .4byte gSaXData
 _0800E108: .4byte 0x06014000
 _0800E10C: .4byte 0x06014400
-_0800E110: .4byte 0x03004D90
+_0800E110: .4byte gSaXPalette
 _0800E114: .4byte 0x05000300
 _0800E118: .4byte 0x80000010
 
@@ -19075,7 +19075,7 @@ _0800E1D2:
 	ldrh r0, [r2, #0xa]
 	strh r0, [r1]
 	ldr r3, _0800E264 @ =0x0400001C
-	ldr r1, _0800E268 @ =0x03000019
+	ldr r1, _0800E268 @ =gWhichBgPositionIsWrittenToBg3Ofs
 	ldrb r0, [r1]
 	lsls r0, r0, #2
 	adds r0, r0, r2
@@ -19109,7 +19109,7 @@ _0800E258: .4byte 0x04000054
 _0800E25C: .4byte gWrittenToBldy
 _0800E260: .4byte gBackgroundPositions
 _0800E264: .4byte 0x0400001C
-_0800E268: .4byte 0x03000019
+_0800E268: .4byte gWhichBgPositionIsWrittenToBg3Ofs
 
 	thumb_func_start unk_e26c
 unk_e26c: @ 0x0800E26C
@@ -19145,7 +19145,7 @@ unk_e26c: @ 0x0800E26C
 	ldrh r0, [r2, #0xa]
 	strh r0, [r1]
 	ldr r3, _0800E2E0 @ =0x0400001C
-	ldr r1, _0800E2E4 @ =0x03000019
+	ldr r1, _0800E2E4 @ =gWhichBgPositionIsWrittenToBg3Ofs
 	ldrb r0, [r1]
 	lsls r0, r0, #2
 	adds r0, r0, r2
@@ -19166,7 +19166,7 @@ _0800E2D4: .4byte 0x84000100
 _0800E2D8: .4byte 0x04000010
 _0800E2DC: .4byte gBackgroundPositions
 _0800E2E0: .4byte 0x0400001C
-_0800E2E4: .4byte 0x03000019
+_0800E2E4: .4byte gWhichBgPositionIsWrittenToBg3Ofs
 
 	thumb_func_start VBlankCodeInGame
 VBlankCodeInGame: @ 0x0800E2E8
@@ -19465,11 +19465,11 @@ _0800E528:
 _0800E554:
 	bl CallSamusUpdateGraphics
 	ldr r2, _0800E638 @ =0x040000D4
-	ldr r0, _0800E654 @ =0x03004D28
+	ldr r0, _0800E654 @ =gSamusPalette
 	str r0, [r2]
 	ldr r0, _0800E658 @ =0x05000200
 	str r0, [r2, #4]
-	ldr r0, _0800E65C @ =0x03004D88
+	ldr r0, _0800E65C @ =gSamusPaletteLength
 	ldrh r0, [r0]
 	lsrs r0, r0, #1
 	movs r1, #0x80
@@ -19571,9 +19571,9 @@ _0800E644: .4byte 0x80000060
 _0800E648: .4byte 0x04000006
 _0800E64C: .4byte gPauseScreenFlag
 _0800E650: .4byte gUnk_03000be3
-_0800E654: .4byte 0x03004D28
+_0800E654: .4byte gSamusPalette
 _0800E658: .4byte 0x05000200
-_0800E65C: .4byte 0x03004D88
+_0800E65C: .4byte gSamusPaletteLength
 _0800E660: .4byte 0x02020000
 _0800E664: .4byte 0x06014000
 _0800E668: .4byte 0x02035700
@@ -19593,7 +19593,7 @@ unk_e684: @ 0x0800E684
 	ldr r6, _0800E744 @ =gSamusData
 	ldrh r0, [r6, #0x16]
 	strh r0, [r1]
-	ldr r1, _0800E748 @ =0x03001344
+	ldr r1, _0800E748 @ =gPreviousYPosition
 	ldrh r0, [r6, #0x18]
 	strh r0, [r1]
 	ldr r2, _0800E74C @ =gChangedInput
@@ -19606,7 +19606,7 @@ unk_e684: @ 0x0800E684
 	ldr r0, _0800E750 @ =gSubGameMode1
 	movs r1, #2
 	strh r1, [r0]
-	ldr r0, _0800E754 @ =0x03000064
+	ldr r0, _0800E754 @ =gUnk_03000064
 	strb r7, [r0]
 _0800E6B0:
 	ldrh r1, [r2]
@@ -19614,7 +19614,7 @@ _0800E6B0:
 	ands r0, r1
 	cmp r0, #0
 	beq _0800E6C4
-	ldr r0, _0800E754 @ =0x03000064
+	ldr r0, _0800E754 @ =gUnk_03000064
 	ldrb r1, [r0]
 	movs r2, #1
 	eors r1, r2
@@ -19674,7 +19674,7 @@ _0800E714:
 	movs r0, #0
 	strh r0, [r4, #0x18]
 _0800E722:
-	ldr r0, _0800E760 @ =0x03000084
+	ldr r0, _0800E760 @ =gBackgroundsData
 	ldrh r1, [r0, #0xc]
 	lsls r3, r1, #6
 	lsls r1, r5, #0x10
@@ -19691,13 +19691,13 @@ _0800E722:
 	.align 2, 0
 _0800E740: .4byte gPreviousXPosition
 _0800E744: .4byte gSamusData
-_0800E748: .4byte 0x03001344
+_0800E748: .4byte gPreviousYPosition
 _0800E74C: .4byte gChangedInput
 _0800E750: .4byte gSubGameMode1
-_0800E754: .4byte 0x03000064
+_0800E754: .4byte gUnk_03000064
 _0800E758: .4byte gButtonInput
 _0800E75C: .4byte 0x0000FFF4
-_0800E760: .4byte 0x03000084
+_0800E760: .4byte gBackgroundsData
 _0800E764:
 	adds r0, r0, r5
 	b _0800E776

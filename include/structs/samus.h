@@ -54,11 +54,44 @@ struct Equipment {
     u8 lowHealth;
 };
 
+struct SamusGraphicsInfo {
+    const u16* pSamusOamFrame;
+
+    const u8* pBodyTopHalfGfx;
+    u16 bodyTopHalfGfxLength;
+
+    const u8* pBodyBottomHalfGfx;
+    u16 bodyBottomHalfGfxLength;
+
+    const u8* pLegsTopHalfGfx;
+    u16 legsTopHalfGfxLength;
+
+    const u8* pLegsBottomHalfGfx;
+    u16 legsBottomHalfGfxLength;
+
+    u16 armCannonXOffset;
+    u16 armCannonYOffset;
+    u16 unk_26;
+
+    const u16* pArmCannonOamFrame;
+
+    const u8* pArmCannonTopHalfGfx;
+    u16 armCannonTopHalfGfxLength;
+
+    const u8* pArmCannonBottomHalfGfx;
+    u16 armCannonBottomHalfGfxLength;
+};
+
 extern struct SamusData gSamusData;
 extern struct SamusData gSamusDataCopy;
 extern struct Equipment gEquipment;
+extern struct SamusGraphicsInfo gSamusGraphicsInfo;
+
+extern u16 gSamusPalette[3 * 16];
+extern u16 gSamusPaletteLength;
 
 extern u16 gPreviousXPosition;
+extern u16 gPreviousYPosition;
 extern u16 gPoseLock;
 extern u16 gPreventMovementTimer;
 extern u8 gDisableDrawingSamusAndScrollingFlag;
