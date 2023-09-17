@@ -38,6 +38,7 @@ extern u8 gDisplayLocationName;
 
 extern u8 gSamusOnTopOfBackgrounds;
 
+extern u16 gWrittenToBldcnt;
 extern u16 gWrittenToBldy;
 extern u8 gDisableScrolling;
 
@@ -63,6 +64,18 @@ struct BackgroundsData {
 };
 
 extern struct BackgroundsData gBackgroundsData;
+
+struct Haze {
+    void* pAffected;
+    u16 unk_4;
+    u8 size;
+    u8 enabled:7;
+    u8 active:1;
+};
+
+extern struct Haze gHazeInfo;
+
+extern u16 gBackdropColor;
 
 enum Area {
     AREA_MAIN_DECK,
@@ -112,7 +125,8 @@ extern struct ButtonAssignments gButtonAssignments;
 
 extern u8 gWhichBgPositionIsWrittenToBg3Ofs;
 
-extern u16 gWrittenToMosaic;
+extern u16 gWrittenToMosaic_H;
+extern u16 gWrittenToMosaic_L;
 extern u8 gCurrentClipdataAffectingAction;
 
 #define GAME_MODE_TITLE 0

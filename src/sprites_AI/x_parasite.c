@@ -297,7 +297,7 @@ void XParasiteCoreXOrStabilizerForming(void)
 
     if (gCurrentSprite.xParasiteTimer != 0)
     {
-        gWrittenToMosaic = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
+        gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
     }
     else
     {
@@ -388,7 +388,7 @@ void XParasiteAquaZebesianWaitingToMove(void)
     {
         if (--gCurrentSprite.xParasiteTimer != 0)
         {
-            gWrittenToMosaic = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
+            gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
 
             if (gCurrentSprite.xParasiteTimer > 22)
             {

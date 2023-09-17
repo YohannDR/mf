@@ -49,7 +49,7 @@ void SaXOmegaForming(void)
 
     if (gCurrentSprite.work1 != 0)
     {
-        gWrittenToMosaic = sXParasiteMosaicValues[gCurrentSprite.work1];
+        gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
         return;
     }
 
@@ -322,7 +322,7 @@ void SaXOmegaRevertingToXInit(void)
  */
 void SaXOmegaRevertingToX(void)
 {
-    gWrittenToMosaic = sXParasiteMosaicValues[gCurrentSprite.work1];
+    gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
     gCurrentSprite.work1--;
 
     if (gCurrentSprite.work1 == 0)

@@ -121,7 +121,7 @@ u32 InGameSubroutine(void)
     else if (gSubGameMode1 != 0)
     {
         UpdateAnimatedGraphicsAndPalette();
-        UpdateSprites();
+        SpriteUpdate();
 
         if (!gDisableDrawingSamusAndScrollingFlag)
         {
@@ -245,9 +245,62 @@ void TransferSamusGraphics(s32 updatePalette)
     }
 }
 
+/**
+ * @brief e11c | 150 | V-blank code during in game loads
+ * 
+ */
 void VBlankCodeInGameLoad(void)
 {
+    vu8 buffer;
 
+    DMA_SET(3, gOamData, OAM_BASE, C_32_2_16(DMA_ENABLE | DMA_32BIT, OAM_SIZE / 4));
+
+    if (gHazeInfo.active)
+    {
+        DMA_SET(0, EWRAM_BASE + 0x24000, gHazeInfo.pAffected, C_32_2_16(DMA_ENABLE | DMA_DEST_RELOAD, gHazeInfo.size / 2));
+        
+        buffer = 0;
+        buffer = 0;
+        buffer = 0;
+        buffer = 0;
+        
+        DMA_SET(0, EWRAM_BASE + 0x24000, gHazeInfo.pAffected, C_32_2_16(DMA_DEST_RELOAD, gHazeInfo.size / 2));
+
+        buffer = 0;
+        
+        if (!(gVBlankRequestFlag & 1))
+        {
+            buffer = 0;
+            DMA_SET(3, EWRAM_BASE + 0x24A00, EWRAM_BASE + 0x24000, C_32_2_16(DMA_ENABLE, gHazeInfo.unk_4 / 2));
+            SET_BACKDROP_COLOR(gBackdropColor);
+        }
+
+        buffer = 0;
+        DMA_SET(0, EWRAM_BASE + 0x24000, gHazeInfo.pAffected,
+            C_32_2_16(DMA_ENABLE | DMA_START_HBLANK | DMA_REPEAT | DMA_DEST_RELOAD, gHazeInfo.size / 2));
+    }
+
+    TransferSamusGraphics(FALSE);
+
+    if (gWrittenToBldcnt != 0)
+    {
+        write16(REG_BLDCNT, gWrittenToBldcnt);
+        gWrittenToBldcnt = 0;
+    }
+
+    write16(REG_BLDY, gWrittenToBldy);
+
+    write16(REG_BG0HOFS, gBackgroundPositions.bg[0].x);
+    write16(REG_BG0VOFS, gBackgroundPositions.bg[0].y);
+
+    write16(REG_BG1HOFS, gBackgroundPositions.bg[1].x);
+    write16(REG_BG1VOFS, gBackgroundPositions.bg[1].y);
+
+    write16(REG_BG2HOFS, gBackgroundPositions.bg[2].x);
+    write16(REG_BG2VOFS, gBackgroundPositions.bg[2].y);
+
+    write16(REG_BG3HOFS, gBackgroundPositions.bg[gWhichBgPositionIsWrittenToBg3Ofs].x);
+    write16(REG_BG3VOFS, gBackgroundPositions.bg[gWhichBgPositionIsWrittenToBg3Ofs].y);
 }
 
 /**
@@ -273,9 +326,56 @@ void unk_e26c(void)
     write16(REG_BG3VOFS, gBackgroundPositions.bg[gWhichBgPositionIsWrittenToBg3Ofs].y);
 }
 
+/**
+ * @brief e2e8 | 12c | V-blank code during in game
+ * 
+ */
 void VBlankCodeInGame(void)
 {
+    vu8 buffer;
 
+    DMA_SET(3, gOamData, OAM_BASE, (DMA_ENABLE | DMA_32BIT) << 16 | OAM_SIZE / sizeof(u32));
+
+    if (gHazeInfo.active)
+    {
+        DMA_SET(0, EWRAM_BASE + 0x24000, gHazeInfo.pAffected, C_32_2_16(DMA_ENABLE | DMA_DEST_RELOAD, gHazeInfo.size / 2));
+        
+        buffer = 0;
+        buffer = 0;
+        buffer = 0;
+        buffer = 0;
+        
+        DMA_SET(0, EWRAM_BASE + 0x24000, gHazeInfo.pAffected, C_32_2_16(DMA_DEST_RELOAD, gHazeInfo.size / 2));
+
+        buffer = 0;
+        
+        if (!(gVBlankRequestFlag & 1))
+        {
+            buffer = 0;
+            DMA_SET(3, EWRAM_BASE + 0x24A00, EWRAM_BASE + 0x24000, C_32_2_16(DMA_ENABLE, gHazeInfo.unk_4 / 2));
+            SET_BACKDROP_COLOR(gBackdropColor);
+        }
+
+        buffer = 0;
+        DMA_SET(0, EWRAM_BASE + 0x24000, gHazeInfo.pAffected,
+            C_32_2_16(DMA_ENABLE | DMA_START_HBLANK | DMA_REPEAT | DMA_DEST_RELOAD, gHazeInfo.size / 2));
+    }
+
+    TransferSamusGraphics(TRUE);
+
+    write16(REG_MOSAIC, gWrittenToMosaic_H << 4 | gWrittenToMosaic_L);
+
+    write16(REG_BG0HOFS, gBackgroundPositions.bg[0].x);
+    write16(REG_BG0VOFS, gBackgroundPositions.bg[0].y);
+
+    write16(REG_BG1HOFS, gBackgroundPositions.bg[1].x);
+    write16(REG_BG1VOFS, gBackgroundPositions.bg[1].y);
+
+    write16(REG_BG2HOFS, gBackgroundPositions.bg[2].x);
+    write16(REG_BG2VOFS, gBackgroundPositions.bg[2].y);
+
+    write16(REG_BG3HOFS, gBackgroundPositions.bg[3].x);
+    write16(REG_BG3VOFS, gBackgroundPositions.bg[3].y);
 }
 
 /**
@@ -379,12 +479,12 @@ void InitAndLoadGenerics(void)
     }
 
     CheckResetHudAndParticles();
-    LoadSpriteData();
+    SpriteLoadAllData();
     ProjectileCallLoadGraphicsAndClearProjectiles();
 
     if (gPauseScreenFlag != 0)
     {
-        DmaSet(3, EWRAM_BASE + 0x20000, VRAM_OBJ + 0x4000, 0x4000, 16);
+        DmaTransfer(3, EWRAM_BASE + 0x20000, VRAM_OBJ + 0x4000, 0x4000, 16);
 
         DMA_SET(3, EWRAM_BASE + 0x35700, PALRAM_OBJ + 0x100, C_32_2_16(DMA_ENABLE, 16 * 8));
     }
@@ -395,7 +495,7 @@ void InitAndLoadGenerics(void)
 
     if (gUnk_03000be3 == 0)
     {
-        UpdateSprites();
+        SpriteUpdate();
         gUnk_03000be3 = 1;
         gPreventMovementTimer = 0;
     }

@@ -12,6 +12,8 @@ SECTIONS {
     iwram (NOLOAD) : ALIGN(4) {
         . = 0x00000000; gDebugFlag = .;
         . = 0x00000002; gFrameCounter16Bit = .;
+        . = 0x00000006; gWrittenToBldcnt = .;
+        . = 0x0000000e; gBackdropColor = .;
         . = 0x00000019; gWhichBgPositionIsWrittenToBg3Ofs = .;
         . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
         . = 0x00000020; gRebootGame = .;
@@ -24,6 +26,7 @@ SECTIONS {
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000053; gCurrentClipdataAffectingAction = .;
         . = 0x00000064; gUnk_03000064 = .;
+        . = 0x00000068; gHazeInfo = .;
         . = 0x00000070; gIoRegisters = .;
         . = 0x00000084; gBackgroundsData = .;
         . = 0x000000a4; gCurrentRoomEntry = .;
@@ -80,7 +83,8 @@ SECTIONS {
         . = 0x000011ec; gChangedInput = .;
         . = 0x000011ee; gNextOamSlot = .;
         . = 0x000011f6; gSaXElevatorBgCnt = .;
-        . = 0x0000120c; gWrittenToMosaic = .;
+        . = 0x0000120c; gWrittenToMosaic_H = .;
+        . = 0x0000120e; gWrittenToMosaic_L = .;
         . = 0x0000121e; gWrittenToBldy = .;
         . = 0x00001228; gBg1XPosition = .;
         . = 0x0000122A; gBg1YPosition = .;
@@ -129,13 +133,18 @@ SECTIONS {
         asm/disasm_0x08000c28.o(.text);
         asm/syscalls.o(.text);
         asm/disasm_0x08004bcc.o(.text);
+
+        src/in_game.o(.text);
         src/sprite.o(.text);
+
         asm/disasm_0x0800fd90.o(.text);
+
         src/sprite_debris.o(.text);
         src/location_text.o(.text);
         src/sprites_AI/target.o(.text);
         src/sprites_AI/unused_sprites.o(.text);
         src/sprites_AI/bubbles.o(.text);
+
         asm/disasm_0x0801503C.o(.text);
 
         asm/libgcc.o(.text);

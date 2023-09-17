@@ -1171,7 +1171,7 @@ void SaXBossUpdateMosaic(void)
 
     if (gSaXData.pose == SA_X_POSE_MID_AIR)
     {
-        gWrittenToMosaic = 0;
+        gWrittenToMosaic_H = 0;
         return;
     }
 
@@ -1188,7 +1188,7 @@ void SaXBossUpdateMosaic(void)
         gBossWork2 = 0;
     }
 
-    gWrittenToMosaic = sSaXMosaicValues[gBossWork2];
+    gWrittenToMosaic_H = sSaXMosaicValues[gBossWork2];
 }
 
 /**
