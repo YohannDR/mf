@@ -659,7 +659,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
 
                             section = SUB_PIXEL_TO_PIXEL(samusX) - SUB_PIXEL_TO_PIXEL(gBg1XPosition);
 
-                            if (CheckAfterEventIceBeamRecovered())
+                            if (EventCheckAfter_IceBeamRecovered())
                             {
                                 if (section > 0x50)
                                     gSamusData.xVelocity = -0x64;
@@ -691,7 +691,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
 
                         if (gEquipment.currentEnergy != 0)
                         {
-                            if (CheckAfterEventIceBeamRecovered())
+                            if (EventCheckAfter_IceBeamRecovered())
                                 gSamusData.xVelocity = -0x46;
                             else
                                 gSamusData.xVelocity = -0x78;

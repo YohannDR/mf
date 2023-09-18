@@ -272,23 +272,23 @@ u32 EventCheckOn_HighJumpRecovered(void)
 }
 
 /**
- * @brief 60d20 | 18 | Checks if the current event is after (including) the high jump recovered
+ * @brief 60d20 | 18 | Checks if the current event is after (including) the escaped the SA-X TRO (1)
  * 
  * @return u32 bool, after or on event
  */
-u32 EventCheckAfter_HighJumpRecovered(void)
+u32 EventCheckAfter_EscapedSaXTro1(void)
 {
-    return gEventCounter >= EVENT_HIGH_JUMP_ABILITY_RECOVERED;
+    return gEventCounter >= EVENT_ESCAPED_TRO_1_SA_X;
 }
 
 /**
- * @brief 60d38 | 18 | Checks if the current event is after (including) the box rumble
+ * @brief 60d38 | 18 | Checks if the current event is after (including) the box defeated
  * 
  * @return u32 bool, after or on event
  */
-u32 EventCheckAfter_BoxRumble(void)
+u32 EventCheckAfter_BoxDefeated(void)
 {
-    return gEventCounter >= EVENT_TRIGGERED_BOX_RUMBLE;
+    return gEventCounter >= EVENT_BOX_DEFEATED;
 }
 
 /**
@@ -329,7 +329,6 @@ u32 EventCheckOn_EnteredSuperMissileDataRoom(void)
 u32 EventCheckAfter_WaterLowered(void)
 {
     return gEventCounter >= EVENT_WATER_LEVEL_LOWERED;
-
 }
 
 /**
@@ -340,22 +339,84 @@ u32 EventCheckAfter_WaterLowered(void)
 u32 EventCheckOn_NavigationRoomBeforeQuarantineBay(void)
 {
     return gEventCounter == EVENT_NAVIGATION_ROOM_BEFORE_QUARANTINE_BAY;
-
 }
 
+/**
+ * @brief 60dc8 | 30 | Checks if the current event needs to have the save stations disabled
+ * 
+ * @return u32 bool, disabled
+ */
 u32 EventCheckWith_SaveDisabled(void)
 {
+    u32 onEvent;
 
+    onEvent = FALSE;
+
+    if (gEventCounter == EVENT_NAVIGATION_ROOM_LEAVING_ARC || gEventCounter == EVENT_WIDE_BEAM_ABILITY_RECOVERED)
+    {
+        // Cooling unit meltdown
+        onEvent = TRUE;
+    }
+    else if (gEventCounter == EVENT_POWER_OUTAGE || gEventCounter == EVENT_ENTERED_SHIP ||
+        gEventCounter == EVENT_ENTERED_YAKUZA_ROOM || gEventCounter == EVENT_SPACE_JUMP_ABILITY_RECOVERED)
+    {
+        // All of power outage
+        onEvent = TRUE;
+    }
+    else if (gEventCounter >= EVENT_ORBIT_CHANGE_IMPLEMENTED)
+    {
+        // After orbit change
+        onEvent = TRUE;
+    }
+
+    return onEvent;
 }
 
+/**
+ * @brief 60df8 | 24 | Checks if the current event needs to have the navigation rooms disabled
+ * 
+ * @return u32 bool, disabled
+ */
 u32 EventCheckWith_NavigationDisabled(void)
 {
+    u32 onEvent;
 
+    onEvent = FALSE;
+
+    if (gEventCounter == EVENT_POWER_OUTAGE || gEventCounter == EVENT_ENTERED_SHIP ||
+        gEventCounter == EVENT_ENTERED_YAKUZA_ROOM || gEventCounter == EVENT_SPACE_JUMP_ABILITY_RECOVERED)
+    {
+        // All of power outage
+        onEvent = TRUE;
+    }
+    else if (gEventCounter >= EVENT_ORBIT_CHANGE_IMPLEMENTED)
+    {
+        // After orbit change
+        onEvent = TRUE;
+    }
+
+    return onEvent;
 }
 
+/**
+ * @brief 60e1c | 20 | Checks if the current event needs to have the recharge stations disabled
+ * 
+ * @return u32 bool, disabled
+ */
 u32 EventCheckWith_RechargeDisabled(void)
 {
+    u32 onEvent;
 
+    onEvent = FALSE;
+
+    if (gEventCounter == EVENT_POWER_OUTAGE || gEventCounter == EVENT_ENTERED_SHIP ||
+        gEventCounter == EVENT_ENTERED_YAKUZA_ROOM || gEventCounter == EVENT_SPACE_JUMP_ABILITY_RECOVERED)
+    {
+        // All of power outage
+        onEvent = TRUE;
+    }
+
+    return onEvent;
 }
 
 /**
@@ -368,9 +429,23 @@ u32 EventCheckOn_EnteredPumpControlUnit(void)
     return gEventCounter == EVENT_ENTERED_PUMP_CONTROL_UNIT;
 }
 
+/**
+ * @brief 60e54 | 20 | Checks the current state of the cooling meltdown event
+ * 
+ * @return u32 meltdown state
+ */
 u32 EventCheckOn_Meltdown(void)
 {
+    u32 state;
 
+    state = MELTDOWN_NONE;
+
+    if (gEventCounter == EVENT_NAVIGATION_ROOM_LEAVING_ARC)
+        state = MELTDOWN_DURING;
+    else if (gEventCounter == EVENT_WIDE_BEAM_ABILITY_RECOVERED)
+        state = MELTDOWN_CAN_BE_STOPPED;
+
+    return state;
 }
 
 /**
@@ -414,21 +489,66 @@ u32 EventCheckOn_SaXDefeated(void)
 }
 
 /**
- * @brief 60ed4 | 18 | Checks if the current event is after (including) the SA-X defeated
+ * @brief 60ed4 | 18 | Checks if the current event is after (including) the orbit change implemented
  * 
  * @return u32 bool, after or on event
  */
-u32 EventCheckAfter_SaXDefeated(void)
+u32 EventCheckAfter_OrbitChange(void)
 {
-    return gEventCounter >= EVENT_SA_X_DEFEATED;
+    return gEventCounter >= EVENT_ORBIT_CHANGE_IMPLEMENTED;
 }
 
+/**
+ * @brief 60eec | f8 | Checks the current escape
+ * 
+ * @return u32 escape type
+ */
 u32 EventCheckOn_Escape(void)
 {
+    u32 escape;
 
+    escape = ESCAPE_NONE;
+
+    switch (gEventCounter)
+    {
+        case EVENT_NAVIGATION_ROOM_LEAVING_ARC:
+        case EVENT_WIDE_BEAM_ABILITY_RECOVERED:
+            escape = ESCAPE_MELTDOWN;
+            break;
+
+        case EVENT_60_SECONDS_TO_DETACHMENT:
+            escape = ESCAPE_RESTRICTED_LAB;
+            break;
+
+        case EVENT_ORBIT_CHANGE_IMPLEMENTED:
+        case EVENT_SKIPPED_BY_NOT_TALKING_TO_COMPUTER_7:
+        case EVENT_ENTERED_SHIP_ROOM:
+        case EVENT_SA_X_KILLED_BY_OMEGA_METROID:
+        case EVENT_ICE_BEAM_ABILITY_RECOVERED:
+        case EVENT_OMEGA_METROID_DEFEATED:
+            escape = ESCAPE_ORBIT_CHANGE;
+    }
+
+    return escape;
 }
 
+/**
+ * @brief 60fe4 | 20 | Checks if the escape has ended
+ * 
+ * @return u32 bool, ended
+ */
 u32 EventCheckOn_EndEscape(void)
 {
+    u32 ended;
 
+    ended = FALSE;
+
+    if (gEventCounter == EVENT_COOLING_UNIT_OPERATIONAL)
+        ended = TRUE;
+    else if (gEventCounter == EVENT_ESCAPED_RESTRICTED_LABORATORY)
+        ended = TRUE;
+    else if (gEventCounter == EVENT_ESCAPED_ON_SHIP)
+        ended = TRUE;
+
+    return ended;
 }

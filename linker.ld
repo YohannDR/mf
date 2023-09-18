@@ -149,6 +149,10 @@ SECTIONS {
 
         asm/disasm_0x0801503C.o(.text);
 
+        src/event_checks.o(.text);
+
+        asm/disasm_0x08061004.o(.text);
+
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);
         src/libgcc/fp-bit-base.o(.text);

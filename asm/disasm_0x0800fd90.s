@@ -1453,7 +1453,7 @@ _0801091C:
 	lsls r1, r1, #0x10
 	lsrs r4, r1, #0x10
 	adds r5, r4, #0
-	bl CheckAfterEventIceBeamRecovered
+	bl EventCheckAfter_IceBeamRecovered
 	cmp r0, #0
 	beq _0801097C
 	cmp r4, #0x50
@@ -1526,7 +1526,7 @@ _080109B4:
 	ldrh r0, [r5]
 	cmp r0, #0
 	beq _08010A04
-	bl CheckAfterEventIceBeamRecovered
+	bl EventCheckAfter_IceBeamRecovered
 	cmp r0, #0
 	beq _08010A00
 	ldr r0, _080109FC @ =0x0000FFBA
