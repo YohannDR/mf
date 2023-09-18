@@ -26,6 +26,7 @@ SECTIONS {
         . = 0x00000046; gDoorUnlockTimer = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000053; gCurrentClipdataAffectingAction = .;
+        . = 0x00000060; gSubEventCounter = .;
         . = 0x00000064; gUnk_03000064 = .;
         . = 0x00000068; gHazeInfo = .;
         . = 0x00000070; gIoRegisters = .;

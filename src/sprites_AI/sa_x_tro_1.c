@@ -78,7 +78,7 @@ void SaXTro1Init(void)
 
     SaXInit();
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
-    UpdateSubEventCounterForSA_XEncounter();
+    SubEventUpdateForSaXEncounter();
 }
 
 /**

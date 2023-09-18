@@ -503,7 +503,7 @@ void SaXArcOpeningDoor(void)
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
     gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
 
-    UpdateSubEventCounterForSA_XEncounter();
+    SubEventUpdateForSaXEncounter();
 }
 
 /**

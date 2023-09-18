@@ -6294,7 +6294,7 @@ _08018020:
 	adds r0, #0x25
 	movs r1, #2
 	strb r1, [r0]
-	bl UpdateSubEventCounterForSA_XEncounter
+	bl SubEventUpdateForSaXEncounter
 _08018030:
 	pop {r0}
 	bx r0
@@ -7589,7 +7589,7 @@ SA_XNocWalkingToLayPowerBomb: @ 0x08018A84
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08018ADE
-	bl UpdateSubEventCounterForSA_XEncounter
+	bl SubEventUpdateForSaXEncounter
 	b _08018ADE
 	.align 2, 0
 _08018AA4: .4byte gCurrentSprite
@@ -8964,7 +8964,7 @@ SA_XArcOpeningDoor: @ 0x0801959C
 	ldr r0, _080195D4 @ =0x0000DFFF
 	ands r0, r1
 	strh r0, [r4]
-	bl UpdateSubEventCounterForSA_XEncounter
+	bl SubEventUpdateForSaXEncounter
 _080195C8:
 	pop {r4}
 	pop {r0}

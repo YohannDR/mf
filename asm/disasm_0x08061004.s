@@ -5677,7 +5677,7 @@ _08063B58:
 	strh r0, [r2, #2]
 	b _08063C2A
 _08063B5E:
-	ldr r0, _08063B70 @ =0x03000060
+	ldr r0, _08063B70 @ =gSubEventCounter
 	ldrh r0, [r0]
 	cmp r0, #0x64
 	bne _08063AD4
@@ -5686,7 +5686,7 @@ _08063B5E:
 	bl SetSubEventAndUpdateMusic
 	b _08063AD4
 	.align 2, 0
-_08063B70: .4byte 0x03000060
+_08063B70: .4byte gSubEventCounter
 _08063B74:
 	ldr r0, _08063B8C @ =gEventCounter
 	ldrb r0, [r0]
@@ -31067,8 +31067,8 @@ _080700B2:
 	.align 2, 0
 _080700B8: .4byte gEventCounter
 
-	thumb_func_start UpdateSubEventCounterForSA_XEncounter
-UpdateSubEventCounterForSA_XEncounter: @ 0x080700BC
+	thumb_func_start SubEventUpdateForSaXEncounter
+SubEventUpdateForSaXEncounter: @ 0x080700BC
 	push {lr}
 	movs r1, #0
 	ldr r0, _080700CC @ =gEventCounter
@@ -31092,7 +31092,7 @@ _080700DE:
 	cmp r1, #0
 	beq _080700EC
 _080700E2:
-	ldr r0, _080700F0 @ =0x03000060
+	ldr r0, _080700F0 @ =gSubEventCounter
 	strh r1, [r0]
 	movs r0, #8
 	bl CheckUpdateSubEventAndMusic
@@ -31100,7 +31100,7 @@ _080700EC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080700F0: .4byte 0x03000060
+_080700F0: .4byte gSubEventCounter
 
 	thumb_func_start UpdateSubEventCounterAfterAbility
 UpdateSubEventCounterAfterAbility: @ 0x080700F4
@@ -31113,7 +31113,7 @@ UpdateSubEventCounterAfterAbility: @ 0x080700F4
 	ldrh r1, [r0, #6]
 	cmp r1, #0
 	beq _08070110
-	ldr r0, _0807011C @ =0x03000060
+	ldr r0, _0807011C @ =gSubEventCounter
 	strh r1, [r0]
 	movs r0, #9
 	bl CheckUpdateSubEventAndMusic
@@ -31123,16 +31123,16 @@ _08070110:
 	.align 2, 0
 _08070114: .4byte 0x08575FB4
 _08070118: .4byte 0x0300001B
-_0807011C: .4byte 0x03000060
+_0807011C: .4byte gSubEventCounter
 
 	thumb_func_start UpdateSubEventAfterNavigationConversation
 UpdateSubEventAfterNavigationConversation: @ 0x08070120
 	push {r4, r5, lr}
 	movs r3, #0
-	ldr r5, _08070128 @ =0x03000060
+	ldr r5, _08070128 @ =gSubEventCounter
 	b _08070132
 	.align 2, 0
-_08070128: .4byte 0x03000060
+_08070128: .4byte gSubEventCounter
 _0807012C:
 	cmp r1, r0
 	blo _08070154
@@ -31169,14 +31169,14 @@ SetSubEventAndUpdateMusic: @ 0x08070164
 	lsrs r0, r0, #0x18
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
-	ldr r2, _0807017C @ =0x03000060
+	ldr r2, _0807017C @ =gSubEventCounter
 	strh r0, [r2]
 	adds r0, r1, #0
 	bl CheckUpdateSubEventAndMusic
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807017C: .4byte 0x03000060
+_0807017C: .4byte gSubEventCounter
 
 	thumb_func_start CheckUpdateSubEventAndMusic
 CheckUpdateSubEventAndMusic: @ 0x08070180
@@ -31190,7 +31190,7 @@ CheckUpdateSubEventAndMusic: @ 0x08070180
 	bls _08070194
 	bl _0807159A
 _08070194:
-	ldr r6, _080701C0 @ =0x03000060
+	ldr r6, _080701C0 @ =gSubEventCounter
 	cmp r4, #0x80
 	beq _080701D2
 	ldr r1, _080701C4 @ =0x0879BC24
@@ -31211,7 +31211,7 @@ _080701B2:
 	b _080701D2
 	.align 2, 0
 _080701BC: .4byte gCurrentArea
-_080701C0: .4byte 0x03000060
+_080701C0: .4byte gSubEventCounter
 _080701C4: .4byte 0x0879BC24
 _080701C8:
 	cmp r4, #0x22
@@ -31524,13 +31524,13 @@ _0807056A:
 	bl _0807158A
 _08070572:
 	movs r5, #2
-	ldr r1, _08070584 @ =0x03000060
+	ldr r1, _08070584 @ =gSubEventCounter
 	movs r0, #8
 	strh r0, [r1]
 	bl _0807158A
 	.align 2, 0
 _08070580: .4byte gCurrentRoom
-_08070584: .4byte 0x03000060
+_08070584: .4byte gSubEventCounter
 _08070588:
 	ldr r0, _080705A8 @ =0x03000048
 	ldrb r0, [r0]
@@ -31778,12 +31778,12 @@ _0807078C:
 	movs r0, #4
 	movs r1, #0
 	bl PlayMusic
-	ldr r1, _080707A0 @ =0x03000060
+	ldr r1, _080707A0 @ =gSubEventCounter
 	movs r0, #0x1e
 	bl _08071106
 	.align 2, 0
 _0807079C: .4byte gCurrentRoom
-_080707A0: .4byte 0x03000060
+_080707A0: .4byte gSubEventCounter
 _080707A4:
 	ldr r0, _080707BC @ =0x03000049
 	ldrb r0, [r0]
@@ -32616,12 +32616,12 @@ _08070E68:
 	bl unk_372c
 _08070E72:
 	movs r5, #2
-	ldr r1, _08070E7C @ =0x03000060
+	ldr r1, _08070E7C @ =gSubEventCounter
 	movs r0, #0x54
 	strh r0, [r1]
 	b _0807158A
 	.align 2, 0
-_08070E7C: .4byte 0x03000060
+_08070E7C: .4byte gSubEventCounter
 _08070E80:
 	ldrb r0, [r2]
 	cmp r0, #5
@@ -32841,12 +32841,12 @@ _08070FF6:
 	bne _08071014
 	movs r0, #0x3c
 	bl FadeMusic
-	ldr r1, _08071010 @ =0x03000060
+	ldr r1, _08071010 @ =gSubEventCounter
 	movs r0, #0x69
 	b _08071106
 	.align 2, 0
 _0807100C: .4byte 0x03004E3C
-_08071010: .4byte 0x03000060
+_08071010: .4byte gSubEventCounter
 _08071014:
 	cmp r0, #0x36
 	beq _0807101A
@@ -32856,11 +32856,11 @@ _0807101A:
 	movs r1, #3
 	movs r2, #0xa
 	bl unk_372c
-	ldr r1, _0807102C @ =0x03000060
+	ldr r1, _0807102C @ =gSubEventCounter
 	movs r0, #0x6a
 	b _08071106
 	.align 2, 0
-_0807102C: .4byte 0x03000060
+_0807102C: .4byte gSubEventCounter
 _08071030:
 	ldrb r0, [r2]
 	cmp r0, #0
@@ -32983,7 +32983,7 @@ _080710FA:
 	movs r0, #0x15
 	movs r1, #8
 	bl PlayMusic
-	ldr r1, _08071110 @ =0x03000060
+	ldr r1, _08071110 @ =gSubEventCounter
 	movs r0, #0x6f
 _08071106:
 	strh r0, [r1]
@@ -32991,7 +32991,7 @@ _08071106:
 	b _0807158A
 	.align 2, 0
 _0807110C: .4byte gCurrentRoom
-_08071110: .4byte 0x03000060
+_08071110: .4byte gSubEventCounter
 _08071114:
 	ldrb r0, [r2]
 	cmp r0, #2
@@ -33615,7 +33615,7 @@ _0807158A:
 	cmp r5, #1
 	bne _0807159A
 	ldr r2, _080715A4 @ =0x03000062
-	ldr r1, _080715A8 @ =0x03000060
+	ldr r1, _080715A8 @ =gSubEventCounter
 	ldrh r0, [r1]
 	strh r0, [r2]
 	adds r0, #1
@@ -33627,7 +33627,7 @@ _0807159A:
 	.align 2, 0
 _080715A0: .4byte gCurrentRoom
 _080715A4: .4byte 0x03000062
-_080715A8: .4byte 0x03000060
+_080715A8: .4byte gSubEventCounter
 
 	thumb_func_start PlayRoomMusicTrack
 PlayRoomMusicTrack: @ 0x080715AC
@@ -33742,7 +33742,7 @@ _0807167C:
 	ldrb r0, [r0]
 	cmp r0, #0x47
 	bne _080716CA
-	ldr r0, _080716C0 @ =0x03000060
+	ldr r0, _080716C0 @ =gSubEventCounter
 	ldrh r0, [r0]
 	cmp r0, #0x64
 	bne _080716CA
@@ -33753,7 +33753,7 @@ _0807167C:
 _080716B4: .4byte gPauseScreenFlag
 _080716B8: .4byte 0x03000048
 _080716BC: .4byte gEventCounter
-_080716C0: .4byte 0x03000060
+_080716C0: .4byte gSubEventCounter
 _080716C4:
 	movs r0, #2
 	bl CheckUpdateSubEventAndMusic
@@ -33920,7 +33920,7 @@ DemoLoadRam: @ 0x080717BC
 	ldr r3, _08071874 @ =gEventCounter
 	ldrb r0, [r1, #4]
 	strb r0, [r3]
-	ldr r0, _08071878 @ =0x03000060
+	ldr r0, _08071878 @ =gSubEventCounter
 	ldrh r3, [r1, #6]
 	strh r3, [r0]
 	ldr r0, _0807187C @ =0x03000062
@@ -33967,7 +33967,7 @@ _08071868: .4byte 0x0300001B
 _0807186C: .4byte gEquipment
 _08071870: .4byte 0x0300001D
 _08071874: .4byte gEventCounter
-_08071878: .4byte 0x03000060
+_08071878: .4byte gSubEventCounter
 _0807187C: .4byte 0x03000062
 _08071880: .4byte gSamusData
 _08071884: .4byte 0x040000D4
@@ -58215,7 +58215,7 @@ _0807D8E2:
 	ands r1, r2
 	cmp r1, #0
 	beq _0807D918
-	ldr r5, _0807D910 @ =0x03000060
+	ldr r5, _0807D910 @ =gSubEventCounter
 	ldrh r3, [r5]
 	ldr r2, _0807D914 @ =0x08576180
 	lsls r1, r4, #1
@@ -58231,14 +58231,14 @@ _0807D902:
 	.align 2, 0
 _0807D908: .4byte gChangedInput
 _0807D90C: .4byte 0x03001484
-_0807D910: .4byte 0x03000060
+_0807D910: .4byte gSubEventCounter
 _0807D914: .4byte 0x08576180
 _0807D918:
 	movs r1, #0x40
 	ands r1, r2
 	cmp r1, #0
 	beq _0807D940
-	ldr r5, _0807D938 @ =0x03000060
+	ldr r5, _0807D938 @ =gSubEventCounter
 	ldrh r3, [r5]
 	ldr r2, _0807D93C @ =0x08576180
 	lsls r1, r4, #1
@@ -58250,7 +58250,7 @@ _0807D918:
 	strh r6, [r5]
 	b _0807D614
 	.align 2, 0
-_0807D938: .4byte 0x03000060
+_0807D938: .4byte gSubEventCounter
 _0807D93C: .4byte 0x08576180
 _0807D940:
 	movs r1, #0x10
@@ -59830,7 +59830,7 @@ _0807E4FC:
 	cmp r6, #0
 	beq _0807E50E
 _0807E504:
-	ldr r0, _0807E51C @ =0x03000060
+	ldr r0, _0807E51C @ =gSubEventCounter
 	ldrh r0, [r0]
 	movs r1, #0x10
 	bl DebugMenuDrawNumber
@@ -59841,7 +59841,7 @@ _0807E50E:
 	.align 2, 0
 _0807E514: .4byte gEquipment
 _0807E518: .4byte gEventCounter
-_0807E51C: .4byte 0x03000060
+_0807E51C: .4byte gSubEventCounter
 
 	thumb_func_start DebugMenuDrawNumber
 DebugMenuDrawNumber: @ 0x0807E520
@@ -61874,7 +61874,7 @@ SramWrite_ToEwram: @ 0x0807F450
 	adds r1, r4, #0
 	adds r1, #0x25
 	strb r0, [r1]
-	ldr r0, _0807F744 @ =0x03000060
+	ldr r0, _0807F744 @ =gSubEventCounter
 	ldrh r0, [r0]
 	strh r0, [r4, #0x26]
 	ldr r0, _0807F748 @ =0x03000062
@@ -62143,7 +62143,7 @@ _0807F734: .4byte 0x03000B88
 _0807F738: .4byte 0x03000B89
 _0807F73C: .4byte 0x03000031
 _0807F740: .4byte 0x03000032
-_0807F744: .4byte 0x03000060
+_0807F744: .4byte gSubEventCounter
 _0807F748: .4byte 0x03000062
 _0807F74C: .4byte 0x0300004D
 _0807F750: .4byte 0x0300001D
@@ -62234,7 +62234,7 @@ SramRead_FromEwram: @ 0x0807F7C0
 	adds r0, #0x25
 	ldrb r0, [r0]
 	strb r0, [r1]
-	ldr r1, _0807FA2C @ =0x03000060
+	ldr r1, _0807FA2C @ =gSubEventCounter
 	ldrh r0, [r2, #0x26]
 	strh r0, [r1]
 	ldr r1, _0807FA30 @ =0x03000062
@@ -62477,7 +62477,7 @@ _0807FA1C: .4byte 0x03000B88
 _0807FA20: .4byte 0x03000B89
 _0807FA24: .4byte 0x03000031
 _0807FA28: .4byte 0x03000032
-_0807FA2C: .4byte 0x03000060
+_0807FA2C: .4byte gSubEventCounter
 _0807FA30: .4byte 0x03000062
 _0807FA34: .4byte 0x0300004D
 _0807FA38: .4byte 0x0300001D

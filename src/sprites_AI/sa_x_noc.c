@@ -441,7 +441,7 @@ void SaXNocWalkingToLayPowerBomb(void)
     {
         gCurrentSprite.work1--;
         if (gCurrentSprite.work1 == 0)
-            UpdateSubEventCounterForSA_XEncounter();
+            SubEventUpdateForSaXEncounter();
 
         return;
     }
