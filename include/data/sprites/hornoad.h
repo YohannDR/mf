@@ -6,11 +6,11 @@
 
 extern const s16 sHornoadSpitYMovement[21];
 extern const s16 sHornoadJumpVelocityHigh[10];
-extern const s16 sHornoadJumpVelocityLow[11];
+extern const s16 sHornoadJumpVelocityLow[10];
 
-extern const struct FrameData sHornoadOam_2eb44c[3];
-extern const struct FrameData sHornoadOam_2eb474[3];
-extern const struct FrameData sHornoadOam_2eb4bc[3];
+extern const struct FrameData sHornoadOam_TiltingHeadHidden[5];
+extern const struct FrameData sHornoadOam_MunchingHidden[9];
+extern const struct FrameData sHornoadOam_MouthHangingOpenHidden[5];
 extern const struct FrameData sHornoadOam_TurningAroundHidden[3];
 extern const struct FrameData sHornoadOam_TurninSecondPartHidden[3];
 extern const struct FrameData sHornoadOam_IdleHidden[5];
@@ -22,9 +22,9 @@ extern const struct FrameData sHornoadOam_2eb594[3];
 extern const struct FrameData sHornoadSpawnerOam_Idle[4];
 extern const struct FrameData sHornoadSpawnerOam_BeforeSpawning[7];
 
-extern const struct FrameData sHornoadOam_2eb604[3];
-extern const struct FrameData sHornoadOam_2eb62c[3];
-extern const struct FrameData sHornoadOam_2eb674[3];
+extern const struct FrameData sHornoadOam_TiltingHead[5];
+extern const struct FrameData sHornoadOam_Munching[9];
+extern const struct FrameData sHornoadOam_MouthHangingOpen[5];
 extern const struct FrameData sHornoadOam_TurningAround[3];
 extern const struct FrameData sHornoadOam_TurninSecondPart[3];
 extern const struct FrameData sHornoadOam_Idle[5];

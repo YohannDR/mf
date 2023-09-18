@@ -298,9 +298,38 @@ void HornoadLandingInit(void)
         gCurrentSprite.pOam = sHornoadOam_Landing;
 }
 
+/**
+ * @brief 1cc20 | 88 | Initializes an hornoad to do an idle animation
+ * 
+ */
 void HornoadIdleAnimationInit(void)
 {
+    gCurrentSprite.pose = 0x8;
 
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
+
+    if (gSpriteRandomNumber < 6)
+    {
+        if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
+            gCurrentSprite.pOam = sHornoadOam_TiltingHeadHidden;
+        else
+            gCurrentSprite.pOam = sHornoadOam_TiltingHead;
+    }
+    else if (gSpriteRandomNumber < 12)
+    {
+        if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
+            gCurrentSprite.pOam = sHornoadOam_MunchingHidden;
+        else
+            gCurrentSprite.pOam = sHornoadOam_Munching;
+    }
+    else
+    {
+        if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
+            gCurrentSprite.pOam = sHornoadOam_MouthHangingOpenHidden;
+        else
+            gCurrentSprite.pOam = sHornoadOam_MouthHangingOpen;
+    }
 }
 
 /**
@@ -322,9 +351,36 @@ void HornoadFallingInit(void)
     gCurrentSprite.currentAnimationFrame = 0;
 }
 
+/**
+ * @brief 1ccec | 80 | To document
+ * 
+ */
 void unk_1ccec(void)
 {
+    gCurrentSprite.work2 = 8;
 
+    SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
+
+    if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
+    {
+        SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
+
+        if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
+        {
+            HornoadFallingInit();
+            return;
+        }
+    }
+
+    gCurrentSprite.pose = 0x8;
+
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
+
+    if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
+        gCurrentSprite.pOam = sHornoadOam_2eb594;
+    else
+        gCurrentSprite.pOam = sHornoadOam_2eb82c;
 }
 
 /**
@@ -387,14 +443,215 @@ void HornoadIdle(void)
         HornoadJumpingInit();
 }
 
+/**
+ * @brief 1ce40 | 238 | Handles an hornoad jumping
+ * 
+ */
 void HornoadJumping(void)
 {
+    u8 var_0;
+    s16 movement;
+    u32 blockTop;
 
+    var_0 = FALSE;
+
+    if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
+        movement = sHornoadJumpVelocityLow[gCurrentSprite.work4 / 4];
+    else if (gCurrentSprite.work3)
+        movement = sHornoadJumpVelocityLow[gCurrentSprite.work4 / 4];
+    else
+        movement = sHornoadJumpVelocityHigh[gCurrentSprite.work4 / 4];
+
+    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE,
+            gCurrentSprite.xPosition + gCurrentSprite.hitboxRight + PIXEL_SIZE);
+
+        if (gPreviousCollisionCheck == COLLISION_SOLID)
+        {
+            var_0++;
+            gCurrentSprite.xPosition -= PIXEL_SIZE;
+        }
+        else if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
+        {
+            if (movement > 0)
+                gCurrentSprite.xPosition += ONE_SUB_PIXEL * 1;
+            else if (MOD_AND(gSpriteRandomNumber, 2))
+                gCurrentSprite.xPosition += ONE_SUB_PIXEL * 2;
+            else    
+                gCurrentSprite.xPosition += ONE_SUB_PIXEL * 1;
+        }
+        else
+        {
+            if (movement > 0)
+                gCurrentSprite.xPosition += ONE_SUB_PIXEL * 2;
+            else    
+                gCurrentSprite.xPosition += ONE_SUB_PIXEL * 3;
+        }
+    }
+    else
+    {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE,
+            gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft - PIXEL_SIZE);
+
+        if (gPreviousCollisionCheck == COLLISION_SOLID)
+        {
+            var_0++;
+            gCurrentSprite.xPosition += PIXEL_SIZE;
+        }
+        else if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
+        {
+            if (movement > 0)
+                gCurrentSprite.xPosition -= ONE_SUB_PIXEL * 1;
+            else if (MOD_AND(gSpriteRandomNumber, 2))
+                gCurrentSprite.xPosition -= ONE_SUB_PIXEL * 2;
+            else    
+                gCurrentSprite.xPosition -= ONE_SUB_PIXEL * 1;
+        }
+        else
+        {
+            if (movement > 0)
+                gCurrentSprite.xPosition -= ONE_SUB_PIXEL * 2;
+            else    
+                gCurrentSprite.xPosition -= ONE_SUB_PIXEL * 3;
+        }
+    }
+
+    gCurrentSprite.yPosition += movement;
+
+    if (gCurrentSprite.work4 < ARRAY_SIZE(sHornoadJumpVelocityHigh) * 4 - 1)
+        gCurrentSprite.work4++;
+
+    if (movement > 0)
+    {
+        blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition,
+            gCurrentSprite.xPosition);
+
+        if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
+        {
+            gCurrentSprite.yPosition = blockTop;
+            HornoadLandingInit();
+            return;
+        }
+
+        if (var_0)
+            return;
+
+        blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition,
+            gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
+
+        if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
+        {
+            var_0++;
+        }
+        else
+        {
+            blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition,
+                gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
+
+            if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
+            {
+                var_0++;
+            }
+        }
+
+        if (var_0)
+        {
+            gCurrentSprite.yPosition = blockTop;
+            HornoadLandingInit();
+            return;
+        }
+    }
+    else
+    {
+        var_0 = FALSE;
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop,
+            gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
+
+        if (gPreviousCollisionCheck == COLLISION_SOLID)
+        {
+            var_0++;
+        }
+        else
+        {
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop,
+                gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
+
+            if (gPreviousCollisionCheck == COLLISION_SOLID)
+            {
+                var_0++;
+            }
+        }
+
+        if (!var_0)
+            return;
+
+        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+            gCurrentSprite.xPosition -= PIXEL_SIZE;
+        else
+            gCurrentSprite.xPosition += PIXEL_SIZE;
+
+        HornoadFallingInit();
+    }
 }
 
+/**
+ * @brief 1d078 | a0 | Handles an hornoad landing
+ * 
+ */
 void HornoadLanding(void)
 {
+    u8 rangeAction;
+    u32 rng;
 
+    if (!SpriteUtilCheckEndOfCurrentSpriteAnimation())
+        return;
+
+    if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
+    {
+        rng = MOD_AND(gSpriteRandomNumber, 2);
+        if (gCurrentSprite.work2 > rng)
+        {
+            gCurrentSprite.pose = 0x1C;
+
+            gCurrentSprite.pOam = sHornoadOam_2eb844;
+            gCurrentSprite.animationDurationCounter = 0;
+            gCurrentSprite.currentAnimationFrame = 0;
+
+            gCurrentSprite.work1 = 0;
+        }
+        else
+        {
+            HornoadIdleInit();
+        }
+
+        return;
+    }
+
+    if (HornoadCheckSamusInSpittingRange())
+    {
+        HornoadSpittingInit();
+        return;
+    }
+
+    rangeAction = HornoadCheckSamusInJumpingRange();
+
+    if (rangeAction == HRANGE_JUMP)
+    {
+        HornoadJumpingInit();
+        return;
+    }
+
+    if (rangeAction == HRANGE_TURN)
+    {
+        HornoadTurningAroundInit();
+        return;
+    }
+
+    if (gCurrentSprite.work2 > 2)
+        HornoadIdleAnimationInit();
+    else
+        HornoadIdleInit();
 }
 
 /**
@@ -457,9 +714,48 @@ void HornoadFalling(void)
     }
 }
 
+/**
+ * @brief 1d1bc | 7c | Handles an hornoad doing an idle animation
+ * 
+ */
 void HornoadIdleAnimation(void)
 {
+    u8 rangeAction;
 
+    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
+
+    if (gPreviousCollisionCheck == COLLISION_AIR)
+    {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
+
+        if (gPreviousCollisionCheck == COLLISION_AIR)
+        {
+            HornoadFallingInit();
+            return;
+        }
+    }
+
+    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    {
+        rangeAction = HornoadCheckSamusInJumpingRange();
+
+        if (rangeAction == HRANGE_JUMP)
+        {
+            HornoadIdleInit();
+            return;
+        }
+
+        if (rangeAction == HRANGE_TURN)
+        {
+            HornoadTurningAroundInit();
+            return;
+        }
+
+        if (gCurrentSprite.work2 > 2)
+            HornoadTurningAroundInit();
+        else
+            HornoadIdleInit();
+    }
 }
 
 /**
@@ -811,17 +1107,145 @@ void HornoadSpwanerSpawnHornoad(void)
     HornoadSpwanerIdleInit();
 }
 
+/**
+ * @brief 1d774 | 264 | Hornoad AI
+ * 
+ */
 void Hornoad(void)
 {
+    if (SPRITE_HAS_ISFT(gCurrentSprite) == 0x4)
+        SoundPlayNotAlreadyPlaying(0x14A);
 
+    if (gCurrentSprite.freezeTimer != 0)
+    {
+        SpriteUtilUpdateFreezeTimer();
+        return;
+    }
+
+    if (gCurrentSprite.pose < SPRITE_POSE_TURNING_INTO_X && SPRITE_HAS_ISFT(gCurrentSprite) && gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+
+    switch (gCurrentSprite.pose)
+    {
+        case SPRITE_POSE_UNITIALIZED:
+            HornoadInit();
+            break;
+
+        case 0x1:
+            HornoadIdleInit();
+
+        case 0x2:
+            HornoadIdle();
+            break;
+
+        case 0x18:
+            HornoadJumping();
+            break;
+
+        case 0x1A:
+            HornoadLanding();
+            break;
+
+        case 0x1C:
+            HornoadWaitingForX();
+            break;
+
+        case 0x8:
+            HornoadIdleAnimation();
+            break;
+
+        case 0x4:
+            HornoadTurningAround();
+            break;
+
+        case 0x5:
+            HornoadTurningAroundSecondPart();
+            break;
+
+        case 0x2A:
+            HornoadSpitting();
+            break;
+
+        case SPRITE_POSE_FALLING:
+            HornoadFalling();
+            break;
+
+        case 0x37:
+            unk_1ccec();
+            break;
+
+        case SPRITE_POSE_DYING_INIT:
+            SpriteDyingInit();
+
+        case SPRITE_POSE_DYING:
+            SpriteDying();
+            break;
+
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
+            HornoadInit();
+
+        case SPRITE_POSE_SPAWNING_FROM_X:
+            SpriteSpawningFromX();
+            break;
+
+        case SPRITE_POSE_TURNING_INTO_X:
+            if (gCurrentSprite.spriteId == PSPRITE_QUARANTINE_BAY_HORNOAD)
+                EventCheckAdvance(0x2);
+
+            XParasiteInit();
+            gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
+    }
 }
 
+/**
+ * @brief 1d9d8 | 3c | Hornoad spit AI
+ * 
+ */
 void HornoadSpit(void)
 {
+    switch (gCurrentSprite.pose)
+    {
+        case SPRITE_POSE_UNITIALIZED:
+            HornoadSpitInit();
+        
+        case 0x2:
+            HornoadSpitMoving();
+            break;
 
+        case 0x38:
+            HornoadSpitExploding();
+            break;
+
+        default:
+            HornoadSpitExplodingInit();
+    }
 }
 
+/**
+ * @brief 1da14 | f8 | Hornoad spawner AI
+ * 
+ */
 void HornoadSpawner(void)
 {
+    gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
+    switch (gCurrentSprite.pose)
+    {
+        case SPRITE_POSE_UNITIALIZED:
+            HornoadSpwanerInit();
+
+        case 0x1:
+            HornoadSpwanerIdleInit();
+
+        case 0x2:
+            HornoadSpwanerIdle();
+            break;
+
+        case 0x2A:
+            HornoadSpwanerDelayBeforeSpawning();
+            break;
+
+        case 0x2C:
+            HornoadSpwanerSpawnHornoad();
+    }
 }
