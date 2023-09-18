@@ -104,6 +104,7 @@
 #define SIN(angle) (sSineTable[angle])
 #define COS(angle) (sSineTable[angle + PI / 2])
 
+#define COLOR_MASK 0x1F
 #define RED(c) ((c) & COLOR_MASK)
 #define GREEN(c) (((c) & (COLOR_MASK << 5)) >> 5)
 #define BLUE(c) (((c) & (COLOR_MASK << 10)) >> 10)
@@ -111,7 +112,6 @@
 #define COLOR_GRAD(r, g, b) ((r) | ((g) << 5) | ((b) << 10))
 #define COLOR_WHITE COLOR(COLOR_MASK, COLOR_MASK, COLOR_MASK)
 #define COLOR_BLACK COLOR(0, 0, 0)
-#define COLOR_MASK 0x1F
 
 #define SET_BACKDROP_COLOR(color) (write16(PALRAM_BASE, (color)))
 

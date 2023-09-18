@@ -23,6 +23,7 @@ SECTIONS {
         . = 0x0000002d; gCurrentRoom = .;
         . = 0x00000030; gDisplayLocationName = .;
         . = 0x00000044; gEffectYPosition = .;
+        . = 0x00000046; gDoorUnlockTimer = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000053; gCurrentClipdataAffectingAction = .;
         . = 0x00000064; gUnk_03000064 = .;
@@ -66,6 +67,7 @@ SECTIONS {
         . = 0x000007f5; gBossWork4 = .;
         . = 0x000007f6; gBossWork5 = .;
         . = 0x00000b84; gPauseScreenFlag = .;
+        . = 0x00000b87; gEventCounter = .;
         . = 0x00000b8b; gIsLoadingFile = .;
         . = 0x00000b8f; gUnk_03000B8F = .;
         . = 0x00000bdc; gCurrentCutscene = .;

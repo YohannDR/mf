@@ -6,6 +6,7 @@
 #include "data/sprite_data.h"
 
 #include "constants/clipdata.h"
+#include "constants/event.h"
 #include "constants/sprite.h"
 
 #include "structs/sprite.h"
@@ -1190,7 +1191,7 @@ void Hornoad(void)
 
         case SPRITE_POSE_TURNING_INTO_X:
             if (gCurrentSprite.spriteId == PSPRITE_QUARANTINE_BAY_HORNOAD)
-                EventCheckAdvance(0x2);
+                EventCheckAdvance(EVENT_QUARANTINE_BAY_HORNOAD_DEAD);
 
             XParasiteInit();
             gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;

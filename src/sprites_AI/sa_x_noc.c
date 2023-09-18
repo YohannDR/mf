@@ -5,6 +5,7 @@
 #include "data/sprites/sa_x.h"
 
 #include "constants/clipdata.h"
+#include "constants/event.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
 #include "constants/sa_x.h"
@@ -671,7 +672,7 @@ void SaXNoc(void)
             if (gCurrentSprite.status == 0)
             {
                 unk_372c(0x50, 3, 8);
-                EventCheckAdvance(0x31);
+                EventCheckAdvance(EVENT_ESCAPED_NOC_SA_X);
             }
             break;
 

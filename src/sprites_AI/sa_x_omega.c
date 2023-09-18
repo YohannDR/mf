@@ -9,6 +9,7 @@
 #include "data/sprites/sa_x.h"
 
 #include "constants/clipdata.h"
+#include "constants/event.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
 #include "constants/sa_x.h"
@@ -313,7 +314,7 @@ void SaXOmegaRevertingToXInit(void)
     gCurrentSprite.work1 = ARRAY_SIZE(sXParasiteMosaicValues) / 5 - 1;
     gSaXData.mosaic = TRUE;
 
-    EventCheckAdvance(0x6A);
+    EventCheckAdvance(EVENT_SA_X_KILLED_BY_OMEGA_METROID);
 }
 
 /**

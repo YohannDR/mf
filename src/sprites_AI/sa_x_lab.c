@@ -6,6 +6,7 @@
 #include "data/sprites/sa_x.h"
 
 #include "constants/clipdata.h"
+#include "constants/event.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
 #include "constants/sa_x.h"
@@ -76,7 +77,7 @@ void SaXLabCoveredByMetroids(void)
     if (gCurrentSprite.work1 == 70)
     {
         gPreventMovementTimer = 1000;
-        EventCheckAdvance(0x5D);
+        EventCheckAdvance(EVENT_60_SECONDS_TO_DETACHMENT);
         TrySpawnMessageBanner(0xA);
     }
     else if (gCurrentSprite.work1 == 60)

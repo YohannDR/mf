@@ -10,6 +10,7 @@
 #include "data/engine_pointers.h"
 
 #include "constants/clipdata.h"
+#include "constants/event.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
 #include "constants/sa_x.h"
@@ -90,7 +91,7 @@ void SaXTro2CheckCollisionWalking(void)
                 {
                     gCurrentSprite.status = 0;
                     unk_372c(0x3C, 0x6, 0);
-                    EventCheckAdvance(0x4D);
+                    EventCheckAdvance(EVENT_ESCAPED_TRO_2_SA_X);
                 }
 
                 return;
