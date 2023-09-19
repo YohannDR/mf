@@ -19,7 +19,7 @@ void SubEventUpdateForSaXEncounter(void)
     subEvent = SUB_EVENT_NONE;
 
     if (gEventCounter == EVENT_HIGH_JUMP_ABILITY_RECOVERED)
-        subEvent = SUB_EVENT_40;
+        subEvent = SUB_EVENT_LEFT_ZAZABI_ROOM;
     else if (gEventCounter == EVENT_NOC_SA_X_ENCOUNTER)
         subEvent = SUB_EVENT_68;
     else if (gEventCounter == EVENT_ARC_SA_X_ENCOUNTER)
@@ -118,12 +118,12 @@ void SubEventUpdateMusic(u8 triggerType)
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_1:
+        case SUB_EVENT_FIRST_CONVERSATION_STARTED:
             MusicPlay(0x1E, 2);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_2:
+        case SUB_EVENT_FIRST_CONVERSATION_ENDED:
             if (gCurrentArea != AREA_MAIN_DECK)
                 break;
 
@@ -140,11 +140,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_3:
+        case SUB_EVENT_ENTERED_ROOM_AFTER_FIRST_NAVIGATION_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_4:
+        case SUB_EVENT_CONVERSATION_AFTER_QUARANTINE_BAY_ENDED:
             if (gCurrentNavigationRoom != NAV_ROOM_MAIN_DECK_ROOM_0)
                 break;
 
@@ -161,16 +161,16 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_5:
+        case SUB_EVENT_LEFT_NAV_ROOM_AFTER_QUARANTINE_BAY:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_6:
+        case SUB_EVENT_OPERATIONS_DECK_ELEVATOR_MONOLOGUE_STARTED:
             MusicFade(60 * 3);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_7:
+        case SUB_EVENT_OPERATIONS_DECK_ELEVATOR_MONOLOGUE_ENDED:
             if (gLastElevatorUsed != ELEVATOR_MAIN_DECK_TO_OPERATIONS_DECK)
                 break;
 
@@ -178,7 +178,7 @@ void SubEventUpdateMusic(u8 triggerType)
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_8:
+        case SUB_EVENT_OPERATIONS_DECK_ELEVATOR_ENDED:
             if (gCurrentArea != AREA_MAIN_DECK)
                 break;
 
@@ -195,7 +195,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_9:
+        case SUB_EVENT_ENTERED_OPERATIONS_DECK_LOBBY:
             if (gCurrentArea != AREA_MAIN_DECK)
                 break;
 
@@ -212,7 +212,7 @@ void SubEventUpdateMusic(u8 triggerType)
             if (updateSubEvent)
             {
                 updateSubEvent = TRUE + 1;
-                gSubEventCounter = SUB_EVENT_8;
+                gSubEventCounter = SUB_EVENT_OPERATIONS_DECK_ELEVATOR_ENDED;
             }
             break;
 
@@ -220,7 +220,7 @@ void SubEventUpdateMusic(u8 triggerType)
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_11:
+        case SUB_EVENT_DOWNLOADED_MISSILES:
             if (gCurrentNavigationRoom != NAV_ROOM_MAIN_DECK_ROOM_32)
                 break;
 
@@ -229,7 +229,7 @@ void SubEventUpdateMusic(u8 triggerType)
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_12:
+        case SUB_EVENT_ENTERED_NAV_ROOM_AFTER_MISSILES:
             if (gCurrentArea != AREA_MAIN_DECK)
                 break;
 
@@ -240,7 +240,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_13:
+        case SUB_EVENT_ENTERED_DARK_VERTICAL_SHAFT:
             if (gCurrentArea != AREA_MAIN_DECK)
                 break;
 
@@ -257,11 +257,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_14:
+        case SUB_EVENT_ENTERED_ARACHNUS_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_15:
+        case SUB_EVENT_MORPH_BALL_ABILITY_RECOVERED:
             if (gCurrentArea != AREA_MAIN_DECK)
                 break;
 
@@ -272,37 +272,37 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_16:
+        case SUB_EVENT_LEFT_ARACHNUS_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_17:
+        case SUB_EVENT_POST_ARACHNUS_NAV_CONVERSATION_ENDED:
             unk_36c4();
             SoundStop(0xFC);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_18:
+        case SUB_EVENT_SA_X_ELEVATOR_CUTSCENE_START:
             MusicPlay(0x31, 2);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_19:
+        case SUB_EVENT_SA_X_ELEVATOR_CUTSCENE_EXPLOSION:
             MusicFade(60 * 5);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_20:
+        case SUB_EVENT_SA_X_ELEVATOR_CUTSCENE_DOOR_SHOT:
             unk_3b1c(0x229);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_21:
+        case SUB_EVENT_SA_X_ELEVATOR_CUTSCENE_RUMBLE_1:
             MusicPlay(0x1E, 2);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_22:
+        case SUB_EVENT_SA_X_ELEVATOR_CUTSCENE_RUMBLE_2:
             if (gCurrentNavigationRoom != NAV_ROOM_SECTOR_1_ROOM_2)
                 break;
 
@@ -319,11 +319,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_23:
+        case SUB_EVENT_ENTERED_SECTOR_1_NAV_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_24:
+        case SUB_EVENT_SECTOR_1_NAV_CONVERSATION_ENDED:
             if (gCurrentArea != AREA_SECTOR_1)
                 break;
 
@@ -340,11 +340,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_25:
+        case SUB_EVENT_ENTERED_CHARGE_BEAM_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_26:
+        case SUB_EVENT_CHARGE_BEAM_ABILITY_RECOVERED:
             if (gCurrentArea != AREA_SECTOR_1)
                 break;
 
@@ -361,7 +361,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_27:
+        case SUB_EVENT_LEFT_CHARGE_BEAM_ROOM:
             if (gCurrentNavigationRoom != NAV_ROOM_SECTOR_1_ROOM_2)
                 break;
 
@@ -378,7 +378,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_28:
+        case SUB_EVENT_ENTERED_NAV_ROOM_BEFORE_LEAVING_SECTOR_1:
             if (gCurrentArea != AREA_SECTOR_1)
                 break;
 
@@ -394,7 +394,7 @@ void SubEventUpdateMusic(u8 triggerType)
             
             if (triggerType == SEVENT_TTYPE_ENDING_NAVIGATION_CONVERSATION)
             {
-                gSubEventCounter = SUB_EVENT_30;
+                gSubEventCounter = SUB_EVENT_LEAVING_SECTOR_1_NAV_CONVERSATION_ENDED;
                 updateSubEvent = TRUE + 1;
             }
             break;
@@ -406,12 +406,12 @@ void SubEventUpdateMusic(u8 triggerType)
             if (gCurrentRoom == 1)
             {
                 MusicPlay(0x4, 0);
-                gSubEventCounter = SUB_EVENT_30;
+                gSubEventCounter = SUB_EVENT_LEAVING_SECTOR_1_NAV_CONVERSATION_ENDED;
                 updateSubEvent = TRUE + 1;
             }
             break;
 
-        case SUB_EVENT_30:
+        case SUB_EVENT_LEAVING_SECTOR_1_NAV_CONVERSATION_ENDED:
             if (gLastElevatorUsed != ELEVATOR_MAIN_DECK_TO_SECTOR_2)
                 break;
 
@@ -419,7 +419,7 @@ void SubEventUpdateMusic(u8 triggerType)
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_31:
+        case SUB_EVENT_STARTING_ELEVATOR_TO_TRO:
             if (gCurrentArea != AREA_SECTOR_2)
                 break;
 
@@ -430,7 +430,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_32:
+        case SUB_EVENT_ENTERED_TRO:
             if (gCurrentNavigationRoom != NAV_ROOM_SECTOR_3_ROOM_2)
                 break;
 
@@ -447,11 +447,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_33:
+        case SUB_EVENT_ENTERED_SECTOR_2_NAV_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_34:
+        case SUB_EVENT_SECTOR_2_NAV_CONVERSATION_ENDED:
             if (gCurrentArea != AREA_SECTOR_2)
                 break;
 
@@ -468,15 +468,15 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_35:
+        case SUB_EVENT_ENTERED_FIRST_ROOM_SECTOR_2:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_36:
+        case SUB_EVENT_UNLOCKED_SECURITY_LEVEL_1:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_37:
+        case SUB_EVENT_DOWNLOADED_BOMBS:
             if (gCurrentArea != AREA_SECTOR_2)
                 break;
 
@@ -493,11 +493,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_38:
+        case SUB_EVENT_ENTERED_ZAZABI_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_39:
+        case SUB_EVENT_HIGH_JUMP_ABILITY_RECOVERED:
             if (gCurrentArea != AREA_SECTOR_2)
                 break;
 
@@ -514,12 +514,12 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_40:
+        case SUB_EVENT_LEFT_ZAZABI_ROOM:
             unk_372c(0x1E, 0x15, 0x8);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_41:
+        case SUB_EVENT_ENTERED_SA_X_TR0_1_ROOM:
             if (gCurrentArea != AREA_SECTOR_2)
                 break;
 
@@ -536,20 +536,20 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_42:
+        case SUB_EVENT_LEFT_SA_X_TR0_1_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_43:
+        case SUB_EVENT_LEAVING_SECTOR_2_NAV_CONVERSATION_ENDED:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_44:
+        case SUB_EVENT_TRO_ELEVATOR_MONOLOGUE_STARTED:
             MusicFade(200);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_45:
+        case SUB_EVENT_TRO_ELEVATOR_MONOLOGUE_ENDED:
             if (gLastElevatorUsed != ELEVATOR_MAIN_DECK_TO_SECTOR_2)
                 break;
 
@@ -557,7 +557,7 @@ void SubEventUpdateMusic(u8 triggerType)
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_46:
+        case SUB_EVENT_TRO_ELEVATOR_ENDED:
             if (gCurrentNavigationRoom != NAV_ROOM_SECTOR_4_ROOM_2)
                 break;
 
@@ -574,11 +574,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_47:
+        case SUB_EVENT_ENTERED_AQA_NAV_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_48:
+        case SUB_EVENT_ENTERING_SECTOR_4_NAV_CONVERSATION_ENDED:
             if (gCurrentArea != AREA_SECTOR_4)
                 break;
 
@@ -595,7 +595,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_49:
+        case SUB_EVENT_ENTERED_FIRST_ROOM_SECTOR_4:
             if (gCurrentArea != AREA_SECTOR_4)
                 break;
 
@@ -612,7 +612,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_50:
+        case SUB_EVENT_ENTERED_SERRIS_TANK_ROOM:
             if (gCurrentArea != AREA_SECTOR_4)
                 break;
 
@@ -629,11 +629,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_51:
+        case SUB_EVENT_ENTERED_SERRIS_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_52:
+        case SUB_EVENT_SPEED_BOOSTER_ABILITY_RECOVERED:
             if (gCurrentArea != AREA_SECTOR_4)
                 break;
 
@@ -650,11 +650,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_53:
+        case SUB_EVENT_LEFT_SERRIS_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_54:
+        case SUB_EVENT_LEAVING_SECTOR_4_NAV_CONVERSATION_ENDED:
             if (gCurrentArea != AREA_SECTOR_3)
                 break;
 
@@ -671,11 +671,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_55:
+        case SUB_EVENT_ENTERED_SECTOR_3_SECURITY_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_56:
+        case SUB_EVENT_UNLOCKED_SECURITY_LEVEL_2:
             if (gCurrentArea != AREA_SECTOR_3)
                 break;
 
@@ -692,7 +692,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_57:
+        case SUB_EVENT_LEFT_SECTOR_3_SECURITY_ROOM:
             if (gCurrentArea != AREA_SECTOR_3)
                 break;
 
@@ -709,11 +709,11 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_58:
+        case SUB_EVENT_ENTERED_SECTOR_3_DATA_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_59:
+        case SUB_EVENT_DOWNLOADED_SUPER_MISSILES:
             if (gCurrentArea != AREA_SECTOR_3)
                 break;
 
@@ -730,7 +730,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_60:
+        case SUB_EVENT_LEFT_SECTOR_3_DATA_ROOM:
             if (gCurrentArea != AREA_SECTOR_3)
                 break;
 
@@ -738,7 +738,7 @@ void SubEventUpdateMusic(u8 triggerType)
                 updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_61:
+        case SUB_EVENT_ENTERED_BOX_ROOM:
             if (gCurrentArea != AREA_SECTOR_3)
                 break;
 
@@ -749,22 +749,22 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_62:
+        case SUB_EVENT_LEFT_BOX_ROOM:
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_63:
+        case SUB_EVENT_LEAVING_SECTOR_3_NAV_CONVERSATION_ENDED:
             MusicFade(30);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_64:
+        case SUB_EVENT_SECRET_CONVERSATION_STARTED:
             unk_372c(0x78, 0x1E, 0xB);
             SoundPlay(0xFC);
             updateSubEvent = TRUE;
             break;
 
-        case SUB_EVENT_65:
+        case SUB_EVENT_SECRET_CONVERSATION_ENDED:
             if (gCurrentNavigationRoom != NAV_ROOM_SECTOR_6_ROOM_2)
                 break;
 
@@ -781,7 +781,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             break;
 
-        case SUB_EVENT_66:
+        case SUB_EVENT_ENTERED_NOC_NAV_ROOM:
             updateSubEvent = TRUE;
             break;
 
