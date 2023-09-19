@@ -3893,7 +3893,7 @@ CheckMainElevatorIsActive: @ 0x08062D68
 	ldrb r0, [r0, #1]
 	cmp r0, #0x17
 	bne _08062D9A
-	ldr r0, _08062DA8 @ =0x03000049
+	ldr r0, _08062DA8 @ =gLastElevatorUsed
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _08062D9A
@@ -3908,7 +3908,7 @@ _08062D9A:
 	.align 2, 0
 _08062DA0: .4byte gEventCounter
 _08062DA4: .4byte gSamusData
-_08062DA8: .4byte 0x03000049
+_08062DA8: .4byte gLastElevatorUsed
 _08062DAC: .4byte 0x0300004B
 
 	thumb_func_start CheckSetMeltdownEffect
@@ -4485,7 +4485,7 @@ SetCurrentNavigationRoom: @ 0x080631D0
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x18
 	lsrs r7, r0, #0x18
-	ldr r2, _080631EC @ =0x03000048
+	ldr r2, _080631EC @ =gCurrentNavigationRoom
 	movs r3, #0
 	strb r3, [r2]
 	ldr r0, _080631F0 @ =0x0857604C
@@ -4497,7 +4497,7 @@ SetCurrentNavigationRoom: @ 0x080631D0
 	strb r3, [r5]
 	b _08063226
 	.align 2, 0
-_080631EC: .4byte 0x03000048
+_080631EC: .4byte gCurrentNavigationRoom
 _080631F0: .4byte 0x0857604C
 _080631F4:
 	ldr r0, _0806322C @ =gCurrentArea
@@ -4539,7 +4539,7 @@ DetermineNavigationHatchesToLock: @ 0x08063230
 	mov r7, sb
 	mov r6, r8
 	push {r6, r7}
-	ldr r0, _08063248 @ =0x03000048
+	ldr r0, _08063248 @ =gCurrentNavigationRoom
 	ldrb r1, [r0]
 	mov r8, r0
 	cmp r1, #0
@@ -4547,7 +4547,7 @@ DetermineNavigationHatchesToLock: @ 0x08063230
 	movs r0, #1
 	b _080633EE
 	.align 2, 0
-_08063248: .4byte 0x03000048
+_08063248: .4byte gCurrentNavigationRoom
 _0806324C:
 	ldrb r0, [r1, #1]
 	b _0806327E
@@ -5857,7 +5857,7 @@ CheckUnlockHatches: @ 0x08063C8C
 	adds r7, r0, #0
 	cmp r1, #0
 	beq _08063D34
-	ldr r0, _08063D24 @ =0x03000048
+	ldr r0, _08063D24 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08063D34
@@ -5910,7 +5910,7 @@ _08063D12:
 	.align 2, 0
 _08063D1C: .4byte gDoorUnlockTimer
 _08063D20: .4byte 0x03004E3B
-_08063D24: .4byte 0x03000048
+_08063D24: .4byte gCurrentNavigationRoom
 _08063D28: .4byte 0x03004DEC
 _08063D2C:
 	cmp r1, #0
@@ -7675,7 +7675,7 @@ _08064B1C:
 	strb r2, [r0]
 	ldr r0, _08064BF4 @ =gCurrentCutscene
 	strb r2, [r0]
-	ldr r0, _08064BF8 @ =0x03000048
+	ldr r0, _08064BF8 @ =gCurrentNavigationRoom
 	strb r2, [r0]
 	ldr r0, _08064BFC @ =0x03004DDA
 	strb r2, [r0]
@@ -7707,7 +7707,7 @@ _08064B78:
 	movs r0, #0
 	bl DemoLoadRam
 _08064B96:
-	ldr r0, _08064C14 @ =0x0300001B
+	ldr r0, _08064C14 @ =gAbilityCount
 	ldrb r0, [r0]
 	bl SetAbilityCount
 _08064B9E:
@@ -7745,14 +7745,14 @@ _08064BE8: .4byte gCurrentClipdataAffectingAction
 _08064BEC: .4byte 0x03000B86
 _08064BF0: .4byte 0x0300002A
 _08064BF4: .4byte gCurrentCutscene
-_08064BF8: .4byte 0x03000048
+_08064BF8: .4byte gCurrentNavigationRoom
 _08064BFC: .4byte 0x03004DDA
 _08064C00: .4byte gIsLoadingFile
 _08064C04: .4byte 0x03000B89
 _08064C08: .4byte 0x0300002E
 _08064C0C: .4byte 0x0300001E
 _08064C10: .4byte 0x03000058
-_08064C14: .4byte 0x0300001B
+_08064C14: .4byte gAbilityCount
 _08064C18: .4byte 0x03004E0C
 _08064C1C: .4byte 0x0300001C
 _08064C20: .4byte gEquipment
@@ -8935,7 +8935,7 @@ _08065614: .4byte 0x03004DEC
 unk_65618: @ 0x08065618
 	push {r4, lr}
 	movs r2, #0
-	ldr r0, _0806564C @ =0x03000048
+	ldr r0, _0806564C @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08065642
@@ -8961,7 +8961,7 @@ _08065642:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0806564C: .4byte 0x03000048
+_0806564C: .4byte gCurrentNavigationRoom
 _08065650: .4byte 0x03004DEC
 
 	thumb_func_start SetupInitialTilemap
@@ -9701,7 +9701,7 @@ _08065B9C:
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 _08065BBE:
-	ldr r0, _08065C30 @ =0x03000048
+	ldr r0, _08065C30 @ =gCurrentNavigationRoom
 	ldrb r2, [r0]
 	cmp r2, #0
 	bne _08065C14
@@ -9755,7 +9755,7 @@ _08065C20: .4byte 0x03004FC4
 _08065C24: .4byte 0x040000D4
 _08065C28: .4byte 0x08408268
 _08065C2C: .4byte 0x0500002C
-_08065C30: .4byte 0x03000048
+_08065C30: .4byte gCurrentNavigationRoom
 _08065C34: .4byte 0x03004E3B
 _08065C38: .4byte gDoorUnlockTimer
 _08065C3C: .4byte 0x08408336
@@ -16499,7 +16499,7 @@ CheckCantUseElevator: @ 0x08068FC4
 	movs r1, #0
 	movs r2, #0xb
 	bl memset
-	ldr r1, _08069004 @ =0x03000049
+	ldr r1, _08069004 @ =gLastElevatorUsed
 	movs r0, #0xff
 	strb r0, [r1]
 	movs r4, #0
@@ -16520,7 +16520,7 @@ _08068FF0:
 	movs r4, #1
 	b _0806902A
 	.align 2, 0
-_08069004: .4byte 0x03000049
+_08069004: .4byte gLastElevatorUsed
 _08069008: .4byte gCurrentArea
 _0806900C: .4byte 0x083C8BFC
 _08069010: .4byte gCurrentRoom
@@ -16549,7 +16549,7 @@ _08069036:
 	cmp r4, #0
 	beq _080690BE
 	movs r4, #4
-	ldr r7, _080690CC @ =0x03000049
+	ldr r7, _080690CC @ =gLastElevatorUsed
 	ldr r6, _080690D0 @ =0x083C8C28
 	ldr r0, _080690D4 @ =gEventCounter
 	ldrb r5, [r0]
@@ -16625,7 +16625,7 @@ _080690BE:
 	movs r0, #2
 	b _080690E2
 	.align 2, 0
-_080690CC: .4byte 0x03000049
+_080690CC: .4byte gLastElevatorUsed
 _080690D0: .4byte 0x083C8C28
 _080690D4: .4byte gEventCounter
 _080690D8: .4byte 0x03004DDA
@@ -31106,7 +31106,7 @@ _080700F0: .4byte gSubEventCounter
 UpdateSubEventCounterAfterAbility: @ 0x080700F4
 	push {lr}
 	ldr r1, _08070114 @ =0x08575FB4
-	ldr r0, _08070118 @ =0x0300001B
+	ldr r0, _08070118 @ =gAbilityCount
 	ldrb r0, [r0]
 	lsls r0, r0, #3
 	adds r0, r0, r1
@@ -31122,7 +31122,7 @@ _08070110:
 	bx r0
 	.align 2, 0
 _08070114: .4byte 0x08575FB4
-_08070118: .4byte 0x0300001B
+_08070118: .4byte gAbilityCount
 _0807011C: .4byte gSubEventCounter
 
 	thumb_func_start UpdateSubEventAfterNavigationConversation
@@ -31140,7 +31140,7 @@ _0807012C:
 _08070132:
 	cmp r3, #0x15
 	bhi _08070154
-	ldr r1, _0807015C @ =0x03000B88
+	ldr r1, _0807015C @ =gPreviousNavigationConversation
 	ldr r4, _08070160 @ =0x0879BBCC
 	lsls r2, r3, #2
 	adds r0, r2, r4
@@ -31159,7 +31159,7 @@ _08070154:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807015C: .4byte 0x03000B88
+_0807015C: .4byte gPreviousNavigationConversation
 _08070160: .4byte 0x0879BBCC
 
 	thumb_func_start SetSubEventAndUpdateMusic
@@ -31402,7 +31402,7 @@ _08070464:
 _0807046E:
 	cmp r3, #1
 	bne _0807047E
-	ldr r0, _0807049C @ =0x03004E3C
+	ldr r0, _0807049C @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x14
 	bne _0807047E
@@ -31422,10 +31422,10 @@ _08070492:
 	movs r1, #2
 	bl _08071584
 	.align 2, 0
-_0807049C: .4byte 0x03004E3C
+_0807049C: .4byte gDestinationDoor
 _080704A0: .4byte gCurrentRoom
 _080704A4:
-	ldr r0, _080704C8 @ =0x03000048
+	ldr r0, _080704C8 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _080704B0
@@ -31443,13 +31443,13 @@ _080704C0:
 	movs r1, #2
 	bl _08071584
 	.align 2, 0
-_080704C8: .4byte 0x03000048
+_080704C8: .4byte gCurrentNavigationRoom
 _080704CC:
 	movs r0, #0xb4
 	bl FadeMusic
 	bl _08071588
 _080704D6:
-	ldr r0, _080704EC @ =0x03000049
+	ldr r0, _080704EC @ =gLastElevatorUsed
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _080704E2
@@ -31459,7 +31459,7 @@ _080704E2:
 	movs r1, #2
 	bl _08071584
 	.align 2, 0
-_080704EC: .4byte 0x03000049
+_080704EC: .4byte gLastElevatorUsed
 _080704F0:
 	ldrb r0, [r2]
 	cmp r0, #0
@@ -31468,7 +31468,7 @@ _080704F0:
 _080704FA:
 	cmp r3, #1
 	bne _0807050A
-	ldr r0, _08070528 @ =0x03004E3C
+	ldr r0, _08070528 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0xd
 	bne _0807050A
@@ -31488,7 +31488,7 @@ _0807051E:
 	movs r1, #2
 	bl _08071584
 	.align 2, 0
-_08070528: .4byte 0x03004E3C
+_08070528: .4byte gDestinationDoor
 _0807052C: .4byte gCurrentRoom
 _08070530:
 	ldrb r0, [r2]
@@ -31498,7 +31498,7 @@ _08070530:
 _0807053A:
 	cmp r3, #1
 	bne _08070554
-	ldr r0, _08070550 @ =0x03004E3C
+	ldr r0, _08070550 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x3c
 	bne _08070554
@@ -31506,7 +31506,7 @@ _0807053A:
 	bl FadeMusic
 	b _0807056A
 	.align 2, 0
-_08070550: .4byte 0x03004E3C
+_08070550: .4byte gDestinationDoor
 _08070554:
 	cmp r3, #2
 	bne _0807056A
@@ -31532,7 +31532,7 @@ _08070572:
 _08070580: .4byte gCurrentRoom
 _08070584: .4byte gSubEventCounter
 _08070588:
-	ldr r0, _080705A8 @ =0x03000048
+	ldr r0, _080705A8 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #3
 	beq _08070594
@@ -31546,7 +31546,7 @@ _08070594:
 	bl unk_38a8
 	bl _08071588
 	.align 2, 0
-_080705A8: .4byte 0x03000048
+_080705A8: .4byte gCurrentNavigationRoom
 _080705AC:
 	ldrb r0, [r2]
 	cmp r0, #0
@@ -31574,7 +31574,7 @@ _080705D4:
 _080705DE:
 	cmp r3, #1
 	bne _080705EE
-	ldr r0, _0807060C @ =0x03004E3C
+	ldr r0, _0807060C @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x26
 	bne _080705EE
@@ -31594,7 +31594,7 @@ _08070602:
 	movs r1, #2
 	bl _08071584
 	.align 2, 0
-_0807060C: .4byte 0x03004E3C
+_0807060C: .4byte gDestinationDoor
 _08070610: .4byte gCurrentRoom
 _08070614:
 	ldrb r0, [r2]
@@ -31640,7 +31640,7 @@ _0807066C:
 	movs r1, #2
 	bl _08071584
 _08070674:
-	ldr r0, _08070698 @ =0x03000048
+	ldr r0, _08070698 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #4
 	beq _08070680
@@ -31658,7 +31658,7 @@ _08070690:
 	movs r1, #3
 	bl _08071584
 	.align 2, 0
-_08070698: .4byte 0x03000048
+_08070698: .4byte gCurrentNavigationRoom
 _0807069C:
 	ldrb r0, [r2]
 	cmp r0, #1
@@ -31667,7 +31667,7 @@ _0807069C:
 _080706A6:
 	cmp r3, #1
 	bne _080706B6
-	ldr r0, _080706D4 @ =0x03004E3C
+	ldr r0, _080706D4 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x28
 	bne _080706B6
@@ -31687,7 +31687,7 @@ _080706CA:
 	movs r1, #6
 	bl _08071584
 	.align 2, 0
-_080706D4: .4byte 0x03004E3C
+_080706D4: .4byte gDestinationDoor
 _080706D8: .4byte gCurrentRoom
 _080706DC:
 	ldrb r0, [r2]
@@ -31697,7 +31697,7 @@ _080706DC:
 _080706E6:
 	cmp r3, #1
 	bne _080706F6
-	ldr r0, _08070714 @ =0x03004E3C
+	ldr r0, _08070714 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x28
 	beq _080706F6
@@ -31717,10 +31717,10 @@ _0807070A:
 	movs r1, #3
 	bl _08071584
 	.align 2, 0
-_08070714: .4byte 0x03004E3C
+_08070714: .4byte gDestinationDoor
 _08070718: .4byte gCurrentRoom
 _0807071C:
-	ldr r0, _08070740 @ =0x03000048
+	ldr r0, _08070740 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #4
 	beq _08070728
@@ -31738,7 +31738,7 @@ _08070738:
 	movs r1, #3
 	bl _08071584
 	.align 2, 0
-_08070740: .4byte 0x03000048
+_08070740: .4byte gCurrentNavigationRoom
 _08070744:
 	ldrb r0, [r2]
 	cmp r0, #1
@@ -31747,7 +31747,7 @@ _08070744:
 _0807074E:
 	cmp r4, #0x21
 	bne _08070768
-	ldr r0, _08070764 @ =0x03004E3C
+	ldr r0, _08070764 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _08070768
@@ -31755,14 +31755,14 @@ _0807074E:
 	bl FadeMusic
 	bl _08071588
 	.align 2, 0
-_08070764: .4byte 0x03004E3C
+_08070764: .4byte gDestinationDoor
 _08070768:
 	cmp r4, #7
 	beq _08070770
 	bl _0807158A
 _08070770:
 	movs r0, #0x1e
-	bl sub_08071130
+	bl _08071130
 _08070776:
 	ldrb r0, [r2]
 	cmp r0, #1
@@ -31785,7 +31785,7 @@ _0807078C:
 _0807079C: .4byte gCurrentRoom
 _080707A0: .4byte gSubEventCounter
 _080707A4:
-	ldr r0, _080707BC @ =0x03000049
+	ldr r0, _080707BC @ =gLastElevatorUsed
 	ldrb r0, [r0]
 	cmp r0, #3
 	beq _080707B0
@@ -31796,7 +31796,7 @@ _080707B0:
 	bl FadeMusic
 	bl _08071588
 	.align 2, 0
-_080707BC: .4byte 0x03000049
+_080707BC: .4byte gLastElevatorUsed
 _080707C0:
 	ldrb r0, [r2]
 	cmp r0, #2
@@ -31818,7 +31818,7 @@ _080707D6:
 	.align 2, 0
 _080707E8: .4byte gCurrentRoom
 _080707EC:
-	ldr r0, _08070810 @ =0x03000048
+	ldr r0, _08070810 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #6
 	beq _080707F8
@@ -31836,7 +31836,7 @@ _08070808:
 	movs r1, #4
 	bl _08071584
 	.align 2, 0
-_08070810: .4byte 0x03000048
+_08070810: .4byte gCurrentNavigationRoom
 _08070814:
 	ldrb r0, [r2]
 	cmp r0, #2
@@ -31845,7 +31845,7 @@ _08070814:
 _0807081E:
 	cmp r3, #1
 	bne _0807082E
-	ldr r0, _0807084C @ =0x03004E3C
+	ldr r0, _0807084C @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0807082E
@@ -31865,7 +31865,7 @@ _08070842:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_0807084C: .4byte 0x03004E3C
+_0807084C: .4byte gDestinationDoor
 _08070850: .4byte gCurrentRoom
 _08070854:
 	ldrb r0, [r2]
@@ -31875,7 +31875,7 @@ _08070854:
 _0807085E:
 	cmp r3, #1
 	bne _0807086E
-	ldr r0, _0807088C @ =0x03004E3C
+	ldr r0, _0807088C @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x12
 	bne _0807086E
@@ -31895,7 +31895,7 @@ _08070882:
 	movs r1, #4
 	bl _08071584
 	.align 2, 0
-_0807088C: .4byte 0x03004E3C
+_0807088C: .4byte gDestinationDoor
 _08070890: .4byte gCurrentRoom
 _08070894:
 	ldrb r0, [r2]
@@ -31905,7 +31905,7 @@ _08070894:
 _0807089E:
 	cmp r3, #1
 	bne _080708AE
-	ldr r0, _080708CC @ =0x03004E3C
+	ldr r0, _080708CC @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x12
 	beq _080708AE
@@ -31925,7 +31925,7 @@ _080708C2:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_080708CC: .4byte 0x03004E3C
+_080708CC: .4byte gDestinationDoor
 _080708D0: .4byte gCurrentRoom
 _080708D4:
 	movs r0, #0x1e
@@ -31941,7 +31941,7 @@ _080708E2:
 _080708EC:
 	cmp r3, #1
 	bne _080708FC
-	ldr r0, _08070918 @ =0x03004E3C
+	ldr r0, _08070918 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x2d
 	beq _080708FC
@@ -31961,14 +31961,14 @@ _08070910:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_08070918: .4byte 0x03004E3C
+_08070918: .4byte gDestinationDoor
 _0807091C: .4byte gCurrentRoom
 _08070920:
 	movs r0, #0xc8
 	bl FadeMusic
 	bl _08071588
 _0807092A:
-	ldr r0, _08070940 @ =0x03000049
+	ldr r0, _08070940 @ =gLastElevatorUsed
 	ldrb r0, [r0]
 	cmp r0, #3
 	beq _08070936
@@ -31978,9 +31978,9 @@ _08070936:
 	movs r1, #0xb
 	bl _08071584
 	.align 2, 0
-_08070940: .4byte 0x03000049
+_08070940: .4byte gLastElevatorUsed
 _08070944:
-	ldr r0, _08070968 @ =0x03000048
+	ldr r0, _08070968 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #7
 	beq _08070950
@@ -31998,7 +31998,7 @@ _08070960:
 	movs r1, #0xb
 	bl _08071584
 	.align 2, 0
-_08070968: .4byte 0x03000048
+_08070968: .4byte gCurrentNavigationRoom
 _0807096C:
 	ldrb r0, [r2]
 	cmp r0, #4
@@ -32007,7 +32007,7 @@ _0807096C:
 _08070976:
 	cmp r3, #1
 	bne _08070986
-	ldr r0, _080709A4 @ =0x03004E3C
+	ldr r0, _080709A4 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08070986
@@ -32027,7 +32027,7 @@ _0807099A:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_080709A4: .4byte 0x03004E3C
+_080709A4: .4byte gDestinationDoor
 _080709A8: .4byte gCurrentRoom
 _080709AC:
 	ldrb r0, [r2]
@@ -32037,7 +32037,7 @@ _080709AC:
 _080709B6:
 	cmp r3, #1
 	bne _080709C6
-	ldr r0, _080709E4 @ =0x03004E3C
+	ldr r0, _080709E4 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x1f
 	bne _080709C6
@@ -32057,7 +32057,7 @@ _080709DA:
 	movs r1, #5
 	bl _08071584
 	.align 2, 0
-_080709E4: .4byte 0x03004E3C
+_080709E4: .4byte gDestinationDoor
 _080709E8: .4byte gCurrentRoom
 _080709EC:
 	ldrb r0, [r2]
@@ -32067,7 +32067,7 @@ _080709EC:
 _080709F6:
 	cmp r3, #1
 	bne _08070A06
-	ldr r0, _08070A24 @ =0x03004E3C
+	ldr r0, _08070A24 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x2a
 	bne _08070A06
@@ -32087,7 +32087,7 @@ _08070A1A:
 	movs r1, #6
 	bl _08071584
 	.align 2, 0
-_08070A24: .4byte 0x03004E3C
+_08070A24: .4byte gDestinationDoor
 _08070A28: .4byte gCurrentRoom
 _08070A2C:
 	ldrb r0, [r2]
@@ -32097,7 +32097,7 @@ _08070A2C:
 _08070A36:
 	cmp r3, #1
 	bne _08070A46
-	ldr r0, _08070A64 @ =0x03004E3C
+	ldr r0, _08070A64 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x2a
 	beq _08070A46
@@ -32117,7 +32117,7 @@ _08070A5A:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_08070A64: .4byte 0x03004E3C
+_08070A64: .4byte gDestinationDoor
 _08070A68: .4byte gCurrentRoom
 _08070A6C:
 	ldrb r0, [r2]
@@ -32127,7 +32127,7 @@ _08070A6C:
 _08070A76:
 	cmp r3, #1
 	bne _08070A82
-	ldr r0, _08070AA0 @ =0x03004E3C
+	ldr r0, _08070AA0 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #4
 	beq _08070AFA
@@ -32146,7 +32146,7 @@ _08070A96:
 	movs r1, #0xa
 	bl _08071584
 	.align 2, 0
-_08070AA0: .4byte 0x03004E3C
+_08070AA0: .4byte gDestinationDoor
 _08070AA4: .4byte gCurrentRoom
 _08070AA8:
 	ldrb r0, [r2]
@@ -32156,7 +32156,7 @@ _08070AA8:
 _08070AB2:
 	cmp r3, #1
 	bne _08070ABE
-	ldr r0, _08070ADC @ =0x03004E3C
+	ldr r0, _08070ADC @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #4
 	bne _08070AFA
@@ -32175,7 +32175,7 @@ _08070AD2:
 	movs r1, #0xa
 	bl _08071584
 	.align 2, 0
-_08070ADC: .4byte 0x03004E3C
+_08070ADC: .4byte gDestinationDoor
 _08070AE0: .4byte gCurrentRoom
 _08070AE4:
 	ldrb r0, [r2]
@@ -32185,7 +32185,7 @@ _08070AE4:
 _08070AEE:
 	cmp r3, #1
 	bne _08070B08
-	ldr r0, _08070B04 @ =0x03004E3C
+	ldr r0, _08070B04 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x15
 	bne _08070B08
@@ -32194,7 +32194,7 @@ _08070AFA:
 	bl FadeMusic
 	bl _0807158A
 	.align 2, 0
-_08070B04: .4byte 0x03004E3C
+_08070B04: .4byte gDestinationDoor
 _08070B08:
 	cmp r3, #2
 	beq _08070B10
@@ -32219,7 +32219,7 @@ _08070B28:
 _08070B32:
 	cmp r3, #1
 	bne _08070B42
-	ldr r0, _08070B60 @ =0x03004E3C
+	ldr r0, _08070B60 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x15
 	beq _08070B42
@@ -32239,7 +32239,7 @@ _08070B56:
 	movs r1, #6
 	bl _08071584
 	.align 2, 0
-_08070B60: .4byte 0x03004E3C
+_08070B60: .4byte gDestinationDoor
 _08070B64: .4byte gCurrentRoom
 _08070B68:
 	ldrb r0, [r2]
@@ -32288,7 +32288,7 @@ _08070BBA:
 	bl PlaySound
 	bl _08071588
 _08070BCE:
-	ldr r0, _08070BF4 @ =0x03000048
+	ldr r0, _08070BF4 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #9
 	beq _08070BDA
@@ -32306,7 +32306,7 @@ _08070BEA:
 	movs r1, #0xb
 	bl _08071584
 	.align 2, 0
-_08070BF4: .4byte 0x03000048
+_08070BF4: .4byte gCurrentNavigationRoom
 _08070BF8:
 	movs r0, #0xa
 	movs r1, #0x15
@@ -32321,7 +32321,7 @@ _08070C06:
 _08070C10:
 	cmp r3, #1
 	bne _08070C20
-	ldr r0, _08070C3C @ =0x03004E3C
+	ldr r0, _08070C3C @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08070C20
@@ -32341,7 +32341,7 @@ _08070C34:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_08070C3C: .4byte 0x03004E3C
+_08070C3C: .4byte gDestinationDoor
 _08070C40: .4byte gCurrentRoom
 _08070C44:
 	ldrb r0, [r2]
@@ -32351,7 +32351,7 @@ _08070C44:
 _08070C4E:
 	cmp r3, #1
 	bne _08070C5C
-	ldr r0, _08070C78 @ =0x03004E3C
+	ldr r0, _08070C78 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0xa
 	bne _08070C5C
@@ -32371,7 +32371,7 @@ _08070C70:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_08070C78: .4byte 0x03004E3C
+_08070C78: .4byte gDestinationDoor
 _08070C7C: .4byte gCurrentRoom
 _08070C80:
 	ldrb r0, [r2]
@@ -32381,7 +32381,7 @@ _08070C80:
 _08070C8A:
 	cmp r3, #1
 	bne _08070C9A
-	ldr r0, _08070CB8 @ =0x03004E3C
+	ldr r0, _08070CB8 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0xc
 	bne _08070C9A
@@ -32401,7 +32401,7 @@ _08070CAE:
 	movs r1, #6
 	bl _08071584
 	.align 2, 0
-_08070CB8: .4byte 0x03004E3C
+_08070CB8: .4byte gDestinationDoor
 _08070CBC: .4byte gCurrentRoom
 _08070CC0:
 	ldrb r0, [r2]
@@ -32411,7 +32411,7 @@ _08070CC0:
 _08070CCA:
 	cmp r3, #1
 	bne _08070CDA
-	ldr r0, _08070CF8 @ =0x03004E3C
+	ldr r0, _08070CF8 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0xd
 	beq _08070CDA
@@ -32431,7 +32431,7 @@ _08070CEE:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_08070CF8: .4byte 0x03004E3C
+_08070CF8: .4byte gDestinationDoor
 _08070CFC: .4byte gCurrentRoom
 _08070D00:
 	ldrb r0, [r2]
@@ -32441,7 +32441,7 @@ _08070D00:
 _08070D0A:
 	cmp r3, #1
 	bne _08070D1A
-	ldr r0, _08070D38 @ =0x03004E3C
+	ldr r0, _08070D38 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #7
 	bne _08070D1A
@@ -32461,7 +32461,7 @@ _08070D2E:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_08070D38: .4byte 0x03004E3C
+_08070D38: .4byte gDestinationDoor
 _08070D3C: .4byte gCurrentRoom
 _08070D40:
 	ldrb r0, [r2]
@@ -32471,7 +32471,7 @@ _08070D40:
 _08070D4A:
 	cmp r3, #1
 	bne _08070D64
-	ldr r0, _08070D60 @ =0x03004E3C
+	ldr r0, _08070D60 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08070D64
@@ -32479,7 +32479,7 @@ _08070D4A:
 	bl FadeMusic
 	b _08070D7A
 	.align 2, 0
-_08070D60: .4byte 0x03004E3C
+_08070D60: .4byte gDestinationDoor
 _08070D64:
 	cmp r3, #2
 	bne _08070D7A
@@ -32503,7 +32503,7 @@ _08070D82:
 _08070D8C: .4byte gCurrentRoom
 _08070D90: .4byte 0x000002CF
 _08070D94:
-	ldr r0, _08070DA8 @ =0x03000048
+	ldr r0, _08070DA8 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #5
 	beq _08070DA0
@@ -32512,7 +32512,7 @@ _08070DA0:
 	bl unk_3cfc
 	bl _08071588
 	.align 2, 0
-_08070DA8: .4byte 0x03000048
+_08070DA8: .4byte gCurrentNavigationRoom
 _08070DAC:
 	ldrb r0, [r2]
 	cmp r0, #3
@@ -32521,7 +32521,7 @@ _08070DAC:
 _08070DB6:
 	cmp r3, #1
 	bne _08070DC4
-	ldr r0, _08070DE0 @ =0x03004E3C
+	ldr r0, _08070DE0 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x1d
 	bne _08070DC4
@@ -32541,7 +32541,7 @@ _08070DD8:
 	movs r1, #0
 	bl _08071584
 	.align 2, 0
-_08070DE0: .4byte 0x03004E3C
+_08070DE0: .4byte gDestinationDoor
 _08070DE4: .4byte gCurrentRoom
 _08070DE8:
 	ldrb r0, [r2]
@@ -32551,7 +32551,7 @@ _08070DE8:
 _08070DF2:
 	cmp r3, #1
 	bne _08070E00
-	ldr r0, _08070E1C @ =0x03004E3C
+	ldr r0, _08070E1C @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x2e
 	bne _08070E00
@@ -32571,7 +32571,7 @@ _08070E14:
 	movs r1, #0xa
 	b _08071584
 	.align 2, 0
-_08070E1C: .4byte 0x03004E3C
+_08070E1C: .4byte gDestinationDoor
 _08070E20: .4byte gCurrentRoom
 _08070E24:
 	ldrb r0, [r2]
@@ -32581,7 +32581,7 @@ _08070E24:
 _08070E2C:
 	cmp r3, #1
 	bne _08070E44
-	ldr r0, _08070E40 @ =0x03004E3C
+	ldr r0, _08070E40 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x14
 	bne _08070E44
@@ -32589,7 +32589,7 @@ _08070E2C:
 	bl FadeMusic
 	b _08070E5A
 	.align 2, 0
-_08070E40: .4byte 0x03004E3C
+_08070E40: .4byte gDestinationDoor
 _08070E44:
 	cmp r3, #2
 	bne _08070E5A
@@ -32630,7 +32630,7 @@ _08070E80:
 _08070E88:
 	cmp r3, #1
 	bne _08070E96
-	ldr r0, _08070EAC @ =0x03004E3C
+	ldr r0, _08070EAC @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #7
 	bne _08070E96
@@ -32650,7 +32650,7 @@ _08070EA6:
 	movs r1, #0
 	b _08071584
 	.align 2, 0
-_08070EAC: .4byte 0x03004E3C
+_08070EAC: .4byte gDestinationDoor
 _08070EB0: .4byte gCurrentRoom
 _08070EB4:
 	ldrb r0, [r2]
@@ -32660,7 +32660,7 @@ _08070EB4:
 _08070EBC:
 	cmp r3, #1
 	bne _08070ECA
-	ldr r0, _08070EE0 @ =0x03004E3C
+	ldr r0, _08070EE0 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x2b
 	bne _08070ECA
@@ -32680,7 +32680,7 @@ _08070EDA:
 	movs r1, #0xa
 	b _08071584
 	.align 2, 0
-_08070EE0: .4byte 0x03004E3C
+_08070EE0: .4byte gDestinationDoor
 _08070EE4: .4byte gCurrentRoom
 _08070EE8:
 	movs r0, #0xa
@@ -32696,7 +32696,7 @@ _08070EF4:
 _08070EFC:
 	cmp r3, #1
 	bne _08070F14
-	ldr r0, _08070F10 @ =0x03004E3C
+	ldr r0, _08070F10 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x16
 	bne _08070F14
@@ -32705,7 +32705,7 @@ _08070F08:
 	bl FadeMusic
 	b _0807158A
 	.align 2, 0
-_08070F10: .4byte 0x03004E3C
+_08070F10: .4byte gDestinationDoor
 _08070F14:
 	cmp r3, #2
 	beq _08070F1A
@@ -32748,7 +32748,7 @@ _08070F4E:
 	.align 2, 0
 _08070F5C: .4byte gCurrentRoom
 _08070F60:
-	ldr r0, _08070F6C @ =0x03000048
+	ldr r0, _08070F6C @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08070F6A
@@ -32756,7 +32756,7 @@ _08070F60:
 _08070F6A:
 	b _08071588
 	.align 2, 0
-_08070F6C: .4byte 0x03000048
+_08070F6C: .4byte gCurrentNavigationRoom
 _08070F70:
 	movs r0, #0
 	bl FadeMusic
@@ -32773,7 +32773,7 @@ _08070F7E:
 _08070F86:
 	cmp r3, #1
 	bne _08070F94
-	ldr r0, _08070FAC @ =0x03004E3C
+	ldr r0, _08070FAC @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x31
 	bne _08070F94
@@ -32793,7 +32793,7 @@ _08070FA4:
 	movs r1, #0xa
 	b _08071584
 	.align 2, 0
-_08070FAC: .4byte 0x03004E3C
+_08070FAC: .4byte gDestinationDoor
 _08070FB0: .4byte gCurrentRoom
 _08070FB4:
 	ldrb r0, [r2]
@@ -32803,7 +32803,7 @@ _08070FB4:
 _08070FBC:
 	cmp r3, #1
 	bne _08070FCA
-	ldr r0, _08070FE0 @ =0x03004E3C
+	ldr r0, _08070FE0 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x56
 	bne _08070FCA
@@ -32823,7 +32823,7 @@ _08070FDA:
 	movs r1, #6
 	b _08071584
 	.align 2, 0
-_08070FE0: .4byte 0x03004E3C
+_08070FE0: .4byte gDestinationDoor
 _08070FE4: .4byte gCurrentRoom
 _08070FE8:
 	ldrb r0, [r2]
@@ -32835,7 +32835,7 @@ _08070FF0:
 	beq _08070FF6
 	b _0807158A
 _08070FF6:
-	ldr r0, _0807100C @ =0x03004E3C
+	ldr r0, _0807100C @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x33
 	bne _08071014
@@ -32845,7 +32845,7 @@ _08070FF6:
 	movs r0, #0x69
 	b _08071106
 	.align 2, 0
-_0807100C: .4byte 0x03004E3C
+_0807100C: .4byte gDestinationDoor
 _08071010: .4byte gSubEventCounter
 _08071014:
 	cmp r0, #0x36
@@ -32886,7 +32886,7 @@ _08071052:
 	movs r1, #0xa
 	b _08071584
 _08071058:
-	ldr r0, _08071074 @ =0x03000048
+	ldr r0, _08071074 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #0xa
 	beq _08071062
@@ -32904,7 +32904,7 @@ _0807106E:
 	movs r1, #0xa
 	b _08071584
 	.align 2, 0
-_08071074: .4byte 0x03000048
+_08071074: .4byte gCurrentNavigationRoom
 _08071078:
 	ldrb r0, [r2]
 	cmp r0, #2
@@ -32913,7 +32913,7 @@ _08071078:
 _08071080:
 	cmp r3, #1
 	bne _0807108C
-	ldr r0, _080710A4 @ =0x03004E3C
+	ldr r0, _080710A4 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x18
 	beq _080710C0
@@ -32932,7 +32932,7 @@ _0807109C:
 	movs r1, #8
 	b _08071584
 	.align 2, 0
-_080710A4: .4byte 0x03004E3C
+_080710A4: .4byte gDestinationDoor
 _080710A8: .4byte gCurrentRoom
 _080710AC:
 	ldrb r0, [r2]
@@ -32942,7 +32942,7 @@ _080710AC:
 _080710B4:
 	cmp r3, #1
 	bne _080710CC
-	ldr r0, _080710C8 @ =0x03004E3C
+	ldr r0, _080710C8 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x37
 	bne _080710CC
@@ -32951,7 +32951,7 @@ _080710C0:
 	bl FadeMusic
 	b _0807158A
 	.align 2, 0
-_080710C8: .4byte 0x03004E3C
+_080710C8: .4byte gDestinationDoor
 _080710CC:
 	cmp r3, #2
 	beq _080710D2
@@ -32998,7 +32998,7 @@ _08071114:
 	beq _0807111C
 	b _0807158A
 _0807111C:
-	ldr r0, _08071138 @ =0x03004E3C
+	ldr r0, _08071138 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x20
 	beq _08071126
@@ -33009,14 +33009,12 @@ _08071126:
 	cmp r0, #0x4d
 	bne _08071140
 	movs r0, #0x74
-
-	thumb_func_start sub_08071130
-sub_08071130: @ 0x08071130
+_08071130:
 	strh r0, [r6]
 	movs r5, #2
 	b _0807158A
 	.align 2, 0
-_08071138: .4byte 0x03004E3C
+_08071138: .4byte gDestinationDoor
 _0807113C: .4byte gEventCounter
 _08071140:
 	movs r0, #0x1e
@@ -33047,7 +33045,7 @@ _08071164:
 _0807116C:
 	cmp r3, #1
 	bne _0807117A
-	ldr r0, _08071190 @ =0x03004E3C
+	ldr r0, _08071190 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x16
 	bne _0807117A
@@ -33066,7 +33064,7 @@ _0807118A:
 	movs r0, #0x44
 	b _08071582
 	.align 2, 0
-_08071190: .4byte 0x03004E3C
+_08071190: .4byte gDestinationDoor
 _08071194: .4byte gCurrentRoom
 _08071198:
 	ldrb r0, [r2]
@@ -33076,7 +33074,7 @@ _08071198:
 _080711A0:
 	cmp r3, #1
 	bne _080711AE
-	ldr r0, _080711C4 @ =0x03004E3C
+	ldr r0, _080711C4 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0xc
 	bne _080711AE
@@ -33096,7 +33094,7 @@ _080711BE:
 	movs r1, #0
 	b _08071584
 	.align 2, 0
-_080711C4: .4byte 0x03004E3C
+_080711C4: .4byte gDestinationDoor
 _080711C8: .4byte gCurrentRoom
 _080711CC:
 	ldrb r0, [r2]
@@ -33106,7 +33104,7 @@ _080711CC:
 _080711D4:
 	cmp r3, #1
 	bne _080711E2
-	ldr r0, _080711F8 @ =0x03004E3C
+	ldr r0, _080711F8 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _080711E2
@@ -33126,7 +33124,7 @@ _080711F2:
 	movs r1, #0xa
 	b _08071584
 	.align 2, 0
-_080711F8: .4byte 0x03004E3C
+_080711F8: .4byte gDestinationDoor
 _080711FC: .4byte gCurrentRoom
 _08071200:
 	ldrb r0, [r2]
@@ -33136,7 +33134,7 @@ _08071200:
 _08071208:
 	cmp r3, #1
 	bne _08071214
-	ldr r0, _0807122C @ =0x03004E3C
+	ldr r0, _0807122C @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x14
 	beq _08071304
@@ -33155,7 +33153,7 @@ _08071224:
 	movs r1, #6
 	b _08071584
 	.align 2, 0
-_0807122C: .4byte 0x03004E3C
+_0807122C: .4byte gDestinationDoor
 _08071230: .4byte gCurrentRoom
 _08071234:
 	ldrb r0, [r2]
@@ -33165,7 +33163,7 @@ _08071234:
 _0807123C:
 	cmp r3, #1
 	bne _08071248
-	ldr r0, _08071260 @ =0x03004E3C
+	ldr r0, _08071260 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x1b
 	beq _08071304
@@ -33184,7 +33182,7 @@ _08071258:
 	movs r1, #0xa
 	b _08071584
 	.align 2, 0
-_08071260: .4byte 0x03004E3C
+_08071260: .4byte gDestinationDoor
 _08071264: .4byte gCurrentRoom
 _08071268:
 	ldrb r0, [r2]
@@ -33194,7 +33192,7 @@ _08071268:
 _08071270:
 	cmp r3, #1
 	bne _0807127C
-	ldr r0, _08071294 @ =0x03004E3C
+	ldr r0, _08071294 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0xe
 	beq _08071304
@@ -33213,7 +33211,7 @@ _0807128C:
 	movs r1, #0
 	b _08071584
 	.align 2, 0
-_08071294: .4byte 0x03004E3C
+_08071294: .4byte gDestinationDoor
 _08071298: .4byte gCurrentRoom
 _0807129C:
 	ldrb r0, [r2]
@@ -33221,7 +33219,7 @@ _0807129C:
 	beq _080712A4
 	b _0807158A
 _080712A4:
-	ldr r0, _080712B8 @ =0x03004E3C
+	ldr r0, _080712B8 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x1a
 	beq _080712AE
@@ -33231,9 +33229,9 @@ _080712AE:
 	bl FadeMusic
 	b _08071588
 	.align 2, 0
-_080712B8: .4byte 0x03004E3C
+_080712B8: .4byte gDestinationDoor
 _080712BC:
-	ldr r0, _080712CC @ =0x03000049
+	ldr r0, _080712CC @ =gLastElevatorUsed
 	ldrb r0, [r0]
 	cmp r0, #4
 	beq _080712C6
@@ -33243,9 +33241,9 @@ _080712C6:
 	movs r1, #0xb
 	b _08071584
 	.align 2, 0
-_080712CC: .4byte 0x03000049
+_080712CC: .4byte gLastElevatorUsed
 _080712D0:
-	ldr r0, _080712EC @ =0x03000048
+	ldr r0, _080712EC @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #9
 	beq _080712DA
@@ -33261,7 +33259,7 @@ _080712E4:
 	movs r1, #0xb
 	b _08071584
 	.align 2, 0
-_080712EC: .4byte 0x03000048
+_080712EC: .4byte gCurrentNavigationRoom
 _080712F0:
 	ldrb r0, [r2]
 	cmp r0, #6
@@ -33270,7 +33268,7 @@ _080712F0:
 _080712F8:
 	cmp r3, #1
 	bne _08071310
-	ldr r0, _0807130C @ =0x03004E3C
+	ldr r0, _0807130C @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08071310
@@ -33279,7 +33277,7 @@ _08071304:
 	bl FadeMusic
 	b _0807158A
 	.align 2, 0
-_0807130C: .4byte 0x03004E3C
+_0807130C: .4byte gDestinationDoor
 _08071310:
 	cmp r3, #2
 	beq _08071316
@@ -33309,7 +33307,7 @@ _08071336:
 _0807133E:
 	cmp r3, #1
 	bne _08071358
-	ldr r0, _08071354 @ =0x03004E3C
+	ldr r0, _08071354 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x10
 	bne _08071358
@@ -33317,7 +33315,7 @@ _0807133E:
 	bl FadeMusic
 	b _0807136E
 	.align 2, 0
-_08071354: .4byte 0x03004E3C
+_08071354: .4byte gDestinationDoor
 _08071358:
 	cmp r3, #2
 	bne _0807136E
@@ -33364,7 +33362,7 @@ _080713A0:
 _080713A8:
 	cmp r3, #1
 	bne _080713C4
-	ldr r0, _080713C0 @ =0x03004E3C
+	ldr r0, _080713C0 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x4e
 	bne _080713C4
@@ -33373,7 +33371,7 @@ _080713A8:
 	bl unk_3cfc
 	b _0807158A
 	.align 2, 0
-_080713C0: .4byte 0x03004E3C
+_080713C0: .4byte gDestinationDoor
 _080713C4:
 	cmp r3, #2
 	beq _080713CA
@@ -33402,7 +33400,7 @@ _080713E8:
 _080713F0:
 	cmp r3, #1
 	bne _08071408
-	ldr r0, _08071404 @ =0x03004E3C
+	ldr r0, _08071404 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x4f
 	bne _08071408
@@ -33410,7 +33408,7 @@ _080713F0:
 	bl FadeMusic
 	b _0807141E
 	.align 2, 0
-_08071404: .4byte 0x03004E3C
+_08071404: .4byte gDestinationDoor
 _08071408:
 	cmp r3, #2
 	bne _0807141E
@@ -33449,7 +33447,7 @@ _08071448:
 	bl FadeMusic
 	b _08071588
 _08071452:
-	ldr r0, _08071464 @ =0x03000049
+	ldr r0, _08071464 @ =gLastElevatorUsed
 	ldrb r0, [r0]
 	cmp r0, #0xa
 	beq _0807145C
@@ -33459,7 +33457,7 @@ _0807145C:
 	movs r1, #0xa
 	b _08071584
 	.align 2, 0
-_08071464: .4byte 0x03000049
+_08071464: .4byte gLastElevatorUsed
 _08071468:
 	ldrb r0, [r2]
 	cmp r0, #1
@@ -33468,7 +33466,7 @@ _08071468:
 _08071470:
 	cmp r3, #1
 	bne _0807147C
-	ldr r0, _08071494 @ =0x03004E3C
+	ldr r0, _08071494 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x1e
 	beq _080714DA
@@ -33487,7 +33485,7 @@ _0807148C:
 	movs r1, #0xa
 	b _08071584
 	.align 2, 0
-_08071494: .4byte 0x03004E3C
+_08071494: .4byte gDestinationDoor
 _08071498: .4byte gCurrentRoom
 _0807149C:
 	ldrb r0, [r2]
@@ -33495,7 +33493,7 @@ _0807149C:
 	bne _0807158A
 	cmp r3, #1
 	bne _080714AE
-	ldr r0, _080714C0 @ =0x03004E3C
+	ldr r0, _080714C0 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x1b
 	beq _080714DA
@@ -33510,7 +33508,7 @@ _080714AE:
 	movs r1, #6
 	b _08071584
 	.align 2, 0
-_080714C0: .4byte 0x03004E3C
+_080714C0: .4byte gDestinationDoor
 _080714C4: .4byte gCurrentRoom
 _080714C8:
 	ldrb r0, [r2]
@@ -33518,7 +33516,7 @@ _080714C8:
 	bne _0807158A
 	cmp r3, #1
 	bne _080714E8
-	ldr r0, _080714E4 @ =0x03004E3C
+	ldr r0, _080714E4 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x1a
 	bne _080714E8
@@ -33527,7 +33525,7 @@ _080714DA:
 	bl FadeMusic
 	b _0807158A
 	.align 2, 0
-_080714E4: .4byte 0x03004E3C
+_080714E4: .4byte gDestinationDoor
 _080714E8:
 	cmp r3, #2
 	bne _0807158A
@@ -33541,7 +33539,7 @@ _080714E8:
 	.align 2, 0
 _080714FC: .4byte gCurrentRoom
 _08071500:
-	ldr r0, _08071518 @ =0x03000048
+	ldr r0, _08071518 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #4
 	bne _0807158A
@@ -33553,14 +33551,14 @@ _08071500:
 	movs r1, #0xa
 	b _08071584
 	.align 2, 0
-_08071518: .4byte 0x03000048
+_08071518: .4byte gCurrentNavigationRoom
 _0807151C:
 	ldrb r0, [r2]
 	cmp r0, #0
 	bne _0807158A
 	cmp r3, #1
 	bne _0807153C
-	ldr r0, _08071538 @ =0x03004E3C
+	ldr r0, _08071538 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x55
 	bne _0807153C
@@ -33569,7 +33567,7 @@ _0807152E:
 	bl FadeMusic
 	b _0807158A
 	.align 2, 0
-_08071538: .4byte 0x03004E3C
+_08071538: .4byte gDestinationDoor
 _0807153C:
 	cmp r3, #2
 	bne _0807158A
@@ -33588,7 +33586,7 @@ _08071554:
 	bne _0807158A
 	cmp r3, #1
 	bne _08071574
-	ldr r0, _08071570 @ =0x03004E3C
+	ldr r0, _08071570 @ =gDestinationDoor
 	ldrb r0, [r0]
 	cmp r0, #0x3f
 	bne _08071574
@@ -33596,7 +33594,7 @@ _08071554:
 	bl FadeMusic
 	b _0807158A
 	.align 2, 0
-_08071570: .4byte 0x03004E3C
+_08071570: .4byte gDestinationDoor
 _08071574:
 	cmp r3, #2
 	bne _0807158A
@@ -33614,7 +33612,7 @@ _08071588:
 _0807158A:
 	cmp r5, #1
 	bne _0807159A
-	ldr r2, _080715A4 @ =0x03000062
+	ldr r2, _080715A4 @ =gPreviousSubEvent
 	ldr r1, _080715A8 @ =gSubEventCounter
 	ldrh r0, [r1]
 	strh r0, [r2]
@@ -33626,7 +33624,7 @@ _0807159A:
 	bx r0
 	.align 2, 0
 _080715A0: .4byte gCurrentRoom
-_080715A4: .4byte 0x03000062
+_080715A4: .4byte gPreviousSubEvent
 _080715A8: .4byte gSubEventCounter
 
 	thumb_func_start PlayRoomMusicTrack
@@ -33649,7 +33647,7 @@ PlayRoomMusicTrack: @ 0x080715AC
 	strh r0, [r2]
 	ldrh r0, [r2]
 	bl CheckSetNewMusicTrack
-	ldr r0, _080715EC @ =0x03004E3C
+	ldr r0, _080715EC @ =gDestinationDoor
 	strb r4, [r0]
 	movs r0, #0x21
 	bl CheckUpdateSubEventAndMusic
@@ -33659,7 +33657,7 @@ PlayRoomMusicTrack: @ 0x080715AC
 	.align 2, 0
 _080715E4: .4byte 0x03004DE8
 _080715E8: .4byte 0x0879B8BC
-_080715EC: .4byte 0x03004E3C
+_080715EC: .4byte gDestinationDoor
 
 	thumb_func_start CheckUpdateMusicDuringRoomLoad
 CheckUpdateMusicDuringRoomLoad: @ 0x080715F0
@@ -33732,7 +33730,7 @@ _0807167C:
 	beq _080716C4
 	cmp r0, #3
 	bne _080716CA
-	ldr r0, _080716B8 @ =0x03000048
+	ldr r0, _080716B8 @ =gCurrentNavigationRoom
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _080716CA
@@ -33751,7 +33749,7 @@ _0807167C:
 	b _080716CA
 	.align 2, 0
 _080716B4: .4byte gPauseScreenFlag
-_080716B8: .4byte 0x03000048
+_080716B8: .4byte gCurrentNavigationRoom
 _080716BC: .4byte gEventCounter
 _080716C0: .4byte gSubEventCounter
 _080716C4:
@@ -33907,7 +33905,7 @@ DemoLoadRam: @ 0x080717BC
 	strb r0, [r2]
 	ldr r0, _08071864 @ =gCurrentRoom
 	strb r3, [r0]
-	ldr r2, _08071868 @ =0x0300001B
+	ldr r2, _08071868 @ =gAbilityCount
 	ldrb r0, [r1, #8]
 	strb r0, [r2]
 	ldr r2, _0807186C @ =gEquipment
@@ -33923,7 +33921,7 @@ DemoLoadRam: @ 0x080717BC
 	ldr r0, _08071878 @ =gSubEventCounter
 	ldrh r3, [r1, #6]
 	strh r3, [r0]
-	ldr r0, _0807187C @ =0x03000062
+	ldr r0, _0807187C @ =gPreviousSubEvent
 	strh r3, [r0]
 	ldrh r0, [r1, #0xa]
 	movs r3, #0
@@ -33963,12 +33961,12 @@ _08071858: .4byte gCurrentArea
 _0807185C: .4byte 0x083E3F6C
 _08071860: .4byte 0x0300002E
 _08071864: .4byte gCurrentRoom
-_08071868: .4byte 0x0300001B
+_08071868: .4byte gAbilityCount
 _0807186C: .4byte gEquipment
 _08071870: .4byte 0x0300001D
 _08071874: .4byte gEventCounter
 _08071878: .4byte gSubEventCounter
-_0807187C: .4byte 0x03000062
+_0807187C: .4byte gPreviousSubEvent
 _08071880: .4byte gSamusData
 _08071884: .4byte 0x040000D4
 _08071888: .4byte 0x083E40C8
@@ -40438,7 +40436,7 @@ _08074B44:
 	ldrb r1, [r1]
 	cmp r0, r1
 	bne _08074B9A
-	ldr r0, _08074B80 @ =0x0300001B
+	ldr r0, _08074B80 @ =gAbilityCount
 	strb r4, [r0]
 	ldr r3, _08074B84 @ =gEquipment
 	ldr r1, _08074B88 @ =0x08575FB4
@@ -40460,7 +40458,7 @@ _08074B44:
 	.align 2, 0
 _08074B78: .4byte gEventCounter
 _08074B7C: .4byte 0x08575FA0
-_08074B80: .4byte 0x0300001B
+_08074B80: .4byte gAbilityCount
 _08074B84: .4byte gEquipment
 _08074B88: .4byte 0x08575FB4
 _08074B8C:
@@ -40592,7 +40590,7 @@ _08074C5E:
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	bl EventSet
-	ldr r1, _08074CAC @ =0x03000B88
+	ldr r1, _08074CAC @ =gPreviousNavigationConversation
 	movs r0, #0xfe
 	strb r0, [r1]
 	ldr r1, _08074CB0 @ =0x03000B85
@@ -40610,7 +40608,7 @@ _08074C90:
 	.align 2, 0
 _08074CA4: .4byte 0x03000B89
 _08074CA8: .4byte gCurrentCutscene
-_08074CAC: .4byte 0x03000B88
+_08074CAC: .4byte gPreviousNavigationConversation
 _08074CB0: .4byte 0x03000B85
 _08074CB4:
 	adds r4, #8
@@ -40770,13 +40768,13 @@ _08074DBC:
 	adds r4, r0, #0
 	cmp r1, #0
 	beq _08074DFE
-	ldr r0, _08074DF0 @ =0x03000B88
+	ldr r0, _08074DF0 @ =gPreviousNavigationConversation
 	strb r2, [r0]
 	b _08074E1C
 	.align 2, 0
 _08074DE8: .4byte gEventCounter
 _08074DEC: .4byte 0x08575A60
-_08074DF0: .4byte 0x03000B88
+_08074DF0: .4byte gPreviousNavigationConversation
 _08074DF4:
 	lsls r0, r3, #0x18
 	lsrs r0, r0, #0x18
@@ -40796,14 +40794,14 @@ _08074DFE:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	beq _08074DFE
-	ldr r0, _08074E24 @ =0x03000B88
+	ldr r0, _08074E24 @ =gPreviousNavigationConversation
 	strb r1, [r0]
 _08074E1C:
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08074E24: .4byte 0x03000B88
+_08074E24: .4byte gPreviousNavigationConversation
 
 	thumb_func_start CheckRoomEventTrigger
 CheckRoomEventTrigger: @ 0x08074E28
@@ -50672,7 +50670,7 @@ _08079CC0:
 	ldrb r1, [r0]
 	subs r0, r1, #1
 	lsls r3, r0, #1
-	ldr r0, _08079D24 @ =0x03000B88
+	ldr r0, _08079D24 @ =gPreviousNavigationConversation
 	ldrb r0, [r0]
 	cmp r1, r0
 	bne _08079CE4
@@ -50713,7 +50711,7 @@ _08079D1A:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08079D24: .4byte 0x03000B88
+_08079D24: .4byte gPreviousNavigationConversation
 _08079D28: .4byte 0x0879C0F0
 _08079D2C: .4byte 0x03000011
 _08079D30: .4byte _08079D34
@@ -51485,7 +51483,7 @@ NavigationConversationGetCurrentConversation: @ 0x0807A2DC
 	ldrb r2, [r0]
 	ldr r3, _0807A334 @ =0x08575A60
 	ldr r4, _0807A338 @ =0x03001484
-	ldr r5, _0807A33C @ =0x03000B88
+	ldr r5, _0807A33C @ =gPreviousNavigationConversation
 	cmp r2, #0
 	ble _0807A310
 	lsls r0, r2, #1
@@ -51528,7 +51526,7 @@ _0807A310:
 _0807A330: .4byte gEventCounter
 _0807A334: .4byte 0x08575A60
 _0807A338: .4byte 0x03001484
-_0807A33C: .4byte 0x03000B88
+_0807A33C: .4byte gPreviousNavigationConversation
 _0807A340: .4byte 0x00000221
 _0807A344:
 	ldr r0, _0807A394 @ =0x00000221
@@ -51951,7 +51949,7 @@ _0807A6C0:
 	movs r2, #0x88
 	lsls r2, r2, #2
 	adds r0, r1, r2
-	ldr r2, _0807A6F8 @ =0x03000B88
+	ldr r2, _0807A6F8 @ =gPreviousNavigationConversation
 	ldrb r0, [r0]
 	ldrb r3, [r2]
 	cmp r0, r3
@@ -51973,7 +51971,7 @@ _0807A6E6:
 	b _0807AE42
 	.align 2, 0
 _0807A6F4: .4byte 0x03001484
-_0807A6F8: .4byte 0x03000B88
+_0807A6F8: .4byte gPreviousNavigationConversation
 _0807A6FC: .4byte 0x00000221
 _0807A700:
 	ldr r2, _0807A714 @ =0x03001484
@@ -52828,7 +52826,7 @@ _0807AD6C:
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _0807ADA4
-	ldr r1, _0807ADE0 @ =0x03000B88
+	ldr r1, _0807ADE0 @ =gPreviousNavigationConversation
 	movs r0, #0xff
 	strb r0, [r1]
 	movs r1, #0xd5
@@ -52876,7 +52874,7 @@ _0807ADA4:
 	b _0807AE42
 	.align 2, 0
 _0807ADDC: .4byte 0x03001484
-_0807ADE0: .4byte 0x03000B88
+_0807ADE0: .4byte gPreviousNavigationConversation
 _0807ADE4: .4byte 0x000001A9
 _0807ADE8:
 	ldr r2, _0807AE4C @ =0x03001484
@@ -53306,7 +53304,7 @@ _0807B11E:
 	adds r0, r5, r2
 	strb r1, [r0]
 	movs r4, #0
-	ldr r0, _0807B154 @ =0x03000B88
+	ldr r0, _0807B154 @ =gPreviousNavigationConversation
 	adds r3, #0x14
 	adds r1, r5, r3
 	ldrb r0, [r0]
@@ -53323,7 +53321,7 @@ _0807B146:
 	.align 2, 0
 _0807B14C: .4byte 0x0000020F
 _0807B150: .4byte 0x0000020D
-_0807B154: .4byte 0x03000B88
+_0807B154: .4byte gPreviousNavigationConversation
 
 	thumb_func_start NavigationConversionScrollToTarget
 NavigationConversionScrollToTarget: @ 0x0807B158
@@ -54694,7 +54692,7 @@ GetFlashingSectorNumber: @ 0x0807BBF0
 	ldrb r2, [r1]
 	adds r6, r0, #0
 	ldr r1, _0807BC88 @ =0x08575A60
-	ldr r7, _0807BC8C @ =0x03000B88
+	ldr r7, _0807BC8C @ =gPreviousNavigationConversation
 	cmp r2, #0
 	ble _0807BC2A
 	lsls r0, r2, #1
@@ -54767,7 +54765,7 @@ _0807BC76:
 _0807BC80: .4byte 0x0300004D
 _0807BC84: .4byte gEventCounter
 _0807BC88: .4byte 0x08575A60
-_0807BC8C: .4byte 0x03000B88
+_0807BC8C: .4byte gPreviousNavigationConversation
 _0807BC90: .4byte 0x085766E4
 _0807BC94: .4byte 0x08576066
 
@@ -57420,7 +57418,7 @@ _0807D29C:
 	strb r4, [r1]
 	subs r2, #0x20
 	adds r1, r0, r2
-	ldr r2, _0807D2C8 @ =0x03000B88
+	ldr r2, _0807D2C8 @ =gPreviousNavigationConversation
 	ldrb r1, [r1]
 	adds r3, r0, #0
 	ldrb r2, [r2]
@@ -57433,7 +57431,7 @@ _0807D29C:
 	b _0807D2D6
 	.align 2, 0
 _0807D2C4: .4byte 0x03001484
-_0807D2C8: .4byte 0x03000B88
+_0807D2C8: .4byte gPreviousNavigationConversation
 _0807D2CC: .4byte 0x0000024A
 _0807D2D0:
 	ldr r1, _0807D324 @ =0x0000024A
@@ -57808,14 +57806,14 @@ _0807D5B2:
 	movs r3, #0
 	strb r2, [r4, #0xc]
 _0807D5BE:
-	ldr r1, _0807D5D0 @ =0x0300001B
+	ldr r1, _0807D5D0 @ =gAbilityCount
 	strb r3, [r1]
 	b _0807DADA
 	.align 2, 0
 _0807D5C4: .4byte gChangedInput
 _0807D5C8: .4byte gEquipment
 _0807D5CC: .4byte 0x08576175
-_0807D5D0: .4byte 0x0300001B
+_0807D5D0: .4byte gAbilityCount
 _0807D5D4:
 	movs r7, #0
 	ldr r1, _0807D618 @ =gChangedInput
@@ -59038,7 +59036,7 @@ _0807DF00: .4byte 0x03001484
 SetAbilityCount: @ 0x0807DF04
 	push {r4, r5, r6, lr}
 	sub sp, #0xc
-	ldr r1, _0807DF58 @ =0x0300001B
+	ldr r1, _0807DF58 @ =gAbilityCount
 	strb r0, [r1]
 	movs r0, #0
 	str r0, [sp]
@@ -59080,7 +59078,7 @@ _0807DF42:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807DF58: .4byte 0x0300001B
+_0807DF58: .4byte gAbilityCount
 _0807DF5C: .4byte gEquipment
 _0807DF60: .4byte 0x08575FB4
 
@@ -59102,7 +59100,7 @@ DebugMenuModifyAbilityCount: @ 0x0807DF64
 	ands r0, r1
 	cmp r0, #0
 	beq _0807DFA4
-	ldr r1, _0807DFA0 @ =0x0300001B
+	ldr r1, _0807DFA0 @ =gAbilityCount
 	ldrb r0, [r1]
 	adds r0, r0, r3
 	cmp r0, #0x11
@@ -59116,13 +59114,13 @@ _0807DF92:
 	.align 2, 0
 _0807DF98: .4byte 0x08576180
 _0807DF9C: .4byte gChangedInput
-_0807DFA0: .4byte 0x0300001B
+_0807DFA0: .4byte gAbilityCount
 _0807DFA4:
 	movs r0, #0x40
 	ands r0, r1
 	cmp r0, #0
 	beq _0807DFC0
-	ldr r1, _0807DFBC @ =0x0300001B
+	ldr r1, _0807DFBC @ =gAbilityCount
 	ldrb r0, [r1]
 	subs r0, r0, r3
 	cmp r0, #0
@@ -59130,7 +59128,7 @@ _0807DFA4:
 	strb r6, [r1]
 	b _0807DF92
 	.align 2, 0
-_0807DFBC: .4byte 0x0300001B
+_0807DFBC: .4byte gAbilityCount
 _0807DFC0:
 	movs r0, #0x10
 	ands r0, r1
@@ -59170,7 +59168,7 @@ _0807E000:
 	str r0, [sp, #4]
 	str r0, [sp, #8]
 	movs r3, #0
-	ldr r4, _0807E050 @ =0x0300001B
+	ldr r4, _0807E050 @ =gAbilityCount
 	ldr r5, _0807E054 @ =gEquipment
 	ldrb r0, [r4]
 	cmp r3, r0
@@ -59208,7 +59206,7 @@ _0807E044:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0807E050: .4byte 0x0300001B
+_0807E050: .4byte gAbilityCount
 _0807E054: .4byte gEquipment
 _0807E058: .4byte 0x08575FB4
 
@@ -59225,7 +59223,7 @@ DebugMenuDrawAbilityCount: @ 0x0807E05C
 	adds r1, r1, r0
 	lsls r1, r1, #1
 	movs r4, #0xa
-	ldr r6, _0807E0A8 @ =0x0300001B
+	ldr r6, _0807E0A8 @ =gAbilityCount
 	ldr r0, _0807E0AC @ =0x0600C800
 	adds r5, r1, r0
 _0807E078:
@@ -59250,7 +59248,7 @@ _0807E078:
 	bx r0
 	.align 2, 0
 _0807E0A4: .4byte 0x0858211C
-_0807E0A8: .4byte 0x0300001B
+_0807E0A8: .4byte gAbilityCount
 _0807E0AC: .4byte 0x0600C800
 
 	thumb_func_start DebugMenuDrawMenuAndDoor
@@ -61846,7 +61844,7 @@ SramWrite_ToEwram: @ 0x0807F450
 	ldr r0, _0807F728 @ =0x0300002E
 	ldrb r0, [r0]
 	strb r0, [r4, #0x1f]
-	ldr r0, _0807F72C @ =0x0300001B
+	ldr r0, _0807F72C @ =gAbilityCount
 	ldrb r1, [r0]
 	adds r0, r4, #0
 	adds r0, #0x20
@@ -61856,7 +61854,7 @@ SramWrite_ToEwram: @ 0x0807F450
 	adds r1, r4, #0
 	adds r1, #0x21
 	strb r0, [r1]
-	ldr r0, _0807F734 @ =0x03000B88
+	ldr r0, _0807F734 @ =gPreviousNavigationConversation
 	ldrb r0, [r0]
 	adds r1, #1
 	strb r0, [r1]
@@ -61877,7 +61875,7 @@ SramWrite_ToEwram: @ 0x0807F450
 	ldr r0, _0807F744 @ =gSubEventCounter
 	ldrh r0, [r0]
 	strh r0, [r4, #0x26]
-	ldr r0, _0807F748 @ =0x03000062
+	ldr r0, _0807F748 @ =gPreviousSubEvent
 	ldrh r0, [r0]
 	strh r0, [r4, #0x28]
 	ldr r0, _0807F74C @ =0x0300004D
@@ -62137,14 +62135,14 @@ _0807F71C: .4byte 0x03000B90
 _0807F720: .4byte gCurrentArea
 _0807F724: .4byte gCurrentRoom
 _0807F728: .4byte 0x0300002E
-_0807F72C: .4byte 0x0300001B
+_0807F72C: .4byte gAbilityCount
 _0807F730: .4byte gEventCounter
-_0807F734: .4byte 0x03000B88
+_0807F734: .4byte gPreviousNavigationConversation
 _0807F738: .4byte 0x03000B89
 _0807F73C: .4byte 0x03000031
 _0807F740: .4byte 0x03000032
 _0807F744: .4byte gSubEventCounter
-_0807F748: .4byte 0x03000062
+_0807F748: .4byte gPreviousSubEvent
 _0807F74C: .4byte 0x0300004D
 _0807F750: .4byte 0x0300001D
 _0807F754: .4byte 0x03000124
@@ -62204,7 +62202,7 @@ SramRead_FromEwram: @ 0x0807F7C0
 	ldr r1, _0807FA10 @ =0x0300002E
 	ldrb r0, [r2, #0x1f]
 	strb r0, [r1]
-	ldr r1, _0807FA14 @ =0x0300001B
+	ldr r1, _0807FA14 @ =gAbilityCount
 	adds r0, r2, #0
 	adds r0, #0x20
 	ldrb r0, [r0]
@@ -62214,7 +62212,7 @@ SramRead_FromEwram: @ 0x0807F7C0
 	adds r0, #0x21
 	ldrb r0, [r0]
 	strb r0, [r1]
-	ldr r1, _0807FA1C @ =0x03000B88
+	ldr r1, _0807FA1C @ =gPreviousNavigationConversation
 	adds r0, r2, #0
 	adds r0, #0x22
 	ldrb r0, [r0]
@@ -62237,7 +62235,7 @@ SramRead_FromEwram: @ 0x0807F7C0
 	ldr r1, _0807FA2C @ =gSubEventCounter
 	ldrh r0, [r2, #0x26]
 	strh r0, [r1]
-	ldr r1, _0807FA30 @ =0x03000062
+	ldr r1, _0807FA30 @ =gPreviousSubEvent
 	ldrh r0, [r2, #0x28]
 	strh r0, [r1]
 	ldr r1, _0807FA34 @ =0x0300004D
@@ -62471,14 +62469,14 @@ _0807FA04: .4byte 0x03000B90
 _0807FA08: .4byte gCurrentArea
 _0807FA0C: .4byte gCurrentRoom
 _0807FA10: .4byte 0x0300002E
-_0807FA14: .4byte 0x0300001B
+_0807FA14: .4byte gAbilityCount
 _0807FA18: .4byte gEventCounter
-_0807FA1C: .4byte 0x03000B88
+_0807FA1C: .4byte gPreviousNavigationConversation
 _0807FA20: .4byte 0x03000B89
 _0807FA24: .4byte 0x03000031
 _0807FA28: .4byte 0x03000032
 _0807FA2C: .4byte gSubEventCounter
-_0807FA30: .4byte 0x03000062
+_0807FA30: .4byte gPreviousSubEvent
 _0807FA34: .4byte 0x0300004D
 _0807FA38: .4byte 0x0300001D
 _0807FA3C: .4byte 0x03000124
@@ -63750,10 +63748,10 @@ _08080424:
 	strb r0, [r1]
 	movs r0, #0
 	bl EventSet
-	ldr r0, _080804EC @ =0x03000B88
+	ldr r0, _080804EC @ =gPreviousNavigationConversation
 	movs r3, #0xff
 	strb r3, [r0]
-	ldr r0, _080804F0 @ =0x03000062
+	ldr r0, _080804F0 @ =gPreviousSubEvent
 	movs r1, #0xff
 	strh r1, [r0]
 	ldr r2, _080804F4 @ =gEquipment
@@ -63766,7 +63764,7 @@ _08080424:
 	strb r1, [r0]
 	movs r1, #0
 	strb r1, [r2, #0xe]
-	ldr r0, _08080500 @ =0x0300001B
+	ldr r0, _08080500 @ =gAbilityCount
 	strb r1, [r0]
 	ldr r0, _08080504 @ =gCurrentArea
 	strb r1, [r0]
@@ -63823,12 +63821,12 @@ _080804DC: .4byte 0x0300003B
 _080804E0: .4byte 0x03000138
 _080804E4: .4byte 0x085822D4
 _080804E8: .4byte gDisableDrawingSamusAndScrollingFlag
-_080804EC: .4byte 0x03000B88
-_080804F0: .4byte 0x03000062
+_080804EC: .4byte gPreviousNavigationConversation
+_080804F0: .4byte gPreviousSubEvent
 _080804F4: .4byte gEquipment
 _080804F8: .4byte 0x0300001C
 _080804FC: .4byte 0x0300001D
-_08080500: .4byte 0x0300001B
+_08080500: .4byte gAbilityCount
 _08080504: .4byte gCurrentArea
 _08080508: .4byte 0x03000B86
 _0808050C: .4byte gCurrentRoom
@@ -63897,10 +63895,10 @@ _08080584:
 	ldr r0, _08080620 @ =gDisableDrawingSamusAndScrollingFlag
 	movs r1, #0
 	strb r1, [r0]
-	ldr r2, _08080624 @ =0x03000B88
+	ldr r2, _08080624 @ =gPreviousNavigationConversation
 	movs r0, #0xff
 	strb r0, [r2]
-	ldr r2, _08080628 @ =0x03000062
+	ldr r2, _08080628 @ =gPreviousSubEvent
 	movs r0, #0xff
 	strh r0, [r2]
 	ldr r0, _0808062C @ =0x0300004C
@@ -63951,8 +63949,8 @@ _08080614: .4byte 0x0300003B
 _08080618: .4byte 0x03000138
 _0808061C: .4byte 0x085822D4
 _08080620: .4byte gDisableDrawingSamusAndScrollingFlag
-_08080624: .4byte 0x03000B88
-_08080628: .4byte 0x03000062
+_08080624: .4byte gPreviousNavigationConversation
+_08080628: .4byte gPreviousSubEvent
 _0808062C: .4byte 0x0300004C
 _08080630: .4byte 0x0300004D
 _08080634: .4byte gIsLoadingFile

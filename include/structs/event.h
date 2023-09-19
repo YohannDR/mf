@@ -3,6 +3,16 @@
 
 #include "types.h"
 
+struct AbilityRamValue {
+    u8 beamStatus;
+    u8 weaponStatus;
+    u8 suitStatus;
+    u8 isSuit;
+    u8 messageNumber;
+    u16 subEvent;
+};
+
+extern u8 gAbilityCount;
 extern u8 gEventCounter;
 extern u8 gPreviousNavigationConversation;
 extern u8 gPreviousCutscene;

@@ -16,6 +16,7 @@ SECTIONS {
         . = 0x0000000e; gBackdropColor = .;
         . = 0x00000019; gWhichBgPositionIsWrittenToBg3Ofs = .;
         . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
+        . = 0x0000001b; gAbilityCount = .;
         . = 0x00000020; gRebootGame = .;
         . = 0x00000021; gDisableScrolling = .;
         . = 0x00000025; gDisableSoftReset = .;
@@ -24,9 +25,12 @@ SECTIONS {
         . = 0x00000030; gDisplayLocationName = .;
         . = 0x00000044; gEffectYPosition = .;
         . = 0x00000046; gDoorUnlockTimer = .;
+        . = 0x00000048; gCurrentNavigationRoom = .;
+        . = 0x00000049; gLastElevatorUsed = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000053; gCurrentClipdataAffectingAction = .;
         . = 0x00000060; gSubEventCounter = .;
+        . = 0x00000062; gPreviousSubEvent = .;
         . = 0x00000064; gUnk_03000064 = .;
         . = 0x00000068; gHazeInfo = .;
         . = 0x00000070; gIoRegisters = .;
@@ -69,6 +73,7 @@ SECTIONS {
         . = 0x000007f6; gBossWork5 = .;
         . = 0x00000b84; gPauseScreenFlag = .;
         . = 0x00000b87; gEventCounter = .;
+        . = 0x00000b88; gPreviousNavigationConversation = .;
         . = 0x00000b8b; gIsLoadingFile = .;
         . = 0x00000b8f; gUnk_03000B8F = .;
         . = 0x00000bdc; gCurrentCutscene = .;
@@ -112,6 +117,7 @@ SECTIONS {
         . = 0x00004d28; gSamusPalette = .;
         . = 0x00004d88; gSamusPaletteLength = .;
         . = 0x00004d90; gSaXPalette = .;
+        . = 0x00004e3c; gDestinationDoor = .;
 
         . = 0x00005408; src/libgcc/fp-bit-base.o(.bss);
         . = 0x00005420; src/libgcc/float.o(.bss);

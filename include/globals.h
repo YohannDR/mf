@@ -31,7 +31,10 @@ extern u16 gBg1XPosition;
 extern u16 gBg1YPosition;
 
 extern u8 gCurrentArea;
+extern u8 gDestinationDoor;
 extern u8 gCurrentRoom;
+extern u8 gCurrentNavigationRoom;
+extern u8 gLastElevatorUsed;
 extern u8 gSpritesetNumber;
 
 extern u8 gDisplayLocationName;
@@ -88,6 +91,35 @@ enum Area {
     AREA_DEBUG_1,
     AREA_DEBUG_2,
     AREA_DEBUG_3,
+};
+
+enum NavigationRoom {
+    NAV_ROOM_MAIN_DECK_ROOM_0,
+    NAV_ROOM_MAIN_DECK_ROOM_16,
+    NAV_ROOM_MAIN_DECK_ROOM_9,
+    NAV_ROOM_MAIN_DECK_ROOM_32,
+    NAV_ROOM_SECTOR_1_ROOM_2,
+    NAV_ROOM_SECTOR_2_ROOM_2,
+    NAV_ROOM_SECTOR_3_ROOM_2,
+    NAV_ROOM_SECTOR_4_ROOM_2,
+    NAV_ROOM_SECTOR_5_ROOM_2,
+    NAV_ROOM_SECTOR_6_ROOM_2,
+    NAV_ROOM_MAIN_DECK_ROOM_56,
+    NAV_ROOM_MAIN_DECK_ROOM_66,
+};
+
+enum Elevator {
+    ELEVATOR_MAIN_DECK_TO_OPERATIONS_DECK,
+    ELEVATOR_MAIN_DECK_TO_LOBBY,
+    ELEVATOR_MAIN_DECK_TO_SECTOR_1,
+    ELEVATOR_MAIN_DECK_TO_SECTOR_2,
+    ELEVATOR_MAIN_DECK_TO_SECTOR_3,
+    ELEVATOR_MAIN_DECK_TO_SECTOR_4,
+    ELEVATOR_MAIN_DECK_TO_SECTOR_5,
+    ELEVATOR_MAIN_DECK_TO_SECTOR_6,
+    ELEVATOR_MAIN_DECK_TO_LOBBY_POWER_OUTAGE,
+    ELEVATOR_MAIN_DECK_TO_HABITATIONS_DECK,
+    ELEVATOR_RESTRICTED_ZONE_TO_SECTOR_1,
 };
 
 struct IoRegisters {
