@@ -130663,7 +130663,7 @@ _08056DAA:
 _08056DB0:
 	bl ElectricWaterDamageBox2Stopping
 _08056DB4:
-	ldr r0, _08056DCC @ =0x0300004A
+	ldr r0, _08056DCC @ =gCurrentEventBasedEffect
 	ldrb r1, [r0]
 	movs r0, #0x80
 	ands r0, r1
@@ -130676,7 +130676,7 @@ _08056DC6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056DCC: .4byte 0x0300004A
+_08056DCC: .4byte gCurrentEventBasedEffect
 _08056DD0: .4byte gCurrentSprite
 
 	thumb_func_start FrozenRidleySetCollision

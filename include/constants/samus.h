@@ -96,6 +96,18 @@ enum DiagonalAim {
     DIAG_AIM_END,
 };
 
+enum SecurityLevel {
+    SECURITY_LEVEL_0,
+    SECURITY_LEVEL_1,
+    SECURITY_LEVEL_2,
+    SECURITY_LEVEL_3,
+    SECURITY_LEVEL_4,
+
+    SECURITY_LEVEL_END,
+
+    SECURITY_LEVEL_NO_HATCHES = UCHAR_MAX
+};
+
 #define SMF_HIGH_JUMP (1 << 0)
 #define SMF_SPEED_BOOSTER (1 << 1)
 #define SMF_SPACE_JUMP (1 << 2)

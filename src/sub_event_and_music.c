@@ -2,6 +2,7 @@
 #include "globals.h"
 #include "macros.h"
 
+#include "data/event_data.h"
 #include "data/sub_event_data.h"
 
 #include "constants/event.h"

@@ -4449,7 +4449,7 @@ _0806317E:
 RecoveringSuitInit: @ 0x08063190
 	push {lr}
 	movs r2, #0
-	ldr r0, _080631C0 @ =0x0300004A
+	ldr r0, _080631C0 @ =gCurrentEventBasedEffect
 	ldrb r1, [r0]
 	cmp r1, #0x90
 	beq _080631A6
@@ -4475,7 +4475,7 @@ _080631BC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080631C0: .4byte 0x0300004A
+_080631C0: .4byte gCurrentEventBasedEffect
 _080631C4: .4byte 0x0300004B
 _080631C8: .4byte 0x03004FA0
 _080631CC: .4byte 0x0300002B
@@ -4810,7 +4810,7 @@ SetCurrentEventBasedEffect: @ 0x0806342C
 	push {lr}
 	lsls r0, r0, #0x18
 	lsrs r1, r0, #0x18
-	ldr r2, _08063440 @ =0x0300004A
+	ldr r2, _08063440 @ =gCurrentEventBasedEffect
 	ldrb r0, [r2]
 	cmp r0, r1
 	beq _0806343C
@@ -4819,7 +4819,7 @@ _0806343C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063440: .4byte 0x0300004A
+_08063440: .4byte gCurrentEventBasedEffect
 
 	thumb_func_start SetupCurrentEventBasedEffect
 SetupCurrentEventBasedEffect: @ 0x08063444
@@ -4934,7 +4934,7 @@ _08063538:
 	strh r0, [r2]
 	ldr r0, _0806356C @ =0x03004FC8
 	strb r1, [r0]
-	ldr r0, _08063570 @ =0x0300004A
+	ldr r0, _08063570 @ =gCurrentEventBasedEffect
 	strb r1, [r0]
 	ldr r1, _08063574 @ =gDoorUnlockTimer
 	movs r0, #1
@@ -4944,7 +4944,7 @@ _08063538:
 _08063564: .4byte gIoRegisters
 _08063568: .4byte 0x0000FEFF
 _0806356C: .4byte 0x03004FC8
-_08063570: .4byte 0x0300004A
+_08063570: .4byte gCurrentEventBasedEffect
 _08063574: .4byte gDoorUnlockTimer
 _08063578:
 	movs r0, #0xff
@@ -5017,12 +5017,12 @@ _080635FE:
 	lsls r0, r0, #1
 _08063602:
 	bl PlaySound
-	ldr r1, _08063610 @ =0x0300004A
+	ldr r1, _08063610 @ =gCurrentEventBasedEffect
 	movs r0, #0
 	strb r0, [r1]
 	b _0806367E
 	.align 2, 0
-_08063610: .4byte 0x0300004A
+_08063610: .4byte gCurrentEventBasedEffect
 _08063614:
 	ldr r0, _08063630 @ =gEventCounter
 	ldrb r0, [r0]
@@ -5034,14 +5034,14 @@ _08063614:
 	ands r0, r1
 	movs r1, #0
 	strh r0, [r2]
-	ldr r0, _0806363C @ =0x0300004A
+	ldr r0, _0806363C @ =gCurrentEventBasedEffect
 	strb r1, [r0]
 	b _0806367E
 	.align 2, 0
 _08063630: .4byte gEventCounter
 _08063634: .4byte gIoRegisters
 _08063638: .4byte 0x0000FEFF
-_0806363C: .4byte 0x0300004A
+_0806363C: .4byte gCurrentEventBasedEffect
 _08063640:
 	ldr r1, _08063660 @ =0x03004E42
 	movs r0, #0
@@ -5083,7 +5083,7 @@ StartStopEventBasedEffect: @ 0x0806368C
 	push {lr}
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
-	ldr r3, _080636AC @ =0x0300004A
+	ldr r3, _080636AC @ =gCurrentEventBasedEffect
 	ldrb r2, [r3]
 	cmp r2, r0
 	bne _080636A8
@@ -5098,13 +5098,13 @@ _080636A8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080636AC: .4byte 0x0300004A
+_080636AC: .4byte gCurrentEventBasedEffect
 _080636B0: .4byte 0x03004FA0
 
 	thumb_func_start UpdateEventBasedEffect
 UpdateEventBasedEffect: @ 0x080636B4
 	push {lr}
-	ldr r0, _080636CC @ =0x0300004A
+	ldr r0, _080636CC @ =gCurrentEventBasedEffect
 	ldrb r1, [r0]
 	cmp r1, #0
 	beq _080636D4
@@ -5115,7 +5115,7 @@ UpdateEventBasedEffect: @ 0x080636B4
 	bl ProcessEventBasedEffect
 	b _080636D4
 	.align 2, 0
-_080636CC: .4byte 0x0300004A
+_080636CC: .4byte gCurrentEventBasedEffect
 _080636D0:
 	bl CheckStopEventBasedEffect
 _080636D4:
@@ -5127,7 +5127,7 @@ _080636D4:
 CheckStopEventBasedEffect: @ 0x080636DC
 	push {lr}
 	movs r2, #0
-	ldr r0, _080636F8 @ =0x0300004A
+	ldr r0, _080636F8 @ =gCurrentEventBasedEffect
 	ldrb r0, [r0]
 	subs r0, #2
 	cmp r0, #0x14
@@ -5140,7 +5140,7 @@ _080636EC:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080636F8: .4byte 0x0300004A
+_080636F8: .4byte gCurrentEventBasedEffect
 _080636FC: .4byte _08063700
 _08063700: @ jump table
 	.4byte _08063802 @ case 0
@@ -5253,7 +5253,7 @@ _080637FE:
 	cmp r2, #0
 	beq _0806380A
 _08063802:
-	ldr r0, _0806381C @ =0x0300004A
+	ldr r0, _0806381C @ =gCurrentEventBasedEffect
 	ldrb r0, [r0]
 	bl StartStopEventBasedEffect
 _0806380A:
@@ -5263,7 +5263,7 @@ _0806380A:
 _08063810: .4byte gCurrentPowerBomb
 _08063814: .4byte 0x0828FD04
 _08063818: .4byte gSamusData
-_0806381C: .4byte 0x0300004A
+_0806381C: .4byte gCurrentEventBasedEffect
 
 	thumb_func_start ProcessEventBasedEffect
 ProcessEventBasedEffect: @ 0x08063820
@@ -5273,7 +5273,7 @@ ProcessEventBasedEffect: @ 0x08063820
 	adds r0, #1
 	strh r0, [r2, #2]
 	movs r6, #0
-	ldr r0, _0806384C @ =0x0300004A
+	ldr r0, _0806384C @ =gCurrentEventBasedEffect
 	ldrb r1, [r0]
 	movs r0, #0x7f
 	ands r0, r1
@@ -5289,7 +5289,7 @@ _0806383C:
 	mov pc, r0
 	.align 2, 0
 _08063848: .4byte 0x03004FA0
-_0806384C: .4byte 0x0300004A
+_0806384C: .4byte gCurrentEventBasedEffect
 _08063850: .4byte _08063854
 _08063854: @ jump table
 	.4byte _080638AC @ case 0
@@ -5491,13 +5491,13 @@ _080639F6:
 	beq _08063A00
 	b _08063C2A
 _08063A00:
-	ldr r0, _08063A0C @ =0x0300001C
+	ldr r0, _08063A0C @ =gSecurityHatchLevel
 	ldr r1, _08063A10 @ =gEquipment
 	ldrb r1, [r1, #0xd]
 	b _08063A4A
 	.align 2, 0
 _08063A08: .4byte gPreventMovementTimer
-_08063A0C: .4byte 0x0300001C
+_08063A0C: .4byte gSecurityHatchLevel
 _08063A10: .4byte gEquipment
 _08063A14:
 	ldrh r1, [r2]
@@ -5776,7 +5776,7 @@ _08063C18:
 	ldr r0, _08063C4C @ =0x0300002B
 	movs r1, #0
 	strb r1, [r0]
-	ldr r0, _08063C50 @ =0x0300004A
+	ldr r0, _08063C50 @ =gCurrentEventBasedEffect
 	strb r1, [r0]
 _08063C2A:
 	cmp r6, #0
@@ -5792,7 +5792,7 @@ _08063C2E:
 	movs r0, #1
 	strb r0, [r1]
 _08063C40:
-	ldr r1, _08063C50 @ =0x0300004A
+	ldr r1, _08063C50 @ =gCurrentEventBasedEffect
 	movs r0, #0x80
 	strb r0, [r1]
 	ldr r1, _08063C58 @ =0x03004FA0
@@ -5800,20 +5800,20 @@ _08063C40:
 	b _08063C7A
 	.align 2, 0
 _08063C4C: .4byte 0x0300002B
-_08063C50: .4byte 0x0300004A
+_08063C50: .4byte gCurrentEventBasedEffect
 _08063C54: .4byte gDoorUnlockTimer
 _08063C58: .4byte 0x03004FA0
 _08063C5C:
 	cmp r6, #3
 	bne _08063C74
-	ldr r1, _08063C6C @ =0x0300004A
+	ldr r1, _08063C6C @ =gCurrentEventBasedEffect
 	movs r0, #0x80
 	strb r0, [r1]
 	ldr r1, _08063C70 @ =0x03004FA0
 	movs r0, #0
 	b _08063C7A
 	.align 2, 0
-_08063C6C: .4byte 0x0300004A
+_08063C6C: .4byte gCurrentEventBasedEffect
 _08063C70: .4byte 0x03004FA0
 _08063C74:
 	ldr r1, _08063C88 @ =0x03004FA0
@@ -7685,7 +7685,7 @@ _08064B1C:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bne _08064B9E
-	ldr r4, _08064C04 @ =0x03000B89
+	ldr r4, _08064C04 @ =gPreviousCutscene
 	ldr r5, _08064C08 @ =0x0300002E
 	ldr r1, _08064C0C @ =0x0300001E
 	ldr r2, _08064C10 @ =0x03000058
@@ -7715,7 +7715,7 @@ _08064B9E:
 	movs r0, #0
 	strh r0, [r1]
 	strh r0, [r1, #2]
-	ldr r1, _08064C1C @ =0x0300001C
+	ldr r1, _08064C1C @ =gSecurityHatchLevel
 	ldr r0, _08064C20 @ =gEquipment
 	ldrb r0, [r0, #0xd]
 	strb r0, [r1]
@@ -7748,13 +7748,13 @@ _08064BF4: .4byte gCurrentCutscene
 _08064BF8: .4byte gCurrentNavigationRoom
 _08064BFC: .4byte 0x03004DDA
 _08064C00: .4byte gIsLoadingFile
-_08064C04: .4byte 0x03000B89
+_08064C04: .4byte gPreviousCutscene
 _08064C08: .4byte 0x0300002E
 _08064C0C: .4byte 0x0300001E
 _08064C10: .4byte 0x03000058
 _08064C14: .4byte gAbilityCount
 _08064C18: .4byte 0x03004E0C
-_08064C1C: .4byte 0x0300001C
+_08064C1C: .4byte gSecurityHatchLevel
 _08064C20: .4byte gEquipment
 _08064C24: .4byte gWhichBgPositionIsWrittenToBg3Ofs
 _08064C28:
@@ -7788,7 +7788,7 @@ _08064C46:
 	strh r2, [r0]
 	ldr r0, _08064D9C @ =0x0300004B
 	strb r1, [r0]
-	ldr r0, _08064DA0 @ =0x0300004A
+	ldr r0, _08064DA0 @ =gCurrentEventBasedEffect
 	strb r1, [r0]
 	ldr r0, _08064DA4 @ =gEffectYPosition
 	strh r2, [r0]
@@ -7944,7 +7944,7 @@ _08064D90: .4byte 0x03000050
 _08064D94: .4byte 0x0300002B
 _08064D98: .4byte gBackdropColor
 _08064D9C: .4byte 0x0300004B
-_08064DA0: .4byte 0x0300004A
+_08064DA0: .4byte gCurrentEventBasedEffect
 _08064DA4: .4byte gEffectYPosition
 _08064DA8: .4byte 0x03004E3B
 _08064DAC: .4byte gDoorUnlockTimer
@@ -9660,7 +9660,7 @@ UpdateHatchFlashingAnimation: @ 0x08065B64
 	ldrsh r0, [r0, r1]
 	cmp r0, #2
 	bne _08065C14
-	ldr r3, _08065C1C @ =0x0300001C
+	ldr r3, _08065C1C @ =gSecurityHatchLevel
 	ldrb r0, [r3]
 	cmp r0, #4
 	bhi _08065BBE
@@ -9750,7 +9750,7 @@ _08065C14:
 	bx r0
 	.align 2, 0
 _08065C18: .4byte gSubGameMode1
-_08065C1C: .4byte 0x0300001C
+_08065C1C: .4byte gSecurityHatchLevel
 _08065C20: .4byte 0x03004FC4
 _08065C24: .4byte 0x040000D4
 _08065C28: .4byte 0x08408268
@@ -33911,7 +33911,7 @@ DemoLoadRam: @ 0x080717BC
 	ldr r2, _0807186C @ =gEquipment
 	ldrb r3, [r1, #2]
 	strb r3, [r2, #0xd]
-	ldr r0, _08071870 @ =0x0300001D
+	ldr r0, _08071870 @ =gSecurityHatchLevelBackup
 	strb r3, [r0]
 	ldrb r0, [r1, #3]
 	strb r0, [r2, #0xe]
@@ -33963,7 +33963,7 @@ _08071860: .4byte 0x0300002E
 _08071864: .4byte gCurrentRoom
 _08071868: .4byte gAbilityCount
 _0807186C: .4byte gEquipment
-_08071870: .4byte 0x0300001D
+_08071870: .4byte gSecurityHatchLevelBackup
 _08071874: .4byte gEventCounter
 _08071878: .4byte gSubEventCounter
 _0807187C: .4byte gPreviousSubEvent
@@ -40388,7 +40388,7 @@ _08074AE4:
 	bl SetSubEventAndUpdateMusic
 	b _08074B3A
 _08074AEE:
-	ldr r1, _08074B04 @ =0x0300001D
+	ldr r1, _08074B04 @ =gSecurityHatchLevelBackup
 	ldr r2, _08074B08 @ =gEquipment
 	ldrb r0, [r2, #0xd]
 	strb r0, [r1]
@@ -40396,15 +40396,15 @@ _08074AEE:
 	orrs r0, r1
 	strb r0, [r2, #0xd]
 _08074AFC:
-	ldr r0, _08074B0C @ =0x0300001C
+	ldr r0, _08074B0C @ =gSecurityHatchLevel
 	strb r1, [r0]
 	b _08074B3A
 	.align 2, 0
-_08074B04: .4byte 0x0300001D
+_08074B04: .4byte gSecurityHatchLevelBackup
 _08074B08: .4byte gEquipment
-_08074B0C: .4byte 0x0300001C
+_08074B0C: .4byte gSecurityHatchLevel
 _08074B10:
-	ldr r2, _08074B2C @ =0x0300001D
+	ldr r2, _08074B2C @ =gSecurityHatchLevelBackup
 	ldrb r1, [r2]
 	adds r0, r1, #0
 	cmp r0, #0xff
@@ -40413,14 +40413,14 @@ _08074B10:
 	strb r1, [r0, #0xd]
 	movs r0, #0xff
 	strb r0, [r2]
-	ldr r1, _08074B34 @ =0x0300004A
+	ldr r1, _08074B34 @ =gCurrentEventBasedEffect
 	movs r0, #2
 	strb r0, [r1]
 	b _08074B3E
 	.align 2, 0
-_08074B2C: .4byte 0x0300001D
+_08074B2C: .4byte gSecurityHatchLevelBackup
 _08074B30: .4byte gEquipment
-_08074B34: .4byte 0x0300004A
+_08074B34: .4byte gCurrentEventBasedEffect
 _08074B38:
 	movs r4, #1
 _08074B3A:
@@ -40572,7 +40572,7 @@ _08074C5A:
 	cmp r5, #0
 	beq _08074CE0
 _08074C5E:
-	ldr r0, _08074CA4 @ =0x03000B89
+	ldr r0, _08074CA4 @ =gPreviousCutscene
 	ldrb r2, [r4, #3]
 	ldrb r0, [r0]
 	adds r1, r2, #0
@@ -40606,7 +40606,7 @@ _08074C90:
 	bl SetSubEventAndUpdateMusic
 	b _08074CBC
 	.align 2, 0
-_08074CA4: .4byte 0x03000B89
+_08074CA4: .4byte gPreviousCutscene
 _08074CA8: .4byte gCurrentCutscene
 _08074CAC: .4byte gPreviousNavigationConversation
 _08074CB0: .4byte 0x03000B85
@@ -40647,7 +40647,7 @@ _08074CF0: .4byte gCurrentArea
 	thumb_func_start CheckUpdateEventAfterCutscene
 CheckUpdateEventAfterCutscene: @ 0x08074CF4
 	push {r4, lr}
-	ldr r0, _08074D18 @ =0x03000B89
+	ldr r0, _08074D18 @ =gPreviousCutscene
 	ldr r2, _08074D1C @ =gCurrentCutscene
 	ldrb r1, [r2]
 	strb r1, [r0]
@@ -40665,7 +40665,7 @@ _08074D0E:
 	movs r0, #0x8e
 	b _08074D36
 	.align 2, 0
-_08074D18: .4byte 0x03000B89
+_08074D18: .4byte gPreviousCutscene
 _08074D1C: .4byte gCurrentCutscene
 _08074D20:
 	movs r2, #0
@@ -44124,7 +44124,7 @@ _08076834:
 	ldrb r0, [r0]
 	cmp r0, #0x61
 	bne _0807686A
-	ldr r0, _08076890 @ =0x03000B89
+	ldr r0, _08076890 @ =gPreviousCutscene
 	ldrb r0, [r0]
 	cmp r0, #7
 	beq _0807686A
@@ -44158,7 +44158,7 @@ _08076872:
 	.align 2, 0
 _08076888: .4byte gPauseScreenFlag
 _0807688C: .4byte gEventCounter
-_08076890: .4byte 0x03000B89
+_08076890: .4byte gPreviousCutscene
 _08076894: .4byte gCurrentCutscene
 _08076898: .4byte 0x0201C000
 _0807689C: .4byte 0x06010000
@@ -57913,14 +57913,14 @@ _0807D684:
 _0807D686:
 	subs r1, r1, r4
 	strb r1, [r5, #0xd]
-	ldr r1, _0807D698 @ =0x0300001C
+	ldr r1, _0807D698 @ =gSecurityHatchLevel
 	ldrb r2, [r5, #0xd]
 	strb r2, [r1]
 	ldr r1, _0807D69C @ =0x03000BD0
 	strb r2, [r1, #9]
 	b _0807DADA
 	.align 2, 0
-_0807D698: .4byte 0x0300001C
+_0807D698: .4byte gSecurityHatchLevel
 _0807D69C: .4byte 0x03000BD0
 _0807D6A0:
 	ldr r1, _0807D6CC @ =gChangedInput
@@ -58104,7 +58104,7 @@ _0807D800:
 	strb r0, [r1, #0xa]
 	strb r0, [r1, #0xb]
 	strb r0, [r1, #0xc]
-	ldr r0, _0807D874 @ =0x0300004A
+	ldr r0, _0807D874 @ =gCurrentEventBasedEffect
 	ldrb r4, [r0]
 	ldr r0, _0807D878 @ =0x0300004B
 	ldrb r5, [r0]
@@ -58121,7 +58121,7 @@ _0807D81C:
 	cmp r7, r6
 	ble _0807D81C
 _0807D82A:
-	ldr r6, _0807D874 @ =0x0300004A
+	ldr r6, _0807D874 @ =gCurrentEventBasedEffect
 	strb r4, [r6]
 	ldr r0, _0807D878 @ =0x0300004B
 	strb r5, [r0]
@@ -58130,7 +58130,7 @@ _0807D82A:
 	movs r0, #0xff
 	bl DebugMenuDrawHealthAmmoAndEvent
 	bl DebugMenuDrawAbilityCount
-	ldr r2, _0807D880 @ =0x0300001C
+	ldr r2, _0807D880 @ =gSecurityHatchLevel
 	ldr r0, _0807D870 @ =gEquipment
 	ldrb r1, [r0, #0xd]
 	strb r1, [r2]
@@ -58156,10 +58156,10 @@ _0807D86A:
 	b _0807DAD8
 	.align 2, 0
 _0807D870: .4byte gEquipment
-_0807D874: .4byte 0x0300004A
+_0807D874: .4byte gCurrentEventBasedEffect
 _0807D878: .4byte 0x0300004B
 _0807D87C: .4byte gEventCounter
-_0807D880: .4byte 0x0300001C
+_0807D880: .4byte gSecurityHatchLevel
 _0807D884: .4byte 0x03000BD0
 _0807D888: .4byte gWaterLowered
 _0807D88C:
@@ -61858,7 +61858,7 @@ SramWrite_ToEwram: @ 0x0807F450
 	ldrb r0, [r0]
 	adds r1, #1
 	strb r0, [r1]
-	ldr r0, _0807F738 @ =0x03000B89
+	ldr r0, _0807F738 @ =gPreviousCutscene
 	ldrb r0, [r0]
 	adds r1, #1
 	strb r0, [r1]
@@ -61882,7 +61882,7 @@ SramWrite_ToEwram: @ 0x0807F450
 	ldrb r0, [r0]
 	adds r1, #5
 	strb r0, [r1]
-	ldr r0, _0807F750 @ =0x0300001D
+	ldr r0, _0807F750 @ =gSecurityHatchLevelBackup
 	ldrb r0, [r0]
 	adds r1, #1
 	strb r0, [r1]
@@ -62138,13 +62138,13 @@ _0807F728: .4byte 0x0300002E
 _0807F72C: .4byte gAbilityCount
 _0807F730: .4byte gEventCounter
 _0807F734: .4byte gPreviousNavigationConversation
-_0807F738: .4byte 0x03000B89
+_0807F738: .4byte gPreviousCutscene
 _0807F73C: .4byte 0x03000031
 _0807F740: .4byte 0x03000032
 _0807F744: .4byte gSubEventCounter
 _0807F748: .4byte gPreviousSubEvent
 _0807F74C: .4byte 0x0300004D
-_0807F750: .4byte 0x0300001D
+_0807F750: .4byte gSecurityHatchLevelBackup
 _0807F754: .4byte 0x03000124
 _0807F758: .4byte 0x03001224
 _0807F75C: .4byte 0x03001226
@@ -62217,7 +62217,7 @@ SramRead_FromEwram: @ 0x0807F7C0
 	adds r0, #0x22
 	ldrb r0, [r0]
 	strb r0, [r1]
-	ldr r1, _0807FA20 @ =0x03000B89
+	ldr r1, _0807FA20 @ =gPreviousCutscene
 	adds r0, r2, #0
 	adds r0, #0x23
 	ldrb r0, [r0]
@@ -62243,7 +62243,7 @@ SramRead_FromEwram: @ 0x0807F7C0
 	adds r0, #0x2a
 	ldrb r0, [r0]
 	strb r0, [r1]
-	ldr r1, _0807FA38 @ =0x0300001D
+	ldr r1, _0807FA38 @ =gSecurityHatchLevelBackup
 	adds r0, r2, #0
 	adds r0, #0x2b
 	ldrb r0, [r0]
@@ -62472,13 +62472,13 @@ _0807FA10: .4byte 0x0300002E
 _0807FA14: .4byte gAbilityCount
 _0807FA18: .4byte gEventCounter
 _0807FA1C: .4byte gPreviousNavigationConversation
-_0807FA20: .4byte 0x03000B89
+_0807FA20: .4byte gPreviousCutscene
 _0807FA24: .4byte 0x03000031
 _0807FA28: .4byte 0x03000032
 _0807FA2C: .4byte gSubEventCounter
 _0807FA30: .4byte gPreviousSubEvent
 _0807FA34: .4byte 0x0300004D
-_0807FA38: .4byte 0x0300001D
+_0807FA38: .4byte gSecurityHatchLevelBackup
 _0807FA3C: .4byte 0x03000124
 _0807FA40: .4byte 0x03001224
 _0807FA44: .4byte 0x03001226
@@ -63758,9 +63758,9 @@ _08080424:
 	ldrb r0, [r2, #0xd]
 	orrs r0, r3
 	strb r0, [r2, #0xd]
-	ldr r0, _080804F8 @ =0x0300001C
+	ldr r0, _080804F8 @ =gSecurityHatchLevel
 	strb r1, [r0]
-	ldr r0, _080804FC @ =0x0300001D
+	ldr r0, _080804FC @ =gSecurityHatchLevelBackup
 	strb r1, [r0]
 	movs r1, #0
 	strb r1, [r2, #0xe]
@@ -63824,8 +63824,8 @@ _080804E8: .4byte gDisableDrawingSamusAndScrollingFlag
 _080804EC: .4byte gPreviousNavigationConversation
 _080804F0: .4byte gPreviousSubEvent
 _080804F4: .4byte gEquipment
-_080804F8: .4byte 0x0300001C
-_080804FC: .4byte 0x0300001D
+_080804F8: .4byte gSecurityHatchLevel
+_080804FC: .4byte gSecurityHatchLevelBackup
 _08080500: .4byte gAbilityCount
 _08080504: .4byte gCurrentArea
 _08080508: .4byte 0x03000B86

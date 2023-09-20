@@ -5,12 +5,6 @@
 
 #include "constants/event.h"
 
-#include "structs/event.h"
-
-extern const struct AbilityRamValue sAbilityRamValues[19];
-
-// ...
-
 extern const u16 sSubEventNavConversations[22][2];
 extern const u8 sSubEventTriggerTypes[SUB_EVENT_END];
 

@@ -17,6 +17,8 @@ SECTIONS {
         . = 0x00000019; gWhichBgPositionIsWrittenToBg3Ofs = .;
         . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
         . = 0x0000001b; gAbilityCount = .;
+        . = 0x0000001c; gSecurityHatchLevel = .;
+        . = 0x0000001d; gSecurityHatchLevelBackup = .;
         . = 0x00000020; gRebootGame = .;
         . = 0x00000021; gDisableScrolling = .;
         . = 0x00000025; gDisableSoftReset = .;
@@ -27,6 +29,7 @@ SECTIONS {
         . = 0x00000046; gDoorUnlockTimer = .;
         . = 0x00000048; gCurrentNavigationRoom = .;
         . = 0x00000049; gLastElevatorUsed = .;
+        . = 0x0000004a; gCurrentEventBasedEffect = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000053; gCurrentClipdataAffectingAction = .;
         . = 0x00000060; gSubEventCounter = .;
@@ -74,6 +77,7 @@ SECTIONS {
         . = 0x00000b84; gPauseScreenFlag = .;
         . = 0x00000b87; gEventCounter = .;
         . = 0x00000b88; gPreviousNavigationConversation = .;
+        . = 0x00000b89; gPreviousCutscene = .;
         . = 0x00000b8b; gIsLoadingFile = .;
         . = 0x00000b8f; gUnk_03000B8F = .;
         . = 0x00000bdc; gCurrentCutscene = .;
