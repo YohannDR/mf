@@ -38,8 +38,8 @@ struct EventLocationAndNavigationInfo {
     u8 yEnd;
     s8 navConversation;
     u8 navRoom;
-    u8 download:1;
-    u8 skippable:1;
+    u16 download:1;
+    u16 skippable:1;
 };
 
 extern u8 gAbilityCount;

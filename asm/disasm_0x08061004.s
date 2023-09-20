@@ -9847,7 +9847,7 @@ _08065CEA:
 	bl UpdateBombChains
 	bl UpdateEventBasedEffect
 	bl UpdateHatches
-	ldr r0, _08065D48 @ =0x03000B8A
+	ldr r0, _08065D48 @ =gRoomEventTrigger
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -9874,7 +9874,7 @@ _08065D3A:
 	bx r0
 	.align 2, 0
 _08065D44: .4byte gSubGameMode1
-_08065D48: .4byte 0x03000B8A
+_08065D48: .4byte gRoomEventTrigger
 _08065D4C: .4byte gHazeInfo
 
 	thumb_func_start UpdateBackgroundsPosition
@@ -40705,7 +40705,7 @@ CheckRoomHasEventTrigger: @ 0x08074D54
 	ldr r0, _08074D9C @ =gEventCounter
 	ldrb r0, [r0]
 	adds r3, r0, #1
-	ldr r1, _08074DA0 @ =0x03000B8A
+	ldr r1, _08074DA0 @ =gRoomEventTrigger
 	movs r0, #0
 	strb r0, [r1]
 	movs r5, #0
@@ -40737,7 +40737,7 @@ _08074D72:
 	b _08074DBC
 	.align 2, 0
 _08074D9C: .4byte gEventCounter
-_08074DA0: .4byte 0x03000B8A
+_08074DA0: .4byte gRoomEventTrigger
 _08074DA4: .4byte 0x08575A60
 _08074DA8: .4byte gCurrentArea
 _08074DAC:
@@ -40807,7 +40807,7 @@ _08074E24: .4byte gPreviousNavigationConversation
 CheckRoomEventTrigger: @ 0x08074E28
 	push {r4, lr}
 	ldr r2, _08074E7C @ =0x08575A60
-	ldr r4, _08074E80 @ =0x03000B8A
+	ldr r4, _08074E80 @ =gRoomEventTrigger
 	movs r1, #0
 	ldrsb r1, [r4, r1]
 	lsls r0, r1, #1
@@ -40847,7 +40847,7 @@ CheckRoomEventTrigger: @ 0x08074E28
 	b _08074E92
 	.align 2, 0
 _08074E7C: .4byte 0x08575A60
-_08074E80: .4byte 0x03000B8A
+_08074E80: .4byte gRoomEventTrigger
 _08074E84: .4byte gSamusData
 _08074E88: .4byte gEventCounter
 _08074E8C:

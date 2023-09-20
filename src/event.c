@@ -179,7 +179,60 @@ void EventCheckUpdateAfterCutscene(void)
 
 void EventCheckRoomHasEventTrigger(u8 room)
 {
+    // https://decomp.me/scratch/6B7IW
 
+    s32 counter;
+    s32 i;
+
+    i = gEventCounter + 1;
+    gRoomEventTrigger = EVENT_NONE;
+
+    counter = 0;
+    while (TRUE)
+    {
+        if (sEventLocationAndNavigationInfo[i].navRoom == NAV_ROOM_MAIN_DECK_ROOM_0 &&
+            !sEventLocationAndNavigationInfo[i].download &&
+            gCurrentArea == sEventLocationAndNavigationInfo[i].area &&
+            room == sEventLocationAndNavigationInfo[i].room)
+        {
+            if (sEventLocationAndNavigationInfo[i].xStart == UCHAR_MAX)
+                EventSet(i);
+            else
+                gRoomEventTrigger = i;
+
+            break;
+        }
+
+        if (!sEventLocationAndNavigationInfo[i].skippable)
+            break;
+
+        i++;
+        counter++;
+    }
+
+    if (counter != 0)
+    {
+        i = gEventCounter;
+        if (i <= EVENT_NONE)
+            return;
+
+        if (sEventLocationAndNavigationInfo[i].navConversation != 0)
+        {
+            gPreviousNavigationConversation = sEventLocationAndNavigationInfo[i].navConversation;
+            return;
+        }
+
+        i--;
+        while (i > 0)
+        {
+            if (sEventLocationAndNavigationInfo[i].navConversation != 0)
+            {
+                gPreviousNavigationConversation = sEventLocationAndNavigationInfo[i].navConversation;
+                break;
+            }
+            i--;
+        }
+    }
 }
 
 void EventCheckRoomEventTrigger(void)
