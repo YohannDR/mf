@@ -1,3 +1,8 @@
+# Hornoad
+
+sprites/hornoad.gfx;1536;0x2e926c;4
+sprites/hornoad.pal;48;0x2eaa6c;2
+
 # Blobs
 
 Blob_a5224_2e4904.bin;2356960;0xa5224;1

@@ -235,9 +235,44 @@ void EventCheckRoomHasEventTrigger(u8 room)
     }
 }
 
+/**
+ * @brief 74e28 | 84 | Checks for the current room event trigger
+ * 
+ */
 void EventCheckRoomEventTrigger(void)
 {
+    // Check in range
+    if (BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].xStart) <= gSamusData.xPosition &&
+        BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].xEnd) >= gSamusData.xPosition &&
+        BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].ySart) <= gSamusData.yPosition &&
+        BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].yEnd) >= gSamusData.yPosition)
+    {
+        // Set room trigger event
+        EventSet(gRoomEventTrigger);
 
+        // Clear
+        gRoomEventTrigger = EVENT_NONE;
+
+        // Set sub event
+        if (gEventCounter == EVENT_RESTRICTED_LABORATORY_EXPLOSION)
+        {
+            SoundPlay(0xFA);
+            SubEventUpdate(SUB_EVENT_139, SEVENT_TTYPE_11);
+            return;
+        }
+
+        if (gEventCounter == EVENT_RESTRICTED_ZONE_WARNING)
+        {
+            SubEventUpdate(SUB_EVENT_133, SEVENT_TTYPE_11);
+            return;
+        }
+
+        if (gEventCounter == EVENT_TRIGGERED_BOX_2_RUMBLE)
+        {
+            SubEventUpdate(SUB_EVENT_134, SEVENT_TTYPE_11);
+            return;
+        }
+    }
 }
 
 /**

@@ -203,7 +203,7 @@ void HornoadInit(void)
         {
             gCurrentSprite.pOam = sHornoadOam_IdleHidden;
             SpriteUtilChooseRandomXFlip();
-            gCurrentSprite.pose = 0x2;
+            gCurrentSprite.pose = SPRITE_POSE_IDLE;
         }
     }
     else
@@ -226,7 +226,7 @@ void HornoadInit(void)
         }
         else
         {
-            gCurrentSprite.pose = 0x2;
+            gCurrentSprite.pose = SPRITE_POSE_IDLE;
         }
     }
 
@@ -239,7 +239,7 @@ void HornoadInit(void)
  */
 void HornoadIdleInit(void)
 {
-    gCurrentSprite.pose = 0x2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -900,7 +900,7 @@ void HornoadSpitInit(void)
     gCurrentSprite.currentAnimationFrame = 0;
 
     gCurrentSprite.work4 = 0;
-    gCurrentSprite.pose = 0x2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS_DIES_WHEN_HIT;
 }
 
@@ -1002,7 +1002,7 @@ void HornoadSpwanerInit(void)
  */
 void HornoadSpwanerIdleInit(void)
 {
-    gCurrentSprite.pose = 0x2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
     gCurrentSprite.pOam = sHornoadSpawnerOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
@@ -1132,10 +1132,10 @@ void Hornoad(void)
             HornoadInit();
             break;
 
-        case 0x1:
+        case SPRITE_POSE_IDLE_INIT:
             HornoadIdleInit();
 
-        case 0x2:
+        case SPRITE_POSE_IDLE:
             HornoadIdle();
             break;
 
