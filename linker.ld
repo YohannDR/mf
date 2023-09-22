@@ -24,12 +24,14 @@ SECTIONS {
         . = 0x00000025; gDisableSoftReset = .;
         . = 0x0000002c; gCurrentArea = .;
         . = 0x0000002d; gCurrentRoom = .;
+        . = 0x0000002e; gLastDoorUsed = .;
         . = 0x00000030; gDisplayLocationName = .;
         . = 0x00000044; gEffectYPosition = .;
         . = 0x00000046; gDoorUnlockTimer = .;
         . = 0x00000048; gCurrentNavigationRoom = .;
         . = 0x00000049; gLastElevatorUsed = .;
         . = 0x0000004a; gCurrentEventBasedEffect = .;
+        . = 0x0000004b; gCurrentEventBasedEffectCopy = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000053; gCurrentClipdataAffectingAction = .;
         . = 0x00000060; gSubEventCounter = .;
@@ -43,6 +45,8 @@ SECTIONS {
         . = 0x000000c8; gBackgroundPositions = .;
         . = 0x000000dc; gSaXSpawnPosition = .;
         . = 0x00000110; gCurrentPowerBomb = .;
+        . = 0x00000138; gInGameTimer = .;
+        . = 0x0000013c; gMaxInGameTimeFlag = .;
         . = 0x00000140; gSpriteData = .;
         . = 0x00000680; gSpritesetSpriteIds = .;
         . = 0x0000068f; gSpritesetSpriteGfxSlots = .;
@@ -75,12 +79,14 @@ SECTIONS {
         . = 0x000007f5; gBossWork4 = .;
         . = 0x000007f6; gBossWork5 = .;
         . = 0x00000b84; gPauseScreenFlag = .;
+        . = 0x00000b86; gPreviousArea = .;
         . = 0x00000b87; gEventCounter = .;
         . = 0x00000b88; gPreviousNavigationConversation = .;
         . = 0x00000b89; gPreviousCutscene = .;
         . = 0x00000b8a; gRoomEventTrigger = .;
         . = 0x00000b8b; gIsLoadingFile = .;
         . = 0x00000b8f; gUnk_03000B8F = .;
+        . = 0x00000bd0; gDebugMenuOptions = .;
         . = 0x00000bdc; gCurrentCutscene = .;
         . = 0x00000bde; gMainGameMode = .;
         . = 0x00000be0; gSubGameMode1 = .;
@@ -114,6 +120,7 @@ SECTIONS {
         . = 0x00001450; gButtonAssignments = .;
         . = 0x00001458; gSaXData = .;
         . = 0x0000147c; gSaXElevatorData = .;
+        . = 0x00001484; gNonGameplayRam = .;
         . = 0x000019c4; gVBlankCallback = .;
         . = 0x000019c8; gHBlankCallback = .;
         . = 0x000019cc; gVCountCallback = .;

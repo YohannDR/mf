@@ -2,6 +2,15 @@
 #define GLOBALS_H
 
 #include "types.h"
+#include "structs/menus/pause_screen.h"
+
+union NonGameplayRam {
+    struct PauseScreenData pauseScreen;
+};
+
+extern union NonGameplayRam gNonGameplayRam;
+
+#define PAUSE_SCREEN_DATA gNonGameplayRam.pauseScreen
 
 extern u8 gRebootGame;
 extern u8 gClearedEveryFrame;
@@ -21,6 +30,7 @@ extern u8 gUnk_03000B8F;
 extern u8 gUnk_03000064;
 
 extern u8 gCurrentEventBasedEffect;
+extern u8 gCurrentEventBasedEffectCopy;
 
 extern u8 gDebugFlag;
 extern u16 gButtonInput;
@@ -33,8 +43,10 @@ extern u16 gBg1XPosition;
 extern u16 gBg1YPosition;
 
 extern u8 gCurrentArea;
+extern u8 gPreviousArea;
 extern u8 gDestinationDoor;
 extern u8 gCurrentRoom;
+extern u8 gLastDoorUsed;
 extern u8 gCurrentNavigationRoom;
 extern u8 gLastElevatorUsed;
 extern u8 gSpritesetNumber;
@@ -81,6 +93,16 @@ struct Haze {
 extern struct Haze gHazeInfo;
 
 extern u16 gBackdropColor;
+extern u8 gMaxInGameTimeFlag;
+
+struct InGameTime {
+    u8 hours;
+    u8 minutes;
+    u8 seconds;
+    u8 frames;
+};
+
+extern struct InGameTime gInGameTimer;
 
 enum Area {
     AREA_MAIN_DECK,
