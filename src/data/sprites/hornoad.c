@@ -130,7 +130,7 @@ static const u16 sHornoadOam_2eac1a[OAM_DATA_SIZE(5)] = {
     OBJ_SHAPE_VERTICAL | 0xee, OBJ_X_FLIP | 0x1f7, OBJ_SPRITE_OAM | 0x202
 };
 
-static const u16 sHornoadOam_2eabe0[OAM_DATA_SIZE(5)] = {
+static const u16 sHornoadOam_2eac2a[OAM_DATA_SIZE(5)] = {
     0x5,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1fa, OBJ_SPRITE_OAM | 0x237,
     0xf2, OBJ_X_FLIP | 0x1fc, OBJ_SPRITE_OAM | 0x218,

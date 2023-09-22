@@ -78,6 +78,7 @@ SECTIONS {
         . = 0x00000b87; gEventCounter = .;
         . = 0x00000b88; gPreviousNavigationConversation = .;
         . = 0x00000b89; gPreviousCutscene = .;
+        . = 0x00000b8a; gRoomEventTrigger = .;
         . = 0x00000b8b; gIsLoadingFile = .;
         . = 0x00000b8f; gUnk_03000B8F = .;
         . = 0x00000bdc; gCurrentCutscene = .;

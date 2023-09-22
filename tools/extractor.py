@@ -5,6 +5,7 @@ import os
 
 DATA_PATH = "data/"
 subDirs: array = [
+    "sprites",
 ]
 
 try:
