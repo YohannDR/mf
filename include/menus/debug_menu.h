@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-void DebugMenuSoubroutine(void);
+void DebugMenuSubroutine(void);
 u32 DebugMenuModifyValues(void);
 void DebugMenuDrawEventText(u8 event);
 void DebugMenuDrawSection(u8 section);

@@ -3,6 +3,8 @@
 
 #include "types.h"
 
+#define DEBUG_MENU_TILE_SIZE (QUARTER_BLOCK_SIZE / 2)
+
 enum DebugMenuSection {
     DEBUG_SECTION_BEAM,
     DEBUG_SECTION_MISSILE,
@@ -27,6 +29,19 @@ enum DebugMenuSection {
     DEBUG_SECTION_END,
 
     DEBUG_SECTION_ALL = UCHAR_MAX
+};
+
+enum DebugMenuEditFlag {
+    DEBUG_EDIT_NONE,
+    DEBUG_EDIT_REDRAW_SECTION,
+    DEBUG_EDIT_REDRAW_NUMBERED_SECTION,
+    DEBUG_EDIT_REDRAW_ALL,
+};
+
+enum DebugMenuAmmoType {
+    DEBUG_AMMO_TYPE_HEALTH,
+    DEBUG_AMMO_TYPE_MISSILES,
+    DEBUG_AMMO_TYPE_POWER_BOMBS,
 };
 
 #endif /* DEBUG_MENU_CONSTANTS_H */

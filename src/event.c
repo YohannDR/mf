@@ -114,7 +114,7 @@ void EventSet(u8 event)
     if (i)
     {
         // Try to give ability
-        for (i = ARRAY_SIZE(sAbilityRamValues) - 1; i != 0; i--)
+        for (i = ABILITY_COUNT_END - 1; i != 0; i--)
         {
             if (gEventCounter != sObtainItemEvents[i])
                 continue;

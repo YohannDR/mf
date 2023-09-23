@@ -8,8 +8,8 @@
 
 extern const struct EventLocationAndNavigationInfo sEventLocationAndNavigationInfo[EVENT_END + 1];
 
-extern const u8 sObtainItemEvents[19];
-extern const struct AbilityRamValue sAbilityRamValues[19];
+extern const u8 sObtainItemEvents[ABILITY_COUNT_END];
+extern const struct AbilityRamValue sAbilityRamValues[ABILITY_COUNT_END];
 
 extern const u8 sAreaNavigationRoomPairs[13][2];
 
