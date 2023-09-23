@@ -1263,6 +1263,7 @@ void DebugMenuDrawEverything(void)
 /**
  * @brief 7e64c | 2c | Sets up the debug menu cursor
  * 
+ */
 void DebugMenuSetupCursor(void)
 {
     UpdateMenuOamDataId(0, 0x1);
