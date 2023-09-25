@@ -4518,7 +4518,7 @@ _080171CC:
 _080171D0:
 	movs r0, #0x97
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _080171D8:
 	pop {r4, r5}
 	pop {r0}
@@ -4762,7 +4762,7 @@ _080173A4:
 	b _080173AE
 _080173A8:
 	ldr r0, _080173B4 @ =0x0000025D
-	bl PlaySound
+	bl SoundPlay
 _080173AE:
 	pop {r4, r5}
 	pop {r0}
@@ -4779,9 +4779,9 @@ SA_XMissileExploding: @ 0x080173B8
 	ldrh r0, [r1, #2]
 	ldrh r1, [r1, #4]
 	movs r2, #0xd
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _080173E8 @ =0x0000025E
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0x28
 	movs r1, #0x81
 	bl ScreenShakeStartHorizontal
@@ -4935,7 +4935,7 @@ SA_XPowerBombInit: @ 0x08017498
 	strb r0, [r1]
 	movs r0, #0x98
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -5010,7 +5010,7 @@ SA_XPowerBombSpinningQuickly: @ 0x0801754C
 	movs r0, #0x1a
 	strb r0, [r1]
 	ldr r0, _08017598 @ =0x00000261
-	bl PlaySound
+	bl SoundPlay
 _0801758C:
 	pop {r4}
 	pop {r0}
@@ -5383,13 +5383,13 @@ _080178B2:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0xd
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x2e
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _080178D4 @ =0x0000025E
-	bl PlaySound
+	bl SoundPlay
 	b _08017932
 	.align 2, 0
 _080178D0: .4byte gSpriteData
@@ -5412,7 +5412,7 @@ _080178DE:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08017904 @ =0x0000023F
 	bl unk_3b1c
 	b _08017922
@@ -5427,7 +5427,7 @@ _08017908:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08017970 @ =0x0000023F
 	bl unk_3b1c
 _08017922:
@@ -5564,7 +5564,7 @@ _08017A20:
 	adds r1, r5, r1
 _08017A26:
 	movs r2, #0x35
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08017A68
 	.align 2, 0
 _08017A30: .4byte 0xFFFFFEB6
@@ -5582,7 +5582,7 @@ _08017A42:
 	subs r1, r5, r1
 _08017A48:
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08017A68
 	.align 2, 0
 _08017A50: .4byte 0xFFFFFEC0
@@ -5595,7 +5595,7 @@ _08017A54:
 	lsls r1, r6
 	subs r1, r5, r1
 	movs r2, #0x35
-	bl SetParticleEffect
+	bl ParticleSet
 _08017A68:
 	ldr r0, _08017A84 @ =gFrameCounter8Bit
 	ldrb r1, [r0]
@@ -9835,7 +9835,7 @@ _08019D04:
 	bne _08019D12
 	movs r0, #0x8f
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	b _08019D22
 _08019D12:
 	cmp r0, #0
@@ -9872,7 +9872,7 @@ SA_XLabCoveredByMetroidsAfterDetachment: @ 0x08019D28
 	beq _08019D52
 	movs r0, #0x8f
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _08019D52:
 	pop {r0}
 	bx r0
@@ -12574,7 +12574,7 @@ _0801B26A:
 	movs r0, #0x4f
 	strb r0, [r5]
 	movs r0, #0x9c
-	bl PlaySound
+	bl SoundPlay
 _0801B286:
 	ldr r0, _0801B29C @ =gCurrentSprite
 	adds r0, #0x24
@@ -17962,7 +17962,7 @@ HalzynLungingInit: @ 0x0801DE74
 	adds r0, #0x31
 	strb r1, [r0]
 	ldr r0, _0801DEA4 @ =0x00000151
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -18024,7 +18024,7 @@ HalzynLunging: @ 0x0801DEA8
 	bl SpriteDebrisInit
 	movs r0, #0xa9
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	b _0801DF68
 	.align 2, 0
 _0801DF24: .4byte gCurrentSprite
@@ -18170,7 +18170,7 @@ _0801E020:
 	cmp r0, #2
 	bne _0801E034
 	ldr r0, _0801E040 @ =0x00000153
-	bl PlaySound
+	bl SoundPlay
 _0801E034:
 	pop {r4}
 	pop {r0}
@@ -18452,7 +18452,7 @@ _0801E250:
 	subs r1, #0x20
 _0801E25A:
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0801E312
 _0801E262:
 	subs r0, r3, r5
@@ -18574,7 +18574,7 @@ HalzynWingFalling: @ 0x0801E320
 	ldrh r1, [r4, #4]
 	adds r1, #0x20
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 _0801E34A:
 	ldrh r0, [r4, #4]
 	adds r0, #1
@@ -18598,7 +18598,7 @@ _0801E35C:
 	ldrh r1, [r4, #4]
 	subs r1, #0x20
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 _0801E378:
 	ldrh r0, [r4, #4]
 	subs r0, #1
@@ -19574,13 +19574,13 @@ _0801EB74:
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x29
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0801EBA6
 _0801EB9C:
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x2a
-	bl SetParticleEffect
+	bl ParticleSet
 _0801EBA6:
 	ldr r0, _0801EBCC @ =0x00000159
 	bl CheckPlayNotAlreadyPlayingSound
@@ -19805,7 +19805,7 @@ MotoCharging: @ 0x0801ED34
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x29
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0801ED6A
 	.align 2, 0
 _0801ED5C: .4byte gCurrentSprite
@@ -19813,7 +19813,7 @@ _0801ED60:
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x2a
-	bl SetParticleEffect
+	bl ParticleSet
 _0801ED6A:
 	movs r0, #0xac
 	lsls r0, r0, #1
@@ -19835,13 +19835,13 @@ _0801ED74:
 	ldrh r0, [r3, #2]
 	ldrh r1, [r3, #4]
 	movs r2, #0x29
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0801EDA2
 _0801ED98:
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x2a
-	bl SetParticleEffect
+	bl ParticleSet
 _0801EDA2:
 	movs r0, #0xac
 	lsls r0, r0, #1
@@ -20690,7 +20690,7 @@ _0801F4BA:
 	bne _0801F4D6
 	movs r0, #0x86
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0801F4D6:
 	ldrh r2, [r5]
 	movs r0, #0x80
@@ -20833,7 +20833,7 @@ _0801F5E4:
 	cmp r0, #0
 	bne _0801F618
 	ldr r0, _0801F60C @ =0x0000010B
-	bl PlaySound
+	bl SoundPlay
 	b _0801F618
 	.align 2, 0
 _0801F604: .4byte gSamusData
@@ -20920,7 +20920,7 @@ _0801F658:
 	movs r0, #0x35
 	bl _call_via_r1
 	ldr r0, _0801F6BC @ =0x0000010D
-	bl PlaySound
+	bl SoundPlay
 	b _0801F6D8
 	.align 2, 0
 _0801F6B0: .4byte gSpriteData
@@ -21091,7 +21091,7 @@ _0801F7EA:
 	cmp r0, #0
 	bne _0801F7FC
 	ldr r0, _0801F80C @ =0x0000010B
-	bl PlaySound
+	bl SoundPlay
 _0801F7FC:
 	pop {r4}
 	pop {r0}
@@ -21141,7 +21141,7 @@ _0801F84C:
 	cmp r0, #0
 	bne _0801F85E
 	ldr r0, _0801F86C @ =0x0000010B
-	bl PlaySound
+	bl SoundPlay
 _0801F85E:
 	pop {r0}
 	bx r0
@@ -21499,7 +21499,7 @@ _0801FB40:
 	movs r1, #0
 	bl SpriteSpawnSecondary
 	movs r0, #0xfd
-	bl PlaySound
+	bl SoundPlay
 	b _0801FC10
 _0801FB68:
 	mov r0, ip
@@ -24233,7 +24233,7 @@ SecurityPadIdleActive: @ 0x080210E8
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
 	ldr r0, _08021124 @ =0x00000101
-	bl PlaySound
+	bl SoundPlay
 	b _08021130
 	.align 2, 0
 _0802111C: .4byte gCurrentSprite
@@ -24366,7 +24366,7 @@ _08021208:
 	strh r3, [r1, #0x16]
 	movs r0, #0x81
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _08021222:
 	pop {r4}
 	pop {r0}
@@ -24570,7 +24570,7 @@ SecurityPadMonitorIdle: @ 0x0802136C
 	movs r0, #0x18
 	strb r0, [r1]
 	adds r0, #0xf7
-	bl PlaySound
+	bl SoundPlay
 _080213A0:
 	pop {r0}
 	bx r0
@@ -24606,7 +24606,7 @@ SecurityPadMonitorArmExtending: @ 0x080213B0
 	bl _call_via_r1
 	movs r0, #0x87
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _080213EC:
 	pop {r0}
 	bx r0
@@ -24642,7 +24642,7 @@ SecurityPadMonitorUnlocking: @ 0x08021400
 	movs r0, #0x1c
 	strb r0, [r1]
 	adds r0, #0xf4
-	bl PlaySound
+	bl SoundPlay
 _08021434:
 	pop {r0}
 	bx r0
@@ -25450,7 +25450,7 @@ SkreeGoingDownInit: @ 0x08021AB4
 	strb r0, [r1]
 	movs r0, #0xed
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -25579,7 +25579,7 @@ _08021BC8:
 	ldrh r0, [r4, #4]
 	strh r0, [r4, #8]
 	ldr r0, _08021BF0 @ =0x000001DB
-	bl PlaySound
+	bl SoundPlay
 	b _08021C2E
 	.align 2, 0
 _08021BEC: .4byte gPreviousVerticalCollisionCheck
@@ -25733,7 +25733,7 @@ _08021D00:
 	adds r0, #1
 	strb r0, [r5]
 	ldr r0, _08021D4C @ =0x000001DB
-	bl PlaySound
+	bl SoundPlay
 _08021D0C:
 	ldr r1, _08021D50 @ =gCurrentSprite
 	ldrh r2, [r1, #2]
@@ -25924,7 +25924,7 @@ SkreeGoingUpInit: @ 0x08021E7C
 	strb r1, [r0]
 	movs r0, #0xed
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -29085,7 +29085,7 @@ ArachnusScreamingInit: @ 0x08023894
 	ldr r0, _080238D4 @ =0x08302D8C
 	bl SetSecondarySpriteOAMPointer
 	movs r0, #0xbb
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -29142,7 +29142,7 @@ _08023908:
 	strh r0, [r4, #6]
 	strh r1, [r4, #8]
 	movs r0, #0xbe
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -29206,7 +29206,7 @@ _08023990:
 	movs r1, #0x40
 	strh r1, [r0, #0x10]
 	movs r0, #0xb4
-	bl PlaySound
+	bl SoundPlay
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -29239,7 +29239,7 @@ ArachnusSlashingInit: @ 0x080239E0
 	ldr r0, _08023A1C @ =0x08302B74
 	bl SetSecondarySpriteOAMPointer
 	movs r0, #0xba
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -29353,7 +29353,7 @@ _08023ADC:
 	movs r1, #0
 	bl SpriteSpawnSecondary
 	movs r0, #0xb9
-	bl PlaySound
+	bl SoundPlay
 	b _08023AF6
 	.align 2, 0
 _08023AEC: .4byte 0x0000FF40
@@ -29606,7 +29606,7 @@ _08023CD0:
 	movs r1, #0x81
 	bl ScreenShakeStartHorizontal
 	movs r0, #0xb7
-	bl PlaySound
+	bl SoundPlay
 	b _08023D0A
 	.align 2, 0
 _08023CF0: .4byte gFrameCounter8Bit
@@ -29619,7 +29619,7 @@ _08023CF8:
 	cmp r0, #0
 	bne _08023D0A
 	movs r0, #0xb6
-	bl PlaySound
+	bl SoundPlay
 _08023D0A:
 	pop {r3}
 	mov r8, r3
@@ -29762,7 +29762,7 @@ _08023DFA:
 	ands r0, r2
 	strh r0, [r1]
 	movs r0, #0xb5
-	bl PlaySound
+	bl SoundPlay
 _08023E22:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -29898,7 +29898,7 @@ _08023F70:
 	subs r0, #0x10
 	adds r1, r4, #0
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	adds r0, #0x10
 	adds r1, r4, #0
@@ -29914,7 +29914,7 @@ _08023F8A:
 	subs r1, #0x10
 _08023F92:
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0802410C
 _08023F9A:
 	adds r0, r5, #0
@@ -29923,7 +29923,7 @@ _08023F9E:
 	adds r1, r4, #0
 	adds r1, #0x1c
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0802410C
 _08023FAA:
 	movs r0, #0
@@ -29992,7 +29992,7 @@ _08024070:
 	subs r4, #0x10
 	adds r1, r4, #0
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	adds r0, #0x20
 	adds r1, r4, #0
@@ -30003,7 +30003,7 @@ _08024086:
 	adds r1, r4, #0
 	adds r1, #0x1c
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	adds r0, #0x40
 	b _080240C2
@@ -30013,7 +30013,7 @@ _0802409A:
 	subs r4, #0x10
 	adds r1, r4, #0
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	adds r0, #0x40
 	adds r1, r4, #0
@@ -30024,7 +30024,7 @@ _080240B0:
 	adds r1, r4, #0
 	adds r1, #0x1c
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	adds r0, #0x20
 _080240C2:
@@ -30032,7 +30032,7 @@ _080240C2:
 	adds r1, #0x20
 _080240C6:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _080240DE
 _080240CE:
 	ldr r2, _080240F4 @ =gCurrentSprite
@@ -30129,7 +30129,7 @@ _08024164:
 	bl SpriteSpawnSecondary
 _08024184:
 	movs r0, #0xbc
-	bl PlaySound
+	bl SoundPlay
 _0802418A:
 	bl CheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
@@ -30550,7 +30550,7 @@ _080244C2:
 	cmp r0, #9
 	bne _080244DC
 	movs r0, #0xb8
-	bl PlaySound
+	bl SoundPlay
 	b _080244DC
 _080244D2:
 	movs r4, #3
@@ -31624,7 +31624,7 @@ _08024E28:
 	ldr r0, _08024E3C @ =0x0000FFC0
 	strh r0, [r4, #0xa]
 	movs r0, #0xbd
-	bl PlaySound
+	bl SoundPlay
 	b _08024FD2
 	.align 2, 0
 _08024E34: .4byte gPreviousCollisionCheck
@@ -31787,7 +31787,7 @@ _08024F70:
 	ldrh r0, [r1, #2]
 	ldrh r1, [r1, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08024FD2
 	.align 2, 0
 _08024F8C: .4byte gCurrentSprite
@@ -31825,7 +31825,7 @@ _08024FC4:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 _08024FD2:
 	add sp, #0xc
 	pop {r4, r5, r6}
@@ -32003,17 +32003,17 @@ _080250F8:
 	subs r0, #0x60
 	ldrh r1, [r5, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r0, [r5, #2]
 	subs r0, #0x20
 	ldrh r1, [r5, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r0, [r5, #2]
 	subs r0, #0xa0
 	ldrh r1, [r5, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0xbf
 	bl CheckPlayNotAlreadyPlayingSound
 	b _080251BA
@@ -33000,7 +33000,7 @@ _080258D4:
 	cmp r0, #0x50
 	bne _080258E4
 	movs r0, #0xc4
-	bl PlaySound
+	bl SoundPlay
 _080258E4:
 	ldrb r0, [r4]
 	subs r0, #1
@@ -33441,7 +33441,7 @@ _08025BE8:
 	adds r0, r0, r1
 	ldrh r1, [r2, #0x16]
 	movs r2, #0x1d
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrb r0, [r4, #0x1d]
 	subs r0, #0x3f
 	cmp r0, #0xa
@@ -33509,7 +33509,7 @@ _08025CE6:
 	movs r0, #0x30
 	strb r0, [r1, #3]
 	movs r0, #0x92
-	bl PlaySound
+	bl SoundPlay
 	b _08025D16
 	.align 2, 0
 _08025D00: .4byte 0x030012F0
@@ -33521,7 +33521,7 @@ _08025D04:
 	cmp r0, #0
 	bne _08025D16
 	movs r0, #0xc3
-	bl PlaySound
+	bl SoundPlay
 _08025D16:
 	pop {r3}
 	mov r8, r3
@@ -33972,7 +33972,7 @@ _0802614E:
 	movs r1, #0x5c
 	strb r1, [r0]
 	movs r0, #0xc1
-	bl PlaySound
+	bl SoundPlay
 	b _08026338
 	.align 2, 0
 _08026180: .4byte 0x00007FFF
@@ -34044,7 +34044,7 @@ _08026208:
 	cmp r1, #0x10
 	bne _080262BE
 	movs r0, #0xc2
-	bl PlaySound
+	bl SoundPlay
 	adds r2, r5, #0
 	adds r2, #0x34
 	ldrb r1, [r2]
@@ -34671,7 +34671,7 @@ CoreXAbilityBeforeVariaCoreIdle: @ 0x08026784
 	cmp r0, #0
 	bne _080267A2
 	ldr r0, _080267AC @ =0x00000231
-	bl PlaySound
+	bl SoundPlay
 _080267A2:
 	pop {r0}
 	bx r0
@@ -35998,7 +35998,7 @@ WaverDebrisFalling: @ 0x080271C4
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 	strh r5, [r4]
 	b _0802725A
 	.align 2, 0
@@ -36066,7 +36066,7 @@ WaverDebrisExploding: @ 0x08027260
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strh r0, [r4]
 	pop {r4}
@@ -41956,7 +41956,7 @@ NavPadIdle: @ 0x0802A200
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
 	ldr r0, _0802A240 @ =0x00000101
-	bl PlaySound
+	bl SoundPlay
 	b _0802A24C
 	.align 2, 0
 _0802A238: .4byte gCurrentSprite
@@ -42048,7 +42048,7 @@ _0802A2D4:
 	strh r3, [r1, #0x16]
 	movs r0, #0x81
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0802A2EE:
 	pop {r4}
 	pop {r0}
@@ -42077,11 +42077,11 @@ NavPadAfterConversationInit: @ 0x0802A310
 	lsrs r0, r0, #0x18
 	cmp r0, #1
 	bne _0802A332
-	ldr r0, _0802A340 @ =0x030008D7
+	ldr r0, _0802A340 @ =gEscapeStatus
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0802A332
-	bl StartEscape
+	bl EscapeStart
 	movs r0, #0x35
 	movs r1, #0xa
 	bl PlayMusic
@@ -42093,7 +42093,7 @@ _0802A332:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802A340: .4byte 0x030008D7
+_0802A340: .4byte gEscapeStatus
 _0802A344: .4byte gCurrentSprite
 
 	thumb_func_start NavPadAfterConversation
@@ -42115,7 +42115,7 @@ NavPadAfterConversation: @ 0x0802A348
 	strh r3, [r1, #0x16]
 	movs r0, #0x81
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0802A370:
 	pop {r0}
 	bx r0
@@ -42139,7 +42139,7 @@ NavPadUsingConsole: @ 0x0802A37C
 	cmp r0, #0
 	bne _0802A39C
 	ldr r0, _0802A3E8 @ =0x00000103
-	bl PlaySound
+	bl SoundPlay
 _0802A39C:
 	ldr r1, _0802A3EC @ =gSamusData
 	ldrb r0, [r1, #1]
@@ -42403,7 +42403,7 @@ NavScreenInit: @ 0x0802A540
 	strh r3, [r4, #0x16]
 	movs r0, #0x82
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -42461,7 +42461,7 @@ NavScreenIdle: @ 0x0802A5DC
 	movs r0, #0x1a
 	strb r0, [r1]
 	adds r0, #0xeb
-	bl PlaySound
+	bl SoundPlay
 _0802A610:
 	pop {r0}
 	bx r0
@@ -43056,7 +43056,7 @@ _0802AAE0:
 	lsrs r0, r0, #0x18
 	cmp r0, #1
 	bhi _0802AAF0
-	bl StartEscape
+	bl EscapeStart
 _0802AAF0:
 	subs r0, r6, #5
 	lsls r0, r0, #0x18
@@ -43407,7 +43407,7 @@ _0802ADB0:
 	beq _0802AE72
 	movs r0, #0xfd
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0802ADCA:
 	movs r0, #0x36
 	strh r0, [r5, #4]
@@ -43424,7 +43424,7 @@ _0802ADD4:
 	beq _0802AE72
 	movs r0, #0xfd
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0802ADEA:
 	movs r0, #0x96
 	strh r0, [r5, #4]
@@ -43435,7 +43435,7 @@ _0802ADF0:
 	cmp r0, #0
 	beq _0802AE72
 	ldr r0, _0802AE28 @ =0x000001FB
-	bl PlaySound
+	bl SoundPlay
 	ldr r1, _0802AE2C @ =gSpriteData
 	lsls r0, r6, #3
 	subs r0, r0, r6
@@ -43644,7 +43644,7 @@ DataPadIdle: @ 0x0802AF64
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
 	ldr r0, _0802AFA0 @ =0x00000101
-	bl PlaySound
+	bl SoundPlay
 	b _0802AFAC
 	.align 2, 0
 _0802AF98: .4byte gCurrentSprite
@@ -43735,7 +43735,7 @@ _0802B034:
 	strh r3, [r1, #0x16]
 	movs r0, #0x81
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0802B04E:
 	pop {r4}
 	pop {r0}
@@ -43931,7 +43931,7 @@ DataPadCenterIdle: @ 0x0802B184
 	str r0, [r3, #0x18]
 	movs r0, #0x85
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0802B1C8:
 	pop {r0}
 	bx r0
@@ -44089,7 +44089,7 @@ DataPadSidesIdle: @ 0x0802B2C8
 	str r0, [r3, #0x18]
 	movs r0, #0x84
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0802B2FE:
 	pop {r0}
 	bx r0
@@ -44191,7 +44191,7 @@ DataPadSidesDoneDownloadingData: @ 0x0802B3A0
 	ldr r0, _0802B3D4 @ =0x08321ABC
 	str r0, [r3, #0x18]
 	ldr r0, _0802B3D8 @ =0x00000109
-	bl PlaySound
+	bl SoundPlay
 _0802B3CA:
 	pop {r0}
 	bx r0
@@ -45682,7 +45682,7 @@ RechargePadIdle: @ 0x0802C048
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
 	ldr r0, _0802C084 @ =0x00000101
-	bl PlaySound
+	bl SoundPlay
 	b _0802C090
 	.align 2, 0
 _0802C07C: .4byte gCurrentSprite
@@ -45815,7 +45815,7 @@ _0802C168:
 	strh r3, [r1, #0x16]
 	movs r0, #0x81
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0802C182:
 	pop {r4}
 	pop {r0}
@@ -46072,7 +46072,7 @@ RechargePadMonitorIdle: @ 0x0802C33C
 	movs r0, #0x18
 	strb r0, [r1]
 	adds r0, #0xfa
-	bl PlaySound
+	bl SoundPlay
 _0802C370:
 	pop {r0}
 	bx r0
@@ -46105,7 +46105,7 @@ RechargePadMonitorExtended: @ 0x0802C380
 	movs r0, #0x38
 	bl _call_via_r1
 	ldr r0, _0802C3C8 @ =0x00000111
-	bl PlaySound
+	bl SoundPlay
 _0802C3B4:
 	pop {r0}
 	bx r0
@@ -46142,7 +46142,7 @@ RechargePadMonitorRetractingInit: @ 0x0802C3CC
 	movs r0, #0x1c
 	strb r0, [r1]
 	adds r0, #0xf7
-	bl PlaySound
+	bl SoundPlay
 _0802C400:
 	pop {r0}
 	bx r0
@@ -46688,7 +46688,7 @@ _0802C8D4:
 _0802C8D6:
 	str r0, [r4, #0x18]
 	movs r0, #0xfe
-	bl PlaySound
+	bl SoundPlay
 	b _0802CA26
 	.align 2, 0
 _0802C8E0: .4byte 0x083277D8
@@ -46852,7 +46852,7 @@ _0802CA1C:
 	b _0802CA2E
 _0802CA20:
 	movs r0, #0xff
-	bl PlaySound
+	bl SoundPlay
 _0802CA26:
 	ldr r0, _0802CA38 @ =gCurrentSprite
 	adds r0, #0x2a
@@ -46897,7 +46897,7 @@ _0802CA6E:
 	str r0, [r3, #0x18]
 	movs r0, #0x80
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -47186,7 +47186,7 @@ AtmosphericStabilizerCoverExploding: @ 0x0802CC90
 	cmp r0, #0
 	bne _0802CCB4
 	ldr r0, _0802CCD0 @ =0x000001BF
-	bl PlaySound
+	bl SoundPlay
 _0802CCB4:
 	ldrb r0, [r6, #0x1e]
 	cmp r0, #0
@@ -47585,7 +47585,7 @@ _0802D028:
 	subs r1, #0x30
 _0802D02C:
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0802D096
 _0802D034:
 	adds r0, r4, #0
@@ -47640,7 +47640,7 @@ _0802D080:
 	adds r1, #0x48
 _0802D088:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0802D096
 _0802D090:
 	ldr r1, _0802D0A4 @ =gCurrentSprite
@@ -49377,7 +49377,7 @@ _0802DD20:
 	adds r0, r0, r1
 	ldrh r1, [r2, #0x16]
 	movs r2, #0x1d
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrb r1, [r4, #0x1d]
 	cmp r1, #0x57
 	beq _0802DDDE
@@ -49425,7 +49425,7 @@ _0802DDF4:
 	movs r0, #0x30
 	strb r0, [r1, #3]
 	movs r0, #0x92
-	bl PlaySound
+	bl SoundPlay
 	b _0802DE26
 	.align 2, 0
 _0802DE10: .4byte 0x030012F0
@@ -49437,7 +49437,7 @@ _0802DE14:
 	cmp r0, #0
 	bne _0802DE26
 	movs r0, #0xc3
-	bl PlaySound
+	bl SoundPlay
 _0802DE26:
 	pop {r3}
 	mov r8, r3
@@ -50397,7 +50397,7 @@ _0802E512:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrb r0, [r4, #0x1d]
 	cmp r0, #0x58
 	beq _0802E562
@@ -50523,7 +50523,7 @@ BeamCoreXEyeOpened: @ 0x0802E60C
 	adds r0, #0x20
 	ldrh r1, [r5, #4]
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r1, r5, #0
 	adds r1, #0x2f
 	movs r0, #1
@@ -50906,7 +50906,7 @@ BeamCoreXEyeShooting: @ 0x0802E8F0
 	adds r0, #0x20
 	ldrh r1, [r4, #4]
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r1, r4, #0
 	adds r1, #0x2f
 	movs r0, #1
@@ -51477,7 +51477,7 @@ _0802EE28:
 _0802EE30: .4byte 0x0858D9D8
 _0802EE34:
 	movs r0, #0xca
-	bl PlaySound
+	bl SoundPlay
 	ldrh r0, [r4]
 	ldr r1, _0802EE58 @ =0x0000FFFB
 	ands r1, r0
@@ -51610,7 +51610,7 @@ _0802EF3A:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #4
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strh r0, [r4]
 	b _0802EFC4
@@ -51685,7 +51685,7 @@ _0802EFC4:
 CoreXWideBeamInit: @ 0x0802EFCC
 	push {lr}
 	movs r0, #0xc9
-	bl PlaySound
+	bl SoundPlay
 	ldr r2, _0802F020 @ =gCurrentSprite
 	adds r3, r2, #0
 	adds r3, #0x25
@@ -51807,7 +51807,7 @@ _0802F0B4:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #5
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strh r0, [r4]
 	b _0802F118
@@ -51851,7 +51851,7 @@ _0802F118:
 CoreXPlasmaBeaminit: @ 0x0802F120
 	push {lr}
 	movs r0, #0xcb
-	bl PlaySound
+	bl SoundPlay
 	ldr r2, _0802F174 @ =gCurrentSprite
 	adds r3, r2, #0
 	adds r3, #0x25
@@ -51975,7 +51975,7 @@ _0802F20C:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #6
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strh r0, [r4]
 	b _0802F270
@@ -52023,13 +52023,13 @@ CoreXWaveIceBeamInit: @ 0x0802F278
 	cmp r0, #0x74
 	bne _0802F290
 	movs r0, #0xcd
-	bl PlaySound
+	bl SoundPlay
 	b _0802F296
 	.align 2, 0
 _0802F28C: .4byte gCurrentSprite
 _0802F290:
 	movs r0, #0xcc
-	bl PlaySound
+	bl SoundPlay
 _0802F296:
 	ldr r0, _0802F304 @ =gCurrentSprite
 	mov ip, r0
@@ -52354,7 +52354,7 @@ _0802F4E0:
 	bl SpriteSpawnSecondary
 	movs r0, #0xad
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0802F51C:
 	add sp, #0xc
 	pop {r4}
@@ -54258,7 +54258,7 @@ _08030494:
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	ldr r0, _080304C4 @ =0x00000239
-	bl PlaySound
+	bl SoundPlay
 	b _08030560
 	.align 2, 0
 _080304BC: .4byte gCurrentSprite
@@ -54285,7 +54285,7 @@ _080304C8:
 	cmp r4, #0
 	bne _08030500
 	ldr r0, _080304FC @ =0x0000022D
-	bl PlaySound
+	bl SoundPlay
 	b _08030560
 	.align 2, 0
 _080304FC: .4byte 0x0000022D
@@ -54333,7 +54333,7 @@ _08030530:
 	bl PlayMusic
 	movs r0, #0x8e
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	b _08030560
 _0803055C:
 	bl ShakeTriggerStartScreenShake
@@ -54941,7 +54941,7 @@ GateOpeningInit: @ 0x080309D8
 	str r0, [r3, #0x18]
 	movs r0, #0x8a
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	b _08030A3A
 	.align 2, 0
 _08030A0C: .4byte gCurrentSprite
@@ -54952,7 +54952,7 @@ _08030A14:
 	ldr r0, _08030A24 @ =0x0833917C
 	str r0, [r3, #0x18]
 	ldr r0, _08030A28 @ =0x00000115
-	bl PlaySound
+	bl SoundPlay
 	b _08030A3A
 	.align 2, 0
 _08030A24: .4byte 0x0833917C
@@ -54963,7 +54963,7 @@ _08030A2C:
 	str r1, [r0, #0x18]
 	movs r0, #0x8a
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _08030A3A:
 	pop {r0}
 	bx r0
@@ -55558,7 +55558,7 @@ _08030E96:
 	cmp r0, #0
 	beq _08030EB8
 	ldr r0, _08030EB0 @ =0x00000117
-	bl PlaySound
+	bl SoundPlay
 	ldr r0, _08030EB4 @ =gCurrentSprite
 	adds r0, #0x24
 	movs r1, #0x18
@@ -55591,7 +55591,7 @@ ElectricWireIdle: @ 0x08030ECC
 	cmp r0, #0
 	bne _08030EEC
 	ldr r0, _08030EFC @ =0x00000117
-	bl PlaySound
+	bl SoundPlay
 	adds r1, r4, #0
 	adds r1, #0x24
 	movs r0, #0x18
@@ -55655,7 +55655,7 @@ ElectricWaterInit: @ 0x08030F00
 	str r0, [r1, #0x18]
 	movs r0, #0x8b
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -62496,7 +62496,7 @@ LavaPlumeGoUp: @ 0x080345DC
 	beq _0803464E
 	movs r0, #0xc2
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	b _0803464E
 	.align 2, 0
 _08034614: .4byte gCurrentSprite
@@ -62569,7 +62569,7 @@ LavaPlumeStopInit: @ 0x0803466C
 	cmp r0, #0
 	beq _0803469C
 	ldr r0, _080346A8 @ =0x00000185
-	bl PlaySound
+	bl SoundPlay
 _0803469C:
 	pop {r0}
 	bx r0
@@ -65549,7 +65549,7 @@ _08035F88:
 	subs r1, #0x2e
 _08035F90:
 	movs r2, #0x2e
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08035FC2
 _08035F98:
 	adds r0, r5, #0
@@ -65569,7 +65569,7 @@ _08035FAA:
 	adds r1, #0x10
 _08035FB2:
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08035FC2
 _08035FBA:
 	ldr r0, _08036000 @ =gCurrentSprite
@@ -65597,7 +65597,7 @@ _08035FC2:
 	subs r1, #0xa0
 	adds r0, r5, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x1b
 	movs r1, #7
 	bl PlayMusic
@@ -65631,7 +65631,7 @@ BoxFirstJumpInit: @ 0x08036004
 	ands r0, r1
 	strh r0, [r3]
 	ldr r0, _08036048 @ =0x00000265
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -65667,9 +65667,9 @@ BoxFirstJump: @ 0x0803604C
 	ldrh r1, [r1, #0xa]
 	adds r1, #0xb4
 	movs r2, #0x35
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _080360A0 @ =0x00000266
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0x3c
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
@@ -65716,7 +65716,7 @@ BoxWaitingToRunInit: @ 0x080360C4
 	adds r0, #0x2e
 	strb r3, [r0]
 	ldr r0, _080360F8 @ =0x0000026A
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -65812,7 +65812,7 @@ BoxSlowRun: @ 0x08036190
 	cmp r0, r1
 	bne _080361A6
 	ldr r0, _080361FC @ =0x00000262
-	bl PlaySound
+	bl SoundPlay
 _080361A6:
 	ldr r5, _08036200 @ =gCurrentSprite
 	adds r4, r5, #0
@@ -65907,7 +65907,7 @@ BoxFastRun: @ 0x08036250
 	cmp r0, r1
 	bne _08036266
 	ldr r0, _08036290 @ =0x00000262
-	bl PlaySound
+	bl SoundPlay
 _08036266:
 	movs r0, #8
 	movs r1, #0x37
@@ -66009,7 +66009,7 @@ _08036314:
 	movs r0, #0x20
 	strb r0, [r1]
 	ldr r0, _0803633C @ =0x00000263
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -66157,7 +66157,7 @@ BoxBonkingInit: @ 0x08036410
 	eors r0, r1
 	strh r0, [r2]
 	ldr r0, _08036460 @ =0x00000267
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0x14
 	movs r1, #0x81
 	bl ScreenShakeStartHorizontal
@@ -66271,7 +66271,7 @@ BoxLandingFromBonkInit: @ 0x08036504
 	adds r0, #2
 	strb r2, [r0]
 	ldr r0, _08036540 @ =0x00000266
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -66314,7 +66314,7 @@ BoxLandingInit: @ 0x08036560
 	adds r0, #0x31
 	strb r3, [r0]
 	ldr r0, _08036594 @ =0x00000266
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -66378,7 +66378,7 @@ BoxFinishedCrawlingInit: @ 0x080365D0
 	strb r0, [r1]
 	movs r0, #0x99
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -66582,7 +66582,7 @@ _08036782:
 	strb r0, [r1]
 _0803678C:
 	ldr r0, _080367A4 @ =0x00000265
-	bl PlaySound
+	bl SoundPlay
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -66657,7 +66657,7 @@ BoxStoppingToFireBombInit: @ 0x080367FC
 	strb r0, [r1]
 	movs r0, #0x99
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -66713,7 +66713,7 @@ BoxLoweringToFireBombInit: @ 0x08036874
 	strb r1, [r0]
 	movs r0, #0x9a
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -66764,7 +66764,7 @@ BoxFiringBomb: @ 0x080368D4
 	strb r2, [r0, #6]
 	strh r2, [r0, #4]
 	ldr r0, _0803690C @ =0x00000269
-	bl PlaySound
+	bl SoundPlay
 	b _0803697A
 	.align 2, 0
 _08036900: .4byte gCurrentSprite
@@ -66997,7 +66997,7 @@ BoxMovingToFinalJump: @ 0x08036AC0
 	cmp r0, r1
 	bne _08036AD6
 	ldr r0, _08036B08 @ =0x00000262
-	bl PlaySound
+	bl SoundPlay
 _08036AD6:
 	ldr r0, _08036B0C @ =gFrameCounter8Bit
 	ldrb r1, [r0]
@@ -67079,7 +67079,7 @@ BoxWaitingForFinalJumpInit: @ 0x08036B5C
 	movs r1, #0x48
 	strb r1, [r0]
 	ldr r0, _08036B88 @ =0x00000276
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -67222,7 +67222,7 @@ BoxFinalJumpInit: @ 0x08036C6C
 	movs r0, #0x1e
 	strb r0, [r1]
 	ldr r0, _08036CA0 @ =0x00000277
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -67678,7 +67678,7 @@ _08037018:
 	adds r0, r3, #0
 	adds r0, #0x3c
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	str r7, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -67772,7 +67772,7 @@ _080370D0:
 	adds r0, r3, #0
 	adds r0, #0x3c
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	str r7, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -67915,7 +67915,7 @@ _080371E0:
 	adds r0, #0x32
 	adds r1, r3, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	mov r1, r8
 	adds r1, #0x24
 	movs r0, #0x43
@@ -67948,7 +67948,7 @@ _0803723E:
 	adds r0, #0x24
 	adds r1, r3, #0
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08037282
 	.align 2, 0
 _08037258: .4byte 0x08347BB8
@@ -67970,7 +67970,7 @@ _0803725C:
 	adds r0, #0x24
 	adds r1, r3, #0
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 _08037282:
 	ldr r0, _080372B4 @ =gCurrentSprite
 	adds r0, #0x2c
@@ -67984,7 +67984,7 @@ _08037282:
 	bl BoxPartSetBoxWorkVar2
 	movs r0, #0x9e
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _080372A0:
 	add sp, #8
 	pop {r3, r4}
@@ -68306,7 +68306,7 @@ BoxMissileInit: @ 0x08037514
 	movs r0, #4
 	strb r0, [r1]
 	ldr r0, _080375B4 @ =0x0000026B
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -68471,10 +68471,10 @@ BoxMissileExploding: @ 0x080376CC
 	ldrh r0, [r1, #2]
 	ldrh r1, [r1, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x9b
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -68549,7 +68549,7 @@ BoxBombInit: @ 0x080376F0
 	strb r3, [r0]
 	movs r0, #0x9c
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -68706,7 +68706,7 @@ _08037884:
 	cmp r0, #1
 	bne _080378B0
 	ldr r0, _080378D0 @ =0x00000271
-	bl PlaySound
+	bl SoundPlay
 _080378B0:
 	ldrb r0, [r4]
 	adds r0, #1
@@ -68851,10 +68851,10 @@ _08037980:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x22
-	bl SetParticleEffect
+	bl ParticleSet
 	strh r5, [r4]
 	ldr r0, _080379E4 @ =0x00000272
-	bl PlaySound
+	bl SoundPlay
 _080379DC:
 	add sp, #0xc
 	pop {r4, r5, r6}
@@ -68871,11 +68871,11 @@ BoxBombExploding: @ 0x080379E8
 	adds r0, #0x20
 	ldrh r1, [r4, #4]
 	movs r2, #0x32
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strh r0, [r4]
 	ldr r0, _08037A0C @ =0x00000273
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -69010,7 +69010,7 @@ _08037B40:
 	bne _08037BB6
 	movs r0, #0x9d
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	b _08037BB6
 	.align 2, 0
 _08037B54: .4byte 0x0000FFA0
@@ -69026,7 +69026,7 @@ _08037B64:
 	cmp r0, #1
 	bne _08037B72
 	ldr r0, _08037B7C @ =0x00000275
-	bl PlaySound
+	bl SoundPlay
 _08037B72:
 	ldr r5, _08037B80 @ =0x0000FEA0
 	b _08037BB6
@@ -69579,12 +69579,12 @@ BoxDebrisFalling: @ 0x08037F80
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r1, r6, #0
 	adds r1, #0x20
 	adds r0, r5, #0
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x28
 	bl EventCheckAdvance
 	movs r0, #2
@@ -69638,7 +69638,7 @@ _08038036:
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #0x34
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0803807E
 _0803804E:
 	adds r0, r7, #4
@@ -69650,7 +69650,7 @@ _0803804E:
 	adds r1, r6, #0
 	adds r1, #0x28
 	movs r2, #0x33
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0803807E
 _08038066:
 	adds r0, r7, #0
@@ -69663,7 +69663,7 @@ _08038066:
 	adds r1, r6, #0
 	subs r1, #0x28
 	movs r2, #0x33
-	bl SetParticleEffect
+	bl ParticleSet
 _0803807E:
 	pop {r3, r4}
 	mov r8, r3
@@ -70049,7 +70049,7 @@ _08038358:
 	subs r1, #0x20
 	adds r0, r7, #0
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	mov r1, r8
 	adds r1, #0x20
 	adds r0, r7, #0
@@ -70066,7 +70066,7 @@ _080383A4:
 	mov r1, r8
 _080383A8:
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08038542
 _080383B0:
 	subs r0, r5, #2
@@ -70081,7 +70081,7 @@ _080383BE:
 	subs r1, #0x10
 	adds r0, r7, #0
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 	mov r1, r8
 	adds r1, #0x10
 	adds r0, r7, #0
@@ -70091,7 +70091,7 @@ _080383D2:
 	mov r1, r8
 _080383D6:
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08038542
 _080383DE:
 	cmp r5, #0
@@ -70104,7 +70104,7 @@ _080383DE:
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08038426
 _080383F8:
 	adds r0, r6, #4
@@ -70116,7 +70116,7 @@ _080383F8:
 	mov r1, r8
 	adds r1, #0x32
 	movs r2, #0x2e
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08038426
 _08038410:
 	adds r0, r6, #0
@@ -70128,7 +70128,7 @@ _08038410:
 	subs r1, #0x20
 	adds r0, r7, #0
 	movs r2, #0x33
-	bl SetParticleEffect
+	bl ParticleSet
 _08038426:
 	ldr r3, _08038450 @ =gCurrentSprite
 	adds r6, r3, #0
@@ -70169,7 +70169,7 @@ _08038464:
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 _08038476:
 	ldr r3, _080384A0 @ =gCurrentSprite
 	adds r6, r3, #0
@@ -70212,7 +70212,7 @@ _080384BA:
 	adds r0, r7, #0
 	mov r1, r8
 	movs r2, #0x33
-	bl SetParticleEffect
+	bl ParticleSet
 _080384CE:
 	ldr r3, _080384F8 @ =gCurrentSprite
 	adds r6, r3, #0
@@ -72055,7 +72055,7 @@ _0803942A:
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
 	adds r0, #0xe9
-	bl PlaySound
+	bl SoundPlay
 	b _08039450
 	.align 2, 0
 _08039444: .4byte 0x0834A094
@@ -72164,7 +72164,7 @@ _080394FE:
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
 	adds r0, #0xe6
-	bl PlaySound
+	bl SoundPlay
 _08039514:
 	pop {r4}
 	pop {r0}
@@ -72199,7 +72199,7 @@ MiscPadSamusInteracting: @ 0x08039534
 	cmp r0, #0
 	bne _08039552
 	ldr r0, _08039568 @ =0x00000103
-	bl PlaySound
+	bl SoundPlay
 _08039552:
 	ldrb r0, [r4]
 	cmp r0, #7
@@ -72392,7 +72392,7 @@ MiscPadWaitForWideBeamCoreX: @ 0x08039680
 	strh r2, [r4, #0x16]
 	movs r0, #0x81
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _080396C2:
 	pop {r4}
 	pop {r0}
@@ -72875,7 +72875,7 @@ OperationsRoomPadIdle: @ 0x08039AC0
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
 	ldr r0, _08039AFC @ =0x00000101
-	bl PlaySound
+	bl SoundPlay
 	b _08039B08
 	.align 2, 0
 _08039AF4: .4byte gCurrentSprite
@@ -72966,7 +72966,7 @@ _08039B90:
 	strh r3, [r1, #0x16]
 	movs r0, #0x81
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _08039BAA:
 	pop {r4}
 	pop {r0}
@@ -73002,7 +73002,7 @@ OperationsRoomPadSamusInteracting: @ 0x08039BCC
 	cmp r0, #0
 	bne _08039BEA
 	ldr r0, _08039C14 @ =0x00000103
-	bl PlaySound
+	bl SoundPlay
 _08039BEA:
 	ldr r1, _08039C18 @ =gSamusData
 	ldrb r0, [r1, #1]
@@ -73276,7 +73276,7 @@ OperationsRoomPadScreenInit: @ 0x08039DA8
 	strh r3, [r4, #0x16]
 	movs r0, #0x82
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -73334,7 +73334,7 @@ OperationsRoomPadScreenIdle: @ 0x08039E44
 	movs r0, #0x1a
 	strb r0, [r1]
 	adds r0, #0xeb
-	bl PlaySound
+	bl SoundPlay
 _08039E78:
 	pop {r0}
 	bx r0
@@ -80117,7 +80117,7 @@ _0803D424:
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x28
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0803D488
 	.align 2, 0
 _0803D440: .4byte gCurrentSprite
@@ -83812,7 +83812,7 @@ _0803F228:
 	cmp r0, #0
 	bne _0803F23C
 	ldr r0, _0803F270 @ =0x0000019F
-	bl PlaySound
+	bl SoundPlay
 _0803F23C:
 	ldrb r0, [r4]
 	adds r0, #1
@@ -83914,7 +83914,7 @@ _0803F2F4:
 	cmp r0, #0
 	bne _0803F308
 	ldr r0, _0803F33C @ =0x0000019F
-	bl PlaySound
+	bl SoundPlay
 _0803F308:
 	ldrb r0, [r4]
 	adds r0, #1
@@ -85829,7 +85829,7 @@ _0804035A:
 	cmp r0, #1
 	bne _08040384
 	ldr r0, _08040380 @ =0x000001AF
-	bl PlaySound
+	bl SoundPlay
 	b _08040396
 	.align 2, 0
 _0804037C: .4byte gCurrentSprite
@@ -85842,7 +85842,7 @@ _08040384:
 	cmp r0, #1
 	bne _08040396
 	ldr r0, _080403B0 @ =0x000001AF
-	bl PlaySound
+	bl SoundPlay
 _08040396:
 	bl ZebesianGroundCheckInShootingRange
 	lsls r0, r0, #0x18
@@ -87310,7 +87310,7 @@ BlueXSetTrail: @ 0x08040F54
 	ldrh r0, [r1, #2]
 	ldrh r1, [r1, #4]
 	movs r2, #0x1f
-	bl SetParticleEffect
+	bl ParticleSet
 _08040F6E:
 	pop {r0}
 	bx r0
@@ -87397,7 +87397,7 @@ _08040FDE:
 	movs r1, #0
 	bl SpriteSpawnSecondary
 	ldr r0, _08041028 @ =0x000001BB
-	bl PlaySound
+	bl SoundPlay
 	b _0804104C
 	.align 2, 0
 _08041018: .4byte gEquipment
@@ -87416,7 +87416,7 @@ _0804102C:
 	adds r0, r0, r1
 	ldrh r1, [r2, #0x16]
 	movs r2, #0x1e
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0xdd
 	lsls r0, r0, #1
 	bl CheckPlayNotAlreadyPlayingSound
@@ -88699,10 +88699,10 @@ _08041A60:
 	adds r0, r3, #0
 	adds r1, r4, #0
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x83
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	b _08041BE4
 _08041A74:
 	adds r0, r3, #0
@@ -88710,7 +88710,7 @@ _08041A74:
 	adds r1, r4, #0
 	adds r1, #0x10
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r1, _08041AA0 @ =gCurrentSprite
 	ldrb r2, [r1, #0x1f]
 	adds r0, r1, #0
@@ -88733,7 +88733,7 @@ _08041AA4:
 	adds r1, r4, #0
 	subs r1, #0x10
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r1, _08041AD0 @ =gCurrentSprite
 	ldrb r2, [r1, #0x1f]
 	adds r0, r1, #0
@@ -88762,7 +88762,7 @@ _08041ADE:
 	adds r1, r4, #0
 	subs r1, #0xc
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r1, _08041B10 @ =gCurrentSprite
 	ldrb r2, [r1, #0x1f]
 	adds r0, r1, #0
@@ -88808,7 +88808,7 @@ _08041B3E:
 	adds r0, r3, #0
 	adds r1, r4, #0
 	movs r2, #0x24
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r1, _08041B70 @ =gCurrentSprite
 	ldrb r2, [r1, #0x1f]
 	adds r0, r1, #0
@@ -88825,7 +88825,7 @@ _08041B3E:
 	movs r1, #3
 	bl SpriteSpawnSecondary
 	ldr r0, _08041B74 @ =0x00000145
-	bl PlaySound
+	bl SoundPlay
 	b _08041BE4
 	.align 2, 0
 _08041B70: .4byte gCurrentSprite
@@ -88842,7 +88842,7 @@ _08041B82:
 	adds r1, r4, #0
 	adds r1, #0x14
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r1, _08041BB4 @ =gCurrentSprite
 	ldrb r2, [r1, #0x1f]
 	adds r0, r1, #0
@@ -88878,13 +88878,13 @@ _08041BCA:
 	adds r1, r4, #4
 _08041BCC:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08041BE4
 _08041BD4:
 	adds r0, r3, #0
 	adds r1, r4, #0
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r1, _08041BEC @ =gCurrentSprite
 	movs r0, #0
 	strh r0, [r1]
@@ -88998,7 +88998,7 @@ MissileHatchDebrisFalling: @ 0x08041C94
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 _08041CB4:
 	ldrb r0, [r4, #0x1e]
 	cmp r0, #0
@@ -89049,12 +89049,12 @@ _08041CF6:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrb r0, [r4, #0x1e]
 	cmp r0, #0
 	beq _08041E0E
 	ldr r0, _08041D30 @ =0x00000107
-	bl PlaySound
+	bl SoundPlay
 	b _08041E0E
 	.align 2, 0
 _08041D28: .4byte gCurrentSprite
@@ -92290,7 +92290,7 @@ _0804373C:
 	adds r0, #0x30
 	ldrh r1, [r5, #4]
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r1, [r5]
 	movs r0, #2
 	ands r0, r1
@@ -92480,7 +92480,7 @@ _080438EC:
 	adds r0, #0x10
 	adds r1, r3, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08043918 @ =0x00000232
 	bl unk_3b1c
 	b _08043A80
@@ -92526,7 +92526,7 @@ _08043952:
 	subs r1, #8
 _0804395E:
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08043A80
 _08043966:
 	cmp r0, #0x45
@@ -92596,7 +92596,7 @@ _080439CA:
 	subs r1, #0x48
 _080439D6:
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08043A80
 _080439DE:
 	cmp r0, #0xa
@@ -92606,7 +92606,7 @@ _080439DE:
 	adds r1, r3, #0
 	subs r1, #8
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r1, r6, #0
 	adds r1, #0x24
 	movs r0, #0x1c
@@ -92643,7 +92643,7 @@ _08043A24:
 	adds r0, r2, #0
 _08043A2E:
 	movs r2, #0x35
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08043A80
 _08043A36:
 	cmp r0, #0xa
@@ -92653,7 +92653,7 @@ _08043A36:
 	subs r1, #0x3c
 _08043A40:
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08043A80
 _08043A48:
 	cmp r0, #5
@@ -92661,7 +92661,7 @@ _08043A48:
 	adds r0, r2, #0
 	adds r1, r3, #0
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x3c
 	strb r0, [r5]
 	adds r1, r4, #0
@@ -94158,7 +94158,7 @@ _080445CA:
 	adds r0, r3, #0
 	adds r1, r2, #0
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 _080445E4:
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -94180,10 +94180,10 @@ _080445E4:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x32
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0xa6
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	b _08044658
 	.align 2, 0
 _0804461C: .4byte gPreviousVerticalCollisionCheck
@@ -94310,7 +94310,7 @@ NettoriPlasmaBeamInit: @ 0x08044698
 	adds r0, #0x35
 	strb r1, [r0]
 	ldr r0, _08044724 @ =0x0000029A
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -94346,7 +94346,7 @@ NettoriPlasmaBeamEmerging: @ 0x08044728
 	adds r0, #0x25
 	strb r2, [r0]
 	ldr r0, _08044768 @ =0x0000029B
-	bl PlaySound
+	bl SoundPlay
 _0804475A:
 	pop {r0}
 	bx r0
@@ -94397,11 +94397,11 @@ NettoriPlasmaBeamMoving: @ 0x0804479C
 	adds r0, #0x20
 	ldrh r1, [r4, #4]
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strh r0, [r4]
 	ldr r0, _080447D0 @ =0x0000029E
-	bl PlaySound
+	bl SoundPlay
 	b _080447DA
 	.align 2, 0
 _080447C8: .4byte gCurrentSprite
@@ -94596,7 +94596,7 @@ SamusEaterEatingSamus: @ 0x08044938
 	cmp r0, #2
 	bne _0804494E
 	ldr r0, _08044964 @ =0x00000297
-	bl PlaySound
+	bl SoundPlay
 _0804494E:
 	ldr r0, _08044960 @ =gCurrentSprite
 	ldrh r2, [r0, #4]
@@ -94699,7 +94699,7 @@ _080449F8:
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x2d
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08044A20 @ =0x0000029D
 	bl CheckPlayNotAlreadyPlayingSound
 _08044A18:
@@ -95076,7 +95076,7 @@ _08044CD4:
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x2d
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08044CFC @ =0x00000299
 	bl CheckPlayNotAlreadyPlayingSound
 _08044CF4:
@@ -96038,7 +96038,7 @@ _08045494:
 	adds r1, r6, #0
 	movs r2, #4
 _080454AA:
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r1, _080454CC @ =0x030006E8
 	ldrb r0, [r1]
 	movs r1, #0x80
@@ -96072,7 +96072,7 @@ _080454EC:
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #7
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _0804551C @ =0x03000960
 	add r0, sb
 	movs r1, #0
@@ -96729,7 +96729,7 @@ _080459E0:
 	cmp r0, #1
 	bne _080459F8
 	ldr r0, _080459F0 @ =0x0000027B
-	bl PlaySound
+	bl SoundPlay
 	b _080459F8
 	.align 2, 0
 _080459F0: .4byte 0x0000027B
@@ -96876,13 +96876,13 @@ ZazabiJumpWarning: @ 0x08045AD8
 	ldrh r1, [r4, #0xa]
 	subs r1, #0x4c
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r0, [r4, #8]
 	adds r0, r0, r5
 	ldrh r1, [r4, #0xa]
 	adds r1, #0x4c
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 _08045B0C:
 	pop {r4, r5}
 	pop {r0}
@@ -96896,7 +96896,7 @@ ZazabiJumpingInit: @ 0x08045B1C
 	push {r4, r5, lr}
 	movs r0, #0x9f
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	ldr r1, _08045B5C @ =gSubSpriteData1
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -97170,7 +97170,7 @@ ZazabiFallingInit: @ 0x08045D24
 	cmp r0, #0
 	bne _08045D38
 	ldr r0, _08045D60 @ =0x0000027E
-	bl PlaySound
+	bl SoundPlay
 _08045D38:
 	ldr r2, _08045D64 @ =gSubSpriteData1
 	movs r0, #0
@@ -97577,15 +97577,15 @@ _0804602E:
 	ldrh r1, [r5, #0xa]
 	subs r1, #0x4c
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r0, [r5, #8]
 	adds r0, r0, r4
 	ldrh r1, [r5, #0xa]
 	adds r1, #0x4c
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08046070 @ =0x0000027D
-	bl PlaySound
+	bl SoundPlay
 	b _08046198
 	.align 2, 0
 _08046064: .4byte gPreviousVerticalCollisionCheck
@@ -97724,15 +97724,15 @@ _08046140:
 	ldrh r1, [r5, #0xa]
 	subs r1, #0x1c
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r0, [r5, #8]
 	adds r0, r0, r4
 	ldrh r1, [r5, #0xa]
 	adds r1, #0x1c
 	movs r2, #0x31
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _080461B0 @ =0x0000027D
-	bl PlaySound
+	bl SoundPlay
 _08046198:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -97753,7 +97753,7 @@ ZazabiLandingMouthOpenInit: @ 0x080461B4
 	bne _080461C6
 	movs r0, #0xa0
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _080461C6:
 	ldr r0, _080461D8 @ =gSubSpriteData1
 	ldrh r1, [r0, #0xc]
@@ -97811,7 +97811,7 @@ ZazabiLandingMouthOpen: @ 0x08046218
 	cmp r0, #0x28
 	beq _08046234
 	ldr r0, _08046260 @ =0x0000027F
-	bl PlaySound
+	bl SoundPlay
 _08046234:
 	bl CheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
@@ -97979,7 +97979,7 @@ _08046358:
 	movs r1, #0x39
 	strb r1, [r0]
 	ldr r0, _08046380 @ =0x00000281
-	bl PlaySound
+	bl SoundPlay
 _08046378:
 	pop {r0}
 	bx r0
@@ -98033,7 +98033,7 @@ _080463D0:
 	movs r1, #0x3b
 	strb r1, [r0]
 	ldr r0, _080463F0 @ =0x00000281
-	bl PlaySound
+	bl SoundPlay
 _080463E6:
 	pop {r0}
 	bx r0
@@ -98121,7 +98121,7 @@ _08046474:
 	movs r1, #0x3d
 	strb r1, [r0]
 	ldr r0, _0804649C @ =0x00000281
-	bl PlaySound
+	bl SoundPlay
 _08046494:
 	pop {r0}
 	bx r0
@@ -98187,7 +98187,7 @@ _08046500:
 	movs r1, #0x3f
 	strb r1, [r0]
 	ldr r0, _08046520 @ =0x00000281
-	bl PlaySound
+	bl SoundPlay
 _08046516:
 	pop {r0}
 	bx r0
@@ -98438,7 +98438,7 @@ ZazabiDyingInit: @ 0x080466C8
 	ldrh r0, [r3, #2]
 	ldrh r1, [r3, #4]
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _0804670C @ =0x00000286
 	bl unk_3b1c
 	pop {r0}
@@ -98539,7 +98539,7 @@ _08046810:
 	subs r0, #0x40
 	adds r1, r5, #0
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	subs r0, #0x80
 	adds r1, r5, #0
@@ -98557,7 +98557,7 @@ _0804682E:
 	subs r1, #0x10
 _08046836:
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	b _080469C0
 _0804683E:
 	ldr r1, _08046850 @ =0xFFFFFF00
@@ -98566,7 +98566,7 @@ _0804683E:
 	adds r1, #0x10
 _08046846:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _080469C0
 	.align 2, 0
 _08046850: .4byte 0xFFFFFF00
@@ -98637,7 +98637,7 @@ _08046918:
 	adds r1, r5, #0
 	subs r1, #0x40
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	subs r0, #0x20
 	adds r1, r5, #0
@@ -98649,7 +98649,7 @@ _08046930:
 	adds r1, r5, #0
 	adds r1, #0x1c
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	subs r0, #0x40
 	adds r1, r5, #0
@@ -98663,7 +98663,7 @@ _0804694C:
 	adds r1, r5, #0
 	adds r1, #0x40
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	subs r0, #0xc0
 	adds r1, r5, #0
@@ -98675,14 +98675,14 @@ _08046964:
 	adds r1, r5, #0
 	subs r1, #0x1c
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	subs r0, #0x20
 	adds r1, r5, #0
 	adds r1, #0x20
 _0804697A:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08046992
 _08046982:
 	ldr r2, _080469A8 @ =gCurrentSprite
@@ -99817,7 +99817,7 @@ _08047388:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strh r0, [r4]
 	movs r0, #0xa1
@@ -101111,7 +101111,7 @@ _08047DCC:
 	adds r1, r4, #0
 	adds r1, #0x14
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	adds r0, #0x20
 	adds r1, r4, #0
@@ -101123,7 +101123,7 @@ _08047DE4:
 	adds r1, r4, #0
 	adds r1, #0x1c
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	adds r0, #0x40
 	b _08047E20
@@ -101133,7 +101133,7 @@ _08047DF8:
 	subs r4, #0x10
 	adds r1, r4, #0
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	adds r0, #0x40
 	adds r1, r4, #0
@@ -101144,7 +101144,7 @@ _08047E0E:
 	adds r1, r4, #0
 	adds r1, #0x14
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	adds r0, #0x20
 _08047E20:
@@ -101152,7 +101152,7 @@ _08047E20:
 	adds r1, #0x20
 _08047E24:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08047E42
 _08047E2C:
 	ldr r1, _08047E58 @ =gCurrentSprite
@@ -102853,9 +102853,9 @@ _08048B24:
 	ldrh r0, [r0]
 	subs r0, #0x78
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08048B44 @ =0x00000293
-	bl PlaySound
+	bl SoundPlay
 _08048B36:
 	pop {r0}
 	bx r0
@@ -102918,10 +102918,10 @@ SerrisPartDying: @ 0x08048B7C
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0xa5
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	b _08048C04
 	.align 2, 0
 _08048BBC: .4byte gCurrentSprite
@@ -103031,7 +103031,7 @@ _08048C66:
 	adds r0, #0x44
 	ldrh r1, [r1, #4]
 	movs r2, #0x36
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08048CA0
 	.align 2, 0
 _08048C8C: .4byte gCurrentSprite
@@ -103041,10 +103041,10 @@ _08048C94:
 	adds r0, #0x44
 	ldrh r1, [r1, #4]
 	movs r2, #0x37
-	bl SetParticleEffect
+	bl ParticleSet
 _08048CA0:
 	ldr r0, _08048CCC @ =0x00000295
-	bl PlaySound
+	bl SoundPlay
 _08048CA6:
 	ldr r2, _08048CD0 @ =gCurrentSprite
 	ldrh r0, [r2, #2]
@@ -103250,7 +103250,7 @@ _08048E20:
 	adds r0, #0x24
 	ldrh r1, [r4, #4]
 	movs r2, #0x36
-	bl SetParticleEffect
+	bl ParticleSet
 _08048E30:
 	pop {r4}
 	pop {r0}
@@ -103307,13 +103307,13 @@ SerricCheckInWater: @ 0x08048E68
 	adds r0, #0x40
 	ldrh r1, [r3, #4]
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08048EB0 @ =gBossWork5
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq _08048EB8
 	ldr r0, _08048EB4 @ =0x0000028D
-	bl PlaySound
+	bl SoundPlay
 	b _08048EBE
 	.align 2, 0
 _08048EA8: .4byte 0x030007C0
@@ -103322,7 +103322,7 @@ _08048EB0: .4byte gBossWork5
 _08048EB4: .4byte 0x0000028D
 _08048EB8:
 	ldr r0, _08048EC8 @ =0x0000028A
-	bl PlaySound
+	bl SoundPlay
 _08048EBE:
 	ldr r2, _08048ECC @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -103350,21 +103350,21 @@ _08048ED4:
 	adds r0, #0x20
 	ldrh r1, [r3, #4]
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08048F10 @ =gBossWork5
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq _08048F14
 	movs r0, #0xa3
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	b _08048F1A
 	.align 2, 0
 _08048F0C: .4byte 0x000002BF
 _08048F10: .4byte gBossWork5
 _08048F14:
 	ldr r0, _08048F2C @ =0x00000289
-	bl PlaySound
+	bl SoundPlay
 _08048F1A:
 	ldr r2, _08048F30 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -103463,7 +103463,7 @@ _08048FBC:
 	strh r0, [r1]
 	bl SerrisSetFacingOam
 	ldr r0, _08049000 @ =0x00000292
-	bl PlaySound
+	bl SoundPlay
 _08048FDC:
 	ldr r0, _08048FFC @ =gBossWork5
 	ldrh r2, [r0]
@@ -103551,7 +103551,7 @@ _0804905E:
 	cmp r0, #0
 	beq _080490A8
 	ldr r0, _080490A4 @ =0x0000028E
-	bl PlaySound
+	bl SoundPlay
 	b _080490AE
 	.align 2, 0
 _08049094: .4byte gCurrentSprite
@@ -103561,7 +103561,7 @@ _080490A0: .4byte gBossWork5
 _080490A4: .4byte 0x0000028E
 _080490A8:
 	ldr r0, _080490CC @ =0x0000028B
-	bl PlaySound
+	bl SoundPlay
 _080490AE:
 	ldr r0, _080490D0 @ =0x030007C0
 	ldr r1, _080490D4 @ =gCurrentSprite
@@ -106708,7 +106708,7 @@ PillarIdle: @ 0x0804AB60
 	strb r0, [r2]
 	movs r0, #0xe1
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0804ABB0:
 	pop {r0}
 	bx r0
@@ -106819,7 +106819,7 @@ _0804AC6A:
 	bne _0804AC7C
 	movs r0, #0xe1
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0804AC7C:
 	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
 	cmp r0, #0
@@ -111681,7 +111681,7 @@ DachorawaitingForOthers: @ 0x0804D590
 	bne _0804D5A8
 	movs r0, #0x91
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0804D5A8:
 	movs r4, #0
 	movs r3, #0
@@ -111751,7 +111751,7 @@ DachoraWaitingToSpawnBaby: @ 0x0804D610
 	bne _0804D62A
 	movs r0, #0x91
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0804D62A:
 	ldr r0, _0804D674 @ =gCurrentSprite
 	mov ip, r0
@@ -111805,7 +111805,7 @@ DachoraWaitingForBaby: @ 0x0804D678
 	bne _0804D690
 	movs r0, #0x91
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0804D690:
 	ldr r4, _0804D6D4 @ =gCurrentSprite
 	adds r5, r4, #0
@@ -111867,7 +111867,7 @@ DachoraBowing: @ 0x0804D6E4
 	strb r1, [r4, #0x1c]
 	strh r1, [r4, #0x16]
 	ldr r0, _0804D718 @ =0x00000123
-	bl PlaySound
+	bl SoundPlay
 	b _0804D75E
 	.align 2, 0
 _0804D710: .4byte gCurrentSprite
@@ -111882,7 +111882,7 @@ _0804D71C:
 	bne _0804D75E
 	movs r0, #0x91
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	b _0804D75E
 _0804D732:
 	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
@@ -115158,7 +115158,7 @@ _0804F0AC:
 	cmp r0, #1
 	bne _0804F0FA
 	ldr r0, _0804F118 @ =0x0000023A
-	bl PlaySound
+	bl SoundPlay
 _0804F0FA:
 	pop {r3}
 	mov r8, r3
@@ -115270,7 +115270,7 @@ _0804F146:
 	movs r0, #0x18
 	strb r0, [r1]
 	ldr r0, _0804F228 @ =0x0000023B
-	bl PlaySound
+	bl SoundPlay
 _0804F1DC:
 	adds r0, r6, #1
 	lsls r0, r0, #0x18
@@ -115889,9 +115889,9 @@ _0804F69A:
 	adds r0, #0x20
 	adds r1, r5, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _0804F6C0 @ =0x0000023D
-	bl PlaySound
+	bl SoundPlay
 	cmp r7, #0x13
 	bne _0804F6C4
 	adds r4, r6, #0
@@ -115943,7 +115943,7 @@ _0804F6DC:
 	adds r1, #0x21
 	strb r0, [r1]
 	ldr r0, _0804F730 @ =0x0000023E
-	bl PlaySound
+	bl SoundPlay
 	cmp r7, #0x13
 	bne _0804F734
 	adds r4, r6, #0
@@ -116063,7 +116063,7 @@ _0804F7EE:
 	subs r0, #0x20
 	adds r1, r5, #0
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0804F83A
 	.align 2, 0
 _0804F818: .4byte gCurrentSprite
@@ -116083,7 +116083,7 @@ _0804F82A:
 	subs r0, #0x20
 	adds r1, r5, #0
 	movs r2, #0x27
-	bl SetParticleEffect
+	bl ParticleSet
 _0804F83A:
 	pop {r3}
 	mov r8, r3
@@ -118132,7 +118132,7 @@ _080508AA:
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #7
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strb r0, [r4]
 _08050916:
@@ -118903,7 +118903,7 @@ _08050EF8:
 	movs r0, #0x1a
 	strb r0, [r1]
 	movs r0, #0xa0
-	bl PlaySound
+	bl SoundPlay
 _08050F18:
 	movs r0, #0
 	bl SA_XMonsterCheckScreaming
@@ -119262,7 +119262,7 @@ _080511C4:
 	cmp r0, #2
 	bne _080511D8
 	movs r0, #0xa6
-	bl PlaySound
+	bl SoundPlay
 _080511D8:
 	pop {r0}
 	bx r0
@@ -119369,7 +119369,7 @@ _08051292:
 	cmp r0, #2
 	bne _080512A6
 	movs r0, #0xa6
-	bl PlaySound
+	bl SoundPlay
 _080512A6:
 	pop {r4}
 	pop {r0}
@@ -119718,7 +119718,7 @@ _08051504:
 	cmp r1, r0
 	bne _080515A8
 	movs r0, #0xa5
-	bl PlaySound
+	bl SoundPlay
 	b _080515A8
 	.align 2, 0
 _0805154C: .4byte 0x0000FFFB
@@ -119733,7 +119733,7 @@ _08051560:
 	bne _08051574
 _08051568:
 	movs r0, #0xa2
-	bl PlaySound
+	bl SoundPlay
 	b _080515A8
 	.align 2, 0
 _08051570: .4byte 0x0838F9B0
@@ -119743,7 +119743,7 @@ _08051574:
 	bne _08051588
 _0805157A:
 	movs r0, #0xa3
-	bl PlaySound
+	bl SoundPlay
 	b _080515A8
 	.align 2, 0
 _08051584: .4byte 0x0838FA18
@@ -119753,7 +119753,7 @@ _08051588:
 	bne _0805159C
 _0805158E:
 	movs r0, #0xa4
-	bl PlaySound
+	bl SoundPlay
 	b _080515A8
 	.align 2, 0
 _08051598: .4byte 0x0838FAE0
@@ -119762,7 +119762,7 @@ _0805159C:
 	cmp r1, r0
 	bne _080515A8
 	movs r0, #0xa5
-	bl PlaySound
+	bl SoundPlay
 _080515A8:
 	pop {r0}
 	bx r0
@@ -120591,7 +120591,7 @@ Box2WaitingToRunInit: @ 0x08051CAC
 	adds r0, #0x2e
 	strb r3, [r0]
 	ldr r0, _08051CE0 @ =0x0000026A
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -120687,7 +120687,7 @@ Box2SlowRunning: @ 0x08051D78
 	cmp r0, r1
 	bne _08051DCE
 	ldr r0, _08051DB8 @ =0x00000279
-	bl PlaySound
+	bl SoundPlay
 	ldr r0, _08051DBC @ =gCurrentSprite
 	ldrh r1, [r0]
 	movs r0, #0x80
@@ -120700,7 +120700,7 @@ Box2SlowRunning: @ 0x08051D78
 	ldrh r1, [r4, #0xa]
 	adds r1, #0x78
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08051DCE
 	.align 2, 0
 _08051DAC: .4byte gSubSpriteData1
@@ -120714,7 +120714,7 @@ _08051DC0:
 	ldrh r1, [r4, #0xa]
 	subs r1, #0x78
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 _08051DCE:
 	ldr r5, _08051E18 @ =gCurrentSprite
 	adds r4, r5, #0
@@ -120805,7 +120805,7 @@ Box2FastRunning: @ 0x08051E68
 	cmp r0, r1
 	bne _08051EBE
 	ldr r0, _08051EA8 @ =0x00000279
-	bl PlaySound
+	bl SoundPlay
 	ldr r0, _08051EAC @ =gCurrentSprite
 	ldrh r1, [r0]
 	movs r0, #0x80
@@ -120818,7 +120818,7 @@ Box2FastRunning: @ 0x08051E68
 	ldrh r1, [r4, #0xa]
 	adds r1, #0xa0
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08051EBE
 	.align 2, 0
 _08051E9C: .4byte gSubSpriteData1
@@ -120832,7 +120832,7 @@ _08051EB0:
 	ldrh r1, [r4, #0xa]
 	subs r1, #0xa0
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 _08051EBE:
 	movs r0, #8
 	movs r1, #0x37
@@ -120934,7 +120934,7 @@ _08051F68:
 	movs r0, #0x20
 	strb r0, [r1]
 	ldr r0, _08051F90 @ =0x00000263
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -121082,7 +121082,7 @@ Box2BonkingInit: @ 0x08052064
 	eors r0, r1
 	strh r0, [r2]
 	ldr r0, _080520B4 @ =0x00000267
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0x14
 	movs r1, #0x81
 	bl ScreenShakeStartHorizontal
@@ -121165,13 +121165,13 @@ _08052120:
 	ldrh r1, [r4, #0xa]
 	subs r1, #0x40
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r0, [r4, #8]
 	subs r0, #0x34
 	ldrh r1, [r4, #0xa]
 	adds r1, #0x80
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0805217A
 _0805215E:
 	ldrh r0, [r4, #8]
@@ -121179,13 +121179,13 @@ _0805215E:
 	ldrh r1, [r4, #0xa]
 	subs r1, #0x80
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r0, [r4, #8]
 	subs r0, #0x34
 	ldrh r1, [r4, #0xa]
 	adds r1, #0x40
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 _0805217A:
 	ldr r0, _08052190 @ =gCurrentSprite
 	ldrh r1, [r0]
@@ -121235,7 +121235,7 @@ Box2LandingFromBonkInit: @ 0x080521AC
 	adds r0, #2
 	strb r2, [r0]
 	ldr r0, _080521E8 @ =0x0000027A
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -121309,7 +121309,7 @@ Box2LandingInit: @ 0x08052244
 	adds r0, #0x31
 	strb r3, [r0]
 	ldr r0, _08052278 @ =0x0000027A
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -121373,7 +121373,7 @@ Box2FinishedCrawlingInit: @ 0x080522B4
 	strb r0, [r1]
 	movs r0, #0x99
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -121613,7 +121613,7 @@ _080524A8:
 	strb r0, [r1]
 _080524B2:
 	ldr r0, _080524D0 @ =0x00000265
-	bl PlaySound
+	bl SoundPlay
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -121672,13 +121672,13 @@ _08052508:
 	ldrh r1, [r4, #0xa]
 	subs r1, #0x40
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r0, [r4, #8]
 	subs r0, #0x10
 	ldrh r1, [r4, #0xa]
 	adds r1, #0x80
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08052568
 	.align 2, 0
 _08052548: .4byte gSubSpriteData1
@@ -121688,13 +121688,13 @@ _0805254C:
 	ldrh r1, [r4, #0xa]
 	subs r1, #0x80
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r0, [r4, #8]
 	subs r0, #0x10
 	ldrh r1, [r4, #0xa]
 	adds r1, #0x40
 	movs r2, #0x38
-	bl SetParticleEffect
+	bl ParticleSet
 _08052568:
 	movs r0, #0xc
 	movs r1, #0x37
@@ -121726,7 +121726,7 @@ Box2StoppingToFireMissilesInit: @ 0x08052578
 	strb r0, [r1]
 	movs r0, #0x99
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -121782,7 +121782,7 @@ Box2LoweringToFireMissilesInit: @ 0x080525F0
 	strb r1, [r0]
 	movs r0, #0x9a
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -121833,7 +121833,7 @@ Box2FiringMissiles: @ 0x08052650
 	strb r2, [r0, #6]
 	strh r2, [r0, #4]
 	ldr r0, _08052688 @ =0x00000269
-	bl PlaySound
+	bl SoundPlay
 	b _0805274C
 	.align 2, 0
 _0805267C: .4byte gCurrentSprite
@@ -122242,7 +122242,7 @@ _080529F8:
 	adds r0, #0x48
 	adds r1, r5, #0
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08052A40 @ =0x0000026E
 	bl unk_3b1c
 	b _08052AAC
@@ -122268,7 +122268,7 @@ _08052A56:
 	subs r1, #0x70
 _08052A5E:
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08052AAC
 _08052A66:
 	adds r0, r4, #0
@@ -122277,7 +122277,7 @@ _08052A66:
 	subs r1, #0xa
 _08052A6E:
 	movs r2, #0x35
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08052AAC
 _08052A76:
 	adds r0, r4, #0
@@ -122292,7 +122292,7 @@ _08052A80:
 	subs r1, #0x90
 _08052A88:
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08052AAC
 _08052A90:
 	adds r1, r2, #0
@@ -122812,7 +122812,7 @@ _08052E7C:
 	adds r0, #0x30
 	adds r1, r7, #0
 	movs r2, #0x2e
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08052F96
 _08052EC8:
 	ldrh r0, [r4]
@@ -122825,7 +122825,7 @@ _08052ED2:
 	adds r0, #0x32
 	adds r1, r7, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08052F96
 _08052EE0:
 	ldrh r1, [r4, #0x14]
@@ -122857,7 +122857,7 @@ _08052EE6:
 	adds r0, #0x32
 	adds r1, r7, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	mov r0, sl
 	b _08052F5A
 	.align 2, 0
@@ -122888,7 +122888,7 @@ _08052F42:
 	adds r0, #0x24
 	adds r1, r7, #0
 	movs r2, #0x2d
-	bl SetParticleEffect
+	bl ParticleSet
 	mov r0, sb
 _08052F5A:
 	movs r1, #1
@@ -122914,7 +122914,7 @@ _08052F68:
 	adds r0, #0x24
 	adds r1, r7, #0
 	movs r2, #0x2d
-	bl SetParticleEffect
+	bl ParticleSet
 	mov r0, sl
 	movs r1, #1
 	bl Box2PartSetBoxWorkVar2
@@ -123023,7 +123023,7 @@ _08053018:
 	adds r0, #0x30
 	adds r1, r7, #0
 	movs r2, #0x2e
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08053132
 _08053064:
 	ldrh r0, [r4]
@@ -123035,7 +123035,7 @@ _0805306C:
 	adds r0, #0x32
 	adds r1, r7, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08053132
 _0805307A:
 	ldrh r1, [r4, #0x14]
@@ -123067,7 +123067,7 @@ _08053080:
 	adds r0, #0x32
 	adds r1, r7, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, [sp]
 	b _080530F6
 	.align 2, 0
@@ -123098,7 +123098,7 @@ _080530DE:
 	adds r0, #0x24
 	adds r1, r7, #0
 	movs r2, #0x2d
-	bl SetParticleEffect
+	bl ParticleSet
 	mov r0, sb
 _080530F6:
 	movs r1, #1
@@ -123124,7 +123124,7 @@ _08053104:
 	adds r0, #0x24
 	adds r1, r7, #0
 	movs r2, #0x2d
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, [sp]
 	movs r1, #1
 	bl Box2PartSetBoxWorkVar2
@@ -123204,7 +123204,7 @@ _08053180:
 	adds r0, #0x32
 	mov r1, r8
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	ldrh r1, [r4]
 	mov r0, sl
 	orrs r0, r1
@@ -123253,7 +123253,7 @@ _08053210:
 	adds r0, #0x24
 	mov r1, r8
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08053252
 	.align 2, 0
 _08053228: .4byte 0x08395628
@@ -123275,7 +123275,7 @@ _0805322C:
 	adds r0, #0x24
 	mov r1, r8
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 _08053252:
 	ldr r0, _08053284 @ =gCurrentSprite
 	adds r0, #0x2c
@@ -123289,7 +123289,7 @@ _08053252:
 	bl Box2PartSetBoxWorkVar2
 	movs r0, #0x9e
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _08053270:
 	add sp, #4
 	pop {r3, r4, r5}
@@ -123573,7 +123573,7 @@ Box2MissileInit: @ 0x080533F8
 	movs r0, #4
 	strb r0, [r1]
 	ldr r0, _080534A0 @ =0x0000026B
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -123739,7 +123739,7 @@ _080535B0:
 	ldrh r0, [r5, #2]
 	ldrh r1, [r5, #4]
 	movs r2, #0x39
-	bl SetParticleEffect
+	bl ParticleSet
 	strb r4, [r6]
 	b _080535F8
 	.align 2, 0
@@ -123756,7 +123756,7 @@ _080535E0:
 	ldrh r0, [r5, #2]
 	ldrh r1, [r5, #4]
 	movs r2, #0x39
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strb r0, [r4]
 _080535F8:
@@ -123774,10 +123774,10 @@ Box2MissileExploding: @ 0x08053600
 	ldrh r0, [r1, #2]
 	ldrh r1, [r1, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x9b
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -125052,7 +125052,7 @@ _08054026:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x3a
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08054094
 	.align 2, 0
 _0805405C: .4byte 0x0000021B
@@ -125390,7 +125390,7 @@ _080542BC:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _080542D4 @ =0x0000021D
-	bl PlaySound
+	bl SoundPlay
 _080542D0:
 	movs r1, #4
 	b _080542EE
@@ -125404,7 +125404,7 @@ _080542D8:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _08054300 @ =0x0000021D
-	bl PlaySound
+	bl SoundPlay
 _080542EC:
 	movs r1, #0
 _080542EE:
@@ -125453,7 +125453,7 @@ _08054348:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _08054360 @ =0x0000021D
-	bl PlaySound
+	bl SoundPlay
 _0805435C:
 	movs r2, #2
 	b _08054382
@@ -125473,7 +125473,7 @@ _0805436C:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _080543B8 @ =0x0000021D
-	bl PlaySound
+	bl SoundPlay
 _08054380:
 	movs r2, #0
 _08054382:
@@ -125888,7 +125888,7 @@ _080546A2:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _080546D8 @ =0x0000021F
-	bl PlaySound
+	bl SoundPlay
 	b _0805470E
 	.align 2, 0
 _080546D4: .4byte 0x083966B8
@@ -125971,7 +125971,7 @@ OmegaMetroidLandedAfterFirstJump: @ 0x08054748
 	movs r0, #0x64
 	strb r0, [r1]
 	ldr r0, _08054784 @ =0x00000219
-	bl PlaySound
+	bl SoundPlay
 _08054774:
 	pop {r0}
 	bx r0
@@ -126059,7 +126059,7 @@ OmegaMetroidJumpWarningInit: @ 0x08054800
 	movs r1, #0x18
 	strb r1, [r0]
 	ldr r0, _0805482C @ =0x0000021E
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -126197,7 +126197,7 @@ _0805490A:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _08054950 @ =0x0000021F
-	bl PlaySound
+	bl SoundPlay
 _08054938:
 	bl OmegaMetroidXMovement
 	pop {r4, r5, r6}
@@ -126343,7 +126343,7 @@ OmegaMetroidIdle: @ 0x08054A3C
 	cmp r0, r1
 	bne _08054A5E
 	ldr r0, _08054AA0 @ =0x00000223
-	bl PlaySound
+	bl SoundPlay
 _08054A5E:
 	bl CheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
@@ -126911,7 +126911,7 @@ _08054EA4:
 	strh r1, [r0, #0x10]
 	movs r0, #0x88
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -127039,7 +127039,7 @@ _08054FCC:
 	cmp r1, r0
 	bne _08054FD8
 	ldr r0, _08054FE4 @ =0x00000221
-	bl PlaySound
+	bl SoundPlay
 _08054FD8:
 	pop {r4}
 	pop {r0}
@@ -127129,7 +127129,7 @@ _0805506A:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _080550AC @ =0x0000021F
-	bl PlaySound
+	bl SoundPlay
 	ldr r2, _080550B0 @ =gCurrentSprite
 	ldr r1, _080550B4 @ =gSamusData
 	ldrh r0, [r2, #4]
@@ -127366,7 +127366,7 @@ _08055252:
 	movs r0, #0x64
 	strb r0, [r1]
 	ldr r0, _08055284 @ =0x00000219
-	bl PlaySound
+	bl SoundPlay
 	b _0805534A
 	.align 2, 0
 _08055278: .4byte gSubSpriteData1
@@ -127502,7 +127502,7 @@ OmegaMetroidWatchingSA_X: @ 0x08055358
 	adds r0, #0x2e
 	strb r2, [r0]
 	ldr r0, _080553B0 @ =0x0000021A
-	bl PlaySound
+	bl SoundPlay
 _0805539A:
 	pop {r0}
 	bx r0
@@ -127640,7 +127640,7 @@ OmegaMetroidDamagedBySA_X2: @ 0x080554A0
 	cmp r0, r1
 	bne _080554C0
 	ldr r0, _080554DC @ =0x0000021A
-	bl PlaySound
+	bl SoundPlay
 _080554C0:
 	ldr r6, _080554E0 @ =gCurrentSprite
 	adds r1, r6, #0
@@ -127696,7 +127696,7 @@ OmegaMetroidWaitingToSwipeSA_X: @ 0x08055508
 	strb r1, [r0]
 	movs r0, #0x88
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _08055536:
 	pop {r0}
 	bx r0
@@ -127745,7 +127745,7 @@ _0805558C:
 	cmp r0, #1
 	bne _080555DA
 	ldr r0, _080555A8 @ =0x00000221
-	bl PlaySound
+	bl SoundPlay
 	b _080555DA
 	.align 2, 0
 _080555A4: .4byte gSubSpriteData1
@@ -127771,7 +127771,7 @@ _080555AC:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _080555E8 @ =0x000002AF
-	bl PlaySound
+	bl SoundPlay
 _080555DA:
 	pop {r0}
 	bx r0
@@ -127793,7 +127793,7 @@ OmegaMetroidKilledSA_X: @ 0x080555EC
 	bne _08055606
 	movs r0, #0x89
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _08055606:
 	bl EventCheckAfter_IceBeamRecovered
 	cmp r0, #0
@@ -127871,7 +127871,7 @@ _08055678:
 	movs r0, #0x64
 	strb r0, [r1]
 	ldr r0, _080556B0 @ =0x00000219
-	bl PlaySound
+	bl SoundPlay
 	b _080556F8
 	.align 2, 0
 _080556A8: .4byte gSubSpriteData1
@@ -128104,7 +128104,7 @@ OmegaMetroidDyingInit: @ 0x08055844
 	movs r0, #0x64
 	strb r0, [r1]
 	ldr r0, _08055890 @ =0x00000219
-	bl PlaySound
+	bl SoundPlay
 _0805587C:
 	pop {r4, r5}
 	pop {r0}
@@ -128251,13 +128251,13 @@ _08055984:
 	adds r1, r5, #0
 	adds r1, #0x1c
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x40
 	adds r1, r5, #0
 	adds r1, #0x34
 	movs r2, #0x22
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x87
 	lsls r0, r0, #2
 	bl unk_3b1c
@@ -128268,13 +128268,13 @@ _080559B2:
 	adds r1, r5, #0
 	subs r1, #0x24
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x40
 	adds r1, r5, #0
 	subs r1, #0x4c
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08055A80
 _080559D0:
 	adds r0, r4, #0
@@ -128282,7 +128282,7 @@ _080559D0:
 	adds r1, r5, #0
 	adds r1, #0x58
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x20
 	adds r1, r5, #0
@@ -128294,7 +128294,7 @@ _080559E8:
 	adds r1, r5, #0
 	subs r1, #0x48
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r1, r5, #0
 	adds r1, #0x1e
 	adds r0, r4, #0
@@ -128305,7 +128305,7 @@ _080559FE:
 	adds r1, r5, #0
 	adds r1, #0x10
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x40
 	adds r1, r5, #0
@@ -128317,13 +128317,13 @@ _08055A16:
 	adds r1, r5, #0
 	subs r1, #0x1c
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x46
 	adds r1, r5, #0
 _08055A2A:
 	movs r2, #0x22
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08055A80
 _08055A32:
 	adds r0, r4, #0
@@ -128331,7 +128331,7 @@ _08055A32:
 	adds r1, r5, #0
 	adds r1, #0x24
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x40
 	adds r1, r5, #0
@@ -128343,13 +128343,13 @@ _08055A4A:
 	adds r1, r5, #0
 	subs r1, #0x4c
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	subs r0, #0x40
 	adds r1, r5, #0
 _08055A5E:
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08055A80
 _08055A66:
 	adds r0, r4, #0
@@ -128357,12 +128357,12 @@ _08055A66:
 	adds r1, r5, #0
 	subs r1, #0x2a
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r1, r5, #0
 	adds r1, #0x1e
 	adds r0, r4, #0
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 _08055A80:
 	pop {r4, r5}
 	pop {r0}
@@ -129150,7 +129150,7 @@ _080561B8:
 	movs r1, #0
 	bl SpriteSpawnSecondary
 	movs r0, #0xfd
-	bl PlaySound
+	bl SoundPlay
 	b _08056270
 _080561DC:
 	ldrb r2, [r3, #0x1f]
@@ -130818,7 +130818,7 @@ FrozenRidleyWaitForSamus: @ 0x08056EB8
 	strb r1, [r0]
 	movs r0, #0x8d
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _08056EEA:
 	pop {r0}
 	bx r0
@@ -130921,7 +130921,7 @@ FrozenRidleyXSpawning: @ 0x08056F7C
 	strb r0, [r1]
 	strh r3, [r2, #0x14]
 	ldr r0, _08056FBC @ =0x00000235
-	bl PlaySound
+	bl SoundPlay
 _08056FAE:
 	pop {r0}
 	bx r0
@@ -130963,7 +130963,7 @@ _08056FF0:
 	ldrh r0, [r1, #2]
 	ldrh r1, [r1, #4]
 	movs r2, #0x3b
-	bl SetParticleEffect
+	bl ParticleSet
 _08057008:
 	pop {r0}
 	bx r0
@@ -131027,7 +131027,7 @@ FrozenRidleyXInit: @ 0x08057010
 	movs r0, #2
 	strb r0, [r1]
 	ldr r0, _0805709C @ =0x00000236
-	bl PlaySound
+	bl SoundPlay
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -132346,7 +132346,7 @@ MegaXShieldIdle: @ 0x08057AB8
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x22
-	bl SetParticleEffect
+	bl ParticleSet
 	strh r5, [r4]
 	b _08057BD6
 	.align 2, 0
@@ -132892,7 +132892,7 @@ _08057F6C:
 	adds r0, #0x18
 	ldrh r1, [r4, #4]
 	movs r2, #0x3a
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0805813A
 	.align 2, 0
 _08057FBC: .4byte gFrameCounter8Bit
@@ -132929,7 +132929,7 @@ _08057FEC:
 	bne _080580DC
 	movs r0, #0xdf
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	adds r2, r4, #0
 	adds r2, #0x34
 	ldrb r1, [r2]
@@ -133341,7 +133341,7 @@ _08058310:
 	movs r1, #0x5c
 	strb r1, [r0]
 	movs r0, #0xc1
-	bl PlaySound
+	bl SoundPlay
 	b _080584FC
 	.align 2, 0
 _08058344: .4byte 0x00007FFF
@@ -133413,7 +133413,7 @@ _080583CC:
 	cmp r1, #0x10
 	bne _08058482
 	movs r0, #0xc2
-	bl PlaySound
+	bl SoundPlay
 	adds r2, r5, #0
 	adds r2, #0x34
 	ldrb r1, [r2]
@@ -133795,19 +133795,19 @@ OmegaMetroidHuskWaitForOmegaMetroidToSpawn: @ 0x08058690
 	adds r4, #0x40
 	adds r1, r4, #0
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	subs r0, #0xc0
 	adds r1, r6, #0
 	adds r1, #0x32
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r5, #0
 	subs r0, #0x60
 	adds r1, r6, #0
 	adds r1, #0x48
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _080587A0 @ =0xFFFFFE3E
 	adds r2, r5, r0
 	movs r0, #0
@@ -133895,7 +133895,7 @@ OmegaMetroidHuskGettingCrushedInit: @ 0x080587B4
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	ldr r0, _080587DC @ =0x00000225
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -134204,7 +134204,7 @@ IceBeamAbilitySpawning: @ 0x08058A2C
 	movs r1, #2
 	strb r1, [r0]
 	ldr r0, _08058A5C @ =0x000002AE
-	bl PlaySound
+	bl SoundPlay
 _08058A54:
 	pop {r0}
 	bx r0
@@ -134647,7 +134647,7 @@ _08058D44:
 	adds r0, r0, r7
 	ldrh r1, [r4, #0x16]
 	movs r2, #0x1d
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x6b
 	bl EventCheckAdvance
 	ldr r1, _08058E08 @ =0x0828FD04
@@ -134661,7 +134661,7 @@ _08058D44:
 	movs r0, #0x30
 	strb r0, [r1, #3]
 	movs r0, #0x92
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0
 	bl FadeMusic
 	b _08058E22
@@ -134683,7 +134683,7 @@ _08058E10:
 	cmp r0, #0
 	bne _08058E22
 	movs r0, #0xc3
-	bl PlaySound
+	bl SoundPlay
 _08058E22:
 	pop {r3}
 	mov r8, r3
@@ -135721,7 +135721,7 @@ RidleyTailStrikingCheckPlayEffects: @ 0x08059684
 	bl ScreenShakeStartVertical
 	movs r0, #0xf4
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _080596AA:
 	ldr r1, _080596B4 @ =gCurrentSprite
 	ldrh r0, [r1, #2]
@@ -136010,7 +136010,7 @@ _08059882:
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #7
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0
 	strb r0, [r4]
 _080598EE:
@@ -136450,7 +136450,7 @@ _08059C20:
 	strb r0, [r1]
 	movs r0, #0xef
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	b _08059C64
 	.align 2, 0
 _08059C3C: .4byte gSubSpriteData1
@@ -136586,7 +136586,7 @@ _08059D2E:
 	adds r1, r5, #0
 	subs r1, #0x10
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x20
 	adds r1, r5, #0
@@ -136598,7 +136598,7 @@ _08059D46:
 	adds r1, r5, #0
 	adds r1, #0x1c
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x40
 	adds r1, r5, #0
@@ -136610,14 +136610,14 @@ _08059D5E:
 	adds r1, r5, #0
 	subs r1, #0x24
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x40
 	adds r1, r5, #0
 	subs r1, #0x4c
 _08059D74:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08059E32
 _08059D7C:
 	adds r0, r4, #0
@@ -136625,7 +136625,7 @@ _08059D7C:
 	adds r1, r5, #0
 	adds r1, #0x58
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x20
 	adds r1, r5, #0
@@ -136637,12 +136637,12 @@ _08059D94:
 	adds r1, r5, #0
 	adds r1, #0x2a
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r1, r5, #0
 	subs r1, #0x1e
 	adds r0, r4, #0
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08059E32
 _08059DB0:
 	adds r0, r4, #0
@@ -136650,7 +136650,7 @@ _08059DB0:
 	adds r1, r5, #0
 	adds r1, #0x10
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x40
 	adds r1, r5, #0
@@ -136662,13 +136662,13 @@ _08059DC8:
 	adds r1, r5, #0
 	subs r1, #0x1c
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x46
 	adds r1, r5, #0
 _08059DDC:
 	movs r2, #0x22
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08059E32
 _08059DE4:
 	adds r0, r4, #0
@@ -136676,7 +136676,7 @@ _08059DE4:
 	adds r1, r5, #0
 	adds r1, #0x24
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x40
 	adds r1, r5, #0
@@ -136688,13 +136688,13 @@ _08059DFC:
 	adds r1, r5, #0
 	adds r1, #0x4c
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	subs r0, #0x40
 	adds r1, r5, #0
 _08059E10:
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08059E32
 _08059E18:
 	adds r0, r4, #0
@@ -136702,12 +136702,12 @@ _08059E18:
 	adds r1, r5, #0
 	subs r1, #0x2a
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r1, r5, #0
 	adds r1, #0x1e
 	adds r0, r4, #0
 	movs r2, #0x21
-	bl SetParticleEffect
+	bl ParticleSet
 _08059E32:
 	pop {r4, r5}
 	pop {r0}
@@ -136831,7 +136831,7 @@ RidleyScreamingAfterSpawn: @ 0x08059F08
 	cmp r0, #1
 	bne _08059F1E
 	ldr r0, _08059F74 @ =0x000001DD
-	bl PlaySound
+	bl SoundPlay
 _08059F1E:
 	bl CheckEndOfSubSpriteData1Animation
 	cmp r0, #0
@@ -137602,7 +137602,7 @@ _0805A512:
 	movs r1, #0
 	bl SpriteSpawnSecondary
 	ldr r0, _0805A554 @ =0x000001E3
-	bl PlaySound
+	bl SoundPlay
 	b _0805A58E
 	.align 2, 0
 _0805A550: .4byte gSubSpriteData1
@@ -138026,7 +138026,7 @@ RidleyTailPartWindingUp1: @ 0x0805A868
 	cmp r0, r1
 	bne _0805A87E
 	ldr r0, _0805A8C8 @ =0x000001E5
-	bl PlaySound
+	bl SoundPlay
 _0805A87E:
 	bl CheckEndOfSubSpriteData2Animation
 	cmp r0, #0
@@ -138081,7 +138081,7 @@ RidleyTailPartWindingUp2: @ 0x0805A8E0
 	cmp r0, r1
 	bne _0805A8F6
 	ldr r0, _0805A94C @ =0x000001E5
-	bl PlaySound
+	bl SoundPlay
 _0805A8F6:
 	ldr r5, _0805A950 @ =gCurrentSprite
 	adds r0, r5, #0
@@ -138224,7 +138224,7 @@ RidleyTailPartStrikingDown1: @ 0x0805AA04
 	cmp r0, r1
 	bne _0805AA1A
 	ldr r0, _0805AA44 @ =0x000001E7
-	bl PlaySound
+	bl SoundPlay
 _0805AA1A:
 	bl CheckEndOfSubSpriteData2Animation
 	cmp r0, #0
@@ -138286,7 +138286,7 @@ RidleyTailPartStrikingDown2: @ 0x0805AA88
 	cmp r0, r1
 	bne _0805AAA0
 	ldr r0, _0805AB18 @ =0x000001E7
-	bl PlaySound
+	bl SoundPlay
 _0805AAA0:
 	movs r5, #0
 	ldr r6, _0805AB1C @ =gCurrentSprite
@@ -138422,7 +138422,7 @@ RidleyTailPartStrikingDown3: @ 0x0805AB98
 	cmp r0, r1
 	bne _0805ABB0
 	ldr r0, _0805ABE0 @ =0x000001E7
-	bl PlaySound
+	bl SoundPlay
 _0805ABB0:
 	bl CheckEndOfSubSpriteData2Animation
 	cmp r0, #0
@@ -138504,7 +138504,7 @@ RidleyTailPartStrikingForward: @ 0x0805AC40
 	bne _0805AC58
 	movs r0, #0xf3
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805AC58:
 	ldr r5, _0805ACC8 @ =gCurrentSprite
 	adds r0, r5, #0
@@ -138936,10 +138936,10 @@ RidleyFireExploding: @ 0x0805AF9C
 	ldrh r0, [r1, #2]
 	ldrh r1, [r1, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0xf2
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -139231,7 +139231,7 @@ _0805B292:
 	beq _0805B2B6
 	movs r0, #0xf1
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805B2B6:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -139623,7 +139623,7 @@ RidleyPreSpawnWaitingForSamus: @ 0x0805B610
 	strb r1, [r0]
 	movs r0, #0xee
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805B642:
 	pop {r0}
 	bx r0
@@ -140210,7 +140210,7 @@ YakuzaGrabbedSamusInit: @ 0x0805BA9C
 	ands r0, r1
 	strh r0, [r3]
 	ldr r0, _0805BAE4 @ =0x0000013F
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -140310,7 +140310,7 @@ _0805BB80:
 	bne _0805BBA0
 	movs r0, #0x9b
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805BBA0:
 	movs r0, #4
 	bl YakuzaYMovement
@@ -140481,15 +140481,15 @@ _0805BCC4:
 	ldrh r1, [r5, #0xa]
 	adds r0, r4, #0
 	movs r2, #0x3c
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r0, r4, #0
 	adds r0, #0x3c
 	ldrh r1, [r5, #0xa]
 	movs r2, #0x3c
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x9d
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805BD12:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -140875,7 +140875,7 @@ YakuzaSweeping: @ 0x0805C000
 	bne _0805C018
 	movs r0, #0x9b
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805C018:
 	movs r0, #3
 	bl YakuzaYMovement
@@ -140979,7 +140979,7 @@ YakuzaOpeningMouthInit: @ 0x0805C09C
 	ands r0, r1
 	strb r0, [r2]
 	ldr r0, _0805C0F8 @ =0x00000137
-	bl PlaySound
+	bl SoundPlay
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -141037,7 +141037,7 @@ _0805C14A:
 	strb r0, [r1]
 	movs r0, #0x9c
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	b _0805C468
 	.align 2, 0
 _0805C16C: .4byte gSubSpriteData1
@@ -141248,7 +141248,7 @@ _0805C324: .4byte 0x083B1078
 _0805C328: .4byte gBossWork2
 _0805C32C:
 	ldr r0, _0805C334 @ =0x00000139
-	bl PlaySound
+	bl SoundPlay
 	b _0805C468
 	.align 2, 0
 _0805C334: .4byte 0x00000139
@@ -141520,7 +141520,7 @@ YakuzaPhase1DyingInit: @ 0x0805C52C
 	ldrh r0, [r3, #8]
 	ldrh r1, [r3, #0xa]
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x99
 	lsls r0, r0, #1
 	bl unk_3b1c
@@ -141983,7 +141983,7 @@ _0805C8B0:
 	bl SpriteSpawnSecondary
 	movs r0, #0xa0
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805C8F0:
 	ldr r4, _0805C92C @ =gSubSpriteData1
 	ldrh r0, [r4, #8]
@@ -142163,7 +142163,7 @@ _0805CA50:
 	cmp r0, #0
 	bne _0805CAB8
 	ldr r0, _0805CA68 @ =0x0000013B
-	bl PlaySound
+	bl SoundPlay
 	b _0805CAB8
 	.align 2, 0
 _0805CA64: .4byte gSpriteRandomNumber
@@ -142206,7 +142206,7 @@ _0805CAA4:
 	cmp r0, #0
 	bne _0805CAB8
 	ldr r0, _0805CAD8 @ =0x0000013B
-	bl PlaySound
+	bl SoundPlay
 _0805CAB8:
 	bl YakuzaUpdateHitboxAndImmunity
 	add sp, #0xc
@@ -142351,7 +142351,7 @@ _0805CC20:
 	adds r1, r3, #0
 	subs r1, #0x10
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0x9a
 	lsls r0, r0, #1
 	bl unk_3b1c
@@ -142380,7 +142380,7 @@ _0805CC56:
 	adds r1, r3, #0
 	subs r1, #0x10
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0805CC9C
 _0805CC66:
 	adds r0, r2, #0
@@ -142389,7 +142389,7 @@ _0805CC66:
 	subs r1, #0x10
 _0805CC6E:
 	movs r2, #0x2f
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0805CC9C
 _0805CC76:
 	adds r0, r2, #0
@@ -142398,14 +142398,14 @@ _0805CC76:
 	adds r1, #0x1c
 _0805CC7E:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0805CC9C
 _0805CC86:
 	adds r0, r2, #0
 	adds r0, #0x10
 	adds r1, r3, #0
 	movs r2, #0x3a
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0805CC9C
 _0805CC94:
 	adds r1, r4, #0
@@ -143007,9 +143007,9 @@ YakuzaProjectileExploding: @ 0x0805D0FC
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	movs r2, #0x2d
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _0805D120 @ =0x000001BF
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0
 	strh r0, [r4]
 	pop {r4}
@@ -143101,7 +143101,7 @@ _0805D192:
 	strb r2, [r0]
 	movs r0, #0x9e
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805D1C4:
 	pop {r4}
 	pop {r0}
@@ -143162,7 +143162,7 @@ _0805D1F8:
 	movs r0, #0x10
 	strh r0, [r2, #0x10]
 	ldr r0, _0805D254 @ =0x0000013D
-	bl PlaySound
+	bl SoundPlay
 	b _0805D268
 	.align 2, 0
 _0805D240: .4byte gCurrentSprite
@@ -143178,7 +143178,7 @@ _0805D258:
 	bne _0805D268
 	movs r0, #0x9e
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805D268:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -143237,7 +143237,7 @@ _0805D290:
 	strh r0, [r2, #0x10]
 	movs r0, #0x9f
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	b _0805D2FA
 	.align 2, 0
 _0805D2D8: .4byte gCurrentSprite
@@ -143251,7 +143251,7 @@ _0805D2EC:
 	cmp r1, #0
 	bne _0805D2FA
 	ldr r0, _0805D300 @ =0x0000013D
-	bl PlaySound
+	bl SoundPlay
 _0805D2FA:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -143305,7 +143305,7 @@ _0805D34A:
 	bne _0805D35C
 	movs r0, #0x9f
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 _0805D35C:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -143591,7 +143591,7 @@ YakuzaFallingLegMoving: @ 0x0805D578
 	ldrh r0, [r2, #2]
 	ldrh r1, [r2, #4]
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0805D5FE
 	.align 2, 0
 _0805D5A0: .4byte gCurrentSprite
@@ -144467,7 +144467,7 @@ NightmarePlaySound: @ 0x0805DD08
 	cmp r0, r1
 	bne _0805DD2A
 	ldr r0, _0805DD3C @ =0x000002A1
-	bl PlaySound
+	bl SoundPlay
 _0805DD2A:
 	pop {r0}
 	bx r0
@@ -147939,7 +147939,7 @@ _0805F7D0:
 	ldrh r1, [r5, #4]
 	subs r1, #0x50
 	movs r2, #0x3a
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _0805F818 @ =0x000002A9
 	bl unk_3b1c
 	b _0805FACC
@@ -148087,7 +148087,7 @@ _0805F920:
 	orrs r0, r1
 	strh r0, [r6]
 	ldr r0, _0805F948 @ =0x000002AD
-	bl PlaySound
+	bl SoundPlay
 	b _0805FACC
 	.align 2, 0
 _0805F93C: .4byte gSpriteData
@@ -148365,7 +148365,7 @@ _0805FB54:
 	bne _0805FB68
 	movs r0, #0xab
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _0805FB68:
 	ldr r1, _0805FB9C @ =gSpriteData
 	lsls r0, r4, #3
@@ -148544,7 +148544,7 @@ _0805FCE8:
 _0805FD00:
 	strb r0, [r1]
 	ldr r0, _0805FD0C @ =0x000002AB
-	bl PlaySound
+	bl SoundPlay
 	b _0805FD9E
 	.align 2, 0
 _0805FD0C: .4byte 0x000002AB
@@ -148563,7 +148563,7 @@ _0805FD10:
 	movs r0, #0x50
 	strb r0, [r6]
 	ldr r0, _0805FD50 @ =0x000002AB
-	bl PlaySound
+	bl SoundPlay
 _0805FD30:
 	ldr r0, _0805FD54 @ =gSpriteData
 	lsls r1, r4, #3
@@ -149019,7 +149019,7 @@ _080600B0:
 	movs r0, #0x3c
 	strb r0, [r1]
 	ldr r0, _08060108 @ =0x000002A5
-	bl PlaySound
+	bl SoundPlay
 	b _08060348
 	.align 2, 0
 _080600EC: .4byte gSubSpriteData1
@@ -149273,7 +149273,7 @@ _080602C4:
 	ldrh r1, [r4, #4]
 	adds r1, #0x50
 	movs r2, #0x30
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08060348
 _08060306:
 	cmp r0, #0x1e
@@ -149283,7 +149283,7 @@ _08060306:
 	ldrh r1, [r4, #4]
 	adds r1, #0x40
 	movs r2, #0x3a
-	bl SetParticleEffect
+	bl ParticleSet
 	adds r1, r4, #0
 	adds r1, #0x20
 	movs r0, #0
@@ -149379,7 +149379,7 @@ NightmareBeamInit: @ 0x08060364
 	adds r0, #0x35
 	strb r1, [r0]
 	ldr r0, _080603EC @ =0x000002A2
-	bl PlaySound
+	bl SoundPlay
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -149664,7 +149664,7 @@ _080605FC:
 	subs r0, #0x50
 	ldrh r1, [r2, #4]
 	movs r2, #0x3a
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0806067A
 	.align 2, 0
 _0806060C: .4byte gCurrentSprite
@@ -149673,7 +149673,7 @@ _08060610:
 	subs r0, #0x50
 	ldrh r1, [r2, #4]
 	movs r2, #0x22
-	bl SetParticleEffect
+	bl ParticleSet
 	b _0806067A
 _0806061E:
 	movs r0, #0x31

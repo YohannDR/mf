@@ -299,7 +299,7 @@ TakeConstantDamage: @ 0x0800FFC0
 	cmp r0, #0
 	bne _0800FFDC
 	ldr r0, _0800FFF8 @ =0x00000282
-	bl PlaySound
+	bl SoundPlay
 _0800FFDC:
 	ldr r0, _0800FFFC @ =gSamusData
 	movs r1, #8
@@ -401,7 +401,7 @@ _08010096:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _080100C0 @ =0x000002AF
-	bl PlaySound
+	bl SoundPlay
 _080100A8:
 	ldr r1, _080100C4 @ =0x0828FD04
 	ldr r0, _080100C8 @ =gSamusData
@@ -4562,9 +4562,9 @@ _0801205E:
 	subs r0, #0x10
 	adds r1, r5, #0
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _0801207C @ =0x00000145
-	bl PlaySound
+	bl SoundPlay
 	b _080120A4
 	.align 2, 0
 _0801207C: .4byte 0x00000145
@@ -4581,13 +4581,13 @@ _0801208A:
 	adds r1, #0x14
 _08012092:
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	b _080120A4
 _0801209A:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 _080120A4:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -4650,9 +4650,9 @@ _08012102:
 	adds r1, r5, #0
 	subs r1, #0x1e
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	ldr r0, _08012120 @ =0x00000145
-	bl PlaySound
+	bl SoundPlay
 	b _08012146
 	.align 2, 0
 _08012120: .4byte 0x00000145
@@ -4668,13 +4668,13 @@ _0801212E:
 	adds r0, r4, #0
 _08012134:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _08012146
 _0801213C:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x24
-	bl SetParticleEffect
+	bl ParticleSet
 _08012146:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -4688,7 +4688,7 @@ unk_1214c: @ 0x0801214C
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	pop {r0}
 	bx r0
 
@@ -4736,10 +4736,10 @@ _080121A2:
 	subs r0, #0x10
 	adds r1, r5, #0
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	movs r0, #0xa2
 	lsls r0, r0, #1
-	bl PlaySound
+	bl SoundPlay
 	b _080121DA
 _080121BC:
 	adds r0, r4, #0
@@ -4747,7 +4747,7 @@ _080121BC:
 	adds r1, r5, #0
 	subs r1, #0x10
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	b _080121DA
 _080121CC:
 	adds r0, r4, #0
@@ -4755,7 +4755,7 @@ _080121CC:
 	adds r1, r5, #0
 	adds r1, #0x10
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 _080121DA:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -4848,7 +4848,7 @@ _0801228C:
 	subs r1, #0x10
 _08012294:
 	movs r2, #0x26
-	bl SetParticleEffect
+	bl ParticleSet
 	b _080122CA
 _0801229C:
 	adds r0, r4, #0
@@ -4869,13 +4869,13 @@ _080122B0:
 	subs r1, #0x14
 _080122B8:
 	movs r2, #0x25
-	bl SetParticleEffect
+	bl ParticleSet
 	b _080122CA
 _080122C0:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x23
-	bl SetParticleEffect
+	bl ParticleSet
 _080122CA:
 	pop {r4, r5, r6}
 	pop {r0}

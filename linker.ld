@@ -78,6 +78,10 @@ SECTIONS {
         . = 0x000007f4; gBossWork3 = .;
         . = 0x000007f5; gBossWork4 = .;
         . = 0x000007f6; gBossWork5 = .;
+        . = 0x000008d7; gEscapeStatus = .;
+        . = 0x000008d8; gEscapeTimerCounter = .;
+        . = 0x000008d9; gEscapeTimerDigits = .;
+        . = 0x000008e0; gEscapeDigitsOam = .;
         . = 0x00000b84; gPauseScreenFlag = .;
         . = 0x00000b86; gPreviousArea = .;
         . = 0x00000b87; gEventCounter = .;
@@ -171,6 +175,10 @@ SECTIONS {
         src/event_checks.o(.text);
 
         asm/disasm_0x08061004.o(.text);
+
+        src/escape.o(.text)
+
+        asm/disasm_0x08072d50.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);

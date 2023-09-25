@@ -2344,20 +2344,20 @@ void unk_12008(u16 yPosition, u16 xPosition)
     switch (timer)
     {
         case 38:
-            SetParticleEffect(yPosition - QUARTER_BLOCK_SIZE, xPosition, 0x26);
+            ParticleSet(yPosition - QUARTER_BLOCK_SIZE, xPosition, 0x26);
             SoundPlay(0x145);
             break;
 
         case 32:
-            SetParticleEffect(yPosition + PIXEL_SIZE * 2, xPosition - (PIXEL_SIZE * 2 + PIXEL_SIZE / 2), 0x26);
+            ParticleSet(yPosition + PIXEL_SIZE * 2, xPosition - (PIXEL_SIZE * 2 + PIXEL_SIZE / 2), 0x26);
             break;
 
         case 29:
-            SetParticleEffect(yPosition - PIXEL_SIZE * 2, xPosition + QUARTER_BLOCK_SIZE + PIXEL_SIZE, 0x26);
+            ParticleSet(yPosition - PIXEL_SIZE * 2, xPosition + QUARTER_BLOCK_SIZE + PIXEL_SIZE, 0x26);
             break;
 
         case 26:
-            SetParticleEffect(yPosition, xPosition, 0x25);
+            ParticleSet(yPosition, xPosition, 0x25);
     }
 }
 
@@ -2393,20 +2393,20 @@ void unk_120ac(u16 yPosition, u16 xPosition)
     switch (timer)
     {
         case 38:
-            SetParticleEffect(yPosition - (HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2), xPosition -(HALF_BLOCK_SIZE - PIXEL_SIZE / 2), 0x25);
+            ParticleSet(yPosition - (HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2), xPosition -(HALF_BLOCK_SIZE - PIXEL_SIZE / 2), 0x25);
             SoundPlay(0x145);
             break;
 
         case 32:
-            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE + PIXEL_SIZE, xPosition + (HALF_BLOCK_SIZE - PIXEL_SIZE / 2), 0x25);
+            ParticleSet(yPosition + QUARTER_BLOCK_SIZE + PIXEL_SIZE, xPosition + (HALF_BLOCK_SIZE - PIXEL_SIZE / 2), 0x25);
             break;
 
         case 29:
-            SetParticleEffect(yPosition, xPosition - QUARTER_BLOCK_SIZE, 0x25);
+            ParticleSet(yPosition, xPosition - QUARTER_BLOCK_SIZE, 0x25);
             break;
 
         case 26:
-            SetParticleEffect(yPosition, xPosition, 0x24);
+            ParticleSet(yPosition, xPosition, 0x24);
     }
 }
 
@@ -2418,7 +2418,7 @@ void unk_120ac(u16 yPosition, u16 xPosition)
  */
 void unk_1214c(u16 yPosition, u16 xPosition)
 {
-    SetParticleEffect(yPosition, xPosition, 0x25);
+    ParticleSet(yPosition, xPosition, 0x25);
 }
 
 /**
@@ -2448,16 +2448,16 @@ void unk_12160(u16 yPosition, u16 xPosition)
     switch (timer)
     {
         case 6:
-            SetParticleEffect(yPosition - QUARTER_BLOCK_SIZE, xPosition, 0x26);
+            ParticleSet(yPosition - QUARTER_BLOCK_SIZE, xPosition, 0x26);
             SoundPlay(0x144);
             break;
 
         case 4:
-            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE, xPosition - QUARTER_BLOCK_SIZE, 0x26);
+            ParticleSet(yPosition + QUARTER_BLOCK_SIZE, xPosition - QUARTER_BLOCK_SIZE, 0x26);
             break;
 
         case 2:
-            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE, xPosition + QUARTER_BLOCK_SIZE, 0x25);
+            ParticleSet(yPosition + QUARTER_BLOCK_SIZE, xPosition + QUARTER_BLOCK_SIZE, 0x25);
             break;
     }
 }
@@ -2491,29 +2491,29 @@ void unk_121e0(u16 yPosition, u16 xPosition)
     switch (timer)
     {
         case 12:
-            SetParticleEffect(yPosition - QUARTER_BLOCK_SIZE, xPosition, 0x26);
+            ParticleSet(yPosition - QUARTER_BLOCK_SIZE, xPosition, 0x26);
             break;
 
         case 10:
-            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE, xPosition - QUARTER_BLOCK_SIZE, 0x26);
+            ParticleSet(yPosition + QUARTER_BLOCK_SIZE, xPosition - QUARTER_BLOCK_SIZE, 0x26);
             break;
 
         case 8:
-            SetParticleEffect(yPosition + QUARTER_BLOCK_SIZE, xPosition + QUARTER_BLOCK_SIZE, 0x25);
+            ParticleSet(yPosition + QUARTER_BLOCK_SIZE, xPosition + QUARTER_BLOCK_SIZE, 0x25);
             break;
 
         case 6:
-            SetParticleEffect(yPosition + (QUARTER_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2),
+            ParticleSet(yPosition + (QUARTER_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2),
                 xPosition - (QUARTER_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2), 0x25);
             break;
 
         case 4:
-            SetParticleEffect(yPosition - (HALF_BLOCK_SIZE - PIXEL_SIZE),
+            ParticleSet(yPosition - (HALF_BLOCK_SIZE - PIXEL_SIZE),
                 xPosition - (QUARTER_BLOCK_SIZE + PIXEL_SIZE), 0x25);
             break;
 
         case 2:
-            SetParticleEffect(yPosition, xPosition, 0x23);
+            ParticleSet(yPosition, xPosition, 0x23);
             break;
     }
 }

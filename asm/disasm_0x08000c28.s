@@ -3684,8 +3684,8 @@ _08002700: .4byte 0x04000100
 _08002704: .4byte 0x00044940
 _08002708: .4byte 0x04000006
 
-	thumb_func_start PlaySound
-PlaySound: @ 0x0800270C
+	thumb_func_start SoundPlay
+SoundPlay: @ 0x0800270C
 	push {lr}
 	lsls r0, r0, #0x10
 	ldr r3, _08002730 @ =0x080A8CDC
@@ -6295,7 +6295,7 @@ _08003A1A:
 	ldrh r0, [r6, #2]
 	cmp r0, #0
 	beq _08003A3C
-	bl PlaySound
+	bl SoundPlay
 _08003A3C:
 	ldrb r1, [r6, #0xb]
 	movs r0, #0x80
@@ -6537,7 +6537,7 @@ _08003BF2:
 	b _08003C10
 _08003C0A:
 	adds r0, r3, #0
-	bl PlaySound
+	bl SoundPlay
 _08003C10:
 	pop {r0}
 	bx r0
@@ -6647,7 +6647,7 @@ unk_3cd4: @ 0x08003CD4
 	movs r4, #0
 	strh r1, [r5, #2]
 	adds r0, r1, #0
-	bl PlaySound
+	bl SoundPlay
 	strb r4, [r5, #1]
 _08003CF2:
 	pop {r4, r5}

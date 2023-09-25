@@ -858,13 +858,13 @@ _08005204:
 	cmp r2, #0
 	bne _08005240
 	movs r0, #0x66
-	bl PlaySound
+	bl SoundPlay
 	b _080052A2
 	.align 2, 0
 _0800523C: .4byte 0x030012F0
 _08005240:
 	movs r0, #0x67
-	bl PlaySound
+	bl SoundPlay
 	b _080052A2
 _08005248:
 	cmp r7, #2
@@ -883,7 +883,7 @@ _08005248:
 	cmp r1, #0
 	beq _0800528E
 	movs r0, #0x69
-	bl PlaySound
+	bl SoundPlay
 	b _080052A2
 	.align 2, 0
 _08005270: .4byte 0x030012F0
@@ -903,13 +903,13 @@ _08005274:
 	bne _0800529C
 _0800528E:
 	movs r0, #0x68
-	bl PlaySound
+	bl SoundPlay
 	b _080052A2
 	.align 2, 0
 _08005298: .4byte 0x030012F0
 _0800529C:
 	movs r0, #0x69
-	bl PlaySound
+	bl SoundPlay
 _080052A2:
 	ldr r0, _080052B8 @ =0x030012F0
 	adds r1, r4, r0
@@ -991,7 +991,7 @@ _08005314:
 	adds r0, #1
 	strb r0, [r1, #6]
 	movs r0, #0x78
-	bl PlaySound
+	bl SoundPlay
 	b _080053FE
 	.align 2, 0
 _08005344: .4byte gSamusData
@@ -1014,7 +1014,7 @@ _0800534C:
 	cmp r0, #1
 	bne _080053FE
 	movs r0, #0x7b
-	bl PlaySound
+	bl SoundPlay
 	b _080053FE
 	.align 2, 0
 _08005374: .4byte 0x030012F0
@@ -1032,7 +1032,7 @@ _0800537C:
 	adds r0, #1
 	strb r0, [r1, #6]
 	movs r0, #0x79
-	bl PlaySound
+	bl SoundPlay
 	b _080053FE
 	.align 2, 0
 _0800539C: .4byte 0x030012F0
@@ -1049,7 +1049,7 @@ _080053A0:
 	adds r0, #1
 	strb r0, [r1, #6]
 	movs r0, #0x7a
-	bl PlaySound
+	bl SoundPlay
 	b _080053FE
 	.align 2, 0
 _080053C0: .4byte 0x030012F0
@@ -1059,7 +1059,7 @@ _080053C4:
 	cmp r0, #1
 	bne _080053DC
 	movs r0, #0x97
-	bl PlaySound
+	bl SoundPlay
 	mov r1, r8
 	lsls r4, r1, #4
 	b _080053FE
@@ -1071,7 +1071,7 @@ _080053DC:
 	cmp r0, #0
 	beq _080053F4
 	movs r0, #0x75
-	bl PlaySound
+	bl SoundPlay
 	mov r2, r8
 	lsls r4, r2, #4
 	b _080053FE
@@ -1079,7 +1079,7 @@ _080053DC:
 _080053F0: .4byte gSamusDataCopy
 _080053F4:
 	movs r0, #0x74
-	bl PlaySound
+	bl SoundPlay
 	mov r0, r8
 	lsls r4, r0, #4
 _080053FE:
@@ -1296,7 +1296,7 @@ _080055A8:
 _080055AC:
 	strh r0, [r3, #8]
 	movs r0, #0x93
-	bl PlaySound
+	bl SoundPlay
 _080055B4:
 	ldr r0, _080055D0 @ =0x030012F0
 	mov r2, r8
@@ -1514,7 +1514,7 @@ _0800577C:
 	strb r0, [r2, #0x10]
 	strb r1, [r2, #0x12]
 	movs r0, #0x8c
-	bl PlaySound
+	bl SoundPlay
 	b _080057EC
 	.align 2, 0
 _080057CC: .4byte 0x030012F0
@@ -1530,7 +1530,7 @@ _080057D4:
 	strb r1, [r0, #0x10]
 	strb r2, [r0, #0x12]
 	movs r0, #0x8c
-	bl PlaySound
+	bl SoundPlay
 _080057EC:
 	ldr r0, _08005828 @ =gEffectYPosition
 	ldrh r0, [r0]
@@ -1623,7 +1623,7 @@ _0800589E:
 	b _08005A22
 _080058B2:
 	movs r0, #0x76
-	bl PlaySound
+	bl SoundPlay
 	b _08005A32
 	.align 2, 0
 _080058BC: .4byte 0x030012F0
@@ -1653,7 +1653,7 @@ _080058DA:
 	b _08005A22
 _080058EE:
 	movs r0, #0x77
-	bl PlaySound
+	bl SoundPlay
 	b _08005A32
 	.align 2, 0
 _080058F8: .4byte 0x030012F0
@@ -2669,7 +2669,7 @@ _08006148:
 	cmp r0, r5
 	bhs _08006156
 	movs r0, #0x91
-	bl PlaySound
+	bl SoundPlay
 _08006156:
 	movs r1, #0
 	strb r5, [r4, #8]
@@ -2927,7 +2927,7 @@ _08006316:
 	bls _0800632A
 	movs r7, #1
 	movs r0, #0x8f
-	bl PlaySound
+	bl SoundPlay
 _0800632A:
 	ldrb r0, [r5, #5]
 	adds r1, r0, #1
@@ -2962,7 +2962,7 @@ _0800635A:
 	bls _0800636A
 	movs r7, #1
 	movs r0, #0x8f
-	bl PlaySound
+	bl SoundPlay
 _0800636A:
 	cmp r6, #0
 	bne _08006384
@@ -3000,7 +3000,7 @@ _080063AA:
 	cmp r0, #1
 	bhi _080063C2
 	movs r0, #0x8b
-	bl PlaySound
+	bl SoundPlay
 	b _080063C2
 _080063B8:
 	movs r0, #0x88
@@ -3070,7 +3070,7 @@ _0800641C:
 	cmp r0, #4
 	bne _08006432
 	movs r0, #0x98
-	bl PlaySound
+	bl SoundPlay
 _08006432:
 	ldrb r0, [r4, #4]
 	subs r0, #1
@@ -3180,7 +3180,7 @@ _080064F0:
 	movs r0, #0x2c
 	strb r0, [r4, #6]
 	movs r0, #0x6b
-	bl PlaySound
+	bl SoundPlay
 	b _08006528
 _08006518:
 	ldrb r0, [r4, #6]
@@ -3345,14 +3345,14 @@ _08006646:
 	cmp r0, #1
 	bne _08006660
 	movs r0, #0x95
-	bl PlaySound
+	bl SoundPlay
 	b _08006666
 	.align 2, 0
 _08006658: .4byte gChangedInput
 _0800665C: .4byte 0x03001330
 _08006660:
 	movs r0, #0x81
-	bl PlaySound
+	bl SoundPlay
 _08006666:
 	ldr r0, _08006674 @ =gSamusData
 	adds r0, #0x23
@@ -3522,7 +3522,7 @@ _08006796:
 	cmp r0, #1
 	bne _080067B8
 	movs r0, #0x95
-	bl PlaySound
+	bl SoundPlay
 	b _080067BE
 	.align 2, 0
 _080067AC: .4byte gChangedInput
@@ -3530,7 +3530,7 @@ _080067B0: .4byte gSamusData
 _080067B4: .4byte 0x03001330
 _080067B8:
 	movs r0, #0x81
-	bl PlaySound
+	bl SoundPlay
 _080067BE:
 	bl SamusSetForcedMovementForJumpingOrDropping
 	cmp r0, #0
@@ -3714,7 +3714,7 @@ _080068F2:
 	cmp r0, #0x91
 	bne _08006926
 	movs r0, #0x6a
-	bl PlaySound
+	bl SoundPlay
 	b _08006926
 	.align 2, 0
 _0800691C: .4byte gSamusData
@@ -3842,18 +3842,18 @@ _08006A00:
 	cmp r2, #1
 	beq _08006A10
 	movs r0, #0x64
-	bl PlaySound
+	bl SoundPlay
 	b _08006A46
 _08006A0C:
 	cmp r2, #1
 	bne _08006A18
 _08006A10:
 	movs r0, #0x95
-	bl PlaySound
+	bl SoundPlay
 	b _08006A46
 _08006A18:
 	movs r0, #0x65
-	bl PlaySound
+	bl SoundPlay
 	b _08006A46
 _08006A20:
 	ldr r1, _08006A34 @ =0x030012F0
@@ -3900,7 +3900,7 @@ SamusMidAir: @ 0x08006A50
 	cmp r0, #0
 	beq _08006A88
 	movs r0, #0x7f
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0x10
 	b _08006B64
 	.align 2, 0
@@ -4454,7 +4454,7 @@ _08006E84:
 	bne _08006EC0
 _08006EAA:
 	movs r0, #0x7f
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0xc
 	b _08006F64
 	.align 2, 0
@@ -5131,7 +5131,7 @@ _080073BE:
 	cmp r0, #1
 	bne _080073EC
 	movs r0, #0x94
-	bl PlaySound
+	bl SoundPlay
 	b _080073F2
 	.align 2, 0
 _080073DC: .4byte 0x082C4878
@@ -5140,7 +5140,7 @@ _080073E4: .4byte 0x03001330
 _080073E8: .4byte 0x00FFFF00
 _080073EC:
 	movs r0, #0x6e
-	bl PlaySound
+	bl SoundPlay
 _080073F2:
 	movs r0, #0xff
 	pop {r4, r5}
@@ -5311,7 +5311,7 @@ _08007528:
 	cmp r0, #1
 	bne _08007544
 	movs r0, #0x95
-	bl PlaySound
+	bl SoundPlay
 	b _0800754A
 	.align 2, 0
 _08007538: .4byte gSamusData
@@ -5319,7 +5319,7 @@ _0800753C: .4byte 0x0000FFC0
 _08007540: .4byte 0x03001330
 _08007544:
 	movs r0, #0x80
-	bl PlaySound
+	bl SoundPlay
 _0800754A:
 	movs r0, #0xf
 	b _08007550
@@ -5412,7 +5412,7 @@ _080075D0:
 	cmp r0, #1
 	bne _08007608
 	movs r0, #0x95
-	bl PlaySound
+	bl SoundPlay
 	b _0800760E
 	.align 2, 0
 _080075FC: .4byte 0x0828FCCC
@@ -5420,7 +5420,7 @@ _08007600: .4byte gChangedInput
 _08007604: .4byte 0x03001330
 _08007608:
 	movs r0, #0x80
-	bl PlaySound
+	bl SoundPlay
 _0800760E:
 	movs r0, #0xf
 	b _08007652
@@ -5554,7 +5554,7 @@ SamusMorphBallMidAir: @ 0x080076D8
 	cmp r0, #1
 	bne _08007714
 	movs r0, #0x95
-	bl PlaySound
+	bl SoundPlay
 	b _0800771A
 	.align 2, 0
 _08007708: .4byte gChangedInput
@@ -5562,7 +5562,7 @@ _0800770C: .4byte 0x0828FCCC
 _08007710: .4byte 0x03001330
 _08007714:
 	movs r0, #0x80
-	bl PlaySound
+	bl SoundPlay
 _0800771A:
 	movs r0, #4
 	b _080077A0
@@ -6492,7 +6492,7 @@ _08007DE0:
 	subs r0, #1
 	strh r0, [r2, #0x18]
 	movs r0, #0x7f
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0xd
 _08007DF2:
 	pop {r1}
@@ -6600,7 +6600,7 @@ _08007E92:
 	cmp r3, #1
 	bne _08007ECC
 	movs r0, #0x94
-	bl PlaySound
+	bl SoundPlay
 	b _08007ED2
 	.align 2, 0
 _08007EB8: .4byte 0x082D8074
@@ -6610,7 +6610,7 @@ _08007EC4: .4byte 0x00FFFF00
 _08007EC8: .4byte 0x030012D8
 _08007ECC:
 	movs r0, #0x6f
-	bl PlaySound
+	bl SoundPlay
 _08007ED2:
 	ldr r1, _08007F0C @ =0x030012D8
 	ldrb r0, [r1, #3]
@@ -6673,7 +6673,7 @@ _08007F36:
 	cmp r0, r1
 	bne _08007F4A
 	movs r0, #0x70
-	bl PlaySound
+	bl SoundPlay
 _08007F4A:
 	adds r1, r5, #0
 	adds r1, #0x21
@@ -7203,14 +7203,14 @@ _080082EA:
 	cmp r0, #1
 	bne _08008340
 	movs r0, #0x95
-	bl PlaySound
+	bl SoundPlay
 	b _08008346
 	.align 2, 0
 _08008338: .4byte 0x0000FFE0
 _0800833C: .4byte 0x03001330
 _08008340:
 	movs r0, #0x86
-	bl PlaySound
+	bl SoundPlay
 _08008346:
 	ldr r0, _08008350 @ =gSamusData
 	movs r1, #0x40
@@ -7270,13 +7270,13 @@ _08008390:
 	cmp r0, #1
 	bne _080083C4
 	movs r0, #0x95
-	bl PlaySound
+	bl SoundPlay
 	b _080083CA
 	.align 2, 0
 _080083C0: .4byte 0x03001330
 _080083C4:
 	movs r0, #0x86
-	bl PlaySound
+	bl SoundPlay
 _080083CA:
 	ldr r0, _080083F4 @ =gSamusData
 	movs r1, #0x80
@@ -7870,7 +7870,7 @@ _08008800:
 	cmp r2, #0
 	bne _0800881A
 	movs r0, #0x87
-	bl PlaySound
+	bl SoundPlay
 	b _08008828
 _08008812:
 	cmp r0, #6
@@ -7879,11 +7879,11 @@ _08008812:
 	bne _08008822
 _0800881A:
 	movs r0, #0x95
-	bl PlaySound
+	bl SoundPlay
 	b _08008828
 _08008822:
 	movs r0, #0x87
-	bl PlaySound
+	bl SoundPlay
 _08008828:
 	movs r0, #0xff
 _0800882A:
@@ -8616,7 +8616,7 @@ _08008D5C:
 	adds r0, #1
 	strh r0, [r2, #0x10]
 	movs r0, #0x8e
-	bl PlaySound
+	bl SoundPlay
 _08008D6A:
 	ldr r0, _08008DA0 @ =gSamusData
 	movs r1, #0x40
@@ -9321,13 +9321,13 @@ _08009300:
 	cmp r0, #1
 	bne _08009314
 	movs r0, #0x96
-	bl PlaySound
+	bl SoundPlay
 	b _080093A8
 	.align 2, 0
 _08009310: .4byte 0x0000FFC0
 _08009314:
 	movs r0, #0x7e
-	bl PlaySound
+	bl SoundPlay
 	b _080093A8
 _0800931C:
 	ldr r0, _08009324 @ =gSamusData
@@ -9420,7 +9420,7 @@ _080093A8:
 	cmp r0, #1
 	beq _08009404
 	movs r0, #0x71
-	bl PlaySound
+	bl SoundPlay
 	b _0800941A
 	.align 2, 0
 _080093C8: .4byte gPreviousYPosition
@@ -9435,7 +9435,7 @@ _080093D8:
 	cmp r0, #1
 	beq _08009404
 	movs r0, #0x72
-	bl PlaySound
+	bl SoundPlay
 	b _0800941A
 	.align 2, 0
 _080093EC: .4byte 0x03001330
@@ -9452,14 +9452,14 @@ _080093F0:
 	bne _08009414
 _08009404:
 	movs r0, #0x96
-	bl PlaySound
+	bl SoundPlay
 	b _0800941A
 	.align 2, 0
 _0800940C: .4byte gSamusDataCopy
 _08009410: .4byte 0x03001330
 _08009414:
 	movs r0, #0x73
-	bl PlaySound
+	bl SoundPlay
 _0800941A:
 	pop {r4, r5}
 	pop {r0}
@@ -9628,7 +9628,7 @@ _080095AC:
 	ldrb r0, [r0, #3]
 	strb r0, [r4, #3]
 	movs r0, #0x9a
-	bl PlaySound
+	bl SoundPlay
 	b _080096C4
 	.align 2, 0
 _080095C8: .4byte gSamusDataCopy
@@ -10354,7 +10354,7 @@ _08009C00:
 _08009C02:
 	strh r0, [r3, #0x1c]
 	movs r0, #0xfc
-	bl PlaySound
+	bl SoundPlay
 	b _08009D70
 	.align 2, 0
 _08009C0C: .4byte 0x0000FFFC
@@ -10404,13 +10404,13 @@ _08009C58:
 	movs r1, #1
 	bl SamusCheckSetNewEnvironmentEffect
 	movs r0, #0x6c
-	bl PlaySound
+	bl SoundPlay
 	b _08009D70
 	.align 2, 0
 _08009C70: .4byte gSamusDataCopy
 _08009C74:
 	movs r0, #0x99
-	bl PlaySound
+	bl SoundPlay
 	b _08009D70
 _08009C7C:
 	ldr r0, _08009C9C @ =gButtonInput
@@ -10495,7 +10495,7 @@ _08009D08:
 	ldrb r0, [r0, #3]
 	strb r0, [r3, #3]
 	movs r0, #0x9a
-	bl PlaySound
+	bl SoundPlay
 	b _08009D70
 	.align 2, 0
 _08009D18: .4byte gSamusDataCopy
@@ -10505,13 +10505,13 @@ _08009D1C:
 	cmp r0, #1
 	bne _08009D30
 	movs r0, #0x96
-	bl PlaySound
+	bl SoundPlay
 	b _08009D36
 	.align 2, 0
 _08009D2C: .4byte 0x03001330
 _08009D30:
 	movs r0, #0x85
-	bl PlaySound
+	bl SoundPlay
 _08009D36:
 	ldr r0, _08009D44 @ =gSamusData
 	movs r2, #0
@@ -11101,13 +11101,13 @@ _0800A228:
 	cmp r0, #1
 	bne _0800A24C
 	movs r0, #0x97
-	bl PlaySound
+	bl SoundPlay
 	b _0800A252
 	.align 2, 0
 _0800A248: .4byte 0x03001330
 _0800A24C:
 	movs r0, #0x82
-	bl PlaySound
+	bl SoundPlay
 _0800A252:
 	mov r1, sb
 	cmp r1, #0xff
@@ -11134,14 +11134,14 @@ _0800A25A:
 	cmp r0, #1
 	bne _0800A294
 	movs r0, #0x97
-	bl PlaySound
+	bl SoundPlay
 	b _0800A29A
 	.align 2, 0
 _0800A28C: .4byte gSamusData
 _0800A290: .4byte 0x03001330
 _0800A294:
 	movs r0, #0x83
-	bl PlaySound
+	bl SoundPlay
 _0800A29A:
 	mov r0, sb
 	cmp r0, #0xff
@@ -11220,7 +11220,7 @@ _0800A328:
 	cmp r0, #1
 	bne _0800A380
 	movs r0, #0x97
-	bl PlaySound
+	bl SoundPlay
 	b _0800A386
 	.align 2, 0
 _0800A370: .4byte gButtonInput
@@ -11229,7 +11229,7 @@ _0800A378: .4byte 0x0000FFC0
 _0800A37C: .4byte 0x03001330
 _0800A380:
 	movs r0, #0x84
-	bl PlaySound
+	bl SoundPlay
 _0800A386:
 	ldr r0, _0800A3FC @ =gSamusData
 	ldrb r1, [r0, #1]
@@ -16249,7 +16249,7 @@ SA_XRunningGFX: @ 0x0800CBB8
 	bne _0800CBF2
 _0800CBEC:
 	ldr r0, _0800CC18 @ =0x00000259
-	bl PlaySound
+	bl SoundPlay
 _0800CBF2:
 	ldr r2, _0800CC14 @ =0x0829AC60
 	ldr r3, _0800CC10 @ =gSaXData
@@ -16302,7 +16302,7 @@ SA_XWalkingGFX: @ 0x0800CC1C
 _0800CC50:
 	movs r0, #0x96
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 _0800CC58:
 	ldr r2, _0800CC78 @ =0x082B3F10
 	ldr r3, _0800CC74 @ =gSaXData
@@ -16466,7 +16466,7 @@ SA_XMidAirGFX: @ 0x0800CD50
 	bne _0800CD8A
 	strb r0, [r2, #0x13]
 	ldr r0, _0800CD98 @ =0x0000025B
-	bl PlaySound
+	bl SoundPlay
 _0800CD8A:
 	movs r0, #0xff
 	pop {r1}
@@ -16595,7 +16595,7 @@ SA_XKneelingGFX: @ 0x0800CE6C
 	cmp r0, #1
 	bne _0800CE7C
 	movs r0, #0x9d
-	bl PlaySound
+	bl SoundPlay
 _0800CE7C:
 	ldr r2, _0800CEB8 @ =0x082A99C8
 	ldrb r0, [r4, #0x13]
@@ -16695,7 +16695,7 @@ SA_XMorphingGFX: @ 0x0800CF00
 	cmp r0, #0
 	bne _0800CF48
 	ldr r0, _0800CF44 @ =0x0000025F
-	bl PlaySound
+	bl SoundPlay
 	movs r0, #0xf
 	b _0800CF4A
 	.align 2, 0
@@ -16960,13 +16960,13 @@ _0800D130:
 _0800D138: .4byte gSaXData
 _0800D13C:
 	ldr r0, _0800D144 @ =0x0000025B
-	bl PlaySound
+	bl SoundPlay
 	b _0800D15A
 	.align 2, 0
 _0800D144: .4byte 0x0000025B
 _0800D148:
 	ldr r0, _0800D150 @ =0x0000025A
-	bl PlaySound
+	bl SoundPlay
 	b _0800D15A
 	.align 2, 0
 _0800D150: .4byte 0x0000025A
@@ -18346,7 +18346,7 @@ _0800DBF6:
 	strb r1, [r0, #4]
 	movs r0, #0x8a
 	lsls r0, r0, #2
-	bl PlaySound
+	bl SoundPlay
 	b _0800DC7C
 	.align 2, 0
 _0800DC08: .4byte gSaXData
