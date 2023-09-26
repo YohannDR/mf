@@ -78,10 +78,16 @@ SECTIONS {
         . = 0x000007f4; gBossWork3 = .;
         . = 0x000007f5; gBossWork4 = .;
         . = 0x000007f6; gBossWork5 = .;
+        . = 0x000008c4; gMissileHighlightStatus = .;
+        . = 0x000008c5; gPowerBombHighlightStatus = .;
+        . = 0x000008c6; gMinimapUpdateFlag = .;
+        . = 0x000008cf; gMissileDigits = .;
+        . = 0x000008d3; gPowerBombDigits = .;
         . = 0x000008d7; gEscapeStatus = .;
         . = 0x000008d8; gEscapeTimerCounter = .;
         . = 0x000008d9; gEscapeTimerDigits = .;
         . = 0x000008e0; gEscapeDigitsOam = .;
+        . = 0x00000912; gAmmoDigitsGfx = .;
         . = 0x00000b84; gPauseScreenFlag = .;
         . = 0x00000b86; gPreviousArea = .;
         . = 0x00000b87; gEventCounter = .;

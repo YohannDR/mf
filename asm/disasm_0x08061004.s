@@ -35130,10 +35130,10 @@ DrawHudMissiles: @ 0x0807223C
 	mov r8, r1
 	cmp r0, #0
 	beq _08072258
-	ldr r5, _08072254 @ =0x030008CF
+	ldr r5, _08072254 @ =gMissileDigits
 	b _080722D0
 	.align 2, 0
-_08072254: .4byte 0x030008CF
+_08072254: .4byte gMissileDigits
 _08072258:
 	ldr r0, _08072414 @ =gEquipment
 	ldrh r4, [r0, #4]
@@ -35146,7 +35146,7 @@ _08072258:
 	bl __umodsi3
 	lsls r0, r0, #0x18
 	lsrs r2, r0, #0x18
-	ldr r0, _08072418 @ =0x030008CF
+	ldr r0, _08072418 @ =gMissileDigits
 	ldrb r1, [r0, #2]
 	adds r5, r0, #0
 	cmp r1, r2
@@ -35213,7 +35213,7 @@ _080722E2:
 	movs r1, #0xb0
 	lsls r1, r1, #1
 	mov ip, r1
-	ldr r0, _0807241C @ =0x030008C4
+	ldr r0, _0807241C @ =gMissileHighlightStatus
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0807231C
@@ -35236,7 +35236,7 @@ _080722E2:
 _0807231C:
 	movs r2, #0
 	mov r8, r2
-	ldr r1, _08072420 @ =0x03000912
+	ldr r1, _08072420 @ =gAmmoDigitsGfx
 	mov sb, r1
 	mov r7, sb
 	ldr r6, _08072424 @ =0x083E7A9C
@@ -35291,7 +35291,7 @@ _08072328:
 	movs r2, #0x20
 	movs r6, #0
 	mov r8, r6
-	ldr r4, _08072420 @ =0x03000912
+	ldr r4, _08072420 @ =gAmmoDigitsGfx
 	ldr r3, _08072424 @ =0x083E7A9C
 _08072390:
 	adds r1, r2, r4
@@ -35363,9 +35363,9 @@ _08072408:
 	bx r0
 	.align 2, 0
 _08072414: .4byte gEquipment
-_08072418: .4byte 0x030008CF
-_0807241C: .4byte 0x030008C4
-_08072420: .4byte 0x03000912
+_08072418: .4byte gMissileDigits
+_0807241C: .4byte gMissileHighlightStatus
+_08072420: .4byte gAmmoDigitsGfx
 _08072424: .4byte 0x083E7A9C
 _08072428: .4byte 0x040000D4
 _0807242C: .4byte 0x06010F00
@@ -35382,10 +35382,10 @@ DrawHudPowerBombs: @ 0x08072434
 	mov r8, r1
 	cmp r0, #0
 	beq _08072450
-	ldr r5, _0807244C @ =0x030008D3
+	ldr r5, _0807244C @ =gPowerBombDigits
 	b _080724C8
 	.align 2, 0
-_0807244C: .4byte 0x030008D3
+_0807244C: .4byte gPowerBombDigits
 _08072450:
 	ldr r0, _0807260C @ =gEquipment
 	ldrb r4, [r0, #8]
@@ -35398,7 +35398,7 @@ _08072450:
 	bl __umodsi3
 	lsls r0, r0, #0x18
 	lsrs r2, r0, #0x18
-	ldr r0, _08072610 @ =0x030008D3
+	ldr r0, _08072610 @ =gPowerBombDigits
 	ldrb r1, [r0, #2]
 	adds r5, r0, #0
 	cmp r1, r2
@@ -35465,7 +35465,7 @@ _080724DA:
 	movs r1, #0xb0
 	lsls r1, r1, #1
 	mov ip, r1
-	ldr r0, _08072614 @ =0x030008C5
+	ldr r0, _08072614 @ =gPowerBombHighlightStatus
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08072514
@@ -35488,7 +35488,7 @@ _080724DA:
 _08072514:
 	movs r2, #0
 	mov r8, r2
-	ldr r1, _08072618 @ =0x03000912
+	ldr r1, _08072618 @ =gAmmoDigitsGfx
 	mov sb, r1
 	mov r7, sb
 	ldr r6, _0807261C @ =0x083E7A9C
@@ -35543,7 +35543,7 @@ _08072520:
 	movs r2, #0x20
 	movs r6, #0
 	mov r8, r6
-	ldr r4, _08072618 @ =0x03000912
+	ldr r4, _08072618 @ =gAmmoDigitsGfx
 	ldr r3, _0807261C @ =0x083E7A9C
 _08072588:
 	adds r1, r2, r4
@@ -35615,9 +35615,9 @@ _08072600:
 	bx r0
 	.align 2, 0
 _0807260C: .4byte gEquipment
-_08072610: .4byte 0x030008D3
-_08072614: .4byte 0x030008C5
-_08072618: .4byte 0x03000912
+_08072610: .4byte gPowerBombDigits
+_08072614: .4byte gPowerBombHighlightStatus
+_08072618: .4byte gAmmoDigitsGfx
 _0807261C: .4byte 0x083E7A9C
 _08072620: .4byte 0x040000D4
 _08072624: .4byte 0x06010F40
@@ -35626,7 +35626,7 @@ _08072628: .4byte 0x80000020
 	thumb_func_start UpdateHudGfx
 UpdateHudGfx: @ 0x0807262C
 	push {lr}
-	ldr r3, _0807265C @ =0x030008C4
+	ldr r3, _0807265C @ =gMissileHighlightStatus
 	ldrb r0, [r3]
 	cmp r0, #0
 	beq _08072674
@@ -35649,7 +35649,7 @@ UpdateHudGfx: @ 0x0807262C
 	bl DrawHudMissiles
 	b _0807269A
 	.align 2, 0
-_0807265C: .4byte 0x030008C4
+_0807265C: .4byte gMissileHighlightStatus
 _08072660: .4byte gSamusData
 _08072664: .4byte 0x040000D4
 _08072668: .4byte 0x083E799C
@@ -35675,7 +35675,7 @@ _08072674:
 	movs r0, #1
 	bl DrawHudMissiles
 _0807269A:
-	ldr r3, _080726E0 @ =0x030008C5
+	ldr r3, _080726E0 @ =gPowerBombHighlightStatus
 	ldrb r0, [r3]
 	cmp r0, #0
 	beq _080726EC
@@ -35705,7 +35705,7 @@ _080726D0: .4byte 0x040000D4
 _080726D4: .4byte 0x083E79DC
 _080726D8: .4byte 0x06010B00
 _080726DC: .4byte 0x80000020
-_080726E0: .4byte 0x030008C5
+_080726E0: .4byte gPowerBombHighlightStatus
 _080726E4: .4byte 0x083E7A1C
 _080726E8: .4byte 0x06010B40
 _080726EC:
@@ -35728,7 +35728,7 @@ _080726EC:
 	movs r0, #1
 	bl DrawHudPowerBombs
 _08072712:
-	ldr r3, _08072758 @ =0x030008C6
+	ldr r3, _08072758 @ =gMinimapUpdateFlag
 	ldrb r0, [r3]
 	cmp r0, #0
 	beq _0807273E
@@ -35759,7 +35759,7 @@ _08072748: .4byte 0x040000D4
 _0807274C: .4byte 0x083E7A5C
 _08072750: .4byte 0x06010B40
 _08072754: .4byte 0x80000020
-_08072758: .4byte 0x030008C6
+_08072758: .4byte gMinimapUpdateFlag
 _0807275C: .4byte 0x02035C00
 _08072760: .4byte 0x06011F80
 _08072764: .4byte 0x80000030

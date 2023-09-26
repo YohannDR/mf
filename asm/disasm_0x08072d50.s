@@ -66,12 +66,12 @@ _08072DBE:
 _08072DC8:
 	ldr r3, _08072E2C @ =0x030008C7
 	ldr r4, _08072E30 @ =0x030008CB
-	ldr r5, _08072E34 @ =0x030008CF
-	ldr r6, _08072E38 @ =0x030008D3
-	ldr r0, _08072E3C @ =0x030008C4
+	ldr r5, _08072E34 @ =gMissileDigits
+	ldr r6, _08072E38 @ =gPowerBombDigits
+	ldr r0, _08072E3C @ =gMissileHighlightStatus
 	mov ip, r0
-	ldr r7, _08072E40 @ =0x030008C5
-	ldr r1, _08072E44 @ =0x030008C6
+	ldr r7, _08072E40 @ =gPowerBombHighlightStatus
+	ldr r1, _08072E44 @ =gMinimapUpdateFlag
 	mov r8, r1
 	ldr r2, _08072E48 @ =gEscapeStatus
 	mov sb, r2
@@ -118,11 +118,11 @@ _08072E1E:
 	.align 2, 0
 _08072E2C: .4byte 0x030008C7
 _08072E30: .4byte 0x030008CB
-_08072E34: .4byte 0x030008CF
-_08072E38: .4byte 0x030008D3
-_08072E3C: .4byte 0x030008C4
-_08072E40: .4byte 0x030008C5
-_08072E44: .4byte 0x030008C6
+_08072E34: .4byte gMissileDigits
+_08072E38: .4byte gPowerBombDigits
+_08072E3C: .4byte gMissileHighlightStatus
+_08072E40: .4byte gPowerBombHighlightStatus
+_08072E44: .4byte gMinimapUpdateFlag
 _08072E48: .4byte gEscapeStatus
 _08072E4C: .4byte 0x030007F8
 
@@ -4602,7 +4602,7 @@ _08075080: .4byte 0x03000032
 MinimapUpdate: @ 0x08075084
 	push {lr}
 	bl MinimapCheckForUnexploredTile
-	ldr r0, _080750A4 @ =0x030008C6
+	ldr r0, _080750A4 @ =gMinimapUpdateFlag
 	ldrb r0, [r0]
 	cmp r0, #3
 	bne _0807509A
@@ -4613,7 +4613,7 @@ _0807509A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080750A4: .4byte 0x030008C6
+_080750A4: .4byte gMinimapUpdateFlag
 
 	thumb_func_start MinimapSetTileAsExplored
 MinimapSetTileAsExplored: @ 0x080750A8
@@ -4652,7 +4652,7 @@ _080750E8: .4byte 0x03000031
 	thumb_func_start MinimapCheckForUnexploredTile
 MinimapCheckForUnexploredTile: @ 0x080750EC
 	push {r4, r5, r6, lr}
-	ldr r0, _0807511C @ =0x030008C6
+	ldr r0, _0807511C @ =gMinimapUpdateFlag
 	ldrb r1, [r0]
 	adds r6, r0, #0
 	cmp r1, #0
@@ -4675,7 +4675,7 @@ MinimapCheckForUnexploredTile: @ 0x080750EC
 	movs r4, #0
 	b _0807513C
 	.align 2, 0
-_0807511C: .4byte 0x030008C6
+_0807511C: .4byte gMinimapUpdateFlag
 _08075120: .4byte gSamusData
 _08075124:
 	ldr r0, _0807514C @ =gBackgroundsData
@@ -4799,7 +4799,7 @@ _080751E2:
 	ldr r0, _0807526C @ =0x03000032
 	strb r1, [r0]
 _08075214:
-	ldr r4, _08075270 @ =0x030008C6
+	ldr r4, _08075270 @ =gMinimapUpdateFlag
 	movs r0, #0
 	strb r0, [r4]
 	bl MinimapCheckForUnexploredTile
@@ -4831,7 +4831,7 @@ _08075260: .4byte 0x02034800
 _08075264: .4byte 0x80000400
 _08075268: .4byte 0x03000031
 _0807526C: .4byte 0x03000032
-_08075270: .4byte 0x030008C6
+_08075270: .4byte gMinimapUpdateFlag
 
 	thumb_func_start MinimapDraw
 MinimapDraw: @ 0x08075274
@@ -4839,7 +4839,7 @@ MinimapDraw: @ 0x08075274
 	mov r7, r8
 	push {r7}
 	sub sp, #8
-	ldr r0, _08075298 @ =0x030008C6
+	ldr r0, _08075298 @ =gMinimapUpdateFlag
 	ldrb r1, [r0]
 	adds r2, r0, #0
 	cmp r1, #0
@@ -4854,7 +4854,7 @@ MinimapDraw: @ 0x08075274
 	movs r6, #1
 	b _080752B4
 	.align 2, 0
-_08075298: .4byte 0x030008C6
+_08075298: .4byte gMinimapUpdateFlag
 _0807529C: .4byte 0x02034000
 _080752A0: .4byte 0x02035C00
 _080752A4:
@@ -6191,7 +6191,7 @@ MinimapUpdateForCollectedItem: @ 0x08075C64
 	ldrh r0, [r5]
 	adds r0, #1
 	strh r0, [r5]
-	ldr r1, _08075CC4 @ =0x030008C6
+	ldr r1, _08075CC4 @ =gMinimapUpdateFlag
 	movs r0, #3
 	strb r0, [r1]
 	bl MinimapDraw
@@ -6202,7 +6202,7 @@ MinimapUpdateForCollectedItem: @ 0x08075C64
 _08075CB8: .4byte gCurrentRoomEntry
 _08075CBC: .4byte 0x02034000
 _08075CC0: .4byte 0x02034800
-_08075CC4: .4byte 0x030008C6
+_08075CC4: .4byte gMinimapUpdateFlag
 
 	thumb_func_start MinimapCheckIsTileExplored
 MinimapCheckIsTileExplored: @ 0x08075CC8
@@ -7211,7 +7211,7 @@ _08076504: .4byte 0x80000400
 _08076508: .4byte 0x00000231
 _0807650C:
 	movs r5, #3
-	ldr r4, _08076534 @ =0x030008C6
+	ldr r4, _08076534 @ =gMinimapUpdateFlag
 _08076510:
 	strb r5, [r4]
 	bl MinimapDraw
@@ -7231,7 +7231,7 @@ _08076510:
 	strb r3, [r1]
 	b _080765E2
 	.align 2, 0
-_08076534: .4byte 0x030008C6
+_08076534: .4byte gMinimapUpdateFlag
 _08076538: .4byte gNonGameplayRam
 _0807653C: .4byte 0x00000231
 _08076540:
