@@ -6,6 +6,7 @@
 #include "constants/samus.h"
 
 #include "structs/samus.h"
+#include "structs/sa_x.h"
 
 /**
  * @brief 4d60 | 68 | Copies samus data
@@ -66,9 +67,49 @@ s16 SamusChangeVelocityOnSlope(void)
     return xVelocity;
 }
 
-void SamusSetPalette(const u16* src, s32 offset, s32 length, u32 isSax)
+/**
+ * @brief 4e24 | 44 | Sets the palette pointed by src as the new suit palette
+ * 
+ * @param src    The memory address where the new suit palette is stored
+ * @param offset Offset of src where the palette begins
+ * @param length Length of the palette
+ * @param isSaX  Flag that indicates whether the destination address is for SA-X or Samus
+ */
+void SamusSetPalette(const u16* src, s32 offset, s32 length, u32 isSaX)
 {
+    // https://decomp.me/scratch/UsVnU
 
+    u32 saXFlag = isSaX;
+#ifndef NONMATCHING
+    register u16 *source asm("r3") = src;
+#else // !NONMATCHING
+    u16 *source = src;
+#endif // NONMATCHING
+    
+    s32 off = offset;
+    s32 end = off + length;
+
+    if (offset < end)
+    {
+        u16 *samusPalette = gSamusPalette;
+        u16 *saXPalette = gSaXPalette;
+        u16 *saXDst = saXPalette + offset;
+        u16 *samusDst = samusPalette + off;
+        
+        off = end - off;
+    
+        do {
+            if (!saXFlag)
+                *samusDst = *source;
+            else
+                *saXDst = *source;
+    
+            source++;
+            saXDst++;
+            samusDst++;
+            off--;
+        } while (off != 0);
+    }
 }
 
 void SamusUpdatePhysics(void)
