@@ -7,14 +7,63 @@
 
 #include "structs/samus.h"
 
+/**
+ * @brief 4d60 | 68 | Copies samus data
+ */
 void SamusCopyData(void)
 {
+    gSamusDataCopy = gSamusData;
 
+    if (gSamusData.turning)
+    {
+        gSamusData.direction = gSamusData.direction ^ (KEY_RIGHT | KEY_LEFT);
+        gSamusData.turning = 0;
+    }
+
+    gSamusData.forcedMovement = 0;
+    gSamusData.walljumpTimer = 0;
+    gSamusData.speedboostingCounter = 0;
+    gSamusData.armCannonDirection = 0;
+    gSamusData.armRunningFlag = 0;
+    gSamusData.counter = 0;
+    gSamusData.lastWallTouchedMidAir = 0;
+    gSamusData.xVelocity = 0;
+    gSamusData.yVelocity = 0;
+    
+    gSamusData.animationDurationCounter = 0;
+    gSamusData.currentAnimationFrame = 0;
+
+    gSamusAnimationInfo.loadingSave = FALSE;
+    gSamusAnimationInfo.paletteAnimationCounter = 0;
+    gSamusAnimationInfo.currentPaletteRow = 0;
+    gSamusAnimationInfo.spaceJumpSpinCounter = 0;
 }
 
+/**
+ * @brief 4dc8 | 5c | Checks if samus is on a slope and changes the velocity according to it
+ * 
+ * @return s16 New velocity
+ */
 s16 SamusChangeVelocityOnSlope(void)
 {
-
+    s16 xVelocity = gSamusData.xVelocity;
+    
+    if (gSamusData.direction & gSamusData.slopeType)
+    {
+        if (gSamusData.slopeType & SLOPE_STEEP)
+            xVelocity = xVelocity * 3 / 5;
+        else
+            xVelocity = xVelocity * 4 / 5;
+    }
+    else
+    {
+        if (xVelocity > 0xA0)
+            xVelocity = 0xA0;
+        else if (xVelocity < -0xA0)
+            xVelocity = -0xA0;
+    }
+    
+    return xVelocity;
 }
 
 void SamusSetPalette(const u16* src, s32 offset, s32 length, u32 isSax)
