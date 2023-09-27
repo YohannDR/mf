@@ -5706,7 +5706,7 @@ _08063B90: .4byte gIoRegisters
 _08063B94: .4byte 0x0000FEFF
 _08063B98: .4byte 0x03000008
 _08063B9C:
-	ldr r0, _08063BBC @ =0x03001330
+	ldr r0, _08063BBC @ =gSamusPhysics
 	ldrb r0, [r0]
 	cmp r0, #0x80
 	bne _08063BC4
@@ -5722,7 +5722,7 @@ _08063B9C:
 	strb r0, [r3]
 	b _08063BE4
 	.align 2, 0
-_08063BBC: .4byte 0x03001330
+_08063BBC: .4byte gSamusPhysics
 _08063BC0: .4byte 0x03004E42
 _08063BC4:
 	ldr r0, _08063BE0 @ =0x03004E42

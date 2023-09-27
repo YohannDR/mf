@@ -149004,7 +149004,7 @@ _080600B0:
 	adds r0, r5, #0
 	adds r0, #0x2d
 	strb r7, [r0]
-	ldr r1, _080600FC @ =0x03001330
+	ldr r1, _080600FC @ =gSamusPhysics
 	movs r0, #0x80
 	strb r0, [r1]
 	ldr r1, _08060100 @ =gSpriteData
@@ -149026,7 +149026,7 @@ _080600EC: .4byte gSubSpriteData1
 _080600F0: .4byte gCurrentSprite
 _080600F4: .4byte sSecondarySpriteStats
 _080600F8: .4byte 0x083BD844
-_080600FC: .4byte 0x03001330
+_080600FC: .4byte gSamusPhysics
 _08060100: .4byte gSpriteData
 _08060104: .4byte gBossWork3
 _08060108: .4byte 0x000002A5
@@ -149199,7 +149199,7 @@ _08060240:
 	adds r0, #0x24
 	movs r1, #0x17
 	strb r1, [r0]
-	ldr r0, _08060280 @ =0x03001330
+	ldr r0, _08060280 @ =gSamusPhysics
 	strb r3, [r0]
 	ldr r1, _08060284 @ =gBossWork3
 	movs r0, #0x64
@@ -149208,7 +149208,7 @@ _08060240:
 	.align 2, 0
 _08060278: .4byte 0x083BD794
 _0806027C: .4byte gSpriteData
-_08060280: .4byte 0x03001330
+_08060280: .4byte gSamusPhysics
 _08060284: .4byte gBossWork3
 _08060288:
 	ldr r0, _08060298 @ =0x083BD844
@@ -149309,7 +149309,7 @@ _08060330:
 	movs r0, #0
 	strh r0, [r4]
 _08060348:
-	ldr r0, _08060360 @ =0x03001330
+	ldr r0, _08060360 @ =gSamusPhysics
 	ldrb r0, [r0]
 	cmp r0, #0x80
 	bne _08060354
@@ -149320,7 +149320,7 @@ _08060354:
 	bx r0
 	.align 2, 0
 _0806035C: .4byte gSpriteData
-_08060360: .4byte 0x03001330
+_08060360: .4byte gSamusPhysics
 
 	thumb_func_start NightmareBeamInit
 NightmareBeamInit: @ 0x08060364

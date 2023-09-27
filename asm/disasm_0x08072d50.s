@@ -25504,7 +25504,7 @@ _0807F5F4:
 	ldm r0!, {r2, r3}
 	stm r1!, {r2, r3}
 	mov r1, r8
-	ldr r0, _0807F784 @ =0x030012D8
+	ldr r0, _0807F784 @ =gSamusAnimationInfo
 	ldm r0!, {r2, r3, r7}
 	stm r1!, {r2, r3, r7}
 	mov r1, sb
@@ -25651,7 +25651,7 @@ _0807F774: .4byte 0x03001232
 _0807F778: .4byte 0x03000033
 _0807F77C: .4byte 0x0300003B
 _0807F780: .4byte gSamusData
-_0807F784: .4byte 0x030012D8
+_0807F784: .4byte gSamusAnimationInfo
 _0807F788: .4byte 0x030012E4
 _0807F78C: .4byte 0x030012F0
 _0807F790: .4byte gEquipment
@@ -25864,7 +25864,7 @@ _0807F920:
 	stm r1!, {r2, r4, r5}
 	ldm r0!, {r3, r4}
 	stm r1!, {r3, r4}
-	ldr r1, _0807FA70 @ =0x030012D8
+	ldr r1, _0807FA70 @ =gSamusAnimationInfo
 	adds r0, r6, #0
 	ldm r0!, {r2, r3, r5}
 	stm r1!, {r2, r3, r5}
@@ -25986,7 +25986,7 @@ _0807FA60: .4byte 0x030019D0
 _0807FA64: .4byte 0x03000033
 _0807FA68: .4byte 0x0300003B
 _0807FA6C: .4byte gSamusData
-_0807FA70: .4byte 0x030012D8
+_0807FA70: .4byte gSamusAnimationInfo
 _0807FA74: .4byte 0x030012E4
 _0807FA78: .4byte 0x030012F0
 _0807FA7C: .4byte gEquipment

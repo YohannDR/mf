@@ -124,7 +124,9 @@ SECTIONS {
         . = 0x00001244; gSamusData = .;
         . = 0x00001270; gSamusDataCopy = .;
         . = 0x0000129c; gSamusGraphicsInfo = .;
+        . = 0x000012d8; gSamusAnimationInfo = .;
         . = 0x00001310; gEquipment = .;
+        . = 0x00001330; gSamusPhysics = .;
         . = 0x00001342; gPreviousXPosition = .;
         . = 0x00001344; gPreviousYPosition = .;
         . = 0x00001348; gPreventMovementTimer = .;

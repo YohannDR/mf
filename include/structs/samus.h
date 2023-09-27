@@ -82,17 +82,38 @@ struct SamusGraphicsInfo {
     u16 armCannonBottomHalfGfxLength;
 };
 
+struct SamusAnimationInfo {
+    u8 loadingSave;
+    u8 paletteAnimationCounter;
+    u8 currentPaletteRow;
+    u8 spaceJumpSpinCounter;
+    u8 shinesparkTimer;
+};
+
+struct SamusPhysics {
+    u8 slowed;
+    s16 yAcceleration;
+    s16 yVelocityCap;
+    s16 midAirXAcceleration;
+    s16 midAirXVelocityCap;
+    s16 midAirMorphedXVelocityCap;
+    s16 xAcceleration;
+    s16 xVelocityCap;
+};
+
 extern struct SamusData gSamusData;
 extern struct SamusData gSamusDataCopy;
 extern struct Equipment gEquipment;
 extern struct SamusGraphicsInfo gSamusGraphicsInfo;
+extern struct SamusAnimationInfo gSamusAnimationInfo;
+extern struct SamusPhysics gSamusPhysics;
 
 extern u16 gSamusPalette[3 * 16];
 extern u16 gSamusPaletteLength;
 
 extern u16 gPreviousXPosition;
 extern u16 gPreviousYPosition;
-extern u16 gPoseLock;
+extern u8 gPoseLock;
 extern u16 gPreventMovementTimer;
 extern u8 gDisableDrawingSamusAndScrollingFlag;
 
