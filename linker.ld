@@ -81,6 +81,8 @@ SECTIONS {
         . = 0x000008c4; gMissileHighlightStatus = .;
         . = 0x000008c5; gPowerBombHighlightStatus = .;
         . = 0x000008c6; gMinimapUpdateFlag = .;
+        . = 0x000008c7; gEnergyDigits = .;
+        . = 0x000008cb; gMaxEnergyDigits = .;
         . = 0x000008cf; gMissileDigits = .;
         . = 0x000008d3; gPowerBombDigits = .;
         . = 0x000008d7; gEscapeStatus = .;
@@ -182,7 +184,8 @@ SECTIONS {
 
         asm/disasm_0x08061004.o(.text);
 
-        src/escape.o(.text)
+        src/hud.o(.text);
+        src/escape.o(.text);
 
         asm/disasm_0x08072d50.o(.text);
 
@@ -198,6 +201,8 @@ SECTIONS {
         src/data/sprite_data.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
+        src/data/hud_data.o(.rodata);
+        src/data/escape_data.o(.rodata);
         src/data/particle_data.o(.rodata);
         src/data/engine_pointers.o(.rodata);
     } >rom

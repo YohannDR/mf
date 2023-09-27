@@ -6,6 +6,8 @@ import os
 DATA_PATH = "data/"
 subDirs: array = [
     "sprites",
+    "hud",
+    "escape",
 ]
 
 try:
@@ -17,7 +19,6 @@ except:
 os.mkdir(DATA_PATH)
 for dir in subDirs:
     os.mkdir(DATA_PATH.__add__(dir))
-
 
 rom: BufferedReader = open("mf_us_baserom.gba", "rb")
 db: BufferedReader = open("database.txt", "r")

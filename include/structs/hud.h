@@ -16,7 +16,7 @@ extern struct Digits gMaxEnergyDigits;
 extern struct Digits gMissileDigits;
 extern struct Digits gPowerBombDigits;
 
-extern u8 gAmmoDigitsGfx[66];
+extern u8 gAmmoDigitsGfx[64];
 
 extern u8 gMissileHighlightStatus;
 extern u8 gPowerBombHighlightStatus;

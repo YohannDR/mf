@@ -64,8 +64,8 @@ _08072DBE:
 	bge _08072D98
 	b _08072E1E
 _08072DC8:
-	ldr r3, _08072E2C @ =0x030008C7
-	ldr r4, _08072E30 @ =0x030008CB
+	ldr r3, _08072E2C @ =gEnergyDigits
+	ldr r4, _08072E30 @ =gMaxEnergyDigits
 	ldr r5, _08072E34 @ =gMissileDigits
 	ldr r6, _08072E38 @ =gPowerBombDigits
 	ldr r0, _08072E3C @ =gMissileHighlightStatus
@@ -116,8 +116,8 @@ _08072E1E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08072E2C: .4byte 0x030008C7
-_08072E30: .4byte 0x030008CB
+_08072E2C: .4byte gEnergyDigits
+_08072E30: .4byte gMaxEnergyDigits
 _08072E34: .4byte gMissileDigits
 _08072E38: .4byte gPowerBombDigits
 _08072E3C: .4byte gMissileHighlightStatus
