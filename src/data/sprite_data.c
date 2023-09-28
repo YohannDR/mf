@@ -2655,7 +2655,7 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
         SPRITE_WEAKNESS_NONE
     },
-    [SSPRITE_GADORA_ROOS] = {
+    [SSPRITE_GADORA_ROOTS] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
