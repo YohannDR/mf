@@ -13,4 +13,8 @@ typedef void (*SamusSetPose_T)(u8);
 
 extern const SamusSetPose_T sSamusSetPoseFunctionPointer[1];
 
+typedef void (*SamusUpdateGrahipcs_t)(u8);
+
+extern const SamusUpdateGrahipcs_t sSamusUpdateGraphicsPointer[1];
+
 #endif /* SAMUS_DATA_H */

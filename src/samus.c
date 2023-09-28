@@ -5,11 +5,14 @@
 
 #include "constants/samus.h"
 
+#include "data/samus_data.h"
+
 #include "structs/samus.h"
 #include "structs/sa_x.h"
 
 /**
  * @brief 4d60 | 68 | Copies samus data
+ * 
  */
 void SamusCopyData(void)
 {
@@ -99,8 +102,30 @@ void SamusUpdateCollisionData(void)
 
 }
 
+/**
+ * @brief 50a4 | 44 | Calls SamusUpdateEnvironmentsEffects and SamusUpdateGraphics
+ * 
+ */
 void SamusCallUpdateGraphics(void)
 {
+    struct SamusData* pData;
+    u8 direction;
+        
+    SamusUpdateEnvironmentEffects();
+    
+    pData = &gSamusData;
+
+    // Get direction
+    if (pData->direction & KEY_RIGHT)
+        direction = FALSE;
+    else
+        direction = TRUE;
+    
+    // Update Samus graphics
+    sSamusUpdateGraphicsPointer[gSamusData.unk_0](direction);
+
+    if (pData->standingStatus == STANDING_MID_AIR)
+        pData->slopeType = SLOPE_NONE;
 
 }
 
