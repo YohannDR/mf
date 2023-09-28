@@ -19,7 +19,7 @@ struct SamusData {
     u8 unk_B;
     u8 chargeBeamCounter;
     u8 diagonalAim;
-    u8 arimRunningFlag;
+    u8 armRunningFlag;
     u8 counter;
     u16 lastWallTouchedMidAir;
     u16 direction;

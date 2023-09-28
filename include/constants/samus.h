@@ -89,14 +89,6 @@ enum SamusStandingStatus {
     STANDING_NOT_IN_CONTROL
 };
 
-enum DiagonalAim {
-    DIAG_AIM_NONE,
-    DIAG_AIM_UP,
-    DIAG_AIM_DOWN,
-
-    DIAG_AIM_END,
-};
-
 enum SecurityLevel {
     SECURITY_LEVEL_0,
     SECURITY_LEVEL_1,
@@ -107,6 +99,25 @@ enum SecurityLevel {
     SECURITY_LEVEL_END,
 
     SECURITY_LEVEL_NO_HATCHES = UCHAR_MAX
+};
+
+enum ArmCannonDirection {
+    ACD_NONE,
+    ACD_FORWARD,
+    ACD_DIAGONAL_UP,
+    ACD_DIAGONAL_DOWN,
+    ACD_UP,
+    ACD_DOWN,
+
+    ACD_END
+};
+
+enum DiagonalAim {
+    DIAG_AIM_NONE,
+    DIAG_AIM_UP,
+    DIAG_AIM_DOWN,
+
+    DIAG_AIM_END
 };
 
 #define SMF_HIGH_JUMP (1 << 0)
