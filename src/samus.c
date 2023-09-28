@@ -126,12 +126,15 @@ void SamusCallUpdateGraphics(void)
 
     if (pData->standingStatus == STANDING_MID_AIR)
         pData->slopeType = SLOPE_NONE;
-
 }
 
+/**
+ * @brief 50e8 | 20 | Calls CheckPlayLowHealthSound
+ * 
+ */
 void SamusCallCheckPlayLowHealthSound(void)
 {
-
+    sSamusCheckPlayLowHealthSoundPointer[gSamusData.unk_0]();
 }
 
 void SamusCheckUpdateArmCannonOffset(void)
