@@ -137,9 +137,22 @@ void SamusCallCheckPlayLowHealthSound(void)
     sSamusCheckPlayLowHealthSoundPointer[gSamusData.unk_0]();
 }
 
+/**
+ * @brief 5108 | 30 | Calls UpdateArmCannonOffset
+ * 
+ */
 void SamusCheckUpdateArmCannonOffset(void)
 {
+    u8 direction;
 
+    // Get direction
+    if (gSamusData.direction & KEY_RIGHT)
+        direction = FALSE;
+    else
+        direction = TRUE;
+
+    // Call function
+    sSamusUpdateArmCannonOffsetPointer[gSamusData.unk_0](direction);
 }
 
 void SamusBombBounce(u8 forcedMovement)

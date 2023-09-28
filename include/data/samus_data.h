@@ -21,4 +21,8 @@ typedef void (*SamusCheckPlayLowHealthSound_t)(void);
 
 extern const SamusCheckPlayLowHealthSound_t sSamusCheckPlayLowHealthSoundPointer[1];
 
+typedef void (*SamusUpdateArmCannonOffset_t)(u8);
+
+extern const SamusUpdateArmCannonOffset_t sSamusUpdateArmCannonOffsetPointer[1];
+
 #endif /* SAMUS_DATA_H */
