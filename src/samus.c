@@ -77,38 +77,15 @@ s16 SamusChangeVelocityOnSlope(void)
  */
 void SamusSetPalette(const u16* src, s32 offset, s32 length, u32 isSaX)
 {
-    // https://decomp.me/scratch/UsVnU
+    const u16 *source = src;
 
-    u32 saXFlag = isSaX;
-#ifndef NONMATCHING
-    register u16 *source asm("r3") = src;
-#else // !NONMATCHING
-    u16 *source = src;
-#endif // NONMATCHING
-    
-    s32 off = offset;
-    s32 end = off + length;
-
-    if (offset < end)
+    s32 i;
+    for (i = offset; i < offset + length; i++)
     {
-        u16 *samusPalette = gSamusPalette;
-        u16 *saXPalette = gSaXPalette;
-        u16 *saXDst = saXPalette + offset;
-        u16 *samusDst = samusPalette + off;
-        
-        off = end - off;
-    
-        do {
-            if (!saXFlag)
-                *samusDst = *source;
-            else
-                *saXDst = *source;
-    
-            source++;
-            saXDst++;
-            samusDst++;
-            off--;
-        } while (off != 0);
+        if (!isSaX)
+            gSamusPalette[i] = *source++;
+        else
+            gSaXPalette[i] = *source++;
     }
 }
 
