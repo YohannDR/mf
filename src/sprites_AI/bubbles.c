@@ -7,6 +7,7 @@
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 
+#include "structs/clipdata.h"
 #include "structs/sprite.h"
 
 // FIXME oam undefined

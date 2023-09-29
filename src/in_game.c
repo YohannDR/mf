@@ -6,6 +6,7 @@
 
 #include "constants/sa_x.h"
 
+#include "structs/clipdata.h"
 #include "structs/samus.h"
 #include "structs/sa_x.h"
 

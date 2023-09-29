@@ -143,7 +143,10 @@ SECTIONS {
         . = 0x00004d28; gSamusPalette = .;
         . = 0x00004d88; gSamusPaletteLength = .;
         . = 0x00004d90; gSaXPalette = .;
+        . = 0x00004dda; gElevatorDirection = .;
+        . = 0x00004ddc; gTilemapAndClipPointers = .;
         . = 0x00004e3c; gDestinationDoor = .;
+        . = 0x00005318; gClipdataCodePointer = .;
 
         . = 0x00005408; src/libgcc/fp-bit-base.o(.bss);
         . = 0x00005420; src/libgcc/float.o(.bss);

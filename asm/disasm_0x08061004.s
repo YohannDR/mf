@@ -7158,7 +7158,7 @@ LoadTileset: @ 0x080646E8
 	stm r1!, {r2, r3, r4}
 	ldm r0!, {r2, r3}
 	stm r1!, {r2, r3}
-	ldr r1, _08064724 @ =0x03004DDC
+	ldr r1, _08064724 @ =gTilemapAndClipPointers
 	ldr r0, [sp, #0x10]
 	adds r0, #2
 	str r0, [r1]
@@ -7173,7 +7173,7 @@ LoadTileset: @ 0x080646E8
 	.align 2, 0
 _0806471C: .4byte 0x083BF888
 _08064720: .4byte gCurrentRoomEntry
-_08064724: .4byte 0x03004DDC
+_08064724: .4byte gTilemapAndClipPointers
 _08064728: .4byte gCurrentArea
 _0806472C: .4byte 0x083F08E4
 _08064730: .4byte 0x083F1348
@@ -7677,7 +7677,7 @@ _08064B1C:
 	strb r2, [r0]
 	ldr r0, _08064BF8 @ =gCurrentNavigationRoom
 	strb r2, [r0]
-	ldr r0, _08064BFC @ =0x03004DDA
+	ldr r0, _08064BFC @ =gElevatorDirection
 	strb r2, [r0]
 	ldr r0, _08064C00 @ =gIsLoadingFile
 	ldrb r0, [r0]
@@ -7746,7 +7746,7 @@ _08064BEC: .4byte gPreviousArea
 _08064BF0: .4byte 0x0300002A
 _08064BF4: .4byte gCurrentCutscene
 _08064BF8: .4byte gCurrentNavigationRoom
-_08064BFC: .4byte 0x03004DDA
+_08064BFC: .4byte gElevatorDirection
 _08064C00: .4byte gIsLoadingFile
 _08064C04: .4byte gPreviousCutscene
 _08064C08: .4byte gLastDoorUsed
@@ -8588,7 +8588,7 @@ _08065378: .4byte gCurrentRoom
 _0806537C: .4byte 0x00007FFF
 _08065380: .4byte 0x083BF5C0
 _08065384:
-	ldr r4, _080653C0 @ =0x03004DDC
+	ldr r4, _080653C0 @ =gTilemapAndClipPointers
 	ldr r0, [r4, #4]
 	adds r0, r0, r5
 _0806538A:
@@ -8620,11 +8620,11 @@ _080653AA:
 	ldr r1, _080653C8 @ =0x083BE3A0
 	b _080653D2
 	.align 2, 0
-_080653C0: .4byte 0x03004DDC
+_080653C0: .4byte gTilemapAndClipPointers
 _080653C4: .4byte 0x00007FFF
 _080653C8: .4byte 0x083BE3A0
 _080653CC:
-	ldr r2, _0806542C @ =0x03004DDC
+	ldr r2, _0806542C @ =gTilemapAndClipPointers
 	ldr r1, [r2, #8]
 	lsls r0, r5, #1
 _080653D2:
@@ -8676,7 +8676,7 @@ _0806541E:
 	movs r4, #5
 	b _08065440
 	.align 2, 0
-_0806542C: .4byte 0x03004DDC
+_0806542C: .4byte gTilemapAndClipPointers
 _08065430: .4byte 0x03004DEC
 _08065434:
 	adds r1, r5, #0
@@ -9184,7 +9184,7 @@ _080657FC:
 	movs r0, #1
 	orrs r2, r0
 	adds r3, r2, #0
-	ldr r0, _08065868 @ =0x03004DDC
+	ldr r0, _08065868 @ =gTilemapAndClipPointers
 	ldr r4, [r0]
 	lsls r1, r1, #1
 	adds r1, r1, r4
@@ -9235,7 +9235,7 @@ _08065854:
 _08065864:
 	b _0806588E
 	.align 2, 0
-_08065868: .4byte 0x03004DDC
+_08065868: .4byte gTilemapAndClipPointers
 _0806586C:
 	cmp r2, #0
 	bne _0806588E
@@ -9434,7 +9434,7 @@ _080659AE:
 	beq _080659C2
 	bl unk_65a1c
 _080659C2:
-	ldr r0, _080659DC @ =0x03004DDA
+	ldr r0, _080659DC @ =gElevatorDirection
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _080659CE
@@ -9445,7 +9445,7 @@ _080659CE:
 	.align 2, 0
 _080659D4: .4byte 0x03000018
 _080659D8: .4byte 0x03004E44
-_080659DC: .4byte 0x03004DDA
+_080659DC: .4byte gElevatorDirection
 
 	thumb_func_start unk_659e0
 unk_659e0: @ 0x080659E0
@@ -9459,7 +9459,7 @@ unk_659e4: @ 0x080659E4
 	ldrb r0, [r0, #1]
 	cmp r0, #0x17
 	beq _08065A14
-	ldr r0, _08065A04 @ =0x03004DDA
+	ldr r0, _08065A04 @ =gElevatorDirection
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _08065A08
@@ -9468,19 +9468,19 @@ unk_659e4: @ 0x080659E4
 	b _08065A0E
 	.align 2, 0
 _08065A00: .4byte gSamusData
-_08065A04: .4byte 0x03004DDA
+_08065A04: .4byte gElevatorDirection
 _08065A08:
 	movs r0, #0x43
 	bl CheckUpdateSubEventAndMusic
 _08065A0E:
-	ldr r1, _08065A18 @ =0x03004DDA
+	ldr r1, _08065A18 @ =gElevatorDirection
 	movs r0, #0
 	strb r0, [r1]
 _08065A14:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08065A18: .4byte 0x03004DDA
+_08065A18: .4byte gElevatorDirection
 
 	thumb_func_start unk_65a1c
 unk_65a1c: @ 0x08065A1C
@@ -10151,7 +10151,7 @@ _08065F78:
 	mov sl, r2
 	ldr r0, _08065FF0 @ =0x083BE740
 	mov ip, r0
-	ldr r7, _08065FF4 @ =0x03004DDC
+	ldr r7, _08065FF4 @ =gTilemapAndClipPointers
 	ldr r1, [sp, #0xc]
 	adds r1, #6
 	str r1, [sp, #0x10]
@@ -10206,7 +10206,7 @@ _08065FE4: .4byte 0x0300122E
 _08065FE8: .4byte 0x0300122C
 _08065FEC: .4byte gBackgroundsData
 _08065FF0: .4byte 0x083BE740
-_08065FF4: .4byte 0x03004DDC
+_08065FF4: .4byte gTilemapAndClipPointers
 _08065FF8: .4byte 0x00007FFF
 _08065FFC:
 	lsls r3, r3, #2
@@ -12822,7 +12822,7 @@ _080673A8:
 	mov sl, r0
 	ldr r1, _08067420 @ =0x083BE740
 	mov ip, r1
-	ldr r7, _08067424 @ =0x03004DDC
+	ldr r7, _08067424 @ =gTilemapAndClipPointers
 	ldr r2, [sp, #0xc]
 	adds r2, #6
 	str r2, [sp, #0x14]
@@ -12877,7 +12877,7 @@ _08067414: .4byte 0x0300122E
 _08067418: .4byte 0x0300122C
 _0806741C: .4byte gBackgroundsData
 _08067420: .4byte 0x083BE740
-_08067424: .4byte 0x03004DDC
+_08067424: .4byte gTilemapAndClipPointers
 _08067428: .4byte 0x00007FFF
 _0806742C:
 	lsls r3, r3, #2
@@ -15740,7 +15740,7 @@ _08068A1E:
 	ands r0, r7
 	cmp r0, #0
 	bne _08068ACE
-	ldr r0, _08068A54 @ =0x03004DDC
+	ldr r0, _08068A54 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r2, #1
 	adds r0, r0, r1
@@ -15753,7 +15753,7 @@ _08068A1E:
 _08068A48: .4byte gBg1YPosition
 _08068A4C: .4byte gBg1XPosition
 _08068A50: .4byte gBackgroundsData
-_08068A54: .4byte 0x03004DDC
+_08068A54: .4byte gTilemapAndClipPointers
 _08068A58: .4byte 0x00008006
 _08068A5C:
 	cmp r2, #0x1a
@@ -15842,23 +15842,23 @@ _08068AEC: .4byte 0x03004E48
 	thumb_func_start SetupClipdataCode
 SetupClipdataCode: @ 0x08068AF0
 	ldr r1, _08068B08 @ =0x040000D4
-	ldr r0, _08068B0C @ =ConvertClipdataToCollision
+	ldr r0, _08068B0C @ =ClipdataConvertToCollision
 	str r0, [r1]
 	ldr r2, _08068B10 @ =gNonGameplayRam
 	str r2, [r1, #4]
 	ldr r0, _08068B14 @ =0x80000140
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08068B18 @ =0x03005318
+	ldr r0, _08068B18 @ =gClipdataCodePointer
 	adds r2, #1
 	str r2, [r0]
 	bx lr
 	.align 2, 0
 _08068B08: .4byte 0x040000D4
-_08068B0C: .4byte ConvertClipdataToCollision
+_08068B0C: .4byte ClipdataConvertToCollision
 _08068B10: .4byte gNonGameplayRam
 _08068B14: .4byte 0x80000140
-_08068B18: .4byte 0x03005318
+_08068B18: .4byte gClipdataCodePointer
 
 	thumb_func_start ProcessClipdataForSamus
 ProcessClipdataForSamus: @ 0x08068B1C
@@ -15916,7 +15916,7 @@ _08068B4C:
 _08068B80: .4byte 0x083BF5C0
 _08068B84: .4byte 0x00007FFF
 _08068B88:
-	ldr r0, _08068BB8 @ =0x03004DDC
+	ldr r0, _08068BB8 @ =gTilemapAndClipPointers
 	ldr r0, [r0, #4]
 	adds r0, r0, r2
 	ldrb r0, [r0]
@@ -15931,7 +15931,7 @@ _08068B90:
 	str r0, [sp, #4]
 	movs r0, #0
 	str r0, [sp, #0x14]
-	ldr r0, _08068BBC @ =0x03005318
+	ldr r0, _08068BBC @ =gClipdataCodePointer
 	ldr r1, [r0]
 	mov r0, sp
 	bl _call_via_r1
@@ -15942,8 +15942,8 @@ _08068BB0:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08068BB8: .4byte 0x03004DDC
-_08068BBC: .4byte 0x03005318
+_08068BB8: .4byte gTilemapAndClipPointers
+_08068BBC: .4byte gClipdataCodePointer
 
 	thumb_func_start ProcessClipdata
 ProcessClipdata: @ 0x08068BC0
@@ -16050,7 +16050,7 @@ _08068C84: .4byte gCurrentClipdataAffectingAction
 _08068C88: .4byte 0x083BF5C0
 _08068C8C: .4byte 0x00007FFF
 _08068C90:
-	ldr r0, _08068CC0 @ =0x03004DDC
+	ldr r0, _08068CC0 @ =gTilemapAndClipPointers
 	ldr r0, [r0, #4]
 	adds r0, r0, r4
 _08068C96:
@@ -16063,7 +16063,7 @@ _08068C96:
 	mov r0, sb
 	ands r0, r1
 	str r0, [sp, #4]
-	ldr r0, _08068CC4 @ =0x03005318
+	ldr r0, _08068CC4 @ =gClipdataCodePointer
 	ldr r1, [r0]
 	mov r0, sp
 	bl _call_via_r1
@@ -16076,11 +16076,11 @@ _08068CB2:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08068CC0: .4byte 0x03004DDC
-_08068CC4: .4byte 0x03005318
+_08068CC0: .4byte gTilemapAndClipPointers
+_08068CC4: .4byte gClipdataCodePointer
 
-	thumb_func_start ConvertClipdataToCollision
-ConvertClipdataToCollision: @ 0x08068CC8
+	thumb_func_start ClipdataConvertToCollision
+ClipdataConvertToCollision: @ 0x08068CC8
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r2, #0
@@ -16229,7 +16229,7 @@ _08068DE4: .4byte gBackgroundsData
 _08068DE8: .4byte 0x083BE3A0
 _08068DEC: .4byte 0x00007FFF
 _08068DF0:
-	ldr r0, _08068E48 @ =0x03004DDC
+	ldr r0, _08068E48 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 _08068DF4:
 	lsls r0, r3, #1
@@ -16275,7 +16275,7 @@ _08068E20:
 	movs r3, #1
 	b _08068E52
 	.align 2, 0
-_08068E48: .4byte 0x03004DDC
+_08068E48: .4byte gTilemapAndClipPointers
 _08068E4C: .4byte 0x03004DEC
 _08068E50:
 	movs r3, #0
@@ -16352,7 +16352,7 @@ _08068EAC:
 _08068ED0: .4byte 0x083BE3A0
 _08068ED4: .4byte 0x00007FFF
 _08068ED8:
-	ldr r0, _08068EEC @ =0x03004DDC
+	ldr r0, _08068EEC @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 _08068EDC:
 	lsls r0, r4, #1
@@ -16364,7 +16364,7 @@ _08068EDC:
 	movs r4, #3
 	b _08068F26
 	.align 2, 0
-_08068EEC: .4byte 0x03004DDC
+_08068EEC: .4byte gTilemapAndClipPointers
 _08068EF0:
 	cmp r5, #7
 	bne _08068EF8
@@ -16621,17 +16621,17 @@ _080690BE:
 	cmp r7, #1
 	bne _080690DC
 	movs r3, #0x41
-	ldr r1, _080690D8 @ =0x03004DDA
+	ldr r1, _080690D8 @ =gElevatorDirection
 	movs r0, #2
 	b _080690E2
 	.align 2, 0
 _080690CC: .4byte gLastElevatorUsed
 _080690D0: .4byte 0x083C8C28
 _080690D4: .4byte gEventCounter
-_080690D8: .4byte 0x03004DDA
+_080690D8: .4byte gElevatorDirection
 _080690DC:
 	movs r3, #0x40
-	ldr r1, _080690FC @ =0x03004DDA
+	ldr r1, _080690FC @ =gElevatorDirection
 	movs r0, #1
 _080690E2:
 	strb r0, [r1]
@@ -16647,7 +16647,7 @@ _080690EC:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080690FC: .4byte 0x03004DDA
+_080690FC: .4byte gElevatorDirection
 
 	thumb_func_start GetGroundEffectAtPosition
 GetGroundEffectAtPosition: @ 0x08069100
@@ -16684,7 +16684,7 @@ _08069124:
 	ands r0, r2
 	cmp r0, #0
 	bne _08069178
-	ldr r0, _08069154 @ =0x03004DDC
+	ldr r0, _08069154 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r2, #1
 	adds r0, r0, r1
@@ -16696,7 +16696,7 @@ _08069124:
 	movs r2, #1
 	b _0806917A
 	.align 2, 0
-_08069154: .4byte 0x03004DDC
+_08069154: .4byte gTilemapAndClipPointers
 _08069158:
 	cmp r2, #0x51
 	bne _08069160
@@ -20879,7 +20879,7 @@ _0806B184:
 	lsls r2, r3, #1
 	adds r4, r2, r7
 	ldrh r0, [r4]
-	ldr r5, _0806B208 @ =0x03004DDC
+	ldr r5, _0806B208 @ =gTilemapAndClipPointers
 	ldr r1, [r5, #8]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -20926,7 +20926,7 @@ _0806B1EE:
 _0806B1FC: .4byte 0x02036000
 _0806B200: .4byte gBackgroundsData
 _0806B204: .4byte gCurrentRoom
-_0806B208: .4byte 0x03004DDC
+_0806B208: .4byte gTilemapAndClipPointers
 
 	thumb_func_start StoreBrokenNonReformBlock
 StoreBrokenNonReformBlock: @ 0x0806B20C
@@ -21236,7 +21236,7 @@ _0806B460:
 	mov r0, sp
 	strh r1, [r0, #6]
 	mov r2, sp
-	ldr r0, _0806B48C @ =0x03004DDC
+	ldr r0, _0806B48C @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r3, #1
 _0806B46C:
@@ -21257,7 +21257,7 @@ _0806B480:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806B48C: .4byte 0x03004DDC
+_0806B48C: .4byte gTilemapAndClipPointers
 _0806B490: .4byte gCurrentClipdataAffectingAction
 _0806B494: .4byte _0806B498
 _0806B498: @ jump table
@@ -21961,7 +21961,7 @@ _0806B9FC: .4byte 0x00007FFF
 _0806BA00: .4byte 0x083BE740
 _0806BA04:
 	lsls r3, r5, #2
-	ldr r0, _0806BA3C @ =0x03004DDC
+	ldr r0, _0806BA3C @ =gTilemapAndClipPointers
 	ldr r1, [r0]
 	lsls r0, r5, #3
 _0806BA0C:
@@ -21991,7 +21991,7 @@ _0806BA36:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806BA3C: .4byte 0x03004DDC
+_0806BA3C: .4byte gTilemapAndClipPointers
 
 	thumb_func_start StoreBrokenReformBlock
 StoreBrokenReformBlock: @ 0x0806BA40
@@ -22384,7 +22384,7 @@ _0806BCF4:
 	adds r0, r0, r1
 	ldrh r3, [r0]
 	mov r2, sp
-	ldr r0, _0806BD2C @ =0x03004DDC
+	ldr r0, _0806BD2C @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r3, #1
 	adds r0, r0, r1
@@ -22398,7 +22398,7 @@ _0806BCF4:
 	b _0806BD4A
 	.align 2, 0
 _0806BD28: .4byte gBackgroundsData
-_0806BD2C: .4byte 0x03004DDC
+_0806BD2C: .4byte gTilemapAndClipPointers
 _0806BD30:
 	ldrb r1, [r4, #3]
 	movs r0, #0x41
@@ -22445,7 +22445,7 @@ _0806BD5C:
 	adds r0, r0, r1
 	ldrh r3, [r0]
 	mov r2, sp
-	ldr r0, _0806BDBC @ =0x03004DDC
+	ldr r0, _0806BDBC @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r3, #1
 	adds r0, r0, r1
@@ -22470,7 +22470,7 @@ _0806BD9A:
 	.align 2, 0
 _0806BDB4: .4byte 0x03004FA8
 _0806BDB8: .4byte gBackgroundsData
-_0806BDBC: .4byte 0x03004DDC
+_0806BDBC: .4byte gTilemapAndClipPointers
 _0806BDC0:
 	mov r1, sp
 	ldrb r0, [r4, #2]
@@ -22508,7 +22508,7 @@ _0806BDEC:
 	adds r0, r0, r1
 	ldrh r3, [r0]
 	mov r2, sp
-	ldr r0, _0806BE24 @ =0x03004DDC
+	ldr r0, _0806BE24 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r3, #1
 	adds r0, r0, r1
@@ -22522,7 +22522,7 @@ _0806BDEC:
 	b _0806BE42
 	.align 2, 0
 _0806BE20: .4byte gBackgroundsData
-_0806BE24: .4byte 0x03004DDC
+_0806BE24: .4byte gTilemapAndClipPointers
 _0806BE28:
 	ldrb r1, [r4, #3]
 	movs r0, #0x41
@@ -22576,7 +22576,7 @@ _0806BE7C:
 	adds r0, r0, r1
 	ldrh r3, [r0]
 	mov r2, sp
-	ldr r0, _0806BEA8 @ =0x03004DDC
+	ldr r0, _0806BEA8 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r3, #1
 	adds r0, r0, r1
@@ -22590,7 +22590,7 @@ _0806BE9E:
 	movs r7, #1
 	b _0806BEC4
 	.align 2, 0
-_0806BEA8: .4byte 0x03004DDC
+_0806BEA8: .4byte gTilemapAndClipPointers
 _0806BEAC:
 	ldrb r1, [r4, #3]
 	movs r0, #0x7f
@@ -22901,7 +22901,7 @@ _0806C0CC:
 _0806C0F0: .4byte 0x083BE3A0
 _0806C0F4: .4byte 0x00007FFF
 _0806C0F8:
-	ldr r0, _0806C110 @ =0x03004DDC
+	ldr r0, _0806C110 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r3, #1
 _0806C0FE:
@@ -22914,7 +22914,7 @@ _0806C0FE:
 	bne _0806C11A
 	b _0806C11E
 	.align 2, 0
-_0806C110: .4byte 0x03004DDC
+_0806C110: .4byte gTilemapAndClipPointers
 _0806C114:
 	cmp r1, #5
 	bne _0806C11A
@@ -23088,7 +23088,7 @@ _0806C244: .4byte gBackgroundsData
 _0806C248: .4byte 0x083BE3A0
 _0806C24C: .4byte 0x00007FFF
 _0806C250:
-	ldr r0, _0806C2B4 @ =0x03004DDC
+	ldr r0, _0806C2B4 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r4, #1
 	adds r0, r0, r1
@@ -23140,7 +23140,7 @@ _0806C276:
 	str r0, [r1]
 	b _0806C2DA
 	.align 2, 0
-_0806C2B4: .4byte 0x03004DDC
+_0806C2B4: .4byte gTilemapAndClipPointers
 _0806C2B8: .4byte gBackgroundsData
 _0806C2BC: .4byte 0x083BE3A0
 _0806C2C0: .4byte 0x00007FFF
@@ -23150,7 +23150,7 @@ _0806C2C4:
 	mov r2, sp
 	adds r2, r2, r0
 	adds r2, #0xc
-	ldr r0, _0806C2F0 @ =0x03004DDC
+	ldr r0, _0806C2F0 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 	lsls r0, r4, #1
 	adds r0, r0, r1
@@ -23168,7 +23168,7 @@ _0806C2DA:
 	movs r4, #0
 	b _0806C310
 	.align 2, 0
-_0806C2F0: .4byte 0x03004DDC
+_0806C2F0: .4byte gTilemapAndClipPointers
 _0806C2F4:
 	ldr r0, [sp, #0x10]
 	cmp r0, #3
@@ -23456,7 +23456,7 @@ _0806C524: .4byte gBackgroundsData
 _0806C528: .4byte 0x083BE3A0
 _0806C52C: .4byte 0x00007FFF
 _0806C530:
-	ldr r0, _0806C568 @ =0x03004DDC
+	ldr r0, _0806C568 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 _0806C534:
 	lsls r0, r3, #1
@@ -23487,7 +23487,7 @@ _0806C562:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806C568: .4byte 0x03004DDC
+_0806C568: .4byte gTilemapAndClipPointers
 _0806C56C: .4byte gSamusData
 
 	thumb_func_start ClearBg1BlockValue
@@ -23547,7 +23547,7 @@ _0806C5CC:
 	adds r0, r0, r1
 	lsls r0, r0, #1
 	adds r3, r3, r0
-	ldr r0, _0806C610 @ =0x03004DDC
+	ldr r0, _0806C610 @ =gTilemapAndClipPointers
 	ldr r1, [r0]
 	ldrh r0, [r1]
 	strh r0, [r3]
@@ -23570,7 +23570,7 @@ _0806C600: .4byte gBg1YPosition
 _0806C604: .4byte gBg1XPosition
 _0806C608: .4byte 0x06001000
 _0806C60C: .4byte 0x06001800
-_0806C610: .4byte 0x03004DDC
+_0806C610: .4byte gTilemapAndClipPointers
 
 	thumb_func_start SetBg1BlockValue
 SetBg1BlockValue: @ 0x0806C614
@@ -23633,7 +23633,7 @@ _0806C670:
 	lsls r0, r4, #0x12
 	lsrs r4, r0, #0x10
 	adds r1, r4, #0
-	ldr r3, _0806C6E0 @ =0x03004DDC
+	ldr r3, _0806C6E0 @ =gTilemapAndClipPointers
 	movs r0, #1
 	orrs r4, r0
 	adds r2, r4, #0
@@ -23674,7 +23674,7 @@ _0806C6D0: .4byte gBg1YPosition
 _0806C6D4: .4byte gBg1XPosition
 _0806C6D8: .4byte 0x06001000
 _0806C6DC: .4byte 0x06001800
-_0806C6E0: .4byte 0x03004DDC
+_0806C6E0: .4byte gTilemapAndClipPointers
 
 	thumb_func_start SetBg1BlockTilemapValue
 SetBg1BlockTilemapValue: @ 0x0806C6E4
@@ -24197,7 +24197,7 @@ _0806CAD8: .4byte gBackgroundsData
 _0806CADC: .4byte 0x083BE3A0
 _0806CAE0: .4byte 0x00007FFF
 _0806CAE4:
-	ldr r0, _0806CB38 @ =0x03004DDC
+	ldr r0, _0806CB38 @ =gTilemapAndClipPointers
 	ldr r1, [r0, #8]
 _0806CAE8:
 	lsls r0, r3, #1
@@ -24242,7 +24242,7 @@ _0806CB32:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806CB38: .4byte 0x03004DDC
+_0806CB38: .4byte gTilemapAndClipPointers
 _0806CB3C: .4byte gSamusData
 _0806CB40: .4byte 0x0828FD04
 
@@ -24597,7 +24597,7 @@ _0806CDC8:
 	ldrh r0, [r1, #0x1c]
 	muls r0, r2, r0
 	ldr r1, [r1, #0x18]
-	ldr r7, _0806CE38 @ =0x03004DDC
+	ldr r7, _0806CE38 @ =gTilemapAndClipPointers
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	mov r2, sb
@@ -24648,7 +24648,7 @@ _0806CE24:
 	bx r1
 	.align 2, 0
 _0806CE34: .4byte gBackgroundsData
-_0806CE38: .4byte 0x03004DDC
+_0806CE38: .4byte gTilemapAndClipPointers
 _0806CE3C: .4byte 0xFFFF7FE3
 
 	thumb_func_start RemoveCollectedTanks
@@ -24688,7 +24688,7 @@ _0806CE78:
 	movs r4, #0
 	cmp r4, r8
 	bge _0806CEFC
-	ldr r7, _0806CED8 @ =0x03004DDC
+	ldr r7, _0806CED8 @ =gTilemapAndClipPointers
 	mov sl, r7
 	ldr r0, _0806CEDC @ =gCurrentRoom
 	mov sb, r0
@@ -24730,7 +24730,7 @@ _0806CE90:
 	b _0806CEF4
 	.align 2, 0
 _0806CED4: .4byte 0x02037200
-_0806CED8: .4byte 0x03004DDC
+_0806CED8: .4byte gTilemapAndClipPointers
 _0806CEDC: .4byte gCurrentRoom
 _0806CEE0: .4byte gBackgroundsData
 _0806CEE4: .4byte 0x0000802C

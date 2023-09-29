@@ -4,13 +4,19 @@
 #include "types.h"
 #include "structs/menus/pause_screen.h"
 
+struct InGameData {
+    u8 clipdataCode[640];
+};
+
 union NonGameplayRam {
     struct PauseScreenData pauseScreen;
+    struct InGameData inGame;
 };
 
 extern union NonGameplayRam gNonGameplayRam;
 
 #define PAUSE_SCREEN_DATA gNonGameplayRam.pauseScreen
+#define IN_GAME_DATA gNonGameplayRam.inGame
 
 extern u8 gRebootGame;
 extern u8 gClearedEveryFrame;
@@ -48,7 +54,6 @@ extern u8 gDestinationDoor;
 extern u8 gCurrentRoom;
 extern u8 gLastDoorUsed;
 extern u8 gCurrentNavigationRoom;
-extern u8 gLastElevatorUsed;
 extern u8 gSpritesetNumber;
 
 extern u8 gDisplayLocationName;
@@ -68,19 +73,6 @@ struct BackgroundPositions {
 };
 
 extern struct BackgroundPositions gBackgroundPositions;
-
-struct BackgroundsData {
-    struct {
-        u16* pDecomp;
-        u16 width;
-        u16 height;
-    } backgrounds[3];
-    u16* pClipDecomp;
-    u16 clipdataWidth;
-    u16 clipdataHeight;
-};
-
-extern struct BackgroundsData gBackgroundsData;
 
 struct Haze {
     void* pAffected;
@@ -135,20 +127,6 @@ enum NavigationRoom {
     NAV_ROOM_MAIN_DECK_ROOM_66,
 };
 
-enum Elevator {
-    ELEVATOR_MAIN_DECK_TO_OPERATIONS_DECK,
-    ELEVATOR_MAIN_DECK_TO_LOBBY,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_1,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_2,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_3,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_4,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_5,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_6,
-    ELEVATOR_MAIN_DECK_TO_LOBBY_POWER_OUTAGE,
-    ELEVATOR_MAIN_DECK_TO_HABITATIONS_DECK,
-    ELEVATOR_RESTRICTED_ZONE_TO_SECTOR_1,
-};
-
 enum Cutscene {
     CUTSCENE_NONE,
     CUTSCENE_MONOLOGUE_INTRO,
@@ -183,13 +161,6 @@ struct IoRegisters {
 extern struct IoRegisters gIoRegisters;
 
 extern u16 gEffectYPosition;
-
-struct CurrentAffectingClipdata {
-    u16 movement;
-    u16 hazard;
-};
-
-extern struct CurrentAffectingClipdata gCurrentAffectingClipdata;
 
 struct ButtonAssignments {
     u16 armMissiles;

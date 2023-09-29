@@ -5,8 +5,10 @@
 #include "data/event_data.h"
 #include "data/sub_event_data.h"
 
+#include "constants/clipdata.h"
 #include "constants/event.h"
 
+#include "structs/clipdata.h"
 #include "structs/event.h"
 
 /**
