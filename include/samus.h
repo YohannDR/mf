@@ -11,7 +11,7 @@ void SamusUpdateCollisionData(void);
 void SamusCallUpdateGraphics(void);
 void SamusCallCheckPlayLowHealthSound(void);
 void SamusCheckUpdateArmCannonOffset(void);
-void SamusBombBounce(u8 forcedMovement);
+void SamusBombBounce(u8 direction);
 void SamusCheckSetNewEnvironmentEffect(u32 offset, u32 request);
 void SamusUpdateEnvironmentEffect(void);
 void SamusAimCannonStanding(void);
