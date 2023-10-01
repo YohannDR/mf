@@ -13,4 +13,6 @@ extern const struct UnkStruct_3c8c28 sElevatorRideEvents[4];
 
 extern const u8 sClipdataTilemapCollisionTypes[464];
 
+extern const u16 sClipdataTilemapBehaviorTypes[464];
+
 #endif /* CLIPDATA_DATA_H */

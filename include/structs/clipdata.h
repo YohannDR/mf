@@ -7,12 +7,12 @@
 
 struct CollisionData {
     u32 type;
-    u32 subPixelX;
-    u32 subPixelY;
+    s32 subPixelX;
+    s32 subPixelY;
     u32 unk_C;
     u16 unk_10;
     u16 unk_12;
-    u32 actor;
+    s32 actor;
     u16 tileX;
     u16 tileY;
 };

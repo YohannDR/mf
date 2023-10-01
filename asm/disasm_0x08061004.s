@@ -4260,7 +4260,7 @@ HatchStartLockAnimation: @ 0x08063008
 	bne _08063022
 	movs r2, #1
 _08063022:
-	ldr r0, _0806306C @ =0x03004DEC
+	ldr r0, _0806306C @ =gHatchData
 	lsls r5, r3, #2
 	adds r5, r5, r0
 	movs r0, #3
@@ -4297,7 +4297,7 @@ _08063022:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806306C: .4byte 0x03004DEC
+_0806306C: .4byte gHatchData
 
 	thumb_func_start LockHatches
 LockHatches: @ 0x08063070
@@ -4310,7 +4310,7 @@ LockHatches: @ 0x08063070
 	movs r4, #0
 	movs r5, #0
 _08063080:
-	ldr r1, _080630D8 @ =0x03004DEC
+	ldr r1, _080630D8 @ =gHatchData
 	lsls r0, r4, #2
 	adds r3, r0, r1
 	ldrb r0, [r3]
@@ -4353,7 +4353,7 @@ _08063080:
 	b _080630EE
 	.align 2, 0
 _080630D4: .4byte 0x03004E3B
-_080630D8: .4byte 0x03004DEC
+_080630D8: .4byte gHatchData
 _080630DC: .4byte 0x03004E04
 _080630E0: .4byte gLastDoorUsed
 _080630E4:
@@ -4383,7 +4383,7 @@ LockHatchesWithTimer: @ 0x08063100
 	movs r4, #0
 	movs r5, #0
 _08063110:
-	ldr r1, _08063168 @ =0x03004DEC
+	ldr r1, _08063168 @ =gHatchData
 	lsls r0, r4, #2
 	adds r3, r0, r1
 	ldrb r0, [r3]
@@ -4426,7 +4426,7 @@ _08063110:
 	b _0806317E
 	.align 2, 0
 _08063164: .4byte 0x03004E3B
-_08063168: .4byte 0x03004DEC
+_08063168: .4byte gHatchData
 _0806316C: .4byte 0x03004E04
 _08063170: .4byte gLastDoorUsed
 _08063174:
@@ -4687,7 +4687,7 @@ _08063336:
 	movs r0, #1
 	mov r8, r0
 _08063344:
-	ldr r0, _08063390 @ =0x03004DEC
+	ldr r0, _08063390 @ =gHatchData
 	lsls r1, r4, #2
 	adds r3, r1, r0
 	ldrb r1, [r3]
@@ -4724,7 +4724,7 @@ _0806335C:
 	.align 2, 0
 _08063388: .4byte gPauseScreenFlag
 _0806338C: .4byte 0x03004E3B
-_08063390: .4byte 0x03004DEC
+_08063390: .4byte gHatchData
 _08063394: .4byte gDoorUnlockTimer
 _08063398:
 	cmp r1, #0
@@ -5868,7 +5868,7 @@ CheckUnlockHatches: @ 0x08063C8C
 	movs r1, #0xf
 	rsbs r1, r1, #0
 	mov r8, r1
-	ldr r3, _08063D28 @ =0x03004DEC
+	ldr r3, _08063D28 @ =gHatchData
 	subs r0, #1
 	mov ip, r0
 _08063CD8:
@@ -5911,7 +5911,7 @@ _08063D12:
 _08063D1C: .4byte gDoorUnlockTimer
 _08063D20: .4byte 0x03004E3B
 _08063D24: .4byte gCurrentNavigationRoom
-_08063D28: .4byte 0x03004DEC
+_08063D28: .4byte gHatchData
 _08063D2C:
 	cmp r1, #0
 	bge _08063D34
@@ -6041,7 +6041,7 @@ CheckUnlockProximityHatches: @ 0x08063E00
 	mov ip, r2
 	cmp r2, #5
 	bgt _08063ED2
-	ldr r0, _08063E5C @ =0x03004DEC
+	ldr r0, _08063E5C @ =gHatchData
 	lsls r2, r2, #2
 	adds r3, r2, r0
 	ldrb r4, [r3]
@@ -6073,7 +6073,7 @@ CheckUnlockProximityHatches: @ 0x08063E00
 	b _08063E66
 	.align 2, 0
 _08063E58: .4byte gFrameCounter8Bit
-_08063E5C: .4byte 0x03004DEC
+_08063E5C: .4byte gHatchData
 _08063E60: .4byte 0x03004E3B
 _08063E64:
 	subs r5, r3, #2
@@ -8515,7 +8515,7 @@ _080652DA:
 	ldr r1, [r0]
 	ldr r4, _0806536C @ =0x03004E04
 	movs r2, #0
-	ldr r3, _08065370 @ =0x03004DEC
+	ldr r3, _08065370 @ =gHatchData
 _080652EC:
 	stm r3!, {r1}
 	mov r7, ip
@@ -8582,7 +8582,7 @@ _08065360: .4byte 0x0879B894
 _08065364: .4byte gCurrentArea
 _08065368: .4byte 0x083C88B0
 _0806536C: .4byte 0x03004E04
-_08065370: .4byte 0x03004DEC
+_08065370: .4byte gHatchData
 _08065374: .4byte gBackgroundsData
 _08065378: .4byte gCurrentRoom
 _0806537C: .4byte 0x00007FFF
@@ -8660,7 +8660,7 @@ _08065402:
 	movs r6, #0
 	movs r2, #1
 	rsbs r2, r2, #0
-	ldr r1, _08065430 @ =0x03004DEC
+	ldr r1, _08065430 @ =gHatchData
 	adds r1, #0x14
 _08065414:
 	ldrb r0, [r1]
@@ -8677,7 +8677,7 @@ _0806541E:
 	b _08065440
 	.align 2, 0
 _0806542C: .4byte gTilemapAndClipPointers
-_08065430: .4byte 0x03004DEC
+_08065430: .4byte gHatchData
 _08065434:
 	adds r1, r5, #0
 	subs r1, #0x80
@@ -8687,7 +8687,7 @@ _08065434:
 	subs r6, r1, r0
 _08065440:
 	lsls r1, r6, #2
-	ldr r0, _08065478 @ =0x03004DEC
+	ldr r0, _08065478 @ =gHatchData
 	adds r3, r1, r0
 	ldrb r5, [r3]
 	lsls r0, r5, #0x1f
@@ -8715,12 +8715,12 @@ _08065440:
 	adds r0, #1
 	b _0806547E
 	.align 2, 0
-_08065478: .4byte 0x03004DEC
+_08065478: .4byte gHatchData
 _0806547C:
 	subs r0, #1
 _0806547E:
 	strb r0, [r3, #2]
-	ldr r4, _0806549C @ =0x03004DEC
+	ldr r4, _0806549C @ =gHatchData
 	adds r2, r2, r4
 	ldrb r0, [r2]
 	movs r1, #1
@@ -8734,7 +8734,7 @@ _0806547E:
 	add ip, r4
 	b _08065534
 	.align 2, 0
-_0806549C: .4byte 0x03004DEC
+_0806549C: .4byte gHatchData
 _080654A0: .4byte 0x03004E04
 _080654A4:
 	movs r0, #0xe0
@@ -8742,7 +8742,7 @@ _080654A4:
 	strb r0, [r3]
 	b _08065534
 _080654AC:
-	ldr r0, _080654C0 @ =0x03004DEC
+	ldr r0, _080654C0 @ =gHatchData
 	ldrb r1, [r0, #0x14]
 	movs r2, #1
 	adds r0, r2, #0
@@ -8752,9 +8752,9 @@ _080654AC:
 	movs r6, #5
 	b _080654D8
 	.align 2, 0
-_080654C0: .4byte 0x03004DEC
+_080654C0: .4byte gHatchData
 _080654C4:
-	ldr r4, _0806551C @ =0x03004DEC
+	ldr r4, _0806551C @ =gHatchData
 	ldrb r1, [r4, #0x10]
 	adds r0, r2, #0
 	ands r0, r1
@@ -8767,7 +8767,7 @@ _080654D4:
 	beq _08065534
 _080654D8:
 	lsls r0, r6, #2
-	ldr r1, _0806551C @ =0x03004DEC
+	ldr r1, _0806551C @ =gHatchData
 	adds r2, r0, r1
 	ldrb r0, [r2]
 	movs r1, #0x1f
@@ -8800,7 +8800,7 @@ _080654D8:
 	orrs r0, r1
 	b _08065532
 	.align 2, 0
-_0806551C: .4byte 0x03004DEC
+_0806551C: .4byte gHatchData
 _08065520: .4byte 0x03004E04
 _08065524:
 	ldrb r0, [r2, #2]
@@ -8843,7 +8843,7 @@ _08065558:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	beq _080655AE
-	ldr r0, _08065614 @ =0x03004DEC
+	ldr r0, _08065614 @ =gHatchData
 	lsls r1, r7, #2
 	adds r5, r1, r0
 	ldrb r2, [r5]
@@ -8883,7 +8883,7 @@ _080655AE:
 	movs r5, #0xf
 	rsbs r5, r5, #0
 _080655B8:
-	ldr r0, _08065614 @ =0x03004DEC
+	ldr r0, _08065614 @ =gHatchData
 	lsls r1, r6, #2
 	adds r4, r1, r0
 	ldrb r2, [r4]
@@ -8929,7 +8929,7 @@ _080655FC:
 	.align 2, 0
 _0806560C: .4byte gLastDoorUsed
 _08065610: .4byte gUnk_03000be3
-_08065614: .4byte 0x03004DEC
+_08065614: .4byte gHatchData
 
 	thumb_func_start unk_65618
 unk_65618: @ 0x08065618
@@ -8939,7 +8939,7 @@ unk_65618: @ 0x08065618
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08065642
-	ldr r3, _08065650 @ =0x03004DEC
+	ldr r3, _08065650 @ =gHatchData
 	ldrb r1, [r3, #1]
 	movs r4, #3
 	adds r0, r4, #0
@@ -8962,7 +8962,7 @@ _08065642:
 	bx r1
 	.align 2, 0
 _0806564C: .4byte gCurrentNavigationRoom
-_08065650: .4byte 0x03004DEC
+_08065650: .4byte gHatchData
 
 	thumb_func_start SetupInitialTilemap
 SetupInitialTilemap: @ 0x08065654
@@ -15209,7 +15209,7 @@ UpdateGadoraHatch: @ 0x080685B4
 	lsls r1, r1, #0x10
 	mov ip, r1
 	mov sb, r3
-	ldr r3, _08068638 @ =0x03004DEC
+	ldr r3, _08068638 @ =gHatchData
 	movs r0, #2
 	rsbs r0, r0, #0
 	mov sl, r0
@@ -15254,7 +15254,7 @@ _0806861C:
 	strb r0, [r3]
 	b _08068644
 	.align 2, 0
-_08068638: .4byte 0x03004DEC
+_08068638: .4byte gHatchData
 _0806863C:
 	adds r3, #4
 	adds r4, #1
@@ -16264,7 +16264,7 @@ _08068E20:
 	lsls r0, r0, #1
 	subs r2, r1, r0
 	movs r3, #0
-	ldr r1, _08068E4C @ =0x03004DEC
+	ldr r1, _08068E4C @ =gHatchData
 	lsls r0, r2, #2
 	adds r0, r0, r1
 	ldrb r0, [r0, #1]
@@ -16276,7 +16276,7 @@ _08068E20:
 	b _08068E52
 	.align 2, 0
 _08068E48: .4byte gTilemapAndClipPointers
-_08068E4C: .4byte 0x03004DEC
+_08068E4C: .4byte gHatchData
 _08068E50:
 	movs r3, #0
 _08068E52:
@@ -16879,7 +16879,7 @@ _0806929E:
 	strh r0, [r1]
 	ldrb r0, [r4]
 	bl ProcessDoorType
-	ldr r2, _0806932C @ =0x03004DEC
+	ldr r2, _0806932C @ =gHatchData
 	movs r5, #5
 _080692AC:
 	ldrb r0, [r2, #1]
@@ -16947,7 +16947,7 @@ _080692E8:
 	movs r6, #0
 	b _08069348
 	.align 2, 0
-_0806932C: .4byte 0x03004DEC
+_0806932C: .4byte gHatchData
 _08069330: .4byte 0x0879B894
 _08069334: .4byte gCurrentArea
 _08069338: .4byte 0x03004E58
@@ -23867,7 +23867,7 @@ UpdateHatches: @ 0x0806C854
 	push {r4, r5, r6, r7, lr}
 	movs r6, #0
 	movs r5, #7
-	ldr r4, _0806C890 @ =0x03004DEC
+	ldr r4, _0806C890 @ =gHatchData
 	movs r0, #0xf
 	rsbs r0, r0, #0
 	adds r7, r0, #0
@@ -23895,7 +23895,7 @@ _0806C878:
 	bl SoundPlay
 	b _0806C89A
 	.align 2, 0
-_0806C890: .4byte 0x03004DEC
+_0806C890: .4byte gHatchData
 _0806C894:
 	movs r0, #0xfb
 	bl SoundPlay
@@ -23989,7 +23989,7 @@ UpdateHatchAnimaton: @ 0x0806C930
 	push {r6, r7}
 	adds r7, r0, #0
 	ldr r5, _0806C984 @ =0x00008011
-	ldr r0, _0806C988 @ =0x03004DEC
+	ldr r0, _0806C988 @ =gHatchData
 	lsls r1, r7, #2
 	adds r2, r1, r0
 	ldrb r3, [r2, #2]
@@ -24028,7 +24028,7 @@ _0806C97A:
 	b _0806C9DC
 	.align 2, 0
 _0806C984: .4byte 0x00008011
-_0806C988: .4byte 0x03004DEC
+_0806C988: .4byte gHatchData
 _0806C98C: .4byte 0x0000801A
 _0806C990:
 	lsrs r0, r2, #0x1d
@@ -24270,7 +24270,7 @@ _0806CB68: .4byte gEquipment
 _0806CB6C:
 	movs r7, #0
 	movs r1, #0
-	ldr r6, _0806CBD8 @ =0x03004DEC
+	ldr r6, _0806CBD8 @ =gHatchData
 	mov r8, r1
 	movs r5, #0x80
 	movs r0, #4
@@ -24325,7 +24325,7 @@ _0806CBAC:
 	movs r7, #1
 	b _0806CBE2
 	.align 2, 0
-_0806CBD8: .4byte 0x03004DEC
+_0806CBD8: .4byte gHatchData
 _0806CBDC:
 	adds r1, #1
 	cmp r1, #5
@@ -28537,7 +28537,7 @@ _0806ECA6:
 	ldrb r3, [r0]
 	adds r4, r5, #0
 	ldr r6, _0806ECDC @ =0x03004E04
-	ldr r1, _0806ECE0 @ =0x03004DEC
+	ldr r1, _0806ECE0 @ =gHatchData
 _0806ECBA:
 	adds r0, r2, r6
 	ldrb r0, [r0]
@@ -28556,7 +28556,7 @@ _0806ECBA:
 _0806ECD4: .4byte 0x0300144F
 _0806ECD8: .4byte gLastDoorUsed
 _0806ECDC: .4byte 0x03004E04
-_0806ECE0: .4byte 0x03004DEC
+_0806ECE0: .4byte gHatchData
 _0806ECE4:
 	adds r1, #4
 	adds r2, #1
