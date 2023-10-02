@@ -61,5 +61,6 @@ extern struct CurrentAffectingClipdata gCurrentAffectingClipdata;
 extern struct TilemapAndClipPointers gTilemapAndClipPointers;
 extern u8 gLastElevatorUsed;
 extern u8 gElevatorDirection;
+extern u8 gCurrentClipdataAffectingAction;
 
 #endif /* CLIPDATA_STRUCT_H */

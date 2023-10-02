@@ -175,7 +175,8 @@ extern u8 gWhichBgPositionIsWrittenToBg3Ofs;
 
 extern u16 gWrittenToMosaic_H;
 extern u16 gWrittenToMosaic_L;
-extern u8 gCurrentClipdataAffectingAction;
+
+extern u8 gDisableDoorsAndTanks;
 
 #define GAME_MODE_TITLE 0
 #define GAME_MODE_IN_GAME 1

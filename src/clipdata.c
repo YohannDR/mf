@@ -8,9 +8,12 @@
 
 #include "constants/clipdata.h"
 #include "constants/event.h"
+#include "constants/samus.h"
 
 #include "structs/connection.h"
 #include "structs/event.h"
+#include "structs/room.h"
+#include "structs/samus.h"
 
 u16 unk_689f0(void)
 {
@@ -100,8 +103,8 @@ u32 ClipdataProcess(u16 yPosition, u16 xPosition)
     // Check in bounds
     if (xPosition >= BLOCK_TO_SUB_PIXEL(gBackgroundsData.clipdataWidth) || yPosition >= BLOCK_TO_SUB_PIXEL(gBackgroundsData.clipdataHeight))
     {
-        gCurrentAffectingClipdata.movement = 0x0;
-        gCurrentAffectingClipdata.hazard = 0x0;
+        gCurrentAffectingClipdata.movement = CLIPDATA_MOVEMENT_NONE;
+        gCurrentAffectingClipdata.hazard = HAZARD_NONE;
         gCurrentClipdataAffectingAction = CAA_NONE;
 
         // Out of bounds on either axis, consider everything air
@@ -356,9 +359,137 @@ u32 ClipdataConvertToCollision(struct CollisionData* pCollision)
     return result;
 }
 
+/**
+ * @brief 68e70 | 154 | Updates the current affecting clipdata
+ * 
+ * @param yPosition Y position (in sub-pixels)
+ * @param xPosition X position (in sub-pixels)
+ * @return u32 Current affecting
+ */
 u32 ClipdataCheckCurrentAffectingAtPosition(u16 yPosition, u16 xPosition)
 {
+    u32 clipdata;
+    u32 behavior;
+    s32 tileY;
+    s32 tileX;
+    s32 array[3];
 
+    // Reset values
+    gCurrentAffectingClipdata.movement = CLIPDATA_MOVEMENT_NONE;
+    gCurrentAffectingClipdata.hazard = HAZARD_NONE;
+
+    // Check in bounds
+    if (yPosition >= BLOCK_TO_SUB_PIXEL(gBackgroundsData.clipdataHeight) || xPosition >= BLOCK_TO_SUB_PIXEL(gBackgroundsData.clipdataWidth))
+    {
+        // Out of bounds on either axis, consider everything is none
+        return C_32_2_16(HAZARD_NONE, CLIPDATA_MOVEMENT_NONE);
+    }
+
+    // Get tile position
+    tileY = SUB_PIXEL_TO_BLOCK(yPosition);
+    tileX = SUB_PIXEL_TO_BLOCK(xPosition);
+
+    // Get clipdata at position
+    clipdata = tileY * gBackgroundsData.clipdataWidth + tileX;
+    clipdata = gBackgroundsData.pClipDecomp[clipdata];
+
+    // Get behavior
+    if (clipdata & CLIPDATA_TILEMAP_FLAG)
+    {
+        behavior = sClipdataTilemapBehaviorTypes[clipdata & 0x7FFF];
+    }
+    else
+    {
+        behavior = gTilemapAndClipPointers.pClipBehaviors[clipdata];
+    }
+
+    clipdata = CLIPDATA_MOVEMENT_NONE;
+
+    // Check for movement clipdata
+    if (behavior == CLIP_BEHAVIOR_WALL_LADDER)
+        clipdata = CLIPDATA_MOVEMENT_WALL_LADDER;
+    else if (behavior == CLIP_BEHAVIOR_PREVENTS_CLIMBING_INTO_FROM_LADDER)
+        clipdata = CLIPDATA_MOVEMENT_PREVENTS_CLIMBING_INTO_FROM_LADDER;
+    else if (behavior == CLIP_BEHAVIOR_CEILING_LADDER)
+        clipdata = CLIPDATA_MOVEMENT_CEILING_LADDER;
+    else if (behavior == CLIP_BEHAVIOR_ELEVATOR_DOWN)
+        clipdata = CLIPDATA_MOVEMENT_ELEVATOR_DOWN;
+    else if (behavior == CLIP_BEHAVIOR_ELEVATOR_UP)
+        clipdata = CLIPDATA_MOVEMENT_ELEVATOR_UP;
+    else if (behavior == CLIP_BEHAVIOR_10)
+        clipdata = CLIPDATA_MOVEMENT_BEHAVIOR_10;
+    else if (behavior == CLIP_BEHAVIOR_11)
+        clipdata = CLIPDATA_MOVEMENT_BEHAVIOR_11;
+    else if (behavior == CLIP_BEHAVIOR_96)
+        clipdata = CLIPDATA_MOVEMENT_BEHAVIOR_96;
+
+    // Check is elevator
+    if (clipdata == CLIPDATA_MOVEMENT_ELEVATOR_DOWN || clipdata == CLIPDATA_MOVEMENT_ELEVATOR_UP)
+    {
+        // If not already riding, check if can use the elevator
+        if (gSamusData.pose != SPOSE_USING_AN_ELEVATOR && ClipdataCheckCantUseElevator(clipdata))
+        {
+            // Can't use the elevator, so void the movement clipdata
+            clipdata = CLIPDATA_MOVEMENT_NONE;
+        }
+
+        gDisableDoorsAndTanks = FALSE;
+    }
+
+    // Register movement clipdata
+    gCurrentAffectingClipdata.movement = clipdata;
+
+    clipdata = HAZARD_NONE;
+
+    // Check for hazard clipdata
+    if (behavior == CLIP_BEHAVIOR_WATER)
+    {
+        clipdata = HAZARD_WATER;
+    }
+    else
+    {
+        // Check BG0 exists
+        if (gCurrentRoomEntry.bg0Prop != 0 && gCurrentRoomEntry.damagingEffect != 0x0)
+        {
+            // Check for full room effects
+            if (gCurrentRoomEntry.damagingEffect == 0x5)
+            {
+                clipdata = HAZARD_COLD_KNOCKBACK;
+            }
+            else if (gCurrentRoomEntry.damagingEffect == 0x6)
+            {
+                clipdata = HAZARD_COLD;
+            }
+            else
+            {
+                // Different effect below and above effect
+
+                // Check above effect
+                if (gCurrentRoomEntry.damagingEffect == 0x3)
+                    clipdata = HAZARD_HEAT;
+
+                // Check below effect
+                if (gEffectYPosition <= yPosition)
+                {
+                    // Set effect
+                    if (gCurrentRoomEntry.damagingEffect == 0x1)
+                        clipdata = HAZARD_WATER;
+                    else if (gCurrentRoomEntry.damagingEffect == 0x2)
+                        clipdata = HAZARD_LAVA;
+                    else if (gCurrentRoomEntry.damagingEffect == 0x4)
+                        clipdata = HAZARD_ACID;
+                    else if (gCurrentRoomEntry.damagingEffect == 0x3)
+                        clipdata = HAZARD_LAVA;
+                }
+            }
+        }
+    }
+
+    // Register hazard
+    gCurrentAffectingClipdata.hazard = clipdata;
+
+    // Construct the result in an u32
+    return C_32_2_16(gCurrentAffectingClipdata.movement, gCurrentAffectingClipdata.hazard);
 }
 
 /**
@@ -431,7 +562,7 @@ u32 ClipdataCheckCantUseElevator(u16 movementClip)
     }
 
     // Get trigger type and set elevator direction
-    if (movementClip == 0x1)
+    if (movementClip == CLIPDATA_MOVEMENT_ELEVATOR_DOWN)
     {
         i = SEVENT_TTYPE_STARTING_ELEVATOR_RIDE_DOWN;
         gElevatorDirection = 0x2;

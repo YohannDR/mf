@@ -22,6 +22,7 @@ SECTIONS {
         . = 0x00000020; gRebootGame = .;
         . = 0x00000021; gDisableScrolling = .;
         . = 0x00000025; gDisableSoftReset = .;
+        . = 0x0000002a; gDisableDoorsAndTanks = .;
         . = 0x0000002c; gCurrentArea = .;
         . = 0x0000002d; gCurrentRoom = .;
         . = 0x0000002e; gLastDoorUsed = .;

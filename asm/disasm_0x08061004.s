@@ -7671,7 +7671,7 @@ _08064B1C:
 	ldr r1, _08064BEC @ =gPreviousArea
 	movs r0, #0xff
 	strb r0, [r1]
-	ldr r0, _08064BF0 @ =0x0300002A
+	ldr r0, _08064BF0 @ =gDisableDoorsAndTanks
 	strb r2, [r0]
 	ldr r0, _08064BF4 @ =gCurrentCutscene
 	strb r2, [r0]
@@ -7743,7 +7743,7 @@ _08064BE0: .4byte gUnk_03000be3
 _08064BE4: .4byte 0x03004DE8
 _08064BE8: .4byte gCurrentClipdataAffectingAction
 _08064BEC: .4byte gPreviousArea
-_08064BF0: .4byte 0x0300002A
+_08064BF0: .4byte gDisableDoorsAndTanks
 _08064BF4: .4byte gCurrentCutscene
 _08064BF8: .4byte gCurrentNavigationRoom
 _08064BFC: .4byte gElevatorDirection
@@ -8096,7 +8096,7 @@ _08064EF4:
 	ldrb r0, [r5, #1]
 	cmp r0, #0x17
 	bne _08064F12
-	ldr r1, _08064F30 @ =0x0300002A
+	ldr r1, _08064F30 @ =gDisableDoorsAndTanks
 	movs r0, #0x80
 	strb r0, [r1]
 _08064F12:
@@ -8112,7 +8112,7 @@ _08064F20: .4byte gBg1YPosition
 _08064F24: .4byte gBg1XPosition
 _08064F28: .4byte 0x03001224
 _08064F2C: .4byte 0x03001226
-_08064F30: .4byte 0x0300002A
+_08064F30: .4byte gDisableDoorsAndTanks
 
 	thumb_func_start LoadScrollsAndEventBasedEffects
 LoadScrollsAndEventBasedEffects: @ 0x08064F34
@@ -16414,7 +16414,7 @@ _08068F26:
 	beq _08068F42
 	movs r4, #0
 _08068F42:
-	ldr r1, _08068F6C @ =0x0300002A
+	ldr r1, _08068F6C @ =gDisableDoorsAndTanks
 	movs r0, #0
 	strb r0, [r1]
 	ldr r7, _08068F70 @ =gCurrentAffectingClipdata
@@ -16436,7 +16436,7 @@ _08068F4A:
 	b _08068FAE
 	.align 2, 0
 _08068F68: .4byte gSamusData
-_08068F6C: .4byte 0x0300002A
+_08068F6C: .4byte gDisableDoorsAndTanks
 _08068F70: .4byte gCurrentAffectingClipdata
 _08068F74: .4byte gCurrentRoomEntry
 _08068F78:
@@ -22750,7 +22750,7 @@ CheckTouchingSpecialClipdata: @ 0x0806BFC4
 	.align 2, 0
 _0806BFDC: .4byte gSamusData
 _0806BFE0:
-	ldr r0, _0806C000 @ =0x0300002A
+	ldr r0, _0806C000 @ =gDisableDoorsAndTanks
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0806BFFC
@@ -22767,7 +22767,7 @@ _0806BFFC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806C000: .4byte 0x0300002A
+_0806C000: .4byte gDisableDoorsAndTanks
 _0806C004: .4byte gFrameCounter8Bit
 
 	thumb_func_start CheckWalkingOnCrumbleBlock
@@ -23219,7 +23219,7 @@ _0806C342:
 	.align 2, 0
 _0806C34C: .4byte 0x083C9424
 _0806C350:
-	ldr r0, _0806C3E8 @ =0x0300002A
+	ldr r0, _0806C3E8 @ =gDisableDoorsAndTanks
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0806C35A
@@ -23297,7 +23297,7 @@ _0806C376:
 	strh r0, [r1, #4]
 	b _0806C436
 	.align 2, 0
-_0806C3E8: .4byte 0x0300002A
+_0806C3E8: .4byte gDisableDoorsAndTanks
 _0806C3EC: .4byte 0x03000026
 _0806C3F0: .4byte 0x083C93F0
 _0806C3F4: .4byte 0x083C9424

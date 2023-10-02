@@ -189,7 +189,7 @@ void WaterDrop(void)
         case 22:
             blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
-            if (gCurrentAffectingClipdata.hazard == 0x1)
+            if (gCurrentAffectingClipdata.hazard == HAZARD_WATER)
             {
                 if (gEffectYPosition != 0)
                 {
