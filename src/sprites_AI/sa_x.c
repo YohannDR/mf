@@ -12,6 +12,7 @@
 #include "constants/samus.h"
 #include "constants/sprite.h"
 
+#include "structs/clipdata.h"
 #include "structs/sprite.h"
 #include "structs/samus.h"
 #include "structs/sa_x.h"

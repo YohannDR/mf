@@ -15643,7 +15643,7 @@ _0806896C:
 unk_68974: @ 0x08068974
 	push {r4, lr}
 	sub sp, #4
-	ldr r4, _0806898C @ =0x03004E48
+	ldr r4, _0806898C @ =gUnk_03004e48
 	ldrb r0, [r4]
 	cmp r0, #0
 	beq _080689DC
@@ -15653,7 +15653,7 @@ unk_68974: @ 0x08068974
 	beq _080689AC
 	b _080689BC
 	.align 2, 0
-_0806898C: .4byte 0x03004E48
+_0806898C: .4byte gUnk_03004e48
 _08068990:
 	ldr r1, _080689E4 @ =0x06001000
 	ldr r2, _080689E8 @ =0x02020000
@@ -15672,12 +15672,12 @@ _080689AC:
 	bl unk_689f0
 	cmp r0, #0
 	beq _080689BC
-	ldr r1, _080689EC @ =0x03004E48
+	ldr r1, _080689EC @ =gUnk_03004e48
 	ldrb r0, [r1]
 	adds r0, #1
 	strb r0, [r1]
 _080689BC:
-	ldr r4, _080689EC @ =0x03004E48
+	ldr r4, _080689EC @ =gUnk_03004e48
 	ldrb r0, [r4]
 	cmp r0, #0x80
 	bne _080689DC
@@ -15700,19 +15700,19 @@ _080689DC:
 	.align 2, 0
 _080689E4: .4byte 0x06001000
 _080689E8: .4byte 0x02020000
-_080689EC: .4byte 0x03004E48
+_080689EC: .4byte gUnk_03004e48
 
 	thumb_func_start unk_689f0
 unk_689f0: @ 0x080689F0
 	push {r4, r5, r6, r7, lr}
-	ldr r1, _08068A00 @ =0x03004E48
+	ldr r1, _08068A00 @ =gUnk_03004e48
 	ldrb r0, [r1, #1]
 	cmp r0, #0xc
 	bne _08068A04
 	movs r0, #1
 	b _08068AE0
 	.align 2, 0
-_08068A00: .4byte 0x03004E48
+_08068A00: .4byte gUnk_03004e48
 _08068A04:
 	ldr r0, _08068A48 @ =gBg1YPosition
 	ldrh r0, [r0]
@@ -15826,7 +15826,7 @@ _08068ACE:
 	adds r4, #1
 	cmp r6, #0
 	bge _08068A1E
-	ldr r1, _08068AEC @ =0x03004E48
+	ldr r1, _08068AEC @ =gUnk_03004e48
 	ldrb r0, [r1, #1]
 	adds r0, #1
 	strb r0, [r1, #1]
@@ -15837,7 +15837,7 @@ _08068AE0:
 	bx r1
 	.align 2, 0
 _08068AE8: .4byte 0x00008005
-_08068AEC: .4byte 0x03004E48
+_08068AEC: .4byte gUnk_03004e48
 
 	thumb_func_start SetupClipdataCode
 SetupClipdataCode: @ 0x08068AF0

@@ -15,9 +15,105 @@
 #include "structs/room.h"
 #include "structs/samus.h"
 
-u16 unk_689f0(void)
+/**
+ * @brief 68974 | 7c | To document
+ * 
+ */
+void unk_68974(void)
 {
+    if (gUnk_03004e48[0] == 0)
+        return;
+    
+    switch (gUnk_03004e48[0])
+    {
+        case 1:
+            DmaTransfer(3, VRAM_BASE + 0x1000, EWRAM_BASE + 0x20000, 0x1000, 16);
+            gUnk_03004e48[1] = 0;
+            gUnk_03004e48[0]++;
 
+        case 2:
+            if (unk_689f0())
+                gUnk_03004e48[0]++;
+
+        default:
+            if (gUnk_03004e48[0] == 0x80)
+            {
+                DmaTransfer(3, EWRAM_BASE + 0x20000, VRAM_BASE + 0x1000, 0x1000, 16);
+                gUnk_03004e48[0] = 0;
+                gUnk_03004e48[1] = 0;
+            }
+    }
+}
+
+/**
+ * @brief 689f0 | 100 | To document
+ * 
+ * @return s32 bool, to document
+ */
+s32 unk_689f0(void)
+{
+    s32 yPosition;
+    s32 xPosition;
+    s32 i;
+    s32 clipdata;
+
+    if (gUnk_03004e48[1] == 12)
+        return TRUE;
+
+    yPosition = SUB_PIXEL_TO_BLOCK(gBg1YPosition);
+    xPosition = SUB_PIXEL_TO_BLOCK(gBg1XPosition);
+
+    yPosition--;
+    yPosition += gUnk_03004e48[1];
+    xPosition--;
+
+    for (i = 0; i <= 16; i++, xPosition++)
+    {
+        clipdata = yPosition * gBackgroundsData.clipdataWidth + xPosition;
+        clipdata = gBackgroundsData.pClipDecomp[clipdata];
+
+        if (clipdata & CLIPDATA_TILEMAP_FLAG)
+            continue;
+
+        clipdata = gTilemapAndClipPointers.pClipBehaviors[clipdata];
+
+        if (clipdata == CLIP_BEHAVIOR_MISSILE_BLOCK_NEVER_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0x6;
+        else if (clipdata == CLIP_BEHAVIOR_MISSILE_BLOCK_NO_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0xD;
+        else if (clipdata == CLIP_BEHAVIOR_POWER_BOMB_BLOCK_NEVER_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0x7;
+        else if (clipdata == CLIP_BEHAVIOR_SPEED_BOOST_BLOCK_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0x9;
+        else if (clipdata == CLIP_BEHAVIOR_SCREW_ATTACK_BLOCK_NO_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0xA;
+        else if (clipdata == CLIP_BEHAVIOR_CRUMBLE_BLOCK)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0x0;
+        else if (clipdata == CLIP_BEHAVIOR_SHOT_BLOCK_NEVER_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0xC;
+        else if (clipdata == CLIP_BEHAVIOR_TOP_LEFT_SHOT_BLOCK_NEVER_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0xC;
+        else if (clipdata == CLIP_BEHAVIOR_TOP_RIGHT_SHOT_BLOCK_NEVER_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0xC;
+        else if (clipdata == CLIP_BEHAVIOR_BOTTOM_LEFT_SHOT_BLOCK_NEVER_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0xC;
+        else if (clipdata == CLIP_BEHAVIOR_BOTTOM_RIGHT_SHOT_BLOCK_NEVER_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0xC;
+        else if (clipdata == CLIP_BEHAVIOR_SHOT_BLOCK_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0xC;
+        else if (clipdata == CLIP_BEHAVIOR_BOMB_BLOCK_NEVER_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0x5;
+        else if (clipdata == CLIP_BEHAVIOR_BOMB_BLOCK_REFORM)
+            clipdata = CLIPDATA_TILEMAP_FLAG | 0x5;
+        else
+            continue;
+
+        SetVramBg1BlockTilemapValu(clipdata, yPosition, xPosition);
+    }
+
+    gUnk_03004e48[1]++;
+
+    return FALSE;
 }
 
 /**

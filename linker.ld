@@ -148,6 +148,7 @@ SECTIONS {
         . = 0x00004ddc; gTilemapAndClipPointers = .;
         . = 0x00004dec; gHatchData = .;
         . = 0x00004e3c; gDestinationDoor = .;
+        . = 0x00004e48; gUnk_03004e48 = .;
         . = 0x00005318; gClipdataCodePointer = .;
 
         . = 0x00005408; src/libgcc/fp-bit-base.o(.bss);
