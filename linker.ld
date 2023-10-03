@@ -12,7 +12,11 @@ SECTIONS {
     iwram (NOLOAD) : ALIGN(4) {
         . = 0x00000000; gDebugFlag = .;
         . = 0x00000002; gFrameCounter16Bit = .;
+        . = 0x00000004; gWrittenToBldalpha = .;
         . = 0x00000006; gWrittenToBldcnt = .;
+        . = 0x00000008; gWrittenToDispcnt = .;
+        . = 0x0000000c; gWrittenToWinin_L = .;
+        . = 0x0000000d; gWrittenToWinout_R = .;
         . = 0x0000000e; gBackdropColor = .;
         . = 0x00000019; gWhichBgPositionIsWrittenToBg3Ofs = .;
         . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
@@ -45,6 +49,7 @@ SECTIONS {
         . = 0x000000c0; gCurrentAffectingClipdata = .;
         . = 0x000000c8; gBackgroundPositions = .;
         . = 0x000000dc; gSaXSpawnPosition = .;
+        . = 0x000000e8; gWindow1Border = .;
         . = 0x00000110; gCurrentPowerBomb = .;
         . = 0x00000138; gInGameTimer = .;
         . = 0x0000013c; gMaxInGameTimeFlag = .;
@@ -144,6 +149,9 @@ SECTIONS {
         . = 0x00004d28; gSamusPalette = .;
         . = 0x00004d88; gSamusPaletteLength = .;
         . = 0x00004d90; gSaXPalette = .;
+        . = 0x00004dd4; gWrittenToWin1H = .;
+        . = 0x00004dd6; gWrittenToWin1V = .;
+        . = 0x00004dd8; gWrittenToBldcnt_Special = .;
         . = 0x00004dda; gElevatorDirection = .;
         . = 0x00004ddc; gTilemapAndClipPointers = .;
         . = 0x00004dec; gHatchData = .;
@@ -191,6 +199,10 @@ SECTIONS {
         src/event_checks.o(.text);
 
         asm/disasm_0x08061004.o(.text);
+
+        src/power_bomb_explosion.o(.text);
+
+        asm/disasm_0x080685b4.o(.text);
 
         src/hud.o(.text);
         src/escape.o(.text);

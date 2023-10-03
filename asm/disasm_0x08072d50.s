@@ -86635,7 +86635,7 @@ _0809DCAE:
 	adds r0, r4, #0
 	bl CallbackSetVBlank
 	bl _call_via_r4
-	ldr r1, _0809DD64 @ =0x03000008
+	ldr r1, _0809DD64 @ =gWrittenToDispcnt
 	movs r2, #0xc0
 	lsls r2, r2, #2
 	adds r0, r2, #0
@@ -86676,7 +86676,7 @@ _0809DD54: .4byte 0x03001222
 _0809DD58: .4byte 0x04000008
 _0809DD5C: .4byte 0x00001A01
 _0809DD60: .4byte SA_XCloseUpVblank
-_0809DD64: .4byte 0x03000008
+_0809DD64: .4byte gWrittenToDispcnt
 
 	thumb_func_start SA_XCloseUpVblank
 SA_XCloseUpVblank: @ 0x0809DD68
@@ -86693,7 +86693,7 @@ SA_XCloseUpVblank: @ 0x0809DD68
 	ldrh r1, [r1]
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r2, _0809DDAC @ =0x03000008
+	ldr r2, _0809DDAC @ =gWrittenToDispcnt
 	ldrh r1, [r2]
 	cmp r1, #0
 	beq _0809DD94
@@ -86711,7 +86711,7 @@ _0809DD9C: .4byte gWrittenToBldy
 _0809DDA0: .4byte 0x04000052
 _0809DDA4: .4byte 0x03001222
 _0809DDA8: .4byte 0x03001220
-_0809DDAC: .4byte 0x03000008
+_0809DDAC: .4byte gWrittenToDispcnt
 
 	thumb_func_start unk_9ddb0
 unk_9ddb0: @ 0x0809DDB0

@@ -61,8 +61,24 @@ extern u8 gDisplayLocationName;
 extern u8 gSamusOnTopOfBackgrounds;
 
 extern u16 gWrittenToBldcnt;
+extern u16 gWrittenToDispcnt;
+extern u8 gWrittenToWinin_L;
+extern u8 gWrittenToWinout_R;
+extern u16 gWrittenToBldalpha;
 extern u16 gWrittenToBldy;
+extern u16 gWrittenToWin1H;
+extern u16 gWrittenToWin1V;
+extern u16 gWrittenToBldcnt_Special;
 extern u8 gDisableScrolling;
+
+struct WindowBorder {
+    u8 left;
+    u8 right;
+    u8 top;
+    u8 bottom;
+};
+
+extern struct WindowBorder gWindow1Border;
 
 extern u8 gInterruptCode[512];
 extern void* gInterruptCodePointer;
