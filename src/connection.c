@@ -8,11 +8,17 @@
 
 #include "structs/connection.h"
 #include "structs/event.h"
+#include "structs/samus.h"
 
+/**
+ * @brief 69184 | 1f8 | Tries to find a door
+ * 
+ * @param yPosition Y position
+ * @param xPosition X position
+ * @return u32 bool, found door
+ */
 u32 ConnectionCheckEnterDoor(u16 yPosition, u16 xPosition)
 {
-    // https://decomp.me/scratch/gYT7T
-
     const struct Door* pDoor;
     u8 foundDoor;
     s32 found;
@@ -33,7 +39,7 @@ u32 ConnectionCheckEnterDoor(u16 yPosition, u16 xPosition)
         if (pDoor->srcRoom != gCurrentRoom)
             continue;
 
-        if ((pDoor->type & DOOR_TYPE_NO_FLAGS) != (DOOR_TYPE_NONE | DOOR_TYPE_AREA_CONNECTION))
+        if ((pDoor->type & DOOR_TYPE_NO_FLAGS) <= (DOOR_TYPE_NONE | DOOR_TYPE_AREA_CONNECTION))
             continue;
 
         if (pDoor->xStart <= xPosition && xPosition <= pDoor->xEnd && pDoor->yStart <= yPosition && yPosition <= pDoor->yEnd)
@@ -57,6 +63,19 @@ u32 ConnectionCheckEnterDoor(u16 yPosition, u16 xPosition)
 
             gSubGameMode1 = SUB_GAME_MODE_LOADING_ROOM;
 
+            if ((pDoor->type & DOOR_TYPE_NO_FLAGS) >= DOOR_TYPE_OPEN_HATCH)
+            {
+                if (pDoor->xStart > SUB_PIXEL_TO_BLOCK(gBg1XPosition) + (s32)(SCREEN_SIZE_X_BLOCKS / 1.75f))
+                    gDoorPositionStart.x = 1;
+
+                gDoorPositionStart.y = pDoor->yStart;
+                gSamusDoorPositionOffset = BLOCK_TO_SUB_PIXEL(pDoor->yEnd + 1) - gSamusData.yPosition - 1;
+            }
+            else
+            {
+                gSamusDoorPositionOffset = 0;
+            }
+
             ConnectionProcessDoorType(pDoor->type);
 
             for (i = 0; i < ARRAY_SIZE(gHatchData); i++)
@@ -73,7 +92,7 @@ u32 ConnectionCheckEnterDoor(u16 yPosition, u16 xPosition)
 
                 found += gHatchData[i].xPosition;
 
-                if (found == pDoor->xStart && pDoor->yStart >= gHatchData[i].yPosition && pDoor->yEnd <= gHatchData[i].yPosition + 3)
+                if (found == pDoor->xStart && pDoor->yStart >= gHatchData[i].yPosition && pDoor->yStart <= gHatchData[i].yPosition + 3)
                 {
                     gHatchData[i].unk_0_1 = 7;
                 }
@@ -113,9 +132,9 @@ u32 ConnectionCheckEnterDoor(u16 yPosition, u16 xPosition)
 /**
  * @brief 6937c | 14c | Tries to find an area connection
  * 
- * @param yPosition 
- * @param xPosition 
- * @return u32 
+ * @param yPosition Y position
+ * @param xPosition X position
+ * @return u32 bool, found transition
  */
 u32 ConnectionCheckAreaConnection(u16 yPosition, u16 xPosition)
 {

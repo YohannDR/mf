@@ -41,6 +41,7 @@ extern u8 gDestinationDoor;
 extern u8 gCurrentRoom;
 extern u8 gLastDoorUsed;
 extern u8 gCurrentNavigationRoom;
+extern s16 gSamusDoorPositionOffset;
 
 extern struct RawCoordsX gDoorPositionStart;
 
