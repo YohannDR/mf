@@ -27412,7 +27412,7 @@ _08080584:
 	strb r0, [r2]
 	ldr r0, _08080648 @ =0x03000022
 	strb r1, [r0]
-	ldr r0, _0808064C @ =0x03000024
+	ldr r0, _0808064C @ =gSkipDoorTransition
 	strb r1, [r0]
 	ldr r0, _08080650 @ =gPauseScreenFlag
 	strb r1, [r0]
@@ -27420,7 +27420,7 @@ _08080584:
 	strb r1, [r0]
 	ldr r0, _08080658 @ =0x0300002B
 	strb r1, [r0]
-	ldr r0, _0808065C @ =0x03004E38
+	ldr r0, _0808065C @ =gSamusDoorPositionOffset
 	movs r1, #0
 	strh r1, [r0]
 	ldr r0, _08080660 @ =gDebugFlag
@@ -27453,11 +27453,11 @@ _0808063C: .4byte 0x03000018
 _08080640: .4byte gDisableSoftReset
 _08080644: .4byte gMaxInGameTimeFlag
 _08080648: .4byte 0x03000022
-_0808064C: .4byte 0x03000024
+_0808064C: .4byte gSkipDoorTransition
 _08080650: .4byte gPauseScreenFlag
 _08080654: .4byte 0x03000B85
 _08080658: .4byte 0x0300002B
-_0808065C: .4byte 0x03004E38
+_0808065C: .4byte gSamusDoorPositionOffset
 _08080660: .4byte gDebugFlag
 
 	thumb_func_start Sram_CheckLoadSaveFile
@@ -27528,7 +27528,7 @@ _080806E0:
 	strb r1, [r0]
 	ldr r0, _08080728 @ =0x03000022
 	strb r1, [r0]
-	ldr r0, _0808072C @ =0x03000024
+	ldr r0, _0808072C @ =gSkipDoorTransition
 	strb r1, [r0]
 	ldr r0, _08080730 @ =gPauseScreenFlag
 	strb r1, [r0]
@@ -27536,7 +27536,7 @@ _080806E0:
 	strb r1, [r0]
 	ldr r0, _08080738 @ =0x0300002B
 	strb r1, [r0]
-	ldr r0, _0808073C @ =0x03004E38
+	ldr r0, _0808073C @ =gSamusDoorPositionOffset
 	movs r1, #0
 	strh r1, [r0]
 	ldr r0, _08080740 @ =gDebugFlag
@@ -27550,11 +27550,11 @@ _0808071C: .4byte 0x03000018
 _08080720: .4byte gDisableSoftReset
 _08080724: .4byte gMaxInGameTimeFlag
 _08080728: .4byte 0x03000022
-_0808072C: .4byte 0x03000024
+_0808072C: .4byte gSkipDoorTransition
 _08080730: .4byte gPauseScreenFlag
 _08080734: .4byte 0x03000B85
 _08080738: .4byte 0x0300002B
-_0808073C: .4byte 0x03004E38
+_0808073C: .4byte gSamusDoorPositionOffset
 _08080740: .4byte gDebugFlag
 
 	thumb_func_start Sram_EraseFile

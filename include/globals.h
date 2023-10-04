@@ -48,12 +48,6 @@ extern u8 gDisableSoftReset;
 extern u16 gBg1XPosition;
 extern u16 gBg1YPosition;
 
-extern u8 gCurrentArea;
-extern u8 gPreviousArea;
-extern u8 gDestinationDoor;
-extern u8 gCurrentRoom;
-extern u8 gLastDoorUsed;
-extern u8 gCurrentNavigationRoom;
 extern u8 gSpritesetNumber;
 
 extern u8 gDisplayLocationName;
@@ -112,37 +106,6 @@ struct InGameTime {
 
 extern struct InGameTime gInGameTimer;
 
-enum Area {
-    AREA_MAIN_DECK,
-    AREA_SECTOR_1,
-    AREA_SECTOR_2,
-    AREA_SECTOR_3,
-    AREA_SECTOR_4,
-    AREA_SECTOR_5,
-    AREA_SECTOR_6,
-
-    AREA_NORMAL_END = AREA_SECTOR_6,
-
-    AREA_DEBUG_1,
-    AREA_DEBUG_2,
-    AREA_DEBUG_3,
-};
-
-enum NavigationRoom {
-    NAV_ROOM_MAIN_DECK_ROOM_0,
-    NAV_ROOM_MAIN_DECK_ROOM_16,
-    NAV_ROOM_MAIN_DECK_ROOM_9,
-    NAV_ROOM_MAIN_DECK_ROOM_32,
-    NAV_ROOM_SECTOR_1_ROOM_2,
-    NAV_ROOM_SECTOR_2_ROOM_2,
-    NAV_ROOM_SECTOR_3_ROOM_2,
-    NAV_ROOM_SECTOR_4_ROOM_2,
-    NAV_ROOM_SECTOR_5_ROOM_2,
-    NAV_ROOM_SECTOR_6_ROOM_2,
-    NAV_ROOM_MAIN_DECK_ROOM_56,
-    NAV_ROOM_MAIN_DECK_ROOM_66,
-};
-
 enum Cutscene {
     CUTSCENE_NONE,
     CUTSCENE_MONOLOGUE_INTRO,
@@ -188,11 +151,13 @@ struct ButtonAssignments {
 extern struct ButtonAssignments gButtonAssignments;
 
 extern u8 gWhichBgPositionIsWrittenToBg3Ofs;
+extern u8 gSkipDoorTransition;
 
 extern u16 gWrittenToMosaic_H;
 extern u16 gWrittenToMosaic_L;
 
 extern u8 gDisableDoorsAndTanks;
+extern u8 gColorFading;
 
 #define GAME_MODE_TITLE 0
 #define GAME_MODE_IN_GAME 1

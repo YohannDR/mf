@@ -4,8 +4,10 @@
 
 #include "data/engine_pointers.h"
 
+#include "constants/connection.h"
 #include "constants/sprite.h"
 
+#include "structs/connection.h"
 #include "structs/sprite.h"
 
 /**

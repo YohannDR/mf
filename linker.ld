@@ -25,6 +25,7 @@ SECTIONS {
         . = 0x0000001d; gSecurityHatchLevelBackup = .;
         . = 0x00000020; gRebootGame = .;
         . = 0x00000021; gDisableScrolling = .;
+        . = 0x00000024; gSkipDoorTransition = .;
         . = 0x00000025; gDisableSoftReset = .;
         . = 0x0000002a; gDisableDoorsAndTanks = .;
         . = 0x0000002c; gCurrentArea = .;
@@ -155,8 +156,11 @@ SECTIONS {
         . = 0x00004dda; gElevatorDirection = .;
         . = 0x00004ddc; gTilemapAndClipPointers = .;
         . = 0x00004dec; gHatchData = .;
+        . = 0x00004e0c; gDoorPositionStart = .;
+        . = 0x00004e38; gSamusDoorPositionOffset = .;
         . = 0x00004e3c; gDestinationDoor = .;
         . = 0x00004e48; gUnk_03004e48 = .;
+        . = 0x00004e58; gColorFading = .;
         . = 0x00005318; gClipdataCodePointer = .;
 
         . = 0x00005408; src/libgcc/fp-bit-base.o(.bss);

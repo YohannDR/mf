@@ -4,6 +4,7 @@
 #include "types.h"
 #include "oam.h"
 
+#include "constants/connection.h"
 #include "constants/event.h"
 #include "constants/menus/debug_menu.h"
 

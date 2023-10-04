@@ -3529,7 +3529,7 @@ _08062A9E:
 	movs r0, #1
 	strb r0, [r1]
 _08062ACC:
-	ldr r0, _08062B10 @ =0x03004E58
+	ldr r0, _08062B10 @ =gColorFading
 	ldrb r0, [r0]
 	cmp r0, #0xd
 	bne _08062B5E
@@ -3558,7 +3558,7 @@ _08062B00: .4byte 0x03004FBC
 _08062B04: .4byte 0x04000052
 _08062B08: .4byte gWrittenToBldalpha
 _08062B0C: .4byte 0x03004E44
-_08062B10: .4byte 0x03004E58
+_08062B10: .4byte gColorFading
 _08062B14: .4byte gWindow1Border
 _08062B18: .4byte gSamusData
 _08062B1C: .4byte gBg1XPosition
@@ -7625,7 +7625,7 @@ RoomResetInfo: @ 0x08064AEC
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r3, _08064BC4 @ =0x03004E58
+	ldr r3, _08064BC4 @ =gColorFading
 	movs r4, #0
 	strb r4, [r3, #3]
 	strb r4, [r3, #2]
@@ -7711,7 +7711,7 @@ _08064B96:
 	ldrb r0, [r0]
 	bl SetAbilityCount
 _08064B9E:
-	ldr r1, _08064C18 @ =0x03004E0C
+	ldr r1, _08064C18 @ =gDoorPositionStart
 	movs r0, #0
 	strh r0, [r1]
 	strh r0, [r1, #2]
@@ -7721,7 +7721,7 @@ _08064B9E:
 	strb r0, [r1]
 	bl SramWrite_MostRecentSaveFile
 _08064BB2:
-	ldr r0, _08064BC4 @ =0x03004E58
+	ldr r0, _08064BC4 @ =gColorFading
 	ldrb r0, [r0]
 	cmp r0, #4
 	beq _08064BBE
@@ -7732,7 +7732,7 @@ _08064BBE:
 	movs r0, #4
 	b _08064C2C
 	.align 2, 0
-_08064BC4: .4byte 0x03004E58
+_08064BC4: .4byte gColorFading
 _08064BC8: .4byte gCurrentPowerBomb
 _08064BCC: .4byte 0x030000F4
 _08064BD0: .4byte 0x083C88C8
@@ -7753,7 +7753,7 @@ _08064C08: .4byte gLastDoorUsed
 _08064C0C: .4byte 0x0300001E
 _08064C10: .4byte 0x03000058
 _08064C14: .4byte gAbilityCount
-_08064C18: .4byte 0x03004E0C
+_08064C18: .4byte gDoorPositionStart
 _08064C1C: .4byte gSecurityHatchLevel
 _08064C20: .4byte gEquipment
 _08064C24: .4byte gWhichBgPositionIsWrittenToBg3Ofs
@@ -7822,7 +7822,7 @@ _08064C46:
 	movs r1, #1
 	ands r0, r1
 	strb r0, [r2]
-	ldr r1, _08064DCC @ =0x03004E0C
+	ldr r1, _08064DCC @ =gDoorPositionStart
 	ldrb r0, [r4, #2]
 	strh r0, [r1]
 	ldrb r0, [r4, #4]
@@ -7955,7 +7955,7 @@ _08064DBC: .4byte gLastDoorUsed
 _08064DC0: .4byte gCurrentRoom
 _08064DC4: .4byte 0x0300002F
 _08064DC8: .4byte 0x03000030
-_08064DCC: .4byte 0x03004E0C
+_08064DCC: .4byte gDoorPositionStart
 _08064DD0: .4byte gSaXSpawnPosition
 _08064DD4: .4byte 0x083C88A4
 _08064DD8: .4byte 0x03004E4C
@@ -8039,7 +8039,7 @@ _08064E98:
 _08064EA0:
 	strh r0, [r2]
 _08064EA2:
-	ldr r0, _08064EB8 @ =0x03004E38
+	ldr r0, _08064EB8 @ =gSamusDoorPositionOffset
 	movs r5, #0
 	ldrsh r2, [r0, r5]
 	ldr r5, _08064EBC @ =gSamusData
@@ -8051,7 +8051,7 @@ _08064EA2:
 	movs r0, #0
 	b _08064ED8
 	.align 2, 0
-_08064EB8: .4byte 0x03004E38
+_08064EB8: .4byte gSamusDoorPositionOffset
 _08064EBC: .4byte gSamusData
 _08064EC0:
 	movs r6, #0x26
@@ -9770,7 +9770,7 @@ UpdateRoom: @ 0x08065C48
 	adds r2, r0, #0
 	cmp r1, #0
 	bne _08065CE0
-	ldr r0, _08065CD4 @ =0x03004E58
+	ldr r0, _08065CD4 @ =gColorFading
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	bne _08065CE0
@@ -9827,7 +9827,7 @@ _08065CB6:
 	b _08065CEA
 	.align 2, 0
 _08065CD0: .4byte gDisableScrolling
-_08065CD4: .4byte 0x03004E58
+_08065CD4: .4byte gColorFading
 _08065CD8: .4byte 0x03004FCC
 _08065CDC: .4byte 0x03000124
 _08065CE0:

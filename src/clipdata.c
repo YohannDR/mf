@@ -5,6 +5,7 @@
 #include "sub_event_and_music.h"
 
 #include "data/clipdata_data.h"
+#include "data/connection_data.h"
 
 #include "constants/clipdata.h"
 #include "constants/event.h"

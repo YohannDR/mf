@@ -41,7 +41,7 @@ struct ElevatorRoomPair {
     u8 room2;
 };
 
-struct UnkStruct_3c8c28 {
+struct ElevatorPairEvent {
     u8 eventStart;
     u8 eventEnd;
     u8 cantUseFlags[ELEVATOR_END];

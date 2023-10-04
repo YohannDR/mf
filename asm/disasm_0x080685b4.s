@@ -1580,7 +1580,7 @@ _080691A6:
 _080691BC:
 	ldr r0, _08069230 @ =gLastDoorUsed
 	mov r8, r0
-	ldr r1, _08069234 @ =0x03004E38
+	ldr r1, _08069234 @ =gSamusDoorPositionOffset
 	mov sb, r1
 _080691C4:
 	ldr r1, _08069238 @ =gCurrentRoom
@@ -1616,7 +1616,7 @@ _080691F2:
 	bls _080691FA
 	b _08069360
 _080691FA:
-	ldr r1, _0806923C @ =0x03004E0C
+	ldr r1, _0806923C @ =gDoorPositionStart
 	movs r0, #0
 	strh r0, [r1]
 	strh r0, [r1, #2]
@@ -1641,9 +1641,9 @@ _08069224: .4byte gSubGameMode1
 _08069228: .4byte 0x0879B894
 _0806922C: .4byte gCurrentArea
 _08069230: .4byte gLastDoorUsed
-_08069234: .4byte 0x03004E38
+_08069234: .4byte gSamusDoorPositionOffset
 _08069238: .4byte gCurrentRoom
-_0806923C: .4byte 0x03004E0C
+_0806923C: .4byte gDoorPositionStart
 _08069240:
 	ldrb r0, [r4, #6]
 	mov r1, r8
@@ -1671,7 +1671,7 @@ _08069256:
 	ldrh r0, [r0]
 	lsrs r0, r0, #6
 	adds r0, #8
-	ldr r2, _08069294 @ =0x03004E0C
+	ldr r2, _08069294 @ =gDoorPositionStart
 	cmp r1, r0
 	ble _0806927A
 	movs r0, #1
@@ -1689,7 +1689,7 @@ _0806927A:
 	b _0806929E
 	.align 2, 0
 _08069290: .4byte gBg1XPosition
-_08069294: .4byte 0x03004E0C
+_08069294: .4byte gDoorPositionStart
 _08069298: .4byte gSamusData
 _0806929C:
 	movs r0, #0
@@ -1755,7 +1755,7 @@ _080692E8:
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _08069348
-	ldr r1, _08069338 @ =0x03004E58
+	ldr r1, _08069338 @ =gColorFading
 	movs r0, #2
 	strb r0, [r1]
 	cmp r5, #2
@@ -1769,7 +1769,7 @@ _080692E8:
 _0806932C: .4byte gHatchData
 _08069330: .4byte 0x0879B894
 _08069334: .4byte gCurrentArea
-_08069338: .4byte 0x03004E58
+_08069338: .4byte gColorFading
 _0806933C: .4byte gSubGameMode1
 _08069340:
 	cmp r5, #3
@@ -1948,7 +1948,7 @@ _08069464:
 	bl CheckPlayCutsceneDuringTransition
 	cmp r0, #0
 	beq _0806949A
-	ldr r0, _080694C4 @ =0x03004E58
+	ldr r0, _080694C4 @ =gColorFading
 	strb r7, [r0]
 _0806949A:
 	ldrb r0, [r4, #1]
@@ -1969,7 +1969,7 @@ _080694AA:
 _080694B8: .4byte 0x0879B894
 _080694BC: .4byte gCurrentArea
 _080694C0: .4byte gLastDoorUsed
-_080694C4: .4byte 0x03004E58
+_080694C4: .4byte gColorFading
 
 	thumb_func_start ProcessDoorType
 ProcessDoorType: @ 0x080694C8
@@ -1984,7 +1984,7 @@ ProcessDoorType: @ 0x080694C8
 	movs r4, #6
 	b _080694EE
 _080694DC:
-	ldr r0, _08069500 @ =0x03000024
+	ldr r0, _08069500 @ =gSkipDoorTransition
 	ldrb r0, [r0]
 	movs r4, #6
 	cmp r0, #0
@@ -2002,7 +2002,7 @@ _080694EE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08069500: .4byte 0x03000024
+_08069500: .4byte gSkipDoorTransition
 _08069504: .4byte gWhichBgPositionIsWrittenToBg3Ofs
 
 	thumb_func_start FindEventBasedDoor
@@ -3281,7 +3281,7 @@ _08069ECC: .4byte 0x03004E10
 ProcessGeneralScrolling: @ 0x08069ED0
 	push {lr}
 	sub sp, #4
-	ldr r0, _08069F20 @ =0x03004E58
+	ldr r0, _08069F20 @ =gColorFading
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	bne _08069FB2
@@ -3319,7 +3319,7 @@ _08069EFC:
 	bl unk_6a8d0
 	b _08069F52
 	.align 2, 0
-_08069F20: .4byte 0x03004E58
+_08069F20: .4byte gColorFading
 _08069F24: .4byte gSamusData
 _08069F28: .4byte 0x0000FFFF
 _08069F2C: .4byte gDisableScrolling
@@ -9808,7 +9808,7 @@ _0806D0F0: .4byte 0x02035400
 	thumb_func_start CheckTransferFadedPalette_Unused
 CheckTransferFadedPalette_Unused: @ 0x0806D0F4
 	push {lr}
-	ldr r3, _0806D144 @ =0x03004E58
+	ldr r3, _0806D144 @ =gColorFading
 	ldrb r2, [r3, #4]
 	cmp r2, #0
 	beq _0806D13E
@@ -9849,7 +9849,7 @@ _0806D13E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806D144: .4byte 0x03004E58
+_0806D144: .4byte gColorFading
 _0806D148: .4byte 0x040000D4
 _0806D14C: .4byte 0x02035000
 _0806D150: .4byte 0x80000100
@@ -9864,7 +9864,7 @@ CheckTransferFadedPalette: @ 0x0806D15C
 	ldrsh r3, [r0, r1]
 	cmp r3, #2
 	bne _0806D1D0
-	ldr r4, _0806D1B4 @ =0x03004E58
+	ldr r4, _0806D1B4 @ =gColorFading
 	ldrb r2, [r4, #4]
 	cmp r2, #0
 	beq _0806D218
@@ -9903,7 +9903,7 @@ _0806D190:
 	b _0806D218
 	.align 2, 0
 _0806D1B0: .4byte gSubGameMode1
-_0806D1B4: .4byte 0x03004E58
+_0806D1B4: .4byte gColorFading
 _0806D1B8: .4byte 0x040000D4
 _0806D1BC: .4byte 0x02035000
 _0806D1C0: .4byte 0x80000100
@@ -9911,7 +9911,7 @@ _0806D1C4: .4byte 0x02035240
 _0806D1C8: .4byte 0x05000240
 _0806D1CC: .4byte 0x800000E0
 _0806D1D0:
-	ldr r3, _0806D220 @ =0x03004E58
+	ldr r3, _0806D220 @ =gColorFading
 	ldrb r2, [r3, #4]
 	cmp r2, #0
 	beq _0806D218
@@ -9953,7 +9953,7 @@ _0806D218:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806D220: .4byte 0x03004E58
+_0806D220: .4byte gColorFading
 _0806D224: .4byte 0x040000D4
 _0806D228: .4byte 0x02035000
 _0806D22C: .4byte 0x80000100
@@ -9981,7 +9981,7 @@ _0806D252:
 	bne _0806D284
 	ldr r0, _0806D274 @ =0x02035000
 	mov sb, r0
-	ldr r1, _0806D278 @ =0x03004E58
+	ldr r1, _0806D278 @ =gColorFading
 	ldrb r0, [r1, #5]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1c
@@ -9995,13 +9995,13 @@ _0806D252:
 	b _0806D29E
 	.align 2, 0
 _0806D274: .4byte 0x02035000
-_0806D278: .4byte 0x03004E58
+_0806D278: .4byte gColorFading
 _0806D27C: .4byte 0x02035400
 _0806D280: .4byte 0x02035800
 _0806D284:
 	ldr r0, _0806D2C8 @ =0x02035200
 	mov sb, r0
-	ldr r1, _0806D2CC @ =0x03004E58
+	ldr r1, _0806D2CC @ =gColorFading
 	ldrb r0, [r1, #5]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1c
@@ -10024,7 +10024,7 @@ _0806D2AA:
 	mov r0, sl
 	cmp r0, #0
 	bne _0806D2D8
-	ldr r1, _0806D2CC @ =0x03004E58
+	ldr r1, _0806D2CC @ =gColorFading
 	ldrb r0, [r1]
 	subs r0, #3
 	lsls r0, r0, #0x18
@@ -10038,7 +10038,7 @@ _0806D2AA:
 	b _0806D2E4
 	.align 2, 0
 _0806D2C8: .4byte 0x02035200
-_0806D2CC: .4byte 0x03004E58
+_0806D2CC: .4byte gColorFading
 _0806D2D0: .4byte 0x02035600
 _0806D2D4: .4byte 0x02035A00
 _0806D2D8:
@@ -10063,7 +10063,7 @@ _0806D2E4:
 	lsls r0, r0, #7
 	ands r0, r1
 	lsrs r3, r0, #0xa
-	ldr r0, _0806D334 @ =0x03004E58
+	ldr r0, _0806D334 @ =gColorFading
 	ldrb r1, [r0]
 	movs r0, #1
 	ands r0, r1
@@ -10090,7 +10090,7 @@ _0806D2E4:
 	subs r0, r7, r0
 	b _0806D39C
 	.align 2, 0
-_0806D334: .4byte 0x03004E58
+_0806D334: .4byte gColorFading
 _0806D338:
 	subs r0, r6, r2
 	muls r0, r5, r0
@@ -10173,7 +10173,7 @@ _0806D3BE:
 	b _0806D252
 _0806D3CC:
 	movs r0, #3
-	ldr r1, _0806D3E4 @ =0x03004E58
+	ldr r1, _0806D3E4 @ =gColorFading
 	strb r0, [r1, #4]
 	add sp, #8
 	pop {r3, r4, r5}
@@ -10184,7 +10184,7 @@ _0806D3CC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806D3E4: .4byte 0x03004E58
+_0806D3E4: .4byte gColorFading
 
 	thumb_func_start unk_6d3e8
 unk_6d3e8: @ 0x0806D3E8
@@ -10205,7 +10205,7 @@ _0806D400:
 	bne _0806D430
 	ldr r0, _0806D420 @ =0x02035000
 	mov sb, r0
-	ldr r1, _0806D424 @ =0x03004E58
+	ldr r1, _0806D424 @ =gColorFading
 	ldrb r0, [r1, #5]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1c
@@ -10218,13 +10218,13 @@ _0806D400:
 	b _0806D448
 	.align 2, 0
 _0806D420: .4byte 0x02035000
-_0806D424: .4byte 0x03004E58
+_0806D424: .4byte gColorFading
 _0806D428: .4byte 0x02035400
 _0806D42C: .4byte 0x02035800
 _0806D430:
 	ldr r0, _0806D4A4 @ =0x02035200
 	mov sb, r0
-	ldr r1, _0806D4A8 @ =0x03004E58
+	ldr r1, _0806D4A8 @ =gColorFading
 	ldrb r0, [r1, #5]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1c
@@ -10254,7 +10254,7 @@ _0806D456:
 	lsls r0, r0, #7
 	ands r0, r1
 	lsrs r3, r0, #0xa
-	ldr r0, _0806D4A8 @ =0x03004E58
+	ldr r0, _0806D4A8 @ =gColorFading
 	ldrb r1, [r0]
 	movs r0, #1
 	ands r0, r1
@@ -10283,7 +10283,7 @@ _0806D456:
 	b _0806D518
 	.align 2, 0
 _0806D4A4: .4byte 0x02035200
-_0806D4A8: .4byte 0x03004E58
+_0806D4A8: .4byte gColorFading
 _0806D4AC: .4byte 0x02035600
 _0806D4B0: .4byte 0x02035A00
 _0806D4B4:
@@ -10365,7 +10365,7 @@ _0806D518:
 	b _0806D400
 _0806D546:
 	movs r0, #3
-	ldr r1, _0806D55C @ =0x03004E58
+	ldr r1, _0806D55C @ =gColorFading
 	strb r0, [r1, #4]
 	add sp, #4
 	pop {r3, r4, r5}
@@ -10376,7 +10376,7 @@ _0806D546:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806D55C: .4byte 0x03004E58
+_0806D55C: .4byte gColorFading
 
 	thumb_func_start unk_6d560
 unk_6d560: @ 0x0806D560
@@ -10438,7 +10438,7 @@ _0806D5B0:
 	lsls r0, r0, #7
 	ands r0, r1
 	lsrs r3, r0, #0xa
-	ldr r0, _0806D608 @ =0x03004E58
+	ldr r0, _0806D608 @ =gColorFading
 	ldrb r1, [r0]
 	movs r0, #1
 	ands r0, r1
@@ -10467,7 +10467,7 @@ _0806D5B0:
 	.align 2, 0
 _0806D600: .4byte 0x02035200
 _0806D604: .4byte 0x02035600
-_0806D608: .4byte 0x03004E58
+_0806D608: .4byte gColorFading
 _0806D60C:
 	subs r0, r6, r2
 	muls r0, r5, r0
@@ -10548,7 +10548,7 @@ _0806D680:
 	b _0806D57A
 _0806D69E:
 	movs r0, #3
-	ldr r1, _0806D6B4 @ =0x03004E58
+	ldr r1, _0806D6B4 @ =gColorFading
 	strb r0, [r1, #4]
 	add sp, #8
 	pop {r3, r4, r5}
@@ -10559,7 +10559,7 @@ _0806D69E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806D6B4: .4byte 0x03004E58
+_0806D6B4: .4byte gColorFading
 
 	thumb_func_start unk_6d6b8
 unk_6d6b8: @ 0x0806D6B8
@@ -10573,7 +10573,7 @@ unk_6d6b8: @ 0x0806D6B8
 	lsrs r3, r0, #0x18
 	lsls r1, r1, #0x18
 	lsrs r2, r1, #0x18
-	ldr r0, _0806D6DC @ =0x03004E58
+	ldr r0, _0806D6DC @ =gColorFading
 	ldrb r1, [r0, #2]
 	adds r4, r0, #0
 	cmp r1, #0x20
@@ -10581,7 +10581,7 @@ unk_6d6b8: @ 0x0806D6B8
 	movs r0, #1
 	b _0806D818
 	.align 2, 0
-_0806D6DC: .4byte 0x03004E58
+_0806D6DC: .4byte gColorFading
 _0806D6E0:
 	lsls r0, r2, #0x18
 	asrs r0, r0, #0x18
@@ -10855,7 +10855,7 @@ _0806D8C6:
 	lsls r0, r3, #5
 	adds r5, r0, r2
 	lsls r4, r3, #4
-	ldr r0, _0806D958 @ =0x03004E58
+	ldr r0, _0806D958 @ =gColorFading
 	mov r8, r0
 	cmp r4, r6
 	bge _0806D932
@@ -10918,7 +10918,7 @@ _0806D948: .4byte 0x03004FC8
 _0806D94C: .4byte 0x040000D4
 _0806D950: .4byte 0x02035000
 _0806D954: .4byte 0x80000100
-_0806D958: .4byte 0x03004E58
+_0806D958: .4byte gColorFading
 
 	thumb_func_start unk_6d95c
 unk_6d95c: @ 0x0806D95C
@@ -11129,7 +11129,7 @@ unk_6dacc: @ 0x0806DACC
 	lsrs r2, r1, #0x18
 	movs r0, #0
 	mov r8, r0
-	ldr r1, _0806DAF8 @ =0x03004E58
+	ldr r1, _0806DAF8 @ =gColorFading
 	ldrb r0, [r1]
 	subs r0, #1
 	adds r7, r1, #0
@@ -11143,7 +11143,7 @@ _0806DAEC:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806DAF8: .4byte 0x03004E58
+_0806DAF8: .4byte gColorFading
 _0806DAFC: .4byte _0806DB00
 _0806DB00: @ jump table
 	.4byte _0806DBEA @ case 0
@@ -11212,7 +11212,7 @@ _0806DBA0: .4byte 0x083C94A0
 _0806DBA4:
 	bl unk_6cfa0
 _0806DBA8:
-	ldr r1, _0806DBBC @ =0x03004E58
+	ldr r1, _0806DBBC @ =gColorFading
 	movs r0, #3
 	strb r0, [r1, #4]
 	adds r7, r1, #0
@@ -11224,7 +11224,7 @@ _0806DBB4:
 	strb r0, [r7, #2]
 	b _0806DBCC
 	.align 2, 0
-_0806DBBC: .4byte 0x03004E58
+_0806DBBC: .4byte gColorFading
 _0806DBC0: .4byte 0x083C94A0
 _0806DBC4:
 	cmp r3, r1
@@ -11313,7 +11313,7 @@ _0806DC58:
 _0806DC6C:
 	bl unk_6cfa0
 _0806DC70:
-	ldr r1, _0806DC84 @ =0x03004E58
+	ldr r1, _0806DC84 @ =gColorFading
 	movs r0, #3
 	strb r0, [r1, #4]
 	adds r7, r1, #0
@@ -11325,7 +11325,7 @@ _0806DC7C:
 	strb r0, [r7, #2]
 	b _0806DC94
 	.align 2, 0
-_0806DC84: .4byte 0x03004E58
+_0806DC84: .4byte gColorFading
 _0806DC88: .4byte 0x083C94A0
 _0806DC8C:
 	cmp r3, r1
@@ -11402,7 +11402,7 @@ _0806DD14:
 	mov r0, r8
 	cmp r0, #0
 	beq _0806DD20
-	ldr r1, _0806DD2C @ =0x03004E58
+	ldr r1, _0806DD2C @ =gColorFading
 	movs r0, #0
 	strb r0, [r1, #2]
 _0806DD20:
@@ -11413,7 +11413,7 @@ _0806DD20:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0806DD2C: .4byte 0x03004E58
+_0806DD2C: .4byte gColorFading
 
 	thumb_func_start unk_6dd30
 unk_6dd30: @ 0x0806DD30
@@ -11421,7 +11421,7 @@ unk_6dd30: @ 0x0806DD30
 	movs r3, #0
 	movs r4, #0
 	movs r2, #0
-	ldr r0, _0806DD4C @ =0x03004E58
+	ldr r0, _0806DD4C @ =gColorFading
 	ldrb r0, [r0]
 	subs r0, #1
 	cmp r0, #0xc
@@ -11432,7 +11432,7 @@ unk_6dd30: @ 0x0806DD30
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806DD4C: .4byte 0x03004E58
+_0806DD4C: .4byte gColorFading
 _0806DD50: .4byte _0806DD54
 _0806DD54: @ jump table
 	.4byte _0806DD88 @ case 0
@@ -11485,7 +11485,7 @@ unk_6ddb8: @ 0x0806DDB8
 	movs r3, #0
 	movs r4, #0
 	movs r2, #0
-	ldr r0, _0806DDD4 @ =0x03004E58
+	ldr r0, _0806DDD4 @ =gColorFading
 	ldrb r0, [r0]
 	subs r0, #1
 	cmp r0, #0xc
@@ -11496,7 +11496,7 @@ unk_6ddb8: @ 0x0806DDB8
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806DDD4: .4byte 0x03004E58
+_0806DDD4: .4byte gColorFading
 _0806DDD8: .4byte _0806DDDC
 _0806DDDC: @ jump table
 	.4byte _0806DE10 @ case 0
@@ -11552,7 +11552,7 @@ unk_6de40: @ 0x0806DE40
 	lsrs r6, r1, #0x18
 	lsls r2, r2, #0x18
 	lsrs r5, r2, #0x18
-	ldr r1, _0806DEA8 @ =0x03004E58
+	ldr r1, _0806DEA8 @ =gColorFading
 	movs r0, #0
 	strb r0, [r1, #2]
 	bl unk_6cf20
@@ -11603,7 +11603,7 @@ _0806DE7A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806DEA8: .4byte 0x03004E58
+_0806DEA8: .4byte gColorFading
 _0806DEAC: .4byte 0x05000200
 _0806DEB0: .4byte 0x040000D4
 _0806DEB4: .4byte 0x02035000
@@ -11935,7 +11935,7 @@ _0806E104: .4byte gWrittenToBldy
 
 	thumb_func_start StartColorFading
 StartColorFading: @ 0x0806E108
-	ldr r1, _0806E118 @ =0x03004E58
+	ldr r1, _0806E118 @ =gColorFading
 	movs r2, #0
 	strb r0, [r1]
 	strb r2, [r1, #1]
@@ -11944,13 +11944,13 @@ StartColorFading: @ 0x0806E108
 	strb r2, [r1, #4]
 	bx lr
 	.align 2, 0
-_0806E118: .4byte 0x03004E58
+_0806E118: .4byte gColorFading
 
 	thumb_func_start unk_6e11c
 unk_6e11c: @ 0x0806E11C
 	push {lr}
 	sub sp, #4
-	ldr r1, _0806E188 @ =0x03004E58
+	ldr r1, _0806E188 @ =gColorFading
 	ldrb r0, [r1, #1]
 	adds r0, #1
 	strb r0, [r1, #1]
@@ -12002,7 +12002,7 @@ _0806E180:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806E188: .4byte 0x03004E58
+_0806E188: .4byte gColorFading
 _0806E18C: .4byte gBackgroundPositions
 _0806E190: .4byte 0x02032000
 _0806E194: .4byte 0x06003000
@@ -12065,7 +12065,7 @@ unk_6e1ac: @ 0x0806E1AC
 	ldrb r1, [r0]
 	cmp r1, #0xc
 	bne _0806E218
-	ldr r0, _0806E258 @ =0x03004E58
+	ldr r0, _0806E258 @ =gColorFading
 	strb r1, [r0]
 _0806E218:
 	ldr r1, _0806E25C @ =0x03001220
@@ -12089,7 +12089,7 @@ _0806E248: .4byte 0x0400004A
 _0806E24C: .4byte 0x04000049
 _0806E250: .4byte 0x04000050
 _0806E254: .4byte gEventCounter
-_0806E258: .4byte 0x03004E58
+_0806E258: .4byte gColorFading
 _0806E25C: .4byte 0x03001220
 _0806E260: .4byte 0x03001222
 
@@ -12262,7 +12262,7 @@ _0806E3BC: .4byte 0x80000010
 unk_6e3c0: @ 0x0806E3C0
 	push {r4, lr}
 	movs r4, #0
-	ldr r1, _0806E3DC @ =0x03004E58
+	ldr r1, _0806E3DC @ =gColorFading
 	ldrb r0, [r1]
 	subs r0, #1
 	adds r2, r1, #0
@@ -12274,7 +12274,7 @@ unk_6e3c0: @ 0x0806E3C0
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806E3DC: .4byte 0x03004E58
+_0806E3DC: .4byte gColorFading
 _0806E3E0: .4byte _0806E3E4
 _0806E3E4: @ jump table
 	.4byte _0806E41C @ case 0
@@ -12293,7 +12293,7 @@ _0806E3E4: @ jump table
 _0806E418:
 	bl SA_XUpdateGFXAndDraw
 _0806E41C:
-	ldr r0, _0806E434 @ =0x03004E58
+	ldr r0, _0806E434 @ =gColorFading
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	bne _0806E428
@@ -12304,7 +12304,7 @@ _0806E428:
 	bl unk_6dacc
 	b _0806E46E
 	.align 2, 0
-_0806E434: .4byte 0x03004E58
+_0806E434: .4byte gColorFading
 _0806E438:
 	bl unk_6eb04
 	b _0806E46E
@@ -12339,7 +12339,7 @@ _0806E470:
 	cmp r4, #0
 	beq _0806E4AC
 _0806E474:
-	ldr r0, _0806E490 @ =0x03004E58
+	ldr r0, _0806E490 @ =gColorFading
 	ldrb r0, [r0]
 	cmp r0, #1
 	blt _0806E4A0
@@ -12352,7 +12352,7 @@ _0806E474:
 	bl CheckUpdateSubEventAndMusic
 	b _0806E4A0
 	.align 2, 0
-_0806E490: .4byte 0x03004E58
+_0806E490: .4byte gColorFading
 _0806E494:
 	ldr r0, _0806E4B4 @ =0x03004DE8
 	ldrb r0, [r0, #2]
@@ -12362,7 +12362,7 @@ _0806E494:
 _0806E4A0:
 	movs r0, #2
 	bl StartColorFading
-	ldr r1, _0806E4B8 @ =0x03004E58
+	ldr r1, _0806E4B8 @ =gColorFading
 	movs r0, #0
 	strb r0, [r1, #1]
 _0806E4AC:
@@ -12372,13 +12372,13 @@ _0806E4AC:
 	bx r1
 	.align 2, 0
 _0806E4B4: .4byte 0x03004DE8
-_0806E4B8: .4byte 0x03004E58
+_0806E4B8: .4byte gColorFading
 
 	thumb_func_start unk_6e4bc
 unk_6e4bc: @ 0x0806E4BC
 	push {r4, r5, lr}
 	movs r5, #0
-	ldr r0, _0806E4E4 @ =0x03004E58
+	ldr r0, _0806E4E4 @ =gColorFading
 	ldrb r2, [r0, #3]
 	adds r1, r2, #0
 	adds r4, r0, #0
@@ -12399,7 +12399,7 @@ _0806E4DA:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806E4E4: .4byte 0x03004E58
+_0806E4E4: .4byte gColorFading
 _0806E4E8: .4byte _0806E4EC
 _0806E4EC: @ jump table
 	.4byte _0806E534 @ case 0
@@ -12547,7 +12547,7 @@ _0806E634:
 	bl HudDraw
 	bl ParticleUpdate
 	bl ResetFreeOam
-	ldr r1, _0806E66C @ =0x03004E58
+	ldr r1, _0806E66C @ =gColorFading
 	movs r0, #0
 	strb r0, [r1, #1]
 _0806E64C:
@@ -12562,14 +12562,14 @@ _0806E65C: .4byte 0x030054B0
 _0806E660: .4byte 0x030055F0
 _0806E664: .4byte 0x030054F0
 _0806E668: .4byte gNextOamSlot
-_0806E66C: .4byte 0x03004E58
+_0806E66C: .4byte gColorFading
 
 	thumb_func_start unk_6e670
 unk_6e670: @ 0x0806E670
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	movs r7, #0
-	ldr r0, _0806E68C @ =0x03004E58
+	ldr r0, _0806E68C @ =gColorFading
 	ldrb r1, [r0, #1]
 	adds r4, r0, #0
 	cmp r1, #5
@@ -12582,7 +12582,7 @@ _0806E682:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806E68C: .4byte 0x03004E58
+_0806E68C: .4byte gColorFading
 _0806E690: .4byte _0806E694
 _0806E694: @ jump table
 	.4byte _0806E6AC @ case 0
@@ -12600,7 +12600,7 @@ _0806E6B2:
 	bl unk_6dacc
 	cmp r0, #0
 	beq _0806E6C6
-	ldr r1, _0806E6D0 @ =0x03004E58
+	ldr r1, _0806E6D0 @ =gColorFading
 	ldrb r0, [r1, #1]
 	adds r0, #1
 	strb r0, [r1, #1]
@@ -12609,7 +12609,7 @@ _0806E6C6:
 	bl unk_6e264
 	b _0806E8B6
 	.align 2, 0
-_0806E6D0: .4byte 0x03004E58
+_0806E6D0: .4byte gColorFading
 _0806E6D4:
 	bl unk_6ee8c
 	movs r0, #0xa0
@@ -12633,7 +12633,7 @@ _0806E6D4:
 	ldr r0, _0806E720 @ =gSamusOnTopOfBackgrounds
 	strb r3, [r0]
 _0806E700:
-	ldr r1, _0806E724 @ =0x03004E58
+	ldr r1, _0806E724 @ =gColorFading
 	ldrb r0, [r1, #1]
 	adds r0, #1
 	strb r0, [r1, #1]
@@ -12645,7 +12645,7 @@ _0806E714: .4byte 0x05000020
 _0806E718: .4byte 0x80000010
 _0806E71C: .4byte 0x0000B3FF
 _0806E720: .4byte gSamusOnTopOfBackgrounds
-_0806E724: .4byte 0x03004E58
+_0806E724: .4byte gColorFading
 _0806E728:
 	ldr r1, _0806E758 @ =0x083F21A4
 	ldr r4, _0806E75C @ =0x02032000
@@ -12660,7 +12660,7 @@ _0806E728:
 	movs r0, #3
 	adds r1, r4, #0
 	bl DmaTransfer
-	ldr r0, _0806E764 @ =0x03004E0C
+	ldr r0, _0806E764 @ =gDoorPositionStart
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq _0806E76C
@@ -12672,7 +12672,7 @@ _0806E728:
 _0806E758: .4byte 0x083F21A4
 _0806E75C: .4byte 0x02032000
 _0806E760: .4byte 0x06003000
-_0806E764: .4byte 0x03004E0C
+_0806E764: .4byte gDoorPositionStart
 _0806E768: .4byte gBackgroundPositions
 _0806E76C:
 	ldr r1, _0806E800 @ =gBackgroundPositions
@@ -12681,7 +12681,7 @@ _0806E76C:
 _0806E772:
 	strh r0, [r1, #0x10]
 	adds r3, r1, #0
-	ldr r0, _0806E804 @ =0x03004E0C
+	ldr r0, _0806E804 @ =gDoorPositionStart
 	ldrh r0, [r0, #2]
 	lsls r0, r0, #6
 	ldr r1, _0806E808 @ =gBg1YPosition
@@ -12743,7 +12743,7 @@ _0806E7BA:
 	ldr r1, _0806E840 @ =0x0000FEFF
 	ands r0, r1
 	strh r0, [r2]
-	ldr r1, _0806E844 @ =0x03004E58
+	ldr r1, _0806E844 @ =gColorFading
 	movs r0, #4
 	strb r0, [r1, #1]
 	movs r0, #0
@@ -12752,7 +12752,7 @@ _0806E7BA:
 	b _0806E8B6
 	.align 2, 0
 _0806E800: .4byte gBackgroundPositions
-_0806E804: .4byte 0x03004E0C
+_0806E804: .4byte gDoorPositionStart
 _0806E808: .4byte gBg1YPosition
 _0806E80C: .4byte 0x0400001C
 _0806E810: .4byte 0x0400001E
@@ -12768,7 +12768,7 @@ _0806E834: .4byte 0x03004E40
 _0806E838: .4byte 0x0400000A
 _0806E83C: .4byte gWrittenToDispcnt
 _0806E840: .4byte 0x0000FEFF
-_0806E844: .4byte 0x03004E58
+_0806E844: .4byte gColorFading
 _0806E848:
 	ldr r0, _0806E864 @ =0x03001222
 	ldrh r2, [r0]
@@ -12839,7 +12839,7 @@ _0806E8B6:
 unk_6e8c0: @ 0x0806E8C0
 	push {r4, r5, lr}
 	movs r5, #0
-	ldr r4, _0806E8D8 @ =0x03004E58
+	ldr r4, _0806E8D8 @ =gColorFading
 	ldrb r0, [r4, #1]
 	cmp r0, #1
 	beq _0806E904
@@ -12849,7 +12849,7 @@ unk_6e8c0: @ 0x0806E8C0
 	beq _0806E8E2
 	b _0806E924
 	.align 2, 0
-_0806E8D8: .4byte 0x03004E58
+_0806E8D8: .4byte gColorFading
 _0806E8DC:
 	cmp r0, #2
 	beq _0806E91E
@@ -12897,7 +12897,7 @@ _0806E924:
 unk_6e92c: @ 0x0806E92C
 	push {r4, r5, lr}
 	movs r5, #0
-	ldr r4, _0806E944 @ =0x03004E58
+	ldr r4, _0806E944 @ =gColorFading
 	ldrb r0, [r4, #1]
 	cmp r0, #1
 	beq _0806E958
@@ -12907,7 +12907,7 @@ unk_6e92c: @ 0x0806E92C
 	beq _0806E952
 	b _0806E99E
 	.align 2, 0
-_0806E944: .4byte 0x03004E58
+_0806E944: .4byte gColorFading
 _0806E948:
 	cmp r0, #2
 	beq _0806E978
@@ -12963,7 +12963,7 @@ _0806E99E:
 unk_6e9a8: @ 0x0806E9A8
 	push {r4, r5, lr}
 	movs r5, #0
-	ldr r4, _0806E9C0 @ =0x03004E58
+	ldr r4, _0806E9C0 @ =gColorFading
 	ldrb r0, [r4, #1]
 	cmp r0, #1
 	beq _0806EA0C
@@ -12973,7 +12973,7 @@ unk_6e9a8: @ 0x0806E9A8
 	beq _0806E9CA
 	b _0806EA34
 	.align 2, 0
-_0806E9C0: .4byte 0x03004E58
+_0806E9C0: .4byte gColorFading
 _0806E9C4:
 	cmp r0, #2
 	beq _0806EA24
@@ -13003,13 +13003,13 @@ _0806E9F8:
 	movs r0, #0xc
 _0806E9FA:
 	strb r0, [r1]
-	ldr r1, _0806EA08 @ =0x03004E58
+	ldr r1, _0806EA08 @ =gColorFading
 	ldrb r0, [r1, #1]
 	adds r0, #1
 	strb r0, [r1, #1]
 	b _0806EA34
 	.align 2, 0
-_0806EA08: .4byte 0x03004E58
+_0806EA08: .4byte gColorFading
 _0806EA0C:
 	movs r0, #1
 	movs r1, #3
@@ -13041,7 +13041,7 @@ _0806EA3C: .4byte 0x00007FFF
 unk_6ea40: @ 0x0806EA40
 	push {r4, lr}
 	movs r4, #0
-	ldr r3, _0806EA54 @ =0x03004E58
+	ldr r3, _0806EA54 @ =gColorFading
 	ldrb r0, [r3, #1]
 	cmp r0, #0
 	beq _0806EA58
@@ -13049,7 +13049,7 @@ unk_6ea40: @ 0x0806EA40
 	beq _0806EA7C
 	b _0806EA92
 	.align 2, 0
-_0806EA54: .4byte 0x03004E58
+_0806EA54: .4byte gColorFading
 _0806EA58:
 	movs r0, #0xa0
 	lsls r0, r0, #0x13
@@ -13091,7 +13091,7 @@ _0806EAA0: .4byte gCurrentCutscene
 unk_6eaa4: @ 0x0806EAA4
 	push {r4, r5, lr}
 	movs r5, #0
-	ldr r4, _0806EABC @ =0x03004E58
+	ldr r4, _0806EABC @ =gColorFading
 	ldrb r0, [r4, #1]
 	cmp r0, #1
 	beq _0806EAD6
@@ -13101,7 +13101,7 @@ unk_6eaa4: @ 0x0806EAA4
 	beq _0806EAC6
 	b _0806EAFC
 	.align 2, 0
-_0806EABC: .4byte 0x03004E58
+_0806EABC: .4byte gColorFading
 _0806EAC0:
 	cmp r0, #2
 	beq _0806EAF0
@@ -13143,7 +13143,7 @@ unk_6eb04: @ 0x0806EB04
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	movs r5, #0
-	ldr r0, _0806EB2C @ =0x03004E58
+	ldr r0, _0806EB2C @ =gColorFading
 	ldrb r2, [r0, #3]
 	adds r1, r2, #0
 	adds r7, r0, #0
@@ -13163,7 +13163,7 @@ _0806EB22:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0806EB2C: .4byte 0x03004E58
+_0806EB2C: .4byte gColorFading
 _0806EB30: .4byte _0806EB34
 _0806EB34: @ jump table
 	.4byte _0806EB48 @ case 0
@@ -13178,7 +13178,7 @@ _0806EB48:
 	lsls r1, r1, #2
 	cmp r0, r1
 	bne _0806EB68
-	ldr r1, _0806EB64 @ =0x03004E0C
+	ldr r1, _0806EB64 @ =gDoorPositionStart
 	movs r0, #0x98
 	lsls r0, r0, #1
 	strh r0, [r1]
@@ -13186,9 +13186,9 @@ _0806EB48:
 	b _0806EB6E
 	.align 2, 0
 _0806EB60: .4byte gBackgroundPositions
-_0806EB64: .4byte 0x03004E0C
+_0806EB64: .4byte gDoorPositionStart
 _0806EB68:
-	ldr r0, _0806EB98 @ =0x03004E0C
+	ldr r0, _0806EB98 @ =gDoorPositionStart
 	strh r1, [r0]
 	adds r3, r0, #0
 _0806EB6E:
@@ -13214,11 +13214,11 @@ _0806EB92:
 	bl CheckLockHatchesWithTimer
 	b _0806EC8C
 	.align 2, 0
-_0806EB98: .4byte 0x03004E0C
+_0806EB98: .4byte gDoorPositionStart
 _0806EB9C: .4byte gBg1YPosition
 _0806EBA0: .4byte 0x03000047
 _0806EBA4:
-	ldr r0, _0806EBB8 @ =0x03004E0C
+	ldr r0, _0806EBB8 @ =gDoorPositionStart
 	ldr r3, _0806EBBC @ =gBackgroundPositions
 	ldrh r1, [r3, #0x12]
 	ldrh r2, [r0, #2]
@@ -13229,7 +13229,7 @@ _0806EBA4:
 	strh r0, [r3, #0x12]
 	b _0806ECF2
 	.align 2, 0
-_0806EBB8: .4byte 0x03004E0C
+_0806EBB8: .4byte gDoorPositionStart
 _0806EBBC: .4byte gBackgroundPositions
 _0806EBC0:
 	cmp r2, r0
@@ -13245,7 +13245,7 @@ _0806EBCA:
 	strb r1, [r7, #3]
 	b _0806ECF2
 _0806EBD6:
-	ldr r0, _0806EBF8 @ =0x03004E0C
+	ldr r0, _0806EBF8 @ =gDoorPositionStart
 	ldr r4, _0806EBFC @ =gBackgroundPositions
 	ldrh r3, [r0]
 	ldrh r0, [r4, #0x10]
@@ -13264,7 +13264,7 @@ _0806EBF4:
 	strh r3, [r4, #0x10]
 	b _0806ECF2
 	.align 2, 0
-_0806EBF8: .4byte 0x03004E0C
+_0806EBF8: .4byte gDoorPositionStart
 _0806EBFC: .4byte gBackgroundPositions
 _0806EC00:
 	cmp r2, r1
@@ -13313,7 +13313,7 @@ _0806EC4E:
 	subs r1, #0x50
 	ldrh r0, [r2]
 	strh r0, [r1]
-	ldr r1, _0806EC7C @ =0x03004E58
+	ldr r1, _0806EC7C @ =gColorFading
 	movs r0, #0
 	strb r0, [r1, #3]
 	b _0806EC8E
@@ -13324,7 +13324,7 @@ _0806EC6C: .4byte 0x04000008
 _0806EC70: .4byte gIoRegisters
 _0806EC74: .4byte gHazeInfo
 _0806EC78: .4byte 0x04000050
-_0806EC7C: .4byte 0x03004E58
+_0806EC7C: .4byte gColorFading
 _0806EC80:
 	movs r0, #0
 	movs r1, #0
@@ -13332,14 +13332,14 @@ _0806EC80:
 	cmp r0, #0
 	beq _0806ECF2
 _0806EC8C:
-	ldr r1, _0806EC98 @ =0x03004E58
+	ldr r1, _0806EC98 @ =gColorFading
 _0806EC8E:
 	ldrb r0, [r1, #1]
 	adds r0, #1
 	strb r0, [r1, #1]
 	b _0806ECF2
 	.align 2, 0
-_0806EC98: .4byte 0x03004E58
+_0806EC98: .4byte gColorFading
 _0806EC9C:
 	ldrb r0, [r5]
 	movs r1, #0x88
@@ -14322,7 +14322,7 @@ _0806F4C4:
 _0806F4D0:
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r2, _0806F504 @ =0x03004E58
+	ldr r2, _0806F504 @ =gColorFading
 	ldrb r1, [r2, #4]
 	movs r0, #1
 	movs r3, #0
@@ -14342,7 +14342,7 @@ _0806F4F4: .4byte 0x040000D4
 _0806F4F8: .4byte 0x02035400
 _0806F4FC: .4byte 0x02035000
 _0806F500: .4byte 0x800000F0
-_0806F504: .4byte 0x03004E58
+_0806F504: .4byte gColorFading
 _0806F508: .4byte gWrittenToWinin_L
 _0806F50C: .4byte gWrittenToWinout_R
 _0806F510: .4byte gBackdropColor
@@ -14392,7 +14392,7 @@ _0806F56C:
 _0806F578:
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r2, _0806F59C @ =0x03004E58
+	ldr r2, _0806F59C @ =gColorFading
 	ldrb r1, [r2, #4]
 	movs r0, #1
 	orrs r0, r1
@@ -14404,7 +14404,7 @@ _0806F58C: .4byte 0x040000D4
 _0806F590: .4byte 0x02035400
 _0806F594: .4byte 0x02035000
 _0806F598: .4byte 0x800000F0
-_0806F59C: .4byte 0x03004E58
+_0806F59C: .4byte gColorFading
 _0806F5A0:
 	bl Haze_Bg3Bg2Bg1
 	b _0806F5AA
@@ -18936,7 +18936,7 @@ _080719B0:
 _080719B8: .4byte 0x030019D0
 _080719BC: .4byte gSubGameMode2
 _080719C0:
-	ldr r0, _080719D4 @ =0x03004E58
+	ldr r0, _080719D4 @ =gColorFading
 	ldrb r2, [r0]
 	cmp r2, #0x10
 	bne _080719DC
@@ -18947,7 +18947,7 @@ _080719C0:
 	strb r1, [r4]
 	b _080719E0
 	.align 2, 0
-_080719D4: .4byte 0x03004E58
+_080719D4: .4byte gColorFading
 _080719D8: .4byte 0x030019D0
 _080719DC:
 	movs r0, #3
