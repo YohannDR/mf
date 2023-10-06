@@ -13,4 +13,4 @@ extern const struct FrameData sGadoraOam_Vulnerable[3];
 extern const struct FrameData sGadoraBeamOam_Idle[5];
 extern const struct FrameData sGadoraRootsOam_OpeningEye[6];
 
-#endif /* TARGET_DATA_H */
+#endif /* GADORA_DATA_H */
