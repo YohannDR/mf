@@ -4,6 +4,8 @@
 #include "types.h"
 #include "constants/sprite.h"
 
+#define SPRITE_GFX_SIZE(nbrRows) ((nbrRows) * 32 * 256 / 4)
+
 extern const u8 sOamXFlipOffsets[3][4];
 extern const u8 sOamYFlipOffsets[3][4];
 

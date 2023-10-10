@@ -114,8 +114,6 @@ const s16 sSpritesFallingSpeedFast[16] = {
     16, 16, 20, SHORT_MAX
 };
 
-#define SPRITE_GFX_SIZE(nbrRows) ((nbrRows) * 32 * 256 / 4)
-
 const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
     [PSPRITE_UNUSED_16 - 0x10] = SPRITE_GFX_SIZE(1),
     [PSPRITE_SA_X_ELEVATOR - 0x10] = SPRITE_GFX_SIZE(2),
