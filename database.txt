@@ -3,6 +3,11 @@
 sprites/hornoad.gfx;1536;0x2e926c;4
 sprites/hornoad.pal;48;0x2eaa6c;2
 
+# Movable platform
+
+sprites/movable_platform.gfx;512;0x2ed2e8;4
+sprites/movable_platform.pal;16;0x2edae8;2
+
 # Hud
 
 hud/ammo_digits.gfx;1152;0x3e7a9c;1
@@ -21,7 +26,8 @@ escape/graphics.gfx;2048;0x3e90fc;1
 
 Blob_a5224_2e4904.bin;2356960;0xa5224;1
 Blob_2e5cae_2e6160.bin;1202;0x2e5cae;1
-Blob_2e6382_3e7a9c.bin;1054490;0x2e6382;1
+Blob_2e6382_2ed2e8.bin;28518;0x2e6382;1
+Blob_2edb20_3e7a9c.bin;1023868;0x2edb20;1
 Blob_3e9940_3ec038.bin;9976;0x3e9940;1
 Blob_3ec1a8_79a29c.bin;3858676;0x3ec1a8;1
 Blob_79afe0_79ecc8.bin;15592;0x79afe0;1

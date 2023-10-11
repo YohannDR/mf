@@ -200,6 +200,10 @@ SECTIONS {
 
         asm/disasm_0x0801503C.o(.text);
 
+        src/sprites_AI/movable_platform.o(.text);
+
+        asm/disasm_0x0801e794.o(.text);
+
         src/event_checks.o(.text);
 
         asm/disasm_0x08061004.o(.text);
@@ -225,6 +229,7 @@ SECTIONS {
         src/data/sprite_data.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
+        src/data/sprites/movable_platform.o(.rodata);
         src/data/hud_data.o(.rodata);
         src/data/escape_data.o(.rodata);
         src/data/particle_data.o(.rodata);
