@@ -16005,7 +16005,7 @@ _0800C9FC:
 	thumb_func_start RecordDemo
 RecordDemo: @ 0x0800CA00
 	push {r4, r5, r6, r7, lr}
-	ldr r3, _0800CA14 @ =0x03004C12
+	ldr r3, _0800CA14 @ =gDemoInputCounter
 	ldrh r0, [r3]
 	cmp r0, #0xfd
 	bls _0800CA1C
@@ -16014,11 +16014,11 @@ RecordDemo: @ 0x0800CA00
 	strh r0, [r1]
 	b _0800CA7C
 	.align 2, 0
-_0800CA14: .4byte 0x03004C12
+_0800CA14: .4byte gDemoInputCounter
 _0800CA18: .4byte gChangedInput
 _0800CA1C:
 	ldr r1, _0800CA54 @ =gButtonInput
-	ldr r6, _0800CA58 @ =0x03004812
+	ldr r6, _0800CA58 @ =gDemoInputs
 	ldrh r2, [r3]
 	lsls r5, r2, #1
 	adds r0, r5, r6
@@ -16026,7 +16026,7 @@ _0800CA1C:
 	ldrh r0, [r0]
 	cmp r4, r0
 	bne _0800CA64
-	ldr r7, _0800CA5C @ =0x03004A12
+	ldr r7, _0800CA5C @ =gDemoInputDurations
 	adds r0, r5, r7
 	ldrh r1, [r0]
 	ldr r0, _0800CA60 @ =0x0000FFFF
@@ -16048,8 +16048,8 @@ _0800CA46:
 	b _0800CA7C
 	.align 2, 0
 _0800CA54: .4byte gButtonInput
-_0800CA58: .4byte 0x03004812
-_0800CA5C: .4byte 0x03004A12
+_0800CA58: .4byte gDemoInputs
+_0800CA5C: .4byte gDemoInputDurations
 _0800CA60: .4byte 0x0000FFFF
 _0800CA64:
 	adds r0, r2, #1
@@ -16058,7 +16058,7 @@ _0800CA64:
 	lsls r0, r0, #1
 	adds r0, r0, r6
 	strh r4, [r0]
-	ldr r1, _0800CA84 @ =0x03004A12
+	ldr r1, _0800CA84 @ =gDemoInputDurations
 	ldrh r0, [r3]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -16069,12 +16069,12 @@ _0800CA7C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800CA84: .4byte 0x03004A12
+_0800CA84: .4byte gDemoInputDurations
 
 	thumb_func_start UpdateDemoInput
 UpdateDemoInput: @ 0x0800CA88
 	push {r4, r5, r6, lr}
-	ldr r3, _0800CAB8 @ =0x03004C12
+	ldr r3, _0800CAB8 @ =gDemoInputCounter
 	ldrh r5, [r3]
 	ldr r6, _0800CABC @ =gButtonInput
 	cmp r5, #0xfd
@@ -16099,7 +16099,7 @@ _0800CAA6:
 	strh r0, [r6]
 	b _0800CB00
 	.align 2, 0
-_0800CAB8: .4byte 0x03004C12
+_0800CAB8: .4byte gDemoInputCounter
 _0800CABC: .4byte gButtonInput
 _0800CAC0: .4byte 0x03004C14
 _0800CAC4: .4byte 0x0000FFFF
@@ -16109,14 +16109,14 @@ _0800CACC:
 	bne _0800CAE0
 	adds r0, r5, #1
 	strh r0, [r3]
-	ldr r1, _0800CB08 @ =0x03004A12
+	ldr r1, _0800CB08 @ =gDemoInputDurations
 	ldrh r0, [r3]
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	strh r0, [r4]
 _0800CAE0:
-	ldr r1, _0800CB0C @ =0x03004812
+	ldr r1, _0800CB0C @ =gDemoInputs
 	ldrh r0, [r3]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -16137,16 +16137,16 @@ _0800CB00:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800CB08: .4byte 0x03004A12
-_0800CB0C: .4byte 0x03004812
+_0800CB08: .4byte gDemoInputDurations
+_0800CB0C: .4byte gDemoInputs
 _0800CB10: .4byte gChangedInput
 _0800CB14: .4byte 0x03004C16
 
 	thumb_func_start CopyDemoInput
 CopyDemoInput: @ 0x0800CB18
 	ldr r2, _0800CB38 @ =gButtonInput
-	ldr r1, _0800CB3C @ =0x03004812
-	ldr r0, _0800CB40 @ =0x03004C12
+	ldr r1, _0800CB3C @ =gDemoInputs
+	ldr r0, _0800CB40 @ =gDemoInputCounter
 	ldrh r0, [r0]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -16162,8 +16162,8 @@ CopyDemoInput: @ 0x0800CB18
 	bx lr
 	.align 2, 0
 _0800CB38: .4byte gButtonInput
-_0800CB3C: .4byte 0x03004812
-_0800CB40: .4byte 0x03004C12
+_0800CB3C: .4byte gDemoInputs
+_0800CB40: .4byte gDemoInputCounter
 _0800CB44: .4byte gChangedInput
 _0800CB48: .4byte 0x03004C16
 
@@ -16175,11 +16175,11 @@ ResetDemoInputAndDuration: @ 0x0800CB4C
 	cmp r0, #1
 	bne _0800CB90
 	ldr r4, _0800CB7C @ =0x03004C14
-	ldr r6, _0800CB80 @ =0x03004C12
+	ldr r6, _0800CB80 @ =gDemoInputCounter
 	ldr r5, _0800CB84 @ =0x03004C16
 	movs r3, #0
-	ldr r2, _0800CB88 @ =0x03004A12
-	ldr r1, _0800CB8C @ =0x03004812
+	ldr r2, _0800CB88 @ =gDemoInputDurations
+	ldr r1, _0800CB8C @ =gDemoInputs
 	movs r0, #0xff
 _0800CB64:
 	strh r3, [r1]
@@ -16195,16 +16195,16 @@ _0800CB64:
 	.align 2, 0
 _0800CB78: .4byte gDemoState
 _0800CB7C: .4byte 0x03004C14
-_0800CB80: .4byte 0x03004C12
+_0800CB80: .4byte gDemoInputCounter
 _0800CB84: .4byte 0x03004C16
-_0800CB88: .4byte 0x03004A12
-_0800CB8C: .4byte 0x03004812
+_0800CB88: .4byte gDemoInputDurations
+_0800CB8C: .4byte gDemoInputs
 _0800CB90:
 	ldr r0, _0800CBA8 @ =0x03004C14
-	ldr r1, _0800CBAC @ =0x03004A12
+	ldr r1, _0800CBAC @ =gDemoInputDurations
 	ldrh r1, [r1]
 	strh r1, [r0]
-	ldr r6, _0800CBB0 @ =0x03004C12
+	ldr r6, _0800CBB0 @ =gDemoInputCounter
 	ldr r5, _0800CBB4 @ =0x03004C16
 _0800CB9C:
 	movs r0, #0
@@ -16215,8 +16215,8 @@ _0800CB9C:
 	bx r0
 	.align 2, 0
 _0800CBA8: .4byte 0x03004C14
-_0800CBAC: .4byte 0x03004A12
-_0800CBB0: .4byte 0x03004C12
+_0800CBAC: .4byte gDemoInputDurations
+_0800CBB0: .4byte gDemoInputCounter
 _0800CBB4: .4byte 0x03004C16
 
 	thumb_func_start SA_XRunningGFX

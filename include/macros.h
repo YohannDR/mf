@@ -72,6 +72,12 @@
  */
 #define C_16_2_8(high, low) ((high) << 8 | (low))
 
+/**
+ * @brief Constructs a byte from 8 bits
+ * 
+ */
+#define C_8_8_1(bit0, bit1, bit2, bit3, bit4, bit5, bit6, bit7) (((bit0) << 0) | ((bit1) << 1) | ((bit2) << 2) | ((bit3) << 3) | ((bit4) << 4) | ((bit5) << 5) | ((bit6) << 6) | ((bit7) << 7))
+
 // Converts a number to Q8.8 fixed-point format
 #define Q_8_8(n) ((s16)((n) * 256))
 

@@ -7687,7 +7687,7 @@ _08064B1C:
 	bne _08064B9E
 	ldr r4, _08064C04 @ =gPreviousCutscene
 	ldr r5, _08064C08 @ =gLastDoorUsed
-	ldr r1, _08064C0C @ =0x0300001E
+	ldr r1, _08064C0C @ =gCurrentDemo
 	ldr r2, _08064C10 @ =0x03000058
 	movs r3, #0
 	adds r0, r2, #4
@@ -7750,7 +7750,7 @@ _08064BFC: .4byte gElevatorDirection
 _08064C00: .4byte gIsLoadingFile
 _08064C04: .4byte gPreviousCutscene
 _08064C08: .4byte gLastDoorUsed
-_08064C0C: .4byte 0x0300001E
+_08064C0C: .4byte gCurrentDemo
 _08064C10: .4byte 0x03000058
 _08064C14: .4byte gAbilityCount
 _08064C18: .4byte gDoorPositionStart
@@ -8005,7 +8005,7 @@ _08064E28:
 	adds r1, r1, r0
 	subs r1, #1
 	strh r1, [r5, #0x18]
-	ldr r0, _08064E90 @ =0x0300001E
+	ldr r0, _08064E90 @ =gCurrentDemo
 	ldrb r1, [r0]
 	movs r0, #0x80
 	ands r0, r1
@@ -8029,7 +8029,7 @@ _08064E6E:
 	.align 2, 0
 _08064E88: .4byte 0x03000124
 _08064E8C: .4byte gSamusData
-_08064E90: .4byte 0x0300001E
+_08064E90: .4byte gCurrentDemo
 _08064E94: .4byte gSaXSpawnPosition
 _08064E98:
 	cmp r0, #0

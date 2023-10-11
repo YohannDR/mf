@@ -1,7 +1,10 @@
 #include "globals.h"
 #include "syscalls.h"
 
+#include "constants/demo.h"
 #include "constants/sprite.h"
+
+#include "structs/demo.h"
 
 /**
  * @brief 230 | 568 | Main game loop
@@ -318,7 +321,7 @@ void AgbMain(void)
                     gUnk_03000be3 = 0;
                     gSubGameMode1 = 0;
 
-                    if (gDemoState == 0)
+                    if (gDemoState == DEMO_STATE_NONE)
                     {
                         gMainGameMode = GAME_MODE_TITLE;
                     }

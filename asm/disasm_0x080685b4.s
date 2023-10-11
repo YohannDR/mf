@@ -18603,8 +18603,8 @@ IncreaseMusicVolume: @ 0x080716E4
 	.align 2, 0
 _080716F4: .4byte 0x03004DE8
 
-	thumb_func_start DemoLoading_EmptyVBlank
-DemoLoading_EmptyVBlank: @ 0x080716F8
+	thumb_func_start DemoVblank_Empty
+DemoVblank_Empty: @ 0x080716F8
 	sub sp, #4
 	mov r1, sp
 	movs r0, #0
@@ -18612,8 +18612,8 @@ DemoLoading_EmptyVBlank: @ 0x080716F8
 	add sp, #4
 	bx lr
 
-	thumb_func_start DemoLoadingVBLank
-DemoLoadingVBLank: @ 0x08071704
+	thumb_func_start DemoVblank
+DemoVblank: @ 0x08071704
 	push {lr}
 	bl UpdateAudio
 	pop {r0}
@@ -18627,9 +18627,9 @@ DemoLoadInputs: @ 0x08071710
 	mov r6, r8
 	push {r6, r7}
 	sub sp, #4
-	ldr r0, _08071798 @ =DemoLoadingVBLank
+	ldr r0, _08071798 @ =DemoVblank
 	bl CallbackSetVBlank
-	ldr r7, _0807179C @ =0x0300001E
+	ldr r7, _0807179C @ =gCurrentDemo
 	ldrb r0, [r7]
 	cmp r0, #0xb
 	bls _0807172C
@@ -18650,7 +18650,7 @@ _0807172C:
 	lsls r5, r5, #4
 	adds r6, r5, r4
 	ldr r1, [r6]
-	ldr r2, _080717AC @ =0x03004812
+	ldr r2, _080717AC @ =gDemoInputs
 	ldrh r3, [r6, #4]
 	movs r0, #0x10
 	mov r8, r0
@@ -18660,7 +18660,7 @@ _0807172C:
 	adds r4, #8
 	adds r5, r5, r4
 	ldr r1, [r5]
-	ldr r2, _080717B0 @ =0x03004A12
+	ldr r2, _080717B0 @ =gDemoInputDurations
 	ldrh r3, [r6, #0xc]
 	mov r0, r8
 	str r0, [sp]
@@ -18670,14 +18670,14 @@ _0807172C:
 	mov r1, sb
 	strb r0, [r1]
 _08071774:
-	ldr r1, _080717B4 @ =0x03004C12
+	ldr r1, _080717B4 @ =gDemoInputCounter
 	movs r0, #0
 	strh r0, [r1]
 	ldrb r0, [r7]
 	movs r1, #0x80
 	orrs r0, r1
 	strb r0, [r7]
-	ldr r0, _080717B8 @ =DemoLoading_EmptyVBlank
+	ldr r0, _080717B8 @ =DemoVblank_Empty
 	bl CallbackSetVBlank
 	add sp, #4
 	pop {r3, r4}
@@ -18687,15 +18687,15 @@ _08071774:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08071798: .4byte DemoLoadingVBLank
-_0807179C: .4byte 0x0300001E
+_08071798: .4byte DemoVblank
+_0807179C: .4byte gCurrentDemo
 _080717A0: .4byte 0x083E40BC
 _080717A4: .4byte gDemoState
 _080717A8: .4byte 0x083E3EAC
-_080717AC: .4byte 0x03004812
-_080717B0: .4byte 0x03004A12
-_080717B4: .4byte 0x03004C12
-_080717B8: .4byte DemoLoading_EmptyVBlank
+_080717AC: .4byte gDemoInputs
+_080717B0: .4byte gDemoInputDurations
+_080717B4: .4byte gDemoInputCounter
+_080717B8: .4byte DemoVblank_Empty
 
 	thumb_func_start DemoLoadRam
 DemoLoadRam: @ 0x080717BC
@@ -18703,7 +18703,7 @@ DemoLoadRam: @ 0x080717BC
 	lsls r0, r0, #0x18
 	lsrs r3, r0, #0x18
 	ldr r0, _08071850 @ =0x083E40BC
-	ldr r6, _08071854 @ =0x0300001E
+	ldr r6, _08071854 @ =gCurrentDemo
 	ldrb r1, [r6]
 	movs r5, #0x7f
 	ands r5, r1
@@ -18775,7 +18775,7 @@ DemoLoadRam: @ 0x080717BC
 	b _080718B6
 	.align 2, 0
 _08071850: .4byte 0x083E40BC
-_08071854: .4byte 0x0300001E
+_08071854: .4byte gCurrentDemo
 _08071858: .4byte gCurrentArea
 _0807185C: .4byte 0x083E3F6C
 _08071860: .4byte gLastDoorUsed
@@ -18834,7 +18834,7 @@ DemoInit: @ 0x080718CC
 	lsrs r0, r0, #8
 	ldrb r1, [r1]
 	adds r1, r0, r1
-	ldr r2, _08071904 @ =0x0300001E
+	ldr r2, _08071904 @ =gCurrentDemo
 	movs r0, #1
 	ands r1, r0
 	cmp r1, #0
@@ -18846,7 +18846,7 @@ DemoInit: @ 0x080718CC
 _080718F8: .4byte 0x0300001F
 _080718FC: .4byte gFrameCounter8Bit
 _08071900: .4byte gFrameCounter16Bit
-_08071904: .4byte 0x0300001E
+_08071904: .4byte gCurrentDemo
 _08071908:
 	strb r1, [r2]
 _0807190A:
@@ -18873,14 +18873,14 @@ EndDemo: @ 0x08071928
 	cmp r1, #1
 	bne _08071978
 	ldr r0, _08071960 @ =0x040000D4
-	ldr r1, _08071964 @ =0x03004812
+	ldr r1, _08071964 @ =gDemoInputs
 	str r1, [r0]
 	ldr r1, _08071968 @ =0x0203F800
 	str r1, [r0, #4]
 	ldr r2, _0807196C @ =0x80000100
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08071970 @ =0x03004A12
+	ldr r1, _08071970 @ =gDemoInputDurations
 	str r1, [r0]
 	ldr r1, _08071974 @ =0x0203FA00
 	str r1, [r0, #4]
@@ -18893,13 +18893,13 @@ EndDemo: @ 0x08071928
 	.align 2, 0
 _0807195C: .4byte gDemoState
 _08071960: .4byte 0x040000D4
-_08071964: .4byte 0x03004812
+_08071964: .4byte gDemoInputs
 _08071968: .4byte 0x0203F800
 _0807196C: .4byte 0x80000100
-_08071970: .4byte 0x03004A12
+_08071970: .4byte gDemoInputDurations
 _08071974: .4byte 0x0203FA00
 _08071978:
-	ldr r3, _08071998 @ =0x0300001E
+	ldr r3, _08071998 @ =gCurrentDemo
 	ldrb r0, [r3]
 	adds r0, #1
 	strb r0, [r3]
@@ -18916,7 +18916,7 @@ _08071978:
 	strb r2, [r3]
 	b _080719B0
 	.align 2, 0
-_08071998: .4byte 0x0300001E
+_08071998: .4byte gCurrentDemo
 _0807199C: .4byte 0x030019D0
 _080719A0:
 	cmp r0, #6
