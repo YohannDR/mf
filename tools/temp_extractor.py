@@ -1,200 +1,140 @@
-chars = [
-    '｡',
-    '｢',
-    '｣',
-    '､',
-    '･',
-    'ｦ',
-    'ｧ',
-    'ｨ',
-    'ｩ',
-    'ｪ',
-    'ｫ',
-    'ｬ',
-    'ｭ',
-    'ｮ',
-    'ｯ',
-    'ｰ',
-    'ｱ',
-    'ｲ',
-    'ｳ',
-    'ｴ',
-    'ｵ',
-    'ｶ',
-    'ｷ',
-    'ｸ',
-    'ｹ',
-    'ｺ',
-    'ｻ',
-    'ｼ',
-    'ｽ',
-    'ｾ',
-    'ｿ',
-    'ﾀ',
-    'ﾁ',
-    'ﾂ',
-    'ﾃ',
-    'ﾄ',
-    'ﾅ',
-    'ﾆ',
-    'ﾇ',
-    'ﾈ',
-    'ﾉ',
-    'ﾊ',
-    'ﾋ',
-    'ﾌ',
-    'ﾍ',
-    'ﾎ',
-    'ﾏ',
-    'ﾐ',
-    'ﾑ',
-    'ﾒ',
-    'ﾓ',
-    'ﾔ',
-    'ﾕ',
-    'ﾖ',
-    'ﾗ',
-    'ﾘ',
-    'ﾙ',
-    'ﾚ',
-    'ﾛ',
-    'ﾜ',
-    'ﾝ',
-    'ﾞ',
-    'ﾟ'
+demos = [
+    "DEMO_ID_SECTOR_2",
+    "DEMO_ID_SECTOR_5",
+    "DEMO_ID_SECTOR_4",
+    "DEMO_ID_MAIN_DECK",
+    "DEMO_ID_WALL_JUMP",
+    "DEMO_ID_SHINESPARK",
+    "DEMO_ID_LADDERS",
+    "DEMO_ID_POWER_BOMBS",
+    "DEMO_ID_SECTOR_3",
+    "DEMO_ID_SECTOR_6",
+    "DEMO_ID_ARACHNUS",
+    "DEMO_ID_SCREW_ATTACK",
 ]
 
-events = [
-    "EVENT_NONE",
-    "EVENT_NAVIGATION_ROOM_BEFORE_QUARANTINE_BAY",
-    "EVENT_QUARANTINE_BAY_HORNOAD_DEAD",
-    "EVENT_NAVIGATION_ROOM_AFTER_QUARANTINE_BAY",
-    "EVENT_NAVIGATION_ROOM_BEFORE_ELEVATOR",
-    "EVENT_SKIPPED_BY_NOT_TALKING_TO_COMPUTER_1",
-    "EVENT_ENTERED_MISSILE_DATA_ROOM",
-    "EVENT_MISSILE_DATA_DOWNLOADED",
-    "EVENT_ENTERED_NAVIGATION_ROOM_POWER_OUTAGE",
-    "EVENT_NAVIGATION_ROOM_AFTER_MISSILES",
-    "EVENT_MORPH_BALL_ABILITY_RECOVERED",
-    "EVENT_NAVIGATION_ROOM_AFTER_MORPH_BALL",
-    "EVENT_ENTERED_ELEVATOR_ROOM",
-    "EVENT_SA_X_ELEVATOR_CUTSCENE_ENDS",
-    "EVENT_NAVIGATION_ROOM_ENTERING_SRX",
-    "EVENT_CHARGE_BEAM_ABILITY_RECOVERED",
-    "EVENT_ALL_STABILIZERS_ONLINE",
-    "EVENT_NAVIGATION_ROOM_LEAVING_SRX",
-    "EVENT_NAVIGATION_ROOM_ENTERING_TRO",
-    "EVENT_SECURITY_LEVEL_1_UNLOCKED",
-    "EVENT_SKIPPED_BY_NOT_TALKING_TO_COMPUTER_2",
-    "EVENT_ENTERING_BOMB_DATA_ROOM",
-    "EVENT_BOMB_DATA_DOWNLOADED",
-    "EVENT_SA_X_QUAKE",
-    "EVENT_LEFT_SA_X_QUAKE_ROOM",
-    "EVENT_HIGH_JUMP_ABILITY_RECOVERED",
-    "EVENT_ESCAPED_TRO_1_SA_X",
-    "EVENT_NAVIGATION_ROOM_LEAVING_TRO",
-    "EVENT_NAVIGATION_ROOM_ENTERING_AQA",
-    "EVENT_SPEED_BOOSTER_ABILITY_RECOVERED",
-    "EVENT_SKIPPED_BY_NOT_TALKING_TO_COMPUTER_3",
-    "EVENT_ENTERED_PUMP_CONTROL_UNIT",
-    "EVENT_WATER_LEVEL_LOWERED",
-    "EVENT_NAVIGATION_ROOM_LEAVING_AQA",
-    "EVENT_NAVIGATION_ROOM_ENTERING_PYR",
-    "EVENT_SECURITY_LEVEL_2_UNLOCKED",
-    "EVENT_SKIPPED_BY_NOT_TALKING_TO_COMPUTER_4",
-    "EVENT_ENTERED_SUPER_MISSILE_DATA_ROOM",
-    "EVENT_SUPER_MISSILE_DATA_DOWNLOADED",
-    "EVENT_TRIGGERED_BOX_RUMBLE",
-    "EVENT_BOX_DEFEATED",
-    "EVENT_NAVIGATION_ROOM_LEAVING_PYR",
-    "EVENT_LEFT_NAVIGATION_ROOM",
-    "EVENT_SECRET_CONVERSATION",
-    "EVENT_SECRET_CONVERSATION_OVER",
-    "EVENT_SKIPPED_BY_USING_NOC_NAVIGATION_ROOM",
-    "EVENT_ENTERED_NOC_NAVIGATION_ROOM",
-    "EVENT_NAVIGATION_ROOM_ENTERING_NOC",
-    "EVENT_NOC_SA_X_ENCOUNTER",
-    "EVENT_ESCAPED_NOC_SA_X",
-    "EVENT_NOC_DATA_ROOM_DESTROYED",
-    "EVENT_VARIA_SUIT_ABILITY_RECOVERED",
-    "EVENT_REACHED_TOP_OF_ROOM_AFTER_VARIA",
-    "EVENT_NAVIGATION_ROOM_LEAVING_NOC",
-    "EVENT_NAVIGATION_ROOM_ENTERING_ARC",
-    "EVENT_SECURITY_LEVEL_3_UNLOCKED",
-    "EVENT_SKIPPED_BY_NOT_TALKING_TO_COMPUTER_5",
-    "EVENT_ENTERED_ICE_MISSILE_DATA_ROOM",
-    "EVENT_ICE_MISSILE_DATA_DOWNLOADED",
-    "EVENT_NAVIGATION_ROOM_LEAVING_ARC",
-    "EVENT_WIDE_BEAM_ABILITY_RECOVERED",
-    "EVENT_COOLING_UNIT_OPERATIONAL",
-    "EVENT_NAVIGATION_ROOM_LEAVING_PYR_2",
-    "EVENT_ANIMALS_RELEASED",
-    "EVENT_NAVIGATION_ROOM_AFTER_ANIMALS",
-    "EVENT_NAVIGATION_ROOM_ENTERING_ARC_2",
-    "EVENT_POWER_BOMB_DATA_DOWNLOADED",
-    "EVENT_ARC_SA_X_ENCOUNTER",
-    "EVENT_ESCAPED_ARC_SA_X",
-    "EVENT_NAVIGATION_ROOM_LEAVING_ARC_2",
-    "EVENT_POWER_OUTAGE",
-    "EVENT_ENTERED_SHIP",
-    "EVENT_ENTERED_YAKUZA_ROOM",
-    "EVENT_SPACE_JUMP_ABILITY_RECOVERED",
-    "EVENT_AUXILARY_POWER_ENGAGED",
-    "EVENT_NAVIGATION_ROOM_AFTER_YAKUZA",
-    "EVENT_ENGAGED_TRO_2_SA_X",
-    "EVENT_ESCAPED_TRO_2_SA_X",
-    "EVENT_PLASMA_BEAM_ABILITY_RECOVERED",
-    "EVENT_NAVIGATION_ROOM_LEAVING_TRO_2",
-    "EVENT_NAVIGATION_ROOM_ENTERING_ARC_3",
-    "EVENT_GRAVITY_SUIT_ABILITY_RECOVERED",
-    "EVENT_ENTERED_LEVEL_4_SECURITY_ROOM",
-    "EVENT_SECURITY_LEVEL_4_UNLOCKED",
-    "EVENT_SECRET_MESSAGE_2",
-    "EVENT_ENTERED_DIFFUSION_MISSILE_DATA_ROOM",
-    "EVENT_DIFFUSION_MISSILE_DATA_DOWNLOADED",
-    "EVENT_NAVIGATION_ROOM_LEAVING_AQA_2",
-    "EVENT_NAVIGATION_ROOM_ENTERING_NOC_2",
-    "EVENT_RESTRICTED_ZONE_WARNING",
-    "EVENT_TRIGGERED_BOX_2_RUMBLE",
-    "EVENT_WAVE_BEAM_ABILITY_RECOVERED",
-    "EVENT_RESTRICTED_LABORATORY_EXPLOSION",
-    "EVENT_60_SECONDS_TO_DETACHMENT",
-    "EVENT_ESCAPED_RESTRICTED_LABORATORY",
-    "EVENT_NAVIGATION_ROOM_AFTER_RESTRICTED_LABORATORY",
-    "EVENT_SCREW_ATTACK_ABILITY_RECOVERED",
-    "EVENT_NAVIGATION_ROOM_LEAVING_SRX_2",
-    "EVENT_END_OF_FIRST_CONVERSATION",
-    "EVENT_SECOND_CONVERSATION",
-    "EVENT_SKIPPED_BY_NOT_TALKING_TO_COMPUTER_6",
-    "EVENT_ENTERED_OPERATION_DECK",
-    "EVENT_SA_X_DEFEATED",
-    "EVENT_ORBIT_CHANGE_IMPLEMENTED",
-    "EVENT_SKIPPED_BY_NOT_TALKING_TO_COMPUTER_7",
-    "EVENT_ENTERED_SHIP_ROOM",
-    "EVENT_SA_X_KILLED_BY_OMEGA_METROID",
-    "EVENT_ICE_BEAM_ABILITY_RECOVERED",
-    "EVENT_OMEGA_METROID_DEFEATED",
-    "EVENT_ESCAPED_ON_SHIP",
-]
+def GetInput(value: int) -> str:    
+    result = ""
+
+    if value == 0:
+        return "KEY_NONE"
+
+    if value == (1 << 0):
+        result = "KEY_A"
+
+    if value & (1 << 1):
+        if result == "":
+            result = "KEY_B"
+        else:
+            result += " | KEY_B"
+
+    if value & (1 << 2):
+        if result == "":
+            result = "KEY_SELECT"
+        else:
+            result += " | KEY_SELECT"
+
+    if value & (1 << 3):
+        if result == "":
+            result = "KEY_START"
+        else:
+            result += " | KEY_START"
+
+    if value & (1 << 4):
+        if result == "":
+            result = "KEY_RIGHT"
+        else:
+            result += " | KEY_RIGHT"
+
+    if value & (1 << 5):
+        if result == "":
+            result = "KEY_LEFT"
+        else:
+            result += " | KEY_LEFT"
+
+    if value & (1 << 6):
+        if result == "":
+            result = "KEY_UP"
+        else:
+            result += " | KEY_UP"
+
+    if value & (1 << 7):
+        if result == "":
+            result = "KEY_DOWN"
+        else:
+            result += " | KEY_DOWN"
+
+    if value & (1 << 8):
+        if result == "":
+            result = "KEY_R"
+        else:
+            result += " | KEY_R"
+
+    if value & (1 << 9):
+        if result == "":
+            result = "KEY_L"
+        else:
+            result += " | KEY_L"
+
+    return result
 
 file = open("../mf_us_baserom.gba", "rb")
 
 def Func():
-    addr: int = 0x581510
-    size: int = 110
-    txtSize: int = 28
+    addr: int = 0x3e3eac
+    size: int = 12
 
     file.seek(addr)
 
     result = ""
 
     for x in range(0, size):
-        result += "[" + events[x] + "] = {\n\t\""
+        result += "static const u16 sDemoInputs_" + str(x) + "["
 
-        result += file.read(txtSize).decode("shift-jis")
-        result += "\"\n},\n"
+        ptr: int = int.from_bytes(file.read(4), "little") - 0x8000000
+        size: int = int.from_bytes(file.read(4), "little")
+
+        currAddr: int = file.tell()
+
+        file.seek(ptr)
+
+        result += str(int(size / 2)) + "] = {\n"
+
+        for y in range(0, int(size / 2)):
+            result += "\t [" + str(y) + "] = " + GetInput(int.from_bytes(file.read(2), "little")) + ",\n"
+
+        result += "};\n\nstatic const u16 sDemoInputDurations_" + str(x) + "["
+
+        file.seek(currAddr)
+
+        ptr: int = int.from_bytes(file.read(4), "little") - 0x8000000
+        size: int = int.from_bytes(file.read(4), "little")
+
+        currAddr: int = file.tell()
+
+        file.seek(ptr)
+
+        result += str(int(size / 2)) + "] = {\n"
+
+        for y in range(0, int(size / 2)):
+            result += "\t [" + str(y) + "] = " + str(int.from_bytes(file.read(2), "little")) + ",\n"
+
+        result += "};\n\n"
+
+        file.seek(currAddr)
+
+    file.seek(addr)
+    size = 12
+
+    result += "struct DemoData sDemoData[DEMO_ID_END] = {\n\t"
+
+    for x in range(0, size):
+        result += "[" + str(demos[x]) + "] = {\n\t\t.pInputs = sDemoInputs_" + str(x) + ",\n\t\t"
+        result += ".inputsLength = ARRAY_SIZE(sDemoInputs_" + str(x) + "),\n\t\t"
+        result += ".pDurations = sDemoInputDurations_" + str(x) + ",\n\t\t"
+        result += ".inputsLength = ARRAY_SIZE(sDemoInputDurations_" + str(x) + ")\n\t},\n\t"
 
     return result
 
-f = open("names.txt", "w")
+f = open("demos.txt", "w")
 f.write(Func())

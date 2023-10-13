@@ -25281,7 +25281,7 @@ SramWrite_ToEwram: @ 0x0807F450
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #0x38
-	ldr r4, _0807F6F8 @ =0x030019D0
+	ldr r4, _0807F6F8 @ =gMusicInfo
 	ldrh r1, [r4, #0x1c]
 	ldr r0, _0807F6FC @ =0xFFFF0000
 	ands r0, r5
@@ -25616,7 +25616,7 @@ _0807F6BA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F6F8: .4byte 0x030019D0
+_0807F6F8: .4byte gMusicInfo
 _0807F6FC: .4byte 0xFFFF0000
 _0807F700: .4byte 0x0000FFFF
 _0807F704: .4byte 0xFFFFFF00
@@ -25790,7 +25790,7 @@ SramRead_FromEwram: @ 0x0807F7C0
 	ldrh r0, [r0]
 	strh r0, [r1]
 	movs r3, #0
-	ldr r5, _0807FA60 @ =0x030019D0
+	ldr r5, _0807FA60 @ =gMusicInfo
 	mov ip, r5
 	ldr r5, _0807FA64 @ =0x03000033
 	adds r4, r2, #0
@@ -25982,7 +25982,7 @@ _0807FA50: .4byte 0x0300122C
 _0807FA54: .4byte 0x0300122E
 _0807FA58: .4byte 0x03001230
 _0807FA5C: .4byte 0x03001232
-_0807FA60: .4byte 0x030019D0
+_0807FA60: .4byte gMusicInfo
 _0807FA64: .4byte 0x03000033
 _0807FA68: .4byte 0x0300003B
 _0807FA6C: .4byte gSamusData

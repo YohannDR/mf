@@ -24,6 +24,7 @@ SECTIONS {
         . = 0x0000001c; gSecurityHatchLevel = .;
         . = 0x0000001d; gSecurityHatchLevelBackup = .;
         . = 0x0000001e; gCurrentDemo = .;
+        . = 0x0000001f; gDemoPlaying = .;
         . = 0x00000020; gRebootGame = .;
         . = 0x00000021; gDisableScrolling = .;
         . = 0x00000024; gSkipDoorTransition = .;
@@ -146,6 +147,7 @@ SECTIONS {
         . = 0x000019c4; gVBlankCallback = .;
         . = 0x000019c8; gHBlankCallback = .;
         . = 0x000019cc; gVCountCallback = .;
+        . = 0x000019d0; gMusicInfo = .;
         . = 0x00004812; gDemoInputs = .;
         . = 0x00004a12; gDemoInputDurations = .;
         . = 0x00004c12; gDemoInputCounter = .;

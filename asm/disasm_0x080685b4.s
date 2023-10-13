@@ -18822,7 +18822,7 @@ _080718C8: .4byte gFrameCounter16Bit
 	thumb_func_start DemoInit
 DemoInit: @ 0x080718CC
 	push {lr}
-	ldr r1, _080718F8 @ =0x0300001F
+	ldr r1, _080718F8 @ =gDemoPlaying
 	ldrb r0, [r1]
 	cmp r0, #0
 	bne _0807190A
@@ -18843,7 +18843,7 @@ DemoInit: @ 0x080718CC
 	strb r0, [r2]
 	b _0807190A
 	.align 2, 0
-_080718F8: .4byte 0x0300001F
+_080718F8: .4byte gDemoPlaying
 _080718FC: .4byte gFrameCounter8Bit
 _08071900: .4byte gFrameCounter16Bit
 _08071904: .4byte gCurrentDemo
@@ -18853,7 +18853,7 @@ _0807190A:
 	ldr r1, _08071920 @ =gDemoState
 	movs r0, #3
 	strb r0, [r1]
-	ldr r0, _08071924 @ =0x030019D0
+	ldr r0, _08071924 @ =gMusicInfo
 	adds r0, #0x21
 	movs r1, #0x11
 	strb r1, [r0]
@@ -18862,7 +18862,7 @@ _0807190A:
 	bx r0
 	.align 2, 0
 _08071920: .4byte gDemoState
-_08071924: .4byte 0x030019D0
+_08071924: .4byte gMusicInfo
 
 	thumb_func_start EndDemo
 EndDemo: @ 0x08071928
@@ -18907,7 +18907,7 @@ _08071978:
 	lsrs r0, r0, #0x18
 	cmp r0, #0xb
 	bls _080719A0
-	ldr r0, _0807199C @ =0x030019D0
+	ldr r0, _0807199C @ =gMusicInfo
 	adds r0, #0x21
 	movs r2, #0
 	movs r1, #0xf
@@ -18917,11 +18917,11 @@ _08071978:
 	b _080719B0
 	.align 2, 0
 _08071998: .4byte gCurrentDemo
-_0807199C: .4byte 0x030019D0
+_0807199C: .4byte gMusicInfo
 _080719A0:
 	cmp r0, #6
 	bne _080719C0
-	ldr r0, _080719B8 @ =0x030019D0
+	ldr r0, _080719B8 @ =gMusicInfo
 	adds r0, #0x21
 	movs r2, #0
 	movs r1, #0xf
@@ -18933,14 +18933,14 @@ _080719B0:
 	strb r0, [r1]
 	b _080719E0
 	.align 2, 0
-_080719B8: .4byte 0x030019D0
+_080719B8: .4byte gMusicInfo
 _080719BC: .4byte gSubGameMode2
 _080719C0:
 	ldr r0, _080719D4 @ =gColorFading
 	ldrb r2, [r0]
 	cmp r2, #0x10
 	bne _080719DC
-	ldr r0, _080719D8 @ =0x030019D0
+	ldr r0, _080719D8 @ =gMusicInfo
 	adds r0, #0x21
 	movs r1, #0
 	strb r2, [r0]
@@ -18948,7 +18948,7 @@ _080719C0:
 	b _080719E0
 	.align 2, 0
 _080719D4: .4byte gColorFading
-_080719D8: .4byte 0x030019D0
+_080719D8: .4byte gMusicInfo
 _080719DC:
 	movs r0, #3
 	strb r0, [r4]

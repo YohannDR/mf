@@ -9,6 +9,7 @@
 #include "constants/demo.h"
 #include "constants/samus.h"
 
+#include "structs/audio.h"
 #include "structs/connection.h"
 #include "structs/demo.h"
 #include "structs/event.h"
@@ -116,9 +117,29 @@ void DemoLoadRam(u8 group)
     }
 }
 
+/**
+ * @brief 718cc | 5c | Initializes a demo
+ * 
+ */
 void DemoInit(void)
 {
+    u32 rng;
 
+    if (!gDemoPlaying)
+    {
+        gDemoPlaying = TRUE;
+
+        rng = gFrameCounter8Bit + gFrameCounter16Bit / 256;
+
+        gCurrentDemo = MOD_AND(rng, 2)
+            ? DEMO_ID_END / 2
+            : 0;
+    }
+
+    gDemoState = DEMO_STATE_LOADING;
+    gMusicInfo.unk_21 = 0x11;
+
+    DemoLoadInputs();
 }
 
 void DemoEnd(void)

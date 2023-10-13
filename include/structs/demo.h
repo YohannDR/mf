@@ -29,6 +29,7 @@ struct DemoRam {
     u16 samusY;
 };
 
+extern u8 gDemoPlaying;
 extern u8 gDemoState;
 extern u8 gCurrentDemo;
 
