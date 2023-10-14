@@ -142,7 +142,52 @@ void DemoInit(void)
     DemoLoadInputs();
 }
 
+/**
+ * @brief 71928 | d0 | Ends a demo
+ * 
+ */
 void DemoEnd(void)
 {
+    if (gDemoState == DEMO_STATE_RECORDING)
+    {
+        DMA_SET(3, gDemoInputs, EWRAM_BASE + 0x3F800, C_32_2_16(DMA_ENABLE, ARRAY_SIZE(gDemoInputs)));
+        DMA_SET(3, gDemoInputDurations, EWRAM_BASE + 0x3FA00, C_32_2_16(DMA_ENABLE, ARRAY_SIZE(gDemoInputDurations)));
 
+        unk_e2c();
+        gDemoState = DEMO_STATE_NONE;
+        return;
+    }
+
+    gCurrentDemo++;
+
+    if (gCurrentDemo >= DEMO_ID_END)
+    {
+        gMusicInfo.unk_21 = 0xF;
+        gDemoState = DEMO_STATE_NONE;
+        gCurrentDemo = 0;
+
+        gSubGameMode2 = 0x1;
+    }
+    else if (gCurrentDemo == DEMO_ID_END / 2)
+    {
+        gMusicInfo.unk_21 = 0xF;
+        gDemoState = DEMO_STATE_NONE;
+
+        gSubGameMode2 = 0x1;
+    }
+    else if (gColorFading == 0x10)
+    {
+        gMusicInfo.unk_21 = 0x10;
+        gDemoState = DEMO_STATE_NONE;
+    }
+    else
+    {
+        gDemoState = DEMO_STATE_LOADING;
+    }
+
+    if (gDemoState == DEMO_STATE_NONE)
+    {
+        unk_27e8(0);
+        FadeMusic(20);
+    }
 }

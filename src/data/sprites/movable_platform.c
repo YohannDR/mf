@@ -17,4 +17,4 @@ const struct FrameData sMovablePlatformOam_Idle[2] = {
     [1] = FRAME_DATA_TERMINATOR
 };
 
-static const u8 sBlob_2edb20_3e7a9c[1023868] = INCBIN_U8("data/Blob_2edb20_3e7a9c.bin");
+static const u8 sBlob_2edb20_3e392c[1007116] = INCBIN_U8("data/Blob_2edb20_3e392c.bin");

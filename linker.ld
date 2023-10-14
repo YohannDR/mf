@@ -218,6 +218,7 @@ SECTIONS {
 
         asm/disasm_0x080685b4.o(.text);
 
+        src/demo.o(.text);
         src/hud.o(.text);
         src/escape.o(.text);
 
@@ -236,6 +237,7 @@ SECTIONS {
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
+        src/data/demo_data.o(.rodata);
         src/data/hud_data.o(.rodata);
         src/data/escape_data.o(.rodata);
         src/data/particle_data.o(.rodata);

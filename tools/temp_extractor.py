@@ -19,7 +19,7 @@ def GetInput(value: int) -> str:
     if value == 0:
         return "KEY_NONE"
 
-    if value == (1 << 0):
+    if value & (1 << 0):
         result = "KEY_A"
 
     if value & (1 << 1):
