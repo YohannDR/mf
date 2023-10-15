@@ -99,6 +99,10 @@ SECTIONS {
         . = 0x000008d9; gEscapeTimerDigits = .;
         . = 0x000008e0; gEscapeDigitsOam = .;
         . = 0x00000912; gAmmoDigitsGfx = .;
+        . = 0x00000960; gProjectileData = .;
+        . = 0x00000b60; gCurrentProjectile = .;
+        . = 0x00000b80; gArmCannonY = .;
+        . = 0x00000b82; gArmCannonX = .;
         . = 0x00000b84; gPauseScreenFlag = .;
         . = 0x00000b86; gPreviousArea = .;
         . = 0x00000b87; gEventCounter = .;

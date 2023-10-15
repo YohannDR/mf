@@ -130,6 +130,9 @@
 #define GET_PSPRITE_SUIT_REDUCTION(id) sPrimarySpriteStats[(id)][2]
 #define GET_SSPRITE_SUIT_REDUCTION(id) sSecondarySpriteStats[(id)][2]
 
+#define GET_PSPRITE_WEAKNESS(id) sPrimarySpriteStats[(id)][3]
+#define GET_SSPRITE_WEAKNESS(id) sSecondarySpriteStats[(id)][3]
+
 #define SPRITE_HAS_ISFT(sprite) ((sprite).invincibilityStunFlashTimer & 0x7F)
 #define SPRITE_CLEAR_ISFT(sprite) ((sprite).invincibilityStunFlashTimer &= 0x80)
 #define SPRITE_SET_ISFT(sprite, value) ((sprite).invincibilityStunFlashTimer |= (value))

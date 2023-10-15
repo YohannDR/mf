@@ -76921,7 +76921,7 @@ _08045414:
 	movs r5, #0
 	mov sl, r5
 _08045418:
-	ldr r0, _0804548C @ =0x03000960
+	ldr r0, _0804548C @ =gProjectileData
 	mov r2, sl
 	lsls r1, r2, #5
 	adds r4, r1, r0
@@ -76978,7 +76978,7 @@ _08045418:
 	movs r2, #8
 	b _080454AA
 	.align 2, 0
-_0804548C: .4byte 0x03000960
+_0804548C: .4byte gProjectileData
 _08045490: .4byte gCurrentSprite
 _08045494:
 	cmp r0, #6
@@ -77027,7 +77027,7 @@ _080454EC:
 	adds r1, r6, #0
 	movs r2, #7
 	bl ParticleSet
-	ldr r0, _0804551C @ =0x03000960
+	ldr r0, _0804551C @ =gProjectileData
 	add r0, sb
 	movs r1, #0
 	strb r1, [r0]
@@ -77048,7 +77048,7 @@ _0804550C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804551C: .4byte 0x03000960
+_0804551C: .4byte gProjectileData
 
 	thumb_func_start ZazabiEnableProjectilesToPassThrough
 ZazabiEnableProjectilesToPassThrough: @ 0x08045520
@@ -77058,7 +77058,7 @@ ZazabiEnableProjectilesToPassThrough: @ 0x08045520
 	ldrh r0, [r0, #4]
 	mov ip, r0
 	movs r4, #0
-	ldr r7, _08045578 @ =0x03000960
+	ldr r7, _08045578 @ =gProjectileData
 	movs r6, #0x10
 _08045530:
 	lsls r0, r4, #5
@@ -77096,7 +77096,7 @@ _08045530:
 	b _0804558C
 	.align 2, 0
 _08045574: .4byte gCurrentSprite
-_08045578: .4byte 0x03000960
+_08045578: .4byte gProjectileData
 _0804557C:
 	cmp r1, r5
 	bhs _0804558E
@@ -87405,7 +87405,7 @@ _0804A9B0: .4byte gEquipment
 _0804A9B4:
 	movs r7, #0
 _0804A9B6:
-	ldr r0, _0804AA44 @ =0x03000960
+	ldr r0, _0804AA44 @ =gProjectileData
 	lsls r1, r7, #5
 	adds r3, r1, r0
 	ldrb r2, [r3]
@@ -87428,7 +87428,7 @@ _0804A9B6:
 	cmp r1, #0x12
 	bne _0804AA26
 _0804A9E2:
-	ldr r0, _0804AA44 @ =0x03000960
+	ldr r0, _0804AA44 @ =gProjectileData
 	adds r1, r4, r0
 	ldrh r2, [r1, #8]
 	ldrh r3, [r1, #0xa]
@@ -87478,7 +87478,7 @@ _0804AA32:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0804AA44: .4byte 0x03000960
+_0804AA44: .4byte gProjectileData
 
 	thumb_func_start PillarInit
 PillarInit: @ 0x0804AA48
@@ -99037,7 +99037,7 @@ SA_XMonsterProjectilesCollision: @ 0x0805085C
 	mov r8, r2
 	movs r7, #0
 _080508AA:
-	ldr r1, _08050934 @ =0x03000960
+	ldr r1, _08050934 @ =gProjectileData
 	lsls r0, r7, #5
 	adds r4, r0, r1
 	ldrb r1, [r4]
@@ -99106,7 +99106,7 @@ _08050920:
 	bx r0
 	.align 2, 0
 _08050930: .4byte gCurrentSprite
-_08050934: .4byte 0x03000960
+_08050934: .4byte gProjectileData
 
 	thumb_func_start SA_XMonsterCheckScreaming
 SA_XMonsterCheckScreaming: @ 0x08050938
@@ -116915,7 +116915,7 @@ RidleyWaveBeamCollsiion: @ 0x08059834
 	mov r8, r2
 	movs r7, #0
 _08059882:
-	ldr r1, _0805990C @ =0x03000960
+	ldr r1, _0805990C @ =gProjectileData
 	lsls r0, r7, #5
 	adds r4, r0, r1
 	ldrb r1, [r4]
@@ -116984,7 +116984,7 @@ _080598F8:
 	bx r0
 	.align 2, 0
 _08059908: .4byte gCurrentSprite
-_0805990C: .4byte 0x03000960
+_0805990C: .4byte gProjectileData
 
 	thumb_func_start RidleyCheckGrabSamusLeft
 RidleyCheckGrabSamusLeft: @ 0x08059910
@@ -125436,7 +125436,7 @@ NightmareMakeMissilesFall: @ 0x0805DD40
 	push {r4, r5, lr}
 	movs r5, #0xc
 	movs r3, #0
-	ldr r4, _0805DD94 @ =0x03000960
+	ldr r4, _0805DD94 @ =gProjectileData
 _0805DD48:
 	lsls r0, r3, #5
 	adds r1, r0, r4
@@ -125479,7 +125479,7 @@ _0805DD82:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805DD94: .4byte 0x03000960
+_0805DD94: .4byte gProjectileData
 
 	thumb_func_start NightmareReduceSamusXVelocity
 NightmareReduceSamusXVelocity: @ 0x0805DD98
