@@ -151,6 +151,8 @@ SECTIONS {
         . = 0x00004812; gDemoInputs = .;
         . = 0x00004a12; gDemoInputDurations = .;
         . = 0x00004c12; gDemoInputCounter = .;
+        . = 0x00004c14; gDemoInputTimer = .;
+        . = 0x00004c16; gDemoInput = .;
         . = 0x00004c18; gSaXElevatorSprites = .;
         . = 0x00004d1c; gNotPressingUp = .;
         . = 0x00004d28; gSamusPalette = .;
@@ -192,6 +194,10 @@ SECTIONS {
         asm/disasm_0x08000c28.o(.text);
         asm/syscalls.o(.text);
         asm/disasm_0x08004bcc.o(.text);
+
+        src/demo_input.o(.text);
+
+        asm/disasm_0x0800cbb8.o(.text);
 
         src/in_game.o(.text);
         src/sprite.o(.text);

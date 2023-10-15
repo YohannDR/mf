@@ -34,8 +34,12 @@ extern u8 gDemoState;
 extern u8 gCurrentDemo;
 
 extern u16 gDemoInputCounter;
+extern u16 gDemoInputTimer;
+extern u16 gDemoInput;
 
-extern u16 gDemoInputs[256];
-extern u16 gDemoInputDurations[256];
+#define DEMO_MAX_DURATION 256
+
+extern u16 gDemoInputs[DEMO_MAX_DURATION];
+extern u16 gDemoInputDurations[DEMO_MAX_DURATION];
 
 #endif /* DEMO_STRUCTS_H */
