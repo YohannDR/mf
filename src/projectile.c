@@ -2,15 +2,18 @@
 #include "gba.h"
 #include "macros.h"
 #include "globals.h"
+#include "sprite_util.h"
 
 #include "data/sprite_data.h"
 
+#include "constants/samus.h"
 #include "constants/sprite.h"
 #include "constants/projectile.h"
 
 #include "structs/clipdata.h"
 #include "structs/samus.h"
 #include "structs/sprite.h"
+#include "structs/power_bomb.h"
 #include "structs/projectile.h"
 
 /**
@@ -449,9 +452,313 @@ void ProjectileSetBeamTrail(u8 particle, u8 delay)
 
 }
 
+/**
+ * @brief 82888 | 764 | Checks if the projectiles are hitting sprite
+ * 
+ */
 void ProjectileCheckHittingSprite(void)
 {
+    u8 i;
+    u8 j;
+    u8 drawOrder;
+    u16 xCheck;
+    u32 contactDamage;
+    u16 spriteCheck;
 
+    u16 o1Y;
+    u16 o1X;
+    u16 o1Top;
+    u16 o1Bottom;
+    u16 o1Left;
+    u16 o1Right;
+
+    u16 o2Y;
+    u16 o2X;
+    u16 o2Top;
+    u16 o2Bottom;
+    u16 o2Left;
+    u16 o2Right;
+
+    if (gCurrentPowerBomb.animationState != 0 && gEquipment.weaponsStatus & MBF_POWER_BOMBS)
+    {
+        o1Y = gCurrentPowerBomb.yPosition;
+        o1X = gCurrentPowerBomb.xPosition;
+
+        o1Top = o1Y + gCurrentPowerBomb.hitboxTop;
+        o1Bottom = o1Y + gCurrentPowerBomb.hitboxBottom;
+        o1Left = o1X + gCurrentPowerBomb.hitboxLeft;
+        o1Right = o1X + gCurrentPowerBomb.hitboxRight;
+
+        spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000 | SPRITE_STATUS_IGNORE_PROJECTILES;
+        xCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000;
+
+        for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+        {
+            if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+            {
+                if ((gSpriteData[i].status & spriteCheck) != SPRITE_STATUS_EXISTS)
+                    continue;
+
+                if (gSpriteData[i].health == 0)
+                    continue;
+
+                if (gSpriteData[i].invincibilityStunFlashTimer & 0x80)
+                    continue;
+
+                o2Y = gSpriteData[i].yPosition;
+                o2X = gSpriteData[i].xPosition;
+
+                o2Top = o2Y + gSpriteData[i].hitboxTop;
+                o2Bottom = o2Y + gSpriteData[i].hitboxBottom;
+                o2Left = o2X + gSpriteData[i].hitboxLeft;
+                o2Right = o2X + gSpriteData[i].hitboxRight;
+
+                if (SpriteUtilCheckObjectsTouching(o2Top, o2Bottom, o2Left, o2Right, o1Top, o1Bottom, o1Left, o1Right))
+                {
+                    ProjectilePowerBombHitSprite(i);
+                }
+            }
+            else
+            {
+                if ((gSpriteData[i].status & xCheck) != SPRITE_STATUS_EXISTS)
+                    continue;
+
+                if (gSpriteData[i].health == 0)
+                    continue;
+
+                o2Y = gSpriteData[i].yPosition;
+                o2X = gSpriteData[i].xPosition;
+
+                o2Top = o2Y + gSpriteData[i].hitboxTop;
+                o2Bottom = o2Y + gSpriteData[i].hitboxBottom;
+                o2Left = o2X + gSpriteData[i].hitboxLeft;
+                o2Right = o2X + gSpriteData[i].hitboxRight;
+
+                if (SpriteUtilCheckObjectsTouching(o2Top, o2Bottom, o2Left, o2Right, o1Top, o1Bottom, o1Left, o1Right))
+                {
+                    ProjectileSetIsftForPowerBomb(i);
+                }
+                else
+                {
+                    ProjectileBringSpriteToPowerBombCenter(i);
+                }
+            }
+        }
+    }
+
+    contactDamage = 0x0;
+
+    if (SpriteUtilCheckDamagingPose())
+        contactDamage = 0x1;
+    else if (SpriteUtilCheckSudoScrew(0x80))
+        contactDamage = 0x2;
+
+    if (contactDamage != 0x0)
+    {
+        o1Y = gSamusData.yPosition;
+        o1X = gSamusData.xPosition;
+
+        o1Top = o1Y + gSamusData.drawDistanceTop;
+        o1Bottom = o1Y + gSamusData.drawDistanceBottom;
+        o1Left = o1X + gSamusData.drawDistanceLeft;
+        o1Right = o1X + gSamusData.drawDistanceRight;
+
+        spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000 | SPRITE_STATUS_IGNORE_PROJECTILES;
+
+        for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+        {
+            if ((gSpriteData[i].status & spriteCheck) != SPRITE_STATUS_EXISTS)
+                continue;
+
+            if (gSpriteData[i].health == 0)
+                continue;
+
+            o2Y = gSpriteData[i].yPosition;
+            o2X = gSpriteData[i].xPosition;
+
+            o2Top = o2Y + gSpriteData[i].hitboxTop;
+            o2Bottom = o2Y + gSpriteData[i].hitboxBottom;
+            o2Left = o2X + gSpriteData[i].hitboxLeft;
+            o2Right = o2X + gSpriteData[i].hitboxRight;
+
+            if (SpriteUtilCheckObjectsTouching(o2Top, o2Bottom, o2Left, o2Right, o1Top, o1Bottom, o1Left, o1Right) && gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+            {
+                if (contactDamage == 0x1)
+                    ProjectileContactDamageHitSprite(i, o2Top + (o2Bottom - o2Top) / 2, o2Left + (o2Right - o2Left) / 2);
+                else if (contactDamage == 0x2)
+                    ProjectileSudoScrewHitSprite(i, o2Top + (o2Bottom - o2Top) / 2, o2Left + (o2Right - o2Left) / 2);
+            }
+        }
+    }
+
+    spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000 | SPRITE_STATUS_IGNORE_PROJECTILES;
+
+    for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+    {
+        if ((gSpriteData[i].status & spriteCheck) == SPRITE_STATUS_EXISTS && gSpriteData[i].health != 0)
+            gSpriteDrawOrder[i] = gSpriteData[i].drawOrder;
+        else
+            gSpriteDrawOrder[i] = 0;
+    }
+
+    for (drawOrder = 1; drawOrder < 17; drawOrder++)
+    {
+        for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
+        {
+            if (gSpriteDrawOrder[i] != drawOrder)
+                continue;
+
+            o1Y = gSpriteData[i].yPosition;
+            o1X = gSpriteData[i].xPosition;
+
+            o1Top = o1Y + gSpriteData[i].hitboxTop;
+            o1Bottom = o1Y + gSpriteData[i].hitboxBottom;
+            o1Left = o1X + gSpriteData[i].hitboxLeft;
+            o1Right = o1X + gSpriteData[i].hitboxRight;
+
+            spriteCheck = PROJ_STATUS_EXISTS | PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+
+            for (j = 0; j < MAX_AMOUNT_OF_PROJECTILES; j++)
+            {
+                if ((gProjectileData[j].status & spriteCheck) != spriteCheck)
+                    continue;
+
+                o2Y = gProjectileData[j].yPosition;
+                o2X = gProjectileData[j].xPosition;
+
+                o2Top = o2Y + gProjectileData[j].hitboxTop;
+                o2Bottom = o2Y + gProjectileData[j].hitboxBottom;
+                o2Left = o2X + gProjectileData[j].hitboxLeft;
+                o2Right = o2X + gProjectileData[j].hitboxRight;
+
+                if (!SpriteUtilCheckObjectsTouching(o1Top, o1Bottom, o1Left, o1Right, o2Top, o2Bottom, o2Left, o2Right))
+                    continue;
+
+                switch (gProjectileData[j].type)
+                {
+                    case PROJ_TYPE_NORMAL_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileNormalBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cac(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_CHARGE_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileChargeBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cc8(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_WIDE_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileWideBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cac(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_PLASMA_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectilePlasmaBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cac(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_WAVE_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileWaveBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cac(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_CHARGED_NORMAL_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileChargedNormalBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cac(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_CHARGED_CHARGE_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileChargedChargeBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cc8(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_CHARGED_WIDE_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileChargedWideBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cac(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_CHARGED_PLASMA_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileChargedPlasmalBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cac(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_CHARGED_WAVE_BEAM:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileChargedWaveBeamHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84cac(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_FLARE:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileFlareHitSprite(i, o2Y, o2X, o1Y, o1X);
+                        else
+                            gSpriteData[i].invincibilityStunFlashTimer = 0x78;
+                        break;
+
+                    case PROJ_TYPE_NORMAL_MISSILE:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileMissileHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84ce4(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_SUPER_MISSILE:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileSuperMissileHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84ce4(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_ICE_MISSILE:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileIceMissileHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84ce4(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_DIFFUSION_MISSILE:
+                    case PROJ_TYPE_CHARGED_DIFFUSION_MISSILE:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileDiffusionMissileHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84ce4(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_DIFFUSION_FLAKE:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileDiffusionFlakeHitSprite(i, j, o2Y, o2X);
+                        else
+                            unk_84ce4(i, j, o2Y, o2X);
+                        break;
+
+                    case PROJ_TYPE_BOMB:
+                        if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
+                            ProjectileBombHitSprite(i, o2Y, o2X);
+                        else
+                            unk_84cac(i, j, o2Y, o2X);
+                        break;
+                }
+            }
+        }
+    }
 }
 
 /**
@@ -602,7 +909,7 @@ void ProjectileChargedWaveBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yP
 
 }
 
-void ProjectileFlareHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition, u16 spriteY, u16 spriteX)
+void ProjectileFlareHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition, u16 spriteY, u16 spriteX)
 {
 
 }
@@ -642,17 +949,17 @@ void ProjectileBombHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition)
 
 }
 
-void unk_84cac(u8 spriteSlot)
+void unk_84cac(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
 
 }
 
-void unk_84cc8(u8 spriteSlot)
+void unk_84cc8(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
 
 }
 
-void unk_84ce4(u8 spriteSlot)
+void unk_84ce4(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
 
 }

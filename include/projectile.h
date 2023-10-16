@@ -49,7 +49,7 @@ void ProjectilePlasmaBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPositi
 void ProjectileChargedPlasmaBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
 void ProjectileWaveBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
 void ProjectileChargedWaveBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
-void ProjectileFlareHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition, u16 spriteY, u16 spriteX);
+void ProjectileFlareHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition, u16 spriteY, u16 spriteX);
 void ProjectileStartMissileTumble(u8 spriteSlot, u8 projectileSlot);
 void ProjectileNormalMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
 void ProjectileSuperMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
@@ -57,9 +57,9 @@ void ProjectileIceMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPositi
 void ProjectileDiffusionMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
 void ProjectileDiffusionFlakeHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
 void ProjectileBombHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition);
-void unk_84cac(u8 spriteSlot);
-void unk_84cc8(u8 spriteSlot);
-void unk_84ce4(u8 spriteSlot);
+void unk_84cac(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
+void unk_84cc8(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
+void unk_84ce4(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
 void ProjectileDealDamageToZazabi(u16 damage);
 void ProjectileChargedNormalBeamInit(void);
 void ProjectileChargedNormalBeamSubroutine(void);
