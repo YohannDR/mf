@@ -4,13 +4,19 @@
 #include "types.h"
 #include "structs/menus/pause_screen.h"
 
+struct InGameData {
+    u8 clipdataCode[640];
+};
+
 union NonGameplayRam {
     struct PauseScreenData pauseScreen;
+    struct InGameData inGame;
 };
 
 extern union NonGameplayRam gNonGameplayRam;
 
 #define PAUSE_SCREEN_DATA gNonGameplayRam.pauseScreen
+#define IN_GAME_DATA gNonGameplayRam.inGame
 
 extern u8 gRebootGame;
 extern u8 gClearedEveryFrame;
@@ -25,7 +31,6 @@ extern s8 gPauseScreenFlag;
 extern u8 gCurrentCutscene;
 extern s8 gIsLoadingFile;
 extern s8 gUnk_03000be3;
-extern u8 gDemoState;
 extern u8 gUnk_03000B8F;
 extern u8 gUnk_03000064;
 
@@ -42,13 +47,6 @@ extern u8 gDisableSoftReset;
 extern u16 gBg1XPosition;
 extern u16 gBg1YPosition;
 
-extern u8 gCurrentArea;
-extern u8 gPreviousArea;
-extern u8 gDestinationDoor;
-extern u8 gCurrentRoom;
-extern u8 gLastDoorUsed;
-extern u8 gCurrentNavigationRoom;
-extern u8 gLastElevatorUsed;
 extern u8 gSpritesetNumber;
 
 extern u8 gDisplayLocationName;
@@ -56,8 +54,24 @@ extern u8 gDisplayLocationName;
 extern u8 gSamusOnTopOfBackgrounds;
 
 extern u16 gWrittenToBldcnt;
+extern u16 gWrittenToDispcnt;
+extern u8 gWrittenToWinin_L;
+extern u8 gWrittenToWinout_R;
+extern u16 gWrittenToBldalpha;
 extern u16 gWrittenToBldy;
+extern u16 gWrittenToWin1H;
+extern u16 gWrittenToWin1V;
+extern u16 gWrittenToBldcnt_Special;
 extern u8 gDisableScrolling;
+
+struct WindowBorder {
+    u8 left;
+    u8 right;
+    u8 top;
+    u8 bottom;
+};
+
+extern struct WindowBorder gWindow1Border;
 
 extern u8 gInterruptCode[512];
 extern void* gInterruptCodePointer;
@@ -68,19 +82,6 @@ struct BackgroundPositions {
 };
 
 extern struct BackgroundPositions gBackgroundPositions;
-
-struct BackgroundsData {
-    struct {
-        u16* pDecomp;
-        u16 width;
-        u16 height;
-    } backgrounds[3];
-    u16* pClipDecomp;
-    u16 clipdataWidth;
-    u16 clipdataHeight;
-};
-
-extern struct BackgroundsData gBackgroundsData;
 
 struct Haze {
     void* pAffected;
@@ -103,51 +104,6 @@ struct InGameTime {
 };
 
 extern struct InGameTime gInGameTimer;
-
-enum Area {
-    AREA_MAIN_DECK,
-    AREA_SECTOR_1,
-    AREA_SECTOR_2,
-    AREA_SECTOR_3,
-    AREA_SECTOR_4,
-    AREA_SECTOR_5,
-    AREA_SECTOR_6,
-
-    AREA_NORMAL_END = AREA_SECTOR_6,
-
-    AREA_DEBUG_1,
-    AREA_DEBUG_2,
-    AREA_DEBUG_3,
-};
-
-enum NavigationRoom {
-    NAV_ROOM_MAIN_DECK_ROOM_0,
-    NAV_ROOM_MAIN_DECK_ROOM_16,
-    NAV_ROOM_MAIN_DECK_ROOM_9,
-    NAV_ROOM_MAIN_DECK_ROOM_32,
-    NAV_ROOM_SECTOR_1_ROOM_2,
-    NAV_ROOM_SECTOR_2_ROOM_2,
-    NAV_ROOM_SECTOR_3_ROOM_2,
-    NAV_ROOM_SECTOR_4_ROOM_2,
-    NAV_ROOM_SECTOR_5_ROOM_2,
-    NAV_ROOM_SECTOR_6_ROOM_2,
-    NAV_ROOM_MAIN_DECK_ROOM_56,
-    NAV_ROOM_MAIN_DECK_ROOM_66,
-};
-
-enum Elevator {
-    ELEVATOR_MAIN_DECK_TO_OPERATIONS_DECK,
-    ELEVATOR_MAIN_DECK_TO_LOBBY,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_1,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_2,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_3,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_4,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_5,
-    ELEVATOR_MAIN_DECK_TO_SECTOR_6,
-    ELEVATOR_MAIN_DECK_TO_LOBBY_POWER_OUTAGE,
-    ELEVATOR_MAIN_DECK_TO_HABITATIONS_DECK,
-    ELEVATOR_RESTRICTED_ZONE_TO_SECTOR_1,
-};
 
 enum Cutscene {
     CUTSCENE_NONE,
@@ -184,13 +140,6 @@ extern struct IoRegisters gIoRegisters;
 
 extern u16 gEffectYPosition;
 
-struct CurrentAffectingClipdata {
-    u16 movement;
-    u16 hazard;
-};
-
-extern struct CurrentAffectingClipdata gCurrentAffectingClipdata;
-
 struct ButtonAssignments {
     u16 armMissiles;
     u16 diagonalAim;
@@ -201,10 +150,13 @@ struct ButtonAssignments {
 extern struct ButtonAssignments gButtonAssignments;
 
 extern u8 gWhichBgPositionIsWrittenToBg3Ofs;
+extern u8 gSkipDoorTransition;
 
 extern u16 gWrittenToMosaic_H;
 extern u16 gWrittenToMosaic_L;
-extern u8 gCurrentClipdataAffectingAction;
+
+extern u8 gDisableDoorsAndTanks;
+extern u8 gColorFading;
 
 #define GAME_MODE_TITLE 0
 #define GAME_MODE_IN_GAME 1

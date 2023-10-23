@@ -7,6 +7,7 @@
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 
+#include "structs/clipdata.h"
 #include "structs/sprite.h"
 
 // FIXME oam undefined
@@ -188,7 +189,7 @@ void WaterDrop(void)
         case 22:
             blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
-            if (gCurrentAffectingClipdata.hazard == 0x1)
+            if (gCurrentAffectingClipdata.hazard == HAZARD_WATER)
             {
                 if (gEffectYPosition != 0)
                 {

@@ -12,16 +12,24 @@ SECTIONS {
     iwram (NOLOAD) : ALIGN(4) {
         . = 0x00000000; gDebugFlag = .;
         . = 0x00000002; gFrameCounter16Bit = .;
+        . = 0x00000004; gWrittenToBldalpha = .;
         . = 0x00000006; gWrittenToBldcnt = .;
+        . = 0x00000008; gWrittenToDispcnt = .;
+        . = 0x0000000c; gWrittenToWinin_L = .;
+        . = 0x0000000d; gWrittenToWinout_R = .;
         . = 0x0000000e; gBackdropColor = .;
         . = 0x00000019; gWhichBgPositionIsWrittenToBg3Ofs = .;
         . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
         . = 0x0000001b; gAbilityCount = .;
         . = 0x0000001c; gSecurityHatchLevel = .;
         . = 0x0000001d; gSecurityHatchLevelBackup = .;
+        . = 0x0000001e; gCurrentDemo = .;
+        . = 0x0000001f; gDemoPlaying = .;
         . = 0x00000020; gRebootGame = .;
         . = 0x00000021; gDisableScrolling = .;
+        . = 0x00000024; gSkipDoorTransition = .;
         . = 0x00000025; gDisableSoftReset = .;
+        . = 0x0000002a; gDisableDoorsAndTanks = .;
         . = 0x0000002c; gCurrentArea = .;
         . = 0x0000002d; gCurrentRoom = .;
         . = 0x0000002e; gLastDoorUsed = .;
@@ -44,6 +52,7 @@ SECTIONS {
         . = 0x000000c0; gCurrentAffectingClipdata = .;
         . = 0x000000c8; gBackgroundPositions = .;
         . = 0x000000dc; gSaXSpawnPosition = .;
+        . = 0x000000e8; gWindow1Border = .;
         . = 0x00000110; gCurrentPowerBomb = .;
         . = 0x00000138; gInGameTimer = .;
         . = 0x0000013c; gMaxInGameTimeFlag = .;
@@ -90,6 +99,10 @@ SECTIONS {
         . = 0x000008d9; gEscapeTimerDigits = .;
         . = 0x000008e0; gEscapeDigitsOam = .;
         . = 0x00000912; gAmmoDigitsGfx = .;
+        . = 0x00000960; gProjectileData = .;
+        . = 0x00000b60; gCurrentProjectile = .;
+        . = 0x00000b80; gArmCannonY = .;
+        . = 0x00000b82; gArmCannonX = .;
         . = 0x00000b84; gPauseScreenFlag = .;
         . = 0x00000b86; gPreviousArea = .;
         . = 0x00000b87; gEventCounter = .;
@@ -138,12 +151,29 @@ SECTIONS {
         . = 0x000019c4; gVBlankCallback = .;
         . = 0x000019c8; gHBlankCallback = .;
         . = 0x000019cc; gVCountCallback = .;
+        . = 0x000019d0; gMusicInfo = .;
+        . = 0x00004812; gDemoInputs = .;
+        . = 0x00004a12; gDemoInputDurations = .;
+        . = 0x00004c12; gDemoInputCounter = .;
+        . = 0x00004c14; gDemoInputTimer = .;
+        . = 0x00004c16; gDemoInput = .;
         . = 0x00004c18; gSaXElevatorSprites = .;
         . = 0x00004d1c; gNotPressingUp = .;
         . = 0x00004d28; gSamusPalette = .;
         . = 0x00004d88; gSamusPaletteLength = .;
         . = 0x00004d90; gSaXPalette = .;
+        . = 0x00004dd4; gWrittenToWin1H = .;
+        . = 0x00004dd6; gWrittenToWin1V = .;
+        . = 0x00004dd8; gWrittenToBldcnt_Special = .;
+        . = 0x00004dda; gElevatorDirection = .;
+        . = 0x00004ddc; gTilemapAndClipPointers = .;
+        . = 0x00004dec; gHatchData = .;
+        . = 0x00004e0c; gDoorPositionStart = .;
+        . = 0x00004e38; gSamusDoorPositionOffset = .;
         . = 0x00004e3c; gDestinationDoor = .;
+        . = 0x00004e48; gUnk_03004e48 = .;
+        . = 0x00004e58; gColorFading = .;
+        . = 0x00005318; gClipdataCodePointer = .;
 
         . = 0x00005408; src/libgcc/fp-bit-base.o(.bss);
         . = 0x00005420; src/libgcc/float.o(.bss);
@@ -169,6 +199,10 @@ SECTIONS {
         asm/syscalls.o(.text);
         asm/disasm_0x08004bcc.o(.text);
 
+        src/demo_input.o(.text);
+
+        asm/disasm_0x0800cbb8.o(.text);
+
         src/in_game.o(.text);
         src/sprite.o(.text);
 
@@ -182,10 +216,19 @@ SECTIONS {
 
         asm/disasm_0x0801503C.o(.text);
 
+        src/sprites_AI/movable_platform.o(.text);
+
+        asm/disasm_0x0801e794.o(.text);
+
         src/event_checks.o(.text);
 
         asm/disasm_0x08061004.o(.text);
 
+        src/power_bomb_explosion.o(.text);
+
+        asm/disasm_0x080685b4.o(.text);
+
+        src/demo.o(.text);
         src/hud.o(.text);
         src/escape.o(.text);
 
@@ -203,6 +246,8 @@ SECTIONS {
         src/data/sprite_data.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
+        src/data/sprites/movable_platform.o(.rodata);
+        src/data/demo_data.o(.rodata);
         src/data/hud_data.o(.rodata);
         src/data/escape_data.o(.rodata);
         src/data/particle_data.o(.rodata);

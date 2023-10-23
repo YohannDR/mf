@@ -4,8 +4,11 @@
 #include "macros.h"
 #include "callbacks.h"
 
+#include "constants/demo.h"
 #include "constants/sa_x.h"
 
+#include "structs/clipdata.h"
+#include "structs/demo.h"
 #include "structs/samus.h"
 #include "structs/sa_x.h"
 
@@ -28,7 +31,7 @@ u32 InGameSubroutine(void)
             if (gUnk_03000be3 == 0)
                 ResetDemoInputAndDuration();
 
-            if (gDemoState == 0x2)
+            if (gDemoState == DEMO_STATE_PLAYING)
                 CopyDemoInput();
 
             InitAndLoadGenerics();

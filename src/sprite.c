@@ -9,6 +9,7 @@
 #include "data/generic_data.h"
 #include "data/engine_pointers.h"
 
+#include "structs/connection.h"
 #include "structs/sprite_debris.h"
 #include "structs/room.h"
 

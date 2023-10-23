@@ -5,11 +5,13 @@
 
 #include "data/sprites/sa_x.h"
 
+#include "constants/connection.h"
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
 #include "constants/sa_x.h"
 
+#include "structs/connection.h"
 #include "structs/sprite.h"
 #include "structs/samus.h"
 #include "structs/sa_x.h"

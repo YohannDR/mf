@@ -279,7 +279,7 @@ unk_e48: @ 0x08000E48
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #8
-	ldr r0, _08000EB8 @ =0x030019D0
+	ldr r0, _08000EB8 @ =gMusicInfo
 	ldrb r1, [r0, #9]
 	str r1, [sp]
 	adds r2, r0, #0
@@ -333,7 +333,7 @@ _08000EB2:
 	strb r0, [r2, #0x11]
 	b _08000F38
 	.align 2, 0
-_08000EB8: .4byte 0x030019D0
+_08000EB8: .4byte gMusicInfo
 _08000EBC: .4byte 0x04000006
 _08000EC0:
 	ldrb r0, [r2, #0x11]
@@ -657,7 +657,7 @@ _0800111E:
 	strb r5, [r4, #0x10]
 	lsls r1, r5, #0x10
 	asrs r1, r1, #0x10
-	ldr r2, _080011C4 @ =0x030019D0
+	ldr r2, _080011C4 @ =gMusicInfo
 	ldrb r0, [r2, #6]
 	adds r0, #1
 	muls r1, r0, r1
@@ -687,7 +687,7 @@ _08001158:
 	lsls r0, r1, #0x10
 	lsrs r2, r0, #0x10
 _0800115E:
-	ldr r0, _080011C4 @ =0x030019D0
+	ldr r0, _080011C4 @ =gMusicInfo
 	ldrb r0, [r0, #5]
 	cmp r2, r0
 	bhs _08001180
@@ -741,7 +741,7 @@ _080011B4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080011C4: .4byte 0x030019D0
+_080011C4: .4byte gMusicInfo
 _080011C8: .4byte 0x03003654
 _080011CC: .4byte 0x04000006
 _080011D0: .4byte 0x030025F4
@@ -1308,7 +1308,7 @@ unk_15d4: @ 0x080015D4
 	mov r5, r8
 	push {r5, r6, r7}
 	adds r5, r0, #0
-	ldr r2, _080015F0 @ =0x030019D0
+	ldr r2, _080015F0 @ =gMusicInfo
 	ldrb r1, [r2, #0xb]
 	movs r0, #1
 	ands r0, r1
@@ -1317,7 +1317,7 @@ unk_15d4: @ 0x080015D4
 	movs r0, #0xfe
 	b _080015FE
 	.align 2, 0
-_080015F0: .4byte 0x030019D0
+_080015F0: .4byte gMusicInfo
 _080015F4:
 	movs r0, #2
 	ands r0, r1
@@ -1888,7 +1888,7 @@ _08001A08:
 	ldrb r2, [r5, #0x18]
 	bl MidiKey2Freq
 	str r0, [r4, #0x1c]
-	ldr r1, _08001A24 @ =0x030019D0
+	ldr r1, _08001A24 @ =gMusicInfo
 	ldrh r2, [r1, #0x12]
 	cmp r0, r2
 	bne _08001A28
@@ -1896,7 +1896,7 @@ _08001A08:
 	lsls r0, r0, #7
 	b _08001A2E
 	.align 2, 0
-_08001A24: .4byte 0x030019D0
+_08001A24: .4byte gMusicInfo
 _08001A28:
 	ldr r1, [r1, #0x18]
 	bl CallGetNoteFrequency
@@ -2035,7 +2035,7 @@ _08001B0E:
 	ldrb r2, [r5, #0x18]
 	bl MidiKey2Freq
 	str r0, [r4, #0x1c]
-	ldr r1, _08001B2C @ =0x030019D0
+	ldr r1, _08001B2C @ =gMusicInfo
 	ldrh r2, [r1, #0x12]
 	cmp r0, r2
 	bne _08001B30
@@ -2043,7 +2043,7 @@ _08001B0E:
 	lsls r0, r0, #7
 	b _08001B36
 	.align 2, 0
-_08001B2C: .4byte 0x030019D0
+_08001B2C: .4byte gMusicInfo
 _08001B30:
 	ldr r1, [r1, #0x18]
 	bl CallGetNoteFrequency
@@ -2127,13 +2127,13 @@ unk_1b9c: @ 0x08001B9C
 	str r3, [sp]
 	b _08001BD6
 _08001BBC:
-	ldr r2, _08001BC8 @ =0x030019D0
+	ldr r2, _08001BC8 @ =gMusicInfo
 	ldr r3, _08001BCC @ =0x00001824
 	adds r0, r2, r3
 	adds r6, r1, r0
 	b _08001C84
 	.align 2, 0
-_08001BC8: .4byte 0x030019D0
+_08001BC8: .4byte gMusicInfo
 _08001BCC: .4byte 0x00001824
 _08001BD0:
 	lsls r0, r0, #0x18
@@ -2146,11 +2146,11 @@ _08001BD6:
 	mov r8, r0
 	movs r6, #0
 	movs r2, #0
-	ldr r1, _08001C28 @ =0x030019D0
+	ldr r1, _08001C28 @ =gMusicInfo
 	ldrb r1, [r1, #5]
 	cmp r6, r1
 	bhs _08001C80
-	ldr r4, _08001C28 @ =0x030019D0
+	ldr r4, _08001C28 @ =gMusicInfo
 	movs r3, #0x34
 	mov ip, r3
 	ldr r0, _08001C2C @ =0x0000184C
@@ -2183,7 +2183,7 @@ _08001C1A:
 	mov r8, r1
 	b _08001C5E
 	.align 2, 0
-_08001C28: .4byte 0x030019D0
+_08001C28: .4byte gMusicInfo
 _08001C2C: .4byte 0x0000184C
 _08001C30: .4byte 0x00001824
 _08001C34:
@@ -2193,7 +2193,7 @@ _08001C34:
 _08001C3A:
 	mov r3, ip
 	muls r3, r2, r3
-	ldr r1, _08001CA0 @ =0x030019D0
+	ldr r1, _08001CA0 @ =gMusicInfo
 	adds r0, r3, r1
 	ldr r1, _08001CA4 @ =0x00001826
 	adds r0, r0, r1
@@ -2246,7 +2246,7 @@ _08001C8E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08001CA0: .4byte 0x030019D0
+_08001CA0: .4byte gMusicInfo
 _08001CA4: .4byte 0x00001826
 _08001CA8: .4byte 0x030031F4
 
@@ -3150,7 +3150,7 @@ InitializeAudio: @ 0x08002298
 	mov r7, r8
 	push {r7}
 	sub sp, #4
-	ldr r5, _08002468 @ =0x030019D0
+	ldr r5, _08002468 @ =gMusicInfo
 	ldrb r4, [r5, #1]
 	cmp r4, #0
 	beq _080022AA
@@ -3324,7 +3324,7 @@ _080023EA:
 	mov r0, r8
 	bl unk_24ec
 	movs r3, #0
-	ldr r2, _08002468 @ =0x030019D0
+	ldr r2, _08002468 @ =gMusicInfo
 	ldrb r0, [r2, #5]
 	cmp r3, r0
 	bhs _0800242A
@@ -3355,7 +3355,7 @@ _0800240C:
 	blo _0800240C
 _0800242A:
 	movs r3, #0
-	ldr r7, _08002468 @ =0x030019D0
+	ldr r7, _08002468 @ =gMusicInfo
 	mov r2, sp
 	movs r6, #0
 	ldr r1, _080024D0 @ =0x040000D4
@@ -3387,7 +3387,7 @@ _0800245A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08002468: .4byte 0x030019D0
+_08002468: .4byte gMusicInfo
 _0800246C: .4byte 0x04000200
 _08002470: .4byte 0x04000084
 _08002474: .4byte 0x04000082
@@ -3425,7 +3425,7 @@ _080024E8: .4byte 0x8100001C
 unk_24ec: @ 0x080024EC
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _0800259C @ =0x030019D0
+	ldr r0, _0800259C @ =gMusicInfo
 	ldrb r1, [r0, #1]
 	adds r2, r0, #0
 	cmp r1, #0
@@ -3479,7 +3479,7 @@ _0800254A:
 	ands r0, r4
 	cmp r0, #0
 	beq _08002562
-	ldr r1, _0800259C @ =0x030019D0
+	ldr r1, _0800259C @ =gMusicInfo
 	lsrs r0, r0, #0x10
 	strb r0, [r1, #7]
 	cmp r0, #0
@@ -3517,7 +3517,7 @@ _0800257A:
 	movs r1, #1
 	b _080025C8
 	.align 2, 0
-_0800259C: .4byte 0x030019D0
+_0800259C: .4byte gMusicInfo
 _080025A0: .4byte 0x00001824
 _080025A4: .4byte 0x04000089
 _080025A8: .4byte 0x04000082
@@ -3539,7 +3539,7 @@ _080025C8:
 	orrs r0, r1
 	strh r0, [r2]
 _080025CC:
-	ldr r1, _080025E4 @ =0x030019D0
+	ldr r1, _080025E4 @ =gMusicInfo
 	movs r0, #0
 	strb r0, [r1, #1]
 _080025D2:
@@ -3550,7 +3550,7 @@ _080025D2:
 _080025D8: .4byte 0x04000082
 _080025DC: .4byte 0x0000FFFE
 _080025E0: .4byte 0x00003302
-_080025E4: .4byte 0x030019D0
+_080025E4: .4byte gMusicInfo
 
 	thumb_func_start SetupSoundTransfer
 SetupSoundTransfer: @ 0x080025E8
@@ -3809,7 +3809,7 @@ unk_27e8: @ 0x080027E8
 	push {r4, r5, lr}
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
-	ldr r0, _08002804 @ =0x030019D0
+	ldr r0, _08002804 @ =gMusicInfo
 	adds r0, #0x20
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3820,7 +3820,7 @@ unk_27e8: @ 0x080027E8
 	bl ApplyMusicSoundFading
 	b _08002816
 	.align 2, 0
-_08002804: .4byte 0x030019D0
+_08002804: .4byte gMusicInfo
 _08002808: .4byte 0x080A8CDC
 _0800280C:
 	ldr r0, _08002850 @ =0x080A8CDC
@@ -4409,7 +4409,7 @@ unk_2c38: @ 0x08002C38
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
 	mov sb, r2
-	ldr r0, _08002CC0 @ =0x030019D0
+	ldr r0, _08002CC0 @ =gMusicInfo
 	ldrb r1, [r0, #1]
 	mov sl, r0
 	cmp r1, #0
@@ -4464,7 +4464,7 @@ unk_2c38: @ 0x08002C38
 	bl ResetTrack
 	b _08002D38
 	.align 2, 0
-_08002CC0: .4byte 0x030019D0
+_08002CC0: .4byte gMusicInfo
 _08002CC4: .4byte 0x080A8CDC
 _08002CC8: .4byte 0x080A8D3C
 _08002CCC:
@@ -4523,7 +4523,7 @@ _08002D38:
 	movs r0, #0
 	strb r0, [r6, #0x1c]
 	strb r0, [r5, #0x1c]
-	ldr r0, _08002D5C @ =0x030019D0
+	ldr r0, _08002D5C @ =gMusicInfo
 	mov sl, r0
 _08002D42:
 	movs r0, #0
@@ -4539,7 +4539,7 @@ _08002D48:
 	bx r0
 	.align 2, 0
 _08002D58: .4byte 0x0000FFFF
-_08002D5C: .4byte 0x030019D0
+_08002D5C: .4byte gMusicInfo
 
 	thumb_func_start unk_2d60
 unk_2d60: @ 0x08002D60
@@ -5029,7 +5029,7 @@ _080030A8:
 	thumb_func_start DMA2InterruptCode
 DMA2InterruptCode: @ 0x080030B8
 	push {r4, lr}
-	ldr r3, _08003100 @ =0x030019D0
+	ldr r3, _08003100 @ =gMusicInfo
 	ldrb r0, [r3, #0x10]
 	adds r0, #1
 	strb r0, [r3, #0x10]
@@ -5065,7 +5065,7 @@ _080030F8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003100: .4byte 0x030019D0
+_08003100: .4byte gMusicInfo
 _08003104: .4byte 0x040000C4
 _08003108: .4byte 0x84400004
 _0800310C: .4byte 0x040000C6
@@ -5075,7 +5075,7 @@ _08003110: .4byte 0x040000D2
 unk_3114: @ 0x08003114
 	push {r4, r5, lr}
 	sub sp, #4
-	ldr r5, _08003178 @ =0x030019D0
+	ldr r5, _08003178 @ =gMusicInfo
 	ldrb r4, [r5, #1]
 	cmp r4, #0
 	bne _08003170
@@ -5124,7 +5124,7 @@ _08003170:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003178: .4byte 0x030019D0
+_08003178: .4byte gMusicInfo
 _0800317C: .4byte 0x04000064
 _08003180: .4byte 0x84400004
 _08003184: .4byte 0x00000C24
@@ -5181,7 +5181,7 @@ _080031E2:
 	ldrb r0, [r3]
 	cmp r0, #0
 	bne _08003210
-	ldr r0, _080031FC @ =0x030019D0
+	ldr r0, _080031FC @ =gMusicInfo
 	adds r0, #0x20
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -5191,7 +5191,7 @@ _080031E2:
 	b _0800321E
 	.align 2, 0
 _080031F8: .4byte 0x00000008
-_080031FC: .4byte 0x030019D0
+_080031FC: .4byte gMusicInfo
 _08003200: .4byte 0x080A8CDC
 _08003204:
 	ldr r1, _0800320C @ =0x080A8CDC
@@ -5405,7 +5405,7 @@ _0800337E:
 	ldrb r0, [r3]
 	cmp r0, #0
 	bne _080033B4
-	ldr r0, _080033AC @ =0x030019D0
+	ldr r0, _080033AC @ =gMusicInfo
 	adds r0, #0x20
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -5416,7 +5416,7 @@ _0800337E:
 	.align 2, 0
 _080033A4: .4byte 0x00000008
 _080033A8: .4byte 0x080A8CDC
-_080033AC: .4byte 0x030019D0
+_080033AC: .4byte gMusicInfo
 _080033B0:
 	mov r0, sl
 	b _080033BE
@@ -5548,7 +5548,7 @@ CheckSetNewMusicTrack: @ 0x08003498
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
-	ldr r5, _080034E4 @ =0x030019D0
+	ldr r5, _080034E4 @ =gMusicInfo
 	adds r0, r5, #0
 	adds r0, #0x21
 	ldrb r0, [r0]
@@ -5585,7 +5585,7 @@ _080034DC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080034E4: .4byte 0x030019D0
+_080034E4: .4byte gMusicInfo
 _080034E8: .4byte 0x080A8CDC
 _080034EC: .4byte 0x000001F7
 _080034F0: .4byte 0x080A8D3C
@@ -5593,7 +5593,7 @@ _080034F0: .4byte 0x080A8D3C
 	thumb_func_start CheckPlayNewMusicTrack
 CheckPlayNewMusicTrack: @ 0x080034F4
 	push {r4, r5, lr}
-	ldr r4, _0800352C @ =0x030019D0
+	ldr r4, _0800352C @ =gMusicInfo
 	adds r0, r4, #0
 	adds r0, #0x21
 	ldrb r5, [r0]
@@ -5621,7 +5621,7 @@ _08003526:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800352C: .4byte 0x030019D0
+_0800352C: .4byte gMusicInfo
 _08003530: .4byte 0x080A8CDC
 _08003534: .4byte 0x080A8D3C
 
@@ -5632,7 +5632,7 @@ PlayMusic: @ 0x08003538
 	lsrs r5, r0, #0x10
 	lsls r1, r1, #0x18
 	lsrs r3, r1, #0x18
-	ldr r2, _08003594 @ =0x030019D0
+	ldr r2, _08003594 @ =gMusicInfo
 	ldrb r0, [r2, #1]
 	cmp r0, #0
 	beq _0800354C
@@ -5676,7 +5676,7 @@ _08003584:
 	beq _080035C4
 	b _080035C8
 	.align 2, 0
-_08003594: .4byte 0x030019D0
+_08003594: .4byte gMusicInfo
 _08003598: .4byte 0x080A8D3C
 _0800359C: .4byte 0x080A8CDC
 _080035A0:
@@ -5714,7 +5714,7 @@ _080035C8:
 	cmp r6, r0
 	beq _080036AA
 _080035DC:
-	ldr r2, _080035F0 @ =0x030019D0
+	ldr r2, _080035F0 @ =gMusicInfo
 	adds r1, r2, #0
 	adds r1, #0x20
 	movs r0, #0
@@ -5723,7 +5723,7 @@ _080035DC:
 	b _08003614
 	.align 2, 0
 _080035EC: .4byte 0x080A8CDC
-_080035F0: .4byte 0x030019D0
+_080035F0: .4byte gMusicInfo
 _080035F4:
 	ldr r4, [r3, #0xc]
 	ldr r3, [r3]
@@ -5736,7 +5736,7 @@ _080035F4:
 	cmp r6, r0
 	beq _080036AA
 _08003608:
-	ldr r2, _0800362C @ =0x030019D0
+	ldr r2, _0800362C @ =gMusicInfo
 	adds r1, r2, #0
 	adds r1, #0x20
 	movs r0, #1
@@ -5755,7 +5755,7 @@ _08003614:
 	bl StopMusic
 	b _0800369C
 	.align 2, 0
-_0800362C: .4byte 0x030019D0
+_0800362C: .4byte gMusicInfo
 _08003630:
 	ldrh r2, [r2, #0x1c]
 	cmp r5, r2
@@ -5806,21 +5806,21 @@ _0800368A:
 	ldr r0, _080036BC @ =0x080A8D3C
 	adds r0, r7, r0
 	ldr r6, [r0]
-	ldr r2, _080036C0 @ =0x030019D0
+	ldr r2, _080036C0 @ =gMusicInfo
 	adds r1, r2, #0
 	adds r1, #0x20
 	movs r0, #0
 	strb r0, [r1]
 	strh r5, [r2, #0x1c]
 _0800369C:
-	ldr r1, _080036C0 @ =0x030019D0
+	ldr r1, _080036C0 @ =gMusicInfo
 	movs r0, #0
 	strb r0, [r1, #1]
 	adds r0, r4, #0
 	adds r1, r6, #0
 	bl unk_45a8
 _080036AA:
-	ldr r1, _080036C0 @ =0x030019D0
+	ldr r1, _080036C0 @ =gMusicInfo
 	movs r0, #0
 	strb r0, [r1, #1]
 _080036B0:
@@ -5830,12 +5830,12 @@ _080036B0:
 	.align 2, 0
 _080036B8: .4byte 0x080A8CDC
 _080036BC: .4byte 0x080A8D3C
-_080036C0: .4byte 0x030019D0
+_080036C0: .4byte gMusicInfo
 
 	thumb_func_start unk_36c4
 unk_36c4: @ 0x080036C4
 	push {lr}
-	ldr r0, _080036D8 @ =0x030019D0
+	ldr r0, _080036D8 @ =gMusicInfo
 	adds r0, #0x20
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -5844,7 +5844,7 @@ unk_36c4: @ 0x080036C4
 	ldr r0, [r0]
 	b _080036E4
 	.align 2, 0
-_080036D8: .4byte 0x030019D0
+_080036D8: .4byte gMusicInfo
 _080036DC: .4byte 0x080A8CDC
 _080036E0:
 	ldr r0, _080036EC @ =0x080A8CDC
@@ -5861,7 +5861,7 @@ FadeMusic: @ 0x080036F0
 	push {lr}
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
-	ldr r0, _08003708 @ =0x030019D0
+	ldr r0, _08003708 @ =gMusicInfo
 	adds r0, #0x20
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -5870,7 +5870,7 @@ FadeMusic: @ 0x080036F0
 	ldr r0, [r0]
 	b _08003714
 	.align 2, 0
-_08003708: .4byte 0x030019D0
+_08003708: .4byte gMusicInfo
 _0800370C: .4byte 0x080A8CDC
 _08003710:
 	ldr r0, _08003720 @ =0x080A8CDC
@@ -5904,7 +5904,7 @@ unk_372c: @ 0x0800372C
 	bl PlayMusic
 	b _0800376E
 _08003748:
-	ldr r0, _08003758 @ =0x030019D0
+	ldr r0, _08003758 @ =gMusicInfo
 	adds r0, #0x20
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -5913,7 +5913,7 @@ _08003748:
 	ldr r0, [r0]
 	b _08003764
 	.align 2, 0
-_08003758: .4byte 0x030019D0
+_08003758: .4byte gMusicInfo
 _0800375C: .4byte 0x080A8CDC
 _08003760:
 	ldr r0, _08003774 @ =0x080A8CDC
@@ -5938,7 +5938,7 @@ unk_3778: @ 0x08003778
 	lsrs r7, r1, #0x10
 	lsls r2, r2, #0x18
 	lsrs r2, r2, #0x18
-	ldr r3, _080037D4 @ =0x030019D0
+	ldr r3, _080037D4 @ =gMusicInfo
 	ldrb r0, [r3, #1]
 	cmp r0, #0
 	beq _08003790
@@ -5980,7 +5980,7 @@ _080037C4:
 	beq _08003822
 	b _08003826
 	.align 2, 0
-_080037D4: .4byte 0x030019D0
+_080037D4: .4byte gMusicInfo
 _080037D8: .4byte 0x080A8D3C
 _080037DC: .4byte 0x080A8CDC
 _080037E0:
@@ -6034,7 +6034,7 @@ _08003826:
 	cmp r6, r0
 	beq _08003896
 _0800383A:
-	ldr r2, _0800384C @ =0x030019D0
+	ldr r2, _0800384C @ =gMusicInfo
 	adds r1, r2, #0
 	adds r1, #0x20
 	movs r0, #0
@@ -6043,7 +6043,7 @@ _0800383A:
 	b _08003870
 	.align 2, 0
 _08003848: .4byte 0x080A8CDC
-_0800384C: .4byte 0x030019D0
+_0800384C: .4byte gMusicInfo
 _08003850:
 	ldr r4, [r2, #0xc]
 	ldr r3, [r2]
@@ -6056,7 +6056,7 @@ _08003850:
 	cmp r6, r0
 	beq _08003896
 _08003864:
-	ldr r2, _080038A4 @ =0x030019D0
+	ldr r2, _080038A4 @ =gMusicInfo
 	adds r1, r2, #0
 	adds r1, #0x20
 	movs r0, #1
@@ -6074,7 +6074,7 @@ _08003870:
 	adds r0, r3, #0
 	bl StopMusic
 _08003886:
-	ldr r1, _080038A4 @ =0x030019D0
+	ldr r1, _080038A4 @ =gMusicInfo
 	movs r0, #0
 	strb r0, [r1, #1]
 	adds r0, r4, #0
@@ -6082,7 +6082,7 @@ _08003886:
 	adds r2, r7, #0
 	bl unk_2b08
 _08003896:
-	ldr r1, _080038A4 @ =0x030019D0
+	ldr r1, _080038A4 @ =gMusicInfo
 	movs r0, #0
 	strb r0, [r1, #1]
 _0800389C:
@@ -6090,7 +6090,7 @@ _0800389C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080038A4: .4byte 0x030019D0
+_080038A4: .4byte gMusicInfo
 
 	thumb_func_start unk_38a8
 unk_38a8: @ 0x080038A8
@@ -6106,7 +6106,7 @@ unk_38a8: @ 0x080038A8
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
 	mov r8, r1
-	ldr r5, _08003908 @ =0x030019D0
+	ldr r5, _08003908 @ =gMusicInfo
 	ldrb r7, [r5, #1]
 	cmp r7, #0
 	bne _080039B2
@@ -6141,7 +6141,7 @@ _080038EA:
 	strh r6, [r5, #0x1c]
 	b _0800398C
 	.align 2, 0
-_08003908: .4byte 0x030019D0
+_08003908: .4byte gMusicInfo
 _0800390C: .4byte 0x080A8D3C
 _08003910: .4byte 0x080A8CDC
 _08003914:
@@ -6218,14 +6218,14 @@ _0800398C:
 	adds r0, r3, #0
 	bl StopMusic
 _0800399E:
-	ldr r1, _080039C8 @ =0x030019D0
+	ldr r1, _080039C8 @ =gMusicInfo
 	movs r0, #0
 	strb r0, [r1, #1]
 	adds r0, r4, #0
 	mov r1, sl
 	bl unk_45a8
 _080039AC:
-	ldr r1, _080039C8 @ =0x030019D0
+	ldr r1, _080039C8 @ =gMusicInfo
 	movs r0, #0
 	strb r0, [r1, #1]
 _080039B2:
@@ -6239,14 +6239,14 @@ _080039B2:
 	bx r0
 	.align 2, 0
 _080039C4: .4byte 0x080A8CDC
-_080039C8: .4byte 0x030019D0
+_080039C8: .4byte gMusicInfo
 
 	thumb_func_start unk_39cc
 unk_39cc: @ 0x080039CC
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r4, _080039FC @ =0x030019D0
+	ldr r4, _080039FC @ =gMusicInfo
 	ldrb r5, [r4, #1]
 	cmp r5, #0
 	bne _08003A6C
@@ -6266,7 +6266,7 @@ unk_39cc: @ 0x080039CC
 	ldrh r4, [r4, #0x1e]
 	b _08003A0E
 	.align 2, 0
-_080039FC: .4byte 0x030019D0
+_080039FC: .4byte gMusicInfo
 _08003A00: .4byte 0x080A8CDC
 _08003A04:
 	ldr r0, _08003A78 @ =0x080A8CDC
@@ -6285,7 +6285,7 @@ _08003A1A:
 	lsls r0, r4, #3
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r6, _08003A80 @ =0x030019D0
+	ldr r6, _08003A80 @ =gMusicInfo
 	movs r0, #0
 	mov r8, r0
 	mov r0, r8
@@ -6328,7 +6328,7 @@ _08003A6C:
 	.align 2, 0
 _08003A78: .4byte 0x080A8CDC
 _08003A7C: .4byte 0x080A8D3C
-_08003A80: .4byte 0x030019D0
+_08003A80: .4byte gMusicInfo
 _08003A84: .4byte 0x0000FFFF
 
 	thumb_func_start unk_3a88
@@ -6336,7 +6336,7 @@ unk_3a88: @ 0x08003A88
 	push {lr}
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
-	ldr r0, _08003AA0 @ =0x030019D0
+	ldr r0, _08003AA0 @ =gMusicInfo
 	adds r0, #0x20
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -6345,7 +6345,7 @@ unk_3a88: @ 0x08003A88
 	ldr r0, [r0]
 	b _08003AAC
 	.align 2, 0
-_08003AA0: .4byte 0x030019D0
+_08003AA0: .4byte gMusicInfo
 _08003AA4: .4byte 0x080A8CDC
 _08003AA8:
 	ldr r0, _08003AB8 @ =0x080A8CDC
@@ -6366,7 +6366,7 @@ _08003AC0:
 	thumb_func_start unk_3ac4
 unk_3ac4: @ 0x08003AC4
 	push {r4, r5, lr}
-	ldr r0, _08003AE8 @ =0x030019D0
+	ldr r0, _08003AE8 @ =gMusicInfo
 	ldrb r1, [r0, #1]
 	adds r5, r0, #0
 	cmp r1, #0
@@ -6384,7 +6384,7 @@ unk_3ac4: @ 0x08003AC4
 	ldrh r0, [r5, #0x1c]
 	b _08003AF8
 	.align 2, 0
-_08003AE8: .4byte 0x030019D0
+_08003AE8: .4byte gMusicInfo
 _08003AEC: .4byte 0x080A8CDC
 _08003AF0:
 	ldr r0, _08003B14 @ =0x080A8CDC
@@ -6414,7 +6414,7 @@ unk_3b1c: @ 0x08003B1C
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
-	ldr r0, _08003B40 @ =0x030019D0
+	ldr r0, _08003B40 @ =gMusicInfo
 	ldrb r1, [r0, #1]
 	adds r6, r0, #0
 	cmp r1, #0
@@ -6430,7 +6430,7 @@ unk_3b1c: @ 0x08003B1C
 	ldr r5, [r0, #0xc]
 	b _08003B4C
 	.align 2, 0
-_08003B40: .4byte 0x030019D0
+_08003B40: .4byte gMusicInfo
 _08003B44: .4byte 0x080A8CDC
 _08003B48:
 	ldr r0, _08003B70 @ =0x080A8CDC
@@ -6462,7 +6462,7 @@ unk_3b78: @ 0x08003B78
 	push {r4, r5, lr}
 	lsls r0, r0, #0x10
 	lsrs r3, r0, #0x10
-	ldr r0, _08003B9C @ =0x030019D0
+	ldr r0, _08003B9C @ =gMusicInfo
 	ldrb r1, [r0, #1]
 	adds r5, r0, #0
 	cmp r1, #0
@@ -6478,7 +6478,7 @@ unk_3b78: @ 0x08003B78
 	ldr r2, [r0, #0xc]
 	b _08003BA8
 	.align 2, 0
-_08003B9C: .4byte 0x030019D0
+_08003B9C: .4byte gMusicInfo
 _08003BA0: .4byte 0x080A8CDC
 _08003BA4:
 	ldr r0, _08003BCC @ =0x080A8CDC
@@ -6566,7 +6566,7 @@ DecreaseMusicVolume: @ 0x08003C34
 	push {r4, r5, r6, lr}
 	movs r0, #0
 	bl unk_3190
-	ldr r2, _08003C74 @ =0x030019D0
+	ldr r2, _08003C74 @ =gMusicInfo
 	ldrb r1, [r2, #0xb]
 	movs r0, #0x81
 	orrs r0, r1
@@ -6592,7 +6592,7 @@ DecreaseMusicVolume: @ 0x08003C34
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003C74: .4byte 0x030019D0
+_08003C74: .4byte gMusicInfo
 _08003C78: .4byte 0x080A8CDC
 _08003C7C: .4byte 0x0000FFFF
 _08003C80: .4byte 0x00000050
@@ -6616,7 +6616,7 @@ unk_3c84: @ 0x08003C84
 	adds r1, r5, #0
 	adds r2, r6, #0
 	bl unk_2d90
-	ldr r2, _08003CD0 @ =0x030019D0
+	ldr r2, _08003CD0 @ =gMusicInfo
 	ldrb r1, [r2, #0xb]
 	movs r0, #0x7f
 	ands r0, r1
@@ -6631,14 +6631,14 @@ unk_3c84: @ 0x08003C84
 	.align 2, 0
 _08003CC8: .4byte 0x080A8CDC
 _08003CCC: .4byte 0x0000FFFF
-_08003CD0: .4byte 0x030019D0
+_08003CD0: .4byte gMusicInfo
 
 	thumb_func_start unk_3cd4
 unk_3cd4: @ 0x08003CD4
 	push {r4, r5, lr}
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
-	ldr r5, _08003CF8 @ =0x030019D0
+	ldr r5, _08003CF8 @ =gMusicInfo
 	ldrb r0, [r5, #1]
 	cmp r0, #0
 	bne _08003CF2
@@ -6654,12 +6654,12 @@ _08003CF2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003CF8: .4byte 0x030019D0
+_08003CF8: .4byte gMusicInfo
 
 	thumb_func_start unk_3cfc
 unk_3cfc: @ 0x08003CFC
 	push {r4, r5, lr}
-	ldr r5, _08003D20 @ =0x030019D0
+	ldr r5, _08003D20 @ =gMusicInfo
 	ldrb r1, [r5, #1]
 	cmp r1, #0
 	bne _08003D1A
@@ -6677,7 +6677,7 @@ _08003D1A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003D20: .4byte 0x030019D0
+_08003D20: .4byte gMusicInfo
 _08003D24: .4byte 0x080A8CDC
 
 	thumb_func_start PlayCharacterAppearingSound
@@ -6730,7 +6730,7 @@ CallSoundCodeB: @ 0x08003D68
 
 	arm_func_start SoundCodeB
 SoundCodeB: @ 0x08003D78
-	ldr r4, _08003E08 @ =0x030019D0
+	ldr r4, _08003E08 @ =gMusicInfo
 	ldrb ip, [r4, #4]
 	mov lr, #0x600
 	b _08003D90
@@ -6770,7 +6770,7 @@ _08003DF8:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.align 2, 0
-_08003E08: .4byte 0x030019D0
+_08003E08: .4byte gMusicInfo
 
 	thumb_func_start CallSoundCodeC
 CallSoundCodeC: @ 0x08003E0C
@@ -7590,7 +7590,7 @@ _080047A0:
 UpdateAudio: @ 0x080047A8
 	push {r4, r5, r6, lr}
 	ldr r4, _08004810 @ =0x080A8CDC
-	ldr r6, _08004814 @ =0x030019D0
+	ldr r6, _08004814 @ =gMusicInfo
 	movs r0, #0x21
 	ldrb r0, [r6, r0]
 	movs r1, #0x11
@@ -7644,7 +7644,7 @@ _08004806:
 	bx r0
 	.align 2, 0
 _08004810: .4byte 0x080A8CDC
-_08004814: .4byte 0x030019D0
+_08004814: .4byte gMusicInfo
 _08004818: .4byte 0x00000008
 
 	thumb_func_start unk_481c
@@ -7932,7 +7932,7 @@ _08004A14:
 _08004A16:
 	ldrb r2, [r5, #0x18]
 	bl MidiKey2Freq
-	ldr r1, _08004A38 @ =0x030019D0
+	ldr r1, _08004A38 @ =gMusicInfo
 	ldrh r2, [r1, #0x12]
 	cmp r0, r2
 	bne _08004A2A
@@ -7948,7 +7948,7 @@ _08004A30:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08004A38: .4byte 0x030019D0
+_08004A38: .4byte gMusicInfo
 
 	thumb_func_start unk_4a3c
 unk_4a3c: @ 0x08004A3C

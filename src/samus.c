@@ -3,6 +3,8 @@
 #include "globals.h"
 #include "gba.h"
 
+#include "data/samus_data.h"
+
 #include "constants/samus.h"
 
 #include "data/samus_data.h"
@@ -155,9 +157,47 @@ void SamusCheckUpdateArmCannonOffset(void)
     sSamusUpdateArmCannonOffsetPointer[gSamusData.unk_0](direction);
 }
 
-void SamusBombBounce(u8 forcedMovement)
+/**
+ * @brief 5138 | 7c | Makes Samus bounce on a bomb
+ * 
+ * @param direction Bounce direction
+ */
+void SamusBombBounce(u8 direction)
 {
+    s32 canBounce;
 
+    if (gSamusPhysics.slowed)
+        return;
+
+    canBounce = FALSE;
+
+    // Check has a direction
+    if (MOD_AND(direction, FORCED_MOVEMENT_BOMB_JUMP_ABOVE) >= FORCED_MOVEMENT_BOMB_JUMP_RIGHT)
+    {
+        // Check pose
+        switch (gSamusData.pose)
+        {
+            case SPOSE_MORPHING:
+            case SPOSE_MORPH_BALL:
+            case SPOSE_ROLLING:
+            case SPOSE_GRABBED_BY_ZAZABI:
+                canBounce++;
+                break;
+
+            case SPOSE_MORPH_BALL_MID_AIR:
+                // Check when falling
+                if (gSamusData.yVelocity <= 0 && !(direction & FORCED_MOVEMENT_BOMB_JUMP_ABOVE))
+                    canBounce++;
+                break;
+        }
+    }
+
+    if (canBounce)
+    {
+        // Make bounce
+        gSamusData.forcedMovement = direction & ~FORCED_MOVEMENT_BOMB_JUMP_ABOVE;
+        SAMUS_SET_POSE(SPOSE_MID_AIR_REQUEST);
+    }
 }
 
 void SamusCheckSetNewEnvironmentEffect(u32 offset, u32 request)
@@ -170,9 +210,42 @@ void SamusUpdateEnvironmentEffect(void)
 
 }
 
+/**
+ * @brief 5a74 | 6c | Aims the arm cannon when samus is standing
+ * 
+ */
 void SamusAimCannonStanding(void)
 {
+    if (gButtonInput & gButtonAssignments.diagonalAim)
+    {
+        if (gButtonInput & KEY_DOWN)
+        {
+            // Aim diagonally down
+            gSamusData.armCannonDirection = ACD_DIAGONAL_DOWN;
+            gSamusData.diagonalAim = DIAG_AIM_DOWN;
+        }
+        else if (gSamusData.diagonalAim == DIAG_AIM_NONE || gButtonInput & KEY_UP)
+        {
+            // Aim diagonally up
+            gSamusData.armCannonDirection = ACD_DIAGONAL_UP;
+            gSamusData.diagonalAim = DIAG_AIM_UP;
+        }
 
+        return;
+    }
+
+    gSamusData.diagonalAim = DIAG_AIM_NONE;
+
+    if (gButtonInput & KEY_UP)
+    {
+        // Aim up
+        gSamusData.armCannonDirection = ACD_UP;
+    }
+    else
+    {
+        // Aim forward
+        gSamusData.armCannonDirection = ACD_FORWARD;
+    }
 }
 
 /**

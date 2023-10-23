@@ -8,9 +8,11 @@
 #include "data/event_data.h"
 
 #include "constants/menus/debug_menu.h"
+#include "constants/connection.h"
 #include "constants/samus.h"
 
 #include "structs/menus/debug_menu.h"
+#include "structs/connection.h"
 #include "structs/event.h"
 #include "structs/samus.h"
 #include "structs/sprite.h"

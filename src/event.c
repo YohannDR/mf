@@ -5,9 +5,11 @@
 
 #include "data/event_data.h"
 
+#include "constants/connection.h"
 #include "constants/event.h"
 #include "constants/samus.h"
 
+#include "structs/connection.h"
 #include "structs/samus.h"
 
 /**
