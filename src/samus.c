@@ -5,6 +5,7 @@
 
 #include "data/samus_data.h"
 
+#include "constants/clipdata.h"
 #include "constants/samus.h"
 
 #include "data/samus_data.h"
@@ -496,9 +497,35 @@ void SamusCheckNewProjectile(void)
     }
 }
 
+/**
+ * @brief 5eec | 74 | Checks if samus is standing on drop through clipdata (crumble block)
+ * 
+ * @return u32 1 if standing on drop through clipdata, 0 otherwise
+ */
 u32 SamusCheckStandingOnDropThroughClipdata(void)
 {
+    u32 onDropThrough = FALSE;
+    
+    if (gSamusData.standingStatus != STANDING_ENEMY)
+    {
+        u32 clipdata1 = ClipdataProcessForSamus(gSamusData.yPosition + 1, gSamusData.xPosition + 0x1e);
+        u32 clipdata2 = ClipdataProcessForSamus(gSamusData.yPosition + 1, gSamusData.xPosition - 0x1e);
 
+        if ((clipdata1 & 0xff) == CLIPDATA_TYPE_PASS_THROUGH_BOTTOM)
+        {
+            if ((clipdata2 & CLIPDATA_TYPE_SOLID_FLAG) == 0)
+                onDropThrough = TRUE;
+        }
+        else if ((clipdata1 & CLIPDATA_TYPE_SOLID_FLAG) == 0)
+        {
+            if ((clipdata2 & 0xff) == CLIPDATA_TYPE_PASS_THROUGH_BOTTOM)
+                onDropThrough = TRUE;
+        }
+        else
+            onDropThrough = FALSE;
+    }
+    
+    return onDropThrough;
 }
 
 u32 SamusSetForcedMovementForJumpingOrDropping(void)
