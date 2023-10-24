@@ -170,4 +170,7 @@ enum DiagonalAim {
 #define KNOCKBACK_Y_VELOCITY (SUB_PIXEL_TO_VELOCITY(PIXEL_SIZE * 2))
 #define KNOCKBACK_X_VELOCITY (SUB_PIXEL_TO_VELOCITY(PIXEL_SIZE + PIXEL_SIZE / 2))
 
+/* We'll have to see if this one appears anywhere else to decide a more representative name: */
+#define UNK_MACRO_1E (HALF_BLOCK_SIZE - PIXEL_SIZE / 2)
+
 #endif /* SAMUS_CONSTANTS_H */
