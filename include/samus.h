@@ -5,7 +5,7 @@
 
 void SamusCopyData(void);
 s16 SamusChangeVelocityOnSlope(void);
-void SamusSetPalette(const u16* src, s32 offset, s32 length, u32 isSax);
+void SamusSetPalette(const u16* src, s32 offset, s32 length, u32 isSaX);
 void SamusUpdatePhysics(void);
 void SamusUpdateCollisionData(void);
 void SamusCallUpdateGraphics(void);
