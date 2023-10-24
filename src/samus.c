@@ -508,8 +508,8 @@ u32 SamusCheckStandingOnDropThroughClipdata(void)
     
     if (gSamusData.standingStatus != STANDING_ENEMY)
     {
-        u32 clipdata1 = ClipdataProcessForSamus(gSamusData.yPosition + 1, gSamusData.xPosition + 0x1e);
-        u32 clipdata2 = ClipdataProcessForSamus(gSamusData.yPosition + 1, gSamusData.xPosition - 0x1e);
+        u32 clipdata1 = ClipdataProcessForSamus(gSamusData.yPosition + ONE_SUB_PIXEL, gSamusData.xPosition + UNK_MACRO_1E);
+        u32 clipdata2 = ClipdataProcessForSamus(gSamusData.yPosition + ONE_SUB_PIXEL, gSamusData.xPosition - UNK_MACRO_1E);
 
         if ((clipdata1 & 0xff) == CLIPDATA_TYPE_PASS_THROUGH_BOTTOM)
         {
