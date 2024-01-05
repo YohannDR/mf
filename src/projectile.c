@@ -1604,44 +1604,425 @@ void ProjectileChargeBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPositi
     gProjectileData[projectileSlot].status = 0;
 }
 
+/**
+ * @brief 83e14 | e0 | Handles a charged charge beam hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileChargedChargeBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x4);
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS))
+    {
+        isft = ProjecileDealDamage(spriteSlot, 10);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
+        }
+
+        ParticleSet(yPosition, xPosition, 0x4);
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
+
+    if (gProjectileData[projectileSlot].status & PROJ_STATUS_NOT_DRAWN)
+    {
+        if (gProjectileData[gProjectileData[projectileSlot].primaryProjectileSlot].movementStage < 4)
+            gProjectileData[gProjectileData[projectileSlot].primaryProjectileSlot].movementStage = 4;
+    }
+
+    gProjectileData[projectileSlot].status = 0;
 }
 
+/**
+ * @brief 83ef4 | c4 | Handles a wide beam hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileWideBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x5);
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_BEAM_AND_BOMBS)
+    {
+        isft = ProjecileDealDamage(spriteSlot, 3);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
+        }
+
+        ParticleSet(yPosition, xPosition, 0x5);
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
+
+    gProjectileData[projectileSlot].status = 0;
 }
 
+/**
+ * @brief 83fb8 | c4 | Handles a charged wide beam hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileChargedWideBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x5);
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS))
+    {
+        isft = ProjecileDealDamage(spriteSlot, 15);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
+        }
+
+        ParticleSet(yPosition, xPosition, 0x5);
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
+
+    gProjectileData[projectileSlot].status = 0;
 }
 
+/**
+ * @brief 8407c | e0 | Handles a plasma beam hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectilePlasmaBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x6);
+        gProjectileData[projectileSlot].status = 0;
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+        gProjectileData[projectileSlot].status = 0;
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_BEAM_AND_BOMBS)
+    {
+        isft = ProjecileDealDamage(spriteSlot, 3);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
+        }
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
 }
 
+/**
+ * @brief 8415c | e0 | Handles a charged plasma beam hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileChargedPlasmaBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x6);
+        gProjectileData[projectileSlot].status = 0;
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+        gProjectileData[projectileSlot].status = 0;
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS))
+    {
+        isft = ProjecileDealDamage(spriteSlot, 9);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
+        }
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
 }
 
+/**
+ * @brief 8423c | 164 | Handles a wave beam hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileWaveBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        
+        if (gEquipment.beamStatus & BF_ICE_BEAM && gSpriteData[spriteSlot].freezeTimer == 0 && ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_CAN_BE_FROZEN)
+        {
+            gSpriteData[spriteSlot].standingOnSprite = FALSE;
+            gSpriteData[spriteSlot].freezeTimer = 60 * 4;
+            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+        }
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+        gProjectileData[projectileSlot].status = 0;
+    }
+    else if (gEquipment.beamStatus & BF_ICE_BEAM)
+    {
+        if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_CAN_BE_FROZEN))
+        {
+            isft = ProjectileIceBeamDealDamage(spriteSlot, projectileSlot, 6);
+
+            if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+            {
+                ProjectileRandomSpriteDebrisPiercing(2, isft, yPosition, xPosition);
+            }
+        }
+        else
+        {
+            ProjectileSetIsftForSolid(spriteSlot);
+            ParticleSet(yPosition, xPosition, 0x7);
+        }
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_BEAM_AND_BOMBS)
+    {
+        isft = ProjecileDealDamage(spriteSlot, 3);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebrisPiercing(1, isft, yPosition, xPosition);
+        }
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
 }
 
+/**
+ * @brief 843a0 | 194 | Handles a charged wave beam hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileChargedWaveBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        
+        if (gEquipment.beamStatus & BF_ICE_BEAM && gSpriteData[spriteSlot].freezeTimer == 0 && ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_CAN_BE_FROZEN)
+        {
+            gSpriteData[spriteSlot].standingOnSprite = FALSE;
+            gSpriteData[spriteSlot].freezeTimer = 60 * 4;
+            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+        }
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+        gProjectileData[projectileSlot].status = 0;
+    }
+    else if (gEquipment.beamStatus & BF_ICE_BEAM)
+    {
+        if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_CAN_BE_FROZEN))
+        {
+            isft = ProjectileIceBeamDealDamage(spriteSlot, projectileSlot, 12);
+
+            if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+            {
+                ProjectileRandomSpriteDebrisPiercing(2, isft, yPosition, xPosition);
+            }
+        }
+        else
+        {
+            ProjectileSetIsftForSolid(spriteSlot);
+            ParticleSet(yPosition, xPosition, 0x7);
+        }
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS))
+    {
+        isft = ProjecileDealDamage(spriteSlot, 9);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebrisPiercing(1, isft, yPosition, xPosition);
+        }
+    }
+    else
+    {
+        if (gSpriteData[spriteSlot].spriteId == PSPRITE_SA_X_BOSS)
+        {
+            isft = ProjecileDealDamage(spriteSlot, 9);
+
+            if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+            {
+                ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
+            }
+        }
+        else
+        {
+            ProjectileSetIsftForSolid(spriteSlot);
+            ParticleSet(yPosition, xPosition, 0x7);
+        }
+    }
 }
 
+/**
+ * @brief 84534 | 12c | Handles a flare hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ * @param spriteY Sprite Y position
+ * @param spriteX Sprite X position
+ */
 void ProjectileFlareHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition, u16 spriteY, u16 spriteX)
 {
+    u16 damage;
+    u8 isft;
+    u16 hitY;
+    u16 hitX;
+    u8 flags;
 
+    if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+        return;
+
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        return;
+    }
+
+    if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS))
+    {
+        flags = gEquipment.beamStatus;
+        if (flags & BF_WAVE_BEAM)
+            damage = 15;
+        else if (flags & BF_PLASMA_BEAM)
+            damage = 12;
+        else if (flags & BF_WIDE_BEAM)
+            damage = 9;
+        else
+            damage = 6;
+
+        isft = ProjecileDealDamage(spriteSlot, damage);
+        
+        hitY = yPosition;
+        hitX = xPosition;
+
+        if (spriteY > yPosition)
+        {
+            if (spriteY - yPosition > BLOCK_SIZE + HALF_BLOCK_SIZE)
+                hitY = yPosition + BLOCK_SIZE;
+        }
+        else
+        {
+            if (yPosition - spriteY > BLOCK_SIZE + HALF_BLOCK_SIZE)
+                hitY = yPosition - BLOCK_SIZE;
+        }
+
+        if (spriteX > xPosition)
+        {
+            if (spriteX - xPosition > BLOCK_SIZE - QUARTER_BLOCK_SIZE)
+                hitX = xPosition + BLOCK_SIZE;
+        }
+        else
+        {
+            if (xPosition - spriteX > BLOCK_SIZE - QUARTER_BLOCK_SIZE)
+                hitX = xPosition - BLOCK_SIZE;
+        }
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(0, isft, hitY, hitX);
+        }
+
+        ParticleSet(hitY, hitX, 0x2);
+        SoundPlay(0xF7);
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+    }
 }
 
 void ProjectileStartMissileTumble(u8 spriteSlot, u8 projectileSlot)
@@ -1649,54 +2030,372 @@ void ProjectileStartMissileTumble(u8 spriteSlot, u8 projectileSlot)
 
 }
 
+/**
+ * @brief 846c4 | d8 | Handles a missile hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileNormalMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x8);
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+        ProjectileStartMissileTumble(spriteSlot, projectileSlot);
+        return;
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_MISSILES)
+    {
+        isft = ProjecileDealDamage(spriteSlot, 10);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
+        }
+
+        ParticleSet(yPosition, xPosition, 0x8);
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+        ProjectileStartMissileTumble(spriteSlot, projectileSlot);
+        return;
+    }
+
+    gProjectileData[projectileSlot].status = 0;
 }
 
+/**
+ * @brief 8479c | d0 | Handles a super missile hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileSuperMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x9);
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+        ProjectileStartMissileTumble(spriteSlot, projectileSlot);
+        return;
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_SUPER_MISSILES))
+    {
+        isft = ProjecileDealDamage(spriteSlot, 30);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
+        }
+
+        ParticleSet(yPosition, xPosition, 0x9);
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+        ProjectileStartMissileTumble(spriteSlot, projectileSlot);
+        return;
+    }
+
+    gProjectileData[projectileSlot].status = 0;
 }
 
+/**
+ * @brief 8486c | 118 | Handles an ice missile hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileIceMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0xA);
+
+        if (gSpriteData[spriteSlot].freezeTimer == 0 && ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_CAN_BE_FROZEN)
+        {
+            gSpriteData[spriteSlot].standingOnSprite = FALSE;
+            gSpriteData[spriteSlot].freezeTimer = 60 * 4;
+            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+        }
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+        ProjectileStartMissileTumble(spriteSlot, projectileSlot);
+        return;
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_CAN_BE_FROZEN))
+    {
+        isft = ProjectileIceMissileDealDamage(spriteSlot, projectileSlot, 40);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(2, isft, yPosition, xPosition);
+        }
+
+        ParticleSet(yPosition, xPosition, 0xA);
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+        ProjectileStartMissileTumble(spriteSlot, projectileSlot);
+        return;
+    }
+
+    gProjectileData[projectileSlot].status = 0;
 }
 
+/**
+ * @brief 84984 | 1dc | Handles a diffusion missile hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileDiffusionMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
+    u8 spawnFlakes;
 
+    spawnFlakes = FALSE;
+
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+
+        if (gProjectileData[projectileSlot].type == PROJ_TYPE_CHARGED_DIFFUSION_MISSILE)
+        {
+            spawnFlakes = TRUE;
+        }
+        else
+        {
+            ParticleSet(yPosition, xPosition, 0xB);
+        }
+
+        if (gSpriteData[spriteSlot].freezeTimer == 0 && ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_CAN_BE_FROZEN)
+        {
+            gSpriteData[spriteSlot].standingOnSprite = FALSE;
+            gSpriteData[spriteSlot].freezeTimer = 60 * 4;
+            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+        }
+    }
+    else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+    {
+        ParticleSet(yPosition, xPosition, 0x7);
+        ProjectileStartMissileTumble(spriteSlot, projectileSlot);
+        return;
+    }
+    else if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_CAN_BE_FROZEN))
+    {
+        isft = ProjectileIceMissileDealDamage(spriteSlot, projectileSlot, 45);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(2, isft, yPosition, xPosition);
+        }
+
+        if (gProjectileData[projectileSlot].type != PROJ_TYPE_CHARGED_DIFFUSION_MISSILE)
+        {
+            ParticleSet(yPosition, xPosition, 0xB);
+        }
+        else
+        {
+            spawnFlakes = TRUE;
+        }
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        ParticleSet(yPosition, xPosition, 0x7);
+        ProjectileStartMissileTumble(spriteSlot, projectileSlot);
+        return;
+    }
+
+    if (spawnFlakes)
+    {
+        ParticleSet(yPosition, xPosition, 0xC);
+
+        gProjectileData[projectileSlot].movementStage = 3;
+        gProjectileData[projectileSlot].timer = 0;
+        gProjectileData[projectileSlot].status &= ~PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+        gProjectileData[projectileSlot].status |= PROJ_STATUS_NOT_DRAWN;
+
+        ProjectileInitSecondary(PROJ_TYPE_DIFFUSION_FLAKE, yPosition, xPosition, Q_8_8(0.f), 0, KEY_NONE, gProjectileData[projectileSlot].primaryProjectileSlot);
+        ProjectileInitSecondary(PROJ_TYPE_DIFFUSION_FLAKE, yPosition, xPosition, Q_8_8(0.25f), 0, KEY_NONE, gProjectileData[projectileSlot].primaryProjectileSlot);
+        ProjectileInitSecondary(PROJ_TYPE_DIFFUSION_FLAKE, yPosition, xPosition, Q_8_8(0.5f), 0, KEY_NONE, gProjectileData[projectileSlot].primaryProjectileSlot);
+        ProjectileInitSecondary(PROJ_TYPE_DIFFUSION_FLAKE, yPosition, xPosition, Q_8_8(0.75f), 0, KEY_NONE, gProjectileData[projectileSlot].primaryProjectileSlot);
+    }
+    else
+    {
+        gProjectileData[projectileSlot].status = 0;
+    }
 }
 
+/**
+ * @brief 84b60 | d0 | Handles a diffusion missile hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileDiffusionFlakeHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+        return;
+
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+
+        if (gSpriteData[spriteSlot].freezeTimer == 0 && ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_CAN_BE_FROZEN)
+        {
+            gSpriteData[spriteSlot].standingOnSprite = FALSE;
+            gSpriteData[spriteSlot].freezeTimer = 60 * 4;
+            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+        }
+    }
+    else if (gSpriteData[spriteSlot].freezeTimer == 0 && ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_CAN_BE_FROZEN)
+    {
+        isft = ProjectileDiffusionFlakeDealDamage(spriteSlot, projectileSlot);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(2, isft, yPosition, xPosition);
+        }
+    }
 }
 
+/**
+ * @brief 84c30 | 7c | Handles a bomb hitting a sprite
+ * 
+ * @param spriteSlot Sprite slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void ProjectileBombHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition)
 {
+    u8 isft;
 
+    if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
+        return;
+
+    if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+        return;
+    }
+
+    if (ProjectileGetSpriteWeakness(spriteSlot) & SPRITE_WEAKNESS_BEAM_AND_BOMBS)
+    {
+        isft = ProjecileDealDamage(spriteSlot, 8);
+
+        if (ProjectileCheckSpriteCreateDebris(spriteSlot))
+        {
+            ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
+        }
+    }
+    else
+    {
+        ProjectileSetIsftForSolid(spriteSlot);
+    }
 }
 
+/**
+ * @brief 84cac | 1c | To document
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void unk_84cac(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
-
+    gSpriteData[spriteSlot].invincibilityStunFlashTimer = 0x78;
 }
 
+/**
+ * @brief 84cc8 | 1c | To document
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void unk_84cc8(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
-
+    gSpriteData[spriteSlot].invincibilityStunFlashTimer = 0x78;
 }
 
+/**
+ * @brief 84ce4 | 1c | To document
+ * 
+ * @param spriteSlot Sprite slot
+ * @param projectileSlot Projectile slot
+ * @param yPosition Y position
+ * @param xPosition X position
+ */
 void unk_84ce4(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition)
 {
-
+    gSpriteData[spriteSlot].invincibilityStunFlashTimer = 0x78;
 }
 
+/**
+ * @brief 84d00 | 74 | Handles dealing damage to zazabi
+ * 
+ * @param damage Damage
+ */
 void ProjectileDealDamageToZazabi(u16 damage)
 {
+    if (gCurrentSprite.health > damage)
+    {
+        gCurrentSprite.health -= damage;
+    }
+    else
+    {
+        gCurrentSprite.health = 0;
+        gCurrentSprite.properties |= SP_DESTROYED;
+        gCurrentSprite.freezeTimer = 0;
+        gCurrentSprite.paletteRow = 0;
 
+        if (gCurrentSprite.standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
+            gSamusData.standingStatus = STANDING_MID_AIR;
+    }
+
+    if (SPRITE_HAS_ISFT(gCurrentSprite) < 17)
+    {
+        SPRITE_CLEAR_AND_SET_ISFT(gCurrentSprite, 17);
+    }
 }
 
 void ProjectileChargedNormalBeamInit(void)
