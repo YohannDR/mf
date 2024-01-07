@@ -39991,8 +39991,8 @@ _080868C8:
 	adds r0, #1
 	b _080868FE
 _080868D6:
-	bl TitleScreenCallOamSubroutine
-	bl TitleScreenDrawAllOam
+	bl TitleScreenCallObjectsSubroutine
+	bl TitleScreenDrawAllObjects
 	ldr r1, _080868EC @ =gWrittenToBldy
 	ldrh r0, [r1]
 	cmp r0, #0xf
@@ -40171,12 +40171,12 @@ unk_8690c: @ 0x0808690C
 	movs r0, #1
 	movs r1, #0x80
 	movs r2, #0x9a
-	bl TitleScreenSetupOam
+	bl TitleScreenSetupObject
 	movs r0, #2
 	movs r1, #0x78
 	movs r2, #0x88
-	bl TitleScreenSetupOam
-	bl TitleScreenDrawAllOam
+	bl TitleScreenSetupObject
+	bl TitleScreenDrawAllObjects
 	movs r0, #0x4a
 	movs r1, #0x10
 	bl PlayMusic
@@ -40271,8 +40271,8 @@ TitleScreenVblank_Empty: @ 0x08086B4C
 unk_86b58: @ 0x08086B58
 	push {r4, lr}
 	movs r4, #0
-	bl TitleScreenCallOamSubroutine
-	bl TitleScreenDrawAllOam
+	bl TitleScreenCallObjectsSubroutine
+	bl TitleScreenDrawAllObjects
 	ldr r2, _08086B74 @ =gNonGameplayRam
 	ldrb r0, [r2, #5]
 	cmp r0, #0
@@ -40346,8 +40346,8 @@ _08086BE0:
 	.align 2, 0
 _08086BE8: .4byte 0x04000050
 
-	thumb_func_start TitleScreenSetupOam
-TitleScreenSetupOam: @ 0x08086BEC
+	thumb_func_start TitleScreenSetupObject
+TitleScreenSetupObject: @ 0x08086BEC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	lsls r0, r0, #0x18
@@ -40692,7 +40692,7 @@ _08086E70:
 	movs r0, #4
 	movs r1, #0x70
 	movs r2, #0x50
-	bl TitleScreenSetupOam
+	bl TitleScreenSetupObject
 	ldrb r0, [r4, #9]
 _08086E88:
 	adds r0, #1
@@ -40726,8 +40726,8 @@ _08086EB4:
 	pop {r0}
 	bx r0
 
-	thumb_func_start TitleScreenDrawAllOam
-TitleScreenDrawAllOam: @ 0x08086EB8
+	thumb_func_start TitleScreenDrawAllObjects
+TitleScreenDrawAllObjects: @ 0x08086EB8
 	push {r4, r5, r6, lr}
 	movs r4, #0
 	ldr r5, _08086EF0 @ =gNonGameplayRam
@@ -40742,7 +40742,7 @@ _08086EC2:
 	cmp r0, #0
 	beq _08086ED6
 	adds r0, r1, r6
-	bl TitleScreenDrawOam
+	bl TitleScreenDrawObject
 _08086ED6:
 	adds r0, r4, #1
 	lsls r0, r0, #0x18
@@ -40760,8 +40760,8 @@ _08086ED6:
 _08086EF0: .4byte gNonGameplayRam
 _08086EF4: .4byte gNextOamSlot
 
-	thumb_func_start TitleScreenDrawOam
-TitleScreenDrawOam: @ 0x08086EF8
+	thumb_func_start TitleScreenDrawObject
+TitleScreenDrawObject: @ 0x08086EF8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -40872,8 +40872,8 @@ _08086FC4: .4byte gOamData
 _08086FC8: .4byte 0x000001FF
 _08086FCC: .4byte 0xFFFFFE00
 
-	thumb_func_start TitleScreenCallOamSubroutine
-TitleScreenCallOamSubroutine: @ 0x08086FD0
+	thumb_func_start TitleScreenCallObjectsSubroutine
+TitleScreenCallObjectsSubroutine: @ 0x08086FD0
 	push {r4, r5, r6, lr}
 	movs r4, #0
 	ldr r5, _08087008 @ =gNonGameplayRam
@@ -41057,7 +41057,7 @@ TItleScreenInit: @ 0x08087010
 	strh r0, [r7]
 	ldr r0, _080871E8 @ =TitleScreenVblank
 	bl CallbackSetVBlank
-	bl TitleScreenDrawAllOam
+	bl TitleScreenDrawAllObjects
 	add sp, #4
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -41276,7 +41276,7 @@ _08087330:
 	movs r0, #1
 	movs r1, #0x80
 	movs r2, #0x9a
-	bl TitleScreenSetupOam
+	bl TitleScreenSetupObject
 	lsls r0, r0, #0x18
 	lsrs r1, r0, #0x18
 	lsls r0, r1, #1
@@ -41288,7 +41288,7 @@ _08087330:
 	movs r0, #2
 	movs r1, #0x78
 	movs r2, #0x88
-	bl TitleScreenSetupOam
+	bl TitleScreenSetupObject
 	lsls r0, r0, #0x18
 	lsrs r1, r0, #0x18
 	lsls r0, r1, #1
@@ -41331,7 +41331,7 @@ _08087390:
 	movs r0, #5
 	strb r0, [r3, #5]
 _080873C4:
-	bl TitleScreenDrawAllOam
+	bl TitleScreenDrawAllObjects
 	b _08087460
 	.align 2, 0
 _080873CC: .4byte gNonGameplayRam
@@ -41339,8 +41339,8 @@ _080873D0: .4byte 0x03001220
 _080873D4: .4byte 0x03001222
 _080873D8: .4byte gWrittenToBldy
 _080873DC:
-	bl TitleScreenCallOamSubroutine
-	bl TitleScreenDrawAllOam
+	bl TitleScreenCallObjectsSubroutine
+	bl TitleScreenDrawAllObjects
 	ldr r2, _0808741C @ =gNonGameplayRam
 	ldrh r0, [r2]
 	adds r0, #1
@@ -41385,8 +41385,8 @@ _08087428:
 	strb r0, [r2, #4]
 	b _08087458
 _0808743C:
-	bl TitleScreenCallOamSubroutine
-	bl TitleScreenDrawAllOam
+	bl TitleScreenCallObjectsSubroutine
+	bl TitleScreenDrawAllObjects
 	ldr r1, _08087474 @ =gNonGameplayRam
 	ldrh r0, [r1]
 	adds r0, #1
@@ -41438,7 +41438,7 @@ _0808747C:
 	movs r0, #1
 	movs r1, #0x80
 	movs r2, #0x9a
-	bl TitleScreenSetupOam
+	bl TitleScreenSetupObject
 	lsls r0, r0, #0x18
 	lsrs r1, r0, #0x18
 	lsls r0, r1, #1
@@ -41451,7 +41451,7 @@ _0808747C:
 	movs r0, #2
 	movs r1, #0x78
 	movs r2, #0x88
-	bl TitleScreenSetupOam
+	bl TitleScreenSetupObject
 	lsls r0, r0, #0x18
 	lsrs r1, r0, #0x18
 	lsls r0, r1, #1
@@ -41543,8 +41543,8 @@ _08087572:
 	movs r0, #3
 	b _080875A6
 _0808757E:
-	bl TitleScreenCallOamSubroutine
-	bl TitleScreenDrawAllOam
+	bl TitleScreenCallObjectsSubroutine
+	bl TitleScreenDrawAllObjects
 	ldr r1, _08087594 @ =gWrittenToBldy
 	ldrh r0, [r1]
 	cmp r0, #0xf

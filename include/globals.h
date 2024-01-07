@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "structs/menus/pause_screen.h"
+#include "structs/menus/title_screen.h"
 
 struct InGameData {
     u8 clipdataCode[640];
@@ -11,12 +12,14 @@ struct InGameData {
 union NonGameplayRam {
     struct PauseScreenData pauseScreen;
     struct InGameData inGame;
+    struct TitleScreenData titleScreen;
 };
 
 extern union NonGameplayRam gNonGameplayRam;
 
 #define PAUSE_SCREEN_DATA gNonGameplayRam.pauseScreen
 #define IN_GAME_DATA gNonGameplayRam.inGame
+#define TITLE_SCREEN_DATA gNonGameplayRam.titleScreen
 
 extern u8 gRebootGame;
 extern u8 gClearedEveryFrame;
