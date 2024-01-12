@@ -130,6 +130,8 @@ SECTIONS {
         . = 0x0000120c; gWrittenToMosaic_H = .;
         . = 0x0000120e; gWrittenToMosaic_L = .;
         . = 0x0000121e; gWrittenToBldy = .;
+        . = 0x00001220; gWrittenToBldalpha_R = .;
+        . = 0x00001222; gWrittenToBldalpha_L = .;
         . = 0x00001228; gBg1XPosition = .;
         . = 0x0000122A; gBg1YPosition = .;
         . = 0x00001242; gDemoState = .;

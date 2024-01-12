@@ -56,8 +56,8 @@ void SoftReset(void)
 
     write16(REG_IME, FALSE);
 
-    dma_fill32(3, 0, EWRAM_BASE, EWRAM_SIZE);
-    dma_fill32(3, 0, IWRAM_BASE, IWRAM_SIZE - 0x200);
+    DMA_FILL_32(3, 0, EWRAM_BASE, EWRAM_SIZE);
+    DMA_FILL_32(3, 0, IWRAM_BASE, IWRAM_SIZE - 0x200);
 
     ClearGfxRam();
     LoadInterruptCode();

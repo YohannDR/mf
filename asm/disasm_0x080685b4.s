@@ -12068,11 +12068,11 @@ unk_6e1ac: @ 0x0806E1AC
 	ldr r0, _0806E258 @ =gColorFading
 	strb r1, [r0]
 _0806E218:
-	ldr r1, _0806E25C @ =0x03001220
+	ldr r1, _0806E25C @ =gWrittenToBldalpha_R
 	ldr r2, _0806E234 @ =gIoRegisters
 	ldrb r0, [r2, #4]
 	strh r0, [r1]
-	ldr r1, _0806E260 @ =0x03001222
+	ldr r1, _0806E260 @ =gWrittenToBldalpha_L
 	ldrb r0, [r2, #5]
 	strh r0, [r1]
 	pop {r0}
@@ -12090,8 +12090,8 @@ _0806E24C: .4byte 0x04000049
 _0806E250: .4byte 0x04000050
 _0806E254: .4byte gEventCounter
 _0806E258: .4byte gColorFading
-_0806E25C: .4byte 0x03001220
-_0806E260: .4byte 0x03001222
+_0806E25C: .4byte gWrittenToBldalpha_R
+_0806E260: .4byte gWrittenToBldalpha_L
 
 	thumb_func_start unk_6e264
 unk_6e264: @ 0x0806E264
@@ -12110,11 +12110,11 @@ unk_6e264: @ 0x0806E264
 	lsrs r0, r0, #0x18
 	cmp r0, #1
 	bhi _0806E2BC
-	ldr r1, _0806E29C @ =0x03001222
+	ldr r1, _0806E29C @ =gWrittenToBldalpha_L
 	ldrh r0, [r1]
 	cmp r0, #0
 	bne _0806E2A4
-	ldr r0, _0806E2A0 @ =0x03001220
+	ldr r0, _0806E2A0 @ =gWrittenToBldalpha_R
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq _0806E2F6
@@ -12122,13 +12122,13 @@ unk_6e264: @ 0x0806E264
 	.align 2, 0
 _0806E294: .4byte gFrameCounter8Bit
 _0806E298: .4byte gCurrentRoomEntry
-_0806E29C: .4byte 0x03001222
-_0806E2A0: .4byte 0x03001220
+_0806E29C: .4byte gWrittenToBldalpha_L
+_0806E2A0: .4byte gWrittenToBldalpha_R
 _0806E2A4:
 	subs r0, #1
 	strh r0, [r1]
 _0806E2A8:
-	ldr r1, _0806E2B8 @ =0x03001220
+	ldr r1, _0806E2B8 @ =gWrittenToBldalpha_R
 	ldrh r0, [r1]
 	cmp r0, #0
 	beq _0806E2FA
@@ -12136,30 +12136,30 @@ _0806E2A8:
 	strh r0, [r1]
 	b _0806E2FA
 	.align 2, 0
-_0806E2B8: .4byte 0x03001220
+_0806E2B8: .4byte gWrittenToBldalpha_R
 _0806E2BC:
 	subs r0, r1, #1
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #5
 	bhi _0806E2F6
-	ldr r1, _0806E2DC @ =0x03001222
+	ldr r1, _0806E2DC @ =gWrittenToBldalpha_L
 	ldrh r0, [r1]
 	cmp r0, #0xf
 	bls _0806E2E4
-	ldr r0, _0806E2E0 @ =0x03001220
+	ldr r0, _0806E2E0 @ =gWrittenToBldalpha_R
 	ldrh r1, [r0]
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0806E2F6
 	b _0806E2EA
 	.align 2, 0
-_0806E2DC: .4byte 0x03001222
-_0806E2E0: .4byte 0x03001220
+_0806E2DC: .4byte gWrittenToBldalpha_L
+_0806E2E0: .4byte gWrittenToBldalpha_R
 _0806E2E4:
 	adds r0, #1
 	strh r0, [r1]
-	ldr r2, _0806E310 @ =0x03001220
+	ldr r2, _0806E310 @ =gWrittenToBldalpha_R
 _0806E2EA:
 	ldrh r0, [r2]
 	cmp r0, #0
@@ -12173,10 +12173,10 @@ _0806E2F6:
 	beq _0806E30A
 _0806E2FA:
 	ldr r2, _0806E314 @ =gWrittenToBldalpha
-	ldr r0, _0806E318 @ =0x03001222
+	ldr r0, _0806E318 @ =gWrittenToBldalpha_L
 	ldrh r0, [r0]
 	lsls r0, r0, #8
-	ldr r1, _0806E310 @ =0x03001220
+	ldr r1, _0806E310 @ =gWrittenToBldalpha_R
 	ldrh r1, [r1]
 	orrs r0, r1
 	strh r0, [r2]
@@ -12184,9 +12184,9 @@ _0806E30A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806E310: .4byte 0x03001220
+_0806E310: .4byte gWrittenToBldalpha_R
 _0806E314: .4byte gWrittenToBldalpha
-_0806E318: .4byte 0x03001222
+_0806E318: .4byte gWrittenToBldalpha_L
 
 	thumb_func_start unk_6e31c
 unk_6e31c: @ 0x0806E31C
@@ -12707,8 +12707,8 @@ _0806E772:
 	subs r0, #0x43
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
-	ldr r5, _0806E820 @ =0x03001222
-	ldr r6, _0806E824 @ =0x03001220
+	ldr r5, _0806E820 @ =gWrittenToBldalpha_L
+	ldr r6, _0806E824 @ =gWrittenToBldalpha_R
 	cmp r0, #2
 	bls _0806E7BA
 	movs r0, #0x10
@@ -12759,8 +12759,8 @@ _0806E810: .4byte 0x0400001E
 _0806E814: .4byte gWrittenToBldcnt_Special
 _0806E818: .4byte 0x00003F48
 _0806E81C: .4byte gCurrentRoomEntry
-_0806E820: .4byte 0x03001222
-_0806E824: .4byte 0x03001220
+_0806E820: .4byte gWrittenToBldalpha_L
+_0806E824: .4byte gWrittenToBldalpha_R
 _0806E828: .4byte gWrittenToBldalpha
 _0806E82C: .4byte 0x03004E3E
 _0806E830: .4byte 0x00004604
@@ -12770,13 +12770,13 @@ _0806E83C: .4byte gWrittenToDispcnt
 _0806E840: .4byte 0x0000FEFF
 _0806E844: .4byte gColorFading
 _0806E848:
-	ldr r0, _0806E864 @ =0x03001222
+	ldr r0, _0806E864 @ =gWrittenToBldalpha_L
 	ldrh r2, [r0]
 	adds r3, r2, #0
 	adds r5, r0, #0
 	cmp r3, #0
 	bne _0806E86C
-	ldr r0, _0806E868 @ =0x03001220
+	ldr r0, _0806E868 @ =gWrittenToBldalpha_R
 	ldrh r1, [r0]
 	adds r6, r0, #0
 	cmp r1, #0xf
@@ -12784,12 +12784,12 @@ _0806E848:
 	strh r3, [r5]
 	b _0806E872
 	.align 2, 0
-_0806E864: .4byte 0x03001222
-_0806E868: .4byte 0x03001220
+_0806E864: .4byte gWrittenToBldalpha_L
+_0806E868: .4byte gWrittenToBldalpha_R
 _0806E86C:
 	subs r0, r2, #1
 	strh r0, [r5]
-	ldr r6, _0806E87C @ =0x03001220
+	ldr r6, _0806E87C @ =gWrittenToBldalpha_R
 _0806E872:
 	ldrh r0, [r6]
 	cmp r0, #0xf
@@ -12797,7 +12797,7 @@ _0806E872:
 	adds r0, #1
 	b _0806E882
 	.align 2, 0
-_0806E87C: .4byte 0x03001220
+_0806E87C: .4byte gWrittenToBldalpha_R
 _0806E880:
 	movs r0, #0x10
 _0806E882:

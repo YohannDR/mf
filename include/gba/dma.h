@@ -25,7 +25,7 @@
         dma_[2];                                                               \
     }
 
-#define dma_fill(channel, val, dst, size, bit)                                 \
+#define DMA_FILL(channel, val, dst, size, bit)                                 \
     {                                                                          \
         vu##bit dma_tmp_ = (vu##bit)val;                                       \
         DMA_SET(                                                               \
@@ -38,20 +38,20 @@
                 | ((size) / (bit / 8)));                                       \
     }
 
-#define dma_fill16(channel, value, dest, size)                                 \
-    dma_fill(channel, value, dest, size, 16)
-#define dma_fill32(channel, value, dest, size)                                 \
-    dma_fill(channel, value, dest, size, 32)
+#define DMA_FILL_16(channel, value, dest, size)                                 \
+    DMA_FILL(channel, value, dest, size, 16)
+#define DMA_FILL_32(channel, value, dest, size)                                 \
+    DMA_FILL(channel, value, dest, size, 32)
 
-#define dma_clear(channel, dest, size, bit)                                    \
+#define DMA_CLEAR(channel, dest, size, bit)                                    \
     {                                                                          \
         vu##bit *dma_dest_ = (vu##bit *)(dest);                                \
         u32 dma_size_      = size;                                             \
-        dma_fill##bit(channel, 0, dma_dest_, dma_size_);                       \
+        DMA_FILL_##bit(channel, 0, dma_dest_, dma_size_);                       \
     }
 
-#define dma_clear16(channel, dest, size) dma_clear(channel, dest, size, 16)
-#define dma_clear32(channel, dest, size) dma_clear(channel, dest, size, 32)
+#define DMA_CLEAR_16(channel, dest, size) DMA_CLEAR(channel, dest, size, 16)
+#define DMA_CLEAR_32(channel, dest, size) DMA_CLEAR(channel, dest, size, 32)
 
 #define DMA_DEST_INC 0x0000
 #define DMA_DEST_DEC (1 << 5)

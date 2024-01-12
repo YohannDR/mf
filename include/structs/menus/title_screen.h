@@ -10,7 +10,7 @@ typedef void (*TitleScreenObjectFunc_T)(struct TitleScreenObject*);
 struct TitleScreenObject {
     u16 xPosition;
     u16 yPosition;
-    u8 callSubroutine;
+    u8 section;
     u8 unk_5;
     u8 isDrawn;
     u8 currentAnimationFrame;

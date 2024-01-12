@@ -6257,18 +6257,18 @@ _08063FDA:
 	.align 2, 0
 _08063FDC: .4byte gPoseLock
 _08063FE0:
-	ldr r1, _08063FF0 @ =0x03001222
+	ldr r1, _08063FF0 @ =gWrittenToBldalpha_L
 	ldr r2, _08063FF4 @ =gIoRegisters
 	ldrb r0, [r2, #5]
 	strh r0, [r1]
-	ldr r1, _08063FF8 @ =0x03001220
+	ldr r1, _08063FF8 @ =gWrittenToBldalpha_R
 	ldrb r0, [r2, #4]
 	strh r0, [r1]
 	b _08064422
 	.align 2, 0
-_08063FF0: .4byte 0x03001222
+_08063FF0: .4byte gWrittenToBldalpha_L
 _08063FF4: .4byte gIoRegisters
-_08063FF8: .4byte 0x03001220
+_08063FF8: .4byte gWrittenToBldalpha_R
 _08063FFC:
 	ldrh r1, [r2, #2]
 	movs r0, #1
@@ -6277,7 +6277,7 @@ _08063FFC:
 	beq _08064008
 	b _0806441E
 _08064008:
-	ldr r0, _08064024 @ =0x03001222
+	ldr r0, _08064024 @ =gWrittenToBldalpha_L
 	ldrh r2, [r0]
 	adds r6, r0, #0
 	cmp r2, #0x10
@@ -6292,11 +6292,11 @@ _08064008:
 	strh r0, [r6]
 	b _0806402A
 	.align 2, 0
-_08064024: .4byte 0x03001222
+_08064024: .4byte gWrittenToBldalpha_L
 _08064028:
 	adds r5, #1
 _0806402A:
-	ldr r0, _08064044 @ =0x03001220
+	ldr r0, _08064044 @ =gWrittenToBldalpha_R
 	ldrh r1, [r0]
 	adds r4, r0, #0
 	cmp r1, #0
@@ -6312,7 +6312,7 @@ _08064040:
 	movs r0, #0
 	b _080643EC
 	.align 2, 0
-_08064044: .4byte 0x03001220
+_08064044: .4byte gWrittenToBldalpha_R
 _08064048:
 	ldr r2, _08064068 @ =gWrittenToDispcnt
 	ldr r0, _0806406C @ =gIoRegisters
@@ -6662,10 +6662,10 @@ _080642DC:
 	ldrb r0, [r2, #6]
 	strb r0, [r1]
 	ldr r3, _08064340 @ =gWrittenToBldalpha
-	ldr r0, _08064344 @ =0x03001222
+	ldr r0, _08064344 @ =gWrittenToBldalpha_L
 	ldrh r0, [r0]
 	lsls r0, r0, #8
-	ldr r1, _08064348 @ =0x03001220
+	ldr r1, _08064348 @ =gWrittenToBldalpha_R
 	ldrh r1, [r1]
 	orrs r0, r1
 	strh r0, [r3]
@@ -6695,8 +6695,8 @@ _08064334: .4byte 0x0000FEFF
 _08064338: .4byte gWrittenToWinout_R
 _0806433C: .4byte gWrittenToWinin_L
 _08064340: .4byte gWrittenToBldalpha
-_08064344: .4byte 0x03001222
-_08064348: .4byte 0x03001220
+_08064344: .4byte gWrittenToBldalpha_L
+_08064348: .4byte gWrittenToBldalpha_R
 _0806434C: .4byte gWrittenToBldcnt_Special
 _08064350: .4byte gWindow1Border
 _08064354: .4byte gPoseLock
@@ -6736,7 +6736,7 @@ _080643A0:
 	ands r0, r1
 	cmp r0, #0
 	bne _0806441E
-	ldr r0, _080643C4 @ =0x03001222
+	ldr r0, _080643C4 @ =gWrittenToBldalpha_L
 	ldr r1, _080643C8 @ =gIoRegisters
 	ldrh r4, [r0]
 	adds r3, r4, #0
@@ -6750,7 +6750,7 @@ _080643A0:
 	strh r0, [r6]
 	b _080643D8
 	.align 2, 0
-_080643C4: .4byte 0x03001222
+_080643C4: .4byte gWrittenToBldalpha_L
 _080643C8: .4byte gIoRegisters
 _080643CC:
 	cmp r3, r2
@@ -6761,7 +6761,7 @@ _080643CC:
 _080643D6:
 	adds r5, #1
 _080643D8:
-	ldr r0, _080643F0 @ =0x03001220
+	ldr r0, _080643F0 @ =gWrittenToBldalpha_R
 	ldrh r2, [r0]
 	adds r3, r2, #0
 	ldrb r1, [r1, #4]
@@ -6775,7 +6775,7 @@ _080643EC:
 	strh r0, [r4]
 	b _080643FE
 	.align 2, 0
-_080643F0: .4byte 0x03001220
+_080643F0: .4byte gWrittenToBldalpha_R
 _080643F4:
 	cmp r3, r1
 	bhs _080643FE
