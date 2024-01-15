@@ -40142,7 +40142,7 @@ unk_8690c: @ 0x0808690C
 	ldr r0, [r0]
 	adds r1, r6, #0
 	movs r2, #0
-	bl TitleScreenLoadDebugText
+	bl TitleScreenDrawDebugText
 	ldr r0, _08086AE0 @ =0x08590C9C
 	ldr r1, _08086AE4 @ =0x06010000
 	bl LZ77UncompVram
@@ -41027,7 +41027,7 @@ TItleScreenInit: @ 0x08087010
 	ldr r0, [r0]
 	adds r1, r6, #0
 	movs r2, #0
-	bl TitleScreenLoadDebugText
+	bl TitleScreenDrawDebugText
 	ldr r0, _080871C4 @ =0x08590C9C
 	ldr r1, _080871C8 @ =0x06010000
 	bl LZ77UncompVram
@@ -41573,8 +41573,8 @@ _080875A8:
 	.align 2, 0
 _080875B0: .4byte gNonGameplayRam
 
-	thumb_func_start TitleScreenLoadDebugText
-TitleScreenLoadDebugText: @ 0x080875B4
+	thumb_func_start TitleScreenDrawDebugText
+TitleScreenDrawDebugText: @ 0x080875B4
 	push {r4, r5, lr}
 	adds r3, r0, #0
 	adds r4, r1, #0

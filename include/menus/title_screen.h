@@ -21,6 +21,6 @@ void TitleScreenProcessCopyright(struct TitleScreenObject* pObject);
 void TitleScreenInit(void);
 s32 TitleScreenSpawningIn(void);
 s32 TitleScreenSubroutine(void);
-void TitleScreenLoadDebugText(const u8* src, u16* dst, u8 palette);
+void TitleScreenDrawDebugText(const u8* src, u16* dst, u8 palette);
 
 #endif /* TITLE_SCREEN_H */

@@ -2,14 +2,82 @@
 #include "gba.h"
 #include "macros.h"
 #include "globals.h"
+#include "callbacks.h"
 
 #include "data/menus/title_screen.h"
+#include "data/menus/internal_title_screen_data.h"
 
 #include "constants/menus/title_screen.h"
 
+/**
+ * @brief 86854 | b8 | To document
+ * 
+ * @return s32 To document
+ */
 s32 unk_86854(void)
 {
+    s32 ended;
 
+    ended = FALSE;
+
+    switch (gSubGameMode1)
+    {
+        case 0:
+            unk_8690c();
+            gSubGameMode1++;
+            break;
+
+        case 1:
+            if (gWrittenToBldy != 0)
+            {
+                if (gWrittenToBldy < 9)
+                {
+                    TITLE_SCREEN_DATA.unk_0++;
+
+                    if (TITLE_SCREEN_DATA.unk_0 == 2)
+                    {
+                        TITLE_SCREEN_DATA.unk_0 = 0;
+                        gWrittenToBldy--;
+                    }
+                }
+                else
+                {
+                    gWrittenToBldy--;
+                }
+            }
+            else
+            {
+                TITLE_SCREEN_DATA.unk_0 = 1995;
+                gSubGameMode1++;
+            }
+            break;
+
+        case 2:
+            if (unk_86b58())
+                gSubGameMode1++;
+            break;
+
+        case 3:
+            TitleScreenCallObjectsSubroutine();
+            TitleScreenDrawAllObject();
+
+            if (gWrittenToBldy < BLDY_MAX_VALUE)
+            {
+                gWrittenToBldy++;
+            }
+            else
+            {
+                if (TITLE_SCREEN_DATA.unk_4 == 0x1)
+                    ended = 0x64;
+                else
+                    ended = TRUE;
+
+                gSubGameMode1 = 0;
+            }
+            break;
+    }
+
+    return ended;
 }
 
 void unk_8690c(void)
@@ -38,9 +106,63 @@ void TitleScreenVblank_Empty(void)
     UpdateAudio();
 }
 
+/**
+ * @brief 86b58 | 94 | To document
+ * 
+ * @return s32 bool, ended
+ */
 s32 unk_86b58(void)
 {
+    s32 ended;
 
+    ended = FALSE;
+
+    TitleScreenCallObjectsSubroutine();
+    TitleScreenDrawAllObjects();
+
+    switch (TITLE_SCREEN_DATA.unk_5)
+    {
+        case 0:
+            TITLE_SCREEN_DATA.unk_0++;
+            TITLE_SCREEN_DATA.unk_2++;
+            if (TITLE_SCREEN_DATA.unk_0 == 2000)
+            {
+                TITLE_SCREEN_DATA.unk_0 = 0;
+            }
+
+            if (gChangedInput & (KEY_A | KEY_START))
+            {
+                TITLE_SCREEN_DATA.unk_0 = 0;
+                TITLE_SCREEN_DATA.unk_2 = 0;
+                TITLE_SCREEN_DATA.unk_5 = 1;
+
+                SoundPlay(0x1FF);
+            }
+            else if (TITLE_SCREEN_DATA.unk_2 == 1200)
+            {
+                TITLE_SCREEN_DATA.unk_0 = 0;
+                TITLE_SCREEN_DATA.unk_2 = 0;
+                TITLE_SCREEN_DATA.unk_4 = 1;
+                write16(REG_BLDCNT, BLDCNT_SCREEN_FIRST_TARGET | BLDCNT_ALPHA_BLENDING_EFFECT | BLDCNT_BRIGHTNESS_INCREASE_EFFECT);
+                ended = TRUE;
+            }
+            break;
+
+        case 1:
+            TITLE_SCREEN_DATA.unk_0++;
+            if (TITLE_SCREEN_DATA.unk_0 > 34)
+            {
+                TITLE_SCREEN_DATA.unk_0 = 0;
+                write16(REG_BLDCNT, BLDCNT_SCREEN_FIRST_TARGET | BLDCNT_ALPHA_BLENDING_EFFECT | BLDCNT_BRIGHTNESS_INCREASE_EFFECT);
+                ended = TRUE;
+            }
+            break;
+
+        default:
+            ended = TRUE;
+    }
+
+    return ended;
 }
 
 /**
@@ -263,9 +385,79 @@ void TitleScreenProcessCopyright(struct TitleScreenObject* pObject)
     return;
 }
 
+/**
+ * @brief 87010 | 1dc | Initializes the title screen
+ * 
+ */
 void TitleScreenInit(void)
 {
+    u32 zero;
 
+    write16(REG_IME, FALSE);
+    write16(REG_DISPSTAT, read16(REG_DISPSTAT) & ~DSTAT_IF_HBLANK);
+    write16(REG_IE, read16(REG_IE) & ~IF_HBLANK);
+    write16(REG_IME, TRUE);
+
+    CallbackSetVBlank(TitleScreenVblank_Empty);
+
+    write16(REG_DISPCNT, 0);
+
+    zero = 0;
+    DMA_SET(3, &zero, &gNonGameplayRam, C_32_2_16(DMA_ENABLE | DMA_32BIT | DMA_SRC_FIXED, sizeof(gNonGameplayRam) / sizeof(u32)));
+
+    unk_24ec(0x1000000);
+
+    gWrittenToBldy = BLDY_MAX_VALUE;
+    write16(REG_BLDY, BLDY_MAX_VALUE);
+
+    gNextOamSlot = 0;
+    ResetFreeOam();
+
+    write16(REG_BG3CNT, 0);
+    write16(REG_BG2CNT, 0);
+    write16(REG_BG1CNT, 0);
+    write16(REG_BG0CNT, 0);
+
+    write16(REG_BG0HOFS, 0);
+    write16(REG_BG0VOFS, 0);
+    write16(REG_BG1HOFS, 0);
+    write16(REG_BG1VOFS, 0);
+    write16(REG_BG2HOFS, 0);
+    write16(REG_BG2VOFS, 0);
+    write16(REG_BG3HOFS, 0);
+    write16(REG_BG3VOFS, 0);
+
+    write16(REG_BG2X, 0);
+    write16(REG_BG2X + 2, 0);
+    write16(REG_BG2Y, 0);
+    write16(REG_BG2Y + 2, 0);
+
+    LZ77UncompVram(sTitleScreenSpaceBackgroundGfx, VRAM_BASE + BGCNT_VRAM_CHAR_SIZE * 0);
+    LZ77UncompVram(sTitleScreenLogoGfx, VRAM_BASE + BGCNT_VRAM_CHAR_SIZE * 2);
+    LZ77UncompVram(sTitleScreenLogoTileTable, VRAM_BASE + BGCNT_VRAM_TILE_SIZE * 30);
+    LZ77UncompVram(sTitleScreenSpaceBackgroundTileTable, VRAM_BASE + BGCNT_VRAM_TILE_SIZE * 31);
+
+    DMA_SET(3, sTitleScreenLogoPal, PALRAM_BASE, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenLogoPal) / sizeof(u32)));
+    DMA_SET(3, sTitleScreenSpaceBackgroundPal, PALRAM_BASE + 0x100, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenSpaceBackgroundPal) / sizeof(u32)));
+
+    SET_BACKDROP_COLOR(COLOR_BLACK);
+
+    TitleScreenDrawDebugText(sTitleScreenDebugTextPointer, VRAM_BASE + 0xF000 + BGCNT_VRAM_TILE_SIZE * 1, 0);
+
+    LZ77UncompVram(sTitleScreenObjectsGfx, VRAM_OBJ);
+    DMA_SET(3, sTitleScreenObjectsPal, PALRAM_OBJ, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenObjectsPal) / sizeof(u32)));
+
+    gWrittenToBldalpha_R = 0;
+    gWrittenToBldalpha_L = BLDALPHA_MAX_VALUE;
+
+    write16(REG_BG1CNT, CREATE_BGCNT(2, 30, BGCNT_HIGH_MID_PRIORITY, BGCNT_SIZE_256x256));
+    write16(REG_BG3CNT, CREATE_BGCNT(0, 31, BGCNT_LOW_PRIORITY, BGCNT_SIZE_256x256));
+
+    write16(REG_DISPCNT, DCNT_BG3);
+
+    CallbackSetVBlank(TitleScreenVblank);
+
+    TitleScreenDrawAllObjects();
 }
 
 /**
@@ -471,12 +663,77 @@ s32 TitleScreenSpawningIn(void)
     return ended;
 }
 
+/**
+ * @brief 87544 | 70 | Title screen subroutine
+ * 
+ * @return s32 
+ */
 s32 TitleScreenSubroutine(void)
 {
+    s32 ended;
 
+    ended = FALSE;
+
+    switch (gSubGameMode1)
+    {
+        case 0:
+            TitleScreenInit();
+            gSubGameMode1 = 2;
+            break;
+
+        case 1:
+            break;
+
+        case 2:
+            if (TitleScreenSpawningIn())
+                gSubGameMode1 = 3;
+            break;
+
+        case 3:
+            TitleScreenCallObjectsSubroutine();
+            TitleScreenDrawAllObject();
+
+            if (gWrittenToBldy < BLDY_MAX_VALUE)
+            {
+                gWrittenToBldy++;
+            }
+            else
+            {
+                if (TITLE_SCREEN_DATA.unk_4 == 0x1)
+                    ended = 0x64;
+                else
+                    ended = TRUE;
+
+                gSubGameMode1 = 0;
+            }
+            break;
+    }
+
+    return ended;
 }
 
-void TitleScreenLoadDebugText(const u8* src, u16* dst, u8 palette)
+/**
+ * @brief 875b4 | 5c | Draws a debug text
+ * 
+ * @param src Source
+ * @param dst Destination
+ * @param palette Palette
+ */
+void TitleScreenDrawDebugText(const u8* src, u16* dst, u8 palette)
 {
+    u16 nbrTile;
 
+    DMA_SET(3, sTitleScreenDebugTextCharactersGfx, VRAM_BASE + 0x7C00, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenDebugTextCharactersGfx) / sizeof(s32)));
+
+    while (*src != '\0')
+    {
+        if (*src != ' ')
+        {
+            nbrTile = *src - 0x30;
+            *dst = palette << 12 | (nbrTile + 0x3e0);
+        }
+
+        dst++;
+        src++;
+    }
 }

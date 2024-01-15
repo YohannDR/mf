@@ -13,6 +13,7 @@ union NonGameplayRam {
     struct PauseScreenData pauseScreen;
     struct InGameData inGame;
     struct TitleScreenData titleScreen;
+    u8 size[1344];
 };
 
 extern union NonGameplayRam gNonGameplayRam;
