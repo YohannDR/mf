@@ -59,7 +59,7 @@ s32 unk_86854(void)
 
         case 3:
             TitleScreenCallObjectsSubroutine();
-            TitleScreenDrawAllObject();
+            TitleScreenDrawAllObjects();
 
             if (gWrittenToBldy < BLDY_MAX_VALUE)
             {
@@ -80,9 +80,87 @@ s32 unk_86854(void)
     return ended;
 }
 
+/**
+ * @brief 8690c | 1f4 | To document
+ * 
+ */
 void unk_8690c(void)
 {
+    u32 zero;
 
+    write16(REG_IME, FALSE);
+    write16(REG_DISPSTAT, read16(REG_DISPSTAT) & ~DSTAT_IF_HBLANK);
+    write16(REG_IE, read16(REG_IE) & ~IF_HBLANK);
+    write16(REG_IME, TRUE);
+
+    CallbackSetVBlank(TitleScreenVblank_Empty);
+
+    write16(REG_DISPCNT, 0);
+
+    zero = 0;
+    DMA_SET(3, &zero, &gNonGameplayRam, C_32_2_16(DMA_ENABLE | DMA_32BIT | DMA_SRC_FIXED, sizeof(gNonGameplayRam) / sizeof(u32)));
+
+    unk_24ec(0x1000000);
+
+    write16(REG_BLDCNT, BLDCNT_SCREEN_FIRST_TARGET | BLDCNT_ALPHA_BLENDING_EFFECT | BLDCNT_BRIGHTNESS_INCREASE_EFFECT);
+    gWrittenToBldy = BLDY_MAX_VALUE;
+    write16(REG_BLDY, BLDY_MAX_VALUE);
+
+    ClearGfxRam();
+    gNextOamSlot = 0;
+    ResetFreeOam();
+
+    write16(REG_BG3CNT, 0);
+    write16(REG_BG2CNT, 0);
+    write16(REG_BG1CNT, 0);
+    write16(REG_BG0CNT, 0);
+
+    write16(REG_BG0HOFS, 0);
+    write16(REG_BG0VOFS, 0);
+    write16(REG_BG1HOFS, 0);
+    write16(REG_BG1VOFS, 0);
+    write16(REG_BG2HOFS, 0);
+    write16(REG_BG2VOFS, 0);
+    write16(REG_BG3HOFS, 0);
+    write16(REG_BG3VOFS, 0);
+
+    write16(REG_BG2X, 0);
+    write16(REG_BG2X + 2, 0);
+    write16(REG_BG2Y, 0);
+    write16(REG_BG2Y + 2, 0);
+
+    // FIXME LZ77UncompVram(sTitleScreenSpaceBackgroundGfx, VRAM_BASE + BGCNT_VRAM_CHAR_SIZE * 0);
+    LZ77UncompVram((const void*)0x8605d08, VRAM_BASE + BGCNT_VRAM_CHAR_SIZE * 0);
+    LZ77UncompVram(sTitleScreenLogoGfx, VRAM_BASE + BGCNT_VRAM_CHAR_SIZE * 2);
+    LZ77UncompVram(sTitleScreenLogoTileTable, VRAM_BASE + BGCNT_VRAM_TILE_SIZE * 30);
+    // FIXME LZ77UncompVram(sTitleScreenSpaceBackgroundTileTable, VRAM_BASE + BGCNT_VRAM_TILE_SIZE * 31);
+    LZ77UncompVram((const void*)0x8609220, VRAM_BASE + BGCNT_VRAM_TILE_SIZE * 31);
+
+    DMA_SET(3, sTitleScreenLogoPal, PALRAM_BASE, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenLogoPal) / sizeof(u32)));
+    // DMA_SET(3, sTitleScreenSpaceBackgroundPal, PALRAM_BASE + 0x100, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenSpaceBackgroundPal) / sizeof(u32)));
+    DMA_SET(3, (const void*)0x8609120, PALRAM_BASE + 0x100, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenSpaceBackgroundPal) / sizeof(u32)));
+
+    SET_BACKDROP_COLOR(COLOR_BLACK);
+
+    // FIXME TitleScreenDrawDebugText(sTitleScreenDebugTextPointer, VRAM_BASE + 0xF000 + BGCNT_VRAM_TILE_SIZE * 1, 0);
+    TitleScreenDrawDebugText(*(const u8** const)0x879c2c8, VRAM_BASE + 0xF000 + BGCNT_VRAM_TILE_SIZE * 1, 0);
+
+    LZ77UncompVram(sTitleScreenObjectsGfx, VRAM_OBJ);
+    DMA_SET(3, sTitleScreenObjectsPal, PALRAM_OBJ, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenObjectsPal) / sizeof(u32)));
+
+    write16(REG_BG1CNT, CREATE_BGCNT(2, 30, BGCNT_HIGH_MID_PRIORITY, BGCNT_SIZE_256x256));
+    write16(REG_BG3CNT, CREATE_BGCNT(0, 31, BGCNT_LOW_PRIORITY, BGCNT_SIZE_256x256));
+
+    write16(REG_DISPCNT, DCNT_BG1 | DCNT_BG3 | DCNT_OBJ);
+
+    CallbackSetVBlank(TitleScreenVblank);
+
+    TitleScreenSetupObject(TITLE_SCREEN_SECTION_COPYRIGHT, SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 8), SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 9 + HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE));
+    TitleScreenSetupObject(TITLE_SCREEN_SECTION_PRESS_START, SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 7 + HALF_BLOCK_SIZE), SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 8 + HALF_BLOCK_SIZE));
+
+    TitleScreenDrawAllObjects();
+
+    PlayMusic(0x4A, 16);
 }
 
 /**
@@ -219,14 +297,115 @@ u8 TitleScreenSetupObject(u8 section, u16 xPosition, u16 yPosition)
     return i;
 }
 
+/**
+ * @brief 86cf0 | e8 | To document
+ * 
+ * @param pObject Title screen object pointer
+ */
 void unk_86cf0(struct TitleScreenObject* pObject)
 {
+    u32 row;
 
+    if (pObject->action == 0)
+    {
+        if (pObject->unk_9 == 34)
+        {
+            pObject->currentAnimationFrame = 0;
+            pObject->animationDurationCounter = 0;
+            pObject->unk_9 = 0;
+            pObject->action = 1;
+        }
+
+        if (gChangedInput & (KEY_A | KEY_START))
+        {
+            pObject->currentAnimationFrame = 0;
+            pObject->animationDurationCounter = 0;
+            pObject->unk_9 = 4;
+            pObject->action = 2;
+        }
+    }
+    else if (pObject->action == 1)
+    {
+        if (pObject->unk_9 == 2)
+        {
+            pObject->unk_5++;
+
+            if (pObject->unk_5 == PALETTE_NBR_ROWS(sTitleScreen_592d74) + PALETTE_NBR_ROWS(sTitleScreen_592f74))
+                pObject->unk_5 = 0;
+
+            row = pObject->unk_5;
+            if (pObject->unk_5 < PALETTE_NBR_ROWS(sTitleScreen_592d74))
+            {
+                DMA_SET(3, &sTitleScreen_592d74[row * 16], PALRAM_OBJ,
+                    C_32_2_16(DMA_ENABLE | DMA_32BIT, 16 * sizeof(u16) / sizeof(s32)));
+            }
+            else if (pObject->unk_5 < PALETTE_NBR_ROWS(sTitleScreen_592d74) + PALETTE_NBR_ROWS(sTitleScreen_592f74))
+            {
+                DMA_SET(3, &sTitleScreen_592f74[(row - PALETTE_NBR_ROWS(sTitleScreen_592d74)) * 16], PALRAM_OBJ,
+                    C_32_2_16(DMA_ENABLE | DMA_32BIT, 16 * sizeof(u16) / sizeof(s32)));
+            }
+
+            pObject->unk_9 = 0;
+        }
+
+        if (gChangedInput & (KEY_A | KEY_START))
+        {
+            pObject->currentAnimationFrame = 0;
+            pObject->animationDurationCounter = 0;
+            pObject->unk_9 = 4;
+            pObject->action = 2;
+        }
+    }
+    
+    if (pObject->action == 2)
+    {
+        if (pObject->unk_9 == 4)
+        {
+            pObject->currentAnimationFrame = 0;
+            pObject->animationDurationCounter = 0;
+            pObject->unk_9 = 0;
+            pObject->action = 3;
+            pObject->pOam = sTitleScreenOam_5973f0;
+        }
+    }
+    else if (pObject->action == 3)
+    {
+        pObject->unk_9 = 0;
+    }
+
+    pObject->unk_9++;
 }
 
+/**
+ * @brief 86dd8 | 78 | Process the press start object
+ * 
+ * @param pObject Title screen object pointer
+ */
 void TitleScreenProcessPressStart(struct TitleScreenObject* pObject)
 {
+    if (pObject->action != 0)
+        return;
 
+    pObject->unk_9++;
+
+    if (pObject->unk_9 == 12)
+    {
+        pObject->unk_9 = 0;
+        pObject->unk_5++;
+
+        if (pObject->unk_5 == PALETTE_NBR_ROWS(sTitleScreenPressStartPal))
+            pObject->unk_5 = 0;
+
+        DMA_SET(3, &sTitleScreenPressStartPal[pObject->unk_5 * 16], PALRAM_OBJ, C_32_2_16(DMA_ENABLE | DMA_32BIT, 16 * sizeof(u16) / sizeof(s32)));
+    }
+
+    if (gChangedInput & (KEY_A | KEY_START))
+    {
+        pObject->currentAnimationFrame = 0;
+        pObject->animationDurationCounter = 0;
+        pObject->pOam = sTitleScreenOam_597470;
+        pObject->action = 1;
+    }
 }
 
 /**
@@ -245,7 +424,7 @@ void TitleScreenProcessLanguage(struct TitleScreenObject* pObject)
 
     if (pOam->timer == 0)
     {
-        pObject->section = FALSE;
+        pObject->section = TITLE_SCREEN_SECTION_NONE;
         pObject->isDrawn = FALSE;
     }
 
@@ -278,7 +457,7 @@ void unk_86e94(struct TitleScreenObject* pObject)
 
     if (pOam->timer == 0)
     {
-        pObject->section = FALSE;
+        pObject->section = TITLE_SCREEN_SECTION_NONE;
         pObject->isDrawn = FALSE;
     }
 }
@@ -432,17 +611,21 @@ void TitleScreenInit(void)
     write16(REG_BG2Y, 0);
     write16(REG_BG2Y + 2, 0);
 
-    LZ77UncompVram(sTitleScreenSpaceBackgroundGfx, VRAM_BASE + BGCNT_VRAM_CHAR_SIZE * 0);
+    // FIXME LZ77UncompVram(sTitleScreenSpaceBackgroundGfx, VRAM_BASE + BGCNT_VRAM_CHAR_SIZE * 0);
+    LZ77UncompVram((const void*)0x8605d08, VRAM_BASE + BGCNT_VRAM_CHAR_SIZE * 0);
     LZ77UncompVram(sTitleScreenLogoGfx, VRAM_BASE + BGCNT_VRAM_CHAR_SIZE * 2);
     LZ77UncompVram(sTitleScreenLogoTileTable, VRAM_BASE + BGCNT_VRAM_TILE_SIZE * 30);
-    LZ77UncompVram(sTitleScreenSpaceBackgroundTileTable, VRAM_BASE + BGCNT_VRAM_TILE_SIZE * 31);
+    // FIXME LZ77UncompVram(sTitleScreenSpaceBackgroundTileTable, VRAM_BASE + BGCNT_VRAM_TILE_SIZE * 31);
+    LZ77UncompVram((const void*)0x8609220, VRAM_BASE + BGCNT_VRAM_TILE_SIZE * 31);
 
     DMA_SET(3, sTitleScreenLogoPal, PALRAM_BASE, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenLogoPal) / sizeof(u32)));
-    DMA_SET(3, sTitleScreenSpaceBackgroundPal, PALRAM_BASE + 0x100, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenSpaceBackgroundPal) / sizeof(u32)));
+    // DMA_SET(3, sTitleScreenSpaceBackgroundPal, PALRAM_BASE + 0x100, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenSpaceBackgroundPal) / sizeof(u32)));
+    DMA_SET(3, (const void*)0x8609120, PALRAM_BASE + 0x100, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenSpaceBackgroundPal) / sizeof(u32)));
 
     SET_BACKDROP_COLOR(COLOR_BLACK);
 
-    TitleScreenDrawDebugText(sTitleScreenDebugTextPointer, VRAM_BASE + 0xF000 + BGCNT_VRAM_TILE_SIZE * 1, 0);
+    // FIXME TitleScreenDrawDebugText(sTitleScreenDebugTextPointer, VRAM_BASE + 0xF000 + BGCNT_VRAM_TILE_SIZE * 1, 0);
+    TitleScreenDrawDebugText(*(const u8** const)0x879c2c8, VRAM_BASE + 0xF000 + BGCNT_VRAM_TILE_SIZE * 1, 0);
 
     LZ77UncompVram(sTitleScreenObjectsGfx, VRAM_OBJ);
     DMA_SET(3, sTitleScreenObjectsPal, PALRAM_OBJ, C_32_2_16(DMA_ENABLE | DMA_32BIT, sizeof(sTitleScreenObjectsPal) / sizeof(u32)));
@@ -489,7 +672,7 @@ s32 TitleScreenSpawningIn(void)
                 write16(REG_BLDCNT, BLDCNT_BG1_FIRST_TARGET_PIXEL | BLDCNT_ALPHA_BLENDING_EFFECT | BLDCNT_BG3_SECOND_TARGET_PIXEL | BLDCNT_BACKDROP_SECOND_TARGET_PIXEL);
                 write16(REG_DISPCNT, read16(REG_DISPCNT) | DCNT_BG1);
                 TITLE_SCREEN_DATA.unk_0 = 0;
-                MusicPlay(0x4A, 16);
+                PlayMusic(0x4A, 16);
                 TITLE_SCREEN_DATA.unk_5 = 1;
             }
             break;
@@ -638,7 +821,7 @@ s32 TitleScreenSpawningIn(void)
 
                 if (TITLE_SCREEN_DATA.unk_5 == 0)
                 {
-                    MusicPlay(0x4A, 16);
+                    PlayMusic(0x4A, 16);
                 }
 
                 TITLE_SCREEN_DATA.unk_5 = 5;
@@ -691,7 +874,7 @@ s32 TitleScreenSubroutine(void)
 
         case 3:
             TitleScreenCallObjectsSubroutine();
-            TitleScreenDrawAllObject();
+            TitleScreenDrawAllObjects();
 
             if (gWrittenToBldy < BLDY_MAX_VALUE)
             {

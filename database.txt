@@ -22,6 +22,20 @@ hud/energy_tank_one_full_one_empty.gfx;32;0x3e907c;1
 escape/palette.pal;48;0x3e909c;2
 escape/graphics.gfx;2048;0x3e90fc;1
 
+# Title screen
+
+menus/title_screen/characters.gfx;768;0x590998;1
+menus/title_screen/objects.gfx.lz;1974;0x590c9c;4
+menus/title_screen/objects.pal;256;0x592b74;2
+menus/title_screen/592d74.pal;256;0x592d74;2
+menus/title_screen/592f74.pal;256;0x592f74;2
+menus/title_screen/press_start.pal;128;0x593174;2
+
+menus/title_screen/logo.gfx.lz;3153;0x593274;4
+menus/title_screen/logo.tt;597;0x5963b8;4
+menus/title_screen/logo.pal;128;0x596d0c;2
+menus/title_screen/596e0c.pal;128;0x596e0c;2
+
 # Blobs
 
 Blob_a5224_2e4904.bin;2356960;0xa5224;1
@@ -30,5 +44,6 @@ Blob_2e6382_2ed2e8.bin;28518;0x2e6382;1
 Blob_2edb20_3e392c.bin;1007116;0x2edb20;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
 Blob_3e9940_3ec038.bin;9976;0x3e9940;1
-Blob_3ec1a8_79a29c.bin;3858676;0x3ec1a8;1
+Blob_3ec1a8_590998.bin;1722352;0x3ec1a8;1
+Blob_597708_79a29c.bin;2108308;0x597708;1
 Blob_79afe0_79ecc8.bin;15592;0x79afe0;1

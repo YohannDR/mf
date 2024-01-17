@@ -8,6 +8,8 @@ subDirs: array = [
     "sprites",
     "hud",
     "escape",
+    "menus",
+    "menus/title_screen"
 ]
 
 try:

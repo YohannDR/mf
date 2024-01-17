@@ -16,7 +16,7 @@ struct TitleScreenObject {
     u8 currentAnimationFrame;
     u8 animationDurationCounter;
     u8 unk_9;
-    u8 unk_A;
+    u8 action;
     u8 objMode;
     u8 unk_C;
     const struct FrameData* pOam;

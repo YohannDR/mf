@@ -236,6 +236,10 @@ SECTIONS {
 
         asm/disasm_0x08072d50.o(.text);
 
+        src/menus/title_screen.o(.text);
+
+        asm/disasm_0x08087610.o(.text);
+
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);
         src/libgcc/fp-bit-base.o(.text);
@@ -253,6 +257,7 @@ SECTIONS {
         src/data/hud_data.o(.rodata);
         src/data/escape_data.o(.rodata);
         src/data/particle_data.o(.rodata);
+        src/data/menus/title_screen.o(.rodata);
         src/data/engine_pointers.o(.rodata);
     } >rom
 }
