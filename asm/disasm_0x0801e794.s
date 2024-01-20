@@ -80951,9 +80951,9 @@ SerrisGetCurrentSamusPlatform: @ 0x080474EC
 	ldr r0, _08047520 @ =gSamusData
 	ldrh r4, [r0, #0x18]
 	ldrh r2, [r0, #0x16]
-	ldr r0, _08047524 @ =0x030006A8
+	ldr r0, _08047524 @ =gSerrisSpawnYPosition
 	ldrh r3, [r0]
-	ldr r0, _08047528 @ =0x030006AA
+	ldr r0, _08047528 @ =gSerrisSpawnXPosition
 	ldrh r1, [r0]
 	ldr r5, _0804752C @ =0xFFFFFD00
 	adds r0, r3, r5
@@ -80975,8 +80975,8 @@ SerrisGetCurrentSamusPlatform: @ 0x080474EC
 	b _0804758A
 	.align 2, 0
 _08047520: .4byte gSamusData
-_08047524: .4byte 0x030006A8
-_08047528: .4byte 0x030006AA
+_08047524: .4byte gSerrisSpawnYPosition
+_08047528: .4byte gSerrisSpawnXPosition
 _0804752C: .4byte 0xFFFFFD00
 _08047530: .4byte 0xFFFFFEC0
 _08047534:
@@ -81406,9 +81406,9 @@ _08047840:
 	ldrh r0, [r5, #2]
 	adds r0, #0x40
 	strh r0, [r5, #2]
-	ldr r1, _0804798C @ =0x030006A8
+	ldr r1, _0804798C @ =gSerrisSpawnYPosition
 	strh r0, [r1]
-	ldr r1, _08047990 @ =0x030006AA
+	ldr r1, _08047990 @ =gSerrisSpawnXPosition
 	ldrh r0, [r5, #4]
 	strh r0, [r1]
 	ldrh r1, [r5]
@@ -81559,8 +81559,8 @@ _0804797C:
 	bx r0
 	.align 2, 0
 _08047988: .4byte gCurrentSprite
-_0804798C: .4byte 0x030006A8
-_08047990: .4byte 0x030006AA
+_0804798C: .4byte gSerrisSpawnYPosition
+_08047990: .4byte gSerrisSpawnXPosition
 _08047994: .4byte 0x0000880C
 _08047998: .4byte sPrimarySpriteStats
 _0804799C: .4byte 0x0000FFD8
@@ -81573,14 +81573,14 @@ SerrisWaitingToAppearInit: @ 0x080479A8
 	mov r7, r8
 	push {r7}
 	sub sp, #0xc
-	ldr r0, _08047AB4 @ =0x030006A8
+	ldr r0, _08047AB4 @ =gSerrisSpawnYPosition
 	ldr r1, _08047AB8 @ =0xFFFFFD60
 	adds r4, r1, #0
 	ldrh r0, [r0]
 	adds r4, r4, r0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
-	ldr r0, _08047ABC @ =0x030006AA
+	ldr r0, _08047ABC @ =gSerrisSpawnXPosition
 	ldrh r6, [r0]
 	ldr r5, _08047AC0 @ =gCurrentSprite
 	ldrb r2, [r5, #0x1f]
@@ -81695,9 +81695,9 @@ SerrisWaitingToAppearInit: @ 0x080479A8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08047AB4: .4byte 0x030006A8
+_08047AB4: .4byte gSerrisSpawnYPosition
 _08047AB8: .4byte 0xFFFFFD60
-_08047ABC: .4byte 0x030006AA
+_08047ABC: .4byte gSerrisSpawnXPosition
 _08047AC0: .4byte gCurrentSprite
 _08047AC4: .4byte 0xFFFFFEC0
 _08047AC8: .4byte 0xFFFFFE80
@@ -82638,7 +82638,7 @@ _0804822E:
 	ands r0, r1
 	cmp r0, #0
 	beq _08048268
-	ldr r0, _08048264 @ =0x030006AA
+	ldr r0, _08048264 @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 	subs r0, #0xc0
 	cmp r0, r4
@@ -82652,9 +82652,9 @@ _0804822E:
 	b _08048284
 	.align 2, 0
 _08048260: .4byte gCurrentSprite
-_08048264: .4byte 0x030006AA
+_08048264: .4byte gSerrisSpawnXPosition
 _08048268:
-	ldr r0, _08048314 @ =0x030006AA
+	ldr r0, _08048314 @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 	ldr r1, _08048318 @ =0xFFFFFAC0
 	adds r0, r0, r1
@@ -82729,7 +82729,7 @@ _080482E2:
 	ands r0, r1
 	cmp r0, #0
 	beq _08048330
-	ldr r0, _08048314 @ =0x030006AA
+	ldr r0, _08048314 @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 	ldr r1, _08048324 @ =0xFFFFFD00
 	adds r0, r0, r1
@@ -82743,7 +82743,7 @@ _080482E2:
 	bl SerrisStartRotationYAligned
 	b _0804834A
 	.align 2, 0
-_08048314: .4byte 0x030006AA
+_08048314: .4byte gSerrisSpawnXPosition
 _08048318: .4byte 0xFFFFFAC0
 _0804831C: .4byte gCurrentSprite
 _08048320: .4byte 0x0000FBFF
@@ -82754,7 +82754,7 @@ _08048328:
 	strh r0, [r2, #4]
 	b _08048450
 _08048330:
-	ldr r0, _08048398 @ =0x030006AA
+	ldr r0, _08048398 @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 	ldr r1, _0804839C @ =0xFFFFFD00
 	adds r0, r0, r1
@@ -82808,7 +82808,7 @@ _08048392:
 	bl SerrisHandleRotationMovement
 	b _08048450
 	.align 2, 0
-_08048398: .4byte 0x030006AA
+_08048398: .4byte gSerrisSpawnXPosition
 _0804839C: .4byte 0xFFFFFD00
 _080483A0: .4byte gCurrentSprite
 _080483A4:
@@ -82828,7 +82828,7 @@ _080483A8:
 	ands r0, r1
 	cmp r0, #0
 	beq _080483EC
-	ldr r0, _080483E0 @ =0x030006AA
+	ldr r0, _080483E0 @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 	subs r0, #0xc0
 	cmp r0, r4
@@ -82842,14 +82842,14 @@ _080483A8:
 	bl SerrisStartRotationYAligned
 	b _08048418
 	.align 2, 0
-_080483E0: .4byte 0x030006AA
+_080483E0: .4byte gSerrisSpawnXPosition
 _080483E4:
 	ldrh r0, [r3, #4]
 	adds r0, r0, r7
 	strh r0, [r3, #4]
 	b _08048450
 _080483EC:
-	ldr r0, _08048400 @ =0x030006AA
+	ldr r0, _08048400 @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 	ldr r3, _08048404 @ =0xFFFFFAC0
 	adds r0, r0, r3
@@ -82861,7 +82861,7 @@ _080483F8:
 	strh r0, [r2, #4]
 	b _08048450
 	.align 2, 0
-_08048400: .4byte 0x030006AA
+_08048400: .4byte gSerrisSpawnXPosition
 _08048404: .4byte 0xFFFFFAC0
 _08048408:
 	movs r0, #8
@@ -83005,7 +83005,7 @@ _080484F8:
 	ands r0, r1
 	cmp r0, #0
 	beq _08048540
-	ldr r0, _08048530 @ =0x030006AA
+	ldr r0, _08048530 @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 	ldr r1, _08048534 @ =0xFFFFFE80
 	adds r0, r0, r1
@@ -83020,7 +83020,7 @@ _080484F8:
 	bl SerrisStartRotationYAligned
 	b _0804856C
 	.align 2, 0
-_08048530: .4byte 0x030006AA
+_08048530: .4byte gSerrisSpawnXPosition
 _08048534: .4byte 0xFFFFFE80
 _08048538:
 	ldrh r0, [r3, #4]
@@ -83028,7 +83028,7 @@ _08048538:
 	strh r0, [r3, #4]
 	b _080485A4
 _08048540:
-	ldr r0, _08048554 @ =0x030006AA
+	ldr r0, _08048554 @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 	ldr r1, _08048558 @ =0xFFFFFB80
 	adds r0, r0, r1
@@ -83039,7 +83039,7 @@ _08048540:
 	strh r0, [r2, #4]
 	b _080485A4
 	.align 2, 0
-_08048554: .4byte 0x030006AA
+_08048554: .4byte gSerrisSpawnXPosition
 _08048558: .4byte 0xFFFFFB80
 _0804855C:
 	movs r0, #4
@@ -83164,7 +83164,7 @@ SerrisZigzagPatternInit: @ 0x08048620
 	adds r1, #0x2b
 	movs r0, #0xc0
 	strb r0, [r1]
-	ldr r1, _08048648 @ =0x030006AA
+	ldr r1, _08048648 @ =gSerrisSpawnXPosition
 	ldr r2, _0804864C @ =0xFFFFFA00
 	adds r0, r2, #0
 	ldrh r1, [r1]
@@ -83172,14 +83172,14 @@ SerrisZigzagPatternInit: @ 0x08048620
 	b _0804865C
 	.align 2, 0
 _08048644: .4byte gCurrentSprite
-_08048648: .4byte 0x030006AA
+_08048648: .4byte gSerrisSpawnXPosition
 _0804864C: .4byte 0xFFFFFA00
 _08048650:
 	adds r1, r3, #0
 	adds r1, #0x2b
 	movs r0, #0x40
 	strb r0, [r1]
-	ldr r0, _0804867C @ =0x030006AA
+	ldr r0, _0804867C @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 _0804865C:
 	strh r0, [r3, #4]
@@ -83199,7 +83199,7 @@ _0804865C:
 	orrs r0, r1
 	b _08048688
 	.align 2, 0
-_0804867C: .4byte 0x030006AA
+_0804867C: .4byte gSerrisSpawnXPosition
 _08048680: .4byte 0x0000031F
 _08048684:
 	ldr r0, _080486B4 @ =0x0000FDFF
@@ -83250,7 +83250,7 @@ SerrisLoopAroundPatternInit: @ 0x080486C4
 	adds r1, #0x2b
 	movs r0, #0xc0
 	strb r0, [r1]
-	ldr r1, _080486EC @ =0x030006AA
+	ldr r1, _080486EC @ =gSerrisSpawnXPosition
 	ldr r2, _080486F0 @ =0xFFFFFA00
 	adds r0, r2, #0
 	ldrh r1, [r1]
@@ -83258,14 +83258,14 @@ SerrisLoopAroundPatternInit: @ 0x080486C4
 	b _08048700
 	.align 2, 0
 _080486E8: .4byte gCurrentSprite
-_080486EC: .4byte 0x030006AA
+_080486EC: .4byte gSerrisSpawnXPosition
 _080486F0: .4byte 0xFFFFFA00
 _080486F4:
 	adds r1, r3, #0
 	adds r1, #0x2b
 	movs r0, #0x40
 	strb r0, [r1]
-	ldr r0, _08048720 @ =0x030006AA
+	ldr r0, _08048720 @ =gSerrisSpawnXPosition
 	ldrh r0, [r0]
 _08048700:
 	strh r0, [r3, #4]
@@ -83285,7 +83285,7 @@ _08048700:
 	orrs r0, r1
 	b _0804872C
 	.align 2, 0
-_08048720: .4byte 0x030006AA
+_08048720: .4byte gSerrisSpawnXPosition
 _08048724: .4byte 0x0000033F
 _08048728:
 	ldr r0, _08048758 @ =0x0000FDFF
@@ -83344,7 +83344,7 @@ _08048784:
 	movs r0, #0x40
 _0804878A:
 	strb r0, [r1]
-	ldr r0, _080487B8 @ =0x030006AA
+	ldr r0, _080487B8 @ =gSerrisSpawnXPosition
 	ldr r2, _080487BC @ =0xFFFFFD00
 	adds r1, r2, #0
 	ldrh r0, [r0]
@@ -83366,7 +83366,7 @@ _0804878A:
 	orrs r0, r1
 	b _080487C8
 	.align 2, 0
-_080487B8: .4byte 0x030006AA
+_080487B8: .4byte gSerrisSpawnXPosition
 _080487BC: .4byte 0xFFFFFD00
 _080487C0: .4byte 0x000002FF
 _080487C4:
@@ -83418,19 +83418,19 @@ SerrisEdgeArcPatternInit: @ 0x08048804
 	adds r1, #0x2b
 	movs r0, #0xc0
 	strb r0, [r1]
-	ldr r1, _08048828 @ =0x030006AA
+	ldr r1, _08048828 @ =gSerrisSpawnXPosition
 	ldr r2, _0804882C @ =0x0000FB80
 	b _0804883C
 	.align 2, 0
 _08048824: .4byte gCurrentSprite
-_08048828: .4byte 0x030006AA
+_08048828: .4byte gSerrisSpawnXPosition
 _0804882C: .4byte 0x0000FB80
 _08048830:
 	adds r1, r3, #0
 	adds r1, #0x2b
 	movs r0, #0x40
 	strb r0, [r1]
-	ldr r1, _08048864 @ =0x030006AA
+	ldr r1, _08048864 @ =gSerrisSpawnXPosition
 	ldr r2, _08048868 @ =0xFFFFFE80
 _0804883C:
 	adds r0, r2, #0
@@ -83453,7 +83453,7 @@ _0804883C:
 	orrs r0, r1
 	b _08048874
 	.align 2, 0
-_08048864: .4byte 0x030006AA
+_08048864: .4byte gSerrisSpawnXPosition
 _08048868: .4byte 0xFFFFFE80
 _0804886C: .4byte 0x000002FF
 _08048870:
@@ -83720,14 +83720,14 @@ _08048A6C:
 	ands r0, r1
 _08048A72:
 	strh r0, [r2]
-	ldr r0, _08048A84 @ =0x030006A8
+	ldr r0, _08048A84 @ =gSerrisSpawnYPosition
 	ldrh r0, [r0]
 	strh r0, [r3, #2]
 	bl SerrisSetFacingOam
 	b _08048B36
 	.align 2, 0
 _08048A80: .4byte 0x0000FFBF
-_08048A84: .4byte 0x030006A8
+_08048A84: .4byte gSerrisSpawnYPosition
 _08048A88:
 	cmp r0, #0x28
 	bne _08048B36
@@ -83757,36 +83757,36 @@ _08048AB0:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08048AD8
-	ldr r1, _08048AD0 @ =0x030006AA
+	ldr r1, _08048AD0 @ =gSerrisSpawnXPosition
 	ldr r2, _08048AD4 @ =0x0000FB80
 	b _08048B08
 	.align 2, 0
 _08048AC8: .4byte gBossWork2
 _08048ACC: .4byte gBossWork3
-_08048AD0: .4byte 0x030006AA
+_08048AD0: .4byte gSerrisSpawnXPosition
 _08048AD4: .4byte 0x0000FB80
 _08048AD8:
-	ldr r1, _08048AE0 @ =0x030006AA
+	ldr r1, _08048AE0 @ =gSerrisSpawnXPosition
 	ldr r2, _08048AE4 @ =0xFFFFFE80
 	b _08048B08
 	.align 2, 0
-_08048AE0: .4byte 0x030006AA
+_08048AE0: .4byte gSerrisSpawnXPosition
 _08048AE4: .4byte 0xFFFFFE80
 _08048AE8:
 	cmp r0, #0x1a
 	bne _08048AFC
-	ldr r1, _08048AF4 @ =0x030006AA
+	ldr r1, _08048AF4 @ =gSerrisSpawnXPosition
 	ldr r2, _08048AF8 @ =0xFFFFFD00
 	b _08048B08
 	.align 2, 0
-_08048AF4: .4byte 0x030006AA
+_08048AF4: .4byte gSerrisSpawnXPosition
 _08048AF8: .4byte 0xFFFFFD00
 _08048AFC:
 	ldr r0, _08048B14 @ =gBossWork3
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08048B20
-	ldr r1, _08048B18 @ =0x030006AA
+	ldr r1, _08048B18 @ =gSerrisSpawnXPosition
 	ldr r2, _08048B1C @ =0xFFFFFA00
 _08048B08:
 	adds r0, r2, #0
@@ -83797,13 +83797,13 @@ _08048B08:
 	b _08048B24
 	.align 2, 0
 _08048B14: .4byte gBossWork3
-_08048B18: .4byte 0x030006AA
+_08048B18: .4byte gSerrisSpawnXPosition
 _08048B1C: .4byte 0xFFFFFA00
 _08048B20:
-	ldr r0, _08048B3C @ =0x030006AA
+	ldr r0, _08048B3C @ =gSerrisSpawnXPosition
 	ldrh r1, [r0]
 _08048B24:
-	ldr r0, _08048B40 @ =0x030006A8
+	ldr r0, _08048B40 @ =gSerrisSpawnYPosition
 	ldrh r0, [r0]
 	subs r0, #0x78
 	movs r2, #0x38
@@ -83814,8 +83814,8 @@ _08048B36:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08048B3C: .4byte 0x030006AA
-_08048B40: .4byte 0x030006A8
+_08048B3C: .4byte gSerrisSpawnXPosition
+_08048B40: .4byte gSerrisSpawnYPosition
 _08048B44: .4byte 0x00000293
 
 	thumb_func_start SerrisPartDyingInit

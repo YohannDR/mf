@@ -97,5 +97,7 @@ extern u16 gXParasiteTargetYPosition;
 extern u16 gXParasiteTargetXPosition;
 extern u16 gAbilityRestingYPosition;
 extern u16 gAbilityRestingXPosition;
+extern u16 gSerrisSpawnYPosition;
+extern u16 gSerrisSpawnXPosition;
 
 #endif /* SPRITE_STRUCTS_H */
