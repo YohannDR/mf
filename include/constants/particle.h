@@ -76,4 +76,4 @@ enum ParticleId {
     PE_END
 };
 
-#endif PARTICLE_CONSTANTS_H
+#endif /* PARTICLE_CONSTANTS_H */

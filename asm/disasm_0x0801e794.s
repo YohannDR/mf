@@ -84240,7 +84240,7 @@ _08048E64: .4byte 0x04FF0000
 	thumb_func_start SerricCheckInWater
 SerricCheckInWater: @ 0x08048E68
 	push {lr}
-	ldr r0, _08048EA8 @ =0x030007C0
+	ldr r0, _08048EA8 @ =gUnk_030007c0
 	ldr r3, _08048EAC @ =gCurrentSprite
 	ldrh r0, [r0]
 	ldrh r1, [r3, #2]
@@ -84270,7 +84270,7 @@ SerricCheckInWater: @ 0x08048E68
 	bl SoundPlay
 	b _08048EBE
 	.align 2, 0
-_08048EA8: .4byte 0x030007C0
+_08048EA8: .4byte gUnk_030007c0
 _08048EAC: .4byte gCurrentSprite
 _08048EB0: .4byte gBossWork5
 _08048EB4: .4byte 0x0000028D
@@ -84517,7 +84517,7 @@ _080490A8:
 	ldr r0, _080490CC @ =0x0000028B
 	bl SoundPlay
 _080490AE:
-	ldr r0, _080490D0 @ =0x030007C0
+	ldr r0, _080490D0 @ =gUnk_030007c0
 	ldr r1, _080490D4 @ =gCurrentSprite
 	ldrh r2, [r1, #2]
 	strh r2, [r0]
@@ -84534,7 +84534,7 @@ _080490C0:
 	mov pc, r0
 	.align 2, 0
 _080490CC: .4byte 0x0000028B
-_080490D0: .4byte 0x030007C0
+_080490D0: .4byte gUnk_030007c0
 _080490D4: .4byte gCurrentSprite
 _080490D8: .4byte _080490DC
 _080490DC: @ jump table
@@ -84695,7 +84695,7 @@ _080492B2:
 	bne _080492C4
 	b _08049426
 _080492C4:
-	ldr r2, _080492E8 @ =0x030007C0
+	ldr r2, _080492E8 @ =gUnk_030007c0
 	ldr r0, _080492EC @ =gCurrentSprite
 	ldrh r1, [r0, #2]
 	strh r1, [r2]
@@ -84713,7 +84713,7 @@ _080492D8:
 	mov pc, r0
 	.align 2, 0
 _080492E4: .4byte gBossWork5
-_080492E8: .4byte 0x030007C0
+_080492E8: .4byte gUnk_030007c0
 _080492EC: .4byte gCurrentSprite
 _080492F0: .4byte _080492F4
 _080492F4: @ jump table

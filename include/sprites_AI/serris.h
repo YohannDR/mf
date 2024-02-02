@@ -3,6 +3,9 @@
 
 #include "types.h"
 
+#define SERRIS_BLOCK_POSE_CRUMBLING 24
+#define SERRIS_BLOCK_POSE_FALLING 26
+
 void SerrisUpdatePalette(void);
 u8 SerrisGetCurrentSamusPlatform(void);
 void SerrisRotateAroundPoint(s16 centerY, s16 centerX, s16 radius, s16 rotation);
@@ -49,4 +52,4 @@ void Serris(void);
 void SerrisPart(void);
 void SerrisBlock(void);
 
-#endif SERRIS_AI_H
+#endif /* SERRIS_AI_H */

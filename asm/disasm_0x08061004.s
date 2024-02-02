@@ -1921,7 +1921,7 @@ _08061E36:
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	lsls r0, r5, #1
-	ldr r7, _08061EF8 @ =0x030007C0
+	ldr r7, _08061EF8 @ =gUnk_030007c0
 	adds r0, r0, r7
 	adds r1, r3, r1
 	movs r3, #0
@@ -2017,7 +2017,7 @@ _08061EC2:
 	strb r0, [r1]
 	b _08061F1E
 	.align 2, 0
-_08061EF8: .4byte 0x030007C0
+_08061EF8: .4byte gUnk_030007c0
 _08061EFC: .4byte gSpriteData
 _08061F00: .4byte 0x00008020
 _08061F04: .4byte 0x0000DFFF
@@ -2047,7 +2047,7 @@ _08061F1E:
 	b _08061F4C
 _08061F34:
 	lsls r0, r5, #1
-	ldr r4, _08061F58 @ =0x030007C0
+	ldr r4, _08061F58 @ =gUnk_030007c0
 	adds r0, r0, r4
 	movs r1, #0x80
 	lsls r1, r1, #8
@@ -2066,7 +2066,7 @@ _08061F4C:
 	movs r0, #2
 	b _0806202A
 	.align 2, 0
-_08061F58: .4byte 0x030007C0
+_08061F58: .4byte gUnk_030007c0
 _08061F5C:
 	ldr r0, [sp, #4]
 	cmp r0, #0
@@ -2131,7 +2131,7 @@ _08061FCA:
 _08061FCE:
 	movs r2, #1
 	movs r5, #0
-	ldr r3, _0806203C @ =0x030007C0
+	ldr r3, _0806203C @ =gUnk_030007c0
 _08061FD4:
 	lsls r0, r2, #1
 	adds r0, r0, r3
@@ -2187,7 +2187,7 @@ _0806202A:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0806203C: .4byte 0x030007C0
+_0806203C: .4byte gUnk_030007c0
 _08062040: .4byte gSpriteData
 
 	thumb_func_start XParasiteFlyingAway
