@@ -17,6 +17,81 @@
 #include "structs/sprite.h"
 
 #define SERRIS_ROOM_WATER_Y (BLOCK_SIZE * 11)
+#define SERRIS_ROOM_WIDTH (BLOCK_SIZE * 24)
+
+/**
+ * Boss work variables for serris :
+ * 0 - Unused
+ * 1 - Palette phase
+ * 2 - Next movement pattern (pose)
+ * 3 - Is next pattern flipped on the X axis
+ * 4 - Time before emerging
+ * 5 - Speedboosting timer
+*/
+
+/*
+ * Serris has 4 movement patterns, below is each pattern described in a small text, followed by an ASCII representation of the pattern
+ * Each pattern can be flipped on the X axis
+ * ■ is a normal platform block, | is vertical movement, / and \ are turns, - is horizontal movement and ... is a transition into another representation
+ * Transitions exist because some patterns pass through the same place multiple times, which makes them hard to represent
+ * 
+ * Zig zag pattern :
+ * Serris emerges from the ground at an end of the room until it reaches the platforms
+ * Then it rotates around each of them in a zig zag pattern until it reaches the other end of the room
+ * Then it performs a large rotation that reaches the ceiling and ends between the last 2 platforms of the other end of room
+ * 
+ *     /...
+ *    |           
+ *    |      /---\       /---\
+ *    | ■■■ | ■■■ | ■■■ | ■■■ |
+ *     \---/       \---/      |
+ *                            |
+ * 
+ *      ...----------\
+ *                    \
+ *                     \
+ *      ■■■   ■■■   ■■■ | ■■■
+ *                      |
+ *                      |
+ * 
+ * 
+ * Loop around pattern :
+ * Serris emerges from the ground at an end of the room until it reaches the platforms
+ * Then it travels horizontally above every platform until it reaches the other end of the room
+ * Then it dives back down up to the bottom of the room, after which it slides on the floor until it reaches between the last 2 platforms
+ * Then it travels back up to the platforms, slides horizontally across them until it reaches between the last 2 platforms and dives back down
+ * 
+ *     /---------------------\
+ *    | ■■■   ■■■   ■■■   ■■■ |
+ *    |                       |
+ *     \----------...         |
+ *
+ *           /---------\
+ *      ■■■ | ■■■   ■■■ | ■■■  
+ *          |           |       
+ *          |     ...--/
+ * 
+ * 
+ * Middle arc pattern :
+ * Serris emerges from the ground in the middle of the room until it reaches the platforms
+ * Then it performs a large rotation up to one end of room, after which it dives back down
+ * 
+ *      /-------\
+ *     /         \
+ *    | ■■■   ■■■ | ■■■   ■■■
+ *    |           |
+ *    |           |
+ * 
+ * Edge arc pattern :
+ * Serris emerges from between the last 2 platforms on one end of the room until it reaches the platforms
+ * Then it performs a large rotation to the last 2 platforms on the other side of room, after which it dives back down
+ * 
+ *           /-------\
+ *          /         \
+ *    ■■■  | ■■■   ■■■ | ■■■
+ *         |           |
+ *         |           |
+*/
 
 /**
  * @brief 47464 | 88 | Updates the palette of serris based on its health
@@ -77,9 +152,9 @@ u8 SerrisGetCurrentSamusPlatform(void)
     serrisY = gSerrisSpawnYPosition;
     serrisX = gSerrisSpawnXPosition;
 
-    if (samusY > serrisY - BLOCK_SIZE * 12 && samusY < serrisY - BLOCK_SIZE * 9)
+    if (samusY > serrisY - (SERRIS_ROOM_WATER_Y + BLOCK_SIZE) && samusY < serrisY - BLOCK_SIZE * 9)
     {
-        if (samusX > serrisX - BLOCK_SIZE * 5 && samusX < serrisX - BLOCK_SIZE)
+        if (samusX > serrisX - BLOCK_SIZE * 5 && samusX < serrisX - BLOCK_SIZE * 1)
             return 4;
 
         if (samusX > serrisX - BLOCK_SIZE * 11 && samusX < serrisX - BLOCK_SIZE * 7)
@@ -163,6 +238,8 @@ void SerrisHandleRotationMovement(void)
         deltaRotation = Q_8_8(.0175f);
 
     // Apply delta rotaiton to radius (work2) and actual sprite rotation
+    // Adding to the rotation rotates the sprite clockwise
+    // Substracting to the rotation rotates the sprite counter-clockwise
     if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
     {
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
@@ -206,11 +283,15 @@ void SerrisStartRotationXAligned(u16 centerY, u16 centerX, u16 radius)
     if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
     {
         gCurrentSprite.unk_8 = centerX + radius * BLOCK_SIZE * 3;
+
+        // Start rotation points right ->
         gCurrentSprite.work2 = PI;
     }
     else
     {
         gCurrentSprite.unk_8 = centerX - radius * BLOCK_SIZE * 3;
+
+        // Start rotation points left <-
         gCurrentSprite.work2 = 0;
     }
 
@@ -229,11 +310,13 @@ void SerrisStartRotationYAligned(u16 centerY, u16 centerX, u16 radius)
 {
     if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
     {
+        // Start rotation points down v
         gCurrentSprite.work2 = 3 * PI / 2;
         gCurrentSprite.xParasiteTimer = centerY + radius * BLOCK_SIZE * 3;
     }
     else
     {
+        // Start rotation points up ^
         gCurrentSprite.work2 = PI / 2;
         gCurrentSprite.xParasiteTimer = centerY - radius * BLOCK_SIZE * 3;
     }
@@ -250,7 +333,7 @@ void SerrisSetFacingOam(void)
 {
     if (gCurrentSprite.properties & SP_SECONDARY_SPRITE)
     {
-        if (gCurrentSprite.roomSlot == 0)
+        if (gCurrentSprite.roomSlot == SERRIS_PART_HEAD_JOINT)
         {
             if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
                 gCurrentSprite.pOam = sSerrisPartOam_Right;
@@ -319,7 +402,7 @@ void SerrisInit(void)
     gCurrentSprite.hitboxLeft = -(HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
     gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE;
 
-    gCurrentSprite.pose = 0x55;
+    gCurrentSprite.pose = SERRIS_POSE_WAITING_TO_APPEAR_INIT;
 
     gCurrentSprite.pOam = sSerrisOam_Left;
     gCurrentSprite.animationDurationCounter = 0;
@@ -333,16 +416,16 @@ void SerrisInit(void)
     yPosition = gCurrentSprite.yPosition;
     xPosition = gCurrentSprite.xPosition;
 
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 0, gfxSlot, ramSlot, yPosition, xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 1, gfxSlot, ramSlot, yPosition, xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 2, gfxSlot, ramSlot, yPosition, xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 3, gfxSlot, ramSlot, yPosition, xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 4, gfxSlot, ramSlot, yPosition, xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 5, gfxSlot, ramSlot, yPosition, xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 6, gfxSlot, ramSlot, yPosition, xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 7, gfxSlot, ramSlot, yPosition, xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 8, gfxSlot, ramSlot, yPosition, xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, 9, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_HEAD_JOINT, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_SECTION_1, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_SECTION_2, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_SECTION_3, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_SECTION_4, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_SECTION_5, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_SECTION_6, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_MIDDLE_END, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_TAIL_JOINT, gfxSlot, ramSlot, yPosition, xPosition, 0);
+    SpriteSpawnSecondary(SSPRITE_SERRIS_PART, SERRIS_PART_TAIL, gfxSlot, ramSlot, yPosition, xPosition, 0);
 }
 
 /**
@@ -357,34 +440,45 @@ void SerrisWaitingToAppearInit(void)
     yPosition = gSerrisSpawnYPosition - (BLOCK_SIZE * 10 + HALF_BLOCK_SIZE);
     xPosition = gSerrisSpawnXPosition;
 
+    // Spawn the serris blocks, ■ is a normal platform block, X is serris block, and O is the serris block that the function will spawn
+
+    // ■■■XXX■■■XXX■■■XXO■■■
     SpriteSpawnSecondary(SSPRITE_SERRIS_BLOCK, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, yPosition,
         xPosition - BLOCK_SIZE * 5, 0);
 
+    // ■■■XXX■■■XXX■■■XOX■■■
     SpriteSpawnSecondary(SSPRITE_SERRIS_BLOCK, 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, yPosition,
         xPosition - BLOCK_SIZE * 6, 0);
 
+    // ■■■XXX■■■XXX■■■OXX■■■
     SpriteSpawnSecondary(SSPRITE_SERRIS_BLOCK, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, yPosition,
         xPosition - BLOCK_SIZE * 7, 0);
 
+    // ■■■XXX■■■XXO■■■XXX■■■
     SpriteSpawnSecondary(SSPRITE_SERRIS_BLOCK, 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, yPosition,
         xPosition - BLOCK_SIZE * 11, 0);
 
+    // ■■■XXX■■■XOX■■■XXX■■■
     SpriteSpawnSecondary(SSPRITE_SERRIS_BLOCK, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, yPosition,
         xPosition - BLOCK_SIZE * 12, 0);
 
+    // ■■■XXX■■■OXX■■■XXX■■■
     SpriteSpawnSecondary(SSPRITE_SERRIS_BLOCK, 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, yPosition,
         xPosition - BLOCK_SIZE * 13, 0);
 
+    // ■■■XXO■■■XXX■■■XXX■■■
     SpriteSpawnSecondary(SSPRITE_SERRIS_BLOCK, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, yPosition,
         xPosition - BLOCK_SIZE * 17, 0);
 
+    // ■■■XOX■■■XXX■■■XXX■■■
     SpriteSpawnSecondary(SSPRITE_SERRIS_BLOCK, 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, yPosition,
         xPosition - BLOCK_SIZE * 18, 0);
 
+    // ■■■OXX■■■XXX■■■XXX■■■
     SpriteSpawnSecondary(SSPRITE_SERRIS_BLOCK, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, yPosition,
         xPosition - BLOCK_SIZE * 19, 0);
 
-    gCurrentSprite.pose = 0x56;
+    gCurrentSprite.pose = SERRIS_POSE_WAITING_TO_APPEAR;
 }
 
 /**
@@ -397,10 +491,12 @@ void SerrisWaitingToAppear(void)
 
     platformId = SerrisGetCurrentSamusPlatform();
 
+    // Wait for samus to be on the third platform
     if (platformId == 3)
     {
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
 
+        // Full screen shake
         ScreenShakeStartHorizontal(60, 0x80 | 1);
         ScreenShakeStartVertical(60, 0x80 | 1);
 
@@ -414,7 +510,7 @@ void SerrisWaitingToAppear(void)
  */
 void SerrisStartFight(void)
 {
-    gCurrentSprite.pose = 0x53;
+    gCurrentSprite.pose = SERRIS_POSE_FIRST_ARC_INIT;
     SerrisSetFacingOam();
 }
 
@@ -424,10 +520,13 @@ void SerrisStartFight(void)
  */
 void SerrisFirstArcInit(void)
 {
-    SerrisEdgeArcPattern();
+    SerrisEdgeArcPatternInit();
 
-    if (gCurrentSprite.pose == 0x3E)
-        gCurrentSprite.pose = 0x54;
+    if (gCurrentSprite.pose == SERRIS_POSE_EDGE_ARC_PATTERN)
+    {
+        // Overwrite with first arc
+        gCurrentSprite.pose = SERRIS_POSE_FIRST_ARC;
+    }
 }
 
 /**
@@ -438,8 +537,11 @@ void SerrisFirstArc(void)
 {
     SerrisEdgeArcPattern();
 
-    if (gCurrentSprite.pose == 0x16)
-        gCurrentSprite.pose = 0x51;
+    if (gCurrentSprite.pose == SERRIS_POSE_END_PATTERN)
+    {
+        // Edge arc pattern ended, end first arc
+        gCurrentSprite.pose = SERRIS_POSE_FIRST_ARC_ENDED;
+    }
 }
 
 /**
@@ -453,6 +555,7 @@ void SerrisFirstArcEnd(void)
     else
         gCurrentSprite.rotation = 3 * PI / 2;
 
+    // Wait to be really deep in the floor
     if (gCurrentSprite.yPosition >= BLOCK_SIZE * 30)
     {
         gCurrentSprite.status &= ~(SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_IGNORE_PROJECTILES);
@@ -462,12 +565,14 @@ void SerrisFirstArcEnd(void)
 
         if (!(gCurrentSprite.properties & SP_SECONDARY_SPRITE))
         {
-            gCurrentSprite.pose = 0x52;
-            MusicPlay(0x3F, 7);
+            // Is main sprite, set first arc done
+            gCurrentSprite.pose = SERRIS_POSE_FIRST_ARC_DONE;
+            PlayMusic(0x3F, 7);
         }
         else
         {
-            gCurrentSprite.pose = SPRITE_POSE_IDLE;
+            // Part of serris, directly start zig zag pattern
+            gCurrentSprite.pose = SERRIS_POSE_ZIG_ZAG_PATTERN_INIT;
         }
     }
     else
@@ -482,13 +587,14 @@ void SerrisFirstArcEnd(void)
  */
 void SerrisDyingInit(void)
 {
-    gCurrentSprite.pose = 0x48;
+    gCurrentSprite.pose = SERRIS_POSE_DYING;
 
     gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
 
     gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.invincibilityStunFlashTimer = 0;
 
+    // Death duration
     gCurrentSprite.work1 = 60 * 3;
     gCurrentSprite.work2 = 0;
 }
@@ -501,20 +607,23 @@ void SerrisDying(void)
 {
     if (MOD_AND(gCurrentSprite.work1, 4))
     {
+        // Make serris flicker between regular palette and the stun palette
         if (gCurrentSprite.work1 & 4)
             gCurrentSprite.paletteRow = 13 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
         else
             gCurrentSprite.paletteRow = 0;
     }
 
+    // Spin gradually faster
     if (gCurrentSprite.work2 < UCHAR_MAX)
         gCurrentSprite.work2++;
 
+    // Spin
     gCurrentSprite.rotation += gCurrentSprite.work2 / 4;
     gCurrentSprite.work1--;
 
     if (gCurrentSprite.work1 == 0)
-        gCurrentSprite.pose = 0x49;
+        gCurrentSprite.pose = SERRIS_POSE_TURNING_INTO_X_INIT;
 }
 
 /**
@@ -523,10 +632,11 @@ void SerrisDying(void)
  */
 void SerrisTurningIntoXInit(void)
 {
-    gCurrentSprite.pose = 0x4A;
+    gCurrentSprite.pose = SERRIS_POSE_TURNING_INTO_X;
 
     gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
     gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
+
     gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.health = 1;
     gCurrentSprite.invincibilityStunFlashTimer = 0;
@@ -544,6 +654,7 @@ void SerrisTurningIntoX(void)
     u16 yPosition;
     u16 xPosition;
 
+    // Spin
     gCurrentSprite.rotation += gCurrentSprite.work2 / 4;
 
     gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
@@ -566,7 +677,7 @@ void SerrisTurningIntoX(void)
             ParticleSet(yPosition + BLOCK_SIZE, xPosition + HALF_BLOCK_SIZE, PE_0x25);
             break;
 
-        case 18:
+        case 20:
             ParticleSet(yPosition - HALF_BLOCK_SIZE, xPosition - QUARTER_BLOCK_SIZE, PE_0x26);
 
             ParticleSet(yPosition + BLOCK_SIZE, xPosition - QUARTER_BLOCK_SIZE, PE_0x25);
@@ -579,6 +690,7 @@ void SerrisTurningIntoX(void)
             break;
 
         case 0:
+            // Turn into speedbooster ability
             gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_8;
             gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X_INIT;
 
@@ -586,6 +698,7 @@ void SerrisTurningIntoX(void)
             break;
     }
 
+    // Load speedbooster ability graphics and palette
     if (gCurrentSprite.xParasiteTimer < 20)
     {
         SpriteLoadGfx(PSPRITE_SPEEDBOOSTER_ABILITY, 0, gCurrentSprite.xParasiteTimer);
@@ -596,9 +709,114 @@ void SerrisTurningIntoX(void)
     }
 }
 
+/**
+ * @brief 47e74 | 1b8 | Initializes a serris part
+ * 
+ */
 void SerrisPartInit(void)
 {
+    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+    
+    gCurrentSprite.samusCollision = SSC_NONE;
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
 
+    gCurrentSprite.pose = SERRIS_POSE_WAITING_TO_APPEAR_INIT;
+    gCurrentSprite.health = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
+
+    gCurrentSprite.rotation = 0;
+    gCurrentSprite.scaling = Q_8_8(1.f);
+
+    gCurrentSprite.work4 = (gCurrentSprite.roomSlot + 1) * 5;
+
+    switch (gCurrentSprite.roomSlot)
+    {
+        case SERRIS_PART_HEAD_JOINT:
+            gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_8 | SPRITE_STATUS_ENABLE_MOSAIC;
+
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
+
+            gCurrentSprite.hitboxTop = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxBottom = HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxLeft = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE;
+
+            gCurrentSprite.pOam = sSerrisPartOam_Left;
+            break;
+
+        case SERRIS_PART_SECTION_1:
+        case SERRIS_PART_SECTION_2:
+        case SERRIS_PART_SECTION_3:
+        case SERRIS_PART_SECTION_4:
+        case SERRIS_PART_SECTION_5:
+        case SERRIS_PART_SECTION_6:
+            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxBottom = HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxLeft = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE;
+
+            gCurrentSprite.pOam = sSerrisPartOam_Middle;
+            break;
+
+        case SERRIS_PART_MIDDLE_END:
+            gCurrentSprite.work4 = (SERRIS_PART_MIDDLE_END + 1) * 5;
+            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxBottom = HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxLeft = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE;
+
+            gCurrentSprite.pOam = sSerrisPartOam_MiddleEnd;
+            break;
+
+        case SERRIS_PART_TAIL_JOINT:
+            gCurrentSprite.work4 = (SERRIS_PART_TAIL_JOINT + 1) * 5 - 2;
+            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -(QUARTER_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
+            gCurrentSprite.hitboxBottom = (QUARTER_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
+            gCurrentSprite.hitboxLeft = -(QUARTER_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
+            gCurrentSprite.hitboxRight = (QUARTER_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
+
+            gCurrentSprite.pOam = sSerrisPartOam_TailJoint;
+            break;
+
+        case SERRIS_PART_TAIL:
+            gCurrentSprite.work4 = (SERRIS_PART_TAIL + 1) * 5 - 4;
+            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -(QUARTER_BLOCK_SIZE - PIXEL_SIZE);
+            gCurrentSprite.hitboxBottom = (QUARTER_BLOCK_SIZE - PIXEL_SIZE);
+            gCurrentSprite.hitboxLeft = -(QUARTER_BLOCK_SIZE - PIXEL_SIZE);
+            gCurrentSprite.hitboxRight = (QUARTER_BLOCK_SIZE - PIXEL_SIZE);
+
+            gCurrentSprite.pOam = sSerrisPartOam_Tail;
+            break;
+
+        default:
+            gCurrentSprite.status = 0;
+    }
 }
 
 /**
@@ -621,7 +839,7 @@ void SerrisPartStartFight(void)
 
     if (gCurrentSprite.work4 == 0)
     {
-        gCurrentSprite.pose = 0x53;
+        gCurrentSprite.pose = SERRIS_POSE_FIRST_ARC_INIT;
         SerrisSetFacingOam();
     }
 }
@@ -637,20 +855,25 @@ void SerrisZigZagPattern(void)
     u8 endRotation;
     u16 yLimit;
 
-    yLimit = BLOCK_SIZE * 12 + HALF_BLOCK_SIZE;
+    // Y position of the horizontal "line" around which serris will change rotation
+    yLimit = SERRIS_ROOM_WATER_Y + BLOCK_SIZE + HALF_BLOCK_SIZE;
 
     rotationCenterY = gCurrentSprite.yPosition;
     rotationCenterX = gCurrentSprite.xPosition;
 
     if (gCurrentSprite.work1 == 0)
     {
+        // Check if is above the Y line
         if (rotationCenterY <= yLimit)
         {
             SerrisHandleRotationMovement();
             return;
         }
 
+        // Is below the line, start next rotation
         gCurrentSprite.work1 = 1;
+
+        // Flip rotation vertically
         gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
 
         SerrisStartRotationXAligned(rotationCenterY, rotationCenterX, 1);
@@ -658,13 +881,17 @@ void SerrisZigZagPattern(void)
 
     if (gCurrentSprite.work1 == 1)
     {
+        // Check if is below the Y line
         if (rotationCenterY >= yLimit)
         {
             SerrisHandleRotationMovement();
             return;
         }
 
+        // Is above the line, start next rotation
         gCurrentSprite.work1 = 2;
+
+        // Flip rotation vertically
         gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
 
         SerrisStartRotationXAligned(rotationCenterY, rotationCenterX, 1);
@@ -672,13 +899,17 @@ void SerrisZigZagPattern(void)
 
     if (gCurrentSprite.work1 == 2)
     {
+        // Check if is above the Y line
         if (rotationCenterY <= yLimit)
         {
             SerrisHandleRotationMovement();
             return;
         }
 
+        // Is below the line, start next rotation
         gCurrentSprite.work1 = 3;
+
+        // Flip rotation vertically
         gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
 
         SerrisStartRotationXAligned(rotationCenterY, rotationCenterX, 1);
@@ -686,30 +917,39 @@ void SerrisZigZagPattern(void)
 
     if (gCurrentSprite.work1 == 3)
     {
+        // Check if is below the Y line
         if (rotationCenterY >= yLimit)
         {
             SerrisHandleRotationMovement();
             return;
         }
 
+        // Is above the line, start next rotation
         gCurrentSprite.work1 = 4;
+
+        // Flip rotation vertically
         gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        // Flip rotation horizontally
         gCurrentSprite.status ^= SPRITE_STATUS_FACING_RIGHT;
 
+        // Start large rotation
         SerrisStartRotationXAligned(rotationCenterY, rotationCenterX, 3);
     }
 
     if (gCurrentSprite.work1 == 4)
     {
+        // Check if is above the Y line
         if (rotationCenterY <= yLimit)
         {
             SerrisHandleRotationMovement();
             return;
         }
 
-        gCurrentSprite.pose = 0x16;
+        // End pattern
+        gCurrentSprite.pose = SERRIS_POSE_END_PATTERN;
     }
 
+    // Below is an unused pattern, it seems to be bugged
     if (gCurrentSprite.work1 == 5)
     {
         if (rotationCenterY < BLOCK_SIZE * 17 - 1)
@@ -737,7 +977,7 @@ void SerrisZigZagPattern(void)
             return;
         }
 
-        gCurrentSprite.pose = 0x18;
+        gCurrentSprite.pose = SERRIS_POSE_LOOP_AROUND_PATTERN_INIT;
     }
 
     if (gCurrentSprite.work1 == 7)
@@ -748,7 +988,7 @@ void SerrisZigZagPattern(void)
             endRotation = PI;
 
         if (gCurrentSprite.work2 == endRotation)
-            gCurrentSprite.pose = 0x1A;
+            gCurrentSprite.pose = SERRIS_POSE_MIDDLE_ARC_PATTERN_INIT;
         else
             SerrisHandleRotationMovement();
 
@@ -773,6 +1013,7 @@ void SerrisLoopAroundPattern(void)
 
     if (gCurrentSprite.work1 == 0)
     {
+        // Wait until the first rotation to reach above the platforms ended
         if (gCurrentSprite.work2 != 3 * PI / 2)
         {
             SerrisHandleRotationMovement();
@@ -784,6 +1025,7 @@ void SerrisLoopAroundPattern(void)
 
     if (gCurrentSprite.work1 == 1)
     {
+        // Move along the platforms until one end of the room is reached
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
         {
             if (gSerrisSpawnXPosition - BLOCK_SIZE * 3 > rotationCenterX)
@@ -797,7 +1039,7 @@ void SerrisLoopAroundPattern(void)
         }
         else
         {
-            if (gSerrisSpawnXPosition - BLOCK_SIZE * 21 < rotationCenterX)
+            if (gSerrisSpawnXPosition - (SERRIS_ROOM_WIDTH - BLOCK_SIZE * 3) < rotationCenterX)
             {
                 gCurrentSprite.xPosition -= movement;
                 return;
@@ -810,11 +1052,13 @@ void SerrisLoopAroundPattern(void)
 
     if (gCurrentSprite.work1 == 2)
     {
+        // Get end rotation
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
             endRotation = 0;
         else
             endRotation = PI;
 
+        // Wait until the rotation to dive under water ended
         if (gCurrentSprite.work2 != endRotation)
         {
             SerrisHandleRotationMovement();
@@ -830,6 +1074,7 @@ void SerrisLoopAroundPattern(void)
 
     if (gCurrentSprite.work1 == 3)
     {
+        // Wait until the rotation underwater ended
         if (gCurrentSprite.work2 != PI / 2)
         {
             SerrisHandleRotationMovement();
@@ -841,9 +1086,10 @@ void SerrisLoopAroundPattern(void)
 
     if (gCurrentSprite.work1 == 4)
     {
+        // Move along the floor underwater
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
         {
-            if (gSerrisSpawnXPosition - BLOCK_SIZE * 12 <= rotationCenterX)
+            if (gSerrisSpawnXPosition - SERRIS_ROOM_WIDTH / 2 <= rotationCenterX)
             {
                 gCurrentSprite.work1 = 5;
                 SerrisStartRotationYAligned(rotationCenterY, rotationCenterX, 2);
@@ -857,7 +1103,7 @@ void SerrisLoopAroundPattern(void)
         }
         else
         {
-            if (gSerrisSpawnXPosition - BLOCK_SIZE * 12 < rotationCenterX)
+            if (gSerrisSpawnXPosition - SERRIS_ROOM_WIDTH / 2 < rotationCenterX)
             {
                 gCurrentSprite.xPosition -= movement;
                 return;
@@ -870,20 +1116,23 @@ void SerrisLoopAroundPattern(void)
 
     if (gCurrentSprite.work1 == 5)
     {
+        // Get end rotation
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
             endRotation = PI;
         else
             endRotation = 0;
 
+        // Wait until the rotation to dive under water ended
         if (gCurrentSprite.work2 != endRotation)
         {
             SerrisHandleRotationMovement();
             return;
         }
 
-        gCurrentSprite.pose = 0x16;
+        gCurrentSprite.pose = SERRIS_POSE_END_PATTERN;
     }
 
+    // Below is an unused pattern that transitions into the zig zag pattern
     if (gCurrentSprite.work1 == 6)
     {
         if (gCurrentSprite.work2 != PI / 2)
@@ -932,7 +1181,7 @@ void SerrisLoopAroundPattern(void)
             endRotation = PI;
 
         if (gCurrentSprite.work2 == endRotation)
-            gCurrentSprite.pose = 0x2;
+            gCurrentSprite.pose = SERRIS_POSE_ZIG_ZAG_PATTERN_INIT;
         else
             SerrisHandleRotationMovement();
     }
@@ -956,20 +1205,23 @@ void SerrisMiddleArcPattern(void)
 
     if (gCurrentSprite.work1 == 0)
     {
+        // Get end rotation
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
             endRotation = 0;
         else
             endRotation = PI;
 
+        // Wait for rotation to end
         if (gCurrentSprite.work2 != endRotation)
         {
             SerrisHandleRotationMovement();
             return;
         }
 
-        gCurrentSprite.pose = 0x16;
+        gCurrentSprite.pose = SERRIS_POSE_END_PATTERN;
     }
 
+    // Below is an unused pattern that transitions into the loop around pattern
     if (gCurrentSprite.work1 == 1)
     {
         if (rotationCenterY < BLOCK_SIZE * 13 - 1)
@@ -1033,7 +1285,7 @@ void SerrisMiddleArcPattern(void)
             endRotation = PI;
 
         if (gCurrentSprite.work2 == endRotation)
-            gCurrentSprite.pose = 0x18;
+            gCurrentSprite.pose = SERRIS_POSE_LOOP_AROUND_PATTERN_INIT;
         else
             SerrisHandleRotationMovement();
     }
@@ -1049,20 +1301,23 @@ void SerrisEdgeArcPattern(void)
 
     if (gCurrentSprite.work1 == 0)
     {
+        // Get end rotation
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
             endRotation = 0;
         else
             endRotation = PI;
 
+        // Wait for the rotation to end
         if (gCurrentSprite.work2 != endRotation)
         {
             SerrisHandleRotationMovement();
             return;
         }
 
-        gCurrentSprite.pose = 0x16;
+        gCurrentSprite.pose = SERRIS_POSE_END_PATTERN;
     }
 
+    // Below is an unused pattern that transitions into the loop around pattern 
     if (gCurrentSprite.work1 == 1)
     {
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
@@ -1071,7 +1326,7 @@ void SerrisEdgeArcPattern(void)
             endRotation = PI;
 
         if (gCurrentSprite.work2 == endRotation)
-            gCurrentSprite.pose = 0x18;
+            gCurrentSprite.pose = SERRIS_POSE_LOOP_AROUND_PATTERN_INIT;
         else
             SerrisHandleRotationMovement();
     }
@@ -1086,21 +1341,28 @@ void SerrisZigZagPatternInit(void)
     u16 rotationCenterY;
     u16 rotationCenterX;
 
+    // Set starting rotation and starting position
     if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
     {
+        // Rotate to face upwards
+        // 3 * PI * 2 instead of just PI / 2 to compensate for the X flip
         gCurrentSprite.rotation = 3 * PI / 2;
-        gCurrentSprite.xPosition = gSerrisSpawnXPosition - BLOCK_SIZE * 24;
+        // Start on the left end of the room
+        gCurrentSprite.xPosition = gSerrisSpawnXPosition - SERRIS_ROOM_WIDTH;
     }
     else
     {
+        // Rotate to face upwards
         gCurrentSprite.rotation = PI / 2;
+        // Start on the right end of the room
         gCurrentSprite.xPosition = gSerrisSpawnXPosition;
     }
 
     rotationCenterY = gCurrentSprite.yPosition;
     rotationCenterX = gCurrentSprite.xPosition;
 
-    if (gCurrentSprite.yPosition < BLOCK_SIZE * 12 + HALF_BLOCK_SIZE)
+    // Wait for serris to reach just below the water to start the first rotation
+    if (gCurrentSprite.yPosition < SERRIS_ROOM_WATER_Y + BLOCK_SIZE + HALF_BLOCK_SIZE)
     {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
             gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
@@ -1108,13 +1370,14 @@ void SerrisZigZagPatternInit(void)
             gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
 
         gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
-        gCurrentSprite.pose = 0x38;
+        gCurrentSprite.pose = SERRIS_POSE_ZIG_ZAG_PATTERN;
         gCurrentSprite.work1 = 0;
 
         SerrisStartRotationXAligned(rotationCenterY, rotationCenterX, 1);
     }
     else
     {
+        // Go up
         gCurrentSprite.yPosition -= QUARTER_BLOCK_SIZE;
     }
 }
@@ -1128,21 +1391,28 @@ void SerrisLoopAroundPatternInit(void)
     u16 rotationCenterY;
     u16 rotationCenterX;
 
+    // Set starting rotation and starting position
     if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
     {
+        // Rotate to face upwards
+        // 3 * PI * 2 instead of just PI / 2 to compensate for the X flip
         gCurrentSprite.rotation = 3 * PI / 2;
-        gCurrentSprite.xPosition = gSerrisSpawnXPosition - BLOCK_SIZE * 24;
+        // Start on the left end of the room
+        gCurrentSprite.xPosition = gSerrisSpawnXPosition - SERRIS_ROOM_WIDTH;
     }
     else
     {
+        // Rotate to face upwards
         gCurrentSprite.rotation = PI / 2;
+        // Start on the right end of the room
         gCurrentSprite.xPosition = gSerrisSpawnXPosition;
     }
 
     rotationCenterY = gCurrentSprite.yPosition;
     rotationCenterX = gCurrentSprite.xPosition;
 
-    if (gCurrentSprite.yPosition < BLOCK_SIZE * 13)
+    // Wait for serris to reach just below the water to start the first rotation
+    if (gCurrentSprite.yPosition < SERRIS_ROOM_WATER_Y + BLOCK_SIZE * 2)
     {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
             gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
@@ -1150,13 +1420,14 @@ void SerrisLoopAroundPatternInit(void)
             gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
 
         gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
-        gCurrentSprite.pose = 0x3A;
+        gCurrentSprite.pose = SERRIS_POSE_LOOP_AROUND_PATTERN;
         gCurrentSprite.work1 = 0;
 
         SerrisStartRotationXAligned(rotationCenterY, rotationCenterX, 1);
     }
     else
     {
+        // Go up
         gCurrentSprite.yPosition -= QUARTER_BLOCK_SIZE;
     }
 }
@@ -1170,21 +1441,27 @@ void SerrisMiddleArcPatternInit(void)
     u16 rotationCenterY;
     u16 rotationCenterX;
 
+    // Set starting rotation
     if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
     {
+        // Rotate to face upwards
+        // 3 * PI * 2 instead of just PI / 2 to compensate for the X flip
         gCurrentSprite.rotation = 3 * PI / 2;
     }
     else
     {
+        // Rotate to face upwards
         gCurrentSprite.rotation = PI / 2;
     }
     
-    gCurrentSprite.xPosition = gSerrisSpawnXPosition - BLOCK_SIZE * 12;
+    // Spawn in the middle of the room
+    gCurrentSprite.xPosition = gSerrisSpawnXPosition - SERRIS_ROOM_WIDTH / 2;
 
     rotationCenterY = gCurrentSprite.yPosition;
     rotationCenterX = gCurrentSprite.xPosition;
 
-    if (gCurrentSprite.yPosition < BLOCK_SIZE * 12)
+    // Wait for serris to reach just below the water to start the first rotation
+    if (gCurrentSprite.yPosition < SERRIS_ROOM_WATER_Y + BLOCK_SIZE)
     {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
             gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
@@ -1192,13 +1469,14 @@ void SerrisMiddleArcPatternInit(void)
             gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
 
         gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
-        gCurrentSprite.pose = 0x3C;
+        gCurrentSprite.pose = SERRIS_POSE_MIDDLE_ARC_PATTERN;
         gCurrentSprite.work1 = 0;
 
         SerrisStartRotationXAligned(rotationCenterY, rotationCenterX, 2);
     }
     else
     {
+        // Go up
         gCurrentSprite.yPosition -= QUARTER_BLOCK_SIZE;
     }
 }
@@ -1212,21 +1490,28 @@ void SerrisEdgeArcPatternInit(void)
     u16 rotationCenterY;
     u16 rotationCenterX;
 
+    // Set starting rotation and starting position
     if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
     {
+        // Rotate to face upwards
+        // 3 * PI * 2 instead of just PI / 2 to compensate for the X flip
         gCurrentSprite.rotation = 3 * PI / 2;
-        gCurrentSprite.xPosition = gSerrisSpawnXPosition + -(BLOCK_SIZE * 18);
+        // Start between the last 2 platforms on the left of the room
+        gCurrentSprite.xPosition = gSerrisSpawnXPosition + -(SERRIS_ROOM_WIDTH - BLOCK_SIZE * 6);
     }
     else
     {
+        // Rotate to face upwards
         gCurrentSprite.rotation = PI / 2;
+        // Start between the last 2 platforms on the right of the room
         gCurrentSprite.xPosition = gSerrisSpawnXPosition - BLOCK_SIZE * 6;
     }
 
     rotationCenterY = gCurrentSprite.yPosition;
     rotationCenterX = gCurrentSprite.xPosition;
 
-    if (gCurrentSprite.yPosition < BLOCK_SIZE * 12)
+    // Wait for serris to reach just below the water to start the first rotation
+    if (gCurrentSprite.yPosition < SERRIS_ROOM_WATER_Y + BLOCK_SIZE)
     {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
             gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
@@ -1234,19 +1519,20 @@ void SerrisEdgeArcPatternInit(void)
             gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
 
         gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
-        gCurrentSprite.pose = 0x3E;
+        gCurrentSprite.pose = SERRIS_POSE_EDGE_ARC_PATTERN;
         gCurrentSprite.work1 = 0;
 
         SerrisStartRotationXAligned(rotationCenterY, rotationCenterX, 2);
     }
     else
     {
+        // Go up
         gCurrentSprite.yPosition -= QUARTER_BLOCK_SIZE;
     }
 }
 
 /**
- * @brief 488b0 | ac | Determines the next pattern of Serris
+ * @brief 488b0 | ac | Determines the next pattern of serris
  * 
  */
 void SerrisDeterminePattern(void)
@@ -1262,35 +1548,37 @@ void SerrisDeterminePattern(void)
     rngParam = gSpriteRandomNumber;
     rng = gXParasiteTargetYPosition + gSpriteRandomNumber;
 
+    // Each pattern has 1/4 chance of happening
     switch (rng % 16)
     {
         case 1:
         case 2:
         case 3:
         case 4:
-            pose = 0x2;
+            pose = SERRIS_POSE_ZIG_ZAG_PATTERN_INIT;
             break;
 
         case 5:
         case 6:
         case 7:
         case 8:
-            pose = 0x18;
+            pose = SERRIS_POSE_LOOP_AROUND_PATTERN_INIT;
             break;
 
         case 9:
         case 10:
         case 11:
         case 12:
-            pose = 0x1A;
+            pose = SERRIS_POSE_MIDDLE_ARC_PATTERN_INIT;
             break;
 
         case 13:
         case 14:
-        default:
-            pose = 0x1C;
+        default: // Handles 0 and 15
+            pose = SERRIS_POSE_EDGE_ARC_PATTERN_INIT;
     }
 
+    // 1/2 to be flipped
     if ((gFrameCounter16Bit + gCurrentSprite.currentAnimationFrame) % 2)
         xFlipped++;
 
@@ -1298,52 +1586,55 @@ void SerrisDeterminePattern(void)
     gBossWork3 = xFlipped;
 }
 
+/**
+ * @brief 4895c | 60 | Determines the next pattern of serris when speedboosting
+ * 
+ */
 void SerrisDetermineSpeedboostingPattern(void)
 {
-    // https://decomp.me/scratch/5QTfr
-
     u8 pose;
     u8 xFlipped;
-    u32 rng;
+    u8 rng;
 
     xFlipped = FALSE;
 
-    rng = gSpriteRandomNumber % 8;
+    rng = MOD_AND(gSpriteRandomNumber, 8);
 
+    // Each pattern has a 1/4 of happening and 1/2 of being flipped
     if (rng == 1)
     {
-        pose = 0x2;
+        pose = SERRIS_POSE_ZIG_ZAG_PATTERN_INIT;
     }
     else if (rng == 2)
     {
-        pose = 0x2;
+        pose = SERRIS_POSE_ZIG_ZAG_PATTERN_INIT;
         xFlipped = TRUE;
     }
     else if (rng == 3)
     {
-        pose = 0x18;
+        pose = SERRIS_POSE_LOOP_AROUND_PATTERN_INIT;
     }
     else if (rng == 4)
     {
-        pose = 0x18;
+        pose = SERRIS_POSE_LOOP_AROUND_PATTERN_INIT;
         xFlipped = TRUE;
     }
     else if (rng == 5)
     {
-        pose = 0x1A;
+        pose = SERRIS_POSE_MIDDLE_ARC_PATTERN_INIT;
     }
     else if (rng == 6)
     {
-        pose = 0x1A;
+        pose = SERRIS_POSE_MIDDLE_ARC_PATTERN_INIT;
         xFlipped = TRUE;
     }
     else if (rng == 7)
     {
-        pose = 0x2;
+        pose = SERRIS_POSE_ZIG_ZAG_PATTERN_INIT;
     }
     else
     {
-        pose = 0x2;
+        pose = SERRIS_POSE_ZIG_ZAG_PATTERN_INIT;
         xFlipped = TRUE;
     }
 
@@ -1357,6 +1648,7 @@ void SerrisDetermineSpeedboostingPattern(void)
  */
 void SerrisEndPattern(void)
 {
+    // Set facing down rotation
     if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
     {
         gCurrentSprite.rotation = PI / 2;
@@ -1366,16 +1658,18 @@ void SerrisEndPattern(void)
         gCurrentSprite.rotation = 3 * PI / 2;
     }
 
+    // Wait to be very deep in the floor
     if (gCurrentSprite.yPosition >= BLOCK_SIZE * 30)
     {
         if (!(gCurrentSprite.properties & SP_SECONDARY_SPRITE))
             gBossWork4 = 65 + gSpriteRandomNumber * 2;
 
-        gCurrentSprite.work4 = gBossWork4,
-        gCurrentSprite.pose = 0x8;
+        gCurrentSprite.work4 = gBossWork4;
+        gCurrentSprite.pose = SERRIS_POSE_WAITING_TO_EMERGE;
     }
     else
     {
+        // Go down
         gCurrentSprite.yPosition += QUARTER_BLOCK_SIZE;
     }
 }
@@ -1392,8 +1686,10 @@ void SerrisWaitingToEmerge(void)
 
     if (gCurrentSprite.work4 == 0)
     {
+        // Set queried pattern
         gCurrentSprite.pose = gBossWork2;
 
+        // Set X flipping
         if (gBossWork3)
             gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
         else
@@ -1407,33 +1703,37 @@ void SerrisWaitingToEmerge(void)
     if (gCurrentSprite.work4 != 40)
         return;
 
+    // Only query pattern if it's the main sprite
     if (gCurrentSprite.properties & SP_SECONDARY_SPRITE)
         return;
 
+    // Query next pattern
     if (gBossWork5 != 0)
         SerrisDetermineSpeedboostingPattern();
     else
         SerrisDeterminePattern();
 
-    if (gBossWork2 == 0x1C)
+    // Get emerging X position of the pattern to play the particles
+    if (gBossWork2 == SERRIS_POSE_EDGE_ARC_PATTERN_INIT)
     {
         if (gBossWork3)
-            xPosition = gSerrisSpawnXPosition + -(BLOCK_SIZE * 18);
+            xPosition = gSerrisSpawnXPosition + -(SERRIS_ROOM_WIDTH - BLOCK_SIZE * 6);
         else
             xPosition = gSerrisSpawnXPosition - BLOCK_SIZE * 6;
     }
-    else if (gBossWork2 == 0x1A)
+    else if (gBossWork2 == SERRIS_POSE_MIDDLE_ARC_PATTERN_INIT)
     {
-        xPosition = gSerrisSpawnXPosition - BLOCK_SIZE * 12;
+        xPosition = gSerrisSpawnXPosition - SERRIS_ROOM_WIDTH / 2;
     }
     else
     {
         if (gBossWork3)
-            xPosition = gSerrisSpawnXPosition - BLOCK_SIZE * 24;
+            xPosition = gSerrisSpawnXPosition - SERRIS_ROOM_WIDTH;
         else
             xPosition = gSerrisSpawnXPosition;
     }
 
+    // Spawn particles
     ParticleSet(gSerrisSpawnYPosition - (BLOCK_SIZE * 2 - EIGHTH_BLOCK_SIZE), xPosition, PE_SPRITE_ENTER_OR_EXIT_WATER);
     SoundPlay(0x293);
 }
@@ -1444,8 +1744,9 @@ void SerrisWaitingToEmerge(void)
  */
 void SerrisPartDyingInit(void)
 {
-    gCurrentSprite.pose = 0x48;
+    gCurrentSprite.pose = SERRIS_POSE_DYING;
 
+    // Delay before the dying part starts slightly falling, scales with the part number to make them fall one after the other
     gCurrentSprite.work1 = (gCurrentSprite.roomSlot + 1) * 16;
     gCurrentSprite.work4 = 0;
 
@@ -1453,14 +1754,104 @@ void SerrisPartDyingInit(void)
     gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
 }
 
+/**
+ * @brief 48b7c | 90 | Handles a serris part dying
+ * 
+ */
 void SerrisPartDying(void)
 {
+    s16 velocity;
+    u8 offset;
 
+    gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+
+    if (gCurrentSprite.work1 != 0)
+    {
+        gCurrentSprite.work1--;
+
+        if (gCurrentSprite.work1 == 0 && gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+        {
+            ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x2F);
+            SoundPlay(0x294);
+        }
+    }
+    else
+    {
+        offset = gCurrentSprite.work4;
+        velocity = sSerrisPartDyingVelocity[offset];
+
+        if (velocity == SHORT_MAX)
+        {
+            gCurrentSprite.pose = SERRIS_POSE_TURNING_INTO_X;
+            gCurrentSprite.work1 = 4;
+            gCurrentSprite.work4 = 0;
+            gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;
+        }
+        else
+        {
+            offset++;
+            gCurrentSprite.work4 = offset;
+            gCurrentSprite.yPosition += velocity;
+        }
+    }
 }
 
+/**
+ * @brief 48c0c | c8 | Handles the serris part falling
+ * 
+ */
 void SerrisPartFalling(void)
 {
+    s16 velocity;
+    u8 offset;
 
+    gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+
+    if (gCurrentSprite.work1 != 0)
+    {
+        gCurrentSprite.work1--;
+        return;
+    }
+
+    offset = gCurrentSprite.work4;
+    velocity = sSerrisPartFallingVelocity[offset];
+
+    if (velocity == SHORT_MAX)
+    {
+        velocity = sSerrisPartFallingVelocity[offset - 1];
+        gCurrentSprite.yPosition += velocity;
+    }
+    else
+    {
+        offset++;
+        gCurrentSprite.work4 = offset;
+        gCurrentSprite.yPosition += velocity;
+    }
+
+    // Check is in water, xParasiteTimer temporarly holds the Y position of the previous frame
+    if (gCurrentSprite.xParasiteTimer < SERRIS_ROOM_WATER_Y && gCurrentSprite.yPosition >= SERRIS_ROOM_WATER_Y)
+    {
+        if (gCurrentSprite.roomSlot >= SERRIS_PART_MIDDLE_END)
+        {
+            // Any tail part, do a small splash
+            ParticleSet(gCurrentSprite.yPosition + BLOCK_SIZE + PIXEL_SIZE, gCurrentSprite.xPosition, PE_ENTER_OR_EXIT_WATER);
+        }
+        else
+        {
+            // Any body part, do a big splash
+            ParticleSet(gCurrentSprite.yPosition + BLOCK_SIZE + PIXEL_SIZE, gCurrentSprite.xPosition, PE_ENTER_OR_EXIT_WATER_BIG);
+        }
+
+        SoundPlay(0x295);
+    }
+
+    gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;
+
+    if (gCurrentSprite.yPosition > SERRIS_ROOM_WATER_Y && !(gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN))
+    {
+        // Kill if in the water and off screen
+        gCurrentSprite.status = 0;
+    }
 }
 
 /**
@@ -1597,6 +1988,8 @@ void SerrisBlockFalling(void)
  */
 void SerrisCheckInWater(void)
 {
+    // gUnk_030007c0[0] has the previous Y position of serris
+
     if (gUnk_030007c0[0] > gCurrentSprite.yPosition)
     {
         if (gUnk_030007c0[0] > SERRIS_ROOM_WATER_Y && gCurrentSprite.yPosition <= SERRIS_ROOM_WATER_Y)
@@ -1633,13 +2026,240 @@ void SerrisCheckInWater(void)
     }
 }
 
+/**
+ * @brief 48f34 | 4f8 | serris AI
+ * 
+ */
 void Serris(void)
 {
+    // Check was damaged
+    if (SPRITE_HAS_ISFT(gCurrentSprite) == 0x10 && gCurrentSprite.health != 0)
+    {
+        // "Stun" timer before serris goes into speedbooster mode
+        gCurrentSprite.work0 = 30;
+        gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
 
+        unk_3b1c(0x290);
+    }
+
+    // "Stun" before going into speedbooster mode
+    if (gCurrentSprite.work0 != 0)
+    {
+        gCurrentSprite.work0--;
+
+        if (gCurrentSprite.work0 != 0)
+            return;
+
+        // Set long speedbooster timer
+        gBossWork5 = 60 * 7 + 30;
+        SerrisSetFacingOam();
+    }
+
+    // Check dead and initialized (a sprite has 0 health when spawning)
+    if (gCurrentSprite.health == 0 && gCurrentSprite.pose != SPRITE_POSE_UNITIALIZED)
+    {
+        // Set dying if not already
+        if (gCurrentSprite.pose < SERRIS_POSE_DYING_INIT)
+        {
+            gCurrentSprite.pose = SERRIS_POSE_DYING_INIT;
+            unk_3b1c(0x291);
+        }
+    }
+    else
+    {
+        if (gCurrentSprite.pose == SERRIS_POSE_FIRST_ARC_DONE)
+        {
+            // Force zig zag pattern after the first arc
+            gCurrentSprite.pose = SERRIS_POSE_ZIG_ZAG_PATTERN_INIT;
+
+            // Set small speedbooster timer
+            gBossWork5 = 60 * 2;
+            SerrisSetFacingOam();
+            SoundPlay(0x292);
+        }
+
+        if (gBossWork5 != 0)
+        {
+            // Flicker speedbooster palette
+            if (gFrameCounter8Bit & 8)
+                gCurrentSprite.paletteRow = 4;
+            else
+                gCurrentSprite.paletteRow = 5;
+
+            // Play speedboosting sound
+            if (MOD_AND(gFrameCounter8Bit, 16) == 0 && gCurrentSprite.pose != SERRIS_POSE_WAITING_TO_EMERGE)
+                unk_3b1c(0x28F);
+
+            // Update timer
+            gBossWork5--;
+
+            if (gBossWork5 == 0)
+            {
+                // Make vulnerable again
+                gCurrentSprite.properties &= ~SP_IMMUNE_TO_PROJECTILES;
+                SerrisSetFacingOam();
+            }
+        }
+        else
+        {
+            // Not speedboosting, set default palette
+            gCurrentSprite.paletteRow = 0;
+        }
+
+        if ((gCurrentSprite.status & (SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_SAMUS_COLLIDING)) == SPRITE_STATUS_SAMUS_COLLIDING &&
+            MOD_AND(gFrameCounter8Bit, 32) == 0 && gCurrentSprite.pose != SERRIS_POSE_WAITING_TO_EMERGE)
+        {
+            if (gBossWork5 != 0)
+                SoundPlay(0x28E);
+            else
+                SoundPlay(0x28B);
+        }
+    }
+
+    // Save previous Y position
+    gUnk_030007c0[0] = gCurrentSprite.yPosition;
+
+    switch (gCurrentSprite.pose)
+    {
+        case SPRITE_POSE_UNITIALIZED:
+            SerrisInit();
+            break;
+
+        case SERRIS_POSE_DYING_INIT:
+            SerrisDyingInit();
+            break;
+
+        case SERRIS_POSE_DYING:
+            SerrisDying();
+            break;
+
+        case SERRIS_POSE_TURNING_INTO_X_INIT:
+            SerrisTurningIntoXInit();
+
+        case SERRIS_POSE_TURNING_INTO_X:
+            SerrisTurningIntoX();
+            break;
+
+        case SERRIS_POSE_WAITING_TO_APPEAR_INIT:
+            SerrisWaitingToAppearInit();
+            break;
+
+        case SERRIS_POSE_WAITING_TO_APPEAR:
+            SerrisWaitingToAppear();
+            break;
+
+        case SPRITE_POSE_IDLE_INIT:
+            SerrisStartFight();
+            break;
+
+        case SERRIS_POSE_FIRST_ARC_INIT:
+            SerrisFirstArcInit();
+            break;
+
+        case SERRIS_POSE_FIRST_ARC:
+            SerrisFirstArc();
+            break;
+
+        case SERRIS_POSE_FIRST_ARC_ENDED:
+            SerrisFirstArcEnd();
+            break;
+
+        case SERRIS_POSE_WAITING_TO_EMERGE:
+            SerrisWaitingToEmerge();
+            break;
+
+        case SERRIS_POSE_END_PATTERN:
+            SerrisEndPattern();
+            break;
+
+        case SERRIS_POSE_ZIG_ZAG_PATTERN_INIT:
+            SerrisZigZagPatternInit();
+            break;
+
+        case SERRIS_POSE_LOOP_AROUND_PATTERN_INIT:
+            SerrisLoopAroundPatternInit();
+            break;
+
+        case SERRIS_POSE_MIDDLE_ARC_PATTERN_INIT:
+            SerrisMiddleArcPatternInit();
+            break;
+
+        case SERRIS_POSE_EDGE_ARC_PATTERN_INIT:
+            SerrisEdgeArcPatternInit();
+            break;
+
+        case SERRIS_POSE_ZIG_ZAG_PATTERN:
+            SerrisZigZagPattern();
+            break;
+
+        case SERRIS_POSE_LOOP_AROUND_PATTERN:
+            SerrisLoopAroundPattern();
+            break;
+
+        case SERRIS_POSE_MIDDLE_ARC_PATTERN:
+            SerrisMiddleArcPattern();
+            break;
+
+        case SERRIS_POSE_EDGE_ARC_PATTERN:
+            SerrisEdgeArcPattern();
+    }
+
+    SerrisCheckInWater();
+    SerrisUpdatePalette();
+
+    // If speedboosting, call the movement functions again to make serris go faster
+    if (gBossWork5 != 0)
+    {
+        gUnk_030007c0[0] = gCurrentSprite.yPosition;
+
+        switch (gCurrentSprite.pose)
+        {
+            case SERRIS_POSE_WAITING_TO_EMERGE:
+                SerrisWaitingToEmerge();
+                break;
+
+            case SERRIS_POSE_END_PATTERN:
+                SerrisEndPattern();
+                break;
+
+            case SERRIS_POSE_ZIG_ZAG_PATTERN_INIT:
+                SerrisZigZagPatternInit();
+                break;
+
+            case SERRIS_POSE_LOOP_AROUND_PATTERN_INIT:
+                SerrisLoopAroundPatternInit();
+                break;
+
+            case SERRIS_POSE_MIDDLE_ARC_PATTERN_INIT:
+                SerrisMiddleArcPatternInit();
+                break;
+
+            case SERRIS_POSE_EDGE_ARC_PATTERN_INIT:
+                SerrisEdgeArcPatternInit();
+                break;
+
+            case SERRIS_POSE_ZIG_ZAG_PATTERN:
+                SerrisZigZagPattern();
+                break;
+
+            case SERRIS_POSE_LOOP_AROUND_PATTERN:
+                SerrisLoopAroundPattern();
+                break;
+
+            case SERRIS_POSE_MIDDLE_ARC_PATTERN:
+                SerrisMiddleArcPattern();
+                break;
+
+            case SERRIS_POSE_EDGE_ARC_PATTERN:
+                SerrisEdgeArcPattern();
+        }
+
+        SerrisCheckInWater();
+    }
 }
 
 /**
- * @brief 4942c | 414 | Serris part AI
+ * @brief 4942c | 414 | serris part AI
  * 
  */
 void SerrisPart(void)
@@ -1649,15 +2269,20 @@ void SerrisPart(void)
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
 
     if (gSpriteData[ramSlot].work0 != 0)
-        return;
-
-    if (gSpriteData[ramSlot].pose == 0x48)
     {
-        if (gCurrentSprite.pose < 0x47)
-            gCurrentSprite.pose = 0x47;
+        // Main sprite is "stunned", so just do nothing here
+        return;
+    }
+
+    if (gSpriteData[ramSlot].pose == SERRIS_POSE_DYING)
+    {
+        // Main sprite is dying, set part as dying too
+        if (gCurrentSprite.pose < SERRIS_POSE_DYING_INIT)
+            gCurrentSprite.pose = SERRIS_POSE_DYING_INIT;
     }
     else if (gBossWork5 != 0)
     {
+        // Set speedboosting palette
         if (gFrameCounter8Bit & 4)
         {
             gCurrentSprite.paletteRow = 5;
@@ -1669,6 +2294,7 @@ void SerrisPart(void)
     }
     else
     {
+        // Set default palette
         gCurrentSprite.paletteRow = 0;
     }
 
@@ -1678,7 +2304,7 @@ void SerrisPart(void)
             SerrisPartInit();
             break;
 
-        case 0x55:
+        case SERRIS_POSE_WAITING_TO_APPEAR_INIT:
             SerrisPartWaitingToAppear();
             break;
 
@@ -1686,122 +2312,123 @@ void SerrisPart(void)
             SerrisPartStartFight();
             break;
 
-        case 0x53:
+        case SERRIS_POSE_FIRST_ARC_INIT:
             SerrisFirstArcInit();
             break;
 
-        case 0x54:
+        case SERRIS_POSE_FIRST_ARC:
             SerrisFirstArc();
             break;
 
-        case 0x47:
+        case SERRIS_POSE_DYING_INIT:
             SerrisPartDyingInit();
             break;
 
-        case 0x48:
+        case SERRIS_POSE_DYING:
             SerrisPartDying();
             break;
 
-        case 0x4A:
+        case SERRIS_PART_POSE_FALLING:
             SerrisPartFalling();
             break;
 
-        case 0x51:
+        case SERRIS_POSE_FIRST_ARC_ENDED:
             SerrisFirstArcEnd();
             break;
 
-        case 0x8:
+        case SERRIS_POSE_WAITING_TO_EMERGE:
             SerrisWaitingToEmerge();
             break;
 
-        case 0x16:
+        case SERRIS_POSE_END_PATTERN:
             SerrisEndPattern();
             break;
 
-        case SPRITE_POSE_IDLE:
+        case SERRIS_POSE_ZIG_ZAG_PATTERN_INIT:
             SerrisZigZagPatternInit();
             break;
 
-        case 0x18:
+        case SERRIS_POSE_LOOP_AROUND_PATTERN_INIT:
             SerrisLoopAroundPatternInit();
             break;
 
-        case 0x1A:
+        case SERRIS_POSE_MIDDLE_ARC_PATTERN_INIT:
             SerrisMiddleArcPatternInit();
             break;
 
-        case 0x1C:
+        case SERRIS_POSE_EDGE_ARC_PATTERN_INIT:
             SerrisEdgeArcPatternInit();
             break;
 
-        case 0x38:
+        case SERRIS_POSE_ZIG_ZAG_PATTERN:
             SerrisZigZagPattern();
             break;
 
-        case 0x3A:
+        case SERRIS_POSE_LOOP_AROUND_PATTERN:
             SerrisLoopAroundPattern();
             break;
 
-        case 0x3C:
+        case SERRIS_POSE_MIDDLE_ARC_PATTERN:
             SerrisMiddleArcPattern();
             break;
 
-        case 0x3E:
+        case SERRIS_POSE_EDGE_ARC_PATTERN:
             SerrisEdgeArcPattern();
     }
 
+    // If speedboosting, call the movement functions again to make serris go faster
     if (gBossWork5 != 0)
     {
         switch (gCurrentSprite.pose)
         {
-            case 0x51:
+            case SERRIS_POSE_FIRST_ARC_ENDED:
                 SerrisFirstArcEnd();
                 break;
 
-            case 0x8:
+            case SERRIS_POSE_WAITING_TO_EMERGE:
                 SerrisWaitingToEmerge();
                 break;
 
-            case 0x16:
+            case SERRIS_POSE_END_PATTERN:
                 SerrisEndPattern();
                 break;
 
-            case SPRITE_POSE_IDLE:
+            case SERRIS_POSE_ZIG_ZAG_PATTERN_INIT:
                 SerrisZigZagPatternInit();
                 break;
 
-            case 0x18:
+            case SERRIS_POSE_LOOP_AROUND_PATTERN_INIT:
                 SerrisLoopAroundPatternInit();
                 break;
 
-            case 0x1A:
+            case SERRIS_POSE_MIDDLE_ARC_PATTERN_INIT:
                 SerrisMiddleArcPatternInit();
                 break;
 
-            case 0x1C:
+            case SERRIS_POSE_EDGE_ARC_PATTERN_INIT:
                 SerrisEdgeArcPatternInit();
                 break;
 
-            case 0x38:
+            case SERRIS_POSE_ZIG_ZAG_PATTERN:
                 SerrisZigZagPattern();
                 break;
 
-            case 0x3A:
+            case SERRIS_POSE_LOOP_AROUND_PATTERN:
                 SerrisLoopAroundPattern();
                 break;
 
-            case 0x3C:
+            case SERRIS_POSE_MIDDLE_ARC_PATTERN:
                 SerrisMiddleArcPattern();
                 break;
 
-            case 0x3E:
+            case SERRIS_POSE_EDGE_ARC_PATTERN:
                 SerrisEdgeArcPattern();
         }
     }
 }
 
 /**
- * @brief 49840 | 48 | Serris block AI
+ * @brief 49840 | 48 | serris block AI
  * 
  */
 void SerrisBlock(void)

@@ -5,6 +5,7 @@
 #include "oam.h"
 
 extern const u16 sXParasiteMosaicValues[44];
+extern const s16 sXParasite_3bdf2e[182];
 extern const s16 sXParasiteIdleFloatingYMovement[65];
 extern const s16 sXParasiteIdleFloatingXMovement[81];
 

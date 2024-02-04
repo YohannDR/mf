@@ -2424,7 +2424,7 @@ SamusCheckStandingOnDropThroughClipdata: @ 0x08005EEC
 	adds r1, #0x1e
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r5, r0, #0
 	ldrh r0, [r4, #0x18]
 	adds r0, #1
@@ -2434,7 +2434,7 @@ SamusCheckStandingOnDropThroughClipdata: @ 0x08005EEC
 	subs r1, #0x1e
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r1, r0, #0
 	movs r2, #0xff
 	adds r0, r5, #0
@@ -4971,7 +4971,7 @@ _0800728A:
 	adds r1, r1, r7
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	movs r1, #0x80
 	lsls r1, r1, #0x11
 	ands r1, r0
@@ -5020,7 +5020,7 @@ _080072EE:
 	adds r1, r1, r7
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r5, r0, #0
 	movs r4, #0x80
 	lsls r4, r4, #0x11
@@ -5033,7 +5033,7 @@ _080072EE:
 	adds r1, r1, r7
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	ands r0, r4
 	cmp r5, #0
 	bne _08007322
@@ -6090,7 +6090,7 @@ _08007AEE:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r1, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	mov r8, r0
 	movs r4, #0x80
 	lsls r4, r4, #0x11
@@ -6102,7 +6102,7 @@ _08007AEE:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldrh r1, [r1, #0x16]
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r6, r0, #0
 	ands r6, r4
 	mov r2, sb
@@ -6111,7 +6111,7 @@ _08007AEE:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r1, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r5, r0, #0
 	ands r5, r4
 	ldr r0, _08007B64 @ =gChangedInput
@@ -6342,7 +6342,7 @@ _08007CD4:
 	adds r1, r1, r2
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	movs r1, #0x80
 	lsls r1, r1, #0x11
 	ands r1, r0
@@ -7236,7 +7236,7 @@ _08008354:
 	adds r1, r1, r6
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	movs r1, #0x80
 	lsls r1, r1, #0x11
 	ands r1, r0
@@ -11005,7 +11005,7 @@ _0800A13C:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldrh r1, [r7, #0x16]
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _0800A152
@@ -11016,7 +11016,7 @@ _0800A152:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldrh r1, [r7, #0x16]
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r5, r0, #0
 	movs r4, #0x80
 	lsls r4, r4, #0x11
@@ -11029,7 +11029,7 @@ _0800A152:
 	add r1, r8
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r6, r0, #0
 	ands r6, r4
 	ldrh r0, [r7, #0x18]
@@ -11040,7 +11040,7 @@ _0800A152:
 	add r1, r8
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r2, r0, #0
 	ands r2, r4
 	ldrb r0, [r7, #1]
@@ -11414,7 +11414,7 @@ SamusSlopeRelated: @ 0x0800A4E0
 	lsrs r6, r1, #0x10
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r1, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #0x11
@@ -11642,7 +11642,7 @@ unk_a670: @ 0x0800A670
 	lsrs r5, r0, #0x10
 	adds r0, r5, #0
 	adds r1, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r1, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #0x11
@@ -11681,7 +11681,7 @@ _0800A6DC:
 	lsrs r5, r0, #0x10
 	adds r0, r5, #0
 	adds r1, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r1, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #0x11
@@ -11718,7 +11718,7 @@ _0800A728:
 	lsrs r5, r0, #0x10
 	adds r0, r5, #0
 	adds r1, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r1, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #0x11
@@ -11806,7 +11806,7 @@ unk_a7b8: @ 0x0800A7B8
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	movs r6, #0x80
 	lsls r6, r6, #0x11
 	ands r0, r6
@@ -11822,7 +11822,7 @@ unk_a7b8: @ 0x0800A7B8
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	ands r0, r6
 	cmp r0, #0
 	beq _0800A82C
@@ -11851,7 +11851,7 @@ _0800A82C:
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	movs r1, #0x80
 	lsls r1, r1, #0x11
 	ands r1, r0
@@ -11870,7 +11870,7 @@ _0800A866:
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	movs r2, #0x80
 	lsls r2, r2, #0x11
 	mov r8, r2
@@ -11889,7 +11889,7 @@ _0800A890:
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	mov r2, r8
 	ands r0, r2
 	cmp r0, #0
@@ -11911,7 +11911,7 @@ _0800A8B2:
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	mov r1, r8
 	ands r0, r1
 	cmp r0, #0
@@ -11957,7 +11957,7 @@ unk_a8fc: @ 0x0800A8FC
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r2, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #0x11
@@ -11990,7 +11990,7 @@ _0800A954:
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r2, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #0x11
@@ -12026,7 +12026,7 @@ _0800A9A0:
 	ldr r0, _0800A9D0 @ =gSamusData
 	ldrh r1, [r0, #0x16]
 	adds r0, r7, #0
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	adds r2, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #0x11

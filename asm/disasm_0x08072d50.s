@@ -30880,7 +30880,7 @@ _0808220C: .4byte gCurrentClipdataAffectingAction
 _08082210:
 	ldrh r0, [r2, #8]
 	ldrh r1, [r2, #0xa]
-	bl ProcessClipdata
+	bl ClipdataProcess
 	movs r1, #0x80
 	lsls r1, r1, #0x11
 	ands r1, r0
@@ -30919,7 +30919,7 @@ _08082250:
 	adds r5, r7, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl ProcessClipdata
+	bl ClipdataProcess
 	adds r1, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #0x11
@@ -37611,7 +37611,7 @@ ProjectileCheckSamusBombBounce: @ 0x080855D0
 	adds r0, r4, #0
 	adds r0, #0x20
 	adds r1, r5, #0
-	bl ProcessClipdata
+	bl ClipdataProcess
 	movs r6, #0x80
 	lsls r6, r6, #0x11
 	ands r0, r6
@@ -37620,7 +37620,7 @@ ProjectileCheckSamusBombBounce: @ 0x080855D0
 	adds r0, r4, #0
 	subs r0, #0x60
 	adds r1, r5, #0
-	bl ProcessClipdata
+	bl ClipdataProcess
 	ands r0, r6
 	cmp r0, #0
 	bne _080856FA
@@ -37878,7 +37878,7 @@ _080857E8:
 	ldrh r0, [r4, #8]
 	subs r0, #8
 	ldrh r1, [r4, #0xa]
-	bl ProcessClipdata
+	bl ClipdataProcess
 	bl ProjectileCheckSamusBombBounce
 	ldrb r1, [r4]
 	movs r0, #0xef
@@ -37907,7 +37907,7 @@ _08085824:
 	subs r0, #8
 	ldrh r1, [r4, #0xa]
 	adds r1, #0x30
-	bl ProcessClipdata
+	bl ClipdataProcess
 	b _080858DA
 	.align 2, 0
 _0808583C: .4byte gCurrentClipdataAffectingAction
@@ -37921,7 +37921,7 @@ _08085840:
 	subs r0, #8
 	ldrh r1, [r4, #0xa]
 	subs r1, #0x30
-	bl ProcessClipdata
+	bl ClipdataProcess
 	b _080858DA
 	.align 2, 0
 _08085858: .4byte gCurrentClipdataAffectingAction
@@ -37957,7 +37957,7 @@ _08085884:
 	subs r0, #0x48
 _08085892:
 	ldrh r1, [r4, #0xa]
-	bl ProcessClipdata
+	bl ClipdataProcess
 	b _080858DA
 	.align 2, 0
 _0808589C: .4byte gCurrentClipdataAffectingAction
@@ -37972,7 +37972,7 @@ _080858A0:
 _080858AE:
 	ldrh r1, [r4, #0xa]
 	adds r1, #0x24
-	bl ProcessClipdata
+	bl ClipdataProcess
 	b _080858DA
 	.align 2, 0
 _080858B8: .4byte gCurrentClipdataAffectingAction
@@ -37986,7 +37986,7 @@ _080858BC:
 _080858C8:
 	ldrh r1, [r4, #0xa]
 	subs r1, #0x24
-	bl ProcessClipdata
+	bl ClipdataProcess
 	b _080858DA
 	.align 2, 0
 _080858D4: .4byte gCurrentClipdataAffectingAction

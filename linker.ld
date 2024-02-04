@@ -225,6 +225,10 @@ SECTIONS {
 
         asm/disasm_0x0801e794.o(.text);
 
+        src/sprites_AI/serris.o(.text);
+
+        asm/disasm_0x08049888.o(.text);
+
         src/event_checks.o(.text);
 
         asm/disasm_0x08061004.o(.text);
@@ -256,6 +260,8 @@ SECTIONS {
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
+        src/data/sprites/serris.o(.rodata);
+        src/data/sprites/x_parasite.o(.rodata);
         src/data/demo_data.o(.rodata);
         src/data/hud_data.o(.rodata);
         src/data/escape_data.o(.rodata);

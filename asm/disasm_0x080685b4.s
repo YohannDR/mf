@@ -679,8 +679,8 @@ _08068B10: .4byte gNonGameplayRam
 _08068B14: .4byte 0x80000140
 _08068B18: .4byte gClipdataCodePointer
 
-	thumb_func_start ProcessClipdataForSamus
-ProcessClipdataForSamus: @ 0x08068B1C
+	thumb_func_start ClipdataProcessForSamus
+ClipdataProcessForSamus: @ 0x08068B1C
 	push {r4, r5, r6, lr}
 	sub sp, #0x1c
 	lsls r2, r0, #0x10
@@ -764,8 +764,8 @@ _08068BB0:
 _08068BB8: .4byte gTilemapAndClipPointers
 _08068BBC: .4byte gClipdataCodePointer
 
-	thumb_func_start ProcessClipdata
-ProcessClipdata: @ 0x08068BC0
+	thumb_func_start ClipdataProcess
+ClipdataProcess: @ 0x08068BC0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -9037,7 +9037,7 @@ _0806CAFE:
 	subs r0, #0x7c
 	ldrh r1, [r1, #0x16]
 	adds r1, r1, r5
-	bl ProcessClipdataForSamus
+	bl ClipdataProcessForSamus
 	movs r1, #0x80
 	lsls r1, r1, #0x11
 	ands r1, r0

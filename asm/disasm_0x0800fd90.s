@@ -2344,7 +2344,7 @@ CheckVerticalCollisionAtPosition: @ 0x08011058
 	lsrs r5, r1, #0x10
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl ProcessClipdata
+	bl ClipdataProcess
 	adds r3, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #0x11
@@ -2485,7 +2485,7 @@ SpriteUtilCheckVerticalCollisionAtPositionSlopes: @ 0x08011174
 	lsrs r4, r1, #0x10
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl ProcessClipdata
+	bl ClipdataProcess
 	adds r6, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #0x11
@@ -2753,7 +2753,7 @@ SpriteUtilCheckCollisionAtPosition: @ 0x08011390
 	lsrs r0, r0, #0x10
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl ProcessClipdata
+	bl ClipdataProcess
 	adds r3, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #0x11
