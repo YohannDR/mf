@@ -8512,7 +8512,7 @@ _0808BA32:
 	movs r0, #1
 	strh r0, [r5, #4]
 	ldr r1, _0808BA6C @ =0x0400004C
-	ldr r0, _0808BA70 @ =0x083BDED6
+	ldr r0, _0808BA70 @ =sXParasiteMosaicValues
 	ldrh r0, [r0, #2]
 	lsls r0, r0, #4
 	strh r0, [r1]
@@ -8526,7 +8526,7 @@ _0808BA32:
 	.align 2, 0
 _0808BA68: .4byte 0x085A2BA8
 _0808BA6C: .4byte 0x0400004C
-_0808BA70: .4byte 0x083BDED6
+_0808BA70: .4byte sXParasiteMosaicValues
 _0808BA74:
 	cmp r0, #7
 	bne _0808BADA
@@ -8539,7 +8539,7 @@ _0808BA74:
 	adds r0, #1
 	strh r0, [r5, #4]
 	ldr r2, _0808BAC8 @ =0x0400004C
-	ldr r1, _0808BACC @ =0x083BDED6
+	ldr r1, _0808BACC @ =sXParasiteMosaicValues
 	movs r6, #4
 	ldrsh r0, [r5, r6]
 	lsls r0, r0, #1
@@ -8574,7 +8574,7 @@ _0808BAAA:
 	b _0808BC7C
 	.align 2, 0
 _0808BAC8: .4byte 0x0400004C
-_0808BACC: .4byte 0x083BDED6
+_0808BACC: .4byte sXParasiteMosaicValues
 _0808BAD0: .4byte 0x085A2E90
 _0808BAD4:
 	movs r2, #4
@@ -8592,7 +8592,7 @@ _0808BADA:
 	adds r0, #1
 	strh r0, [r5, #4]
 	ldr r2, _0808BB44 @ =0x0400004C
-	ldr r1, _0808BB48 @ =0x083BDED6
+	ldr r1, _0808BB48 @ =sXParasiteMosaicValues
 	movs r3, #4
 	ldrsh r0, [r5, r3]
 	lsls r0, r0, #1
@@ -8636,7 +8636,7 @@ _0808BB10:
 	b _0808BC7C
 	.align 2, 0
 _0808BB44: .4byte 0x0400004C
-_0808BB48: .4byte 0x083BDED6
+_0808BB48: .4byte sXParasiteMosaicValues
 _0808BB4C:
 	movs r6, #4
 	ldrsh r0, [r5, r6]

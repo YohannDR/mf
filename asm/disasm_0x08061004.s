@@ -1008,7 +1008,7 @@ _08061748:
 	strh r0, [r3]
 _0806175A:
 	ldr r2, _08061774 @ =gWrittenToMosaic_H
-	ldr r1, _08061778 @ =0x083BDED6
+	ldr r1, _08061778 @ =sXParasiteMosaicValues
 	adds r0, r3, #0
 	adds r0, #0x2e
 	ldrb r0, [r0]
@@ -1021,7 +1021,7 @@ _0806175A:
 	bx r0
 	.align 2, 0
 _08061774: .4byte gWrittenToMosaic_H
-_08061778: .4byte 0x083BDED6
+_08061778: .4byte sXParasiteMosaicValues
 
 	thumb_func_start XParasiteSpawningInit
 XParasiteSpawningInit: @ 0x0806177C
@@ -1032,7 +1032,7 @@ XParasiteSpawningInit: @ 0x0806177C
 	movs r0, #0x16
 	strh r0, [r3, #6]
 	ldr r2, _080617B4 @ =gWrittenToMosaic_H
-	ldr r0, _080617B8 @ =0x083BDED6
+	ldr r0, _080617B8 @ =sXParasiteMosaicValues
 	ldrh r0, [r0, #0x2c]
 	strh r0, [r2]
 	ldr r0, _080617BC @ =0x0000FFFB
@@ -1054,7 +1054,7 @@ XParasiteSpawningInit: @ 0x0806177C
 	.align 2, 0
 _080617B0: .4byte gCurrentSprite
 _080617B4: .4byte gWrittenToMosaic_H
-_080617B8: .4byte 0x083BDED6
+_080617B8: .4byte sXParasiteMosaicValues
 _080617BC: .4byte 0x0000FFFB
 _080617C0: .4byte gSpriteRandomNumber
 
@@ -1350,7 +1350,7 @@ _080619E0:
 	movs r0, #0x2c
 	strh r0, [r4, #6]
 	ldr r1, _08061A3C @ =gWrittenToMosaic_H
-	ldr r0, _08061A40 @ =0x083BDED6
+	ldr r0, _08061A40 @ =sXParasiteMosaicValues
 	adds r0, #0x58
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -1386,7 +1386,7 @@ _08061A2E:
 	.align 2, 0
 _08061A38: .4byte 0x0000FFFB
 _08061A3C: .4byte gWrittenToMosaic_H
-_08061A40: .4byte 0x083BDED6
+_08061A40: .4byte sXParasiteMosaicValues
 _08061A44: .4byte gSpriteRandomNumber
 _08061A48:
 	adds r1, r4, #0
@@ -1607,7 +1607,7 @@ _08061BDA:
 	cmp r0, #0
 	beq _08061C52
 	ldr r2, _08061C30 @ =gWrittenToMosaic_H
-	ldr r1, _08061C34 @ =0x083BDED6
+	ldr r1, _08061C34 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -1636,7 +1636,7 @@ _08061C24: .4byte 0x083BE09A
 _08061C28: .4byte 0x00007FFF
 _08061C2C: .4byte 0x083BE11C
 _08061C30: .4byte gWrittenToMosaic_H
-_08061C34: .4byte 0x083BDED6
+_08061C34: .4byte sXParasiteMosaicValues
 _08061C38:
 	movs r0, #0x80
 	lsls r0, r0, #4
@@ -2395,7 +2395,7 @@ _080621B6:
 	strb r0, [r3]
 _080621C6:
 	ldr r2, _080621E8 @ =gWrittenToMosaic_H
-	ldr r1, _080621EC @ =0x083BDED6
+	ldr r1, _080621EC @ =sXParasiteMosaicValues
 	ldrb r0, [r3]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -2413,7 +2413,7 @@ _080621C6:
 	b _080621FA
 	.align 2, 0
 _080621E8: .4byte gWrittenToMosaic_H
-_080621EC: .4byte 0x083BDED6
+_080621EC: .4byte sXParasiteMosaicValues
 _080621F0:
 	subs r0, r0, r1
 	lsls r0, r0, #0x10
@@ -2520,7 +2520,7 @@ _080622A4:
 	strh r0, [r3]
 _080622B4:
 	ldr r2, _080622CC @ =gWrittenToMosaic_H
-	ldr r1, _080622D0 @ =0x083BDED6
+	ldr r1, _080622D0 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -2531,7 +2531,7 @@ _080622B4:
 	.align 2, 0
 _080622C8: .4byte gCurrentSprite
 _080622CC: .4byte gWrittenToMosaic_H
-_080622D0: .4byte 0x083BDED6
+_080622D0: .4byte sXParasiteMosaicValues
 
 	thumb_func_start SpriteSpawningFromX
 SpriteSpawningFromX: @ 0x080622D4
@@ -2548,7 +2548,7 @@ SpriteSpawningFromX: @ 0x080622D4
 	cmp r0, #0
 	beq _08062308
 	ldr r2, _08062300 @ =gWrittenToMosaic_H
-	ldr r1, _08062304 @ =0x083BDED6
+	ldr r1, _08062304 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -2558,7 +2558,7 @@ SpriteSpawningFromX: @ 0x080622D4
 	.align 2, 0
 _080622FC: .4byte gCurrentSprite
 _08062300: .4byte gWrittenToMosaic_H
-_08062304: .4byte 0x083BDED6
+_08062304: .4byte sXParasiteMosaicValues
 _08062308:
 	ldrh r1, [r3]
 	ldr r0, _08062320 @ =0x00007FFF

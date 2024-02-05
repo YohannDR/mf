@@ -1681,7 +1681,7 @@ GeegaSpawningFromX: @ 0x0804A5C0
 	cmp r0, #0
 	beq _0804A5F8
 	ldr r2, _0804A5F0 @ =gWrittenToMosaic_H
-	ldr r1, _0804A5F4 @ =0x083BDED6
+	ldr r1, _0804A5F4 @ =sXParasiteMosaicValues
 	ldrb r0, [r3]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -1690,7 +1690,7 @@ GeegaSpawningFromX: @ 0x0804A5C0
 	.align 2, 0
 _0804A5EC: .4byte gCurrentSprite
 _0804A5F0: .4byte gWrittenToMosaic_H
-_0804A5F4: .4byte 0x083BDED6
+_0804A5F4: .4byte sXParasiteMosaicValues
 _0804A5F8:
 	ldrh r1, [r2]
 	ldr r0, _0804A610 @ =0x00007FFF
@@ -15235,7 +15235,7 @@ SA_XMonsterTurningIntoCoreX: @ 0x08051390
 	movs r0, #1
 	strb r0, [r1]
 	ldr r2, _080513F4 @ =gWrittenToMosaic_H
-	ldr r1, _080513F8 @ =0x083BDED6
+	ldr r1, _080513F8 @ =sXParasiteMosaicValues
 	ldrh r0, [r4, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -15278,7 +15278,7 @@ SA_XMonsterTurningIntoCoreX: @ 0x08051390
 	.align 2, 0
 _080513F0: .4byte gCurrentSprite
 _080513F4: .4byte gWrittenToMosaic_H
-_080513F8: .4byte 0x083BDED6
+_080513F8: .4byte sXParasiteMosaicValues
 _080513FC:
 	ldrh r0, [r4, #4]
 	subs r0, #0x50
@@ -19793,7 +19793,7 @@ Box2BrainTopTransforming: @ 0x08053824
 	push {r4, r5, lr}
 	movs r5, #0x59
 	ldr r2, _0805387C @ =gWrittenToMosaic_H
-	ldr r1, _08053880 @ =0x083BDED6
+	ldr r1, _08053880 @ =sXParasiteMosaicValues
 	ldr r4, _08053884 @ =gCurrentSprite
 	ldrh r0, [r4, #6]
 	lsls r0, r0, #1
@@ -19834,7 +19834,7 @@ Box2BrainTopTransforming: @ 0x08053824
 	b _08053896
 	.align 2, 0
 _0805387C: .4byte gWrittenToMosaic_H
-_08053880: .4byte 0x083BDED6
+_08053880: .4byte sXParasiteMosaicValues
 _08053884: .4byte gCurrentSprite
 _08053888:
 	cmp r0, #0x14
@@ -26821,7 +26821,7 @@ _080570BC:
 	strb r1, [r0]
 _080570EE:
 	ldr r2, _0805710C @ =gWrittenToMosaic_H
-	ldr r1, _08057110 @ =0x083BDED6
+	ldr r1, _08057110 @ =sXParasiteMosaicValues
 	mov r3, ip
 	ldrb r0, [r3]
 	lsls r0, r0, #1
@@ -26834,7 +26834,7 @@ _080570EE:
 _08057104: .4byte gCurrentSprite
 _08057108: .4byte 0x0000FFDF
 _0805710C: .4byte gWrittenToMosaic_H
-_08057110: .4byte 0x083BDED6
+_08057110: .4byte sXParasiteMosaicValues
 
 	thumb_func_start FrozenRidleyXFlyingAway
 FrozenRidleyXFlyingAway: @ 0x08057114
@@ -27329,7 +27329,7 @@ MegaXTurningIntoX_Unused: @ 0x080574DC
 	cmp r0, #0
 	beq _08057514
 	ldr r2, _0805750C @ =gWrittenToMosaic_H
-	ldr r1, _08057510 @ =0x083BDED6
+	ldr r1, _08057510 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -27339,7 +27339,7 @@ MegaXTurningIntoX_Unused: @ 0x080574DC
 	.align 2, 0
 _08057508: .4byte gCurrentSprite
 _0805750C: .4byte gWrittenToMosaic_H
-_08057510: .4byte 0x083BDED6
+_08057510: .4byte sXParasiteMosaicValues
 _08057514:
 	adds r1, r3, #0
 	adds r1, #0x24
@@ -29805,7 +29805,7 @@ IceBeamAbilitySpawningFromX: @ 0x08058934
 	subs r1, #1
 	strb r1, [r4]
 	ldr r3, _08058968 @ =gWrittenToMosaic_H
-	ldr r2, _0805896C @ =0x083BDED6
+	ldr r2, _0805896C @ =sXParasiteMosaicValues
 	ldrb r0, [r4]
 	lsls r0, r0, #1
 	adds r0, r0, r2
@@ -29823,7 +29823,7 @@ IceBeamAbilitySpawningFromX: @ 0x08058934
 	.align 2, 0
 _08058964: .4byte gCurrentSprite
 _08058968: .4byte gWrittenToMosaic_H
-_0805896C: .4byte 0x083BDED6
+_0805896C: .4byte sXParasiteMosaicValues
 _08058970:
 	cmp r1, #8
 	bne _0805897E
@@ -30107,7 +30107,7 @@ IceBeamAbilityTurningIntoSA_X: @ 0x08058B80
 	movs r0, #1
 	strb r0, [r2]
 	ldr r3, _08058BBC @ =gWrittenToMosaic_H
-	ldr r2, _08058BC0 @ =0x083BDED6
+	ldr r2, _08058BC0 @ =sXParasiteMosaicValues
 	adds r1, #0x2e
 	ldrb r0, [r1]
 	lsls r0, r0, #1
@@ -30129,7 +30129,7 @@ IceBeamAbilityTurningIntoSA_X: @ 0x08058B80
 	.align 2, 0
 _08058BB8: .4byte gCurrentSprite
 _08058BBC: .4byte gWrittenToMosaic_H
-_08058BC0: .4byte 0x083BDED6
+_08058BC0: .4byte sXParasiteMosaicValues
 _08058BC4:
 	cmp r0, #8
 	bne _08058BD2
@@ -32455,7 +32455,7 @@ _08059E32:
 RidleyTurningIntoCoreX: @ 0x08059E38
 	push {lr}
 	ldr r2, _08059E74 @ =gWrittenToMosaic_H
-	ldr r1, _08059E78 @ =0x083BDED6
+	ldr r1, _08059E78 @ =sXParasiteMosaicValues
 	ldr r3, _08059E7C @ =gCurrentSprite
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
@@ -32485,7 +32485,7 @@ _08059E62:
 	b _08059E8E
 	.align 2, 0
 _08059E74: .4byte gWrittenToMosaic_H
-_08059E78: .4byte 0x083BDED6
+_08059E78: .4byte sXParasiteMosaicValues
 _08059E7C: .4byte gCurrentSprite
 _08059E80:
 	cmp r0, #0x14
@@ -32523,7 +32523,7 @@ RidleyForming: @ 0x08059E94
 	cmp r5, #0
 	beq _08059EE0
 	ldr r2, _08059ED8 @ =gWrittenToMosaic_H
-	ldr r1, _08059EDC @ =0x083BDED6
+	ldr r1, _08059EDC @ =sXParasiteMosaicValues
 	mov r3, ip
 	ldrb r0, [r3]
 	lsls r0, r0, #1
@@ -32535,7 +32535,7 @@ RidleyForming: @ 0x08059E94
 _08059ED0: .4byte gCurrentSprite
 _08059ED4: .4byte gSubSpriteData1
 _08059ED8: .4byte gWrittenToMosaic_H
-_08059EDC: .4byte 0x083BDED6
+_08059EDC: .4byte sXParasiteMosaicValues
 _08059EE0:
 	ldrh r1, [r3]
 	ldr r0, _08059F00 @ =0x00007FDF
@@ -35457,7 +35457,7 @@ _0805B6E8: .4byte gCurrentSprite
 RidleyPreSpawnTurningIntoRidley: @ 0x0805B6EC
 	push {r4, lr}
 	ldr r2, _0805B734 @ =gWrittenToMosaic_H
-	ldr r1, _0805B738 @ =0x083BDED6
+	ldr r1, _0805B738 @ =sXParasiteMosaicValues
 	ldr r4, _0805B73C @ =gCurrentSprite
 	ldrh r0, [r4, #6]
 	lsls r0, r0, #1
@@ -35492,7 +35492,7 @@ RidleyPreSpawnTurningIntoRidley: @ 0x0805B6EC
 	b _0805B752
 	.align 2, 0
 _0805B734: .4byte gWrittenToMosaic_H
-_0805B738: .4byte 0x083BDED6
+_0805B738: .4byte sXParasiteMosaicValues
 _0805B73C: .4byte gCurrentSprite
 _0805B740: .4byte 0x00008004
 _0805B744:
@@ -38177,7 +38177,7 @@ _0805CCBC: .4byte gCurrentSprite
 YakuzaTurningIntoCoreX: @ 0x0805CCC0
 	push {lr}
 	ldr r2, _0805CCEC @ =gWrittenToMosaic_H
-	ldr r1, _0805CCF0 @ =0x083BDED6
+	ldr r1, _0805CCF0 @ =sXParasiteMosaicValues
 	ldr r3, _0805CCF4 @ =gCurrentSprite
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
@@ -38198,7 +38198,7 @@ YakuzaTurningIntoCoreX: @ 0x0805CCC0
 	b _0805CD06
 	.align 2, 0
 _0805CCEC: .4byte gWrittenToMosaic_H
-_0805CCF0: .4byte 0x083BDED6
+_0805CCF0: .4byte sXParasiteMosaicValues
 _0805CCF4: .4byte gCurrentSprite
 _0805CCF8:
 	cmp r0, #0x14
@@ -41427,7 +41427,7 @@ NightmareTurningIntoCoreX: @ 0x0805E618
 _0805E650: .4byte gCurrentSprite
 _0805E654:
 	ldr r2, _0805E68C @ =gWrittenToMosaic_H
-	ldr r1, _0805E690 @ =0x083BDED6
+	ldr r1, _0805E690 @ =sXParasiteMosaicValues
 	ldrh r0, [r4, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -41456,7 +41456,7 @@ _0805E67A:
 	b _0805E6A2
 	.align 2, 0
 _0805E68C: .4byte gWrittenToMosaic_H
-_0805E690: .4byte 0x083BDED6
+_0805E690: .4byte sXParasiteMosaicValues
 _0805E694:
 	cmp r0, #0x14
 	bne _0805E6A2

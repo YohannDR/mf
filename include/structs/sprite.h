@@ -102,4 +102,7 @@ extern u16 gAbilityRestingXPosition;
 extern u16 gSerrisSpawnYPosition;
 extern u16 gSerrisSpawnXPosition;
 
+extern u8 gBossFormationSpriteId;
+extern u8 gCoreXFormationSpriteId;
+
 #endif /* SPRITE_STRUCTS_H */

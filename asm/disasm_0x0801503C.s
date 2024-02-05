@@ -515,7 +515,7 @@ XParasiteCoreXOrStabilizerForming: @ 0x080153D0
 	cmp r0, #0
 	beq _08015404
 	ldr r2, _080153FC @ =gWrittenToMosaic_H
-	ldr r1, _08015400 @ =0x083BDED6
+	ldr r1, _08015400 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -525,7 +525,7 @@ XParasiteCoreXOrStabilizerForming: @ 0x080153D0
 	.align 2, 0
 _080153F8: .4byte gCurrentSprite
 _080153FC: .4byte gWrittenToMosaic_H
-_08015400: .4byte 0x083BDED6
+_08015400: .4byte sXParasiteMosaicValues
 _08015404:
 	ldrh r1, [r3]
 	ldr r0, _08015420 @ =0x0000FFDF
@@ -680,7 +680,7 @@ _08015506:
 	cmp r0, #0
 	beq _08015568
 	ldr r2, _08015550 @ =gWrittenToMosaic_H
-	ldr r1, _08015554 @ =0x083BDED6
+	ldr r1, _08015554 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -701,7 +701,7 @@ _08015544: .4byte 0x083BE09A
 _08015548: .4byte 0x00007FFF
 _0801554C: .4byte 0x083BE11C
 _08015550: .4byte gWrittenToMosaic_H
-_08015554: .4byte 0x083BDED6
+_08015554: .4byte sXParasiteMosaicValues
 _08015558:
 	movs r0, #0x80
 	lsls r0, r0, #4
@@ -12872,7 +12872,7 @@ SA_XOmegaForming: @ 0x0801B564
 	cmp r2, #0
 	beq _0801B59C
 	ldr r2, _0801B594 @ =gWrittenToMosaic_H
-	ldr r1, _0801B598 @ =0x083BDED6
+	ldr r1, _0801B598 @ =sXParasiteMosaicValues
 	mov r3, ip
 	ldrb r0, [r3]
 	lsls r0, r0, #1
@@ -12883,7 +12883,7 @@ SA_XOmegaForming: @ 0x0801B564
 	.align 2, 0
 _0801B590: .4byte gCurrentSprite
 _0801B594: .4byte gWrittenToMosaic_H
-_0801B598: .4byte 0x083BDED6
+_0801B598: .4byte sXParasiteMosaicValues
 _0801B59C:
 	adds r1, r3, #0
 	adds r1, #0x24
@@ -13392,7 +13392,7 @@ _0801B958: .4byte gSaXData
 SA_XOmegaRevertingToX: @ 0x0801B95C
 	push {lr}
 	ldr r2, _0801B994 @ =gWrittenToMosaic_H
-	ldr r1, _0801B998 @ =0x083BDED6
+	ldr r1, _0801B998 @ =sXParasiteMosaicValues
 	ldr r0, _0801B99C @ =gCurrentSprite
 	mov ip, r0
 	mov r3, ip
@@ -13420,7 +13420,7 @@ _0801B98E:
 	bx r0
 	.align 2, 0
 _0801B994: .4byte gWrittenToMosaic_H
-_0801B998: .4byte 0x083BDED6
+_0801B998: .4byte sXParasiteMosaicValues
 _0801B99C: .4byte gCurrentSprite
 
 	thumb_func_start SA_XOmega
@@ -17671,7 +17671,7 @@ HalzynSpawningFromX: @ 0x0801DC44
 	cmp r0, #0
 	beq _0801DC7C
 	ldr r2, _0801DC74 @ =gWrittenToMosaic_H
-	ldr r1, _0801DC78 @ =0x083BDED6
+	ldr r1, _0801DC78 @ =sXParasiteMosaicValues
 	ldrb r0, [r3]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -17680,7 +17680,7 @@ HalzynSpawningFromX: @ 0x0801DC44
 	.align 2, 0
 _0801DC70: .4byte gCurrentSprite
 _0801DC74: .4byte gWrittenToMosaic_H
-_0801DC78: .4byte 0x083BDED6
+_0801DC78: .4byte sXParasiteMosaicValues
 _0801DC7C:
 	adds r1, r2, #0
 	adds r1, #0x24

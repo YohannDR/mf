@@ -17,7 +17,7 @@ MotoSpawningFromX: @ 0x0801E794
 	cmp r0, #0
 	beq _0801E7C8
 	ldr r2, _0801E7C0 @ =gWrittenToMosaic_H
-	ldr r1, _0801E7C4 @ =0x083BDED6
+	ldr r1, _0801E7C4 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -27,7 +27,7 @@ MotoSpawningFromX: @ 0x0801E794
 	.align 2, 0
 _0801E7BC: .4byte gCurrentSprite
 _0801E7C0: .4byte gWrittenToMosaic_H
-_0801E7C4: .4byte 0x083BDED6
+_0801E7C4: .4byte sXParasiteMosaicValues
 _0801E7C8:
 	ldrh r0, [r3]
 	ldr r1, _0801E7E0 @ =0x00007FFF
@@ -10769,7 +10769,7 @@ _08023E76:
 ArachnusDying: @ 0x08023E7C
 	push {r4, r5, lr}
 	ldr r2, _08023EBC @ =gWrittenToMosaic_H
-	ldr r1, _08023EC0 @ =0x083BDED6
+	ldr r1, _08023EC0 @ =sXParasiteMosaicValues
 	ldr r3, _08023EC4 @ =gCurrentSprite
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
@@ -10802,7 +10802,7 @@ _08023EB0:
 	mov pc, r0
 	.align 2, 0
 _08023EBC: .4byte gWrittenToMosaic_H
-_08023EC0: .4byte 0x083BDED6
+_08023EC0: .4byte sXParasiteMosaicValues
 _08023EC4: .4byte gCurrentSprite
 _08023EC8: .4byte _08023ECC
 _08023ECC: @ jump table
@@ -10994,7 +10994,7 @@ _080240CE:
 	adds r1, #0x24
 	movs r0, #0x59
 	strb r0, [r1]
-	ldr r0, _080240F8 @ =0x030006AD
+	ldr r0, _080240F8 @ =gCoreXFormationSpriteId
 	ldrb r0, [r0]
 	strb r0, [r2, #0x1d]
 _080240DE:
@@ -11002,7 +11002,7 @@ _080240DE:
 	ldrh r0, [r1, #6]
 	cmp r0, #0x13
 	bhi _080240FC
-	ldr r0, _080240F8 @ =0x030006AD
+	ldr r0, _080240F8 @ =gCoreXFormationSpriteId
 	ldrb r0, [r0]
 	ldrh r2, [r1, #6]
 	movs r1, #0
@@ -11010,11 +11010,11 @@ _080240DE:
 	b _0802410C
 	.align 2, 0
 _080240F4: .4byte gCurrentSprite
-_080240F8: .4byte 0x030006AD
+_080240F8: .4byte gCoreXFormationSpriteId
 _080240FC:
 	cmp r0, #0x14
 	bne _0802410C
-	ldr r0, _08024114 @ =0x030006AD
+	ldr r0, _08024114 @ =gCoreXFormationSpriteId
 	ldrb r0, [r0]
 	movs r1, #0
 	movs r2, #5
@@ -11024,7 +11024,7 @@ _0802410C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08024114: .4byte 0x030006AD
+_08024114: .4byte gCoreXFormationSpriteId
 
 	thumb_func_start ArachnusShootingFire
 ArachnusShootingFire: @ 0x08024118
@@ -11189,7 +11189,7 @@ ArachnusCoreXTransformation: @ 0x0802423C
 	cmp r0, #0
 	beq _08024270
 	ldr r2, _08024268 @ =gWrittenToMosaic_H
-	ldr r1, _0802426C @ =0x083BDED6
+	ldr r1, _0802426C @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -11199,7 +11199,7 @@ ArachnusCoreXTransformation: @ 0x0802423C
 	.align 2, 0
 _08024264: .4byte gCurrentSprite
 _08024268: .4byte gWrittenToMosaic_H
-_0802426C: .4byte 0x083BDED6
+_0802426C: .4byte sXParasiteMosaicValues
 _08024270:
 	ldrh r0, [r3]
 	ldr r1, _08024288 @ =0x00007FFF
@@ -13185,7 +13185,7 @@ CoreXAbilityTransfromation: @ 0x080252C4
 	cmp r0, #0
 	beq _080252FC
 	ldr r2, _080252F4 @ =gWrittenToMosaic_H
-	ldr r1, _080252F8 @ =0x083BDED6
+	ldr r1, _080252F8 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -13195,7 +13195,7 @@ CoreXAbilityTransfromation: @ 0x080252C4
 	.align 2, 0
 _080252F0: .4byte gCurrentSprite
 _080252F4: .4byte gWrittenToMosaic_H
-_080252F8: .4byte 0x083BDED6
+_080252F8: .4byte sXParasiteMosaicValues
 _080252FC:
 	adds r1, r3, #0
 	adds r1, #0x24
@@ -13365,9 +13365,9 @@ _08025438:
 	.align 2, 0
 _08025440: .4byte gEquipment
 _08025444:
-	ldr r0, _08025524 @ =0x030006AC
+	ldr r0, _08025524 @ =gBossFormationSpriteId
 	strb r4, [r0]
-	ldr r1, _08025528 @ =0x030006AD
+	ldr r1, _08025528 @ =gCoreXFormationSpriteId
 	ldrb r0, [r5, #0x1d]
 	strb r0, [r1]
 	ldrh r0, [r5, #2]
@@ -13477,8 +13477,8 @@ _08025520:
 	strh r6, [r4]
 	b _0802555C
 	.align 2, 0
-_08025524: .4byte 0x030006AC
-_08025528: .4byte 0x030006AD
+_08025524: .4byte gBossFormationSpriteId
+_08025528: .4byte gCoreXFormationSpriteId
 _0802552C: .4byte 0xFFFFFE80
 _08025530: .4byte sPrimarySpriteStats
 _08025534: .4byte 0x0000FFE0
@@ -13844,7 +13844,7 @@ _080257F0:
 	ldrh r0, [r2, #4]
 	adds r0, r0, r3
 	strh r0, [r2, #4]
-	ldr r0, _08025850 @ =0x030006AC
+	ldr r0, _08025850 @ =gBossFormationSpriteId
 	ldrb r0, [r0]
 	cmp r0, #0x4b
 	bne _08025860
@@ -13873,7 +13873,7 @@ _080257F0:
 	movs r0, #0x2c
 	strb r0, [r1]
 	ldr r1, _08025858 @ =gWrittenToMosaic_H
-	ldr r0, _0802585C @ =0x083BDED6
+	ldr r0, _0802585C @ =sXParasiteMosaicValues
 	adds r0, #0x58
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -13884,10 +13884,10 @@ _08025840: .4byte gCurrentSprite
 _08025844: .4byte 0x083031E0
 _08025848: .4byte 0x00007FFF
 _0802584C: .4byte 0x08303262
-_08025850: .4byte 0x030006AC
+_08025850: .4byte gBossFormationSpriteId
 _08025854: .4byte 0xFFFFFEC0
 _08025858: .4byte gWrittenToMosaic_H
-_0802585C: .4byte 0x083BDED6
+_0802585C: .4byte sXParasiteMosaicValues
 _08025860:
 	ldrh r1, [r2, #2]
 	ldrh r0, [r2, #6]
@@ -13913,7 +13913,7 @@ _08025860:
 	movs r0, #0x2c
 	strb r0, [r1]
 	ldr r1, _080258AC @ =gWrittenToMosaic_H
-	ldr r0, _080258B0 @ =0x083BDED6
+	ldr r0, _080258B0 @ =sXParasiteMosaicValues
 	adds r0, #0x58
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -13928,7 +13928,7 @@ _080258A2:
 	b _080258BC
 	.align 2, 0
 _080258AC: .4byte gWrittenToMosaic_H
-_080258B0: .4byte 0x083BDED6
+_080258B0: .4byte sXParasiteMosaicValues
 _080258B4: .4byte gDemoState
 _080258B8:
 	adds r0, r1, #1
@@ -13993,7 +13993,7 @@ CoreXAbilitySpawningBoss: @ 0x08025900
 	cmp r0, #0
 	beq _08025944
 	ldr r2, _0802593C @ =gWrittenToMosaic_H
-	ldr r1, _08025940 @ =0x083BDED6
+	ldr r1, _08025940 @ =sXParasiteMosaicValues
 	ldrb r0, [r3]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -14003,7 +14003,7 @@ CoreXAbilitySpawningBoss: @ 0x08025900
 	.align 2, 0
 _08025938: .4byte gCurrentSprite
 _0802593C: .4byte gWrittenToMosaic_H
-_08025940: .4byte 0x083BDED6
+_08025940: .4byte sXParasiteMosaicValues
 _08025944:
 	ldr r0, _08025970 @ =0x0000FFFB
 	ands r1, r0
@@ -14012,7 +14012,7 @@ _08025944:
 	adds r1, #0x24
 	movs r0, #0x59
 	strb r0, [r1]
-	ldr r0, _08025974 @ =0x030006AC
+	ldr r0, _08025974 @ =gBossFormationSpriteId
 	ldrb r0, [r0]
 	strb r0, [r4, #0x1d]
 _08025958:
@@ -14021,7 +14021,7 @@ _08025958:
 	ldrb r0, [r1]
 	cmp r0, #0x1f
 	bhi _08025978
-	ldr r0, _08025974 @ =0x030006AC
+	ldr r0, _08025974 @ =gBossFormationSpriteId
 	ldrb r0, [r0]
 	ldrb r2, [r1]
 	movs r1, #0
@@ -14029,11 +14029,11 @@ _08025958:
 	b _08025988
 	.align 2, 0
 _08025970: .4byte 0x0000FFFB
-_08025974: .4byte 0x030006AC
+_08025974: .4byte gBossFormationSpriteId
 _08025978:
 	cmp r0, #0x20
 	bne _08025988
-	ldr r0, _08025990 @ =0x030006AC
+	ldr r0, _08025990 @ =gBossFormationSpriteId
 	ldrb r0, [r0]
 	movs r1, #0
 	movs r2, #4
@@ -14043,7 +14043,7 @@ _08025988:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08025990: .4byte 0x030006AC
+_08025990: .4byte gBossFormationSpriteId
 
 	thumb_func_start CoreXAbilityMovingInit
 CoreXAbilityMovingInit: @ 0x08025994
@@ -25643,7 +25643,7 @@ ZebesianWallFormingFromX: @ 0x0802B82C
 	cmp r0, #0
 	beq _0802B860
 	ldr r2, _0802B858 @ =gWrittenToMosaic_H
-	ldr r1, _0802B85C @ =0x083BDED6
+	ldr r1, _0802B85C @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #8]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -25653,7 +25653,7 @@ ZebesianWallFormingFromX: @ 0x0802B82C
 	.align 2, 0
 _0802B854: .4byte gCurrentSprite
 _0802B858: .4byte gWrittenToMosaic_H
-_0802B85C: .4byte 0x083BDED6
+_0802B85C: .4byte sXParasiteMosaicValues
 _0802B860:
 	adds r1, r3, #0
 	adds r1, #0x24
@@ -28880,7 +28880,7 @@ _0802D270:
 	movs r0, #0x2c
 	strb r0, [r3]
 	ldr r1, _0802D2B4 @ =gWrittenToMosaic_H
-	ldr r0, _0802D2B8 @ =0x083BDED6
+	ldr r0, _0802D2B8 @ =sXParasiteMosaicValues
 	adds r0, #0x58
 	ldrh r0, [r0]
 	strh r0, [r1]
@@ -28891,7 +28891,7 @@ _0802D2AA:
 	.align 2, 0
 _0802D2B0: .4byte 0x083279F8
 _0802D2B4: .4byte gWrittenToMosaic_H
-_0802D2B8: .4byte 0x083BDED6
+_0802D2B8: .4byte sXParasiteMosaicValues
 
 	thumb_func_start AtmosphericStabilizerParasiteSpawnX
 AtmosphericStabilizerParasiteSpawnX: @ 0x0802D2BC
@@ -28918,7 +28918,7 @@ AtmosphericStabilizerParasiteSpawnX: @ 0x0802D2BC
 	subs r1, #1
 	strb r1, [r0]
 	ldr r3, _0802D338 @ =gWrittenToMosaic_H
-	ldr r2, _0802D33C @ =0x083BDED6
+	ldr r2, _0802D33C @ =sXParasiteMosaicValues
 	ldrb r0, [r0]
 	lsls r0, r0, #1
 	adds r0, r0, r2
@@ -28956,7 +28956,7 @@ _0802D328:
 _0802D330: .4byte gCurrentSprite
 _0802D334: .4byte gSpriteData
 _0802D338: .4byte gWrittenToMosaic_H
-_0802D33C: .4byte 0x083BDED6
+_0802D33C: .4byte sXParasiteMosaicValues
 _0802D340: .4byte 0x0000FFDF
 
 	thumb_func_start AtmosphericStabilizerParasiteDeath
@@ -29460,7 +29460,7 @@ _0802D708: .4byte 0x00008020
 ChozoStatueTransforming: @ 0x0802D70C
 	push {r4, lr}
 	ldr r2, _0802D754 @ =gWrittenToMosaic_H
-	ldr r1, _0802D758 @ =0x083BDED6
+	ldr r1, _0802D758 @ =sXParasiteMosaicValues
 	ldr r4, _0802D75C @ =gCurrentSprite
 	ldrh r0, [r4, #6]
 	lsls r0, r0, #1
@@ -29494,7 +29494,7 @@ ChozoStatueTransforming: @ 0x0802D70C
 	b _0802D76E
 	.align 2, 0
 _0802D754: .4byte gWrittenToMosaic_H
-_0802D758: .4byte 0x083BDED6
+_0802D758: .4byte sXParasiteMosaicValues
 _0802D75C: .4byte gCurrentSprite
 _0802D760:
 	cmp r0, #0x14
@@ -29813,7 +29813,7 @@ BeamCoreXTransformation: @ 0x0802D994
 	cmp r0, #0
 	beq _0802D9C8
 	ldr r2, _0802D9C0 @ =gWrittenToMosaic_H
-	ldr r1, _0802D9C4 @ =0x083BDED6
+	ldr r1, _0802D9C4 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -29823,7 +29823,7 @@ BeamCoreXTransformation: @ 0x0802D994
 	.align 2, 0
 _0802D9BC: .4byte gCurrentSprite
 _0802D9C0: .4byte gWrittenToMosaic_H
-_0802D9C4: .4byte 0x083BDED6
+_0802D9C4: .4byte sXParasiteMosaicValues
 _0802D9C8:
 	adds r1, r3, #0
 	adds r1, #0x24
@@ -33751,7 +33751,7 @@ KagoSpawningFromX: @ 0x0802F86C
 	cmp r0, #0
 	beq _0802F8B0
 	ldr r2, _0802F8A8 @ =gWrittenToMosaic_H
-	ldr r1, _0802F8AC @ =0x083BDED6
+	ldr r1, _0802F8AC @ =sXParasiteMosaicValues
 	ldrh r0, [r4, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -33768,7 +33768,7 @@ KagoSpawningFromX: @ 0x0802F86C
 	.align 2, 0
 _0802F8A4: .4byte gCurrentSprite
 _0802F8A8: .4byte gWrittenToMosaic_H
-_0802F8AC: .4byte 0x083BDED6
+_0802F8AC: .4byte sXParasiteMosaicValues
 _0802F8B0:
 	ldrh r1, [r4]
 	ldr r0, _0802F8CC @ =0x00007FFF
@@ -54660,7 +54660,7 @@ _0803A198: .4byte 0x00008020
 ScientistTransforming: @ 0x0803A19C
 	push {r4, lr}
 	ldr r2, _0803A1E4 @ =gWrittenToMosaic_H
-	ldr r1, _0803A1E8 @ =0x083BDED6
+	ldr r1, _0803A1E8 @ =sXParasiteMosaicValues
 	ldr r4, _0803A1EC @ =gCurrentSprite
 	ldrh r0, [r4, #6]
 	lsls r0, r0, #1
@@ -54694,7 +54694,7 @@ ScientistTransforming: @ 0x0803A19C
 	b _0803A1FE
 	.align 2, 0
 _0803A1E4: .4byte gWrittenToMosaic_H
-_0803A1E8: .4byte 0x083BDED6
+_0803A1E8: .4byte sXParasiteMosaicValues
 _0803A1EC: .4byte gCurrentSprite
 _0803A1F0:
 	cmp r0, #0x14
@@ -61547,7 +61547,7 @@ EvirSpawningFromX: @ 0x0803D85C
 	cmp r0, #0
 	beq _0803D890
 	ldr r2, _0803D888 @ =gWrittenToMosaic_H
-	ldr r1, _0803D88C @ =0x083BDED6
+	ldr r1, _0803D88C @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -61557,7 +61557,7 @@ EvirSpawningFromX: @ 0x0803D85C
 	.align 2, 0
 _0803D884: .4byte gCurrentSprite
 _0803D888: .4byte gWrittenToMosaic_H
-_0803D88C: .4byte 0x083BDED6
+_0803D88C: .4byte sXParasiteMosaicValues
 _0803D890:
 	ldrh r0, [r3]
 	ldr r1, _0803D8A8 @ =0x00007FFF
@@ -66291,7 +66291,7 @@ ZebesianGroundSpawningFromX: @ 0x0803FF80
 	cmp r1, #0
 	beq _0803FFC0
 	ldr r2, _0803FFB8 @ =gWrittenToMosaic_H
-	ldr r1, _0803FFBC @ =0x083BDED6
+	ldr r1, _0803FFBC @ =sXParasiteMosaicValues
 	mov r3, ip
 	ldrb r0, [r3]
 	lsls r0, r0, #1
@@ -66302,7 +66302,7 @@ ZebesianGroundSpawningFromX: @ 0x0803FF80
 	.align 2, 0
 _0803FFB4: .4byte gCurrentSprite
 _0803FFB8: .4byte gWrittenToMosaic_H
-_0803FFBC: .4byte 0x083BDED6
+_0803FFBC: .4byte sXParasiteMosaicValues
 _0803FFC0:
 	ldrb r0, [r3, #0x1d]
 	cmp r0, #0xb4
@@ -74261,7 +74261,7 @@ _08043F5C: .4byte 0x00008020
 NettoriTransformingIntoCoreX: @ 0x08043F60
 	push {r4, lr}
 	ldr r2, _08043FB4 @ =gWrittenToMosaic_H
-	ldr r1, _08043FB8 @ =0x083BDED6
+	ldr r1, _08043FB8 @ =sXParasiteMosaicValues
 	ldr r4, _08043FBC @ =gCurrentSprite
 	ldrh r0, [r4, #6]
 	lsls r0, r0, #1
@@ -74301,7 +74301,7 @@ NettoriTransformingIntoCoreX: @ 0x08043F60
 	b _08043FCE
 	.align 2, 0
 _08043FB4: .4byte gWrittenToMosaic_H
-_08043FB8: .4byte 0x083BDED6
+_08043FB8: .4byte sXParasiteMosaicValues
 _08043FBC: .4byte gCurrentSprite
 _08043FC0:
 	cmp r0, #0x14
@@ -77203,7 +77203,7 @@ ZazabiSpawningFromX: @ 0x08045620
 	cmp r0, #0
 	beq _08045654
 	ldr r2, _0804564C @ =gWrittenToMosaic_H
-	ldr r1, _08045650 @ =0x083BDED6
+	ldr r1, _08045650 @ =sXParasiteMosaicValues
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -77213,7 +77213,7 @@ ZazabiSpawningFromX: @ 0x08045620
 	.align 2, 0
 _08045648: .4byte gCurrentSprite
 _0804564C: .4byte gWrittenToMosaic_H
-_08045650: .4byte 0x083BDED6
+_08045650: .4byte sXParasiteMosaicValues
 _08045654:
 	adds r1, r3, #0
 	adds r1, #0x24
@@ -79405,7 +79405,7 @@ _0804670C: .4byte 0x00000286
 ZazabiDying: @ 0x08046710
 	push {r4, r5, lr}
 	ldr r2, _08046758 @ =gWrittenToMosaic_H
-	ldr r1, _0804675C @ =0x083BDED6
+	ldr r1, _0804675C @ =sXParasiteMosaicValues
 	ldr r3, _08046760 @ =gCurrentSprite
 	ldrh r0, [r3, #6]
 	lsls r0, r0, #1
@@ -79442,7 +79442,7 @@ _0804674C:
 	mov pc, r0
 	.align 2, 0
 _08046758: .4byte gWrittenToMosaic_H
-_0804675C: .4byte 0x083BDED6
+_0804675C: .4byte sXParasiteMosaicValues
 _08046760: .4byte gCurrentSprite
 _08046764: .4byte gSubSpriteData1
 _08046768: .4byte _0804676C
@@ -79644,7 +79644,7 @@ _08046982:
 	adds r1, #0x24
 	movs r0, #0x59
 	strb r0, [r1]
-	ldr r0, _080469AC @ =0x030006AD
+	ldr r0, _080469AC @ =gCoreXFormationSpriteId
 	ldrb r0, [r0]
 	strb r0, [r2, #0x1d]
 _08046992:
@@ -79652,7 +79652,7 @@ _08046992:
 	ldrh r0, [r1, #6]
 	cmp r0, #0x13
 	bhi _080469B0
-	ldr r0, _080469AC @ =0x030006AD
+	ldr r0, _080469AC @ =gCoreXFormationSpriteId
 	ldrb r0, [r0]
 	ldrh r2, [r1, #6]
 	movs r1, #0
@@ -79660,11 +79660,11 @@ _08046992:
 	b _080469C0
 	.align 2, 0
 _080469A8: .4byte gCurrentSprite
-_080469AC: .4byte 0x030006AD
+_080469AC: .4byte gCoreXFormationSpriteId
 _080469B0:
 	cmp r0, #0x14
 	bne _080469C0
-	ldr r0, _080469C8 @ =0x030006AD
+	ldr r0, _080469C8 @ =gCoreXFormationSpriteId
 	ldrb r0, [r0]
 	movs r1, #0
 	movs r2, #5
@@ -79674,7 +79674,7 @@ _080469C0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080469C8: .4byte 0x030006AD
+_080469C8: .4byte gCoreXFormationSpriteId
 
 	thumb_func_start ZazabiPartInit
 ZazabiPartInit: @ 0x080469CC

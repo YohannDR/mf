@@ -65,6 +65,8 @@ SECTIONS {
         . = 0x000006a6; gAbilityRestingXPosition = .;
         . = 0x000006a8; gSerrisSpawnYPosition = .;
         . = 0x000006aa; gSerrisSpawnXPosition = .;
+        . = 0x000006ac; gBossFormationSpriteId; = .;
+        . = 0x000006ad; gCoreXFormationSpriteId; = .;
         . = 0x000006ae; gAtmosphericStabilizersOnline = .;
         . = 0x000006b0; gNormalXBarrierCoresDestroyed = .;
         . = 0x000006b2; gSuperXBarrierCoresDestroyed = .;
