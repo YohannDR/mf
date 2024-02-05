@@ -1,5 +1,5 @@
-#ifndef SERRIS_DATA
-#define SERRIS_DATA
+#ifndef SERRIS_DATA_H
+#define SERRIS_DATA_H
 
 #include "types.h"
 #include "oam.h"
@@ -33,4 +33,4 @@ extern const struct FrameData sSerrisBlockOam_Falling0[2];
 extern const u16 sSerrisSecondPhasePal[16 * 2];
 extern const u16 sSerrisThirdPhasePal[16 * 2];
 
-#endif /* SERRIS_DATA */
+#endif /* SERRIS_DATA_H */
