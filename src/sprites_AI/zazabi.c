@@ -220,7 +220,7 @@ void ZazabiSpawningFromX(void)
     }
     else
     {
-        gCurrentSprite.pose = 0x7;
+        gCurrentSprite.pose = ZAZABI_POSE_IDLE_INIT;
         gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
     }
 }
@@ -246,7 +246,7 @@ void ZazabiIdle(void)
         gCurrentSprite.work1--;
 
         if (gCurrentSprite.work1 == 0)
-            gCurrentSprite.pose = 0x1;
+            gCurrentSprite.pose = ZAZABI_POSE_CRAWLING_INIT;
     }
 }
 
@@ -302,13 +302,13 @@ void ZazabiCrawling(void)
     {
         if (SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 8, BLOCK_SIZE * 6) != NSLR_OUT_OF_RANGE)
         {
-            gCurrentSprite.pose = 0x17;
+            gCurrentSprite.pose = ZAZABI_POSE_JUMP_WARNING_INIT;
             gCurrentSprite.work3 = 0;
         }
     }
     else
     {
-        gCurrentSprite.pose = 0x17;
+        gCurrentSprite.pose = ZAZABI_POSE_JUMP_WARNING_INIT;
         gCurrentSprite.work3 = gSpriteRandomNumber / 4;
 
         if (gSubSpriteData1.health == 60)
@@ -331,7 +331,7 @@ void ZazabiJumpWarning(void)
 {
     if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
     {
-        gCurrentSprite.pose = 0x19;
+        gCurrentSprite.pose = ZAZABI_POSE_JUMPING_INIT;
 
         ParticleSet(gSubSpriteData1.yPosition + ZAZABI_HEIGHT + HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE + PIXEL_SIZE,
             gSubSpriteData1.xPosition - (ZAZABI_WIDTH - QUARTER_BLOCK_SIZE - EIGHTH_BLOCK_SIZE), PE_SMOKE);
@@ -380,15 +380,15 @@ void ZazabiLandingMouthOpen(void)
         if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
         {
             if (gSubSpriteData1.health == 60)
-                gCurrentSprite.pose = 0x3F;
+                gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_5_INIT;
             else if (gSubSpriteData1.health == 80)
-                gCurrentSprite.pose = 0x3B;
+                gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_3_INIT;
             else
-                gCurrentSprite.pose = 0x37;
+                gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_1_INIT;
         }
         else
         {
-            gCurrentSprite.pose = 0x7;
+            gCurrentSprite.pose = ZAZABI_POSE_IDLE_INIT;
         }
     }
 }
@@ -405,7 +405,7 @@ void ZazabiLandingInit(void)
 void ZazabiLanding(void)
 {
     if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
-        gCurrentSprite.pose = 0x19;
+        gCurrentSprite.pose = ZAZABI_POSE_JUMPING_INIT;
 }
 
 void ZazabiEatingSamus1Init(void)
@@ -425,7 +425,7 @@ void ZazabiEatingSamus1(void)
     {
         gBossWork0 = 0;
         Zazabi_Empty();
-        gCurrentSprite.pose = 0x41;
+        gCurrentSprite.pose = ZAZABI_POSE_SPITTING_SAMUS_INIT;
     }
     else
     {
@@ -433,7 +433,7 @@ void ZazabiEatingSamus1(void)
 
         if (gCurrentSprite.work1 == 0)
         {
-            gCurrentSprite.pose = 0x39;
+            gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_2_INIT;
             SoundPlay(0x281);
         }
     }
@@ -456,13 +456,13 @@ void ZazabiEatingSamus2(void)
     {
         gBossWork0 = 0;
         Zazabi_Empty();
-        gCurrentSprite.pose = 0x37;
+        gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_1_INIT;
     }
     else
     {
         if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
         {
-            gCurrentSprite.pose = 0x3B;
+            gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_3_INIT;
             SoundPlay(0x281);
         }
     }
@@ -487,9 +487,9 @@ void ZazabiEatingSamus3(void)
         Zazabi_Empty();
 
         if (gSubSpriteData1.health == 80)
-            gCurrentSprite.pose = 0x41;
+            gCurrentSprite.pose = ZAZABI_POSE_SPITTING_SAMUS_INIT;
         else
-            gCurrentSprite.pose = 0x37;
+            gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_1_INIT;
     }
     else
     {
@@ -497,7 +497,7 @@ void ZazabiEatingSamus3(void)
 
         if (gCurrentSprite.work1 == 0)
         {
-            gCurrentSprite.pose = 0x3D;
+            gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_4_INIT;
             SoundPlay(0x281);
         }
     }
@@ -520,13 +520,13 @@ void ZazabiEatingSamus4(void)
     {
         gBossWork0 = 0;
         Zazabi_Empty();
-        gCurrentSprite.pose = 0x3B;
+        gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_3_INIT;
     }
     else
     {
         if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
         {
-            gCurrentSprite.pose = 0x3F;
+            gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_5_INIT;
             SoundPlay(0x281);
         }
     }
@@ -552,9 +552,9 @@ void ZazabiEatingSamus5(void)
         Zazabi_Empty();
 
         if (gSubSpriteData1.health == 60)
-            gCurrentSprite.pose = 0x41;
+            gCurrentSprite.pose = ZAZABI_POSE_SPITTING_SAMUS_INIT;
         else
-            gCurrentSprite.pose = 0x3B;
+            gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_3_INIT;
     }
 }
 
@@ -581,7 +581,7 @@ void ZazabiSpittingSamus(void)
     }
 
     if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
-        gCurrentSprite.pose = 0x43;
+        gCurrentSprite.pose = ZAZABI_POSE_LANDING_AFTER_SPITTING_INIT;
 }
 
 void ZazabiLandingAfterSpittingInit(void)
@@ -596,7 +596,7 @@ void ZazabiLandingAfterSpittingInit(void)
 void ZazabiLandingAfterSpitting(void)
 {
     if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
-        gCurrentSprite.pose = 0x7;
+        gCurrentSprite.pose = ZAZABI_POSE_IDLE_INIT;
 }
 
 /**
@@ -605,7 +605,7 @@ void ZazabiLandingAfterSpitting(void)
  */
 void ZazabiDyingInit(void)
 {
-    gCurrentSprite.pose = 0x46;
+    gCurrentSprite.pose = ZAZABI_POSE_DYING;
     gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
     gCurrentSprite.health = 1;
     gCurrentSprite.invincibilityStunFlashTimer = 0;
@@ -700,9 +700,127 @@ void ZazabiDying(void)
     }
 }
 
+/**
+ * @brief 469cc | 218 | Initializes a zazabi part
+ * 
+ */
 void ZazabiPartInit(void)
 {
-    // https://decomp.me/scratch/UCLOv
+    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
+    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+    gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
+
+    gCurrentSprite.pose = 0x2;
+    gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
+    gCurrentSprite.health = 1;
+
+    if (gCurrentSprite.roomSlot < ZAZABI_PART_PUPIL)
+        gCurrentSprite.drawOrder = 11;
+    else
+        gCurrentSprite.drawOrder = 13;
+
+    switch (gCurrentSprite.roomSlot)
+    {
+        case ZAZABI_PART_0:
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE + HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE + HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
+
+            gCurrentSprite.hitboxTop = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxBottom = HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxLeft = -BLOCK_SIZE;
+            gCurrentSprite.hitboxRight = BLOCK_SIZE;
+            break;
+
+        case ZAZABI_PART_MOUTH:
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE + HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE + HALF_BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -PIXEL_SIZE;
+            gCurrentSprite.hitboxBottom = PIXEL_SIZE;
+            gCurrentSprite.hitboxLeft = -PIXEL_SIZE;
+            gCurrentSprite.hitboxRight = PIXEL_SIZE;
+
+            gCurrentSprite.samusCollision = SSC_NONE;
+            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            break;
+
+        case ZAZABI_PART_HAIR:
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2 + HALF_BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -BLOCK_SIZE;
+            gCurrentSprite.hitboxBottom = QUARTER_BLOCK_SIZE;
+            gCurrentSprite.hitboxLeft = -(BLOCK_SIZE + HALF_BLOCK_SIZE);
+            gCurrentSprite.hitboxRight = BLOCK_SIZE + HALF_BLOCK_SIZE;
+            break;
+
+        case ZAZABI_PART_EYE_SHELL:
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE + HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE + HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -(BLOCK_SIZE + HALF_BLOCK_SIZE);
+            gCurrentSprite.hitboxBottom = BLOCK_SIZE + HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxLeft = -BLOCK_SIZE;
+            gCurrentSprite.hitboxRight = BLOCK_SIZE;
+            break;
+
+        case ZAZABI_PART_PUPIL:
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -PIXEL_SIZE;
+            gCurrentSprite.hitboxBottom = PIXEL_SIZE;
+            gCurrentSprite.hitboxLeft = -PIXEL_SIZE;
+            gCurrentSprite.hitboxRight = PIXEL_SIZE;
+
+            gCurrentSprite.samusCollision = SSC_NONE;
+            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            break;
+
+        case ZAZABI_PART_UPPER_SHELL:
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxBottom = HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxLeft = -(HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
+            gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE;
+            break;
+
+        case ZAZABI_PART_MIDDLE_SHELL:
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -(HALF_BLOCK_SIZE - PIXEL_SIZE);
+            gCurrentSprite.hitboxBottom = QUARTER_BLOCK_SIZE + EIGHTH_BLOCK_SIZE;
+            gCurrentSprite.hitboxLeft = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE;
+            break;
+
+        case ZAZABI_PART_LOWER_SHELL:
+            gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+
+            gCurrentSprite.hitboxTop = -(QUARTER_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
+            gCurrentSprite.hitboxBottom = QUARTER_BLOCK_SIZE + PIXEL_SIZE;
+            gCurrentSprite.hitboxLeft = -HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE;
+            break;
+
+        default:
+            gCurrentSprite.status = 0;
+    }
+
+    ZazabiSyncSubSprites();
 }
 
 void ZazabiPartDefault(void)
@@ -715,17 +833,212 @@ void ZazabiPartMouth(void)
 
 }
 
-void ZazabiPartEye(void)
+void ZazabiPartPupil(void)
 {
 
 }
 
+/**
+ * @brief 470a0 | 24c | Zazabi AI
+ * 
+ */
 void Zazabi(void)
 {
+    gCurrentSprite.ignoreSamusCollisionTimer = 1;
+    ZazabiProjectilesCollision();
 
+    switch (gCurrentSprite.pose)
+    {
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
+            ZazabiInit();
+
+        case SPRITE_POSE_SPAWNING_FROM_X:
+            ZazabiSpawningFromX();
+            break;
+
+        case SPRITE_POSE_UNITIALIZED:
+            ZazabiInit();
+            break;
+
+        case ZAZABI_POSE_IDLE_INIT:
+            ZazabiIdleInit();
+
+        case ZAZABI_POSE_IDLE:
+            ZazabiIdle();
+            break;
+
+        case ZAZABI_POSE_CRAWLING_INIT:
+            ZazabiCrawlingInit();
+
+        case ZAZABI_POSE_CRAWLING:
+            ZazabiCrawling();
+            break;
+
+        case ZAZABI_POSE_JUMP_WARNING_INIT:
+            ZazabiJumpWarningInit();
+
+        case ZAZABI_POSE_JUMP_WARNING:
+            ZazabiJumpWarning();
+            break;
+
+        case ZAZABI_POSE_JUMPING_INIT:
+            ZazabiJumpingInit();
+
+        case ZAZABI_POSE_JUMPING:
+            ZazabiJumping();
+            break;
+
+        case ZAZABI_POSE_FALLING_INIT:
+            ZazabiFallingInit();
+
+        case ZAZABI_POSE_FALLING:
+            ZazabiFalling();
+            break;
+
+        case ZAZABI_POSE_LANDING_MOUTH_OPEN_INIT:
+            ZazabiLandingMouthOpenInit();
+
+        case ZAZABI_POSE_LANDING_MOUTH_OPEN:
+            ZazabiLandingMouthOpen();
+            break;
+
+        case ZAZABI_POSE_LANDING_INIT:
+            ZazabiLandingInit();
+
+        case ZAZABI_POSE_LANDING:
+            ZazabiLanding();
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_1_INIT:
+            ZazabiEatingSamus1Init();
+
+        case ZAZABI_POSE_EATING_SAMUS_1:
+            ZazabiEatingSamus1();
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_2_INIT:
+            ZazabiEatingSamus2Init();
+
+        case ZAZABI_POSE_EATING_SAMUS_2:
+            ZazabiEatingSamus2();
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_3_INIT:
+            ZazabiEatingSamus3Init();
+
+        case ZAZABI_POSE_EATING_SAMUS_3:
+            ZazabiEatingSamus3();
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_4_INIT:
+            ZazabiEatingSamus4Init();
+
+        case ZAZABI_POSE_EATING_SAMUS_4:
+            ZazabiEatingSamus4();
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_5_INIT:
+            ZazabiEatingSamus5Init();
+
+        case ZAZABI_POSE_EATING_SAMUS_5:
+            ZazabiEatingSamus5();
+            break;
+
+        case ZAZABI_POSE_SPITTING_SAMUS_INIT:
+            ZazabiSpittingSamusInit();
+
+        case ZAZABI_POSE_SPITTING_SAMUS:
+            ZazabiSpittingSamus();
+            break;
+
+        case ZAZABI_POSE_LANDING_AFTER_SPITTING_INIT:
+            ZazabiLandingAfterSpittingInit();
+
+        case ZAZABI_POSE_LANDING_AFTER_SPITTING:
+            ZazabiLandingAfterSpitting();
+            break;
+
+        case ZAZABI_POSE_DYING_INIT:
+            ZazabiDyingInit();
+
+        case ZAZABI_POSE_DYING:
+            ZazabiDying();
+    }
+
+    SpriteUtilUpdateSubSpriteData1Animation();
+    ZazabiSyncSubSprites();
 }
 
+/**
+ * @brief 472ec | d0 | Zazabi part AI
+ * 
+ */
 void ZazabiPart(void)
 {
+    if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+        gCurrentSprite.ignoreSamusCollisionTimer = 16;
 
+    if (gCurrentSprite.pose == SPRITE_POSE_UNITIALIZED)
+    {
+        ZazabiPartInit();
+        return;
+    }
+
+    switch (gCurrentSprite.roomSlot)
+    {
+        case ZAZABI_PART_PUPIL:
+            ZazabiPartPupil();
+            SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position();
+            break;
+
+        case ZAZABI_PART_MOUTH:
+            ZazabiPartMouth();
+            break;
+
+        case ZAZABI_PART_UPPER_SHELL:
+            if (gSubSpriteData1.health == 40)
+            {
+                ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x2F);
+                gCurrentSprite.status = 0;
+                unk_3b1c(0x284);
+            }
+            else
+            {
+                ZazabiPartDefault();
+                ZazabiSyncSubSprites();
+            }
+            break;
+
+        case ZAZABI_PART_MIDDLE_SHELL:
+            if (gSubSpriteData1.health == 60)
+            {
+                ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x2F);
+                gCurrentSprite.status = 0;
+                unk_3b1c(0x284);
+            }
+            else
+            {
+                ZazabiPartDefault();
+                ZazabiSyncSubSprites();
+            }
+            break;
+
+        case ZAZABI_PART_LOWER_SHELL:
+            if (gSubSpriteData1.health == 80)
+            {
+                ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x2F);
+                gCurrentSprite.status = 0;
+                unk_3b1c(0x284);
+            }
+            else
+            {
+                ZazabiPartDefault();
+                ZazabiSyncSubSprites();
+            }
+            break;
+
+        default:
+            ZazabiPartDefault();
+            ZazabiSyncSubSprites();
+    }
 }

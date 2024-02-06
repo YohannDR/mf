@@ -80394,8 +80394,8 @@ _08046FDA:
 	.align 2, 0
 _08046FE4: .4byte 0x0000FFFB
 
-	thumb_func_start ZazabiPartEye
-ZazabiPartEye: @ 0x08046FE8
+	thumb_func_start ZazabiPartPupil
+ZazabiPartPupil: @ 0x08046FE8
 	push {r4, lr}
 	ldr r2, _0804701C @ =gCurrentSprite
 	adds r1, r2, #0
@@ -80740,7 +80740,7 @@ _08047330: @ jump table
 	.4byte _08047370 @ case 6
 	.4byte _08047380 @ case 7
 _08047350:
-	bl ZazabiPartEye
+	bl ZazabiPartPupil
 	bl SyncCurrentSpritePositionWithSubSprite1Position
 	b _080473B6
 _0804735A:
