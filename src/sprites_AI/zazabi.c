@@ -2,7 +2,9 @@
 #include "macros.h"
 #include "globals.h"
 
+#include "data/sprite_data.h"
 #include "data/sprites/x_parasite.h"
+#include "data/sprites/zazabi.h"
 
 #include "constants/clipdata.h"
 #include "constants/samus.h"
@@ -225,14 +227,195 @@ void ZazabiSpawningFromX(void)
     }
 }
 
+/**
+ * @brief 4566c | 1dc | Initializes zazabi
+ * 
+ */
 void ZazabiInit(void)
 {
+    u8 ramSlot;
 
+    gCurrentSprite.samusCollision = SSC_NONE;
+    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+
+    gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+    gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+    gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
+
+    gCurrentSprite.hitboxTop = -(HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE);
+    gCurrentSprite.hitboxBottom = HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE;
+    gCurrentSprite.hitboxLeft = -HALF_BLOCK_SIZE;
+    gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE;
+
+    gCurrentSprite.drawOrder = 12;
+    gCurrentSprite.work3 = 0;
+    gCurrentSprite.roomSlot = ZAZABI_PART_EYE;
+
+    gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
+
+    gSubSpriteData1.health = gCurrentSprite.health;
+    gSubSpriteData1.yPosition = gCurrentSprite.yPosition;
+    gSubSpriteData1.xPosition = gCurrentSprite.xPosition;
+
+    gSubSpriteData1.pMultiOam = sZazabiMultiOam_Idle4;
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
+    {
+        gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
+        gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+    }
+    else
+    {
+        gCurrentSprite.pose = ZAZABI_POSE_IDLE_INIT;
+    }
+
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ZAZABI_PART, ZAZABI_PART_0, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+
+    if (ramSlot == UCHAR_MAX)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ZAZABI_PART, ZAZABI_PART_MOUTH, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+
+    if (ramSlot == UCHAR_MAX)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ZAZABI_PART, ZAZABI_PART_HAIR, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+
+    if (ramSlot == UCHAR_MAX)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ZAZABI_PART, ZAZABI_PART_EYE_SHELL, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+
+    if (ramSlot == UCHAR_MAX)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ZAZABI_PART, ZAZABI_PART_PUPIL, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+
+    if (ramSlot == UCHAR_MAX)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ZAZABI_PART, ZAZABI_PART_UPPER_SHELL, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+
+    if (ramSlot == UCHAR_MAX)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ZAZABI_PART, ZAZABI_PART_MIDDLE_SHELL, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+
+    if (ramSlot == UCHAR_MAX)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ZAZABI_PART, ZAZABI_PART_LOWER_SHELL, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+
+    if (ramSlot == UCHAR_MAX)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    gBossWork0 = 0;
 }
 
+/**
+ * @brief 45848 | bc | Initializes zazabi to be idle
+ * 
+ */
 void ZazabiIdleInit(void)
 {
+    u16 currentHealth;
 
+    currentHealth = gCurrentSprite.health;
+
+    if (gSubSpriteData1.health == 80)
+    {
+        if (currentHealth <= 60)
+        {
+            gSubSpriteData1.health = 60;
+            gCurrentSprite.health = 60;
+        }
+    }
+    else if (gSubSpriteData1.health == 60)
+    {
+        if (currentHealth <= 40)
+        {
+            gSubSpriteData1.health = 40;
+            gCurrentSprite.health = 40;
+        }
+    }
+    else if (gSubSpriteData1.health == 40)
+    {
+        if (currentHealth == 0)
+        {
+            gSubSpriteData1.health = 0;
+        }
+    }
+    else
+    {
+        if (currentHealth <= 80)
+        {
+            gSubSpriteData1.health = 80;
+            gCurrentSprite.health = 80;
+        }
+    }
+
+    if (gSubSpriteData1.health == 40 || gSubSpriteData1.health == 0)
+    {
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Idle1;
+        gCurrentSprite.work1 = 1;
+    }
+    else if (gSubSpriteData1.health == 60)
+    {
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Idle2;
+        gCurrentSprite.work1 = 1;
+    }
+    else if (gSubSpriteData1.health == 80)
+    {
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Idle3;
+        gCurrentSprite.work1 = 2;
+    }
+    else
+    {
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Idle4;
+        gCurrentSprite.work1 = 3;
+    }
+
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    if (gSubSpriteData1.health != 0)
+        gCurrentSprite.pose = ZAZABI_POSE_IDLE;
+    else
+        gCurrentSprite.pose = ZAZABI_POSE_DYING_INIT;
 }
 
 /**
@@ -250,9 +433,30 @@ void ZazabiIdle(void)
     }
 }
 
+/**
+ * @brief 45930 | 70 | Initializes zazabi to be crawling
+ * 
+ */
 void ZazabiCrawlingInit(void)
 {
+    if (gSubSpriteData1.health == 40)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Crawling1;
+    else if (gSubSpriteData1.health == 60)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Crawling2;
+    else if (gSubSpriteData1.health == 80)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Crawling3;
+    else
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Crawling4;
 
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = ZAZABI_POSE_CRAWLING;
+
+    if (gSubSpriteData1.health == 40)
+        gCurrentSprite.work1 = 60 + gSpriteRandomNumber * 8;
+    else
+        gCurrentSprite.work1 = 60 * 2;
 }
 
 /**
@@ -318,9 +522,25 @@ void ZazabiCrawling(void)
     }
 }
 
+/**
+ * @brief 45a88 | 50 | Initializes zazabi to do a jump warning
+ * 
+ */
 void ZazabiJumpWarningInit(void)
 {
+    if (gSubSpriteData1.health == 40)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_JumpWarning1;
+    else if (gSubSpriteData1.health == 60)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_JumpWarning2;
+    else if (gSubSpriteData1.health == 80)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_JumpWarning3;
+    else
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_JumpWarning4;
 
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = ZAZABI_POSE_JUMP_WARNING;
 }
 
 /**
@@ -361,9 +581,28 @@ void ZazabiFalling(void)
 
 }
 
+/**
+ * @brief 461b4 | 64 | Initializes zazabi to be landing with its mouth opened
+ * 
+ */
 void ZazabiLandingMouthOpenInit(void)
 {
+    if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+        SoundPlay(0x280);
 
+    if (gSubSpriteData1.health == 40)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_LandingMouthOpen1;
+    else if (gSubSpriteData1.health == 60)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_LandingMouthOpen2;
+    else if (gSubSpriteData1.health == 80)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_LandingMouthOpen3;
+    else
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_LandingMouthOpen4;
+
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = ZAZABI_POSE_LANDING_MOUTH_OPEN;
 }
 
 /**
@@ -393,9 +632,25 @@ void ZazabiLandingMouthOpen(void)
     }
 }
 
+/**
+ * @brief 46298 | 50 | Initializes zazabi to be landing
+ * 
+ */
 void ZazabiLandingInit(void)
 {
+    if (gSubSpriteData1.health == 40)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Landing1;
+    else if (gSubSpriteData1.health == 60)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Landing2;
+    else if (gSubSpriteData1.health == 80)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Landing3;
+    else
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_Landing4;
 
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = ZAZABI_POSE_LANDING;
 }
 
 /**
@@ -408,9 +663,18 @@ void ZazabiLanding(void)
         gCurrentSprite.pose = ZAZABI_POSE_JUMPING_INIT;
 }
 
+/**
+ * @brief 46304 | 2c | Initializes zazabi to be eating samus (1)
+ * 
+ */
 void ZazabiEatingSamus1Init(void)
 {
+    gSubSpriteData1.pMultiOam = sZazabiMultiOam_EatingSamus1;
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
 
+    gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_1;
+    gCurrentSprite.work1 = 60;
 }
 
 /**
@@ -439,9 +703,17 @@ void ZazabiEatingSamus1(void)
     }
 }
 
+/**
+ * @brief 46384 | 24 | Initializes zazabi to be eating samus (2)
+ * 
+ */
 void ZazabiEatingSamus2Init(void)
 {
+    gSubSpriteData1.pMultiOam = sZazabiMultiOam_EatingSamus2;
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
 
+    gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_2;
 }
 
 /**
@@ -468,9 +740,22 @@ void ZazabiEatingSamus2(void)
     }
 }
 
+/**
+ * @brief 463f4 | 3c | Initializes zazabi to be eating samus (3)
+ * 
+ */
 void ZazabiEatingSamus3Init(void)
 {
+    if (gSubSpriteData1.health == 80)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_EatingSamus3_3;
+    else
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_EatingSamus3_4;
 
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_3;
+    gCurrentSprite.work1 = 60;
 }
 
 /**
@@ -503,9 +788,21 @@ void ZazabiEatingSamus3(void)
     }
 }
 
+/**
+ * @brief 464a0 | 38 | Initializes zazabi to be eating samus (4)
+ * 
+ */
 void ZazabiEatingSamus4Init(void)
 {
+    if (gSubSpriteData1.health == 80)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_EatingSamus4_3;
+    else
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_EatingSamus4_4;
 
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_4;
 }
 
 /**
@@ -532,9 +829,23 @@ void ZazabiEatingSamus4(void)
     }
 }
 
+/**
+ * @brief 46524 | 44 | Initializes zazabi to be eating samus (5)
+ * 
+ */
 void ZazabiEatingSamus5Init(void)
 {
+    if (gSubSpriteData1.health == 60)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_EatingSamus5_2;
+    else if (gSubSpriteData1.health == 80)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_EatingSamus5_3;
+    else
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_EatingSamus5_4;
 
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_5;
 }
 
 /**
@@ -558,9 +869,25 @@ void ZazabiEatingSamus5(void)
     }
 }
 
+/**
+ * @brief 465ac | 50 | Initializes zazabi to be spitting samus
+ * 
+ */
 void ZazabiSpittingSamusInit(void)
 {
+    SoundPlayNotAlreadyPlaying(0x283);
 
+    if (gSubSpriteData1.health == 60)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_SpittingSamus2;
+    else if (gSubSpriteData1.health == 80)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_SpittingSamus3;
+    else
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_SpittingSamus4;
+
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = ZAZABI_POSE_SPITTING_SAMUS;
 }
 
 /**
@@ -584,9 +911,23 @@ void ZazabiSpittingSamus(void)
         gCurrentSprite.pose = ZAZABI_POSE_LANDING_AFTER_SPITTING_INIT;
 }
 
+/**
+ * @brief 46668 | 44 | Initializes zazabi to be landing after spitting
+ * 
+ */
 void ZazabiLandingAfterSpittingInit(void)
 {
+    if (gSubSpriteData1.health == 60)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_LandingAfterSpitting2;
+    else if (gSubSpriteData1.health == 80)
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_LandingAfterSpitting3;
+    else
+        gSubSpriteData1.pMultiOam = sZazabiMultiOam_LandingAfterSpitting4;
 
+    gSubSpriteData1.animationDurationCounter = 0;
+    gSubSpriteData1.currentAnimationFrame = 0;
+
+    gCurrentSprite.pose = ZAZABI_POSE_LANDING_AFTER_SPITTING;
 }
 
 /**
@@ -823,19 +1164,302 @@ void ZazabiPartInit(void)
     ZazabiSyncSubSprites();
 }
 
+/**
+ * @brief 46be4 | 378 | Default behavior for zazabi parts
+ * 
+ */
 void ZazabiPartDefault(void)
 {
+    u8 ramSlot;
 
+    ramSlot = gCurrentSprite.primarySpriteRamSlot;
+
+    switch (gSpriteData[ramSlot].pose)
+    {
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
+            gCurrentSprite.status = 0;
+            break;
+
+        case SPRITE_POSE_SPAWNING_FROM_X:
+        case ZAZABI_POSE_DYING_INIT:
+        case ZAZABI_POSE_DYING:
+            gCurrentSprite.ignoreSamusCollisionTimer = 1;
+
+            if (gSpriteData[ramSlot].status & SPRITE_STATUS_ENABLE_MOSAIC)
+            {
+                gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
+            }
+            else
+            {
+                gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
+            }
+            break;
+
+        case ZAZABI_POSE_IDLE_INIT:
+        case ZAZABI_POSE_IDLE:
+            gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
+
+            if (!(gCurrentSprite.status & SPRITE_STATUS_NOT_DRAWN))
+                gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
+            break;
+
+        case ZAZABI_POSE_FALLING_INIT:
+        case ZAZABI_POSE_FALLING:
+            if (gCurrentSprite.roomSlot != ZAZABI_PART_0)
+                break;
+
+            if (gSpriteData[ramSlot].work3 != 0)
+                break;
+
+            if (gSubSpriteData1.health == 40)
+            {
+                if (gCurrentSprite.pOam == sZazabi_3729f8)
+                {
+                    gCurrentSprite.hitboxTop = -(BLOCK_SIZE - QUARTER_BLOCK_SIZE);
+                    gCurrentSprite.hitboxBottom = PIXEL_SIZE;
+                    gCurrentSprite.hitboxLeft = -BLOCK_SIZE;
+                    gCurrentSprite.hitboxRight = BLOCK_SIZE;
+                }
+            }
+            else
+            {
+                if (gCurrentSprite.pOam == sZazabiPartOam_MouthOpened)
+                {
+                    gCurrentSprite.samusCollision = SSC_14;
+
+                    gCurrentSprite.hitboxTop = -BLOCK_SIZE;
+                    gCurrentSprite.hitboxBottom = PIXEL_SIZE;
+                    gCurrentSprite.hitboxLeft = -(BLOCK_SIZE + QUARTER_BLOCK_SIZE);
+                    gCurrentSprite.hitboxRight = (BLOCK_SIZE + QUARTER_BLOCK_SIZE);
+                }
+
+                if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+                {
+                    gSamusData.yPosition = gCurrentSprite.yPosition + HALF_BLOCK_SIZE;
+                    gSamusData.xPosition = gCurrentSprite.xPosition;
+                }
+            }
+
+            ZazabiEnableProjectilesToPassThrough();
+            break;
+
+        case ZAZABI_POSE_LANDING_MOUTH_OPEN_INIT:
+            if (gCurrentSprite.roomSlot == ZAZABI_PART_0)
+            {
+                gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
+                
+                gCurrentSprite.hitboxTop = -HALF_BLOCK_SIZE;
+                gCurrentSprite.hitboxBottom = HALF_BLOCK_SIZE;
+                gCurrentSprite.hitboxLeft = -BLOCK_SIZE;
+                gCurrentSprite.hitboxRight = BLOCK_SIZE;
+
+                if (gSamusData.pose != SPOSE_GRABBED_BY_ZAZABI)
+                    break;
+
+                gSamusData.yPosition = gCurrentSprite.yPosition + HALF_BLOCK_SIZE;
+                gSamusData.xPosition = gCurrentSprite.xPosition;
+            }
+
+            if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+            {
+                if (gCurrentSprite.roomSlot < ZAZABI_PART_EYE)
+                    gCurrentSprite.drawOrder = 3;
+                else
+                    gCurrentSprite.drawOrder = 5;
+            }
+            break;
+
+        case ZAZABI_POSE_LANDING_MOUTH_OPEN:
+            if (gCurrentSprite.roomSlot == ZAZABI_PART_0)
+            {
+                if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+                {
+                    gSamusData.yPosition = gCurrentSprite.yPosition + HALF_BLOCK_SIZE;
+                    gSamusData.xPosition = gCurrentSprite.xPosition;
+                }
+            }
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_1_INIT:
+        case ZAZABI_POSE_EATING_SAMUS_1:
+            if (gCurrentSprite.roomSlot == ZAZABI_PART_LOWER_SHELL)
+            {
+                if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+                {
+                    gSamusData.yPosition = gCurrentSprite.yPosition + HALF_BLOCK_SIZE;
+                    gSamusData.xPosition = gCurrentSprite.xPosition;
+                }
+            }
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_2_INIT:
+        case ZAZABI_POSE_EATING_SAMUS_2:
+            if (gCurrentSprite.roomSlot == ZAZABI_PART_LOWER_SHELL)
+            {
+                if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+                {
+                    if (gCurrentSprite.currentAnimationFrame == 0)
+                    {
+                        gSamusData.yPosition = gCurrentSprite.yPosition + HALF_BLOCK_SIZE;
+                        gSamusData.xPosition = gCurrentSprite.xPosition;
+                    }
+                    else
+                    {
+                        gSamusData.yPosition = gCurrentSprite.yPosition;
+                        gSamusData.xPosition = gCurrentSprite.xPosition;
+                    }
+                }
+            }
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_3_INIT:
+        case ZAZABI_POSE_EATING_SAMUS_3:
+            if (gCurrentSprite.roomSlot == ZAZABI_PART_MIDDLE_SHELL)
+            {
+                if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+                {
+                    gSamusData.yPosition = gCurrentSprite.yPosition + HALF_BLOCK_SIZE;
+                    gSamusData.xPosition = gCurrentSprite.xPosition;
+                }
+            }
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_4_INIT:
+        case ZAZABI_POSE_EATING_SAMUS_4:
+            if (gCurrentSprite.roomSlot == ZAZABI_PART_MIDDLE_SHELL)
+            {
+                if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+                {
+                    if (gCurrentSprite.currentAnimationFrame == 0)
+                    {
+                        gSamusData.yPosition = gCurrentSprite.yPosition + HALF_BLOCK_SIZE;
+                        gSamusData.xPosition = gCurrentSprite.xPosition;
+                    }
+                    else
+                    {
+                        gSamusData.yPosition = gCurrentSprite.yPosition;
+                        gSamusData.xPosition = gCurrentSprite.xPosition;
+                    }
+                }
+            }
+            break;
+
+        case ZAZABI_POSE_EATING_SAMUS_5_INIT:
+        case ZAZABI_POSE_EATING_SAMUS_5:
+            if (gCurrentSprite.roomSlot == ZAZABI_PART_UPPER_SHELL)
+            {
+                if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+                {
+                    gSamusData.yPosition = gCurrentSprite.yPosition + HALF_BLOCK_SIZE;
+                    gSamusData.xPosition = gCurrentSprite.xPosition;
+                }
+            }
+            break;
+
+        case ZAZABI_POSE_SPITTING_SAMUS_INIT:
+        case ZAZABI_POSE_SPITTING_SAMUS:
+            if (gCurrentSprite.roomSlot == ZAZABI_PART_LOWER_SHELL)
+            {
+                if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+                {
+                    gSamusData.yPosition = gCurrentSprite.yPosition + BLOCK_SIZE;
+                    gSamusData.xPosition = gCurrentSprite.xPosition;
+                }
+            }
+
+            if (gCurrentSprite.roomSlot < ZAZABI_PART_EYE)
+                gCurrentSprite.drawOrder = 11;
+            else
+                gCurrentSprite.drawOrder = 13;
+    }
 }
 
+/**
+ * @brief 46f5c | 8c | Handles zazabi's mouth
+ * 
+ */
 void ZazabiPartMouth(void)
 {
+    u8 ramSlot;
 
+    gCurrentSprite.ignoreSamusCollisionTimer = 1;
+    ramSlot = gCurrentSprite.primarySpriteRamSlot;
+
+    if (gSpriteData[ramSlot].status & SPRITE_STATUS_ENABLE_MOSAIC)
+        gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
+    else
+        gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
+
+    if (gSpriteData[ramSlot].pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
+    {
+        gCurrentSprite.status = 0;
+    }
+    else
+    {
+        ZazabiSyncSubSprites();
+
+        if (gCurrentSprite.pOam == sZazabi_372c80)
+            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+        else
+            gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    }
 }
 
+/**
+ * @brief 46fe8 | b8 | Handles zazabi's pupil
+ * 
+ */
 void ZazabiPartPupil(void)
 {
+    u8 ramSlot;
 
+    gCurrentSprite.ignoreSamusCollisionTimer = 1;
+    ramSlot = gCurrentSprite.primarySpriteRamSlot;
+
+    switch (gSpriteData[ramSlot].pose)
+    {
+        case ZAZABI_POSE_DYING_INIT:
+        case ZAZABI_POSE_DYING:
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
+            gCurrentSprite.status = 0;
+            break;
+
+        case ZAZABI_POSE_CRAWLING_INIT:
+        case ZAZABI_POSE_CRAWLING:
+        case ZAZABI_POSE_IDLE_INIT:
+        case ZAZABI_POSE_IDLE:
+            if (gCurrentSprite.pOam == sZazabiPartOam_PupilBlinking)
+            {
+                if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+                {
+                    gCurrentSprite.pOam = sZazabiPartOam_PupilClosed;
+                    gCurrentSprite.animationDurationCounter = 0;
+                    gCurrentSprite.currentAnimationFrame = 0;
+
+                    gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+                }
+            }
+            else if (gSpriteRandomNumber == 15)
+            {
+                gCurrentSprite.pOam = sZazabiPartOam_PupilBlinking;
+                gCurrentSprite.animationDurationCounter = 0;
+                gCurrentSprite.currentAnimationFrame = 0;
+
+                gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+                SoundPlayNotAlreadyPlaying(0x287);
+            }
+            break;
+
+        default:
+            if (gCurrentSprite.pOam == sZazabiPartOam_PupilBlinking)
+            {
+                gCurrentSprite.pOam = sZazabiPartOam_PupilClosed;
+                gCurrentSprite.animationDurationCounter = 0;
+                gCurrentSprite.currentAnimationFrame = 0;
+
+                gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            }
+    }
 }
 
 /**
