@@ -566,9 +566,60 @@ void ZazabiJumpingInit(void)
 
 }
 
+/**
+ * @brief 45c4c | d8 | Handles zazabi jumping
+ * 
+ */
 void ZazabiJumping(void)
 {
+    u8 offset;
+    s16 movement;
 
+    if (gCurrentSprite.work3 == 0)
+    {
+        offset = gCurrentSprite.work4;
+        movement = sZazabiJumpingSpeedMouthOpened[offset];
+
+        if (movement == SHORT_MAX)
+        {
+            gCurrentSprite.pose = ZAZABI_POSE_FALLING_INIT;
+        }
+        else
+        {
+            gCurrentSprite.work4++;
+            gSubSpriteData1.yPosition += movement;
+        }
+
+        if (gCurrentSprite.work2 != 0)
+            ZazabiXMovement(PIXEL_SIZE);
+    }
+    else
+    {
+        offset = gCurrentSprite.work4;
+
+        if (gSubSpriteData1.health == 80)
+            movement = sZazabiJumpingSpeed3[offset];
+        else if (gSubSpriteData1.health == 60)
+            movement = sZazabiJumpingSpeed2[offset];
+        else
+            movement = sZazabiJumpingSpeed4[offset];
+
+        if (movement == SHORT_MAX)
+        {
+            gCurrentSprite.pose = ZAZABI_POSE_FALLING_INIT;
+        }
+        else
+        {
+            offset++;
+            gCurrentSprite.work4 = offset;
+            gSubSpriteData1.yPosition += movement;
+        }
+
+        if (gCurrentSprite.work2 != 0)
+            ZazabiXMovement(PIXEL_SIZE * 2);
+        else
+            ZazabiXMovement(PIXEL_SIZE / 2);
+    }
 }
 
 void ZazabiFallingInit(void)

@@ -76,12 +76,12 @@ extern const struct FrameData sZazabiMultiOam_FallingMouthOpenedRight1[9];
 extern const struct FrameData sZazabiMultiOam_LandingMouthOpen1[7];
 extern const struct FrameData sZazabiMultiOam_Landing1[3];
 
-extern const s16 ZazabiJumpingSpeedMouthOpened[40];
-extern const s16 ZazabiFallingSpeedMouthOpened[8];
-extern const s16 ZazabiJumpingSpeed4[40];
-extern const s16 ZazabiJumpingSpeed2[40];
-extern const s16 ZazabiJumpingSpeed3[40];
-extern const s16 ZazabiFallingSpeed[8];
+extern const s16 sZazabiJumpingSpeedMouthOpened[40];
+extern const s16 sZazabiFallingSpeedMouthOpened[8];
+extern const s16 sZazabiJumpingSpeed4[40];
+extern const s16 sZazabiJumpingSpeed2[40];
+extern const s16 sZazabiJumpingSpeed3[40];
+extern const s16 sZazabiFallingSpeed[8];
 
 extern const struct FrameData sZazabi_3729f8[2];
 extern const struct FrameData sZazabiPartOam_MouthOpened[2];
