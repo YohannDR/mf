@@ -863,7 +863,7 @@ _080733CE:
 	adds r0, #1
 	strb r0, [r1, #3]
 	movs r0, #0xf8
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _080733E0:
 	pop {r4}
 	pop {r0}
@@ -33883,7 +33883,7 @@ _0808389E:
 	strb r1, [r0]
 	movs r0, #0xa3
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _080838D8:
 	ldr r0, [sp]
 	add sp, #4
@@ -34066,7 +34066,7 @@ _080839FC:
 	strb r1, [r0]
 	movs r0, #0xa3
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08083A36:
 	mov r0, sl
 	pop {r3, r4, r5}
@@ -34224,7 +34224,7 @@ _08083B2E:
 	strb r1, [r0]
 	movs r0, #0xa3
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08083B64:
 	adds r0, r6, #0
 	pop {r3, r4}

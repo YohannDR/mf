@@ -6132,7 +6132,7 @@ _0806B50C:
 	movs r0, #0x94
 	lsls r0, r0, #1
 _0806B51A:
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0806B51E:
 	movs r6, #1
 	b _0806B57A
@@ -7455,7 +7455,7 @@ _0806BEF8:
 	beq _0806BF04
 	movs r0, #0x94
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0806BF04:
 	add sp, #0xc
 	pop {r4, r5, r6, r7}

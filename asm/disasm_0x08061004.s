@@ -297,7 +297,7 @@ _080611F4:
 	strh r0, [r4, #8]
 _0806121C:
 	ldr r0, _08061238 @ =0x00000141
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	adds r1, r4, #0
 	adds r1, #0x22
 	ldrb r0, [r1]
@@ -454,7 +454,7 @@ _0806132C:
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, _08061358 @ =0x00000141
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08061346:
 	add sp, #8
 	pop {r3, r4, r5}
@@ -637,7 +637,7 @@ _08061480:
 	movs r0, #1
 	strb r0, [r2]
 	ldr r0, [sp, #8]
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0806149A:
 	movs r0, #0
 	mov sb, r0
@@ -782,7 +782,7 @@ _0806158E:
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, [sp, #8]
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _080615A8:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -941,7 +941,7 @@ SpriteDyingInit: @ 0x080616C0
 	strb r0, [r1]
 	movs r0, #0xa1
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1498,7 +1498,7 @@ _08061B20:
 	mov r2, ip
 	strh r5, [r2]
 _08061B2C:
-	bl MakeSpriteFaceSamusDirection
+	bl SpriteUtilMakeSpriteFaceSamusDirection
 _08061B30:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -2308,7 +2308,7 @@ unk_620ec: @ 0x080620EC
 	lsls r0, r0, #1
 	strh r0, [r2, #0x12]
 	adds r0, #0x17
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2485,7 +2485,7 @@ unk_6224c: @ 0x0806224C
 	movs r0, #0x2c
 	strh r0, [r2, #6]
 	ldr r0, _08062284 @ =0x00000143
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	pop {r0}
 	bx r0
 	.align 2, 0

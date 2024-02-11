@@ -1504,7 +1504,7 @@ Owtch: @ 0x0804A3B4
 	bne _0804A3CE
 	movs r0, #0xea
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804A3CE:
 	adds r0, r4, #0
 	adds r0, #0x32
@@ -1828,7 +1828,7 @@ _0804A6EC:
 	lsls r0, r0, #1
 	movs r1, #0xc0
 	lsls r1, r1, #1
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #0
 	beq _0804A720
 	bl MakeSpriteFaceSamusXFlip
@@ -2849,7 +2849,7 @@ _0804AEAE:
 	cmp r0, #0
 	beq _0804AEC8
 	ldr r0, _0804AEF4 @ =0x000001C7
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804AEC8:
 	ldr r4, _0804AEF0 @ =gCurrentSprite
 	ldrh r1, [r4]
@@ -3186,7 +3186,7 @@ GenesisSpitting: @ 0x0804B140
 	beq _0804B202
 	movs r0, #0xe4
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	b _0804B202
 	.align 2, 0
 _0804B174: .4byte gCurrentSprite
@@ -3379,7 +3379,7 @@ GenesisSpitSplashingInit: @ 0x0804B2C8
 	cmp r0, #0
 	beq _0804B2EE
 	ldr r0, _0804B2FC @ =0x000001C9
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804B2EE:
 	pop {r0}
 	bx r0
@@ -3421,7 +3421,7 @@ Genesis: @ 0x0804B324
 	bne _0804B33E
 	movs r0, #0xe5
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804B33E:
 	adds r0, r4, #0
 	adds r0, #0x32
@@ -3830,7 +3830,7 @@ _0804B766:
 	cmp r0, #0
 	beq _0804B780
 	ldr r0, _0804B798 @ =0x000001C3
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804B780:
 	bl unk_1129c
 	ldr r0, _0804B79C @ =gPreviousVerticalCollisionCheck
@@ -3938,7 +3938,7 @@ _0804B844:
 	movs r1, #0xc0
 	lsls r1, r1, #1
 	adds r0, r1, #0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #4
 	bne _0804B870
 	ldr r1, _0804B868 @ =gCurrentSprite
@@ -4090,7 +4090,7 @@ PuyoJumpWarning: @ 0x0804B948
 	beq _0804B980
 	movs r0, #0xe2
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804B980:
 	pop {r0}
 	bx r0
@@ -4270,7 +4270,7 @@ PuyoJumpingDown: @ 0x0804BAA0
 	cmp r0, #0
 	beq _0804BB2C
 	ldr r0, _0804BAEC @ =0x000001C5
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	b _0804BB2C
 	.align 2, 0
 _0804BAE0: .4byte gCurrentSprite
@@ -4404,7 +4404,7 @@ Puyo: @ 0x0804BBC8
 	bne _0804BBE2
 	movs r0, #0xe3
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804BBE2:
 	adds r0, r4, #0
 	adds r0, #0x32
@@ -4693,7 +4693,7 @@ FakeTankIdle: @ 0x0804BEB8
 	bne _0804BEDE
 	movs r0, #0xc0
 	movs r1, #0xc0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0804BEDE
@@ -5956,13 +5956,13 @@ _0804C9BE:
 	beq _0804CA5C
 	movs r0, #0xa0
 	movs r1, #0xc8
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #0
 	bne _0804CA5C
 	movs r1, #0xc8
 	lsls r1, r1, #1
 	movs r0, #0xa0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r1, r0, #0
 	ldr r3, _0804CA0C @ =gCurrentSprite
 	ldrh r2, [r3]
@@ -6067,7 +6067,7 @@ ZebesianAquaLunge: @ 0x0804CA7C
 	cmp r0, #0
 	bne _0804CB14
 	ldr r0, _0804CAFC @ =0x000001BD
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804CAA0:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
@@ -6094,13 +6094,13 @@ _0804CAB6:
 	movs r1, #0xe1
 	lsls r1, r1, #1
 	adds r0, r5, #0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #0
 	bne _0804CB14
 	movs r1, #0xa0
 	lsls r1, r1, #2
 	adds r0, r5, #0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r2, r0, #0
 	ldrh r1, [r4]
 	movs r0, #0x40
@@ -6481,7 +6481,7 @@ _0804CDDA:
 	bne _0804CDE8
 	movs r0, #0xde
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804CDE8:
 	pop {r4, r5}
 	pop {r0}
@@ -6502,7 +6502,7 @@ ZebesianAqua: @ 0x0804CDF4
 	bne _0804CE0E
 	movs r0, #0xaf
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804CE0E:
 	adds r0, r4, #0
 	adds r0, #0x32
@@ -9280,7 +9280,7 @@ EtecoonWaitingForOthers: @ 0x0804E3A0
 	cmp r0, #1
 	bne _0804E3B6
 	ldr r0, _0804E414 @ =0x00000121
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804E3B6:
 	movs r3, #0
 	ldr r5, _0804E418 @ =gSpriteData
@@ -12070,7 +12070,7 @@ PowampExtendingInit: @ 0x0804F9E8
 	beq _0804FA10
 	movs r0, #0xe7
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804FA10:
 	pop {r0}
 	bx r0
@@ -12161,7 +12161,7 @@ PowampRetractingInit: @ 0x0804FA90
 	cmp r0, #0
 	beq _0804FAB6
 	ldr r0, _0804FAC4 @ =0x000001CF
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804FAB6:
 	pop {r0}
 	bx r0
@@ -12235,7 +12235,7 @@ Powamp: @ 0x0804FB30
 	bne _0804FB4A
 	movs r0, #0xe8
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0804FB4A:
 	adds r0, r4, #0
 	adds r0, #0x32
@@ -12862,7 +12862,7 @@ ZozoroIdleInit: @ 0x08050098
 	beq _080500B8
 	movs r0, #0xb4
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _080500B8:
 	pop {r0}
 	bx r0
@@ -13568,7 +13568,7 @@ Zozoro: @ 0x080505F0
 	cmp r0, #4
 	bne _08050608
 	ldr r0, _0805061C @ =0x000001D1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08050608:
 	adds r0, r4, #0
 	adds r0, #0x32
@@ -13914,7 +13914,7 @@ _0805095C:
 	bl SA_XMonsterScreamingGroundedInit
 _08050960:
 	ldr r0, _0805096C @ =0x000001E1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	movs r0, #1
 	b _08050972
 	.align 2, 0
@@ -14514,7 +14514,7 @@ _08050E18: .4byte 0x08388DE4
 SA_XMonsterIdle: @ 0x08050E1C
 	push {r4, lr}
 	movs r4, #0
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08050E70
 	ldr r2, _08050E44 @ =gCurrentSprite
@@ -14780,7 +14780,7 @@ _0805101C: .4byte 0x08388E5C
 SA_XMonsterLanding: @ 0x08051020
 	push {r4, lr}
 	movs r4, #0
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08051074
 	ldr r2, _08051048 @ =gCurrentSprite
@@ -15679,7 +15679,7 @@ _080517AE:
 _080517B4:
 	bl SA_XMonsterTurningIntoCoreX
 _080517B8:
-	bl UpdateSubSpriteData1Animation
+	bl SpriteUtilUpdateSubSpriteData1Animation
 	bl SA_XMonsterSyncSubSprites
 	pop {r0}
 	bx r0
@@ -16341,7 +16341,7 @@ _08051CE0: .4byte 0x0000026A
 	thumb_func_start Box2WaitingToRun
 Box2WaitingToRun: @ 0x08051CE4
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08051D08
 	ldr r1, _08051D20 @ =gCurrentSprite
@@ -16376,7 +16376,7 @@ _08051D20: .4byte gCurrentSprite
 	thumb_func_start Box2SlowRunningInit
 Box2SlowRunningInit: @ 0x08051D24
 	push {lr}
-	bl MakeSpriteFaceSamusDirection
+	bl SpriteUtilMakeSpriteFaceSamusDirection
 	ldr r0, _08051D40 @ =gCurrentSprite
 	ldrh r1, [r0]
 	movs r0, #0x80
@@ -16463,7 +16463,7 @@ _08051DCE:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08051E12
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08051E00
 	ldrb r0, [r4]
@@ -16762,7 +16762,7 @@ _08052024: .4byte 0x08391434
 	thumb_func_start Box2StopSkidding
 Box2StopSkidding: @ 0x08052028
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08052048
 	ldr r1, _08052044 @ =gCurrentSprite
@@ -16985,7 +16985,7 @@ _080521E8: .4byte 0x0000027A
 	thumb_func_start Box2LandingFromBonk
 Box2LandingFromBonk: @ 0x080521EC
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08052240
 	ldr r2, _08052218 @ =gCurrentSprite
@@ -17059,7 +17059,7 @@ _08052278: .4byte 0x0000027A
 	thumb_func_start Box2Landing
 Box2Landing: @ 0x0805227C
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _080522B0
 	ldr r1, _08052298 @ =gCurrentSprite
@@ -17139,7 +17139,7 @@ Box2FinishCrawling: @ 0x080522F0
 	.align 2, 0
 _08052310: .4byte gCurrentSprite
 _08052314:
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08052346
 	bl SamusCheckOnCeilingLadder
@@ -17212,7 +17212,7 @@ _08052394: .4byte gCurrentSprite
 	thumb_func_start Box2JumpWarning
 Box2JumpWarning: @ 0x08052398
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _080523AA
 	ldr r0, _080523B0 @ =gCurrentSprite
@@ -17254,7 +17254,7 @@ Box2JumpingInit: @ 0x080523B4
 	bl SamusCheckOnCeilingLadder
 	cmp r0, #0
 	beq _08052400
-	bl MakeSpriteFaceSamusDirection
+	bl SpriteUtilMakeSpriteFaceSamusDirection
 	b _08052404
 	.align 2, 0
 _080523F4: .4byte gSubSpriteData1
@@ -17492,7 +17492,7 @@ Box2StoppingToFireMissiles: @ 0x080525B4
 	.align 2, 0
 _080525D4: .4byte gCurrentSprite
 _080525D8:
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _080525E8
 	adds r1, r5, #0
@@ -17680,7 +17680,7 @@ _08052754: .4byte 0x00080009
 	thumb_func_start Box2DoneFiringMissiles
 Box2DoneFiringMissiles: @ 0x08052758
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805276A
 	ldr r0, _08052770 @ =gCurrentSprite
@@ -17811,7 +17811,7 @@ _08052842:
 	lsrs r0, r0, #0x10
 	cmp r0, #0xbe
 	bhi _0805286A
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805286A
 	adds r1, r4, #0
@@ -18382,7 +18382,7 @@ _08052D34:
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _08052E04
 	.align 2, 0
 _08052D70: .4byte 0x0000FFD0
@@ -20155,8 +20155,8 @@ _08053B86:
 _08053B8C:
 	bl Box2BrainFloating
 _08053B90:
-	bl UpdateSubSpriteData1Animation
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilUpdateSubSpriteData1Animation
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	pop {r0}
 	bx r0
 
@@ -20204,7 +20204,7 @@ _08053BD2:
 	strb r3, [r4]
 _08053BEA:
 	bl Box2PartFrontLeftLeg
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _08053C80
 	.align 2, 0
 _08053BF4: .4byte gSubSpriteData1
@@ -20223,7 +20223,7 @@ _08053BF8:
 	strb r3, [r4]
 _08053C10:
 	bl Box2PartFrontRightLeg
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _08053C80
 	.align 2, 0
 _08053C1C: .4byte gSubSpriteData1
@@ -20234,7 +20234,7 @@ _08053C20:
 	ldrb r1, [r1]
 	strb r1, [r0, #0xe]
 	bl Box2PartTopShell
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _08053C80
 	.align 2, 0
 _08053C34: .4byte gSubSpriteData1
@@ -20253,7 +20253,7 @@ _08053C38:
 	strb r3, [r4]
 _08053C50:
 	bl Box2PartBottomShell
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _08053C80
 	.align 2, 0
 _08053C5C: .4byte gSubSpriteData1
@@ -20757,7 +20757,7 @@ OmegaMetroidUpdateHealthThreshold: @ 0x08053FF4
 	cmp r1, #0x10
 	bne _0805401C
 	ldr r0, _08054018 @ =0x00000222
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	b _08054026
 	.align 2, 0
 _08054014: .4byte gCurrentSprite
@@ -20766,7 +20766,7 @@ _0805401C:
 	cmp r1, #0xe
 	bne _08054026
 	ldr r0, _0805405C @ =0x0000021B
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08054026:
 	ldr r4, _08054060 @ =gCurrentSprite
 	ldrh r2, [r4, #0x14]
@@ -20944,7 +20944,7 @@ OmegaMetroidCheckSamusInFrontRange: @ 0x08054168
 	lsls r0, r0, #1
 	movs r1, #0xbe
 	lsls r1, r1, #1
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #0
 	beq _08054194
 	ldr r0, _0805418C @ =gSubSpriteData1
@@ -21752,10 +21752,10 @@ _080547BC: .4byte 0x08396898
 	thumb_func_start OmegaMetroidFinishedScreamingAfterFirstJump
 OmegaMetroidFinishedScreamingAfterFirstJump: @ 0x080547C0
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _080547FC
-	bl MakeSpriteFaceSamusDirection
+	bl SpriteUtilMakeSpriteFaceSamusDirection
 	ldr r3, _080547EC @ =gCurrentSprite
 	ldrh r1, [r3]
 	movs r0, #0x80
@@ -21968,7 +21968,7 @@ _08054974: .4byte gCurrentSprite
 	thumb_func_start OmegaMetroidLanding
 OmegaMetroidLanding: @ 0x08054978
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _080549E0
 	bl EventCheckAfter_SaXKilledByOmega
@@ -21992,7 +21992,7 @@ OmegaMetroidLanding: @ 0x08054978
 _080549A8: .4byte gCurrentSprite
 _080549AC: .4byte 0x0000FDFF
 _080549B0:
-	bl MakeSpriteFaceSamusDirection
+	bl SpriteUtilMakeSpriteFaceSamusDirection
 	ldr r3, _080549D0 @ =gCurrentSprite
 	ldrh r1, [r3]
 	movs r0, #0x80
@@ -22083,7 +22083,7 @@ OmegaMetroidIdle: @ 0x08054A3C
 	ldr r0, _08054AA0 @ =0x00000223
 	bl SoundPlay
 _08054A5E:
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08054AF2
 	bl EventCheckAfter_SaXKilledByOmega
@@ -22113,7 +22113,7 @@ _08054A98: .4byte gSubSpriteData1
 _08054A9C: .4byte 0x00FFFFFF
 _08054AA0: .4byte 0x00000223
 _08054AA4:
-	bl MakeSpriteFaceSamusDirection
+	bl SpriteUtilMakeSpriteFaceSamusDirection
 	ldr r4, _08054AC4 @ =gCurrentSprite
 	ldrh r1, [r4]
 	movs r0, #0x80
@@ -22215,7 +22215,7 @@ _08054B64:
 	bl OmegaMetroidStandingMovement
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08054BAC
 	cmp r5, #2
@@ -22383,7 +22383,7 @@ _08054CB4:
 	bl OmegaMetroidStandingMovement
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08054CFC
 	cmp r5, #2
@@ -22551,7 +22551,7 @@ _08054E04:
 	bl OmegaMetroidStandingMovement
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08054E4C
 	cmp r5, #2
@@ -22660,7 +22660,7 @@ _08054ED8: .4byte gSpriteData
 	thumb_func_start OmegaMetroidSwiping
 OmegaMetroidSwiping: @ 0x08054EDC
 	push {r4, lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _08054FA4
 	ldr r2, _08054F78 @ =gSubSpriteData1
@@ -23639,7 +23639,7 @@ _080556B4:
 _080556DC: .4byte gSubSpriteData1
 _080556E0: .4byte 0x08396898
 _080556E4:
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _080556F8
 	adds r0, r5, #0
@@ -23768,7 +23768,7 @@ _080557D8: .4byte gSubSpriteData1
 _080557DC: .4byte 0x08396908
 _080557E0: .4byte 0x0000FDFF
 _080557E4:
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805583C
 	ldr r2, _0805580C @ =gSubSpriteData1
@@ -24801,7 +24801,7 @@ _08056102:
 _08056108:
 	bl OmegaMetroidDying3
 _0805610C:
-	bl UpdateSubSpriteData1Animation
+	bl SpriteUtilUpdateSubSpriteData1Animation
 	bl OmagaMetroidSyncSubSPrites
 	bl OmegaMetroidUpdatePalette
 	pop {r0}
@@ -26538,7 +26538,7 @@ FrozenRidleyWaitForSamus: @ 0x08056EB8
 	movs r1, #0xa0
 	lsls r1, r1, #1
 	adds r0, r1, #0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #4
 	bne _08056EEA
 	ldr r0, _08056EF0 @ =gCurrentSprite
@@ -27550,7 +27550,7 @@ VariaSuitAbilityWaitingToSpawn: @ 0x080576B8
 	movs r1, #0x80
 	lsls r1, r1, #1
 	adds r0, r1, #0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #0
 	beq _080576EA
 	ldr r2, _080576F0 @ =gCurrentSprite
@@ -29474,7 +29474,7 @@ OmegaMetroidHuskWaitingForSamus: @ 0x08058660
 	lsls r0, r0, #2
 	movs r1, #0xbc
 	lsls r1, r1, #1
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #0
 	beq _08058684
 	ldr r0, _08058688 @ =gCurrentSprite
@@ -31580,7 +31580,7 @@ RidleyUpdateHealthThreshold: @ 0x08059774
 	cmp r0, #0x10
 	bne _08059798
 	ldr r0, _080597B8 @ =0x000001E1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08059798:
 	ldrh r2, [r4, #0x14]
 	cmp r2, #0
@@ -31642,7 +31642,7 @@ _08059804:
 	cmp r0, #4
 	bne _08059818
 	ldr r0, _08059828 @ =0x000001DF
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08059818:
 	ldr r0, _0805982C @ =gSubSpriteData1
 	ldr r1, _08059830 @ =gCurrentSprite
@@ -33252,7 +33252,7 @@ RidleyShootingFire: @ 0x0805A48C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	bl RidleyFloatingMovement
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805A4EE
 	ldr r2, _0805A4B8 @ =gCurrentSprite
@@ -34845,7 +34845,7 @@ _0805B1B0:
 _0805B1B4:
 	bl RidleyShootingFire
 _0805B1B8:
-	bl UpdateSubSpriteData1Animation
+	bl SpriteUtilUpdateSubSpriteData1Animation
 	bl RidleySyncSubSprites
 	bl RidleySetBackgroundPriority
 	bl RidleyUpdatePalette
@@ -35343,7 +35343,7 @@ RidleyPreSpawnWaitingForSamus: @ 0x0805B610
 	movs r1, #0xa0
 	lsls r1, r1, #1
 	adds r0, r1, #0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #8
 	bne _0805B642
 	ldr r0, _0805B648 @ =gCurrentSprite
@@ -36259,7 +36259,7 @@ _0805BD48: .4byte gCurrentSprite
 	thumb_func_start YakuzaReleasingSamus
 YakuzaReleasingSamus: @ 0x0805BD4C
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805BD5E
 	ldr r0, _0805BD64 @ =gCurrentSprite
@@ -36293,7 +36293,7 @@ _0805BD88: .4byte gCurrentSprite
 	thumb_func_start YakuzaAfterReleasingSamus
 YakuzaAfterReleasingSamus: @ 0x0805BD8C
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805BDAA
 	ldr r0, _0805BDB0 @ =gCurrentSprite
@@ -36304,7 +36304,7 @@ YakuzaAfterReleasingSamus: @ 0x0805BD8C
 	adds r0, #0x24
 	movs r1, #1
 	strb r1, [r0]
-	bl MakeSpriteFaceSamusDirection
+	bl SpriteUtilMakeSpriteFaceSamusDirection
 _0805BDAA:
 	pop {r0}
 	bx r0
@@ -36532,7 +36532,7 @@ _0805BF70: .4byte gCurrentSprite
 	thumb_func_start YakuzaIdleBeforeNewRound
 YakuzaIdleBeforeNewRound: @ 0x0805BF74
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805BFA6
 	ldr r1, _0805BF9C @ =gCurrentSprite
@@ -36546,7 +36546,7 @@ YakuzaIdleBeforeNewRound: @ 0x0805BF74
 	adds r1, #0x24
 	movs r0, #1
 	strb r0, [r1]
-	bl MakeSpriteFaceSamusDirection
+	bl SpriteUtilMakeSpriteFaceSamusDirection
 	b _0805BFA6
 	.align 2, 0
 _0805BF9C: .4byte gCurrentSprite
@@ -36668,7 +36668,7 @@ _0805C07C: .4byte gCurrentSprite
 	thumb_func_start YakuzaSweepingEnd
 YakuzaSweepingEnd: @ 0x0805C080
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805C092
 	ldr r0, _0805C098 @ =gCurrentSprite
@@ -37098,7 +37098,7 @@ _0805C404:
 _0805C418: .4byte gSubSpriteData1
 _0805C41C: .4byte 0x083B10A0
 _0805C420:
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805C468
 	ldr r2, _0805C458 @ =sPrimarySpriteStats
@@ -37217,7 +37217,7 @@ _0805C4FC: .4byte 0x0000FFB8
 	thumb_func_start YakuzaClosingMouth
 YakuzaClosingMouth: @ 0x0805C500
 	push {lr}
-	bl CheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
 	cmp r0, #0
 	beq _0805C520
 	ldr r1, _0805C524 @ =gCurrentSprite
@@ -39410,7 +39410,7 @@ _0805D61C:
 	cmp r0, #4
 	bne _0805D630
 	ldr r0, _0805D64C @ =0x00000131
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0805D630:
 	adds r0, r4, #0
 	adds r0, #0x24
@@ -39593,7 +39593,7 @@ _0805D828:
 _0805D82C:
 	bl YakuzaTurningIntoCoreX
 _0805D830:
-	bl UpdateSubSpriteData1Animation
+	bl SpriteUtilUpdateSubSpriteData1Animation
 	bl YakuzaSyncSubSprites
 	bl YakuzaUpdatePalette
 	pop {r4}
@@ -39641,7 +39641,7 @@ _0805D87E:
 _0805D88C:
 	bl YakuzaPartEyesPhase2
 _0805D890:
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 _0805D894:
 	pop {r0}
 	bx r0
@@ -39958,7 +39958,7 @@ _0805DB3A:
 	movs r0, #1
 	strb r0, [r2]
 	ldr r0, _0805DB90 @ =0x000002A6
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0805DB54:
 	movs r5, #0
 	mov sb, r5
@@ -40121,7 +40121,7 @@ _0805DC72:
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, _0805DC9C @ =0x000002A6
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0805DC8C:
 	add sp, #4
 	pop {r3, r4, r5}
@@ -43578,7 +43578,7 @@ NightmarePartEye: @ 0x0805F6C0
 	cmp r1, #0x10
 	bne _0805F704
 	ldr r0, _0805F700 @ =0x000002A7
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	b _0805F70E
 	.align 2, 0
 _0805F6F8: .4byte gCurrentSprite
@@ -43588,7 +43588,7 @@ _0805F704:
 	cmp r1, #5
 	bne _0805F70E
 	ldr r0, _0805F72C @ =0x000002AA
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0805F70E:
 	ldr r1, _0805F730 @ =gCurrentSprite
 	adds r0, r1, #0
@@ -44616,7 +44616,7 @@ NightmarePartGenerator: @ 0x0805FF70
 	cmp r1, #0x10
 	bne _0805FF98
 	ldr r0, _0805FF94 @ =0x000002A7
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	b _0805FFA2
 	.align 2, 0
 _0805FF90: .4byte gCurrentSprite
@@ -44625,7 +44625,7 @@ _0805FF98:
 	cmp r1, #5
 	bne _0805FFA2
 	ldr r0, _0805FFC0 @ =0x000002AA
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0805FFA2:
 	ldr r1, _0805FFC4 @ =gCurrentSprite
 	adds r0, r1, #0
@@ -45595,7 +45595,7 @@ _080607EA:
 	bl NightmareTurningIntoCoreX
 _080607EE:
 	bl NightmarePlaySound
-	bl UpdateSubSpriteData1Animation
+	bl SpriteUtilUpdateSubSpriteData1Animation
 	bl NightmareSyncSubSprites
 	pop {r0}
 	bx r0
@@ -45642,47 +45642,47 @@ _0806082C: @ jump table
 	.4byte _080608C8 @ case 13
 _08060864:
 	bl NightmarePartGenerator
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _0806086E:
 	bl NightmarePartEyeSludge
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _08060878:
 	bl NightmarePartChinSludge
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _08060882:
 	bl NightmarePartEye
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _0806088C:
 	bl NightmarePartMouth
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _08060896:
 	bl NightmarePartRightTurret1
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _080608A0:
 	bl NightmarePartRightTurret2
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _080608AA:
 	bl NightmarePartRightTurret3
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _080608B4:
 	bl NightmarePartLeftTurret1
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _080608BE:
 	bl NightmarePartLeftTurret2
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _080608C8:
 	bl NightmarePartLeftTurret3
-	bl SyncCurrentSpritePositionWithSubSprite1Position
+	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 	b _080608E4
 _080608D2:
 	bl NightmarePartRightArmTop

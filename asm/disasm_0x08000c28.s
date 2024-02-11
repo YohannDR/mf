@@ -3853,8 +3853,8 @@ _08002816:
 	.align 2, 0
 _08002850: .4byte 0x080A8CDC
 
-	thumb_func_start CheckPlayNotAlreadyPlayingSound
-CheckPlayNotAlreadyPlayingSound: @ 0x08002854
+	thumb_func_start SoundPlayNotAlreadyPlaying
+SoundPlayNotAlreadyPlaying: @ 0x08002854
 	push {lr}
 	lsls r0, r0, #0x10
 	ldr r3, _0800288C @ =0x080A8CDC
@@ -6699,18 +6699,18 @@ _08003D3E:
 	b _08003D60
 _08003D44:
 	ldr r0, _08003D4C @ =0x000001F5
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	b _08003D60
 	.align 2, 0
 _08003D4C: .4byte 0x000001F5
 _08003D50:
 	movs r0, #0xfb
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	b _08003D60
 _08003D5A:
 	ldr r0, _08003D64 @ =0x000001F7
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08003D60:
 	pop {r0}
 	bx r0

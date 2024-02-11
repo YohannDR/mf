@@ -55,7 +55,7 @@ XParasiteWaitingToMove: @ 0x08015084
 	lsls r0, r0, #2
 	movs r1, #0x80
 	lsls r1, r1, #2
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	rsbs r1, r0, #0
 	orrs r1, r0
 	lsrs r1, r1, #0x1f
@@ -1844,7 +1844,7 @@ unk_15dd4: @ 0x08015DD4
 	lsls r0, r0, #1
 	movs r1, #0xaa
 	lsls r1, r1, #1
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r3, r0, #0
 	ldr r2, _08015E04 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -1878,7 +1878,7 @@ _08015E20:
 	lsls r0, r0, #1
 	movs r1, #0xa0
 	lsls r1, r1, #2
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r3, r0, #0
 	ldr r2, _08015E44 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -2462,7 +2462,7 @@ SA_XInit: @ 0x0801621C
 	adds r0, r0, r2
 	ldrh r0, [r0]
 	strh r0, [r5, #0x14]
-	bl MakeSpriteFaceSamusDirection
+	bl SpriteUtilMakeSpriteFaceSamusDirection
 	bl SA_XSetDirection
 	ldr r0, _080162A4 @ =gSaXData
 	strb r4, [r0, #0x12]
@@ -2694,7 +2694,7 @@ _08016410:
 	lsls r0, r0, #1
 	movs r1, #0xaa
 	lsls r1, r1, #1
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r2, r0, #0
 	ldrh r1, [r4]
 	movs r0, #0x80
@@ -3311,7 +3311,7 @@ _080168D4:
 	lsls r0, r0, #1
 	movs r1, #0xaa
 	lsls r1, r1, #1
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r2, r0, #0
 	ldrh r1, [r4]
 	movs r0, #0x80
@@ -3563,7 +3563,7 @@ _08016AC4:
 	lsls r0, r0, #1
 	movs r1, #0xaa
 	lsls r1, r1, #1
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r3, r0, #0
 	ldr r2, _08016AF0 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -3916,7 +3916,7 @@ _08016D38:
 	lsls r0, r0, #1
 	movs r1, #0xaa
 	lsls r1, r1, #1
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r2, r0, #0
 	ldrh r1, [r4]
 	movs r0, #0x80
@@ -5605,14 +5605,14 @@ _08017A68:
 	beq _08017A88
 	movs r0, #0x90
 	lsls r0, r0, #2
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 	b _08017A8E
 	.align 2, 0
 _08017A80: .4byte 0xFFFFFEB6
 _08017A84: .4byte gSpriteRandomNumber
 _08017A88:
 	ldr r0, _08017ABC @ =0x00000241
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08017A8E:
 	ldr r0, _08017AC0 @ =gSpriteData
 	ldr r3, [sp]
@@ -6438,7 +6438,7 @@ SA_XTro1Running: @ 0x0801812C
 	lsls r0, r0, #1
 	movs r1, #0xaa
 	lsls r1, r1, #1
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r3, r0, #0
 	ldr r2, _0801815C @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -6471,7 +6471,7 @@ _08018176:
 	lsls r0, r0, #1
 	movs r1, #0xa0
 	lsls r1, r1, #2
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r3, r0, #0
 	ldr r2, _08018198 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -10531,7 +10531,7 @@ _0801A2C0:
 	movs r1, #0xaa
 	lsls r1, r1, #1
 _0801A2C8:
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r4, r0, #0
 	ldr r2, _0801A2F0 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -10571,7 +10571,7 @@ _0801A310:
 	lsls r0, r0, #1
 	movs r1, #0xa0
 	lsls r1, r1, #2
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r4, r0, #0
 	ldr r2, _0801A33C @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -14558,7 +14558,7 @@ SA_XTro2StoppedAtDoor: @ 0x0801C2EC
 	movs r1, #0xe0
 	lsls r1, r1, #1
 	movs r0, #0xc0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #4
 	bne _0801C336
 	ldrh r1, [r4]
@@ -15249,7 +15249,7 @@ _0801C8F0:
 	movs r1, #0x96
 	lsls r1, r1, #1
 	movs r0, #0x78
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r2, r0, #0
 	ldrh r1, [r4]
 	movs r0, #0x40
@@ -15313,7 +15313,7 @@ _0801C96A:
 	cmp r0, #0
 	beq _0801C9DE
 	adds r0, r3, #0
-	bl CheckSamusNearSpriteLeftRight
+	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	adds r2, r0, #0
 	ldrh r1, [r4]
 	movs r0, #0x40
@@ -15608,7 +15608,7 @@ _0801CBA8:
 	str r0, [r3, #0x18]
 	movs r0, #0xa6
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0801CBB4:
 	ldr r0, _0801CBD0 @ =gFrameCounter8Bit
 	ldrb r0, [r0]
@@ -16694,7 +16694,7 @@ _0801D3D4:
 	bl SpriteSpawnSecondary
 _0801D3F4:
 	ldr r0, _0801D420 @ =0x0000014B
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0801D3FA:
 	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
 	cmp r0, #0
@@ -17177,7 +17177,7 @@ Hornoad: @ 0x0801D774
 	bne _0801D790
 	movs r0, #0xa5
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0801D790:
 	adds r0, r4, #0
 	adds r0, #0x32
@@ -18682,7 +18682,7 @@ Halzyn: @ 0x0801E400
 	bne _0801E41A
 	movs r0, #0xa8
 	lsls r0, r0, #1
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0801E41A:
 	adds r0, r4, #0
 	adds r0, #0x32

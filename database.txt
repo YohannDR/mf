@@ -8,6 +8,11 @@ sprites/hornoad.pal;48;0x2eaa6c;2
 sprites/movable_platform.gfx;512;0x2ed2e8;4
 sprites/movable_platform.pal;16;0x2edae8;2
 
+# Zazabi
+
+sprites/zazabi.gfx;4096;0x36dd18;4
+sprites/zazabi.pal;128;0x371d18;2
+
 # Elevator pad
 
 sprites/elevator_pad.gfx;512;0x372cd0;4
@@ -53,7 +58,7 @@ menus/title_screen/596e0c.pal;128;0x596e0c;2
 Blob_a5224_2e4904.bin;2356960;0xa5224;1
 Blob_2e5cae_2e6160.bin;1202;0x2e5cae;1
 Blob_2e6382_2ed2e8.bin;28518;0x2e6382;1
-Blob_2edb20_372cd0.bin;545200;0x2edb20;1
+Blob_2edb20_36a520.bin;510464;0x2edb20;1
 Blob_3787d0_3bdebc.bin;284396;0x3787d0;1
 Blob_3be1be_3e392c.bin;153454;0x3be1be;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1

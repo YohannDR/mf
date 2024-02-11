@@ -285,8 +285,8 @@ _0800FFB2:
 _0800FFB8: .4byte 0x0828FD04
 _0800FFBC: .4byte gSamusData
 
-	thumb_func_start TakeConstantDamage
-TakeConstantDamage: @ 0x0800FFC0
+	thumb_func_start SpriteUtilTakeConstantDamage
+SpriteUtilTakeConstantDamage: @ 0x0800FFC0
 	push {r4, lr}
 	ldr r0, _0800FFF4 @ =gFrameCounter8Bit
 	ldrb r1, [r0]
@@ -2997,8 +2997,8 @@ _08011566:
 	pop {r0}
 	bx r0
 
-	thumb_func_start MakeSpriteFaceSamusDirection
-MakeSpriteFaceSamusDirection: @ 0x0801156C
+	thumb_func_start SpriteUtilMakeSpriteFaceSamusDirection
+SpriteUtilMakeSpriteFaceSamusDirection: @ 0x0801156C
 	push {lr}
 	ldr r2, _08011584 @ =gCurrentSprite
 	ldr r1, _08011588 @ =gSamusData
@@ -3711,8 +3711,8 @@ _08011A6E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CheckNearEndOfSubSpriteData1Animation
-CheckNearEndOfSubSpriteData1Animation: @ 0x08011A74
+	thumb_func_start SpriteUtilCheckNearEndOfSubSpriteData1Animation
+SpriteUtilCheckNearEndOfSubSpriteData1Animation: @ 0x08011A74
 	push {lr}
 	ldr r0, _08011AA4 @ =gSubSpriteData1
 	ldrb r1, [r0, #6]
@@ -3814,8 +3814,8 @@ _08011B1E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CheckSamusNearSpriteLeftRight
-CheckSamusNearSpriteLeftRight: @ 0x08011B24
+	thumb_func_start SpriteUtilCheckSamusNearSpriteLeftRight
+SpriteUtilCheckSamusNearSpriteLeftRight: @ 0x08011B24
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
@@ -6467,7 +6467,7 @@ _08012E94:
 	movs r0, #1
 	strb r0, [r2]
 	ldr r0, [sp, #8]
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08012EAE:
 	movs r4, #0
 	ldr r2, _08012EF4 @ =gCurrentSprite
@@ -6579,7 +6579,7 @@ _08012F60:
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, [sp, #8]
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _08012F7A:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -6761,7 +6761,7 @@ _080130B0:
 	movs r0, #1
 	strb r0, [r2]
 	ldr r0, [sp, #8]
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _080130CA:
 	movs r0, #0
 	mov sb, r0
@@ -6906,7 +6906,7 @@ _080131BE:
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, [sp, #8]
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _080131D8:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -7424,7 +7424,7 @@ _08013580:
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, [sp, #8]
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0801358E:
 	movs r0, #0
 	mov sb, r0
@@ -7569,7 +7569,7 @@ _08013682:
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, [sp, #8]
-	bl CheckPlayNotAlreadyPlayingSound
+	bl SoundPlayNotAlreadyPlaying
 _0801369C:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -8271,6 +8271,3 @@ _08013B92:
 	pop {r0}
 	bx r0
 	.align 2, 0
-
-
-	
