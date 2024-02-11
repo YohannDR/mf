@@ -3707,8 +3707,8 @@ SoundPlay: @ 0x0800270C
 _08002730: .4byte 0x080A8CDC
 _08002734: .4byte 0x080A8D3C
 
-	thumb_func_start StopSound
-StopSound: @ 0x08002738
+	thumb_func_start SoundStop
+SoundStop: @ 0x08002738
 	push {lr}
 	lsls r0, r0, #0x10
 	ldr r2, _0800276C @ =0x080A8CDC
@@ -6556,7 +6556,7 @@ unk_3c14: @ 0x08003C14
 	bl unk_36c4
 	b _08003C30
 _08003C2C:
-	bl StopSound
+	bl SoundStop
 _08003C30:
 	pop {r0}
 	bx r0

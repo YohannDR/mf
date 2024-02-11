@@ -2882,8 +2882,8 @@ _08011490:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start SpriteChooseRandomXFlip
-SpriteChooseRandomXFlip: @ 0x08011498
+	thumb_func_start SpriteUtilSpriteChooseRandomXFlip
+SpriteUtilSpriteChooseRandomXFlip: @ 0x08011498
 	push {lr}
 	ldr r0, _080114B0 @ =gFrameCounter8Bit
 	ldrb r1, [r0]
@@ -2971,8 +2971,8 @@ _08011536:
 	pop {r0}
 	bx r0
 
-	thumb_func_start MakeSpriteFaceSamusXFlip
-MakeSpriteFaceSamusXFlip: @ 0x0801153C
+	thumb_func_start SpriteUtilMakeSpriteFaceSamusXFlip
+SpriteUtilMakeSpriteFaceSamusXFlip: @ 0x0801153C
 	push {lr}
 	ldr r2, _08011554 @ =gCurrentSprite
 	ldr r1, _08011558 @ =gSamusData
@@ -3559,8 +3559,8 @@ _08011966:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CheckNearEndOfCurrentSpriteAnimation
-CheckNearEndOfCurrentSpriteAnimation: @ 0x0801196C
+	thumb_func_start SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+SpriteUtilCheckNearEndOfCurrentSpriteAnimation: @ 0x0801196C
 	push {lr}
 	ldr r0, _0801199C @ =gCurrentSprite
 	ldrb r1, [r0, #0x1c]
@@ -4263,8 +4263,8 @@ _08011E3A:
 	.align 2, 0
 _08011E40: .4byte gSamusData
 
-	thumb_func_start SpriteUpdateFreezeTimer
-SpriteUpdateFreezeTimer: @ 0x08011E44
+	thumb_func_start SpriteUtilUpdateFreezeTimer
+SpriteUtilUpdateFreezeTimer: @ 0x08011E44
 	push {r4, r5, lr}
 	ldr r0, _08011E90 @ =gFrameCounter8Bit
 	ldrb r1, [r0]
@@ -5281,8 +5281,8 @@ _080125BA:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SamusCheckCrouchingOrMorphed
-SamusCheckCrouchingOrMorphed: @ 0x080125C4
+	thumb_func_start SpriteUtilSamusCheckCrouchingOrMorphed
+SpriteUtilSamusCheckCrouchingOrMorphed: @ 0x080125C4
 	push {lr}
 	ldr r0, _080125DC @ =gSamusData
 	ldrb r0, [r0, #1]
@@ -5764,8 +5764,8 @@ _08012988:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CountSecondarySpriteWithRamSlot
-CountSecondarySpriteWithRamSlot: @ 0x08012990
+	thumb_func_start SpriteUtilCountSecondarySpriteWithRamSlot
+SpriteUtilCountSecondarySpriteWithRamSlot: @ 0x08012990
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x18
 	lsrs r6, r0, #0x18

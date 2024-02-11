@@ -227,6 +227,7 @@ SECTIONS {
 
         asm/disasm_0x0801e794.o(.text);
 
+        src/sprites_AI/nettori.o(.text);
         src/sprites_AI/zazabi.o(.text);
         src/sprites_AI/elevator_pad.o(.text);
         src/sprites_AI/serris.o(.text);
@@ -264,6 +265,7 @@ SECTIONS {
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
+        src/data/sprites/nettori.o(.rodata);
         src/data/sprites/zazabi.o(.rodata);
         src/data/sprites/elevator_pad.o(.rodata);
         src/data/sprites/serris.o(.rodata);

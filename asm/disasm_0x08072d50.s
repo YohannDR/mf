@@ -896,7 +896,7 @@ _0807340E:
 	adds r0, #1
 	strb r0, [r1, #3]
 	movs r0, #0xcf
-	bl StopSound
+	bl SoundStop
 	movs r0, #0xd0
 	bl SoundPlay
 _08073426:
@@ -931,7 +931,7 @@ _08073452:
 	adds r0, #1
 	strb r0, [r1, #3]
 	movs r0, #0xd2
-	bl StopSound
+	bl SoundStop
 	movs r0, #0xd3
 	bl SoundPlay
 	movs r0, #0xa
@@ -972,7 +972,7 @@ _080734A6:
 	adds r0, #1
 	strb r0, [r1, #3]
 	movs r0, #0xd5
-	bl StopSound
+	bl SoundStop
 	movs r0, #0xd6
 	bl SoundPlay
 	movs r0, #0x14
@@ -1013,7 +1013,7 @@ _080734FA:
 	adds r0, #1
 	strb r0, [r1, #3]
 	movs r0, #0xd8
-	bl StopSound
+	bl SoundStop
 	movs r0, #0xd9
 	bl SoundPlay
 	movs r0, #0x1e
@@ -1054,7 +1054,7 @@ _0807354E:
 	adds r0, #1
 	strb r0, [r1, #3]
 	movs r0, #0xdb
-	bl StopSound
+	bl SoundStop
 	movs r0, #0xdc
 	bl unk_3b1c
 	movs r0, #0x28
@@ -2930,7 +2930,7 @@ StopBeamChargingSound: @ 0x080742D4
 	cmp r0, #0
 	beq _080742F0
 	movs r0, #0xe9
-	bl StopSound
+	bl SoundStop
 	b _08074326
 	.align 2, 0
 _080742EC: .4byte gEquipment
@@ -2940,7 +2940,7 @@ _080742F0:
 	cmp r0, #0
 	beq _08074300
 	movs r0, #0xe7
-	bl StopSound
+	bl SoundStop
 	b _08074326
 _08074300:
 	movs r0, #4
@@ -2948,7 +2948,7 @@ _08074300:
 	cmp r1, #0
 	beq _08074310
 	movs r0, #0xe5
-	bl StopSound
+	bl SoundStop
 	b _08074326
 _08074310:
 	movs r0, #2
@@ -2956,11 +2956,11 @@ _08074310:
 	cmp r2, #0
 	beq _08074320
 	movs r0, #0xe3
-	bl StopSound
+	bl SoundStop
 	b _08074326
 _08074320:
 	movs r0, #0xe1
-	bl StopSound
+	bl SoundStop
 _08074326:
 	pop {r0}
 	bx r0
@@ -3282,7 +3282,7 @@ unk_74560: @ 0x08074560
 	cmp r0, #1
 	bhi _08074650
 	movs r0, #0xeb
-	bl StopSound
+	bl SoundStop
 	b _08074650
 	.align 2, 0
 _08074590: .4byte 0x030008B8
@@ -16995,7 +16995,7 @@ _0807B2C4:
 _0807B2C6:
 	strb r0, [r5, #9]
 	ldr r0, _0807B2F0 @ =0x00000119
-	bl StopSound
+	bl SoundStop
 	ldr r1, _0807B2F4 @ =gNonGameplayRam
 	movs r2, #0x83
 	lsls r2, r2, #2
@@ -19125,7 +19125,7 @@ _0807C322:
 	cmp r0, #3
 	bne _0807C364
 	ldr r0, _0807C3AC @ =0x00000125
-	bl StopSound
+	bl SoundStop
 _0807C364:
 	movs r1, #0x86
 	lsls r1, r1, #2

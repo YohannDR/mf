@@ -16437,7 +16437,7 @@ _08070638: .4byte gCurrentRoom
 _0807063C:
 	bl unk_36c4
 	movs r0, #0xfc
-	bl StopSound
+	bl SoundStop
 	bl _08071588
 _0807064A:
 	movs r0, #0x31

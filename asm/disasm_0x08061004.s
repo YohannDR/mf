@@ -5392,7 +5392,7 @@ _08063938:
 	bl SoundPlay
 	movs r0, #0x8b
 	lsls r0, r0, #1
-	bl StopSound
+	bl SoundStop
 	movs r6, #1
 	b _08063C2E
 	.align 2, 0
@@ -5412,7 +5412,7 @@ _08063956:
 	ble _0806397E
 	movs r0, #0x8f
 	lsls r0, r0, #1
-	bl StopSound
+	bl SoundStop
 	ldr r0, _0806399C @ =gWaterLowered
 	strb r4, [r0]
 	ldr r0, _080639A0 @ =0x03004E3A

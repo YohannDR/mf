@@ -1305,7 +1305,7 @@ OwtchLanding: @ 0x0804A234
 	.align 2, 0
 _0804A248: .4byte gCurrentSprite
 _0804A24C:
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804A25C
 	ldr r0, _0804A260 @ =gCurrentSprite
@@ -1511,7 +1511,7 @@ _0804A3CE:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804A3E4
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _0804A5BA
 	.align 2, 0
 _0804A3E0: .4byte gCurrentSprite
@@ -1831,7 +1831,7 @@ _0804A6EC:
 	bl SpriteUtilCheckSamusNearSpriteLeftRight
 	cmp r0, #0
 	beq _0804A720
-	bl MakeSpriteFaceSamusXFlip
+	bl SpriteUtilMakeSpriteFaceSamusXFlip
 	adds r1, r4, #0
 	adds r1, #0x24
 	movs r0, #2
@@ -2044,7 +2044,7 @@ Geega: @ 0x0804A890
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804A8A8
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _0804A910
 	.align 2, 0
 _0804A8A4: .4byte gCurrentSprite
@@ -2724,7 +2724,7 @@ GenesisInit: @ 0x0804ADA0
 	.align 2, 0
 _0804ADCC: .4byte gCurrentSprite
 _0804ADD0:
-	bl MakeSpriteFaceSamusXFlip
+	bl SpriteUtilMakeSpriteFaceSamusXFlip
 	ldr r0, _0804AE40 @ =gCurrentSprite
 	mov ip, r0
 	mov r1, ip
@@ -3038,7 +3038,7 @@ _0804B04C: .4byte gCurrentSprite
 _0804B050: .4byte 0x0837C478
 _0804B054: .4byte 0x0837C450
 _0804B058:
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804B068
 	adds r1, r4, #0
@@ -3090,7 +3090,7 @@ _0804B0B0: .4byte gCurrentSprite
 _0804B0B4: .4byte 0x0837C478
 _0804B0B8: .4byte 0x0837C450
 _0804B0BC:
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804B0CC
 	adds r1, r4, #0
@@ -3193,7 +3193,7 @@ _0804B174: .4byte gCurrentSprite
 _0804B178: .4byte 0x0837C478
 _0804B17C: .4byte 0x0837C498
 _0804B180:
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _0804B1AA
@@ -3428,7 +3428,7 @@ _0804B33E:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804B354
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _0804B53A
 	.align 2, 0
 _0804B350: .4byte gCurrentSprite
@@ -3710,7 +3710,7 @@ PuyoInit: @ 0x0804B664
 	.align 2, 0
 _0804B690: .4byte gCurrentSprite
 _0804B694:
-	bl MakeSpriteFaceSamusXFlip
+	bl SpriteUtilMakeSpriteFaceSamusXFlip
 	ldr r0, _0804B6F4 @ =gCurrentSprite
 	mov ip, r0
 	adds r0, #0x27
@@ -3932,7 +3932,7 @@ _0804B840:
 	subs r0, r0, r3
 _0804B844:
 	strh r0, [r4, #4]
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804B894
 	movs r1, #0xc0
@@ -4378,7 +4378,7 @@ _0804BBA4:
 	thumb_func_start PuyoLanding
 PuyoLanding: @ 0x0804BBAC
 	push {lr}
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804BBBE
 	ldr r0, _0804BBC4 @ =gCurrentSprite
@@ -4411,7 +4411,7 @@ _0804BBE2:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804BBF8
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _0804BDE4
 	.align 2, 0
 _0804BBF4: .4byte gCurrentSprite
@@ -4742,7 +4742,7 @@ _0804BF20: .4byte gIoRegisters
 	thumb_func_start FakeTankWakingUp
 FakeTankWakingUp: @ 0x0804BF24
 	push {lr}
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804BF36
 	ldr r0, _0804BF3C @ =gCurrentSprite
@@ -5022,7 +5022,7 @@ FakeEnergyTank: @ 0x0804C118
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0804C134
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _0804C340
 	.align 2, 0
 _0804C130: .4byte gCurrentSprite
@@ -5210,7 +5210,7 @@ FakeMissileTank: @ 0x0804C348
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0804C364
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _0804C570
 	.align 2, 0
 _0804C360: .4byte gCurrentSprite
@@ -6208,7 +6208,7 @@ _0804CBB4:
 _0804CBB6:
 	movs r0, #8
 	bl ZebesianAquaXMovement
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804CBD8
 	ldr r0, _0804CBD4 @ =gCurrentSprite
@@ -6391,7 +6391,7 @@ _0804CD18:
 	eors r0, r1
 	strh r0, [r2]
 _0804CD2E:
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804CD3E
 	ldr r0, _0804CD4C @ =gCurrentSprite
@@ -6509,7 +6509,7 @@ _0804CE0E:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804CE24
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _0804CFFC
 	.align 2, 0
 _0804CE20: .4byte gCurrentSprite
@@ -6833,7 +6833,7 @@ _0804D110:
 	strh r0, [r5, #2]
 	ldrh r0, [r5, #4]
 	strh r0, [r5, #8]
-	bl MakeSpriteFaceSamusXFlip
+	bl SpriteUtilMakeSpriteFaceSamusXFlip
 	adds r1, r5, #0
 	adds r1, #0x24
 	movs r0, #2
@@ -7203,7 +7203,7 @@ _0804D414:
 	thumb_func_start DachoraTurningAroundSecondPart
 DachoraTurningAroundSecondPart: @ 0x0804D418
 	push {lr}
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804D42A
 	ldr r0, _0804D430 @ =gCurrentSprite
@@ -7263,7 +7263,7 @@ _0804D484: .4byte 0x0838456C
 	thumb_func_start DachoraTurningAroundWhileLeavingSecondPart
 DachoraTurningAroundWhileLeavingSecondPart: @ 0x0804D488
 	push {lr}
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804D49A
 	ldr r0, _0804D4A0 @ =gCurrentSprite
@@ -8230,7 +8230,7 @@ _0804DB7C:
 	strh r0, [r4, #2]
 	ldrh r0, [r4, #4]
 	strh r0, [r4, #8]
-	bl MakeSpriteFaceSamusXFlip
+	bl SpriteUtilMakeSpriteFaceSamusXFlip
 	adds r1, r4, #0
 	adds r1, #0x2d
 	movs r0, #0xff
@@ -8777,7 +8777,7 @@ _0804DFF0:
 	thumb_func_start EtecoonTurningAroundSecondPart
 EtecoonTurningAroundSecondPart: @ 0x0804DFF4
 	push {lr}
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804E006
 	ldr r0, _0804E00C @ =gCurrentSprite
@@ -8988,7 +8988,7 @@ _0804E194: .4byte 0x083842C4
 	thumb_func_start EtecoonTurningAroundWhileLeavingSecondPart
 EtecoonTurningAroundWhileLeavingSecondPart: @ 0x0804E198
 	push {lr}
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804E1AA
 	ldr r0, _0804E1B0 @ =gCurrentSprite
@@ -12091,7 +12091,7 @@ PowampExtending: @ 0x0804FA1C
 	ldr r0, _0804FA48 @ =0x0000FF74
 	strh r0, [r1, #0xa]
 _0804FA30:
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804FA40
 	ldr r0, _0804FA44 @ =gCurrentSprite
@@ -12208,7 +12208,7 @@ _0804FB00:
 	ldr r0, _0804FB2C @ =0x0000FFCC
 	strh r0, [r1, #0xa]
 _0804FB12:
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0804FB22
 	ldr r0, _0804FB28 @ =gCurrentSprite
@@ -12242,7 +12242,7 @@ _0804FB4A:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804FB60
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _0804FD3A
 	.align 2, 0
 _0804FB5C: .4byte gCurrentSprite
@@ -13395,7 +13395,7 @@ _080504B4:
 	eors r0, r1
 	strh r0, [r2]
 _080504B8:
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _080504C8
 	ldr r0, _080504CC @ =gCurrentSprite
@@ -13575,7 +13575,7 @@ _08050608:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08050620
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _080507EC
 	.align 2, 0
 _08050618: .4byte gCurrentSprite
@@ -26185,7 +26185,7 @@ _08056C08:
 	cmp r0, #0
 	bne _08056C1C
 	movs r0, #0xfd
-	bl StopSound
+	bl SoundStop
 _08056C1C:
 	pop {r0}
 	bx r0

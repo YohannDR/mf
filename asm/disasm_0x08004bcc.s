@@ -3187,7 +3187,7 @@ _08006518:
 	cmp r0, #0
 	beq _08006524
 	movs r0, #0x6a
-	bl StopSound
+	bl SoundStop
 _08006524:
 	movs r0, #0
 _08006526:
@@ -5930,7 +5930,7 @@ SamusUsingAnElevator: @ 0x08007974
 	strb r1, [r0]
 	strh r2, [r4, #0x1c]
 	movs r0, #0xfc
-	bl StopSound
+	bl SoundStop
 	b _08007A24
 	.align 2, 0
 _080079D4: .4byte gSamusData
@@ -5969,7 +5969,7 @@ _080079DC:
 	strb r1, [r0]
 	strh r2, [r4, #0x1c]
 	movs r0, #0xfc
-	bl StopSound
+	bl SoundStop
 _08007A24:
 	movs r0, #0xff
 	pop {r4, r5}
@@ -8966,14 +8966,14 @@ _08008FE2:
 	cmp r0, #0x50
 	bls _08009008
 	movs r0, #0x6a
-	bl StopSound
+	bl SoundStop
 	b _08009008
 _08008FF6:
 	cmp r4, #0x24
 	beq _08009008
 _08008FFA:
 	movs r0, #0x99
-	bl StopSound
+	bl SoundStop
 	b _08009008
 _08009002:
 	ldr r1, _0800901C @ =gDisableScrolling

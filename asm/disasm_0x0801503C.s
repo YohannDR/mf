@@ -15498,7 +15498,7 @@ _0801CAD8: .4byte 0x082EB53C
 _0801CADC:
 	ldr r0, _0801CAEC @ =0x082EB514
 	str r0, [r4, #0x18]
-	bl SpriteChooseRandomXFlip
+	bl SpriteUtilSpriteChooseRandomXFlip
 	adds r0, r4, #0
 	adds r0, #0x24
 	strb r5, [r0]
@@ -15519,7 +15519,7 @@ _0801CAF0:
 	strb r0, [r1]
 	ldr r0, _0801CB24 @ =0x082EB6CC
 	str r0, [r4, #0x18]
-	bl MakeSpriteFaceSamusXFlip
+	bl SpriteUtilMakeSpriteFaceSamusXFlip
 	adds r1, r4, #0
 	adds r1, #0x24
 	ldrb r0, [r1]
@@ -17184,7 +17184,7 @@ _0801D790:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0801D7A4
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	b _0801D9D0
 	.align 2, 0
 _0801D7A0: .4byte gCurrentSprite
@@ -18153,7 +18153,7 @@ HalzynFlyingUp: @ 0x0801DFE4
 _0801E008: .4byte gCurrentSprite
 _0801E00C: .4byte gPreviousCollisionCheck
 _0801E010:
-	bl CheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
 	cmp r0, #0
 	beq _0801E020
 _0801E018:
@@ -18689,7 +18689,7 @@ _0801E41A:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0801E43C
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	adds r0, r4, #0
 	adds r0, #0x23
 	ldrb r1, [r0]
@@ -18863,7 +18863,7 @@ HalzynWing: @ 0x0801E628
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0801E644
-	bl SpriteUpdateFreezeTimer
+	bl SpriteUtilUpdateFreezeTimer
 	bl UpdatePrimarySpriteFreezeTimer
 	b _0801E6AC
 	.align 2, 0

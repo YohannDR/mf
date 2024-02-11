@@ -20,7 +20,7 @@ def Func():
         result += str(sign(int.from_bytes(file.read(2), "little")))
         # result += hex(int.from_bytes(file.read(2), "little"))
 
-        if x % 16 == 0 and x != 0:
+        if x % 4 == 0 and x != 0:
             result += ",\n"
         else:
             result += ", "
