@@ -50,7 +50,7 @@ _0801E7E4: .4byte 0x0000FFDF
 MotoInit: @ 0x0801E7E8
 	push {r4, r5, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r0, _0801E85C @ =gCurrentSprite
 	mov ip, r0
 	mov r1, ip
@@ -257,7 +257,7 @@ _0801E978:
 	lsls r2, r2, #1
 	movs r0, #0xa0
 	adds r1, r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	cmp r0, #0xc
 	bne _0801E99C
 	ldr r0, _0801E998 @ =gCurrentSprite
@@ -584,7 +584,7 @@ _0801EBDE:
 	lsls r2, r2, #1
 	movs r0, #0xa0
 	adds r1, r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	adds r6, r0, #0
 _0801EC0A:
 	cmp r6, #3
@@ -6221,7 +6221,7 @@ _08021976:
 	thumb_func_start SkreeInit
 SkreeInit: @ 0x08021980
 	push {r4, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _080219AC @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -8722,7 +8722,7 @@ _08022DF0:
 GeemerInit: @ 0x08022DF4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08022E20 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -11154,7 +11154,7 @@ _0802420A:
 	lsls r2, r2, #1
 	movs r0, #0xc0
 	adds r1, r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	cmp r0, #3
 	bne _08024220
 	bl ArachnusSlashingInit
@@ -11164,7 +11164,7 @@ _08024220:
 	lsls r2, r2, #2
 	movs r0, #0xc0
 	adds r1, r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	cmp r0, #3
 	bne _08024234
 	bl ArachnusRollingInit
@@ -16250,7 +16250,7 @@ WaverCheckSamusInRange: @ 0x08026C7C
 	lsls r1, r1, #1
 	movs r0, #0x28
 	movs r2, #0x40
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	cmp r0, #3
 	bne _08026C9A
 	movs r4, #1
@@ -16292,7 +16292,7 @@ _08026CD4: .4byte 0x08317580
 	thumb_func_start WaverInit
 WaverInit: @ 0x08026CD8
 	push {lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08026D04 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -17818,7 +17818,7 @@ _0802791C:
 	thumb_func_start SciserInit
 SciserInit: @ 0x08027920
 	push {r4, r5, r6, r7, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r4, _0802793C @ =gCurrentSprite
 	adds r5, r4, #0
 	adds r5, #0x24
@@ -19191,7 +19191,7 @@ _08028438:
 	thumb_func_start SidehopperInit
 SidehopperInit: @ 0x08028440
 	push {r4, r5, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0802846C @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -20592,7 +20592,7 @@ _08028FAC:
 	thumb_func_start DesgeegaInit
 DesgeegaInit: @ 0x08028FB4
 	push {r4, r5, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08028FE0 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -22277,7 +22277,7 @@ _08029D48: .4byte gCurrentClipdataAffectingAction
 XBarrierCoreInit: @ 0x08029D4C
 	push {r4, r5, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08029D6C @ =gCurrentSprite
 	adds r3, r2, #0
 	adds r3, #0x24
@@ -25508,7 +25508,7 @@ _0802B734: .4byte gCurrentSprite
 	thumb_func_start ZebesianWallInit
 ZebesianWallInit: @ 0x0802B738
 	push {r4, r5, r6, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r4, _0802B78C @ =gCurrentSprite
 	adds r0, r4, #0
 	adds r0, #0x25
@@ -33607,7 +33607,7 @@ _0802F760: .4byte gCurrentSprite
 	thumb_func_start KagoInit
 KagoInit: @ 0x0802F764
 	push {r4, r5, r6, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0802F798 @ =gCurrentSprite
 	adds r4, r2, #0
 	adds r4, #0x34
@@ -37045,7 +37045,7 @@ _08031280:
 	thumb_func_start ZoroInit
 ZoroInit: @ 0x08031284
 	push {r4, r5, r6, r7, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _080312B0 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -38475,7 +38475,7 @@ _08031E32:
 	thumb_func_start KihunterGroundInit
 KihunterGroundInit: @ 0x08031E3C
 	push {r4, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r4, _08031E60 @ =gCurrentSprite
 	adds r0, r4, #0
 	adds r0, #0x34
@@ -39417,7 +39417,7 @@ _08032560:
 KihunterFlyingInit: @ 0x08032568
 	push {r4, r5, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r4, _0803258C @ =gCurrentSprite
 	adds r0, r4, #0
 	adds r0, #0x34
@@ -40744,7 +40744,7 @@ _08032F74: .4byte gCurrentSprite
 KihunterHiveInit: @ 0x08032F78
 	push {r4, r5, r6, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r5, _08032F9C @ =gCurrentSprite
 	adds r0, r5, #0
 	adds r0, #0x34
@@ -42101,7 +42101,7 @@ _08033AF4:
 ReoInit: @ 0x08033AFC
 	push {r4, r5, r6, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08033B28 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -43833,7 +43833,7 @@ _08034954:
 	thumb_func_start FuneInit
 FuneInit: @ 0x08034958
 	push {r4, r5, r6, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08034984 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -44018,7 +44018,7 @@ FuneCheckSamusInFront: @ 0x08034AB4
 	lsls r1, r1, #2
 	movs r0, #0x48
 	movs r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #3
@@ -44094,7 +44094,7 @@ _08034B50:
 	movs r1, #0x80
 	lsls r1, r1, #2
 	movs r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #3
@@ -44642,7 +44642,7 @@ _08034F80: .4byte gCurrentSprite
 	thumb_func_start NamiheInit
 NamiheInit: @ 0x08034F84
 	push {r4, r5, r6, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08034FB0 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -44824,7 +44824,7 @@ NamiheCheckSamusInFront: @ 0x080350D8
 	lsls r1, r1, #2
 	movs r0, #0x48
 	movs r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #3
@@ -44900,7 +44900,7 @@ _08035174:
 	movs r1, #0x80
 	lsls r1, r1, #2
 	movs r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #3
@@ -52009,7 +52009,7 @@ _08038BEC: .4byte 0x08348C54
 	thumb_func_start GerudaInit
 GerudaInit: @ 0x08038BF0
 	push {r4, r5, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08038C1C @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -56194,7 +56194,7 @@ _0803ADB8:
 	thumb_func_start ZeelaInit
 ZeelaInit: @ 0x0803ADBC
 	push {r4, r5, r6, r7, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0803ADE8 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -57526,7 +57526,7 @@ SovaInit: @ 0x0803B870
 	mov r7, sb
 	mov r6, r8
 	push {r6, r7}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0803B8A0 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -59477,7 +59477,7 @@ _0803C824:
 	lsls r2, r2, #2
 	adds r0, r2, #0
 	adds r1, r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 _0803C830:
 	adds r1, r0, #0
 	cmp r1, #3
@@ -59816,7 +59816,7 @@ _0803CAA0:
 	thumb_func_start YardInit
 YardInit: @ 0x0803CAA4
 	push {r4, r5, r6, r7, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r4, _0803CAF0 @ =gCurrentSprite
 	adds r5, r4, #0
 	adds r5, #0x24
@@ -61638,7 +61638,7 @@ _0803D918:
 EvirInit: @ 0x0803D920
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r3, _0803D98C @ =gCurrentSprite
 	adds r1, r3, #0
 	adds r1, #0x27
@@ -62946,7 +62946,7 @@ _0803E3B0:
 	thumb_func_start BullInit
 BullInit: @ 0x0803E3B4
 	push {r4, r5, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0803E3E0 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -63424,7 +63424,7 @@ _0803E758: .4byte gSpriteData
 	thumb_func_start MemuInit
 MemuInit: @ 0x0803E75C
 	push {r4, r5, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0803E788 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -64425,7 +64425,7 @@ _0803EF94: .4byte gCurrentSprite
 	thumb_func_start GerubossInit
 GerubossInit: @ 0x0803EF98
 	push {lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0803EFC4 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -65132,7 +65132,7 @@ _0803F5B8: .4byte 0x0000FFE0
 	thumb_func_start ChootInit
 ChootInit: @ 0x0803F5BC
 	push {r4, r5, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0803F5E8 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -65975,7 +65975,7 @@ ZebesianGroundCheckInShootingRange: @ 0x0803FD28
 	movs r2, #0xd0
 	lsls r2, r2, #2
 	movs r0, #0xc0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	adds r3, r0, #0
 	cmp r3, #3
 	bne _0803FD78
@@ -66014,7 +66014,7 @@ _0803FD90:
 	movs r2, #0xd0
 	lsls r2, r2, #2
 	adds r1, r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	adds r3, r0, #0
 	cmp r3, #3
 	bne _0803FDB4
@@ -66192,7 +66192,7 @@ _0803FED4:
 	strb r0, [r2]
 	b _0803FF10
 _0803FEE2:
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	adds r0, r4, #0
 	adds r0, #0x34
 	ldrb r1, [r0]
@@ -67646,7 +67646,7 @@ ZebesianGroundShootingEnd: @ 0x080409E0
 	lsls r6, r6, #2
 	movs r0, #0xc0
 	adds r2, r6, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	cmp r0, #3
 	bne _08040A2C
 	adds r1, r4, #0
@@ -67676,7 +67676,7 @@ _08040A3A:
 	lsls r0, r0, #1
 	adds r1, r6, #0
 	adds r2, r6, #0
-	bl CheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
 	cmp r0, #3
 	bne _08040A58
 	ldrb r0, [r5]
@@ -70195,7 +70195,7 @@ _08041E7E:
 XBarrierCoreSuperInit: @ 0x08041E84
 	push {r4, r5, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08041EA4 @ =gCurrentSprite
 	adds r3, r2, #0
 	adds r3, #0x24
@@ -70636,7 +70636,7 @@ _080421EC: .4byte 0x0000FFDF
 XBarrierCorePowerInit: @ 0x080421F0
 	push {r4, r5, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08042210 @ =gCurrentSprite
 	adds r3, r2, #0
 	adds r3, #0x24
@@ -71092,7 +71092,7 @@ _08042578: .4byte 0x0000FFDF
 	thumb_func_start RipperInit
 RipperInit: @ 0x0804257C
 	push {r4, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _080425AC @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -72051,1220 +72051,3 @@ _08042D6C:
 	bx r0
 	.align 2, 0
 _08042D70: .4byte gCurrentSprite
-
-	thumb_func_start GadoraSetCollision
-GadoraSetCollision: @ 0x08042D74
-	push {r4, r5, r6, r7, lr}
-	adds r4, r0, #0
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x18
-	ldr r0, _08042DBC @ =gCurrentSprite
-	ldrh r7, [r0, #2]
-	ldrh r6, [r0, #4]
-	ldr r5, _08042DC0 @ =gCurrentClipdataAffectingAction
-	strb r4, [r5]
-	adds r0, r7, #0
-	subs r0, #0x20
-	adds r1, r6, #0
-	bl ClipdataProcess
-	strb r4, [r5]
-	adds r0, r7, #0
-	subs r0, #0x60
-	adds r1, r6, #0
-	bl ClipdataProcess
-	strb r4, [r5]
-	adds r0, r7, #0
-	adds r0, #0x20
-	adds r1, r6, #0
-	bl ClipdataProcess
-	strb r4, [r5]
-	adds r0, r7, #0
-	adds r0, #0x60
-	adds r1, r6, #0
-	bl ClipdataProcess
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08042DBC: .4byte gCurrentSprite
-_08042DC0: .4byte gCurrentClipdataAffectingAction
-
-	thumb_func_start GadoraSetDirectionAndPosition
-GadoraSetDirectionAndPosition: @ 0x08042DC4
-	push {lr}
-	lsls r0, r0, #0x18
-	lsrs r3, r0, #0x18
-	ldr r1, _08042DE0 @ =gCurrentSprite
-	ldrb r0, [r1, #0x1d]
-	subs r0, #0x8f
-	adds r2, r1, #0
-	cmp r0, #9
-	bhi _08042E6E
-	lsls r0, r0, #2
-	ldr r1, _08042DE4 @ =_08042DE8
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_08042DE0: .4byte gCurrentSprite
-_08042DE4: .4byte _08042DE8
-_08042DE8: @ jump table
-	.4byte _08042E10 @ case 0
-	.4byte _08042E28 @ case 1
-	.4byte _08042E10 @ case 2
-	.4byte _08042E10 @ case 3
-	.4byte _08042E10 @ case 4
-	.4byte _08042E28 @ case 5
-	.4byte _08042E10 @ case 6
-	.4byte _08042E28 @ case 7
-	.4byte _08042E3C @ case 8
-	.4byte _08042E54 @ case 9
-_08042E10:
-	cmp r3, #2
-	bne _08042E72
-	ldrh r0, [r2]
-	ldr r1, _08042E24 @ =0x0000FFBF
-	ands r1, r0
-	strh r1, [r2]
-	ldrh r0, [r2, #4]
-	subs r0, #0xc
-	strh r0, [r2, #4]
-	b _08042E72
-	.align 2, 0
-_08042E24: .4byte 0x0000FFBF
-_08042E28:
-	cmp r3, #2
-	bne _08042E72
-	ldrh r0, [r2]
-	movs r1, #0x40
-	orrs r1, r0
-	strh r1, [r2]
-	ldrh r0, [r2, #4]
-	adds r0, #0xc
-	strh r0, [r2, #4]
-	b _08042E72
-_08042E3C:
-	cmp r3, #2
-	bne _08042E66
-	ldrh r0, [r2]
-	ldr r1, _08042E50 @ =0x0000FFBF
-	ands r1, r0
-	strh r1, [r2]
-	ldrh r0, [r2, #4]
-	subs r0, #0xc
-	b _08042E64
-	.align 2, 0
-_08042E50: .4byte 0x0000FFBF
-_08042E54:
-	cmp r3, #2
-	bne _08042E66
-	ldrh r0, [r2]
-	movs r1, #0x40
-	orrs r1, r0
-	strh r1, [r2]
-	ldrh r0, [r2, #4]
-	adds r0, #0xc
-_08042E64:
-	strh r0, [r2, #4]
-_08042E66:
-	adds r0, r3, #0
-	bl GadoraSetCollision
-	b _08042E72
-_08042E6E:
-	movs r0, #0
-	strh r0, [r1]
-_08042E72:
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start GadoraDeath
-GadoraDeath: @ 0x08042E78
-	push {r4, lr}
-	ldr r4, _08042EAC @ =gCurrentSprite
-	ldrb r0, [r4, #0x1d]
-	adds r0, #0x71
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	movs r1, #0x80
-	lsls r1, r1, #9
-	lsls r1, r0
-	lsrs r1, r1, #0x10
-	ldr r2, _08042EB0 @ =gGadorasDestroyed
-	ldrh r0, [r2]
-	orrs r1, r0
-	strh r1, [r2]
-	movs r0, #1
-	bl GadoraSetDirectionAndPosition
-	ldrh r1, [r4, #2]
-	ldrh r0, [r4, #4]
-	movs r2, #1
-	bl UpdateGadoraHatch
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08042EAC: .4byte gCurrentSprite
-_08042EB0: .4byte gGadorasDestroyed
-
-	thumb_func_start GadoraInit
-GadoraInit: @ 0x08042EB4
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	bl TrySetAbsorbXFlag
-	ldr r5, _08042ED8 @ =gCurrentSprite
-	adds r0, r5, #0
-	adds r0, #0x34
-	ldrb r1, [r0]
-	movs r0, #2
-	ands r0, r1
-	lsls r0, r0, #0x18
-	lsrs r2, r0, #0x18
-	cmp r2, #0
-	beq _08042EDC
-	movs r0, #0
-	strh r0, [r5]
-	b _08042FF8
-	.align 2, 0
-_08042ED8: .4byte gCurrentSprite
-_08042EDC:
-	adds r1, r5, #0
-	adds r1, #0x24
-	ldrb r0, [r1]
-	cmp r0, #0x59
-	bne _08042EF0
-	movs r0, #0x5a
-	strb r0, [r1]
-	movs r0, #0x2c
-	strh r0, [r5, #6]
-	b _08042F94
-_08042EF0:
-	ldrb r1, [r5, #0x1d]
-	adds r0, r1, #0
-	adds r0, #0x71
-	lsls r0, r0, #0x18
-	lsrs r1, r0, #0x18
-	ldr r0, _08042F10 @ =gGadorasDestroyed
-	ldrh r0, [r0]
-	asrs r0, r1
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	movs r1, #1
-	ands r0, r1
-	cmp r0, #0
-	beq _08042F14
-	strh r2, [r5]
-	b _08042FF8
-	.align 2, 0
-_08042F10: .4byte gGadorasDestroyed
-_08042F14:
-	movs r0, #2
-	bl GadoraSetDirectionAndPosition
-	ldrh r7, [r5, #2]
-	ldrh r6, [r5, #4]
-	adds r0, r6, #0
-	adds r1, r7, #0
-	movs r2, #0
-	bl UpdateGadoraHatch
-	ldrb r2, [r5, #0x1f]
-	adds r0, r5, #0
-	adds r0, #0x23
-	ldrb r3, [r0]
-	str r7, [sp]
-	str r6, [sp, #4]
-	ldrh r1, [r5]
-	movs r4, #0x40
-	adds r0, r4, #0
-	ands r0, r1
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	str r0, [sp, #8]
-	movs r0, #0x45
-	movs r1, #0
-	bl SpriteSpawnSecondary
-	ldrh r0, [r5]
-	ands r4, r0
-	cmp r4, #0
-	beq _08042F58
-	adds r0, r6, #0
-	adds r0, #0x10
-	b _08042F5C
-_08042F58:
-	adds r0, r6, #0
-	subs r0, #0x10
-_08042F5C:
-	lsls r0, r0, #0x10
-	lsrs r6, r0, #0x10
-	ldr r4, _08042F88 @ =gCurrentSprite
-	ldrb r1, [r4, #0x1e]
-	ldrb r2, [r4, #0x1f]
-	adds r0, r4, #0
-	adds r0, #0x23
-	ldrb r3, [r0]
-	str r7, [sp]
-	str r6, [sp, #4]
-	movs r5, #0
-	str r5, [sp, #8]
-	movs r0, #0x47
-	bl SpriteSpawnSecondary
-	lsls r0, r0, #0x18
-	lsrs r1, r0, #0x18
-	cmp r1, #0xff
-	bne _08042F8C
-	strh r5, [r4]
-	b _08042FF8
-	.align 2, 0
-_08042F88: .4byte gCurrentSprite
-_08042F8C:
-	adds r1, r4, #0
-	adds r1, #0x24
-	movs r0, #1
-	strb r0, [r1]
-_08042F94:
-	ldr r3, _08043000 @ =gCurrentSprite
-	adds r0, r3, #0
-	adds r0, #0x27
-	movs r2, #0
-	movs r1, #0x28
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r1, r3, #0
-	adds r1, #0x29
-	movs r0, #0x10
-	strb r0, [r1]
-	movs r1, #0
-	ldr r0, _08043004 @ =0x0000FF80
-	strh r0, [r3, #0xa]
-	movs r0, #0x80
-	strh r0, [r3, #0xc]
-	ldr r0, _08043008 @ =0x0000FFE0
-	strh r0, [r3, #0xe]
-	movs r0, #0x20
-	strh r0, [r3, #0x10]
-	ldr r0, _0804300C @ =0x08365040
-	str r0, [r3, #0x18]
-	strb r1, [r3, #0x1c]
-	strh r2, [r3, #0x16]
-	adds r0, r3, #0
-	adds r0, #0x2f
-	strb r1, [r0]
-	adds r1, r3, #0
-	adds r1, #0x25
-	movs r0, #2
-	strb r0, [r1]
-	subs r1, #3
-	movs r0, #5
-	strb r0, [r1]
-	ldr r0, _08043010 @ =gIoRegisters
-	ldrb r1, [r0, #0xa]
-	movs r0, #3
-	ands r0, r1
-	adds r1, r3, #0
-	adds r1, #0x21
-	strb r0, [r1]
-	ldr r2, _08043014 @ =sPrimarySpriteStats
-	ldrb r1, [r3, #0x1d]
-	lsls r0, r1, #3
-	subs r0, r0, r1
-	lsls r0, r0, #1
-	adds r0, r0, r2
-	ldrh r0, [r0]
-	strh r0, [r3, #0x14]
-_08042FF8:
-	add sp, #0xc
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08043000: .4byte gCurrentSprite
-_08043004: .4byte 0x0000FF80
-_08043008: .4byte 0x0000FFE0
-_0804300C: .4byte 0x08365040
-_08043010: .4byte gIoRegisters
-_08043014: .4byte sPrimarySpriteStats
-
-	thumb_func_start GadoraIdleInit
-GadoraIdleInit: @ 0x08043018
-	ldr r1, _0804303C @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x24
-	movs r3, #0
-	movs r0, #2
-	strb r0, [r2]
-	ldr r0, _08043040 @ =0x08365040
-	str r0, [r1, #0x18]
-	strb r3, [r1, #0x1c]
-	strh r3, [r1, #0x16]
-	ldr r0, _08043044 @ =gFrameCounter8Bit
-	ldrb r0, [r0]
-	lsls r0, r0, #2
-	adds r0, #0x3d
-	adds r1, #0x2e
-	strb r0, [r1]
-	bx lr
-	.align 2, 0
-_0804303C: .4byte gCurrentSprite
-_08043040: .4byte 0x08365040
-_08043044: .4byte gSpriteRandomNumber
-
-	thumb_func_start GadoraIdle
-GadoraIdle: @ 0x08043048
-	push {r4, r5, lr}
-	ldr r5, _08043078 @ =gCurrentSprite
-	adds r4, r5, #0
-	adds r4, #0x2e
-	ldrb r0, [r4]
-	subs r0, #1
-	strb r0, [r4]
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _08043086
-	movs r1, #0xe0
-	lsls r1, r1, #1
-	movs r0, #0x80
-	movs r2, #0
-	bl CheckSamusNearSpriteFrontBehindX
-	cmp r0, #3
-	bne _0804307C
-	adds r1, r5, #0
-	adds r1, #0x24
-	movs r0, #0x17
-	strb r0, [r1]
-	b _08043086
-	.align 2, 0
-_08043078: .4byte gCurrentSprite
-_0804307C:
-	ldr r0, _0804308C @ =gFrameCounter8Bit
-	ldrb r0, [r0]
-	lsls r0, r0, #2
-	adds r0, #0x3d
-	strb r0, [r4]
-_08043086:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804308C: .4byte gSpriteRandomNumber
-
-	thumb_func_start GadoraOpeningEyeInit
-GadoraOpeningEyeInit: @ 0x08043090
-	push {lr}
-	ldr r1, _080430BC @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x24
-	movs r3, #0
-	movs r0, #0x18
-	strb r0, [r2]
-	ldr r0, _080430C0 @ =0x08365058
-	str r0, [r1, #0x18]
-	strb r3, [r1, #0x1c]
-	strh r3, [r1, #0x16]
-	ldrh r1, [r1]
-	movs r0, #2
-	ands r0, r1
-	cmp r0, #0
-	beq _080430B8
-	movs r0, #0xd9
-	lsls r0, r0, #1
-	bl SoundPlayNotAlreadyPlaying
-_080430B8:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080430BC: .4byte gCurrentSprite
-_080430C0: .4byte 0x08365058
-
-	thumb_func_start GadoraOpeningEye
-GadoraOpeningEye: @ 0x080430C4
-	push {r4, lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
-	cmp r0, #0
-	beq _08043136
-	ldr r0, _08043108 @ =gFrameCounter8Bit
-	ldrb r0, [r0]
-	ldr r4, _0804310C @ =gCurrentSprite
-	cmp r0, #6
-	bls _08043118
-	adds r1, r4, #0
-	adds r1, #0x2f
-	ldrb r0, [r1]
-	cmp r0, #3
-	bhi _08043118
-	adds r0, #1
-	strb r0, [r1]
-	subs r1, #0xb
-	movs r0, #0x1c
-	strb r0, [r1]
-	ldr r0, _08043110 @ =0x08365078
-	str r0, [r4, #0x18]
-	ldrh r1, [r4]
-	movs r0, #2
-	ands r0, r1
-	cmp r0, #0
-	beq _08043100
-	ldr r0, _08043114 @ =0x000001B5
-	bl SoundPlayNotAlreadyPlaying
-_08043100:
-	adds r1, r4, #0
-	adds r1, #0x2e
-	movs r0, #0x30
-	b _0804312E
-	.align 2, 0
-_08043108: .4byte gSpriteRandomNumber
-_0804310C: .4byte gCurrentSprite
-_08043110: .4byte 0x08365078
-_08043114: .4byte 0x000001B5
-_08043118:
-	adds r1, r4, #0
-	adds r1, #0x2f
-	movs r0, #0
-	strb r0, [r1]
-	subs r1, #0xb
-	movs r0, #0x1a
-	strb r0, [r1]
-	ldr r0, _0804313C @ =0x083650A0
-	str r0, [r4, #0x18]
-	adds r1, #0xa
-	movs r0, #0x50
-_0804312E:
-	strb r0, [r1]
-	movs r0, #0
-	strb r0, [r4, #0x1c]
-	strh r0, [r4, #0x16]
-_08043136:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804313C: .4byte 0x083650A0
-
-	thumb_func_start GadoraVulnerable
-GadoraVulnerable: @ 0x08043140
-	push {lr}
-	ldr r2, _08043170 @ =gCurrentSprite
-	adds r1, r2, #0
-	adds r1, #0x2e
-	ldrb r0, [r1]
-	adds r3, r0, #0
-	cmp r3, #0
-	bne _0804317C
-	subs r1, #0xa
-	movs r0, #0x20
-	strb r0, [r1]
-	ldr r0, _08043174 @ =0x08365068
-	str r0, [r2, #0x18]
-	strb r3, [r2, #0x1c]
-	strh r3, [r2, #0x16]
-	ldrh r1, [r2]
-	movs r0, #2
-	ands r0, r1
-	cmp r0, #0
-	beq _08043180
-	ldr r0, _08043178 @ =0x000001B3
-	bl SoundPlayNotAlreadyPlaying
-	b _08043180
-	.align 2, 0
-_08043170: .4byte gCurrentSprite
-_08043174: .4byte 0x08365068
-_08043178: .4byte 0x000001B3
-_0804317C:
-	subs r0, #1
-	strb r0, [r1]
-_08043180:
-	pop {r0}
-	bx r0
-
-	thumb_func_start GadoraShooting
-GadoraShooting: @ 0x08043184
-	push {r4, r5, r6, lr}
-	sub sp, #0xc
-	ldr r1, _080431B4 @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x2e
-	ldrb r0, [r2]
-	subs r0, #1
-	strb r0, [r2]
-	lsls r0, r0, #0x18
-	adds r5, r1, #0
-	cmp r0, #0
-	bne _08043200
-	ldrh r1, [r5]
-	movs r0, #0x40
-	ands r0, r1
-	cmp r0, #0
-	beq _080431B8
-	ldrh r0, [r5, #4]
-	adds r0, #0x10
-	lsls r0, r0, #0x10
-	lsrs r1, r0, #0x10
-	movs r6, #0x40
-	b _080431C2
-	.align 2, 0
-_080431B4: .4byte gCurrentSprite
-_080431B8:
-	ldrh r0, [r5, #4]
-	subs r0, #0x10
-	lsls r0, r0, #0x10
-	lsrs r1, r0, #0x10
-	movs r6, #0
-_080431C2:
-	adds r4, r5, #0
-	ldrb r2, [r4, #0x1f]
-	adds r0, r4, #0
-	adds r0, #0x23
-	ldrb r3, [r0]
-	ldrh r0, [r4, #2]
-	str r0, [sp]
-	str r1, [sp, #4]
-	str r6, [sp, #8]
-	movs r0, #0x46
-	movs r1, #0
-	bl SpriteSpawnSecondary
-	ldrh r1, [r4]
-	movs r0, #2
-	ands r0, r1
-	cmp r0, #0
-	beq _080431EE
-	movs r0, #0xdb
-	lsls r0, r0, #1
-	bl SoundPlayNotAlreadyPlaying
-_080431EE:
-	adds r1, r5, #0
-	adds r1, #0x24
-	movs r2, #0
-	movs r0, #0x20
-	strb r0, [r1]
-	ldr r0, _08043208 @ =0x08365068
-	str r0, [r5, #0x18]
-	strb r2, [r5, #0x1c]
-	strh r2, [r5, #0x16]
-_08043200:
-	add sp, #0xc
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08043208: .4byte 0x08365068
-
-	thumb_func_start GadoraClosingEye
-GadoraClosingEye: @ 0x0804320C
-	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
-	cmp r0, #0
-	beq _0804321E
-	ldr r0, _08043224 @ =gCurrentSprite
-	adds r0, #0x24
-	movs r1, #1
-	strb r1, [r0]
-_0804321E:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08043224: .4byte gCurrentSprite
-
-	thumb_func_start Gadora
-Gadora: @ 0x08043228
-	push {lr}
-	ldr r0, _08043240 @ =gCurrentSprite
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x5b
-	bls _08043236
-	b _08043400
-_08043236:
-	lsls r0, r0, #2
-	ldr r1, _08043244 @ =_08043248
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_08043240: .4byte gCurrentSprite
-_08043244: .4byte _08043248
-_08043248: @ jump table
-	.4byte _080433B8 @ case 0
-	.4byte _080433BE @ case 1
-	.4byte _080433C2 @ case 2
-	.4byte _08043400 @ case 3
-	.4byte _08043400 @ case 4
-	.4byte _08043400 @ case 5
-	.4byte _08043400 @ case 6
-	.4byte _08043400 @ case 7
-	.4byte _08043400 @ case 8
-	.4byte _08043400 @ case 9
-	.4byte _08043400 @ case 10
-	.4byte _08043400 @ case 11
-	.4byte _08043400 @ case 12
-	.4byte _08043400 @ case 13
-	.4byte _08043400 @ case 14
-	.4byte _08043400 @ case 15
-	.4byte _08043400 @ case 16
-	.4byte _08043400 @ case 17
-	.4byte _08043400 @ case 18
-	.4byte _08043400 @ case 19
-	.4byte _08043400 @ case 20
-	.4byte _08043400 @ case 21
-	.4byte _08043400 @ case 22
-	.4byte _080433C8 @ case 23
-	.4byte _080433CC @ case 24
-	.4byte _08043400 @ case 25
-	.4byte _080433D2 @ case 26
-	.4byte _08043400 @ case 27
-	.4byte _080433D8 @ case 28
-	.4byte _08043400 @ case 29
-	.4byte _08043400 @ case 30
-	.4byte _08043400 @ case 31
-	.4byte _080433DE @ case 32
-	.4byte _08043400 @ case 33
-	.4byte _08043400 @ case 34
-	.4byte _08043400 @ case 35
-	.4byte _08043400 @ case 36
-	.4byte _08043400 @ case 37
-	.4byte _08043400 @ case 38
-	.4byte _08043400 @ case 39
-	.4byte _08043400 @ case 40
-	.4byte _08043400 @ case 41
-	.4byte _08043400 @ case 42
-	.4byte _08043400 @ case 43
-	.4byte _08043400 @ case 44
-	.4byte _08043400 @ case 45
-	.4byte _08043400 @ case 46
-	.4byte _08043400 @ case 47
-	.4byte _08043400 @ case 48
-	.4byte _08043400 @ case 49
-	.4byte _08043400 @ case 50
-	.4byte _08043400 @ case 51
-	.4byte _08043400 @ case 52
-	.4byte _08043400 @ case 53
-	.4byte _08043400 @ case 54
-	.4byte _08043400 @ case 55
-	.4byte _08043400 @ case 56
-	.4byte _08043400 @ case 57
-	.4byte _08043400 @ case 58
-	.4byte _08043400 @ case 59
-	.4byte _08043400 @ case 60
-	.4byte _08043400 @ case 61
-	.4byte _08043400 @ case 62
-	.4byte _08043400 @ case 63
-	.4byte _08043400 @ case 64
-	.4byte _08043400 @ case 65
-	.4byte _08043400 @ case 66
-	.4byte _08043400 @ case 67
-	.4byte _08043400 @ case 68
-	.4byte _08043400 @ case 69
-	.4byte _08043400 @ case 70
-	.4byte _08043400 @ case 71
-	.4byte _08043400 @ case 72
-	.4byte _08043400 @ case 73
-	.4byte _08043400 @ case 74
-	.4byte _08043400 @ case 75
-	.4byte _08043400 @ case 76
-	.4byte _08043400 @ case 77
-	.4byte _08043400 @ case 78
-	.4byte _08043400 @ case 79
-	.4byte _08043400 @ case 80
-	.4byte _08043400 @ case 81
-	.4byte _08043400 @ case 82
-	.4byte _08043400 @ case 83
-	.4byte _08043400 @ case 84
-	.4byte _08043400 @ case 85
-	.4byte _08043400 @ case 86
-	.4byte _080433E4 @ case 87
-	.4byte _080433EC @ case 88
-	.4byte _080433F2 @ case 89
-	.4byte _080433F6 @ case 90
-	.4byte _080433FC @ case 91
-_080433B8:
-	bl GadoraInit
-	b _08043400
-_080433BE:
-	bl GadoraIdleInit
-_080433C2:
-	bl GadoraIdle
-	b _08043400
-_080433C8:
-	bl GadoraOpeningEyeInit
-_080433CC:
-	bl GadoraOpeningEye
-	b _08043400
-_080433D2:
-	bl GadoraVulnerable
-	b _08043400
-_080433D8:
-	bl GadoraShooting
-	b _08043400
-_080433DE:
-	bl GadoraClosingEye
-	b _08043400
-_080433E4:
-	bl GadoraDeath
-	bl SpriteDyingInit
-_080433EC:
-	bl SpriteDying
-	b _08043400
-_080433F2:
-	bl GadoraInit
-_080433F6:
-	bl SpriteSpawningFromX
-	b _08043400
-_080433FC:
-	bl XParasiteInit
-_08043400:
-	pop {r0}
-	bx r0
-
-	thumb_func_start GadoraEye
-GadoraEye: @ 0x08043404
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	ldr r4, _080434B8 @ =gCurrentSprite
-	adds r0, r4, #0
-	adds r0, #0x26
-	movs r1, #1
-	mov sb, r1
-	mov r3, sb
-	strb r3, [r0]
-	adds r0, #6
-	ldrb r1, [r0]
-	movs r0, #0x7f
-	ands r0, r1
-	cmp r0, #4
-	bne _0804342E
-	movs r0, #0xdc
-	lsls r0, r0, #1
-	bl SoundPlayNotAlreadyPlaying
-_0804342E:
-	adds r0, r4, #0
-	adds r0, #0x23
-	ldrb r6, [r0]
-	adds r5, r4, #0
-	adds r5, #0x24
-	ldrb r3, [r5]
-	cmp r3, #0
-	bne _08043490
-	ldr r0, _080434BC @ =gIoRegisters
-	ldrb r1, [r0, #0xa]
-	movs r0, #3
-	ands r0, r1
-	adds r1, r4, #0
-	adds r1, #0x21
-	strb r0, [r1]
-	ldr r1, _080434C0 @ =sSecondarySpriteStats
-	ldrb r0, [r4, #0x1d]
-	lsls r0, r0, #3
-	adds r0, r0, r1
-	ldrh r0, [r0]
-	movs r2, #0
-	strh r0, [r4, #0x14]
-	adds r0, r4, #0
-	adds r0, #0x27
-	movs r1, #0xc
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r1, r4, #0
-	adds r1, #0x29
-	movs r0, #6
-	strb r0, [r1]
-	ldr r0, _080434C4 @ =0x0000FFD0
-	strh r0, [r4, #0xa]
-	movs r0, #0x30
-	strh r0, [r4, #0xc]
-	ldr r0, _080434C8 @ =0x0000FFF0
-	strh r0, [r4, #0xe]
-	movs r0, #0x10
-	strh r0, [r4, #0x10]
-	ldr r0, _080434CC @ =0x082E6214
-	str r0, [r4, #0x18]
-	strb r2, [r4, #0x1c]
-	strh r3, [r4, #0x16]
-	adds r0, r4, #0
-	adds r0, #0x25
-	strb r2, [r0]
-	movs r0, #2
-	strb r0, [r5]
-_08043490:
-	ldr r2, _080434D0 @ =gSpriteData
-	lsls r3, r6, #3
-	subs r0, r3, r6
-	lsls r0, r0, #3
-	adds r0, r0, r2
-	mov ip, r0
-	ldrh r1, [r0]
-	movs r5, #0x80
-	lsls r5, r5, #6
-	adds r0, r5, #0
-	ands r0, r1
-	mov r8, r2
-	adds r2, r3, #0
-	cmp r0, #0
-	beq _080434D4
-	ldrh r1, [r4]
-	adds r0, r5, #0
-	orrs r0, r1
-	strh r0, [r4]
-	b _0804358A
-	.align 2, 0
-_080434B8: .4byte gCurrentSprite
-_080434BC: .4byte gIoRegisters
-_080434C0: .4byte sSecondarySpriteStats
-_080434C4: .4byte 0x0000FFD0
-_080434C8: .4byte 0x0000FFF0
-_080434CC: .4byte 0x082E6214
-_080434D0: .4byte gSpriteData
-_080434D4:
-	ldrh r1, [r4]
-	ldr r0, _08043524 @ =0x0000DFFF
-	ands r0, r1
-	movs r7, #0
-	strh r0, [r4]
-	adds r0, r4, #0
-	adds r0, #0x20
-	ldrb r0, [r0]
-	mov r5, ip
-	adds r5, #0x20
-	strb r0, [r5]
-	ldrh r3, [r4, #0x14]
-	cmp r3, #0
-	bne _08043528
-	mov r1, ip
-	adds r1, #0x24
-	ldrb r0, [r1]
-	cmp r0, #0x56
-	bhi _08043528
-	movs r0, #0x57
-	strb r0, [r1]
-	mov r0, ip
-	adds r0, #0x26
-	mov r1, sb
-	strb r1, [r0]
-	mov r0, ip
-	strh r3, [r0, #0x14]
-	mov r2, ip
-	adds r2, #0x34
-	ldrb r0, [r2]
-	movs r1, #0x10
-	orrs r0, r1
-	strb r0, [r2]
-	mov r0, ip
-	adds r0, #0x32
-	strb r7, [r0]
-	strb r7, [r5]
-	strh r3, [r4]
-	b _0804358A
-	.align 2, 0
-_08043524: .4byte 0x0000DFFF
-_08043528:
-	subs r0, r2, r6
-	lsls r0, r0, #3
-	mov r1, r8
-	adds r3, r0, r1
-	adds r0, r3, #0
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x1a
-	beq _08043554
-	cmp r0, #0x1a
-	blt _0804357C
-	cmp r0, #0x58
-	bgt _0804357C
-	cmp r0, #0x57
-	blt _0804357C
-	ldr r1, _08043550 @ =gCurrentSprite
-	movs r0, #0
-	strh r0, [r1]
-	b _0804358A
-	.align 2, 0
-_08043550: .4byte gCurrentSprite
-_08043554:
-	ldr r1, _08043574 @ =gCurrentSprite
-	ldrh r2, [r1]
-	ldr r0, _08043578 @ =0x00007FFF
-	ands r0, r2
-	strh r0, [r1]
-	adds r1, #0x2c
-	ldrb r1, [r1]
-	movs r0, #0x7f
-	ands r0, r1
-	cmp r0, #0
-	beq _0804358A
-	adds r1, r3, #0
-	adds r1, #0x2e
-	movs r0, #0
-	strb r0, [r1]
-	b _0804358A
-	.align 2, 0
-_08043574: .4byte gCurrentSprite
-_08043578: .4byte 0x00007FFF
-_0804357C:
-	ldr r2, _08043598 @ =gCurrentSprite
-	ldrh r1, [r2]
-	movs r3, #0x80
-	lsls r3, r3, #8
-	adds r0, r3, #0
-	orrs r0, r1
-	strh r0, [r2]
-_0804358A:
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08043598: .4byte gCurrentSprite
-
-	thumb_func_start GadoraRoots
-GadoraRoots: @ 0x0804359C
-	push {r4, r5, r6, lr}
-	ldr r3, _08043628 @ =gCurrentSprite
-	adds r1, r3, #0
-	adds r1, #0x26
-	movs r0, #1
-	strb r0, [r1]
-	adds r0, r3, #0
-	adds r0, #0x23
-	ldrb r5, [r0]
-	adds r6, r3, #0
-	adds r6, #0x24
-	ldrb r4, [r6]
-	cmp r4, #0
-	bne _08043602
-	ldrh r1, [r3]
-	ldr r0, _0804362C @ =0x0000FFFB
-	ands r0, r1
-	movs r2, #0
-	strh r0, [r3]
-	adds r0, r3, #0
-	adds r0, #0x27
-	movs r1, #0x20
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r1, r3, #0
-	adds r1, #0x29
-	movs r0, #0x10
-	strb r0, [r1]
-	ldr r1, _08043630 @ =0x0000FFFC
-	strh r1, [r3, #0xa]
-	movs r0, #4
-	strh r0, [r3, #0xc]
-	strh r1, [r3, #0xe]
-	strh r0, [r3, #0x10]
-	strb r2, [r3, #0x1c]
-	strh r4, [r3, #0x16]
-	adds r0, r3, #0
-	adds r0, #0x25
-	strb r2, [r0]
-	movs r0, #2
-	strb r0, [r6]
-	ldr r0, _08043634 @ =gIoRegisters
-	ldrb r1, [r0, #0xa]
-	movs r0, #3
-	ands r0, r1
-	adds r1, r3, #0
-	adds r1, #0x21
-	strb r0, [r1]
-	ldr r0, _08043638 @ =0x08365010
-	str r0, [r3, #0x18]
-_08043602:
-	ldr r1, _0804363C @ =gSpriteData
-	lsls r0, r5, #3
-	subs r0, r0, r5
-	lsls r0, r0, #3
-	adds r2, r0, r1
-	ldrh r1, [r2]
-	movs r5, #0x80
-	lsls r5, r5, #6
-	adds r0, r5, #0
-	ands r0, r1
-	lsls r0, r0, #0x10
-	lsrs r4, r0, #0x10
-	cmp r4, #0
-	beq _08043640
-	ldrh r1, [r3]
-	adds r0, r5, #0
-	orrs r0, r1
-	strh r0, [r3]
-	b _08043688
-	.align 2, 0
-_08043628: .4byte gCurrentSprite
-_0804362C: .4byte 0x0000FFFB
-_08043630: .4byte 0x0000FFFC
-_08043634: .4byte gIoRegisters
-_08043638: .4byte 0x08365010
-_0804363C: .4byte gSpriteData
-_08043640:
-	ldrh r1, [r3]
-	ldr r0, _08043668 @ =0x0000DFFF
-	ands r0, r1
-	movs r5, #0
-	strh r0, [r3]
-	adds r0, r3, #0
-	adds r0, #0x20
-	ldrb r1, [r0]
-	adds r0, r2, #0
-	adds r0, #0x20
-	strb r1, [r0]
-	adds r0, #4
-	ldrb r0, [r0]
-	cmp r0, #0x17
-	beq _08043680
-	cmp r0, #0x17
-	bgt _0804366C
-	cmp r0, #1
-	beq _08043678
-	b _08043688
-	.align 2, 0
-_08043668: .4byte 0x0000DFFF
-_0804366C:
-	cmp r0, #0x58
-	bgt _08043688
-	cmp r0, #0x57
-	blt _08043688
-	strh r4, [r3]
-	b _08043688
-_08043678:
-	ldr r0, _0804367C @ =0x08365010
-	b _08043682
-	.align 2, 0
-_0804367C: .4byte 0x08365010
-_08043680:
-	ldr r0, _08043690 @ =0x083650E0
-_08043682:
-	str r0, [r3, #0x18]
-	strb r5, [r3, #0x1c]
-	strh r4, [r3, #0x16]
-_08043688:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08043690: .4byte 0x083650E0
-
-	thumb_func_start GadoraBeam
-GadoraBeam: @ 0x08043694
-	push {r4, r5, r6, lr}
-	ldr r0, _080436AC @ =gCurrentSprite
-	adds r6, r0, #0
-	adds r6, #0x24
-	ldrb r5, [r6]
-	adds r4, r0, #0
-	cmp r5, #0
-	beq _080436B0
-	cmp r5, #2
-	beq _08043712
-	b _08043776
-	.align 2, 0
-_080436AC: .4byte gCurrentSprite
-_080436B0:
-	ldrh r1, [r4]
-	ldr r0, _08043724 @ =0x0000FFFB
-	ands r0, r1
-	movs r3, #0
-	strh r0, [r4]
-	adds r2, r4, #0
-	adds r2, #0x34
-	ldrb r1, [r2]
-	movs r0, #4
-	orrs r0, r1
-	strb r0, [r2]
-	adds r0, r4, #0
-	adds r0, #0x27
-	movs r1, #0x18
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r1, r4, #0
-	adds r1, #0x29
-	movs r0, #0x10
-	strb r0, [r1]
-	ldr r0, _08043728 @ =0x0000FFC4
-	strh r0, [r4, #0xa]
-	movs r0, #0x44
-	strh r0, [r4, #0xc]
-	ldr r0, _0804372C @ =0x0000FFE0
-	strh r0, [r4, #0xe]
-	movs r0, #0x20
-	strh r0, [r4, #0x10]
-	ldr r0, _08043730 @ =0x083650B8
-	str r0, [r4, #0x18]
-	strb r3, [r4, #0x1c]
-	strh r5, [r4, #0x16]
-	movs r0, #2
-	strb r0, [r6]
-	subs r1, #4
-	strb r0, [r1]
-	subs r1, #3
-	movs r0, #3
-	strb r0, [r1]
-	ldr r1, _08043734 @ =gIoRegisters
-	ldrb r1, [r1, #0xa]
-	ands r0, r1
-	adds r1, r4, #0
-	adds r1, #0x21
-	strb r0, [r1]
-	adds r1, #0x14
-	movs r0, #1
-	strb r0, [r1]
-_08043712:
-	ldrh r1, [r4]
-	movs r0, #0x40
-	ands r0, r1
-	cmp r0, #0
-	beq _08043738
-	ldrh r0, [r4, #4]
-	adds r0, #0xc
-	b _0804373C
-	.align 2, 0
-_08043724: .4byte 0x0000FFFB
-_08043728: .4byte 0x0000FFC4
-_0804372C: .4byte 0x0000FFE0
-_08043730: .4byte 0x083650B8
-_08043734: .4byte gIoRegisters
-_08043738:
-	ldrh r0, [r4, #4]
-	subs r0, #0xc
-_0804373C:
-	strh r0, [r4, #4]
-	ldr r1, _0804377C @ =gCurrentClipdataAffectingAction
-	movs r0, #5
-	strb r0, [r1]
-	adds r5, r4, #0
-	ldrh r0, [r5, #2]
-	ldrh r1, [r5, #4]
-	bl SpriteUtilCheckCollisionAtPosition
-	ldr r0, _08043780 @ =gPreviousCollisionCheck
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _08043776
-	ldrh r0, [r5, #2]
-	adds r0, #0x30
-	ldrh r1, [r5, #4]
-	movs r2, #0x2f
-	bl ParticleSet
-	ldrh r1, [r5]
-	movs r0, #2
-	ands r0, r1
-	cmp r0, #0
-	beq _08043772
-	ldr r0, _08043784 @ =0x000001B7
-	bl SoundPlayNotAlreadyPlaying
-_08043772:
-	movs r0, #0
-	strh r0, [r4]
-_08043776:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804377C: .4byte gCurrentClipdataAffectingAction
-_08043780: .4byte gPreviousCollisionCheck
-_08043784: .4byte 0x000001B7
-
-	thumb_func_start Gadora_UnusedSprite
-Gadora_UnusedSprite: @ 0x08043788
-	bx lr
-	.align 2, 0

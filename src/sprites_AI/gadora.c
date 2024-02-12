@@ -1,13 +1,14 @@
 #include "sprites_AI/gadora.h"
 #include "macros.h"
 #include "globals.h"
-#include "sprite_util.h"
 
 #include "data/sprite_data.h"
 #include "data/sprites/target.h"
+#include "data/sprites/x_parasite.h"
 #include "data/sprites/gadora.h"
 
 #include "constants/clipdata.h"
+#include "constants/particle.h"
 #include "constants/sprite.h"
 
 #include "structs/clipdata.h"
@@ -159,7 +160,7 @@ void GadoraInit(void)
     {
         // Set spawning from X
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-        gCurrentSprite.xParasiteTimer = 44;
+        gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
     }
     else
     {
@@ -671,7 +672,7 @@ void GadoraBeam(void)
             if (gPreviousCollisionCheck != COLLISION_AIR)
             {
                 // Destroy beam
-                ParticleSet(gCurrentSprite.yPosition + (BLOCK_SIZE - QUARTER_BLOCK_SIZE), gCurrentSprite.xPosition, 0x2F);
+                ParticleSet(gCurrentSprite.yPosition + (BLOCK_SIZE - QUARTER_BLOCK_SIZE), gCurrentSprite.xPosition, PE_0x2F);
 
                 if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
                     SoundPlayNotAlreadyPlaying(0x1B7);

@@ -15419,7 +15419,7 @@ HornoadInit: @ 0x0801CA1C
 	.align 2, 0
 _0801CA34: .4byte gCurrentSprite
 _0801CA38:
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r4, _0801CAC8 @ =gCurrentSprite
 	ldrh r0, [r4]
 	ldr r3, _0801CACC @ =0x0000FFFB
@@ -17502,7 +17502,7 @@ _0801DB08:
 HalzynInit: @ 0x0801DB0C
 	push {r4, r5, r6, lr}
 	sub sp, #0xc
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r0, _0801DB7C @ =gCurrentSprite
 	mov ip, r0
 	adds r0, #0x25

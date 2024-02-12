@@ -264,7 +264,7 @@ _08049A64:
 	thumb_func_start OwtchInit
 OwtchInit: @ 0x08049A68
 	push {r4, r5, r6, r7, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08049A94 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -1712,7 +1712,7 @@ _0804A614: .4byte 0x0000FFDF
 	thumb_func_start GeegaInit
 GeegaInit: @ 0x0804A618
 	push {r4, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0804A644 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -2702,7 +2702,7 @@ _0804AD9A:
 	thumb_func_start GenesisInit
 GenesisInit: @ 0x0804ADA0
 	push {r4, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0804ADCC @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -3688,7 +3688,7 @@ _0804B65E:
 	thumb_func_start PuyoInit
 PuyoInit: @ 0x0804B664
 	push {r4, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0804B690 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -4581,7 +4581,7 @@ _0804BDEC: .4byte gCurrentSprite
 	thumb_func_start FakeTankInit
 FakeTankInit: @ 0x0804BDF0
 	push {r4, r5, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0804BE1C @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -5736,7 +5736,7 @@ _0804C80C: .4byte gCurrentSprite
 	thumb_func_start ZebesianAquaInit
 ZebesianAquaInit: @ 0x0804C810
 	push {lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0804C83C @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34
@@ -11913,7 +11913,7 @@ _0804F8D4:
 	thumb_func_start PowampInit
 PowampInit: @ 0x0804F8D8
 	push {r4, r5, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r3, _0804F938 @ =gCurrentSprite
 	adds r0, r3, #0
 	adds r0, #0x27
@@ -12657,7 +12657,7 @@ _0804FF18:
 	thumb_func_start ZozoroInit
 ZozoroInit: @ 0x0804FF1C
 	push {r4, r5, r6, r7, lr}
-	bl TrySetAbsorbXFlag
+	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _0804FF48 @ =gCurrentSprite
 	adds r0, r2, #0
 	adds r0, #0x34

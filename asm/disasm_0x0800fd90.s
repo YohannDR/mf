@@ -3926,8 +3926,8 @@ _08011BDE:
 	pop {r1}
 	bx r1
 
-	thumb_func_start CheckSamusNearSpriteFrontBehindX
-CheckSamusNearSpriteFrontBehindX: @ 0x08011BE4
+	thumb_func_start SpriteUtilCheckSamusNearSpriteFrontBehindX
+SpriteUtilCheckSamusNearSpriteFrontBehindX: @ 0x08011BE4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -5552,8 +5552,8 @@ _08012812:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start TrySetAbsorbXFlag
-TrySetAbsorbXFlag: @ 0x08012818
+	thumb_func_start SpriteUtilTrySetAbsorbXFlag
+SpriteUtilTrySetAbsorbXFlag: @ 0x08012818
 	push {lr}
 	ldr r2, _08012854 @ =gCurrentSprite
 	adds r0, r2, #0
