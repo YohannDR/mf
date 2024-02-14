@@ -227,6 +227,7 @@ SECTIONS {
 
         asm/disasm_0x0801e794.o(.text);
 
+        src/sprites_AI/zoro_cocoon.o(.text);
         src/sprites_AI/gadora.o(.text);
         src/sprites_AI/destroyed_data_pad.o(.text);
         src/sprites_AI/nettori.o(.text);
@@ -267,6 +268,7 @@ SECTIONS {
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
+        src/data/sprites/zoro_cocoon.o(.rodata);
         src/data/sprites/gadora.o(.rodata);
         src/data/sprites/destroyed_data_pad.o(.rodata);
         src/data/sprites/nettori.o(.rodata);

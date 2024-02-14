@@ -2,7 +2,8 @@
 #include "globals.h"
 #include "macros.h"
 
-#include "data/sprites/target.h"
+#include "data/sprites/zoro_cocoon.h"
+#include "data/sprite_data.h"
 
 #include "constants/sprite.h"
 #include "constants/clipdata.h"
@@ -56,14 +57,101 @@ void ZoroCocoonSetHitboxesAndDrawDistances(void)
     gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE + HALF_BLOCK_SIZE);
 }
 
+/**
+ * @brief 429b8 | 6c | Sets the oam for a zoro cocoon
+ * 
+ */
 void ZoroCocoonSetOam(void)
 {
+    if (EventCheckAfter_EscapedSaXTro1())
+    {
+        if (gCurrentSprite.work0)
+            gCurrentSprite.pOam = sZoroCocoonOam_TransformedVertical;
+        else
+            gCurrentSprite.pOam = sZoroCocoonOam_TransformedHorizontal;
 
+        gCurrentSprite.currentAnimationFrame = MOD_AND(gSpriteRandomNumber, 8);
+    }
+    else
+    {
+        if (gCurrentSprite.work0)
+            gCurrentSprite.pOam = sZoroCocoonOam_UntransformedVertical;
+        else
+            gCurrentSprite.pOam = sZoroCocoonOam_UntransformedHorizontal;
+
+        gCurrentSprite.currentAnimationFrame = 0;
+    }
+
+    gCurrentSprite.animationDurationCounter = 0;
 }
 
+/**
+ * @brief 42a24 | 130 | Initializes a zoro cocoon
+ * 
+ */
 void ZoroCocoonInit(void)
 {
+    gCurrentSprite.samusCollision = SSC_SOLID;
+    gCurrentSprite.properties |= SP_SOLID_FOR_PROJECTILES;
 
+    gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
+
+    SpriteUtilSpriteChooseRandomXDirectionWithRoomSlot();
+
+    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+
+    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+    {
+        gCurrentSprite.work0 = FALSE;
+
+        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+            gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+    }
+    else
+    {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - (BLOCK_SIZE + PIXEL_SIZE), gCurrentSprite.xPosition);
+        if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+        {
+            gCurrentSprite.work0 = FALSE;
+
+            gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
+            gCurrentSprite.yPosition -= BLOCK_SIZE;
+
+            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+        }
+        else
+        {
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition - (HALF_BLOCK_SIZE + PIXEL_SIZE));
+            if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+            {
+                gCurrentSprite.work0 = TRUE;
+
+                gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
+                gCurrentSprite.xPosition -= HALF_BLOCK_SIZE;
+            }
+            else
+            {
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
+
+                if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN))
+                {
+                    gCurrentSprite.status = 0;
+                    return;
+                }
+
+                gCurrentSprite.work0 = TRUE;
+
+                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+                gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
+                gCurrentSprite.xPosition += HALF_BLOCK_SIZE;
+            }
+        }
+    }
+
+    ZoroCocoonSetOam();
+    ZoroCocoonSetHitboxesAndDrawDistances();
 }
 
 /**
@@ -74,7 +162,7 @@ void ZoroCocoon(void)
 {
     if (gCurrentSprite.freezeTimer != 0)
     {
-        SpriteUtilSpriteUpdateFreezeTimer();
+        SpriteUtilUpdateFreezeTimer();
         return;
     }
 
@@ -100,9 +188,19 @@ void ZoroCocoon(void)
     }
 }
 
+/**
+ * @brief 42bfc | 30 | Sets the oam for a zoro husk
+ * 
+ */
 void ZoroHuskSetOam(void)
 {
+    if (gCurrentSprite.work0)
+        gCurrentSprite.pOam = sZoroHuskOam_Vertical;
+    else
+        gCurrentSprite.pOam = sZoroHuskOam_Horizontal;
 
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
 }
 
 /**

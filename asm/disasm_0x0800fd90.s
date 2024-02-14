@@ -2944,8 +2944,8 @@ _08011500:
 	.align 2, 0
 _08011508: .4byte gCurrentSprite
 
-	thumb_func_start SpriteChooseRandomXDirectionWithRoomSlot
-SpriteChooseRandomXDirectionWithRoomSlot: @ 0x0801150C
+	thumb_func_start SpriteUtilSpriteChooseRandomXDirectionWithRoomSlot
+SpriteUtilSpriteChooseRandomXDirectionWithRoomSlot: @ 0x0801150C
 	push {lr}
 	ldr r2, _08011524 @ =gCurrentSprite
 	ldrb r1, [r2, #0x1e]

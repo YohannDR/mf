@@ -8,6 +8,14 @@ sprites/hornoad.pal;48;0x2eaa6c;2
 sprites/movable_platform.gfx;512;0x2ed2e8;4
 sprites/movable_platform.pal;16;0x2edae8;2
 
+# Zoro cocoon
+
+sprites/zoro_cocoon.gfx;1024;0x36232c;4
+sprites/zoro_cocoon.pal;32;0x36332c;2
+
+sprites/zoro_husk.gfx;512;0x3634f0;4
+sprites/zoro_husk.pal;16;0x363cf0;2
+
 # Gadora
 
 sprites/gadora.gfx;1024;0x363d4c;4
@@ -78,7 +86,7 @@ menus/title_screen/596e0c.pal;128;0x596e0c;2
 Blob_a5224_2e4904.bin;2356960;0xa5224;1
 Blob_2e5cae_2e6160.bin;1202;0x2e5cae;1
 Blob_2e6382_2ed2e8.bin;28518;0x2e6382;1
-Blob_2edb20_363d4c.bin;483884;0x2edb20;1
+Blob_2edb20_36232c.bin;477196;0x2edb20;1
 Blob_3787d0_3bdebc.bin;284396;0x3787d0;1
 Blob_3be1be_3e392c.bin;153454;0x3be1be;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
