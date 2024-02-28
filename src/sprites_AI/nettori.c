@@ -921,7 +921,7 @@ void SamusEaterInit(void)
     gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
     gCurrentSprite.frozenPaletteRowOffset = 1;
 
-    SpriteUtilSpriteChooseRandomXFlip();
+    SpriteUtilChooseRandomXFlip();
 
     gCurrentSprite.work1 = 90 + gSpriteRandomNumber * 4;
 }
@@ -1088,7 +1088,7 @@ void SamusEaterBudInit(void)
     // Why is this called when the sprite was made to face samus before?
     // Also this de-syncs the side hitboxes
     // Also doesn't matter because the eater bud constantly check to turn around based on samus' position
-    SpriteUtilSpriteChooseRandomXFlip();
+    SpriteUtilChooseRandomXFlip();
 }
 
 /**

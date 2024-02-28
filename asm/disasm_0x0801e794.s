@@ -147,7 +147,7 @@ _0801E8AC: .4byte gCurrentSprite
 _0801E8B0:
 	movs r0, #8
 	strb r0, [r1]
-	bl SpriteUtilSpriteChooseRandomXFlip
+	bl SpriteUtilChooseRandomXFlip
 	ldrh r1, [r4]
 	movs r0, #0x40
 	ands r0, r1
@@ -7327,7 +7327,7 @@ _08022294:
 	strb r0, [r2]
 	bl ZombieSetWaitingToForm
 _080222A8:
-	bl SpriteUtilSpriteChooseRandomXFlip
+	bl SpriteUtilChooseRandomXFlip
 	b _080222DE
 	.align 2, 0
 _080222B0: .4byte 0x082FB528
@@ -16377,7 +16377,7 @@ _08026D40:
 	movs r0, #0x30
 	strb r0, [r1]
 	bl WaverSetFlyingGFX
-	bl SpriteUtilSpriteChooseRandomXFlip
+	bl SpriteUtilChooseRandomXFlip
 _08026D88:
 	pop {r0}
 	bx r0
@@ -33978,7 +33978,7 @@ _0802FA3C:
 	adds r0, #0x2f
 	strb r4, [r0]
 _0802FA42:
-	bl SpriteUtilSpriteChooseRandomXFlip
+	bl SpriteUtilChooseRandomXFlip
 	ldr r1, _0802FA60 @ =gCurrentSprite
 	ldrh r2, [r1]
 	movs r3, #0x80
@@ -54959,7 +54959,7 @@ _0803A3C2:
 	strh r3, [r2]
 	b _0803A498
 _0803A3C6:
-	bl SpriteUtilSpriteChooseRandomXFlip
+	bl SpriteUtilChooseRandomXFlip
 	ldr r0, _0803A3D4 @ =gCurrentSprite
 	adds r0, #0x24
 	movs r1, #1
@@ -63004,7 +63004,7 @@ _0803E3E4:
 	adds r1, #0x25
 	movs r0, #2
 	strb r0, [r1]
-	bl SpriteUtilSpriteChooseRandomXFlip
+	bl SpriteUtilChooseRandomXFlip
 	bl SpriteUtilChooseRandomXDirection
 	ldr r0, _0803E46C @ =gFrameCounter8Bit
 	ldrb r0, [r0]
@@ -66216,7 +66216,7 @@ _0803FF0A:
 	adds r0, #0x36
 	strb r2, [r0]
 _0803FF10:
-	bl SpriteUtilSpriteChooseRandomXFlip
+	bl SpriteUtilChooseRandomXFlip
 	ldr r1, _0803FF74 @ =gCurrentSprite
 	adds r2, r1, #0
 	adds r2, #0x24
@@ -71088,401 +71088,3 @@ _0804256E:
 	.align 2, 0
 _08042574: .4byte gCurrentSprite
 _08042578: .4byte 0x0000FFDF
-
-	thumb_func_start RipperInit
-RipperInit: @ 0x0804257C
-	push {r4, lr}
-	bl SpriteUtilTrySetAbsorbXFlag
-	ldr r2, _080425AC @ =gCurrentSprite
-	adds r0, r2, #0
-	adds r0, #0x34
-	ldrb r1, [r0]
-	movs r0, #2
-	ands r0, r1
-	lsls r0, r0, #0x18
-	lsrs r1, r0, #0x18
-	cmp r1, #0
-	beq _080425C4
-	ldrh r1, [r2]
-	movs r0, #0x80
-	lsls r0, r0, #6
-	ands r0, r1
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	cmp r0, #0
-	bne _080425B0
-	strh r0, [r2]
-	b _08042634
-	.align 2, 0
-_080425AC: .4byte gCurrentSprite
-_080425B0:
-	movs r1, #0
-	ldr r0, _080425C0 @ =0x0000FFC8
-	strh r0, [r2, #0xa]
-	strh r1, [r2, #0xc]
-	adds r0, #8
-	strh r0, [r2, #0xe]
-	movs r0, #0x30
-	b _080425D0
-	.align 2, 0
-_080425C0: .4byte 0x0000FFC8
-_080425C4:
-	ldr r0, _08042620 @ =0x0000FFD0
-	strh r0, [r2, #0xa]
-	strh r1, [r2, #0xc]
-	adds r0, #0x10
-	strh r0, [r2, #0xe]
-	movs r0, #0x20
-_080425D0:
-	strh r0, [r2, #0x10]
-	ldr r4, _08042624 @ =gCurrentSprite
-	adds r0, r4, #0
-	adds r0, #0x27
-	movs r1, #0
-	movs r2, #0x10
-	strb r2, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r0, #1
-	strb r2, [r0]
-	ldr r0, _08042628 @ =0x083622F4
-	str r0, [r4, #0x18]
-	strb r1, [r4, #0x1c]
-	strh r1, [r4, #0x16]
-	adds r1, r4, #0
-	adds r1, #0x25
-	movs r0, #2
-	strb r0, [r1]
-	ldr r2, _0804262C @ =sPrimarySpriteStats
-	ldrb r1, [r4, #0x1d]
-	lsls r0, r1, #3
-	subs r0, r0, r1
-	lsls r0, r0, #1
-	adds r0, r0, r2
-	ldrh r0, [r0]
-	strh r0, [r4, #0x14]
-	bl SpriteUtilSpriteChooseRandomXFlip
-	adds r1, r4, #0
-	adds r1, #0x24
-	ldrb r0, [r1]
-	cmp r0, #0x59
-	bne _08042630
-	movs r0, #0x5a
-	strb r0, [r1]
-	movs r0, #0x2c
-	strh r0, [r4, #6]
-	b _08042634
-	.align 2, 0
-_08042620: .4byte 0x0000FFD0
-_08042624: .4byte gCurrentSprite
-_08042628: .4byte 0x083622F4
-_0804262C: .4byte sPrimarySpriteStats
-_08042630:
-	movs r0, #1
-	strb r0, [r1]
-_08042634:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start RipperIdleInit
-RipperIdleInit: @ 0x0804263C
-	ldr r1, _08042654 @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x24
-	movs r3, #0
-	movs r0, #2
-	strb r0, [r2]
-	ldr r0, _08042658 @ =0x083622F4
-	str r0, [r1, #0x18]
-	movs r0, #0
-	strh r3, [r1, #0x16]
-	strb r0, [r1, #0x1c]
-	bx lr
-	.align 2, 0
-_08042654: .4byte gCurrentSprite
-_08042658: .4byte 0x083622F4
-
-	thumb_func_start RipperIdle
-RipperIdle: @ 0x0804265C
-	push {r4, lr}
-	ldr r4, _08042684 @ =gCurrentSprite
-	ldrh r1, [r4]
-	movs r0, #0x40
-	ands r0, r1
-	cmp r0, #0
-	beq _0804268C
-	ldrh r0, [r4, #2]
-	subs r0, #0x10
-	ldrh r1, [r4, #4]
-	adds r1, #0x28
-	bl SpriteUtilCheckCollisionAtPosition
-	ldr r0, _08042688 @ =gPreviousCollisionCheck
-	ldrb r0, [r0]
-	cmp r0, #0x11
-	beq _080426A0
-	ldrh r0, [r4, #4]
-	adds r0, #2
-	b _080426B4
-	.align 2, 0
-_08042684: .4byte gCurrentSprite
-_08042688: .4byte gPreviousCollisionCheck
-_0804268C:
-	ldrh r0, [r4, #2]
-	subs r0, #0x10
-	ldrh r1, [r4, #4]
-	subs r1, #0x28
-	bl SpriteUtilCheckCollisionAtPosition
-	ldr r0, _080426AC @ =gPreviousCollisionCheck
-	ldrb r0, [r0]
-	cmp r0, #0x11
-	bne _080426B0
-_080426A0:
-	adds r1, r4, #0
-	adds r1, #0x24
-	movs r0, #3
-	strb r0, [r1]
-	b _080426B6
-	.align 2, 0
-_080426AC: .4byte gPreviousCollisionCheck
-_080426B0:
-	ldrh r0, [r4, #4]
-	subs r0, #2
-_080426B4:
-	strh r0, [r4, #4]
-_080426B6:
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start RipperTurningAroundInit
-RipperTurningAroundInit: @ 0x080426BC
-	ldr r1, _080426D4 @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x24
-	movs r3, #0
-	movs r0, #4
-	strb r0, [r2]
-	ldr r0, _080426D8 @ =0x0836231C
-	str r0, [r1, #0x18]
-	movs r0, #0
-	strh r3, [r1, #0x16]
-	strb r0, [r1, #0x1c]
-	bx lr
-	.align 2, 0
-_080426D4: .4byte gCurrentSprite
-_080426D8: .4byte 0x0836231C
-
-	thumb_func_start RipperTurningAround
-RipperTurningAround: @ 0x080426DC
-	push {r4, lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
-	cmp r0, #0
-	beq _08042700
-	ldr r2, _08042708 @ =gCurrentSprite
-	ldrh r1, [r2]
-	movs r0, #0x40
-	eors r1, r0
-	movs r3, #0
-	movs r4, #0
-	strh r1, [r2]
-	adds r1, r2, #0
-	adds r1, #0x24
-	movs r0, #5
-	strb r0, [r1]
-	strb r3, [r2, #0x1c]
-	strh r4, [r2, #0x16]
-_08042700:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08042708: .4byte gCurrentSprite
-
-	thumb_func_start RipperTurningAroundSecondPart
-RipperTurningAroundSecondPart: @ 0x0804270C
-	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
-	cmp r0, #0
-	beq _0804271E
-	ldr r0, _08042724 @ =gCurrentSprite
-	adds r0, #0x24
-	movs r1, #1
-	strb r1, [r0]
-_0804271E:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08042724: .4byte gCurrentSprite
-
-	thumb_func_start Ripper
-Ripper: @ 0x08042728
-	push {r4, lr}
-	ldr r4, _08042750 @ =gCurrentSprite
-	adds r0, r4, #0
-	adds r0, #0x2c
-	ldrb r1, [r0]
-	movs r0, #0x7f
-	ands r0, r1
-	cmp r0, #4
-	bne _08042740
-	ldr r0, _08042754 @ =0x000001D3
-	bl SoundPlayNotAlreadyPlaying
-_08042740:
-	adds r0, r4, #0
-	adds r0, #0x32
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _08042758
-	bl SpriteUtilUpdateFreezeTimer
-	b _08042924
-	.align 2, 0
-_08042750: .4byte gCurrentSprite
-_08042754: .4byte 0x000001D3
-_08042758:
-	adds r0, r4, #0
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x5b
-	bls _08042764
-	b _08042924
-_08042764:
-	lsls r0, r0, #2
-	ldr r1, _08042770 @ =_08042774
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_08042770: .4byte _08042774
-_08042774: @ jump table
-	.4byte _080428E4 @ case 0
-	.4byte _080428EA @ case 1
-	.4byte _080428EE @ case 2
-	.4byte _080428F4 @ case 3
-	.4byte _080428F8 @ case 4
-	.4byte _080428FE @ case 5
-	.4byte _08042924 @ case 6
-	.4byte _08042924 @ case 7
-	.4byte _08042924 @ case 8
-	.4byte _08042924 @ case 9
-	.4byte _08042924 @ case 10
-	.4byte _08042924 @ case 11
-	.4byte _08042924 @ case 12
-	.4byte _08042924 @ case 13
-	.4byte _08042924 @ case 14
-	.4byte _08042924 @ case 15
-	.4byte _08042924 @ case 16
-	.4byte _08042924 @ case 17
-	.4byte _08042924 @ case 18
-	.4byte _08042924 @ case 19
-	.4byte _08042924 @ case 20
-	.4byte _08042924 @ case 21
-	.4byte _08042924 @ case 22
-	.4byte _08042924 @ case 23
-	.4byte _08042924 @ case 24
-	.4byte _08042924 @ case 25
-	.4byte _08042924 @ case 26
-	.4byte _08042924 @ case 27
-	.4byte _08042924 @ case 28
-	.4byte _08042924 @ case 29
-	.4byte _08042924 @ case 30
-	.4byte _08042924 @ case 31
-	.4byte _08042924 @ case 32
-	.4byte _08042924 @ case 33
-	.4byte _08042924 @ case 34
-	.4byte _08042924 @ case 35
-	.4byte _08042924 @ case 36
-	.4byte _08042924 @ case 37
-	.4byte _08042924 @ case 38
-	.4byte _08042924 @ case 39
-	.4byte _08042924 @ case 40
-	.4byte _08042924 @ case 41
-	.4byte _08042924 @ case 42
-	.4byte _08042924 @ case 43
-	.4byte _08042924 @ case 44
-	.4byte _08042924 @ case 45
-	.4byte _08042924 @ case 46
-	.4byte _08042924 @ case 47
-	.4byte _08042924 @ case 48
-	.4byte _08042924 @ case 49
-	.4byte _08042924 @ case 50
-	.4byte _08042924 @ case 51
-	.4byte _08042924 @ case 52
-	.4byte _08042924 @ case 53
-	.4byte _08042924 @ case 54
-	.4byte _08042924 @ case 55
-	.4byte _08042924 @ case 56
-	.4byte _08042924 @ case 57
-	.4byte _08042924 @ case 58
-	.4byte _08042924 @ case 59
-	.4byte _08042924 @ case 60
-	.4byte _08042924 @ case 61
-	.4byte _08042924 @ case 62
-	.4byte _08042924 @ case 63
-	.4byte _08042924 @ case 64
-	.4byte _08042924 @ case 65
-	.4byte _08042924 @ case 66
-	.4byte _08042924 @ case 67
-	.4byte _08042924 @ case 68
-	.4byte _08042924 @ case 69
-	.4byte _08042924 @ case 70
-	.4byte _08042924 @ case 71
-	.4byte _08042924 @ case 72
-	.4byte _08042924 @ case 73
-	.4byte _08042924 @ case 74
-	.4byte _08042924 @ case 75
-	.4byte _08042924 @ case 76
-	.4byte _08042924 @ case 77
-	.4byte _08042924 @ case 78
-	.4byte _08042924 @ case 79
-	.4byte _08042924 @ case 80
-	.4byte _08042924 @ case 81
-	.4byte _08042924 @ case 82
-	.4byte _08042924 @ case 83
-	.4byte _08042924 @ case 84
-	.4byte _08042924 @ case 85
-	.4byte _08042924 @ case 86
-	.4byte _08042904 @ case 87
-	.4byte _08042908 @ case 88
-	.4byte _0804290E @ case 89
-	.4byte _08042912 @ case 90
-	.4byte _08042918 @ case 91
-_080428E4:
-	bl RipperInit
-	b _08042924
-_080428EA:
-	bl RipperIdleInit
-_080428EE:
-	bl RipperIdle
-	b _08042924
-_080428F4:
-	bl RipperTurningAroundInit
-_080428F8:
-	bl RipperTurningAround
-	b _08042924
-_080428FE:
-	bl RipperTurningAroundSecondPart
-	b _08042924
-_08042904:
-	bl SpriteDyingInit
-_08042908:
-	bl SpriteDying
-	b _08042924
-_0804290E:
-	bl RipperInit
-_08042912:
-	bl SpriteSpawningFromX
-	b _08042924
-_08042918:
-	bl XParasiteInit
-	ldr r1, _0804292C @ =gCurrentSprite
-	ldrh r0, [r1, #2]
-	subs r0, #0x1c
-	strh r0, [r1, #2]
-_08042924:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804292C: .4byte gCurrentSprite

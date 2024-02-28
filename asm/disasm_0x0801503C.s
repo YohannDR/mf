@@ -15498,7 +15498,7 @@ _0801CAD8: .4byte 0x082EB53C
 _0801CADC:
 	ldr r0, _0801CAEC @ =0x082EB514
 	str r0, [r4, #0x18]
-	bl SpriteUtilSpriteChooseRandomXFlip
+	bl SpriteUtilChooseRandomXFlip
 	adds r0, r4, #0
 	adds r0, #0x24
 	strb r5, [r0]

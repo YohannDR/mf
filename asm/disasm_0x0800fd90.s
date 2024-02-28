@@ -2882,8 +2882,8 @@ _08011490:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start SpriteUtilSpriteChooseRandomXFlip
-SpriteUtilSpriteChooseRandomXFlip: @ 0x08011498
+	thumb_func_start SpriteUtilChooseRandomXFlip
+SpriteUtilChooseRandomXFlip: @ 0x08011498
 	push {lr}
 	ldr r0, _080114B0 @ =gFrameCounter8Bit
 	ldrb r1, [r0]
