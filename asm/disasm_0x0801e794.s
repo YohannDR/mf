@@ -1116,7 +1116,7 @@ _0801EFEC:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0xb
-	bl UpdateSecondarySpritesFreezeTimer
+	bl SpriteUtilUpdateSecondarySpritesFreezeTimer
 	b _0801F230
 	.align 2, 0
 _0801F008: .4byte gCurrentSprite
@@ -1288,7 +1288,7 @@ _0801F204:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0xb
-	bl UnfreezeSecondarySprites
+	bl SpriteUtilUnfreezeSecondarySprites
 	bl SpriteDyingInit
 _0801F214:
 	bl SpriteDying
@@ -1360,7 +1360,7 @@ _0801F28C:
 	cmp r0, #0
 	beq _0801F2A8
 	bl SpriteUtilUpdateFreezeTimer
-	bl UpdatePrimarySpriteFreezeTimer
+	bl SpriteUtilUpdatePrimarySpriteFreezeTimer
 	b _0801F2BA
 	.align 2, 0
 _0801F2A0: .4byte gSpriteData
@@ -9583,7 +9583,7 @@ _08023476:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0xc
-	bl UpdateSecondarySpritesFreezeTimer
+	bl SpriteUtilUpdateSecondarySpritesFreezeTimer
 	b _08023686
 	.align 2, 0
 _08023494: .4byte gCurrentSprite
@@ -9727,7 +9727,7 @@ _0802365A:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0xc
-	bl UnfreezeSecondarySprites
+	bl SpriteUtilUnfreezeSecondarySprites
 	bl SpriteDyingInit
 _0802366A:
 	bl SpriteDying
@@ -9762,7 +9762,7 @@ GeemerFlashingLight: @ 0x0802368C
 	cmp r0, #0
 	beq _080236B4
 	bl SpriteUtilUpdateFreezeTimer
-	bl UpdatePrimarySpriteFreezeTimer
+	bl SpriteUtilUpdatePrimarySpriteFreezeTimer
 	b _08023812
 	.align 2, 0
 _080236B0: .4byte gCurrentSprite
@@ -22229,8 +22229,8 @@ _08029CEC:
 	pop {r0}
 	bx r0
 
-	thumb_func_start XBarrierCoreSetCollision
-XBarrierCoreSetCollision: @ 0x08029CF0
+	thumb_func_start XBarrierSetCollision
+XBarrierSetCollision: @ 0x08029CF0
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -22413,7 +22413,7 @@ _08029E60: .4byte 0x0000FFD0
 _08029E64: .4byte 0x0000FFD8
 _08029E68:
 	movs r0, #3
-	bl XBarrierCoreSetCollision
+	bl XBarrierSetCollision
 _08029E6E:
 	add sp, #0xc
 	pop {r4, r5}
@@ -22460,7 +22460,7 @@ XBarrierCoreDeath: @ 0x08029E9C
 	orrs r1, r0
 	strh r1, [r2]
 	movs r0, #1
-	bl XBarrierCoreSetCollision
+	bl XBarrierSetCollision
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -22492,7 +22492,7 @@ _08029EE6:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x1d
-	bl UpdateSecondarySpritesFreezeTimer
+	bl SpriteUtilUpdateSecondarySpritesFreezeTimer
 	b _08029F74
 	.align 2, 0
 _08029F04: .4byte gCurrentSprite
@@ -22538,7 +22538,7 @@ _08029F4C:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x1d
-	bl UnfreezeSecondarySprites
+	bl SpriteUtilUnfreezeSecondarySprites
 	bl XBarrierCoreDeath
 	bl SpriteDyingInit
 _08029F60:
@@ -22567,7 +22567,7 @@ XBarrierStem: @ 0x08029F7C
 	cmp r6, #0
 	beq _08029F98
 	bl SpriteUtilUpdateFreezeTimer
-	bl UpdatePrimarySpriteFreezeTimer
+	bl SpriteUtilUpdatePrimarySpriteFreezeTimer
 	b _0802A0AA
 	.align 2, 0
 _08029F94: .4byte gCurrentSprite
@@ -41650,7 +41650,7 @@ _080336E6:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x10
-	bl UpdateSecondarySpritesFreezeTimer
+	bl SpriteUtilUpdateSecondarySpritesFreezeTimer
 	b _08033918
 	.align 2, 0
 _08033704: .4byte gCurrentSprite
@@ -41798,7 +41798,7 @@ _080338D2:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x10
-	bl UnfreezeSecondarySprites
+	bl SpriteUtilUnfreezeSecondarySprites
 	bl SpriteDyingInit
 _080338E2:
 	bl SpriteDying
@@ -43096,7 +43096,7 @@ _08034284:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x2c
-	bl UpdateSecondarySpritesFreezeTimer
+	bl SpriteUtilUpdateSecondarySpritesFreezeTimer
 	b _080344A2
 	.align 2, 0
 _080342A0: .4byte gCurrentSprite
@@ -43245,7 +43245,7 @@ _08034472:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x2c
-	bl UnfreezeSecondarySprites
+	bl SpriteUtilUnfreezeSecondarySprites
 	bl SpriteDyingInit
 _08034482:
 	bl SpriteDying
@@ -62679,7 +62679,7 @@ _0803E0E2:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x3b
-	bl UpdateSecondarySpritesFreezeTimer
+	bl SpriteUtilUpdateSecondarySpritesFreezeTimer
 	b _0803E2E6
 	.align 2, 0
 _0803E100: .4byte gCurrentSprite
@@ -62817,7 +62817,7 @@ _0803E2BA:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x3b
-	bl UnfreezeSecondarySprites
+	bl SpriteUtilUnfreezeSecondarySprites
 	bl SpriteDyingInit
 _0803E2CA:
 	bl SpriteDying
@@ -62886,7 +62886,7 @@ _0803E33C:
 	cmp r0, #0
 	beq _0803E358
 	bl SpriteUtilUpdateFreezeTimer
-	bl UpdatePrimarySpriteFreezeTimer
+	bl SpriteUtilUpdatePrimarySpriteFreezeTimer
 	b _0803E36A
 	.align 2, 0
 _0803E350: .4byte gSpriteData
@@ -70331,7 +70331,7 @@ _08041F98: .4byte 0x0000FFD0
 _08041F9C: .4byte 0x0000FFD8
 _08041FA0:
 	movs r0, #3
-	bl XBarrierCoreSetCollision
+	bl XBarrierSetCollision
 _08041FA6:
 	add sp, #0xc
 	pop {r4, r5}
@@ -70378,7 +70378,7 @@ XBarrierCoreSuperDying: @ 0x08041FD4
 	orrs r1, r0
 	strh r1, [r2]
 	movs r0, #1
-	bl XBarrierCoreSetCollision
+	bl XBarrierSetCollision
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -70410,7 +70410,7 @@ _0804201E:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x42
-	bl UpdateSecondarySpritesFreezeTimer
+	bl SpriteUtilUpdateSecondarySpritesFreezeTimer
 	b _080420AC
 	.align 2, 0
 _0804203C: .4byte gCurrentSprite
@@ -70456,7 +70456,7 @@ _08042084:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #0x42
-	bl UnfreezeSecondarySprites
+	bl SpriteUtilUnfreezeSecondarySprites
 	bl XBarrierCoreSuperDying
 	bl SpriteDyingInit
 _08042098:
@@ -70485,7 +70485,7 @@ XBarrierCoreSuperStem: @ 0x080420B4
 	cmp r6, #0
 	beq _080420D0
 	bl SpriteUtilUpdateFreezeTimer
-	bl UpdatePrimarySpriteFreezeTimer
+	bl SpriteUtilUpdatePrimarySpriteFreezeTimer
 	b _080421E2
 	.align 2, 0
 _080420CC: .4byte gCurrentSprite
@@ -70631,460 +70631,3 @@ _080421E2:
 	.align 2, 0
 _080421E8: .4byte gCurrentSprite
 _080421EC: .4byte 0x0000FFDF
-
-	thumb_func_start XBarrierCorePowerInit
-XBarrierCorePowerInit: @ 0x080421F0
-	push {r4, r5, lr}
-	sub sp, #0xc
-	bl SpriteUtilTrySetAbsorbXFlag
-	ldr r2, _08042210 @ =gCurrentSprite
-	adds r3, r2, #0
-	adds r3, #0x24
-	ldrb r0, [r3]
-	cmp r0, #0x59
-	bne _08042214
-	movs r0, #0x5a
-	strb r0, [r3]
-	movs r0, #0x2c
-	strh r0, [r2, #6]
-	b _08042240
-	.align 2, 0
-_08042210: .4byte gCurrentSprite
-_08042214:
-	ldrb r1, [r2, #0x1d]
-	adds r0, r1, #0
-	subs r0, #0x78
-	lsls r0, r0, #0x18
-	lsrs r1, r0, #0x18
-	ldr r0, _08042238 @ =gPowerBombXBarrierCoresDestroyed
-	ldrh r0, [r0]
-	asrs r0, r1
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	movs r1, #1
-	ands r0, r1
-	cmp r0, #0
-	beq _0804223C
-	movs r0, #0
-	strh r0, [r2]
-	b _08042316
-	.align 2, 0
-_08042238: .4byte gPowerBombXBarrierCoresDestroyed
-_0804223C:
-	movs r0, #2
-	strb r0, [r3]
-_08042240:
-	ldr r4, _080422A8 @ =gCurrentSprite
-	adds r0, r4, #0
-	adds r0, #0x27
-	movs r3, #0
-	movs r1, #0x10
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	ldr r2, _080422AC @ =sPrimarySpriteStats
-	ldrb r1, [r4, #0x1d]
-	lsls r0, r1, #3
-	subs r0, r0, r1
-	lsls r0, r0, #1
-	adds r0, r0, r2
-	ldrh r0, [r0]
-	movs r2, #0
-	strh r0, [r4, #0x14]
-	adds r1, r4, #0
-	adds r1, #0x22
-	movs r0, #5
-	strb r0, [r1]
-	adds r1, #0x13
-	movs r0, #1
-	strb r0, [r1]
-	subs r1, #0x10
-	movs r0, #0xd
-	strb r0, [r1]
-	ldr r0, _080422B0 @ =0x08361958
-	str r0, [r4, #0x18]
-	strb r2, [r4, #0x1c]
-	strh r3, [r4, #0x16]
-	adds r0, r4, #0
-	adds r0, #0x34
-	ldrb r1, [r0]
-	movs r0, #2
-	ands r0, r1
-	lsls r0, r0, #0x18
-	lsrs r5, r0, #0x18
-	cmp r5, #0
-	beq _080422D0
-	ldrh r1, [r4]
-	movs r0, #0x80
-	lsls r0, r0, #6
-	ands r0, r1
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	cmp r0, #0
-	bne _080422B4
-	strh r0, [r4]
-	b _08042316
-	.align 2, 0
-_080422A8: .4byte gCurrentSprite
-_080422AC: .4byte sPrimarySpriteStats
-_080422B0: .4byte 0x08361958
-_080422B4:
-	ldr r0, _080422C8 @ =0x0000FFC0
-	strh r0, [r4, #0xa]
-	movs r0, #0x40
-	strh r0, [r4, #0xc]
-	ldr r0, _080422CC @ =0x0000FFC8
-	strh r0, [r4, #0xe]
-	movs r0, #0x38
-	strh r0, [r4, #0x10]
-	b _08042316
-	.align 2, 0
-_080422C8: .4byte 0x0000FFC0
-_080422CC: .4byte 0x0000FFC8
-_080422D0:
-	ldr r0, _08042308 @ =0x0000FFC0
-	strh r0, [r4, #0xa]
-	movs r0, #0x40
-	strh r0, [r4, #0xc]
-	ldr r0, _0804230C @ =0x0000FFD0
-	strh r0, [r4, #0xe]
-	movs r0, #0x30
-	strh r0, [r4, #0x10]
-	ldrb r1, [r4, #0x1e]
-	ldrb r2, [r4, #0x1f]
-	adds r0, r4, #0
-	adds r0, #0x23
-	ldrb r3, [r0]
-	ldrh r0, [r4, #2]
-	str r0, [sp]
-	ldrh r0, [r4, #4]
-	str r0, [sp, #4]
-	str r5, [sp, #8]
-	movs r0, #0x43
-	bl SpriteSpawnSecondary
-	lsls r0, r0, #0x18
-	lsrs r1, r0, #0x18
-	cmp r1, #0xff
-	bne _08042310
-	strh r5, [r4]
-	b _08042316
-	.align 2, 0
-_08042308: .4byte 0x0000FFC0
-_0804230C: .4byte 0x0000FFD0
-_08042310:
-	movs r0, #3
-	bl XBarrierCoreSetCollision
-_08042316:
-	add sp, #0xc
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start XBarrierCorePowerIdleInit
-XBarrierCorePowerIdleInit: @ 0x08042320
-	ldr r1, _08042338 @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x24
-	movs r3, #0
-	movs r0, #2
-	strb r0, [r2]
-	ldr r0, _0804233C @ =0x08361958
-	str r0, [r1, #0x18]
-	strb r3, [r1, #0x1c]
-	strh r3, [r1, #0x16]
-	bx lr
-	.align 2, 0
-_08042338: .4byte gCurrentSprite
-_0804233C: .4byte 0x08361958
-
-	thumb_func_start XBarrierCorePowerIdle
-XBarrierCorePowerIdle: @ 0x08042340
-	push {lr}
-	ldr r1, _0804235C @ =gCurrentSprite
-	ldrh r0, [r1, #0x16]
-	cmp r0, #0x24
-	bne _08042358
-	ldrb r0, [r1, #0x1c]
-	cmp r0, #1
-	bne _08042358
-	movs r0, #0xd8
-	lsls r0, r0, #1
-	bl SoundPlayNotAlreadyPlaying
-_08042358:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804235C: .4byte gCurrentSprite
-
-	thumb_func_start XBarrierCorePowerDying
-XBarrierCorePowerDying: @ 0x08042360
-	push {lr}
-	ldr r0, _08042388 @ =gCurrentSprite
-	ldrb r0, [r0, #0x1d]
-	subs r0, #0x78
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	movs r1, #0x80
-	lsls r1, r1, #9
-	lsls r1, r0
-	lsrs r1, r1, #0x10
-	ldr r2, _0804238C @ =gPowerBombXBarrierCoresDestroyed
-	ldrh r0, [r2]
-	orrs r1, r0
-	strh r1, [r2]
-	movs r0, #1
-	bl XBarrierCoreSetCollision
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08042388: .4byte gCurrentSprite
-_0804238C: .4byte gPowerBombXBarrierCoresDestroyed
-
-	thumb_func_start XBarrierCorePower
-XBarrierCorePower: @ 0x08042390
-	push {r4, lr}
-	ldr r4, _080423C8 @ =gCurrentSprite
-	adds r0, r4, #0
-	adds r0, #0x2c
-	ldrb r1, [r0]
-	movs r0, #0x7f
-	ands r0, r1
-	cmp r0, #4
-	bne _080423AA
-	movs r0, #0xb0
-	lsls r0, r0, #1
-	bl SoundPlayNotAlreadyPlaying
-_080423AA:
-	adds r0, r4, #0
-	adds r0, #0x32
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _080423CC
-	bl SpriteUtilUpdateFreezeTimer
-	adds r0, r4, #0
-	adds r0, #0x23
-	ldrb r1, [r0]
-	movs r0, #0x43
-	bl UpdateSecondarySpritesFreezeTimer
-	b _08042438
-	.align 2, 0
-_080423C8: .4byte gCurrentSprite
-_080423CC:
-	adds r0, r4, #0
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x57
-	beq _08042410
-	cmp r0, #0x57
-	bgt _080423EE
-	cmp r0, #1
-	beq _08042406
-	cmp r0, #1
-	bgt _080423E8
-	cmp r0, #0
-	beq _08042400
-	b _08042438
-_080423E8:
-	cmp r0, #2
-	beq _0804240A
-	b _08042438
-_080423EE:
-	cmp r0, #0x59
-	beq _0804242A
-	cmp r0, #0x59
-	blt _08042424
-	cmp r0, #0x5a
-	beq _0804242E
-	cmp r0, #0x5b
-	beq _08042434
-	b _08042438
-_08042400:
-	bl XBarrierCorePowerInit
-	b _08042438
-_08042406:
-	bl XBarrierCorePowerIdleInit
-_0804240A:
-	bl XBarrierCorePowerIdle
-	b _08042438
-_08042410:
-	adds r0, r4, #0
-	adds r0, #0x23
-	ldrb r1, [r0]
-	movs r0, #0x43
-	bl UnfreezeSecondarySprites
-	bl XBarrierCorePowerDying
-	bl SpriteDyingInit
-_08042424:
-	bl SpriteDying
-	b _08042438
-_0804242A:
-	bl XBarrierCorePowerInit
-_0804242E:
-	bl SpriteSpawningFromX
-	b _08042438
-_08042434:
-	bl XParasiteInit
-_08042438:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start XBarrierCorePowerStem
-XBarrierCorePowerStem: @ 0x08042440
-	push {r4, r5, r6, lr}
-	ldr r4, _08042458 @ =gCurrentSprite
-	adds r0, r4, #0
-	adds r0, #0x32
-	ldrb r6, [r0]
-	cmp r6, #0
-	beq _0804245C
-	bl SpriteUtilUpdateFreezeTimer
-	bl UpdatePrimarySpriteFreezeTimer
-	b _0804256E
-	.align 2, 0
-_08042458: .4byte gCurrentSprite
-_0804245C:
-	adds r0, r4, #0
-	adds r0, #0x23
-	ldrb r5, [r0]
-	adds r3, r4, #0
-	adds r3, #0x24
-	ldrb r0, [r3]
-	cmp r0, #2
-	beq _080424EC
-	cmp r0, #2
-	bgt _08042478
-	cmp r0, #0
-	beq _08042480
-	lsls r2, r5, #3
-	b _08042534
-_08042478:
-	cmp r0, #0x18
-	beq _08042520
-	lsls r2, r5, #3
-	b _08042534
-_08042480:
-	ldrh r1, [r4]
-	ldr r0, _080424D8 @ =0x0000FFFB
-	ands r0, r1
-	movs r2, #0
-	strh r0, [r4]
-	movs r0, #2
-	strb r0, [r3]
-	adds r0, r4, #0
-	adds r0, #0x27
-	movs r1, #0x20
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r3, r4, #0
-	adds r3, #0x29
-	movs r0, #0x10
-	strb r0, [r3]
-	ldr r0, _080424DC @ =0x0000FF80
-	strh r0, [r4, #0xa]
-	movs r0, #0x80
-	strh r0, [r4, #0xc]
-	ldr r0, _080424E0 @ =0x0000FFE0
-	strh r0, [r4, #0xe]
-	strh r1, [r4, #0x10]
-	ldr r1, _080424E4 @ =sSecondarySpriteStats
-	ldrb r0, [r4, #0x1d]
-	lsls r0, r0, #3
-	adds r0, r0, r1
-	ldrh r0, [r0]
-	strh r0, [r4, #0x14]
-	adds r1, r4, #0
-	adds r1, #0x22
-	movs r0, #6
-	strb r0, [r1]
-	adds r1, #3
-	movs r0, #0xd
-	strb r0, [r1]
-	ldr r0, _080424E8 @ =0x083617E0
-	str r0, [r4, #0x18]
-	strb r2, [r4, #0x1c]
-	strh r6, [r4, #0x16]
-	lsls r2, r5, #3
-	b _08042534
-	.align 2, 0
-_080424D8: .4byte 0x0000FFFB
-_080424DC: .4byte 0x0000FF80
-_080424E0: .4byte 0x0000FFE0
-_080424E4: .4byte sSecondarySpriteStats
-_080424E8: .4byte 0x083617E0
-_080424EC:
-	ldr r2, _08042518 @ =gSpriteData
-	lsls r1, r5, #3
-	subs r0, r1, r5
-	lsls r0, r0, #3
-	adds r0, r0, r2
-	ldrh r0, [r0, #0x14]
-	adds r2, r1, #0
-	cmp r0, #0
-	bne _08042534
-	movs r0, #0x18
-	strb r0, [r3]
-	ldr r0, _0804251C @ =0x08361928
-	str r0, [r4, #0x18]
-	strb r6, [r4, #0x1c]
-	strh r6, [r4, #0x16]
-	strh r6, [r4, #0x14]
-	adds r1, r4, #0
-	adds r1, #0x26
-	movs r0, #1
-	strb r0, [r1]
-	b _08042534
-	.align 2, 0
-_08042518: .4byte gSpriteData
-_0804251C: .4byte 0x08361928
-_08042520:
-	adds r1, r4, #0
-	adds r1, #0x26
-	movs r0, #1
-	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
-	lsls r2, r5, #3
-	cmp r0, #0
-	beq _08042534
-	strh r6, [r4]
-_08042534:
-	ldr r1, _0804255C @ =gSpriteData
-	subs r0, r2, r5
-	lsls r0, r0, #3
-	adds r0, r0, r1
-	ldrh r1, [r0]
-	movs r0, #0x20
-	ands r0, r1
-	cmp r0, #0
-	beq _08042564
-	ldr r1, _08042560 @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x26
-	movs r0, #1
-	strb r0, [r2]
-	ldrh r2, [r1]
-	movs r0, #0x20
-	orrs r0, r2
-	strh r0, [r1]
-	b _0804256E
-	.align 2, 0
-_0804255C: .4byte gSpriteData
-_08042560: .4byte gCurrentSprite
-_08042564:
-	ldr r2, _08042574 @ =gCurrentSprite
-	ldrh r1, [r2]
-	ldr r0, _08042578 @ =0x0000FFDF
-	ands r0, r1
-	strh r0, [r2]
-_0804256E:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08042574: .4byte gCurrentSprite
-_08042578: .4byte 0x0000FFDF

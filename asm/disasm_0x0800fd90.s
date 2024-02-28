@@ -4318,8 +4318,8 @@ _08011E9E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start UpdateSecondarySpritesFreezeTimer
-UpdateSecondarySpritesFreezeTimer: @ 0x08011EA4
+	thumb_func_start SpriteUtilUpdateSecondarySpritesFreezeTimer
+SpriteUtilUpdateSecondarySpritesFreezeTimer: @ 0x08011EA4
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -4401,8 +4401,8 @@ _08011F2E:
 _08011F38: .4byte gCurrentSprite
 _08011F3C: .4byte gSpriteData
 
-	thumb_func_start UpdatePrimarySpriteFreezeTimer
-UpdatePrimarySpriteFreezeTimer: @ 0x08011F40
+	thumb_func_start SpriteUtilUpdatePrimarySpriteFreezeTimer
+SpriteUtilUpdatePrimarySpriteFreezeTimer: @ 0x08011F40
 	push {r4, lr}
 	ldr r0, _08011F98 @ =gCurrentSprite
 	adds r1, r0, #0
@@ -4451,8 +4451,8 @@ _08011F90:
 _08011F98: .4byte gCurrentSprite
 _08011F9C: .4byte gSpriteData
 
-	thumb_func_start UnfreezeSecondarySprites
-UnfreezeSecondarySprites: @ 0x08011FA0
+	thumb_func_start SpriteUtilUnfreezeSecondarySprites
+SpriteUtilUnfreezeSecondarySprites: @ 0x08011FA0
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x18
 	lsrs r6, r0, #0x18

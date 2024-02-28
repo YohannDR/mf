@@ -18694,7 +18694,7 @@ _0801E41A:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #3
-	bl UpdateSecondarySpritesFreezeTimer
+	bl SpriteUtilUpdateSecondarySpritesFreezeTimer
 	b _0801E622
 	.align 2, 0
 _0801E438: .4byte gCurrentSprite
@@ -18834,7 +18834,7 @@ _0801E5F6:
 	adds r0, #0x23
 	ldrb r1, [r0]
 	movs r0, #3
-	bl UnfreezeSecondarySprites
+	bl SpriteUtilUnfreezeSecondarySprites
 	bl SpriteDyingInit
 _0801E606:
 	bl SpriteDying
@@ -18864,7 +18864,7 @@ HalzynWing: @ 0x0801E628
 	cmp r0, #0
 	beq _0801E644
 	bl SpriteUtilUpdateFreezeTimer
-	bl UpdatePrimarySpriteFreezeTimer
+	bl SpriteUtilUpdatePrimarySpriteFreezeTimer
 	b _0801E6AC
 	.align 2, 0
 _0801E640: .4byte gCurrentSprite
