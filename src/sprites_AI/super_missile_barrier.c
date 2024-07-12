@@ -1,9 +1,9 @@
-#include "sprites_AI/power_bomb_barrier.h"
+#include "sprites_AI/super_missile_barrier.h"
 #include "macros.h"
 #include "globals.h"
 #include "sprite_util.h"
 
-#include "data/sprites/power_bomb_barrier.h"
+#include "data/sprites/super_missile_barrier.h"
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
@@ -15,14 +15,14 @@
 #include "structs/samus.h"
 
 /**
- * @brief 421f0 | 130 | Initializes a power bomb barrier
+ * @brief 41e84 | 12c | Iniializes a super missile barrier
  * 
  */
-void PowerBombBarrierInit(void)
+void SuperMissileBarrierInit(void)
 {
     u8 spriteId;
     u16 barrierBit;
-
+    
     SpriteUtilTrySetAbsorbXFlag();
 
     if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
@@ -32,13 +32,12 @@ void PowerBombBarrierInit(void)
     }
     else
     {
-        // All barrier sprite idsx are next to each other numerically, so doing spriteId - firstBarrierId offsets the id to start at 0
-        // For some reason this offsets to the super missile barrier ids
+        // All barrier sprite ids are next to each other numerically, so doing spriteId - firstBarrierId offsets the id to start at 0
         spriteId = gCurrentSprite.spriteId;
         spriteId -= PSPRITE_X_BARRIER_CORE_SUPER_1;
 
         // Get bit affected by the current barrier
-        barrierBit = gPowerBombXBarrierCoresDestroyed >> spriteId;
+        barrierBit = gSuperXBarrierCoresDestroyed >> spriteId;
 
         if (barrierBit & 1)
         {
@@ -54,11 +53,11 @@ void PowerBombBarrierInit(void)
     gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
 
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
+
     gCurrentSprite.drawOrder = 5;
-    gCurrentSprite.frozenPaletteRowOffset = 1;
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS_SOLID;
 
-    gCurrentSprite.pOam = sPowerBombBarrierOam_Idle;
+    gCurrentSprite.pOam = sSuperMissileBarrierOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 
@@ -72,106 +71,103 @@ void PowerBombBarrierInit(void)
 
         gCurrentSprite.hitboxTop = -BLOCK_SIZE;
         gCurrentSprite.hitboxBottom = BLOCK_SIZE;
-        gCurrentSprite.hitboxLeft = -(BLOCK_SIZE - EIGHTH_BLOCK_SIZE);
-        gCurrentSprite.hitboxRight = BLOCK_SIZE - EIGHTH_BLOCK_SIZE;
-    }
-    else
-    {
-        gCurrentSprite.hitboxTop = -BLOCK_SIZE;
-        gCurrentSprite.hitboxBottom = BLOCK_SIZE;
         gCurrentSprite.hitboxLeft = -(BLOCK_SIZE - QUARTER_BLOCK_SIZE);
         gCurrentSprite.hitboxRight = BLOCK_SIZE - QUARTER_BLOCK_SIZE;
-
-        spriteId = SpriteSpawnSecondary(SSPRITE_X_BARRIER_CORE_POWER_BOMB_STEM, gCurrentSprite.roomSlot,
-            gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-            gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-
-        if (spriteId == UCHAR_MAX)
-        {
-            gCurrentSprite.status = 0;
-            return;
-        }
-
-        XBarrierSetCollision(CAA_MAKE_SOLID_STOP_ENEMY);
+        return;
     }
+
+    gCurrentSprite.hitboxTop = -(BLOCK_SIZE - QUARTER_BLOCK_SIZE);
+    gCurrentSprite.hitboxBottom = BLOCK_SIZE - QUARTER_BLOCK_SIZE;
+    gCurrentSprite.hitboxLeft = -(HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
+    gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE;
+
+    spriteId = SpriteSpawnSecondary(SSPRITE_X_BARRIER_CORE_SUPER_STEM, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+
+    if (spriteId == UCHAR_MAX)
+    {
+        gCurrentSprite.status = 0;
+        return;
+    }
+
+    XBarrierSetCollision(CAA_MAKE_SOLID_STOP_ENEMY);
 }
 
 /**
- * @brief 42320 | 20 | Initializes a power bomb barrier to be idle
+ * @brief 41fb0 | 20 | Initializes a super missile barrier to be idle
  * 
  */
-void PowerBombBarrierIdleInit(void)
+void SuperMissileBarrierIdleInit(void)
 {
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
-    gCurrentSprite.pOam = sPowerBombBarrierOam_Idle;
+    gCurrentSprite.pOam = sSuperMissileBarrierOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
 
 /**
- * @brief 42340 | 20 | Handles a power bomb X barrier being idle
+ * @brief 41fd0 | 20 | Handles a super missile barrier being idle
  * 
  */
-void PowerBombBarrierIdle(void)
+void SuperMissileBarrierIdle(void)
 {
-    if (gCurrentSprite.currentAnimationFrame == 36 && gCurrentSprite.animationDurationCounter == 1)
-        SoundPlayNotAlreadyPlaying(0x1B0);
+    return;
 }
 
 /**
- * @brief 42360 | 30 | Handles a power bomb X barrier dying
+ * @brief 41fd4 | 30 | Handles a super missile barrier dying
  * 
  */
-void PowerBombBarrierDying(void)
+void SuperMissileBarrierDying(void)
 {
     u8 spriteId;
     u16 barrierBit;
 
     // All barrier sprite ids are next to each other numerically, so doing spriteId - firstBarrierId offsets the id to start at 0
-    // For some reason this offsets to the super missile barrier ids
-    spriteId = gCurrentSprite.spriteId - PSPRITE_X_BARRIER_CORE_SUPER_1;
+    spriteId = gCurrentSprite.spriteId;
+    spriteId -= PSPRITE_X_BARRIER_CORE_SUPER_1;
 
     // Get bit affected by the current barrier
     barrierBit = 1 << spriteId;
 
-    gPowerBombXBarrierCoresDestroyed |= barrierBit;
+    gSuperXBarrierCoresDestroyed |= barrierBit;
 
     XBarrierSetCollision(CAA_REMOVE_SOLID);
 }
 
 /**
- * @brief 42390 | b0 | Power bomb barrier AI
+ * @brief 42004 | b0 | Super missile barrier AI
  * 
  */
-void PowerBombBarrier(void)
+void SuperMissileBarrier(void)
 {
-    if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
+    if (SPRITE_HAS_ISFT(gCurrentSprite) == 0x4)
         SoundPlayNotAlreadyPlaying(0x160);
 
     if (gCurrentSprite.freezeTimer != 0)
     {
         SpriteUtilUpdateFreezeTimer();
-        SpriteUtilUpdateSecondarySpritesFreezeTimer(SSPRITE_X_BARRIER_CORE_POWER_BOMB_STEM, gCurrentSprite.primarySpriteRamSlot);
+        SpriteUtilUpdateSecondarySpritesFreezeTimer(SSPRITE_X_BARRIER_CORE_SUPER_STEM, gCurrentSprite.primarySpriteRamSlot);
         return;
     }
 
     switch (gCurrentSprite.pose)
     {
         case SPRITE_POSE_UNITIALIZED:
-            PowerBombBarrierInit();
+            SuperMissileBarrierInit();
             break;
 
         case SPRITE_POSE_IDLE_INIT:
-            PowerBombBarrierIdleInit();
+            SuperMissileBarrierIdleInit();
 
         case SPRITE_POSE_IDLE:
-            PowerBombBarrierIdle();
+            SuperMissileBarrierIdle();
             break;
 
         case SPRITE_POSE_DYING_INIT:
-            SpriteUtilUnfreezeSecondarySprites(SSPRITE_X_BARRIER_CORE_POWER_BOMB_STEM, gCurrentSprite.primarySpriteRamSlot);
-            PowerBombBarrierDying();
+            SpriteUtilUnfreezeSecondarySprites(SSPRITE_X_BARRIER_CORE_SUPER_STEM, gCurrentSprite.primarySpriteRamSlot);
+            SuperMissileBarrierDying();
             SpriteDyingInit();
 
         case SPRITE_POSE_DYING:
@@ -179,7 +175,7 @@ void PowerBombBarrier(void)
             break;
 
         case SPRITE_POSE_SPAWNING_FROM_X_INIT:
-            PowerBombBarrierInit();
+            SuperMissileBarrierInit();
 
         case SPRITE_POSE_SPAWNING_FROM_X:
             SpriteSpawningFromX();
@@ -187,18 +183,17 @@ void PowerBombBarrier(void)
 
         case SPRITE_POSE_TURNING_INTO_X:
             XParasiteInit();
-            break;
     }
 }
 
 /**
- * @brief 42440 | 13c | Power bomb barrier stem AI
+ * @brief 420b4 | 13c | Super missile barrier stem AI
  * 
  */
-void PowerBombBarrierStem(void)
+void SuperMissileBarrierStem(void)
 {
     u8 ramSlot;
-
+    
     if (gCurrentSprite.freezeTimer != 0)
     {
         SpriteUtilUpdateFreezeTimer();
@@ -207,27 +202,29 @@ void PowerBombBarrierStem(void)
     }
 
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
-    
+
     switch (gCurrentSprite.pose)
     {
         case SPRITE_POSE_UNITIALIZED:
             gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+
             gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
             gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
             gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
-            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
+            gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
 
             gCurrentSprite.hitboxTop = -(BLOCK_SIZE * 2);
             gCurrentSprite.hitboxBottom = BLOCK_SIZE * 2;
-            gCurrentSprite.hitboxLeft = -HALF_BLOCK_SIZE;
-            gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE;
+            gCurrentSprite.hitboxLeft = -QUARTER_BLOCK_SIZE;
+            gCurrentSprite.hitboxRight = QUARTER_BLOCK_SIZE;
 
             gCurrentSprite.health = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
+
             gCurrentSprite.drawOrder = 6;
             gCurrentSprite.samusCollision = SSC_HURTS_SAMUS_SOLID;
 
-            gCurrentSprite.pOam = sPowerBombBarrierStemOam_Idle;
+            gCurrentSprite.pOam = sSuperMissileBarrierStemOam_Idle;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             break;
@@ -237,7 +234,7 @@ void PowerBombBarrierStem(void)
             {
                 gCurrentSprite.pose = 0x18;
 
-                gCurrentSprite.pOam = sPowerBombBarrierStemOam_Destroyed;
+                gCurrentSprite.pOam = sSuperMissileBarrierStemOam_Destroyed;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
 
@@ -250,7 +247,10 @@ void PowerBombBarrierStem(void)
             gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
             if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            {
                 gCurrentSprite.status = 0;
+            }
+            break;
     }
 
     if (gSpriteData[ramSlot].status & SPRITE_STATUS_ENABLE_MOSAIC)
