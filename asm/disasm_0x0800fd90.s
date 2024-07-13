@@ -2335,8 +2335,8 @@ _08011032:
 _08011050: .4byte gIgnoreSamusAndSpriteCollision
 _08011054: .4byte gSpriteData
 
-	thumb_func_start CheckVerticalCollisionAtPosition
-CheckVerticalCollisionAtPosition: @ 0x08011058
+	thumb_func_start SpriteUtilCheckVerticalCollisionAtPosition
+SpriteUtilCheckVerticalCollisionAtPosition: @ 0x08011058
 	push {r4, r5, lr}
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
@@ -2640,7 +2640,7 @@ unk_1129c: @ 0x0801129C
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r1, r4, #0
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	adds r2, r0, #0
 	ldr r6, _0801130C @ =gPreviousVerticalCollisionCheck
 	ldrb r1, [r6]
@@ -2651,7 +2651,7 @@ unk_1129c: @ 0x0801129C
 	bhi _080112F6
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	adds r2, r0, #0
 	ldrb r1, [r6]
 	mov r0, r8
@@ -2663,7 +2663,7 @@ unk_1129c: @ 0x0801129C
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r1, sl
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	adds r2, r0, #0
 	ldrb r0, [r6]
 	cmp r0, #0
@@ -2702,7 +2702,7 @@ unk_11310: @ 0x08011310
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r1, r4, #0
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	adds r2, r0, #0
 	ldr r7, _0801138C @ =gPreviousVerticalCollisionCheck
 	ldrb r1, [r7]
@@ -2713,7 +2713,7 @@ unk_11310: @ 0x08011310
 	bhi _08011372
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	adds r2, r0, #0
 	ldrb r1, [r7]
 	mov r0, r8
@@ -2725,7 +2725,7 @@ unk_11310: @ 0x08011310
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r1, sl
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	adds r2, r0, #0
 	ldrb r0, [r7]
 	cmp r0, #0

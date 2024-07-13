@@ -2211,7 +2211,7 @@ unk_1605c: @ 0x0801605C
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	subs r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _08016092
@@ -2231,7 +2231,7 @@ _080160A8:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	adds r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _080160BA
@@ -2246,7 +2246,7 @@ _080160C4:
 	ldrh r0, [r4, #2]
 	adds r0, #0x40
 	ldrh r1, [r4, #4]
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	strh r0, [r4, #2]
 	b _08016214
 _080160D2:
@@ -6860,7 +6860,7 @@ SA_XNocWalkingCheckCollisions: @ 0x080184E0
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	subs r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _08018524
@@ -6883,7 +6883,7 @@ _08018530:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	adds r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _08018548
@@ -6900,7 +6900,7 @@ _08018550:
 	ldrh r0, [r4, #2]
 	adds r0, #0x40
 	ldrh r1, [r4, #4]
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	strh r0, [r4, #2]
 	b _08018636
 _0801855E:
@@ -7040,7 +7040,7 @@ SA_XNocRunningCheckCollisions: @ 0x08018644
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	subs r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _0801867A
@@ -7060,7 +7060,7 @@ _08018690:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	adds r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _080186A2
@@ -7075,7 +7075,7 @@ _080186AC:
 	ldrh r0, [r4, #2]
 	adds r0, #0x40
 	ldrh r1, [r4, #4]
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	strh r0, [r4, #2]
 	b _0801883C
 _080186BA:
@@ -8144,7 +8144,7 @@ SA_XArcWalkingCheckCollisions: @ 0x08018F50
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	subs r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _08018F86
@@ -8164,7 +8164,7 @@ _08018F9C:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	adds r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801908A
@@ -8176,7 +8176,7 @@ _08018FB4:
 	ldrh r0, [r4, #2]
 	adds r0, #0x40
 	ldrh r1, [r4, #4]
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	strh r0, [r4, #2]
 	b _08019092
 _08018FC2:
@@ -8314,7 +8314,7 @@ SA_XArcRunningCheckCollisions: @ 0x08019098
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	subs r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _080190DC
@@ -8336,7 +8336,7 @@ _080190E8:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	adds r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _080190FE
@@ -8353,7 +8353,7 @@ _08019108:
 	ldrh r0, [r4, #2]
 	adds r0, #0x40
 	ldrh r1, [r4, #4]
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	strh r0, [r4, #2]
 	b _080193BE
 _08019116:
@@ -9982,7 +9982,7 @@ SA_XBossRunniingCheckCollisions: @ 0x08019E34
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	subs r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _08019E78
@@ -10004,7 +10004,7 @@ _08019E84:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	adds r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _08019E9A
@@ -10021,7 +10021,7 @@ _08019EA4:
 	ldrh r0, [r4, #2]
 	adds r0, #0x40
 	ldrh r1, [r4, #4]
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	strh r0, [r4, #2]
 	b _0801A26E
 _08019EB2:
@@ -13617,7 +13617,7 @@ SA_XTro2WalkingCheckCollisions: @ 0x0801BB98
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	subs r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _0801BBDC
@@ -13639,7 +13639,7 @@ _0801BBE8:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	adds r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _0801BBFE
@@ -13656,7 +13656,7 @@ _0801BC08:
 	ldrh r0, [r4, #2]
 	adds r0, #0x40
 	ldrh r1, [r4, #4]
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	strh r0, [r4, #2]
 	b _0801BDAC
 _0801BC16:
@@ -13890,7 +13890,7 @@ SA_XTro2RunningCheckCollisions: @ 0x0801BDB4
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	subs r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _0801BDF8
@@ -13912,7 +13912,7 @@ _0801BE04:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	adds r1, #0x10
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r0, [r5]
 	cmp r0, #0
 	bne _0801BE1A
@@ -13929,7 +13929,7 @@ _0801BE24:
 	ldrh r0, [r4, #2]
 	adds r0, #0x40
 	ldrh r1, [r4, #4]
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	strh r0, [r4, #2]
 	b _0801C0E2
 _0801BE32:

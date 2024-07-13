@@ -13138,7 +13138,7 @@ _080502BE:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	subs r1, #0x40
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r1, [r5]
 	cmp r1, #0
 	beq _08050308
@@ -13155,7 +13155,7 @@ _080502F8:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
 	adds r1, #0x40
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	ldrb r1, [r5]
 	cmp r1, #0
 	bne _08050312
@@ -13176,7 +13176,7 @@ _0805031C:
 	ldrh r0, [r4, #2]
 	adds r0, #0x40
 	ldrh r1, [r4, #4]
-	bl CheckVerticalCollisionAtPosition
+	bl SpriteUtilCheckVerticalCollisionAtPosition
 	adds r1, r0, #0
 	strh r1, [r4, #2]
 	b _08050442

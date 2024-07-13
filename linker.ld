@@ -225,8 +225,9 @@ SECTIONS {
         asm/disasm_0x0801503C.o(.text);
 
         src/sprites_AI/movable_platform.o(.text);
+        src/sprites_AI/moto.o(.text);
 
-        asm/disasm_0x0801e794.o(.text);
+        asm/disasm_0x0801f2c0.o(.text);
 
         src/sprites_AI/blue_x.o(.text);
         src/sprites_AI/missile_hatch.o(.text);
@@ -275,6 +276,7 @@ SECTIONS {
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
+        src/data/sprites/moto.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);
