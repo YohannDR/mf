@@ -5,23 +5,94 @@
 
 #include "data/samus_data.h"
 
+#include "constants/clipdata.h"
 #include "constants/samus.h"
 
-#include "structs/samus.h"
+#include "data/samus_data.h"
 
+#include "structs/samus.h"
+#include "structs/sa_x.h"
+
+/**
+ * @brief 4d60 | 68 | Copies samus data
+ * 
+ */
 void SamusCopyData(void)
 {
+    gSamusDataCopy = gSamusData;
 
+    if (gSamusData.turning)
+    {
+        gSamusData.direction = gSamusData.direction ^ (KEY_RIGHT | KEY_LEFT);
+        gSamusData.turning = 0;
+    }
+
+    gSamusData.forcedMovement = 0;
+    gSamusData.walljumpTimer = 0;
+    gSamusData.speedboostingCounter = 0;
+    gSamusData.armCannonDirection = 0;
+    gSamusData.armRunningFlag = 0;
+    gSamusData.counter = 0;
+    gSamusData.lastWallTouchedMidAir = 0;
+    gSamusData.xVelocity = 0;
+    gSamusData.yVelocity = 0;
+    
+    gSamusData.animationDurationCounter = 0;
+    gSamusData.currentAnimationFrame = 0;
+
+    gSamusAnimationInfo.loadingSave = FALSE;
+    gSamusAnimationInfo.paletteAnimationCounter = 0;
+    gSamusAnimationInfo.currentPaletteRow = 0;
+    gSamusAnimationInfo.spaceJumpSpinCounter = 0;
 }
 
+/**
+ * @brief 4dc8 | 5c | Checks if samus is on a slope and changes the velocity according to it
+ * 
+ * @return s16 New velocity
+ */
 s16 SamusChangeVelocityOnSlope(void)
 {
-
+    s16 xVelocity = gSamusData.xVelocity;
+    
+    if (gSamusData.direction & gSamusData.slopeType)
+    {
+        if (gSamusData.slopeType & SLOPE_STEEP)
+            xVelocity = xVelocity * 3 / 5;
+        else
+            xVelocity = xVelocity * 4 / 5;
+    }
+    else
+    {
+        if (xVelocity > 0xA0)
+            xVelocity = 0xA0;
+        else if (xVelocity < -0xA0)
+            xVelocity = -0xA0;
+    }
+    
+    return xVelocity;
 }
 
-void SamusSetPalette(const u16* src, s32 offset, s32 length, u32 isSax)
+/**
+ * @brief 4e24 | 44 | Sets the palette pointed by src as the new suit palette
+ * 
+ * @param src    The memory address where the new suit palette is stored
+ * @param offset Offset of src where the palette begins
+ * @param length Length of the palette
+ * @param isSaX  Flag that indicates whether the destination address is for SA-X or Samus
+ */
+void SamusSetPalette(const u16* src, s32 offset, s32 length, u32 isSaX)
 {
+    const u16 *source = src;
 
+    s32 i;
+    for (i = offset; i < offset + length; i++)
+    {
+        if (!isSaX)
+            gSamusPalette[i] = *source++;
+        else
+            gSaXPalette[i] = *source++;
+    }
 }
 
 void SamusUpdatePhysics(void)
@@ -34,19 +105,57 @@ void SamusUpdateCollisionData(void)
 
 }
 
+/**
+ * @brief 50a4 | 44 | Calls SamusUpdateEnvironmentsEffects and SamusUpdateGraphics
+ * 
+ */
 void SamusCallUpdateGraphics(void)
 {
+    struct SamusData* pData;
+    u8 direction;
+        
+    SamusUpdateEnvironmentEffects();
+    
+    pData = &gSamusData;
 
+    // Get direction
+    if (pData->direction & KEY_RIGHT)
+        direction = FALSE;
+    else
+        direction = TRUE;
+    
+    // Update Samus graphics
+    sSamusUpdateGraphicsPointer[gSamusData.unk_0](direction);
+
+    if (pData->standingStatus == STANDING_MID_AIR)
+        pData->slopeType = SLOPE_NONE;
 }
 
+/**
+ * @brief 50e8 | 20 | Calls CheckPlayLowHealthSound
+ * 
+ */
 void SamusCallCheckPlayLowHealthSound(void)
 {
-
+    sSamusCheckPlayLowHealthSoundPointer[gSamusData.unk_0]();
 }
 
+/**
+ * @brief 5108 | 30 | Calls UpdateArmCannonOffset
+ * 
+ */
 void SamusCheckUpdateArmCannonOffset(void)
 {
+    u8 direction;
 
+    // Get direction
+    if (gSamusData.direction & KEY_RIGHT)
+        direction = FALSE;
+    else
+        direction = TRUE;
+
+    // Call function
+    sSamusUpdateArmCannonOffsetPointer[gSamusData.unk_0](direction);
 }
 
 /**
@@ -388,9 +497,35 @@ void SamusCheckNewProjectile(void)
     }
 }
 
+/**
+ * @brief 5eec | 74 | Checks if samus is standing on drop through clipdata (crumble block)
+ * 
+ * @return u32 1 if standing on drop through clipdata, 0 otherwise
+ */
 u32 SamusCheckStandingOnDropThroughClipdata(void)
 {
+    u32 onDropThrough = FALSE;
+    
+    if (gSamusData.standingStatus != STANDING_ENEMY)
+    {
+        u32 clipdata1 = ClipdataProcessForSamus(gSamusData.yPosition + ONE_SUB_PIXEL, gSamusData.xPosition + UNK_MACRO_1E);
+        u32 clipdata2 = ClipdataProcessForSamus(gSamusData.yPosition + ONE_SUB_PIXEL, gSamusData.xPosition - UNK_MACRO_1E);
 
+        if ((clipdata1 & 0xff) == CLIPDATA_TYPE_PASS_THROUGH_BOTTOM)
+        {
+            if ((clipdata2 & CLIPDATA_TYPE_SOLID_FLAG) == 0)
+                onDropThrough = TRUE;
+        }
+        else if ((clipdata1 & CLIPDATA_TYPE_SOLID_FLAG) == 0)
+        {
+            if ((clipdata2 & 0xff) == CLIPDATA_TYPE_PASS_THROUGH_BOTTOM)
+                onDropThrough = TRUE;
+        }
+        else
+            onDropThrough = FALSE;
+    }
+    
+    return onDropThrough;
 }
 
 u32 SamusSetForcedMovementForJumpingOrDropping(void)
