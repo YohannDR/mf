@@ -101,8 +101,22 @@ struct SamusPhysics {
     s16 xVelocityCap;
 };
 
+struct SamusEnvironmentalEffect {
+    u8 effect;
+    u8 animationDurationCounter;
+    u8 currentAnimationFrame;
+    s8 externalTimer;
+    u8 timer1;
+    u8 timer2;
+    u8 unk_6;
+    u16 xPosition;
+    u16 yPosition;
+    const u16* pOamFrame;
+};
+
 extern struct SamusData gSamusData;
 extern struct SamusData gSamusDataCopy;
+extern struct SamusEnvironmentalEffect gSamusEnvironmentalEffects[2];
 extern struct Equipment gEquipment;
 extern struct SamusGraphicsInfo gSamusGraphicsInfo;
 extern struct SamusAnimationInfo gSamusAnimationInfo;

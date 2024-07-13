@@ -323,4 +323,4 @@ const s16 sSineTable[Q_8_8(1.f) + PI / 2] = {
     Q_8_8(0.99609375),  // sin(319*(π/128))
 };
 
-static const u8 sBlob_a5224_2e4904[2356960] = INCBIN_U8("data/Blob_a5224_2e4904.bin");
+static const u8 sBlob_a5224_28fd04[] = INCBIN_U8("data/Blob_a5224_28fd04.bin");

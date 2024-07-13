@@ -145,6 +145,7 @@ SECTIONS {
         . = 0x00001270; gSamusDataCopy = .;
         . = 0x0000129c; gSamusGraphicsInfo = .;
         . = 0x000012d8; gSamusAnimationInfo = .;
+        . = 0x000012f0; gSamusEnvironmentalEffects = .;
         . = 0x00001310; gEquipment = .;
         . = 0x00001330; gSamusPhysics = .;
         . = 0x00001342; gPreviousXPosition = .;
@@ -227,6 +228,7 @@ SECTIONS {
 
         asm/disasm_0x0801e794.o(.text);
 
+        src/sprites_AI/blue_x.o(.text);
         src/sprites_AI/missile_hatch.o(.text);
         src/sprites_AI/super_missile_barrier.o(.text);
         src/sprites_AI/power_bomb_barrier.o(.text);
@@ -268,10 +270,12 @@ SECTIONS {
 
     .rodata : ALIGN(2) {
         src/data/generic_data.o(.rodata);
+        src/data/samus_data.o(.rodata);
         src/data/sprite_data.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
+        src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);
         src/data/sprites/power_bomb_barrier.o(.rodata);
