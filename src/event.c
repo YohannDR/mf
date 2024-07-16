@@ -179,10 +179,13 @@ void EventCheckUpdateAfterCutscene(void)
     }
 }
 
+/**
+ * @brief 74d54 | d4 | Checks if the current room has an event trigger
+ * 
+ * @param room Room ID (+ 1)
+ */
 void EventCheckRoomHasEventTrigger(u8 room)
 {
-    // https://decomp.me/scratch/6B7IW
-
     s32 counter;
     s32 i;
 
@@ -224,7 +227,6 @@ void EventCheckRoomHasEventTrigger(u8 room)
             return;
         }
 
-        i--;
         while (i > 0)
         {
             if (sEventLocationAndNavigationInfo[i].navConversation != 0)
