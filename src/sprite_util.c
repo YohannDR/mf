@@ -3817,10 +3817,17 @@ void SpriteUtilMoveBeamCoreX_Unused(u16 dstY, u16 dstX, u8 yVelocity, u8 xVeloci
     }
 }
 
-void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
+/**
+ * @brief Makes a sprite move towards a specified target
+ * 
+ * @param dstY Destination Y
+ * @param dstX Destination X
+ * @param ySpeedCap Y Velocity
+ * @param xSpeedCap X Velocity
+ * @param speedDivisor Speed divisor
+ */
+void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor)
 {
-    // https://decomp.me/scratch/83paO
-
     u8 turning;
     u16 velocity;
 
@@ -3836,7 +3843,7 @@ void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity,
             }
             else
             {
-                if (gCurrentSprite.work3 < xVelocity)
+                if (gCurrentSprite.work3 < xSpeedCap)
                     gCurrentSprite.work3++;
 
                 gCurrentSprite.xPosition += gCurrentSprite.work3 >> speedDivisor;
@@ -3844,9 +3851,7 @@ void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity,
         }
         else
         {
-            gCurrentSprite.work2--;
-
-            if (gCurrentSprite.work2 != 0)
+            if (--gCurrentSprite.work2 != 0)
                 gCurrentSprite.xPosition += gCurrentSprite.work2 >> speedDivisor;
             else
                 turning = TRUE;
@@ -3862,7 +3867,7 @@ void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity,
             }
             else
             {
-                if (gCurrentSprite.work3 < xVelocity)
+                if (gCurrentSprite.work3 < xSpeedCap)
                     gCurrentSprite.work3++;
 
                 velocity = gCurrentSprite.work3 >> speedDivisor;
@@ -3877,9 +3882,7 @@ void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity,
         }
         else
         {
-            gCurrentSprite.work2--;
-
-            if (gCurrentSprite.work2 != 0)
+            if (--gCurrentSprite.work2 != 0)
             {
                 velocity = gCurrentSprite.work2 >> speedDivisor;
                 if ((gCurrentSprite.xPosition - velocity) & 0x8000)
@@ -3913,7 +3916,7 @@ void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity,
             }
             else
             {
-                if (gCurrentSprite.work4 < yVelocity)
+                if (gCurrentSprite.work4 < ySpeedCap)
                     gCurrentSprite.work4++;
 
                 gCurrentSprite.yPosition += gCurrentSprite.work4 >> speedDivisor;
@@ -3921,9 +3924,7 @@ void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity,
         }
         else
         {
-            gCurrentSprite.work1--;
-
-            if (gCurrentSprite.work1 != 0)
+            if (--gCurrentSprite.work1 != 0)
                 gCurrentSprite.yPosition += gCurrentSprite.work1 >> speedDivisor;
             else
                 turning = TRUE;
@@ -3939,7 +3940,7 @@ void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity,
             }
             else
             {
-                if (gCurrentSprite.work4 < yVelocity)
+                if (gCurrentSprite.work4 < ySpeedCap)
                     gCurrentSprite.work4++;
 
                 velocity = gCurrentSprite.work4 >> speedDivisor;
@@ -3954,9 +3955,7 @@ void SpriteUtilMoveTowardsTarget(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity,
         }
         else
         {
-            gCurrentSprite.work1--;
-
-            if (gCurrentSprite.work1 != 0)
+            if (--gCurrentSprite.work1 != 0)
             {
                 velocity = gCurrentSprite.work1 >> speedDivisor;
                 if ((gCurrentSprite.yPosition - velocity) & 0x8000)
@@ -4156,10 +4155,17 @@ void unk_1343c(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor, 
     }
 }
 
-void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
+/**
+ * @brief 136ac | 264 | To document
+ * 
+ * @param dstY Destination Y
+ * @param dstX Destination X
+ * @param ySpeedCap Y Velocity
+ * @param xSpeedCap X Velocity
+ * @param speedDivisor Speed divisor
+ */
+void unk_136ac(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor)
 {
-    // https://decomp.me/scratch/CZKkD
-
     u8 turning;
     u16 velocity;
 
@@ -4175,7 +4181,7 @@ void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
             }
             else
             {
-                if (gCurrentSprite.work3 < xVelocity)
+                if (gCurrentSprite.work3 < xSpeedCap)
                     gCurrentSprite.work3++;
 
                 gCurrentSprite.xPosition += gCurrentSprite.work3 >> speedDivisor;
@@ -4183,9 +4189,7 @@ void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
         }
         else
         {
-            gCurrentSprite.work2--;
-
-            if (gCurrentSprite.work2 != 0)
+            if (--gCurrentSprite.work2 != 0)
                 gCurrentSprite.xPosition += gCurrentSprite.work2 >> speedDivisor;
             else
                 turning = TRUE;
@@ -4201,7 +4205,7 @@ void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
             }
             else
             {
-                if (gCurrentSprite.work3 < xVelocity)
+                if (gCurrentSprite.work3 < xSpeedCap)
                     gCurrentSprite.work3++;
 
                 velocity = gCurrentSprite.work3 >> speedDivisor;
@@ -4216,9 +4220,7 @@ void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
         }
         else
         {
-            gCurrentSprite.work2--;
-
-            if (gCurrentSprite.work2 != 0)
+            if (--gCurrentSprite.work2 != 0)
             {
                 velocity = gCurrentSprite.work2 >> speedDivisor;
                 if ((gCurrentSprite.xPosition - velocity) & 0x8000)
@@ -4257,7 +4259,7 @@ void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
             }
             else
             {
-                if (gCurrentSprite.work4 < yVelocity)
+                if (gCurrentSprite.work4 < ySpeedCap)
                     gCurrentSprite.work4++;
 
                 gCurrentSprite.yPosition += gCurrentSprite.work4 >> speedDivisor;
@@ -4265,9 +4267,7 @@ void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
         }
         else
         {
-            gCurrentSprite.work1--;
-
-            if (gCurrentSprite.work1 != 0)
+            if (--gCurrentSprite.work1 != 0)
                 gCurrentSprite.yPosition += gCurrentSprite.work1 >> speedDivisor;
             else
                 turning = TRUE;
@@ -4283,7 +4283,7 @@ void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
             }
             else
             {
-                if (gCurrentSprite.work4 < yVelocity)
+                if (gCurrentSprite.work4 < ySpeedCap)
                     gCurrentSprite.work4++;
 
                 velocity = gCurrentSprite.work4 >> speedDivisor;
@@ -4298,9 +4298,7 @@ void unk_136ac(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
         }
         else
         {
-            gCurrentSprite.work1--;
-
-            if (gCurrentSprite.work1 != 0)
+            if (--gCurrentSprite.work1 != 0)
             {
                 velocity = gCurrentSprite.work1 >> speedDivisor;
                 if ((gCurrentSprite.yPosition - velocity) & 0x8000)
