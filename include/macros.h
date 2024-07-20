@@ -13,6 +13,7 @@
 #define OPPOSITE_DIRECTION(dir) ((dir) ^ (KEY_RIGHT | KEY_LEFT))
 #define ARRAY_SIZE(a) ((int)(sizeof((a)) / sizeof((a)[0])))
 #define OFFSET_OF(type, element) ((int)&(((type*)0)->element))
+#define CHECK_ALL_FLAGS(value, flags) (((value) & (flags)) == (flags))
 #define PALETTE_NBR_ROWS(pal) (ARRAY_SIZE((pal)) / 16)
 
 #define CEIL(v) ((int)(((float)v) + .5) == (int)(v) ? ((int)(v)) : (int)(((float)v) + .5))

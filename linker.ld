@@ -226,6 +226,7 @@ SECTIONS {
 
         src/sprites_AI/movable_platform.o(.text);
         src/sprites_AI/moto.o(.text);
+        src/sprites_AI/save_pad.o(.text);
 
         asm/disasm_0x0801f2c0.o(.text);
 
@@ -277,6 +278,7 @@ SECTIONS {
         src/data/sprites/target.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
         src/data/sprites/moto.o(.rodata);
+        src/data/sprites/save_pad.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);
