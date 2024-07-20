@@ -420,7 +420,7 @@ void Gadora(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             GadoraInit();
             break;
 
@@ -634,7 +634,7 @@ void GadoraBeam(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
             gCurrentSprite.properties |= SP_KILL_OFF_SCREEN;
 

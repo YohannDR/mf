@@ -1128,7 +1128,7 @@ void Hornoad(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             HornoadInit();
             break;
 
@@ -1206,7 +1206,7 @@ void HornoadSpit(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             HornoadSpitInit();
         
         case 0x2:
@@ -1232,7 +1232,7 @@ void HornoadSpawner(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             HornoadSpwanerInit();
 
         case 0x1:

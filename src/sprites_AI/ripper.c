@@ -162,7 +162,7 @@ void Ripper(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             RipperInit();
             break;
 

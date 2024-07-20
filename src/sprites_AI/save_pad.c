@@ -464,7 +464,7 @@ void SavePad(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SavePadInit();
 
         case SPRITE_POSE_IDLE:
@@ -483,7 +483,7 @@ void SavePlatform(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SavePlatformInit();
             break;
 
@@ -525,7 +525,7 @@ void SavePadHologram(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SavePadHologramInit();
             break;
 

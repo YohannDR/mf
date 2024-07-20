@@ -2618,7 +2618,7 @@ void SaXElevator(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SaXElevatorInit();
 
         case SPRITE_POSE_FALLING_INIT:
@@ -2793,7 +2793,7 @@ void SaXBeam(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SaXBeamInit();
             break;
 
@@ -2810,7 +2810,7 @@ void SaXMissile(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SaXMissileInit();
             break;
 
@@ -2831,7 +2831,7 @@ void SaXPowerBomb(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SaXPowerBombInit();
             break;
 
@@ -2859,7 +2859,7 @@ void LabExplosion(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             LabExplosionInit();
             break;
 

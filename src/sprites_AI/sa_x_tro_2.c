@@ -833,7 +833,7 @@ void SaXTro2(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SaXTro2Init();
             break;
 

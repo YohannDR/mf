@@ -64,7 +64,7 @@ void MovablePlatform(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             MovablePlatformInit();
 
         case SPRITE_POSE_IDLE:

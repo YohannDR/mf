@@ -646,7 +646,7 @@ void Moto(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             MotoInit();
             break;
 
@@ -740,7 +740,7 @@ void MotoFront(void)
     
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             MotoFrontInit();
 
         default:

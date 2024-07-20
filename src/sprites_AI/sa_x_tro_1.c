@@ -295,7 +295,7 @@ void SaXTro1(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SaXTro1Init();
 
         case 0x1:

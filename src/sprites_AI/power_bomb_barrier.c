@@ -158,7 +158,7 @@ void PowerBombBarrier(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             PowerBombBarrierInit();
             break;
 
@@ -210,7 +210,7 @@ void PowerBombBarrierStem(void)
     
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
             gCurrentSprite.pose = SPRITE_POSE_IDLE;
 

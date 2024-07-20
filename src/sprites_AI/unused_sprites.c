@@ -15,7 +15,7 @@ void UnusedSprites(void)
 {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-    if (gCurrentSprite.pose == SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED)
     {
         gCurrentSprite.pose++;
 

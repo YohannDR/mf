@@ -38,7 +38,7 @@ void Bubbles1(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             BubblesWaterDropInit();
 
             gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
@@ -91,7 +91,7 @@ void Bubbles2(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             BubblesWaterDropInit();
 
             gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;

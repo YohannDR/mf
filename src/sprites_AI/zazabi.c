@@ -1941,7 +1941,7 @@ void Zazabi(void)
             ZazabiSpawningFromX();
             break;
 
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             ZazabiInit();
             break;
 
@@ -2063,7 +2063,7 @@ void ZazabiPart(void)
     if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
         gCurrentSprite.ignoreSamusCollisionTimer = 16;
 
-    if (gCurrentSprite.pose == SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED)
     {
         ZazabiPartInit();
         return;

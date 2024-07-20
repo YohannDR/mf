@@ -1442,7 +1442,7 @@ void Nettori(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             NettoriInit();
             break;
 
@@ -1473,7 +1473,7 @@ void NettoriPart(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             NettoriPartInit();
             break;
 
@@ -1498,7 +1498,7 @@ void NettoriPlasmaBeam(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             NettoriPlasmaBeamInit();
             break;
 
@@ -1535,7 +1535,7 @@ void SamusEater(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SamusEaterInit();
             break;
 
@@ -1580,7 +1580,7 @@ void SamusEaterBud(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SamusEaterBudInit();
             break;
 
@@ -1622,7 +1622,7 @@ void SamusEaterSpore(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SamusEaterSporeInit();
             break;
 

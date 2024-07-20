@@ -72,7 +72,7 @@ void TargetCircles(void)
 
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-    if (gCurrentSprite.pose != SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.pose != SPRITE_POSE_UNINITIALIZED)
     {
         offset = gCurrentSprite.work4;
         movement = sTargetCirclesYMovement[offset];
@@ -112,7 +112,7 @@ void TargetDiagonal(void)
 {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-    if (gCurrentSprite.pose != SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.pose != SPRITE_POSE_UNINITIALIZED)
     {
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
         {
@@ -166,7 +166,7 @@ void TargetSideways(void)
 {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-    if (gCurrentSprite.pose != SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.pose != SPRITE_POSE_UNINITIALIZED)
     {
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
         {
@@ -201,7 +201,7 @@ void TargetCoreX(void)
 {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-    if (gCurrentSprite.pose == SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED)
         TargetInit();
 
     gAbilityRestingYPosition = gCurrentSprite.yPosition;

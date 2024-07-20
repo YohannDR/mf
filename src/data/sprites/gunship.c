@@ -85,5 +85,3 @@ const struct FrameData sGunshipPartOam_Idle[2] = {
 };
 
 const u16 sGunshipFlashingPal[7 * 16] = INCBIN_U16("data/sprites/gunship_flashing.pal");
-
-static const u8 sBlob_2f4818_35dd74[] = INCBIN_U8("data/Blob_2f4818_35dd74.bin");

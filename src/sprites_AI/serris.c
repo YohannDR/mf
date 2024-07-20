@@ -2056,7 +2056,7 @@ void Serris(void)
     }
 
     // Check dead and initialized (a sprite has 0 health when spawning)
-    if (gCurrentSprite.health == 0 && gCurrentSprite.pose != SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.health == 0 && gCurrentSprite.pose != SPRITE_POSE_UNINITIALIZED)
     {
         // Set dying if not already
         if (gCurrentSprite.pose < SERRIS_POSE_DYING_INIT)
@@ -2121,7 +2121,7 @@ void Serris(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SerrisInit();
             break;
 
@@ -2300,7 +2300,7 @@ void SerrisPart(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SerrisPartInit();
             break;
 
@@ -2437,7 +2437,7 @@ void SerrisBlock(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SerrisBlockInit();
             break;
 

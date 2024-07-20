@@ -518,7 +518,7 @@ void Gunship(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             GunshipInit();
             break;
 
@@ -582,7 +582,7 @@ void GunshipBeam(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             GunshipBeamInit();
 
         case SPRITE_POSE_IDLE:
@@ -608,7 +608,7 @@ void GunshipPart(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
             gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;
 

@@ -779,7 +779,7 @@ void SaXArc(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             SaXArcInit();
             break;
 

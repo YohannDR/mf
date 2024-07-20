@@ -596,7 +596,7 @@ void BlueX(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             BlueXInit();
             break;
 
@@ -642,7 +642,7 @@ void BlueXAbsorbtion(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             BlueXAbsorbtionInit();
             break;
 

@@ -18,7 +18,7 @@ void ElevatorPad(void)
 {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-    if (gCurrentSprite.pose == SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED)
     {
         gCurrentSprite.yPosition += QUARTER_BLOCK_SIZE;
         gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;

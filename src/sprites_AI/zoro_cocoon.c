@@ -166,7 +166,7 @@ void ZoroCocoon(void)
         return;
     }
 
-    if (gCurrentSprite.pose == SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED)
         ZoroCocoonInit();
 
     if (EventCheckAfter_EscapedSaXTro1() && gCurrentSprite.currentAnimationFrame == 1 && gCurrentSprite.animationDurationCounter == 1 && gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
@@ -286,6 +286,6 @@ void ZoroHusk(void)
 {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-    if (gCurrentSprite.pose == SPRITE_POSE_UNITIALIZED)
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED)
         ZoroHuskInit();
 }

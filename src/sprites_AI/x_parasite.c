@@ -466,7 +466,7 @@ void XParasite(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             XParasiteInit();
             break;
 
@@ -509,7 +509,7 @@ void XParasiteInRoom(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             XParasiteInit();
             break;
 
@@ -528,7 +528,7 @@ void XParasiteBossFormation(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             XParasiteInit();
             break;
 
@@ -557,7 +557,7 @@ void XParasiteCoreXOrStabilizer(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             XParasiteInit();
             break;
 
@@ -600,7 +600,7 @@ void XParasiteAquaZebesian(void)
 {
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             XParasiteInit();
             break;
 

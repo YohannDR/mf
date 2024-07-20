@@ -634,7 +634,7 @@ void Halzyn(void)
 
     switch (gCurrentSprite.pose)
     {
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             HalzynInit();
             break;
 
@@ -713,7 +713,7 @@ void HalzynWing(void)
         case 0x3A:
             break;
 
-        case SPRITE_POSE_UNITIALIZED:
+        case SPRITE_POSE_UNINITIALIZED:
             HalzynWingInit();
 
         default:
