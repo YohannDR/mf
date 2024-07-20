@@ -407,5 +407,3 @@ const struct FrameData sSecurityPadMonitorOam_2f78bc[2] = {
 };
 
 const u16 sSecurityPad_2f78cc[16 * 16] = INCBIN_U16("data/sprites/security_pad_2f78cc.pal");
-
-static const u8 sBlob_2f7acc_35dd74[] = INCBIN_U8("data/Blob_2f7acc_35dd74.bin");
