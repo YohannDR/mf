@@ -526,7 +526,7 @@ _08004F6E:
 	lsrs r2, r0, #0x18
 	cmp r2, #0xff
 	beq _08004FA8
-	ldr r0, _08004FE0 @ =0x0828FD04
+	ldr r0, _08004FE0 @ =sSamusSetPoseFunctionPointer
 	ldrb r1, [r4]
 	lsls r1, r1, #2
 	adds r1, r1, r0
@@ -555,7 +555,7 @@ _08004FD0: .4byte 0x03001340
 _08004FD4: .4byte gPreviousXPosition
 _08004FD8: .4byte gPreviousYPosition
 _08004FDC: .4byte 0x0828FD00
-_08004FE0: .4byte 0x0828FD04
+_08004FE0: .4byte sSamusSetPoseFunctionPointer
 _08004FE4: .4byte 0x0828FD18
 _08004FE8: .4byte 0x0828FD08
 
@@ -780,7 +780,7 @@ _0800518A:
 	movs r0, #0x7f
 	ands r0, r3
 	strb r0, [r2, #3]
-	ldr r1, _080051B0 @ =0x0828FD04
+	ldr r1, _080051B0 @ =sSamusSetPoseFunctionPointer
 	ldrb r0, [r2]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -793,7 +793,7 @@ _080051A6:
 	bx r0
 	.align 2, 0
 _080051AC: .4byte gSamusData
-_080051B0: .4byte 0x0828FD04
+_080051B0: .4byte sSamusSetPoseFunctionPointer
 
 	thumb_func_start SamusCheckSetNewEnvironmentEffect
 SamusCheckSetNewEnvironmentEffect: @ 0x080051B4

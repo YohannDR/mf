@@ -1,6 +1,8 @@
 #ifndef SAVE_PAD_AI_H
 #define SAVE_PAD_AI_H
 
+#include "types.h"
+
 void SavePadInit(void);
 void SavePadIdle(void);
 void SavePlatformInit(void);

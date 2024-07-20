@@ -9048,7 +9048,7 @@ _0806CB1C:
 	cmp r6, #0
 	beq _0806CB32
 _0806CB20:
-	ldr r1, _0806CB40 @ =0x0828FD04
+	ldr r1, _0806CB40 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _0806CB3C @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -9063,7 +9063,7 @@ _0806CB32:
 	.align 2, 0
 _0806CB38: .4byte gTilemapAndClipPointers
 _0806CB3C: .4byte gSamusData
-_0806CB40: .4byte 0x0828FD04
+_0806CB40: .4byte sSamusSetPoseFunctionPointer
 
 	thumb_func_start CheckProjectileHitHatch
 CheckProjectileHitHatch: @ 0x0806CB44

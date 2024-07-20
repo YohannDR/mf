@@ -177,7 +177,7 @@ _0800FEDE:
 	strh r0, [r5]
 	cmp r6, #0
 	beq _0800FF00
-	ldr r1, _0800FEF8 @ =0x0828FD04
+	ldr r1, _0800FEF8 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _0800FEFC @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -187,13 +187,13 @@ _0800FEDE:
 	bl _call_via_r1
 	b _0800FF18
 	.align 2, 0
-_0800FEF8: .4byte 0x0828FD04
+_0800FEF8: .4byte sSamusSetPoseFunctionPointer
 _0800FEFC: .4byte gSamusData
 _0800FF00:
 	ldrh r0, [r5]
 	cmp r0, #0
 	bne _0800FF18
-	ldr r1, _0800FF20 @ =0x0828FD04
+	ldr r1, _0800FF20 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _0800FF24 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -206,7 +206,7 @@ _0800FF18:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800FF20: .4byte 0x0828FD04
+_0800FF20: .4byte sSamusSetPoseFunctionPointer
 _0800FF24: .4byte gSamusData
 
 	thumb_func_start TakeDamageFromSA_XIceBeamWithPowerSuit
@@ -256,7 +256,7 @@ _0800FF7A:
 	ldrh r0, [r4]
 	cmp r0, #0
 	bne _0800FFA0
-	ldr r1, _0800FF98 @ =0x0828FD04
+	ldr r1, _0800FF98 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _0800FF9C @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -266,10 +266,10 @@ _0800FF7A:
 	bl _call_via_r1
 	b _0800FFB2
 	.align 2, 0
-_0800FF98: .4byte 0x0828FD04
+_0800FF98: .4byte sSamusSetPoseFunctionPointer
 _0800FF9C: .4byte gSamusData
 _0800FFA0:
-	ldr r1, _0800FFB8 @ =0x0828FD04
+	ldr r1, _0800FFB8 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _0800FFBC @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -282,7 +282,7 @@ _0800FFB2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800FFB8: .4byte 0x0828FD04
+_0800FFB8: .4byte sSamusSetPoseFunctionPointer
 _0800FFBC: .4byte gSamusData
 
 	thumb_func_start SpriteUtilTakeConstantDamage
@@ -323,7 +323,7 @@ _08010006:
 	ldrh r0, [r1]
 	cmp r0, #0
 	bne _0801001C
-	ldr r0, _08010024 @ =0x0828FD04
+	ldr r0, _08010024 @ =sSamusSetPoseFunctionPointer
 	ldrb r1, [r3]
 	lsls r1, r1, #2
 	adds r1, r1, r0
@@ -335,7 +335,7 @@ _0801001C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08010024: .4byte 0x0828FD04
+_08010024: .4byte sSamusSetPoseFunctionPointer
 
 	thumb_func_start TakeDamageFromOmegaMetroidSwiping
 TakeDamageFromOmegaMetroidSwiping: @ 0x08010028
@@ -403,7 +403,7 @@ _08010096:
 	ldr r0, _080100C0 @ =0x000002AF
 	bl SoundPlay
 _080100A8:
-	ldr r1, _080100C4 @ =0x0828FD04
+	ldr r1, _080100C4 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _080100C8 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -415,7 +415,7 @@ _080100A8:
 	bx r0
 	.align 2, 0
 _080100C0: .4byte 0x000002AF
-_080100C4: .4byte 0x0828FD04
+_080100C4: .4byte sSamusSetPoseFunctionPointer
 _080100C8: .4byte gSamusData
 
 	thumb_func_start TakeDamageFromYakuzaSlamming
@@ -443,7 +443,7 @@ _080100F4:
 	movs r0, #0
 _080100F6:
 	strh r0, [r1]
-	ldr r1, _08010110 @ =0x0828FD04
+	ldr r1, _08010110 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _08010114 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -454,7 +454,7 @@ _080100F6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08010110: .4byte 0x0828FD04
+_08010110: .4byte sSamusSetPoseFunctionPointer
 _08010114: .4byte gSamusData
 
 	thumb_func_start TakeConstantDamageFromYakuza
@@ -492,7 +492,7 @@ _08010158: .4byte gEquipment
 _0801015C: .4byte gSamusData
 _08010160:
 	strh r4, [r1]
-	ldr r1, _0801018C @ =0x0828FD04
+	ldr r1, _0801018C @ =sSamusSetPoseFunctionPointer
 	ldr r0, _08010190 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -513,7 +513,7 @@ _08010174:
 	bl unk_2894
 	b _080101A2
 	.align 2, 0
-_0801018C: .4byte 0x0828FD04
+_0801018C: .4byte sSamusSetPoseFunctionPointer
 _08010190: .4byte gSamusData
 _08010194: .4byte gEquipment
 _08010198:
@@ -533,7 +533,7 @@ _080101A8:
 	thumb_func_start TakeKnockback
 TakeKnockback: @ 0x080101B0
 	push {lr}
-	ldr r1, _080101C8 @ =0x0828FD04
+	ldr r1, _080101C8 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _080101CC @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -544,7 +544,7 @@ TakeKnockback: @ 0x080101B0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080101C8: .4byte 0x0828FD04
+_080101C8: .4byte sSamusSetPoseFunctionPointer
 _080101CC: .4byte gSamusData
 
 	thumb_func_start CheckObjectsTouching
@@ -2047,7 +2047,7 @@ _08010DEE:
 	.align 2, 0
 _08010E0C: .4byte gSpriteData
 _08010E10:
-	ldr r1, _08010E40 @ =0x0828FD04
+	ldr r1, _08010E40 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _08010E44 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -2070,7 +2070,7 @@ _08010E10:
 	strb r1, [r0]
 	b _08010FE8
 	.align 2, 0
-_08010E40: .4byte 0x0828FD04
+_08010E40: .4byte sSamusSetPoseFunctionPointer
 _08010E44: .4byte gSamusData
 _08010E48: .4byte gSpriteData
 _08010E4C:
@@ -2224,7 +2224,7 @@ _08010F70:
 	cmp r0, #0x1d
 	bne _08010FE8
 _08010F80:
-	ldr r1, _08010F98 @ =0x0828FD04
+	ldr r1, _08010F98 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _08010F94 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -2235,13 +2235,13 @@ _08010F80:
 	b _08010FE8
 	.align 2, 0
 _08010F94: .4byte gSamusData
-_08010F98: .4byte 0x0828FD04
+_08010F98: .4byte sSamusSetPoseFunctionPointer
 _08010F9C:
 	movs r0, #2
 	ands r6, r0
 	cmp r6, #0
 	beq _08010FE8
-	ldr r1, _08010FD4 @ =0x0828FD04
+	ldr r1, _08010FD4 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _08010FD8 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -2264,7 +2264,7 @@ _08010F9C:
 	strb r1, [r0]
 	b _08010FE8
 	.align 2, 0
-_08010FD4: .4byte 0x0828FD04
+_08010FD4: .4byte sSamusSetPoseFunctionPointer
 _08010FD8: .4byte gSamusData
 _08010FDC: .4byte gSpriteData
 _08010FE0:
@@ -4199,7 +4199,7 @@ SpriteUtilSamusStandingOnSprite: @ 0x08011D9C
 	beq _08011DD8
 	cmp r0, #2
 	bne _08011DD2
-	ldr r0, _08011DEC @ =0x0828FD04
+	ldr r0, _08011DEC @ =sSamusSetPoseFunctionPointer
 	ldrb r1, [r1]
 	lsls r1, r1, #2
 	adds r1, r1, r0
@@ -4219,7 +4219,7 @@ _08011DD8:
 	.align 2, 0
 _08011DE4: .4byte gCurrentSprite
 _08011DE8: .4byte gSamusData
-_08011DEC: .4byte 0x0828FD04
+_08011DEC: .4byte sSamusSetPoseFunctionPointer
 _08011DF0: .4byte 0x0000EFFF
 _08011DF4:
 	adds r2, r4, #0

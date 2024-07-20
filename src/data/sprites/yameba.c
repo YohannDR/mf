@@ -276,5 +276,3 @@ const struct FrameData sYamebaOam_Small_Unused[9] = {
     },
     [8] = FRAME_DATA_TERMINATOR
 };
-
-static const u8 sBlob_2f5bf0_35dd74[] = INCBIN_U8("data/Blob_2f5bf0_35dd74.bin");

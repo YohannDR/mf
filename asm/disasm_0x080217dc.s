@@ -2,1192 +2,6 @@
 
     .syntax unified
 
-	thumb_func_start SecurityPadUpdatePalette
-SecurityPadUpdatePalette: @ 0x08020E3C
-	push {r4, r5, r6, lr}
-	ldr r1, _08020E7C @ =gCurrentSprite
-	adds r0, r1, #0
-	adds r0, #0x30
-	ldrb r2, [r0]
-	subs r0, r2, #1
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	adds r6, r1, #0
-	cmp r0, #3
-	bhi _08020EEA
-	lsls r0, r0, #0x1e
-	lsrs r2, r0, #0x18
-	movs r5, #1
-	adds r3, r6, #0
-	adds r3, #0x31
-	ldrb r0, [r3]
-	adds r1, r0, #1
-	strb r1, [r3]
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	cmp r0, #0x30
-	beq _08020EB4
-	cmp r0, #0x30
-	bgt _08020E86
-	cmp r0, #0x10
-	beq _08020E9A
-	cmp r0, #0x10
-	bgt _08020E80
-	cmp r0, #0
-	beq _08020EC2
-	b _08020ED0
-	.align 2, 0
-_08020E7C: .4byte gCurrentSprite
-_08020E80:
-	cmp r0, #0x20
-	beq _08020EA8
-	b _08020ED0
-_08020E86:
-	cmp r0, #0x50
-	beq _08020E9A
-	cmp r0, #0x50
-	bgt _08020E94
-	cmp r0, #0x40
-	beq _08020EA8
-	b _08020ED0
-_08020E94:
-	cmp r0, #0x60
-	beq _08020EC0
-	b _08020ED0
-_08020E9A:
-	lsls r1, r2, #1
-	ldr r0, _08020EA4 @ =0x082F78FC
-	adds r4, r1, r0
-	b _08020ED2
-	.align 2, 0
-_08020EA4: .4byte 0x082F78FC
-_08020EA8:
-	lsls r1, r2, #1
-	ldr r0, _08020EB0 @ =0x082F791C
-	adds r4, r1, r0
-	b _08020ED2
-	.align 2, 0
-_08020EB0: .4byte 0x082F791C
-_08020EB4:
-	lsls r1, r2, #1
-	ldr r0, _08020EBC @ =0x082F793C
-	adds r4, r1, r0
-	b _08020ED2
-	.align 2, 0
-_08020EBC: .4byte 0x082F793C
-_08020EC0:
-	strb r5, [r3]
-_08020EC2:
-	lsls r1, r2, #1
-	ldr r0, _08020ECC @ =0x082F78DC
-	adds r4, r1, r0
-	b _08020ED2
-	.align 2, 0
-_08020ECC: .4byte 0x082F78DC
-_08020ED0:
-	movs r5, #0
-_08020ED2:
-	cmp r5, #0
-	beq _08020EEA
-	ldr r1, _08020EF0 @ =0x040000D4
-	str r4, [r1]
-	ldrb r0, [r6, #0x1f]
-	lsls r0, r0, #5
-	ldr r2, _08020EF4 @ =0x05000310
-	adds r0, r0, r2
-	str r0, [r1, #4]
-	ldr r0, _08020EF8 @ =0x80000008
-	str r0, [r1, #8]
-	ldr r0, [r1, #8]
-_08020EEA:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08020EF0: .4byte 0x040000D4
-_08020EF4: .4byte 0x05000310
-_08020EF8: .4byte 0x80000008
-
-	thumb_func_start SecurityPadInit
-SecurityPadInit: @ 0x08020EFC
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	ldr r4, _08020F5C @ =gCurrentSprite
-	adds r2, r4, #0
-	adds r2, #0x34
-	ldrb r1, [r2]
-	movs r0, #1
-	movs r3, #0
-	orrs r0, r1
-	strb r0, [r2]
-	adds r0, r4, #0
-	adds r0, #0x25
-	strb r3, [r0]
-	adds r1, r4, #0
-	adds r1, #0x27
-	movs r0, #8
-	strb r0, [r1]
-	adds r1, #1
-	movs r0, #0x28
-	strb r0, [r1]
-	adds r1, #1
-	movs r0, #0x18
-	strb r0, [r1]
-	movs r2, #0
-	ldr r1, _08020F60 @ =0x0000FFFC
-	strh r1, [r4, #0xa]
-	movs r0, #4
-	strh r0, [r4, #0xc]
-	strh r1, [r4, #0xe]
-	strh r0, [r4, #0x10]
-	adds r1, r4, #0
-	adds r1, #0x21
-	movs r0, #1
-	strb r0, [r1]
-	strb r2, [r4, #0x1c]
-	strh r3, [r4, #0x16]
-	adds r0, r4, #0
-	adds r0, #0x31
-	strb r2, [r0]
-	ldr r0, _08020F64 @ =gCurrentArea
-	ldrb r0, [r0]
-	cmp r0, #3
-	beq _08020F76
-	cmp r0, #3
-	bgt _08020F68
-	cmp r0, #2
-	beq _08020F72
-	b _08020F82
-	.align 2, 0
-_08020F5C: .4byte gCurrentSprite
-_08020F60: .4byte 0x0000FFFC
-_08020F64: .4byte gCurrentArea
-_08020F68:
-	cmp r0, #4
-	beq _08020F7E
-	cmp r0, #5
-	beq _08020F7A
-	b _08020F82
-_08020F72:
-	movs r6, #1
-	b _08020F84
-_08020F76:
-	movs r6, #2
-	b _08020F84
-_08020F7A:
-	movs r6, #3
-	b _08020F84
-_08020F7E:
-	movs r6, #4
-	b _08020F84
-_08020F82:
-	movs r6, #5
-_08020F84:
-	ldr r5, _08020FE0 @ =gCurrentSprite
-	adds r0, r5, #0
-	adds r0, #0x30
-	movs r7, #0
-	strb r6, [r0]
-	movs r0, #0
-	bl CheckOrUnlockSecurityLevel
-	cmp r0, #0
-	bne _08021020
-	ldr r0, _08020FE4 @ =0x082F789C
-	str r0, [r5, #0x18]
-	adds r1, r5, #0
-	adds r1, #0x24
-	movs r0, #0x1e
-	strb r0, [r1]
-	adds r0, r5, #0
-	adds r0, #0x2a
-	ldrb r0, [r0]
-	movs r6, #1
-	ands r6, r0
-	cmp r6, #0
-	beq _08020FE8
-	ldrb r2, [r5, #0x1f]
-	adds r4, r5, #0
-	adds r4, #0x23
-	ldrb r3, [r4]
-	ldrh r0, [r5, #2]
-	str r0, [sp]
-	ldrh r0, [r5, #4]
-	subs r0, #0x90
-	str r0, [sp, #4]
-	str r7, [sp, #8]
-	movs r0, #0x25
-	movs r1, #1
-	bl SpriteSpawnSecondary
-	ldrb r2, [r5, #0x1f]
-	ldrb r3, [r4]
-	ldrh r0, [r5, #2]
-	str r0, [sp]
-	ldrh r0, [r5, #4]
-	subs r0, #0x90
-	str r0, [sp, #4]
-	str r7, [sp, #8]
-	b _08021016
-	.align 2, 0
-_08020FE0: .4byte gCurrentSprite
-_08020FE4: .4byte 0x082F789C
-_08020FE8:
-	ldrb r2, [r5, #0x1f]
-	adds r7, r5, #0
-	adds r7, #0x23
-	ldrb r3, [r7]
-	ldrh r0, [r5, #2]
-	str r0, [sp]
-	ldrh r0, [r5, #4]
-	adds r0, #0x90
-	str r0, [sp, #4]
-	movs r4, #0x40
-	str r4, [sp, #8]
-	movs r0, #0x25
-	movs r1, #1
-	bl SpriteSpawnSecondary
-	ldrb r2, [r5, #0x1f]
-	ldrb r3, [r7]
-	ldrh r0, [r5, #2]
-	str r0, [sp]
-	ldrh r0, [r5, #4]
-	adds r0, #0x90
-	str r0, [sp, #4]
-	str r4, [sp, #8]
-_08021016:
-	movs r0, #0x12
-	movs r1, #1
-	bl SpriteSpawnSecondary
-	b _080210B2
-_08021020:
-	ldr r0, _08021078 @ =0x082F788C
-	str r0, [r5, #0x18]
-	adds r0, r5, #0
-	adds r0, #0x2e
-	movs r2, #1
-	strb r2, [r0]
-	adds r1, r5, #0
-	adds r1, #0x24
-	movs r0, #2
-	strb r0, [r1]
-	adds r0, r5, #0
-	adds r0, #0x2a
-	ldrb r0, [r0]
-	adds r6, r2, #0
-	ands r6, r0
-	cmp r6, #0
-	beq _0802107C
-	ldrb r2, [r5, #0x1f]
-	adds r4, r5, #0
-	adds r4, #0x23
-	ldrb r3, [r4]
-	ldrh r0, [r5, #2]
-	str r0, [sp]
-	ldrh r0, [r5, #4]
-	subs r0, #0x90
-	str r0, [sp, #4]
-	str r7, [sp, #8]
-	movs r0, #0x25
-	movs r1, #0
-	bl SpriteSpawnSecondary
-	ldrb r2, [r5, #0x1f]
-	ldrb r3, [r4]
-	ldrh r0, [r5, #2]
-	str r0, [sp]
-	ldrh r0, [r5, #4]
-	subs r0, #0x90
-	str r0, [sp, #4]
-	str r7, [sp, #8]
-	movs r0, #0x12
-	movs r1, #0
-	bl SpriteSpawnSecondary
-	b _080210B2
-	.align 2, 0
-_08021078: .4byte 0x082F788C
-_0802107C:
-	ldrb r2, [r5, #0x1f]
-	adds r7, r5, #0
-	adds r7, #0x23
-	ldrb r3, [r7]
-	ldrh r0, [r5, #2]
-	str r0, [sp]
-	ldrh r0, [r5, #4]
-	adds r0, #0x90
-	str r0, [sp, #4]
-	movs r4, #0x40
-	str r4, [sp, #8]
-	movs r0, #0x25
-	movs r1, #0
-	bl SpriteSpawnSecondary
-	ldrb r2, [r5, #0x1f]
-	ldrb r3, [r7]
-	ldrh r0, [r5, #2]
-	str r0, [sp]
-	ldrh r0, [r5, #4]
-	adds r0, #0x90
-	str r0, [sp, #4]
-	str r4, [sp, #8]
-	movs r0, #0x12
-	movs r1, #0
-	bl SpriteSpawnSecondary
-_080210B2:
-	ldr r0, _080210C0 @ =gCurrentSprite
-	adds r0, #0x2f
-	strb r6, [r0]
-	add sp, #0xc
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080210C0: .4byte gCurrentSprite
-
-	thumb_func_start SecurityPadIdleActiveInit
-SecurityPadIdleActiveInit: @ 0x080210C4
-	ldr r0, _080210E0 @ =gCurrentSprite
-	ldr r1, _080210E4 @ =0x082F788C
-	str r1, [r0, #0x18]
-	movs r1, #0
-	strb r1, [r0, #0x1c]
-	strh r1, [r0, #0x16]
-	adds r2, r0, #0
-	adds r2, #0x2e
-	movs r1, #1
-	strb r1, [r2]
-	adds r0, #0x24
-	movs r1, #2
-	strb r1, [r0]
-	bx lr
-	.align 2, 0
-_080210E0: .4byte gCurrentSprite
-_080210E4: .4byte 0x082F788C
-
-	thumb_func_start SecurityPadIdleActive
-SecurityPadIdleActive: @ 0x080210E8
-	push {lr}
-	bl NavPadDetectSamus
-	cmp r0, #0
-	beq _08021128
-	ldr r3, _0802111C @ =gCurrentSprite
-	adds r1, r3, #0
-	adds r1, #0x2e
-	ldrb r0, [r1]
-	subs r0, #1
-	strb r0, [r1]
-	lsls r0, r0, #0x18
-	lsrs r2, r0, #0x18
-	cmp r2, #0
-	bne _08021130
-	subs r1, #0xa
-	movs r0, #0x18
-	strb r0, [r1]
-	ldr r0, _08021120 @ =0x082F783C
-	str r0, [r3, #0x18]
-	strb r2, [r3, #0x1c]
-	strh r2, [r3, #0x16]
-	ldr r0, _08021124 @ =0x00000101
-	bl SoundPlay
-	b _08021130
-	.align 2, 0
-_0802111C: .4byte gCurrentSprite
-_08021120: .4byte 0x082F783C
-_08021124: .4byte 0x00000101
-_08021128:
-	ldr r0, _08021134 @ =gCurrentSprite
-	adds r0, #0x2e
-	movs r1, #1
-	strb r1, [r0]
-_08021130:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021134: .4byte gCurrentSprite
-
-	thumb_func_start SecurityPadCheckPressingSwitchAnimEnded
-SecurityPadCheckPressingSwitchAnimEnded: @ 0x08021138
-	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
-	cmp r0, #0
-	beq _08021156
-	ldr r1, _0802115C @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x24
-	movs r3, #0
-	movs r0, #0x1a
-	strb r0, [r2]
-	ldr r0, _08021160 @ =0x082F789C
-	str r0, [r1, #0x18]
-	strb r3, [r1, #0x1c]
-	strh r3, [r1, #0x16]
-_08021156:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0802115C: .4byte gCurrentSprite
-_08021160: .4byte 0x082F789C
-
-	thumb_func_start SecurityPadGrabSamus
-SecurityPadGrabSamus: @ 0x08021164
-	push {r4, lr}
-	movs r4, #0
-	bl NavPadDetectSamus
-	adds r3, r0, #0
-	cmp r3, #0
-	beq _08021208
-	bl SpriteUtilCheckMorphed
-	cmp r0, #0
-	bne _08021222
-	ldr r0, _080211AC @ =gSamusData
-	ldrb r1, [r0, #2]
-	adds r2, r0, #0
-	cmp r1, #0
-	bne _08021222
-	ldr r1, _080211B0 @ =gCurrentSprite
-	ldrh r0, [r1, #4]
-	strh r0, [r2, #0x16]
-	ldrb r0, [r2, #5]
-	cmp r0, #0
-	beq _08021194
-	movs r0, #0
-	strb r0, [r2, #5]
-_08021194:
-	adds r0, r1, #0
-	adds r0, #0x2f
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _080211B4
-	ldrh r1, [r2, #0x12]
-	movs r0, #0x10
-	ands r0, r1
-	cmp r0, #0
-	beq _080211C0
-	b _080211C4
-	.align 2, 0
-_080211AC: .4byte gSamusData
-_080211B0: .4byte gCurrentSprite
-_080211B4:
-	ldrh r1, [r2, #0x12]
-	movs r0, #0x20
-	ands r0, r1
-	cmp r0, #0
-	beq _080211C0
-	movs r4, #1
-_080211C0:
-	cmp r4, #0
-	beq _080211DC
-_080211C4:
-	ldr r0, _080211D8 @ =0x0828FD04
-	ldrb r1, [r2]
-	lsls r1, r1, #2
-	adds r1, r1, r0
-	ldr r1, [r1]
-	movs r0, #0x22
-	bl _call_via_r1
-	b _080211EC
-	.align 2, 0
-_080211D8: .4byte 0x0828FD04
-_080211DC:
-	ldr r0, _08021200 @ =0x0828FD04
-	ldrb r1, [r2]
-	lsls r1, r1, #2
-	adds r1, r1, r0
-	ldr r1, [r1]
-	movs r0, #0x21
-	bl _call_via_r1
-_080211EC:
-	ldr r1, _08021204 @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x24
-	movs r0, #0x38
-	strb r0, [r2]
-	adds r1, #0x2e
-	movs r0, #0x10
-	strb r0, [r1]
-	b _08021222
-	.align 2, 0
-_08021200: .4byte 0x0828FD04
-_08021204: .4byte gCurrentSprite
-_08021208:
-	ldr r1, _08021228 @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x24
-	movs r0, #0x1c
-	strb r0, [r2]
-	ldr r0, _0802122C @ =0x082F7864
-	str r0, [r1, #0x18]
-	strb r3, [r1, #0x1c]
-	strh r3, [r1, #0x16]
-	movs r0, #0x81
-	lsls r0, r0, #1
-	bl SoundPlay
-_08021222:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021228: .4byte gCurrentSprite
-_0802122C: .4byte 0x082F7864
-
-	thumb_func_start SecurityPadDepressingSwitch
-SecurityPadDepressingSwitch: @ 0x08021230
-	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
-	cmp r0, #0
-	beq _0802123E
-	bl SecurityPadIdleActiveInit
-_0802123E:
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start SecurityPadIdleBeforeUnlocking
-SecurityPadIdleBeforeUnlocking: @ 0x08021244
-	push {lr}
-	ldr r1, _08021268 @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x2e
-	ldrb r0, [r2]
-	subs r0, #1
-	strb r0, [r2]
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _08021264
-	adds r0, r1, #0
-	adds r0, #0x24
-	movs r1, #0x3a
-	strb r1, [r0]
-	movs r0, #0xb4
-	strb r0, [r2]
-_08021264:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021268: .4byte gCurrentSprite
-
-	thumb_func_start SecurityPadUnlocking
-SecurityPadUnlocking: @ 0x0802126C
-	push {lr}
-	ldr r1, _08021290 @ =gCurrentSprite
-	adds r2, r1, #0
-	adds r2, #0x2e
-	ldrb r0, [r2]
-	subs r0, #1
-	strb r0, [r2]
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0802128C
-	adds r0, r1, #0
-	adds r0, #0x24
-	movs r1, #0x3c
-	strb r1, [r0]
-	movs r0, #0x14
-	strb r0, [r2]
-_0802128C:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021290: .4byte gCurrentSprite
-
-	thumb_func_start SecurityPadFinishedUnlocking
-SecurityPadFinishedUnlocking: @ 0x08021294
-	push {r4, lr}
-	ldr r4, _080212D8 @ =gCurrentSprite
-	adds r1, r4, #0
-	adds r1, #0x2e
-	ldrb r0, [r1]
-	subs r0, #1
-	strb r0, [r1]
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _080212D2
-	movs r0, #0
-	bl TrySpawnMessageBanner
-	ldr r1, _080212DC @ =0x0828FD04
-	ldr r0, _080212E0 @ =gSamusData
-	ldrb r0, [r0]
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r1, [r0]
-	movs r0, #0
-	bl _call_via_r1
-	ldr r1, _080212E4 @ =gPreventMovementTimer
-	movs r2, #0xfa
-	lsls r2, r2, #2
-	adds r0, r2, #0
-	strh r0, [r1]
-	adds r1, r4, #0
-	adds r1, #0x24
-	movs r0, #0x1e
-	strb r0, [r1]
-_080212D2:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080212D8: .4byte gCurrentSprite
-_080212DC: .4byte 0x0828FD04
-_080212E0: .4byte gSamusData
-_080212E4: .4byte gPreventMovementTimer
-
-	thumb_func_start SecurityPadMonitorInit
-SecurityPadMonitorInit: @ 0x080212E8
-	push {r4, r5, lr}
-	ldr r0, _0802134C @ =gCurrentSprite
-	mov ip, r0
-	mov r2, ip
-	adds r2, #0x34
-	ldrb r1, [r2]
-	movs r0, #1
-	movs r4, #0
-	orrs r0, r1
-	strb r0, [r2]
-	mov r5, ip
-	ldrh r1, [r5]
-	ldr r0, _08021350 @ =0x0000FFFB
-	ands r0, r1
-	movs r2, #0
-	strh r0, [r5]
-	mov r0, ip
-	adds r0, #0x25
-	strb r2, [r0]
-	mov r1, ip
-	adds r1, #0x27
-	movs r0, #0x30
-	strb r0, [r1]
-	mov r0, ip
-	adds r0, #0x28
-	strb r2, [r0]
-	adds r1, #2
-	movs r0, #0x18
-	strb r0, [r1]
-	ldr r1, _08021354 @ =0x0000FFFC
-	strh r1, [r5, #0xa]
-	movs r3, #4
-	movs r0, #4
-	strh r0, [r5, #0xc]
-	strh r1, [r5, #0xe]
-	strh r0, [r5, #0x10]
-	mov r0, ip
-	adds r0, #0x22
-	strb r3, [r0]
-	ldr r0, _08021358 @ =0x082F7754
-	str r0, [r5, #0x18]
-	strb r2, [r5, #0x1c]
-	strh r4, [r5, #0x16]
-	ldrb r0, [r5, #0x1e]
-	cmp r0, #0
-	beq _0802135C
-	mov r1, ip
-	adds r1, #0x24
-	movs r0, #0x1e
-	b _08021362
-	.align 2, 0
-_0802134C: .4byte gCurrentSprite
-_08021350: .4byte 0x0000FFFB
-_08021354: .4byte 0x0000FFFC
-_08021358: .4byte 0x082F7754
-_0802135C:
-	mov r1, ip
-	adds r1, #0x24
-	movs r0, #2
-_08021362:
-	strb r0, [r1]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start SecurityPadMonitorIdle
-SecurityPadMonitorIdle: @ 0x0802136C
-	push {lr}
-	ldr r2, _080213A4 @ =gSpriteData
-	ldr r3, _080213A8 @ =gCurrentSprite
-	adds r0, r3, #0
-	adds r0, #0x23
-	ldrb r1, [r0]
-	lsls r0, r1, #3
-	subs r0, r0, r1
-	lsls r0, r0, #3
-	adds r0, r0, r2
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x3a
-	bne _080213A0
-	ldr r0, _080213AC @ =0x082F7764
-	str r0, [r3, #0x18]
-	movs r0, #0
-	strb r0, [r3, #0x1c]
-	strh r0, [r3, #0x16]
-	adds r1, r3, #0
-	adds r1, #0x24
-	movs r0, #0x18
-	strb r0, [r1]
-	adds r0, #0xf7
-	bl SoundPlay
-_080213A0:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080213A4: .4byte gSpriteData
-_080213A8: .4byte gCurrentSprite
-_080213AC: .4byte 0x082F7764
-
-	thumb_func_start SecurityPadMonitorArmExtending
-SecurityPadMonitorArmExtending: @ 0x080213B0
-	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
-	cmp r0, #0
-	beq _080213EC
-	ldr r1, _080213F0 @ =gCurrentSprite
-	ldr r0, _080213F4 @ =0x082F78AC
-	str r0, [r1, #0x18]
-	movs r0, #0
-	strb r0, [r1, #0x1c]
-	strh r0, [r1, #0x16]
-	adds r1, #0x24
-	movs r0, #0x1a
-	strb r0, [r1]
-	movs r0, #1
-	bl CheckOrUnlockSecurityLevel
-	ldr r1, _080213F8 @ =0x0828FD04
-	ldr r0, _080213FC @ =gSamusData
-	ldrb r0, [r0]
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r1, [r0]
-	movs r0, #0x34
-	bl _call_via_r1
-	movs r0, #0x87
-	lsls r0, r0, #1
-	bl SoundPlay
-_080213EC:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080213F0: .4byte gCurrentSprite
-_080213F4: .4byte 0x082F78AC
-_080213F8: .4byte 0x0828FD04
-_080213FC: .4byte gSamusData
-
-	thumb_func_start SecurityPadMonitorUnlocking
-SecurityPadMonitorUnlocking: @ 0x08021400
-	push {lr}
-	ldr r2, _08021438 @ =gSpriteData
-	ldr r3, _0802143C @ =gCurrentSprite
-	adds r0, r3, #0
-	adds r0, #0x23
-	ldrb r1, [r0]
-	lsls r0, r1, #3
-	subs r0, r0, r1
-	lsls r0, r0, #3
-	adds r0, r0, r2
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x3c
-	bne _08021434
-	ldr r0, _08021440 @ =0x082F780C
-	str r0, [r3, #0x18]
-	movs r0, #0
-	strb r0, [r3, #0x1c]
-	strh r0, [r3, #0x16]
-	adds r1, r3, #0
-	adds r1, #0x24
-	movs r0, #0x1c
-	strb r0, [r1]
-	adds r0, #0xf4
-	bl SoundPlay
-_08021434:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021438: .4byte gSpriteData
-_0802143C: .4byte gCurrentSprite
-_08021440: .4byte 0x082F780C
-
-	thumb_func_start SecurityPadMonitorArmRetracting
-SecurityPadMonitorArmRetracting: @ 0x08021444
-	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
-	cmp r0, #0
-	beq _08021460
-	ldr r1, _08021464 @ =gCurrentSprite
-	ldr r0, _08021468 @ =0x082F7754
-	str r0, [r1, #0x18]
-	movs r0, #0
-	strb r0, [r1, #0x1c]
-	strh r0, [r1, #0x16]
-	adds r1, #0x24
-	movs r0, #0x1e
-	strb r0, [r1]
-_08021460:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08021464: .4byte gCurrentSprite
-_08021468: .4byte 0x082F7754
-
-	thumb_func_start SecurityPadScreenInit
-SecurityPadScreenInit: @ 0x0802146C
-	push {r4, lr}
-	ldr r0, _080214D4 @ =gCurrentSprite
-	mov ip, r0
-	mov r2, ip
-	adds r2, #0x34
-	ldrb r1, [r2]
-	movs r0, #1
-	movs r3, #0
-	orrs r0, r1
-	strb r0, [r2]
-	mov r4, ip
-	ldrh r1, [r4]
-	ldr r0, _080214D8 @ =0x0000FFFB
-	ands r0, r1
-	movs r2, #0
-	strh r0, [r4]
-	mov r0, ip
-	adds r0, #0x25
-	strb r2, [r0]
-	mov r1, ip
-	adds r1, #0x27
-	movs r0, #0x30
-	strb r0, [r1]
-	mov r0, ip
-	adds r0, #0x28
-	strb r2, [r0]
-	adds r1, #2
-	movs r0, #0x18
-	strb r0, [r1]
-	ldr r1, _080214DC @ =0x0000FFFC
-	strh r1, [r4, #0xa]
-	movs r0, #4
-	strh r0, [r4, #0xc]
-	strh r1, [r4, #0xe]
-	strh r0, [r4, #0x10]
-	strb r2, [r4, #0x1c]
-	strh r3, [r4, #0x16]
-	mov r1, ip
-	adds r1, #0x22
-	movs r0, #3
-	strb r0, [r1]
-	ldrb r0, [r4, #0x1e]
-	cmp r0, #0
-	beq _080214E4
-	mov r0, ip
-	adds r0, #0x24
-	movs r1, #0x1a
-	strb r1, [r0]
-	ldr r0, _080214E0 @ =0x082F77E4
-	str r0, [r4, #0x18]
-	b _080214F2
-	.align 2, 0
-_080214D4: .4byte gCurrentSprite
-_080214D8: .4byte 0x0000FFFB
-_080214DC: .4byte 0x0000FFFC
-_080214E0: .4byte 0x082F77E4
-_080214E4:
-	mov r0, ip
-	adds r0, #0x24
-	movs r1, #2
-	strb r1, [r0]
-	ldr r0, _080214F8 @ =0x082F7794
-	mov r1, ip
-	str r0, [r1, #0x18]
-_080214F2:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080214F8: .4byte 0x082F7794
-
-	thumb_func_start SecurityPadScreenIdle
-SecurityPadScreenIdle: @ 0x080214FC
-	push {lr}
-	ldr r3, _0802153C @ =gCurrentSprite
-	adds r0, r3, #0
-	adds r0, #0x23
-	ldrb r1, [r0]
-	ldr r2, _08021540 @ =gSpriteData
-	lsls r0, r1, #3
-	subs r0, r0, r1
-	lsls r0, r0, #3
-	adds r1, r0, r2
-	adds r0, r1, #0
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x3a
-	bne _08021536
-	adds r0, r1, #0
-	adds r0, #0x2e
-	ldrb r0, [r0]
-	cmp r0, #0x8c
-	bhi _08021536
-	ldr r0, _08021544 @ =0x082F77BC
-	str r0, [r3, #0x18]
-	movs r0, #0
-	strb r0, [r3, #0x1c]
-	strh r0, [r3, #0x16]
-	adds r1, r3, #0
-	adds r1, #0x24
-	movs r0, #0x18
-	strb r0, [r1]
-_08021536:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0802153C: .4byte gCurrentSprite
-_08021540: .4byte gSpriteData
-_08021544: .4byte 0x082F77BC
-
-	thumb_func_start SecurityPadScreenUnlocking
-SecurityPadScreenUnlocking: @ 0x08021548
-	push {lr}
-	ldr r2, _0802157C @ =gSpriteData
-	ldr r3, _08021580 @ =gCurrentSprite
-	adds r0, r3, #0
-	adds r0, #0x23
-	ldrb r1, [r0]
-	lsls r0, r1, #3
-	subs r0, r0, r1
-	lsls r0, r0, #3
-	adds r0, r0, r2
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x3c
-	bne _08021576
-	ldr r0, _08021584 @ =0x082F77E4
-	str r0, [r3, #0x18]
-	movs r0, #0
-	strb r0, [r3, #0x1c]
-	strh r0, [r3, #0x16]
-	adds r1, r3, #0
-	adds r1, #0x24
-	movs r0, #0x1a
-	strb r0, [r1]
-_08021576:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0802157C: .4byte gSpriteData
-_08021580: .4byte gCurrentSprite
-_08021584: .4byte 0x082F77E4
-
-	thumb_func_start SecurityPad
-SecurityPad: @ 0x08021588
-	push {lr}
-	ldr r0, _080215A8 @ =gCurrentSprite
-	adds r2, r0, #0
-	adds r2, #0x26
-	movs r1, #1
-	strb r1, [r2]
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x3c
-	bls _0802159E
-	b _080216D8
-_0802159E:
-	lsls r0, r0, #2
-	ldr r1, _080215AC @ =_080215B0
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_080215A8: .4byte gCurrentSprite
-_080215AC: .4byte _080215B0
-_080215B0: @ jump table
-	.4byte _080216A4 @ case 0
-	.4byte _080216AA @ case 1
-	.4byte _080216B0 @ case 2
-	.4byte _080216D8 @ case 3
-	.4byte _080216D8 @ case 4
-	.4byte _080216D8 @ case 5
-	.4byte _080216D8 @ case 6
-	.4byte _080216D8 @ case 7
-	.4byte _080216D8 @ case 8
-	.4byte _080216D8 @ case 9
-	.4byte _080216D8 @ case 10
-	.4byte _080216D8 @ case 11
-	.4byte _080216D8 @ case 12
-	.4byte _080216D8 @ case 13
-	.4byte _080216D8 @ case 14
-	.4byte _080216D8 @ case 15
-	.4byte _080216D8 @ case 16
-	.4byte _080216D8 @ case 17
-	.4byte _080216D8 @ case 18
-	.4byte _080216D8 @ case 19
-	.4byte _080216D8 @ case 20
-	.4byte _080216D8 @ case 21
-	.4byte _080216D8 @ case 22
-	.4byte _080216D8 @ case 23
-	.4byte _080216B6 @ case 24
-	.4byte _080216D8 @ case 25
-	.4byte _080216BC @ case 26
-	.4byte _080216D8 @ case 27
-	.4byte _080216C2 @ case 28
-	.4byte _080216D8 @ case 29
-	.4byte _080216D8 @ case 30
-	.4byte _080216D8 @ case 31
-	.4byte _080216D8 @ case 32
-	.4byte _080216D8 @ case 33
-	.4byte _080216D8 @ case 34
-	.4byte _080216D8 @ case 35
-	.4byte _080216D8 @ case 36
-	.4byte _080216D8 @ case 37
-	.4byte _080216D8 @ case 38
-	.4byte _080216D8 @ case 39
-	.4byte _080216D8 @ case 40
-	.4byte _080216D8 @ case 41
-	.4byte _080216D8 @ case 42
-	.4byte _080216D8 @ case 43
-	.4byte _080216D8 @ case 44
-	.4byte _080216D8 @ case 45
-	.4byte _080216D8 @ case 46
-	.4byte _080216D8 @ case 47
-	.4byte _080216D8 @ case 48
-	.4byte _080216D8 @ case 49
-	.4byte _080216D8 @ case 50
-	.4byte _080216D8 @ case 51
-	.4byte _080216D8 @ case 52
-	.4byte _080216D8 @ case 53
-	.4byte _080216D8 @ case 54
-	.4byte _080216D8 @ case 55
-	.4byte _080216C8 @ case 56
-	.4byte _080216D8 @ case 57
-	.4byte _080216CE @ case 58
-	.4byte _080216D8 @ case 59
-	.4byte _080216D4 @ case 60
-_080216A4:
-	bl SecurityPadInit
-	b _080216D8
-_080216AA:
-	bl SecurityPadIdleActiveInit
-	b _080216D8
-_080216B0:
-	bl SecurityPadIdleActive
-	b _080216D8
-_080216B6:
-	bl SecurityPadCheckPressingSwitchAnimEnded
-	b _080216D8
-_080216BC:
-	bl SecurityPadGrabSamus
-	b _080216D8
-_080216C2:
-	bl SecurityPadDepressingSwitch
-	b _080216D8
-_080216C8:
-	bl SecurityPadIdleBeforeUnlocking
-	b _080216D8
-_080216CE:
-	bl SecurityPadUnlocking
-	b _080216D8
-_080216D4:
-	bl SecurityPadFinishedUnlocking
-_080216D8:
-	bl SecurityPadUpdatePalette
-	pop {r0}
-	bx r0
-
-	thumb_func_start SecurityPadMonitor
-SecurityPadMonitor: @ 0x080216E0
-	push {lr}
-	ldr r0, _08021700 @ =gCurrentSprite
-	adds r2, r0, #0
-	adds r2, #0x26
-	movs r1, #1
-	strb r1, [r2]
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #0x1c
-	bhi _08021798
-	lsls r0, r0, #2
-	ldr r1, _08021704 @ =_08021708
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_08021700: .4byte gCurrentSprite
-_08021704: .4byte _08021708
-_08021708: @ jump table
-	.4byte _0802177C @ case 0
-	.4byte _08021798 @ case 1
-	.4byte _08021782 @ case 2
-	.4byte _08021798 @ case 3
-	.4byte _08021798 @ case 4
-	.4byte _08021798 @ case 5
-	.4byte _08021798 @ case 6
-	.4byte _08021798 @ case 7
-	.4byte _08021798 @ case 8
-	.4byte _08021798 @ case 9
-	.4byte _08021798 @ case 10
-	.4byte _08021798 @ case 11
-	.4byte _08021798 @ case 12
-	.4byte _08021798 @ case 13
-	.4byte _08021798 @ case 14
-	.4byte _08021798 @ case 15
-	.4byte _08021798 @ case 16
-	.4byte _08021798 @ case 17
-	.4byte _08021798 @ case 18
-	.4byte _08021798 @ case 19
-	.4byte _08021798 @ case 20
-	.4byte _08021798 @ case 21
-	.4byte _08021798 @ case 22
-	.4byte _08021798 @ case 23
-	.4byte _08021788 @ case 24
-	.4byte _08021798 @ case 25
-	.4byte _0802178E @ case 26
-	.4byte _08021798 @ case 27
-	.4byte _08021794 @ case 28
-_0802177C:
-	bl SecurityPadMonitorInit
-	b _08021798
-_08021782:
-	bl SecurityPadMonitorIdle
-	b _08021798
-_08021788:
-	bl SecurityPadMonitorArmExtending
-	b _08021798
-_0802178E:
-	bl SecurityPadMonitorUnlocking
-	b _08021798
-_08021794:
-	bl SecurityPadMonitorArmRetracting
-_08021798:
-	pop {r0}
-	bx r0
-
-	thumb_func_start SecurityPadScreen
-SecurityPadScreen: @ 0x0802179C
-	push {lr}
-	ldr r0, _080217BC @ =gCurrentSprite
-	adds r2, r0, #0
-	adds r2, #0x26
-	movs r1, #1
-	strb r1, [r2]
-	adds r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #2
-	beq _080217CC
-	cmp r0, #2
-	bgt _080217C0
-	cmp r0, #0
-	beq _080217C6
-	b _080217D6
-	.align 2, 0
-_080217BC: .4byte gCurrentSprite
-_080217C0:
-	cmp r0, #0x18
-	beq _080217D2
-	b _080217D6
-_080217C6:
-	bl SecurityPadScreenInit
-	b _080217D6
-_080217CC:
-	bl SecurityPadScreenIdle
-	b _080217D6
-_080217D2:
-	bl SecurityPadScreenUnlocking
-_080217D6:
-	pop {r0}
-	bx r0
-	.align 2, 0
-
 	thumb_func_start AreaBannerInit
 AreaBannerInit: @ 0x080217DC
 	push {r4, lr}
@@ -18168,7 +16982,7 @@ NavPadSwitchPressed: @ 0x0802A280
 	movs r0, #0
 	strb r0, [r2, #5]
 _0802A2A8:
-	ldr r1, _0802A2D0 @ =0x0828FD04
+	ldr r1, _0802A2D0 @ =sSamusSetPoseFunctionPointer
 	ldrb r0, [r2]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -18186,7 +17000,7 @@ _0802A2A8:
 	.align 2, 0
 _0802A2C8: .4byte gSamusData
 _0802A2CC: .4byte gCurrentSprite
-_0802A2D0: .4byte 0x0828FD04
+_0802A2D0: .4byte sSamusSetPoseFunctionPointer
 _0802A2D4:
 	ldr r1, _0802A2F4 @ =gCurrentSprite
 	adds r2, r1, #0
@@ -19855,7 +18669,7 @@ DataPadSwitchPressed: @ 0x0802AFE0
 	movs r0, #0
 	strb r0, [r2, #5]
 _0802B006:
-	ldr r1, _0802B030 @ =0x0828FD04
+	ldr r1, _0802B030 @ =sSamusSetPoseFunctionPointer
 	ldrb r0, [r2]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -19873,7 +18687,7 @@ _0802B006:
 	.align 2, 0
 _0802B028: .4byte gSamusData
 _0802B02C: .4byte gCurrentSprite
-_0802B030: .4byte 0x0828FD04
+_0802B030: .4byte sSamusSetPoseFunctionPointer
 _0802B034:
 	ldr r1, _0802B054 @ =gCurrentSprite
 	adds r2, r1, #0
@@ -19929,7 +18743,7 @@ DataPadLockingSamus: @ 0x0802B070
 	ldr r1, _0802B0B4 @ =gDoorUnlockTimer
 	movs r0, #0x3c
 	strb r0, [r1]
-	ldr r1, _0802B0B8 @ =0x0828FD04
+	ldr r1, _0802B0B8 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _0802B0BC @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -19943,7 +18757,7 @@ _0802B0AC:
 	.align 2, 0
 _0802B0B0: .4byte gCurrentSprite
 _0802B0B4: .4byte gDoorUnlockTimer
-_0802B0B8: .4byte 0x0828FD04
+_0802B0B8: .4byte sSamusSetPoseFunctionPointer
 _0802B0BC: .4byte gSamusData
 
 	thumb_func_start DataPadDownloadingData
@@ -20295,7 +19109,7 @@ DataPadSidesDownloadingData: @ 0x0802B33C
 	subs r1, #0xa
 	movs r0, #0x1c
 	strb r0, [r1]
-	ldr r1, _0802B394 @ =0x0828FD04
+	ldr r1, _0802B394 @ =sSamusSetPoseFunctionPointer
 	ldr r4, _0802B398 @ =gSamusData
 	ldrb r0, [r4]
 	lsls r0, r0, #2
@@ -20317,7 +19131,7 @@ _0802B386:
 	.align 2, 0
 _0802B38C: .4byte gSpriteData
 _0802B390: .4byte gCurrentSprite
-_0802B394: .4byte 0x0828FD04
+_0802B394: .4byte sSamusSetPoseFunctionPointer
 _0802B398: .4byte gSamusData
 _0802B39C: .4byte gPreventMovementTimer
 
@@ -21923,7 +20737,7 @@ _0802C120:
 	cmp r4, #0
 	beq _0802C13C
 _0802C124:
-	ldr r0, _0802C138 @ =0x0828FD04
+	ldr r0, _0802C138 @ =sSamusSetPoseFunctionPointer
 	ldrb r1, [r2]
 	lsls r1, r1, #2
 	adds r1, r1, r0
@@ -21932,9 +20746,9 @@ _0802C124:
 	bl _call_via_r1
 	b _0802C14C
 	.align 2, 0
-_0802C138: .4byte 0x0828FD04
+_0802C138: .4byte sSamusSetPoseFunctionPointer
 _0802C13C:
-	ldr r0, _0802C160 @ =0x0828FD04
+	ldr r0, _0802C160 @ =sSamusSetPoseFunctionPointer
 	ldrb r1, [r2]
 	lsls r1, r1, #2
 	adds r1, r1, r0
@@ -21952,7 +20766,7 @@ _0802C14C:
 	strb r0, [r1]
 	b _0802C182
 	.align 2, 0
-_0802C160: .4byte 0x0828FD04
+_0802C160: .4byte sSamusSetPoseFunctionPointer
 _0802C164: .4byte gCurrentSprite
 _0802C168:
 	ldr r1, _0802C188 @ =gCurrentSprite
@@ -22087,7 +20901,7 @@ RechargePadRetracting: @ 0x0802C240
 	subs r1, #0xa
 	movs r0, #0x1e
 	strb r0, [r1]
-	ldr r1, _0802C288 @ =0x0828FD04
+	ldr r1, _0802C288 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _0802C28C @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -22108,7 +20922,7 @@ RechargePadRetracting: @ 0x0802C240
 	b _0802C2C2
 	.align 2, 0
 _0802C284: .4byte gCurrentSprite
-_0802C288: .4byte 0x0828FD04
+_0802C288: .4byte sSamusSetPoseFunctionPointer
 _0802C28C: .4byte gSamusData
 _0802C290: .4byte gPreventMovementTimer
 _0802C294:
@@ -22247,7 +21061,7 @@ RechargePadMonitorExtended: @ 0x0802C380
 	adds r1, #0x24
 	movs r0, #0x1a
 	strb r0, [r1]
-	ldr r1, _0802C3C0 @ =0x0828FD04
+	ldr r1, _0802C3C0 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _0802C3C4 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -22263,7 +21077,7 @@ _0802C3B4:
 	.align 2, 0
 _0802C3B8: .4byte gCurrentSprite
 _0802C3BC: .4byte 0x08325738
-_0802C3C0: .4byte 0x0828FD04
+_0802C3C0: .4byte sSamusSetPoseFunctionPointer
 _0802C3C4: .4byte gSamusData
 _0802C3C8: .4byte 0x00000111
 
@@ -48273,7 +47087,7 @@ MiscPadSwitchPressed: @ 0x08039494
 	movs r0, #0
 	strb r0, [r2, #5]
 _080394B8:
-	ldr r1, _080394E0 @ =0x0828FD04
+	ldr r1, _080394E0 @ =sSamusSetPoseFunctionPointer
 	ldrb r0, [r2]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -48291,7 +47105,7 @@ _080394B8:
 	.align 2, 0
 _080394D8: .4byte gSamusData
 _080394DC: .4byte gCurrentSprite
-_080394E0: .4byte 0x0828FD04
+_080394E0: .4byte sSamusSetPoseFunctionPointer
 _080394E4:
 	ldr r0, _080394F4 @ =gCurrentSprite
 	ldrb r1, [r0, #0x1d]
@@ -49086,7 +47900,7 @@ OperationsRoomPadSwitchPressed: @ 0x08039B3C
 	movs r0, #0
 	strb r0, [r2, #5]
 _08039B62:
-	ldr r1, _08039B8C @ =0x0828FD04
+	ldr r1, _08039B8C @ =sSamusSetPoseFunctionPointer
 	ldrb r0, [r2]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -49104,7 +47918,7 @@ _08039B62:
 	.align 2, 0
 _08039B84: .4byte gSamusData
 _08039B88: .4byte gCurrentSprite
-_08039B8C: .4byte 0x0828FD04
+_08039B8C: .4byte sSamusSetPoseFunctionPointer
 _08039B90:
 	ldr r1, _08039BB0 @ =gCurrentSprite
 	adds r2, r1, #0

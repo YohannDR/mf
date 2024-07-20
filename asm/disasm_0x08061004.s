@@ -5240,7 +5240,7 @@ _080637DC:
 	ldrb r0, [r1, #0x10]
 	cmp r0, #0
 	bne _080637FE
-	ldr r1, _08063814 @ =0x0828FD04
+	ldr r1, _08063814 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _08063818 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -5261,7 +5261,7 @@ _0806380A:
 	bx r0
 	.align 2, 0
 _08063810: .4byte gCurrentPowerBomb
-_08063814: .4byte 0x0828FD04
+_08063814: .4byte sSamusSetPoseFunctionPointer
 _08063818: .4byte gSamusData
 _0806381C: .4byte gCurrentEventBasedEffect
 

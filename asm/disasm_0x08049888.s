@@ -7561,7 +7561,7 @@ _0804D690:
 	strb r0, [r1]
 	ldr r0, _0804D6D8 @ =gPreventMovementTimer
 	strh r2, [r0]
-	ldr r1, _0804D6DC @ =0x0828FD04
+	ldr r1, _0804D6DC @ =sSamusSetPoseFunctionPointer
 	ldr r0, _0804D6E0 @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -7582,7 +7582,7 @@ _0804D6CE:
 	.align 2, 0
 _0804D6D4: .4byte gCurrentSprite
 _0804D6D8: .4byte gPreventMovementTimer
-_0804D6DC: .4byte 0x0828FD04
+_0804D6DC: .4byte sSamusSetPoseFunctionPointer
 _0804D6E0: .4byte gSamusData
 
 	thumb_func_start DachoraBowing
@@ -25417,7 +25417,7 @@ _080565B8:
 	beq _080565E6
 	strb r1, [r5, #5]
 _080565E6:
-	ldr r1, _0805662C @ =0x0828FD04
+	ldr r1, _0805662C @ =sSamusSetPoseFunctionPointer
 	ldrb r0, [r5]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -25448,7 +25448,7 @@ _080565E6:
 	.align 2, 0
 _08056624: .4byte gSamusData
 _08056628: .4byte 0x000002BF
-_0805662C: .4byte 0x0828FD04
+_0805662C: .4byte sSamusSetPoseFunctionPointer
 _08056630:
 	ldr r0, _08056640 @ =gCurrentSprite
 	adds r0, #0x22
@@ -30255,7 +30255,7 @@ _08058C56:
 	strb r4, [r0]
 	adds r0, #1
 	strb r4, [r0]
-	ldr r1, _08058CE8 @ =0x0828FD04
+	ldr r1, _08058CE8 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _08058CEC @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -30277,7 +30277,7 @@ _08058CD8: .4byte gAbilityRestingYPosition
 _08058CDC: .4byte gAbilityRestingXPosition
 _08058CE0: .4byte 0x00000141
 _08058CE4: .4byte 0x0000FFFB
-_08058CE8: .4byte 0x0828FD04
+_08058CE8: .4byte sSamusSetPoseFunctionPointer
 _08058CEC: .4byte gSamusData
 _08058CF0: .4byte gPoseLock
 
@@ -30388,7 +30388,7 @@ _08058D44:
 	bl ParticleSet
 	movs r0, #0x6b
 	bl EventCheckAdvance
-	ldr r1, _08058E08 @ =0x0828FD04
+	ldr r1, _08058E08 @ =sSamusSetPoseFunctionPointer
 	ldrb r0, [r4]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -30411,7 +30411,7 @@ _08058DF8: .4byte 0x08303262
 _08058DFC: .4byte gPreventMovementTimer
 _08058E00: .4byte 0x083A86EC
 _08058E04: .4byte gSamusData
-_08058E08: .4byte 0x0828FD04
+_08058E08: .4byte sSamusSetPoseFunctionPointer
 _08058E0C: .4byte 0x030012F0
 _08058E10:
 	ldr r0, _08058E2C @ =gFrameCounter8Bit
@@ -32168,7 +32168,7 @@ RidleyScreamingInit: @ 0x08059BEC
 	ldrb r0, [r5]
 	cmp r0, #0x1b
 	bne _08059C20
-	ldr r1, _08059C48 @ =0x0828FD04
+	ldr r1, _08059C48 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _08059C4C @ =gSamusData
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -32194,7 +32194,7 @@ _08059C20:
 _08059C3C: .4byte gSubSpriteData1
 _08059C40: .4byte 0x083A9A14
 _08059C44: .4byte gCurrentSprite
-_08059C48: .4byte 0x0828FD04
+_08059C48: .4byte sSamusSetPoseFunctionPointer
 _08059C4C: .4byte gSamusData
 _08059C50:
 	movs r0, #0
