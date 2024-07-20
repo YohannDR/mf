@@ -290,5 +290,3 @@ const struct FrameData sSavePadOam_Disabled[2] = {
         .timer = UCHAR_MAX
     }
 };
-
-static const u8 sBlob_2f159c_35dd74[] = INCBIN_U8("data/Blob_2f159c_35dd74.bin");

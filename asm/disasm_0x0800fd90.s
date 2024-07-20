@@ -866,7 +866,7 @@ _08010434:
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801045A
-	bl SamusCheckMorphed
+	bl SpriteUtilCheckMorphed
 	cmp r0, #0
 	bne _0801045A
 	bl _08010FEE
@@ -1051,7 +1051,7 @@ _080105F6:
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801061C
-	bl SamusCheckMorphed
+	bl SpriteUtilCheckMorphed
 	cmp r0, #0
 	bne _0801061C
 	bl _08010FEE
@@ -1095,7 +1095,7 @@ _08010652:
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801067A
-	bl SamusCheckMorphed
+	bl SpriteUtilCheckMorphed
 	cmp r0, #0
 	bne _0801067A
 	bl _08010FEE
@@ -2216,7 +2216,7 @@ _08010F6A:
 	movs r0, #0x89
 	bl unk_2894
 _08010F70:
-	bl SamusCheckMorphed
+	bl SpriteUtilCheckMorphed
 	cmp r0, #0
 	bne _08010F80
 	ldr r0, _08010F94 @ =gSamusData
@@ -4944,8 +4944,8 @@ SetEnergyAndAmmoToMax_Unused: @ 0x0801232C
 	.align 2, 0
 _0801233C: .4byte gEquipment
 
-	thumb_func_start RefillEnergy
-RefillEnergy: @ 0x08012340
+	thumb_func_start SpriteUtilRefillEnergy
+SpriteUtilRefillEnergy: @ 0x08012340
 	push {lr}
 	ldr r2, _08012360 @ =gEquipment
 	ldrh r0, [r2]
@@ -4972,8 +4972,8 @@ _08012366:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start RefillMissiles
-RefillMissiles: @ 0x0801236C
+	thumb_func_start SpriteUtilRefillMissiles
+SpriteUtilRefillMissiles: @ 0x0801236C
 	push {lr}
 	ldr r2, _0801238C @ =gEquipment
 	ldrh r0, [r2, #4]
@@ -5000,8 +5000,8 @@ _08012392:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start RefillPowerBombs
-RefillPowerBombs: @ 0x08012398
+	thumb_func_start SpriteUtilRefillPowerBombs
+SpriteUtilRefillPowerBombs: @ 0x08012398
 	push {lr}
 	ldr r2, _080123B8 @ =gEquipment
 	ldrb r0, [r2, #8]
@@ -5320,8 +5320,8 @@ _0801261A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SamusCheckMorphed
-SamusCheckMorphed: @ 0x08012620
+	thumb_func_start SpriteUtilCheckMorphed
+SpriteUtilCheckMorphed: @ 0x08012620
 	push {lr}
 	ldr r0, _08012638 @ =gSamusData
 	ldrb r0, [r0, #1]

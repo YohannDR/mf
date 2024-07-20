@@ -18,6 +18,12 @@ sprites/moto.pal;48;0x2ef320;2
 sprites/save_pad.gfx;1536;0x2efa78;4
 sprites/save_pad.pal;48;0x2f1278;2
 
+# Gunship
+
+sprites/gunship.gfx;3072;0x2f159c;4
+sprites/gunship.pal;96;0x2f459c;2
+sprites/gunship_flashing.pal;112;0x2f4738;2
+
 # Blue X
 
 sprites/blue_x.gfx;1024;0x35de98;4
@@ -122,7 +128,7 @@ Blob_a5224_28fd04.bin;2009824;0xa5224;1
 Blob_28fd08_2e4904.bin;347132;0x28fd08;1
 Blob_2e5cae_2e6160.bin;1202;0x2e5cae;1
 Blob_2e6382_2ed2e8.bin;28518;0x2e6382;1
-Blob_2f159c_35dd74.bin;444376;0x2f159c;1
+Blob_2f4818_35dd74.bin;431452;0x2f4818;1
 Blob_3787d0_3bdebc.bin;284396;0x3787d0;1
 Blob_3be1be_3e392c.bin;153454;0x3be1be;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1

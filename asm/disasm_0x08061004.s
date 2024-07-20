@@ -2860,7 +2860,7 @@ _08062510:
 	adds r0, r0, r2
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
-	bl SamusCheckMorphed
+	bl SpriteUtilCheckMorphed
 	cmp r0, #0
 	beq _08062534
 	ldr r1, _08062530 @ =gSamusData

@@ -197,7 +197,7 @@ void SavePlatformSinking(void)
     {
         if (gCurrentSprite.yPosition == gSpriteData[ramSlot].yPosition - HALF_BLOCK_SIZE)
         {
-            if (!SamusCheckMorphed())
+            if (!SpriteUtilCheckMorphed())
             {
                 if (gSamusData.invincibilityTimer != 0)
                     gSamusData.invincibilityTimer = 0;

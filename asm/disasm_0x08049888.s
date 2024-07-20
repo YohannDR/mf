@@ -25408,7 +25408,7 @@ _080565B8:
 	ldr r0, _08056628 @ =0x000002BF
 	cmp r1, r0
 	bne _08056630
-	bl SamusCheckMorphed
+	bl SpriteUtilCheckMorphed
 	adds r1, r0, #0
 	cmp r1, #0
 	bne _08056630
