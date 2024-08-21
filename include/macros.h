@@ -34,7 +34,7 @@
 }
 
 /**
- * @brief Performs a modulo (value % mod) operation on a value using the and operation (WARNING only use a value for mod that is divisble by 2)
+ * @brief Performs a modulo (value % mod) operation on a value using the and operation (WARNING only use a value for mod that is a power of 2)
  * 
  * @param value Value
  * @param mod Modulo
@@ -42,7 +42,7 @@
 #define MOD_AND(value, mod) ((value) & ((mod) - 1))
 
 /**
- * @brief Performs a division (value / div) operation on a value using the right shift operation (WARNING only use a value for div that is divisble by 2 and <= 1024)
+ * @brief Performs a division (value / div) operation on a value using the right shift operation (WARNING only use a value for div that is a power of 2 and <= 1024)
  * 
  * @param value Value
  * @param div Divisor
