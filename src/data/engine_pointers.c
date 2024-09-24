@@ -865,4 +865,4 @@ const u8* const sSpritesetPointers[130] = {
 	[129] = (const u8*)0x82e5cb6
 };
 
-static const u8 sBlob_79afe0_79ecc8[15592] = INCBIN_U8("data/Blob_79afe0_79ecc8.bin");
+static const u8 sBlob_79afe0_79b0c8[232] = INCBIN_U8("data/Blob_79afe0_79b0c8.bin");

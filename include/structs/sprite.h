@@ -8,6 +8,21 @@
 #define MAX_AMOUNT_OF_SPRITE_TYPES 15
 #define ENEMY_ROOM_DATA_SIZE 3
 
+enum MultiSpriteDataElements {
+    MULTI_SPRITE_DATA_ELEMENT_OAM_INDEX,
+    MULTI_SPRITE_DATA_ELEMENT_Y_OFFSET,
+    MULTI_SPRITE_DATA_ELEMENT_X_OFFSET,
+
+    MULTI_SPRITE_DATA_ELEMENT_END
+};
+
+typedef const s16 (*MultiSpriteDataInfo_T)[MULTI_SPRITE_DATA_ELEMENT_END];
+
+struct MultiSpriteData {
+    MultiSpriteDataInfo_T pData;
+    u8 timer;
+};
+
 struct SpriteData {
     u16 status;
     u16 yPosition;
@@ -52,7 +67,7 @@ struct SpriteData {
 };
 
 struct SubSpriteData {
-    const struct FrameData* pMultiOam;
+    const struct MultiSpriteData* pMultiOam;
     u16 currentAnimationFrame;
     u8 animationDurationCounter;
     u16 yPosition;

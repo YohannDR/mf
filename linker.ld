@@ -306,5 +306,6 @@ SECTIONS {
         src/data/particle_data.o(.rodata);
         src/data/menus/title_screen.o(.rodata);
         src/data/engine_pointers.o(.rodata);
+        src/data/frame_data_pointers.o(.rodata);
     } >rom
 }

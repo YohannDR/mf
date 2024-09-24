@@ -2,6 +2,7 @@
 #include "macros.h"
 #include "globals.h"
 
+#include "data/frame_data_pointers.h"
 #include "data/sprite_data.h"
 #include "data/sprites/x_parasite.h"
 #include "data/sprites/zazabi.h"
@@ -21,97 +22,55 @@
 #define ZAZABI_HEIGHT (BLOCK_SIZE * 4 + HALF_BLOCK_SIZE)
 #define ZAZABI_WIDTH (BLOCK_SIZE + HALF_BLOCK_SIZE + PIXEL_SIZE)
 
-#ifdef NON_MATCHING
 void ZazabiSyncSubSprites(void)
 {
+    MultiSpriteDataInfo_T pData;
+    u16 oamIdx;
+    const struct FrameData* pOam;
 
+    pData = gSubSpriteData1.pMultiOam[gSubSpriteData1.currentAnimationFrame].pData;
+    oamIdx = pData[gCurrentSprite.roomSlot][MULTI_SPRITE_DATA_ELEMENT_OAM_INDEX];
+    
+    if (gSubSpriteData1.health == 40)
+    {
+        if (gCurrentSprite.pOam != sZazabiFrameDataPointers3[oamIdx])
+        {
+            gCurrentSprite.pOam = sZazabiFrameDataPointers3[oamIdx];
+            gCurrentSprite.animationDurationCounter = 0;
+            gCurrentSprite.currentAnimationFrame = 0;
+        }
+    }
+    else if (gSubSpriteData1.health == 60)
+    {
+        if (gCurrentSprite.pOam != sZazabiFrameDataPointers2[oamIdx])
+        {
+            gCurrentSprite.pOam = sZazabiFrameDataPointers2[oamIdx];
+            gCurrentSprite.animationDurationCounter = 0;
+            gCurrentSprite.currentAnimationFrame = 0;
+        }
+    }
+    else if (gSubSpriteData1.health == 80)
+    {
+        if (gCurrentSprite.pOam != sZazabiFrameDataPointers1[oamIdx])
+        {
+            gCurrentSprite.pOam = sZazabiFrameDataPointers1[oamIdx];
+            gCurrentSprite.animationDurationCounter = 0;
+            gCurrentSprite.currentAnimationFrame = 0;
+        }
+    }
+    else
+    {
+        if (gCurrentSprite.pOam != sZazabiFrameDataPointers0[oamIdx])
+        {
+            gCurrentSprite.pOam = sZazabiFrameDataPointers0[oamIdx];
+            gCurrentSprite.animationDurationCounter = 0;
+            gCurrentSprite.currentAnimationFrame = 0;
+        }
+    }
+
+    gCurrentSprite.yPosition = gSubSpriteData1.yPosition + pData[gCurrentSprite.roomSlot][MULTI_SPRITE_DATA_ELEMENT_Y_OFFSET];
+    gCurrentSprite.xPosition = gSubSpriteData1.xPosition + pData[gCurrentSprite.roomSlot][MULTI_SPRITE_DATA_ELEMENT_X_OFFSET];
 }
-#else
-NAKED_FUNCTION
-void ZazabiSyncSubSprites(void)
-{
-    asm(" \n\
-    push {r4, r5, lr} \n\
-	ldr r2, _0804535C @ =gSubSpriteData1 \n\
-	ldrh r0, [r2, #4] \n\
-	ldr r1, [r2] \n\
-	lsl r0, r0, #3 \n\
-	add r0, r0, r1 \n\
-	ldr r5, [r0] \n\
-	ldr r3, _08045360 @ =gCurrentSprite \n\
-	ldrb r1, [r3, #0x1e] \n\
-	lsl r0, r1, #1 \n\
-	add r0, r0, r1 \n\
-	lsl r0, r0, #1 \n\
-	add r0, r0, r5 \n\
-	ldrh r1, [r0] \n\
-	add r4, r1, #0 \n\
-	ldrh r0, [r2, #0xc] \n\
-	cmp r0, #0x28 \n\
-	bne _08045368 \n\
-	ldr r0, _08045364 @ =0x0879B374 \n\
-	lsl r1, r1, #2 \n\
-	b _0804538C \n\
-	.align 2, 0 \n\
-_0804535C: .4byte gSubSpriteData1 \n\
-_08045360: .4byte gCurrentSprite \n\
-_08045364: .4byte 0x0879B374 \n\
-_08045368: \n\
-	cmp r0, #0x3c \n\
-	bne _08045378 \n\
-	ldr r0, _08045374 @ =0x0879B290 \n\
-	lsl r1, r1, #2 \n\
-	b _0804538C \n\
-	.align 2, 0 \n\
-_08045374: .4byte 0x0879B290 \n\
-_08045378: \n\
-	cmp r0, #0x50 \n\
-	bne _08045388 \n\
-	ldr r0, _08045384 @ =0x0879B1AC \n\
-	lsl r1, r1, #2 \n\
-	b _0804538C \n\
-	.align 2, 0 \n\
-_08045384: .4byte 0x0879B1AC \n\
-_08045388: \n\
-	ldr r0, _080453C8 @ =0x0879B0C8 \n\
-	lsl r1, r4, #2 \n\
-_0804538C: \n\
-	add r1, r1, r0 \n\
-	ldr r0, [r3, #0x18] \n\
-	ldr r1, [r1] \n\
-	cmp r0, r1 \n\
-	beq _0804539E \n\
-	str r1, [r3, #0x18] \n\
-	movs r0, #0 \n\
-	strb r0, [r3, #0x1c] \n\
-	strh r0, [r3, #0x16] \n\
-_0804539E: \n\
-	ldrb r1, [r3, #0x1e] \n\
-	lsl r0, r1, #1 \n\
-	add r0, r0, r1 \n\
-	lsl r0, r0, #1 \n\
-	add r0, r0, r5 \n\
-	ldrh r0, [r0, #2] \n\
-	ldrh r1, [r2, #8] \n\
-	add r0, r0, r1 \n\
-	strh r0, [r3, #2] \n\
-	ldrb r1, [r3, #0x1e] \n\
-	lsl r0, r1, #1 \n\
-	add r0, r0, r1 \n\
-	lsl r0, r0, #1 \n\
-	add r0, r0, r5 \n\
-	ldrh r0, [r0, #4] \n\
-	ldrh r2, [r2, #0xa] \n\
-	add r0, r0, r2 \n\
-	strh r0, [r3, #4] \n\
-	pop {r4, r5} \n\
-	pop {r0} \n\
-	bx r0 \n\
-	.align 2, 0 \n\
-_080453C8: .4byte 0x0879B0C8 \n\
-    ");
-}
-#endif
 
 /**
  * @brief 453cc | 154 | Handles the collision between projectiles and zazabi
