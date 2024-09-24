@@ -145,8 +145,6 @@ void HalzynSwingingInit(void)
 
 void HalzynSwinging(void)
 {
-    // https://decomp.me/scratch/uefFZ
-
     u8 bounce;
     s32 xMovement;
     s32 yMovement;
@@ -162,17 +160,12 @@ void HalzynSwinging(void)
         {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE, gCurrentSprite.xPosition + (BLOCK_SIZE + HALF_BLOCK_SIZE));
 
-            if (gPreviousCollisionCheck != COLLISION_SOLID)
+            if (gPreviousCollisionCheck != COLLISION_SOLID && gCurrentSprite.xPosition <= gCurrentSprite.unk_8 + BLOCK_SIZE * 4)
             {
-                if (gCurrentSprite.xPosition <= gCurrentSprite.unk_8 + BLOCK_SIZE * 4)
-                {
-                    gCurrentSprite.xPosition += xMovement;
+                gCurrentSprite.xPosition += xMovement;
 
-                    if (gCurrentSprite.work3 < ARRAY_SIZE(sHalzynSwingingXVelocity) * 4 - 1)
-                        gCurrentSprite.work3++;
-                    else
-                        bounce = TRUE;
-                }
+                if (gCurrentSprite.work3 < ARRAY_SIZE(sHalzynSwingingXVelocity) * 4 - 1)
+                    gCurrentSprite.work3++;
                 else
                     bounce = TRUE;
             }
@@ -183,17 +176,12 @@ void HalzynSwinging(void)
         {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE, gCurrentSprite.xPosition - (BLOCK_SIZE + HALF_BLOCK_SIZE));
 
-            if (gPreviousCollisionCheck != COLLISION_SOLID)
+            if (gPreviousCollisionCheck != COLLISION_SOLID && gCurrentSprite.xPosition >= gCurrentSprite.unk_8)
             {
-                if (gCurrentSprite.xPosition >= gCurrentSprite.unk_8)
-                {
-                    gCurrentSprite.xPosition -= xMovement;
+                gCurrentSprite.xPosition -= xMovement;
 
-                    if (gCurrentSprite.work3 < ARRAY_SIZE(sHalzynSwingingXVelocity) * 4 - 1)
-                        gCurrentSprite.work3++;
-                    else
-                        bounce = TRUE;
-                }
+                if (gCurrentSprite.work3 < ARRAY_SIZE(sHalzynSwingingXVelocity) * 4 - 1)
+                    gCurrentSprite.work3++;
                 else
                     bounce = TRUE;
             }
