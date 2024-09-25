@@ -101,7 +101,7 @@ void ZoroCocoonInit(void)
 
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
-    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
     {
         gCurrentSprite.work0 = FALSE;
 
@@ -111,7 +111,7 @@ void ZoroCocoonInit(void)
     else
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - (BLOCK_SIZE + PIXEL_SIZE), gCurrentSprite.xPosition);
-        if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+        if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
         {
             gCurrentSprite.work0 = FALSE;
 
@@ -124,7 +124,7 @@ void ZoroCocoonInit(void)
         else
         {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition - (HALF_BLOCK_SIZE + PIXEL_SIZE));
-            if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+            if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
             {
                 gCurrentSprite.work0 = TRUE;
 
@@ -135,7 +135,7 @@ void ZoroCocoonInit(void)
             {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
 
-                if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN))
+                if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                 {
                     gCurrentSprite.status = 0;
                     return;
@@ -226,7 +226,7 @@ void ZoroHuskInit(void)
 
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
-    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
     {
         gCurrentSprite.work0 = FALSE;
 
@@ -236,7 +236,7 @@ void ZoroHuskInit(void)
     else
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - (BLOCK_SIZE + PIXEL_SIZE), gCurrentSprite.xPosition);
-        if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+        if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
         {
             gCurrentSprite.work0 = FALSE;
 
@@ -249,7 +249,7 @@ void ZoroHuskInit(void)
         else
         {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition - (HALF_BLOCK_SIZE + PIXEL_SIZE));
-            if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+            if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
             {
                 gCurrentSprite.work0 = TRUE;
 
@@ -260,7 +260,7 @@ void ZoroHuskInit(void)
             {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
 
-                if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN))
+                if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                 {
                     gCurrentSprite.status = 0;
                     return;

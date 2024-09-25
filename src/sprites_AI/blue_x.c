@@ -117,7 +117,7 @@ void BlueXInit(void)
 
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
-    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
     {
         gCurrentSprite.bgPriority++;
         gCurrentSprite.pose = BLUE_X_POSE_HIDING;
@@ -161,7 +161,7 @@ void BlueXHiding(void)
 {
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
-    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN))
+    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
     {
         gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;

@@ -21,7 +21,7 @@ u8 OwtchCheckCollidingWithAir(void)
     colliding = FALSE;
     if (gCurrentSprite.work0 != 0)
     {
-        if ((gCurrentSprite.status & SPRITE_STATUS_X_FLIP) != 0)
+        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
         {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition);
             if (gPreviousCollisionCheck == 0)
@@ -43,7 +43,7 @@ u8 OwtchCheckCollidingWithAir(void)
     }
     else
     {
-        if ((gCurrentSprite.status & SPRITE_STATUS_Y_FLIP) != 0) {
+        if (gCurrentSprite.status & SPRITE_STATUS_Y_FLIP) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition - 0x20);
             if (gPreviousCollisionCheck == 0)
             {
@@ -68,9 +68,9 @@ u8 OwtchCheckCollidingWithAir(void)
 
 void OwtchUpdateHitbox(void)
 {
-    if (gCurrentSprite.work0 != 0)
+    if (gCurrentSprite.work0)
     {
-        if ((gCurrentSprite.status & SPRITE_STATUS_X_FLIP) != 0)
+        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
         {
             gCurrentSprite.hitboxTop = -0x1c;
             gCurrentSprite.hitboxBottom = 0x1c;
@@ -87,7 +87,7 @@ void OwtchUpdateHitbox(void)
     }
     else
     {
-        if ((gCurrentSprite.status & SPRITE_STATUS_Y_FLIP) != 0)
+        if (gCurrentSprite.status & SPRITE_STATUS_Y_FLIP)
         {
             gCurrentSprite.hitboxTop = 0x10;
             gCurrentSprite.hitboxBottom = 0x2c;
@@ -107,7 +107,7 @@ void OwtchUpdateHitbox(void)
 
 void OwtchSetCrawlingOam(void)
 {
-    if (gCurrentSprite.work0 != 0)
+    if (gCurrentSprite.work0)
         gCurrentSprite.pOam = (const struct FrameData*)0x08379154;
     else
         gCurrentSprite.pOam = (const struct FrameData*)0x083790d4;
@@ -129,14 +129,14 @@ void OwtchTurningIntoX(void)
 {
     if (gCurrentSprite.work0)
     {
-        if ((gCurrentSprite.status & SPRITE_STATUS_X_FLIP))
+        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
             gCurrentSprite.xPosition -= 0x28;
         else
             gCurrentSprite.xPosition += 0x28;
     }
     else
     {
-        if ((gCurrentSprite.status & SPRITE_STATUS_Y_FLIP))
+        if (gCurrentSprite.status & SPRITE_STATUS_Y_FLIP)
             gCurrentSprite.yPosition += 0x28;
         else
             gCurrentSprite.yPosition -= 0x28;
@@ -146,15 +146,15 @@ void OwtchTurningIntoX(void)
 void OwtchInit(void)
 {
     SpriteUtilTrySetAbsorbXFlag();
-    if (((gCurrentSprite.properties & SPRITE_STATUS_ON_SCREEN)) && (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)))
+    if ((gCurrentSprite.properties & SPRITE_STATUS_ON_SCREEN) && (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)))
     {
         gCurrentSprite.status = 0;
     }
     else
     {
-        if (gCurrentSprite.pose == 0x59)
+        if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
         {
-            gCurrentSprite.pose = 0x5a;
+            gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
             gCurrentSprite.xParasiteTimer = 0x2c;
         }
         else
@@ -162,14 +162,14 @@ void OwtchInit(void)
             SpriteUtilChooseRandomXDirection();
             gCurrentSprite.pose = SPRITE_POSE_IDLE;
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
-            if ((gPreviousCollisionCheck & 0xf0))
+            if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
             {
                 gCurrentSprite.work0 = FALSE;
             }
             else
             {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x44, gCurrentSprite.xPosition);
-                if ((gPreviousCollisionCheck & 0xf0))
+                if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
                 {
                     gCurrentSprite.work0 = FALSE;
                     gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
@@ -178,7 +178,7 @@ void OwtchInit(void)
                 else
                 {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition - 0x24);
-                    if ((gPreviousCollisionCheck & 0xf0))
+                    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
                     {
                         gCurrentSprite.work0 = TRUE;
                         gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
@@ -187,7 +187,7 @@ void OwtchInit(void)
                     else
                     {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition + 0x20);
-                        if ((gPreviousCollisionCheck & 0xf0))
+                        if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
                         {
                             gCurrentSprite.work0 = TRUE;
                             gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
@@ -217,7 +217,7 @@ void OwtchInit(void)
 void OwtchIdleInit(void)
 {
     OwtchSetCrawlingOam();
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
 }
 
 void OwtchIdle(void)
@@ -227,18 +227,18 @@ void OwtchIdle(void)
     turnAround = FALSE;
     if (OwtchCheckCollidingWithAir() << 0x18)
     {
-        gCurrentSprite.pose = 0x15;
+        gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
     }
     else if (!(gCurrentSprite.properties & SPRITE_STATUS_ON_SCREEN))
     {
         if (gCurrentSprite.work0)
         {
-            if ((gCurrentSprite.status & SPRITE_STATUS_X_FLIP))
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
             {
-                if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
-                    if (!(gPreviousCollisionCheck & 0xf0))
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     {
                         gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
                         turnAround = TRUE;
@@ -247,7 +247,7 @@ void OwtchIdle(void)
                     else
                     {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition - 4);
-                        if (gPreviousCollisionCheck == 0x11)
+                        if (gPreviousCollisionCheck == COLLISION_SOLID)
                         {
                             gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
                             turnAround = TRUE;
@@ -260,7 +260,7 @@ void OwtchIdle(void)
                 else
                 {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition);
-                    if (!(gPreviousCollisionCheck & 0xf0))
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     {
                         gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
                         turnAround = TRUE;
@@ -269,7 +269,7 @@ void OwtchIdle(void)
                     else
                     {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition - 4);
-                        if (gPreviousCollisionCheck == 0x11)
+                        if (gPreviousCollisionCheck == COLLISION_SOLID)
                         {
                             gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
                             turnAround = TRUE;
@@ -282,10 +282,10 @@ void OwtchIdle(void)
             }
             else
             {
-                if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 4);
-                    if (!(gPreviousCollisionCheck & 0xf0))
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     {
                         gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
                         turnAround = TRUE;
@@ -294,7 +294,7 @@ void OwtchIdle(void)
                     else
                     {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition);
-                        if (gPreviousCollisionCheck == 0x11)
+                        if (gPreviousCollisionCheck == COLLISION_SOLID)
                         {
                             gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
                             turnAround = TRUE;
@@ -307,7 +307,7 @@ void OwtchIdle(void)
                 else
                 {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition - 4);
-                    if (!(gPreviousCollisionCheck & 0xf0))
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     {
                         gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
                         turnAround = TRUE;
@@ -316,7 +316,7 @@ void OwtchIdle(void)
                     else
                     {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition);
-                        if (gPreviousCollisionCheck == 0x11)
+                        if (gPreviousCollisionCheck == COLLISION_SOLID)
                         {
                             gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
                             turnAround = TRUE;
@@ -330,12 +330,12 @@ void OwtchIdle(void)
         }
         else
         {
-            if ((gCurrentSprite.status & SPRITE_STATUS_Y_FLIP))
+            if (gCurrentSprite.status & SPRITE_STATUS_Y_FLIP)
             {
-                if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition);
-                    if (!(gPreviousCollisionCheck & 0xf))
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F))
                     {
                         gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
                         turnAround = TRUE;
@@ -344,7 +344,7 @@ void OwtchIdle(void)
                     else
                     {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
-                        if (gPreviousCollisionCheck == 0x11)
+                        if (gPreviousCollisionCheck == COLLISION_SOLID)
                         {
                             gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
                             turnAround = TRUE;
@@ -357,7 +357,7 @@ void OwtchIdle(void)
                 else
                 {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition - 4);
-                    if (!(gPreviousCollisionCheck & 0xf))
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F))
                     {
                         gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
                         turnAround = TRUE;
@@ -366,7 +366,7 @@ void OwtchIdle(void)
                     else
                     {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
-                        if (gPreviousCollisionCheck == 0x11)
+                        if (gPreviousCollisionCheck == COLLISION_SOLID)
                         {
                             gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
                             turnAround = TRUE;
@@ -379,10 +379,10 @@ void OwtchIdle(void)
             }
             else
             {
-                if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
-                    if (!(gPreviousCollisionCheck & 0xf0))
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     {
                         gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
                         turnAround = TRUE;
@@ -391,7 +391,7 @@ void OwtchIdle(void)
                     else
                     {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition + 0x20);
-                        if (gPreviousCollisionCheck == 0x11)
+                        if (gPreviousCollisionCheck == COLLISION_SOLID)
                         {
                             gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
                             turnAround = TRUE;
@@ -404,7 +404,7 @@ void OwtchIdle(void)
                 else
                 {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 4);
-                    if (!(gPreviousCollisionCheck & 0xf0))
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     {
                         gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
                         turnAround = TRUE;
@@ -413,7 +413,7 @@ void OwtchIdle(void)
                     else
                     {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition - 0x20);
-                        if (gPreviousCollisionCheck == 0x11)
+                        if (gPreviousCollisionCheck == COLLISION_SOLID)
                         {
                             gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
                             turnAround = TRUE;
@@ -426,19 +426,19 @@ void OwtchIdle(void)
             }
         }
         if (turnAround)
-            gCurrentSprite.pose = 3;
+            gCurrentSprite.pose = OWTCH_POSE_TURNING_AROUND_INIT;
     }
 }
 
 void OwtchTurningAroundInit(void)
 {
-    gCurrentSprite.pose = 4;
+    gCurrentSprite.pose = OWTCH_POSE_TURNING_AROUND;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     switch (gCurrentSprite.work2)
     {
         case 0:
-            if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379114;
             else
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379194;
@@ -446,7 +446,7 @@ void OwtchTurningAroundInit(void)
             gCurrentSprite.status &= ~SPRITE_STATUS_Y_FLIP;
             break;
         case 1:
-            if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379114;
             else
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379194;
@@ -454,7 +454,7 @@ void OwtchTurningAroundInit(void)
             gCurrentSprite.status &= ~SPRITE_STATUS_Y_FLIP;
             break;
         case 2:
-            if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379194;
             else
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379114;
@@ -462,7 +462,7 @@ void OwtchTurningAroundInit(void)
             gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
             break;
         case 3:
-            if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379194;
             else
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379114;
@@ -470,7 +470,7 @@ void OwtchTurningAroundInit(void)
             gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
             break;
         case 4:
-            if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 gCurrentSprite.pOam = (const struct FrameData*)0x83791b4;
             else
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379134;
@@ -478,7 +478,7 @@ void OwtchTurningAroundInit(void)
             gCurrentSprite.status &= ~SPRITE_STATUS_Y_FLIP;
             break;
         case 5:
-            if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379134;
             else
                 gCurrentSprite.pOam = (const struct FrameData*)0x83791b4;
@@ -486,7 +486,7 @@ void OwtchTurningAroundInit(void)
             gCurrentSprite.status &= ~SPRITE_STATUS_Y_FLIP;
             break;
         case 6:
-            if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 gCurrentSprite.pOam = (const struct FrameData*)0x83791b4;
             else
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379134;
@@ -494,7 +494,7 @@ void OwtchTurningAroundInit(void)
             gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
             break;
         case 7:
-            if ((gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT))
+            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
                 gCurrentSprite.pOam = (const struct FrameData*)0x8379134;
             else
                 gCurrentSprite.pOam = (const struct FrameData*)0x83791b4;
@@ -513,7 +513,7 @@ void OwtchTurningAround(void)
         switch (gCurrentSprite.work2)
         {
             case 0:
-                if ((gCurrentSprite.status & 0x200) == 0) {
+                if (!(gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)) {
                     gCurrentSprite.yPosition -= 0x1c;
                     gCurrentSprite.xPosition -= 0x1c;
                 }
@@ -521,7 +521,7 @@ void OwtchTurningAround(void)
                 gCurrentSprite.work0 = TRUE;
                 break;
             case 1:
-                if ((gCurrentSprite.status & 0x200) == 0) {
+                if (!(gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)) {
                     gCurrentSprite.yPosition -= 0x20;
                     gCurrentSprite.xPosition += 0x20;
                 }
@@ -529,7 +529,7 @@ void OwtchTurningAround(void)
                 gCurrentSprite.work0 = TRUE;
                 break;
             case 2:
-                if ((gCurrentSprite.status & 0x200) != 0) {
+                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT) {
                     gCurrentSprite.yPosition += 0x1c;
                     gCurrentSprite.xPosition -= 0x1c;
                 }
@@ -537,7 +537,7 @@ void OwtchTurningAround(void)
                 gCurrentSprite.work0 = TRUE;
                 break;
             case 3:
-                if ((gCurrentSprite.status & 0x200) != 0) {
+                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT) {
                     gCurrentSprite.yPosition += 0x20;
                     gCurrentSprite.xPosition += 0x20;
                 }
@@ -545,7 +545,7 @@ void OwtchTurningAround(void)
                 gCurrentSprite.work0 = TRUE;
                 break;
             case 4:
-                if ((gCurrentSprite.status & 0x200) != 0) {
+                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT) {
                     gCurrentSprite.yPosition += 0x20;
                     gCurrentSprite.xPosition += 0x20;
                 }
@@ -553,7 +553,7 @@ void OwtchTurningAround(void)
                 gCurrentSprite.work0 = FALSE;
                 break;
             case 5:
-                if ((gCurrentSprite.status & 0x200) == 0) {
+                if (!(gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)) {
                     gCurrentSprite.yPosition += 0x20;
                     gCurrentSprite.xPosition -= 0x20;
                 }
@@ -561,7 +561,7 @@ void OwtchTurningAround(void)
                 gCurrentSprite.work0 = FALSE;
                 break;
             case 6:
-                if ((gCurrentSprite.status & 0x200) != 0) {
+                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT) {
                     gCurrentSprite.yPosition -= 0x1c;
                     gCurrentSprite.xPosition += 0x1c;
                 }
@@ -569,7 +569,7 @@ void OwtchTurningAround(void)
                 gCurrentSprite.work0 = FALSE;
                 break;
             case 7:
-                if ((gCurrentSprite.status & 0x200) == 0) {
+                if (!(gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)) {
                     gCurrentSprite.yPosition -= 0x1c;
                     gCurrentSprite.xPosition -= 0x1c;
                 }
@@ -586,7 +586,7 @@ void OwtchTurningAround(void)
 
 void OwtchLandingInit(void)
 {
-    gCurrentSprite.pose = 8;
+    gCurrentSprite.pose = OWTCH_POSE_LANDING;
     OwtchSetFallingOam();
 }
 
@@ -627,13 +627,13 @@ void OwtchFalling(void)
     xCollisionPoint = gCurrentSprite.xPosition;
     if (gCurrentSprite.work0)
     {
-        if ((gCurrentSprite.status & SPRITE_STATUS_X_FLIP))
+        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
             xCollisionPoint -= 4;
         yCollisionPoint += gCurrentSprite.hitboxBottom;
     }
     else
     {
-        if ((gCurrentSprite.status & SPRITE_STATUS_Y_FLIP))
+        if (gCurrentSprite.status & SPRITE_STATUS_Y_FLIP)
             yCollisionPoint += gCurrentSprite.hitboxBottom;
     }
     
@@ -651,19 +651,19 @@ void OwtchFalling(void)
         OwtchUpdateHitbox();
         if (onWall)
         {
-            if ((gCurrentSprite.status & SPRITE_STATUS_X_FLIP))
+            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
                 gCurrentSprite.xPosition -= gCurrentSprite.hitboxRight;
             else
                 gCurrentSprite.xPosition -= gCurrentSprite.hitboxLeft;
         }
-        if ((gCurrentSprite.properties & SPRITE_STATUS_ON_SCREEN))
+        if (gCurrentSprite.properties & SPRITE_STATUS_ON_SCREEN)
         {
-            gCurrentSprite.pose = 2;
+            gCurrentSprite.pose = SPRITE_POSE_IDLE;
             OwtchSetCrawlingOam();
         }
         else
         {
-            gCurrentSprite.pose = 8;
+            gCurrentSprite.pose = OWTCH_POSE_LANDING;
             OwtchSetFallingOam();
         }
     }
@@ -693,8 +693,10 @@ void Owtch(void)
 
     if (gCurrentSprite.freezeTimer != 0)
         SpriteUtilUpdateFreezeTimer();
-    else {
-        switch(gCurrentSprite.pose) {
+    else
+    {
+        switch (gCurrentSprite.pose)
+        {
             case SPRITE_POSE_UNINITIALIZED:
                 OwtchInit();
                 break;
@@ -703,14 +705,14 @@ void Owtch(void)
             case SPRITE_POSE_IDLE:
                 OwtchIdle();
                 break;
-            case 3:
+            case OWTCH_POSE_TURNING_AROUND_INIT:
                 OwtchTurningAroundInit();
-            case 4:
+            case OWTCH_POSE_TURNING_AROUND:
                 OwtchTurningAround();
                 break;
-            case 7:
+            case OWTCH_POSE_LANDING_INIT:
                 OwtchLandingInit();
-            case 8:
+            case OWTCH_POSE_LANDING:
                 OwtchLanding();
                 break;
             case SPRITE_POSE_FALLING_INIT:

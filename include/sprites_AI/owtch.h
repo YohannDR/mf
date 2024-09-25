@@ -3,6 +3,11 @@
 
 #include "types.h"
 
+#define OWTCH_POSE_TURNING_AROUND_INIT 3
+#define OWTCH_POSE_TURNING_AROUND 4
+#define OWTCH_POSE_LANDING_INIT 7
+#define OWTCH_POSE_LANDING 8
+
 u8 OwtchCheckCollidingWithAir(void);
 void OwtchUpdateHitbox(void);
 void OwtchSetCrawlingOam(void);

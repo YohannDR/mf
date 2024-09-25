@@ -263,7 +263,7 @@ void MotoWalking(void)
             }
         }
     }
-    else if (gPreviousVerticalCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+    else if (gPreviousVerticalCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
     {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
         {
