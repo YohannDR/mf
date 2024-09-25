@@ -2,7 +2,7 @@
 #include "macros.h"
 #include "globals.h"
 
-//#include "data/sprites/owtch.h"
+#include "data/sprites/owtch.h"
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
@@ -108,9 +108,9 @@ void OwtchUpdateHitbox(void)
 void OwtchSetCrawlingOam(void)
 {
     if (gCurrentSprite.work0)
-        gCurrentSprite.pOam = (const struct FrameData*)0x08379154;
+        gCurrentSprite.pOam = sFrameData_379154;
     else
-        gCurrentSprite.pOam = (const struct FrameData*)0x083790d4;
+        gCurrentSprite.pOam = sFrameData_3790d4;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -118,9 +118,9 @@ void OwtchSetCrawlingOam(void)
 void OwtchSetFallingOam(void)
 {
     if (gCurrentSprite.work0)
-        gCurrentSprite.pOam = (const struct FrameData*)0x8379154;
+        gCurrentSprite.pOam = sFrameData_379154;
     else
-        gCurrentSprite.pOam = (const struct FrameData*)0x83790d4;
+        gCurrentSprite.pOam = sFrameData_3790d4;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -439,65 +439,65 @@ void OwtchTurningAroundInit(void)
     {
         case 0:
             if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379114;
+                gCurrentSprite.pOam = sFrameData_379114;
             else
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379194;
+                gCurrentSprite.pOam = sFrameData_379194;
             gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
             gCurrentSprite.status &= ~SPRITE_STATUS_Y_FLIP;
             break;
         case 1:
             if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379114;
+                gCurrentSprite.pOam = sFrameData_379114;
             else
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379194;
+                gCurrentSprite.pOam = sFrameData_379194;
             gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
             gCurrentSprite.status &= ~SPRITE_STATUS_Y_FLIP;
             break;
         case 2:
             if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379194;
+                gCurrentSprite.pOam = sFrameData_379194;
             else
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379114;
+                gCurrentSprite.pOam = sFrameData_379114;
             gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
             gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
             break;
         case 3:
             if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379194;
+                gCurrentSprite.pOam = sFrameData_379194;
             else
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379114;
+                gCurrentSprite.pOam = sFrameData_379114;
             gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
             gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
             break;
         case 4:
             if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.pOam = (const struct FrameData*)0x83791b4;
+                gCurrentSprite.pOam = sFrameData_3791b4;
             else
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379134;
+                gCurrentSprite.pOam = sFrameData_379134;
             gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
             gCurrentSprite.status &= ~SPRITE_STATUS_Y_FLIP;
             break;
         case 5:
             if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379134;
+                gCurrentSprite.pOam = sFrameData_379134;
             else
-                gCurrentSprite.pOam = (const struct FrameData*)0x83791b4;
+                gCurrentSprite.pOam = sFrameData_3791b4;
             gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
             gCurrentSprite.status &= ~SPRITE_STATUS_Y_FLIP;
             break;
         case 6:
             if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.pOam = (const struct FrameData*)0x83791b4;
+                gCurrentSprite.pOam = sFrameData_3791b4;
             else
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379134;
+                gCurrentSprite.pOam = sFrameData_379134;
             gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
             gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
             break;
         case 7:
             if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.pOam = (const struct FrameData*)0x8379134;
+                gCurrentSprite.pOam = sFrameData_379134;
             else
-                gCurrentSprite.pOam = (const struct FrameData*)0x83791b4;
+                gCurrentSprite.pOam = sFrameData_3791b4;
             gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
             gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
             break;

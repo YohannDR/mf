@@ -300,6 +300,7 @@ SECTIONS {
         src/data/sprites/zazabi.o(.rodata);
         src/data/sprites/elevator_pad.o(.rodata);
         src/data/sprites/serris.o(.rodata);
+        src/data/sprites/owtch.o(.rodata);
         src/data/sprites/x_parasite.o(.rodata);
         src/data/demo_data.o(.rodata);
         src/data/hud_data.o(.rodata);

@@ -111,6 +111,11 @@ sprites/serris.pal;128;0x3776f8;2
 sprites/serris_phase_two.pal;32;0x378750;2
 sprites/serris_phase_three.pal;32;0x378790;2
 
+# Owtch
+
+sprites/owtch.gfx;512;0x3787d0;4
+sprites/owtch.pal;16;0x378fd0;2
+
 # Hud
 
 hud/ammo_digits.gfx;1152;0x3e7a9c;1
@@ -146,7 +151,7 @@ Blob_28fd08_2e4904.bin;347132;0x28fd08;1
 Blob_2e5cae_2e6160.bin;1202;0x2e5cae;1
 Blob_2e6382_2ed2e8.bin;28518;0x2e6382;1
 Blob_2f887c_35dd74.bin;414968;0x2f887c;1
-Blob_3787d0_3bdebc.bin;284396;0x3787d0;1
+Blob_3791d4_3bdebc.bin;281832;0x3791d4;1
 Blob_3be1be_3e392c.bin;153454;0x3be1be;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
 Blob_3e9940_3ec038.bin;9976;0x3e9940;1
