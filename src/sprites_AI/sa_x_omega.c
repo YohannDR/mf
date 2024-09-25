@@ -65,7 +65,7 @@ void SaXOmegaForming(void)
  */
 void SaXOmegaFalling(void)
 {
-    u32 blockTop;
+    u16 blockTop;
     u8 offset;
     s16 movement;
 

@@ -1061,9 +1061,9 @@ u32 SpriteUtilCheckVerticalCollisionAtPosition(u16 yPosition, u16 xPosition)
  * 
  * @param yPosition Y Position
  * @param xPosition X Position
- * @return u16 Block top position
+ * @return u32 Block top position
  */
-u16 SpriteUtilCheckVerticalCollisionAtPositionSlopes(u16 yPosition, u16 xPosition)
+u32 SpriteUtilCheckVerticalCollisionAtPositionSlopes(u16 yPosition, u16 xPosition)
 {
     u32 clipdata;
     u8 collision;
@@ -1263,7 +1263,7 @@ void SpriteUtilCheckCollisionAtPosition(u16 yPosition, u16 xPosition)
  */
 void SpriteUtilCurrentSpriteFalling(void)
 {
-    u32 blockTop;
+    u16 blockTop;
     s16 movement;
     u8 offset;
 

@@ -255,7 +255,7 @@ void HalzynLungingInit(void)
  */
 void HalzynLunging(void)
 {
-    u32 blockTop;
+    u16 blockTop;
     u16 yPosition;
     u16 xPosition;
     u8 offset;
@@ -551,7 +551,7 @@ void HalzynWingIdle(void)
  */
 void HalzynWingFalling(void)
 {
-    u32 blockTop;
+    u16 blockTop;
     u8 offset;
     s16 movement;
 

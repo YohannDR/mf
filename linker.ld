@@ -246,8 +246,9 @@ SECTIONS {
         src/sprites_AI/zazabi.o(.text);
         src/sprites_AI/elevator_pad.o(.text);
         src/sprites_AI/serris.o(.text);
+        src/sprites_AI/owtch.o(.text);
 
-        asm/disasm_0x08049888.o(.text);
+        asm/disasm_0x0804a5c0.o(.text);
 
         src/event_checks.o(.text);
 

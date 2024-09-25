@@ -452,7 +452,7 @@ void HornoadJumping(void)
 {
     u8 var_0;
     s16 movement;
-    u32 blockTop;
+    u16 blockTop;
 
     var_0 = FALSE;
 
@@ -661,7 +661,7 @@ void HornoadLanding(void)
  */
 void HornoadFalling(void)
 {
-    u32 blockTop;
+    u16 blockTop;
     u8 landing;
     s16 movement;
     u8 offset;
@@ -910,7 +910,7 @@ void HornoadSpitInit(void)
  */
 void HornoadSpitMoving(void)
 {
-    u32 blockTop;
+    u16 blockTop;
     u8 offset;
     s16 movement;
 
