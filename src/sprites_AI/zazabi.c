@@ -26,12 +26,20 @@ void ZazabiSyncSubSprites(void)
 {
     MultiSpriteDataInfo_T pData;
     u16 oamIdx;
-    const struct FrameData* pOam;
 
     pData = gSubSpriteData1.pMultiOam[gSubSpriteData1.currentAnimationFrame].pData;
     oamIdx = pData[gCurrentSprite.roomSlot][MULTI_SPRITE_DATA_ELEMENT_OAM_INDEX];
     
     if (gSubSpriteData1.health == 40)
+    {
+        if (gCurrentSprite.pOam != sZazabiFrameDataPointers4[oamIdx])
+        {
+            gCurrentSprite.pOam = sZazabiFrameDataPointers4[oamIdx];
+            gCurrentSprite.animationDurationCounter = 0;
+            gCurrentSprite.currentAnimationFrame = 0;
+        }
+    }
+    else if (gSubSpriteData1.health == 60)
     {
         if (gCurrentSprite.pOam != sZazabiFrameDataPointers3[oamIdx])
         {
@@ -40,7 +48,7 @@ void ZazabiSyncSubSprites(void)
             gCurrentSprite.currentAnimationFrame = 0;
         }
     }
-    else if (gSubSpriteData1.health == 60)
+    else if (gSubSpriteData1.health == 80)
     {
         if (gCurrentSprite.pOam != sZazabiFrameDataPointers2[oamIdx])
         {
@@ -49,20 +57,11 @@ void ZazabiSyncSubSprites(void)
             gCurrentSprite.currentAnimationFrame = 0;
         }
     }
-    else if (gSubSpriteData1.health == 80)
+    else
     {
         if (gCurrentSprite.pOam != sZazabiFrameDataPointers1[oamIdx])
         {
             gCurrentSprite.pOam = sZazabiFrameDataPointers1[oamIdx];
-            gCurrentSprite.animationDurationCounter = 0;
-            gCurrentSprite.currentAnimationFrame = 0;
-        }
-    }
-    else
-    {
-        if (gCurrentSprite.pOam != sZazabiFrameDataPointers0[oamIdx])
-        {
-            gCurrentSprite.pOam = sZazabiFrameDataPointers0[oamIdx];
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
