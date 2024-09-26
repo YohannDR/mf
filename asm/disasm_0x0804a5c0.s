@@ -12944,7 +12944,7 @@ _08050EC4: .4byte 0x08388E0C
 	thumb_func_start SA_XMonsterJumpWarning
 SA_XMonsterJumpWarning: @ 0x08050EC8
 	push {lr}
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08050F18
 	ldr r2, _08050EE8 @ =gCurrentSprite
@@ -15467,7 +15467,7 @@ Box2FinishCrawling: @ 0x080522F0
 	ldrb r0, [r5]
 	cmp r0, #1
 	bls _08052314
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08052346
 	ldrb r0, [r5]
@@ -15820,7 +15820,7 @@ Box2StoppingToFireMissiles: @ 0x080525B4
 	ldrb r0, [r4]
 	cmp r0, #1
 	bls _080525D8
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _080525E8
 	ldrb r0, [r4]
@@ -15869,7 +15869,7 @@ _0805261C: .4byte gCurrentSprite
 	thumb_func_start Box2LoweringToFireMissiles
 Box2LoweringToFireMissiles: @ 0x08052620
 	push {lr}
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805263E
 	ldr r0, _08052644 @ =gCurrentSprite
@@ -15894,7 +15894,7 @@ _0805264C: .4byte 0x083914A4
 Box2FiringMissiles: @ 0x08052650
 	push {r4, r5, r6, lr}
 	sub sp, #0xc
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	adds r6, r0, #0
 	cmp r6, #0
 	beq _0805268C
@@ -20005,7 +20005,7 @@ _08054714: .4byte gSpriteData
 	thumb_func_start OmegaMetroidLandingFromFirstJump
 OmegaMetroidLandingFromFirstJump: @ 0x08054718
 	push {lr}
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054736
 	ldr r1, _0805473C @ =gSubSpriteData1
@@ -20029,7 +20029,7 @@ _08054744: .4byte gCurrentSprite
 	thumb_func_start OmegaMetroidLandedAfterFirstJump
 OmegaMetroidLandedAfterFirstJump: @ 0x08054748
 	push {lr}
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054774
 	ldr r1, _08054778 @ =gSubSpriteData1
@@ -20147,7 +20147,7 @@ _0805482C: .4byte 0x0000021E
 	thumb_func_start OmegaMetroidJumpWarning
 OmegaMetroidJumpWarning: @ 0x08054830
 	push {lr}
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054856
 	ldr r1, _0805485C @ =gSubSpriteData1
@@ -20534,7 +20534,7 @@ OmegaMetroidWalkingBeforeSA_X: @ 0x08054B20
 	cmp r0, #2
 	bne _08054B64
 	bl OmegaMetroidForwardMovement
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054BAC
 	ldr r0, _08054B5C @ =gSubSpriteData1
@@ -20649,7 +20649,7 @@ _08054C1A:
 	bl OmegaMetroidSlowMovement
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054CFC
 	ldr r0, _08054C40 @ =gSubSpriteData1
@@ -20673,7 +20673,7 @@ _08054C4E:
 	bl OmegaMetroidForwardMovement
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054CFC
 	cmp r5, #0
@@ -20703,7 +20703,7 @@ _08054C88: .4byte gSubSpriteData1
 _08054C8C: .4byte 0x083967B0
 _08054C90:
 	bl OmegaMetroidForwardMovement
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054CFC
 	ldr r0, _08054CAC @ =gSubSpriteData1
@@ -20817,7 +20817,7 @@ _08054D6A:
 	bl OmegaMetroidSlowMovement
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054E4C
 	ldr r0, _08054D90 @ =gSubSpriteData1
@@ -20841,7 +20841,7 @@ _08054D9E:
 	bl OmegaMetroidForwardMovement
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054E4C
 	cmp r5, #0
@@ -20871,7 +20871,7 @@ _08054DD8: .4byte gSubSpriteData1
 _08054DDC: .4byte 0x08396830
 _08054DE0:
 	bl OmegaMetroidForwardMovement
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054E4C
 	ldr r0, _08054DFC @ =gSubSpriteData1
@@ -21404,7 +21404,7 @@ _08055214:
 	subs r0, #1
 	b _08055348
 _08055224:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	bne _0805522E
 	b _0805534A
@@ -21422,7 +21422,7 @@ _0805522E:
 _08055240: .4byte gSubSpriteData1
 _08055244: .4byte 0x08396858
 _08055248:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	bne _08055252
 	b _0805534A
@@ -21459,7 +21459,7 @@ _08055288:
 	subs r0, #1
 	b _08055348
 _08055298:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805534A
 	ldr r0, _080552C0 @ =gSubSpriteData1
@@ -21480,7 +21480,7 @@ _08055298:
 _080552C0: .4byte gSubSpriteData1
 _080552C4: .4byte 0x08396898
 _080552C8:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805534A
 	ldr r1, _080552E8 @ =gSubSpriteData1
@@ -21504,7 +21504,7 @@ _080552F4:
 	movs r4, #0
 	strb r4, [r0]
 	bl OmegaMetroidForwardMovement
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805534A
 	ldr r0, _0805531C @ =gSubSpriteData1
@@ -21525,7 +21525,7 @@ _08055324:
 	movs r4, #0
 	strb r4, [r0]
 	bl OmegaMetroidStandingMovement
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805534A
 	ldr r0, _08055350 @ =gSubSpriteData1
@@ -21594,7 +21594,7 @@ OmegaMetroidDamagedBySA_X: @ 0x080553B4
 	push {r4, lr}
 	bl OmegaMetroidSA_XIceBeamCollision
 	bl OmegaMetroidBodyBlinking
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _080553EE
 	ldr r1, _080553F4 @ =gSubSpriteData1
@@ -21647,7 +21647,7 @@ _08055420:
 	adds r0, #0x30
 	strb r4, [r0]
 	bl OmegaMetroidBackwardsMovement
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08055490
 	ldr r0, _08055460 @ =gSubSpriteData1
@@ -21679,7 +21679,7 @@ _08055464: .4byte 0x08396908
 _08055468: .4byte 0x0000FDFF
 _0805546C: .4byte gSpriteData
 _08055470:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08055490
 	ldr r1, _08055498 @ =gSubSpriteData1
@@ -21733,7 +21733,7 @@ _080554D8: .4byte 0x00FFFFFF
 _080554DC: .4byte 0x0000021A
 _080554E0: .4byte gCurrentSprite
 _080554E4:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _080554FC
 	ldr r0, _08055504 @ =0x083965D8
@@ -21757,7 +21757,7 @@ OmegaMetroidWaitingToSwipeSA_X: @ 0x08055508
 	push {lr}
 	bl OmegaMetroidSA_XIceBeamCollision
 	bl OmegaMetroidBodyBlinking
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08055536
 	ldr r1, _0805553C @ =gSubSpriteData1
@@ -21786,7 +21786,7 @@ OmegaMEtroidSwipingSA_X: @ 0x08055548
 	push {lr}
 	bl OmegaMetroidSA_XIceBeamCollision
 	bl OmegaMetroidBodyBlinking
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805558C
 	ldr r1, _08055580 @ =gSubSpriteData1
@@ -21932,7 +21932,7 @@ _08055678:
 	ldrb r4, [r6]
 	cmp r4, #0
 	bne _080556B4
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _080556F8
 	ldr r0, _080556A8 @ =gSubSpriteData1
@@ -22080,7 +22080,7 @@ OmegaMetroidWalkingBackwards: @ 0x08055790
 	cmp r0, #0
 	beq _080557E4
 	bl OmegaMetroidBackwardsMovement
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805583C
 	ldrb r0, [r5]
@@ -22164,7 +22164,7 @@ OmegaMetroidDyingInit: @ 0x08055844
 	movs r0, #1
 	strb r0, [r1]
 	bl OmegaMetroidFullBodyBlinking
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805587C
 	ldr r0, _08055888 @ =gSubSpriteData1
@@ -30909,7 +30909,7 @@ RidleyScreamingAfterSpawn: @ 0x08059F08
 	ldr r0, _08059F74 @ =0x000001DD
 	bl SoundPlay
 _08059F1E:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08059F6A
 	ldr r2, _08059F78 @ =gSubSpriteData1
@@ -30998,7 +30998,7 @@ _08059FCC:
 	strh r0, [r5, #8]
 	b _0805A014
 _08059FD8:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805A014
 	bl RidleyUpdateClawOam
@@ -31469,7 +31469,7 @@ _0805A3A4: .4byte gCurrentSprite
 RidleyTurningAround: @ 0x0805A3A8
 	push {lr}
 	bl RidleyFloatingMovement
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805A3D8
 	ldr r1, _0805A3DC @ =gSubSpriteData1
@@ -31501,7 +31501,7 @@ RidleyTurningAroundSecondPart: @ 0x0805A3E8
 	push {lr}
 	bl RidleyUpdateClawOam
 	bl RidleyFloatingMovement
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805A406
 	bl RidleyUpdateClawOam
@@ -34317,7 +34317,7 @@ _0805BB04:
 	ldrb r4, [r5]
 	cmp r4, #0
 	bne _0805BB34
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805BB54
 	ldr r0, _0805BB2C @ =gSubSpriteData1
@@ -34333,7 +34333,7 @@ _0805BB28: .4byte gCurrentSprite
 _0805BB2C: .4byte gSubSpriteData1
 _0805BB30: .4byte 0x083B1178
 _0805BB34:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805BB54
 	adds r1, r6, #0
@@ -34410,7 +34410,7 @@ _0805BBC4: .4byte gCurrentSprite
 _0805BBC8: .4byte gSubSpriteData1
 _0805BBCC: .4byte 0x083B11B0
 _0805BBD0:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805BC00
 	adds r1, r4, #0
@@ -34918,7 +34918,7 @@ _0805BFCC: .4byte gCurrentSprite
 	thumb_func_start YakuzaBeginSweep
 YakuzaBeginSweep: @ 0x0805BFD0
 	push {lr}
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805BFEE
 	ldr r1, _0805BFF4 @ =gSubSpriteData1
@@ -34958,7 +34958,7 @@ _0805C018:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0805C05C
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805C076
 	ldr r2, _0805C050 @ =gCurrentSprite
@@ -35095,7 +35095,7 @@ _0805C124: @ jump table
 	.4byte _0805C3A8 @ case 5
 	.4byte _0805C420 @ case 6
 _0805C140:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	bne _0805C14A
 	b _0805C468
@@ -35120,7 +35120,7 @@ _0805C16C: .4byte gSubSpriteData1
 _0805C170: .4byte 0x083B1040
 _0805C174: .4byte gCurrentSprite
 _0805C178:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	bne _0805C182
 	b _0805C468
@@ -35329,7 +35329,7 @@ _0805C32C:
 	.align 2, 0
 _0805C334: .4byte 0x00000139
 _0805C338:
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	bne _0805C342
 	b _0805C468

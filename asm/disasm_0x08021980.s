@@ -41134,7 +41134,7 @@ BoxFinishedCrawling: @ 0x0803660C
 	ldrb r0, [r5]
 	cmp r0, #1
 	bls _08036630
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08036662
 	ldrb r0, [r5]
@@ -41413,7 +41413,7 @@ BoxStoppingToFireBomb: @ 0x08036838
 	ldrb r0, [r4]
 	cmp r0, #1
 	bls _0803685C
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0803686C
 	ldrb r0, [r4]
@@ -41462,7 +41462,7 @@ _080368A0: .4byte gCurrentSprite
 	thumb_func_start BoxLoweringToFireBomb
 BoxLoweringToFireBomb: @ 0x080368A4
 	push {lr}
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _080368C2
 	ldr r0, _080368C8 @ =gCurrentSprite
@@ -41487,7 +41487,7 @@ _080368D0: .4byte 0x08343028
 BoxFiringBomb: @ 0x080368D4
 	push {r4, r5, r6, lr}
 	sub sp, #0xc
-	bl CheckEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckEndSubSprite1Anim
 	adds r6, r0, #0
 	cmp r6, #0
 	beq _08036910

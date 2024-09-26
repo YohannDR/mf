@@ -3678,8 +3678,8 @@ _08011A36:
 	pop {r1}
 	bx r1
 
-	thumb_func_start CheckEndOfSubSpriteData1Animation
-CheckEndOfSubSpriteData1Animation: @ 0x08011A3C
+	thumb_func_start SpriteUtilCheckEndSubSprite1Anim
+SpriteUtilCheckEndSubSprite1Anim: @ 0x08011A3C
 	push {lr}
 	ldr r0, _08011A68 @ =gSubSpriteData1
 	ldrb r1, [r0, #6]
