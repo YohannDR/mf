@@ -146,7 +146,7 @@ void OwtchTurningIntoX(void)
 void OwtchInit(void)
 {
     SpriteUtilTrySetAbsorbXFlag();
-    if ((gCurrentSprite.properties & SPRITE_STATUS_ON_SCREEN) && (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)))
+    if ((gCurrentSprite.properties & SP_CAN_ABSORB_X) && (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)))
     {
         gCurrentSprite.status = 0;
     }
@@ -229,7 +229,7 @@ void OwtchIdle(void)
     {
         gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
     }
-    else if (!(gCurrentSprite.properties & SPRITE_STATUS_ON_SCREEN))
+    else if (!(gCurrentSprite.properties & SP_CAN_ABSORB_X))
     {
         if (gCurrentSprite.work0)
         {
@@ -656,7 +656,7 @@ void OwtchFalling(void)
             else
                 gCurrentSprite.xPosition -= gCurrentSprite.hitboxLeft;
         }
-        if (gCurrentSprite.properties & SPRITE_STATUS_ON_SCREEN)
+        if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
         {
             gCurrentSprite.pose = SPRITE_POSE_IDLE;
             OwtchSetCrawlingOam();
