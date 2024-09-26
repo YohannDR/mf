@@ -508,7 +508,7 @@ void OwtchTurningAroundInit(void)
 
 void OwtchTurningAround(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation()) {
+    if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.pose = SPRITE_POSE_IDLE;
         switch (gCurrentSprite.work2)
         {
@@ -597,7 +597,7 @@ void OwtchLanding(void)
     }
     else
     {
-        if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation()) {
+        if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
             gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
         }
     }

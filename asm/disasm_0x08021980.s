@@ -154,7 +154,7 @@ _08021A94: .4byte gCurrentSprite
 	thumb_func_start SkreeWarning
 SkreeWarning: @ 0x08021A98
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08021AAA
 	ldr r0, _08021AB0 @ =gCurrentSprite
@@ -1181,7 +1181,7 @@ ZombieWaitingToForm: @ 0x0802232C
 	ldr r0, _08022360 @ =0x082FB5D0
 	cmp r1, r0
 	bne _08022368
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	bne _08022342
 	b _0802244E
@@ -1367,7 +1367,7 @@ _08022498:
 	ldr r0, _080224CC @ =0x0000014D
 	bl SoundPlayNotAlreadyPlaying
 _080224AE:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080224C6
 	ldr r1, _080224D0 @ =gCurrentSprite
@@ -1422,7 +1422,7 @@ ZombieIdle: @ 0x080224FC
 _08022514: .4byte gPreviousVerticalCollisionCheck
 _08022518: .4byte gCurrentSprite
 _0802251C:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802252C
 	ldr r0, _08022534 @ =gCurrentSprite
@@ -1595,7 +1595,7 @@ _08022664: .4byte 0x082FB410
 	thumb_func_start ZombieTurning
 ZombieTurning: @ 0x08022668
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802268A
 	ldr r2, _08022690 @ =gCurrentSprite
@@ -1619,7 +1619,7 @@ _08022690: .4byte gCurrentSprite
 	thumb_func_start ZombieTurningEnd
 ZombieTurningEnd: @ 0x08022694
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080226A6
 	ldr r0, _080226AC @ =gCurrentSprite
@@ -1635,7 +1635,7 @@ _080226AC: .4byte gCurrentSprite
 	thumb_func_start ZombieLungingInit
 ZombieLungingInit: @ 0x080226B0
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080226D2
 	ldr r1, _080226D8 @ =gCurrentSprite
@@ -1771,7 +1771,7 @@ _080227A0:
 _080227D0:
 	strh r0, [r4, #4]
 _080227D2:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080227EC
 	ldr r1, _080227F8 @ =gCurrentSprite
@@ -1795,7 +1795,7 @@ _080227FC: .4byte 0x082FB488
 	thumb_func_start ZombieCheckLungingAnimEnded
 ZombieCheckLungingAnimEnded: @ 0x08022800
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08022812
 	ldr r0, _08022818 @ =gCurrentSprite
@@ -2443,7 +2443,7 @@ _08022D84: .4byte 0x082FCF08
 	thumb_func_start GeemerUncoveering
 GeemerUncoveering: @ 0x08022D88
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08022DA2
 	bl GeemerSetHitbox
@@ -3140,7 +3140,7 @@ GeemerIdle: @ 0x080232AC
 _080232C4: .4byte gPreviousCollisionCheck
 _080232C8: .4byte gCurrentSprite
 _080232CC:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080232DC
 	ldr r0, _080232E4 @ =gCurrentSprite
@@ -4101,7 +4101,7 @@ _08023AF2:
 	mov r2, ip
 	strh r0, [r2, #0xe]
 _08023AF6:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08023B0E
 	ldr r1, _08023B1C @ =gCurrentSprite
@@ -4512,7 +4512,7 @@ _08023E2C: .4byte 0x0000FF7F
 	thumb_func_start ArachnusScreaming
 ArachnusScreaming: @ 0x08023E30
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08023E76
 	movs r0, #0x1a
@@ -4869,7 +4869,7 @@ _08024184:
 	movs r0, #0xbc
 	bl SoundPlay
 _0802418A:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080241A2
 	ldr r1, _080241AC @ =gCurrentSprite
@@ -5419,7 +5419,7 @@ _080245C8: .4byte 0x08302C6C
 	thumb_func_start ArachnusIdle
 ArachnusIdle: @ 0x080245CC
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802460C
 	ldr r2, _080245F0 @ =gCurrentSprite
@@ -5529,7 +5529,7 @@ _0802469C:
 _080246A0:
 	strh r0, [r3, #0x10]
 _080246A2:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080246B2
 	ldr r0, _080246B8 @ =gCurrentSprite
@@ -6438,7 +6438,7 @@ _08024EA8:
 	movs r0, #0x1a
 	bl SpriteSpawnSecondary
 _08024EC6:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	bne _08024ED0
 	b _08024FD2
@@ -6452,7 +6452,7 @@ _08024ED0:
 	.align 2, 0
 _08024EDC: .4byte gCurrentSprite
 _08024EE0:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08024FD2
 	ldr r1, _08024F04 @ =gCurrentSprite
@@ -6473,7 +6473,7 @@ _08024F04: .4byte gCurrentSprite
 _08024F08: .4byte 0x083030C8
 _08024F0C: .4byte 0x0000FF80
 _08024F10:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08024FD2
 	ldr r1, _08024F34 @ =gCurrentSprite
@@ -6495,7 +6495,7 @@ _08024F34: .4byte gCurrentSprite
 _08024F38: .4byte 0x08303100
 _08024F3C: .4byte 0x0000FFA0
 _08024F40:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08024FD2
 	ldr r1, _08024F64 @ =gCurrentSprite
@@ -6516,7 +6516,7 @@ _08024F64: .4byte gCurrentSprite
 _08024F68: .4byte 0x08303138
 _08024F6C: .4byte 0x0000FFC0
 _08024F70:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08024FD2
 	ldr r1, _08024F8C @ =gCurrentSprite
@@ -8517,7 +8517,7 @@ CoreXShell: @ 0x08025F90
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	bne _08025FCE
 	b _08026338
@@ -10298,7 +10298,7 @@ _08026E90:
 	ldr r0, _08026F10 @ =0x08317590
 	cmp r1, r0
 	bne _08026EA8
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08026EA8
 	ldr r0, _08026F14 @ =0x08317580
@@ -10612,7 +10612,7 @@ _080270EA:
 	thumb_func_start WaverCheckBackingOutAnimEnded
 WaverCheckBackingOutAnimEnded: @ 0x080270F0
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08027116
 	ldr r2, _0802711C @ =gCurrentSprite
@@ -10639,7 +10639,7 @@ _08027120: .4byte 0x083175C0
 	thumb_func_start WaverCheckTurningAnimNearEnded
 WaverCheckTurningAnimNearEnded: @ 0x08027124
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08027136
 	ldr r0, _0802713C @ =gCurrentSprite
@@ -12328,7 +12328,7 @@ SciserIdle: @ 0x08027E9C
 	.align 2, 0
 _08027EB0: .4byte gCurrentSprite
 _08027EB4:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08027EC4
 	ldr r0, _08027EC8 @ =gCurrentSprite
@@ -12726,7 +12726,7 @@ SciserProjectileExploding: @ 0x080281A0
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080281B8
 	movs r0, #0
@@ -13299,7 +13299,7 @@ SidehopperPreparingToJumpGround: @ 0x08028678
 _080286B8: .4byte gCurrentSprite
 _080286BC: .4byte gPreviousCollisionCheck
 _080286C0:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080286CC
 	bl SidehopperJumpingInit
@@ -13319,7 +13319,7 @@ SidehopperPreparingToJumpCeiling: @ 0x080286D4
 	ands r0, r1
 	cmp r0, #0
 	bne _080286F0
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080286F0
 	bl SidehopperJumpingInit
@@ -13831,7 +13831,7 @@ _08028AC8: .4byte gCurrentSprite
 	thumb_func_start SidehopperLanding
 SidehopperLanding: @ 0x08028ACC
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08028ADA
 	bl SidehopperIdle
@@ -14043,7 +14043,7 @@ SidehopperIdleGround: @ 0x08028C2C
 _08028C6C: .4byte gCurrentSprite
 _08028C70: .4byte gPreviousCollisionCheck
 _08028C74:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08028CB0
 	ldr r2, _08028C9C @ =gCurrentSprite
@@ -14086,7 +14086,7 @@ SidehopperIdleCeiling: @ 0x08028CBC
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08028CEA
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08028D04
 	ldr r2, _08028CF0 @ =gCurrentSprite
@@ -14700,7 +14700,7 @@ DessgeegaJumpWarningGround: @ 0x080291EC
 _0802922C: .4byte gCurrentSprite
 _08029230: .4byte gPreviousCollisionCheck
 _08029234:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08029240
 	bl DesgeegaJumpingGroundInit
@@ -14720,7 +14720,7 @@ DessgeegaJumpWarningCeiling: @ 0x08029248
 	ands r0, r1
 	cmp r0, #0
 	bne _08029264
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08029264
 	bl DesgeegaJumpingGroundInit
@@ -15232,7 +15232,7 @@ _0802963C: .4byte gCurrentSprite
 	thumb_func_start DessgeegaLanding
 DessgeegaLanding: @ 0x08029640
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802964E
 	bl DessgeegaIdleInit
@@ -15444,7 +15444,7 @@ DessgeegaIdleGround: @ 0x080297A0
 _080297E0: .4byte gCurrentSprite
 _080297E4: .4byte gPreviousCollisionCheck
 _080297E8:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08029824
 	ldr r2, _08029810 @ =gCurrentSprite
@@ -15487,7 +15487,7 @@ DessgeegaIdleCeiling: @ 0x08029830
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0802985E
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08029878
 	ldr r2, _08029864 @ =gCurrentSprite
@@ -15662,7 +15662,7 @@ DessgeegaSpikeExploding: @ 0x08029970
 	ands r0, r1
 	cmp r0, #0
 	beq _08029990
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08029992
 _08029990:
@@ -16456,7 +16456,7 @@ _0802A05C:
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	lsls r2, r5, #3
 	cmp r0, #0
 	beq _0802A070
@@ -16714,7 +16714,7 @@ _0802A250: .4byte gCurrentSprite
 	thumb_func_start NavPadPressingSwitch
 NavPadPressingSwitch: @ 0x0802A254
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802A272
 	ldr r1, _0802A278 @ =gCurrentSprite
@@ -16798,7 +16798,7 @@ _0802A2F8: .4byte 0x0831E2F0
 	thumb_func_start NavPadReleasingSwitch
 NavPadReleasingSwitch: @ 0x0802A2FC
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802A30A
 	bl NavPadIdleInit
@@ -17154,7 +17154,7 @@ _0802A5B0: .4byte 0x0831E340
 	thumb_func_start NavScreenTurningOn
 NavScreenTurningOn: @ 0x0802A5B4
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802A5D0
 	ldr r1, _0802A5D4 @ =gCurrentSprite
@@ -17211,7 +17211,7 @@ _0802A61C: .4byte 0x0831E390
 	thumb_func_start NavScreenTurningOff
 NavScreenTurningOff: @ 0x0802A620
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802A630
 	ldr r1, _0802A634 @ =gCurrentSprite
@@ -17749,7 +17749,7 @@ _0802AA88:
 	bl DisplayMessage
 	b _0802AB0A
 _0802AA92:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802AB0A
 	ldr r0, _0802AAB8 @ =0x0831F808
@@ -17928,7 +17928,7 @@ _0802ABE0: .4byte 0x0831F7B0
 	thumb_func_start MesageBannerRemoval
 MesageBannerRemoval: @ 0x0802ABE4
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802AC12
 	ldr r1, _0802AC18 @ =gCurrentSprite
@@ -18402,7 +18402,7 @@ _0802AFB0: .4byte gCurrentSprite
 	thumb_func_start DataPadPressingSwitch
 DataPadPressingSwitch: @ 0x0802AFB4
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802AFD2
 	ldr r1, _0802AFD8 @ =gCurrentSprite
@@ -18485,7 +18485,7 @@ _0802B058: .4byte 0x08321A0C
 	thumb_func_start DataPadReleasingSwitch
 DataPadReleasingSwitch: @ 0x0802B05C
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802B06A
 	bl DataPadIdleInit
@@ -18839,7 +18839,7 @@ _0802B30C: .4byte 0x08321A9C
 	thumb_func_start DataPadSidesEngaging
 DataPadSidesEngaging: @ 0x0802B310
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802B32E
 	ldr r1, _0802B334 @ =gCurrentSprite
@@ -18941,7 +18941,7 @@ _0802B3D8: .4byte 0x00000109
 	thumb_func_start DataPadSidesDisengaging
 DataPadSidesDisengaging: @ 0x0802B3DC
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802B400
 	ldr r1, _0802B404 @ =gCurrentSprite
@@ -19613,7 +19613,7 @@ _0802B994: .4byte 0x083237D0
 	thumb_func_start ZebesianWallTurningAround
 ZebesianWallTurningAround: @ 0x0802B998
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802B9F0
 	ldr r3, _0802B9D8 @ =gCurrentSprite
@@ -19734,7 +19734,7 @@ _0802BA7C: .4byte 0x08323728
 	thumb_func_start ZebesianWallIdle
 ZebesianWallIdle: @ 0x0802BA80
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802BA8E
 	bl unk_2b690
@@ -19813,7 +19813,7 @@ _0802BAFC:
 	movs r1, #0
 	bl SpriteSpawnSecondary
 _0802BB1A:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802BB26
 	bl unk_2b690
@@ -19904,7 +19904,7 @@ _0802BBC8: .4byte 0x0000015D
 	thumb_func_start ZebesianBeamSpawning
 ZebesianBeamSpawning: @ 0x0802BBCC
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802BC10
 	ldr r2, _0802BBFC @ =gCurrentSprite
@@ -19943,7 +19943,7 @@ _0802BC10:
 	thumb_func_start ZebesianBeamExtending
 ZebesianBeamExtending: @ 0x0802BC14
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802BC58
 	ldr r2, _0802BC44 @ =gCurrentSprite
@@ -20440,7 +20440,7 @@ _0802C094: .4byte gCurrentSprite
 	thumb_func_start RechargePadOpening
 RechargePadOpening: @ 0x0802C098
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802C0B6
 	ldr r1, _0802C0BC @ =gCurrentSprite
@@ -20565,7 +20565,7 @@ _0802C18C: .4byte 0x083257A8
 	thumb_func_start RechargePadClosing
 RechargePadClosing: @ 0x0802C190
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802C19E
 	bl RechargePadIdleInit
@@ -20822,7 +20822,7 @@ _0802C37C: .4byte 0x08325710
 	thumb_func_start RechargePadMonitorExtended
 RechargePadMonitorExtended: @ 0x0802C380
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802C3B4
 	ldr r1, _0802C3B8 @ =gCurrentSprite
@@ -20892,7 +20892,7 @@ _0802C40C: .4byte 0x08325758
 	thumb_func_start RechargePadMonitorRetracting
 RechargePadMonitorRetracting: @ 0x0802C410
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802C42C
 	ldr r1, _0802C430 @ =gCurrentSprite
@@ -21644,7 +21644,7 @@ _0802CA7C: .4byte 0x08327878
 	thumb_func_start AtmosphericStabilizerBackOnline
 AtmosphericStabilizerBackOnline: @ 0x0802CA80
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802CABA
 	ldr r3, _0802CAA8 @ =gCurrentSprite
@@ -25208,7 +25208,7 @@ _0802E5C4: .4byte 0x0832B0C8
 BeamCoreXEyeOpening: @ 0x0802E5C8
 	push {lr}
 	bl BeamCoreXEyeHandleRotation
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802E5FA
 	ldr r1, _0802E600 @ =gCurrentSprite
@@ -25700,7 +25700,7 @@ _0802E97C: .4byte gSpriteData
 BeamCoreXEyeClosing: @ 0x0802E980
 	push {lr}
 	bl BeamCoreXEyeHandleRotation
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802E9B0
 	ldr r3, _0802E9B4 @ =gCurrentSprite
@@ -27204,7 +27204,7 @@ _0802F5EA:
 	movs r0, #1
 _0802F5F0:
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802F612
 	ldr r1, _0802F618 @ =gCurrentSprite
@@ -27674,7 +27674,7 @@ KagoInsectExploding: @ 0x0802F984
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802F99C
 	movs r0, #0
@@ -27932,7 +27932,7 @@ _0802FB58:
 	.align 2, 0
 _0802FB88: .4byte gPreviousCollisionCheck
 _0802FB8C:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802FB98
 	bl KagoInsectJumpingInit
@@ -29712,7 +29712,7 @@ _08030A44: .4byte 0x0833900C
 	thumb_func_start GateOpening
 GateOpening: @ 0x08030A48
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08030A84
 	ldr r1, _08030A78 @ =gCurrentSprite
@@ -29902,7 +29902,7 @@ GateSwitchPressing: @ 0x08030B9C
 	movs r5, #0
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08030C1E
 	adds r1, r4, #0
@@ -30200,7 +30200,7 @@ ElectricWaterDamageStopping: @ 0x08030DC0
 	strh r0, [r4, #2]
 	ldrh r0, [r1, #0x16]
 	strh r0, [r4, #4]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08030E00
 	ldrh r0, [r4]
@@ -31677,7 +31677,7 @@ _08031920: .4byte gCurrentSprite
 	thumb_func_start ZoroTurningAround
 ZoroTurningAround: @ 0x08031924
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803193A
 	ldr r0, _08031940 @ =gCurrentSprite
@@ -31694,7 +31694,7 @@ _08031940: .4byte gCurrentSprite
 	thumb_func_start ZoroTurningAroundSecondPart
 ZoroTurningAroundSecondPart: @ 0x08031944
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08031956
 	ldr r0, _0803195C @ =gCurrentSprite
@@ -32568,7 +32568,7 @@ kihunterGroundJumpWarning: @ 0x08032058
 _0803208C: .4byte gCurrentSprite
 _08032090: .4byte gPreviousCollisionCheck
 _08032094:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080320A0
 	bl KihhunterGroundJumpInit
@@ -32782,7 +32782,7 @@ _0803222E:
 	thumb_func_start KihunterGroundLanding
 KihunterGroundLanding: @ 0x08032234
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08032284
 	bl KihunterGroundCheckInSpittingrange
@@ -32933,7 +32933,7 @@ KihunterGroundIdle: @ 0x0803232C
 _08032360: .4byte gCurrentSprite
 _08032364: .4byte gPreviousCollisionCheck
 _08032368:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080323A0
 	bl KihunterGroundDetectSamus
@@ -32975,7 +32975,7 @@ KihunterGroundTurningAround: @ 0x080323A8
 	subs r0, #4
 	strh r0, [r4, #2]
 _080323B8:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080323DC
 	ldrh r1, [r4]
@@ -33052,7 +33052,7 @@ _08032430:
 _0803244E:
 	strh r0, [r4, #4]
 _08032450:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803245C
 	bl KihunterIdleInit
@@ -33123,7 +33123,7 @@ _080324D4:
 	lsls r0, r0, #1
 	bl SoundPlayNotAlreadyPlaying
 _080324DC:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080324F8
 	ldr r1, _08032500 @ =gCurrentSprite
@@ -33500,7 +33500,7 @@ _080327A8:
 	thumb_func_start KihunterTurningAround
 KihunterTurningAround: @ 0x080327B4
 	push {r4, lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080327DC
 	ldr r2, _080327E4 @ =gCurrentSprite
@@ -33529,7 +33529,7 @@ _080327E8: .4byte 0x0833E604
 	thumb_func_start KihunterFlyingTurningAroundSecondPart
 KihunterFlyingTurningAroundSecondPart: @ 0x080327EC
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080327FA
 	bl KihunterFlyingIdleInit
@@ -33591,7 +33591,7 @@ _0803284E:
 	lsls r0, r0, #1
 	bl SoundPlayNotAlreadyPlaying
 _0803286A:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803287E
 	ldr r0, _08032888 @ =gCurrentSprite
@@ -33938,7 +33938,7 @@ KihunterFlyingAfterSwooping: @ 0x08032B00
 	mov r6, r8
 	push {r6, r7}
 	movs r7, #0
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08032B24
 	ldr r2, _08032B7C @ =gCurrentSprite
@@ -34512,7 +34512,7 @@ KihunterSpitExploding: @ 0x08032F54
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08032F6C
 	movs r0, #0
@@ -37257,7 +37257,7 @@ _08034636:
 	ldrh r0, [r4, #2]
 	subs r0, #0xe
 	strh r0, [r4, #2]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803464E
 _08034646:
@@ -37324,7 +37324,7 @@ LavaPlumeStop: @ 0x080346AC
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080346EA
 	adds r1, r4, #0
@@ -38411,7 +38411,7 @@ FuneSpitExploding: @ 0x08034F60
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08034F78
 	movs r0, #0
@@ -39293,7 +39293,7 @@ NamiheSpitExploding: @ 0x08035618
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08035630
 	movs r0, #0
@@ -40466,7 +40466,7 @@ _080360F8: .4byte 0x0000026A
 	thumb_func_start BoxWaitingToRun
 BoxWaitingToRun: @ 0x080360FC
 	push {lr}
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _08036120
 	ldr r1, _08036138 @ =gCurrentSprite
@@ -40561,7 +40561,7 @@ _080361A6:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080361EA
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _080361D8
 	ldrb r0, [r4]
@@ -40837,7 +40837,7 @@ _080363D0: .4byte 0x08342FB8
 	thumb_func_start BoxStopSkidding
 BoxStopSkidding: @ 0x080363D4
 	push {lr}
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _080363F4
 	ldr r1, _080363F0 @ =gCurrentSprite
@@ -41021,7 +41021,7 @@ _08036540: .4byte 0x00000266
 	thumb_func_start BoxLandingFromBonk
 BoxLandingFromBonk: @ 0x08036544
 	push {lr}
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _08036556
 	ldr r0, _0803655C @ =gCurrentSprite
@@ -41064,7 +41064,7 @@ _08036594: .4byte 0x00000266
 	thumb_func_start BoxLanding
 BoxLanding: @ 0x08036598
 	push {lr}
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _080365CC
 	ldr r1, _080365B4 @ =gCurrentSprite
@@ -41144,7 +41144,7 @@ BoxFinishedCrawling: @ 0x0803660C
 	.align 2, 0
 _0803662C: .4byte gCurrentSprite
 _08036630:
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _08036662
 	bl SamusCheckOnCeilingLadder
@@ -41217,7 +41217,7 @@ _080366B0: .4byte gCurrentSprite
 	thumb_func_start BoxJumpWarning
 BoxJumpWarning: @ 0x080366B4
 	push {lr}
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _080366C6
 	ldr r0, _080366CC @ =gCurrentSprite
@@ -41423,7 +41423,7 @@ BoxStoppingToFireBomb: @ 0x08036838
 	.align 2, 0
 _08036858: .4byte gCurrentSprite
 _0803685C:
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _0803686C
 	adds r1, r5, #0
@@ -41568,7 +41568,7 @@ _0803697A:
 	thumb_func_start BoxDoneFiringBomb
 BoxDoneFiringBomb: @ 0x08036984
 	push {lr}
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _08036996
 	ldr r0, _0803699C @ =gCurrentSprite
@@ -41867,7 +41867,7 @@ _08036BC2:
 	lsrs r0, r0, #0x10
 	cmp r0, #0xbe
 	bhi _08036BEA
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _08036BEA
 	adds r1, r4, #0
@@ -41928,7 +41928,7 @@ _08036C48:
 _08036C4C:
 	strb r1, [r0]
 _08036C4E:
-	bl SpriteUtilCheckNearEndOfSubSpriteData1Animation
+	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _08036C62
 	ldr r0, _08036C68 @ =gCurrentSprite
@@ -43807,7 +43807,7 @@ _08037BB6:
 	ldr r4, _08037C0C @ =gCurrentSprite
 	movs r6, #0
 	strh r5, [r4, #0xa]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08037BE0
 	ldr r0, _08037C10 @ =0x083480A8
@@ -45773,7 +45773,7 @@ _08038BAE:
 	lsls r0, r0, #1
 	bl SoundPlayNotAlreadyPlaying
 _08038BCC:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08038BE0
 	ldr r0, _08038BE4 @ =gCurrentSprite
@@ -46168,7 +46168,7 @@ _08038EC4: .4byte 0x08348C94
 	thumb_func_start GerudaTurningAround
 GerudaTurningAround: @ 0x08038EC8
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08038EE4
 	ldr r2, _08038EE8 @ =gCurrentSprite
@@ -46208,7 +46208,7 @@ _08038F0C: .4byte 0x08348C44
 	thumb_func_start GerudaAttackWarning
 GerudaAttackWarning: @ 0x08038F10
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08038F34
 	ldr r0, _08038F38 @ =gCurrentSprite
@@ -46811,7 +46811,7 @@ _08039454: .4byte gCurrentSprite
 	thumb_func_start MiscPadPressingSwitch
 MiscPadPressingSwitch: @ 0x08039458
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803948A
 	ldr r0, _08039470 @ =gCurrentSprite
@@ -46913,7 +46913,7 @@ _0803951C: .4byte 0x0834A0BC
 	thumb_func_start MiscPadReleasingSwitch
 MiscPadReleasingSwitch: @ 0x08039520
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803952E
 	bl MiscPadIdleInit
@@ -47633,7 +47633,7 @@ _08039B0C: .4byte gCurrentSprite
 	thumb_func_start OperationsRoomPadPressingSwitch
 OperationsRoomPadPressingSwitch: @ 0x08039B10
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08039B2E
 	ldr r1, _08039B34 @ =gCurrentSprite
@@ -47716,7 +47716,7 @@ _08039BB4: .4byte 0x0834C2CC
 	thumb_func_start OperationsRoomPadReleasing
 OperationsRoomPadReleasing: @ 0x08039BB8
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08039BC6
 	bl OperationsRoomPadIdleInit
@@ -48027,7 +48027,7 @@ _08039E18: .4byte 0x0834C31C
 	thumb_func_start OperationsRoomPadScreenTurningOn
 OperationsRoomPadScreenTurningOn: @ 0x08039E1C
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08039E38
 	ldr r1, _08039E3C @ =gCurrentSprite
@@ -48084,7 +48084,7 @@ _08039E84: .4byte 0x0834C354
 	thumb_func_start OperationsRoomPadScreenTurningOff
 OperationsRoomPadScreenTurningOff: @ 0x08039E88
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08039E98
 	ldr r1, _08039E9C @ =gCurrentSprite
@@ -49273,7 +49273,7 @@ _0803A7C0: .4byte 0x00000191
 	thumb_func_start SkulteraTurningAround
 SkulteraTurningAround: @ 0x0803A7C4
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803A7E0
 	bl SkulteraIdleInit
@@ -49699,7 +49699,7 @@ _0803ABAC: .4byte 0x083505B4
 ZeelaShootProjectiles: @ 0x0803ABB0
 	push {r4, r5, lr}
 	sub sp, #0xc
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803ABDC
 	ldr r0, _0803ABD8 @ =gCurrentSprite
@@ -50471,7 +50471,7 @@ ZeelaTurningAround: @ 0x0803B174
 	.align 2, 0
 _0803B188: .4byte gCurrentSprite
 _0803B18C:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803B19C
 	ldr r0, _0803B1A0 @ =gCurrentSprite
@@ -50847,7 +50847,7 @@ ZeelaProjectileExploding: @ 0x0803B448
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803B460
 	movs r0, #0
@@ -52520,7 +52520,7 @@ SovaFireExploding: @ 0x0803C1B0
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803C1C8
 	movs r0, #0
@@ -53299,7 +53299,7 @@ _0803C870: .4byte 0x00000195
 	thumb_func_start YardCharging
 YardCharging: @ 0x0803C874
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803C892
 	ldr r0, _0803C898 @ =gCurrentSprite
@@ -53536,7 +53536,7 @@ _0803CA34: .4byte gCurrentSprite
 	thumb_func_start YardRecoil
 YardRecoil: @ 0x0803CA38
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803CA52
 	ldr r1, _0803CA58 @ =gCurrentSprite
@@ -54165,7 +54165,7 @@ YardStartled: @ 0x0803CEDC
 	.align 2, 0
 _0803CEF4: .4byte gCurrentSprite
 _0803CEF8:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803CF10
 	ldr r1, _0803CF14 @ =gCurrentSprite
@@ -54682,7 +54682,7 @@ _0803D2E8: .4byte gCurrentSprite
 	thumb_func_start YardTurningAround
 YardTurningAround: @ 0x0803D2EC
 	push {r4, lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803D332
 	ldr r4, _0803D318 @ =gCurrentSprite
@@ -54726,7 +54726,7 @@ _0803D338: .4byte gCurrentSprite
 	thumb_func_start YardTurningAroundSecondPart
 YardTurningAroundSecondPart: @ 0x0803D33C
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803D34E
 	ldr r0, _0803D354 @ =gCurrentSprite
@@ -55036,7 +55036,7 @@ YardProjectileExploding: @ 0x0803D580
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803D598
 	movs r0, #0
@@ -55612,7 +55612,7 @@ _0803DA94: .4byte 0x08356B04
 EvirShooting: @ 0x0803DA98
 	push {r4, lr}
 	sub sp, #0xc
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803DAB4
 	ldr r0, _0803DAB0 @ =gCurrentSprite
@@ -55891,7 +55891,7 @@ _0803DCBC: .4byte 0x08356B44
 	thumb_func_start EvirTurningAround
 EvirTurningAround: @ 0x0803DCC0
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803DCE6
 	ldr r2, _0803DCEC @ =gCurrentSprite
@@ -55918,7 +55918,7 @@ _0803DCF0: .4byte 0x08356B64
 	thumb_func_start EvirTurningAroundSecondPart
 EvirTurningAroundSecondPart: @ 0x0803DCF4
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803DD06
 	ldr r0, _0803DD0C @ =gCurrentSprite
@@ -56426,7 +56426,7 @@ EvirProjectileExploding: @ 0x0803E0A4
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803E0BC
 	movs r0, #0
@@ -57185,7 +57185,7 @@ _0803E720:
 	movs r0, #1
 	strb r0, [r1]
 _0803E734:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803E750
 	movs r2, #0
@@ -58482,7 +58482,7 @@ _0803F1AC: .4byte 0x0000019D
 	thumb_func_start GerubossCharging
 GerubossCharging: @ 0x0803F1B0
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803F1E8
 	ldr r1, _0803F1EC @ =gCurrentSprite
@@ -58585,7 +58585,7 @@ _0803F278: .4byte 0x08358EEC
 	thumb_func_start GerubossChagningDirection
 GerubossChagningDirection: @ 0x0803F27C
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803F2B0
 	ldr r1, _0803F2B4 @ =gCurrentSprite
@@ -58687,7 +58687,7 @@ _0803F344: .4byte 0x08358F3C
 	thumb_func_start GerubossGrabbingCeiling
 GerubossGrabbingCeiling: @ 0x0803F348
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803F35A
 	ldr r0, _0803F360 @ =gCurrentSprite
@@ -59082,7 +59082,7 @@ _0803F6FC: .4byte 0x0835990C
 	thumb_func_start ChootLaunching
 ChootLaunching: @ 0x0803F700
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803F712
 	ldr r0, _0803F718 @ =gCurrentSprite
@@ -59206,7 +59206,7 @@ _0803F7EC: .4byte 0x08359934
 	thumb_func_start ChootOpening
 ChootOpening: @ 0x0803F7F0
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803F802
 	ldr r0, _0803F808 @ =gCurrentSprite
@@ -59456,7 +59456,7 @@ ChootSpitExploding: @ 0x0803F9D0
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0803F9E8
 	movs r0, #0
@@ -60671,7 +60671,7 @@ _08040438: .4byte 0x0835C328
 	thumb_func_start ZebesianGroundTurningAround
 ZebesianGroundTurningAround: @ 0x0804043C
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08040462
 	ldr r2, _08040468 @ =gCurrentSprite
@@ -60698,7 +60698,7 @@ _0804046C: .4byte 0x0835C348
 	thumb_func_start ZebesianGroundTurningAroundSecondPart
 ZebesianGroundTurningAroundSecondPart: @ 0x08040470
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0804049A
 	ldr r1, _08040490 @ =gCurrentSprite
@@ -60743,7 +60743,7 @@ _080404B8: .4byte 0x0835C2D8
 	thumb_func_start ZebesianGroundJumpWarning
 ZebesianGroundJumpWarning: @ 0x080404BC
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080404F6
 	ldr r3, _080404FC @ =gCurrentSprite
@@ -60999,7 +60999,7 @@ _080406B4: .4byte 0x0835C310
 ZebesianGroundLanding: @ 0x080406B8
 	push {r4, r5, r6, r7, lr}
 	movs r7, #0
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0804077C
 	ldr r4, _080406DC @ =gCurrentSprite
@@ -61120,7 +61120,7 @@ _080407A8: .4byte 0x0835C1D8
 	thumb_func_start ZebesianGroundWaiting
 ZebesianGroundWaiting: @ 0x080407AC
 	push {lr}
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080407BE
 	ldr r0, _080407C4 @ =gCurrentSprite
@@ -61164,7 +61164,7 @@ ZebesianGroundStanding: @ 0x080407F8
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08040824
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08040824
 	ldr r1, _08040828 @ =gCurrentSprite
@@ -61375,7 +61375,7 @@ _08040968:
 	movs r1, #0
 	bl SpriteSpawnSecondary
 _080409A0:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080409B0
 	ldr r0, _080409B8 @ =gCurrentSprite
@@ -61580,7 +61580,7 @@ _08040B20: .4byte 0x0000015D
 	thumb_func_start ZebesianGroundBeamSpawning
 ZebesianGroundBeamSpawning: @ 0x08040B24
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08040B64
 	ldr r2, _08040B54 @ =gCurrentSprite
@@ -61620,7 +61620,7 @@ _08040B68: .4byte 0x0000FFA0
 	thumb_func_start ZebesianGroundBeamFired
 ZebesianGroundBeamFired: @ 0x08040B6C
 	push {lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08040BAC
 	ldr r2, _08040B9C @ =gCurrentSprite

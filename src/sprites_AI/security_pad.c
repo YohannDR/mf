@@ -230,7 +230,7 @@ void SecurityPadIdleActive(void)
  */
 void SecurityPadPressingSwitch(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.pose = SECURITY_PAD_POSE_GRABBING_SAMUS;
 
@@ -300,7 +300,7 @@ void SecurityPadGrabSamus(void)
  */
 void SecurityPadDepressingSwitch(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
         SecurityPadIdleActiveInit();
 }
 
@@ -409,7 +409,7 @@ void SecurityPadMonitorIdle(void)
  */
 void SecurityPadMonitorArmExtending(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.pOam = (const struct FrameData*)0x82f78ac;
         gCurrentSprite.animationDurationCounter = 0;
@@ -448,7 +448,7 @@ void SecurityPadMonitorUnlocking(void)
  */
 void SecurityPadMonitorArmRetracting(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.pOam = (const struct FrameData*)0x82f7754;
         gCurrentSprite.animationDurationCounter = 0;

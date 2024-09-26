@@ -162,7 +162,7 @@ void MotoIdle(void)
         return;
     }
 
-    if (!SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    if (!SpriteUtilCheckNearEndCurrentSpriteAnim())
         return;
 
     if (SpriteUtilCheckSamusNearSpriteFrontBehindX(BLOCK_SIZE * 2 + HALF_BLOCK_SIZE, BLOCK_SIZE * 5, BLOCK_SIZE * 5) == NSFB_BEHIND)
@@ -198,7 +198,7 @@ void MotoHittingWall(void)
         return;
     }
 
-    if (!SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    if (!SpriteUtilCheckNearEndCurrentSpriteAnim())
         return;
 
     gCurrentSprite.pose = MOTO_POSE_TURNING_AROUND_INIT;
@@ -394,7 +394,7 @@ void MotoWalking(void)
             }
             else
             {
-                if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+                if (SpriteUtilCheckNearEndCurrentSpriteAnim())
                 {
                     if (gSpriteRandomNumber > 12)
                         gCurrentSprite.pose = MOTO_POSE_IDLE_INIT;
@@ -475,7 +475,7 @@ void MotoCharging(void)
         SoundPlayNotAlreadyPlaying(0x158);
     }
 
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.pose = MOTO_POSE_WALKING_FASTER;
 
@@ -506,7 +506,7 @@ void MotoTurningInit(void)
  */
 void MotoTurning(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.pose = MOTO_POSE_TURNING_AROUND_SECOND_PART;
 
@@ -524,7 +524,7 @@ void MotoTurning(void)
  */
 void MotoTurningEnd(void)
 {
-    if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckNearEndCurrentSpriteAnim())
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
 }
 

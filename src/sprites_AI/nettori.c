@@ -839,7 +839,7 @@ void NettoriPlasmaBeamInit(void)
  */
 void NettoriPlasmaBeamEmerging(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.pOam = sNettoriPlasmaBeamOam_Charging;
         gCurrentSprite.animationDurationCounter = 0;
@@ -1175,7 +1175,7 @@ void SamusEaterBudTurningAroundInit(void)
  */
 void SamusEaterBudTurningAround(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.status ^= SPRITE_STATUS_X_FLIP;
         gCurrentSprite.pose = SAMUS_EATER_BUD_POSE_TURNING_AROUND_SECOND_PART;
@@ -1188,7 +1188,7 @@ void SamusEaterBudTurningAround(void)
  */
 void SamusEaterBudTurningAroundSecondPart(void)
 {
-    if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckNearEndCurrentSpriteAnim())
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
 }
 
@@ -1214,7 +1214,7 @@ void SamusEaterBudShooting(void)
         }
     }
 
-    if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckNearEndCurrentSpriteAnim())
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
 }
 
@@ -1430,7 +1430,7 @@ void SamusEaterSporeExploding(void)
 {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
         gCurrentSprite.status = 0;
 }
 

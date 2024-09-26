@@ -246,7 +246,7 @@ void SuperMissileBarrierStem(void)
         case 0x18:
             gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 gCurrentSprite.status = 0;
             }

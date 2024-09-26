@@ -1574,7 +1574,7 @@ u8 SpriteUtilMakeSpriteRotateTowardsTarget(s16 oamRotation, s16 targetY, s16 tar
  * 
  * @return u32 bool, ended
  */
-u32 SpriteUtilCheckEndOfCurrentSpriteAnimation(void)
+u32 SpriteUtilCheckEndCurrentSpriteAnim(void)
 {
     u8 adc;
     u16 caf;
@@ -1604,7 +1604,7 @@ u32 SpriteUtilCheckEndOfCurrentSpriteAnimation(void)
  * 
  * @return u32 bool, nearly ended
  */
-u32 SpriteUtilCheckNearEndOfCurrentSpriteAnimation(void)
+u32 SpriteUtilCheckNearEndCurrentSpriteAnim(void)
 {
     u8 adc;
     u16 caf;
@@ -1636,7 +1636,7 @@ u32 SpriteUtilCheckNearEndOfCurrentSpriteAnimation(void)
  * @param spriteSlot Sprite slot
  * @return u32 bool, ended
  */
-u32 SpriteUtilCheckEndOfSpriteAnimation(u8 spriteSlot)
+u32 SpriteUtilCheckEndSpriteAnim(u8 spriteSlot)
 {
     u8 adc;
     u16 caf;
@@ -1667,7 +1667,7 @@ u32 SpriteUtilCheckEndOfSpriteAnimation(u8 spriteSlot)
  * @param spriteSlot Sprite slot
  * @return u32 bool, ended
  */
-u32 SpriteUtilCheckNearEndOfSpriteAnimation(u8 spriteSlot)
+u32 SpriteUtilCheckNearEndSpriteAnim(u8 spriteSlot)
 {
     u8 adc;
     u16 caf;
@@ -1698,7 +1698,7 @@ u32 SpriteUtilCheckNearEndOfSpriteAnimation(u8 spriteSlot)
  * 
  * @return u32 bool, ended
  */
-u32 SpriteUtilCheckEndOfSubSpriteData1Animation(void)
+u32 SpriteUtilCheckEndSubSprite1Anim(void)
 {
     u8 adc;
     u16 caf;
@@ -1728,7 +1728,7 @@ u32 SpriteUtilCheckEndOfSubSpriteData1Animation(void)
  * 
  * @return u32 bool, ended
  */
-u32 SpriteUtilCheckNearEndOfSubSpriteData1Animation(void)
+u32 SpriteUtilCheckNearEndSubSprite1Anim(void)
 {
     u8 adc;
     u16 caf;

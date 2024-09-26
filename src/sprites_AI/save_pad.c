@@ -420,7 +420,7 @@ void SavePadHologramInit(void)
  */
 void SavePadHologramOpening(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.pOam = sSavePadHologramOam_Flashing;
         gCurrentSprite.animationDurationCounter = 0;
@@ -452,7 +452,7 @@ void SavePadHologramFlashing(void)
  */
 void SavePadHologramClosing(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
         gCurrentSprite.status = 0;
 }
 

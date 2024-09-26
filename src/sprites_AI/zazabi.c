@@ -470,7 +470,7 @@ void ZazabiIdleInit(void)
  */
 void ZazabiIdle(void)
 {
-    if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
+    if (SpriteUtilCheckNearEndSubSprite1Anim())
     {
         gCurrentSprite.work1--;
 
@@ -595,7 +595,7 @@ void ZazabiJumpWarningInit(void)
  */
 void ZazabiJumpWarning(void)
 {
-    if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
+    if (SpriteUtilCheckNearEndSubSprite1Anim())
     {
         gCurrentSprite.pose = ZAZABI_POSE_JUMPING_INIT;
 
@@ -1034,7 +1034,7 @@ void ZazabiLandingMouthOpen(void)
     if (gSubSpriteData1.currentAnimationFrame == 1 && gSubSpriteData1.animationDurationCounter == 1 && gSubSpriteData1.health != 40)
         SoundPlay(0x27F);
 
-    if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
+    if (SpriteUtilCheckNearEndSubSprite1Anim())
     {
         if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
         {
@@ -1079,7 +1079,7 @@ void ZazabiLandingInit(void)
  */
 void ZazabiLanding(void)
 {
-    if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
+    if (SpriteUtilCheckNearEndSubSprite1Anim())
         gCurrentSprite.pose = ZAZABI_POSE_JUMPING_INIT;
 }
 
@@ -1152,7 +1152,7 @@ void ZazabiEatingSamus2(void)
     }
     else
     {
-        if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
+        if (SpriteUtilCheckNearEndSubSprite1Anim())
         {
             gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_3_INIT;
             SoundPlay(0x281);
@@ -1241,7 +1241,7 @@ void ZazabiEatingSamus4(void)
     }
     else
     {
-        if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
+        if (SpriteUtilCheckNearEndSubSprite1Anim())
         {
             gCurrentSprite.pose = ZAZABI_POSE_EATING_SAMUS_5_INIT;
             SoundPlay(0x281);
@@ -1327,7 +1327,7 @@ void ZazabiSpittingSamus(void)
         gBossWork0 = FALSE;
     }
 
-    if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
+    if (SpriteUtilCheckNearEndSubSprite1Anim())
         gCurrentSprite.pose = ZAZABI_POSE_LANDING_AFTER_SPITTING_INIT;
 }
 
@@ -1356,7 +1356,7 @@ void ZazabiLandingAfterSpittingInit(void)
  */
 void ZazabiLandingAfterSpitting(void)
 {
-    if (SpriteUtilCheckNearEndOfSubSpriteData1Animation())
+    if (SpriteUtilCheckNearEndSubSprite1Anim())
         gCurrentSprite.pose = ZAZABI_POSE_IDLE_INIT;
 }
 
@@ -1850,7 +1850,7 @@ void ZazabiPartPupil(void)
         case ZAZABI_POSE_IDLE:
             if (gCurrentSprite.pOam == sZazabiPartOam_PupilBlinking)
             {
-                if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+                if (SpriteUtilCheckEndCurrentSpriteAnim())
                 {
                     gCurrentSprite.pOam = sZazabiPartOam_PupilClosed;
                     gCurrentSprite.animationDurationCounter = 0;

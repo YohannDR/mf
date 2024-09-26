@@ -301,7 +301,7 @@ void GadoraOpeningEyeInit(void)
  */
 void GadoraOpeningEye(void)
 {
-    if (!SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (!SpriteUtilCheckEndCurrentSpriteAnim())
         return;
 
     // Determine whether or not to shoot, ~50% chance and didn't already shoot more than 3 beams
@@ -408,7 +408,7 @@ void GadoraShooting(void)
  */
 void GadoraClosingEye(void)
 {
-    if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckNearEndCurrentSpriteAnim())
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
 }
 

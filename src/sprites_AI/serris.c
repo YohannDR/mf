@@ -1935,7 +1935,7 @@ void SerrisBlockCrumbling(void)
             gCurrentSprite.currentAnimationFrame = 0;
         }
     }
-    else if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    else if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         // Finished crumbling, set falling
         if (gCurrentSprite.roomSlot != 0)

@@ -15941,7 +15941,7 @@ HornoadIdle: @ 0x0801CDF0
 _0801CE24: .4byte gCurrentSprite
 _0801CE28: .4byte gPreviousCollisionCheck
 _0801CE2C:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801CE38
 	bl HornoadJumpingInit
@@ -16248,7 +16248,7 @@ _0801D072:
 	thumb_func_start HornoadLanding
 HornoadLanding: @ 0x0801D078
 	push {r4, lr}
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801D112
 	ldr r4, _0801D0C0 @ =gCurrentSprite
@@ -16437,7 +16437,7 @@ HornoadTurningIdle: @ 0x0801D1BC
 _0801D1F0: .4byte gCurrentSprite
 _0801D1F4: .4byte gPreviousCollisionCheck
 _0801D1F8:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801D230
 	bl HornoadCheckSamusInJumpingRange
@@ -16497,7 +16497,7 @@ HornoadWaitingForX: @ 0x0801D238
 _0801D26C: .4byte gCurrentSprite
 _0801D270: .4byte gPreviousCollisionCheck
 _0801D274:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801D29E
 	ldr r0, _0801D2A4 @ =gCurrentSprite
@@ -16535,7 +16535,7 @@ HornoadTurning: @ 0x0801D2AC
 	subs r0, #4
 	strh r0, [r4, #2]
 _0801D2BC:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801D300
 	ldrh r1, [r4]
@@ -16626,7 +16626,7 @@ _0801D350:
 _0801D36E:
 	strh r0, [r4, #4]
 _0801D370:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801D37C
 	bl HornoadSetRandomIdleAnimation
@@ -16696,7 +16696,7 @@ _0801D3F4:
 	ldr r0, _0801D420 @ =0x0000014B
 	bl SoundPlayNotAlreadyPlaying
 _0801D3FA:
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801D416
 	ldr r1, _0801D424 @ =gCurrentSprite
@@ -16876,7 +16876,7 @@ HornoadSpitExploding: @ 0x0801D54C
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801D564
 	movs r0, #0
@@ -17135,7 +17135,7 @@ _0801D72C:
 HornoadSpawnerSpawnHornoad: @ 0x0801D734
 	push {lr}
 	sub sp, #0xc
-	bl SpriteUtilCheckEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801D768
 	ldr r3, _0801D770 @ =gCurrentSprite
@@ -18153,7 +18153,7 @@ HalzynFlyingUp: @ 0x0801DFE4
 _0801E008: .4byte gCurrentSprite
 _0801E00C: .4byte gPreviousCollisionCheck
 _0801E010:
-	bl SpriteUtilCheckNearEndOfCurrentSpriteAnimation
+	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0801E020
 _0801E018:

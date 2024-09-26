@@ -356,7 +356,7 @@ void HalzynFlyingUp(void)
     {
         gCurrentSprite.yPosition -= PIXEL_SIZE / 2;
     }
-    else if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    else if (SpriteUtilCheckNearEndCurrentSpriteAnim())
     {
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
     }

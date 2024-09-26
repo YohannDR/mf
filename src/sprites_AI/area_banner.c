@@ -60,7 +60,7 @@ void AreaBannerMovingUp(void)
         return;
     }
 
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
@@ -108,7 +108,7 @@ void AreaBannerStatic(void)
  */
 void AreaBannerMovingDown(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
         gCurrentSprite.status = 0;
 }
 

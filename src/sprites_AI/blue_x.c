@@ -578,7 +578,7 @@ void BlueXAbsorbtionAbsorbing(void)
  */
 void BlueXAbsorbtionFadingAway(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
         gCurrentSprite.status = 0;
 }
 

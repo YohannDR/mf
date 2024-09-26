@@ -126,7 +126,7 @@ void RipperTurningAroundInit(void)
  */
 void RipperTurningAround(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.status ^= SPRITE_STATUS_X_FLIP;
         gCurrentSprite.pose = 0x5;
@@ -141,7 +141,7 @@ void RipperTurningAround(void)
  */
 void RipperTurningAroundSecondPart(void)
 {
-    if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckNearEndCurrentSpriteAnim())
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
 }
 

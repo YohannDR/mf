@@ -60,7 +60,7 @@ void Bubbles1(void)
             break;
 
         case 1:
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 gCurrentSprite.pose++;
                 gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
@@ -115,7 +115,7 @@ void Bubbles2(void)
             break;
 
         case 1:
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 gCurrentSprite.pose++;
                 gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
@@ -173,7 +173,7 @@ void WaterDrop(void)
             break;
 
         case 2:
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 // gCurrentSprite.pOam = sWaterDropOam_Falling;
                 gCurrentSprite.pOam = (const struct FrameData*)0x83ec270;
@@ -239,7 +239,7 @@ void WaterDrop(void)
             if (gCurrentSprite.work2)
                 gCurrentSprite.yPosition = gEffectYPosition;
 
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
                 gCurrentSprite.pose = 10;

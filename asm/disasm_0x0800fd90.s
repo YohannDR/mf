@@ -3526,8 +3526,8 @@ _08011924:
 	pop {r1}
 	bx r1
 
-	thumb_func_start SpriteUtilCheckEndOfCurrentSpriteAnimation
-SpriteUtilCheckEndOfCurrentSpriteAnimation: @ 0x08011934
+	thumb_func_start SpriteUtilCheckEndCurrentSpriteAnim
+SpriteUtilCheckEndCurrentSpriteAnim: @ 0x08011934
 	push {lr}
 	ldr r0, _08011960 @ =gCurrentSprite
 	ldrb r1, [r0, #0x1c]
@@ -3559,8 +3559,8 @@ _08011966:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SpriteUtilCheckNearEndOfCurrentSpriteAnimation
-SpriteUtilCheckNearEndOfCurrentSpriteAnimation: @ 0x0801196C
+	thumb_func_start SpriteUtilCheckNearEndCurrentSpriteAnim
+SpriteUtilCheckNearEndCurrentSpriteAnim: @ 0x0801196C
 	push {lr}
 	ldr r0, _0801199C @ =gCurrentSprite
 	ldrb r1, [r0, #0x1c]
@@ -3711,8 +3711,8 @@ _08011A6E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SpriteUtilCheckNearEndOfSubSpriteData1Animation
-SpriteUtilCheckNearEndOfSubSpriteData1Animation: @ 0x08011A74
+	thumb_func_start SpriteUtilCheckNearEndSubSprite1Anim
+SpriteUtilCheckNearEndSubSprite1Anim: @ 0x08011A74
 	push {lr}
 	ldr r0, _08011AA4 @ =gSubSpriteData1
 	ldrb r1, [r0, #6]
