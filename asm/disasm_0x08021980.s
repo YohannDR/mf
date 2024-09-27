@@ -41581,8 +41581,8 @@ _08036996:
 	.align 2, 0
 _0803699C: .4byte gCurrentSprite
 
-	thumb_func_start BoxDyingInit
-BoxDyingInit: @ 0x080369A0
+	thumb_func_start BoxDefeatedInit
+BoxDefeatedInit: @ 0x080369A0
 	ldr r1, _080369CC @ =gCurrentSprite
 	ldr r0, _080369D0 @ =0x08347BD8
 	str r0, [r1, #0x18]
@@ -41610,8 +41610,8 @@ _080369D0: .4byte 0x08347BD8
 _080369D4: .4byte gSubSpriteData1
 _080369D8: .4byte 0x08342DF0
 
-	thumb_func_start BoxDying
-BoxDying: @ 0x080369DC
+	thumb_func_start BoxDefeated
+BoxDefeated: @ 0x080369DC
 	push {r4, r5, lr}
 	ldr r1, _08036A08 @ =gCurrentSprite
 	adds r5, r1, #0
@@ -45203,9 +45203,9 @@ _08038754:
 	bl BoxFirstJump
 	b _0803878A
 _0803875A:
-	bl BoxDyingInit
+	bl BoxDefeatedInit
 _0803875E:
-	bl BoxDying
+	bl BoxDefeated
 	b _0803878A
 _08038764:
 	bl BoxMovingToFinalJumpInit

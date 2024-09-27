@@ -78,10 +78,18 @@ def ParsePart1(part0, value):
 def ParsePart2(value):
     result = ""
 
-    if value & 0x8000:
-        result = "OBJ_SPRITE_OAM | "
+    if value >> 12 & 0xF != 0:
+        result += f"OBJ_PALETTE_{value >> 12 & 0xF}"
     
-    result += hex(value & ~0x8000)
+    if value >> 10 & 3 != 0:
+        if result != "":
+            result += " | "
+        result += f"OBJ_PRIORITY_{value >> 10 & 3}"
+
+    if result != "":
+        result += " | "
+    
+    result += hex(value & 0x3FF)
 
     return result
 
