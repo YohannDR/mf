@@ -224,6 +224,7 @@ SECTIONS {
 
         asm/disasm_0x0801503C.o(.text);
 
+        src/sprites_AI/halzyn.o(.text);
         src/sprites_AI/movable_platform.o(.text);
         src/sprites_AI/moto.o(.text);
         src/sprites_AI/save_pad.o(.text);
@@ -281,6 +282,7 @@ SECTIONS {
         src/data/sprite_data.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
+        src/data/sprites/halzyn.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
         src/data/sprites/moto.o(.rodata);
         src/data/sprites/save_pad.o(.rodata);

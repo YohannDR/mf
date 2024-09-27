@@ -1,9 +1,6 @@
 #include "sprites_AI/halzyn.h"
-#include "sprite_util.h"
-#include "sprite.h"
 #include "macros.h"
 #include "globals.h"
-#include "sprite_debris.h"
 
 #include "data/sprite_data.h"
 #include "data/sprites/halzyn.h"
@@ -14,6 +11,7 @@
 
 #include "structs/samus.h"
 #include "structs/sprite.h"
+#include "structs/sprite_debris.h"
 
 /**
  * @brief 1db0c | 138 | Initializes an halzyn sprite
@@ -143,6 +141,10 @@ void HalzynSwingingInit(void)
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
 }
 
+/**
+ * @brief 1dd0c | 44 | Handles an halzyn swinging
+ * 
+ */
 void HalzynSwinging(void)
 {
     u8 bounce;
@@ -153,8 +155,8 @@ void HalzynSwinging(void)
 
     if (gCurrentSprite.work4 == 0)
     {
-        xMovement = sHalzynSwingingXVelocity[gCurrentSprite.work3 / 4];
-        yMovement = sHalzynSwingingYVelocity[gCurrentSprite.work3 / 4];
+        xMovement = (u16)sHalzynSwingingXVelocity[gCurrentSprite.work3 / 4]; //have to do this to make it matching
+        yMovement = (u16)sHalzynSwingingYVelocity[gCurrentSprite.work3 / 4];
 
         if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
         {
@@ -255,7 +257,7 @@ void HalzynLungingInit(void)
  */
 void HalzynLunging(void)
 {
-    u16 blockTop;
+    u32 blockTop;
     u16 yPosition;
     u16 xPosition;
     u8 offset;
@@ -551,7 +553,7 @@ void HalzynWingIdle(void)
  */
 void HalzynWingFalling(void)
 {
-    u16 blockTop;
+    u32 blockTop;
     u8 offset;
     s16 movement;
 
@@ -671,7 +673,7 @@ void Halzyn(void)
 
         case SPRITE_POSE_TURNING_INTO_X:
             HalzynTurningIntoX();
-            XParaisteInit();
+            XParasiteInit();
     }
 }
 
@@ -705,7 +707,7 @@ void HalzynWing(void)
             HalzynWingInit();
 
         default:
-            HalzynWingIlde();
+            HalzynWingIdle();
     }
 
     if (gCurrentSprite.health == 0 && gCurrentSprite.status & SPRITE_STATUS_EXISTS)

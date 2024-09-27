@@ -83,4 +83,4 @@ const s16 sTargetCirclesXMovement[81] = {
     SHORT_MAX
 };
 
-const u8 sBlob_2e6382_2ed2e8[28518] = INCBIN_U8("data/Blob_2e6382_2ed2e8.bin");
+const u8 sBlob_2e6382_2eb8ac[21802] = INCBIN_U8("data/Blob_2e6382_2eb8ac.bin");
