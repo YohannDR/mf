@@ -232,8 +232,9 @@ SECTIONS {
         src/sprites_AI/yameba.o(.text);
         src/sprites_AI/security_pad.o(.text);
         src/sprites_AI/area_banner.o(.text);
+        src/sprites_AI/skree.o(.text);
 
-        asm/disasm_0x08021980.o(.text);
+        asm/disasm_0x080220ec.o(.text);
 
         src/sprites_AI/blue_x.o(.text);
         src/sprites_AI/missile_hatch.o(.text);
@@ -290,6 +291,7 @@ SECTIONS {
         src/data/sprites/yameba.o(.rodata);
         src/data/sprites/security_pad.o(.rodata);
         src/data/sprites/area_banner.o(.rodata);
+        src/data/sprites/skree.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);
