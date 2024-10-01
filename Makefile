@@ -45,7 +45,7 @@ CPPFLAGS = -nostdinc -Iinclude/
 # Objects
 CSRC = $(wildcard src/**.c) $(wildcard src/**/**.c) $(wildcard src/**/**/**.c)
 .PRECIOUS: $(CSRC:.c=.s)
-ASMSRC = $(CSRC:.c=.s) $(wildcard asm/*.s)
+ASMSRC = $(CSRC:.c=.s) $(wildcard asm/*.s) $(wildcard audio/*.s) $(wildcard audio/**/*.s) $(wildcard audio/**/**/*.s)
 OBJ = $(ASMSRC:.s=.o) 
 
 # Enable verbose output

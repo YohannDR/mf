@@ -1,5 +1,12 @@
 /src/**/*.s
 /data/*
+/audio/samples/*
+/audio/tracks/*
+/audio/voice_groups/*
+/audio/sound_entries.s
+/audio/samples.s
+/audio/voice_groups.s
+/audio/tracks.s
 
 *.gba
 *.elf

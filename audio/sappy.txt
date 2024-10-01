@@ -1,0 +1,578 @@
+########################################
+# GBA "Sappy" sound engine information #
+#         v1.4 by Bregalad             #
+########################################
+
+ ****************
+** Introduction **
+ ****************
+
+This documentation contains info about the "sappy" sound engine that the vast majority of commercial Game Boy Advance games uses. This engine was named "sappy" because of a program that could rip the music of some GBA games and convert it to MIDI. Then another utility called "saptapper" was able to rip music from a GBA Rom to GSF format, applying to games using this sound engine.
+
+All info in this file was figured by my own by hacking games. I am not involved in any way with the authors of the sound engine nor the authors of the "sappy" or "saptapper" program in any way.
+
+Video game developers probably prototyped their music in standard MIDI files or tracker modules and used tools to convert the music to the "sappy" format. The format contain many similarities to MIDI, like key on, key off and delta-time values, but it is stored in a different (more efficient) way, and was made for video games so they could also play sound effects, etc...
+
+The data is normally stored somewhere on a GBA ROM in this order :
+
+1) Instrument bank(s) definition
+2) Key-split instrument data
+3) Gameboy channel 3 waveform data
+4) Track-group RAM pointers
+5) Music/SFX pointers
+5) Samples
+6) Music/SFX data
+   6a) Data for each track in the song
+   6b) Pointer to each track
+
+I believe the sound-engine related code is most often found right before the instrument bank definition, but I have no proof that this is systematically the case.
+Note that the data doesn't *HAVE* to be arranged this way in the ROM, there might be some other data interleaved in-between, but as far as I can remember in all games I've checked it was in this order, and without any other data interleaved between that.
+
+A good technique to find where this data is located is to search for the following HEX string : 0x01, 0x3c, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x00
+It will likely point to an unused instrument, and you'll find yourself somewhere in the instrument banks definition. Then you can scroll down to find other data.
+
+*** IMPORTANT NOTE ABOUT POINTERS ***
+
+The GBA is a 32-bit system, all pointers are 32-bit. Because ROM is mapped at 0x8000000 in GBA's memory map, all pointers have their address ORed with 0x8000000 compared to the address shown in the HEX editor.
+Also, usually all data is aligned on a 4-byte boundary, because the CPU normally works with 32-bit values. The only exception is track data which is made of 1-byte values.
+
+ *********************************
+** 1) Instrument bank definition **
+ *********************************
+ 
+** 2.1) Generic Instrument definition data **
+
+Each instrument/sub-instrument definition takes 12 bytes. The first byte tell the type of the instrument :
+
+0x00 = Sample (GBA Direct Sound channel)
+0x01 = PSG Square 1 (Game Boy channel 1)
+0x02 = PSG Square 2 (Game Boy channel 2)
+0x03 = PSG Programmable Waveform (Game Boy channel 3)
+0x04 = PSG Noise (Game Boy channel 4)
+0x08 = Sample (GBA Direct Sound channel) that is never resampled (always playing at the engine's rate)
+0x09-0x0C = same as 0x01-0x04
+0x40 = Key split instrument  : Points to different sub-instruments depending on MIDI key
+0x80 = Every Key split instrument / percussion : Each MIDI key points to its own sub-instrument
+anything else = invalid (the engine crashes)
+
+** 2.2) Sampled Instrument / Sub-instrument format **
+1 byte = 0x00 (normal) or 0x08 (not resampled). With some direct-sound mixers, 0x10 or 0x20 can also be used for special attributes.
+1 byte = MIDI key (only used as percussion sub-instrument)
+1 byte = apparently unused (always 0)
+1 byte = panning (only used as percussion sub-instrument).
+         If bit 7 is set, the lower 7 bits forces the panning value for this key. Otherwise, the channel's panning is used
+4 bytes = Pointer to sample data
+1 byte = attack value (8-bit : 0x01 = longest attack, 0xFF = no attack)
+1 byte = decay value  (8-bit : 0x00 = no decay, 0xFF = longest decay)
+1 byte = sustain level (8-bit : 0x00 = sustain to silence, 0xFF = sustain to full volume)
+1 byte = release value (8-bit : 0x00 = instantaneous release, 0xFF = longest release)
+
+Note : to play a sampled instrument "raw" without appliying ADSR, just uses values of 0xFF, 0x00, 0xFF, 0x00
+
+** 2.3) PSG instrument / sub-instrument format **
+1 byte = PSG Channel (1 = square 1, 2 = square 2, 3 = programmable waveform, 4 = noise)
+1 byte = MIDI key (only used as a percussion sub-instrument, otherwise should be 0x00)
+1 byte = hardware time length control (0x00 to disable timelength)
+1 byte = sweep control (square 1 channel only, 0x08 to disable sweep)
+
+4 bytes :
+        WHEN SQUARE CHANNEL
+                1 byte = duty cycle (0=12,5%, 1=25%, 2=50%, 3=75%)
+                3 bytes = 0x0000
+        WHEN NOISE CHANNEL
+                1 byte = control of the noise's period (0 = normal (32767 samples), 1 = metallic (127 samples))
+                3 bytes = 0x0000
+        IF PROGRAMMABLE CHANNEL
+                4 bytes = pointer of 16-byte waveform data
+
+1 byte = attack value (3-bit : 0x00 = no attack, 0x07 = longest attack)
+1 byte = decay value (3-bit : 0x00 = no decay, 0x01 = fastest decay, 0x07 = slowest decay)
+1 byte = sustain level (4-bit : 0x00 = sustain to silence, 0x0F = sustain to full volume)
+1 byte = release value (3-bit : 0x00 = no release, 0x07 = slowest release)
+All unused bits should be set to 0, else the envelope will glitch and not sound good.
+
+Note : to play a PSG instrument "raw" without applying ADSR, just use values of 0x00, 0x00, 0x0F, 0x00
+
+SQUARE & NOISE CHANNELS: The enveloppe is made by using the hardware increase/decrease volume registers. This make it fundamentally different to the ADSR of Direct Sound sampled instruments, which is emulated by software.
+For example if the volume is 6, an attack of "3" will happen twice as fast as the same attack of "3" if the volume is 12, because the volume is increasing at the same rate no matter the volume.
+
+In addition to this problem, any volume change in the tracks will reset ADSR and trigger a sound reset, maing a "clicking" sound. This can also be heard in games which fades the music volume in and out. Therefore such volumes changes should be avoided, and ADSR should be used instead for volume changes whenever possible.
+
+PROGRAMABLE WAVEFORM CHANNEL : The enveloppe is simulated by software using the 4 levels of volume available (25%, 50%, 75% and 100%). Because there is so few levels available, the enveloppe can sound very blocky and crude. However this channel doesn't suffer the clicking sound problems of square and noise channels on volume changes.
+
+** 2.4) Key-Split instruments **
+
+1 byte = 0x40
+3 bytes = 0x00
+4 bytes = Pointer to first sub-instrument
+4 bytes = Pointer to key split table
+
+Key split table is 128 bytes long and gives information about which sub-instrument is used on which MIDI keys, one byte per MIDI key.
+The location of the used sub-instrument is : 12 * KeySplitTable[MidiKey] + Pointer to First Sub-Instrument
+
+** 2.5) Every Key Split (percussion) instrument format **
+
+1 byte = 0x80
+3 bytes = 0x00
+4 bytes = Pointer to percussion table
+4 bytes = 0x00
+
+The location of the used sub-instrument is : 12 * MidiKey + Pointer to Percussion Table.
+The MIDI-key and panning specified in the instrument will be used here (and only here).
+
+** 2.6) Unused instruments **
+Fore some reason "unused" instruments are always defined as following :
+0x01, 0x3c, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x00
+
+If they would still be "accidentally" used, it would be Square 1, but without properly disable the sweep (lower octaves won't play).
+
+ *******************************************
+** 3) 16-byte programmable waveform format **
+ *******************************************
+
+The waveform is simply made of 32 4-bit PCM samples, big endian, unsigned (0 = lower level, F = higher level), for a total of 16 bytes per waveform.
+
+Example :
+0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef, 0xfe, 0xdc, 0xba, 0x98, 0x76, 0x54, 0x32, 0x10
+Will produce a triangle wave.
+
+The GBA hardware has a 64 samples mode, but no way to trigger it was found.
+
+ **************************************
+** 4) Track-group RAM pointers format **
+ **************************************
+
+This introduce the concept of "track groups". The sappy engine can play multiple "groups of tracks" simultaneously, for example a sound effect can play while the music is playing. (I call music and SFX with the generic term "song" in this doccument). Various games handles groups in various ways.
+
+Apparently when the game starts a song it doesn't know in which groups it is started (it's the song pointers structure who decides it), but afterward he can alter the volume, panning and other settings by refering to the group in which the song plays. It's a bit strangle but apparently this is how the sappy engine works.
+
+Each track in each group have it's own set of pointers and counters used by the sound engine, which should sit somewhere in RAM. The more tracks and track groups are neccesarly for the game, the more RAM it takes up.
+Each track group takes 12 bytes of pointers at this locations. Remember that IRAM is mapped in the GBA at 0x3000000.
+
+4 bytes = Pointer track group variables, takes up 0x40 bytes
+4 bytes = Pointer track variables, each track takes up 0x50 bytes
+1 byte = Maximum # of tracks for this group. If an attempt to play a song with more tracks is made, the exceding tracks will be ignored and won't play.
+3 bytes = 0x00
+
+The really important thing here is that it specifies how much tracks are allowed for the songs and sound effects in the game.
+
+ ***************************
+** 5) Song pointers format **
+ ***************************
+
+Each song is 8 bytes of data :
+
+4 bytes = Pointer to song header
+1 byte = track group # (see above about how this is handled)
+1 byte = 0x00
+1 byte = track group # (yeah again)
+1 byte = 0x00
+
+Some info is definitely lacking here, I have no idea why the track group is stored 2 times. I've never seen them differ in a game, but if I forced them to differ, it seems only the first one takes effect.
+
+ ********************
+** 6) Sample format **
+ ********************
+ 
+All samples comes with a 16-byte header, followed by variable length data.
+
+3 bytes : 0x00, 0x00, 0x00
+1 byte : 0x00 for unlooped sample, 0x40 for looped sample
+4 bytes : Pitch adjustement
+4 bytes : Loop relative starting point
+4 bytes : Size of the sample
+
+The 8-bit signed PCM sample data follows immediately.
+
+The pitch adjustement value is calculated with the following equation :
+Pitch adjustement = 1024 * sample-rate for Mid-C
+
+(Mid-C corresponds to MIDI key #60)
+
+The pitch adjustment equivalent to available engine sampling rates (for mid-C note) are as following :
+0x599800  (5734 Hz)
+0x7b3000  (7884 Hz)
+0xa44000  (10512 Hz)
+0xd10c00  (13379 Hz)
+0xf66000  (15768 Hz)
+0x11bb400 (18157 Hz)
+0x1488000 (21024 Hz)
+0x1a21800 (26758 Hz)
+0x1ecc000 (31536 Hz)
+0x2376800 (36314 Hz)
+0x2732400 (40137 Hz)
+0x2910000 (42048 Hz)
+
+Those values are often used for percussion sounds and sound effects, which are typically played at the engine's sample rate.
+
+If the loop is exactly the size of a single oscillation of a looped waveform, there is an useful shorcut to compute the right pitch :
+pitch = 267905 * (loop_end - loop_start)
+
+NOTE ABOUT INTEROPLATION: Bytes after the end of the sample are sometimes used by the mixer for interpolation purposes. Therefore it is wise to set the end of the sample one or two bytes before the end of the sample, and adjust the loop start accordingly. The reason for that it that the mixer was implemented in a lazy but efficient way which do not try to interpolate between the last sample and the first sample of the loop.
+
+ ********************
+** 7a) Track format **
+ ********************
+
+Track format is the only sappy-related data which does not have to be aligned on a 4-byte boundary.
+
+Unlike the vast majority of sounds format in games, but like MIDI, polyphony (multiple notes playing at the same time) on the same track is possible.
+
+Bytes between 0x80-0xB0 are delta-time values, bytes between 0xB1-0xFF are commands, and bytes 0x00-0x7F are arguments to commands. "Negative" arguments 0x80-0xff are possible but usually "forbidden".
+
+0x00-0x7F : This will repeat the last command, with this byte used as a new argument.
+            Some commands can be "repeated" this way , while other can't.
+            When a raw argument is found in the data steam, the last "repeatable" command is repeated.
+            In some cases, commands with more than an argument can be repeated this way too.
+
+0x80 = wait zero time (consider it a musical NOP)
+       Non repeatable.
+
+0x81 - 0xB0 = Wait some time, higher = longer time, see loockup table below.
+              Non repeatable.
+
+0xB1 = End of track. Non repeatable (obviously).
+
+0xB2 = jump to address (4 bytes). Non repeatable.
+
+0xB3 = "call" subsection (4 bytes).
+       Calls can't be "nested" (i.e. a "stack" is not simulated for each channel - only a single pointer is memorized)
+       Non repeatable.
+
+0xB4 = End subsection.
+       If a "call" was previously used, return after the call command, else this is ignored.
+       Non repeatable.
+
+0xB5 = "call and repeat" subsection. (5 bytes)
+       Works the same way as call but has a 1 byte repeat counter before the subsection pointer. The subsection will repeat
+       by the specified amount of times and then return. Usually not used (not produced by mid2agb).
+
+0xB9 = conditionnal jump based on memory content (3 bytes) (kinda mysterious)
+       Used by some games where the music repeats a section or continues depending on game state, or sound effects that
+       stops based on game state for example.
+
+0xBA = set track priority (1 byte), higher value = higher priority
+       Usually the lower track number means higher priority in terms of preventing notes "dropping" (if not enough channels
+       are available). This can be used to break that order.
+
+0xBB = tempo, BPM divided by 2.
+       A value of 75 means 1 frame = 1 tick.
+       Other values are proportional : ticks_per_frame = tempo / 75.
+       The engine, which is called once every frame (~60 Hz update) apparently uses fixed point to know how many times
+       to tick songs on each call, so that in average this tick_per_frame number is repected.
+       For example if tempo = 76, the song will be ticked in a pattern like 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, ....
+       and this can produce some audible "instabiliy".
+
+0xBC = transpose (1 signed byte)
+       This is the only command which allows negative arguments.
+       Non repeatable.
+
+0xBD = set instrument (1 byte). Repeatable.
+
+0xBE = set volume (1 byte). Repeatable
+       
+0xBF = set panning (1 byte)
+       0x00 is left, 0x40 center, 0x7f right.
+       Repeatable.
+
+0xC0 = pitch bend value (1 byte)
+       41-0x7f and above bends up, 0x00-0x3f bends down, 0x40 is original pitch.
+       Repeatable.
+
+0xC1 = pitch bend range (1 byte)
+       Argument is the number of semitones afar from the original pitch when bent to the maximum/minimum.
+       Like on MIDI, by default, 2 is used.
+       Repeatable.
+
+0xC2 = LFO speed (1 byte, higher = faster vib)
+       The LFO speed is apparently "ticked" like the notes are, because it's affected by tempo.
+       Non repeatable.
+
+0xC3 = LFO delay (1 byte)
+       This is exactly the number of ticks that is counted down before the LFO effects start.
+       If this is zero, the LFO never stops, even when a new note is triggered.
+       Otherwise, the LFO is reset when a new note is triggered, which is a bug in the sound engine,
+       because if another note on the same channel was already playing, it's LFO effect will reset as well.
+       For this reason it's not recommanded to use polyphony and LFO at the same time.
+       Non repeatable.
+
+0xC4 = LFO depth (1 byte)
+       Affects how "deep" the LFO effect is.
+       Repeatable.
+
+0xC5 = LFO type (1 byte)
+       Affects which variable the LFO will modify.
+       0 = pitch (default)
+       1 = volume
+       2 = panning
+       In all cases, the original variable is added with the LFO modifier to produce the final variable, in a triangle-wave like fashion.
+       Non repeatable.
+
+0xC6 - 0xCD = currently unknown
+
+0xC8 = detune (1 byte)
+       0x40 is normal pitch, 0x00 is one semitone lower and 0x7F is one semitone higher.
+       Repeatable.
+
+0xCD = pseudo echo (2 bytes), repeatable:
+  0x08 0xXX = set pseudo echo volume to 0xXX (0-255)
+   OR
+  0x09 0xXX = set pseudo echo length (in frames) to 0xXX (0-255)
+	Pseudo echo is an addition to the envelope curve which activates after the release has fallen down to 0 for N frames at volume M.
+	It is ignored whether this is ever used in any game (it doesn't sound that "good") but it is implemented across all mixer versions.
+
+0xCE = note off (2 optional argument).
+       Repeatable.
+
+0xCF = note on (2 optional arguments), indefinite length until 0xCE encountered.
+       Repeatable.
+
+0xD0 to 0xFF = note on with auto time-out before keyoff (3 optional argument).
+               See lockup table below.
+               Repeatable.
+
+The length table for note-on and delta-time commands is as following :
+
+d-time  | 81 82 83  ..., 97  98  99  9A  9B  9C  9D  9E  9F  A0  A1  A2  A3  A4  A5  A6  A7  A8  A9  AA  AB  AC  AD  AE  AF  B0
+Note    | D0 D1 D2 ...., E6  E7  E8  E9  EA  EB  EC  ED  EE  EF  F0  F1  F2  F3  F4  F5  F6  F7  F8  F9  FA  FB  FC  FD  FE  FF
+--------+----------------------------------------------------------------------------------------------------------------------
+Length  | 1, 2, 3, ...., 23, 24, 28, 30, 32, 36, 40, 42, 44, 48, 52, 54, 56, 60, 64, 66, 68, 72, 76, 78, 80, 84, 88, 90, 92, 96
+
+Usually, the song is made so that a lenght of 96 is a whole note, therefore a tick (lenght of 1) is a third of a 32nd note and is the finer resolution available.
+
+Note on commands : There is multiple versions of them. The number of arguments can vary between 0 and 3. A negative byte means that the argument list is terminated, and that therfore the key-on command is fully decoded.
+
+The "full" version of a note on command takes 2 arguments, key and velocity. If you ever used MIDI you should be right at home here.
+In the case of auto time-out note on commands, an optional 3rd argument is possible. Because the lookup table above lacks some values, the extra 3rd argument can be used to reach a finer precision when required, and is directly added to the length from the lookup table. It was rarely used in games though.
+
+A note command followed by a single argument will play a new note with a new key, but with the most recently used velocity.
+
+A note on command followed by no arguemnts will play a new note with the most recently used key and most recently used velocity.
+
+ **************************
+** 7b) Song header format **
+ **************************
+
+1 byte : Amount of tracks
+1 byte : Unknown
+1 byte : Song priority
+1 byte : Echo feed back (affects ALL direct sound channels)
+         If bit 7 is set, reverb setting is set to this value whenever the song starts to play, overwriting any previous value.
+         If bit 7 is clear nothing is changed when the song starts to play, and the previously used reverb value is kept.
+4 bytes : Pointer to instrument definition
+n*4 bytes : Pointer to track data
+
+Priority is handled as follows :
+- On PSG channels, the note with the highest priority will play
+- On direct sound channels, if there is no free channel anymore, the notes with the highest priority will continue to play while the lower priority ones will be ignored or silenced out to make room for high priority notes.
+
+In the case where the priority is equal, the track number comes into play. Lower tracks numbers always takes the priority on higher track numbers.
+
+ *************************************
+** Appendix A) About the sound mixer **
+ *************************************
+
+For this section, I would give special thanks to ipatix who completely reverse-engineered the sound mixer. This chapter is about how direct sound channels are created by the engine. (none of this affects the PSG channels)
+
+The sampled sounds are mixed into one or two direct sound channel (for mono or stereo operation respectively). Different games uses different mixers, and it is possible to write one own mixer in ARM assembly in order to add any desired features in it! The mixer simulate a DSP with sound channels, and will produce a series of numbers in the RAM buffer, corresponding to the output waveform. If the mixer is in stereo, the buffer is truncated in two halves, one buffer for left and the other for right.
+
+The code for most sound engine related routines is normally located in the ROM before the instruments and sequences. The sound mixer is normally copied from there into IWRAM (0x3000000-0x3007FFF), and is then called every frame. The reason why the code is run in IWRAM is because it allows the GBA CPU to fech CPU instructions faster. Because processing sound is a complex operation, and because it will have to be done every frame, this will take a significant amount of the CPU, so it is important that the code is fast. The code can be run in 32-bit ARM mode and not only in 16-bit THUMB mode like code that is executed from the cartridge.
+
+Because of how the ARM CPU in the GBA works, the ROM is compiled so that there is instructions of a particular function, followed by arguments / constant used by this function. The reason for that is that in a RISC processor, it is not possible to load a 32-bit constant in a 32-bit instruction, even less in a 16-bit instruction, for obvious reasons. This makes hacking easier than for CICS processors like 6502, as the constants used in a program are stored after said program, and as such, it is often not nessary to know assembly to alter the way a program function.
+
+One of the major sound-related function, which initializes the sound mixer, is followed by the following 32-bit constants in the ROM:
+
+- Adress of mixing code(*). This mixing code is copied to RAM to execute faster.
+- RAM adress where mixing code stays (normally in IWRAM)
+- Size of code (in words)
+- Adress of "DirectSound Variables" (takes up 0x350 bytes + buffer size). The sound engine uses this RAM area for variables related
+  to Direct Sound, to the 12 PCM software channels, and for the mixing buffer.
+- Adress of "PSG Variables" (takes up 4 * 0x40 bytes, 0x100 bytes in total). Variables used for PSG channels.
+- Main engine parameters (mentionned in appendix B)
+- Amount of track groups (see 2.4)
+- Adress of track groups table (the data which is explained at 2.4)
+- Adress of ??? (in RAM again)
+
+(*) The low bit of the adress is set if the mixer should start executing code in THUMB mode. This is the case for the standard, Nintendo mixer.
+
+There is multiple variants of the sound mixer, and it is possible to add your own version of the mixer in order to get extra features. The 3 most common of the mixer are the 3 following versions:
+- The stereo version is 256 words long, and use 2 bufers for stereo output
+- The mono version is 224 words long, and use 1 buffer for mono output (it's also faster)
+- The "old" version 256 words long and is similar to the stereo version, but is slower. Only the older GBA games (released in year 2001) used it.
+
+The features of the normal sound mixer are the following :
+
+- Relatively slow mixing
+- Linear interpolation is used
+- No anti-aliasing
+- Each sample is directly downscaled to 8-bit and mixed in the output buffer, which results in noisy output
+- No saturation output control : If the output goes past the max value, it will wrap arround and produce a very ugly audible "click".
+- Reverb is calculated with the following principle :
+Imagine the following buffer constellation (7 frames long each):
+
++-------+-------+
+|....#*.|....#*.|
++-------+-------+
+
+. = a rendered frame
+# = frame to render
+* = see below
+
+Reverb gets calculated by averaging the 4 samples from both '*' and both ',', multiplied by the reverb and dividied by 512.
+That obviously means that reverb is MONO ONLY (what a waste!). 
+That way there is effecitively 2 delay lines (one 7 frames, one 6 frames) which brings some nice diffusion into the reverb.
+
+Various features can or could be added by writing alternative mixers. For example:
+- Compressed samples (Pokemon)
+- Synth instruments (Camelot)
+- Faster mixing with self-modifying code (Camelot, Final Fantasy Advance sound restoration hacks)
+- Mixing instruments in 16-bit, before downgrading to 8-bit, leading to better sound quality (Camelot, Final Fantasy Advance sound restoration hacks)
+- Better reverb (Camelot, Final Fantasy Advance sound restoration hacks)
+- Protection against staturation of the output (Camelot, Final Fantasy Advance sound restoration hacks)
+- Better ADSR enveloppe done with 16-bit instead of 8-bit (Final Fantasy Advance sound restoration hacks)
+- Samples played in reverse
+- Ping-pong and reverse sample looping
+- Better interpolation / anti-aliasing
+- etc, etc....
+
+The only limit to added features is the imagination of the one responsible to coding the mixer, and the CPU time.
+
+ ************************************************
+** Appendix B) Sound driver operation mode word **
+ ************************************************
+
+The standard mixer has been made so it can work with different parameters. Normally the paramters are only loaded once at boot from the operation mode word and aren't changed. However some games change them by writing to the Variable1 area. The reverb is definitely rewritten when a new music plays. The paramters mostly deals with sound quality, as well as how quick the mixer is.
+
+In order to find where the initial operation word is stored, the instructions are as follow:
+
+1) Find the address of the track-group RAM pointers (right after the GB channel 3 waveforms) using the technique I mentioned in the introduction.
+2) Search in the ROM for that address. There will be many occurrences of it, but you should look the 8-bytes that there is before it. The previous 4 bytes should be a low number followed by 3 times 0x00. Then the 4 bytes even before that might be the sound driver operation mode word, coming in this format (this is from nocash's site) :
+
+       Bit    Expl.
+       0-7    Not used (should be 0x00)
+       8-11   Direct Sound Playback Frequency (1-12 = 5734,7884,10512,13379, 15768,18157,21024,26758,31536,36314,40137,42048, def 4=13379 Hz)
+       12-15  Final number of D/A converter bits (8-11 = 9-6bits, def. 9=8bits)
+       16-19  Direct Sound Simultaneously-produced (1-12 channels, default 8)
+       20-23  Direct Sound Master volume (1-15, default 15)
+       24-30  Direct Sound Reverb value (0-127, default=0) (ignored if Bit7=0)
+       31     Direct Sound Reverb set (0=ignore, 1=apply reverb value)
+
+For example : 0x00, 0xF8, 0x94, 0x00 means the game has reverb disabled, maximum global volume, 8 channels, 8 bits DAC and a sampling rate of 13379 Hz (this is the default values). If any value is '0' (which normally shouldn't be the case) the specified default value seems used instead.
+
+Here you are all the field explained :
+1) Direct Sound Playback Frequency
+   This is just another term that means "mixing sampling rate" really. Higher values allows for better quality sound, at the expense of more CPU time. Appendix C has a chart to estimate the CPU time used.
+
+2) Final number of D/A converter bits
+   This directly affects an obscure I/O register in the GBA called "SGBIAS". I think it comes to play in the D->A conversion stage.
+   The value of this register makes no differences on emulators, but on hardware it makes a huge difference.
+   I really recommend letting this number to 9 = 8 bit DAC, because other values will sound awful. 9 bit DAC sounds awful beacuase there is too much aliasing, and the 7 or 6 bits DAC sounds awful because there is too much quantisation noise.
+
+3) Direct sound Simultaneously-produced
+   This is simply the # of emulated Direct Sound channels. Each channel adds more expense in CPU time. Appendix C has a chart to estimate the CPU time used.
+   This cannot, ever go above 12 without a major rewrite of the sound engine, as this number is hardcoded in a lot of places.
+
+4) Direct Sound Master volume
+   This affects the volume of all channels. With the default mixer, if the volume is too lood, the values in the buffer could overflow and warp arround, making a horrible clicking sound.
+
+5) Direct Sound Reverb value
+   This value is normally rewritten depending on which music is played. With the default mixer, Reverb applies unconditionally to the whole direct sound buffer (see appendix A). Since the reverb is completely used by the mixer alone, this byte could be changed to mean something completely different.
+
+ ***************************
+** Appendix C) CPU Usage   **
+ ***************************
+
+These tables indicate which maximum CPU time takes the mixing code in RAM to execute.
+They were measured with the emulator BoycottAdvance. They are probably innacurate.
+CPU usage is measured in scanlines (there is 228 lines in a frame, so divide those numbers by 228 to convert in %).
+I didn't make a table for the "old" version because it was already long enough like that, but I'm pretty sure it's slower than the Stereo version.
+
+Mono CPU usage :
+
+# Channels |   4  |   5  |   6  |   7  |   8  |   9  |  10  |  11  |  12  |  Reverb enabled
+  ---------+------+------+------+------+------+------+------+------+------+
+   5734    |   7  |   8  |   9  |  11  |  12  |  14  |  15  |  17  |  18  | +1
+   7884    |   9  |  11  |  13  |  15  |  17  |  19  |  21  |  23  |  25  | +1
+  10512    |  11  |  13  |  16  |  19  |  22  |  25  |  27  |  30  |  33  | +2
+  13379    |  14  |  17  |  20  |  24  |  27  |  31  |  34  |  38  |  41  | +2
+  15768    |  15  |  19  |  23  |  27  |  31  |  35  |  40  |  44  |  48  | +3
+  18157    |  17  |  21  |  26  |  31  |  35  |  40  |  45  |  50  |  55  | +3
+  21024    |  19  |  24  |  29  |  35  |  40  |  46  |  51  |  57  |  62  | +3
+  26758    |  23  |  29  |  36  |  42  |  49  |  56  |  63  |  71  |  78  | +4
+  31536    |  27  |  33  |  40  |  49  |  57  |  65  |  73  |  82  |  90  | +4
+  36314    |  30  |  37  |  45  |  54  |  64  |  73  |  83  |  92  | 102  | +5
+  40137    |  33  |  41  |  49  |  59  |  69  |  80  |  90  | 100  | 111  | +5
+  42048    |  34  |  42  |  51  |  61  |  72  |  83  |  94  | 105  | 116  | +5
+
+Stereo CPU usage :
+
+# Channels |   4  |   5  |   6  |   7  |   8  |   9  |  10  |  11  |  12  |  Reverb enabled
+  ---------+------+------+------+------+------+------+------+------+------+
+   5734    |   8  |   9  |  11  |  13  |  14  |  16  |  18  |  20  |  22  | +1
+   7884    |  10  |  12  |  15  |  17  |  20  |  22  |  25  |  27  |  30  | +1
+  10512    |  13  |  17  |  19  |  23  |  26  |  29  |  33  |  36  |  39  | +2
+  13379    |  16  |  20  |  24  |  28  |  32  |  36  |  41  |  45  |  49  | +3
+  15768    |  19  |  23  |  28  |  33  |  37  |  42  |  47  |  52  |  57  | +3
+  18157    |  21  |  26  |  31  |  37  |  43  |  48  |  54  |  59  |  65  | +4
+  21024    |  23  |  29  |  35  |  42  |  48  |  55  |  61  |  68  |  75  | +4
+  26758    |  28  |  36  |  43  |  51  |  60  |  68  |  76  |  85  |  93  | +6
+  31536    |  33  |  41  |  49  |  59  |  69  |  79  |  89  |  99  | 108  | +6
+  36314    |  37  |  46  |  56  |  77  |  78  |  89  | 100  | 111  | 123  | +7
+  40137    |  40  |  51  |  61  |  72  |  85  |  98  | 109  | 122  | 134  | +8
+  42048    |  42  |  53  |  63  |  75  |  88  | 102  | 115  | 128  | 140  | +9
+  
+
+ *******************************************
+** Appendix D) Camelot Synth sample format **
+ *******************************************
+
+Camelot games (e.g. Golden Sun) has a special sample format for "synths". It works similarly to normal samples, exept data is generated by a math formula instead of being stored in ROM. Their usage of ADSR and pitch adjustment is identical to a normal sample instrument.
+
+The 16-byte header is the one of a normal sampled instrument with loop enabled, but with both loop and length to be = 0. The frequency is 0x1058920 for correct pitch - other values will work but lead to wrong pitch.
+
+The data that follows the 16-byte header describes the mathematical formula used for the synth. The size is either 2 bytes or 6 bytes, but it is always padded up to the next multiple of 4 bytes with the value 0x00, because the GBA is a 32-bit system. Therefore the size is either 4 bytes or 8 bytes.
+
+1 byte : 0x80 (always)
+1 byte : Type of synth (0x00 = square wave, 0x01 = saw wave, 0x02 = triangle wave)
+4 bytes : Arguments (only for type of synth = 0x00)
+
+SYNTH 0 is a complex square wave generator. It takes 4 argument bytes :
+
+1 byte : Initial duty cycle (0x80 makes a square wave, other values are proportional)
+1 byte : Duty cycle change speed
+1 byte : Duty cycle change amplitude (the duty cycle changes over time linearly in a triangle-wave fashion)
+1 byte : Offset value for duty cycle. (this is the minimum value that the duty cycle can reach)
+
+SYNTH 1 is a simple saw wave generator, it doesn't take any arguments.
+
+SYNTH 2 is a simple triangle wave generator, it doesn't take any arguments. 
+
+Notice : There is no anti-aliasing of any kind on those instruments, therefore very audible aliasing can occur, especially in high tones, except for SYNTH 2 where it's not audible thanks to the fact triangle waves have few harmonics. On the good side, those instruments are much lighter to the CPU as normal sampled instruments.
+
+ ***********
+** History **
+ ***********
+ v1.5 March 25th 2016
+ Restructured the doccument a little, and added more details abour mixers
+ 
+ v1.4 December 21st 2014
+ Added information with Golden Sun synth instruments and mixing engines.
+ 
+ v1.3 September 6th 2012
+ Some cleanup and clarifications.
+ 
+ v1.2 October 11th 2011
+ Some fixes, thanks to ipatix for reporting me errors in my doccument.
+ 
+ v1.1 September 6th 2010
+ Major update with a ton of new info about this sound engine.
+ 
+ v1.0 May 24th 2010
+ First release
+ 
+** Look up for future updates if I ever find more info about the engine. **
+
+Contact me at : jmasur [at] bluewin [dot] ch
+Or hit me on nesdev.parodius.com or romhacking.net message board.
+
+For questions about writing specified sound mixers, please contact ipatix to : michel [at] pa-bu [dot] de

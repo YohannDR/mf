@@ -275,10 +275,16 @@ SECTIONS {
         src/libgcc/fp-bit-base.o(.text);
         src/libgcc/float.o(.text);
         src/libgcc/libgcc.o(.text);
-    } >rom
 
-    .rodata : ALIGN(2) {
         src/data/generic_data.o(.rodata);
+        audio/voice_groups.o(.rodata);
+        audio/key_split_tbl_0.o(.rodata);
+        audio/prog_waveforms.o(.rodata);
+        src/data/blob_a8cdc_a8d3c.o(.rodata);
+        audio/sound_entries.o(.rodata);
+        audio/null_track.o(.rodata);
+        audio/samples.o(.rodata);
+        audio/tracks.o(.rodata);
         src/data/samus_data.o(.rodata);
         src/data/sprite_data.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
