@@ -140,10 +140,6 @@ static const u16 sOam_2f9216[OAM_DATA_SIZE(1)] = {
     0xfc, 0x1fc, OBJ_PALETTE_8 | 0x225
 };
 
-static const u16 sOam_2f921e[OAM_DATA_SIZE(0)] = {
-    0
-};
-
 const struct FrameData sFrameData_2f9220[5] = {
     [0] = {
         .pFrame = sOam_2f90b4,
