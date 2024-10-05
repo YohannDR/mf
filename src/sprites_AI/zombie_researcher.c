@@ -16,18 +16,17 @@
 
 void ZombieCheckSamusInRange(void) {
     u32 nslr;
-    u32 currentSprite;
 
     nslr = SpriteUtilCheckSamusNearSpriteLeftRight(0x5a, 0x82);
     if (nslr != 0) {
-        if ((gCurrentSprite.status & SPRITE_STATUS_X_FLIP)) {
+        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
             if (nslr == NSLR_LEFT) {
                 return;
             }
         } else if (nslr == NSLR_RIGHT) {
             return;
         }
-        gCurrentSprite.pose = 0x2a;
+        gCurrentSprite.pose = ZOMBIE_POSE_LUNGING_INIT;
         gCurrentSprite.pOam = sFrameData_2fb4c0;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
@@ -39,7 +38,7 @@ void ZombieCheckSamusInRange(void) {
 
 void ZombieSetWaitingToForm(void) {
     gCurrentSprite.samusCollision = 0;
-    gCurrentSprite.pose = 0x18;
+    gCurrentSprite.pose = ZOMBIE_POSE_WAITING_TO_FORM;
     gCurrentSprite.hitboxTop = -0x20;
     gCurrentSprite.hitboxBottom = 0x18;
     gCurrentSprite.hitboxLeft = -0x20;
@@ -61,7 +60,7 @@ void ZombieDyingInit(void) {
     gCurrentSprite.samusCollision = 0;
     gCurrentSprite.hitboxTop = -0x20;
     gCurrentSprite.work1 = 0xb4;
-    gCurrentSprite.pose = 0x58;
+    gCurrentSprite.pose = SPRITE_POSE_DYING;
     return;
 }
 
@@ -84,16 +83,16 @@ void ZombieDying(void) {
 }
 
 void ZombieInit(void) {
-    u32 pose;
+    u32 prevPose;
 
-    pose = gCurrentSprite.pose;
-    if (pose == 0) {
+    prevPose = gCurrentSprite.pose;
+    if (prevPose == 0) {
         if ((u8)(gCurrentSprite.spritesetSlotAndProperties - 0x20) < 0x30) {
             gCurrentSprite.pOam = sFrameData_2fb300;
             gCurrentSprite.samusCollision = 2;
-            gCurrentSprite.pose = 8;
+            gCurrentSprite.pose = ZOMBIE_POSE_IDLE;
             ZombieSetStandingHitbox();
-            gCurrentSprite.work1 = pose;
+            gCurrentSprite.work1 = prevPose;
         } else {
             gCurrentSprite.pOam = sFrameData_2fb528;
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
@@ -103,7 +102,7 @@ void ZombieInit(void) {
     } else {
         gCurrentSprite.pOam = sFrameData_2fb258;
         gCurrentSprite.samusCollision = 0;
-        gCurrentSprite.pose = 0x1a;
+        gCurrentSprite.pose = ZOMBIE_POSE_FORMING;
         gCurrentSprite.hitboxTop = -0x20;
         gCurrentSprite.hitboxBottom = 0;
         gCurrentSprite.hitboxLeft = -0x18;
@@ -130,7 +129,7 @@ void ZombieWaitingToForm(void) {
     } else {
         unk_1129c();
         if (gPreviousVerticalCollisionCheck == 0) {
-            gCurrentSprite.pose = 0x15;
+            gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
         } else if (gPreviousVerticalCollisionCheck & 0xf0) {
             if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
@@ -174,7 +173,7 @@ void ZombieForming(void) {
     if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
         gCurrentSprite.hitboxLeft = -0x18;
         gCurrentSprite.hitboxRight = 0x18;
-        gCurrentSprite.pose = 7;
+        gCurrentSprite.pose = ZOMBIE_POSE_IDLE_INIT;
     }
 }
 
@@ -182,17 +181,17 @@ void ZombieIdleInit(void) {
     gCurrentSprite.pOam = sFrameData_2fb300;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 8;
+    gCurrentSprite.pose = ZOMBIE_POSE_IDLE;
     ZombieSetStandingHitbox();
 }
 
 void ZombieIdle(void) {
     unk_1129c();
     if (gPreviousVerticalCollisionCheck == 0) {
-        gCurrentSprite.pose = 0x15;
+        gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
     } else {
         if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
-            gCurrentSprite.pose = 1;
+            gCurrentSprite.pose = ZOMBIE_POSE_MOVING_INIT;
         }
         ZombieCheckSamusInRange();
     }
@@ -202,7 +201,7 @@ void ZombieMovingInit(void) {
     gCurrentSprite.pOam = sFrameData_2fb328;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = ZOMBIE_POSE_MOVING;
 }
 
 void ZombieMoving(void) {
@@ -214,31 +213,31 @@ void ZombieMoving(void) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
         }
         if (gPreviousCollisionCheck == 0) {
-            gCurrentSprite.pose = 0x15;
+            gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
             return;
         }
     } else if (gPreviousVerticalCollisionCheck & 0xf0) {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
             if (!(gPreviousCollisionCheck & 0xf0)) {
-                gCurrentSprite.pose = 3;
+                gCurrentSprite.pose = ZOMBIE_POSE_TURNING_INIT;
                 return;
             }
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition + 0x20);
             if (gPreviousCollisionCheck & 0xf) {
-                gCurrentSprite.pose = 3;
+                gCurrentSprite.pose = ZOMBIE_POSE_TURNING_INIT;
                 return;
             }
             gCurrentSprite.xPosition += 1;
         } else {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
             if (!(gPreviousCollisionCheck & 0xf0)) {
-                gCurrentSprite.pose = 3;
+                gCurrentSprite.pose = ZOMBIE_POSE_TURNING_INIT;
                 return;
             }
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition - 0x20);
             if (gPreviousCollisionCheck & 0xf) {
-                gCurrentSprite.pose = 3;
+                gCurrentSprite.pose = ZOMBIE_POSE_TURNING_INIT;
                 return;
             }
             gCurrentSprite.xPosition -= 1;
@@ -251,21 +250,21 @@ void ZombieTurningInit(void) {
     gCurrentSprite.pOam = sFrameData_2fb410;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 4;
+    gCurrentSprite.pose = ZOMBIE_POSE_TURNING;
 }
 
 void ZombieTurning(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 5;
+        gCurrentSprite.pose = ZOMBIE_POSE_TURNING_END;
         gCurrentSprite.status ^= SPRITE_STATUS_X_FLIP;
     }
 }
 
 void ZombieTurningEnd(void) {
     if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
-        gCurrentSprite.pose = 7;
+        gCurrentSprite.pose = ZOMBIE_POSE_IDLE_INIT;
     }
 }
 
@@ -274,7 +273,7 @@ void ZombieLungingInit(void) {
         gCurrentSprite.pOam = sFrameData_2fb460;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x2c;
+        gCurrentSprite.pose = ZOMBIE_POSE_LUNGING;
         SoundPlayNotAlreadyPlaying(0x14f);
     }
 }
@@ -290,7 +289,7 @@ void ZombieLunging(void) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
         }
         if (gPreviousCollisionCheck == 0) {
-            gCurrentSprite.pose = 0x15;
+            gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
             return;
         }
     } else {
@@ -319,18 +318,18 @@ void ZombieLunging(void) {
         gCurrentSprite.pOam = sFrameData_2fb488;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x2e;
+        gCurrentSprite.pose = ZOMBIE_POSE_CHECK_LUNGING_ANIM_ENDED;
     }
 }
 
 void ZombieCheckLungingAnimEnded(void) {
     if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
-        gCurrentSprite.pose = 7;
+        gCurrentSprite.pose = ZOMBIE_POSE_IDLE_INIT;
     }
 }
 
 void ZombieFallingInit(void) {
-    gCurrentSprite.pose = 0x16;
+    gCurrentSprite.pose = SPRITE_POSE_FALLING;
     gCurrentSprite.work4 = 0;
     if (!(gCurrentSprite.properties & SP_CAN_ABSORB_X)) {
         gCurrentSprite.pOam = sFrameData_2fb300;
@@ -349,9 +348,9 @@ void ZombieFalling(void) {
     if (gPreviousVerticalCollisionCheck) {
         gCurrentSprite.yPosition = blockTop;
         if (gCurrentSprite.properties & SP_CAN_ABSORB_X) {
-            gCurrentSprite.pose = 0x18;
+            gCurrentSprite.pose = ZOMBIE_POSE_WAITING_TO_FORM;
         } else {
-            gCurrentSprite.pose = 7;
+            gCurrentSprite.pose = ZOMBIE_POSE_IDLE_INIT;
         }
     } else {
         offset = gCurrentSprite.work4;
@@ -380,53 +379,53 @@ void Zombie(void) {
         return;
     }
     switch (gCurrentSprite.pose) {
-        case 0:
+        case SPRITE_POSE_UNINITIALIZED:
             ZombieInit();
             break;
-        case 1:
+        case ZOMBIE_POSE_MOVING_INIT:
             ZombieMovingInit();
-        case 2:
+        case ZOMBIE_POSE_MOVING:
             ZombieMoving();
             break;
-        case 7:
+        case ZOMBIE_POSE_IDLE_INIT:
             ZombieIdleInit();
-        case 8:
+        case ZOMBIE_POSE_IDLE:
             ZombieIdle();
             break;
-        case 3:
+        case ZOMBIE_POSE_TURNING_INIT:
             ZombieTurningInit();
-        case 4:
+        case ZOMBIE_POSE_TURNING:
             ZombieTurning();
             break;
-        case 5:
+        case ZOMBIE_POSE_TURNING_END:
             ZombieTurningEnd();
             break;
-        case 0x18:
+        case ZOMBIE_POSE_WAITING_TO_FORM:
             ZombieWaitingToForm();
             break;
-        case 0x1a:
+        case ZOMBIE_POSE_FORMING:
             ZombieForming();
             break;
-        case 0x2a:
+        case ZOMBIE_POSE_LUNGING_INIT:
             ZombieLungingInit();
             break;
-        case 0x2c:
+        case ZOMBIE_POSE_LUNGING:
             ZombieLunging();
             break;
-        case 0x2e:
+        case ZOMBIE_POSE_CHECK_LUNGING_ANIM_ENDED:
             ZombieCheckLungingAnimEnded();
             break;
-        case 0x15:
+        case SPRITE_POSE_FALLING_INIT:
             ZombieFallingInit();
-        case 0x16:
+        case SPRITE_POSE_FALLING:
             ZombieFalling();
             break;
-        case 0x57:
+        case SPRITE_POSE_DYING_INIT:
             ZombieDyingInit();
-        case 0x58:
+        case SPRITE_POSE_DYING:
             ZombieDying();
             break;
-        case 0x59:
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
             ZombieInit();
     }
 }
