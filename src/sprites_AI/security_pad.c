@@ -134,7 +134,7 @@ void SecurityPadInit(void)
 
     if (CheckOrUnlockSecurityLevel(FALSE) == SECURITY_LEVEL_0)
     {
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f789c;
+        gCurrentSprite.pOam = sSecurityPadOam_Pressed;
         gCurrentSprite.pose = SECURITY_PAD_POSE_INACTIVE;
 
         securityLevel = gCurrentSprite.spritesetSlotAndProperties & 1;
@@ -157,7 +157,7 @@ void SecurityPadInit(void)
     }
     else
     {
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f788c;
+        gCurrentSprite.pOam = sSecurityPadOam_Idle;
         gCurrentSprite.work1 = TRUE;
         gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
@@ -189,7 +189,7 @@ void SecurityPadInit(void)
  */
 void SecurityPadIdleActiveInit(void)
 {
-    gCurrentSprite.pOam = (const struct FrameData*)0x82f788c;
+    gCurrentSprite.pOam = sSecurityPadOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 
@@ -211,7 +211,7 @@ void SecurityPadIdleActive(void)
         {
             gCurrentSprite.pose = SECURITY_PAD_POSE_PRESSING_SWITCH;
 
-            gCurrentSprite.pOam = (const struct FrameData*)0x82f783c;
+            gCurrentSprite.pOam = sSecurityPadOam_Pressing;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             
@@ -234,7 +234,7 @@ void SecurityPadPressingSwitch(void)
     {
         gCurrentSprite.pose = SECURITY_PAD_POSE_GRABBING_SAMUS;
 
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f789c;
+        gCurrentSprite.pOam = sSecurityPadOam_Pressed;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     }
@@ -286,7 +286,7 @@ void SecurityPadGrabSamus(void)
     {
         gCurrentSprite.pose = SECURITY_PAD_POSE_DEPRESSING_SWITCH;
 
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f7864;
+        gCurrentSprite.pOam = sSecurityPadOam_Depressing;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
 
@@ -375,7 +375,7 @@ void SecurityPadMonitorInit(void)
 
     gCurrentSprite.drawOrder = 4;
 
-    gCurrentSprite.pOam = (const struct FrameData*)0x82f7754;
+    gCurrentSprite.pOam = sSecurityPadMonitorOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 
@@ -393,7 +393,7 @@ void SecurityPadMonitorIdle(void)
 {
     if (gSpriteData[gCurrentSprite.primarySpriteRamSlot].pose == 0x3A)
     {
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f7764;
+        gCurrentSprite.pOam = sSecurityPadMonitorOam_ArmExtending;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
 
@@ -411,7 +411,7 @@ void SecurityPadMonitorArmExtending(void)
 {
     if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f78ac;
+        gCurrentSprite.pOam = sSecurityPadMonitorOam_ArmExtended;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
 
@@ -432,7 +432,7 @@ void SecurityPadMonitorUnlocking(void)
 {
     if (gSpriteData[gCurrentSprite.primarySpriteRamSlot].pose == 0x3C)
     {
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f780C;
+        gCurrentSprite.pOam = sSecurityPadMonitorOam_ArmRetracting;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
 
@@ -450,7 +450,7 @@ void SecurityPadMonitorArmRetracting(void)
 {
     if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f7754;
+        gCurrentSprite.pOam = sSecurityPadMonitorOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
 
@@ -486,12 +486,12 @@ void SecurityPadScreenInit(void)
     if (gCurrentSprite.roomSlot != 0)
     {
         gCurrentSprite.pose = SECURITY_PAD_SCREEN_POSE_INACTIVE;
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f77e4;
+        gCurrentSprite.pOam = sSecurityPadScreenOam_Inactive;
     }
     else
     {
         gCurrentSprite.pose = SPRITE_POSE_IDLE;
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f7794;
+        gCurrentSprite.pOam = sSecurityPadScreenOam_Idle;
     }
 }
 
@@ -507,7 +507,7 @@ void SecurityPadScreenIdle(void)
 
     if (gSpriteData[ramSlot].pose == 0x3A && gSpriteData[ramSlot].work1 <= 60 * 2 + 60 / 3)
     {
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f77bc;
+        gCurrentSprite.pOam = sSecurityPadScreenOam_Unlocking;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
 
@@ -523,7 +523,7 @@ void SecurityPadScreenUnlocking(void)
 {
     if (gSpriteData[gCurrentSprite.primarySpriteRamSlot].pose == 0x3C)
     {
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f77e4;
+        gCurrentSprite.pOam = sSecurityPadScreenOam_Inactive;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
 
