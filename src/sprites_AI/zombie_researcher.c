@@ -83,10 +83,7 @@ void ZombieDying(void) {
 }
 
 void ZombieInit(void) {
-    u32 prevPose;
-
-    prevPose = gCurrentSprite.pose;
-    if (prevPose == 0) {
+    if (gCurrentSprite.pose == 0) {
         if ((u8)(gCurrentSprite.spritesetSlotAndProperties - 0x20) < 0x30) {
             gCurrentSprite.pOam = sFrameData_2fb300;
             gCurrentSprite.samusCollision = 2;
