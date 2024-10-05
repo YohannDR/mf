@@ -192,15 +192,12 @@ def ExtractSample(f: BufferedReader, addr: int, instrType: int):
     size8: int = size // 8
 
     for x in range(0, size8):
-        content += "\t.byte " + str(data[x * 8 + 0]) + ", " + str(data[x * 8 + 1]) + ", " + str(data[x * 8 + 2]) + ", " + str(data[x * 8 + 3]) + ", " + str(data[x * 8 + 4]) + ", " + str(data[x * 8 + 5]) + ", " + str(data[x * 8 + 6]) + ", " + str(data[x * 8 + 7]) + "\n"
+        content += "\t.byte " + ", ".join(str(data[x * 8 + i]) for i in range(8)) + "\n"
 
     content += "\t.byte "
 
     remaining: int = size % 8
-    for x in range(0, remaining):
-        content += str(data[size8 * 8 + x])
-        if x != remaining - 1:
-            content += ", "
+    content += ", ".join(str(data[size8 * 8 + x]) for x in range(remaining))
 
     content += "\n\n.align 2\n"
     output.write(content)
