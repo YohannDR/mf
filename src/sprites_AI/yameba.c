@@ -71,13 +71,13 @@ void YamebaInit(void)
         gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
         gCurrentSprite.drawOrder = 12;
         gCurrentSprite.samusCollision = SSC_NONE;
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f5b18;
+        gCurrentSprite.pOam = sYamebaOam_Small;
     }
     else
     {
         gCurrentSprite.drawOrder = 4;
         gCurrentSprite.samusCollision = SSC_YAMEBA;
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f5b60;
+        gCurrentSprite.pOam = sYamebaOam_Big;
     }
 
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
