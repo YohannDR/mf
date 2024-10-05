@@ -37,7 +37,7 @@ void ZombieCheckSamusInRange(void) {
 }
 
 void ZombieSetWaitingToForm(void) {
-    gCurrentSprite.samusCollision = 0;
+    gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.pose = ZOMBIE_POSE_WAITING_TO_FORM;
     gCurrentSprite.hitboxTop = -0x20;
     gCurrentSprite.hitboxBottom = 0x18;
@@ -57,7 +57,7 @@ void ZombieDyingInit(void) {
     gCurrentSprite.pOam = sFrameData_2fb420;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.samusCollision = 0;
+    gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.hitboxTop = -0x20;
     gCurrentSprite.work1 = 0xb4;
     gCurrentSprite.pose = SPRITE_POSE_DYING;
@@ -67,9 +67,9 @@ void ZombieDyingInit(void) {
 void ZombieDying(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     if (gCurrentSprite.work1 == 0x8c) {
-        SpriteSpawnNewXParasite(0x38,gCurrentSprite.spriteId,0,gCurrentSprite.primarySpriteRamSlot,
-            gCurrentSprite.spritesetSlotAndProperties,gCurrentSprite.yPosition - 0x20,
-            gCurrentSprite.xPosition,0);
+        SpriteSpawnNewXParasite(0x38, gCurrentSprite.spriteId, 0, gCurrentSprite.primarySpriteRamSlot,
+            gCurrentSprite.spritesetSlotAndProperties, gCurrentSprite.yPosition - 0x20,
+            gCurrentSprite.xPosition, 0);
     }
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.pOam = sFrameData_2fb5d0;
@@ -86,7 +86,7 @@ void ZombieInit(void) {
     if (gCurrentSprite.pose == 0) {
         if ((u8)(gCurrentSprite.spritesetSlotAndProperties - 0x20) < 0x30) {
             gCurrentSprite.pOam = sFrameData_2fb300;
-            gCurrentSprite.samusCollision = 2;
+            gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
             gCurrentSprite.pose = ZOMBIE_POSE_IDLE;
             ZombieSetStandingHitbox();
             gCurrentSprite.work1 = 0;
@@ -98,7 +98,7 @@ void ZombieInit(void) {
         SpriteUtilChooseRandomXFlip();
     } else {
         gCurrentSprite.pOam = sFrameData_2fb258;
-        gCurrentSprite.samusCollision = 0;
+        gCurrentSprite.samusCollision = SSC_NONE;
         gCurrentSprite.pose = ZOMBIE_POSE_FORMING;
         gCurrentSprite.hitboxTop = -0x20;
         gCurrentSprite.hitboxBottom = 0;
@@ -130,11 +130,11 @@ void ZombieWaitingToForm(void) {
         } else if (gPreviousVerticalCollisionCheck & 0xf0) {
             if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
-                if ((gPreviousCollisionCheck & 0xf0) == 0) {
+                if (!(gPreviousCollisionCheck & 0xf0)) {
                     gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
                 } else {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition + 0x20);
-                    if ((gPreviousCollisionCheck & 0xf) != 0) {
+                    if (gPreviousCollisionCheck & 0xf) {
                         gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
                     } else if (gSpriteRandomNumber == 0 && (gFrameCounter16Bit & 1) != 0) {
                         gCurrentSprite.xPosition += 4;
@@ -142,11 +142,11 @@ void ZombieWaitingToForm(void) {
                 }
             } else {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
-                if ((gPreviousCollisionCheck & 0xf0) == 0) {
+                if (!(gPreviousCollisionCheck & 0xf0)) {
                     gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
                 } else {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition - 0x20);
-                    if ((gPreviousCollisionCheck & 0xf) != 0) {
+                    if (gPreviousCollisionCheck & 0xf) {
                         gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
                     } else if (gSpriteRandomNumber == 0 && (gFrameCounter16Bit & 1) != 0) {
                         gCurrentSprite.xPosition -= 4;
@@ -368,7 +368,7 @@ void ZombieFalling(void) {
 }
 
 void Zombie(void) {
-    if ((gCurrentSprite.invincibilityStunFlashTimer & 0x7f) == 4) {
+    if (SPRITE_HAS_ISFT(gCurrentSprite) == 4) {
         SoundPlayNotAlreadyPlaying(0x14e);
     }
     if (gCurrentSprite.freezeTimer != 0) {
