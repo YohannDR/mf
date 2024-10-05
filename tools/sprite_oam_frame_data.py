@@ -128,7 +128,7 @@ def ParseFrameData():
         index += 1
     result += f"    [{index}] = FRAME_DATA_TERMINATOR\n" + "};\n"
 
-    return result
+    return (result, len(frameData)+1)
 
 file = open("../mf_us_baserom.gba", "rb")
 
@@ -159,13 +159,20 @@ def Func():
         frames |= {currAddress | 0x8000000}
         print(ParseOam())
 
+    animations = []
     while True:
-        currAddress = file.tell()
+        currentAddr = file.tell()
         pointer = int.from_bytes(file.read(4), 'little')
-        file.seek(currAddress)
+        file.seek(currentAddr)
         if pointer not in frames:
             break
-        print(ParseFrameData())
+
+        (result, count) = ParseFrameData()
+        print(result)
+        animations.append((currentAddr, count))
+
+    for (addr, count) in animations:
+        print(f"extern const struct FrameData sFrameData_{addr:x}[{count}];")
 
     Func()
 
