@@ -920,5 +920,3 @@ const struct FrameData sFrameData_2fb5d0[8] = {
     },
     [7] = FRAME_DATA_TERMINATOR
 };
-
-static const u8 sBlob_2fb610_35dd74[] = INCBIN_U8("data/Blob_2fb610_35dd74.bin");
