@@ -92,7 +92,7 @@ void ZombieInit(void) {
             gCurrentSprite.samusCollision = 2;
             gCurrentSprite.pose = ZOMBIE_POSE_IDLE;
             ZombieSetStandingHitbox();
-            gCurrentSprite.work1 = prevPose;
+            gCurrentSprite.work1 = 0;
         } else {
             gCurrentSprite.pOam = sFrameData_2fb528;
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
