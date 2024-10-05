@@ -291,7 +291,33 @@ SECTIONS {
         src/sprites_AI/serris.o(.text);
         src/sprites_AI/owtch.o(.text);
 
-        asm/disasm_0x0804a5c0.o(.text);
+        asm/geega.o(.text);
+        asm/pillar.o(.text);
+        asm/genesis.o(.text);
+        asm/puyo.o(.text);
+        asm/fake_tank.o(.text);
+        asm/flashing_number.o(.text);
+        asm/zebesian_aqua.o(.text);
+        asm/animals.o(.text);
+        asm/infant_metroid.o(.text);
+        asm/lab_debris.o(.text);
+        asm/powamp.o(.text);
+        asm/zozoro.o(.text);
+        asm/sa_x_monster.o(.text);
+        asm/continual_x_spawner.o(.text);
+        asm/box_2.o(.text);
+        asm/omega_metroid.o(.text);
+        asm/gunship_end.o(.text);
+        asm/electric_water_box_2.o(.text);
+        asm/frozen_ridley.o(.text);
+        asm/gold_enemy_door_lock.o(.text);
+        asm/varia_x.o(.text);
+        asm/omega_metroid_husk.o(.text);
+        asm/ice_beam_x.o(.text);
+        asm/metroid_husk.o(.text);
+        asm/neo_ridley.o(.text);
+        asm/yakuza.o(.text);
+        asm/nightmare.o(.text);
 
         src/event_checks.o(.text);
 
