@@ -174,6 +174,7 @@ def Func():
     for (addr, count) in animations:
         print(f"extern const struct FrameData sFrameData_{addr:x}[{count}];")
 
+    print(f"\nEnd: {file.tell():x}\n")
     Func()
 
 Func()
