@@ -18,6 +18,8 @@ This produces the following ROMs:
 - https://discord.gg/2MGB9Xbr9y MAGret
 - https://discord.gg/WtekHKb MAGConst
 
+**biospark's GBATroid Data Maps:** https://labk.org/maps/
+
 ## Dependencies
 
 - [agbcc](https://github.com/pret/agbcc)
