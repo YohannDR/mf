@@ -312,6 +312,18 @@ codeCommands = [
     "EOT", # 0xce
 ]
 
+repeatableCommands = [
+    "VOICE", # 0xbd
+    "VOL", # 0xbe
+    "PAN", # 0xbf
+    "BEND", # 0xc0
+    "BENDR", # 0xc1
+    "MOD", # 0xc4
+    "TUNE", # 0xc8
+    "XCMD", # 0xcd
+    "EOT", # 0xce
+]
+
 PARAM_TYPE_NONE = 0
 PARAM_TYPE_BYTE = 1
 PARAM_TYPE_C_V = 2
@@ -601,11 +613,17 @@ def ExtractCommandParam(f: BufferedReader, val: int, name: str) -> str:
     if type == PARAM_TYPE_XCMD:
         value: int = int.from_bytes(f.read(1), "little")
 
-        if value == 8:
-            return ", xIECV"
-
-        if value == 9:
-            return ", xIECL"
+        if name == "repeat":
+            return ", " + str(value)
+        else:
+            if value == 8:
+                result = ", xIECV"
+            elif value == 9:
+                result = ", xIECL"
+            else:
+                raise Exception("Invalid XCMD")
+            value = int.from_bytes(f.read(1), "little")
+            return result + ", " + str(value)
 
     if type == PARAM_TYPE_EOT:
         value: int = int.from_bytes(f.read(1), "little")
@@ -628,6 +646,7 @@ def ExtractTrackCommands(f: BufferedReader, addr: int, trackNbr: int):
     value: int = int.from_bytes(f.read(1), "little")
     name = "track_" + str(trackNbr) + "_lbl_"
     result = ""
+    lastRepeatableCommand = 0
 
     while value != 0xB1:
         if value == 0xB6:
@@ -641,6 +660,8 @@ def ExtractTrackCommands(f: BufferedReader, addr: int, trackNbr: int):
             result += "\t.byte " + waitCommand[value]
         elif value >= 0xb1 and value <= 0xce and value != 0xb6:
             # Code command
+            if codeCommands[value - 0xb1] in repeatableCommands:
+                lastRepeatableCommand = value
             value -= 0xb1
             result += "\t.byte " + codeCommands[value]
 
@@ -654,28 +675,8 @@ def ExtractTrackCommands(f: BufferedReader, addr: int, trackNbr: int):
 
         elif value >= 0xcf:
             # Note command
+            lastRepeatableCommand = value
             result += "\t.byte " + notes[value - 0xcf]
-            value: int = int.from_bytes(f.read(1), "little")
-
-            if value >= 0xcf:
-                result += ", " + notes[value - 0xcf]
-                value: int = int.from_bytes(f.read(1), "little")
-
-                if value >= 0xcf:
-                    result += ", " + notes[value - 0xcf]
-                    value: int = int.from_bytes(f.read(1), "little")
-                        
-                    if value >= 0xcf:
-                        result += ", " + notes[value - 0xcf]
-                    else:
-                        f.seek(f.tell() - 1)
-                else:
-                    f.seek(f.tell() - 1)
-            else:
-                f.seek(f.tell() - 1)
-        elif value < 0x80:
-            # Raw note command
-            result += "\t.byte " + notesTieEot[value]
             value: int = int.from_bytes(f.read(1), "little")
 
             if value < 0x80:
@@ -683,17 +684,43 @@ def ExtractTrackCommands(f: BufferedReader, addr: int, trackNbr: int):
                 value: int = int.from_bytes(f.read(1), "little")
 
                 if value < 0x80:
-                    result += ", " + notesTieEot[value]
+                    result += f", v{value:03}"
                     value: int = int.from_bytes(f.read(1), "little")
                         
                     if value < 0x80:
-                        result += ", " + notesTieEot[value]
+                        result += ", " + str(value)
                     else:
                         f.seek(f.tell() - 1)
                 else:
                     f.seek(f.tell() - 1)
             else:
                 f.seek(f.tell() - 1)
+        elif value < 0x80:
+            # Repeat last command
+            if lastRepeatableCommand <= 0xce:
+                result += "\t.byte "
+                f.seek(f.tell() - 1)
+                ret = ExtractCommandParam(f, lastRepeatableCommand - 0xb1, "repeat")
+                if ret == None:
+                    print(hex(lastRepeatableCommand))
+
+                if ret != "":
+                    ret = ret[2:]
+                result += ret
+            else:
+                result += "\t.byte " + notesTieEot[value]
+                value: int = int.from_bytes(f.read(1), "little")
+
+                if value < 0x80:
+                    result += f", v{value:03}"
+                    value: int = int.from_bytes(f.read(1), "little")
+                        
+                    if value < 0x80:
+                        result += ", " + str(value)
+                    else:
+                        f.seek(f.tell() - 1)
+                else:
+                    f.seek(f.tell() - 1)
 
         result += "\n" + name + hex(f.tell()) + ":\n"
         value = int.from_bytes(f.read(1), "little")
