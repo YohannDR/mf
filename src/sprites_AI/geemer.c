@@ -525,12 +525,8 @@ void Geemer(void) {
     }
 }
 
-#ifdef NON_MATCHING
 void GeemerFlashingLight(void) {
-    // https://decomp.me/scratch/3B0Ca
-
     u32 geemerSlot;
-    s32 geemerPose;
 
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     if (gCurrentSprite.freezeTimer != 0) {
@@ -589,238 +585,17 @@ void GeemerFlashingLight(void) {
             gSpriteData[geemerSlot].paletteRow = 0;
             gCurrentSprite.status = 0;
         } else {
-            geemerPose = gSpriteData[geemerSlot].pose;
-            if (geemerPose == 0x44) {
-                goto hidden;
+            switch (gSpriteData[geemerSlot].pose) {
+                case 0x44:
+                    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+                    break;
+                default:
+                    gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
+                    break;
+                case 0x57:
+                case 0x58:
+                    gCurrentSprite.status = 0;
             }
-            if (geemerPose < 0x44) {
-                goto shown;
-            }
-            if (geemerPose > 0x58) {
-                goto shown;
-            }
-            if (geemerPose < 0x57) {
-                goto shown;
-            }
-            gCurrentSprite.status = 0;
-            return;
-            hidden:
-            gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
-            return;
-            shown:
-            gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
         }
     }
 }
-#else
-NAKED_FUNCTION
-void GeemerFlashingLight(void) {
-    asm(" \n\
-    push {r4, r5, r6, r7, lr} \n\
-	ldr r1, _080236B0 @ =gCurrentSprite \n\
-	add r2, r1, #0 \n\
-	add r2, #0x26 \n\
-	movs r0, #1 \n\
-	strb r0, [r2] \n\
-	add r0, r1, #0 \n\
-	add r0, #0x32 \n\
-	ldrb r0, [r0] \n\
-	add r3, r1, #0 \n\
-	cmp r0, #0 \n\
-	beq _080236B4 \n\
-	bl SpriteUtilUpdateFreezeTimer \n\
-	bl SpriteUtilUpdatePrimarySpriteFreezeTimer \n\
-	b _08023812 \n\
-	.align 2, 0 \n\
-_080236B0: .4byte gCurrentSprite \n\
-_080236B4: \n\
-	add r0, r3, #0 \n\
-	add r0, #0x23 \n\
-	ldrb r5, [r0] \n\
-	add r6, r3, #0 \n\
-	add r6, #0x24 \n\
-	ldrb r4, [r6] \n\
-	ldr r7, _08023724 @ =gSpriteData \n\
-	cmp r4, #0 \n\
-	bne _08023772 \n\
-	sub r0, #1 \n\
-	movs r1, #3 \n\
-	strb r1, [r0] \n\
-	ldr r2, _08023728 @ =sSecondarySpriteStats \n\
-	ldrb r0, [r3, #0x1d] \n\
-	lsl r0, r0, #3 \n\
-	add r0, r0, r2 \n\
-	ldrh r0, [r0] \n\
-	movs r2, #0 \n\
-	strh r0, [r3, #0x14] \n\
-	add r0, r3, #0 \n\
-	add r0, #0x27 \n\
-	strb r1, [r0] \n\
-	add r0, #1 \n\
-	strb r1, [r0] \n\
-	add r0, #1 \n\
-	strb r1, [r0] \n\
-	ldr r0, _0802372C @ =sFrameData_2fcd78 \n\
-	str r0, [r3, #0x18] \n\
-	strb r2, [r3, #0x1c] \n\
-	strh r4, [r3, #0x16] \n\
-	add r0, r3, #0 \n\
-	add r0, #0x25 \n\
-	strb r2, [r0] \n\
-	movs r0, #2 \n\
-	strb r0, [r6] \n\
-	lsl r0, r5, #3 \n\
-	sub r0, r0, r5 \n\
-	lsl r0, r0, #3 \n\
-	add r1, r0, r7 \n\
-	add r0, r1, #0 \n\
-	add r0, #0x2d \n\
-	ldrb r0, [r0] \n\
-	cmp r0, #0 \n\
-	beq _08023744 \n\
-	ldrh r1, [r1] \n\
-	movs r0, #0x40 \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	beq _08023734 \n\
-	ldr r0, _08023730 @ =0x0000FFF4 \n\
-	strh r0, [r3, #0xa] \n\
-	movs r1, #0xc \n\
-	strh r1, [r3, #0xc] \n\
-	strh r0, [r3, #0xe] \n\
-	movs r0, #0x20 \n\
-	b _08023770 \n\
-	.align 2, 0 \n\
-_08023724: .4byte gSpriteData \n\
-_08023728: .4byte sSecondarySpriteStats \n\
-_0802372C: .4byte sFrameData_2fcd78 \n\
-_08023730: .4byte 0x0000FFF4 \n\
-_08023734: \n\
-	ldr r0, _08023740 @ =0x0000FFF4 \n\
-	strh r0, [r3, #0xa] \n\
-	movs r1, #0xc \n\
-	strh r1, [r3, #0xc] \n\
-	sub r0, #0x14 \n\
-	b _0802375A \n\
-	.align 2, 0 \n\
-_08023740: .4byte 0x0000FFF4 \n\
-_08023744: \n\
-	ldrh r1, [r1] \n\
-	movs r0, #0x80 \n\
-	lsl r0, r0, #1 \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	beq _08023764 \n\
-	ldr r0, _08023760 @ =0x0000FFE0 \n\
-	strh r0, [r3, #0xa] \n\
-	movs r1, #0xc \n\
-	strh r1, [r3, #0xc] \n\
-	add r0, #0x14 \n\
-_0802375A: \n\
-	strh r0, [r3, #0xe] \n\
-	strh r1, [r3, #0x10] \n\
-	b _08023772 \n\
-	.align 2, 0 \n\
-_08023760: .4byte 0x0000FFE0 \n\
-_08023764: \n\
-	ldr r0, _08023794 @ =0x0000FFF4 \n\
-	strh r0, [r3, #0xa] \n\
-	movs r1, #0x20 \n\
-	strh r1, [r3, #0xc] \n\
-	strh r0, [r3, #0xe] \n\
-	movs r0, #0xc \n\
-_08023770: \n\
-	strh r0, [r3, #0x10] \n\
-_08023772: \n\
-	lsl r2, r5, #3 \n\
-	sub r0, r2, r5 \n\
-	lsl r0, r0, #3 \n\
-	add r0, r0, r7 \n\
-	mov ip, r0 \n\
-	ldrh r1, [r0] \n\
-	movs r4, #0x80 \n\
-	lsl r4, r4, #6 \n\
-	add r0, r4, #0 \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	beq _08023798 \n\
-	ldrh r1, [r3] \n\
-	add r0, r4, #0 \n\
-	orr r0, r1 \n\
-	b _08023810 \n\
-	.align 2, 0 \n\
-_08023794: .4byte 0x0000FFF4 \n\
-_08023798: \n\
-	ldrh r1, [r3] \n\
-	ldr r0, _080237DC @ =0x0000DFFF \n\
-	and r0, r1 \n\
-	movs r6, #0 \n\
-	strh r0, [r3] \n\
-	ldrh r4, [r3, #0x14] \n\
-	cmp r4, #0 \n\
-	bne _080237E0 \n\
-	mov r1, ip \n\
-	add r1, #0x24 \n\
-	ldrb r0, [r1] \n\
-	cmp r0, #0x56 \n\
-	bhi _080237E0 \n\
-	movs r0, #0x57 \n\
-	strb r0, [r1] \n\
-	add r1, #2 \n\
-	movs r0, #1 \n\
-	strb r0, [r1] \n\
-	mov r0, ip \n\
-	strh r4, [r0, #0x14] \n\
-	mov r2, ip \n\
-	add r2, #0x34 \n\
-	ldrb r1, [r2] \n\
-	movs r0, #0x10 \n\
-	orr r0, r1 \n\
-	strb r0, [r2] \n\
-	mov r0, ip \n\
-	add r0, #0x32 \n\
-	strb r6, [r0] \n\
-	sub r0, #0x12 \n\
-	strb r6, [r0] \n\
-	strh r4, [r3] \n\
-	b _08023812 \n\
-	.align 2, 0 \n\
-_080237DC: .4byte 0x0000DFFF \n\
-_080237E0: \n\
-	sub r0, r2, r5 \n\
-	lsl r0, r0, #3 \n\
-	add r0, r0, r7 \n\
-	add r0, #0x24 \n\
-	ldrb r0, [r0] \n\
-	cmp r0, #0x44 \n\
-	beq _080237FE \n\
-	cmp r0, #0x44 \n\
-	blt _0802380A \n\
-	cmp r0, #0x58 \n\
-	bgt _0802380A \n\
-	cmp r0, #0x57 \n\
-	blt _0802380A \n\
-	movs r0, #0 \n\
-	b _08023810 \n\
-_080237FE: \n\
-	ldrh r1, [r3] \n\
-	movs r2, #0x80 \n\
-	lsl r2, r2, #8 \n\
-	add r0, r2, #0 \n\
-	orr r0, r1 \n\
-	b _08023810 \n\
-_0802380A: \n\
-	ldrh r1, [r3] \n\
-	ldr r0, _08023818 @ =0x00007FFF \n\
-	and r0, r1 \n\
-_08023810: \n\
-	strh r0, [r3] \n\
-_08023812: \n\
-	pop {r4, r5, r6, r7} \n\
-	pop {r0} \n\
-	bx r0 \n\
-	.align 2, 0 \n\
-_08023818: .4byte 0x00007FFF \n\
-    ");
-}
-#endif
