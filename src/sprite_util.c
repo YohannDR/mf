@@ -1935,7 +1935,7 @@ u8 SpriteUtilCheckSamusNearSpriteAboveBelow(u16 yRange, u16 xRange)
  * @param xRangeBehind X range (behind)
  * @return u8 NSFB result
  */
-u8 SpriteUtilCheckSamusNearSpriteFrontBehindX(u16 yRange, u16 xRangeFront, u16 xRangeBehind)
+u8 SpriteUtilCheckSamusNearSpriteFrontBehind(u16 yRange, u16 xRangeFront, u16 xRangeBehind)
 {
     u8 result;
     u16 samusY;
@@ -2745,7 +2745,7 @@ u32 SpriteUtilSamusCheckPassThroughSprite(u8 spriteSlot)
                     break;
                 }
 
-                if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS))
+                if (ProjectileGetSpriteWeakness(spriteSlot) & (WEAKNESS_CHARGE_BEAM | WEAKNESS_BEAM_BOMBS))
                     passThrough++;
             }
             break;
@@ -2892,7 +2892,7 @@ u32 SpriteUtilCheckSudoScrew(u8 spriteSlot)
                     break;
                 }
 
-                if (ProjectileGetSpriteWeakness(spriteSlot) & (SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_BEAM_AND_BOMBS))
+                if (ProjectileGetSpriteWeakness(spriteSlot) & (WEAKNESS_CHARGE_BEAM | WEAKNESS_BEAM_BOMBS))
                     sudoCrew++;
             }
     }
@@ -2988,7 +2988,7 @@ void SpriteUtilTrySetAbsorbXFlag(void)
  * @param spriteId Sprite ID
  * @return u8 count
  */
-u8 SpriteUtilCountSecondarySprites(u8 spriteId)
+u8 SpriteUtilSpriteUtilCountSecondarySpritess(u8 spriteId)
 {
     u8 i;
     u8 count;
@@ -3097,7 +3097,7 @@ u8 SpriteUtilFindSecondarySprite(u8 spriteId)
  * @param ramSlot Primary sprite ram slot
  * @return u8 Count
  */
-u8 SpriteUtilCountSecondarySpriteWithRamSlot(u8 spriteId, u8 ramSlot)
+u8 SpriteUtilSpriteUtilCountSecondarySpritesWithRamSlot(u8 spriteId, u8 ramSlot)
 {
     u8 i;
     u8 count;

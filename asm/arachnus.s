@@ -779,7 +779,7 @@ ArachnusScreaming: @ 0x08023E30
 	cmp r0, #0
 	beq _08023E76
 	movs r0, #0x1a
-	bl CountSecondarySprite
+	bl SpriteUtilCountSecondarySprites
 	cmp r0, #0
 	beq _08023E54
 	ldr r0, _08023E50 @ =gFrameCounter8Bit
@@ -1178,7 +1178,7 @@ _080241D4:
 	cmp r0, #0
 	beq _080241FC
 	movs r0, #0x1a
-	bl CountSecondarySprite
+	bl SpriteUtilCountSecondarySprites
 	cmp r0, #0
 	bne _08024204
 	ldrh r1, [r5]
@@ -1201,7 +1201,7 @@ _0802420A:
 	lsls r2, r2, #1
 	movs r0, #0xc0
 	adds r1, r2, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	cmp r0, #3
 	bne _08024220
 	bl ArachnusSlashingInit
@@ -1211,7 +1211,7 @@ _08024220:
 	lsls r2, r2, #2
 	movs r0, #0xc0
 	adds r1, r2, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	cmp r0, #3
 	bne _08024234
 	bl ArachnusRollingInit

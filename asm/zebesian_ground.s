@@ -22,7 +22,7 @@ ZebesianGroundCheckInShootingRange: @ 0x0803FD28
 	movs r2, #0xd0
 	lsls r2, r2, #2
 	movs r0, #0xc0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	adds r3, r0, #0
 	cmp r3, #3
 	bne _0803FD78
@@ -61,7 +61,7 @@ _0803FD90:
 	movs r2, #0xd0
 	lsls r2, r2, #2
 	adds r1, r2, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	adds r3, r0, #0
 	cmp r3, #3
 	bne _0803FDB4
@@ -1693,7 +1693,7 @@ ZebesianGroundShootingEnd: @ 0x080409E0
 	lsls r6, r6, #2
 	movs r0, #0xc0
 	adds r2, r6, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	cmp r0, #3
 	bne _08040A2C
 	adds r1, r4, #0
@@ -1723,7 +1723,7 @@ _08040A3A:
 	lsls r0, r0, #1
 	adds r1, r6, #0
 	adds r2, r6, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	cmp r0, #3
 	bne _08040A58
 	ldrb r0, [r5]

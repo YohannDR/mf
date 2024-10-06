@@ -2289,7 +2289,7 @@ RidleyIdle: @ 0x0805A224
 	cmp r0, #0x1b
 	beq _0805A26E
 	movs r0, #0x7d
-	bl CountSecondarySprite
+	bl SpriteUtilCountSecondarySprites
 	cmp r0, #0
 	bne _0805A260
 	movs r0, #2
@@ -2358,7 +2358,7 @@ _0805A284:
 	cmp r0, #0
 	bne _0805A36E
 	movs r0, #0x7d
-	bl CountSecondarySprite
+	bl SpriteUtilCountSecondarySprites
 	cmp r0, #0
 	bne _0805A36E
 	movs r0, #2
@@ -2425,7 +2425,7 @@ _0805A324:
 	cmp r0, #0
 	bne _0805A36E
 	movs r0, #0x7d
-	bl CountSecondarySprite
+	bl SpriteUtilCountSecondarySprites
 	cmp r0, #0
 	bne _0805A36E
 	movs r0, #2

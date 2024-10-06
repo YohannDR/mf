@@ -265,7 +265,7 @@ void PowerBombExplosionEnd(void)
         SET_BACKDROP_COLOR(COLOR_BLACK);
 
         gWrittenToWinin_L = gIoRegisters.winin_L;
-        gWrittenToWinout_R = gIoRegisters.winin_R;
+        gWrittenToWinout_R = gIoRegisters.winout_R;
 
         write16(REG_BG0CNT, gIoRegisters.bg0Cnt);
         write16(REG_BG1CNT, gIoRegisters.bg1Cnt);

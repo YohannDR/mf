@@ -165,7 +165,7 @@ void MotoIdle(void)
     if (!SpriteUtilCheckNearEndCurrentSpriteAnim())
         return;
 
-    if (SpriteUtilCheckSamusNearSpriteFrontBehindX(BLOCK_SIZE * 2 + HALF_BLOCK_SIZE, BLOCK_SIZE * 5, BLOCK_SIZE * 5) == NSFB_BEHIND)
+    if (SpriteUtilCheckSamusNearSpriteFrontBehind(BLOCK_SIZE * 2 + HALF_BLOCK_SIZE, BLOCK_SIZE * 5, BLOCK_SIZE * 5) == NSFB_BEHIND)
         gCurrentSprite.pose = MOTO_POSE_TURNING_AROUND_INIT;
     else
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
@@ -362,7 +362,7 @@ void MotoWalking(void)
     {
         if (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))
         {
-            nsfb = SpriteUtilCheckSamusNearSpriteFrontBehindX(BLOCK_SIZE * 2 + HALF_BLOCK_SIZE, BLOCK_SIZE * 5, BLOCK_SIZE * 5);
+            nsfb = SpriteUtilCheckSamusNearSpriteFrontBehind(BLOCK_SIZE * 2 + HALF_BLOCK_SIZE, BLOCK_SIZE * 5, BLOCK_SIZE * 5);
         }
 
         if (nsfb == NSFB_IN_FRONT)

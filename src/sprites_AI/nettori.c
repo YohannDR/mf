@@ -1140,7 +1140,7 @@ void SamusEaterBudIdle(void)
         }
     }
 
-    if (canShoot && SpriteUtilCountSecondarySpriteWithRamSlot(SSPRITE_SAMUS_EATER_SPORE, gCurrentSprite.primarySpriteRamSlot) < 2)
+    if (canShoot && SpriteUtilSpriteUtilCountSecondarySpritesWithRamSlot(SSPRITE_SAMUS_EATER_SPORE, gCurrentSprite.primarySpriteRamSlot) < 2)
     {
         // Set shooting
         gCurrentSprite.pose = SAMUS_EATER_BUD_POSE_SHOOTING;

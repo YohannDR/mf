@@ -136,7 +136,7 @@ struct IoRegisters {
     u8 bldalpha_eva;
     u8 bldalpha_evb;
     u8 winin_L;
-    u8 winin_R;
+    u8 winout_R;
     u16 bg0Cnt;
     u16 bg1Cnt;
     u16 bg2Cnt;

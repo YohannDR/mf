@@ -3926,8 +3926,8 @@ _08011BDE:
 	pop {r1}
 	bx r1
 
-	thumb_func_start SpriteUtilCheckSamusNearSpriteFrontBehindX
-SpriteUtilCheckSamusNearSpriteFrontBehindX: @ 0x08011BE4
+	thumb_func_start SpriteUtilCheckSamusNearSpriteFrontBehind
+SpriteUtilCheckSamusNearSpriteFrontBehind: @ 0x08011BE4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -5588,8 +5588,8 @@ _0801284E:
 	.align 2, 0
 _08012854: .4byte gCurrentSprite
 
-	thumb_func_start CountSecondarySprite
-CountSecondarySprite: @ 0x08012858
+	thumb_func_start SpriteUtilCountSecondarySprites
+SpriteUtilCountSecondarySprites: @ 0x08012858
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
@@ -5764,8 +5764,8 @@ _08012988:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SpriteUtilCountSecondarySpriteWithRamSlot
-SpriteUtilCountSecondarySpriteWithRamSlot: @ 0x08012990
+	thumb_func_start SpriteUtilSpriteUtilCountSecondarySpritesWithRamSlot
+SpriteUtilSpriteUtilCountSecondarySpritesWithRamSlot: @ 0x08012990
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x18
 	lsrs r6, r0, #0x18

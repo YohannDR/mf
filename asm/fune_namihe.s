@@ -190,7 +190,7 @@ FuneCheckSamusInFront: @ 0x08034AB4
 	lsls r1, r1, #2
 	movs r0, #0x48
 	movs r2, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #3
@@ -266,7 +266,7 @@ _08034B50:
 	movs r1, #0x80
 	lsls r1, r1, #2
 	movs r2, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #3
@@ -996,7 +996,7 @@ NamiheCheckSamusInFront: @ 0x080350D8
 	lsls r1, r1, #2
 	movs r0, #0x48
 	movs r2, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #3
@@ -1072,7 +1072,7 @@ _08035174:
 	movs r1, #0x80
 	lsls r1, r1, #2
 	movs r2, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #3

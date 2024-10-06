@@ -494,7 +494,7 @@ _0803C824:
 	lsls r2, r2, #2
 	adds r0, r2, #0
 	adds r1, r2, #0
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 _0803C830:
 	adds r1, r0, #0
 	cmp r1, #3

@@ -84,7 +84,7 @@ void GeemerSetIdleGFX(void) {
 }
 
 void GeemerCheckShouldHide(void) {
-    if (!(gCurrentSprite.properties & 2)) {
+    if (!(gCurrentSprite.properties & SP_CAN_ABSORB_X)) {
         if (gChangedInput != KEY_NONE) {
             gCurrentSprite.work1 = 0;
         }
@@ -370,7 +370,7 @@ void GeemerCrawling(void) {
             }
         }
         if (turnAround) {
-            gCurrentSprite.status ^= 0x200;
+            gCurrentSprite.status ^= SPRITE_STATUS_FACING_RIGHT;
             gCurrentSprite.pose = 7;
         }
         GeemerCheckShouldHide();

@@ -14,7 +14,7 @@ WaverCheckSamusInRange: @ 0x08026C7C
 	lsls r1, r1, #1
 	movs r0, #0x28
 	movs r2, #0x40
-	bl SpriteUtilCheckSamusNearSpriteFrontBehindX
+	bl SpriteUtilCheckSamusNearSpriteFrontBehind
 	cmp r0, #3
 	bne _08026C9A
 	movs r4, #1

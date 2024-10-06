@@ -1359,7 +1359,7 @@ _080299B8:
 	adds r6, #0x23
 	ldrb r1, [r6]
 	movs r0, #0x32
-	bl SpriteUtilCountSecondarySpriteWithRamSlot
+	bl SpriteUtilSpriteUtilCountSecondarySpritesWithRamSlot
 	cmp r0, #2
 	bgt _08029A72
 	ldrh r1, [r4]

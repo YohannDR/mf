@@ -265,7 +265,7 @@ void GadoraIdle(void)
     if (gCurrentSprite.work1 == 0)
     {
         // Timer ended, check samus is in front
-        nsfb = SpriteUtilCheckSamusNearSpriteFrontBehindX(BLOCK_SIZE * 2, BLOCK_SIZE * 7, 0);
+        nsfb = SpriteUtilCheckSamusNearSpriteFrontBehind(BLOCK_SIZE * 2, BLOCK_SIZE * 7, 0);
 
         if (nsfb == NSFB_IN_FRONT)
         {
