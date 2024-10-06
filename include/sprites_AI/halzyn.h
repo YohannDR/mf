@@ -1,5 +1,5 @@
-#ifndef GADORA_AI_H
-#define GADORA_AI_H
+#ifndef HALZYN_AI_H
+#define HALZYN_AI_H
 
 #include "types.h"
 
@@ -22,4 +22,4 @@ void HalzynWingFalling(void);
 void Halzyn(void);
 void HalzynWing(void);
 
-#endif /* GADORA_AI_H */
+#endif /* HALZYN_AI_H */
