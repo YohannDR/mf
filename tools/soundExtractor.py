@@ -613,17 +613,15 @@ def ExtractCommandParam(f: BufferedReader, val: int, name: str) -> str:
     if type == PARAM_TYPE_XCMD:
         value: int = int.from_bytes(f.read(1), "little")
 
-        if name == "repeat":
-            return ", " + str(value)
+        if value == 8:
+            result = ", xIECV"
+        elif value == 9:
+            result = ", xIECL"
         else:
-            if value == 8:
-                result = ", xIECV"
-            elif value == 9:
-                result = ", xIECL"
-            else:
-                raise Exception("Invalid XCMD")
-            value = int.from_bytes(f.read(1), "little")
-            return result + ", " + str(value)
+            raise Exception("Invalid XCMD")
+
+        value = int.from_bytes(f.read(1), "little")
+        return result + ", " + str(value)
 
     if type == PARAM_TYPE_EOT:
         value: int = int.from_bytes(f.read(1), "little")
