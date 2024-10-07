@@ -347,7 +347,7 @@ SECTIONS {
         audio/voice_groups.o(.rodata);
         audio/key_split_tbl_0.o(.rodata);
         audio/prog_waveforms.o(.rodata);
-        src/data/blob_a8cdc_a8d3c.o(.rodata);
+        src/data/music_track_data.o(.rodata);
         audio/sound_entries.o(.rodata);
         audio/null_track.o(.rodata);
         audio/samples.o(.rodata);

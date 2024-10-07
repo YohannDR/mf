@@ -3,6 +3,13 @@
 
 #include "types.h"
 
+struct TrackGroupROMData {
+    u32 pTrack;
+    u32 pVariables;
+    u16 maxAmountOfTracks;
+    u16 unknonw_A;
+};
+
 struct MusicInfo {
     u8 unk_0;
     u8 unk_1;
