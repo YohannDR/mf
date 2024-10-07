@@ -431,7 +431,7 @@ _08023B74: .4byte gSpriteData
 _08023B78: .4byte 0x08302C94
 _08023B7C: .4byte 0x08302DC4
 _08023B80:
-	ldr r0, _08023C18 @ =0x082FD0B8
+	ldr r0, _08023C18 @ =sArachnusRollingSpeed
 	movs r1, #0x30
 	adds r1, r1, r5
 	mov r8, r1
@@ -508,7 +508,7 @@ _08023BE6:
 	bl SpriteDebrisInit
 	b _08023CCA
 	.align 2, 0
-_08023C18: .4byte 0x082FD0B8
+_08023C18: .4byte sArachnusRollingSpeed
 _08023C1C: .4byte gPreviousCollisionCheck
 _08023C20: .4byte gSpriteRandomNumber
 _08023C24: .4byte gFrameCounter8Bit
@@ -671,7 +671,7 @@ _08023D64:
 	adds r6, r4, #0
 	adds r6, #0x31
 	ldrb r1, [r6]
-	ldr r2, _08023D84 @ =0x082FD0D0
+	ldr r2, _08023D84 @ =sArachnusBonkingSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r2
 	ldrh r3, [r0]
@@ -684,7 +684,7 @@ _08023D64:
 	ldrh r3, [r0]
 	b _08023D90
 	.align 2, 0
-_08023D84: .4byte 0x082FD0D0
+_08023D84: .4byte sArachnusBonkingSpeed
 _08023D88: .4byte 0x00007FFF
 _08023D8C:
 	adds r0, r1, #1

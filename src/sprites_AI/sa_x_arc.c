@@ -24,7 +24,7 @@ void SaXArcCheckCollisionWalking(void)
 {
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -152,7 +152,7 @@ void SaXArcCheckCollisionRunning(void)
 {
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -612,7 +612,7 @@ void SaXArcTurningAroundAfterHearingWeaponInit(void)
  */
 void SaXArcTurningAroundAfterHearingWeapon(void)
 {
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -654,7 +654,7 @@ void SaXArcRunning(void)
  */
 void SaXArcTurningAroundChase(void)
 {
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -697,7 +697,7 @@ void SaXArcDelayBeforeShootingBeamInit(void)
  */
 void SaXArcDelayBeforeShootingBeam(void)
 {
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -744,7 +744,7 @@ void SaXArcShootingBeamInit(void)
  */
 void SaXArcShootingBeam(void)
 {
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {

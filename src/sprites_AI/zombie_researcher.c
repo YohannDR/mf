@@ -124,17 +124,20 @@ void ZombieWaitingToForm(void) {
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
         }
     } else {
-        unk_1129c();
+        SpriteUtilAdjustYPosOnSlope();
         if (gPreviousVerticalCollisionCheck == 0) {
+            // Falling
             gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
-        } else if (gPreviousVerticalCollisionCheck & 0xf0) {
+        } else if (gPreviousVerticalCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
             if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
-                if (!(gPreviousCollisionCheck & 0xf0)) {
+                if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
+                    // On ledge
                     gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
                 } else {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition + 0x20);
-                    if (gPreviousCollisionCheck & 0xf) {
+                    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
+                        // Hit wall
                         gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
                     } else if (gSpriteRandomNumber == 0 && (gFrameCounter16Bit & 1) != 0) {
                         gCurrentSprite.xPosition += 4;
@@ -142,11 +145,11 @@ void ZombieWaitingToForm(void) {
                 }
             } else {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
-                if (!(gPreviousCollisionCheck & 0xf0)) {
+                if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
                     gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
                 } else {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition - 0x20);
-                    if (gPreviousCollisionCheck & 0xf) {
+                    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                         gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
                     } else if (gSpriteRandomNumber == 0 && (gFrameCounter16Bit & 1) != 0) {
                         gCurrentSprite.xPosition -= 4;
@@ -183,7 +186,7 @@ void ZombieIdleInit(void) {
 }
 
 void ZombieIdle(void) {
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
     if (gPreviousVerticalCollisionCheck == 0) {
         gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
     } else {
@@ -202,7 +205,8 @@ void ZombieMovingInit(void) {
 }
 
 void ZombieMoving(void) {
-    unk_1129c();
+    // Check if falling
+    SpriteUtilAdjustYPosOnSlope();
     if (gPreviousVerticalCollisionCheck == 0) {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
@@ -213,27 +217,29 @@ void ZombieMoving(void) {
             gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
             return;
         }
-    } else if (gPreviousVerticalCollisionCheck & 0xf0) {
+    } else if (gPreviousVerticalCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
+            // Check if on ledge
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
-            if (!(gPreviousCollisionCheck & 0xf0)) {
+            if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
                 gCurrentSprite.pose = ZOMBIE_POSE_TURNING_INIT;
                 return;
             }
+            // Check if hit wall
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition + 0x20);
-            if (gPreviousCollisionCheck & 0xf) {
+            if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                 gCurrentSprite.pose = ZOMBIE_POSE_TURNING_INIT;
                 return;
             }
             gCurrentSprite.xPosition += 1;
         } else {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
-            if (!(gPreviousCollisionCheck & 0xf0)) {
+            if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
                 gCurrentSprite.pose = ZOMBIE_POSE_TURNING_INIT;
                 return;
             }
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition - 0x20);
-            if (gPreviousCollisionCheck & 0xf) {
+            if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                 gCurrentSprite.pose = ZOMBIE_POSE_TURNING_INIT;
                 return;
             }
@@ -277,8 +283,9 @@ void ZombieLungingInit(void) {
 
 void ZombieLunging(void) {
     s16 speed;
-    
-    unk_1129c();
+
+    // Check if falling
+    SpriteUtilAdjustYPosOnSlope();
     if (gPreviousVerticalCollisionCheck == 0) {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
@@ -291,20 +298,22 @@ void ZombieLunging(void) {
         }
     } else {
         speed = sZombieLungingSpeed[gCurrentSprite.currentAnimationFrame];
-        if (gPreviousVerticalCollisionCheck & 0xf0) {
+        if (gPreviousVerticalCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
             if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
+                // Check if on ledge
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
-                if (gPreviousCollisionCheck & 0xf0) {
+                if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
+                    // Check if hit wall
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition + 0x20);
-                    if (!(gPreviousCollisionCheck & 0xf)) {
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)) {
                         gCurrentSprite.xPosition += speed;
                     }
                 }
             } else {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
-                if (gPreviousCollisionCheck & 0xf0) {
+                if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition - 0x20);
-                    if (!(gPreviousCollisionCheck & 0xf)) {
+                    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)) {
                         gCurrentSprite.xPosition -= speed;
                     }
                 }
@@ -341,8 +350,9 @@ void ZombieFalling(void) {
     u8 offset;
     s16 movement;
 
-    blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition,gCurrentSprite.xPosition);
-    if (gPreviousVerticalCollisionCheck) {
+    blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+    if (gPreviousVerticalCollisionCheck != COLLISION_AIR) {
+        // Touched the ground
         gCurrentSprite.yPosition = blockTop;
         if (gCurrentSprite.properties & SP_CAN_ABSORB_X) {
             gCurrentSprite.pose = ZOMBIE_POSE_WAITING_TO_FORM;
@@ -350,6 +360,7 @@ void ZombieFalling(void) {
             gCurrentSprite.pose = ZOMBIE_POSE_IDLE_INIT;
         }
     } else {
+        // Falling
         offset = gCurrentSprite.work4;
         movement = sSpritesFallingSpeed[offset];
         

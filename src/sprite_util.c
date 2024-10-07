@@ -996,7 +996,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
 }
 
 /**
- * @brief 11058 | 11c | Checks the vertical collision at the position
+ * @brief 11058 | 11c | Checks the vertical collision at the position, slopes are treated as whole blocks when detecting collision
  * 
  * @param yPosition Y Position
  * @param xPosition X Position
@@ -1136,10 +1136,10 @@ u32 SpriteUtilCheckVerticalCollisionAtPositionSlopes(u16 yPosition, u16 xPositio
 }
 
 /**
- * @brief 1129c | 74 | To document
+ * @brief 1129c | 74 | Adjust the current sprite's Y position on slope, check position at origin
  * 
  */
-void unk_1129c(void)
+void SpriteUtilAdjustYPosOnSlope(void)
 {
     u16 yPosition;
     u16 xPosition;
@@ -1173,10 +1173,10 @@ void unk_1129c(void)
 }
 
 /**
- * @brief 11310 | 80 | To document
+ * @brief 11310 | 80 | Adjust the current sprite's Y position on slope, check position at bottom of hitbox, X origin
  * 
  */
-void unk_11310(void)
+void SpriteUtilAdjustYPosOnSlopeAtHitbox(void)
 {
     u16 yPosition;
     u16 xPosition;

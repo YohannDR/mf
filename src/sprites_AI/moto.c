@@ -154,7 +154,7 @@ void MotoIdleInit(void)
  */
 void MotoIdle(void)
 {
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -190,7 +190,7 @@ void MotoHittingWallInit(void)
  */
 void MotoHittingWall(void)
 {
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -228,7 +228,7 @@ void MotoWalking(void)
 
     nsfb = NSFB_OUT_OF_RANGE;
     
-    unk_1129c();
+    SpriteUtilAdjustYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {

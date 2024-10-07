@@ -122,27 +122,27 @@ enum DiagonalAim {
 
 // --- Flags ---
 
-#define SMF_HIGH_JUMP (1 << 0)
-#define SMF_SPEED_BOOSTER (1 << 1)
-#define SMF_SPACE_JUMP (1 << 2)
-#define SMF_SCREW_ATTACK (1 << 3)
-#define SMF_VARIA_SUIT (1 << 4)
-#define SMF_GRAVITY_SUIT (1 << 5)
-#define SMF_MORPH_BALL (1 << 6)
-#define SMF_SA_X_SUIT (1 << 7)
+#define SMF_HIGH_JUMP (1 << 0) // 1
+#define SMF_SPEED_BOOSTER (1 << 1) // 2
+#define SMF_SPACE_JUMP (1 << 2) // 4
+#define SMF_SCREW_ATTACK (1 << 3) // 8
+#define SMF_VARIA_SUIT (1 << 4) // 0x10
+#define SMF_GRAVITY_SUIT (1 << 5) // 0x20
+#define SMF_MORPH_BALL (1 << 6) // 0x40
+#define SMF_SA_X_SUIT (1 << 7) // 0x80
 
-#define BF_CHARGE_BEAM (1 << 0)
-#define BF_WIDE_BEAM (1 << 1)
-#define BF_PLASMA_BEAM (1 << 2)
-#define BF_WAVE_BEAM (1 << 3)
-#define BF_ICE_BEAM (1 << 4)
+#define BF_CHARGE_BEAM (1 << 0) // 1
+#define BF_WIDE_BEAM (1 << 1) // 2
+#define BF_PLASMA_BEAM (1 << 2) // 4
+#define BF_WAVE_BEAM (1 << 3) // 8
+#define BF_ICE_BEAM (1 << 4) // 0x10
 
-#define MBF_MISSILES (1 << 0)
-#define MBF_SUPER_MISSILES (1 << 1)
-#define MBF_ICE_MISSILES (1 << 2)
-#define MBF_DIFFUSION_MISSILES (1 << 3)
-#define MBF_BOMBS (1 << 4)
-#define MBF_POWER_BOMBS (1 << 5)
+#define MBF_MISSILES (1 << 0) // 1
+#define MBF_SUPER_MISSILES (1 << 1) // 2
+#define MBF_ICE_MISSILES (1 << 2) // 4
+#define MBF_DIFFUSION_MISSILES (1 << 3) // 8
+#define MBF_BOMBS (1 << 4) // 0x10
+#define MBF_POWER_BOMBS (1 << 5) // 0x20
 #define MBF_ANY_MISSILE (MBF_MISSILES | MBF_SUPER_MISSILES | MBF_ICE_MISSILES | MBF_DIFFUSION_MISSILES)
 
 // --- Forced movement ---

@@ -149,7 +149,7 @@ _0804B766:
 	ldr r0, _0804B798 @ =0x000001C3
 	bl SoundPlayNotAlreadyPlaying
 _0804B780:
-	bl unk_1129c
+	bl SpriteUtilAdjustYPosOnSlope
 	ldr r0, _0804B79C @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -321,7 +321,7 @@ _0804B8CC: .4byte gSpriteRandomNumber
 	thumb_func_start PuyoWaiting
 PuyoWaiting: @ 0x0804B8D0
 	push {lr}
-	bl unk_1129c
+	bl SpriteUtilAdjustYPosOnSlope
 	ldr r0, _0804B8E8 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0

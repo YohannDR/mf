@@ -726,7 +726,7 @@ _080502B4:
 	strh r1, [r4, #4]
 	b _0805044E
 _080502BE:
-	bl unk_1129c
+	bl SpriteUtilAdjustYPosOnSlope
 	ldr r5, _080502F4 @ =gPreviousVerticalCollisionCheck
 	ldrb r1, [r5]
 	adds r3, r1, #0
