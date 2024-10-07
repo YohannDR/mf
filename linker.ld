@@ -367,6 +367,7 @@ SECTIONS {
         src/data/sprites/skree.o(.rodata);
         src/data/sprites/zombie_researcher.o(.rodata);
         src/data/sprites/geemer.o(.rodata);
+        src/data/sprites/arachnus.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);
