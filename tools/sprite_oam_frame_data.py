@@ -148,15 +148,15 @@ def Func():
 
     frames = set()
     while True:
-        currAddress = file.tell()
+        currentAddr = file.tell()
         pointer = int.from_bytes(file.read(4), 'little')
-        file.seek(currAddress)
+        file.seek(currentAddr)
         if pointer in frames:
             break
         if pointer & 0xFFFF == 0:
             file.read(2) # align
             break
-        frames |= {currAddress | 0x8000000}
+        frames |= {currentAddr | 0x8000000}
         print(ParseOam())
 
     animations = []
