@@ -32,18 +32,18 @@ void ZazabiSyncSubSprites(void)
     
     if (gSubSpriteData1.health == 40)
     {
-        if (gCurrentSprite.pOam != sZazabiFrameDataPointers4[oamIdx])
+        if (gCurrentSprite.pOam != sZazabiFrameDataPointers1[oamIdx])
         {
-            gCurrentSprite.pOam = sZazabiFrameDataPointers4[oamIdx];
+            gCurrentSprite.pOam = sZazabiFrameDataPointers1[oamIdx];
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
     }
     else if (gSubSpriteData1.health == 60)
     {
-        if (gCurrentSprite.pOam != sZazabiFrameDataPointers3[oamIdx])
+        if (gCurrentSprite.pOam != sZazabiFrameDataPointers2[oamIdx])
         {
-            gCurrentSprite.pOam = sZazabiFrameDataPointers3[oamIdx];
+            gCurrentSprite.pOam = sZazabiFrameDataPointers2[oamIdx];
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
@@ -59,9 +59,9 @@ void ZazabiSyncSubSprites(void)
     }
     else
     {
-        if (gCurrentSprite.pOam != sZazabiFrameDataPointers1[oamIdx])
+        if (gCurrentSprite.pOam != sZazabiFrameDataPointers4[oamIdx])
         {
-            gCurrentSprite.pOam = sZazabiFrameDataPointers1[oamIdx];
+            gCurrentSprite.pOam = sZazabiFrameDataPointers4[oamIdx];
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
