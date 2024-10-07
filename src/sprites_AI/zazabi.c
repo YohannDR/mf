@@ -50,9 +50,9 @@ void ZazabiSyncSubSprites(void)
     }
     else if (gSubSpriteData1.health == 80)
     {
-        if (gCurrentSprite.pOam != sZazabiFrameDataPointers2[oamIdx])
+        if (gCurrentSprite.pOam != sZazabiFrameDataPointers3[oamIdx])
         {
-            gCurrentSprite.pOam = sZazabiFrameDataPointers2[oamIdx];
+            gCurrentSprite.pOam = sZazabiFrameDataPointers3[oamIdx];
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
