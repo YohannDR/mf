@@ -3594,8 +3594,8 @@ _080119A2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CheckEndOfSpriteAnimation
-CheckEndOfSpriteAnimation: @ 0x080119A8
+	thumb_func_start SpriteUtilCheckEndSpriteAnim
+SpriteUtilCheckEndSpriteAnim: @ 0x080119A8
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
@@ -3635,8 +3635,8 @@ _080119EA:
 	pop {r1}
 	bx r1
 
-	thumb_func_start CheckNearEndOfSpriteAnimation
-CheckNearEndOfSpriteAnimation: @ 0x080119F0
+	thumb_func_start SpriteUtilCheckNearEndSpriteAnim
+SpriteUtilCheckNearEndSpriteAnim: @ 0x080119F0
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18

@@ -238,6 +238,7 @@ SECTIONS {
 
         asm/arachnus.o(.text);
         asm/core_x.o(.text);
+        asm/core_x_downloading_varia.o(.text);
         asm/waver.o(.text);
         asm/sciser.o(.text);
         asm/sidehopper.o(.text);
@@ -368,6 +369,8 @@ SECTIONS {
         src/data/sprites/zombie_researcher.o(.rodata);
         src/data/sprites/geemer.o(.rodata);
         src/data/sprites/arachnus.o(.rodata);
+        src/data/sprites/core_x.o(.rodata);
+        src/data/sprites/core_x_downloading_varia.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);

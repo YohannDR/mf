@@ -2,6 +2,9 @@ def sign(value):
     if value > 0x7FFF:
         value = -(0x10000 - value)
 
+    if value == 0x7FFF:
+        value = "SHORT_MAX"
+
     return value
 
 file = open("../mf_us_baserom.gba", "rb")
@@ -22,7 +25,7 @@ def Func():
 
         if x % 4 == 0 and x != 0:
             result += ",\n"
-        else:
+        elif x < size:
             result += ", "
 
     print(result)

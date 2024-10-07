@@ -405,7 +405,7 @@ ArachnusRolling: @ 0x08023B20
 	cmp r1, r0
 	bne _08023B80
 	adds r0, r2, #0
-	bl CheckEndOfSpriteAnimation
+	bl SpriteUtilCheckEndSpriteAnim
 	cmp r0, #0
 	bne _08023B50
 	b _08023D0A
@@ -652,7 +652,7 @@ ArachnusBonking: @ 0x08023D18
 	cmp r0, ip
 	bne _08023D64
 	adds r0, r5, #0
-	bl CheckNearEndOfSpriteAnimation
+	bl SpriteUtilCheckNearEndSpriteAnim
 	cmp r0, #0
 	beq _08023E22
 	adds r1, r4, #0

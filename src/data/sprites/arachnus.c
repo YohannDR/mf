@@ -4,7 +4,7 @@
 const s16 sArachnusRollingSpeed[12] = {
       0,   0,   0,   0,
       0,   0,   0,   0,
-      4,   6,   8,   10,
+      4,   6,   8,   10
 };
 
 const s16 sArachnusBonkingSpeed[36] = {
@@ -2456,5 +2456,3 @@ const struct FrameData sFrameData_3031b8[5] = {
     },
     [4] = FRAME_DATA_TERMINATOR
 };
-
-static const u8 sBlob_3031e0_35dd74[] = INCBIN_U8("data/Blob_3031e0_35dd74.bin");
