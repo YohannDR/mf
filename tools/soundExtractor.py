@@ -804,16 +804,16 @@ def ExtractTracks(f: BufferedReader):
         addr: int = ReadPtr(f)
 
         if addr == 0xaa484:
-            content += "\n\n\t.word null_track"
+            content += "\t.word null_track"
         else:
-            content += "\n\n\t.word track_" + str(x)
+            content += "\t.word track_" + str(x)
             ExtractSoundHeader(f, addr, x)
             existingHeaders[addr] = x
 
         f.seek(currAddr + 4)
         
         content += "\n\t.short " + str(int.from_bytes(f.read(2), "little"))
-        content += "\n\t.short " + str(int.from_bytes(f.read(2), "little"))
+        content += ", " + str(int.from_bytes(f.read(2), "little")) + "\n\n"
 
     content += "\n"
     output.write(content)
