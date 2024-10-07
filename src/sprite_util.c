@@ -2774,6 +2774,7 @@ u32 SpriteUtilSamusCheckPassThroughSprite(u8 spriteSlot)
  */
 u32 SpriteUtilCheckCrouchingOrMorphed(void)
 {
+    // Doesn't check for grabbed by zazabi pose
     switch (gSamusData.pose)
     {
         case SPOSE_CROUCHING:
@@ -2798,6 +2799,7 @@ u32 SpriteUtilCheckCrouchingOrMorphed(void)
  */
 u32 SpriteUtilCheckMorphed(void)
 {
+    // Doesn't check for grabbed by zazabi pose
     switch (gSamusData.pose)
     {
         case SPOSE_MORPHING:
