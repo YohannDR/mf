@@ -4,6 +4,7 @@
 
 from PIL import Image
 import numpy as np
+import os
 
 gba2hex = lambda address: address & 0x1FFFFFF
 hex2gba = lambda address: address & 0x1FFFFFF | 0x8000000
@@ -136,15 +137,17 @@ def Func():
     romSeek(spritemapAddr)
     imageIndex = 0
     usedImages = set()
+    if not os.access(f'0x{spriteIndex:x}', os.W_OK):
+        os.mkdir(f'0x{spriteIndex:x}')
     while True:
         spritemap = []
 
-        possibleOamAddr = romRead(4)
-        if possibleOamAddr & 0xFFFF == 0 or possibleOamAddr & 0xFFFF > 128:
-            break
-        if possibleOamAddr in usedImages:
-            break
-        romSeek(rom.tell()-4)
+        possibleOamAddr = romRead(4, rom.tell())
+        if possibleOamAddr & 0xFFFF == 0 or possibleOamAddr & 0xFFFF > 128 or possibleOamAddr in usedImages:
+            if spriteIndex == 0x3A and rom.tell()+2 == 0x3028F4: # arachnus
+                romSeek(0x302E3C)
+            else:
+                break
         usedImages |= {hex2gba(spritemapAddr)}
 
         for i in range(romRead(2)):
@@ -152,7 +155,7 @@ def Func():
 
         image = image_from_raw_data(spritemap, tiles)
         image.putpalette(paletteRgba, 'RGBA')
-        image.save(f'0x{spriteIndex:02x}_{imageIndex}_0x{gba2hex(spritemapAddr):x}.png')
+        image.save(f'0x{spriteIndex:x}/0x{spriteIndex:02x}_{imageIndex}_0x{gba2hex(spritemapAddr):x}.png')
         imageIndex += 1
         spritemapAddr = rom.tell()
 
