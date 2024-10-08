@@ -3020,5 +3020,3 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SPRITE_WEAKNESS_NONE
     }
 };
-
-static const u8 sBlob_2e5cae_2e6160[1202] = INCBIN_U8("data/Blob_2e5cae_2e6160.bin");
