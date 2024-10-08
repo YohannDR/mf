@@ -87,6 +87,10 @@ sprites/core_x_downloading_varia.gfx;2048;0x312FE8;4
 sprites/core_x_downloading_varia.pal;64;0x314FE8;2
 sprites/varia_x_after_downloading.gfx;1024;0x315414;4
 
+# Waver
+sprites/waver.gfx;1024;0x316468;4
+sprites/waver.pal;32;0x317468;2
+
 # Blue X
 
 sprites/blue_x.gfx;1024;0x35de98;4
@@ -197,7 +201,7 @@ Blob_289970_28fd04.bin;25492;0x289970;1
 Blob_28fd08_2e4904.bin;347132;0x28fd08;1
 Blob_2e5cae_2e6160.bin;1202;0x2e5cae;1
 Blob_2e6382_2eb8ac.bin;21802;0x2e6382;1
-Blob_316414_35dd74.bin;293216;0x316414;1
+Blob_317630_35dd74.bin;288580;0x317630;1
 Blob_3791d4_3bdebc.bin;281832;0x3791d4;1
 Blob_3be1be_3e392c.bin;153454;0x3be1be;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1

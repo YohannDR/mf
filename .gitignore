@@ -19,5 +19,5 @@
 
 include/**/*.s
 tools/*.txt
-tools/*.png
+tools/**/*.png
 .vscode

@@ -235,6 +235,7 @@ SECTIONS {
         src/sprites_AI/skree.o(.text);
         src/sprites_AI/zombie_researcher.o(.text);
         src/sprites_AI/geemer.o(.text);
+        src/sprites_AI/arachnus.o(.text);
 
         asm/arachnus.o(.text);
         asm/core_x.o(.text);
@@ -371,6 +372,7 @@ SECTIONS {
         src/data/sprites/arachnus.o(.rodata);
         src/data/sprites/core_x.o(.rodata);
         src/data/sprites/core_x_downloading_varia.o(.rodata);
+        src/data/sprites/waver.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);

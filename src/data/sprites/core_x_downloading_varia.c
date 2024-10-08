@@ -449,5 +449,3 @@ const struct FrameData sFrameData_3153ec[5] = {
 };
 
 const u32 sVariaXAfterDownloadingGfx[512 * 2] = INCBIN_U32("data/sprites/varia_x_after_downloading.gfx");
-
-static const u8 sBlob_316414_35dd74[] = INCBIN_U8("data/Blob_316414_35dd74.bin");
