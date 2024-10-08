@@ -143,7 +143,7 @@ _08024D70:
 	ldrb r0, [r4, #0x1e]
 	cmp r0, #0
 	bne _08024DE4
-	ldr r0, _08024DDC @ =0x08303170
+	ldr r0, _08024DDC @ =sFrameData_303170
 	str r0, [r4, #0x18]
 	strb r3, [r4, #0x1c]
 	strh r5, [r4, #0x16]
@@ -158,10 +158,10 @@ _08024D70:
 	.align 2, 0
 _08024DD4: .4byte 0x0000FFFB
 _08024DD8: .4byte 0x0000FFE8
-_08024DDC: .4byte 0x08303170
+_08024DDC: .4byte sFrameData_303170
 _08024DE0: .4byte 0x0000FFD0
 _08024DE4:
-	ldr r0, _08024DFC @ =0x08303138
+	ldr r0, _08024DFC @ =sFrameData_303138
 	str r0, [r4, #0x18]
 	strb r3, [r4, #0x1c]
 	strh r5, [r4, #0x16]
@@ -174,7 +174,7 @@ _08024DE4:
 	strb r0, [r1]
 	b _08024E28
 	.align 2, 0
-_08024DFC: .4byte 0x08303138
+_08024DFC: .4byte sFrameData_303138
 _08024E00:
 	ldrh r0, [r4, #2]
 	ldrh r1, [r4, #4]
@@ -191,7 +191,7 @@ _08024E00:
 	adds r1, #1
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _08024E38 @ =0x08303138
+	ldr r0, _08024E38 @ =sFrameData_303138
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -203,7 +203,7 @@ _08024E28:
 	b _08024FD2
 	.align 2, 0
 _08024E34: .4byte gPreviousCollisionCheck
-_08024E38: .4byte 0x08303138
+_08024E38: .4byte sFrameData_303138
 _08024E3C: .4byte 0x0000FFC0
 _08024E40:
 	ldrh r0, [r4, #2]
@@ -298,7 +298,7 @@ _08024EE0:
 	movs r3, #0
 	movs r0, #0x1c
 	strb r0, [r2]
-	ldr r0, _08024F08 @ =0x083030C8
+	ldr r0, _08024F08 @ =sFrameData_3030c8
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -307,7 +307,7 @@ _08024EE0:
 	b _08024FD2
 	.align 2, 0
 _08024F04: .4byte gCurrentSprite
-_08024F08: .4byte 0x083030C8
+_08024F08: .4byte sFrameData_3030c8
 _08024F0C: .4byte 0x0000FF80
 _08024F10:
 	bl SpriteUtilCheckEndCurrentSpriteAnim
@@ -320,7 +320,7 @@ _08024F10:
 	movs r0, #0x2a
 _08024F22:
 	strb r0, [r2]
-	ldr r0, _08024F38 @ =0x08303100
+	ldr r0, _08024F38 @ =sFrameData_303100
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -329,7 +329,7 @@ _08024F22:
 	b _08024FD2
 	.align 2, 0
 _08024F34: .4byte gCurrentSprite
-_08024F38: .4byte 0x08303100
+_08024F38: .4byte sFrameData_303100
 _08024F3C: .4byte 0x0000FFA0
 _08024F40:
 	bl SpriteUtilCheckEndCurrentSpriteAnim
@@ -341,7 +341,7 @@ _08024F40:
 	movs r3, #0
 	movs r0, #0x2c
 	strb r0, [r2]
-	ldr r0, _08024F68 @ =0x08303138
+	ldr r0, _08024F68 @ =sFrameData_303138
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -350,7 +350,7 @@ _08024F40:
 	b _08024FD2
 	.align 2, 0
 _08024F64: .4byte gCurrentSprite
-_08024F68: .4byte 0x08303138
+_08024F68: .4byte sFrameData_303138
 _08024F6C: .4byte 0x0000FFC0
 _08024F70:
 	bl SpriteUtilCheckEndCurrentSpriteAnim
@@ -493,7 +493,7 @@ _08025038:
 	strh r0, [r5, #0xe]
 	movs r0, #0x20
 	strh r0, [r5, #0x10]
-	ldr r0, _080250B8 @ =0x08303198
+	ldr r0, _080250B8 @ =sFrameData_303198
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r6, [r5, #0x16]
@@ -521,7 +521,7 @@ _08025038:
 	.align 2, 0
 _080250B0: .4byte 0x0000FFFB
 _080250B4: .4byte 0x0000FF40
-_080250B8: .4byte 0x08303198
+_080250B8: .4byte sFrameData_303198
 _080250BC:
 	ldrb r2, [r5, #0x1f]
 	adds r0, r5, #0
@@ -726,7 +726,7 @@ _080251F4:
 	strh r0, [r3, #0xc]
 	strh r1, [r3, #0xe]
 	strh r0, [r3, #0x10]
-	ldr r0, _0802526C @ =0x083031B8
+	ldr r0, _0802526C @ =sFrameData_3031b8
 	str r0, [r3, #0x18]
 	strb r4, [r3, #0x1c]
 	strh r5, [r3, #0x16]
@@ -741,4 +741,4 @@ _0802525E:
 	.align 2, 0
 _08025264: .4byte 0x0000FFFB
 _08025268: .4byte 0x0000FFFC
-_0802526C: .4byte 0x083031B8
+_0802526C: .4byte sFrameData_3031b8

@@ -73,7 +73,7 @@ void MotoInit(void)
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
     {
-        if (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))
+        if (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))
         {
             gCurrentSprite.status = 0;
             return;
@@ -360,7 +360,7 @@ void MotoWalking(void)
 
     if (gCurrentSprite.pose == SPRITE_POSE_IDLE)
     {
-        if (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))
+        if (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))
         {
             nsfb = SpriteUtilCheckSamusNearSpriteFrontBehind(BLOCK_SIZE * 2 + HALF_BLOCK_SIZE, BLOCK_SIZE * 5, BLOCK_SIZE * 5);
         }
@@ -538,8 +538,8 @@ void MotoFrontInit(void)
 
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
     
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_UNKNOWN_2000)
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
 
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
 
@@ -572,10 +572,10 @@ void MotoFrontIdle(void)
 
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_UNKNOWN_2000)
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
     else
-        gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
 
     if (gCurrentSprite.health == 0)
     {

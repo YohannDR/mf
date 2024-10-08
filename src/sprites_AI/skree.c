@@ -15,7 +15,7 @@
 
 void SkreeInit(void) {
     SpriteUtilTrySetAbsorbXFlag();
-    if ((gCurrentSprite.properties & SP_CAN_ABSORB_X) && (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))){
+    if ((gCurrentSprite.properties & SP_CAN_ABSORB_X) && (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))){
         gCurrentSprite.status = 0;
     } else {
         gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
@@ -48,7 +48,7 @@ void SkreeIdleInit(void) {
 }
 
 void SkreeDetectSamus(void) {
-    if (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000) &&
+    if (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN) &&
         gSamusData.yPosition > gCurrentSprite.yPosition + 0xc8 &&
         gSamusData.xPosition > gCurrentSprite.xPosition - 0x96 &&
         gSamusData.xPosition < gCurrentSprite.xPosition + 0x96)

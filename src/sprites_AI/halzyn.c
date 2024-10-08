@@ -37,7 +37,7 @@ void HalzynInit(void)
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
     {
-        if (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))
+        if (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))
         {
             gCurrentSprite.status = 0;
             return;
@@ -222,7 +222,7 @@ void HalzynSwinging(void)
             gCurrentSprite.work4 = 0;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)
+    if (gCurrentSprite.status & SPRITE_STATUS_HIDDEN)
         return;
 
     if (gSamusData.yPosition > gCurrentSprite.yPosition + (BLOCK_SIZE * 3 + QUARTER_BLOCK_SIZE / 2))
@@ -427,8 +427,8 @@ void HalzynWingInit(void)
 
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_UNKNOWN_2000)
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
 
     if (gSpriteData[ramSlot].status & SPRITE_STATUS_ENABLE_MOSAIC)
         gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
@@ -459,10 +459,10 @@ void HalzynWingIdle(void)
 
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_UNKNOWN_2000)
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
     else
-        gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
 
     if (gCurrentSprite.health == 0 && gSpriteData[ramSlot].pose < SPRITE_POSE_DYING_INIT)
     {

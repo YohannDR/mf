@@ -32,7 +32,7 @@ u8 HornoadCheckSamusInSpittingRange(void)
 
     inRange = FALSE;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)
+    if (gCurrentSprite.status & SPRITE_STATUS_HIDDEN)
         return FALSE;
 
     // Check on screen and alive
@@ -71,7 +71,7 @@ u8 HornoadCheckSamusInJumpingRange(void)
 
     inRange = HRANGE_NONE;
     
-    if (gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)
+    if (gCurrentSprite.status & SPRITE_STATUS_HIDDEN)
         return HRANGE_NONE;
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)

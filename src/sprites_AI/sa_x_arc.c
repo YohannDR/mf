@@ -407,13 +407,13 @@ void SaXArcInit(void)
 
     if (EventCheckOn_PowerBombDataDownloaded())
     {
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
         gCurrentSprite.pose = 0x19;
         SaXSetPose(SA_X_POSE_WALKING);
     }
     else if (EventCheckOn_ArcSaXEncounter())
     {
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
         gCurrentSprite.pose = 0x1B;
         gCurrentSprite.work1 = 60;
         SaXSetPose(SA_X_POSE_RUNNING);
@@ -462,7 +462,7 @@ void SaXArcOpeningDoorDuringChase(void)
     SaXRunningInit();
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+    gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
     gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
 }
 
@@ -503,7 +503,7 @@ void SaXArcOpeningDoor(void)
     SaXWalkingInit();
 
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
-    gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+    gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
 
     SubEventUpdateForSaXEncounter();
 }

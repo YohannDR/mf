@@ -509,13 +509,13 @@ void GadoraEye(void)
         gCurrentSprite.pose = SPRITE_POSE_IDLE;
     }
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_UNKNOWN_2000)
+    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
         return;
     }
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+    gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
     gSpriteData[ramSlot].paletteRow = gCurrentSprite.paletteRow;
 
     // Check eye is dead
@@ -596,13 +596,13 @@ void GadoraRoots(void)
         gCurrentSprite.pOam = sGadoraRootsOam_Idle;
     }
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_UNKNOWN_2000)
+    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
         return;
     }
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+    gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
     gSpriteData[ramSlot].paletteRow = gCurrentSprite.paletteRow;
 
     // Sync oam with main gadora sprite

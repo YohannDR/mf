@@ -146,7 +146,7 @@ void OwtchTurningIntoX(void)
 void OwtchInit(void)
 {
     SpriteUtilTrySetAbsorbXFlag();
-    if ((gCurrentSprite.properties & SP_CAN_ABSORB_X) && (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)))
+    if ((gCurrentSprite.properties & SP_CAN_ABSORB_X) && (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN)))
     {
         gCurrentSprite.status = 0;
     }

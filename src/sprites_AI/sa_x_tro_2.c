@@ -486,7 +486,7 @@ void SaXTro2Init(void)
             gCurrentSprite.xPosition += (BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2);
 
         gCurrentSprite.samusCollision = SSC_NONE;
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
 
         if (gCurrentRoom == 59)
         {
@@ -519,7 +519,7 @@ void SaXTro2WaitingInDoorDuringChase(void)
         SaXRunningInit();
         gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
 
-        gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
         gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
     }
 }
@@ -536,7 +536,7 @@ void SaXTro2WaitingInDoorEnd(void)
         SaXWalkingInit();
         gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
 
-        gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
         gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
     }
 }

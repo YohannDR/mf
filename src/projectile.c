@@ -490,8 +490,8 @@ void ProjectileCheckHittingSprite(void)
         o1Left = o1X + gCurrentPowerBomb.hitboxLeft;
         o1Right = o1X + gCurrentPowerBomb.hitboxRight;
 
-        spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000 | SPRITE_STATUS_IGNORE_PROJECTILES;
-        xCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000;
+        spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_HIDDEN | SPRITE_STATUS_IGNORE_PROJECTILES;
+        xCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_HIDDEN;
 
         for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
         {
@@ -564,7 +564,7 @@ void ProjectileCheckHittingSprite(void)
         o1Left = o1X + gSamusData.drawDistanceLeft;
         o1Right = o1X + gSamusData.drawDistanceRight;
 
-        spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000 | SPRITE_STATUS_IGNORE_PROJECTILES;
+        spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_HIDDEN | SPRITE_STATUS_IGNORE_PROJECTILES;
 
         for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
         {
@@ -592,7 +592,7 @@ void ProjectileCheckHittingSprite(void)
         }
     }
 
-    spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000 | SPRITE_STATUS_IGNORE_PROJECTILES;
+    spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_HIDDEN | SPRITE_STATUS_IGNORE_PROJECTILES;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {

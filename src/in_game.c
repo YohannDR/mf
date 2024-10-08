@@ -138,16 +138,16 @@ u32 InGameSubroutine(void)
 
         ProjectileUpdate();
         HudDraw();
-        unk_eb04();
+        SpriteDrawAll_Upper();
         ParticleUpdate();
         ProjectileDrawAll_False();
 
-        SpriteDrawAll();
+        SpriteDrawAll_Middle();
 
         if (!gDisableDrawingSamusAndScrollingFlag)
             SamusDraw();
 
-        unk_ec38();
+        SpriteDrawAll_Lower();
         ProjectileDrawAll_True();
         
         ResetFreeOam();

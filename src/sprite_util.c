@@ -26,7 +26,7 @@ void SpriteUtilInitLocationText(void)
     if (gfxSlot < 8)
     {
         gSpriteData[0].status = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN |
-            SPRITE_STATUS_UNKNOWN_10 | SPRITE_STATUS_IGNORE_PROJECTILES;
+            SPRITE_STATUS_DRAW_UPPER | SPRITE_STATUS_IGNORE_PROJECTILES;
 
         gSpriteData[0].properties = SP_ABSOLUTE_POSITION;
         gSpriteData[0].spritesetGfxSlot = gfxSlot;
@@ -349,7 +349,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
     samusLeft = samusX + gSamusData.drawDistanceLeft;
     samusRight = samusX + gSamusData.drawDistanceRight;
 
-    statusCheckFlags = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_UNKNOWN_2000;
+    statusCheckFlags = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_HIDDEN;
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
         status = gSpriteData[i].status;
@@ -2969,7 +2969,7 @@ void SpriteUtilTrySetAbsorbXFlag(void)
     {
         properties = gCurrentSprite.spritesetSlotAndProperties;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000)
+        if (gCurrentSprite.status & SPRITE_STATUS_HIDDEN)
         {
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
             return;

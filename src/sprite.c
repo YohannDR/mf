@@ -215,10 +215,10 @@ void SpriteUpdateAnimation(void)
 }
 
 /**
- * @brief eb04 | 9c | To document
+ * @brief eb04 | 9c | Draws all higher-priority sprites (draw order between 1 and 8 with the upper status flag)
  * 
  */
-void unk_eb04(void)
+void SpriteDrawAll_Upper(void)
 {
     s32 i;
     s32 drawOrder;
@@ -228,8 +228,8 @@ void unk_eb04(void)
     if (gSubGameMode1 != SUB_GAME_MODE_PLAYING)
         return;
 
-    checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_UNKNOWN_10 | SPRITE_STATUS_UNKNOWN_2000;
-    drawStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_UNKNOWN_10;
+    checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_DRAW_UPPER | SPRITE_STATUS_HIDDEN;
+    drawStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_DRAW_UPPER;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
@@ -259,17 +259,17 @@ void unk_eb04(void)
 }
 
 /**
- * @brief eba0 | 98 | Draws all the sprites
+ * @brief eba0 | 98 | Draws all middle-priority sprites (draw order between 1 and 8 without the upper status flag)
  * 
  */
-void SpriteDrawAll(void)
+void SpriteDrawAll_Middle(void)
 {
     s32 i;
     s32 drawOrder;
     u16 drawStatus;
     u16 checkStatus;
 
-    checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_UNKNOWN_10 | SPRITE_STATUS_UNKNOWN_2000;
+    checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_DRAW_UPPER | SPRITE_STATUS_HIDDEN;
     drawStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN;
 
     SpriteDebrisDrawAll();
@@ -303,17 +303,17 @@ void SpriteDrawAll(void)
 }
 
 /**
- * @brief ec38 | 90 | To document
+ * @brief ec38 | 90 | Draws all lower-priority sprites (draw order between 9 and 16, upper status flag hides the sprite)
  * 
  */
-void unk_ec38(void)
+void SpriteDrawAll_Lower(void)
 {
     s32 i;
     s32 drawOrder;
     u16 drawStatus;
     u16 checkStatus;
 
-    checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_UNKNOWN_10 | SPRITE_STATUS_UNKNOWN_2000;
+    checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_DRAW_UPPER | SPRITE_STATUS_HIDDEN;
     drawStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
@@ -994,7 +994,7 @@ void SpriteInitPrimary(u8 spritesetSlot, u16 yPosition, u16 xPosition, u8 roomSl
 
         // Set initial status
         if (spritesetSlot & 0x80)
-            gSpriteData[i].status = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000;
+            gSpriteData[i].status = SPRITE_STATUS_EXISTS | SPRITE_STATUS_HIDDEN;
         else
             gSpriteData[i].status = SPRITE_STATUS_EXISTS;
 

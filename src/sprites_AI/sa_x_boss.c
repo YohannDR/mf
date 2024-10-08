@@ -720,7 +720,7 @@ void SaXBossSpinJumping(void)
  */
 void SaXBossWaitingToAppearInit(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+    gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
     gCurrentSprite.pose = 0x42;
 
     SaXSetPose(SA_X_POSE_FALLING);
@@ -756,7 +756,7 @@ void SaXBossWaitingToAppear(void)
         {
             gCurrentSprite.pose = 0x45;
             gCurrentSprite.work3 = 8;
-            gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+            gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
             MusicPlay(0x51, 7);
         }
     }

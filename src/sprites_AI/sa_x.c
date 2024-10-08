@@ -2525,7 +2525,7 @@ void SaXUpdateGraphics(void)
     if (newPose != SA_X_POSE_NONE)
         SaXSetPose(newPose);
 
-    if (gCurrentSprite.status & SPRITE_STATUS_EXISTS && !(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))
+    if (gCurrentSprite.status & SPRITE_STATUS_EXISTS && !(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))
     {
         if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
             gSaXData.screenFlag = SA_X_SCREEN_FLAG_ON_SCREEN;

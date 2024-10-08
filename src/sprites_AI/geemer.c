@@ -169,7 +169,7 @@ void GeemerInit(void) {
     u8 flashingLightSlot;
 
     SpriteUtilTrySetAbsorbXFlag();
-    if ((gCurrentSprite.properties & SP_CAN_ABSORB_X) && (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))) {
+    if ((gCurrentSprite.properties & SP_CAN_ABSORB_X) && (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))) {
         gCurrentSprite.status = 0;
     } else {
         if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
@@ -572,10 +572,10 @@ void GeemerFlashingLight(void) {
             }
         }
     }
-    if (gSpriteData[geemerSlot].status & SPRITE_STATUS_UNKNOWN_2000) {
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+    if (gSpriteData[geemerSlot].status & SPRITE_STATUS_HIDDEN) {
+        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
     } else {
-        gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
         if (gCurrentSprite.health == 0 && gSpriteData[geemerSlot].pose < 0x57) {
             gSpriteData[geemerSlot].pose = 0x57;
             gSpriteData[geemerSlot].ignoreSamusCollisionTimer = 1;

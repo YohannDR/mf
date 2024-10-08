@@ -64,7 +64,7 @@ void PowerBombBarrierInit(void)
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
     {
-        if (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))
+        if (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))
         {
             gCurrentSprite.status = 0;
             return;

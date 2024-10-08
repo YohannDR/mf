@@ -1,7 +1,9 @@
+#include "sprites_AI/arachnus.h"
 #include "macros.h"
 #include "globals.h"
 
 #include "data/sprites/arachnus.h"
+#include "data/sprites/core_x.h"
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
@@ -26,7 +28,7 @@ void ArachnusSetStandingHitbox(void) {
 }
 
 void ArachnusShootingFireInit(void) {
-    gCurrentSprite.pose = 0x40;
+    gCurrentSprite.pose = ARACHNUS_POSE_SHOOTING_FIRE;
     gCurrentSprite.pOam = sFrameData_302a44;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -36,7 +38,7 @@ void ArachnusShootingFireInit(void) {
 }
 
 void ArachnusScreamingInit(void) {
-    gCurrentSprite.pose = 0x3e;
+    gCurrentSprite.pose = ARACHNUS_POSE_SCREAMING;
     gCurrentSprite.pOam = sFrameData_302d54;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -49,7 +51,7 @@ void ArachnusScreamingInit(void) {
 }
 
 void ArachnusDyingInit(void) {
-    gCurrentSprite.pose = 0x42;
+    gCurrentSprite.pose = ARACHNUS_POSE_DYING;
     if (gCurrentSprite.pOam != sFrameData_302d54) {
         gCurrentSprite.pOam = sFrameData_302d54;
         gCurrentSprite.animationDurationCounter = 0;
@@ -74,8 +76,8 @@ void ArachnusDyingInit(void) {
 void ArachnusRollingInit(void) {
     u32 shellSpriteSlot;
 
-    gCurrentSprite.pose = 0x3a;
-    gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+    gCurrentSprite.pose = ARACHNUS_POSE_ROLLING;
+    gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
     gCurrentSprite.work3 = 0;
     gCurrentSprite.hitboxLeft = -0x20;
     gCurrentSprite.hitboxRight = 0x20;
@@ -93,7 +95,7 @@ void ArachnusRollingInit(void) {
 }
 
 void ArachnusSlashingInit(void) {
-    gCurrentSprite.pose = 0x38;
+    gCurrentSprite.pose = ARACHNUS_POSE_SLASHING;
     gCurrentSprite.pOam = sFrameData_302aa4;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -135,7 +137,7 @@ void ArachnusSlashing(void) {
         }
     }
     if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
-        gCurrentSprite.pose = 1;
+        gCurrentSprite.pose = ARACHNUS_POSE_WALKING_INIT;
         gCurrentSprite.work1 = 120;
     }
 }
@@ -211,7 +213,7 @@ void ArachnusRolling(void) {
             }
         }
         if (hitWall) {
-            gCurrentSprite.pose = 0x3c;
+            gCurrentSprite.pose = ARACHNUS_POSE_BONKING;
             gCurrentSprite.work4 = 0;
             ScreenShakeStartHorizontal(0x28, 0x81);
             SoundPlay(0xb7);
@@ -480,7 +482,7 @@ void ArachnusBonking(void) {
     shellSpriteSlot = gCurrentSprite.work2;
     if (gSpriteData[shellSpriteSlot].pOam == sFrameData_302cf4) {
         if (SpriteUtilCheckNearEndSpriteAnim(shellSpriteSlot)) {
-            gCurrentSprite.pose = 7;
+            gCurrentSprite.pose = ARACHNUS_POSE_IDLE_INIT;
             gCurrentSprite.work1 = 0xff;
         }
     } else {
@@ -585,13 +587,13 @@ void ArachnusDying(void) {
                 ParticleSet(y+0x20, x+0x20, 0x25);
                 break;
             case 0:
-                gCurrentSprite.pose = 0x59;
+                gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X_INIT;
                 gCurrentSprite.spriteId = gCoreXFormationSpriteId;
         }
-        if (gCurrentSprite.xParasiteTimer < 0x14) {
+        if (gCurrentSprite.xParasiteTimer < ARRAY_SIZE(sMorphBallCoreXPal) / 16 * 4) {
             SpriteLoadGfx(gCoreXFormationSpriteId, 0, gCurrentSprite.xParasiteTimer);
-        } else if (gCurrentSprite.xParasiteTimer == 0x14) {
-            SpriteLoadPal(gCoreXFormationSpriteId, 0, 5);
+        } else if (gCurrentSprite.xParasiteTimer == ARRAY_SIZE(sMorphBallCoreXPal) / 16 * 4) {
+            SpriteLoadPal(gCoreXFormationSpriteId, 0, ARRAY_SIZE(sMorphBallCoreXPal) / 16);
         }
     }
 }
@@ -608,7 +610,7 @@ void ArachnusShootingFire(void) {
         SoundPlay(0xbc);
     }
     if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
-        gCurrentSprite.pose = 1;
+        gCurrentSprite.pose = ARACHNUS_POSE_WALKING_INIT;
         gCurrentSprite.work1 = 120;
     }
 }
@@ -653,7 +655,7 @@ void ArachnusCoreXTransformation(void) {
         gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
     } else {
         gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
-        gCurrentSprite.pose = 7;
+        gCurrentSprite.pose = ARACHNUS_POSE_IDLE_INIT;
         gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
     }
 }
@@ -668,15 +670,15 @@ void ArachnusInit(void) {
     gCurrentSprite.drawDistanceBottom = 0;
     gCurrentSprite.drawDistanceHorizontal = 0x40;
     gCurrentSprite.work1 = 100;
-    if (gCurrentSprite.pose == 0x59) {
+    if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
         gCurrentSprite.yPosition += 100;
         gCurrentSprite.bgPriority = 2;
         gCurrentSprite.drawOrder = 4;
         gCurrentSprite.status &= ~(SPRITE_STATUS_SAMUS_DETECTED | SPRITE_STATUS_SAMUS_COLLIDING);
-        gCurrentSprite.pose = 0x5a;
-        gCurrentSprite.xParasiteTimer = 0x2c;
+        gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
+        gCurrentSprite.xParasiteTimer = 44;
     } else {
-        gCurrentSprite.pose = 8;
+        gCurrentSprite.pose = ARACHNUS_POSE_IDLE;
     }
     gCurrentSprite.pOam = sFrameData_302c44;
     gCurrentSprite.animationDurationCounter = 0;
@@ -705,7 +707,7 @@ void ArachnusInit(void) {
 }
 
 void ArachnusWalkingInit(void) {
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = ARACHNUS_POSE_WALKING;
     gCurrentSprite.pOam = sFrameData_3028f4;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -742,7 +744,7 @@ void ArachnusWalking(void) {
         }
     }
     if (turn) {
-        gCurrentSprite.pose = 7;
+        gCurrentSprite.pose = ARACHNUS_POSE_IDLE_INIT;
     } else {
         switch (gCurrentSprite.currentAnimationFrame) {
             case 0:
@@ -779,7 +781,7 @@ void ArachnusIdleInit(void) {
 
     shellSpriteSlot = gCurrentSprite.work2;
     if (gCurrentSprite.work1 == 0xff) {
-        gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
         gSpriteData[shellSpriteSlot].status &= ~SPRITE_STATUS_ROTATION_SCALING;
         gSpriteData[shellSpriteSlot].hitboxTop = -0xa0;
         gSpriteData[shellSpriteSlot].hitboxBottom = 0;
@@ -792,7 +794,7 @@ void ArachnusIdleInit(void) {
             gSpriteData[shellSpriteSlot].hitboxRight = 0x50;
         }
     }
-    gCurrentSprite.pose = 8;
+    gCurrentSprite.pose = ARACHNUS_POSE_IDLE;
     gCurrentSprite.pOam = sFrameData_302c44;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -806,15 +808,15 @@ void ArachnusIdle(void) {
     if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
             if (gCurrentSprite.xPosition > gSamusData.xPosition) {
-                newPose = 3;
+                newPose = ARACHNUS_POSE_TURNING_INIT;
             } else {
-                newPose = 1;
+                newPose = ARACHNUS_POSE_WALKING_INIT;
             }
         } else {
             if (gCurrentSprite.xPosition < gSamusData.xPosition) {
-                newPose = 3;
+                newPose = ARACHNUS_POSE_TURNING_INIT;
             } else {
-                newPose = 1;
+                newPose = ARACHNUS_POSE_WALKING_INIT;
             }
         }
         gCurrentSprite.pose = newPose;
@@ -822,7 +824,7 @@ void ArachnusIdle(void) {
 }
 
 void ArachnusTurningInit(void) {
-    gCurrentSprite.pose = 4;
+    gCurrentSprite.pose = ARACHNUS_POSE_TURNING;
     gCurrentSprite.pOam = sFrameData_3029c4;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -847,15 +849,15 @@ void ArachnusTurning(void) {
         }
     }
     if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
-        gCurrentSprite.pose = 1;
+        gCurrentSprite.pose = ARACHNUS_POSE_WALKING_INIT;
     }
 }
 
 void Arachnus(void) {
-    if (gCurrentSprite.pose != 0) {
+    if (gCurrentSprite.pose != SPRITE_POSE_UNINITIALIZED) {
         if (gCurrentSprite.health > 0) {
             if (SPRITE_HAS_ISFT(gCurrentSprite) >= 6) {
-                if ((gCurrentSprite.pose == 2 || gCurrentSprite.pose == 8) && gCurrentSprite.pose != 0x3e) {
+                if ((gCurrentSprite.pose == ARACHNUS_POSE_WALKING || gCurrentSprite.pose == ARACHNUS_POSE_IDLE) && gCurrentSprite.pose != ARACHNUS_POSE_SCREAMING) {
                     ArachnusScreamingInit();
                 }
             } else if (SPRITE_HAS_ISFT(gCurrentSprite) >= 3) {
@@ -868,46 +870,46 @@ void Arachnus(void) {
             ArachnusDyingInit();
         }
     }
-    switch(gCurrentSprite.pose) {
-        case 0x59:
+    switch (gCurrentSprite.pose) {
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
             ArachnusInit();
-        case 0x5a:
+        case SPRITE_POSE_SPAWNING_FROM_X:
             ArachnusCoreXTransformation();
             break;
-        case 0:
+        case SPRITE_POSE_UNINITIALIZED:
             ArachnusInit();
             break;
-        case 1:
+        case ARACHNUS_POSE_WALKING_INIT:
             ArachnusWalkingInit();
-        case 2:
+        case ARACHNUS_POSE_WALKING:
             ArachnusWalking();
             break;
-        case 7:
+        case ARACHNUS_POSE_IDLE_INIT:
             ArachnusIdleInit();
-        case 8:
+        case ARACHNUS_POSE_IDLE:
             ArachnusIdle();
             break;
-        case 3:
+        case ARACHNUS_POSE_TURNING_INIT:
             ArachnusTurningInit();
-        case 4:
+        case ARACHNUS_POSE_TURNING:
             ArachnusTurning();
             break;
-        case 0x38:
+        case ARACHNUS_POSE_SLASHING:
             ArachnusSlashing();
             break;
-        case 0x3a:
+        case ARACHNUS_POSE_ROLLING:
             ArachnusRolling();
             break;
-        case 0x3c:
+        case ARACHNUS_POSE_BONKING:
             ArachnusBonking();
             break;
-        case 0x3e:
+        case ARACHNUS_POSE_SCREAMING:
             ArachnusScreaming();
             break;
-        case 0x40:
+        case ARACHNUS_POSE_SHOOTING_FIRE:
             ArachnusShootingFire();
             break;
-        case 0x42:
+        case ARACHNUS_POSE_DYING:
             ArachnusDying();
             break;
     }
@@ -917,7 +919,7 @@ void ArachnusShell(void) {
     u32 arachnusRamSlot;
 
     arachnusRamSlot = gCurrentSprite.primarySpriteRamSlot;
-    if (gCurrentSprite.pose == 0) {
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED) {
         gCurrentSprite.status = gCurrentSprite.status & ~SPRITE_STATUS_NOT_DRAWN;
         gCurrentSprite.drawOrder = 5;
         gCurrentSprite.health = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
@@ -929,8 +931,8 @@ void ArachnusShell(void) {
         gCurrentSprite.pOam = sFrameData_302c6c;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.samusCollision = 2;
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
             gCurrentSprite.hitboxLeft = -0x50;
             gCurrentSprite.hitboxRight = 0;
@@ -939,25 +941,24 @@ void ArachnusShell(void) {
             gCurrentSprite.hitboxRight = 0x50;
         }
     }
-    if (gSpriteData[arachnusRamSlot].pose == 2 && SPRITE_HAS_ISFT(gCurrentSprite) > 0) {
+    if (gSpriteData[arachnusRamSlot].pose == ARACHNUS_POSE_WALKING && SPRITE_HAS_ISFT(gCurrentSprite) > 0) {
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
             if (gCurrentSprite.xPosition > gSamusData.xPosition) {
-                // Why not use "gSpriteData[arachnusRamSlot].pose = 7;"?
-                gSpriteData[gCurrentSprite.primarySpriteRamSlot].pose = 7;
+                // Why not use "gSpriteData[arachnusRamSlot].pose = ARACHNUS_POSE_IDLE_INIT;"?
+                gSpriteData[gCurrentSprite.primarySpriteRamSlot].pose = ARACHNUS_POSE_IDLE_INIT;
             }
         } else {
             if (gCurrentSprite.xPosition < gSamusData.xPosition) {
-                gSpriteData[gCurrentSprite.primarySpriteRamSlot].pose = 7;
+                gSpriteData[gCurrentSprite.primarySpriteRamSlot].pose = ARACHNUS_POSE_IDLE_INIT;
             }
         }
     }
     if (gSpriteData[arachnusRamSlot].status & SPRITE_STATUS_ENABLE_MOSAIC) {
         gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
-    }
-    else {
+    } else {
         gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
     }
-    if (gSpriteData[arachnusRamSlot].pose == 0x59) {
+    if (gSpriteData[arachnusRamSlot].pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
         gCurrentSprite.status = 0;
     }
 }
@@ -968,33 +969,32 @@ void ArachnusPart(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     arachnusRamSlot = gCurrentSprite.primarySpriteRamSlot;
     switch (gSpriteData[arachnusRamSlot].pose) {
-        case 2:
+        case ARACHNUS_POSE_WALKING:
             break;
-        case 1:
-            gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+        case ARACHNUS_POSE_WALKING_INIT:
+            gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
-        case 7:
+        case ARACHNUS_POSE_IDLE_INIT:
             break;
         default:
-            gCurrentSprite.status |= 0x2000;
+            gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
     }
     gCurrentSprite.yPosition = gSpriteData[arachnusRamSlot].yPosition;
     gCurrentSprite.xPosition = gSpriteData[arachnusRamSlot].xPosition;
     gCurrentSprite.paletteRow = gSpriteData[arachnusRamSlot].paletteRow;
     if (gSpriteData[arachnusRamSlot].status & SPRITE_STATUS_X_FLIP) {
         gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
-    }
-    else {
+    } else {
         gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
     }
-    if (gSpriteData[arachnusRamSlot].pose == 0x59) {
+    if (gSpriteData[arachnusRamSlot].pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
         gCurrentSprite.status = 0;
     }
 }
 
 void ArachnusHead(void) {
-    if (gCurrentSprite.pose == 0) {
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED) {
         gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
         gCurrentSprite.drawOrder = 3;
         gCurrentSprite.drawDistanceTop = 0x30;
@@ -1007,14 +1007,14 @@ void ArachnusHead(void) {
         gCurrentSprite.pOam = sFrameData_30294c;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.samusCollision = 0;
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.samusCollision = SSC_NONE;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
     }
     ArachnusPart();
 }
 
 void ArachnusArm1(void) {
-    if (gCurrentSprite.pose == 0) {
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED) {
         gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
         gCurrentSprite.drawOrder = 4;
         gCurrentSprite.drawDistanceTop = 0x20;
@@ -1027,14 +1027,14 @@ void ArachnusArm1(void) {
         gCurrentSprite.pOam = sFrameData_30299c;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.samusCollision = 0;
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.samusCollision = SSC_NONE;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
     }
     ArachnusPart();
 }
 
 void ArachnusArm2(void) {
-    if (gCurrentSprite.pose == 0) {
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED) {
         gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
         gCurrentSprite.drawOrder = 2;
         gCurrentSprite.drawDistanceTop = 0x20;
@@ -1047,8 +1047,8 @@ void ArachnusArm2(void) {
         gCurrentSprite.pOam = sFrameData_302974;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.samusCollision = 0;
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.samusCollision = SSC_NONE;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
     }
     ArachnusPart();
 }

@@ -5,7 +5,7 @@
 #define SPRITE_STATUS_ON_SCREEN (1 << 1) // 2
 #define SPRITE_STATUS_NOT_DRAWN (1 << 2) // 4
 #define SPRITE_STATUS_UNKNOWN_8 (1 << 3) // 8
-#define SPRITE_STATUS_UNKNOWN_10 (1 << 4) // 0x10
+#define SPRITE_STATUS_DRAW_UPPER (1 << 4) // 0x10
 #define SPRITE_STATUS_ENABLE_MOSAIC (1 << 5) // 0x20
 #define SPRITE_STATUS_X_FLIP (1 << 6) // 0x40
 #define SPRITE_STATUS_ROTATION_SCALING (1 << 7) // 0x80
@@ -14,7 +14,7 @@
 #define SPRITE_STATUS_SAMUS_DETECTED (1 << 10) // 0x400
 #define SPRITE_STATUS_SAMUS_COLLIDING (1 << 11) // 0x800
 #define SPRITE_STATUS_SAMUS_ON_TOP (1 << 12) // 0x1000
-#define SPRITE_STATUS_UNKNOWN_2000 (1 << 13) // 0x2000
+#define SPRITE_STATUS_HIDDEN (1 << 13) // 0x2000 (compared to SPRITE_STATUS_NOT_DRAWN, ignores Samus and projectile collision)
 #define SPRITE_STATUS_DOUBLE_SIZE (1 << 14) // 0x4000
 #define SPRITE_STATUS_IGNORE_PROJECTILES (1 << 15) // 0x8000
 
