@@ -29,38 +29,38 @@ void ArachnusSetStandingHitbox(void) {
 
 void ArachnusShootingFireInit(void) {
     gCurrentSprite.pose = ARACHNUS_POSE_SHOOTING_FIRE;
-    gCurrentSprite.pOam = sFrameData_302a44;
+    gCurrentSprite.pOam = sArachnusOam_ShootingFire;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
     gCurrentSprite.status ^= SPRITE_STATUS_SAMUS_COLLIDING;
-    SetSecondarySpriteOAMPointer(sFrameData_302a74);
+    SetSecondarySpriteOAMPointer(sArachnusShellOam_ShootingFire);
 }
 
 void ArachnusScreamingInit(void) {
     gCurrentSprite.pose = ARACHNUS_POSE_SCREAMING;
-    gCurrentSprite.pOam = sFrameData_302d54;
+    gCurrentSprite.pOam = sArachnusOam_Screaming;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.hitboxTop = -0xe0;
     gCurrentSprite.hitboxBottom = 0;
     gCurrentSprite.hitboxLeft = -0x48;
     gCurrentSprite.hitboxRight = 0x48;
-    SetSecondarySpriteOAMPointer(sFrameData_302d8c);
+    SetSecondarySpriteOAMPointer(sArachnusShellOam_Screaming);
     SoundPlay(0xbb);
 }
 
 void ArachnusDyingInit(void) {
     gCurrentSprite.pose = ARACHNUS_POSE_DYING;
-    if (gCurrentSprite.pOam != sFrameData_302d54) {
-        gCurrentSprite.pOam = sFrameData_302d54;
+    if (gCurrentSprite.pOam != sArachnusOam_Screaming) {
+        gCurrentSprite.pOam = sArachnusOam_Screaming;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.hitboxTop = -0xe0;
         gCurrentSprite.hitboxBottom = 0;
         gCurrentSprite.hitboxLeft = -0x48;
         gCurrentSprite.hitboxRight = 0x48;
-        SetSecondarySpriteOAMPointer(sFrameData_302d8c);
+        SetSecondarySpriteOAMPointer(sArachnusShellOam_Screaming);
     }
     gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
     gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
@@ -85,7 +85,7 @@ void ArachnusRollingInit(void) {
         gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
         gCurrentSprite.status ^= SPRITE_STATUS_SAMUS_COLLIDING;
     }
-    SetSecondarySpriteOAMPointer(sFrameData_302c94);
+    SetSecondarySpriteOAMPointer(sArachnusOam_Curling);
     shellSpriteSlot = gCurrentSprite.work2;
     gSpriteData[shellSpriteSlot].hitboxTop = -0x60;
     gSpriteData[shellSpriteSlot].hitboxBottom = 0;
@@ -96,11 +96,11 @@ void ArachnusRollingInit(void) {
 
 void ArachnusSlashingInit(void) {
     gCurrentSprite.pose = ARACHNUS_POSE_SLASHING;
-    gCurrentSprite.pOam = sFrameData_302aa4;
+    gCurrentSprite.pOam = sArachnusOam_Slashing;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
-    SetSecondarySpriteOAMPointer(sFrameData_302b74);
+    SetSecondarySpriteOAMPointer(sArachnusShellOam_Slashing);
     SoundPlay(0xba);
 }
 
@@ -150,9 +150,9 @@ void ArachnusRolling(void) {
     u32 yPosition;
 
     shellSpriteSlot = gCurrentSprite.work2;
-    if (gSpriteData[shellSpriteSlot].pOam == sFrameData_302c94) {
+    if (gSpriteData[shellSpriteSlot].pOam == sArachnusOam_Curling) {
         if (SpriteUtilCheckEndSpriteAnim(shellSpriteSlot)) {
-            SetSecondarySpriteOAMPointer(sFrameData_302dc4);
+            SetSecondarySpriteOAMPointer(sArachnusOam_Rolling);
             gSpriteData[shellSpriteSlot].status |= SPRITE_STATUS_ROTATION_SCALING;
             gSpriteData[shellSpriteSlot].rotation = 0;
             gSpriteData[shellSpriteSlot].scaling = Q_8_8(1);
@@ -163,7 +163,8 @@ void ArachnusRolling(void) {
             gCurrentSprite.work3++;
         }
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
-            SpriteUtilCheckCollisionAtPosition(gSpriteData[shellSpriteSlot].yPosition - 0x48, gSpriteData[shellSpriteSlot].xPosition + gSpriteData[shellSpriteSlot].hitboxRight);
+            SpriteUtilCheckCollisionAtPosition(gSpriteData[shellSpriteSlot].yPosition - 0x48,
+                gSpriteData[shellSpriteSlot].xPosition + gSpriteData[shellSpriteSlot].hitboxRight);
             if (gPreviousCollisionCheck & 0xf) {
                 hitWall = TRUE;
             } else {
@@ -210,7 +211,7 @@ void ArachnusRolling(void) {
             }
         }
         if (hitWall) {
-            gCurrentSprite.pose = 0x3c;
+            gCurrentSprite.pose = ARACHNUS_POSE_BONKING;
             gCurrentSprite.work4 = 0;
             ScreenShakeStartHorizontal(0x28, 0x81);
             SoundPlay(0xb7);
@@ -229,7 +230,7 @@ void ArachnusBonking(void) {
     u16 xSpeed;
 
     shellSpriteSlot = gCurrentSprite.work2;
-    if (gSpriteData[shellSpriteSlot].pOam == sFrameData_302cf4) {
+    if (gSpriteData[shellSpriteSlot].pOam == sArachnusOam_Uncurling) {
         if (SpriteUtilCheckNearEndSpriteAnim(shellSpriteSlot)) {
             gCurrentSprite.pose = ARACHNUS_POSE_IDLE_INIT;
             gCurrentSprite.work1 = 0xff;
@@ -262,7 +263,7 @@ void ArachnusBonking(void) {
             gSpriteData[shellSpriteSlot].rotation += xSpeed / 2;
         }
         if (gCurrentSprite.work4 == 0x22) {
-            SetSecondarySpriteOAMPointer(sFrameData_302cf4);
+            SetSecondarySpriteOAMPointer(sArachnusOam_Uncurling);
             gSpriteData[shellSpriteSlot].status &= ~SPRITE_STATUS_ROTATION_SCALING;
             SoundPlay(0xb5);
         }
@@ -429,7 +430,7 @@ void ArachnusInit(void) {
     } else {
         gCurrentSprite.pose = ARACHNUS_POSE_IDLE;
     }
-    gCurrentSprite.pOam = sFrameData_302c44;
+    gCurrentSprite.pOam = sArachnusOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     ArachnusSetStandingHitbox();
@@ -461,11 +462,11 @@ void ArachnusInit(void) {
 
 void ArachnusWalkingInit(void) {
     gCurrentSprite.pose = ARACHNUS_POSE_WALKING;
-    gCurrentSprite.pOam = sFrameData_3028f4;
+    gCurrentSprite.pOam = sArachnusOam_Walking;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     ArachnusSetStandingHitbox();
-    SetSecondarySpriteOAMPointer(sFrameData_302924);
+    SetSecondarySpriteOAMPointer(sArachnusShellOam_Walking);
 }
 
 void ArachnusWalking(void) {
@@ -548,11 +549,11 @@ void ArachnusIdleInit(void) {
         }
     }
     gCurrentSprite.pose = ARACHNUS_POSE_IDLE;
-    gCurrentSprite.pOam = sFrameData_302c44;
+    gCurrentSprite.pOam = sArachnusOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     ArachnusSetStandingHitbox();
-    SetSecondarySpriteOAMPointer(sFrameData_302c6c);
+    SetSecondarySpriteOAMPointer(sArachnusShellOam_Idle);
 }
 
 void ArachnusIdle(void) {
@@ -578,12 +579,12 @@ void ArachnusIdle(void) {
 
 void ArachnusTurningInit(void) {
     gCurrentSprite.pose = ARACHNUS_POSE_TURNING;
-    gCurrentSprite.pOam = sFrameData_3029c4;
+    gCurrentSprite.pOam = sArachnusOam_Turning;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.hitboxLeft = -0x20;
     gCurrentSprite.hitboxRight = 0x20;
-    SetSecondarySpriteOAMPointer(sFrameData_302a04);
+    SetSecondarySpriteOAMPointer(sArachnusShellOam_Turning);
 }
 
 void ArachnusTurning(void) {
@@ -681,7 +682,7 @@ void ArachnusShell(void) {
         gCurrentSprite.drawDistanceHorizontal = 0x18;
         gCurrentSprite.hitboxTop = -0xa0;
         gCurrentSprite.hitboxBottom = 0;
-        gCurrentSprite.pOam = sFrameData_302c6c;
+        gCurrentSprite.pOam = sArachnusShellOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
@@ -757,7 +758,7 @@ void ArachnusHead(void) {
         gCurrentSprite.hitboxBottom = 4;
         gCurrentSprite.hitboxLeft = -4;
         gCurrentSprite.hitboxRight = 4;
-        gCurrentSprite.pOam = sFrameData_30294c;
+        gCurrentSprite.pOam = sArachnusHeadOam;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_NONE;
@@ -777,7 +778,7 @@ void ArachnusArm1(void) {
         gCurrentSprite.hitboxBottom = 4;
         gCurrentSprite.hitboxLeft = -4;
         gCurrentSprite.hitboxRight = 4;
-        gCurrentSprite.pOam = sFrameData_30299c;
+        gCurrentSprite.pOam = sArachnusArm1Oam;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_NONE;
@@ -797,7 +798,7 @@ void ArachnusArm2(void) {
         gCurrentSprite.hitboxBottom = 4;
         gCurrentSprite.hitboxLeft = -4;
         gCurrentSprite.hitboxRight = 4;
-        gCurrentSprite.pOam = sFrameData_302974;
+        gCurrentSprite.pOam = sArachnusArm2Oam;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_NONE;
@@ -827,14 +828,14 @@ void ArachnusFire(void) {
             gCurrentSprite.hitboxRight = 0x18;
             gCurrentSprite.work1 = 0;
             if (gCurrentSprite.roomSlot == 0) {
-                gCurrentSprite.pOam = sFrameData_303170;
+                gCurrentSprite.pOam = sArachnusFireballOam;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
                 gCurrentSprite.pose = ARACHNUS_FIRE_POSE_FIREBALL;
                 gCurrentSprite.hitboxTop = -0x30;
             } else {
-                gCurrentSprite.pOam = sFrameData_303138;
+                gCurrentSprite.pOam = sArachnusFireTrailOam_Short;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
@@ -849,7 +850,7 @@ void ArachnusFire(void) {
             if (gPreviousCollisionCheck != 0) {
                 gCurrentSprite.pose = ARACHNUS_FIRE_POSE_FIRE_TRAIL_1;
                 gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
-                gCurrentSprite.pOam = sFrameData_303138;
+                gCurrentSprite.pOam = sArachnusFireTrailOam_Short;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.hitboxTop = -0x40;
@@ -876,7 +877,7 @@ void ArachnusFire(void) {
             }
             if (SpriteUtilCheckEndCurrentSpriteAnim()) {
                 gCurrentSprite.pose = ARACHNUS_FIRE_POSE_FIRE_TRAIL_2;
-                gCurrentSprite.pOam = sFrameData_303100;
+                gCurrentSprite.pOam = sArachnusFireTrailOam_Medium;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.hitboxTop = -0x60;
@@ -886,7 +887,7 @@ void ArachnusFire(void) {
         case ARACHNUS_FIRE_POSE_FIRE_TRAIL_2: {
             if (SpriteUtilCheckEndCurrentSpriteAnim()) {
                 gCurrentSprite.pose = ARACHNUS_FIRE_POSE_FIRE_TRAIL_3;
-                gCurrentSprite.pOam = sFrameData_3030c8;
+                gCurrentSprite.pOam = sArachnusFireTrailOam_Tall;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.hitboxTop = -0x80;
@@ -896,7 +897,7 @@ void ArachnusFire(void) {
         case ARACHNUS_FIRE_POSE_FIRE_TRAIL_3: {
             if (SpriteUtilCheckEndCurrentSpriteAnim()) {
                 gCurrentSprite.pose = ARACHNUS_FIRE_POSE_FIRE_TRAIL_4;
-                gCurrentSprite.pOam = sFrameData_303100;
+                gCurrentSprite.pOam = sArachnusFireTrailOam_Medium;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.hitboxTop = -0x60;
@@ -906,7 +907,7 @@ void ArachnusFire(void) {
         case ARACHNUS_FIRE_POSE_FIRE_TRAIL_4: {
             if (SpriteUtilCheckEndCurrentSpriteAnim()) {
                 gCurrentSprite.pose = ARACHNUS_FIRE_POSE_FIRE_TRAIL_DIE;
-                gCurrentSprite.pOam = sFrameData_303138;
+                gCurrentSprite.pOam = sArachnusFireTrailOam_Short;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.hitboxTop = -0x40;
@@ -958,7 +959,7 @@ void ArachnusSlash(void) {
             gCurrentSprite.hitboxBottom = 0;
             gCurrentSprite.hitboxLeft = -0x20;
             gCurrentSprite.hitboxRight = 0x20;
-            gCurrentSprite.pOam = sFrameData_303198;
+            gCurrentSprite.pOam = sArachnusSlashOam;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
@@ -1026,7 +1027,7 @@ void ArachnusSlashTrail(void) {
             gCurrentSprite.hitboxBottom = 4;
             gCurrentSprite.hitboxLeft = -4;
             gCurrentSprite.hitboxRight = 4;
-            gCurrentSprite.pOam = sFrameData_3031b8;
+            gCurrentSprite.pOam = sArachnusSlashTrailOam;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.samusCollision = SSC_NONE;
