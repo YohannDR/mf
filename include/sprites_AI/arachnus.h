@@ -1,8 +1,6 @@
 #ifndef ARACHNUS_AI_H
 #define ARACHNUS_AI_H
 
-#include "types.h"
-
 #define ARACHNUS_POSE_WALKING_INIT 1
 #define ARACHNUS_POSE_WALKING 2
 #define ARACHNUS_POSE_IDLE_INIT 7
@@ -27,5 +25,14 @@
 #define ARACHNUS_SLASH_POSE_MOVING 2
 
 #define ARACHNUS_PROJECTILE_POSE_ARACHNUS_DYING 0x38
+
+void Arachnus(void);
+void ArachnusShell(void);
+void ArachnusHead(void);
+void ArachnusArm1(void);
+void ArachnusArm2(void);
+void ArachnusFire(void);
+void ArachnusSlash(void);
+void ArachnusSlashTrail(void);
 
 #endif /* ARACHNUS_AI_H */

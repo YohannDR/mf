@@ -591,9 +591,9 @@ void ArachnusDying(void) {
                 gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X_INIT;
                 gCurrentSprite.spriteId = gCoreXFormationSpriteId;
         }
-        if (gCurrentSprite.xParasiteTimer < ARRAY_SIZE(sMorphBallCoreXPal) / 16 * 4) {
+        if (gCurrentSprite.xParasiteTimer < ARRAY_SIZE(sMorphBallCoreXGfx) / 512 * 4) {
             SpriteLoadGfx(gCoreXFormationSpriteId, 0, gCurrentSprite.xParasiteTimer);
-        } else if (gCurrentSprite.xParasiteTimer == ARRAY_SIZE(sMorphBallCoreXPal) / 16 * 4) {
+        } else if (gCurrentSprite.xParasiteTimer == ARRAY_SIZE(sMorphBallCoreXGfx) / 512 * 4) {
             SpriteLoadPal(gCoreXFormationSpriteId, 0, ARRAY_SIZE(sMorphBallCoreXPal) / 16);
         }
     }
@@ -1210,10 +1210,10 @@ void ArachnusSlash(void) {
             gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
             gCurrentSprite.pose = ARACHNUS_SLASH_POSE_MOVING;
             if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
-                ramSlot = SpriteSpawnSecondary(0x20, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+                ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_BEAM_TRAIL, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
                     gCurrentSprite.yPosition - 0xc, gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
             } else {
-                ramSlot = SpriteSpawnSecondary(0x20, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+                ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_BEAM_TRAIL, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
                     gCurrentSprite.yPosition - 0xc, gCurrentSprite.xPosition, 0);
             }
             if (ramSlot == UCHAR_MAX) {

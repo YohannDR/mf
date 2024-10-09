@@ -2431,7 +2431,7 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
         SPRITE_WEAKNESS_NONE
     },
-    [SSPRITE_20] = {
+    [SSPRITE_ARACHNUS_BEAM_TRAIL] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
