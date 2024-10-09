@@ -142,12 +142,9 @@ void ArachnusSlashing(void) {
     }
 }
 
-// non-matching (https://decomp.me/scratch/JYp6j)
-#ifdef NON_MATCHING
 void ArachnusRolling(void) {
     u32 shellSpriteSlot;
-    s16 speed;
-    u32 rotationDelta;
+    u16 speed;
     u32 hitWall;
     u32 xPosition;
     u32 yPosition;
@@ -156,9 +153,9 @@ void ArachnusRolling(void) {
     if (gSpriteData[shellSpriteSlot].pOam == sFrameData_302c94) {
         if (SpriteUtilCheckEndSpriteAnim(shellSpriteSlot)) {
             SetSecondarySpriteOAMPointer(sFrameData_302dc4);
-            gSpriteData[shellSpriteSlot].status |= 0x80;
+            gSpriteData[shellSpriteSlot].status |= SPRITE_STATUS_ROTATION_SCALING;
             gSpriteData[shellSpriteSlot].rotation = 0;
-            gSpriteData[shellSpriteSlot].scaling = 0x100;
+            gSpriteData[shellSpriteSlot].scaling = Q_8_8(1);
         }
     } else {
         speed = sArachnusRollingSpeed[gCurrentSprite.work3 >> 2];
@@ -174,11 +171,11 @@ void ArachnusRolling(void) {
                 xPosition = gCurrentSprite.xPosition;
                 yPosition = gCurrentSprite.yPosition;
                 gSpriteData[shellSpriteSlot].xPosition += speed;
-                rotationDelta = gCurrentSprite.work3 / 2;
-                if (rotationDelta > 0x10) {
-                    rotationDelta = 0x10;
+                speed = gCurrentSprite.work3 / 2;
+                if (speed > 0x10) {
+                    speed = 0x10;
                 }
-                gSpriteData[shellSpriteSlot].rotation += rotationDelta;
+                gSpriteData[shellSpriteSlot].rotation += speed;
                 if (gSpriteRandomNumber > 12) {
                     if ((gSpriteRandomNumber & 1) != 0) {
                         SpriteDebrisInit(0, 4, yPosition - 0x10, xPosition + (gFrameCounter8Bit & 0x1f));
@@ -188,7 +185,8 @@ void ArachnusRolling(void) {
                 }
             }
         } else {
-            SpriteUtilCheckCollisionAtPosition(gSpriteData[shellSpriteSlot].yPosition - 0x48, gSpriteData[shellSpriteSlot].xPosition + gSpriteData[shellSpriteSlot].hitboxLeft);
+            SpriteUtilCheckCollisionAtPosition(gSpriteData[shellSpriteSlot].yPosition - 0x48,
+                gSpriteData[shellSpriteSlot].xPosition + gSpriteData[shellSpriteSlot].hitboxLeft);
             if (gPreviousCollisionCheck & 0xf) {
                 hitWall = TRUE;
             } else {
@@ -196,11 +194,11 @@ void ArachnusRolling(void) {
                 xPosition = gCurrentSprite.xPosition;
                 yPosition = gCurrentSprite.yPosition;
                 gSpriteData[shellSpriteSlot].xPosition -= speed;
-                rotationDelta = gCurrentSprite.work3 / 2;
-                if (rotationDelta > 0x10) {
-                    rotationDelta = 0x10;
+                speed = gCurrentSprite.work3 / 2;
+                if (speed > 0x10) {
+                    speed = 0x10;
                 }
-                gSpriteData[shellSpriteSlot].rotation -= rotationDelta;
+                gSpriteData[shellSpriteSlot].rotation -= speed;
                 if (gSpriteRandomNumber > 12) {
                     if ((gSpriteRandomNumber & 1) != 0) {
                         SpriteDebrisInit(0, 0x13, yPosition - 0x10, xPosition - (gFrameCounter8Bit & 0x1f));
@@ -223,256 +221,6 @@ void ArachnusRolling(void) {
         }
     }
 }
-#else
-NAKED_FUNCTION
-void ArachnusRolling(void) {
-    asm(" \n\
-    push {r4, r5, r6, r7, lr} \n\
-	mov r7, r8 \n\
-	push {r7} \n\
-	ldr r5, _08023B70 @ =gCurrentSprite \n\
-	add r0, r5, #0 \n\
-	add r0, #0x2f \n\
-	ldrb r2, [r0] \n\
-	ldr r7, _08023B74 @ =gSpriteData \n\
-	lsl r0, r2, #3 \n\
-	sub r0, r0, r2 \n\
-	lsl r6, r0, #3 \n\
-	add r0, r7, #0 \n\
-	add r0, #0x18 \n\
-	add r0, r6, r0 \n\
-	ldr r1, [r0] \n\
-	ldr r0, _08023B78 @ =sFrameData_302c94 \n\
-	cmp r1, r0 \n\
-	bne _08023B80 \n\
-	add r0, r2, #0 \n\
-	bl SpriteUtilCheckEndSpriteAnim \n\
-	cmp r0, #0 \n\
-	bne _08023B50 \n\
-	b _08023D0A \n\
-_08023B50: \n\
-	ldr r0, _08023B7C @ =sFrameData_302dc4 \n\
-	bl SetSecondarySpriteOAMPointer \n\
-	add r1, r6, r7 \n\
-	ldrh r2, [r1] \n\
-	movs r0, #0x80 \n\
-	movs r3, #0 \n\
-	orr r0, r2 \n\
-	strh r0, [r1] \n\
-	add r0, r1, #0 \n\
-	add r0, #0x2b \n\
-	strb r3, [r0] \n\
-	movs r0, #0x80 \n\
-	lsl r0, r0, #1 \n\
-	strh r0, [r1, #0x12] \n\
-	b _08023D0A \n\
-	.align 2, 0 \n\
-_08023B70: .4byte gCurrentSprite \n\
-_08023B74: .4byte gSpriteData \n\
-_08023B78: .4byte sFrameData_302c94 \n\
-_08023B7C: .4byte sFrameData_302dc4 \n\
-_08023B80: \n\
-	ldr r0, _08023C18 @ =sArachnusRollingSpeed \n\
-	movs r1, #0x30 \n\
-	add r1, r1, r5 \n\
-	mov r8, r1 \n\
-	ldrb r3, [r1] \n\
-	lsl r1, r3, #0x18 \n\
-	lsr r2, r1, #0x18 \n\
-	lsr r1, r1, #0x1a \n\
-	lsl r1, r1, #1 \n\
-	add r1, r1, r0 \n\
-	ldrh r4, [r1] \n\
-	cmp r2, #0x2e \n\
-	bhi _08023BA0 \n\
-	add r0, r3, #1 \n\
-	mov r2, r8 \n\
-	strb r0, [r2] \n\
-_08023BA0: \n\
-	ldrh r1, [r5] \n\
-	movs r0, #0x40 \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	beq _08023C40 \n\
-	add r6, r6, r7 \n\
-	ldrh r0, [r6, #2] \n\
-	sub r0, #0x48 \n\
-	movs r2, #0x10 \n\
-	ldrsh r1, [r6, r2] \n\
-	ldrh r2, [r6, #4] \n\
-	add r1, r1, r2 \n\
-	bl SpriteUtilCheckCollisionAtPosition \n\
-	ldr r0, _08023C1C @ =gPreviousCollisionCheck \n\
-	ldrb r1, [r0] \n\
-	movs r0, #0xf \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	beq _08023BCA \n\
-	b _08023CD0 \n\
-_08023BCA: \n\
-	ldrh r0, [r5, #4] \n\
-	add r0, r4, r0 \n\
-	strh r0, [r5, #4] \n\
-	ldrh r7, [r5, #4] \n\
-	ldrh r2, [r5, #2] \n\
-	ldrh r0, [r6, #4] \n\
-	add r0, r4, r0 \n\
-	strh r0, [r6, #4] \n\
-	mov r1, r8 \n\
-	ldrb r0, [r1] \n\
-	lsr r4, r0, #1 \n\
-	cmp r4, #0x10 \n\
-	bls _08023BE6 \n\
-	movs r4, #0x10 \n\
-_08023BE6: \n\
-	add r0, r6, #0 \n\
-	add r0, #0x2b \n\
-	ldrb r1, [r0] \n\
-	add r1, r1, r4 \n\
-	strb r1, [r0] \n\
-	ldr r0, _08023C20 @ =gFrameCounter8Bit \n\
-	ldrb r1, [r0] \n\
-	cmp r1, #0xc \n\
-	bls _08023CCA \n\
-	movs r0, #1 \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	beq _08023C28 \n\
-	sub r2, #0x10 \n\
-	ldr r0, _08023C24 @ =gFrameCounter8Bit \n\
-	ldrb r0, [r0] \n\
-	movs r3, #0x1f \n\
-	and r3, r0 \n\
-	add r3, r7, r3 \n\
-	movs r0, #0 \n\
-	movs r1, #4 \n\
-	bl SpriteDebrisInit \n\
-	b _08023CCA \n\
-	.align 2, 0 \n\
-_08023C18: .4byte sArachnusRollingSpeed \n\
-_08023C1C: .4byte gPreviousCollisionCheck \n\
-_08023C20: .4byte gSpriteRandomNumber \n\
-_08023C24: .4byte gFrameCounter8Bit \n\
-_08023C28: \n\
-	ldr r0, _08023C3C @ =gFrameCounter8Bit \n\
-	ldrb r0, [r0] \n\
-	movs r3, #0x1f \n\
-	and r3, r0 \n\
-	add r3, r7, r3 \n\
-	movs r0, #0 \n\
-	movs r1, #0x11 \n\
-	bl SpriteDebrisInit \n\
-	b _08023CCA \n\
-	.align 2, 0 \n\
-_08023C3C: .4byte gFrameCounter8Bit \n\
-_08023C40: \n\
-	add r6, r6, r7 \n\
-	ldrh r0, [r6, #2] \n\
-	sub r0, #0x48 \n\
-	movs r2, #0xe \n\
-	ldrsh r1, [r6, r2] \n\
-	ldrh r2, [r6, #4] \n\
-	add r1, r1, r2 \n\
-	bl SpriteUtilCheckCollisionAtPosition \n\
-	ldr r0, _08023CAC @ =gPreviousCollisionCheck \n\
-	ldrb r1, [r0] \n\
-	movs r0, #0xf \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	bne _08023CD0 \n\
-	ldrh r0, [r5, #4] \n\
-	sub r0, r0, r4 \n\
-	strh r0, [r5, #4] \n\
-	ldrh r7, [r5, #4] \n\
-	ldrh r2, [r5, #2] \n\
-	ldrh r0, [r6, #4] \n\
-	sub r0, r0, r4 \n\
-	strh r0, [r6, #4] \n\
-	mov r1, r8 \n\
-	ldrb r0, [r1] \n\
-	lsr r4, r0, #1 \n\
-	cmp r4, #0x10 \n\
-	bls _08023C7A \n\
-	movs r4, #0x10 \n\
-_08023C7A: \n\
-	add r0, r6, #0 \n\
-	add r0, #0x2b \n\
-	ldrb r1, [r0] \n\
-	sub r1, r1, r4 \n\
-	strb r1, [r0] \n\
-	ldr r0, _08023CB0 @ =gFrameCounter8Bit \n\
-	ldrb r1, [r0] \n\
-	cmp r1, #0xc \n\
-	bls _08023CCA \n\
-	movs r0, #1 \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	beq _08023CB8 \n\
-	sub r2, #0x10 \n\
-	ldr r0, _08023CB4 @ =gFrameCounter8Bit \n\
-	ldrb r0, [r0] \n\
-	movs r3, #0x1f \n\
-	and r3, r0 \n\
-	sub r3, r7, r3 \n\
-	movs r0, #0 \n\
-	movs r1, #0x13 \n\
-	bl SpriteDebrisInit \n\
-	b _08023CCA \n\
-	.align 2, 0 \n\
-_08023CAC: .4byte gPreviousCollisionCheck \n\
-_08023CB0: .4byte gSpriteRandomNumber \n\
-_08023CB4: .4byte gFrameCounter8Bit \n\
-_08023CB8: \n\
-	ldr r0, _08023CF0 @ =gFrameCounter8Bit \n\
-	ldrb r0, [r0] \n\
-	movs r3, #0x1f \n\
-	and r3, r0 \n\
-	sub r3, r7, r3 \n\
-	movs r0, #0 \n\
-	movs r1, #0x12 \n\
-	bl SpriteDebrisInit \n\
-_08023CCA: \n\
-	movs r0, #0 \n\
-	cmp r0, #0 \n\
-	beq _08023CF8 \n\
-_08023CD0: \n\
-	ldr r1, _08023CF4 @ =gCurrentSprite \n\
-	add r2, r1, #0 \n\
-	add r2, #0x24 \n\
-	movs r3, #0 \n\
-	movs r0, #0x3c \n\
-	strb r0, [r2] \n\
-	add r1, #0x31 \n\
-	strb r3, [r1] \n\
-	movs r0, #0x28 \n\
-	movs r1, #0x81 \n\
-	bl ScreenShakeStartHorizontal \n\
-	movs r0, #0xb7 \n\
-	bl SoundPlay \n\
-	b _08023D0A \n\
-	.align 2, 0 \n\
-_08023CF0: .4byte gFrameCounter8Bit \n\
-_08023CF4: .4byte gCurrentSprite \n\
-_08023CF8: \n\
-	ldr r0, _08023D14 @ =gFrameCounter8Bit \n\
-	ldrb r1, [r0] \n\
-	movs r0, #0xf \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	bne _08023D0A \n\
-	movs r0, #0xb6 \n\
-	bl SoundPlay \n\
-_08023D0A: \n\
-	pop {r3} \n\
-	mov r8, r3 \n\
-	pop {r4, r5, r6, r7} \n\
-	pop {r0} \n\
-	bx r0 \n\
-	.align 2, 0 \n\
-_08023D14: .4byte gFrameCounter8Bit \n\
-    ");
-}
-#endif
 
 void ArachnusBonking(void) {
     u32 shellSpriteSlot;
@@ -685,23 +433,27 @@ void ArachnusInit(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     ArachnusSetStandingHitbox();
-    ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_SHELL, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_SHELL, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
     if (ramSlot == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
     gCurrentSprite.work2 = ramSlot;
-    ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_HEAD, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_HEAD, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
     if (ramSlot == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_LEFT_ARM, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_LEFT_ARM, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
     if (ramSlot == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_RIGHT_ARM, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
+    ramSlot = SpriteSpawnSecondary(SSPRITE_ARACHNUS_RIGHT_ARM, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
+        gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
     if (ramSlot == UCHAR_MAX) {
         gCurrentSprite.status = 0;
     }
@@ -1115,9 +867,11 @@ void ArachnusFire(void) {
         case ARACHNUS_FIRE_POSE_FIRE_TRAIL_1: {
             if (++gCurrentSprite.work1 == 8 && gCurrentSprite.roomSlot < 7) {
                 if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
-                    SpriteSpawnSecondary(SSPRITE_ARACHNUS_FIRE_BALL, gCurrentSprite.roomSlot + 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x38, SPRITE_STATUS_X_FLIP);
+                    SpriteSpawnSecondary(SSPRITE_ARACHNUS_FIRE_BALL, gCurrentSprite.roomSlot + 1, gCurrentSprite.spritesetGfxSlot,
+                        gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x38, SPRITE_STATUS_X_FLIP);
                 } else {
-                    SpriteSpawnSecondary(SSPRITE_ARACHNUS_FIRE_BALL, gCurrentSprite.roomSlot + 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x38, 0);
+                    SpriteSpawnSecondary(SSPRITE_ARACHNUS_FIRE_BALL, gCurrentSprite.roomSlot + 1, gCurrentSprite.spritesetGfxSlot,
+                        gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x38, 0);
                 }
             }
             if (SpriteUtilCheckEndCurrentSpriteAnim()) {
