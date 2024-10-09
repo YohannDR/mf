@@ -167,7 +167,9 @@ void ArachnusRolling(void) {
         }
         if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP) {
             SpriteUtilCheckCollisionAtPosition(gSpriteData[shellSpriteSlot].yPosition - 0x48, gSpriteData[shellSpriteSlot].xPosition + gSpriteData[shellSpriteSlot].hitboxRight);
-            if ((gPreviousCollisionCheck & 0xf) == 0) {
+            if (gPreviousCollisionCheck & 0xf) {
+                hitWall = TRUE;
+            } else {
                 gCurrentSprite.xPosition += speed;
                 xPosition = gCurrentSprite.xPosition;
                 yPosition = gCurrentSprite.yPosition;
@@ -184,13 +186,12 @@ void ArachnusRolling(void) {
                         SpriteDebrisInit(0, 0x11, yPosition, xPosition + (gFrameCounter8Bit & 0x1f));
                     }
                 }
-                hitWall = FALSE;
-            } else {
-                hitWall = TRUE;
             }
         } else {
             SpriteUtilCheckCollisionAtPosition(gSpriteData[shellSpriteSlot].yPosition - 0x48, gSpriteData[shellSpriteSlot].xPosition + gSpriteData[shellSpriteSlot].hitboxLeft);
-            if ((gPreviousCollisionCheck & 0xf) == 0) {
+            if (gPreviousCollisionCheck & 0xf) {
+                hitWall = TRUE;
+            } else {
                 gCurrentSprite.xPosition -= speed;
                 xPosition = gCurrentSprite.xPosition;
                 yPosition = gCurrentSprite.yPosition;
@@ -208,16 +209,16 @@ void ArachnusRolling(void) {
                     }
                 }
                 hitWall = FALSE;
-            } else {
-                hitWall = TRUE;
             }
         }
         if (hitWall) {
-            gCurrentSprite.pose = ARACHNUS_POSE_BONKING;
+            gCurrentSprite.pose = 0x3c;
             gCurrentSprite.work4 = 0;
             ScreenShakeStartHorizontal(0x28, 0x81);
             SoundPlay(0xb7);
-        } else if ((gFrameCounter8Bit & 0xf) == 0) {
+            return;
+        }
+        if ((gFrameCounter8Bit & 0xf) == 0) {
             SoundPlay(0xb6);
         }
     }
