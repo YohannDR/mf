@@ -237,7 +237,6 @@ SECTIONS {
         src/sprites_AI/geemer.o(.text);
         src/sprites_AI/arachnus.o(.text);
 
-        asm/arachnus.o(.text);
         asm/core_x.o(.text);
         asm/core_x_downloading_varia.o(.text);
         asm/waver.o(.text);
