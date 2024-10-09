@@ -32,17 +32,17 @@ u8 HornoadCheckSamusInSpittingRange(void)
 
     inRange = FALSE;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_HIDDEN)
+    if (gCurrentSprite.status & SS_HIDDEN)
         return FALSE;
 
     // Check on screen and alive
-    if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN && gCurrentSprite.health != 0)
+    if (gCurrentSprite.status & SS_ON_SCREEN && gCurrentSprite.health != 0)
     {
         nslr = SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 2 - QUARTER_BLOCK_SIZE / 2,
             BLOCK_SIZE * 5 - QUARTER_BLOCK_SIZE - PIXEL_SIZE);
 
         // Check in front
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
         {
             if (nslr == NSLR_RIGHT)
                 inRange = TRUE;
@@ -71,7 +71,7 @@ u8 HornoadCheckSamusInJumpingRange(void)
 
     inRange = HRANGE_NONE;
     
-    if (gCurrentSprite.status & SPRITE_STATUS_HIDDEN)
+    if (gCurrentSprite.status & SS_HIDDEN)
         return HRANGE_NONE;
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
@@ -80,12 +80,12 @@ u8 HornoadCheckSamusInJumpingRange(void)
     yRange = BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE - PIXEL_SIZE;
     xRange = BLOCK_SIZE * 8 - QUARTER_BLOCK_SIZE + PIXEL_SIZE;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
     {
         xRange = BLOCK_SIZE * 11 - PIXEL_SIZE;
         yRange = BLOCK_SIZE * 5 + QUARTER_BLOCK_SIZE + PIXEL_SIZE;
 
-        gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
     }
 
     if (gCurrentSprite.health != 0)
@@ -93,7 +93,7 @@ u8 HornoadCheckSamusInJumpingRange(void)
         nslr = SpriteUtilCheckSamusNearSpriteLeftRight(yRange, xRange);
 
         // Check in front or behind
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
         {
             if (nslr == NSLR_RIGHT)
             {
@@ -142,7 +142,7 @@ u8 HornoadCheckSamusInJumpingRange(void)
  */
 void HornoadSetSideHitboxes(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
     {
         gCurrentSprite.hitboxLeft = -HORNOAD_BACK_HITBOX;
         gCurrentSprite.hitboxRight = HORNOAD_HEAD_HITBOX;
@@ -171,7 +171,7 @@ void HornoadInit(void)
 
     SpriteUtilTrySetAbsorbXFlag();
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.work2 = 0;
 
     gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE + HALF_BLOCK_SIZE);
@@ -188,7 +188,7 @@ void HornoadInit(void)
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+        gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
         gCurrentSprite.drawOrder = 12;
         gCurrentSprite.bgPriority = 3;
         gCurrentSprite.samusCollision = SSC_NONE;
@@ -463,7 +463,7 @@ void HornoadJumping(void)
     else
         movement = sHornoadJumpVelocityHigh[gCurrentSprite.work4 / 4];
 
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE,
             gCurrentSprite.xPosition + gCurrentSprite.hitboxRight + PIXEL_SIZE);
@@ -587,7 +587,7 @@ void HornoadJumping(void)
         if (!var_0)
             return;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
             gCurrentSprite.xPosition -= PIXEL_SIZE;
         else
             gCurrentSprite.xPosition += PIXEL_SIZE;
@@ -798,7 +798,7 @@ void HornoadTurningAround(void)
 
     if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
-        gCurrentSprite.status ^= SPRITE_STATUS_X_FLIP;
+        gCurrentSprite.status ^= SS_X_FLIP;
 
         gCurrentSprite.pose = 0x5;
 
@@ -823,7 +823,7 @@ void HornoadTurningAroundSecondPart(void)
     if (gCurrentSprite.currentAnimationFrame != 0)
         gCurrentSprite.yPosition += PIXEL_SIZE;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE,
             gCurrentSprite.xPosition + gCurrentSprite.hitboxRight + PIXEL_SIZE);
@@ -852,11 +852,11 @@ void HornoadSpitting(void)
 {
     if (gCurrentSprite.currentAnimationFrame == 5 && gCurrentSprite.animationDurationCounter == 1)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
         {
             SpriteSpawnSecondary(SSPRITE_HORNOAD_SPIT, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
                 gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition - (HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2),
-                gCurrentSprite.xPosition + HALF_BLOCK_SIZE, SPRITE_STATUS_X_FLIP);
+                gCurrentSprite.xPosition + HALF_BLOCK_SIZE, SS_X_FLIP);
         }
         else
         {
@@ -883,7 +883,7 @@ void HornoadSpitting(void)
  */
 void HornoadSpitInit(void)
 {
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.properties |= SP_KILL_OFF_SCREEN;
 
     gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
@@ -937,7 +937,7 @@ void HornoadSpitMoving(void)
         gCurrentSprite.yPosition += movement;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
         gCurrentSprite.xPosition += 0xA;
     else
         gCurrentSprite.xPosition -= 0xA;
@@ -1029,7 +1029,7 @@ void HornoadSpwanerIdle(void)
     count = 0;
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
-        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+        if (!(gSpriteData[i].status & SS_EXISTS))
             continue;
 
         if (gSpriteData[i].roomSlot == gCurrentSprite.roomSlot && gSpriteData[i].spriteId == PSPRITE_HORNOAD)
@@ -1070,16 +1070,16 @@ void HornoadSpwanerDelayBeforeSpawning(void)
     count = 0;
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
-        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+        if (!(gSpriteData[i].status & SS_EXISTS))
             count++;
     }
 
     if (count != 0)
     {
         if (gCurrentSprite.work2)
-            gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+            gCurrentSprite.status |= SS_X_FLIP;
         else
-            gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
+            gCurrentSprite.status &= ~SS_X_FLIP;
 
         gCurrentSprite.work2 ^= TRUE;
         gCurrentSprite.pose = 0x2C;
@@ -1103,7 +1103,7 @@ void HornoadSpwanerSpawnHornoad(void)
         return;
 
     SpriteSpawnPrimary(PSPRITE_HORNOAD, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, 0x10,
-        gCurrentSprite.yPosition - (BLOCK_SIZE - PIXEL_SIZE), gCurrentSprite.xPosition, gCurrentSprite.status & SPRITE_STATUS_X_FLIP);
+        gCurrentSprite.yPosition - (BLOCK_SIZE - PIXEL_SIZE), gCurrentSprite.xPosition, gCurrentSprite.status & SS_X_FLIP);
 
     HornoadSpwanerIdleInit();
 }
@@ -1123,8 +1123,8 @@ void Hornoad(void)
         return;
     }
 
-    if (gCurrentSprite.pose < SPRITE_POSE_TURNING_INTO_X && SPRITE_HAS_ISFT(gCurrentSprite) && gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
-        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    if (gCurrentSprite.pose < SPRITE_POSE_TURNING_INTO_X && SPRITE_HAS_ISFT(gCurrentSprite) && gCurrentSprite.status & SS_ON_SCREEN)
+        gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     switch (gCurrentSprite.pose)
     {

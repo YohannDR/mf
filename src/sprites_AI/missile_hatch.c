@@ -145,7 +145,7 @@ void MissileHatchExploding(void)
             break;
 
         case 10:
-            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status |= SS_NOT_DRAWN;
 
             SpriteSpawnSecondary(SSPRITE_41, 0, gCurrentSprite.spritesetGfxSlot,
                 gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition + HALF_BLOCK_SIZE,
@@ -198,7 +198,7 @@ void MissileHatchExploding(void)
  */
 void MissileHatchDebrisInit(void)
 {
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
     gCurrentSprite.samusCollision = SSC_NONE;
 

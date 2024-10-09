@@ -490,14 +490,14 @@ void ProjectileCheckHittingSprite(void)
         o1Left = o1X + gCurrentPowerBomb.hitboxLeft;
         o1Right = o1X + gCurrentPowerBomb.hitboxRight;
 
-        spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_HIDDEN | SPRITE_STATUS_IGNORE_PROJECTILES;
-        xCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_HIDDEN;
+        spriteCheck = SS_EXISTS | SS_HIDDEN | SS_IGNORE_PROJECTILES;
+        xCheck = SS_EXISTS | SS_HIDDEN;
 
         for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
         {
             if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
             {
-                if ((gSpriteData[i].status & spriteCheck) != SPRITE_STATUS_EXISTS)
+                if ((gSpriteData[i].status & spriteCheck) != SS_EXISTS)
                     continue;
 
                 if (gSpriteData[i].health == 0)
@@ -521,7 +521,7 @@ void ProjectileCheckHittingSprite(void)
             }
             else
             {
-                if ((gSpriteData[i].status & xCheck) != SPRITE_STATUS_EXISTS)
+                if ((gSpriteData[i].status & xCheck) != SS_EXISTS)
                     continue;
 
                 if (gSpriteData[i].health == 0)
@@ -564,11 +564,11 @@ void ProjectileCheckHittingSprite(void)
         o1Left = o1X + gSamusData.drawDistanceLeft;
         o1Right = o1X + gSamusData.drawDistanceRight;
 
-        spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_HIDDEN | SPRITE_STATUS_IGNORE_PROJECTILES;
+        spriteCheck = SS_EXISTS | SS_HIDDEN | SS_IGNORE_PROJECTILES;
 
         for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
         {
-            if ((gSpriteData[i].status & spriteCheck) != SPRITE_STATUS_EXISTS)
+            if ((gSpriteData[i].status & spriteCheck) != SS_EXISTS)
                 continue;
 
             if (gSpriteData[i].health == 0)
@@ -592,11 +592,11 @@ void ProjectileCheckHittingSprite(void)
         }
     }
 
-    spriteCheck = SPRITE_STATUS_EXISTS | SPRITE_STATUS_HIDDEN | SPRITE_STATUS_IGNORE_PROJECTILES;
+    spriteCheck = SS_EXISTS | SS_HIDDEN | SS_IGNORE_PROJECTILES;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
-        if ((gSpriteData[i].status & spriteCheck) == SPRITE_STATUS_EXISTS && gSpriteData[i].health != 0)
+        if ((gSpriteData[i].status & spriteCheck) == SS_EXISTS && gSpriteData[i].health != 0)
             gSpriteDrawOrder[i] = gSpriteData[i].drawOrder;
         else
             gSpriteDrawOrder[i] = 0;

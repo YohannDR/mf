@@ -19,7 +19,7 @@ void ZoroCocoonSetHitboxesAndDrawDistances(void)
 {
     if (gCurrentSprite.work0)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
         {
             gCurrentSprite.hitboxTop = -(BLOCK_SIZE - PIXEL_SIZE);
             gCurrentSprite.hitboxBottom = BLOCK_SIZE - PIXEL_SIZE;
@@ -36,7 +36,7 @@ void ZoroCocoonSetHitboxesAndDrawDistances(void)
     }
     else
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_Y_FLIP)
+        if (gCurrentSprite.status & SS_Y_FLIP)
         {
             gCurrentSprite.hitboxTop = PIXEL_SIZE;
             gCurrentSprite.hitboxBottom = BLOCK_SIZE - PIXEL_SIZE;
@@ -105,8 +105,8 @@ void ZoroCocoonInit(void)
     {
         gCurrentSprite.work0 = FALSE;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-            gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
+            gCurrentSprite.status |= SS_X_FLIP;
     }
     else
     {
@@ -115,11 +115,11 @@ void ZoroCocoonInit(void)
         {
             gCurrentSprite.work0 = FALSE;
 
-            gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
+            gCurrentSprite.status |= SS_Y_FLIP;
             gCurrentSprite.yPosition -= BLOCK_SIZE;
 
-            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+            if (gCurrentSprite.status & SS_FACING_RIGHT)
+                gCurrentSprite.status |= SS_X_FLIP;
         }
         else
         {
@@ -143,7 +143,7 @@ void ZoroCocoonInit(void)
 
                 gCurrentSprite.work0 = TRUE;
 
-                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+                gCurrentSprite.status |= SS_X_FLIP;
                 gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
                 gCurrentSprite.xPosition += HALF_BLOCK_SIZE;
             }
@@ -169,19 +169,19 @@ void ZoroCocoon(void)
     if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED)
         ZoroCocoonInit();
 
-    if (EventCheckAfter_EscapedSaXTro1() && gCurrentSprite.currentAnimationFrame == 1 && gCurrentSprite.animationDurationCounter == 1 && gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+    if (EventCheckAfter_EscapedSaXTro1() && gCurrentSprite.currentAnimationFrame == 1 && gCurrentSprite.animationDurationCounter == 1 && gCurrentSprite.status & SS_ON_SCREEN)
         SoundPlayNotAlreadyPlaying(0x1D2);
 
     if (gCurrentSprite.work0)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
             unk_12008(gCurrentSprite.yPosition, gCurrentSprite.xPosition - HALF_BLOCK_SIZE);
         else
             unk_12008(gCurrentSprite.yPosition, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
     }
     else
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_Y_FLIP)
+        if (gCurrentSprite.status & SS_Y_FLIP)
             unk_12008(gCurrentSprite.yPosition + HALF_BLOCK_SIZE, gCurrentSprite.xPosition);
         else
             unk_12008(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition);
@@ -219,7 +219,7 @@ void ZoroHuskInit(void)
     gCurrentSprite.hitboxRight = PIXEL_SIZE;
 
     gCurrentSprite.samusCollision = SSC_NONE;
-    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+    gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
     SpriteUtilSpriteChooseRandomXDirectionWithRoomSlot();
@@ -230,8 +230,8 @@ void ZoroHuskInit(void)
     {
         gCurrentSprite.work0 = FALSE;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-            gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
+            gCurrentSprite.status |= SS_X_FLIP;
     }
     else
     {
@@ -240,11 +240,11 @@ void ZoroHuskInit(void)
         {
             gCurrentSprite.work0 = FALSE;
 
-            gCurrentSprite.status |= SPRITE_STATUS_Y_FLIP;
+            gCurrentSprite.status |= SS_Y_FLIP;
             gCurrentSprite.yPosition -= BLOCK_SIZE;
 
-            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
-                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+            if (gCurrentSprite.status & SS_FACING_RIGHT)
+                gCurrentSprite.status |= SS_X_FLIP;
         }
         else
         {
@@ -268,7 +268,7 @@ void ZoroHuskInit(void)
 
                 gCurrentSprite.work0 = TRUE;
 
-                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+                gCurrentSprite.status |= SS_X_FLIP;
                 gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
                 gCurrentSprite.xPosition += HALF_BLOCK_SIZE;
             }

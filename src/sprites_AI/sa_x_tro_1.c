@@ -20,7 +20,7 @@ void SaXTro1CheckBlockInFront(void)
 {
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE,
             gCurrentSprite.xPosition + (BLOCK_SIZE - PIXEL_SIZE));
@@ -46,7 +46,7 @@ void SaXTro1CheckBlockInFrontChase(void)
 {
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE,
             gCurrentSprite.xPosition + (BLOCK_SIZE - PIXEL_SIZE));
@@ -87,11 +87,11 @@ void SaXTro1Init(void)
  */
 void SaXTro1Walking(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (gSaXVision.inYRange == TRUE)
         {
-            gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+            gCurrentSprite.status |= SS_SAMUS_DETECTED;
             gCurrentSprite.xParasiteTimer = 0;
 
             if (gSaXVision.unk_1 == TRUE)
@@ -104,7 +104,7 @@ void SaXTro1Walking(void)
         
         if (SPRITE_HAS_ISFT(gCurrentSprite))
         {
-            gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+            gCurrentSprite.status |= SS_SAMUS_DETECTED;
             gCurrentSprite.xParasiteTimer = 0;
 
             if (gSaXVision.samusOnRight == FALSE)
@@ -119,7 +119,7 @@ void SaXTro1Walking(void)
     {
         if (gSaXVision.inYRange == TRUE)
         {
-            gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+            gCurrentSprite.status |= SS_SAMUS_DETECTED;
             gCurrentSprite.xParasiteTimer = 0;
 
             if (gSaXVision.unk_1 == FALSE)
@@ -132,7 +132,7 @@ void SaXTro1Walking(void)
         
         if (SPRITE_HAS_ISFT(gCurrentSprite))
         {
-            gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+            gCurrentSprite.status |= SS_SAMUS_DETECTED;
             gCurrentSprite.xParasiteTimer = 0;
 
             if (gSaXVision.samusOnRight == TRUE)
@@ -168,7 +168,7 @@ void SaXTro1Running(void)
         nslr = SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 7 + HALF_BLOCK_SIZE,
             BLOCK_SIZE * 5 + QUARTER_BLOCK_SIZE + PIXEL_SIZE);
 
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             if (nslr == NSLR_RIGHT)
             {
@@ -189,7 +189,7 @@ void SaXTro1Running(void)
 
         nslr = SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 4, BLOCK_SIZE * 10);
 
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             if (nslr == NSLR_LEFT)
             {
@@ -208,7 +208,7 @@ void SaXTro1Running(void)
     }
     else
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             if (gSaXVision.samusOnRight == FALSE && gSaXVision.inXRange)
             {
@@ -245,7 +245,7 @@ void SaXTro1TurningAroundChase(void)
 {
     if (gSaXData.pose == SA_X_POSE_STANDING)
     {
-        gCurrentSprite.status ^= SPRITE_STATUS_FACING_RIGHT;
+        gCurrentSprite.status ^= SS_FACING_RIGHT;
         SaXSetDirection();
 
         if (gSaXVision.inYRange == TRUE)
@@ -254,7 +254,7 @@ void SaXTro1TurningAroundChase(void)
         }
         else
         {
-            gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+            gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
             gCurrentSprite.pose = 0x7;
         }
     }
@@ -271,7 +271,7 @@ void SaXTro1(void)
 
     SaXSeeAndLocateSamus();
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
     {
         if (gSaXVision.inYRange == TRUE)
         {
@@ -281,11 +281,11 @@ void SaXTro1(void)
         {
             if (gCurrentSprite.xParasiteTimer >= 60 * 20)
             {
-                gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+                gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
             }
             else
             {
-                if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+                if (gCurrentSprite.status & SS_ON_SCREEN)
                     gCurrentSprite.xParasiteTimer += 4;
                 else
                     gCurrentSprite.xParasiteTimer += 1;
@@ -410,6 +410,6 @@ void SaXTro1(void)
 
     SaXUpdateGraphics();
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
         MusicPlay(0x17, 0x9);
 }

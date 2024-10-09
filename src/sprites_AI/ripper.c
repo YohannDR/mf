@@ -23,7 +23,7 @@ void RipperInit(void)
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
     {
-        if (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))
+        if (!(gCurrentSprite.status & SS_HIDDEN))
         {
             gCurrentSprite.status = 0;
             return;
@@ -85,7 +85,7 @@ void RipperIdleInit(void)
  */
 void RipperIdle(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE,
             gCurrentSprite.xPosition + (HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE));
@@ -128,7 +128,7 @@ void RipperTurningAround(void)
 {
     if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
-        gCurrentSprite.status ^= SPRITE_STATUS_X_FLIP;
+        gCurrentSprite.status ^= SS_X_FLIP;
         gCurrentSprite.pose = 0x5;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;

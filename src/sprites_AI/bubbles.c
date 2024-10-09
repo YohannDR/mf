@@ -55,7 +55,7 @@ void Bubbles1(void)
 
             gCurrentSprite.pose = 2;
 
-            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status |= SS_NOT_DRAWN;
             gCurrentSprite.work1 = gSpriteRandomNumber * 8;
             break;
 
@@ -63,7 +63,7 @@ void Bubbles1(void)
             if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 gCurrentSprite.pose++;
-                gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status |= SS_NOT_DRAWN;
                 gCurrentSprite.work1 = gSpriteRandomNumber * 8;
             }
             break;
@@ -74,7 +74,7 @@ void Bubbles1(void)
             {
                 gCurrentSprite.pose--;
 
-                gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status &= ~SS_NOT_DRAWN;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.animationDurationCounter = 0;
             }
@@ -106,11 +106,11 @@ void Bubbles2(void)
 
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition + BLOCK_SIZE);
             if (gPreviousCollisionCheck == COLLISION_SOLID)
-                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+                gCurrentSprite.status |= SS_X_FLIP;
 
             gCurrentSprite.pose = 2;
 
-            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status |= SS_NOT_DRAWN;
             gCurrentSprite.work1 = gSpriteRandomNumber * 4;
             break;
 
@@ -118,7 +118,7 @@ void Bubbles2(void)
             if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 gCurrentSprite.pose++;
-                gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status |= SS_NOT_DRAWN;
                 gCurrentSprite.work1 = gSpriteRandomNumber * 4;
             }
             break;
@@ -129,7 +129,7 @@ void Bubbles2(void)
             {
                 gCurrentSprite.pose--;
 
-                gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status &= ~SS_NOT_DRAWN;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.animationDurationCounter = 0;
             }
@@ -166,7 +166,7 @@ void WaterDrop(void)
             gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;
             gCurrentSprite.unk_8 = gCurrentSprite.xPosition;
 
-            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status |= SS_NOT_DRAWN;
             gCurrentSprite.pose = 10;
 
             gCurrentSprite.work1 = gSpriteRandomNumber * 8;
@@ -241,7 +241,7 @@ void WaterDrop(void)
 
             if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
-                gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status |= SS_NOT_DRAWN;
                 gCurrentSprite.pose = 10;
                 gCurrentSprite.work1 = 100 + gSpriteRandomNumber * 8;
             }
@@ -259,7 +259,7 @@ void WaterDrop(void)
 
                 gCurrentSprite.pose = 2;
 
-                gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
                 gCurrentSprite.yPosition = gCurrentSprite.xParasiteTimer;
                 gCurrentSprite.xPosition = gCurrentSprite.unk_8;

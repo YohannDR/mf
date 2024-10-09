@@ -63,7 +63,7 @@ void SuperMissileBarrierInit(void)
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
     {
-        if (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))
+        if (!(gCurrentSprite.status & SS_HIDDEN))
         {
             gCurrentSprite.status = 0;
             return;
@@ -206,7 +206,7 @@ void SuperMissileBarrierStem(void)
     switch (gCurrentSprite.pose)
     {
         case SPRITE_POSE_UNINITIALIZED:
-            gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
             gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
@@ -253,13 +253,13 @@ void SuperMissileBarrierStem(void)
             break;
     }
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_ENABLE_MOSAIC)
+    if (gSpriteData[ramSlot].status & SS_ENABLE_MOSAIC)
     {
         gCurrentSprite.ignoreSamusCollisionTimer = 1;
-        gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
+        gCurrentSprite.status |= SS_ENABLE_MOSAIC;
     }
     else
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
+        gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
     }
 }

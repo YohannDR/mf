@@ -87,7 +87,7 @@ void GunshipInit(void)
         
         SAMUS_SET_POSE(SPOSE_ON_SAVE_PAD);
 
-        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status |= SS_SAMUS_DETECTED;
     }
     else
     {
@@ -107,7 +107,7 @@ void GunshipInit(void)
  */
 void GunshipNavigation(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     if (gCurrentSprite.work2 < 24)
     {
@@ -132,7 +132,7 @@ void GunshipIdle(void)
     if (SpriteUtilCheckStopSpritesPose())
         return;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
     {
         if (gCurrentSprite.work2 <= 35)
         {
@@ -167,7 +167,7 @@ void GunshipIdle(void)
  */
 void GunshipLockingSamus(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     gCurrentSprite.work1--;
 
@@ -184,7 +184,7 @@ void GunshipLockingSamus(void)
  */
 void GunshipPullingSamusUp(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
     gCurrentSprite.work1--;
 
     if (gCurrentSprite.work1 == 0)
@@ -207,7 +207,7 @@ void GunshipPullingSamusUp(void)
  */
 void GunshipRefill(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     if (SpriteUtilRefillEnergy())
         return;
@@ -229,7 +229,7 @@ void GunshipRefill(void)
  */
 void GunshipSavePrompt(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     if (gSpriteData[gCurrentSprite.work1].status != 0)
         return;
@@ -253,7 +253,7 @@ void GunshipSavePrompt(void)
  */
 void GunshipSpawnSavedPrompt(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     gCurrentSprite.pose = 0x3C;
     gCurrentSprite.work1 = TrySpawnMessageBanner(0xD); // TODO enum
@@ -265,7 +265,7 @@ void GunshipSpawnSavedPrompt(void)
  */
 void GunshipSavedPrompt(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     if (gSpriteData[gCurrentSprite.work1].status != 0)
         return;
@@ -281,7 +281,7 @@ void GunshipSavedPrompt(void)
  */
 void GunshipReleasingSamus(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     gCurrentSprite.work1--;
 
@@ -308,11 +308,11 @@ void GunshipSamusReleased(void)
 {
     if (gSamusData.pose == SPOSE_FACING_FOREGROUND)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status |= SS_SAMUS_DETECTED;
         return;
     }
     
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
     {
         gCurrentSprite.work1 = 30;
         return;
@@ -333,7 +333,7 @@ void GunshipSamusReleased(void)
  */
 void GunshipLoadingSave(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
     {
         gCurrentSprite.work1 = 30;
         return;
@@ -354,7 +354,7 @@ void GunshipLoadingSave(void)
  */
 void GunshipBeamInit(void)
 {
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;
 
     gCurrentSprite.samusCollision = SSC_NONE;
@@ -509,11 +509,11 @@ void Gunship(void)
         gCurrentSprite.xPosition + HALF_BLOCK_SIZE > gSamusData.xPosition &&
         gCurrentSprite.yPosition - ONE_SUB_PIXEL == gSamusData.yPosition)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status |= SS_SAMUS_DETECTED;
     }
     else
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
     }
 
     switch (gCurrentSprite.pose)
@@ -566,7 +566,7 @@ void Gunship(void)
             GunshipLoadingSave();
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
         gCurrentSprite.drawOrder = 4;
     else
         gCurrentSprite.drawOrder = 12;
@@ -609,7 +609,7 @@ void GunshipPart(void)
     switch (gCurrentSprite.pose)
     {
         case SPRITE_POSE_UNINITIALIZED:
-            gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status &= ~SS_NOT_DRAWN;
             gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;
 
             gCurrentSprite.drawOrder = 12;

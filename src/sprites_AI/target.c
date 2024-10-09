@@ -20,7 +20,7 @@ void TargetInit(void)
     gCurrentSprite.pose++;
 
     if (!gDebugFlag)
-        gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+        gCurrentSprite.status |= SS_NOT_DRAWN;
 
     gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
     gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
@@ -46,9 +46,9 @@ void TargetInit(void)
     SpriteUtilChooseRandomXDirection();
 
     if (gSamusData.direction & KEY_RIGHT)
-        gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+        gCurrentSprite.status |= SS_FACING_RIGHT;
 
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 }
 
 /**
@@ -114,14 +114,14 @@ void TargetDiagonal(void)
 
     if (gCurrentSprite.pose != SPRITE_POSE_UNINITIALIZED)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
 
             if (gPreviousCollisionCheck == COLLISION_AIR)
                 gCurrentSprite.xPosition += PIXEL_SIZE / 2;
             else
-                gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status &= ~SS_FACING_RIGHT;
         }
         else
         {
@@ -130,17 +130,17 @@ void TargetDiagonal(void)
             if (gPreviousCollisionCheck == COLLISION_AIR)
                 gCurrentSprite.xPosition -= PIXEL_SIZE / 2;
             else
-                gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status |= SS_FACING_RIGHT;
         }
 
-        if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+        if (gCurrentSprite.status & SS_SAMUS_DETECTED)
         {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition);
 
             if (gPreviousCollisionCheck == COLLISION_AIR)
                 gCurrentSprite.yPosition -= PIXEL_SIZE / 2;
             else
-                gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+                gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
         }
         else
         {
@@ -149,7 +149,7 @@ void TargetDiagonal(void)
             if (gPreviousCollisionCheck == COLLISION_AIR)
                 gCurrentSprite.yPosition += PIXEL_SIZE / 2;
             else
-                gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+                gCurrentSprite.status |= SS_SAMUS_DETECTED;
         }
     }
     else
@@ -168,14 +168,14 @@ void TargetSideways(void)
 
     if (gCurrentSprite.pose != SPRITE_POSE_UNINITIALIZED)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
 
             if (gPreviousCollisionCheck == COLLISION_AIR)
                 gCurrentSprite.xPosition += PIXEL_SIZE / 2;
             else
-                gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status &= ~SS_FACING_RIGHT;
         }
         else
         {
@@ -184,7 +184,7 @@ void TargetSideways(void)
             if (gPreviousCollisionCheck == COLLISION_AIR)
                 gCurrentSprite.xPosition -= PIXEL_SIZE / 2;
             else
-                gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status |= SS_FACING_RIGHT;
         }
     }
     else

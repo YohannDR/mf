@@ -149,10 +149,10 @@ void SecurityPadInit(void)
         else
         {
             SpriteSpawnSecondary(SSPRITE_SECURITY_PAD_MONITOR, 0x1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-                gCurrentSprite.yPosition, gCurrentSprite.xPosition + (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE), SPRITE_STATUS_X_FLIP);
+                gCurrentSprite.yPosition, gCurrentSprite.xPosition + (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE), SS_X_FLIP);
 
             SpriteSpawnSecondary(SSPRITE_12, 0x1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-                gCurrentSprite.yPosition, gCurrentSprite.xPosition + (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE), SPRITE_STATUS_X_FLIP);
+                gCurrentSprite.yPosition, gCurrentSprite.xPosition + (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE), SS_X_FLIP);
         }
     }
     else
@@ -173,10 +173,10 @@ void SecurityPadInit(void)
         else
         {
             SpriteSpawnSecondary(SSPRITE_SECURITY_PAD_MONITOR, 0x0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-                gCurrentSprite.yPosition, gCurrentSprite.xPosition + (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE), SPRITE_STATUS_X_FLIP);
+                gCurrentSprite.yPosition, gCurrentSprite.xPosition + (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE), SS_X_FLIP);
 
             SpriteSpawnSecondary(SSPRITE_12, 0x0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-                gCurrentSprite.yPosition, gCurrentSprite.xPosition + (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE), SPRITE_STATUS_X_FLIP);
+                gCurrentSprite.yPosition, gCurrentSprite.xPosition + (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE), SS_X_FLIP);
         }
     }
 
@@ -360,7 +360,7 @@ void SecurityPadFinishedUnlocking(void)
 void SecurityPadMonitorInit(void)
 {
     gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
     gCurrentSprite.samusCollision = SSC_NONE;
 
@@ -465,7 +465,7 @@ void SecurityPadMonitorArmRetracting(void)
 void SecurityPadScreenInit(void)
 {
     gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
     gCurrentSprite.samusCollision = SSC_NONE;
 

@@ -95,7 +95,7 @@ void SavePlatformInit(void)
 
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;
 
     gCurrentSprite.samusCollision = SSC_SAVE_PLATFORM;
@@ -125,7 +125,7 @@ void SavePlatformInit(void)
 
     if (gIsLoadingFile)
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_ON_TOP;
+        gCurrentSprite.status &= ~SS_SAMUS_ON_TOP;
 
         gCurrentSprite.work1 = 16;
         gCurrentSprite.work2 = 0;
@@ -173,12 +173,12 @@ void SavePlatformIdle(void)
     if (offset == 1)
         SoundPlay(0x10C);
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_ON_TOP)
+    if (gCurrentSprite.status & SS_SAMUS_ON_TOP)
     {
         // Apply movement to samus if standing on the platform
         gSamusData.yPosition += movement;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+        if (gCurrentSprite.status & SS_SAMUS_DETECTED)
             gCurrentSprite.pose = SAVE_PLATFORM_POSE_SINKING;
     }
 }
@@ -193,7 +193,7 @@ void SavePlatformSinking(void)
 
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
 
-    if (CHECK_ALL_FLAGS(gCurrentSprite.status, SPRITE_STATUS_SAMUS_DETECTED | SPRITE_STATUS_SAMUS_ON_TOP))
+    if (CHECK_ALL_FLAGS(gCurrentSprite.status, SS_SAMUS_DETECTED | SS_SAMUS_ON_TOP))
     {
         if (gCurrentSprite.yPosition == gSpriteData[ramSlot].yPosition - HALF_BLOCK_SIZE)
         {
@@ -206,7 +206,7 @@ void SavePlatformSinking(void)
     
                 SAMUS_SET_POSE(SPOSE_ON_SAVE_PAD);
     
-                gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_ON_TOP;
+                gCurrentSprite.status &= ~SS_SAMUS_ON_TOP;
                 gCurrentSprite.standingOnSprite = FALSE;
                 gCurrentSprite.samusCollision = SSC_NONE;
     
@@ -300,7 +300,7 @@ void SavePlatformIdleAfterPrompt(void)
     {
         ramSlot = gCurrentSprite.primarySpriteRamSlot;
 
-        if (gCurrentSprite.status & (SPRITE_STATUS_SAMUS_DETECTED | SPRITE_STATUS_SAMUS_ON_TOP))
+        if (gCurrentSprite.status & (SS_SAMUS_DETECTED | SS_SAMUS_ON_TOP))
         {
             gCurrentSprite.work1 = 0;
             return;
@@ -325,7 +325,7 @@ void SavePlatformIdleAfterPrompt(void)
  */
 void SavePlatformRising(void)
 {
-    if (CHECK_ALL_FLAGS(gCurrentSprite.status, SPRITE_STATUS_SAMUS_DETECTED | SPRITE_STATUS_SAMUS_ON_TOP))
+    if (CHECK_ALL_FLAGS(gCurrentSprite.status, SS_SAMUS_DETECTED | SS_SAMUS_ON_TOP))
     {
         gCurrentSprite.pose = SAVE_PLATFORM_POSE_SINKING;
         return;
@@ -342,14 +342,14 @@ void SavePlatformRising(void)
     {
         gCurrentSprite.yPosition -= ONE_SUB_PIXEL;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_ON_TOP)
+        if (gCurrentSprite.status & SS_SAMUS_ON_TOP)
             gSamusData.yPosition -= ONE_SUB_PIXEL;
     }
     else
     {
         gCurrentSprite.yPosition += ONE_SUB_PIXEL;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_ON_TOP)
+        if (gCurrentSprite.status & SS_SAMUS_ON_TOP)
             gSamusData.yPosition += ONE_SUB_PIXEL;
     }
 
@@ -372,7 +372,7 @@ void SavePlatformRisingAfterPrompt(void)
 
     gCurrentSprite.yPosition -= ONE_SUB_PIXEL;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_ON_TOP)
+    if (gCurrentSprite.status & SS_SAMUS_ON_TOP)
         gSamusData.yPosition -= ONE_SUB_PIXEL;
 
     if (MOD_AND(gFrameCounter8Bit, 16) == 0)
@@ -385,7 +385,7 @@ void SavePlatformRisingAfterPrompt(void)
  */
 void SavePadHologramInit(void)
 {
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;
 
     gCurrentSprite.samusCollision = SSC_NONE;
@@ -479,7 +479,7 @@ void SavePad(void)
 void SavePlatform(void)
 {
     if (gCurrentSprite.xPosition - HALF_BLOCK_SIZE < gSamusData.xPosition && gCurrentSprite.xPosition + HALF_BLOCK_SIZE > gSamusData.xPosition)
-        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     switch (gCurrentSprite.pose)
     {
@@ -512,7 +512,7 @@ void SavePlatform(void)
             break;
     }
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
 }
 
 /**

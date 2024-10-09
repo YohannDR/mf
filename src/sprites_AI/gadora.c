@@ -61,7 +61,7 @@ void GadoraSetDirectionAndPosition(u8 caa)
             if (caa == CAA_MAKE_SOLID)
             {
                 // Facing left
-                gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
+                gCurrentSprite.status &= ~SS_X_FLIP;
                 gCurrentSprite.xPosition -= (QUARTER_BLOCK_SIZE - PIXEL_SIZE);
             }
             break;
@@ -72,7 +72,7 @@ void GadoraSetDirectionAndPosition(u8 caa)
             if (caa == CAA_MAKE_SOLID)
             {
                 // Facing right
-                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+                gCurrentSprite.status |= SS_X_FLIP;
                 gCurrentSprite.xPosition += (QUARTER_BLOCK_SIZE - PIXEL_SIZE);
             }
             break;
@@ -81,7 +81,7 @@ void GadoraSetDirectionAndPosition(u8 caa)
             if (caa == CAA_MAKE_SOLID)
             {
                 // Facing left
-                gCurrentSprite.status &= ~SPRITE_STATUS_X_FLIP;
+                gCurrentSprite.status &= ~SS_X_FLIP;
                 gCurrentSprite.xPosition -= (QUARTER_BLOCK_SIZE - PIXEL_SIZE);
             }
 
@@ -92,7 +92,7 @@ void GadoraSetDirectionAndPosition(u8 caa)
             if (caa == CAA_MAKE_SOLID)
             {
                 // Facing right
-                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+                gCurrentSprite.status |= SS_X_FLIP;
                 gCurrentSprite.xPosition += (QUARTER_BLOCK_SIZE - PIXEL_SIZE);
             }
 
@@ -189,10 +189,10 @@ void GadoraInit(void)
 
         // Spawn roots
         SpriteSpawnSecondary(SSPRITE_GADORA_ROOTS, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-            yPosition, xPosition, gCurrentSprite.status & SPRITE_STATUS_X_FLIP);
+            yPosition, xPosition, gCurrentSprite.status & SS_X_FLIP);
 
         // Offset slightly forward for the eye position
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
             xPosition += QUARTER_BLOCK_SIZE;
         else
             xPosition -= QUARTER_BLOCK_SIZE;
@@ -291,7 +291,7 @@ void GadoraOpeningEyeInit(void)
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+    if (gCurrentSprite.status & SS_ON_SCREEN)
         SoundPlayNotAlreadyPlaying(0x1B2);
 }
 
@@ -315,7 +315,7 @@ void GadoraOpeningEye(void)
 
         gCurrentSprite.pOam = sGadoraOam_Shooting;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+        if (gCurrentSprite.status & SS_ON_SCREEN)
             SoundPlayNotAlreadyPlaying(0x1B5);
 
         // Timer for how long the eye stays open
@@ -352,7 +352,7 @@ void GadoraVulnerable(void)
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+        if (gCurrentSprite.status & SS_ON_SCREEN)
             SoundPlayNotAlreadyPlaying(0x1B3);
     }
     else
@@ -377,10 +377,10 @@ void GadoraShooting(void)
         return;
 
     // Get spawn X position and status
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
     {
         xPosition = gCurrentSprite.xPosition + QUARTER_BLOCK_SIZE;
-        status = SPRITE_STATUS_X_FLIP;
+        status = SS_X_FLIP;
     }
     else
     {
@@ -392,7 +392,7 @@ void GadoraShooting(void)
     SpriteSpawnSecondary(SSPRITE_GADORA_BEAM, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
         gCurrentSprite.yPosition, xPosition, status);
 
-    if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+    if (gCurrentSprite.status & SS_ON_SCREEN)
         SoundPlayNotAlreadyPlaying(0x1B6);
 
     gCurrentSprite.pose = GADORA_POSE_CLOSING_EYE;
@@ -509,13 +509,13 @@ void GadoraEye(void)
         gCurrentSprite.pose = SPRITE_POSE_IDLE;
     }
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
+    if (gSpriteData[ramSlot].status & SS_HIDDEN)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
+        gCurrentSprite.status |= SS_HIDDEN;
         return;
     }
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
+    gCurrentSprite.status &= ~SS_HIDDEN;
     gSpriteData[ramSlot].paletteRow = gCurrentSprite.paletteRow;
 
     // Check eye is dead
@@ -539,7 +539,7 @@ void GadoraEye(void)
         {
             case GADORA_POSE_VULNERABLE:
                 // Allow projectile collision
-                gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
+                gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
 
                 if (SPRITE_HAS_ISFT(gCurrentSprite))
                 {
@@ -550,7 +550,7 @@ void GadoraEye(void)
 
             default:
                 // Prevent projectile collision
-                gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+                gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
                 break;
 
             case SPRITE_POSE_DYING_INIT:
@@ -574,7 +574,7 @@ void GadoraRoots(void)
 
     if (gCurrentSprite.pose == 0)
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+        gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
         gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
         gCurrentSprite.drawDistanceBottom = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
@@ -596,13 +596,13 @@ void GadoraRoots(void)
         gCurrentSprite.pOam = sGadoraRootsOam_Idle;
     }
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
+    if (gSpriteData[ramSlot].status & SS_HIDDEN)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
+        gCurrentSprite.status |= SS_HIDDEN;
         return;
     }
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
+    gCurrentSprite.status &= ~SS_HIDDEN;
     gSpriteData[ramSlot].paletteRow = gCurrentSprite.paletteRow;
 
     // Sync oam with main gadora sprite
@@ -635,7 +635,7 @@ void GadoraBeam(void)
     switch (gCurrentSprite.pose)
     {
         case SPRITE_POSE_UNINITIALIZED:
-            gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status &= ~SS_NOT_DRAWN;
             gCurrentSprite.properties |= SP_KILL_OFF_SCREEN;
 
             gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE + HALF_BLOCK_SIZE);
@@ -660,7 +660,7 @@ void GadoraBeam(void)
 
         case SPRITE_POSE_IDLE:
             // Move
-            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+            if (gCurrentSprite.status & SS_X_FLIP)
                 gCurrentSprite.xPosition += (QUARTER_BLOCK_SIZE - PIXEL_SIZE);
             else
                 gCurrentSprite.xPosition -= (QUARTER_BLOCK_SIZE - PIXEL_SIZE);
@@ -674,7 +674,7 @@ void GadoraBeam(void)
                 // Destroy beam
                 ParticleSet(gCurrentSprite.yPosition + (BLOCK_SIZE - QUARTER_BLOCK_SIZE), gCurrentSprite.xPosition, PE_0x2F);
 
-                if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+                if (gCurrentSprite.status & SS_ON_SCREEN)
                     SoundPlayNotAlreadyPlaying(0x1B7);
 
                 gCurrentSprite.status = 0;

@@ -186,7 +186,7 @@ void SaXOmegaShootingOmegaInit(void)
     gCurrentSprite.pose = 0x44;
 
     SpriteSapwnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-        gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SPRITE_STATUS_X_FLIP);
+        gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SS_X_FLIP);
 
     gSaXData.missilesArmed = FALSE;
     SaXSetPose(SA_X_POSE_SHOOTING);
@@ -257,7 +257,7 @@ void SaXOmegaAfterShootingOmega(void)
                 gCurrentSprite.work1 = 40;
 
                 SpriteSapwnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-                    gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SPRITE_STATUS_X_FLIP);
+                    gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SS_X_FLIP);
 
                 gSaXData.missilesArmed = FALSE;
                 SaXSetPose(SA_X_POSE_SHOOTING);

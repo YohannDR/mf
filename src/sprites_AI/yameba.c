@@ -21,8 +21,8 @@
  */
 void YamebaTurningIntoX(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_ROTATION_SCALING)
-        gCurrentSprite.status &= ~SPRITE_STATUS_ROTATION_SCALING;
+    if (gCurrentSprite.status & SS_ROTATE_SCALE_INDIVIDUAL)
+        gCurrentSprite.status &= ~SS_ROTATE_SCALE_INDIVIDUAL;
 
     switch (gCurrentSprite.work0)
     {
@@ -68,7 +68,7 @@ void YamebaInit(void)
 
     if (gCurrentSprite.work0 == 0)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+        gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
         gCurrentSprite.drawOrder = 12;
         gCurrentSprite.samusCollision = SSC_NONE;
         gCurrentSprite.pOam = sYamebaOam_Small;
@@ -87,7 +87,7 @@ void YamebaInit(void)
     {
         case 0:
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
-            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+            gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
 
             gCurrentSprite.scaling = Q_8_8(.625f);
 
@@ -103,7 +103,7 @@ void YamebaInit(void)
 
         case 1:
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
-            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+            gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
 
             gCurrentSprite.scaling = Q_8_8(.5f);
 
@@ -119,7 +119,7 @@ void YamebaInit(void)
 
         case 2:
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
-            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+            gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
 
             gCurrentSprite.scaling = Q_8_8(1.f);
 
@@ -137,7 +137,7 @@ void YamebaInit(void)
 
         default:
             gCurrentSprite.properties &= ~SP_CAN_ABSORB_X;
-            gCurrentSprite.status |= (SPRITE_STATUS_ROTATION_SCALING | SPRITE_STATUS_DOUBLE_SIZE);
+            gCurrentSprite.status |= (SS_ROTATE_SCALE_INDIVIDUAL | SS_DOUBLE_SIZE);
 
             gCurrentSprite.scaling = Q_8_8(1.999f);
 
@@ -156,7 +156,7 @@ void YamebaInit(void)
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
         gCurrentSprite.work5 = TRUE;
@@ -247,9 +247,9 @@ void YamebaChasingSamusInit(void)
     SpriteUtilMakeSpriteFaceSamusDirection();
 
     if (gCurrentSprite.yPosition > gSamusData.yPosition + gSamusData.drawDistanceTop)
-        gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
     else
-        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status |= SS_SAMUS_DETECTED;
 }
 
 /**
@@ -272,7 +272,7 @@ void YamebaChasingSamus(void)
 
     for (i = gCurrentSprite.primarySpriteRamSlot + 1; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
-        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+        if (!(gSpriteData[i].status & SS_EXISTS))
             continue;
 
         if (gSpriteData[i].properties & SP_SECONDARY_SPRITE)
@@ -311,14 +311,14 @@ void YamebaChasingSamus(void)
             else
                 gSpriteData[i].xPosition += PIXEL_SIZE;
 
-            gSpriteData[i].status ^= SPRITE_STATUS_FACING_RIGHT;
-            gSpriteData[i].status ^= SPRITE_STATUS_SAMUS_DETECTED;
+            gSpriteData[i].status ^= SS_FACING_RIGHT;
+            gSpriteData[i].status ^= SS_SAMUS_DETECTED;
         }
 
         break;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
+    if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
     {
         gCurrentSprite.work2 = 0;
         gCurrentSprite.work3 = 1;
@@ -340,7 +340,7 @@ void YamebaChasingSamus(void)
 
     velocityCap = HALF_BLOCK_SIZE - PIXEL_SIZE / 2;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (gCurrentSprite.work2 == 0)
         {
@@ -364,7 +364,7 @@ void YamebaChasingSamus(void)
             }
             else
             {
-                gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status &= ~SS_FACING_RIGHT;
                 gCurrentSprite.work3 = 1;
                 gCurrentSprite.unk_8++;
 
@@ -397,7 +397,7 @@ void YamebaChasingSamus(void)
             }
             else
             {
-                gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status |= SS_FACING_RIGHT;
                 gCurrentSprite.work3 = 1;
                 gCurrentSprite.unk_8++;
 
@@ -407,7 +407,7 @@ void YamebaChasingSamus(void)
         }
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
     {
         if (gCurrentSprite.work1 == 0)
         {
@@ -431,7 +431,7 @@ void YamebaChasingSamus(void)
             }
             else
             {
-                gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+                gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
                 gCurrentSprite.work4 = 1;
             }
         }
@@ -460,7 +460,7 @@ void YamebaChasingSamus(void)
             }
             else
             {
-                gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+                gCurrentSprite.status |= SS_SAMUS_DETECTED;
                 gCurrentSprite.work4 = 1;
             }
         }
@@ -522,6 +522,6 @@ void Yameba(void)
             XParasiteInit();
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
-        gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_COLLIDING;
+    if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
+        gCurrentSprite.status &= ~SS_SAMUS_COLLIDING;
 }

@@ -42,9 +42,9 @@ void MotoSpawningFromX(void)
     }
     else
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
+        gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
         gCurrentSprite.pose = MOTO_POSE_IDLE;
-        gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
+        gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
     }
 }
 
@@ -73,7 +73,7 @@ void MotoInit(void)
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
     {
-        if (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))
+        if (!(gCurrentSprite.status & SS_HIDDEN))
         {
             gCurrentSprite.status = 0;
             return;
@@ -102,7 +102,7 @@ void MotoInit(void)
     gCurrentSprite.pose = MOTO_POSE_IDLE;
     SpriteUtilChooseRandomXFlip();
 
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
     {
         spriteSlot = SpriteSpawnSecondary(SSPRITE_MOTO_FRONT, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
             gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition,
@@ -232,7 +232,7 @@ void MotoWalking(void)
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
         {
             SpriteUtilCheckVerticalCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - BLOCK_SIZE);
 
@@ -265,7 +265,7 @@ void MotoWalking(void)
     }
     else if (gPreviousVerticalCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
         {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + BLOCK_SIZE);
 
@@ -335,7 +335,7 @@ void MotoWalking(void)
     {
         if (MOD_AND(gCurrentSprite.work1, 16) == 0)
         {
-            if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+            if (gCurrentSprite.status & SS_X_FLIP)
                 ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_DUST_1);
             else
                 ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_DUST_2);
@@ -360,7 +360,7 @@ void MotoWalking(void)
 
     if (gCurrentSprite.pose == SPRITE_POSE_IDLE)
     {
-        if (!(gCurrentSprite.status & SPRITE_STATUS_HIDDEN))
+        if (!(gCurrentSprite.status & SS_HIDDEN))
         {
             nsfb = SpriteUtilCheckSamusNearSpriteFrontBehind(BLOCK_SIZE * 2 + HALF_BLOCK_SIZE, BLOCK_SIZE * 5, BLOCK_SIZE * 5);
         }
@@ -375,9 +375,9 @@ void MotoWalking(void)
         }
         else
         {
-            if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+            if (gCurrentSprite.status & SS_SAMUS_DETECTED)
             {
-                if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+                if (gCurrentSprite.status & SS_X_FLIP)
                 {
                     if (gCurrentSprite.xPosition > gSamusData.xPosition)
                         gCurrentSprite.pose = MOTO_POSE_TURNING_AROUND_INIT;
@@ -402,12 +402,12 @@ void MotoWalking(void)
             }
         }
 
-        if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
-            gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+        if (gCurrentSprite.status & SS_SAMUS_DETECTED)
+            gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
     }
     else if (gCurrentSprite.pose == MOTO_POSE_WALKING_FASTER)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
         {
             if (gCurrentSprite.xPosition > gSamusData.xPosition)
             {
@@ -458,7 +458,7 @@ void MotoCharging(void)
 {
     if (gCurrentSprite.currentAnimationFrame == 2 && gCurrentSprite.animationDurationCounter == 2)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
             ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_DUST_1);
         else
             ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_DUST_2);
@@ -467,7 +467,7 @@ void MotoCharging(void)
     }
     else if (gCurrentSprite.currentAnimationFrame == 7 && gCurrentSprite.animationDurationCounter == 2)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
             ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_DUST_1);
         else
             ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_DUST_2);
@@ -514,7 +514,7 @@ void MotoTurning(void)
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
 
-        gCurrentSprite.status ^= SPRITE_STATUS_X_FLIP;
+        gCurrentSprite.status ^= SS_X_FLIP;
     }
 }
 
@@ -538,8 +538,8 @@ void MotoFrontInit(void)
 
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
     
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
-        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
+    if (gSpriteData[ramSlot].status & SS_HIDDEN)
+        gCurrentSprite.status |= SS_HIDDEN;
 
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
 
@@ -572,10 +572,10 @@ void MotoFrontIdle(void)
 
     ramSlot = gCurrentSprite.primarySpriteRamSlot;
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_HIDDEN)
-        gCurrentSprite.status |= SPRITE_STATUS_HIDDEN;
+    if (gSpriteData[ramSlot].status & SS_HIDDEN)
+        gCurrentSprite.status |= SS_HIDDEN;
     else
-        gCurrentSprite.status &= ~SPRITE_STATUS_HIDDEN;
+        gCurrentSprite.status &= ~SS_HIDDEN;
 
     if (gCurrentSprite.health == 0)
     {
@@ -597,7 +597,7 @@ void MotoFrontIdle(void)
 
     gCurrentSprite.yPosition = gSpriteData[ramSlot].yPosition;
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_X_FLIP)
+    if (gSpriteData[ramSlot].status & SS_X_FLIP)
         gCurrentSprite.xPosition = gSpriteData[ramSlot].xPosition + (HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE - PIXEL_SIZE);
     else
         gCurrentSprite.xPosition = gSpriteData[ramSlot].xPosition - (HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE - PIXEL_SIZE);
@@ -610,14 +610,14 @@ void MotoFrontIdle(void)
             break;
             
         default:
-            if (gSpriteData[ramSlot].status & SPRITE_STATUS_ENABLE_MOSAIC)
+            if (gSpriteData[ramSlot].status & SS_ENABLE_MOSAIC)
             {
                 gCurrentSprite.ignoreSamusCollisionTimer = 1;
-                gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+                gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
             }
             else
             {
-                gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
+                gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
             }
     }
 }
@@ -640,8 +640,8 @@ void Moto(void)
 
     if (SPRITE_HAS_ISFT(gCurrentSprite))
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
-            gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        if (gCurrentSprite.status & SS_ON_SCREEN)
+            gCurrentSprite.status |= SS_SAMUS_DETECTED;
     }
 
     switch (gCurrentSprite.pose)

@@ -56,7 +56,7 @@ void AreaBannerMovingUp(void)
         gCurrentSprite.work1--;
 
         if (gCurrentSprite.work1 == 0)
-            gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status &= ~SS_NOT_DRAWN;
         return;
     }
 
