@@ -617,21 +617,21 @@ void SpriteDraw(s32 slot)
                 gOamData[prevSlot + i].split.affineMode = 1;
             }
 
-            // Select proper matrix depending on mosaic and flipping?
+            // Select proper matrix: mosaic flag doesn't enable mosaic and instead chooses between one of the two matrix slots
             if (mosaic)
             {
                 if (gOamData[prevSlot + i].split.xFlip)
                 {
                     gOamData[prevSlot + i].split.x--;
-                    gOamData[prevSlot + i].split.yFlip = TRUE;
-                    gOamData[prevSlot + i].split.xFlip = TRUE;
-                    gOamData[prevSlot + i].split.matrixNum = 5;
+                    gOamData[prevSlot + i].split.yFlip = 29 >> 4;
+                    gOamData[prevSlot + i].split.xFlip = 29 >> 3;
+                    gOamData[prevSlot + i].split.matrixNum = 29;
                 }
                 else
                 {
-                    gOamData[prevSlot + i].split.yFlip = TRUE;
-                    gOamData[prevSlot + i].split.xFlip = TRUE;
-                    gOamData[prevSlot + i].split.matrixNum = 4;
+                    gOamData[prevSlot + i].split.yFlip = 28 >> 4;
+                    gOamData[prevSlot + i].split.xFlip = 28 >> 3;
+                    gOamData[prevSlot + i].split.matrixNum = 28;
                 }
             }
             else
@@ -639,15 +639,15 @@ void SpriteDraw(s32 slot)
                 if (gOamData[prevSlot + i].split.xFlip)
                 {
                     gOamData[prevSlot + i].split.x--;
-                    gOamData[prevSlot + i].split.yFlip = TRUE;
-                    gOamData[prevSlot + i].split.xFlip = TRUE;
-                    gOamData[prevSlot + i].split.matrixNum = 7;
+                    gOamData[prevSlot + i].split.yFlip = 31 >> 4;
+                    gOamData[prevSlot + i].split.xFlip = 31 >> 3;
+                    gOamData[prevSlot + i].split.matrixNum = 31;
                 }
                 else
                 {
-                    gOamData[prevSlot + i].split.yFlip = TRUE;
-                    gOamData[prevSlot + i].split.xFlip = TRUE;
-                    gOamData[prevSlot + i].split.matrixNum = 6;
+                    gOamData[prevSlot + i].split.yFlip = 30 >> 4;
+                    gOamData[prevSlot + i].split.xFlip = 30 >> 3;
+                    gOamData[prevSlot + i].split.matrixNum = 30;
                 }
             }
 

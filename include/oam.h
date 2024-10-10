@@ -51,7 +51,7 @@
 #define OBJ_PALETTE_13 (13 << 12)
 #define OBJ_PALETTE_14 (14 << 12)
 #define OBJ_PALETTE_15 (15 << 12)
-#define OBJ_SPRITE_OAM 0x8000 // sprite OAM usually uses palette 8
+#define OBJ_SPRITE_OAM 0x8000 // sprite OAM usually uses palettes 8..15
 
 struct FrameData {
     const u16* pFrame;

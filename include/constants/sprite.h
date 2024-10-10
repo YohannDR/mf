@@ -1,31 +1,31 @@
 #ifndef SPRITE_CONSTANTS_H
 #define SPRITE_CONSTANTS_H
 
-#define SS_EXISTS (1 << 0) // 1
-#define SS_ON_SCREEN (1 << 1) // 2
-#define SS_NOT_DRAWN (1 << 2) // 4
-#define SS_ROTATE_SCALE_WHOLE (1 << 3) // 8
-#define SS_DRAW_UPPER (1 << 4) // 0x10
-#define SS_ENABLE_MOSAIC (1 << 5) // 0x20
-#define SS_X_FLIP (1 << 6) // 0x40
-#define SS_ROTATE_SCALE_INDIVIDUAL (1 << 7) // 0x80
-#define SS_Y_FLIP (1 << 8) // 0x100
-#define SS_FACING_RIGHT (1 << 9) // 0x200
-#define SS_SAMUS_DETECTED (1 << 10) // 0x400
-#define SS_SAMUS_COLLIDING (1 << 11) // 0x800
-#define SS_SAMUS_ON_TOP (1 << 12) // 0x1000
-#define SS_HIDDEN (1 << 13) // 0x2000 (compared to SS_NOT_DRAWN, ignores Samus and projectile collision)
-#define SS_DOUBLE_SIZE (1 << 14) // 0x4000
-#define SS_IGNORE_PROJECTILES (1 << 15) // 0x8000
+#define SS_EXISTS (1 << 0) // 1 ~0xfffe
+#define SS_ON_SCREEN (1 << 1) // 2 ~0xfffd
+#define SS_NOT_DRAWN (1 << 2) // 4 ~0xfffb
+#define SS_ROTATE_SCALE_WHOLE (1 << 3) // 8 ~0xfff7
+#define SS_DRAW_UPPER (1 << 4) // 0x10 ~0xffef
+#define SS_ENABLE_MOSAIC (1 << 5) // 0x20 ~0xffdf (with SS_ROTATE_SCALE_WHOLE, doesn't enable mosaic, instead chooses matrix slot)
+#define SS_X_FLIP (1 << 6) // 0x40 ~0xffbf
+#define SS_ROTATE_SCALE_INDIVIDUAL (1 << 7) // 0x80 ~0xff7f
+#define SS_Y_FLIP (1 << 8) // 0x100 ~0xfeff
+#define SS_FACING_RIGHT (1 << 9) // 0x200 ~0xfdff
+#define SS_SAMUS_DETECTED (1 << 10) // 0x400 ~0xfbff
+#define SS_SAMUS_COLLIDING (1 << 11) // 0x800 ~0xf7ff
+#define SS_SAMUS_ON_TOP (1 << 12) // 0x1000 ~0xefff
+#define SS_HIDDEN (1 << 13) // 0x2000 ~0xdfff (compared to SS_NOT_DRAWN, ignores Samus and projectile collision)
+#define SS_DOUBLE_SIZE (1 << 14) // 0x4000 ~0xbfff
+#define SS_IGNORE_PROJECTILES (1 << 15) // 0x8000 ~0x7fff
 
-#define SP_ALWAYS_ACTIVE (1 << 0) // 1
-#define SP_CAN_ABSORB_X (1 << 1) // 2
-#define SP_KILL_OFF_SCREEN (1 << 2) // 4
-#define SP_SOLID_FOR_PROJECTILES (1 << 3) // 8
-#define SP_DESTROYED (1 << 4) // 0x10
-#define SP_ABSOLUTE_POSITION (1 << 5) // 0x20
-#define SP_IMMUNE_TO_PROJECTILES (1 << 6) // 0x40
-#define SP_SECONDARY_SPRITE (1 << 7) // 0x80
+#define SP_ALWAYS_ACTIVE (1 << 0) // 1 ~0xfe
+#define SP_CAN_ABSORB_X (1 << 1) // 2 ~0xfd
+#define SP_KILL_OFF_SCREEN (1 << 2) // 4 ~0xfb
+#define SP_SOLID_FOR_PROJECTILES (1 << 3) // 8 ~0xf7
+#define SP_DESTROYED (1 << 4) // 0x10 ~0xef
+#define SP_ABSOLUTE_POSITION (1 << 5) // 0x20 ~0xdf
+#define SP_IMMUNE_TO_PROJECTILES (1 << 6) // 0x40 ~0xbf
+#define SP_SECONDARY_SPRITE (1 << 7) // 0x80 ~0x7f
 
 #define SPRITE_WEAKNESS_NONE (0 << 0) // 0
 #define WEAKNESS_CHARGE_BEAM (1 << 0) // 1
