@@ -327,15 +327,15 @@ void ProjectileCheckOnScreen(void)
     var_0 = bgY + BLOCK_SIZE * 4;
     yDistance = projY + BLOCK_SIZE * 4;
 
-    var_2 = var_0 - PIXEL_TO_SUBPIXEL(gCurrentProjectile.drawDistanceY);
-    tmp = PIXEL_TO_SUBPIXEL(gCurrentProjectile.drawDistanceY) + SCREEN_SIZE_Y_SUB_PIXEL;
+    var_2 = var_0 - PIXEL_TO_SUB_PIXEL(gCurrentProjectile.drawDistanceY);
+    tmp = PIXEL_TO_SUB_PIXEL(gCurrentProjectile.drawDistanceY) + SCREEN_SIZE_Y_SUB_PIXEL;
     var_3 = var_0 + tmp;
 
     var_4 = bgX + BLOCK_SIZE * 4;
     xDistance = projX + BLOCK_SIZE * 4;
 
-    var_6 = var_4 - PIXEL_TO_SUBPIXEL(gCurrentProjectile.drawDistanceX);
-    tmp2 = PIXEL_TO_SUBPIXEL(gCurrentProjectile.drawDistanceX) + SCREEN_SIZE_X_SUB_PIXEL;
+    var_6 = var_4 - PIXEL_TO_SUB_PIXEL(gCurrentProjectile.drawDistanceX);
+    tmp2 = PIXEL_TO_SUB_PIXEL(gCurrentProjectile.drawDistanceX) + SCREEN_SIZE_X_SUB_PIXEL;
     var_7 = var_4 + tmp2;
 
     if (var_6 < xDistance && xDistance < var_7 && var_2 < yDistance && yDistance < var_3)

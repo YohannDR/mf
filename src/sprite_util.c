@@ -26,7 +26,7 @@ void SpriteUtilInitLocationText(void)
     if (gfxSlot < 8)
     {
         gSpriteData[0].status = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN |
-            SS_DRAW_UPPER | SS_IGNORE_PROJECTILES;
+            SS_HIGH_PRIORITY | SS_IGNORE_PROJECTILES;
 
         gSpriteData[0].properties = SP_ABSOLUTE_POSITION;
         gSpriteData[0].spritesetGfxSlot = gfxSlot;

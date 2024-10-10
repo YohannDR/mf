@@ -215,10 +215,10 @@ void SpriteUpdateAnimation(void)
 }
 
 /**
- * @brief eb04 | 9c | Draws all higher-priority sprites (draw order between 1 and 8 with the upper status flag)
+ * @brief eb04 | 9c | Draws all high-priority sprites (draw order between 1 and 8 with the high-priority status flag)
  * 
  */
-void SpriteDrawAll_Upper(void)
+void SpriteDrawAll_HighPriority(void)
 {
     s32 i;
     s32 drawOrder;
@@ -228,8 +228,8 @@ void SpriteDrawAll_Upper(void)
     if (gSubGameMode1 != SUB_GAME_MODE_PLAYING)
         return;
 
-    checkStatus = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN | SS_DRAW_UPPER | SS_HIDDEN;
-    drawStatus = SS_EXISTS | SS_ON_SCREEN | SS_DRAW_UPPER;
+    checkStatus = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN | SS_HIGH_PRIORITY | SS_HIDDEN;
+    drawStatus = SS_EXISTS | SS_ON_SCREEN | SS_HIGH_PRIORITY;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
@@ -269,7 +269,7 @@ void SpriteDrawAll_Middle(void)
     u16 drawStatus;
     u16 checkStatus;
 
-    checkStatus = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN | SS_DRAW_UPPER | SS_HIDDEN;
+    checkStatus = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN | SS_HIGH_PRIORITY | SS_HIDDEN;
     drawStatus = SS_EXISTS | SS_ON_SCREEN;
 
     SpriteDebrisDrawAll();
@@ -303,17 +303,17 @@ void SpriteDrawAll_Middle(void)
 }
 
 /**
- * @brief ec38 | 90 | Draws all lower-priority sprites (draw order between 9 and 16, upper status flag hides the sprite)
+ * @brief ec38 | 90 | Draws all low-priority sprites (draw order between 9 and 16, high-priority status flag hides the sprite)
  * 
  */
-void SpriteDrawAll_Lower(void)
+void SpriteDrawAll_LowPriority(void)
 {
     s32 i;
     s32 drawOrder;
     u16 drawStatus;
     u16 checkStatus;
 
-    checkStatus = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN | SS_DRAW_UPPER | SS_HIDDEN;
+    checkStatus = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN | SS_HIGH_PRIORITY | SS_HIDDEN;
     drawStatus = SS_EXISTS | SS_ON_SCREEN;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
@@ -432,7 +432,6 @@ void SpriteDraw(s32 slot)
 
     if (!(gCurrentSprite.status & SS_ROTATE_SCALE_WHOLE))
     {
-        // Rotates and scales objects at their centers independently if SS_ROTATE_SCALE_INDIVIDUAL is set
         for (i = 0; i < partCount; i++)
         {
             // Raw copy
@@ -477,6 +476,8 @@ void SpriteDraw(s32 slot)
                 gOamData[prevSlot + i].split.y = yPosition - (part1 + offset * 8);
             }
 
+            // Rotates and scales objects at their centers independently if SS_ROTATE_SCALE_INDIVIDUAL is set
+            // Breaks if any of the objects are flipped
             if (rotateScaleIndividual)
             {
                 if (doubleSize)
