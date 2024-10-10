@@ -337,7 +337,7 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
 
     [PSPRITE_SA_X_BOSS - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_SA_X_MONSTER - 0x10] = SPRITE_GFX_SIZE(8),
-    [PSPRITE_ICE_BEAM_COE_X - 0x10] = SPRITE_GFX_SIZE(5),
+    [PSPRITE_ICE_BEAM_CORE_X - 0x10] = SPRITE_GFX_SIZE(5),
     [PSPRITE_OMEGA_METROID - 0x10] = SPRITE_GFX_SIZE(5),
 
     [PSPRITE_GUNSHIP_END - 0x10] = SPRITE_GFX_SIZE(7),
@@ -2112,7 +2112,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0
     },
-    [PSPRITE_ICE_BEAM_COE_X] = {
+    [PSPRITE_ICE_BEAM_CORE_X] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,

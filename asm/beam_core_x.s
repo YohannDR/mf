@@ -439,7 +439,7 @@ BeamCoreXRestingAtTarget: @ 0x0802DCD0
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r1, [r0]
-	ldr r3, _0802DDB4 @ =0x083031E0
+	ldr r3, _0802DDB4 @ =sCoreXIdleYSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -462,7 +462,7 @@ _0802DCF8:
 	adds r5, r4, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r3, _0802DDBC @ =0x08303262
+	ldr r3, _0802DDBC @ =sCoreXIdleXSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -546,9 +546,9 @@ _0802DD20:
 	b _0802DDF4
 	.align 2, 0
 _0802DDB0: .4byte gCurrentSprite
-_0802DDB4: .4byte 0x083031E0
+_0802DDB4: .4byte sCoreXIdleYSpeed
 _0802DDB8: .4byte 0x00007FFF
-_0802DDBC: .4byte 0x08303262
+_0802DDBC: .4byte sCoreXIdleXSpeed
 _0802DDC0: .4byte gPreventMovementTimer
 _0802DDC4: .4byte 0x0832AFC8
 _0802DDC8: .4byte gSamusData

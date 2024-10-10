@@ -300,7 +300,7 @@ _08025464:
 	strh r0, [r4, #0xc]
 	strh r1, [r4, #0xe]
 	strh r0, [r4, #0x10]
-	ldr r0, _08025538 @ =0x08306008
+	ldr r0, _08025538 @ =sFrameData_306008
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r6, [r4, #0x16]
@@ -362,7 +362,7 @@ _08025528: .4byte gCoreXFormationSpriteId
 _0802552C: .4byte 0xFFFFFE80
 _08025530: .4byte sPrimarySpriteStats
 _08025534: .4byte 0x0000FFE0
-_08025538: .4byte 0x08306008
+_08025538: .4byte sFrameData_306008
 _0802553C:
 	ldrb r2, [r5, #0x1f]
 	ldrb r3, [r7]
@@ -396,14 +396,14 @@ CoreXAbilityIdleInit: @ 0x08025564
 	subs r1, #2
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _08025584 @ =0x08306008
+	ldr r0, _08025584 @ =sFrameData_306008
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
 	bx lr
 	.align 2, 0
 _08025580: .4byte gCurrentSprite
-_08025584: .4byte 0x08306008
+_08025584: .4byte sFrameData_306008
 
 	thumb_func_start CoreXAbilityIdle
 CoreXAbilityIdle: @ 0x08025588
@@ -425,7 +425,7 @@ CoreXAbilityIdle: @ 0x08025588
 	adds r5, r4, #0
 	adds r5, #0x31
 	ldrb r1, [r5]
-	ldr r3, _08025780 @ =0x083031E0
+	ldr r3, _08025780 @ =sCoreXIdleYSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -446,7 +446,7 @@ _080255C4:
 	adds r5, r4, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r3, _08025788 @ =0x08303262
+	ldr r3, _08025788 @ =sCoreXIdleXSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -664,9 +664,9 @@ _0802576E:
 	bx r0
 	.align 2, 0
 _0802577C: .4byte gCurrentSprite
-_08025780: .4byte 0x083031E0
+_08025780: .4byte sCoreXIdleYSpeed
 _08025784: .4byte 0x00007FFF
-_08025788: .4byte 0x08303262
+_08025788: .4byte sCoreXIdleXSpeed
 _0802578C: .4byte gBg1XPosition
 _08025790: .4byte gSamusData
 _08025794: .4byte gSpriteData
@@ -688,7 +688,7 @@ CoreXAbilityMovingToSpawnPoint: @ 0x08025798
 	adds r5, r2, #0
 	adds r5, #0x31
 	ldrb r1, [r5]
-	ldr r4, _08025844 @ =0x083031E0
+	ldr r4, _08025844 @ =sCoreXIdleYSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -708,7 +708,7 @@ _080257CC:
 	adds r5, r2, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r4, _0802584C @ =0x08303262
+	ldr r4, _0802584C @ =sCoreXIdleXSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -761,9 +761,9 @@ _080257F0:
 	b _080258A2
 	.align 2, 0
 _08025840: .4byte gCurrentSprite
-_08025844: .4byte 0x083031E0
+_08025844: .4byte sCoreXIdleYSpeed
 _08025848: .4byte 0x00007FFF
-_0802584C: .4byte 0x08303262
+_0802584C: .4byte sCoreXIdleXSpeed
 _08025850: .4byte gBossFormationSpriteId
 _08025854: .4byte 0xFFFFFEC0
 _08025858: .4byte gWrittenToMosaic_H
@@ -1177,7 +1177,7 @@ CoreXAbilityWaitingAtTarget: @ 0x08025B80
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r1, [r0]
-	ldr r3, _08025C68 @ =0x083031E0
+	ldr r3, _08025C68 @ =sCoreXIdleYSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -1200,7 +1200,7 @@ _08025BA8:
 	adds r5, r4, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r3, _08025C70 @ =0x08303262
+	ldr r3, _08025C70 @ =sCoreXIdleXSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -1263,7 +1263,7 @@ _08025BE8:
 	strb r6, [r4, #0x1c]
 	movs r0, #0
 	strh r0, [r4, #0x16]
-	ldr r0, _08025C78 @ =0x08306098
+	ldr r0, _08025C78 @ =sFrameData_306098
 	str r0, [r4, #0x18]
 	ldr r2, _08025C7C @ =gSamusData
 	movs r7, #0x26
@@ -1287,11 +1287,11 @@ _08025BE8:
 	mov pc, r0
 	.align 2, 0
 _08025C64: .4byte gCurrentSprite
-_08025C68: .4byte 0x083031E0
+_08025C68: .4byte sCoreXIdleYSpeed
 _08025C6C: .4byte 0x00007FFF
-_08025C70: .4byte 0x08303262
+_08025C70: .4byte sCoreXIdleXSpeed
 _08025C74: .4byte gPreventMovementTimer
-_08025C78: .4byte 0x08306098
+_08025C78: .4byte sFrameData_306098
 _08025C7C: .4byte gSamusData
 _08025C80: .4byte _08025C84
 _08025C84: @ jump table
@@ -1666,7 +1666,7 @@ _08025FDC:
 	strh r0, [r5, #0xc]
 	strh r1, [r5, #0xe]
 	strh r0, [r5, #0x10]
-	ldr r0, _08026078 @ =0x08306498
+	ldr r0, _08026078 @ =sFrameData_306498
 	str r0, [r5, #0x18]
 	strb r3, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -1701,7 +1701,7 @@ _08026040:
 _0802606C: .4byte 0x0000FFFB
 _08026070: .4byte gIoRegisters
 _08026074: .4byte 0x0000FFB0
-_08026078: .4byte 0x08306498
+_08026078: .4byte sFrameData_306498
 _0802607C: .4byte gSpriteData
 _08026080:
 	ldrh r1, [r5]
@@ -1790,7 +1790,7 @@ _0802614E:
 	adds r0, r5, #0
 	adds r0, #0x25
 	strb r4, [r0]
-	ldr r0, _08026184 @ =0x083061C0
+	ldr r0, _08026184 @ =sFrameData_3061c0
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -1810,7 +1810,7 @@ _0802614E:
 	b _08026338
 	.align 2, 0
 _08026180: .4byte 0x00007FFF
-_08026184: .4byte 0x083061C0
+_08026184: .4byte sFrameData_3061c0
 _08026188:
 	adds r0, r6, #0
 	movs r1, #3
@@ -1819,14 +1819,14 @@ _08026188:
 	lsrs r0, r0, #0x10
 	cmp r4, r0
 	bhi _080261A8
-	ldr r0, _080261A4 @ =0x083064B8
+	ldr r0, _080261A4 @ =sFrameData_3064b8
 	str r0, [r5, #0x18]
 	adds r1, r5, #0
 	adds r1, #0x35
 	movs r0, #3
 	b _080261C0
 	.align 2, 0
-_080261A4: .4byte 0x083064B8
+_080261A4: .4byte sFrameData_3064b8
 _080261A8:
 	ldrh r4, [r5, #0x14]
 	lsls r0, r6, #1
@@ -1834,7 +1834,7 @@ _080261A8:
 	bl __divsi3
 	cmp r4, r0
 	bgt _080261C2
-	ldr r0, _08026204 @ =0x083064A8
+	ldr r0, _08026204 @ =sFrameData_3064a8
 	str r0, [r5, #0x18]
 	adds r1, r5, #0
 	adds r1, #0x35
@@ -1873,7 +1873,7 @@ _080261C2:
 	bl SpriteSpawnNewXParasite
 	b _080262BE
 	.align 2, 0
-_08026204: .4byte 0x083064A8
+_08026204: .4byte sFrameData_3064a8
 _08026208:
 	cmp r1, #0x10
 	bne _080262BE
@@ -2094,25 +2094,25 @@ AbilityAura: @ 0x08026348
 	ldrb r0, [r1, #0x1e]
 	cmp r0, #2
 	bne _080263D0
-	ldr r0, _080263CC @ =0x08306100
+	ldr r0, _080263CC @ =sFrameData_306100
 	b _080263E4
 	.align 2, 0
 _080263BC: .4byte gCurrentSprite
 _080263C0: .4byte 0x0000FFFB
 _080263C4: .4byte gIoRegisters
 _080263C8: .4byte 0x0000FFFC
-_080263CC: .4byte 0x08306100
+_080263CC: .4byte sFrameData_306100
 _080263D0:
 	cmp r0, #1
 	bne _080263E0
-	ldr r0, _080263DC @ =0x083060D8
+	ldr r0, _080263DC @ =sFrameData_3060d8
 	mov r5, ip
 	str r0, [r5, #0x18]
 	b _080263E6
 	.align 2, 0
-_080263DC: .4byte 0x083060D8
+_080263DC: .4byte sFrameData_3060d8
 _080263E0:
-	ldr r0, _08026410 @ =0x083060B0
+	ldr r0, _08026410 @ =sFrameData_3060b0
 	mov r1, ip
 _080263E4:
 	str r0, [r1, #0x18]
@@ -2138,7 +2138,7 @@ _080263E6:
 	strh r0, [r5]
 	b _08026424
 	.align 2, 0
-_08026410: .4byte 0x083060B0
+_08026410: .4byte sFrameData_3060b0
 _08026414: .4byte gSpriteData
 _08026418:
 	mov r0, ip
@@ -2297,11 +2297,11 @@ _080265FA:
 	mov r5, ip
 	strb r0, [r5, #0x1c]
 	strh r0, [r5, #0x16]
-	ldr r0, _08026608 @ =0x08306350
+	ldr r0, _08026608 @ =sFrameData_306350
 	str r0, [r5, #0x18]
 	b _08026642
 	.align 2, 0
-_08026608: .4byte 0x08306350
+_08026608: .4byte sFrameData_306350
 _0802660C:
 	ldr r0, _08026624 @ =gFrameCounter8Bit
 	ldrb r1, [r0]

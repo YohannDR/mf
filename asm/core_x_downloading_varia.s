@@ -185,7 +185,7 @@ CoreXAbilityBeforeVariaCoreExplodingDataPad: @ 0x080267B0
 	adds r5, r2, #0
 	adds r5, #0x31
 	ldrb r1, [r5]
-	ldr r4, _08026808 @ =0x083031E0
+	ldr r4, _08026808 @ =sCoreXIdleYSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -205,7 +205,7 @@ _080267D0:
 	adds r5, r2, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r4, _08026810 @ =0x08303262
+	ldr r4, _08026810 @ =sCoreXIdleXSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -226,9 +226,9 @@ _080267F4:
 	bx r0
 	.align 2, 0
 _08026804: .4byte gCurrentSprite
-_08026808: .4byte 0x083031E0
+_08026808: .4byte sCoreXIdleYSpeed
 _0802680C: .4byte 0x00007FFF
-_08026810: .4byte 0x08303262
+_08026810: .4byte sCoreXIdleXSpeed
 
 	thumb_func_start CoreXAbilityBeforeVariaCoreFloatingAway
 CoreXAbilityBeforeVariaCoreFloatingAway: @ 0x08026814
@@ -241,7 +241,7 @@ CoreXAbilityBeforeVariaCoreFloatingAway: @ 0x08026814
 	adds r5, r3, #0
 	adds r5, #0x31
 	ldrb r2, [r5]
-	ldr r4, _0802687C @ =0x083031E0
+	ldr r4, _0802687C @ =sCoreXIdleYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r4
 	ldrh r1, [r0]
@@ -262,7 +262,7 @@ _0802683E:
 	adds r6, r3, #0
 	adds r6, #0x30
 	ldrb r2, [r6]
-	ldr r4, _08026884 @ =0x08303262
+	ldr r4, _08026884 @ =sCoreXIdleXSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r4
 	ldrh r1, [r0]
@@ -286,9 +286,9 @@ _08026862:
 	bx r0
 	.align 2, 0
 _08026878: .4byte gCurrentSprite
-_0802687C: .4byte 0x083031E0
+_0802687C: .4byte sCoreXIdleYSpeed
 _08026880: .4byte 0x00007FFF
-_08026884: .4byte 0x08303262
+_08026884: .4byte sCoreXIdleXSpeed
 
 	thumb_func_start CoreXAbilityBeforeVariaCore
 CoreXAbilityBeforeVariaCore: @ 0x08026888

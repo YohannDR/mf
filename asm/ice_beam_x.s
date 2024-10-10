@@ -498,7 +498,7 @@ IceBeamAbilityWaiting: @ 0x08058CF4
 	adds r0, r0, r3
 	mov ip, r0
 	ldrb r1, [r0]
-	ldr r4, _08058DF0 @ =0x083031E0
+	ldr r4, _08058DF0 @ =sCoreXIdleYSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r2, [r0]
@@ -521,7 +521,7 @@ _08058D1C:
 	adds r5, r3, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r4, _08058DF8 @ =0x08303262
+	ldr r4, _08058DF8 @ =sCoreXIdleXSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r2, [r0]
@@ -612,9 +612,9 @@ _08058D44:
 	b _08058E22
 	.align 2, 0
 _08058DEC: .4byte gCurrentSprite
-_08058DF0: .4byte 0x083031E0
+_08058DF0: .4byte sCoreXIdleYSpeed
 _08058DF4: .4byte 0x00007FFF
-_08058DF8: .4byte 0x08303262
+_08058DF8: .4byte sCoreXIdleXSpeed
 _08058DFC: .4byte gPreventMovementTimer
 _08058E00: .4byte 0x083A86EC
 _08058E04: .4byte gSamusData
