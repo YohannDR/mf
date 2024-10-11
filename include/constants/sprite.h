@@ -4,7 +4,7 @@
 #define SS_EXISTS (1 << 0) // 1 ~0xfffe
 #define SS_ON_SCREEN (1 << 1) // 2 ~0xfffd
 #define SS_NOT_DRAWN (1 << 2) // 4 ~0xfffb
-#define SS_ROTATE_SCALE_WHOLE (1 << 3) // 8 ~0xfff7
+#define SS_ROTATE_SCALE_WHOLE (1 << 3) // 8 ~0xfff7 (ignores flip, maximum of 2 matrix slots)
 #define SS_HIGH_PRIORITY (1 << 4) // 0x10 ~0xffef
 #define SS_ENABLE_MOSAIC (1 << 5) // 0x20 ~0xffdf (with SS_ROTATE_SCALE_WHOLE, doesn't enable mosaic, instead chooses matrix slot)
 #define SS_X_FLIP (1 << 6) // 0x40 ~0xffbf
@@ -185,7 +185,7 @@ enum PrimarySpriteId {
     PSPRITE_RIPPER,
     PSPRITE_ZORO_COCOON,
     PSPRITE_ZORO_HUSK,
-    PSPRITE_GOLD_SCICER,
+    PSPRITE_GOLD_SCISER,
     PSPRITE_SA_X_TRO_1,
     PSPRITE_SA_X_NOC,
     PSPRITE_PRE_DESTROYED_DATA_PAD,

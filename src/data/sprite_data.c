@@ -268,7 +268,7 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
     [PSPRITE_RIPPER - 0x10] = SPRITE_GFX_SIZE(1),
     [PSPRITE_ZORO_COCOON - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_ZORO_HUSK - 0x10] = SPRITE_GFX_SIZE(1),
-    [PSPRITE_GOLD_SCICER - 0x10] = SPRITE_GFX_SIZE(2),
+    [PSPRITE_GOLD_SCISER - 0x10] = SPRITE_GFX_SIZE(2),
 
     [PSPRITE_SA_X_TRO_1 - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_SA_X_NOC - 0x10] = SPRITE_GFX_SIZE(2),
@@ -1617,7 +1617,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0
     },
-    [PSPRITE_GOLD_SCICER] = {
+    [PSPRITE_GOLD_SCISER] = {
         16,
         40,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,

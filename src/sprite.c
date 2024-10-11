@@ -558,7 +558,7 @@ void SpriteDraw(s32 slot)
             gOamData[prevSlot + i].split.paletteNum += paletteRow;
             gOamData[prevSlot + i].split.tileNum += gfxOffset;
 
-            // Rotates and scales the whole sprite
+            // Rotates and scales the whole sprite, ignores flip
             shape = gOamData[prevSlot + i].split.shape;
             size = gOamData[prevSlot + i].split.size;
         
@@ -738,14 +738,14 @@ void SpriteCheckOnScreen(void)
 
     bgYRange = bgBaseY + BLOCK_TO_SUB_PIXEL(CEIL(SCREEN_SIZE_X_BLOCKS / 2));
     spriteYRange = spriteY + BLOCK_TO_SUB_PIXEL(CEIL(SCREEN_SIZE_X_BLOCKS / 2));
-    spriteBottom = bgYRange - PIXEL_TO_SUBPIXEL(gCurrentSprite.drawDistanceBottom);
-    drawOffsetY = PIXEL_TO_SUBPIXEL(gCurrentSprite.drawDistanceTop) + SCREEN_SIZE_Y_SUB_PIXEL;
+    spriteBottom = bgYRange - PIXEL_TO_SUB_PIXEL(gCurrentSprite.drawDistanceBottom);
+    drawOffsetY = PIXEL_TO_SUB_PIXEL(gCurrentSprite.drawDistanceTop) + SCREEN_SIZE_Y_SUB_PIXEL;
     spriteTop = bgYRange + drawOffsetY;
 
     bgXRange = bgBaseX + BLOCK_TO_SUB_PIXEL(CEIL(SCREEN_SIZE_X_BLOCKS / 2));
     spriteXRange = spriteX + BLOCK_TO_SUB_PIXEL(CEIL(SCREEN_SIZE_X_BLOCKS / 2));
-    spriteLeft = bgXRange - PIXEL_TO_SUBPIXEL(gCurrentSprite.drawDistanceHorizontal);
-    drawOffsetX = PIXEL_TO_SUBPIXEL(gCurrentSprite.drawDistanceHorizontal) + SCREEN_SIZE_X_SUB_PIXEL;
+    spriteLeft = bgXRange - PIXEL_TO_SUB_PIXEL(gCurrentSprite.drawDistanceHorizontal);
+    drawOffsetX = PIXEL_TO_SUB_PIXEL(gCurrentSprite.drawDistanceHorizontal) + SCREEN_SIZE_X_SUB_PIXEL;
     spriteRight = bgXRange + drawOffsetX;
 
     if (spriteLeft < spriteXRange && spriteXRange < spriteRight && spriteBottom < spriteYRange && spriteYRange < spriteTop)
