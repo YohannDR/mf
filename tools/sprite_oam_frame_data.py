@@ -124,7 +124,7 @@ def ParseFrameData():
 
     index = 0
     for (pFrame, timer) in frameData:
-        result += f"    [{index}] = " + "{\n" + f"        .pFrame = sOam_{pFrame:x},\n" + f"        .timer = {timer},\n" + "    },\n"
+        result += f"    [{index}] = " + "{\n" + f"        .pFrame = sOam_{pFrame:x},\n" + f"        .timer = {timer}\n" + "    },\n"
         index += 1
     result += f"    [{index}] = FRAME_DATA_TERMINATOR\n" + "};\n"
 

@@ -937,4 +937,4 @@ const struct FrameData sFrameData_3190f0[5] = {
 const u32 sGoldSciserGfx[512 * 2] = INCBIN_U32("data/sprites/gold_sciser.gfx");
 const u16 sGoldSciserPal[16 * 2] = INCBIN_U16("data/sprites/gold_sciser.pal");
 
-static const u8 sBlob_31a158_35dd74[] = INCBIN_U8("data/Blob_31a158_35dd74.bin");
+static const u8 sBlob_31a158_3420b4[] = INCBIN_U8("data/Blob_31a158_3420b4.bin");

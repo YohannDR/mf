@@ -865,5 +865,3 @@ const u8* const sSpritesetPointers[MAX_AMOUNT_OF_SPRITESET] = {
     sSpriteset128,
     sSpriteset129
 };
-
-static const u8 sBlob_79afe0_79b0c8[232] = INCBIN_U8("data/Blob_79afe0_79b0c8.bin");

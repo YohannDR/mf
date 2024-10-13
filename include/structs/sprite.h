@@ -23,6 +23,12 @@ struct MultiSpriteData {
     u8 timer;
 };
 
+#define MULTI_SPRITE_DATA_TERMINATOR \
+{\
+    .pData = NULL,\
+    .timer = 0\
+}
+
 struct SpriteData {
     u16 status;
     u16 yPosition;
