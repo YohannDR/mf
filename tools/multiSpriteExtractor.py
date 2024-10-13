@@ -3,9 +3,9 @@ def toPixels(value):
         value = -(0x10000 - value)
 
     if value % 4 == 0:
-        return f"PIXEL_TO_SUB_PIXEL({value//4})"
+        return value//4
     else:
-        return f"PIXEL_TO_SUB_PIXEL({value/4}f)"
+        return value/4
 
 def ParseMultiSpriteFrame():
     global animations
@@ -19,15 +19,10 @@ def ParseMultiSpriteFrame():
 
     result = f"static const s16 sMultiSpriteFrame_{startAddr:x}[BOX_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = " + "{\n"
     for i in range(12):
-        result += f"    [BOX_PART_{i}] = " + "{\n"
-        result += f"        [MULTI_SPRITE_DATA_ELEMENT_OAM_INDEX] = FRAMEDATA_{animations[multiSpriteData[i][0]]:X},\n"
-        result += f"        [MULTI_SPRITE_DATA_ELEMENT_Y_OFFSET]  = {toPixels(multiSpriteData[i][1])},\n"
-        result += f"        [MULTI_SPRITE_DATA_ELEMENT_X_OFFSET]  = {toPixels(multiSpriteData[i][2])}\n"
-        if i == 11:
-            result += "    }\n"
-        else:
-            result += "    },\n"
-    result += "};\n"
+        result += f"    [BOX_PART_{i}] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_{animations[multiSpriteData[i][0]]:X}, {toPixels(multiSpriteData[i][1])}, {toPixels(multiSpriteData[i][2])})"
+        if i < 11:
+            result += ",\n"
+    result += "\n};\n"
 
     return result
 

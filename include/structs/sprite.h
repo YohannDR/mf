@@ -23,6 +23,13 @@ struct MultiSpriteData {
     u8 timer;
 };
 
+#define MULTI_SPRITE_DATA_INFO(index, y, x) \
+{\
+    [MULTI_SPRITE_DATA_ELEMENT_OAM_INDEX] = (index),\
+    [MULTI_SPRITE_DATA_ELEMENT_Y_OFFSET]  = PIXEL_TO_SUB_PIXEL(y),\
+    [MULTI_SPRITE_DATA_ELEMENT_X_OFFSET]  = PIXEL_TO_SUB_PIXEL(x)\
+}
+
 #define MULTI_SPRITE_DATA_TERMINATOR \
 {\
     .pData = NULL,\
