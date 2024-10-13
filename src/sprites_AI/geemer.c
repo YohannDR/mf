@@ -35,27 +35,27 @@ void GeemerCheckCollisions(void) {
 void GeemerSetHitbox(void) {
     if (gCurrentSprite.work0) {
         if (gCurrentSprite.status & SS_X_FLIP) {
-            gCurrentSprite.hitboxTop = -0x30;
-            gCurrentSprite.hitboxBottom = 0x30;
-            gCurrentSprite.hitboxLeft = -0x30;
+            gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-12);
+            gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(12);
+            gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-12);
             gCurrentSprite.hitboxRight = 0;
         } else {
-            gCurrentSprite.hitboxTop = -0x30;
-            gCurrentSprite.hitboxBottom = 0x30;
+            gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-12);
+            gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(12);
             gCurrentSprite.hitboxLeft = 0;
-            gCurrentSprite.hitboxRight = 0x30;
+            gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(12);
         }
     } else {
         if (gCurrentSprite.status & SS_Y_FLIP) {
             gCurrentSprite.hitboxTop = 0;
-            gCurrentSprite.hitboxBottom = 0x28;
-            gCurrentSprite.hitboxLeft = -0x30;
-            gCurrentSprite.hitboxRight = 0x30;
+            gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(10);
+            gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-12);
+            gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(12);
         } else {
-            gCurrentSprite.hitboxTop = -0x28;
+            gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-10);
             gCurrentSprite.hitboxBottom = 0;
-            gCurrentSprite.hitboxLeft = -0x30;
-            gCurrentSprite.hitboxRight = 0x30;
+            gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-12);
+            gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(12);
         }
     }
     gCurrentSprite.drawDistanceTop = 0x10;
@@ -89,16 +89,16 @@ void GeemerCheckShouldHide(void) {
             gCurrentSprite.work1 = 0;
         }
         if (gCurrentSprite.work1 <= 120) {
-            if (SpriteUtilCheckSamusNearSpriteLeftRight(0x140, 0x140) != NSLR_OUT_OF_RANGE) {
+            if (SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_TO_SUB_PIXEL(5), BLOCK_TO_SUB_PIXEL(5)) != NSLR_OUT_OF_RANGE) {
                 gCurrentSprite.pose = 0x42;
                 if (gCurrentSprite.work0) {
                     gCurrentSprite.pOam = sFrameData_2fd058;
-                    gCurrentSprite.hitboxTop = -0x28;
-                    gCurrentSprite.hitboxBottom = 0x28;
+                    gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-10);
+                    gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(10);
                 } else {
                     gCurrentSprite.pOam = sFrameData_2fcec8;
-                    gCurrentSprite.hitboxLeft = -0x28;
-                    gCurrentSprite.hitboxRight = 0x28;
+                    gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-10);
+                    gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(10);
                 }
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
@@ -150,15 +150,15 @@ void GeemerUncovering(void) {
 void GeemerTurningIntoX(void) {
     if (gCurrentSprite.work0) {
         if (gCurrentSprite.status & SS_X_FLIP) {
-            gCurrentSprite.xPosition -= 0x20;
+            gCurrentSprite.xPosition -= PIXEL_TO_SUB_PIXEL(8);
         } else {
-            gCurrentSprite.xPosition += 0x20;
+            gCurrentSprite.xPosition += PIXEL_TO_SUB_PIXEL(8);
         }
     } else {
         if (gCurrentSprite.status & SS_Y_FLIP) {
-            gCurrentSprite.yPosition += 0x20;
+            gCurrentSprite.yPosition += PIXEL_TO_SUB_PIXEL(8);
         } else {
-            gCurrentSprite.yPosition -= 0x20;
+            gCurrentSprite.yPosition -= PIXEL_TO_SUB_PIXEL(8);
         }
     }
 }
@@ -174,32 +174,37 @@ void GeemerInit(void) {
     } else {
         if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
             gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-            gCurrentSprite.xParasiteTimer = 0x2c;
+            gCurrentSprite.xParasiteTimer = 44;
         } else {
             gCurrentSprite.pose = 2;
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
             if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
+                // on floor
                 gCurrentSprite.work0 = FALSE;
             } else {
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x44, gCurrentSprite.xPosition);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_TO_SUB_PIXEL(17), gCurrentSprite.xPosition);
                 if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
+                    // on ceiling
                     gCurrentSprite.work0 = FALSE;
                     gCurrentSprite.status |= SS_Y_FLIP;
                     gCurrentSprite.yPosition -= BLOCK_SIZE;
                 } else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition - 0x24);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_TO_SUB_PIXEL(8), gCurrentSprite.xPosition - PIXEL_TO_SUB_PIXEL(9));
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
+                        // on left wall
                         gCurrentSprite.work0 = TRUE;
                         gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
                         gCurrentSprite.xPosition -= HALF_BLOCK_SIZE;
                     } else {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition + 0x20);
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_TO_SUB_PIXEL(8), gCurrentSprite.xPosition + PIXEL_TO_SUB_PIXEL(8));
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
+                            // on right wall
                             gCurrentSprite.work0 = TRUE;
                             gCurrentSprite.status |= SS_X_FLIP;
                             gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
                             gCurrentSprite.xPosition += HALF_BLOCK_SIZE;
                         } else {
+                            // can't be placed in midair
                             gCurrentSprite.status = 0;
                             return;
                         }
@@ -209,23 +214,23 @@ void GeemerInit(void) {
             if (gCurrentSprite.work0) {
                 if (gCurrentSprite.status & SS_X_FLIP) {
                     flashingLightY = gCurrentSprite.yPosition;
-                    flashingLightX = gCurrentSprite.xPosition - 0x24;
+                    flashingLightX = gCurrentSprite.xPosition - PIXEL_TO_SUB_PIXEL(9);
                 } else {
                     flashingLightY = gCurrentSprite.yPosition;
-                    flashingLightX = gCurrentSprite.xPosition + 0x24;
+                    flashingLightX = gCurrentSprite.xPosition + PIXEL_TO_SUB_PIXEL(9);
                 }
             } else {
                 if (gCurrentSprite.status & SS_Y_FLIP) {
-                    flashingLightY = gCurrentSprite.yPosition + 0x24;
+                    flashingLightY = gCurrentSprite.yPosition + PIXEL_TO_SUB_PIXEL(9);
                     flashingLightX = gCurrentSprite.xPosition;
                 } else {
-                    flashingLightY = gCurrentSprite.yPosition - 0x24;
+                    flashingLightY = gCurrentSprite.yPosition - PIXEL_TO_SUB_PIXEL(9);
                     flashingLightX = gCurrentSprite.xPosition;
                 }
             }
             flashingLightSlot = SpriteSpawnSecondary(SSPRITE_GEEMER_FLASHING_LIGHT, gCurrentSprite.roomSlot,
                 gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, flashingLightY, flashingLightX, 0);
-            if (flashingLightSlot == 0xff) {
+            if (flashingLightSlot == UCHAR_MAX) {
                 gCurrentSprite.status = 0;
                 return;
             }
@@ -255,57 +260,57 @@ void GeemerCrawling(void) {
         if (gCurrentSprite.work0) {
             if (gCurrentSprite.status & SS_X_FLIP) {
                 if (gCurrentSprite.status & SS_FACING_RIGHT) {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom, gCurrentSprite.xPosition + 4);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom, gCurrentSprite.xPosition + PIXEL_SIZE);
                     if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
                         turnAround = TRUE;
                     } else {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom, gCurrentSprite.xPosition - 4);
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom, gCurrentSprite.xPosition - PIXEL_SIZE);
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                             turnAround = TRUE;
                         } else {
-                            gCurrentSprite.yPosition += 1;
-                            gSpriteData[gCurrentSprite.work2].yPosition += 1;
+                            gCurrentSprite.yPosition += PIXEL_TO_SUB_PIXEL(.25f);
+                            gSpriteData[gCurrentSprite.work2].yPosition += PIXEL_TO_SUB_PIXEL(.25f);
                         }
                     }
                 } else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition + 4);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition + PIXEL_SIZE);
                     if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
                         turnAround = TRUE;
                     } else {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition - 4);
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition - PIXEL_SIZE);
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                             turnAround = TRUE;
                         } else {
-                            gCurrentSprite.yPosition -= 1;
-                            gSpriteData[gCurrentSprite.work2].yPosition -= 1;
+                            gCurrentSprite.yPosition -= PIXEL_TO_SUB_PIXEL(.25f);
+                            gSpriteData[gCurrentSprite.work2].yPosition -= PIXEL_TO_SUB_PIXEL(.25f);
                         }
                     }
                 }
             } else {
                 if (gCurrentSprite.status & SS_FACING_RIGHT) {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom, gCurrentSprite.xPosition - 4);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom, gCurrentSprite.xPosition - PIXEL_SIZE);
                     if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
                         turnAround = TRUE;
                     } else {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom, gCurrentSprite.xPosition + 4);
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom, gCurrentSprite.xPosition + PIXEL_SIZE);
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                             turnAround = TRUE;
                         } else {
-                            gCurrentSprite.yPosition += 1;
-                            gSpriteData[gCurrentSprite.work2].yPosition += 1;
+                            gCurrentSprite.yPosition += PIXEL_TO_SUB_PIXEL(.25f);
+                            gSpriteData[gCurrentSprite.work2].yPosition += PIXEL_TO_SUB_PIXEL(.25f);
                         }
                     }
                 } else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition - 4);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition - PIXEL_SIZE);
                     if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
                         turnAround = TRUE;
                     } else {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition + 4);
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition + PIXEL_SIZE);
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                             turnAround = TRUE;
                         } else {
-                            gCurrentSprite.yPosition -= 1;
-                            gSpriteData[gCurrentSprite.work2].yPosition -= 1;
+                            gCurrentSprite.yPosition -= PIXEL_TO_SUB_PIXEL(.25f);
+                            gSpriteData[gCurrentSprite.work2].yPosition -= PIXEL_TO_SUB_PIXEL(.25f);
                         }
                     }
                 }
@@ -313,7 +318,7 @@ void GeemerCrawling(void) {
         } else {
             if (gCurrentSprite.status & SS_Y_FLIP) {
                 if (gCurrentSprite.status & SS_FACING_RIGHT) {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
                     if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)) {
                         turnAround = TRUE;
                     } else {
@@ -321,12 +326,12 @@ void GeemerCrawling(void) {
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                             turnAround = TRUE;
                         } else {
-                            gCurrentSprite.xPosition += 1;
-                            gSpriteData[gCurrentSprite.work2].xPosition += 1;
+                            gCurrentSprite.xPosition += PIXEL_TO_SUB_PIXEL(.25f);
+                            gSpriteData[gCurrentSprite.work2].xPosition += PIXEL_TO_SUB_PIXEL(.25f);
                         }
                     }
                 } else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
                     if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)) {
                         turnAround = TRUE;
                     } else {
@@ -334,8 +339,8 @@ void GeemerCrawling(void) {
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                             turnAround = TRUE;
                         } else {
-                            gCurrentSprite.xPosition -= 1;
-                            gSpriteData[gCurrentSprite.work2].xPosition -= 1;
+                            gCurrentSprite.xPosition -= PIXEL_TO_SUB_PIXEL(.25f);
+                            gSpriteData[gCurrentSprite.work2].xPosition -= PIXEL_TO_SUB_PIXEL(.25f);
                         }
                     }
                 }
@@ -345,12 +350,12 @@ void GeemerCrawling(void) {
                     if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
                         turnAround = TRUE;
                     } else {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                             turnAround = TRUE;
                         } else {
-                            gCurrentSprite.xPosition += 1;
-                            gSpriteData[gCurrentSprite.work2].xPosition += 1;
+                            gCurrentSprite.xPosition += PIXEL_TO_SUB_PIXEL(.25f);
+                            gSpriteData[gCurrentSprite.work2].xPosition += PIXEL_TO_SUB_PIXEL(.25f);
                         }
                     }
                 } else {
@@ -358,12 +363,12 @@ void GeemerCrawling(void) {
                     if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)) {
                         turnAround = TRUE;
                     } else {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F) {
                             turnAround = TRUE;
                         } else {
-                            gCurrentSprite.xPosition -= 1;
-                            gSpriteData[gCurrentSprite.work2].xPosition -= 1;
+                            gCurrentSprite.xPosition -= PIXEL_TO_SUB_PIXEL(.25f);
+                            gSpriteData[gCurrentSprite.work2].xPosition -= PIXEL_TO_SUB_PIXEL(.25f);
                         }
                     }
                 }
@@ -415,7 +420,7 @@ void GeemerFalling(void) {
     xCollisionPoint = gCurrentSprite.xPosition;
     if (gCurrentSprite.work0) {
         if (gCurrentSprite.status & SS_X_FLIP) {
-            xCollisionPoint -= 4;
+            xCollisionPoint -= PIXEL_SIZE;
         }
         yCollisionPoint += gCurrentSprite.hitboxBottom;
     }
@@ -450,12 +455,12 @@ void GeemerFalling(void) {
             gCurrentSprite.pose = 8;
             GeemerSetIdleGFX();
             flashingLightSlot = gCurrentSprite.work2;
-            gSpriteData[flashingLightSlot].yPosition = gCurrentSprite.yPosition - 0x24;
+            gSpriteData[flashingLightSlot].yPosition = gCurrentSprite.yPosition - PIXEL_TO_SUB_PIXEL(9);
             gSpriteData[flashingLightSlot].xPosition = gCurrentSprite.xPosition;
-            gSpriteData[flashingLightSlot].hitboxTop = -0xc;
-            gSpriteData[flashingLightSlot].hitboxBottom = 0x20;
-            gSpriteData[flashingLightSlot].hitboxLeft = -0xc;
-            gSpriteData[flashingLightSlot].hitboxRight = 0xc;
+            gSpriteData[flashingLightSlot].hitboxTop = PIXEL_TO_SUB_PIXEL(-3);
+            gSpriteData[flashingLightSlot].hitboxBottom = PIXEL_TO_SUB_PIXEL(8);
+            gSpriteData[flashingLightSlot].hitboxLeft = PIXEL_TO_SUB_PIXEL(-3);
+            gSpriteData[flashingLightSlot].hitboxRight = PIXEL_TO_SUB_PIXEL(3);
         }
     } else {
         offset = gCurrentSprite.work4;
@@ -548,27 +553,27 @@ void GeemerFlashingLight(void) {
         gCurrentSprite.pose = 2;
         if (gSpriteData[geemerSlot].work0) {
             if (gSpriteData[geemerSlot].status & SS_X_FLIP) {
-                gCurrentSprite.hitboxTop = -0xc;
-                gCurrentSprite.hitboxBottom = 0xc;
-                gCurrentSprite.hitboxLeft = -0xc;
-                gCurrentSprite.hitboxRight = 0x20;
+                gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-3);
+                gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(3);
+                gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-3);
+                gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(8);
             } else {
-                gCurrentSprite.hitboxTop = -0xc;
-                gCurrentSprite.hitboxBottom = 0xc;
-                gCurrentSprite.hitboxLeft = -0x20;
-                gCurrentSprite.hitboxRight = 0xc;
+                gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-3);
+                gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(3);
+                gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-8);
+                gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(3);
             }
         } else {
             if (gSpriteData[geemerSlot].status & SS_Y_FLIP) {
-                gCurrentSprite.hitboxTop = -0x20;
-                gCurrentSprite.hitboxBottom = 0xc;
-                gCurrentSprite.hitboxLeft = -0xc;
-                gCurrentSprite.hitboxRight = 0xc;
+                gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-8);
+                gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(3);
+                gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-3);
+                gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(3);
             } else {
-                gCurrentSprite.hitboxTop = -0xc;
-                gCurrentSprite.hitboxBottom = 0x20;
-                gCurrentSprite.hitboxLeft = -0xc;
-                gCurrentSprite.hitboxRight = 0xc;
+                gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-3);
+                gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(8);
+                gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-3);
+                gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(3);
             }
         }
     }

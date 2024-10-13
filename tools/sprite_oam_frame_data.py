@@ -114,7 +114,7 @@ def ParseFrameData():
     startAddr = file.tell()
     frameData = []
     while True:
-        pFrame = int.from_bytes(file.read(4), "little") & 0x7fffff
+        pFrame = int.from_bytes(file.read(4), "little") & 0x1ffffff
         timer = int.from_bytes(file.read(4), "little")
         if pFrame == 0:
             break
@@ -136,10 +136,10 @@ def Func():
     spriteId = int(input("Primary sprite ID or first OAM entry pointer (in hex) : "), 16)
 
     if spriteId >= 0x100:
-        file.seek(spriteId & 0xffffff)
+        file.seek(spriteId & 0x1ffffff)
     else:
         file.seek(0x79a8d4 + spriteId*4 - 0x40) # usually OAM entries come right after palettes, but that's not always the case
-        palettePointer = int.from_bytes(file.read(4), 'little') & 0xffffff
+        palettePointer = int.from_bytes(file.read(4), 'little') & 0x1ffffff
 
         file.seek(0x2e4a50 + spriteId*4 - 0x40)
         paletteRows = int.from_bytes(file.read(4), 'little')//0x800
@@ -154,8 +154,12 @@ def Func():
         if pointer in frames:
             break
         if pointer & 0xFFFF == 0:
-            file.read(2) # align
-            break
+            file.read(2) # align if it's not actually an empty frame
+            pointer = int.from_bytes(file.read(4), 'little')
+            file.seek(file.tell()-6)
+            if pointer in frames:
+                file.read(2)
+                break
         frames |= {currentAddr | 0x8000000}
         print(ParseOam())
 

@@ -373,6 +373,7 @@ SECTIONS {
         src/data/sprites/core_x.o(.rodata);
         src/data/sprites/core_x_downloading_varia.o(.rodata);
         src/data/sprites/waver.o(.rodata);
+        src/data/sprites/sciser.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);

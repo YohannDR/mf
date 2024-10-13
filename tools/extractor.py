@@ -27,21 +27,27 @@ db: BufferedReader = open("database.txt", "r")
 
 line: str = db.readline()
 while line != '':
-    # Formatted as follows : name;length;address;size
+    # Formatted as follows : name;length;address;size or name;start;end
     # The symbol # can be used as the first character of a line to make the extractor ignore it
     if line[0] != '\n' and line[0] != '#':
         info: array = line.split(";")
 
         name: str = info[0]
         print("Extracting", name)
-        rom.seek(int(info[2], 16))
+        if len(info) == 3:
+            rom.seek(int(info[1], 16))
 
-        size: int = int(info[3])
-        output: BufferedReader = open(DATA_PATH.__add__(name), "ab")
-        for x in range(0, int(info[1])):
-            output.write(int.from_bytes(rom.read(size), "little").to_bytes(size, "little"))
+            output: BufferedReader = open(DATA_PATH.__add__(name), "ab")
+            output.write(rom.read(int(info[2], 16) - int(info[1], 16)))
 
-        output.close()
+            output.close()
+        else:
+            rom.seek(int(info[2], 16))
+
+            output: BufferedReader = open(DATA_PATH.__add__(name), "ab")
+            output.write(rom.read(int(info[1]) * int(info[3])))
+
+            output.close()
     line = db.readline()
 
 rom.close()
