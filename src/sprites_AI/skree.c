@@ -91,17 +91,17 @@ void SkreeGoingDown(void) {
         yPosition = gCurrentSprite.yPosition;
         xPosition = gCurrentSprite.xPosition;
         if (gCurrentSprite.work1 == 1) {
-            SpriteDebrisInit(0, 0x11, yPosition - 10, xPosition);
-            SpriteDebrisInit(0, 0x12, yPosition - 16, xPosition + 12);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_LEFT, yPosition - 10, xPosition);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_RIGHT, yPosition - 16, xPosition + 12);
         } else if (gCurrentSprite.work1 == 2) {
-            SpriteDebrisInit(0, 0x13, yPosition - 40, xPosition - 16);
-            SpriteDebrisInit(0, 0x4, yPosition - 30, xPosition);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_FAST_RIGHT, yPosition - 40, xPosition - 16);
+            SpriteDebrisInit(0, DEBRIS_TYPE_HOPPING_FAST_LEFT, yPosition - 30, xPosition);
         } else if (gCurrentSprite.work1 == 4) {
-            SpriteDebrisInit(0, 0x11, yPosition - 60, xPosition - 20);
-            SpriteDebrisInit(0, 0x12, yPosition - 70, xPosition + 30);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_LEFT, yPosition - 60, xPosition - 20);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_RIGHT, yPosition - 70, xPosition + 30);
         } else if (gCurrentSprite.work1 == 6) {
-            SpriteDebrisInit(0, 0x13, yPosition - 92, xPosition + 20);
-            SpriteDebrisInit(0, 0x4, yPosition - 100, xPosition - 30);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_FAST_RIGHT, yPosition - 92, xPosition + 20);
+            SpriteDebrisInit(0, DEBRIS_TYPE_HOPPING_FAST_LEFT, yPosition - 100, xPosition - 30);
         }
         gCurrentSprite.work1++;
     } else {
@@ -171,32 +171,32 @@ void SkreeGoingUpWarning(void) {
     if (gCurrentSprite.work1 != 0) {
         gCurrentSprite.work1--;
         if (gCurrentSprite.work1 == 30) {
-            SpriteDebrisInit(0, 0x11, yPosition - 96, xPosition);
-            SpriteDebrisInit(0, 0x12, yPosition - 96, xPosition + 16);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_LEFT, yPosition - 96, xPosition);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_RIGHT, yPosition - 96, xPosition + 16);
         } else if (gCurrentSprite.work1 == 20) {
-            SpriteDebrisInit(0, 0x13, yPosition - 64, xPosition - 16);
-            SpriteDebrisInit(0, 4, yPosition - 64, xPosition);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_FAST_RIGHT, yPosition - 64, xPosition - 16);
+            SpriteDebrisInit(0, DEBRIS_TYPE_HOPPING_FAST_LEFT, yPosition - 64, xPosition);
         } else if (gCurrentSprite.work1 == 14) {
-            SpriteDebrisInit(0, 0x11, yPosition - 32, xPosition + 8);
-            SpriteDebrisInit(0, 0x12, yPosition - 32, xPosition - 16);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_LEFT, yPosition - 32, xPosition + 8);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_RIGHT, yPosition - 32, xPosition - 16);
         } else if (gCurrentSprite.work1 == 6) {
-            SpriteDebrisInit(0, 0x13, yPosition, xPosition - 8);
-            SpriteDebrisInit(0, 4, yPosition, xPosition + 16);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_FAST_RIGHT, yPosition, xPosition - 8);
+            SpriteDebrisInit(0, DEBRIS_TYPE_HOPPING_FAST_LEFT, yPosition, xPosition + 16);
         }
     } else {
         gCurrentSprite.yPosition--;
         if (gCurrentSprite.work2 == 1) {
-            SpriteDebrisInit(0, 0x11, yPosition - 96, xPosition);
-            SpriteDebrisInit(0, 0x12, yPosition - 96, xPosition + 16);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_LEFT, yPosition - 96, xPosition);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_RIGHT, yPosition - 96, xPosition + 16);
         } else if (gCurrentSprite.work2 == 8) {
-            SpriteDebrisInit(0, 0x13, yPosition - 64, xPosition - 16);
-            SpriteDebrisInit(0, 4, yPosition - 64, xPosition);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_FAST_RIGHT, yPosition - 64, xPosition - 16);
+            SpriteDebrisInit(0, DEBRIS_TYPE_HOPPING_FAST_LEFT, yPosition - 64, xPosition);
         } else if (gCurrentSprite.work2 == 16) {
-            SpriteDebrisInit(0, 0x11, yPosition - 32, xPosition + 8);
-            SpriteDebrisInit(0, 0x12, yPosition - 32, xPosition - 16);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_LEFT, yPosition - 32, xPosition + 8);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_RIGHT, yPosition - 32, xPosition - 16);
         } else if (gCurrentSprite.work2 == 24) {
-            SpriteDebrisInit(0, 0x13, yPosition, xPosition - 8);
-            SpriteDebrisInit(0, 4, yPosition, xPosition + 16);
+            SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_FAST_RIGHT, yPosition, xPosition - 8);
+            SpriteDebrisInit(0, DEBRIS_TYPE_HOPPING_FAST_LEFT, yPosition, xPosition + 16);
         } else if (gCurrentSprite.work2 > 30) {
             gCurrentSprite.yPosition--;
         }

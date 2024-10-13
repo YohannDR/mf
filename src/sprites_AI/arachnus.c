@@ -13,6 +13,7 @@
 #include "constants/samus.h"
 
 #include "structs/sprite.h"
+#include "structs/sprite_debris.h"
 #include "structs/samus.h"
 
 void ArachnusSetStandingHitbox(void) {
@@ -179,9 +180,9 @@ void ArachnusRolling(void) {
                 gSpriteData[shellSpriteSlot].rotation += speed;
                 if (gSpriteRandomNumber > 12) {
                     if (MOD_AND(gSpriteRandomNumber, 2) != 0) {
-                        SpriteDebrisInit(0, 4, yPosition - PIXEL_TO_SUB_PIXEL(4), xPosition + MOD_AND(gFrameCounter8Bit, HALF_BLOCK_SIZE));
+                        SpriteDebrisInit(0, DEBRIS_TYPE_HOPPING_FAST_LEFT, yPosition - PIXEL_TO_SUB_PIXEL(4), xPosition + MOD_AND(gFrameCounter8Bit, HALF_BLOCK_SIZE));
                     } else {
-                        SpriteDebrisInit(0, 0x11, yPosition, xPosition + MOD_AND(gFrameCounter8Bit, HALF_BLOCK_SIZE));
+                        SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_LEFT, yPosition, xPosition + MOD_AND(gFrameCounter8Bit, HALF_BLOCK_SIZE));
                     }
                 }
             }
@@ -202,9 +203,9 @@ void ArachnusRolling(void) {
                 gSpriteData[shellSpriteSlot].rotation -= speed;
                 if (gSpriteRandomNumber > 12) {
                     if (MOD_AND(gSpriteRandomNumber, 2) != 0) {
-                        SpriteDebrisInit(0, 0x13, yPosition - PIXEL_TO_SUB_PIXEL(4), xPosition - MOD_AND(gFrameCounter8Bit, HALF_BLOCK_SIZE));
+                        SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_FAST_RIGHT, yPosition - PIXEL_TO_SUB_PIXEL(4), xPosition - MOD_AND(gFrameCounter8Bit, HALF_BLOCK_SIZE));
                     } else {
-                        SpriteDebrisInit(0, 0x12, yPosition, xPosition - MOD_AND(gFrameCounter8Bit, HALF_BLOCK_SIZE));
+                        SpriteDebrisInit(0, DEBRIS_TYPE_FALLING | DEBRIS_TYPE_HOPPING_SLOW_RIGHT, yPosition, xPosition - MOD_AND(gFrameCounter8Bit, HALF_BLOCK_SIZE));
                     }
                 }
                 hitWall = FALSE;
