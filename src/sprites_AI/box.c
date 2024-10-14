@@ -1066,3 +1066,336 @@ void BoxPartDefault(void) {
         }
     }
 }
+
+void BoxMissileInit(void) {
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
+    gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
+    gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
+    gCurrentSprite.drawDistanceTop = 0x10;
+    gCurrentSprite.drawDistanceBottom = 0x10;
+    gCurrentSprite.drawDistanceHorizontal = 0x10;
+    gCurrentSprite.hitboxTop = -8;
+    gCurrentSprite.hitboxBottom = 8;
+    gCurrentSprite.hitboxLeft = -8;
+    gCurrentSprite.hitboxRight = 8;
+    gCurrentSprite.pOam = sFrameData_347d68;
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
+    gCurrentSprite.health = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
+    gCurrentSprite.rotation = Q_8_8(0.75f);
+    gCurrentSprite.scaling = Q_8_8(1);
+    gCurrentSprite.work1 = 0x24;
+    gCurrentSprite.xParasiteTimer = 300;
+    gCurrentSprite.pose = 2;
+    gCurrentSprite.samusCollision = SSC_HURTS_SAMUS_DIES_WHEN_HIT;
+    SoundPlay(0x26b);
+}
+
+void BoxMissileSpawning(void) {
+    u32 movement;
+
+    if (gCurrentSprite.health == 0) {
+        gCurrentSprite.pose = 0x37;
+    }
+    movement = gCurrentSprite.work1 / 2;
+    gCurrentSprite.yPosition -= movement;
+    if (movement < 3) {
+        gCurrentSprite.rotation = RotateSpriteTowardsSamus(gCurrentSprite.rotation,
+            gSamusData.yPosition - 0x40, gSamusData.xPosition, gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+    }
+    gCurrentSprite.work1 -= 2;
+    if (gCurrentSprite.work1 < 2) {
+        gCurrentSprite.pose = 0x18;
+        gCurrentSprite.work2 = 0;
+        gCurrentSprite.work3 = 1;
+        gCurrentSprite.work1 = 0;
+        gCurrentSprite.work4 = 1;
+    }
+}
+
+void BoxMissileMoving(void) {
+    u16 targetYOffset;
+    if (--gCurrentSprite.xParasiteTimer != 0 && gCurrentSprite.health != 0) {
+        if (gCurrentSprite.roomSlot == 3) {
+            targetYOffset = 8;
+        } else if (gCurrentSprite.roomSlot == 2) {
+            targetYOffset = 0x28;
+        } else if (gCurrentSprite.roomSlot == 1) {
+            targetYOffset = 0x48;
+        } else {
+            targetYOffset = 0x68;
+        }
+        MoveSpriteTowardsTarget((u16)(gSamusData.yPosition - targetYOffset), gSamusData.xPosition, 0x18, 0x28, 2);
+        gCurrentSprite.rotation = RotateSpriteTowardsSamus(gCurrentSprite.rotation,
+            gSamusData.yPosition - 0x40, gSamusData.xPosition, gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
+        if (gPreviousCollisionCheck != 0) {
+            gCurrentSprite.pose = 0x37;
+        }
+    } else {
+        gCurrentSprite.pose = 0x37;
+    }
+}
+
+void BoxMissileExploding(void) {
+    gCurrentSprite.status = 0;
+    ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0x25);
+    SoundPlay(0x26c);
+}
+
+void BoxBombInit(void) {
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
+    gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
+    gCurrentSprite.drawDistanceTop = 0x10;
+    gCurrentSprite.drawDistanceBottom = 0x10;
+    gCurrentSprite.drawDistanceHorizontal = 0x10;
+    gCurrentSprite.hitboxTop = -0x1c;
+    gCurrentSprite.hitboxBottom = 0x1c;
+    gCurrentSprite.hitboxLeft = -0x1c;
+    gCurrentSprite.hitboxRight = 0x1c;
+    gCurrentSprite.pOam = sFrameData_347e58;
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
+    gCurrentSprite.health = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
+    gCurrentSprite.rotation = 0;
+    gCurrentSprite.scaling = Q_8_8(1);
+    gCurrentSprite.work2 = 0;
+    gCurrentSprite.work3 = 7;
+    gCurrentSprite.work4 = 0;
+    gCurrentSprite.pose = 2;
+    gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
+    gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
+    SoundPlay(0x270);
+}
+
+void BoxBombMoving(void) {
+    u32 blockTop;
+    u8 offset;
+    u16 movement;
+    
+    if (gCurrentSprite.health == 0) {
+        gCurrentSprite.pose = 0x37;
+        return;
+    }
+    if (gCurrentSprite.work2 == 0) {
+        offset = gCurrentSprite.work4;
+        movement = sBoxBombLaunchingSpeed[offset];
+        if (movement == SHORT_MAX) {
+            movement = 0;
+            gCurrentSprite.work2 += 1;
+            gCurrentSprite.work4 = 0;
+        } else {
+            gCurrentSprite.work4 += 1;
+        }
+        if (gCurrentSprite.work4 == 3) {
+            gCurrentSprite.work3 = 7;
+        }
+        gCurrentSprite.yPosition += movement;
+    }
+    else if (gCurrentSprite.work2 == 2) {
+        offset = gCurrentSprite.work4;
+        movement = sBoxBombFirstBounceSpeed[offset];
+        if (movement == SHORT_MAX) {
+            movement = 0;
+            gCurrentSprite.work2 += 1;
+            gCurrentSprite.work4 = 0;
+        } else {
+            gCurrentSprite.work4 += 1;
+        }
+        gCurrentSprite.yPosition += movement;
+    } else if (gCurrentSprite.work2 == 4) {
+        offset = gCurrentSprite.work4;
+        movement = sBoxBombSecondBounceSpeed[offset];
+        if (movement == SHORT_MAX) {
+            movement = 0;
+            gCurrentSprite.work2 += 1;
+            gCurrentSprite.work4 = 0;
+        } else {
+            gCurrentSprite.work4 += 1;
+        }
+        gCurrentSprite.yPosition += movement;
+    } else {
+        if (gCurrentSprite.work2 == 6) {
+            gCurrentSprite.pose = 0x18;
+            gCurrentSprite.work1 = 60;
+        } else {
+            offset = gCurrentSprite.work4;
+            movement = sBoxBombFallingSpeed[offset];
+            if (movement == SHORT_MAX) {
+                movement = sBoxBombFallingSpeed[gCurrentSprite.work4 - 1];
+            } else {
+                offset++;
+                gCurrentSprite.work4 = offset;
+            }
+            blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition);
+            if (gPreviousVerticalCollisionCheck != 0) {
+                gCurrentSprite.yPosition = blockTop - 0x20;
+                if (gCurrentSprite.work2 == 1) {
+                    SoundPlay(0x271);
+                }
+                gCurrentSprite.work2 += 1;
+                gCurrentSprite.work4 = 0;
+                gCurrentSprite.work3 -= 2;
+            } else {
+                gCurrentSprite.yPosition += movement;
+            }
+        }
+    }
+    if (gCurrentSprite.status & SS_FACING_RIGHT) {
+        gCurrentSprite.rotation += (6 - gCurrentSprite.work2) * 8;
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
+        if (gPreviousCollisionCheck == 0) {
+            gCurrentSprite.xPosition += gCurrentSprite.work3;
+        }
+    } else {
+        gCurrentSprite.rotation += (6 - gCurrentSprite.work2) * -8;
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
+        if (gPreviousCollisionCheck == 0) {
+            gCurrentSprite.xPosition -= gCurrentSprite.work3;
+        }
+    }
+}
+
+void BoxBombLanded(void) {
+    if (gCurrentSprite.health == 0) {
+        gCurrentSprite.pose = 0x37;
+    } else {
+        if (--gCurrentSprite.work1 == 0) {
+            SpriteSpawnSecondary(SSPRITE_BOX_FIRE, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+                gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition, 0);
+            SpriteSpawnSecondary(SSPRITE_BOX_FIRE, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+                gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition, SS_FACING_RIGHT);
+            ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0x22);
+            gCurrentSprite.status = 0;
+            SoundPlay(0x272);
+        }
+    }
+}
+
+void BoxBombExploding(void) {
+    ParticleSet(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition, 0x32);
+    gCurrentSprite.status = 0;
+    SoundPlay(0x273);
+}
+
+void BoxFireInit(void) {
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
+    gCurrentSprite.drawDistanceTop = 0x68;
+    gCurrentSprite.drawDistanceBottom = 8;
+    gCurrentSprite.drawDistanceHorizontal = 0x10;
+    gCurrentSprite.hitboxTop = -0x20;
+    gCurrentSprite.hitboxBottom = 0;
+    gCurrentSprite.hitboxLeft = -0x10;
+    gCurrentSprite.hitboxRight = 0x10;
+    gCurrentSprite.pOam = sFrameData_347e80;
+    gCurrentSprite.animationDurationCounter = 0;
+    gCurrentSprite.currentAnimationFrame = 0;
+    gCurrentSprite.health = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
+    gCurrentSprite.pose = 2;
+    gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
+}
+
+void BoxFireMovingHigh(void) {
+    u16 hitboxTop;
+
+    switch (gCurrentSprite.currentAnimationFrame) {
+        case 0:
+        case 1:
+        case 2:
+            hitboxTop = -0x20;
+            break;
+        case 3:
+            hitboxTop = -0x40;
+            break;
+        case 4:
+            hitboxTop = -0x60;
+            if (gCurrentSprite.animationDurationCounter == 1) {
+                SoundPlay(0x274);
+            }
+            break;
+        case 6:
+            hitboxTop = -0xc0;
+            break;
+        case 27:
+            if (gCurrentSprite.animationDurationCounter == 1) {
+                SoundPlay(0x275);
+            }
+        case 28:
+            hitboxTop = -0x160;
+            break;
+        case 8:
+        case 29:
+        case 30:
+            hitboxTop = -0x140;
+            break;
+        case 31:
+            hitboxTop = -0x120;
+            break;
+        case 7:
+        case 32:
+            hitboxTop = -0x100;
+            break;
+        case 33:
+            hitboxTop = -0xe0;
+            break;
+        case 5:
+        case 34:
+            hitboxTop = -0x80;
+            break;
+        case 35:
+            hitboxTop = -0x60;
+            break;
+        default:
+            hitboxTop = -0x180;
+            break;
+    }
+    gCurrentSprite.hitboxTop = hitboxTop;
+    if (SpriteUtilCheckEndCurrentSpriteAnim()) {
+        gCurrentSprite.pOam = sFrameData_3480a8;
+        gCurrentSprite.animationDurationCounter = 0;
+        gCurrentSprite.currentAnimationFrame = 0;
+        gCurrentSprite.pose = 0x18;
+        gCurrentSprite.work1 = 60;
+        gCurrentSprite.hitboxTop = -0x30;
+    }
+    if (!(gCurrentSprite.status & SS_FACING_RIGHT)) {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x40, gCurrentSprite.xPosition - 0x20);
+        if (gPreviousCollisionCheck != 0) {
+            gCurrentSprite.status = 0;
+        } else {
+            gCurrentSprite.xPosition += 3;
+        }
+    } else {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x40, gCurrentSprite.xPosition + 0x20);
+        if (gPreviousCollisionCheck != 0) {
+            gCurrentSprite.status = 0;
+        } else {
+            gCurrentSprite.xPosition -= 3;
+        }
+    }
+}
+
+void BoxFireMovingLow(void) {
+    if (--gCurrentSprite.work1 == 0) {
+        gCurrentSprite.pOam = sFrameData_347e80;
+        gCurrentSprite.animationDurationCounter = 0;
+        gCurrentSprite.currentAnimationFrame = 0;
+        gCurrentSprite.pose = 2;
+        gCurrentSprite.hitboxTop = -0x20;
+    }
+    if (!(gCurrentSprite.status & SS_FACING_RIGHT)) {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x40, gCurrentSprite.xPosition - 0x20);
+        if (gPreviousCollisionCheck != 0) {
+            gCurrentSprite.status = 0;
+        } else {
+            gCurrentSprite.xPosition += 3;
+        }
+    } else {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x40, gCurrentSprite.xPosition + 0x20);
+        if (gPreviousCollisionCheck != 0) {
+            gCurrentSprite.status = 0;
+        } else {
+            gCurrentSprite.xPosition -= 3;
+        }
+    }
+}
