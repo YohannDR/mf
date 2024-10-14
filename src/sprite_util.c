@@ -536,7 +536,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     }
                     break;
 
-                case SSC_6:
+                case SSC_KNOCKS_BACK_SAMUS_DIES_WHEN_HIT:
                     gSpriteData[i].pose = 0x37;
                     
                 case SSC_KNOCKS_BACK_SAMUS:

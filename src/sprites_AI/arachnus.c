@@ -934,7 +934,7 @@ void ArachnusFire(void) {
             }
             break;
         }
-        case ARACHNUS_FIRE_POSE_UNUSED: {
+        case SPRITE_POSE_SELF_DESTRUCT: {
             gCurrentSprite.status = 0;
             ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0x25);
             break;

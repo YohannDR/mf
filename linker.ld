@@ -265,7 +265,6 @@ SECTIONS {
 
         src/sprites_AI/box.o(.text);
 
-        asm/box.o(.text);
         asm/geruda.o(.text);
         asm/misc_pad.o(.text);
         asm/operations_room_pad.o(.text);
