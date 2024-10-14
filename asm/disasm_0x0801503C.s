@@ -12824,7 +12824,7 @@ _0801B514: .4byte gCurrentSprite
 SA_XOmegaInit: @ 0x0801B518
 	push {lr}
 	bl SA_XInit
-	bl MakeSpriteFaceAwayFromSamusDirection
+	bl SpriteUtilMakeSpriteFaceAwayFromSamusDirection
 	bl SA_XSetDirection
 	ldr r2, _0801B55C @ =gCurrentSprite
 	movs r1, #0

@@ -1323,7 +1323,7 @@ _080523F4: .4byte gSubSpriteData1
 _080523F8: .4byte 0x08391214
 _080523FC: .4byte gCurrentSprite
 _08052400:
-	bl MakeSpriteFaceAwayFromSamusDirection
+	bl SpriteUtilMakeSpriteFaceAwayFromSamusDirection
 _08052404:
 	ldr r6, _08052458 @ =gCurrentSprite
 	ldrh r1, [r6]

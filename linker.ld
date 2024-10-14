@@ -262,6 +262,9 @@ SECTIONS {
         asm/reo.o(.text);
         asm/lava_plume.o(.text);
         asm/fune_namihe.o(.text);
+
+        src/sprites_AI/box.o(.text);
+
         asm/box.o(.text);
         asm/geruda.o(.text);
         asm/misc_pad.o(.text);

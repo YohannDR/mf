@@ -1109,7 +1109,7 @@ _0803CCB6:
 	.align 2, 0
 _0803CCC0: .4byte gCurrentSprite
 _0803CCC4:
-	bl MakeSpriteFaceAwayFromSamusDirection
+	bl SpriteUtilMakeSpriteFaceAwayFromSamusDirection
 	adds r1, r4, #0
 	adds r1, #0x24
 	movs r0, #0x38

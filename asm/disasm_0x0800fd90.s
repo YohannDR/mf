@@ -3052,8 +3052,8 @@ _080115C6:
 	.align 2, 0
 _080115CC: .4byte 0x0000FFBF
 
-	thumb_func_start MakeSpriteFaceAwayFromSamusDirection
-MakeSpriteFaceAwayFromSamusDirection: @ 0x080115D0
+	thumb_func_start SpriteUtilMakeSpriteFaceAwayFromSamusDirection
+SpriteUtilMakeSpriteFaceAwayFromSamusDirection: @ 0x080115D0
 	push {lr}
 	ldr r2, _080115EC @ =gCurrentSprite
 	ldr r1, _080115F0 @ =gSamusData
@@ -5676,8 +5676,8 @@ _080128E0:
 	.align 2, 0
 _080128F4: .4byte gSpriteData
 
-	thumb_func_start FindPrimarySprite
-FindPrimarySprite: @ 0x080128F8
+	thumb_func_start SpriteUtilFindPrimarySprite
+SpriteUtilFindPrimarySprite: @ 0x080128F8
 	push {r4, r5, lr}
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
