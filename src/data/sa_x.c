@@ -1146,7 +1146,7 @@ static const u16 sSaXOam_29ac2c[OAM_DATA_SIZE(8)] = {
     OBJ_SHAPE_HORIZONTAL | 0xe8, OBJ_X_FLIP | 0x1f6, OBJ_PALETTE_8 | 0x20b
 };
 
-const struct SaXAnimationData sSaXAnim_29ac60[11] = {
+const struct SaXAnimationData sSaXAnim_Running_Left[11] = {
     [0] = {
         .pGraphics = sSaXGfx_28ff60,
         .pOamFrame = sSaXOam_29a26e,
@@ -1200,7 +1200,7 @@ const struct SaXAnimationData sSaXAnim_29ac60[11] = {
     [10] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29ace4[11] = {
+const struct SaXAnimationData sSaXAnim_Running_Right[11] = {
     [0] = {
         .pGraphics = sSaXGfx_290fb4,
         .pOamFrame = sSaXOam_29a378,
@@ -1254,7 +1254,7 @@ const struct SaXAnimationData sSaXAnim_29ace4[11] = {
     [10] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29ad68[11] = {
+const struct SaXAnimationData sSaXAnim_SwagWalk_Left[11] = {
     [0] = {
         .pGraphics = sSaXGfx_292308,
         .pOamFrame = sSaXOam_29a4ca,
@@ -1308,7 +1308,7 @@ const struct SaXAnimationData sSaXAnim_29ad68[11] = {
     [10] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29adec[11] = {
+const struct SaXAnimationData sSaXAnim_SwagWalk_Right[11] = {
     [0] = {
         .pGraphics = sSaXGfx_29337c,
         .pOamFrame = sSaXOam_29a5d8,
@@ -1470,7 +1470,7 @@ const struct SaXAnimationData sSaXAnim_29aef4[11] = {
     [10] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29af78[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Left[4] = {
     [0] = {
         .pGraphics = sSaXGfx_294550,
         .pOamFrame = sSaXOam_29a718,
@@ -1489,7 +1489,7 @@ const struct SaXAnimationData sSaXAnim_29af78[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29afa8[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Left[3] = {
     [0] = {
         .pGraphics = sSaXGfx_294d36,
         .pOamFrame = sSaXOam_29a74a,
@@ -1503,7 +1503,7 @@ const struct SaXAnimationData sSaXAnim_29afa8[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29afcc[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Right[4] = {
     [0] = {
         .pGraphics = sSaXGfx_294fb8,
         .pOamFrame = sSaXOam_29a776,
@@ -1522,7 +1522,7 @@ const struct SaXAnimationData sSaXAnim_29afcc[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29affc[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Right[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29579e,
         .pOamFrame = sSaXOam_29a7da,
@@ -1564,7 +1564,7 @@ const struct SaXAnimationData sSaXAnim_29b044[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b068[3] = {
+const struct SaXAnimationData sSaXAnim_Turning_Left[3] = {
     [0] = {
         .pGraphics = sSaXGfx_296086,
         .pOamFrame = sSaXOam_29a88a,
@@ -1578,7 +1578,7 @@ const struct SaXAnimationData sSaXAnim_29b068[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b08c[3] = {
+const struct SaXAnimationData sSaXAnim_Turning_Right[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29648a,
         .pOamFrame = sSaXOam_29a8d6,
@@ -1620,7 +1620,7 @@ const struct SaXAnimationData sSaXAnim_29b0d4[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b0f8[12] = {
+const struct SaXAnimationData sSaXAnim_TurningTowardsCamera[12] = {
     [0] = {
         .pGraphics = sSaXGfx_294fb8,
         .pOamFrame = sSaXOam_29a776,
@@ -1679,7 +1679,7 @@ const struct SaXAnimationData sSaXAnim_29b0f8[12] = {
     [11] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b188[3] = {
+const struct SaXAnimationData sSaXAnim_Morphing_Left[3] = {
     [0] = {
         .pGraphics = sSaXGfx_298486,
         .pOamFrame = sSaXOam_29ab22,
@@ -1693,7 +1693,7 @@ const struct SaXAnimationData sSaXAnim_29b188[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b1ac[3] = {
+const struct SaXAnimationData sSaXAnim_Unmorphing_Left[3] = {
     [0] = {
         .pGraphics = sSaXGfx_298588,
         .pOamFrame = sSaXOam_29ab22,
@@ -1707,7 +1707,7 @@ const struct SaXAnimationData sSaXAnim_29b1ac[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b1d0[9] = {
+const struct SaXAnimationData sSaXAnim_MorphBall_Left[9] = {
     [0] = {
         .pGraphics = sSaXGfx_29868a,
         .pOamFrame = sSaXOam_29ab36,
@@ -1751,7 +1751,7 @@ const struct SaXAnimationData sSaXAnim_29b1d0[9] = {
     [8] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b23c[3] = {
+const struct SaXAnimationData sSaXAnim_Morphing_Right[3] = {
     [0] = {
         .pGraphics = sSaXGfx_298a9a,
         .pOamFrame = sSaXOam_29ab76,
@@ -1765,7 +1765,7 @@ const struct SaXAnimationData sSaXAnim_29b23c[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b260[3] = {
+const struct SaXAnimationData sSaXAnim_Unmorphing_Right[3] = {
     [0] = {
         .pGraphics = sSaXGfx_298b9c,
         .pOamFrame = sSaXOam_29ab76,
@@ -1779,7 +1779,7 @@ const struct SaXAnimationData sSaXAnim_29b260[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b284[9] = {
+const struct SaXAnimationData sSaXAnim_MorphBall_Right[9] = {
     [0] = {
         .pGraphics = sSaXGfx_29868a,
         .pOamFrame = sSaXOam_29ab36,
@@ -1823,7 +1823,7 @@ const struct SaXAnimationData sSaXAnim_29b284[9] = {
     [8] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b2f0[3] = {
+const struct SaXAnimationData sSaXAnim_TurningAwayFromCamera[3] = {
     [0] = {
         .pGraphics = sSaXGfx_2977dc,
         .pOamFrame = sSaXOam_29aa22,
@@ -1837,7 +1837,7 @@ const struct SaXAnimationData sSaXAnim_29b2f0[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b314[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Left_Armed[4] = {
     [0] = {
         .pGraphics = sSaXGfx_298c9e,
         .pOamFrame = sSaXOam_29ab8a,
@@ -1856,7 +1856,7 @@ const struct SaXAnimationData sSaXAnim_29b314[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b344[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Left_Armed[3] = {
     [0] = {
         .pGraphics = sSaXGfx_2994e4,
         .pOamFrame = sSaXOam_29abc2,
@@ -1870,7 +1870,7 @@ const struct SaXAnimationData sSaXAnim_29b344[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b368[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Right_Armed[4] = {
     [0] = {
         .pGraphics = sSaXGfx_299786,
         .pOamFrame = sSaXOam_29abf4,
@@ -1889,7 +1889,7 @@ const struct SaXAnimationData sSaXAnim_29b368[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_29b398[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Right_Armed[3] = {
     [0] = {
         .pGraphics = sSaXGfx_299fcc,
         .pOamFrame = sSaXOam_29ac2c,
@@ -2964,7 +2964,7 @@ static const u16 sSaXOam_2a953a[OAM_DATA_SIZE(16)] = {
     0xee, 0x10, OBJ_PALETTE_8 | 0x239
 };
 
-const struct SaXAnimationData sSaXAnim_2a959c[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Left_DiagonalUp[4] = {
     [0] = {
         .pGraphics = sSaXGfx_29b3bc,
         .pOamFrame = sSaXOam_2a8a6c,
@@ -2983,7 +2983,7 @@ const struct SaXAnimationData sSaXAnim_2a959c[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a95cc[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Left_DiagonalUp[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29bba2,
         .pOamFrame = sSaXOam_2a8a98,
@@ -2997,7 +2997,7 @@ const struct SaXAnimationData sSaXAnim_2a95cc[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a95f0[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Left_DiagonalDown[4] = {
     [0] = {
         .pGraphics = sSaXGfx_29be44,
         .pOamFrame = sSaXOam_2a8ac4,
@@ -3016,7 +3016,7 @@ const struct SaXAnimationData sSaXAnim_2a95f0[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9620[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Left_DiagonalDown[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29c68a,
         .pOamFrame = sSaXOam_2a8af0,
@@ -3030,7 +3030,7 @@ const struct SaXAnimationData sSaXAnim_2a9620[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9644[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Right_DiagonalUp[4] = {
     [0] = {
         .pGraphics = sSaXGfx_29c94c,
         .pOamFrame = sSaXOam_2a8b1c,
@@ -3049,7 +3049,7 @@ const struct SaXAnimationData sSaXAnim_2a9644[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9674[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Right_DiagonalUp[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29d132,
         .pOamFrame = sSaXOam_2a8b80,
@@ -3063,7 +3063,7 @@ const struct SaXAnimationData sSaXAnim_2a9674[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9698[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Right_DiagonalDown[4] = {
     [0] = {
         .pGraphics = sSaXGfx_29d414,
         .pOamFrame = sSaXOam_2a8bb2,
@@ -3082,7 +3082,7 @@ const struct SaXAnimationData sSaXAnim_2a9698[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a96c8[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Right_DiagonalDown[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29dd5a,
         .pOamFrame = sSaXOam_2a8c10,
@@ -3096,7 +3096,7 @@ const struct SaXAnimationData sSaXAnim_2a96c8[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a96ec[3] = {
+const struct SaXAnimationData sSaXAnim_Turning_Left_DiagonalUp[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29e09c,
         .pOamFrame = sSaXOam_2a8c42,
@@ -3110,7 +3110,7 @@ const struct SaXAnimationData sSaXAnim_2a96ec[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9710[3] = {
+const struct SaXAnimationData sSaXAnim_Turning_Right_DiagonalUp[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29e25e,
         .pOamFrame = sSaXOam_2a8c62,
@@ -3124,7 +3124,7 @@ const struct SaXAnimationData sSaXAnim_2a9710[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9734[3] = {
+const struct SaXAnimationData sSaXAnim_Turning_Left_DiagonalDown[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29e400,
         .pOamFrame = sSaXOam_2a8c82,
@@ -3138,7 +3138,7 @@ const struct SaXAnimationData sSaXAnim_2a9734[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9758[3] = {
+const struct SaXAnimationData sSaXAnim_Turning_Right_DiagonalDown[3] = {
     [0] = {
         .pGraphics = sSaXGfx_29e602,
         .pOamFrame = sSaXOam_2a8ca8,
@@ -3152,7 +3152,7 @@ const struct SaXAnimationData sSaXAnim_2a9758[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a977c[4] = {
+const struct SaXAnimationData sSaXAnim_Landing_Left[4] = {
     [0] = {
         .pGraphics = sSaXGfx_29e804,
         .pOamFrame = sSaXOam_2a8cce,
@@ -3171,7 +3171,7 @@ const struct SaXAnimationData sSaXAnim_2a977c[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a97ac[4] = {
+const struct SaXAnimationData sSaXAnim_Landing_Right[4] = {
     [0] = {
         .pGraphics = sSaXGfx_29eeca,
         .pOamFrame = sSaXOam_2a8d46,
@@ -3190,7 +3190,7 @@ const struct SaXAnimationData sSaXAnim_2a97ac[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a97dc[2] = {
+const struct SaXAnimationData sSaXAnim_Falling_Left[2] = {
     [0] = {
         .pGraphics = sSaXGfx_29f490,
         .pOamFrame = sSaXOam_2a8db8,
@@ -3199,7 +3199,7 @@ const struct SaXAnimationData sSaXAnim_2a97dc[2] = {
     [1] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a97f4[2] = {
+const struct SaXAnimationData sSaXAnim_GettingHurt_Left[2] = {
     [0] = {
         .pGraphics = sSaXGfx_29f712,
         .pOamFrame = sSaXOam_2a8dde,
@@ -3208,7 +3208,7 @@ const struct SaXAnimationData sSaXAnim_2a97f4[2] = {
     [1] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a980c[2] = {
+const struct SaXAnimationData sSaXAnim_Falling_Right[2] = {
     [0] = {
         .pGraphics = sSaXGfx_29f914,
         .pOamFrame = sSaXOam_2a8e04,
@@ -3217,7 +3217,7 @@ const struct SaXAnimationData sSaXAnim_2a980c[2] = {
     [1] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9824[2] = {
+const struct SaXAnimationData sSaXAnim_GettingHurt_Right[2] = {
     [0] = {
         .pGraphics = sSaXGfx_29fbf6,
         .pOamFrame = sSaXOam_2a8e30,
@@ -3226,7 +3226,7 @@ const struct SaXAnimationData sSaXAnim_2a9824[2] = {
     [1] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a983c[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Left_DiagonalUp_Armed[4] = {
     [0] = {
         .pGraphics = sSaXGfx_29fe78,
         .pOamFrame = sSaXOam_2a8e5c,
@@ -3245,7 +3245,7 @@ const struct SaXAnimationData sSaXAnim_2a983c[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a986c[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Left_DiagonalUp_Armed[3] = {
     [0] = {
         .pGraphics = sSaXGfx_2a06be,
         .pOamFrame = sSaXOam_2a8e8e,
@@ -3259,7 +3259,7 @@ const struct SaXAnimationData sSaXAnim_2a986c[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9890[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Left_DiagonalDown_Armed[4] = {
     [0] = {
         .pGraphics = sSaXGfx_2a0980,
         .pOamFrame = sSaXOam_2a8ec0,
@@ -3278,7 +3278,7 @@ const struct SaXAnimationData sSaXAnim_2a9890[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a98c0[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Left_DiagonalDown_Armed[3] = {
     [0] = {
         .pGraphics = sSaXGfx_2a1226,
         .pOamFrame = sSaXOam_2a8ef2,
@@ -3292,7 +3292,7 @@ const struct SaXAnimationData sSaXAnim_2a98c0[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a98e4[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Right_DiagonalUp_Armed[4] = {
     [0] = {
         .pGraphics = sSaXGfx_2a1508,
         .pOamFrame = sSaXOam_2a8f24,
@@ -3311,7 +3311,7 @@ const struct SaXAnimationData sSaXAnim_2a98e4[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9914[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Right_DiagonalUp_Armed[3] = {
     [0] = {
         .pGraphics = sSaXGfx_2a1d4e,
         .pOamFrame = sSaXOam_2a8fcc,
@@ -3325,7 +3325,7 @@ const struct SaXAnimationData sSaXAnim_2a9914[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9938[4] = {
+const struct SaXAnimationData sSaXAnim_Standing_Right_DiagonalDown_Armed[4] = {
     [0] = {
         .pGraphics = sSaXGfx_2a2050,
         .pOamFrame = sSaXOam_2a9004,
@@ -3344,7 +3344,7 @@ const struct SaXAnimationData sSaXAnim_2a9938[4] = {
     [3] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9968[3] = {
+const struct SaXAnimationData sSaXAnim_Shooting_Right_DiagonalDown_Armed[3] = {
     [0] = {
         .pGraphics = sSaXGfx_2a29f6,
         .pOamFrame = sSaXOam_2a906e,
@@ -3358,7 +3358,7 @@ const struct SaXAnimationData sSaXAnim_2a9968[3] = {
     [2] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a998c[5] = {
+const struct SaXAnimationData sSaXAnim_Kneeling_Left[5] = {
     [0] = {
         .pGraphics = sSaXGfx_2a2d58,
         .pOamFrame = sSaXOam_2a90a6,
@@ -3382,7 +3382,7 @@ const struct SaXAnimationData sSaXAnim_2a998c[5] = {
     [4] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a99c8[5] = {
+const struct SaXAnimationData sSaXAnim_Kneeling_Right[5] = {
     [0] = {
         .pGraphics = sSaXGfx_2a331e,
         .pOamFrame = sSaXOam_2a911e,
@@ -3406,7 +3406,7 @@ const struct SaXAnimationData sSaXAnim_2a99c8[5] = {
     [4] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9a04[35] = {
+const struct SaXAnimationData sSaXAnim_TransformingIntoMonster_Left[35] = {
     [0] = {
         .pGraphics = sSaXGfx_2a2d58,
         .pOamFrame = sSaXOam_2a90a6,
@@ -3580,7 +3580,7 @@ const struct SaXAnimationData sSaXAnim_2a9a04[35] = {
     [34] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2a9ba8[35] = {
+const struct SaXAnimationData sSaXAnim_TransformingIntoMonster_Right[35] = {
     [0] = {
         .pGraphics = sSaXGfx_2a331e,
         .pOamFrame = sSaXOam_2a911e,
@@ -3846,7 +3846,7 @@ static const u16 sSaXOam_2abd7a[OAM_DATA_SIZE(2)] = {
     OBJ_SHAPE_HORIZONTAL | 0xf5, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_8 | 0x204
 };
 
-const struct SaXAnimationData sSaXAnim_2abd88[9] = {
+const struct SaXAnimationData sSaXAnim_MidAir_Left[9] = {
     [0] = {
         .pGraphics = sSaXGfx_2a9d4c,
         .pOamFrame = sSaXOam_2abd6c,
@@ -3890,7 +3890,7 @@ const struct SaXAnimationData sSaXAnim_2abd88[9] = {
     [8] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2abdf4[9] = {
+const struct SaXAnimationData sSaXAnim_MidAir_Right[9] = {
     [0] = {
         .pGraphics = sSaXGfx_2aad5c,
         .pOamFrame = sSaXOam_2abd7a,
@@ -4395,7 +4395,7 @@ static const u16 sSaXOam_2b0d4c[OAM_DATA_SIZE(3)] = {
     OBJ_SHAPE_HORIZONTAL | 0xf0, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_8 | 0x204
 };
 
-const struct SaXAnimationData sSaXAnim_2b0d60[51] = {
+const struct SaXAnimationData sSaXAnim_ShootingRestrictedLaboratory[51] = {
     [0] = {
         .pGraphics = sSaXGfx_2ac92a,
         .pOamFrame = sSaXOam_2b09ba,
@@ -4649,7 +4649,7 @@ const struct SaXAnimationData sSaXAnim_2b0d60[51] = {
     [50] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2b0fc4[23] = {
+const struct SaXAnimationData sSaXAnim_CoveredByMetroids[23] = {
     [0] = {
         .pGraphics = sSaXGfx_2af34c,
         .pOamFrame = sSaXOam_2b0c76,
@@ -5049,7 +5049,7 @@ static const u16 sSaXOam_2b3eea[OAM_DATA_SIZE(6)] = {
     0xdc, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1fa, OBJ_PALETTE_8 | 0x204
 };
 
-const struct SaXAnimationData sSaXAnim_2b3f10[11] = {
+const struct SaXAnimationData sSaXAnim_Walking_Left[11] = {
     [0] = {
         .pGraphics = sSaXGfx_2b10d8,
         .pOamFrame = sSaXOam_2b3c40,
@@ -5103,7 +5103,7 @@ const struct SaXAnimationData sSaXAnim_2b3f10[11] = {
     [10] = SA_X_ANIM_TERMINATOR
 };
 
-const struct SaXAnimationData sSaXAnim_2b3f94[11] = {
+const struct SaXAnimationData sSaXAnim_Walking_Right[11] = {
     [0] = {
         .pGraphics = sSaXGfx_2b27cc,
         .pOamFrame = sSaXOam_2b3da8,
@@ -5181,159 +5181,159 @@ const struct SaXData sSaXData_Empty = {
 
 const struct SaXAnimationData* const sSaXOamDataPointers[SA_X_POSE_END][2] = {
     [SA_X_POSE_RUNNING] = {
-        sSaXAnim_29ace4,
-        sSaXAnim_29ac60
+        sSaXAnim_Running_Right,
+        sSaXAnim_Running_Left
     },
     [SA_X_POSE_WALKING] = {
-        sSaXAnim_2b3f94,
-        sSaXAnim_2b3f10
+        sSaXAnim_Walking_Right,
+        sSaXAnim_Walking_Left
     },
     [SA_X_POSE_STANDING] = {
-        sSaXAnim_29afcc,
-        sSaXAnim_29af78
+        sSaXAnim_Standing_Right,
+        sSaXAnim_Standing_Left
     },
     [SA_X_POSE_SHOOTING] = {
-        sSaXAnim_29affc,
-        sSaXAnim_29afa8
+        sSaXAnim_Shooting_Right,
+        sSaXAnim_Shooting_Left
     },
     [SA_X_POSE_TURNING] = {
-        sSaXAnim_29b08c,
-        sSaXAnim_29b068
+        sSaXAnim_Turning_Right,
+        sSaXAnim_Turning_Left
     },
     [SA_X_POSE_MID_AIR] = {
-        sSaXAnim_2abdf4,
-        sSaXAnim_2abd88
+        sSaXAnim_MidAir_Right,
+        sSaXAnim_MidAir_Left
     },
     [SA_X_POSE_LANDING] = {
-        sSaXAnim_2a97ac,
-        sSaXAnim_2a977c
+        sSaXAnim_Landing_Right,
+        sSaXAnim_Landing_Left
     },
     [SA_X_POSE_FALLING] = {
-        sSaXAnim_2a980c,
-        sSaXAnim_2a97dc
+        sSaXAnim_Falling_Right,
+        sSaXAnim_Falling_Left
     },
     [SA_X_POSE_GETTING_HURT] = {
-        sSaXAnim_2a9824,
-        sSaXAnim_2a97f4
+        sSaXAnim_GettingHurt_Right,
+        sSaXAnim_GettingHurt_Left
     },
     [SA_X_POSE_SHOOTING_RESTRICTED_LABORATORY] = {
-        sSaXAnim_2b0d60,
-        sSaXAnim_2b0d60
+        sSaXAnim_ShootingRestrictedLaboratory,
+        sSaXAnim_ShootingRestrictedLaboratory
     },
     [SA_X_POSE_COVERED_BY_METROIDS] = {
-        sSaXAnim_2b0fc4,
-        sSaXAnim_2b0fc4
+        sSaXAnim_CoveredByMetroids,
+        sSaXAnim_CoveredByMetroids
     },
     [SA_X_POSE_KNEELING] = {
-        sSaXAnim_2a99c8,
-        sSaXAnim_2a998c
+        sSaXAnim_Kneeling_Right,
+        sSaXAnim_Kneeling_Left
     },
     [SA_X_POSE_TRANSFORMING_INTO_MONSTER] = {
-        sSaXAnim_2a9ba8,
-        sSaXAnim_2a9a04
+        sSaXAnim_TransformingIntoMonster_Right,
+        sSaXAnim_TransformingIntoMonster_Left
     },
     [SA_X_POSE_MORPHING] = {
-        sSaXAnim_29b23c,
-        sSaXAnim_29b188
+        sSaXAnim_Morphing_Right,
+        sSaXAnim_Morphing_Left
     },
     [SA_X_POSE_UNMORPHING] = {
-        sSaXAnim_29b260,
-        sSaXAnim_29b1ac
+        sSaXAnim_Unmorphing_Right,
+        sSaXAnim_Unmorphing_Left
     },
     [SA_X_POSE_MORPH_BALL] = {
-        sSaXAnim_29b284,
-        sSaXAnim_29b1d0
+        sSaXAnim_MorphBall_Right,
+        sSaXAnim_MorphBall_Left
     },
     [SA_X_POSE_ROLLING] = {
-        sSaXAnim_29b284,
-        sSaXAnim_29b1d0
+        sSaXAnim_MorphBall_Right,
+        sSaXAnim_MorphBall_Left
     },
     [SA_X_POSE_SWAG_WALK] = {
-        sSaXAnim_29adec,
-        sSaXAnim_29ad68
+        sSaXAnim_SwagWalk_Right,
+        sSaXAnim_SwagWalk_Left
     },
     [SA_X_POSE_TURNING_TOWARDS_CAMERA] = {
-        sSaXAnim_29b0f8,
-        sSaXAnim_29b0f8
+        sSaXAnim_TurningTowardsCamera,
+        sSaXAnim_TurningTowardsCamera
     },
     [SA_X_POSE_TURNING_AWAY_FROM_CAMERA] = {
-        sSaXAnim_29b2f0,
-        sSaXAnim_29b2f0
-    }
-};
-
-const struct SaXAnimationData* const sSaXOamDataPointers_Standing_Armed[DIAG_AIM_END][2] = {
-    [DIAG_AIM_NONE] = {
-        sSaXAnim_29afcc,
-        sSaXAnim_29af78
-    },
-    [DIAG_AIM_UP] = {
-        sSaXAnim_2a9644,
-        sSaXAnim_2a959c
-    },
-    [DIAG_AIM_DOWN] = {
-        sSaXAnim_2a9698,
-        sSaXAnim_2a95f0
+        sSaXAnim_TurningAwayFromCamera,
+        sSaXAnim_TurningAwayFromCamera
     }
 };
 
 const struct SaXAnimationData* const sSaXOamDataPointers_Standing[DIAG_AIM_END][2] = {
     [DIAG_AIM_NONE] = {
-        sSaXAnim_29b368,
-        sSaXAnim_29b314
+        sSaXAnim_Standing_Right,
+        sSaXAnim_Standing_Left
     },
     [DIAG_AIM_UP] = {
-        sSaXAnim_2a98e4,
-        sSaXAnim_2a983c
+        sSaXAnim_Standing_Right_DiagonalUp,
+        sSaXAnim_Standing_Left_DiagonalUp
     },
     [DIAG_AIM_DOWN] = {
-        sSaXAnim_2a9938,
-        sSaXAnim_2a9890
+        sSaXAnim_Standing_Right_DiagonalDown,
+        sSaXAnim_Standing_Left_DiagonalDown
     }
 };
 
-const struct SaXAnimationData* const sSaXOamDataPointers_Shooting_Armed[DIAG_AIM_END][2] = {
+const struct SaXAnimationData* const sSaXOamDataPointers_Standing_Armed[DIAG_AIM_END][2] = {
     [DIAG_AIM_NONE] = {
-        sSaXAnim_29affc,
-        sSaXAnim_29afa8
+        sSaXAnim_Standing_Right_Armed,
+        sSaXAnim_Standing_Left_Armed
     },
     [DIAG_AIM_UP] = {
-        sSaXAnim_2a9674,
-        sSaXAnim_2a95cc
+        sSaXAnim_Standing_Right_DiagonalUp_Armed,
+        sSaXAnim_Standing_Left_DiagonalUp_Armed
     },
     [DIAG_AIM_DOWN] = {
-        sSaXAnim_2a96c8,
-        sSaXAnim_2a9620
+        sSaXAnim_Standing_Right_DiagonalDown_Armed,
+        sSaXAnim_Standing_Left_DiagonalDown_Armed
     }
 };
 
 const struct SaXAnimationData* const sSaXOamDataPointers_Shooting[DIAG_AIM_END][2] = {
     [DIAG_AIM_NONE] = {
-        sSaXAnim_29b398,
-        sSaXAnim_29b344
+        sSaXAnim_Shooting_Right,
+        sSaXAnim_Shooting_Left
     },
     [DIAG_AIM_UP] = {
-        sSaXAnim_2a9914,
-        sSaXAnim_2a986c
+        sSaXAnim_Shooting_Right_DiagonalUp,
+        sSaXAnim_Shooting_Left_DiagonalUp
     },
     [DIAG_AIM_DOWN] = {
-        sSaXAnim_2a9968,
-        sSaXAnim_2a98c0
+        sSaXAnim_Shooting_Right_DiagonalDown,
+        sSaXAnim_Shooting_Left_DiagonalDown
+    }
+};
+
+const struct SaXAnimationData* const sSaXOamDataPointers_Shooting_Armed[DIAG_AIM_END][2] = {
+    [DIAG_AIM_NONE] = {
+        sSaXAnim_Shooting_Right_Armed,
+        sSaXAnim_Shooting_Left_Armed
+    },
+    [DIAG_AIM_UP] = {
+        sSaXAnim_Shooting_Right_DiagonalUp_Armed,
+        sSaXAnim_Shooting_Left_DiagonalUp_Armed
+    },
+    [DIAG_AIM_DOWN] = {
+        sSaXAnim_Shooting_Right_DiagonalDown_Armed,
+        sSaXAnim_Shooting_Left_DiagonalDown_Armed
     }
 };
 
 const struct SaXAnimationData* const sSaXOamDataPointers_Turning[DIAG_AIM_END][2] = {
     [DIAG_AIM_NONE] = {
-        sSaXAnim_29b08c,
-        sSaXAnim_29b068
+        sSaXAnim_Turning_Right,
+        sSaXAnim_Turning_Left
     },
     [DIAG_AIM_UP] = {
-        sSaXAnim_2a9710,
-        sSaXAnim_2a96ec
+        sSaXAnim_Turning_Right_DiagonalUp,
+        sSaXAnim_Turning_Left_DiagonalUp
     },
     [DIAG_AIM_DOWN] = {
-        sSaXAnim_2a9758,
-        sSaXAnim_2a9734
+        sSaXAnim_Turning_Right_DiagonalDown,
+        sSaXAnim_Turning_Left_DiagonalDown
     }
 };
 
