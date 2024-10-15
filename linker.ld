@@ -356,6 +356,7 @@ SECTIONS {
         audio/samples.o(.rodata);
         audio/tracks.o(.rodata);
         src/data/samus_data.o(.rodata);
+        src/data/sa_x/sa_x_graphics.o(.rodata);
         src/data/sprite_data.o(.rodata);
         src/data/spriteset.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
