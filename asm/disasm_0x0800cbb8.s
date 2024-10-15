@@ -931,13 +931,13 @@ _0800D256:
 	movs r1, #3
 	ands r1, r0
 	lsls r1, r1, #5
-	ldr r0, _0800D2A4 @ =0x082B4368
+	ldr r0, _0800D2A4 @ =sSaXPalette_MidAir
 	adds r0, r1, r0
 	b _0800D2CE
 	.align 2, 0
 _0800D29C: .4byte 0x082B403C
 _0800D2A0: .4byte gSaXData
-_0800D2A4: .4byte 0x082B4368
+_0800D2A4: .4byte sSaXPalette_MidAir
 _0800D2A8:
 	cmp r0, #0xc
 	bne _0800D2CC
@@ -955,10 +955,10 @@ _0800D2BC:
 	cmp r0, #0x1c
 	blt _0800D2CC
 _0800D2C4:
-	ldr r0, _0800D2C8 @ =0x082B43E8
+	ldr r0, _0800D2C8 @ =sSaXPalette_TransformingIntoMonster
 	b _0800D2CE
 	.align 2, 0
-_0800D2C8: .4byte 0x082B43E8
+_0800D2C8: .4byte sSaXPalette_TransformingIntoMonster
 _0800D2CC:
 	ldr r0, _0800D3CC @ =0x082E7D60
 _0800D2CE:

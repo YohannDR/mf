@@ -1,5 +1,6 @@
 #include "macros.h"
 
+#include "data/sprites/sa_x.h"
 #include "structs/sa_x.h"
 
 #define SA_X_GFX_SIZE(top, bottom) (2+(top+bottom)*32)
@@ -5156,4 +5157,190 @@ const struct SaXAnimationData sSaXAnim_2b3f94[11] = {
     [10] = SA_X_ANIM_TERMINATOR
 };
 
-static const u8 sBlob_2b4018_2e4904[] = INCBIN_U8("data/Blob_2b4018_2e4904.bin");
+const struct SaXData sSaXData_Empty = {
+    .screenFlag = 0,
+    .pose = 2,
+    .turning = 0,
+    .diagonalAim = 0,
+    .missilesArmed = 0,
+    .paletteRow = 0,
+    .mosaic = 0,
+    .direction = 0x10,
+    .xPosition = 0,
+    .yPosition = 0,
+    .xVelocity = 0,
+    .yVelocity = 0,
+    .animationDurationCounter = 0,
+    .currentAnimationFrame = 0,
+    .pTopGfx = NULL,
+    .pBottomGfx = NULL,
+    .topGfxLength = 0,
+    .bottomGfxLength = 0,
+    .pOamFrame = NULL
+};
+
+const struct SaXAnimationData* const sSaXOamDataPointers[SA_X_POSE_END][2] = {
+    [SA_X_POSE_RUNNING] = {
+        sSaXAnim_29ace4,
+        sSaXAnim_29ac60
+    },
+    [SA_X_POSE_WALKING] = {
+        sSaXAnim_2b3f94,
+        sSaXAnim_2b3f10
+    },
+    [SA_X_POSE_STANDING] = {
+        sSaXAnim_29afcc,
+        sSaXAnim_29af78
+    },
+    [SA_X_POSE_SHOOTING] = {
+        sSaXAnim_29affc,
+        sSaXAnim_29afa8
+    },
+    [SA_X_POSE_TURNING] = {
+        sSaXAnim_29b08c,
+        sSaXAnim_29b068
+    },
+    [SA_X_POSE_MID_AIR] = {
+        sSaXAnim_2abdf4,
+        sSaXAnim_2abd88
+    },
+    [SA_X_POSE_LANDING] = {
+        sSaXAnim_2a97ac,
+        sSaXAnim_2a977c
+    },
+    [SA_X_POSE_FALLING] = {
+        sSaXAnim_2a980c,
+        sSaXAnim_2a97dc
+    },
+    [SA_X_POSE_GETTING_HURT] = {
+        sSaXAnim_2a9824,
+        sSaXAnim_2a97f4
+    },
+    [SA_X_POSE_SHOOTING_RESTRICTED_LABORATORY] = {
+        sSaXAnim_2b0d60,
+        sSaXAnim_2b0d60
+    },
+    [SA_X_POSE_COVERED_BY_METROIDS] = {
+        sSaXAnim_2b0fc4,
+        sSaXAnim_2b0fc4
+    },
+    [SA_X_POSE_KNEELING] = {
+        sSaXAnim_2a99c8,
+        sSaXAnim_2a998c
+    },
+    [SA_X_POSE_TRANSFORMING_INTO_MONSTER] = {
+        sSaXAnim_2a9ba8,
+        sSaXAnim_2a9a04
+    },
+    [SA_X_POSE_MORPHING] = {
+        sSaXAnim_29b23c,
+        sSaXAnim_29b188
+    },
+    [SA_X_POSE_UNMORPHING] = {
+        sSaXAnim_29b260,
+        sSaXAnim_29b1ac
+    },
+    [SA_X_POSE_MORPH_BALL] = {
+        sSaXAnim_29b284,
+        sSaXAnim_29b1d0
+    },
+    [SA_X_POSE_ROLLING] = {
+        sSaXAnim_29b284,
+        sSaXAnim_29b1d0
+    },
+    [SA_X_POSE_SWAG_WALK] = {
+        sSaXAnim_29adec,
+        sSaXAnim_29ad68
+    },
+    [SA_X_POSE_TURNING_TOWARDS_CAMERA] = {
+        sSaXAnim_29b0f8,
+        sSaXAnim_29b0f8
+    },
+    [SA_X_POSE_TURNING_AWAY_FROM_CAMERA] = {
+        sSaXAnim_29b2f0,
+        sSaXAnim_29b2f0
+    }
+};
+
+const struct SaXAnimationData* const sSaXOamDataPointers_Standing_Armed[DIAG_AIM_END][2] = {
+    [DIAG_AIM_NONE] = {
+        sSaXAnim_29afcc,
+        sSaXAnim_29af78
+    },
+    [DIAG_AIM_UP] = {
+        sSaXAnim_2a9644,
+        sSaXAnim_2a959c
+    },
+    [DIAG_AIM_DOWN] = {
+        sSaXAnim_2a9698,
+        sSaXAnim_2a95f0
+    }
+};
+
+const struct SaXAnimationData* const sSaXOamDataPointers_Standing[DIAG_AIM_END][2] = {
+    [DIAG_AIM_NONE] = {
+        sSaXAnim_29b368,
+        sSaXAnim_29b314
+    },
+    [DIAG_AIM_UP] = {
+        sSaXAnim_2a98e4,
+        sSaXAnim_2a983c
+    },
+    [DIAG_AIM_DOWN] = {
+        sSaXAnim_2a9938,
+        sSaXAnim_2a9890
+    }
+};
+
+const struct SaXAnimationData* const sSaXOamDataPointers_Shooting_Armed[DIAG_AIM_END][2] = {
+    [DIAG_AIM_NONE] = {
+        sSaXAnim_29affc,
+        sSaXAnim_29afa8
+    },
+    [DIAG_AIM_UP] = {
+        sSaXAnim_2a9674,
+        sSaXAnim_2a95cc
+    },
+    [DIAG_AIM_DOWN] = {
+        sSaXAnim_2a96c8,
+        sSaXAnim_2a9620
+    }
+};
+
+const struct SaXAnimationData* const sSaXOamDataPointers_Shooting[DIAG_AIM_END][2] = {
+    [DIAG_AIM_NONE] = {
+        sSaXAnim_29b398,
+        sSaXAnim_29b344
+    },
+    [DIAG_AIM_UP] = {
+        sSaXAnim_2a9914,
+        sSaXAnim_2a986c
+    },
+    [DIAG_AIM_DOWN] = {
+        sSaXAnim_2a9968,
+        sSaXAnim_2a98c0
+    }
+};
+
+const struct SaXAnimationData* const sSaXOamDataPointers_Turning[DIAG_AIM_END][2] = {
+    [DIAG_AIM_NONE] = {
+        sSaXAnim_29b08c,
+        sSaXAnim_29b068
+    },
+    [DIAG_AIM_UP] = {
+        sSaXAnim_2a9710,
+        sSaXAnim_2a96ec
+    },
+    [DIAG_AIM_DOWN] = {
+        sSaXAnim_2a9758,
+        sSaXAnim_2a9734
+    }
+};
+
+static const u8 sBlob_2b4154_2b4168[] = INCBIN_U8("data/Blob_2b4154_2b4168.bin");
+
+const u16 sSaXPalette_Fading[16 * 16] = INCBIN_U16("data/sa_x/fading.pal");
+const u16 sSaXPalette_MidAir[4 * 16] = INCBIN_U16("data/sa_x/screw_attack.pal");
+const u16 sSaXPalette_TransformingIntoMonster[1 * 16] = INCBIN_U16("data/sa_x/transforming_into_monster.pal");
+
+static const u8 sBlob_2b4408_2e4904[] = INCBIN_U8("data/Blob_2b4408_2e4904.bin");

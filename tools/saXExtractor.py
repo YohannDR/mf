@@ -1,3 +1,40 @@
+saXPoseNames = [
+    "SA_X_POSE_RUNNING",
+    "SA_X_POSE_WALKING",
+    "SA_X_POSE_STANDING",
+    "SA_X_POSE_SHOOTING",
+    "SA_X_POSE_TURNING",
+    "SA_X_POSE_MID_AIR",
+    "SA_X_POSE_LANDING",
+    "SA_X_POSE_FALLING",
+    "SA_X_POSE_GETTING_HURT",
+    "SA_X_POSE_SHOOTING_RESTRICTED_LABORATORY",
+    "SA_X_POSE_COVERED_BY_METROIDS",
+    "SA_X_POSE_KNEELING",
+    "SA_X_POSE_TRANSFORMING_INTO_MONSTER",
+    "SA_X_POSE_MORPHING",
+    "SA_X_POSE_UNMORPHING",
+    "SA_X_POSE_MORPH_BALL",
+    "SA_X_POSE_ROLLING",
+    "SA_X_POSE_SWAG_WALK",
+    "SA_X_POSE_TURNING_TOWARDS_CAMERA",
+    "SA_X_POSE_TURNING_AWAY_FROM_CAMERA"
+]
+
+diagAimNames = [
+    "DIAG_AIM_NONE",
+    "DIAG_AIM_UP",
+    "DIAG_AIM_DOWN"
+]
+
+diagAimPoses = [
+    "sSaXOamDataPointers_Standing_Armed",
+    "sSaXOamDataPointers_Standing",
+    "sSaXOamDataPointers_Shooting_Armed",
+    "sSaXOamDataPointers_Shooting",
+    "sSaXOamDataPointers_Turning"
+]
+
 def ParseGfx():
     startAddr = file.tell()
 
@@ -192,12 +229,29 @@ def PrintGfxOamAnim():
 file = open("../mf_us_baserom.gba", "rb")
 
 def Func():
-    start = 0x28ff60
-
-    file.seek(start)
+    file.seek(0x28ff60)
 
     for i in range(5):
         PrintGfxOamAnim()
+
+    '''file.seek(0x2b403c)
+
+    print("extern const struct SaXAnimationData* const sSaXOamDataPointers[SA_X_POSE_END][2] = {")
+    for name in saXPoseNames:
+        print("    [" + name + "] = {")
+        print(f"        sSaXAnim_{int.from_bytes(file.read(4), 'little') & 0x1ffffff:x},")
+        print(f"        sSaXAnim_{int.from_bytes(file.read(4), 'little') & 0x1ffffff:x}")
+        print("    },")
+    print("};\n")
+
+    for diagAimPose in diagAimPoses:
+        print("const struct SaXAnimationData* const " + diagAimPose + "[DIAG_AIM_END][2] = {")
+        for name in diagAimNames:
+            print("    [" + name + "] = {")
+            print(f"        sSaXAnim_{int.from_bytes(file.read(4), 'little') & 0x1ffffff:x},")
+            print(f"        sSaXAnim_{int.from_bytes(file.read(4), 'little') & 0x1ffffff:x}")
+            print("    },")
+        print("};\n")'''
 
     input(f"End: {file.tell():x}")
 

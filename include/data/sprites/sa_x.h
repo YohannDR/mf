@@ -110,6 +110,7 @@ extern const struct SaXAnimationData* const sSaXOamDataPointers_Shooting[DIAG_AI
 
 extern const struct SaXAnimationData* const sSaXOamDataPointers_Turning[DIAG_AIM_END][2];
 
+extern const u16 sSaXPalette_Fading[16 * 16];
 extern const u16 sSaXPalette_MidAir[4 * 16];
 extern const u16 sSaXPalette_TransformingIntoMonster[1 * 16];
 

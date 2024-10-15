@@ -231,6 +231,10 @@ sa_x/2b359a.gfx;19;2b359c;32
 sa_x/2b37fc.gfx;19;2b37fe;32
 sa_x/2b3a5e.gfx;15;2b3a60;32
 
+sa_x/fading.pal;16;0x2b4168;32
+sa_x/screw_attack.pal;4;0x2b4368;32
+sa_x/transforming_into_monster.pal;1;0x2b43e8;32
+
 # Hornoad
 
 sprites/hornoad.gfx;1536;0x2e926c;4
@@ -445,7 +449,8 @@ menus/title_screen/596e0c.pal;128;0x596e0c;2
 Blob_a5224_a5710.bin;1260;0xa5224;1
 Blob_289970_28fd04.bin;25492;0x289970;1
 Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
-Blob_2b4018_2e4904.bin;0x2b4018;0x2e4904
+Blob_2b4154_2b4168.bin;0x2b4154;0x2b4168
+Blob_2b4408_2e4904.bin;0x2b4408;0x2e4904
 Blob_2e6382_2eb8ac.bin;21802;0x2e6382;1
 Blob_31a158_3420b4.bin;0x31a158;0x3420b4
 Blob_3480c8_35dd74.bin;0x3480c8;0x35dd74
