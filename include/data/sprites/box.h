@@ -7,7 +7,7 @@
 #include "structs/sprite.h"
 
 enum BoxOam {
-    FRAMEDATA_3479A8,
+    BOX_OAM_PART_FRONT_LEFT_LEG_COVER_UNDAMAGED,
     FRAMEDATA_3479B8,
     FRAMEDATA_3479F0,
     FRAMEDATA_347A00,
@@ -20,7 +20,7 @@ enum BoxOam {
     FRAMEDATA_347A70,
     FRAMEDATA_347A80,
     FRAMEDATA_347A90,
-    FRAMEDATA_347AA0,
+    BOX_OAM_PART_FRONT_RIGHT_LEG_COVER_UNDAMAGED,
     FRAMEDATA_347AB0,
     FRAMEDATA_347AE8,
     FRAMEDATA_347AF8,
@@ -37,7 +37,7 @@ enum BoxOam {
     FRAMEDATA_347BA8,
     FRAMEDATA_347BB8,
     FRAMEDATA_347BC8,
-    FRAMEDATA_347BD8,
+    BOX_OAM_PART_BRAIN,
     FRAMEDATA_347C38,
     FRAMEDATA_347C70,
     FRAMEDATA_347C98,
@@ -94,32 +94,32 @@ extern const s16 sBoxBombFirstBounceSpeed[6];
 extern const s16 sBoxBombLaunchingSpeed[11];
 extern const s16 sBoxBombFallingSpeed[16];
 
-extern const struct MultiSpriteData sMultiSpriteData_342d98[2];
-extern const struct MultiSpriteData sMultiSpriteData_342da8[4];
-extern const struct MultiSpriteData sMultiSpriteData_342dc8[5];
-extern const struct MultiSpriteData sMultiSpriteData_342df0[5];
-extern const struct MultiSpriteData sMultiSpriteData_342e18[6];
-extern const struct MultiSpriteData sMultiSpriteData_342e48[6];
-extern const struct MultiSpriteData sMultiSpriteData_342e78[6];
-extern const struct MultiSpriteData sMultiSpriteData_342ea8[6];
-extern const struct MultiSpriteData sMultiSpriteData_342ed8[6];
-extern const struct MultiSpriteData sMultiSpriteData_342f08[6];
-extern const struct MultiSpriteData sMultiSpriteData_342f38[5];
-extern const struct MultiSpriteData sMultiSpriteData_342f60[9];
-extern const struct MultiSpriteData sMultiSpriteData_342fa8[2];
-extern const struct MultiSpriteData sMultiSpriteData_342fb8[2];
-extern const struct MultiSpriteData sMultiSpriteData_342fc8[2];
-extern const struct MultiSpriteData sMultiSpriteData_342fd8[2];
-extern const struct MultiSpriteData sMultiSpriteData_342fe8[8];
-extern const struct MultiSpriteData sMultiSpriteData_343028[4];
-extern const struct MultiSpriteData sMultiSpriteData_343048[9];
+extern const struct MultiSpriteData sBoxMultiSpriteData_Jumping[2];
+extern const struct MultiSpriteData sBoxMultiSpriteData_Landing[4];
+extern const struct MultiSpriteData sBoxMultiSpriteData_JumpWarning[5];
+extern const struct MultiSpriteData sBoxMultiSpriteData_Defeated[5];
+extern const struct MultiSpriteData sBoxMultiSpriteData_Crawling_Left[6];
+extern const struct MultiSpriteData sBoxMultiSpriteData_SlowRun_Left[6];
+extern const struct MultiSpriteData sBoxMultiSpriteData_FastRun_Left[6];
+extern const struct MultiSpriteData sBoxMultiSpriteData_Crawling_Right[6];
+extern const struct MultiSpriteData sBoxMultiSpriteData_SlowRun_Right[6];
+extern const struct MultiSpriteData sBoxMultiSpriteData_FastRun_Right[6];
+extern const struct MultiSpriteData sBoxMultiSpriteData_FinishedCrawling[5];
+extern const struct MultiSpriteData sBoxMultiSpriteData_WaitingToRun[9];
+extern const struct MultiSpriteData sBoxMultiSpriteData_Skidding_Left[2];
+extern const struct MultiSpriteData sBoxMultiSpriteData_StopSkidding_Left[2];
+extern const struct MultiSpriteData sBoxMultiSpriteData_Skidding_Right[2];
+extern const struct MultiSpriteData sBoxMultiSpriteData_StopSkidding_Right[2];
+extern const struct MultiSpriteData sBoxMultiSpriteData_LoweringToFireBomb[8];
+extern const struct MultiSpriteData sBoxMultiSpriteData_FiringBomb[4];
+extern const struct MultiSpriteData sBoxMultiSpriteData_DoneFiringBomb[9];
 
 extern const u32 sBoxGfx[512 * 8];
 extern const u16 sBoxPal[16 * 8];
 
-extern const struct FrameData sFrameData_3479a8[2];
+extern const struct FrameData sBoxPartOam_FrontLeftLegCoverUndamaged[2];
 extern const struct FrameData sFrameData_3479b8[7];
-extern const struct FrameData sFrameData_3479f0[2];
+extern const struct FrameData sBoxPartOam_FrontLeftLegCoverDamaged[2];
 extern const struct FrameData sFrameData_347a00[2];
 extern const struct FrameData sFrameData_347a10[2];
 extern const struct FrameData sFrameData_347a20[2];
@@ -130,9 +130,9 @@ extern const struct FrameData sFrameData_347a60[2];
 extern const struct FrameData sFrameData_347a70[2];
 extern const struct FrameData sFrameData_347a80[2];
 extern const struct FrameData sFrameData_347a90[2];
-extern const struct FrameData sFrameData_347aa0[2];
+extern const struct FrameData sBoxPartOam_FrontRightLegCoverUndamaged[2];
 extern const struct FrameData sFrameData_347ab0[7];
-extern const struct FrameData sFrameData_347ae8[2];
+extern const struct FrameData sBoxPartOam_FrontRightLegCoverDamaged[2];
 extern const struct FrameData sFrameData_347af8[2];
 extern const struct FrameData sFrameData_347b08[2];
 extern const struct FrameData sFrameData_347b18[2];
@@ -143,11 +143,11 @@ extern const struct FrameData sFrameData_347b58[2];
 extern const struct FrameData sFrameData_347b68[2];
 extern const struct FrameData sFrameData_347b78[2];
 extern const struct FrameData sFrameData_347b88[2];
-extern const struct FrameData sFrameData_347b98[2];
-extern const struct FrameData sFrameData_347ba8[2];
-extern const struct FrameData sFrameData_347bb8[2];
-extern const struct FrameData sFrameData_347bc8[2];
-extern const struct FrameData sFrameData_347bd8[12];
+extern const struct FrameData sBoxPartOam_CenterUndamaged[2];
+extern const struct FrameData sBoxPartOam_CenterSlightlyDamaged[2];
+extern const struct FrameData sBoxPartOam_CenterModeratelyDamaged[2];
+extern const struct FrameData sBoxPartOam_CenterHeavilyDamaged[2];
+extern const struct FrameData sBoxPartOam_Brain[12];
 extern const struct FrameData sFrameData_347c38[7];
 extern const struct FrameData sFrameData_347c70[5];
 extern const struct FrameData sFrameData_347c98[2];
@@ -159,21 +159,21 @@ extern const struct FrameData sFrameData_347d28[2];
 extern const struct FrameData sFrameData_347d38[2];
 extern const struct FrameData sFrameData_347d48[2];
 extern const struct FrameData sFrameData_347d58[2];
-extern const struct FrameData sFrameData_347d68[4];
-extern const struct FrameData sFrameData_347d88[26];
-extern const struct FrameData sFrameData_347e58[5];
-extern const struct FrameData sFrameData_347e80[37];
-extern const struct FrameData sFrameData_347fa8[2];
-extern const struct FrameData sFrameData_347fb8[2];
-extern const struct FrameData sFrameData_347fc8[2];
-extern const struct FrameData sFrameData_347fd8[2];
-extern const struct FrameData sFrameData_347fe8[2];
-extern const struct FrameData sFrameData_347ff8[2];
-extern const struct FrameData sFrameData_348008[2];
-extern const struct FrameData sFrameData_348018[2];
-extern const struct FrameData sFrameData_348028[2];
-extern const struct FrameData sFrameData_348038[2];
+extern const struct FrameData sBoxMissileOam[4];
+extern const struct FrameData sBoxBombOam_Unused[26];
+extern const struct FrameData sBoxBombOam_Moving[5];
+extern const struct FrameData sBoxFireOam_MovingHigh[37];
+extern const struct FrameData sBoxDebrisOam[2];
+extern const struct FrameData sBoxFallingDebrisOam_0[2];
+extern const struct FrameData sBoxFallingDebrisOam_1[2];
+extern const struct FrameData sBoxFallingDebrisOam_2[2];
+extern const struct FrameData sBoxFallingDebrisOam_3[2];
+extern const struct FrameData sBoxFallingDebrisOam_4[2];
+extern const struct FrameData sBoxFallingDebrisOam_5[2];
+extern const struct FrameData sBoxFallingDebrisOam_6[2];
+extern const struct FrameData sBoxFallingDebrisOam_7[2];
+extern const struct FrameData sBoxFallingDebrisOam_8[2];
 extern const struct FrameData sFrameData_348048[12];
-extern const struct FrameData sFrameData_3480a8[4];
+extern const struct FrameData sBoxFireOam_MovingLow[4];
 
 #endif /* BOX_DATA_H */
