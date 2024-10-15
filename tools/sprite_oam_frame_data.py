@@ -96,15 +96,18 @@ def ParsePart2(value):
 def ParseOam():
     part_count = int.from_bytes(file.read(2), "little")
     result = f"static const u16 sOam_{file.tell()-2:x}[OAM_DATA_SIZE({part_count})] = " + "{\n"
-    result += f"    {part_count},\n    "
+    if part_count == 0:
+        result += f"    0"
+    else:
+        result += f"    {part_count},\n    "
 
-    for x in range(0, part_count):
-        part0 = ParsePart0(int.from_bytes(file.read(2), "little"))
-        result += part0 + ", "
-        result += ParsePart1(part0, int.from_bytes(file.read(2), "little")) + ", "
-        result += ParsePart2(int.from_bytes(file.read(2), "little"))
-        if x < part_count - 1:
-            result += ",\n    "
+        for x in range(0, part_count):
+            part0 = ParsePart0(int.from_bytes(file.read(2), "little"))
+            result += part0 + ", "
+            result += ParsePart1(part0, int.from_bytes(file.read(2), "little")) + ", "
+            result += ParsePart2(int.from_bytes(file.read(2), "little"))
+            if x < part_count - 1:
+                result += ",\n    "
 
     result += "\n};\n"
 
@@ -128,7 +131,7 @@ def ParseFrameData():
         index += 1
     result += f"    [{index}] = FRAME_DATA_TERMINATOR\n" + "};\n"
 
-    return (result, len(frameData)+1)
+    return (result, frameData)
 
 file = open("../mf_us_baserom.gba", "rb")
 
@@ -147,23 +150,21 @@ def Func():
         file.seek(palettePointer+paletteRows*16*2)
 
     frames = set()
+    output = ""
     while True:
         currentAddr = file.tell()
+        if currentAddr % 4 != 0:
+            file.read(4 - (currentAddr % 4)) # align
         pointer = int.from_bytes(file.read(4), 'little')
-        file.seek(currentAddr)
         if pointer in frames:
+            file.seek(file.tell()-4)
             break
-        if pointer & 0xFFFF == 0:
-            file.read(2) # align if it's not actually an empty frame
-            pointer = int.from_bytes(file.read(4), 'little')
-            file.seek(file.tell()-6)
-            if pointer in frames:
-                file.read(2)
-                break
+        file.seek(currentAddr)
         frames |= {currentAddr | 0x8000000}
-        print(ParseOam())
+        output += ParseOam() + '\n'
 
     animations = []
+    namedFrames = {}
     while True:
         currentAddr = file.tell()
         pointer = int.from_bytes(file.read(4), 'little')
@@ -171,9 +172,16 @@ def Func():
         if pointer not in frames:
             break
 
-        (result, count) = ParseFrameData()
-        print(result)
-        animations.append((currentAddr, count))
+        (result, frameData) = ParseFrameData()
+        output += result + '\n'
+        animations.append((currentAddr, len(frameData)+1))
+        for i in range(len(frameData)):
+            if frameData[i][0] not in namedFrames:
+                namedFrames[frameData[i][0]] = f"sFrameData_{currentAddr:x}_Frame{i}"
+
+    for (addr, name) in namedFrames.items():
+        output = output.replace(f"sOam_{addr:x}", name)
+    print(output)
 
     for (addr, count) in animations:
         print(f"extern const struct FrameData sFrameData_{addr:x}[{count}];")
