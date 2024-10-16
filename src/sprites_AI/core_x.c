@@ -463,7 +463,7 @@ void CoreXAbilityIdle(void) {
     xPosOnScreen = SUB_PIXEL_TO_PIXEL_(gCurrentSprite.xPosition) - SUB_PIXEL_TO_PIXEL_(gBg1XPosition);
     if (gCurrentSprite.yPosition < gSamusData.yPosition) {
         if (xPosOnScreen > 20) {
-            if (xPosOnScreen < 220) {
+            if (xPosOnScreen < SCREEN_SIZE_X - 20) {
                 ramSlot = SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_FORMATION, 0, 0,
                     gCurrentSprite.primarySpriteRamSlot, 0x30, gCurrentSprite.yPosition + 0xb4, gCurrentSprite.xPosition - 0x14, 0);
                 if (ramSlot != UCHAR_MAX) {

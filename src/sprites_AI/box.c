@@ -681,6 +681,8 @@ void BoxWaitingForFinalJumpInit(void) {
 }
 
 void BoxWaitingForFinalJump(void) {
+    u16 xPosOnScreen;
+
     if ((gFrameCounter8Bit & 7) == 0) {
         if ((gFrameCounter8Bit & 8) != 0) {
             gCurrentSprite.paletteRow = 0xb;
@@ -688,7 +690,8 @@ void BoxWaitingForFinalJump(void) {
             gCurrentSprite.paletteRow = 0;
         }
     }
-    if ((u32)(((gCurrentSprite.xPosition / 4 - gBg1XPosition / 4) << 0x10) - 0x190000) >> 0x10 < 0xbf) { // umm...?
+    xPosOnScreen = SUB_PIXEL_TO_PIXEL_(gCurrentSprite.xPosition) - SUB_PIXEL_TO_PIXEL_(gBg1XPosition);
+    if (xPosOnScreen > 0x18 && xPosOnScreen < SCREEN_SIZE_X - 0x18) {
         if (SpriteUtilCheckNearEndSubSprite1Anim()) {
             gCurrentSprite.pose = 0x49;
         }
@@ -1477,8 +1480,11 @@ void BoxDebrisFallingInit(void) {
 }
 
 void BoxDebrisWaitToFall(void) {
+    u16 xPosOnScreen;
+
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
-    if ((u32)(((gCurrentSprite.xPosition / 4 - gBg1XPosition / 4) << 0x10) - 0x210000) >> 0x10 < 0xaf) {
+    xPosOnScreen = SUB_PIXEL_TO_PIXEL_(gCurrentSprite.xPosition) - SUB_PIXEL_TO_PIXEL_(gBg1XPosition);
+    if (xPosOnScreen > 0x20 && xPosOnScreen < SCREEN_SIZE_X - 0x20) {
         gCurrentSprite.work1 = 0;
         gCurrentSprite.work4 = 0;
         gCurrentSprite.pose = 0x1c;
