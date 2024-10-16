@@ -2990,7 +2990,7 @@ void SpriteUtilTrySetAbsorbXFlag(void)
  * @param spriteId Sprite ID
  * @return u8 count
  */
-u8 SpriteUtilSpriteUtilCountSecondarySpritess(u8 spriteId)
+u8 SpriteUtilSpriteUtilCountSecondarySprites(u8 spriteId)
 {
     u8 i;
     u8 count;

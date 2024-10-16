@@ -5028,8 +5028,8 @@ _080123BE:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start RefillSamus
-RefillSamus: @ 0x080123C4
+	thumb_func_start SpriteUtilRefillSamus
+SpriteUtilRefillSamus: @ 0x080123C4
 	push {r4, r5, lr}
 	lsls r0, r0, #0x10
 	lsls r1, r1, #0x10
@@ -5632,8 +5632,8 @@ _08012890:
 	.align 2, 0
 _080128A4: .4byte gSpriteData
 
-	thumb_func_start CountPrimarySprite
-CountPrimarySprite: @ 0x080128A8
+	thumb_func_start SpriteUtilCountPrimarySprites
+SpriteUtilCountPrimarySprites: @ 0x080128A8
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18

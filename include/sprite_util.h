@@ -69,7 +69,7 @@ u32 SpriteUtilCheckHangingOnLedge(void);
 u32 SpriteUtilCheckOnCeilingLadder(void);
 u32 SpriteUtilCheckPullingSelfUp(void);
 void SpriteUtilTrySetAbsorbXFlag(void);
-u8 SpriteUtilSpriteUtilCountSecondarySpritess(u8 spriteId);
+u8 SpriteUtilSpriteUtilCountSecondarySprites(u8 spriteId);
 u8 SpriteUtilCountPrimarySprites(u8 spriteId);
 u8 SpriteUtilFindPrimarySprite(u8 spriteId);
 u8 SpriteUtilFindSecondarySprite(u8 spriteId);

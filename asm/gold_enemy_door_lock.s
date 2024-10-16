@@ -6,7 +6,7 @@
 GoldSciserDoorLockIdle: @ 0x08057294
 	push {lr}
 	movs r0, #0x8b
-	bl CountPrimarySprite
+	bl SpriteUtilCountPrimarySprites
 	lsls r0, r0, #0x18
 	lsrs r2, r0, #0x18
 	cmp r2, #0
@@ -102,7 +102,7 @@ _08057348:
 GoldZebesianDoorLockIdle: @ 0x08057350
 	push {lr}
 	movs r0, #0xa2
-	bl CountPrimarySprite
+	bl SpriteUtilCountPrimarySprites
 	lsls r0, r0, #0x18
 	lsrs r2, r0, #0x18
 	cmp r2, #0

@@ -578,7 +578,7 @@ _0802DDF4:
 	lsls r0, r0, #1
 	movs r1, #0x32
 	movs r2, #0xa
-	bl RefillSamus
+	bl SpriteUtilRefillSamus
 	ldr r1, _0802DE10 @ =0x030012F0
 	movs r0, #0x30
 	strb r0, [r1, #3]
@@ -954,7 +954,7 @@ BeamCoreXShellIdle: @ 0x0802E0BC
 	cmp r0, #1
 	bne _0802E0FE
 	movs r0, #0x32
-	bl CountPrimarySprite
+	bl SpriteUtilCountPrimarySprites
 	lsls r0, r0, #0x18
 	lsrs r2, r0, #0x18
 	cmp r2, #5

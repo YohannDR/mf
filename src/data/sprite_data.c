@@ -2401,7 +2401,7 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
         SPRITE_WEAKNESS_NONE
     },
-    [SSPRITE_1B] = {
+    [SSPRITE_CORE_X_SHELL_MORPH_BALL] = {
         30,
         10,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
@@ -2803,13 +2803,13 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_MISSILES
     },
-    [SSPRITE_CORE_X_STATIC_BEFORE_VARIA_CORE] = {
+    [SSPRITE_CORE_X_SHELL_HIGH_JUMP] = {
         40,
         20,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_MISSILES
     },
-    [SSPRITE_5F] = {
+    [SSPRITE_CORE_X_SHELL_SPEEDBOOSTER] = {
         50,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
@@ -2821,19 +2821,19 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_MISSILES
     },
-    [SSPRITE_61] = {
+    [SSPRITE_CORE_X_SHELL_SPACE_JUMP] = {
         240,
         45,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_MISSILES
     },
-    [SSPRITE_62] = {
+    [SSPRITE_CORE_X_SHELL_GRAVITY] = {
         240,
         50,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_MISSILES
     },
-    [SSPRITE_63] = {
+    [SSPRITE_CORE_X_SHELL_SCREW_ATTACK] = {
         270,
         55,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,

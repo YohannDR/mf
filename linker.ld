@@ -236,8 +236,8 @@ SECTIONS {
         src/sprites_AI/zombie_researcher.o(.text);
         src/sprites_AI/geemer.o(.text);
         src/sprites_AI/arachnus.o(.text);
+        src/sprites_AI/core_x.o(.text);
 
-        asm/core_x.o(.text);
         asm/core_x_downloading_varia.o(.text);
         asm/waver.o(.text);
         asm/sciser.o(.text);

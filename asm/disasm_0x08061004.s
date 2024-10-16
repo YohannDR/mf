@@ -871,7 +871,7 @@ _0806164E:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl RefillSamus
+	bl SpriteUtilRefillSamus
 	ldr r1, _08061670 @ =0x030012F0
 	movs r0, #0x30
 	strb r0, [r1, #3]

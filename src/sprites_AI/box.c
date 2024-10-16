@@ -5,7 +5,7 @@
 #include "data/sprite_data.h"
 #include "data/sprites/box.h"
 
-#include "constants/samus.h"
+#include "constants/event.h"
 #include "constants/particle.h"
 
 #include "structs/samus.h"
@@ -1446,7 +1446,7 @@ void BoxDebrisInit(void) {
     gCurrentSprite.health = 1;
     gCurrentSprite.properties |= 8;
     gCurrentSprite.drawOrder = 0xc;
-    gCurrentSprite.samusCollision = 1;
+    gCurrentSprite.samusCollision = SSC_SOLID;
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
     gCurrentSprite.xPosition -= 0x20;
     if (EventCheckAfter_BoxDefeated()) {
@@ -1509,8 +1509,8 @@ void BoxDebrisFalling(void) {
         ScreenShakeStartVertical(30, 0x81);
         ParticleSet(y, x, 0x31);
         ParticleSet(y, x+0x20,0x31);
-        EventCheckAdvance(0x28);
-        BoxSetDebrisClipdata(2);
+        EventCheckAdvance(EVENT_BOX_DEFEATED);
+        BoxSetDebrisClipdata(CAA_MAKE_SOLID);
         PlayMusic(0x18, 6);
     } else {
         offset = gCurrentSprite.work4;
@@ -1525,9 +1525,9 @@ void BoxDebrisFalling(void) {
         }
         if ((work1 & 0xf) == 0) {
             ParticleSet(y, x, 0x34);
-        } else if ((work1 + 4 & 0xf) == 0) {
+        } else if (((work1 + 4) & 0xf) == 0) {
             ParticleSet(y-0xa0, x+0x28, 0x33);
-        } else if ((work1 + 8 & 0xf) == 0) {
+        } else if (((work1 + 8) & 0xf) == 0) {
             ParticleSet(y-0x82, x-0x28, 0x33);
         }
     }
@@ -1720,7 +1720,7 @@ void BoxFallingDebrisFalling(void) {
                 gCurrentSprite.yPosition += movement;
             }
         } else if (roomSlot == 2 || roomSlot == 3 || roomSlot == 7) {
-            if ((work2 + 7 & 0x1f) == 0) {
+            if (((work2 + 7) & 0x1f) == 0) {
                 ParticleSet(y, x, 0x33);
             }
             offset = gCurrentSprite.work4;

@@ -575,7 +575,7 @@ MiscPadWaitForWideBeamCoreX: @ 0x08039680
 	cmp r0, #2
 	bne _080396C2
 	movs r0, #0x57
-	bl CountPrimarySprite
+	bl SpriteUtilCountPrimarySprites
 	cmp r0, #0
 	bne _080396C2
 	ldr r0, _080396CC @ =gPreventMovementTimer
