@@ -42,6 +42,7 @@ void CoreXAbilityTransfromation(void) {
 
 #ifdef NON_MATCHING
 void CoreXAbilityInit(void) {
+    // https://decomp.me/scratch/3Se2X
     u8 bossSpriteId;
     u8 secondarySpriteId;
     u8 ramSlot;
@@ -877,7 +878,7 @@ void CoreXShell(void) {
                 if (gSpriteData[primaryRamSlot].work0 != 0) {
                     if ((gSpriteData[primaryRamSlot].work0 & 3) == 0) {
                         if ((gSpriteData[primaryRamSlot].work0 & 4) != 0) {
-                            gCurrentSprite.paletteRow = 0xd - (gCurrentSprite.frozenPaletteRowOffset + gCurrentSprite.spritesetGfxSlot);
+                            gCurrentSprite.paletteRow = 0xd - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
                         } else {
                             gCurrentSprite.paletteRow = 0;
                         }
@@ -1367,15 +1368,13 @@ void AbilityAura(void) {
         gCurrentSprite.hitboxRight = 4;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.samusCollision = 0;
+        gCurrentSprite.samusCollision = SSC_NONE;
         gCurrentSprite.pose = 2;
         if (gCurrentSprite.roomSlot == 2) {
             gCurrentSprite.pOam = sCoreXLightningOam_2;
-        }
-        else if (gCurrentSprite.roomSlot == 1) {
+        } else if (gCurrentSprite.roomSlot == 1) {
             gCurrentSprite.pOam = sCoreXLightningOam_1;
-        }
-        else {
+        } else {
             gCurrentSprite.pOam = sCoreXLightningOam_0;
         }
     }

@@ -413,7 +413,7 @@ enum SamusSpriteCollision {
     SSC_RED_X_PARASITE,
     SSC_YELLOW_X_PARASITE,
     SSC_BLUE_X_PARASITE,
-    SSC_14,
+    SSC_ZAZABI_CAN_GRAB,
     SSC_OMEGA_METROID_SWIPING,
     SSC_OMEGA_METROID_BODY,
     SSC_17,
@@ -421,7 +421,7 @@ enum SamusSpriteCollision {
     SSC_19,
     SSC_RIDLEY_CLAW_CAN_GRAB,
     SSC_RIDLEY_CLAW_GRABBED,
-    SSC_1C,
+    SSC_YAKUZA_CAN_GRAB,
     SSC_1D
 };
 

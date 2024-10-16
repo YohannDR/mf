@@ -1,6 +1,8 @@
 #include "oam.h"
 
-extern const struct FrameData* const sBoxFrameDataPointers[58];
+#include "data/sprites/box.h"
+
+extern const struct FrameData* const sBoxFrameDataPointers[BOX_OAM_END];
 
 extern const struct FrameData* const sZazabiFrameDataPointers1[57];
 extern const struct FrameData* const sZazabiFrameDataPointers2[57];

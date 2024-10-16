@@ -3,7 +3,7 @@
 #include "data/sprites/box.h"
 #include "data/sprites/zazabi.h"
 
-const struct FrameData* const sBoxFrameDataPointers[58] = {
+const struct FrameData* const sBoxFrameDataPointers[BOX_OAM_END] = {
     [BOX_OAM_PART_FRONT_LEFT_LEG_COVER_UNDAMAGED] = sBoxPartOam_FrontLeftLegCoverUndamaged,
     [FRAMEDATA_3479B8] = sFrameData_3479b8,
     [FRAMEDATA_3479F0] = sBoxPartOam_FrontLeftLegCoverDamaged,

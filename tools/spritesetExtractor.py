@@ -225,7 +225,7 @@ def Parse(spritesetIndex):
         else:
             result += f"    {spriteNames[spriteId]}, {graphicsRow},\n"
     result += "};\n"
-    #result = f"extern const u8 sSpriteset{spritesetIndex}[{len(spriteset)*2}];\n"
+    #result = f"extern const u8 sSpriteset{spritesetIndex}[{len(spriteset)*2}];"
     return result
 
 file = open("../mf_us_baserom.gba", "rb")
@@ -239,9 +239,17 @@ def Func():
         file.seek(spritesetPointer & 0x1FFFFFF)
         print(Parse(spritesetIndex))
 
-    '''print("const u8* const sSpritesetPointers[MAX_AMOUNT_OF_SPRITESET] = {")
+    print("const u8* const sSpritesetPointers[SPRITESET_END] = {")
     for spritesetIndex in range(0x82):
-        print(f"    sSpriteset{spritesetIndex},")
-    print("};")'''
+        print(f"    [SPRITESET_{spritesetIndex}] = sSpriteset{spritesetIndex},")
+    print("};")
+
+    print("enum SpritesetId {")
+    for spritesetIndex in range(0x82):
+        print(f"    SPRITESET_{spritesetIndex},")
+    print("};")
+
+    file.close()
+    input()
 
 Func()

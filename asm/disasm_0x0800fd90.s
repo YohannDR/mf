@@ -285,8 +285,8 @@ _0800FFB2:
 _0800FFB8: .4byte sSamusSetPoseFunctionPointer
 _0800FFBC: .4byte gSamusData
 
-	thumb_func_start SpriteUtilTakeConstantDamage
-SpriteUtilTakeConstantDamage: @ 0x0800FFC0
+	thumb_func_start SpriteUtilTakeConstantDamageFromZazabi
+SpriteUtilTakeConstantDamageFromZazabi: @ 0x0800FFC0
 	push {r4, lr}
 	ldr r0, _0800FFF4 @ =gFrameCounter8Bit
 	ldrb r1, [r0]

@@ -155,10 +155,10 @@ void SpriteUtilTakeDamageFromSA_XIceBeamWithPowerSuit(u8 spriteSlot)
 }
 
 /**
- * @brief ffc0 | 68 | Handles samus taking constant damage from a sprite
+ * @brief ffc0 | 68 | Handles samus taking constant damage from zazabi
  * 
  */
-void SpriteUtilTakeConstantDamage(void)
+void SpriteUtilTakeConstantDamageFromZazabi(void)
 {
     // Apply damage every 8 frames
     if (MOD_AND(gFrameCounter8Bit, SPRITE_CONSTANT_DAMAGE_INTERVAL) != 0)
@@ -537,7 +537,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     break;
 
                 case SSC_KNOCKS_BACK_SAMUS_DIES_WHEN_HIT:
-                    gSpriteData[i].pose = 0x37;
+                    gSpriteData[i].pose = SPRITE_POSE_SELF_DESTRUCT;
                     
                 case SSC_KNOCKS_BACK_SAMUS:
                     if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
@@ -570,7 +570,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     break;
 
                 case SSC_HURTS_SAMUS_DIES_WHEN_HIT:
-                    gSpriteData[i].pose = 0x37;
+                    gSpriteData[i].pose = SPRITE_POSE_SELF_DESTRUCT;
 
                 case SSC_HURTS_SAMUS:
                     if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckDamagingPose() && !SpriteUtilCheckSudoScrew(i))
@@ -849,7 +849,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                         IniitializeSpriteDebris(2, 4, gSpriteData[i].yPosition + PIXEL_SIZE * 2, gSpriteData[i].xPosition + PIXEL_SIZE * 2);
                     }
 
-                    gSpriteData[i].pose = 0x37;
+                    gSpriteData[i].pose = SPRITE_POSE_SELF_DESTRUCT;
                     gSpriteData[i].samusCollision = SSC_NONE;
                     gIgnoreSamusAndSpriteCollision = TRUE;
                     break;
@@ -865,7 +865,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                         SpriteUtilTakeDamageFromSprite(TRUE, i, 1);
                     }
 
-                    gSpriteData[i].pose = 0x37;
+                    gSpriteData[i].pose = SPRITE_POSE_SELF_DESTRUCT;
                     gSpriteData[i].samusCollision = SSC_NONE;
                     gIgnoreSamusAndSpriteCollision = TRUE;
                     break;
@@ -886,7 +886,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     gIgnoreSamusAndSpriteCollision = TRUE;
                     break;
 
-                case SSC_14:
+                case SSC_ZAZABI_CAN_GRAB:
                     SAMUS_SET_POSE(SPOSE_GRABBED_BY_ZAZABI);
                     
                     gSpriteData[i].ignoreSamusCollisionTimer = 15;
@@ -964,7 +964,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     gIgnoreSamusAndSpriteCollision = TRUE;
                     break;
 
-                case SSC_1C:
+                case SSC_YAKUZA_CAN_GRAB:
                     if (collisionFlags & SPRITE_COLLISION_FLAG_ON_BOTTOM)
                     {
                         SAMUS_SET_POSE(SPOSE_GRABBED_BY_YAKUZA);

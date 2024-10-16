@@ -1102,7 +1102,7 @@ void ZazabiEatingSamus1Init(void)
  */
 void ZazabiEatingSamus1(void)
 {
-    SpriteUtilTakeConstantDamage();
+    SpriteUtilTakeConstantDamageFromZazabi();
 
     if (gBossWork0)
     {
@@ -1141,7 +1141,7 @@ void ZazabiEatingSamus2Init(void)
  */
 void ZazabiEatingSamus2(void)
 {
-    SpriteUtilTakeConstantDamage();
+    SpriteUtilTakeConstantDamageFromZazabi();
 
     if (gBossWork0)
     {
@@ -1183,7 +1183,7 @@ void ZazabiEatingSamus3Init(void)
  */
 void ZazabiEatingSamus3(void)
 {
-    SpriteUtilTakeConstantDamage();
+    SpriteUtilTakeConstantDamageFromZazabi();
 
     if (gBossWork0)
     {
@@ -1230,7 +1230,7 @@ void ZazabiEatingSamus4Init(void)
  */
 void ZazabiEatingSamus4(void)
 {
-    SpriteUtilTakeConstantDamage();
+    SpriteUtilTakeConstantDamageFromZazabi();
 
     if (gBossWork0)
     {
@@ -1273,7 +1273,7 @@ void ZazabiEatingSamus5Init(void)
  */
 void ZazabiEatingSamus5(void)
 {
-    SpriteUtilTakeConstantDamage();
+    SpriteUtilTakeConstantDamageFromZazabi();
 
     if (gBossWork0)
     {
@@ -1644,7 +1644,7 @@ void ZazabiPartDefault(void)
             {
                 if (gCurrentSprite.pOam == sZazabiPartOam_MouthOpened)
                 {
-                    gCurrentSprite.samusCollision = SSC_14;
+                    gCurrentSprite.samusCollision = SSC_ZAZABI_CAN_GRAB;
 
                     gCurrentSprite.hitboxTop = -BLOCK_SIZE;
                     gCurrentSprite.hitboxBottom = PIXEL_SIZE;

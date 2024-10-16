@@ -953,28 +953,26 @@ void BoxPartCenter(void) {
         gSpriteData[brainRamSlot].work0 &= ~4;
         ParticleSet(y+0x32, x, 0x2f);
         gSpriteData[brainRamSlot].pose = 0x43;
-    } else {
-        if (gCurrentSprite.health < maxHealth / 4) {
-            if (gCurrentSprite.pOam != sBoxPartOam_CenterHeavilyDamaged) {
-                gCurrentSprite.pOam = sBoxPartOam_CenterHeavilyDamaged;
-                gCurrentSprite.animationDurationCounter = 0;
-                gCurrentSprite.currentAnimationFrame = 0;
-                ParticleSet(y+0x24, x, 0x30);
-            }
-        } else if (gCurrentSprite.health < maxHealth / 2) {
-            if (gCurrentSprite.pOam != sBoxPartOam_CenterModeratelyDamaged) {
-                gCurrentSprite.pOam = sBoxPartOam_CenterModeratelyDamaged;
-                gCurrentSprite.animationDurationCounter = 0;
-                gCurrentSprite.currentAnimationFrame = 0;
-                ParticleSet(y+0x24, x, 0x30);
-            }
-        } else if (gCurrentSprite.health < maxHealth * 3 / 4) {
-            if (gCurrentSprite.pOam != sBoxPartOam_CenterSlightlyDamaged) {
-                gCurrentSprite.pOam = sBoxPartOam_CenterSlightlyDamaged;
-                gCurrentSprite.animationDurationCounter = 0;
-                gCurrentSprite.currentAnimationFrame = 0;
-                ParticleSet(y+0x24, x, 0x30);
-            }
+    } else if (gCurrentSprite.health < maxHealth / 4) {
+        if (gCurrentSprite.pOam != sBoxPartOam_CenterHeavilyDamaged) {
+            gCurrentSprite.pOam = sBoxPartOam_CenterHeavilyDamaged;
+            gCurrentSprite.animationDurationCounter = 0;
+            gCurrentSprite.currentAnimationFrame = 0;
+            ParticleSet(y+0x24, x, 0x30);
+        }
+    } else if (gCurrentSprite.health < maxHealth / 2) {
+        if (gCurrentSprite.pOam != sBoxPartOam_CenterModeratelyDamaged) {
+            gCurrentSprite.pOam = sBoxPartOam_CenterModeratelyDamaged;
+            gCurrentSprite.animationDurationCounter = 0;
+            gCurrentSprite.currentAnimationFrame = 0;
+            ParticleSet(y+0x24, x, 0x30);
+        }
+    } else if (gCurrentSprite.health < maxHealth * 3 / 4) {
+        if (gCurrentSprite.pOam != sBoxPartOam_CenterSlightlyDamaged) {
+            gCurrentSprite.pOam = sBoxPartOam_CenterSlightlyDamaged;
+            gCurrentSprite.animationDurationCounter = 0;
+            gCurrentSprite.currentAnimationFrame = 0;
+            ParticleSet(y+0x24, x, 0x30);
         }
     }
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4) {
@@ -1561,7 +1559,7 @@ void BoxFallingDebrisInit(void) {
             gCurrentSprite.hitboxBottom = 0x10;
             gCurrentSprite.hitboxLeft = -4;
             gCurrentSprite.hitboxRight = 0x44;
-            gCurrentSprite.drawOrder = 0xb;
+            gCurrentSprite.drawOrder = 11;
             gCurrentSprite.samusCollision = SSC_SOLID;
             gCurrentSprite.health = 1;
             gCurrentSprite.properties |= SP_SOLID_FOR_PROJECTILES;
@@ -2049,7 +2047,7 @@ _08038542: \n\
 
 void Box(void) {
     switch (gCurrentSprite.pose) {
-        case 0:
+        case SPRITE_POSE_UNINITIALIZED:
             BoxInit();
             break;
         case 1:
@@ -2225,7 +2223,7 @@ void BoxMissile(void) {
         case 0x18:
             BoxMissileMoving();
             break;
-        case 0x37:
+        case SPRITE_POSE_SELF_DESTRUCT:
             BoxMissileExploding();
             break;
     }
@@ -2242,7 +2240,7 @@ void BoxBomb(void) {
         case 0x18:
             BoxBombLanded();
             break;
-        case 0x37:
+        case SPRITE_POSE_SELF_DESTRUCT:
             BoxBombExploding();
             break;
     }

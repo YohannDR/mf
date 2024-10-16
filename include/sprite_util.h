@@ -6,7 +6,7 @@
 void SpriteUtilInitLocationText(void);
 void SpriteUtilTakeDamageFromSprite(u8 kbFlag, u8 spriteSlot, u16 dmgMultiplier);
 void SpriteUtilTakeDamageFromSA_XIceBeamWithPowerSuit(u8 spriteSlot);
-void SpriteUtilTakeConstantDamage(void);
+void SpriteUtilTakeConstantDamageFromZazabi(void);
 void SpriteUtilTakeDamageFromOmegaMetroidSwiping(u8 spriteSlot);
 void SpriteUtilTakeDamageFromYakuzaSlamming(void);
 void SpriteUtilTakeConstantDamageFromYakuza(void);
