@@ -48,7 +48,7 @@ const s16 sCoreXIdleXSpeed[81] = {
 const u32 sMorphBallCoreXGfx[512 * 5] = INCBIN_U32("data/sprites/morph_ball_core_x.gfx");
 const u16 sMorphBallCoreXPal[16 * 5] = INCBIN_U16("data/sprites/morph_ball_core_x.pal");
 
-static const u16 sFrameData_306498_Frame0[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXShellOam_White_Frame0[OAM_DATA_SIZE(4)] = {
     4,
     0xe8, OBJ_SIZE_32x32 | 0x1e8, OBJ_PALETTE_9 | 0x28c,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x8, OBJ_PALETTE_9 | 0x290,
@@ -56,7 +56,7 @@ static const u16 sFrameData_306498_Frame0[OAM_DATA_SIZE(4)] = {
     0x8, OBJ_SIZE_16x16 | 0x8, OBJ_PALETTE_9 | 0x310
 };
 
-static const u16 sFrameData_3064a8_Frame0[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXShellOam_Yellow_Frame0[OAM_DATA_SIZE(4)] = {
     4,
     0xe8, OBJ_SIZE_32x32 | 0x1e8, OBJ_PALETTE_10 | 0x28c,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x8, OBJ_PALETTE_10 | 0x290,
@@ -64,7 +64,7 @@ static const u16 sFrameData_3064a8_Frame0[OAM_DATA_SIZE(4)] = {
     0x8, OBJ_SIZE_16x16 | 0x8, OBJ_PALETTE_10 | 0x310
 };
 
-static const u16 sFrameData_3061c0_Frame0[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXShellOam_Breaking_Frame0[OAM_DATA_SIZE(4)] = {
     4,
     0xe8, OBJ_SIZE_32x32 | 0x1e8, OBJ_PALETTE_11 | 0x28c,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x8, OBJ_PALETTE_11 | 0x290,
@@ -72,14 +72,14 @@ static const u16 sFrameData_3061c0_Frame0[OAM_DATA_SIZE(4)] = {
     0x8, OBJ_SIZE_16x16 | 0x8, OBJ_PALETTE_11 | 0x310
 };
 
-static const u16 sFrameData_3060b0_Frame0[OAM_DATA_SIZE(3)] = {
+static const u16 sCoreXLightningOam_0_Frame0[OAM_DATA_SIZE(3)] = {
     3,
     OBJ_SHAPE_VERTICAL | 0xff, 0x1ff, OBJ_PALETTE_9 | 0x2d2,
     OBJ_SHAPE_HORIZONTAL | 0x8, OBJ_SIZE_32x8 | 0x1f0, OBJ_PALETTE_9 | 0x2b2,
     0x0, 0x1f0, OBJ_PALETTE_9 | 0x292
 };
 
-static const u16 sFrameData_3060b0_Frame1[OAM_DATA_SIZE(5)] = {
+static const u16 sCoreXLightningOam_0_Frame1[OAM_DATA_SIZE(5)] = {
     5,
     OBJ_SHAPE_HORIZONTAL | 0xfe, 0x1ff, OBJ_PALETTE_9 | 0x2d3,
     0x6, 0x7, OBJ_PALETTE_9 | 0x2f4,
@@ -88,37 +88,37 @@ static const u16 sFrameData_3060b0_Frame1[OAM_DATA_SIZE(5)] = {
     OBJ_SHAPE_VERTICAL | 0xf8, 0x8, OBJ_PALETTE_9 | 0x296
 };
 
-static const u16 sFrameData_3060b0_Frame2[OAM_DATA_SIZE(3)] = {
+static const u16 sCoreXLightningOam_0_Frame2[OAM_DATA_SIZE(3)] = {
     3,
     0x8, 0x5, OBJ_PALETTE_9 | 0x2f3,
     OBJ_SHAPE_HORIZONTAL | 0xf0, 0x1f8, OBJ_PALETTE_9 | 0x297,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x8, OBJ_PALETTE_9 | 0x299
 };
 
-static const u16 sFrameData_3060d8_Frame0[OAM_DATA_SIZE(2)] = {
+static const u16 sCoreXLightningOam_1_Frame0[OAM_DATA_SIZE(2)] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf1, 0x1ff, OBJ_PALETTE_9 | 0x2d5,
     0xf1, 0x7, OBJ_PALETTE_9 | 0x2d6
 };
 
-static const u16 sFrameData_3060d8_Frame1[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXLightningOam_1_Frame1[OAM_DATA_SIZE(1)] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xf0, 0x0, OBJ_PALETTE_9 | 0x2b7
 };
 
-static const u16 sFrameData_3060d8_Frame2[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXLightningOam_1_Frame2[OAM_DATA_SIZE(1)] = {
     1,
     0xf9, 0x1ff, OBJ_PALETTE_9 | 0x2f6
 };
 
-static const u16 sFrameData_306100_Frame0[OAM_DATA_SIZE(3)] = {
+static const u16 sCoreXLightningOam_2_Frame0[OAM_DATA_SIZE(3)] = {
     3,
     0x8, 0x1f6, OBJ_PALETTE_9 | 0x2d7,
     OBJ_SHAPE_HORIZONTAL | 0xf0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_32x8 | 0x1f0, OBJ_PALETTE_9 | 0x2b2,
     0xf8, OBJ_X_FLIP | OBJ_Y_FLIP | 0x8, OBJ_PALETTE_9 | 0x292
 };
 
-static const u16 sFrameData_306100_Frame1[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXLightningOam_2_Frame1[OAM_DATA_SIZE(4)] = {
     4,
     0x8, 0x1f8, OBJ_PALETTE_9 | 0x2f7,
     OBJ_SHAPE_HORIZONTAL | 0x8, OBJ_X_FLIP | 0x1f8, OBJ_PALETTE_9 | 0x293,
@@ -126,54 +126,54 @@ static const u16 sFrameData_306100_Frame1[OAM_DATA_SIZE(4)] = {
     OBJ_SHAPE_VERTICAL | 0xf8, OBJ_X_FLIP | 0x1f0, OBJ_PALETTE_9 | 0x296
 };
 
-static const u16 sFrameData_306100_Frame2[OAM_DATA_SIZE(3)] = {
+static const u16 sCoreXLightningOam_2_Frame2[OAM_DATA_SIZE(3)] = {
     3,
     OBJ_SHAPE_VERTICAL | 0xff, 0x1fa, OBJ_PALETTE_9 | 0x2d8,
     OBJ_SHAPE_HORIZONTAL | 0x8, OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_9 | 0x297,
     OBJ_SHAPE_VERTICAL | 0x0, OBJ_Y_FLIP | 0x8, OBJ_PALETTE_9 | 0x299
 };
 
-static const u16 sFrameData_306008_Frame0[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_Idle_Frame0[OAM_DATA_SIZE(1)] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1ef, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sFrameData_306008_Frame1[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_Idle_Frame1[OAM_DATA_SIZE(1)] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1ef, OBJ_PALETTE_8 | 0x204
 };
 
-static const u16 sFrameData_306008_Frame2[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_Idle_Frame2[OAM_DATA_SIZE(1)] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1ef, OBJ_PALETTE_8 | 0x208
 };
 
-static const u16 sFrameData_306008_Frame3[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_Idle_Frame3[OAM_DATA_SIZE(1)] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1ef, OBJ_PALETTE_8 | 0x20c
 };
 
-static const u16 sFrameData_306008_Frame4[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_Idle_Frame4[OAM_DATA_SIZE(1)] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1ef, OBJ_PALETTE_8 | 0x210
 };
 
-static const u16 sFrameData_306008_Frame5[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_Idle_Frame5[OAM_DATA_SIZE(1)] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1ef, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_306008_Frame6[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_Idle_Frame6[OAM_DATA_SIZE(1)] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1ef, OBJ_PALETTE_8 | 0x218
 };
 
-static const u16 sFrameData_306008_Frame7[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_Idle_Frame7[OAM_DATA_SIZE(1)] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1ef, OBJ_PALETTE_8 | 0x21c
 };
 
-static const u16 sFrameData_3061c0_Frame1[OAM_DATA_SIZE(13)] = {
+static const u16 sCoreXShellOam_Breaking_Frame1[OAM_DATA_SIZE(13)] = {
     13,
     0xec, OBJ_SIZE_16x16 | 0x1ec, OBJ_PALETTE_11 | 0x2ad,
     OBJ_SHAPE_HORIZONTAL | 0xe4, 0x1ec, OBJ_PALETTE_11 | 0x28d,
@@ -190,7 +190,7 @@ static const u16 sFrameData_3061c0_Frame1[OAM_DATA_SIZE(13)] = {
     0xfa, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_9 | 0x312
 };
 
-static const u16 sFrameData_3061c0_Frame2[OAM_DATA_SIZE(10)] = {
+static const u16 sCoreXShellOam_Breaking_Frame2[OAM_DATA_SIZE(10)] = {
     10,
     0xf7, OBJ_SIZE_16x16 | 0x1fa, OBJ_PALETTE_9 | 0x312,
     0xf9, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f5, OBJ_PALETTE_9 | 0x312,
@@ -204,7 +204,7 @@ static const u16 sFrameData_3061c0_Frame2[OAM_DATA_SIZE(10)] = {
     OBJ_SHAPE_VERTICAL | 0xa, OBJ_X_FLIP | 0x13, OBJ_PALETTE_11 | 0x2e0
 };
 
-static const u16 sFrameData_3061c0_Frame3[OAM_DATA_SIZE(14)] = {
+static const u16 sCoreXShellOam_Breaking_Frame3[OAM_DATA_SIZE(14)] = {
     14,
     0xf6, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_9 | 0x312,
     0xfa, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_9 | 0x312,
@@ -222,7 +222,7 @@ static const u16 sFrameData_3061c0_Frame3[OAM_DATA_SIZE(14)] = {
     OBJ_SHAPE_VERTICAL | 0x19, OBJ_X_FLIP | 0x4, OBJ_PALETTE_11 | 0x305
 };
 
-static const u16 sFrameData_3061c0_Frame4[OAM_DATA_SIZE(16)] = {
+static const u16 sCoreXShellOam_Breaking_Frame4[OAM_DATA_SIZE(16)] = {
     16,
     0xf3, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_9 | 0x312,
     0xfd, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_9 | 0x312,
@@ -242,7 +242,7 @@ static const u16 sFrameData_3061c0_Frame4[OAM_DATA_SIZE(16)] = {
     OBJ_SHAPE_VERTICAL | 0x24, 0x6, OBJ_PALETTE_11 | 0x2e0
 };
 
-static const u16 sFrameData_3061c0_Frame5[OAM_DATA_SIZE(16)] = {
+static const u16 sCoreXShellOam_Breaking_Frame5[OAM_DATA_SIZE(16)] = {
     16,
     0xef, OBJ_SIZE_16x16 | 0x1fa, OBJ_PALETTE_9 | 0x312,
     0x1, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f6, OBJ_PALETTE_9 | 0x312,
@@ -262,7 +262,7 @@ static const u16 sFrameData_3061c0_Frame5[OAM_DATA_SIZE(16)] = {
     OBJ_SHAPE_VERTICAL | 0x2e, 0x7, OBJ_PALETTE_11 | 0x2e0
 };
 
-static const u16 sFrameData_3061c0_Frame6[OAM_DATA_SIZE(9)] = {
+static const u16 sCoreXShellOam_Breaking_Frame6[OAM_DATA_SIZE(9)] = {
     9,
     0x30, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1d8, OBJ_PALETTE_11 | 0x312,
     0x38, OBJ_SIZE_16x16 | 0x8, OBJ_PALETTE_11 | 0x312,
@@ -275,7 +275,7 @@ static const u16 sFrameData_3061c0_Frame6[OAM_DATA_SIZE(9)] = {
     0xfc, 0x1fc, OBJ_PALETTE_9 | 0x332
 };
 
-static const u16 sFrameData_3061c0_Frame7[OAM_DATA_SIZE(8)] = {
+static const u16 sCoreXShellOam_Breaking_Frame7[OAM_DATA_SIZE(8)] = {
     8,
     0x3e, OBJ_Y_FLIP | 0x1d8, OBJ_PALETTE_11 | 0x332,
     0x50, OBJ_X_FLIP | OBJ_Y_FLIP | 0x10, OBJ_PALETTE_11 | 0x332,
@@ -287,12 +287,12 @@ static const u16 sFrameData_3061c0_Frame7[OAM_DATA_SIZE(8)] = {
     0x0, OBJ_X_FLIP | 0x8, OBJ_PALETTE_9 | 0x333
 };
 
-static const u16 sFrameData_3060b0_Frame3[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXLightningOam_0_Frame3[OAM_DATA_SIZE(1)] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_9 | 0x2ef
 };
 
-static const u16 sFrameData_306208_Frame0[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame0[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x29a,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x29a,
@@ -300,7 +300,7 @@ static const u16 sFrameData_306208_Frame0[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x29a
 };
 
-static const u16 sFrameData_306208_Frame4[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame4[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x29c,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x29c,
@@ -308,7 +308,7 @@ static const u16 sFrameData_306208_Frame4[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x29c
 };
 
-static const u16 sFrameData_306208_Frame8[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame8[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x29e,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x29e,
@@ -316,7 +316,7 @@ static const u16 sFrameData_306208_Frame8[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x29e
 };
 
-static const u16 sFrameData_306208_Frame12[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame12[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x2da,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x2da,
@@ -324,7 +324,7 @@ static const u16 sFrameData_306208_Frame12[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x2da
 };
 
-static const u16 sFrameData_306208_Frame16[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame16[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x2dc,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x2dc,
@@ -332,7 +332,7 @@ static const u16 sFrameData_306208_Frame16[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x2dc
 };
 
-static const u16 sFrameData_306208_Frame20[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame20[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x2de,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x2de,
@@ -340,7 +340,7 @@ static const u16 sFrameData_306208_Frame20[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x2de
 };
 
-static const u16 sFrameData_306208_Frame24[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame24[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x314,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x314,
@@ -348,7 +348,7 @@ static const u16 sFrameData_306208_Frame24[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x314
 };
 
-static const u16 sFrameData_306208_Frame28[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame28[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x316,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x316,
@@ -356,7 +356,7 @@ static const u16 sFrameData_306208_Frame28[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x316
 };
 
-static const u16 sFrameData_306208_Frame32[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame32[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x318,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x318,
@@ -364,7 +364,7 @@ static const u16 sFrameData_306208_Frame32[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x318
 };
 
-static const u16 sFrameData_306208_Frame36[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXAbilityAuraOam_Frame36[OAM_DATA_SIZE(4)] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_9 | 0x31a,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x31a,
@@ -372,619 +372,619 @@ static const u16 sFrameData_306208_Frame36[OAM_DATA_SIZE(4)] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_9 | 0x31a
 };
 
-static const u16 sFrameData_306098_Frame0[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_GettingAbsorbed_Frame0[OAM_DATA_SIZE(1)] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_PALETTE_8 | 0x286
 };
 
-static const u16 sFrameData_306098_Frame1[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXAbilityOam_GettingAbsorbed_Frame1[OAM_DATA_SIZE(1)] = {
     1,
     0xee, OBJ_SIZE_32x32 | 0x1f0, OBJ_PALETTE_8 | 0x286
 };
 
-const struct FrameData sFrameData_306008[9] = {
+const struct FrameData sCoreXAbilityOam_Idle[9] = {
     [0] = {
-        .pFrame = sFrameData_306008_Frame0,
+        .pFrame = sCoreXAbilityOam_Idle_Frame0,
         .timer = 6
     },
     [1] = {
-        .pFrame = sFrameData_306008_Frame1,
+        .pFrame = sCoreXAbilityOam_Idle_Frame1,
         .timer = 6
     },
     [2] = {
-        .pFrame = sFrameData_306008_Frame2,
+        .pFrame = sCoreXAbilityOam_Idle_Frame2,
         .timer = 6
     },
     [3] = {
-        .pFrame = sFrameData_306008_Frame3,
+        .pFrame = sCoreXAbilityOam_Idle_Frame3,
         .timer = 6
     },
     [4] = {
-        .pFrame = sFrameData_306008_Frame4,
+        .pFrame = sCoreXAbilityOam_Idle_Frame4,
         .timer = 6
     },
     [5] = {
-        .pFrame = sFrameData_306008_Frame5,
+        .pFrame = sCoreXAbilityOam_Idle_Frame5,
         .timer = 6
     },
     [6] = {
-        .pFrame = sFrameData_306008_Frame6,
+        .pFrame = sCoreXAbilityOam_Idle_Frame6,
         .timer = 6
     },
     [7] = {
-        .pFrame = sFrameData_306008_Frame7,
+        .pFrame = sCoreXAbilityOam_Idle_Frame7,
         .timer = 6
     },
     [8] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_306050[9] = {
+const struct FrameData sCoreXAbilityOam_IdleFast[9] = {
     [0] = {
-        .pFrame = sFrameData_306008_Frame0,
+        .pFrame = sCoreXAbilityOam_Idle_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sFrameData_306008_Frame1,
+        .pFrame = sCoreXAbilityOam_Idle_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_306008_Frame2,
+        .pFrame = sCoreXAbilityOam_Idle_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sFrameData_306008_Frame3,
+        .pFrame = sCoreXAbilityOam_Idle_Frame3,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_306008_Frame4,
+        .pFrame = sCoreXAbilityOam_Idle_Frame4,
         .timer = 2
     },
     [5] = {
-        .pFrame = sFrameData_306008_Frame5,
+        .pFrame = sCoreXAbilityOam_Idle_Frame5,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_306008_Frame6,
+        .pFrame = sCoreXAbilityOam_Idle_Frame6,
         .timer = 2
     },
     [7] = {
-        .pFrame = sFrameData_306008_Frame7,
+        .pFrame = sCoreXAbilityOam_Idle_Frame7,
         .timer = 2
     },
     [8] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_306098[3] = {
+const struct FrameData sCoreXAbilityOam_GettingAbsorbed[3] = {
     [0] = {
-        .pFrame = sFrameData_306098_Frame0,
+        .pFrame = sCoreXAbilityOam_GettingAbsorbed_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sFrameData_306098_Frame1,
+        .pFrame = sCoreXAbilityOam_GettingAbsorbed_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3060b0[5] = {
+const struct FrameData sCoreXLightningOam_0[5] = {
     [0] = {
-        .pFrame = sFrameData_3060b0_Frame0,
+        .pFrame = sCoreXLightningOam_0_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sFrameData_3060b0_Frame1,
+        .pFrame = sCoreXLightningOam_0_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3060b0_Frame2,
+        .pFrame = sCoreXLightningOam_0_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 20
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3060d8[5] = {
+const struct FrameData sCoreXLightningOam_1[5] = {
     [0] = {
-        .pFrame = sFrameData_3060d8_Frame0,
+        .pFrame = sCoreXLightningOam_1_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sFrameData_3060d8_Frame1,
+        .pFrame = sCoreXLightningOam_1_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3060d8_Frame2,
+        .pFrame = sCoreXLightningOam_1_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 40
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_306100[5] = {
+const struct FrameData sCoreXLightningOam_2[5] = {
     [0] = {
-        .pFrame = sFrameData_306100_Frame0,
+        .pFrame = sCoreXLightningOam_2_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sFrameData_306100_Frame1,
+        .pFrame = sCoreXLightningOam_2_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_306100_Frame2,
+        .pFrame = sCoreXLightningOam_2_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 60
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_306128[19] = {
+const struct FrameData sCoreXLightningOam_Unused[19] = {
     [0] = {
-        .pFrame = sFrameData_3060b0_Frame0,
+        .pFrame = sCoreXLightningOam_0_Frame0,
         .timer = 1
     },
     [1] = {
-        .pFrame = sFrameData_3060b0_Frame1,
+        .pFrame = sCoreXLightningOam_0_Frame1,
         .timer = 1
     },
     [2] = {
-        .pFrame = sFrameData_3060b0_Frame2,
+        .pFrame = sCoreXLightningOam_0_Frame2,
         .timer = 1
     },
     [3] = {
-        .pFrame = sFrameData_306100_Frame0,
+        .pFrame = sCoreXLightningOam_2_Frame0,
         .timer = 1
     },
     [4] = {
-        .pFrame = sFrameData_306100_Frame1,
+        .pFrame = sCoreXLightningOam_2_Frame1,
         .timer = 1
     },
     [5] = {
-        .pFrame = sFrameData_306100_Frame2,
+        .pFrame = sCoreXLightningOam_2_Frame2,
         .timer = 1
     },
     [6] = {
-        .pFrame = sFrameData_3060d8_Frame0,
+        .pFrame = sCoreXLightningOam_1_Frame0,
         .timer = 1
     },
     [7] = {
-        .pFrame = sFrameData_3060d8_Frame1,
+        .pFrame = sCoreXLightningOam_1_Frame1,
         .timer = 1
     },
     [8] = {
-        .pFrame = sFrameData_3060d8_Frame2,
+        .pFrame = sCoreXLightningOam_1_Frame2,
         .timer = 1
     },
     [9] = {
-        .pFrame = sFrameData_3060b0_Frame0,
+        .pFrame = sCoreXLightningOam_0_Frame0,
         .timer = 1
     },
     [10] = {
-        .pFrame = sFrameData_3060b0_Frame1,
+        .pFrame = sCoreXLightningOam_0_Frame1,
         .timer = 1
     },
     [11] = {
-        .pFrame = sFrameData_3060b0_Frame2,
+        .pFrame = sCoreXLightningOam_0_Frame2,
         .timer = 1
     },
     [12] = {
-        .pFrame = sFrameData_3060d8_Frame0,
+        .pFrame = sCoreXLightningOam_1_Frame0,
         .timer = 1
     },
     [13] = {
-        .pFrame = sFrameData_3060d8_Frame1,
+        .pFrame = sCoreXLightningOam_1_Frame1,
         .timer = 1
     },
     [14] = {
-        .pFrame = sFrameData_3060d8_Frame2,
+        .pFrame = sCoreXLightningOam_1_Frame2,
         .timer = 1
     },
     [15] = {
-        .pFrame = sFrameData_306100_Frame0,
+        .pFrame = sCoreXLightningOam_2_Frame0,
         .timer = 1
     },
     [16] = {
-        .pFrame = sFrameData_306100_Frame1,
+        .pFrame = sCoreXLightningOam_2_Frame1,
         .timer = 1
     },
     [17] = {
-        .pFrame = sFrameData_306100_Frame2,
+        .pFrame = sCoreXLightningOam_2_Frame2,
         .timer = 1
     },
     [18] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3061c0[9] = {
+const struct FrameData sCoreXShellOam_Breaking[9] = {
     [0] = {
-        .pFrame = sFrameData_3061c0_Frame0,
+        .pFrame = sCoreXShellOam_Breaking_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sFrameData_3061c0_Frame1,
+        .pFrame = sCoreXShellOam_Breaking_Frame1,
         .timer = 6
     },
     [2] = {
-        .pFrame = sFrameData_3061c0_Frame2,
+        .pFrame = sCoreXShellOam_Breaking_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3061c0_Frame3,
+        .pFrame = sCoreXShellOam_Breaking_Frame3,
         .timer = 5
     },
     [4] = {
-        .pFrame = sFrameData_3061c0_Frame4,
+        .pFrame = sCoreXShellOam_Breaking_Frame4,
         .timer = 4
     },
     [5] = {
-        .pFrame = sFrameData_3061c0_Frame5,
+        .pFrame = sCoreXShellOam_Breaking_Frame5,
         .timer = 4
     },
     [6] = {
-        .pFrame = sFrameData_3061c0_Frame6,
+        .pFrame = sCoreXShellOam_Breaking_Frame6,
         .timer = 4
     },
     [7] = {
-        .pFrame = sFrameData_3061c0_Frame7,
+        .pFrame = sCoreXShellOam_Breaking_Frame7,
         .timer = 4
     },
     [8] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_306208[41] = {
+const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
     [0] = {
-        .pFrame = sFrameData_306208_Frame0,
+        .pFrame = sCoreXAbilityAuraOam_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_306208_Frame0,
+        .pFrame = sCoreXAbilityAuraOam_Frame0,
         .timer = 2
     },
     [3] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_306208_Frame4,
+        .pFrame = sCoreXAbilityAuraOam_Frame4,
         .timer = 2
     },
     [5] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_306208_Frame4,
+        .pFrame = sCoreXAbilityAuraOam_Frame4,
         .timer = 2
     },
     [7] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_306208_Frame8,
+        .pFrame = sCoreXAbilityAuraOam_Frame8,
         .timer = 2
     },
     [9] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [10] = {
-        .pFrame = sFrameData_306208_Frame8,
+        .pFrame = sCoreXAbilityAuraOam_Frame8,
         .timer = 2
     },
     [11] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [12] = {
-        .pFrame = sFrameData_306208_Frame12,
+        .pFrame = sCoreXAbilityAuraOam_Frame12,
         .timer = 2
     },
     [13] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [14] = {
-        .pFrame = sFrameData_306208_Frame12,
+        .pFrame = sCoreXAbilityAuraOam_Frame12,
         .timer = 2
     },
     [15] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [16] = {
-        .pFrame = sFrameData_306208_Frame16,
+        .pFrame = sCoreXAbilityAuraOam_Frame16,
         .timer = 2
     },
     [17] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [18] = {
-        .pFrame = sFrameData_306208_Frame16,
+        .pFrame = sCoreXAbilityAuraOam_Frame16,
         .timer = 2
     },
     [19] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [20] = {
-        .pFrame = sFrameData_306208_Frame20,
+        .pFrame = sCoreXAbilityAuraOam_Frame20,
         .timer = 2
     },
     [21] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [22] = {
-        .pFrame = sFrameData_306208_Frame20,
+        .pFrame = sCoreXAbilityAuraOam_Frame20,
         .timer = 2
     },
     [23] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [24] = {
-        .pFrame = sFrameData_306208_Frame24,
+        .pFrame = sCoreXAbilityAuraOam_Frame24,
         .timer = 2
     },
     [25] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [26] = {
-        .pFrame = sFrameData_306208_Frame24,
+        .pFrame = sCoreXAbilityAuraOam_Frame24,
         .timer = 2
     },
     [27] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [28] = {
-        .pFrame = sFrameData_306208_Frame28,
+        .pFrame = sCoreXAbilityAuraOam_Frame28,
         .timer = 2
     },
     [29] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [30] = {
-        .pFrame = sFrameData_306208_Frame28,
+        .pFrame = sCoreXAbilityAuraOam_Frame28,
         .timer = 2
     },
     [31] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [32] = {
-        .pFrame = sFrameData_306208_Frame32,
+        .pFrame = sCoreXAbilityAuraOam_Frame32,
         .timer = 2
     },
     [33] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [34] = {
-        .pFrame = sFrameData_306208_Frame32,
+        .pFrame = sCoreXAbilityAuraOam_Frame32,
         .timer = 2
     },
     [35] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [36] = {
-        .pFrame = sFrameData_306208_Frame36,
+        .pFrame = sCoreXAbilityAuraOam_Frame36,
         .timer = 2
     },
     [37] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [38] = {
-        .pFrame = sFrameData_306208_Frame36,
+        .pFrame = sCoreXAbilityAuraOam_Frame36,
         .timer = 2
     },
     [39] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 2
     },
     [40] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_306350[41] = {
+const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
     [0] = {
-        .pFrame = sFrameData_306208_Frame0,
+        .pFrame = sCoreXAbilityAuraOam_Frame0,
         .timer = 1
     },
     [1] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [2] = {
-        .pFrame = sFrameData_306208_Frame0,
+        .pFrame = sCoreXAbilityAuraOam_Frame0,
         .timer = 1
     },
     [3] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [4] = {
-        .pFrame = sFrameData_306208_Frame4,
+        .pFrame = sCoreXAbilityAuraOam_Frame4,
         .timer = 1
     },
     [5] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [6] = {
-        .pFrame = sFrameData_306208_Frame4,
+        .pFrame = sCoreXAbilityAuraOam_Frame4,
         .timer = 1
     },
     [7] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [8] = {
-        .pFrame = sFrameData_306208_Frame8,
+        .pFrame = sCoreXAbilityAuraOam_Frame8,
         .timer = 1
     },
     [9] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [10] = {
-        .pFrame = sFrameData_306208_Frame8,
+        .pFrame = sCoreXAbilityAuraOam_Frame8,
         .timer = 1
     },
     [11] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [12] = {
-        .pFrame = sFrameData_306208_Frame12,
+        .pFrame = sCoreXAbilityAuraOam_Frame12,
         .timer = 1
     },
     [13] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [14] = {
-        .pFrame = sFrameData_306208_Frame12,
+        .pFrame = sCoreXAbilityAuraOam_Frame12,
         .timer = 1
     },
     [15] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [16] = {
-        .pFrame = sFrameData_306208_Frame16,
+        .pFrame = sCoreXAbilityAuraOam_Frame16,
         .timer = 1
     },
     [17] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [18] = {
-        .pFrame = sFrameData_306208_Frame16,
+        .pFrame = sCoreXAbilityAuraOam_Frame16,
         .timer = 1
     },
     [19] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [20] = {
-        .pFrame = sFrameData_306208_Frame20,
+        .pFrame = sCoreXAbilityAuraOam_Frame20,
         .timer = 1
     },
     [21] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [22] = {
-        .pFrame = sFrameData_306208_Frame20,
+        .pFrame = sCoreXAbilityAuraOam_Frame20,
         .timer = 1
     },
     [23] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [24] = {
-        .pFrame = sFrameData_306208_Frame24,
+        .pFrame = sCoreXAbilityAuraOam_Frame24,
         .timer = 1
     },
     [25] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [26] = {
-        .pFrame = sFrameData_306208_Frame24,
+        .pFrame = sCoreXAbilityAuraOam_Frame24,
         .timer = 1
     },
     [27] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [28] = {
-        .pFrame = sFrameData_306208_Frame28,
+        .pFrame = sCoreXAbilityAuraOam_Frame28,
         .timer = 1
     },
     [29] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [30] = {
-        .pFrame = sFrameData_306208_Frame28,
+        .pFrame = sCoreXAbilityAuraOam_Frame28,
         .timer = 1
     },
     [31] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [32] = {
-        .pFrame = sFrameData_306208_Frame32,
+        .pFrame = sCoreXAbilityAuraOam_Frame32,
         .timer = 1
     },
     [33] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [34] = {
-        .pFrame = sFrameData_306208_Frame32,
+        .pFrame = sCoreXAbilityAuraOam_Frame32,
         .timer = 1
     },
     [35] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [36] = {
-        .pFrame = sFrameData_306208_Frame36,
+        .pFrame = sCoreXAbilityAuraOam_Frame36,
         .timer = 1
     },
     [37] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [38] = {
-        .pFrame = sFrameData_306208_Frame36,
+        .pFrame = sCoreXAbilityAuraOam_Frame36,
         .timer = 1
     },
     [39] = {
-        .pFrame = sFrameData_3060b0_Frame3,
+        .pFrame = sCoreXLightningOam_0_Frame3,
         .timer = 1
     },
     [40] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_306498[2] = {
+const struct FrameData sCoreXShellOam_White[2] = {
     [0] = {
-        .pFrame = sFrameData_306498_Frame0,
+        .pFrame = sCoreXShellOam_White_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3064a8[2] = {
+const struct FrameData sCoreXShellOam_Yellow[2] = {
     [0] = {
-        .pFrame = sFrameData_3064a8_Frame0,
+        .pFrame = sCoreXShellOam_Yellow_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3064b8[2] = {
+const struct FrameData sCoreXShellOam_Red[2] = {
     [0] = {
-        .pFrame = sFrameData_3061c0_Frame0,
+        .pFrame = sCoreXShellOam_Breaking_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR

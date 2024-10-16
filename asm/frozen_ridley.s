@@ -340,7 +340,7 @@ FrozenRidleyXInit: @ 0x08057010
 	strh r0, [r2, #0x10]
 	strb r4, [r2, #0x1c]
 	strh r5, [r2, #0x16]
-	ldr r0, _08057098 @ =sFrameData_306008
+	ldr r0, _08057098 @ =sCoreXAbilityOam_Idle
 	str r0, [r2, #0x18]
 	mov r0, ip
 	adds r0, #0x25
@@ -359,7 +359,7 @@ _08057088: .4byte gCurrentSprite
 _0805708C: .4byte 0x0000FFFB
 _08057090: .4byte gIoRegisters
 _08057094: .4byte 0x0000FFFC
-_08057098: .4byte sFrameData_306008
+_08057098: .4byte sCoreXAbilityOam_Idle
 _0805709C: .4byte 0x00000236
 
 	thumb_func_start FrozenRidleyXRidleySpawning

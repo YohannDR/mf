@@ -27,7 +27,7 @@
 #define SP_IMMUNE_TO_PROJECTILES (1 << 6) // 0x40 ~0xbf
 #define SP_SECONDARY_SPRITE (1 << 7) // 0x80 ~0x7f
 
-#define SPRITE_WEAKNESS_NONE (0 << 0) // 0
+#define WEAKNESS_NONE (0 << 0) // 0
 #define WEAKNESS_CHARGE_BEAM (1 << 0) // 1
 #define WEAKNESS_BEAM_BOMBS (1 << 1) // 2
 #define WEAKNESS_SUPER_MISSILES (1 << 2) // 4

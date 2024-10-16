@@ -119,7 +119,7 @@ void CoreXAbilityInit(void) {
     gCurrentSprite.hitboxBottom = 0x20;
     gCurrentSprite.hitboxLeft = -0x20;
     gCurrentSprite.hitboxRight = 0x20;
-    gCurrentSprite.pOam = sFrameData_306008;
+    gCurrentSprite.pOam = sCoreXAbilityOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work3 = 0;
@@ -335,7 +335,7 @@ _08025464: \n\
     strh r0, [r4, #0xc] \n\
     strh r1, [r4, #0xe] \n\
     strh r0, [r4, #0x10] \n\
-    ldr r0, _08025538 @ =sFrameData_306008 \n\
+    ldr r0, _08025538 @ =sCoreXAbilityOam_Idle \n\
     str r0, [r4, #0x18] \n\
     strb r2, [r4, #0x1c] \n\
     strh r6, [r4, #0x16] \n\
@@ -397,7 +397,7 @@ _08025528: .4byte gCoreXFormationSpriteId \n\
 _0802552C: .4byte 0xFFFFFE80 \n\
 _08025530: .4byte sPrimarySpriteStats \n\
 _08025534: .4byte 0x0000FFE0 \n\
-_08025538: .4byte sFrameData_306008 \n\
+_08025538: .4byte sCoreXAbilityOam_Idle \n\
 _0802553C: \n\
     ldrb r2, [r5, #0x1f] \n\
     ldrb r3, [r7] \n\
@@ -426,7 +426,7 @@ _0802555C: \n\
 void CoreXAbilityIdleInit(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     gCurrentSprite.pose = 2;
-    gCurrentSprite.pOam = sFrameData_306008;
+    gCurrentSprite.pOam = sCoreXAbilityOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -679,7 +679,7 @@ void CoreXAbilityWaitingAtTarget(void) {
         gCurrentSprite.xParasiteTimer = 0x14;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.pOam = sFrameData_306098;
+        gCurrentSprite.pOam = sCoreXAbilityOam_GettingAbsorbed;
         ParticleSet(gSamusData.yPosition + gSamusData.drawDistanceTop / 2, gSamusData.xPosition, 0x1d);
         switch (gCurrentSprite.spriteId) {
             case PSPRITE_MORPH_BALL_ABILITY:
@@ -802,7 +802,7 @@ void CoreXShell(void) {
             gCurrentSprite.hitboxBottom = 0x50;
             gCurrentSprite.hitboxLeft = -0x50;
             gCurrentSprite.hitboxRight = 0x50;
-            gCurrentSprite.pOam = sFrameData_306498;
+            gCurrentSprite.pOam = sCoreXShellOam_White;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.samusCollision = SSC_RIDLEY_TAIL_SERRIS_SEGMENT;
@@ -836,7 +836,7 @@ void CoreXShell(void) {
         case 0x1c: {
             if (gCurrentSprite.health == 0) {
                 gCurrentSprite.samusCollision = SSC_NONE;
-                gCurrentSprite.pOam = sFrameData_3061c0;
+                gCurrentSprite.pOam = sCoreXShellOam_Breaking;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x18;
@@ -844,10 +844,10 @@ void CoreXShell(void) {
                 SoundPlay(0xc1);
             } else {
                 if (gCurrentSprite.health <= maxHealth / 3) {
-                    gCurrentSprite.pOam = sFrameData_3064b8;
+                    gCurrentSprite.pOam = sCoreXShellOam_Red;
                     gCurrentSprite.frozenPaletteRowOffset = 3;
                 } else if (gCurrentSprite.health <= maxHealth * 2 / 3) {
-                    gCurrentSprite.pOam = sFrameData_3064a8;
+                    gCurrentSprite.pOam = sCoreXShellOam_Yellow;
                     gCurrentSprite.frozenPaletteRowOffset = 2;
                 }
                 if (SPRITE_HAS_ISFT(gCurrentSprite) == 1) {
@@ -974,7 +974,7 @@ _08025FDC: \n\
     strh r0, [r5, #0xc] \n\
     strh r1, [r5, #0xe] \n\
     strh r0, [r5, #0x10] \n\
-    ldr r0, _08026078 @ =sFrameData_306498 \n\
+    ldr r0, _08026078 @ =sCoreXShellOam_White \n\
     str r0, [r5, #0x18] \n\
     strb r3, [r5, #0x1c] \n\
     strh r4, [r5, #0x16] \n\
@@ -1009,7 +1009,7 @@ _08026040: \n\
 _0802606C: .4byte 0x0000FFFB \n\
 _08026070: .4byte gIoRegisters \n\
 _08026074: .4byte 0x0000FFB0 \n\
-_08026078: .4byte sFrameData_306498 \n\
+_08026078: .4byte sCoreXShellOam_White \n\
 _0802607C: .4byte gSpriteData \n\
 _08026080: \n\
     ldrh r1, [r5] \n\
@@ -1098,7 +1098,7 @@ _0802614E: \n\
     add r0, r5, #0 \n\
     add r0, #0x25 \n\
     strb r4, [r0] \n\
-    ldr r0, _08026184 @ =sFrameData_3061c0 \n\
+    ldr r0, _08026184 @ =sCoreXShellOam_Breaking \n\
     str r0, [r5, #0x18] \n\
     strb r4, [r5, #0x1c] \n\
     strh r4, [r5, #0x16] \n\
@@ -1118,7 +1118,7 @@ _0802614E: \n\
     b _08026338 \n\
     .align 2, 0 \n\
 _08026180: .4byte 0x00007FFF \n\
-_08026184: .4byte sFrameData_3061c0 \n\
+_08026184: .4byte sCoreXShellOam_Breaking \n\
 _08026188: \n\
     add r0, r6, #0 \n\
     movs r1, #3 \n\
@@ -1127,14 +1127,14 @@ _08026188: \n\
     lsr r0, r0, #0x10 \n\
     cmp r4, r0 \n\
     bhi _080261A8 \n\
-    ldr r0, _080261A4 @ =sFrameData_3064b8 \n\
+    ldr r0, _080261A4 @ =sCoreXShellOam_Red \n\
     str r0, [r5, #0x18] \n\
     add r1, r5, #0 \n\
     add r1, #0x35 \n\
     movs r0, #3 \n\
     b _080261C0 \n\
     .align 2, 0 \n\
-_080261A4: .4byte sFrameData_3064b8 \n\
+_080261A4: .4byte sCoreXShellOam_Red \n\
 _080261A8: \n\
     ldrh r4, [r5, #0x14] \n\
     lsl r0, r6, #1 \n\
@@ -1142,7 +1142,7 @@ _080261A8: \n\
     bl __divsi3 \n\
     cmp r4, r0 \n\
     bgt _080261C2 \n\
-    ldr r0, _08026204 @ =sFrameData_3064a8 \n\
+    ldr r0, _08026204 @ =sCoreXShellOam_Yellow \n\
     str r0, [r5, #0x18] \n\
     add r1, r5, #0 \n\
     add r1, #0x35 \n\
@@ -1181,7 +1181,7 @@ _080261C2: \n\
     bl SpriteSpawnNewXParasite \n\
     b _080262BE \n\
     .align 2, 0 \n\
-_08026204: .4byte sFrameData_3064a8 \n\
+_08026204: .4byte sCoreXShellOam_Yellow \n\
 _08026208: \n\
     cmp r1, #0x10 \n\
     bne _080262BE \n\
@@ -1370,13 +1370,13 @@ void AbilityAura(void) {
         gCurrentSprite.samusCollision = 0;
         gCurrentSprite.pose = 2;
         if (gCurrentSprite.roomSlot == 2) {
-            gCurrentSprite.pOam = sFrameData_306100;
+            gCurrentSprite.pOam = sCoreXLightningOam_2;
         }
         else if (gCurrentSprite.roomSlot == 1) {
-            gCurrentSprite.pOam = sFrameData_3060d8;
+            gCurrentSprite.pOam = sCoreXLightningOam_1;
         }
         else {
-            gCurrentSprite.pOam = sFrameData_3060b0;
+            gCurrentSprite.pOam = sCoreXLightningOam_0;
         }
     }
     gCurrentSprite.yPosition = gSpriteData[primaryRamSlot].yPosition;
@@ -1409,7 +1409,7 @@ void AbilityAura(void) {
             } else {
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
-                gCurrentSprite.pOam = sFrameData_306350;
+                gCurrentSprite.pOam = sCoreXAbilityAuraOam_Fast;
             }
             break;
         case 0x5d:
@@ -1485,25 +1485,25 @@ void AbilityAura(void) {
     ldrb r0, [r1, #0x1e] \n\
     cmp r0, #2 \n\
     bne _080263D0 \n\
-    ldr r0, _080263CC @ =sFrameData_306100 \n\
+    ldr r0, _080263CC @ =sCoreXLightningOam_2 \n\
     b _080263E4 \n\
     .align 2, 0 \n\
 _080263BC: .4byte gCurrentSprite \n\
 _080263C0: .4byte 0x0000FFFB \n\
 _080263C4: .4byte gIoRegisters \n\
 _080263C8: .4byte 0x0000FFFC \n\
-_080263CC: .4byte sFrameData_306100 \n\
+_080263CC: .4byte sCoreXLightningOam_2 \n\
 _080263D0: \n\
     cmp r0, #1 \n\
     bne _080263E0 \n\
-    ldr r0, _080263DC @ =sFrameData_3060d8 \n\
+    ldr r0, _080263DC @ =sCoreXLightningOam_1 \n\
     mov r5, ip \n\
     str r0, [r5, #0x18] \n\
     b _080263E6 \n\
     .align 2, 0 \n\
-_080263DC: .4byte sFrameData_3060d8 \n\
+_080263DC: .4byte sCoreXLightningOam_1 \n\
 _080263E0: \n\
-    ldr r0, _08026410 @ =sFrameData_3060b0 \n\
+    ldr r0, _08026410 @ =sCoreXLightningOam_0 \n\
     mov r1, ip \n\
 _080263E4: \n\
     str r0, [r1, #0x18] \n\
@@ -1529,7 +1529,7 @@ _080263E6: \n\
     strh r0, [r5] \n\
     b _08026424 \n\
     .align 2, 0 \n\
-_08026410: .4byte sFrameData_3060b0 \n\
+_08026410: .4byte sCoreXLightningOam_0 \n\
 _08026414: .4byte gSpriteData \n\
 _08026418: \n\
     mov r0, ip \n\
@@ -1688,11 +1688,11 @@ _080265FA: \n\
     mov r5, ip \n\
     strb r0, [r5, #0x1c] \n\
     strh r0, [r5, #0x16] \n\
-    ldr r0, _08026608 @ =sFrameData_306350 \n\
+    ldr r0, _08026608 @ =sCoreXAbilityAuraOam_Fast \n\
     str r0, [r5, #0x18] \n\
     b _08026642 \n\
     .align 2, 0 \n\
-_08026608: .4byte sFrameData_306350 \n\
+_08026608: .4byte sCoreXAbilityAuraOam_Fast \n\
 _0802660C: \n\
     ldr r0, _08026624 @ =gFrameCounter8Bit \n\
     ldrb r1, [r0] \n\
