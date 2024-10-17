@@ -6,6 +6,8 @@ import os
 DATA_PATH = "data/"
 subDirs: array = [
     "sa_x",
+    "samus",
+    "samus/gfx",
     "sprites",
     "hud",
     "escape",

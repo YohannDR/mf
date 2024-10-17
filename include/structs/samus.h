@@ -114,6 +114,18 @@ struct SamusEnvironmentalEffect {
     const u16* pOamFrame;
 };
 
+struct ArmCannonOffset {
+    s16 y;
+    s16 x;
+};
+
+struct SamusAnimationData {
+    const u8* const pTopGfx;
+    const u8* const pBottomGfx;
+    const u16* const pOam;
+    u8 timer;
+};
+
 extern struct SamusData gSamusData;
 extern struct SamusData gSamusDataCopy;
 extern struct SamusEnvironmentalEffect gSamusEnvironmentalEffects[2];

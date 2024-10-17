@@ -7,6 +7,12 @@
 
 #define SAMUS_SET_POSE(pose) (sSamusSetPoseFunctionPointer[gSamusData.unk_0](pose))
 
+extern const u8 sSamusGfx_Empty[2];
+
+extern const u16 sSamusOam_Empty[1];
+
+extern const struct ArmCannonOffset sArmCannonOffset_Empty;
+
 extern const u8 sSamusCollisionData[SPOSE_END][6];
 
 typedef void (*SamusSetPose_T)(u8);

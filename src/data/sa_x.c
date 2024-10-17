@@ -5343,4 +5343,4 @@ const u16 sSaXPalette_Fading[16 * 16] = INCBIN_U16("data/sa_x/fading.pal");
 const u16 sSaXPalette_MidAir[4 * 16] = INCBIN_U16("data/sa_x/screw_attack.pal");
 const u16 sSaXPalette_TransformingIntoMonster[1 * 16] = INCBIN_U16("data/sa_x/transforming_into_monster.pal");
 
-static const u8 sBlob_2b4408_2e4904[] = INCBIN_U8("data/Blob_2b4408_2e4904.bin");
+static const u8 sBlob_2b4408_2b5058[] = INCBIN_U8("data/Blob_2b4408_2b5058.bin");

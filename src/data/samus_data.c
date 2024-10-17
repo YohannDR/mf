@@ -1,6 +1,21 @@
 #include "data/samus_data.h"
 
-static const u8 sBlob_289970_28fd04[] = INCBIN_U8("data/Blob_289970_28fd04.bin");
+static const u8 sBlob_289970_28998c[] = INCBIN_U8("data/Blob_289970_28998c.bin");
+
+const u8 sSamusGfx_Empty[2] = {
+    0, 0
+};
+
+const u16 sSamusOam_Empty[1] = {
+    0
+};
+
+const struct ArmCannonOffset sArmCannonOffset_Empty = {
+    .x = 0,
+    .y = 0
+};
+
+static const u8 sBlob_289994_28fd04[] = INCBIN_U8("data/Blob_289994_28fd04.bin");
 
 const SamusSetPose_T sSamusSetPoseFunctionPointer[1] = {
     (SamusSetPose_T)0x8008fa1
