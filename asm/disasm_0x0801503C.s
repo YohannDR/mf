@@ -2197,7 +2197,7 @@ unk_1605c: @ 0x0801605C
 	adds r6, #0x2f
 	movs r0, #0
 	strb r0, [r6]
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r5, _080160A4 @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r5]
 	cmp r2, #0
@@ -2657,7 +2657,7 @@ _080163EC: .4byte 0x0000FF88
 	thumb_func_start SA_XStanding
 SA_XStanding: @ 0x080163F0
 	push {r4, r5, lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _08016408 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3276,7 +3276,7 @@ _0801689C: .4byte gSaXData
 	thumb_func_start SA_XDelayBeforeShootingBeam
 SA_XDelayBeforeShootingBeam: @ 0x080168A0
 	push {r4, lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _080168B8 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3527,7 +3527,7 @@ _08016A78: .4byte gSaXData
 	thumb_func_start SA_XShootingBeam
 SA_XShootingBeam: @ 0x08016A7C
 	push {r4, lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _08016A94 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3833,7 +3833,7 @@ _08016CAC: .4byte gSaXData
 	thumb_func_start SA_XShootingMissile
 SA_XShootingMissile: @ 0x08016CB0
 	push {lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _08016CC8 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -6846,7 +6846,7 @@ SA_XNocWalkingCheckCollisions: @ 0x080184E0
 	adds r6, #0x2f
 	movs r0, #0
 	strb r0, [r6]
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r5, _08018520 @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r5]
 	cmp r2, #0
@@ -7026,7 +7026,7 @@ SA_XNocRunningCheckCollisions: @ 0x08018644
 	adds r6, #0x2f
 	movs r0, #0
 	strb r0, [r6]
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r5, _0801868C @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r5]
 	cmp r2, #0
@@ -8130,7 +8130,7 @@ SA_XArcWalkingCheckCollisions: @ 0x08018F50
 	adds r6, #0x2f
 	movs r0, #0
 	strb r0, [r6]
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r5, _08018F98 @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r5]
 	cmp r2, #0
@@ -8300,7 +8300,7 @@ SA_XArcRunningCheckCollisions: @ 0x08019098
 	adds r6, #0x2f
 	movs r0, #0
 	strb r0, [r6]
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r5, _080190D8 @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r5]
 	cmp r2, #0
@@ -9145,7 +9145,7 @@ _08019718: .4byte 0x0000FF88
 	thumb_func_start SA_XArcTurningAround
 SA_XArcTurningAround: @ 0x0801971C
 	push {lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _08019734 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -9222,7 +9222,7 @@ _080197B4: .4byte 0x082E6BCC
 	thumb_func_start SA_XArcTurningAroundDuringChase
 SA_XArcTurningAroundDuringChase: @ 0x080197B8
 	push {r4, lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _080197D0 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -9301,7 +9301,7 @@ _08019850: .4byte 0x0000FDFF
 	thumb_func_start SA_XArcIdleBeforeShootingMissile
 SA_XArcIdleBeforeShootingMissile: @ 0x08019854
 	push {lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _0801986C @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -9420,7 +9420,7 @@ _08019938: .4byte gSaXData
 	thumb_func_start SA_XArcShootingMissile
 SA_XArcShootingMissile: @ 0x0801993C
 	push {lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _08019954 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -9968,7 +9968,7 @@ SA_XBossRunniingCheckCollisions: @ 0x08019E34
 	adds r0, r4, #0
 	adds r0, #0x2f
 	strb r6, [r0]
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r5, _08019E74 @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r5]
 	cmp r2, #0
@@ -13603,7 +13603,7 @@ SA_XTro2WalkingCheckCollisions: @ 0x0801BB98
 	adds r6, #0x2f
 	movs r7, #0
 	strb r7, [r6]
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r5, _0801BBD8 @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r5]
 	cmp r2, #0
@@ -13876,7 +13876,7 @@ SA_XTro2RunningCheckCollisions: @ 0x0801BDB4
 	adds r6, #0x2f
 	movs r0, #0
 	strb r0, [r6]
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r5, _0801BDF4 @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r5]
 	cmp r2, #0
@@ -14659,7 +14659,7 @@ _0801C3D0: .4byte 0x0000FF88
 	thumb_func_start SA_XTro2TurningAfterHearingWeapon
 SA_XTro2TurningAfterHearingWeapon: @ 0x0801C3D4
 	push {lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _0801C3EC @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -14736,7 +14736,7 @@ _0801C46C: .4byte 0x082E6BCC
 	thumb_func_start SA_XTro2TurningDuringChase
 SA_XTro2TurningDuringChase: @ 0x0801C470
 	push {r4, lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _0801C488 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -14815,7 +14815,7 @@ _0801C508: .4byte 0x0000FDFF
 	thumb_func_start SA_XTro2IdleBeforeShootingBeam
 SA_XTro2IdleBeforeShootingBeam: @ 0x0801C50C
 	push {lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _0801C524 @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -14934,7 +14934,7 @@ _0801C5F0: .4byte gSaXData
 	thumb_func_start SA_XTro2ShootingBeam
 SA_XTro2ShootingBeam: @ 0x0801C5F4
 	push {lr}
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _0801C60C @ =gPreviousVerticalCollisionCheck
 	ldrb r0, [r0]
 	cmp r0, #0

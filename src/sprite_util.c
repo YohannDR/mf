@@ -1136,10 +1136,10 @@ u32 SpriteUtilCheckVerticalCollisionAtPositionSlopes(u16 yPosition, u16 xPositio
 }
 
 /**
- * @brief 1129c | 74 | Adjust the current sprite's Y position on slope, check position at origin
+ * @brief 1129c | 74 | Aligns the current sprite's Y position on slope, check position at origin
  * 
  */
-void SpriteUtilAdjustYPosOnSlope(void)
+void SpriteUtilAlignYPosOnSlope(void)
 {
     u16 yPosition;
     u16 xPosition;
@@ -1173,10 +1173,10 @@ void SpriteUtilAdjustYPosOnSlope(void)
 }
 
 /**
- * @brief 11310 | 80 | Adjust the current sprite's Y position on slope, check position at bottom of hitbox, X origin
+ * @brief 11310 | 80 | Aligns the current sprite's Y position on slope, check position at bottom of hitbox, X origin
  * 
  */
-void SpriteUtilAdjustYPosOnSlopeAtHitbox(void)
+void SpriteUtilAlignYPosOnSlopeAtHitboxBottom(void)
 {
     u16 yPosition;
     u16 xPosition;

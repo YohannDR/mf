@@ -619,7 +619,7 @@ u8 unk_15f54(void)
 void unk_1605c(void)
 {
     gCurrentSprite.work2 = 0;
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -927,7 +927,7 @@ void SaXStanding(void)
 {
     u32 nslr;
 
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -1289,7 +1289,7 @@ void SaXDelayBeforeShootingBeam(void)
 {
     u32 nslr;
 
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -1403,7 +1403,7 @@ void SaXShootingBeam(void)
 {
     u32 nslr;
 
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -1557,7 +1557,7 @@ void SaXShootingMissileInit(void)
  */
 void SaXShootingMissile(void)
 {
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {

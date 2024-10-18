@@ -2624,8 +2624,8 @@ _0801128E:
 	.align 2, 0
 _08011298: .4byte gPreviousVerticalCollisionCheck
 
-	thumb_func_start SpriteUtilAdjustYPosOnSlope
-SpriteUtilAdjustYPosOnSlope: @ 0x0801129C
+	thumb_func_start SpriteUtilAlignYPosOnSlope
+SpriteUtilAlignYPosOnSlope: @ 0x0801129C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2682,8 +2682,8 @@ _080112F8:
 _08011308: .4byte gCurrentSprite
 _0801130C: .4byte gPreviousVerticalCollisionCheck
 
-	thumb_func_start SpriteUtilAdjustYPosOnSlopeAtHitbox
-SpriteUtilAdjustYPosOnSlopeAtHitbox: @ 0x08011310
+	thumb_func_start SpriteUtilAlignYPosOnSlopeAtHitboxBottom
+SpriteUtilAlignYPosOnSlopeAtHitboxBottom: @ 0x08011310
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

@@ -124,7 +124,7 @@ void ZombieWaitingToForm(void) {
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
         }
     } else {
-        SpriteUtilAdjustYPosOnSlope();
+        SpriteUtilAlignYPosOnSlope();
         if (gPreviousVerticalCollisionCheck == 0) {
             // Falling
             gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
@@ -186,7 +186,7 @@ void ZombieIdleInit(void) {
 }
 
 void ZombieIdle(void) {
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
     if (gPreviousVerticalCollisionCheck == 0) {
         gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
     } else {
@@ -206,7 +206,7 @@ void ZombieMovingInit(void) {
 
 void ZombieMoving(void) {
     // Check if falling
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
     if (gPreviousVerticalCollisionCheck == 0) {
         if (gCurrentSprite.status & SS_X_FLIP) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
@@ -285,7 +285,7 @@ void ZombieLunging(void) {
     s16 speed;
 
     // Check if falling
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
     if (gPreviousVerticalCollisionCheck == 0) {
         if (gCurrentSprite.status & SS_X_FLIP) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);

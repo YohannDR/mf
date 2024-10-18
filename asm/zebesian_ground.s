@@ -697,7 +697,7 @@ _0804024E:
 	.align 2, 0
 _08040264: .4byte gCurrentSprite
 _08040268:
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _080402A4 @ =gPreviousVerticalCollisionCheck
 	ldrb r1, [r0]
 	movs r6, #0xf0

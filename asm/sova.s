@@ -845,7 +845,7 @@ _0803BCF0:
 	lsls r0, r0, #1
 	bl SoundPlayNotAlreadyPlaying
 _0803BD24:
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r6, _0803BD58 @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r6]
 	adds r1, r2, #0

@@ -1273,8 +1273,8 @@ NightmareReachedPhase3Position: @ 0x0805E384
 	bx lr
 	.align 2, 0
 
-	thumb_func_start NightmarePhase3SlotMovementInit
-NightmarePhase3SlotMovementInit: @ 0x0805E388
+	thumb_func_start NightmarePhase3SlowMovementInit
+NightmarePhase3SlowMovementInit: @ 0x0805E388
 	bx lr
 	.align 2, 0
 
@@ -5804,7 +5804,7 @@ _080607C8:
 	bl NightmareReachedPhase3Position
 	b _080607EE
 _080607CE:
-	bl NightmarePhase3SlotMovementInit
+	bl NightmarePhase3SlowMovementInit
 	b _080607EE
 _080607D4:
 	bl NightmarePhase3FastMovementInit
@@ -5827,8 +5827,8 @@ _080607EE:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start NigthmarePart
-NigthmarePart: @ 0x08060800
+	thumb_func_start NightmarePart
+NightmarePart: @ 0x08060800
 	push {lr}
 	ldr r1, _08060814 @ =gCurrentSprite
 	adds r0, r1, #0

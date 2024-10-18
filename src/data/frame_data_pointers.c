@@ -2,6 +2,7 @@
 
 #include "data/sprites/box.h"
 #include "data/sprites/zazabi.h"
+#include "data/sprites/nightmare.h"
 
 const struct FrameData* const sBoxFrameDataPointers[BOX_OAM_END] = {
     [BOX_OAM_PART_FRONT_LEFT_LEG_COVER_UNDAMAGED] = sBoxPartOam_FrontLeftLegCoverUndamaged,
@@ -305,4 +306,47 @@ const struct FrameData* const sZazabiFrameDataPointers1[57] = {
     sZazabiPartOam_EyeLandingLeft
 };
 
-static const u8 sBlob_79b458_79ecc8[14448] = INCBIN_U8("data/Blob_79b458_79ecc8.bin");
+static const u8 sBlob_79b458_79b7fc[] = INCBIN_U8("data/Blob_79b458_79b7fc.bin");
+
+const struct FrameData* const sNightmareFrameDataPointers[NIGHTMARE_OAM_END] = {
+    [FRAMEDATA_3BD4DC] = sFrameData_3bd4dc,
+    [FRAMEDATA_3BD4EC] = sFrameData_3bd4ec,
+    [FRAMEDATA_3BD51C] = sFrameData_3bd51c,
+    [FRAMEDATA_3BD574] = sFrameData_3bd574,
+    [FRAMEDATA_3BD59C] = sFrameData_3bd59c,
+    [FRAMEDATA_3BD5AC] = sFrameData_3bd5ac,
+    [FRAMEDATA_3BD5D4] = sFrameData_3bd5d4,
+    [FRAMEDATA_3BD5FC] = sFrameData_3bd5fc,
+    [FRAMEDATA_3BD654] = sFrameData_3bd654,
+    [FRAMEDATA_3BD67C] = sFrameData_3bd67c,
+    [FRAMEDATA_3BD6D4] = sFrameData_3bd6d4,
+    [FRAMEDATA_3BD6FC] = sFrameData_3bd6fc,
+    [FRAMEDATA_3BD754] = sFrameData_3bd754,
+    [FRAMEDATA_3BD76C] = sFrameData_3bd76c,
+    [FRAMEDATA_3BD784] = sFrameData_3bd784,
+    [FRAMEDATA_3BD794] = sFrameData_3bd794,
+    [FRAMEDATA_3BD7A4] = sFrameData_3bd7a4,
+    [FRAMEDATA_3BD7C4] = sFrameData_3bd7c4,
+    [FRAMEDATA_3BD7E4] = sFrameData_3bd7e4,
+    [FRAMEDATA_3BD804] = sFrameData_3bd804,
+    [FRAMEDATA_3BD824] = sFrameData_3bd824,
+    [FRAMEDATA_3BD844] = sFrameData_3bd844,
+    [FRAMEDATA_3BD864] = sFrameData_3bd864,
+    [FRAMEDATA_3BD874] = sFrameData_3bd874,
+    [FRAMEDATA_3BD884] = sFrameData_3bd884,
+    [FRAMEDATA_3BD894] = sFrameData_3bd894,
+    [FRAMEDATA_3BD8A4] = sFrameData_3bd8a4,
+    [FRAMEDATA_3BD8B4] = sFrameData_3bd8b4,
+    [FRAMEDATA_3BD8C4] = sFrameData_3bd8c4,
+    [FRAMEDATA_3BD8D4] = sFrameData_3bd8d4,
+    [FRAMEDATA_3BD8E4] = sFrameData_3bd8e4,
+    [FRAMEDATA_3BD95C] = sFrameData_3bd95c,
+    [FRAMEDATA_3BD9D4] = sFrameData_3bd9d4,
+    [FRAMEDATA_3BDA4C] = sFrameData_3bda4c,
+    [FRAMEDATA_3BDAC4] = sFrameData_3bdac4,
+    [FRAMEDATA_3BDB3C] = sFrameData_3bdb3c,
+    [FRAMEDATA_3BDBB4] = sFrameData_3bdbb4,
+    [FRAMEDATA_3BDBC4] = sFrameData_3bdbc4
+};
+
+static const u8 sBlob_79b894_79ecc8[] = INCBIN_U8("data/Blob_79b894_79ecc8.bin");

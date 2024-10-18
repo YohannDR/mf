@@ -30,7 +30,7 @@ void SaXBossCheckCollisionRunning(void)
     var_1 = FALSE;
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {

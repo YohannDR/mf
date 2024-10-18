@@ -23,10 +23,11 @@ def Func():
         result += str(sign(int.from_bytes(file.read(2), "little")))
         # result += hex(int.from_bytes(file.read(2), "little"))
 
-        if x % 4 == 0 and x != 0:
-            result += ",\n"
-        elif x < size:
-            result += ", "
+        if x < size:
+            if x % 4 == 0 and x != 0:
+                result += ",\n"
+            else:
+                result += ", "
 
     print(result)
     Func()

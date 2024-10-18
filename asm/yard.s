@@ -1141,7 +1141,7 @@ YardRolling: @ 0x0803CCF8
 	push {r4, r5, r6, r7, lr}
 	bl YardCheckRoll
 	movs r7, #0
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r5, _0803CD38 @ =gPreviousVerticalCollisionCheck
 	ldrb r2, [r5]
 	adds r1, r2, #0
@@ -1779,7 +1779,7 @@ _0803D1B8:
 	.align 2, 0
 _0803D1E8: .4byte gPreviousCollisionCheck
 _0803D1EC:
-	bl SpriteUtilAdjustYPosOnSlope
+	bl SpriteUtilAlignYPosOnSlope
 	ldr r0, _0803D23C @ =gPreviousVerticalCollisionCheck
 	ldrb r1, [r0]
 	movs r5, #0xf0

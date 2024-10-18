@@ -15,8 +15,8 @@ u32 SpriteUtilCheckObjectsTouching(u16 o1Top, u16 o1Bottom, u16 o1Left, u16 o1Ri
 void SpriteUtilSamusAndSpriteCollision(void);
 u32 SpriteUtilCheckVerticalCollisionAtPosition(u16 yPosition, u16 xPosition);
 u32 SpriteUtilCheckVerticalCollisionAtPositionSlopes(u16 yPosition, u16 xPosition);
-void SpriteUtilAdjustYPosOnSlope(void);
-void SpriteUtilAdjustYPosOnSlopeAtHitbox(void);
+void SpriteUtilAlignYPosOnSlope(void);
+void SpriteUtilAlignYPosOnSlopeAtHitboxBottom(void);
 void SpriteUtilCheckCollisionAtPosition(u16 yPosition, u16 xPosition);
 void SpriteUtilCurrentSpriteFalling(void);
 void SpriteUtilChooseRandomXFlip(void);

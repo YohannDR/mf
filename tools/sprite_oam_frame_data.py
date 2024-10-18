@@ -95,7 +95,7 @@ def ParsePart2(value):
 
 def ParseOam():
     part_count = int.from_bytes(file.read(2), "little")
-    result = f"static const u16 sOam_{file.tell()-2:x}[OAM_DATA_SIZE({part_count})] = " + "{\n"
+    result = f"static const u16 sOam_{file.tell()-2:x}[] = " + "{\n"
     if part_count == 0:
         result += f"    0"
     else:

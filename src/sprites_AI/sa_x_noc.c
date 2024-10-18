@@ -21,7 +21,7 @@ void SaXNocCheckCollisionWalking(void)
 {
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
@@ -126,7 +126,7 @@ void SaXNocCheckCollisionRunning(void)
 {
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    SpriteUtilAdjustYPosOnSlope();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {

@@ -2,26 +2,24 @@ def toPixels(value):
     if value > 0x7FFF:
         value = -(0x10000 - value)
 
-    if value % 4 == 0:
-        return value//4
-    else:
-        return value/4
+    return value//4
 
 partNames = [
-    "BOX_PART_FRONT_LEFT_LEG_COVER",
-    "BOX_PART_FRONT_LEFT_LEG",
-    "BOX_PART_FRONT_RIGHT_LEG_COVER",
-    "BOX_PART_FRONT_RIGHT_LEG",
-    "BOX_PART_MIDDLE_LEFT_LEG",
-    "BOX_PART_MIDDLE_RIGHT_LEG",
-    "BOX_PART_CENTER",
-    "BOX_PART_BRAIN",
-    "BOX_PART_CENTER_BOTTOM",
-    "BOX_PART_LAUNCHER",
-    "BOX_PART_BACK_LEFT_LEG",
-    "BOX_PART_BACK_RIGHT_LEG",
-
-    "BOX_PART_END"
+    "NIGHTMARE_PART_CHIN_SLUDGE",
+    "NIGHTMARE_PART_EYE_SLUDGE",
+    "NIGHTMARE_PART_EYE",
+    "NIGHTMARE_PART_MOUTH",
+    "NIGHTMARE_PART_RIGHT_ARM_TOP",
+    "NIGHTMARE_PART_RIGHT_TURRET_1",
+    "NIGHTMARE_PART_RIGHT_TURRET_2",
+    "NIGHTMARE_PART_RIGHT_TURRET_3",
+    "NIGHTMARE_PART_RIGHT_ARM_BOTTOM",
+    "NIGHTMARE_PART_BODY",
+    "NIGHTMARE_PART_GENERATOR",
+    "NIGHTMARE_PART_LEFT_TURRET_1",
+    "NIGHTMARE_PART_LEFT_TURRET_2",
+    "NIGHTMARE_PART_LEFT_TURRET_3",
+    "NIGHTMARE_PART_END"
 ]
 
 def ParseMultiSpriteFrame():
@@ -64,35 +62,31 @@ def ParseMultiSpriteData():
     return (result, frameData)
 
 file = open("../mf_us_baserom.gba", "rb")
-file.seek(0x79afe0)
-animations = [int.from_bytes(file.read(4), 'little') & 0x1ffffff for i in range(58)]
+file.seek(0x79b7fc)
+animations = [int.from_bytes(file.read(4), 'little') & 0x1ffffff for i in range(38)]
 
-'''print("const struct FrameData* const sBoxFrameDataPointers[58] = {")
+print("const struct FrameData* const sNightmareFrameDataPointers[NIGHTMARE_OAM_END] = {")
 for addr in animations:
     print(f"    [FRAMEDATA_{addr:X}] = sFrameData_{addr:x},")
-print("};\n")'''
+print("};\n")
 
-'''print("enum BoxOam {")
+print("enum NightmareOam {")
 for addr in animations:
     print(f"    FRAMEDATA_{addr:X},")
-print("\n    BOX_OAM_END\n};\n")'''
+print("\n    NIGHTMARE_OAM_END\n};\n")
 
-file.seek(0x342180)
+file.seek(0x3b73e2)
 frames = set()
 output = ""
 while True:
     currentAddr = file.tell()
+    if currentAddr % 4 != 0:
+        file.read(2) # align
     pointer = int.from_bytes(file.read(4), 'little')
-    file.seek(currentAddr)
     if pointer in frames:
+        file.seek(file.tell()-4)
         break
-    if pointer & 0xFFFF == 0:
-        file.read(2)
-        pointer = int.from_bytes(file.read(4), 'little')
-        file.seek(file.tell()-6)
-        if pointer in frames:
-            file.read(2)
-            break
+    file.seek(currentAddr)
     frames |= {currentAddr | 0x8000000}
     output += ParseMultiSpriteFrame() + '\n'
 
