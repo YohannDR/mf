@@ -8,6 +8,7 @@
 #include "constants/audio.h"
 #include "constants/event.h"
 #include "constants/particle.h"
+#include "constants/samus.h"
 
 #include "structs/sprite.h"
 #include "structs/samus.h"
@@ -41,17 +42,11 @@ void CoreXAbilityTransfromation(void) {
     }
 }
 
-#ifdef NON_MATCHING
-void CoreXAbilityInit(void) {
-    // https://decomp.me/scratch/3Se2X
-    u8 bossSpriteId;
-    u8 secondarySpriteId;
-    u8 ramSlot;
-    u32 bossAlreadyDead;
 
-    bossAlreadyDead = FALSE;
-    bossSpriteId = PSPRITE_ARACHNUS;
-    secondarySpriteId = SSPRITE_CORE_X_SHELL_MORPH_BALL;
+void CoreXAbilityInit(void) {
+    u8 bossAlreadyDead = FALSE;
+    u8 bossSpriteId = PSPRITE_ARACHNUS;
+    u8 secondarySpriteId = SSPRITE_CORE_X_SHELL_MORPH_BALL;
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     if (gCurrentSprite.pose == 0x59) {
         switch (gCurrentSprite.spriteId) {
@@ -126,304 +121,31 @@ void CoreXAbilityInit(void) {
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work3 = 0;
     gCurrentSprite.work4 = 0;
-    ramSlot = SpriteSpawnSecondary(secondarySpriteId, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
+    bossAlreadyDead = SpriteSpawnSecondary(secondarySpriteId, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, // Need to reuse variable to make it matching.
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-    if (ramSlot == UCHAR_MAX) {
+    if (bossAlreadyDead == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    ramSlot = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 0, gCurrentSprite.spritesetGfxSlot,
+    bossAlreadyDead = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 0, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-    if (ramSlot == UCHAR_MAX) {
+    if (bossAlreadyDead == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    ramSlot = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 1, gCurrentSprite.spritesetGfxSlot,
+    bossAlreadyDead = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 1, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-    if (ramSlot == UCHAR_MAX) {
+    if (bossAlreadyDead == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    ramSlot = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 2, gCurrentSprite.spritesetGfxSlot,
+    bossAlreadyDead = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 2, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-    if (ramSlot == UCHAR_MAX) {
+    if (bossAlreadyDead == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
 }
-#else
-NAKED_FUNCTION
-void CoreXAbilityInit(void) {
-    asm(" \n\
-    push {r4, r5, r6, r7, lr} \n\
-    sub sp, #0xc \n\
-    movs r2, #0 \n\
-    movs r4, #0x3a \n\
-    movs r0, #0x1b \n\
-    mov ip, r0 \n\
-    ldr r0, _0802537C @ =gCurrentSprite \n\
-    add r1, r0, #0 \n\
-    add r1, #0x26 \n\
-    movs r3, #1 \n\
-    strb r3, [r1] \n\
-    sub r1, #2 \n\
-    ldrb r1, [r1] \n\
-    add r5, r0, #0 \n\
-    cmp r1, #0x59 \n\
-    bne _08025400 \n\
-    ldrb r0, [r5, #0x1d] \n\
-    sub r0, #0x3f \n\
-    cmp r0, #0xa \n\
-    bhi _080253E2 \n\
-    lsl r0, r0, #2 \n\
-    ldr r1, _08025380 @ =_08025384 \n\
-    add r0, r0, r1 \n\
-    ldr r0, [r0] \n\
-    mov pc, r0 \n\
-    .align 2, 0 \n\
-_0802537C: .4byte gCurrentSprite \n\
-_08025380: .4byte _08025384 \n\
-_08025384: @ jump table \n\
-    .4byte _080253B0 @ case 0 \n\
-    .4byte _080253E2 @ case 1 \n\
-    .4byte _080253E2 @ case 2 \n\
-    .4byte _080253E2 @ case 3 \n\
-    .4byte _080253E2 @ case 4 \n\
-    .4byte _080253BC @ case 5 \n\
-    .4byte _080253C2 @ case 6 \n\
-    .4byte _080253E2 @ case 7 \n\
-    .4byte _080253C6 @ case 8 \n\
-    .4byte _080253CC @ case 9 \n\
-    .4byte _080253DE @ case 10 \n\
-_080253B0: \n\
-    ldrh r0, [r5, #2] \n\
-    sub r0, #0x80 \n\
-    strh r0, [r5, #2] \n\
-    movs r1, #0x1b \n\
-    mov ip, r1 \n\
-    b _080253E2 \n\
-_080253BC: \n\
-    movs r3, #0x5e \n\
-    mov ip, r3 \n\
-    b _080253E2 \n\
-_080253C2: \n\
-    movs r0, #0x5f \n\
-    b _080253E0 \n\
-_080253C6: \n\
-    movs r1, #0x61 \n\
-    mov ip, r1 \n\
-    b _080253E2 \n\
-_080253CC: \n\
-    ldrh r0, [r5, #2] \n\
-    sub r0, #0x80 \n\
-    strh r0, [r5, #2] \n\
-    ldrh r0, [r5, #4] \n\
-    sub r0, #0x40 \n\
-    strh r0, [r5, #4] \n\
-    movs r3, #0x62 \n\
-    mov ip, r3 \n\
-    b _080253E2 \n\
-_080253DE: \n\
-    movs r0, #0x63 \n\
-_080253E0: \n\
-    mov ip, r0 \n\
-_080253E2: \n\
-    add r1, r5, #0 \n\
-    add r1, #0x24 \n\
-    movs r0, #0x5a \n\
-    strb r0, [r1] \n\
-    movs r0, #0x2c \n\
-    strh r0, [r5, #6] \n\
-    ldrh r1, [r5] \n\
-    movs r0, #0x20 \n\
-    orr r0, r1 \n\
-    ldr r1, _080253FC @ =0x0000F3FF \n\
-    and r0, r1 \n\
-    strh r0, [r5] \n\
-    b _08025464 \n\
-    .align 2, 0 \n\
-_080253FC: .4byte 0x0000F3FF \n\
-_08025400: \n\
-    ldrb r0, [r5, #0x1d] \n\
-    cmp r0, #0x3f \n\
-    beq _0802540C \n\
-    cmp r0, #0x44 \n\
-    beq _08025420 \n\
-    b _08025438 \n\
-_0802540C: \n\
-    ldr r0, _0802541C @ =gEquipment \n\
-    ldrb r1, [r0, #0xc] \n\
-    movs r0, #0x40 \n\
-    and r0, r1 \n\
-    cmp r0, #0 \n\
-    beq _08025434 \n\
-    b _08025438 \n\
-    .align 2, 0 \n\
-_0802541C: .4byte gEquipment \n\
-_08025420: \n\
-    ldr r0, _08025440 @ =gEquipment \n\
-    ldrb r1, [r0, #0xc] \n\
-    add r0, r3, #0 \n\
-    and r0, r1 \n\
-    cmp r0, #0 \n\
-    beq _0802542E \n\
-    movs r2, #1 \n\
-_0802542E: \n\
-    movs r4, #0x4b \n\
-    movs r1, #0x5e \n\
-    mov ip, r1 \n\
-_08025434: \n\
-    cmp r2, #0 \n\
-    beq _08025444 \n\
-_08025438: \n\
-    movs r0, #0 \n\
-    strh r0, [r5] \n\
-    b _0802555C \n\
-    .align 2, 0 \n\
-_08025440: .4byte gEquipment \n\
-_08025444: \n\
-    ldr r0, _08025524 @ =gBossFormationSpriteId \n\
-    strb r4, [r0] \n\
-    ldr r1, _08025528 @ =gCoreXFormationSpriteId \n\
-    ldrb r0, [r5, #0x1d] \n\
-    strb r0, [r1] \n\
-    ldrh r0, [r5, #2] \n\
-    strh r0, [r5, #6] \n\
-    ldrh r1, [r5, #4] \n\
-    strh r1, [r5, #8] \n\
-    ldr r3, _0802552C @ =0xFFFFFE80 \n\
-    add r0, r0, r3 \n\
-    strh r0, [r5, #2] \n\
-    add r1, r5, #0 \n\
-    add r1, #0x24 \n\
-    movs r0, #1 \n\
-    strb r0, [r1] \n\
-_08025464: \n\
-    add r4, r5, #0 \n\
-    ldr r2, _08025530 @ =sPrimarySpriteStats \n\
-    ldrb r1, [r4, #0x1d] \n\
-    lsl r0, r1, #3 \n\
-    sub r0, r0, r1 \n\
-    lsl r0, r0, #1 \n\
-    add r0, r0, r2 \n\
-    ldrh r0, [r0] \n\
-    movs r2, #0 \n\
-    movs r6, #0 \n\
-    strh r0, [r4, #0x14] \n\
-    add r1, r4, #0 \n\
-    add r1, #0x22 \n\
-    movs r0, #6 \n\
-    strb r0, [r1] \n\
-    add r0, r4, #0 \n\
-    add r0, #0x25 \n\
-    strb r2, [r0] \n\
-    ldrh r0, [r4] \n\
-    movs r3, #0x80 \n\
-    lsl r3, r3, #8 \n\
-    add r1, r3, #0 \n\
-    orr r0, r1 \n\
-    strh r0, [r4] \n\
-    add r0, r4, #0 \n\
-    add r0, #0x27 \n\
-    movs r1, #0x10 \n\
-    strb r1, [r0] \n\
-    add r0, #1 \n\
-    strb r1, [r0] \n\
-    add r0, #1 \n\
-    strb r1, [r0] \n\
-    ldr r1, _08025534 @ =0x0000FFE0 \n\
-    strh r1, [r4, #0xa] \n\
-    movs r0, #0x20 \n\
-    strh r0, [r4, #0xc] \n\
-    strh r1, [r4, #0xe] \n\
-    strh r0, [r4, #0x10] \n\
-    ldr r0, _08025538 @ =sCoreXAbilityOam_Idle \n\
-    str r0, [r4, #0x18] \n\
-    strb r2, [r4, #0x1c] \n\
-    strh r6, [r4, #0x16] \n\
-    add r0, r4, #0 \n\
-    add r0, #0x30 \n\
-    strb r2, [r0] \n\
-    add r0, #1 \n\
-    strb r2, [r0] \n\
-    ldrb r1, [r4, #0x1e] \n\
-    ldrb r2, [r4, #0x1f] \n\
-    add r7, r4, #0 \n\
-    add r7, #0x23 \n\
-    ldrb r3, [r7] \n\
-    ldrh r0, [r4, #2] \n\
-    str r0, [sp] \n\
-    ldrh r0, [r4, #4] \n\
-    str r0, [sp, #4] \n\
-    str r6, [sp, #8] \n\
-    mov r0, ip \n\
-    bl SpriteSpawnSecondary \n\
-    lsl r0, r0, #0x18 \n\
-    lsr r2, r0, #0x18 \n\
-    cmp r2, #0xff \n\
-    beq _08025520 \n\
-    ldrb r2, [r4, #0x1f] \n\
-    ldrb r3, [r7] \n\
-    ldrh r0, [r4, #2] \n\
-    str r0, [sp] \n\
-    ldrh r0, [r4, #4] \n\
-    str r0, [sp, #4] \n\
-    str r6, [sp, #8] \n\
-    movs r0, #0x1c \n\
-    movs r1, #0 \n\
-    bl SpriteSpawnSecondary \n\
-    lsl r0, r0, #0x18 \n\
-    lsr r2, r0, #0x18 \n\
-    cmp r2, #0xff \n\
-    beq _08025520 \n\
-    ldrb r2, [r4, #0x1f] \n\
-    ldrb r3, [r7] \n\
-    ldrh r0, [r4, #2] \n\
-    str r0, [sp] \n\
-    ldrh r0, [r4, #4] \n\
-    str r0, [sp, #4] \n\
-    str r6, [sp, #8] \n\
-    movs r0, #0x1c \n\
-    movs r1, #1 \n\
-    bl SpriteSpawnSecondary \n\
-    lsl r0, r0, #0x18 \n\
-    lsr r2, r0, #0x18 \n\
-    cmp r2, #0xff \n\
-    bne _0802553C \n\
-_08025520: \n\
-    strh r6, [r4] \n\
-    b _0802555C \n\
-    .align 2, 0 \n\
-_08025524: .4byte gBossFormationSpriteId \n\
-_08025528: .4byte gCoreXFormationSpriteId \n\
-_0802552C: .4byte 0xFFFFFE80 \n\
-_08025530: .4byte sPrimarySpriteStats \n\
-_08025534: .4byte 0x0000FFE0 \n\
-_08025538: .4byte sCoreXAbilityOam_Idle \n\
-_0802553C: \n\
-    ldrb r2, [r5, #0x1f] \n\
-    ldrb r3, [r7] \n\
-    ldrh r0, [r5, #2] \n\
-    str r0, [sp] \n\
-    ldrh r0, [r5, #4] \n\
-    str r0, [sp, #4] \n\
-    str r6, [sp, #8] \n\
-    movs r0, #0x1c \n\
-    movs r1, #2 \n\
-    bl SpriteSpawnSecondary \n\
-    lsl r0, r0, #0x18 \n\
-    lsr r2, r0, #0x18 \n\
-    cmp r2, #0xff \n\
-    bne _0802555C \n\
-    strh r6, [r5] \n\
-_0802555C: \n\
-    add sp, #0xc \n\
-    pop {r4, r5, r6, r7} \n\
-    pop {r0} \n\
-    bx r0 \n\
-    ");
-}
-#endif
 
 void CoreXAbilityIdleInit(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
