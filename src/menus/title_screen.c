@@ -7,6 +7,7 @@
 #include "data/menus/title_screen.h"
 #include "data/menus/internal_title_screen_data.h"
 
+#include "constants/audio.h"
 #include "constants/menus/title_screen.h"
 
 /**
@@ -160,7 +161,7 @@ void unk_8690c(void)
 
     TitleScreenDrawAllObjects();
 
-    PlayMusic(0x4A, 16);
+    PlayMusic(MUSIC_TITLE, 16);
 }
 
 /**
@@ -672,7 +673,7 @@ s32 TitleScreenSpawningIn(void)
                 write16(REG_BLDCNT, BLDCNT_BG1_FIRST_TARGET_PIXEL | BLDCNT_ALPHA_BLENDING_EFFECT | BLDCNT_BG3_SECOND_TARGET_PIXEL | BLDCNT_BACKDROP_SECOND_TARGET_PIXEL);
                 write16(REG_DISPCNT, read16(REG_DISPCNT) | DCNT_BG1);
                 TITLE_SCREEN_DATA.unk_0 = 0;
-                PlayMusic(0x4A, 16);
+                PlayMusic(MUSIC_TITLE, 16);
                 TITLE_SCREEN_DATA.unk_5 = 1;
             }
             break;
@@ -821,7 +822,7 @@ s32 TitleScreenSpawningIn(void)
 
                 if (TITLE_SCREEN_DATA.unk_5 == 0)
                 {
-                    PlayMusic(0x4A, 16);
+                    PlayMusic(MUSIC_TITLE, 16);
                 }
 
                 TITLE_SCREEN_DATA.unk_5 = 5;

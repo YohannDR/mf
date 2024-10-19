@@ -8,6 +8,7 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprites/serris.h"
 
+#include "constants/audio.h"
 #include "constants/particle.h"
 #include "constants/samus.h"
 #include "constants/sprite.h"
@@ -567,7 +568,7 @@ void SerrisFirstArcEnd(void)
         {
             // Is main sprite, set first arc done
             gCurrentSprite.pose = SERRIS_POSE_FIRST_ARC_DONE;
-            PlayMusic(0x3F, 7);
+            PlayMusic(MUSIC_SERRIS_YAKUZA_BATTLE, 7);
         }
         else
         {

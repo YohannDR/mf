@@ -5,6 +5,7 @@
 #include "data/sprite_data.h"
 #include "data/sprites/box.h"
 
+#include "constants/audio.h"
 #include "constants/event.h"
 #include "constants/particle.h"
 
@@ -186,7 +187,7 @@ void BoxWaitingToEmerge(void) {
     if (SpriteUtilCheckSamusNearSpriteLeftRight(0x200, 0x200) == NSLR_LEFT) {
         gCurrentSprite.pose = 0x41;
         ParticleSet(y, x-0xa0, 0x2f);
-        PlayMusic(0x1b, 7);
+        PlayMusic(MUSIC_BOX_BATTLE, 7);
     }
 }
 
@@ -1523,7 +1524,7 @@ void BoxDebrisFalling(void) {
         ParticleSet(y, x+0x20,0x31);
         EventCheckAdvance(EVENT_BOX_DEFEATED);
         BoxSetDebrisClipdata(CAA_MAKE_SOLID);
-        PlayMusic(0x18, 6);
+        PlayMusic(MUSIC_BOSS_TENSION, 6);
     } else {
         offset = gCurrentSprite.work4;
         movement = sSpritesFallingSpeedFast[offset];
@@ -1656,21 +1657,15 @@ void BoxFallingDebrisInit(void) {
     }
 }
 
-#ifdef NON_MATCHING
 void BoxFallingDebrisFalling(void) {
-    // https://decomp.me/scratch/bBJyP
-    u32 blockTop;
-    u16 y;
-    u16 x;
-    u8 offset;
-    s16 movement;
-    u8 work2;
-    u8 roomSlot;
-
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     if (gCurrentSprite.work1 > 0) {
         gCurrentSprite.work1--;
     } else {
+        u16 y, x;
+        u8 work2;
+        u8 roomSlot;
+
         gCurrentSprite.work2++;
         work2 = gCurrentSprite.work2;
         y = gCurrentSprite.yPosition;
@@ -1680,7 +1675,7 @@ void BoxFallingDebrisFalling(void) {
             gCurrentSprite.work3 += 1;
         }
         if (gCurrentSprite.work3 > 50) {
-            blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(y, x);
+            u32 blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(y, x);
             if (gPreviousVerticalCollisionCheck != 0) {
                 gCurrentSprite.yPosition = blockTop;
                 gCurrentSprite.pose = 0x1e;
@@ -1700,11 +1695,13 @@ void BoxFallingDebrisFalling(void) {
             }
         }
         if (roomSlot == 0) {
+            u8 offset;
+            s16 movement;
             if ((work2 & 0xf) == 0) {
                 ParticleSet(y, x, 0x31);
-            } else if ((work2 + 4 & 0xf) == 0) {
+            } else if (((work2 + 4) & 0xf) == 0) {
                 ParticleSet(y-0xa0, x+0x32, 0x2e);
-            } else if ((work2 + 8 & 0xf) == 0) {
+            } else if (((work2 + 8) & 0xf) == 0) {
                 ParticleSet(y, x-0x20, 0x33);
             }
             offset = gCurrentSprite.work4;
@@ -1718,6 +1715,8 @@ void BoxFallingDebrisFalling(void) {
                 gCurrentSprite.yPosition += movement;
             }
         } else if (roomSlot == 1 || roomSlot == 6) {
+            u8 offset;
+            s16 movement;
             if ((work2 & 0x1f) == 0) {
                 ParticleSet(y, x, 0x27);
             }
@@ -1732,6 +1731,8 @@ void BoxFallingDebrisFalling(void) {
                 gCurrentSprite.yPosition += movement;
             }
         } else if (roomSlot == 2 || roomSlot == 3 || roomSlot == 7) {
+            u8 offset;
+            s16 movement;
             if (((work2 + 7) & 0x1f) == 0) {
                 ParticleSet(y, x, 0x33);
             }
@@ -1746,6 +1747,8 @@ void BoxFallingDebrisFalling(void) {
                 gCurrentSprite.yPosition += movement;
             }
         } else {
+            u8 offset;
+            s16 movement;
             offset = gCurrentSprite.work4;
             movement = sSpritesFallingSpeedSlow[offset];
             if (movement == SHORT_MAX) {
@@ -1759,299 +1762,6 @@ void BoxFallingDebrisFalling(void) {
         }
     }
 }
-#else
-NAKED_FUNCTION
-void BoxFallingDebrisFalling(void) {
-    asm(" \n\
-	push {r4, r5, r6, r7, lr} \n\
-	mov r7, r8 \n\
-	push {r7} \n\
-	ldr r4, _08038334 @ =gCurrentSprite \n\
-	add r1, r4, #0 \n\
-	add r1, #0x26 \n\
-	movs r0, #1 \n\
-	strb r0, [r1] \n\
-	add r1, #8 \n\
-	ldrb r0, [r1] \n\
-	cmp r0, #0 \n\
-	beq _08038338 \n\
-	sub r0, #1 \n\
-	strb r0, [r1] \n\
-	b _08038542 \n\
-	.align 2, 0 \n\
-_08038334: .4byte gCurrentSprite \n\
-_08038338: \n\
-	add r1, r4, #0 \n\
-	add r1, #0x2f \n\
-	ldrb r0, [r1] \n\
-	add r0, #1 \n\
-	strb r0, [r1] \n\
-	ldrb r6, [r1] \n\
-	ldrh r7, [r4, #2] \n\
-	ldrh r0, [r4, #4] \n\
-	mov r8, r0 \n\
-	ldrb r5, [r4, #0x1e] \n\
-	add r1, #1 \n\
-	ldrb r0, [r1] \n\
-	cmp r0, #0xfe \n\
-	bhi _08038358 \n\
-	add r0, #1 \n\
-	strb r0, [r1] \n\
-_08038358: \n\
-	ldrb r0, [r1] \n\
-	cmp r0, #0x32 \n\
-	bls _080383DE \n\
-	add r0, r7, #0 \n\
-	mov r1, r8 \n\
-	bl SpriteUtilCheckVerticalCollisionAtPositionSlopes \n\
-	add r1, r0, #0 \n\
-	ldr r0, _08038398 @ =gPreviousVerticalCollisionCheck \n\
-	ldrb r0, [r0] \n\
-	cmp r0, #0 \n\
-	beq _080383DE \n\
-	strh r1, [r4, #2] \n\
-	add r1, r4, #0 \n\
-	add r1, #0x24 \n\
-	movs r0, #0x1e \n\
-	strb r0, [r1] \n\
-	cmp r5, #0 \n\
-	bne _0803839C \n\
-	movs r1, #0x81 \n\
-	bl ScreenShakeStartVertical \n\
-	mov r1, r8 \n\
-	sub r1, #0x20 \n\
-	add r0, r7, #0 \n\
-	movs r2, #0x31 \n\
-	bl ParticleSet \n\
-	mov r1, r8 \n\
-	add r1, #0x20 \n\
-	add r0, r7, #0 \n\
-	b _080383A8 \n\
-	.align 2, 0 \n\
-_08038398: .4byte gPreviousVerticalCollisionCheck \n\
-_0803839C: \n\
-	cmp r5, #1 \n\
-	beq _080383A4 \n\
-	cmp r5, #6 \n\
-	bne _080383B0 \n\
-_080383A4: \n\
-	add r0, r7, #0 \n\
-	mov r1, r8 \n\
-_080383A8: \n\
-	movs r2, #0x31 \n\
-	bl ParticleSet \n\
-	b _08038542 \n\
-_080383B0: \n\
-	sub r0, r5, #2 \n\
-	lsl r0, r0, #0x18 \n\
-	lsr r0, r0, #0x18 \n\
-	cmp r0, #1 \n\
-	bls _080383BE \n\
-	cmp r5, #7 \n\
-	bne _080383D2 \n\
-_080383BE: \n\
-	mov r1, r8 \n\
-	sub r1, #0x10 \n\
-	add r0, r7, #0 \n\
-	movs r2, #0x27 \n\
-	bl ParticleSet \n\
-	mov r1, r8 \n\
-	add r1, #0x10 \n\
-	add r0, r7, #0 \n\
-	b _080383D6 \n\
-_080383D2: \n\
-	add r0, r7, #0 \n\
-	mov r1, r8 \n\
-_080383D6: \n\
-	movs r2, #0x27 \n\
-	bl ParticleSet \n\
-	b _08038542 \n\
-_080383DE: \n\
-	cmp r5, #0 \n\
-	bne _0803845C \n\
-	movs r1, #0xf \n\
-	add r0, r6, #0 \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	bne _080383F8 \n\
-	add r0, r7, #0 \n\
-	mov r1, r8 \n\
-	movs r2, #0x31 \n\
-	bl ParticleSet \n\
-	b _08038426 \n\
-_080383F8: \n\
-	add r0, r6, #4 \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	bne _08038410 \n\
-	add r0, r7, #0 \n\
-	sub r0, #0xa0 \n\
-	mov r1, r8 \n\
-	add r1, #0x32 \n\
-	movs r2, #0x2e \n\
-	bl ParticleSet \n\
-	b _08038426 \n\
-_08038410: \n\
-	add r0, r6, #0 \n\
-	add r0, #8 \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	bne _08038426 \n\
-	mov r1, r8 \n\
-	sub r1, #0x20 \n\
-	add r0, r7, #0 \n\
-	movs r2, #0x33 \n\
-	bl ParticleSet \n\
-_08038426: \n\
-	ldr r3, _08038450 @ =gCurrentSprite \n\
-	add r6, r3, #0 \n\
-	add r6, #0x31 \n\
-	ldrb r2, [r6] \n\
-	ldr r5, _08038454 @ =sSpritesFallingSpeedFast \n\
-	lsl r0, r2, #1 \n\
-	add r0, r0, r5 \n\
-	ldrh r4, [r0] \n\
-	movs r7, #0 \n\
-	ldrsh r1, [r0, r7] \n\
-	ldr r0, _08038458 @ =0x00007FFF \n\
-	cmp r1, r0 \n\
-	beq _08038442 \n\
-	b _08038538 \n\
-_08038442: \n\
-	sub r1, r2, #1 \n\
-	lsl r1, r1, #1 \n\
-	add r1, r1, r5 \n\
-	ldrh r0, [r3, #2] \n\
-	ldrh r1, [r1] \n\
-	add r0, r0, r1 \n\
-	b _08038540 \n\
-	.align 2, 0 \n\
-_08038450: .4byte gCurrentSprite \n\
-_08038454: .4byte sSpritesFallingSpeedFast \n\
-_08038458: .4byte 0x00007FFF \n\
-_0803845C: \n\
-	cmp r5, #1 \n\
-	beq _08038464 \n\
-	cmp r5, #6 \n\
-	bne _080384AC \n\
-_08038464: \n\
-	movs r0, #0x1f \n\
-	and r6, r0 \n\
-	cmp r6, #0 \n\
-	bne _08038476 \n\
-	add r0, r7, #0 \n\
-	mov r1, r8 \n\
-	movs r2, #0x27 \n\
-	bl ParticleSet \n\
-_08038476: \n\
-	ldr r3, _080384A0 @ =gCurrentSprite \n\
-	add r6, r3, #0 \n\
-	add r6, #0x31 \n\
-	ldrb r2, [r6] \n\
-	ldr r5, _080384A4 @ =sSpritesFallingSpeedQuickAcceleration \n\
-	lsl r0, r2, #1 \n\
-	add r0, r0, r5 \n\
-	ldrh r4, [r0] \n\
-	movs r7, #0 \n\
-	ldrsh r1, [r0, r7] \n\
-	ldr r0, _080384A8 @ =0x00007FFF \n\
-	cmp r1, r0 \n\
-	bne _08038538 \n\
-	sub r1, r2, #1 \n\
-	lsl r1, r1, #1 \n\
-	add r1, r1, r5 \n\
-	ldrh r0, [r3, #2] \n\
-	ldrh r1, [r1] \n\
-	add r0, r0, r1 \n\
-	b _08038540 \n\
-	.align 2, 0 \n\
-_080384A0: .4byte gCurrentSprite \n\
-_080384A4: .4byte sSpritesFallingSpeedQuickAcceleration \n\
-_080384A8: .4byte 0x00007FFF \n\
-_080384AC: \n\
-	sub r0, r5, #2 \n\
-	lsl r0, r0, #0x18 \n\
-	lsr r0, r0, #0x18 \n\
-	cmp r0, #1 \n\
-	bls _080384BA \n\
-	cmp r5, #7 \n\
-	bne _08038504 \n\
-_080384BA: \n\
-	add r0, r6, #7 \n\
-	movs r1, #0x1f \n\
-	and r0, r1 \n\
-	cmp r0, #0 \n\
-	bne _080384CE \n\
-	add r0, r7, #0 \n\
-	mov r1, r8 \n\
-	movs r2, #0x33 \n\
-	bl ParticleSet \n\
-_080384CE: \n\
-	ldr r3, _080384F8 @ =gCurrentSprite \n\
-	add r6, r3, #0 \n\
-	add r6, #0x31 \n\
-	ldrb r2, [r6] \n\
-	ldr r5, _080384FC @ =sSpritesFallingSpeed \n\
-	lsl r0, r2, #1 \n\
-	add r0, r0, r5 \n\
-	ldrh r4, [r0] \n\
-	movs r7, #0 \n\
-	ldrsh r1, [r0, r7] \n\
-	ldr r0, _08038500 @ =0x00007FFF \n\
-	cmp r1, r0 \n\
-	bne _08038538 \n\
-	sub r1, r2, #1 \n\
-	lsl r1, r1, #1 \n\
-	add r1, r1, r5 \n\
-	ldrh r0, [r3, #2] \n\
-	ldrh r1, [r1] \n\
-	add r0, r0, r1 \n\
-	b _08038540 \n\
-	.align 2, 0 \n\
-_080384F8: .4byte gCurrentSprite \n\
-_080384FC: .4byte sSpritesFallingSpeed \n\
-_08038500: .4byte 0x00007FFF \n\
-_08038504: \n\
-	ldr r3, _0803852C @ =gCurrentSprite \n\
-	add r6, r3, #0 \n\
-	add r6, #0x31 \n\
-	ldrb r2, [r6] \n\
-	ldr r5, _08038530 @ =sSpritesFallingSpeedSlow \n\
-	lsl r0, r2, #1 \n\
-	add r0, r0, r5 \n\
-	ldrh r4, [r0] \n\
-	movs r7, #0 \n\
-	ldrsh r1, [r0, r7] \n\
-	ldr r0, _08038534 @ =0x00007FFF \n\
-	cmp r1, r0 \n\
-	bne _08038538 \n\
-	sub r1, r2, #1 \n\
-	lsl r1, r1, #1 \n\
-	add r1, r1, r5 \n\
-	ldrh r0, [r3, #2] \n\
-	ldrh r1, [r1] \n\
-	add r0, r0, r1 \n\
-	b _08038540 \n\
-	.align 2, 0 \n\
-_0803852C: .4byte gCurrentSprite \n\
-_08038530: .4byte sSpritesFallingSpeedSlow \n\
-_08038534: .4byte 0x00007FFF \n\
-_08038538: \n\
-	add r0, r2, #1 \n\
-	strb r0, [r6] \n\
-	ldrh r0, [r3, #2] \n\
-	add r0, r0, r4 \n\
-_08038540: \n\
-	strh r0, [r3, #2] \n\
-_08038542: \n\
-	pop {r3} \n\
-	mov r8, r3 \n\
-	pop {r4, r5, r6, r7} \n\
-	pop {r0} \n\
-	bx r0 \n\
-    ");
-}
-#endif
 
 void Box(void) {
     switch (gCurrentSprite.pose) {

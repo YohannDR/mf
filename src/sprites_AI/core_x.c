@@ -5,6 +5,7 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/event.h"
 #include "constants/particle.h"
 
@@ -538,7 +539,7 @@ void CoreXAbilityMovingToSpawnPoint(void) {
                 gCurrentSprite.status |= SS_ENABLE_MOSAIC;
                 gCurrentSprite.work1 = 44;
                 gWrittenToMosaic_H = sXParasiteMosaicValues[44];
-                PlayMusic(0x1a, 7);
+                PlayMusic(MUSIC_ZAZABI_BATTLE, 7);
             }
         } else {
             gCurrentSprite.yPosition += 1;
@@ -552,7 +553,7 @@ void CoreXAbilityMovingToSpawnPoint(void) {
                 gCurrentSprite.work1 = 44;
                 gWrittenToMosaic_H = sXParasiteMosaicValues[44];
                 if (gDemoState == 0) {
-                    PlayMusic(0x19, 7);
+                    PlayMusic(MUSIC_ARACHNUS_BATTLE, 7);
                 }
             }
         } else {
@@ -621,7 +622,7 @@ void CoreXAbilityMovingToTargetInit(void) {
     gCurrentSprite.work1 = 0;
     gCurrentSprite.work4 = 1;
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
-    PlayMusic(0x18, 6);
+    PlayMusic(MUSIC_BOSS_TENSION, 6);
 }
 
 void CoreXAbilityMovingToTarget(void) {

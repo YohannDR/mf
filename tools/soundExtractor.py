@@ -128,10 +128,10 @@ def ExtractVoiceGroups(f: BufferedReader):
 
         for y in range(0, (voiceGroupsAddr[x+1]-addr)//12):
             instrType: int = int.from_bytes(f.read(1), "little")
-            pitch: int = int.from_bytes(f.read(1), "little")
+            note: int = int.from_bytes(f.read(1), "little") # only used in percussion instruments
             unk_2: int = int.from_bytes(f.read(1), "little")
             unk_3: int = int.from_bytes(f.read(1), "little")
-            content += "\t.byte " + str(instrType) + ", " + str(pitch) + ", " + str(unk_2) + ", " + str(unk_3) + " @ " + str(y)
+            content += "\t.byte " + str(instrType) + ", " + notesTieEot[note] + ", " + str(unk_2) + ", " + str(unk_3) + " @ " + str(y)
             if voiceGroupsAddr[x] in percVoiceGroupsBack:
                 content += " " + notesTieEot[(voiceGroupsAddr[x]-percVoiceGroupsBack[voiceGroupsAddr[x]])//12+y]
             content += "\n\t"
@@ -162,7 +162,7 @@ def ExtractVoiceGroups(f: BufferedReader):
         output.close()
 
     output = open("../audio/voice_groups.s", "w")
-    content = ".section .rodata\n\n"
+    content = ".include \"audio/m_play_def.s\"\n\n.section .rodata\n\n"
     for x in range(0, len(voiceGroupsAddr)-1):
         content += ".include \"audio/voice_groups/" + GetVoiceGroupName(x) + ".s\"\n"
     output.write(content)
@@ -190,14 +190,15 @@ def ExtractSample(f: BufferedReader, addr: int, instrType: int):
 
     content = ".align 2\n\n.section .rodata\n.global " + name + "\n\n" + name + ":\n"
         
-    content += "\t.byte " + str(int.from_bytes(f.read(1), "little")) + "\n"
-    content += "\t.byte " + str(int.from_bytes(f.read(1), "little")) + "\n"
-    content += "\t.byte " + str(int.from_bytes(f.read(1), "little")) + "\n"
-    content += "\t.byte " + str(int.from_bytes(f.read(1), "little")) + "\n" # loop flag
-    content += "\t.word " + str(int.from_bytes(f.read(4), "little")) + "\n" # frequency
-    content += "\t.word " + str(int.from_bytes(f.read(4), "little")) + "\n" # loop start
+    content += f"\t.byte {int.from_bytes(f.read(1), "little")}\n"
+    content += f"\t.byte {int.from_bytes(f.read(1), "little")}\n"
+    content += f"\t.byte {int.from_bytes(f.read(1), "little")}\n"
+    content += f"\t.byte {int.from_bytes(f.read(1), "little")}\n" # loop flag
+    frequency: int = int.from_bytes(f.read(4), "little")
+    content += f"\t.word {frequency} @ {frequency//1024}\n" # frequency
+    content += f"\t.word {int.from_bytes(f.read(4), "little")}\n" # loop start
     size: int = int.from_bytes(f.read(4), "little")
-    content += "\t.word " + str(size) + "\n"
+    content += f"\t.word {size}\n"
 
     data: bytearray = bytearray(f.read(size))
 

@@ -7,6 +7,7 @@
 #include "data/sprites/nettori.h"
 #include "data/sprites/x_parasite.h"
 
+#include "constants/audio.h"
 #include "constants/particle.h"
 #include "constants/samus.h"
 #include "constants/sprite.h"
@@ -351,7 +352,7 @@ void NettoriDyingInit(void)
     gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
 
     NettoriRemoveCollision();
-    PlayMusic(0x43, 7);
+    PlayMusic(MUSIC_CHOZO_STATUE_CORE_X_BATTLE, 7);
 }
 
 /**
