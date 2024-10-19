@@ -117,6 +117,8 @@ def Func():
     rows = romRead(4, romRead(4, 0xF880)+(spriteIndex-0x10)*4)//0x800
     paletteAddr = romRead(4, romRead(4, 0xF884)+(spriteIndex-0x10)*4)
     spritemapAddr = paletteAddr+0x20*rows # doesn't work with a few sprites
+    if spriteIndex == 0x51: # yakuza
+        spritemapAddr += 0x100
 
     romSeek(paletteAddr)
     palette555 = [romRead(2) for i in range(rows*16)]

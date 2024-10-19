@@ -142,7 +142,7 @@ u32 InGameSubroutine(void)
         ParticleUpdate();
         ProjectileDrawAll_False();
 
-        SpriteDrawAll_Middle();
+        SpriteDrawAll_MediumPriority();
 
         if (!gDisableDrawingSamusAndScrollingFlag)
             SamusDraw();

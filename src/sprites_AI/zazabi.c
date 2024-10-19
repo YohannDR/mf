@@ -204,7 +204,7 @@ void ZazabiEnableProjectilesToPassThrough(void)
         else if (gProjectileData[i].yPosition < spriteY)
         {
             if (!(gProjectileData[i].status & PROJ_STATUS_CAN_AFFECT_ENVIRONMENT))
-                gProjectileData[i].status |= PROJ_STATUS_UNKNOWN_80;
+                gProjectileData[i].status |= PROJ_STATUS_LOW_OAM_PRIORITY;
         }
     }
 }

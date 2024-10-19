@@ -259,10 +259,10 @@ void SpriteDrawAll_HighPriority(void)
 }
 
 /**
- * @brief eba0 | 98 | Draws all middle-priority sprites (draw order between 1 and 8 without the upper status flag)
+ * @brief eba0 | 98 | Draws all medium-priority sprites (draw order between 1 and 8 without the upper status flag)
  * 
  */
-void SpriteDrawAll_Middle(void)
+void SpriteDrawAll_MediumPriority(void)
 {
     s32 i;
     s32 drawOrder;

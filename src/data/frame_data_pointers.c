@@ -2,6 +2,7 @@
 
 #include "data/sprites/box.h"
 #include "data/sprites/zazabi.h"
+#include "data/sprites/yakuza.h"
 #include "data/sprites/nightmare.h"
 
 const struct FrameData* const sBoxFrameDataPointers[BOX_OAM_END] = {
@@ -306,7 +307,40 @@ const struct FrameData* const sZazabiFrameDataPointers1[57] = {
     sZazabiPartOam_EyeLandingLeft
 };
 
-static const u8 sBlob_79b458_79b7fc[] = INCBIN_U8("data/Blob_79b458_79b7fc.bin");
+static const u8 sBlob_79b458_79b784[] = INCBIN_U8("data/Blob_79b458_79b784.bin");
+
+const struct FrameData* const sYakuzaFrameDataPointers[YAKUZA_OAM_END] = {
+    [FRAMEDATA_3B6F08] = sFrameData_3b6f08,
+    [FRAMEDATA_3B6F30] = sFrameData_3b6f30,
+    [FRAMEDATA_3B6F40] = sFrameData_3b6f40,
+    [FRAMEDATA_3B6F58] = sFrameData_3b6f58,
+    [FRAMEDATA_3B6F68] = sFrameData_3b6f68,
+    [FRAMEDATA_3B6F90] = sFrameData_3b6f90,
+    [FRAMEDATA_3B6FA8] = sFrameData_3b6fa8,
+    [FRAMEDATA_3B6FC0] = sFrameData_3b6fc0,
+    [FRAMEDATA_3B6FD0] = sFrameData_3b6fd0,
+    [FRAMEDATA_3B6FE8] = sFrameData_3b6fe8,
+    [FRAMEDATA_3B7010] = sFrameData_3b7010,
+    [FRAMEDATA_3B7028] = sFrameData_3b7028,
+    [FRAMEDATA_3B7060] = sFrameData_3b7060,
+    [FRAMEDATA_3B7088] = sFrameData_3b7088,
+    [FRAMEDATA_3B70B0] = sFrameData_3b70b0,
+    [FRAMEDATA_3B70F8] = sFrameData_3b70f8,
+    [FRAMEDATA_3B7120] = sFrameData_3b7120,
+    [FRAMEDATA_3B7140] = sFrameData_3b7140,
+    [FRAMEDATA_3B7150] = sFrameData_3b7150,
+    [FRAMEDATA_3B7188] = sFrameData_3b7188,
+    [FRAMEDATA_3B7198] = sFrameData_3b7198,
+    [FRAMEDATA_3B71C0] = sFrameData_3b71c0,
+    [FRAMEDATA_3B7208] = sFrameData_3b7208,
+    [FRAMEDATA_3B7230] = sFrameData_3b7230,
+    [FRAMEDATA_3B7240] = sFrameData_3b7240,
+    [FRAMEDATA_3B7260] = sFrameData_3b7260,
+    [FRAMEDATA_3B7288] = sFrameData_3b7288,
+    [FRAMEDATA_3B72C0] = sFrameData_3b72c0,
+    [FRAMEDATA_3B72E0] = sFrameData_3b72e0,
+    [FRAMEDATA_3B7300] = sFrameData_3b7300
+};
 
 const struct FrameData* const sNightmareFrameDataPointers[NIGHTMARE_OAM_END] = {
     [FRAMEDATA_3BD4DC] = sFrameData_3bd4dc,

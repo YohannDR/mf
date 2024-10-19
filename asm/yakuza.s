@@ -3037,8 +3037,8 @@ _0805CFF8:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start YakuzaPartEyesPhase2
-YakuzaPartEyesPhase2: @ 0x0805D000
+	thumb_func_start YakuzaPartEyePhase2
+YakuzaPartEyePhase2: @ 0x0805D000
 	push {lr}
 	ldr r3, _0805D030 @ =gCurrentSprite
 	adds r0, r3, #0
@@ -4066,7 +4066,7 @@ _0805D87E:
 	bl YakuzaPartEyeIdle
 	b _0805D890
 _0805D88C:
-	bl YakuzaPartEyesPhase2
+	bl YakuzaPartEyePhase2
 _0805D890:
 	bl SpriteUtilSyncCurrentSpritePositionWithSubSprite1Position
 _0805D894:

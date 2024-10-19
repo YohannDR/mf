@@ -191,7 +191,7 @@ void ProjectileDrawAll_True(void)
 
     for (i = 0; i < MAX_AMOUNT_OF_PROJECTILES; i++)
     {
-        if ((gProjectileData[i].status & PROJ_STATUS_DRAW_CHECK) != (PROJ_STATUS_DRAW_COND | PROJ_STATUS_UNKNOWN_80))
+        if ((gProjectileData[i].status & PROJ_STATUS_DRAW_CHECK) != (PROJ_STATUS_DRAW_COND | PROJ_STATUS_LOW_OAM_PRIORITY))
             continue;
 
         gCurrentProjectile = gProjectileData[i];
@@ -243,7 +243,7 @@ void ProjectileDraw(s32 projectileSlot)
         palette = gCurrentProjectile.palette;
 
         bgPriority = (gIoRegisters.bg1Cnt & 3);
-        if (!(gCurrentProjectile.status & PROJ_STATUS_HIGH_PRIORITY))
+        if (!(gCurrentProjectile.status & PROJ_STATUS_HIGH_BG_PRIORITY))
             bgPriority++;
 
         for (i = 0; i < partCount; i++)

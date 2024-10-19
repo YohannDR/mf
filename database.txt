@@ -951,6 +951,12 @@ sprites/serris_phase_three.pal;32;0x378790;2
 sprites/owtch.gfx;512;0x3787d0;4
 sprites/owtch.pal;16;0x378fd0;2
 
+# Yakuza
+
+sprites/yakuza.gfx;8;0x3b11d0;2048
+sprites/yakuza.pal;8;0x3b51d0;32
+sprites/yakuza_mouth_charging.pal;8;0x3b52d0;32
+
 # Nightmare
 
 sprites/nightmare.gfx;8;0x3b85cc;2048
@@ -996,11 +1002,11 @@ Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 Blob_2e6382_2eb8ac.bin;21802;0x2e6382;1
 Blob_31a158_3420b4.bin;0x31a158;0x3420b4
 Blob_3480c8_35dd74.bin;0x3480c8;0x35dd74
-Blob_3791d4_3b7380.bin;3791d4;3b7380
+Blob_3791d4_3b0b04.bin;3791d4;3b0b04
 Blob_3be1be_3e392c.bin;153454;0x3be1be;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
 Blob_3e9940_3ec038.bin;9976;0x3e9940;1
 Blob_3ec1a8_590998.bin;1722352;0x3ec1a8;1
 Blob_597708_79a29c.bin;2108308;0x597708;1
-Blob_79b458_79b7fc.bin;79b458;79b7fc
+Blob_79b458_79b784.bin;79b458;79b784
 Blob_79b894_79ecc8.bin;79b894;79ecc8

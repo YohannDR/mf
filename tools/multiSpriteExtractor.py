@@ -5,21 +5,11 @@ def toPixels(value):
     return value//4
 
 partNames = [
-    "NIGHTMARE_PART_CHIN_SLUDGE",
-    "NIGHTMARE_PART_EYE_SLUDGE",
-    "NIGHTMARE_PART_EYE",
-    "NIGHTMARE_PART_MOUTH",
-    "NIGHTMARE_PART_RIGHT_ARM_TOP",
-    "NIGHTMARE_PART_RIGHT_TURRET_1",
-    "NIGHTMARE_PART_RIGHT_TURRET_2",
-    "NIGHTMARE_PART_RIGHT_TURRET_3",
-    "NIGHTMARE_PART_RIGHT_ARM_BOTTOM",
-    "NIGHTMARE_PART_BODY",
-    "NIGHTMARE_PART_GENERATOR",
-    "NIGHTMARE_PART_LEFT_TURRET_1",
-    "NIGHTMARE_PART_LEFT_TURRET_2",
-    "NIGHTMARE_PART_LEFT_TURRET_3",
-    "NIGHTMARE_PART_END"
+    "YAKUZA_PART_LEGS",
+    "YAKUZA_PART_BODY",
+    "YAKUZA_PART_EYE",
+
+    "YAKUZA_PART_END"
 ]
 
 def ParseMultiSpriteFrame():
@@ -62,20 +52,20 @@ def ParseMultiSpriteData():
     return (result, frameData)
 
 file = open("../mf_us_baserom.gba", "rb")
-file.seek(0x79b7fc)
-animations = [int.from_bytes(file.read(4), 'little') & 0x1ffffff for i in range(38)]
+file.seek(0x79b784)
+animations = [int.from_bytes(file.read(4), 'little') & 0x1ffffff for i in range(30)]
 
-print("const struct FrameData* const sNightmareFrameDataPointers[NIGHTMARE_OAM_END] = {")
+print("const struct FrameData* const sYakuzaFrameDataPointers[YAKUZA_OAM_END] = {")
 for addr in animations:
     print(f"    [FRAMEDATA_{addr:X}] = sFrameData_{addr:x},")
 print("};\n")
 
-print("enum NightmareOam {")
+print("enum YakuzaOam {")
 for addr in animations:
     print(f"    FRAMEDATA_{addr:X},")
-print("\n    NIGHTMARE_OAM_END\n};\n")
+print("\n    YAKUZA_OAM_END\n};\n")
 
-file.seek(0x3b73e2)
+file.seek(0x3b0bb4)
 frames = set()
 output = ""
 while True:

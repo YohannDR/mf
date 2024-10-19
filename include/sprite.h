@@ -7,7 +7,7 @@ void SpriteUpdateRandomNumber(u8 slot);
 void SpriteUpdate(void);
 void SpriteUpdateAnimation(void);
 void SpriteDrawAll_HighPriority(void);
-void SpriteDrawAll_Middle(void);
+void SpriteDrawAll_MediumPriority(void);
 void SpriteDrawAll_LowPriority(void);
 void SpriteDraw(s32 slot);
 void SpriteCheckOnScreen(void);
