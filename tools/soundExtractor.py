@@ -82,6 +82,15 @@ percVoiceGroups = {
     0xa81c4: 0xa8404
 }
 
+percVoiceGroupsBack = {
+    0xa5710: 0xa5560,
+    0xa5a28: 0xa57b8,
+    0xa5f2c: 0xa5c5c,
+    0xa6064: 0xa5eb4,
+    0xa61d8: 0xa5f08,
+    0xa8404: 0xa81c4
+}
+
 prog_waveforms = {
     0xa8c8c: "sine",
     0xa8c9c: "triangle",
@@ -97,7 +106,7 @@ global maxVoiceNum
 maxVoiceNum = 0
 
 def GetVoiceGroupName(x: int):
-    if voiceGroupsAddr[x] in percVoiceGroups.values():
+    if voiceGroupsAddr[x] in percVoiceGroupsBack:
         name: str = "perc_" + str(x)
     elif voiceGroupsAddr[x] in gaps:
         name: str = "voice_group_gap_" + str(x)
@@ -122,7 +131,10 @@ def ExtractVoiceGroups(f: BufferedReader):
             pitch: int = int.from_bytes(f.read(1), "little")
             unk_2: int = int.from_bytes(f.read(1), "little")
             unk_3: int = int.from_bytes(f.read(1), "little")
-            content += "\t.byte " + str(instrType) + ", " + str(pitch) + ", " + str(unk_2) + ", " + str(unk_3) + " @ " + str(y) + "\n\t"
+            content += "\t.byte " + str(instrType) + ", " + str(pitch) + ", " + str(unk_2) + ", " + str(unk_3) + " @ " + str(y)
+            if voiceGroupsAddr[x] in percVoiceGroupsBack:
+                content += " " + notesTieEot[(voiceGroupsAddr[x]-percVoiceGroupsBack[voiceGroupsAddr[x]])//12+y]
+            content += "\n\t"
             
             if instrType == 0x40: # there's only one key split table in the game
                 first_subinstr: int = ReadPtr(f)
