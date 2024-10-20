@@ -16,16 +16,14 @@
 #include "structs/projectile.h"
 #include "structs/samus.h"
 
-#ifdef NON_MATCHING
 void NightmareMoveToPosition(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor) {
-    // https://decomp.me/scratch/UyiOq
     u8 flip;
     u16 velocity;
 
     flip = FALSE;
     if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
-        // Move to right
+        // Move right
         if (gCurrentSprite.work2 == 0)
         {
             if (gSubSpriteData1.xPosition > dstX + PIXEL_SIZE)
@@ -50,7 +48,7 @@ void NightmareMoveToPosition(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 
     }
     else
     {
-        // Move to left
+        // Move left
         if (gCurrentSprite.work2 == 0)
         {
             if (gSubSpriteData1.xPosition < dstX - PIXEL_SIZE)
@@ -62,7 +60,7 @@ void NightmareMoveToPosition(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 
                     gCurrentSprite.work3++;
 
                 // Apply speed
-                velocity = gCurrentSprite.work2 >> speedDivisor;
+                velocity = gCurrentSprite.work3 >> speedDivisor;
                 if ((gSubSpriteData1.xPosition - velocity) & 0x8000)
                 {
                     flip = TRUE;
@@ -125,7 +123,7 @@ void NightmareMoveToPosition(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 
     }
     else
     {
-        // Move left
+        // Move up
         if (gCurrentSprite.work1 == 0)
         {
             if (gSubSpriteData1.yPosition < dstY + PIXEL_SIZE)
@@ -137,7 +135,7 @@ void NightmareMoveToPosition(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 
                     gCurrentSprite.work4++;
 
                 // Apply speed
-                velocity = gCurrentSprite.work1 >> speedDivisor;
+                velocity = gCurrentSprite.work4 >> speedDivisor;
                 if ((gSubSpriteData1.yPosition - velocity) & 0x8000)
                 {
                     flip = TRUE;
@@ -172,368 +170,6 @@ void NightmareMoveToPosition(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 
         SoundPlayNotAlreadyPlaying(0x2a6);
     }
 }
-#else
-NAKED_FUNCTION
-void NightmareMoveToPosition(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor) {
-    asm(" \n\
-    push {r4, r5, r6, r7, lr} \n\
-    mov r7, sl \n\
-    mov r6, sb \n\
-    mov r5, r8 \n\
-    push {r5, r6, r7} \n\
-    sub sp, #4 \n\
-    ldr r4, [sp, #0x24] \n\
-    lsl r0, r0, #0x10 \n\
-    lsr r0, r0, #0x10 \n\
-    mov sl, r0 \n\
-    lsl r1, r1, #0x10 \n\
-    lsr r5, r1, #0x10 \n\
-    add r7, r5, #0 \n\
-    lsl r2, r2, #0x18 \n\
-    lsr r2, r2, #0x18 \n\
-    str r2, [sp] \n\
-    lsl r3, r3, #0x18 \n\
-    lsr r6, r3, #0x18 \n\
-    mov r8, r6 \n\
-    lsl r4, r4, #0x18 \n\
-    lsr r4, r4, #0x18 \n\
-    movs r0, #0 \n\
-    mov sb, r0 \n\
-    ldr r2, _0805DA60 @ =gCurrentSprite \n\
-    ldrh r1, [r2] \n\
-    movs r0, #0x80 \n\
-    lsl r0, r0, #2 \n\
-    and r0, r1 \n\
-    lsl r0, r0, #0x10 \n\
-    lsr r3, r0, #0x10 \n\
-    cmp r3, #0 \n\
-    beq _0805DAA0 \n\
-    movs r1, #0x2f \n\
-    add r1, r1, r2 \n\
-    mov ip, r1 \n\
-    ldrb r0, [r1] \n\
-    cmp r0, #0 \n\
-    bne _0805DA82 \n\
-    ldr r3, _0805DA64 @ =gSubSpriteData1 \n\
-    ldrh r1, [r3, #0xa] \n\
-    add r0, r5, #4 \n\
-    cmp r1, r0 \n\
-    ble _0805DA68 \n\
-    add r0, r2, #0 \n\
-    add r0, #0x30 \n\
-    ldrb r0, [r0] \n\
-    mov r2, ip \n\
-    strb r0, [r2] \n\
-    b _0805DB34 \n\
-    .align 2, 0 \n\
-_0805DA60: .4byte gCurrentSprite \n\
-_0805DA64: .4byte gSubSpriteData1 \n\
-_0805DA68: \n\
-    add r1, r2, #0 \n\
-    add r1, #0x30 \n\
-    ldrb r0, [r1] \n\
-    cmp r0, r6 \n\
-    bhs _0805DA76 \n\
-    add r0, #1 \n\
-    strb r0, [r1] \n\
-_0805DA76: \n\
-    ldrb r0, [r1] \n\
-    asr r0, r4 \n\
-    ldrh r5, [r3, #0xa] \n\
-    add r0, r0, r5 \n\
-    strh r0, [r3, #0xa] \n\
-    b _0805DB34 \n\
-_0805DA82: \n\
-    sub r0, #1 \n\
-    mov r6, ip \n\
-    strb r0, [r6] \n\
-    lsl r0, r0, #0x18 \n\
-    cmp r0, #0 \n\
-    beq _0805DB3A \n\
-    ldr r1, _0805DA9C @ =gSubSpriteData1 \n\
-    ldrb r0, [r6] \n\
-    asr r0, r4 \n\
-    ldrh r2, [r1, #0xa] \n\
-    add r0, r0, r2 \n\
-    strh r0, [r1, #0xa] \n\
-    b _0805DB34 \n\
-    .align 2, 0 \n\
-_0805DA9C: .4byte gSubSpriteData1 \n\
-_0805DAA0: \n\
-    movs r5, #0x2f \n\
-    add r5, r5, r2 \n\
-    mov ip, r5 \n\
-    ldrb r0, [r5] \n\
-    add r5, r0, #0 \n\
-    cmp r5, #0 \n\
-    bne _0805DAFA \n\
-    ldr r3, _0805DAC4 @ =gSubSpriteData1 \n\
-    ldrh r1, [r3, #0xa] \n\
-    sub r0, r7, #4 \n\
-    cmp r1, r0 \n\
-    bge _0805DAC8 \n\
-    add r0, r2, #0 \n\
-    add r0, #0x30 \n\
-    ldrb r0, [r0] \n\
-    mov r6, ip \n\
-    strb r0, [r6] \n\
-    b _0805DB34 \n\
-    .align 2, 0 \n\
-_0805DAC4: .4byte gSubSpriteData1 \n\
-_0805DAC8: \n\
-    add r1, r2, #0 \n\
-    add r1, #0x30 \n\
-    ldrb r0, [r1] \n\
-    cmp r0, r8 \n\
-    bhs _0805DAD6 \n\
-    add r0, #1 \n\
-    strb r0, [r1] \n\
-_0805DAD6: \n\
-    ldrb r0, [r1] \n\
-    asr r0, r4 \n\
-    lsl r0, r0, #0x10 \n\
-    lsr r1, r0, #0x10 \n\
-    ldrh r0, [r3, #0xa] \n\
-    sub r1, r0, r1 \n\
-    movs r0, #0x80 \n\
-    lsl r0, r0, #8 \n\
-    and r0, r1 \n\
-    cmp r0, #0 \n\
-    beq _0805DAF6 \n\
-    movs r0, #1 \n\
-    mov sb, r0 \n\
-    mov r1, ip \n\
-    strb r5, [r1] \n\
-    b _0805DB34 \n\
-_0805DAF6: \n\
-    strh r1, [r3, #0xa] \n\
-    b _0805DB34 \n\
-_0805DAFA: \n\
-    sub r0, #1 \n\
-    mov r2, ip \n\
-    strb r0, [r2] \n\
-    lsl r0, r0, #0x18 \n\
-    cmp r0, #0 \n\
-    beq _0805DB30 \n\
-    ldrb r0, [r2] \n\
-    asr r0, r4 \n\
-    lsl r0, r0, #0x10 \n\
-    lsr r1, r0, #0x10 \n\
-    ldr r2, _0805DB28 @ =gSubSpriteData1 \n\
-    ldrh r0, [r2, #0xa] \n\
-    sub r1, r0, r1 \n\
-    movs r0, #0x80 \n\
-    lsl r0, r0, #8 \n\
-    and r0, r1 \n\
-    cmp r0, #0 \n\
-    beq _0805DB2C \n\
-    movs r5, #1 \n\
-    mov sb, r5 \n\
-    mov r6, ip \n\
-    strb r3, [r6] \n\
-    b _0805DB34 \n\
-    .align 2, 0 \n\
-_0805DB28: .4byte gSubSpriteData1 \n\
-_0805DB2C: \n\
-    strh r1, [r2, #0xa] \n\
-    b _0805DB34 \n\
-_0805DB30: \n\
-    movs r0, #1 \n\
-    mov sb, r0 \n\
-_0805DB34: \n\
-    mov r1, sb \n\
-    cmp r1, #0 \n\
-    beq _0805DB54 \n\
-_0805DB3A: \n\
-    ldr r2, _0805DB8C @ =gCurrentSprite \n\
-    ldrh r0, [r2] \n\
-    movs r3, #0x80 \n\
-    lsl r3, r3, #2 \n\
-    add r1, r3, #0 \n\
-    eor r0, r1 \n\
-    strh r0, [r2] \n\
-    add r2, #0x30 \n\
-    movs r0, #1 \n\
-    strb r0, [r2] \n\
-    ldr r0, _0805DB90 @ =0x000002A6 \n\
-    bl SoundPlayNotAlreadyPlaying \n\
-_0805DB54: \n\
-    movs r5, #0 \n\
-    mov sb, r5 \n\
-    ldr r2, _0805DB8C @ =gCurrentSprite \n\
-    ldrh r1, [r2] \n\
-    movs r0, #0x80 \n\
-    lsl r0, r0, #3 \n\
-    and r0, r1 \n\
-    lsl r0, r0, #0x10 \n\
-    lsr r6, r0, #0x10 \n\
-    cmp r6, #0 \n\
-    beq _0805DBD4 \n\
-    movs r6, #0x2e \n\
-    add r6, r6, r2 \n\
-    mov ip, r6 \n\
-    ldrb r0, [r6] \n\
-    cmp r0, #0 \n\
-    bne _0805DBB4 \n\
-    ldr r3, _0805DB94 @ =gSubSpriteData1 \n\
-    ldrh r1, [r3, #8] \n\
-    mov r0, sl \n\
-    sub r0, #4 \n\
-    cmp r1, r0 \n\
-    ble _0805DB98 \n\
-    add r0, r2, #0 \n\
-    add r0, #0x31 \n\
-    ldrb r0, [r0] \n\
-    strb r0, [r6] \n\
-    b _0805DC6C \n\
-    .align 2, 0 \n\
-_0805DB8C: .4byte gCurrentSprite \n\
-_0805DB90: .4byte 0x000002A6 \n\
-_0805DB94: .4byte gSubSpriteData1 \n\
-_0805DB98: \n\
-    add r1, r2, #0 \n\
-    add r1, #0x31 \n\
-    ldrb r0, [r1] \n\
-    ldr r5, [sp] \n\
-    cmp r0, r5 \n\
-    bhs _0805DBA8 \n\
-    add r0, #1 \n\
-    strb r0, [r1] \n\
-_0805DBA8: \n\
-    ldrb r0, [r1] \n\
-    asr r0, r4 \n\
-    ldrh r6, [r3, #8] \n\
-    add r0, r0, r6 \n\
-    strh r0, [r3, #8] \n\
-    b _0805DC6C \n\
-_0805DBB4: \n\
-    sub r0, #1 \n\
-    mov r1, ip \n\
-    strb r0, [r1] \n\
-    lsl r0, r0, #0x18 \n\
-    cmp r0, #0 \n\
-    beq _0805DC72 \n\
-    ldr r1, _0805DBD0 @ =gSubSpriteData1 \n\
-    mov r3, ip \n\
-    ldrb r0, [r3] \n\
-    asr r0, r4 \n\
-    ldrh r5, [r1, #8] \n\
-    add r0, r0, r5 \n\
-    strh r0, [r1, #8] \n\
-    b _0805DC6C \n\
-    .align 2, 0 \n\
-_0805DBD0: .4byte gSubSpriteData1 \n\
-_0805DBD4: \n\
-    movs r0, #0x2e \n\
-    add r0, r0, r2 \n\
-    mov ip, r0 \n\
-    ldrb r0, [r0] \n\
-    add r5, r0, #0 \n\
-    cmp r5, #0 \n\
-    bne _0805DC30 \n\
-    ldr r3, _0805DBFC @ =gSubSpriteData1 \n\
-    ldrh r1, [r3, #8] \n\
-    mov r0, sl \n\
-    add r0, #4 \n\
-    cmp r1, r0 \n\
-    bge _0805DC00 \n\
-    add r0, r2, #0 \n\
-    add r0, #0x31 \n\
-    ldrb r0, [r0] \n\
-    mov r1, ip \n\
-    strb r0, [r1] \n\
-    b _0805DC6C \n\
-    .align 2, 0 \n\
-_0805DBFC: .4byte gSubSpriteData1 \n\
-_0805DC00: \n\
-    add r1, r2, #0 \n\
-    add r1, #0x31 \n\
-    ldrb r0, [r1] \n\
-    ldr r6, [sp] \n\
-    cmp r0, r6 \n\
-    bhs _0805DC10 \n\
-    add r0, #1 \n\
-    strb r0, [r1] \n\
-_0805DC10: \n\
-    ldrb r0, [r1] \n\
-    asr r0, r4 \n\
-    lsl r0, r0, #0x10 \n\
-    lsr r1, r0, #0x10 \n\
-    ldrh r0, [r3, #8] \n\
-    sub r1, r0, r1 \n\
-    movs r0, #0x80 \n\
-    lsl r0, r0, #8 \n\
-    and r0, r1 \n\
-    cmp r0, #0 \n\
-    beq _0805DC64 \n\
-    movs r0, #1 \n\
-    mov sb, r0 \n\
-    mov r1, ip \n\
-    strb r5, [r1] \n\
-    b _0805DC6C \n\
-_0805DC30: \n\
-    sub r0, #1 \n\
-    mov r3, ip \n\
-    strb r0, [r3] \n\
-    lsl r0, r0, #0x18 \n\
-    cmp r0, #0 \n\
-    beq _0805DC68 \n\
-    ldrb r0, [r3] \n\
-    asr r0, r4 \n\
-    lsl r0, r0, #0x10 \n\
-    lsr r1, r0, #0x10 \n\
-    ldr r3, _0805DC60 @ =gSubSpriteData1 \n\
-    ldrh r0, [r3, #8] \n\
-    sub r1, r0, r1 \n\
-    movs r0, #0x80 \n\
-    lsl r0, r0, #8 \n\
-    and r0, r1 \n\
-    cmp r0, #0 \n\
-    beq _0805DC64 \n\
-    movs r5, #1 \n\
-    mov sb, r5 \n\
-    mov r0, ip \n\
-    strb r6, [r0] \n\
-    b _0805DC6C \n\
-    .align 2, 0 \n\
-_0805DC60: .4byte gSubSpriteData1 \n\
-_0805DC64: \n\
-    strh r1, [r3, #8] \n\
-    b _0805DC6C \n\
-_0805DC68: \n\
-    movs r1, #1 \n\
-    mov sb, r1 \n\
-_0805DC6C: \n\
-    mov r3, sb \n\
-    cmp r3, #0 \n\
-    beq _0805DC8C \n\
-_0805DC72: \n\
-    ldrh r0, [r2] \n\
-    movs r5, #0x80 \n\
-    lsl r5, r5, #3 \n\
-    add r1, r5, #0 \n\
-    eor r0, r1 \n\
-    strh r0, [r2] \n\
-    add r1, r2, #0 \n\
-    add r1, #0x31 \n\
-    movs r0, #1 \n\
-    strb r0, [r1] \n\
-    ldr r0, _0805DC9C @ =0x000002A6 \n\
-    bl SoundPlayNotAlreadyPlaying \n\
-_0805DC8C: \n\
-    add sp, #4 \n\
-    pop {r3, r4, r5} \n\
-    mov r8, r3 \n\
-    mov sb, r4 \n\
-    mov sl, r5 \n\
-    pop {r4, r5, r6, r7} \n\
-    pop {r0} \n\
-    bx r0 \n\
-    .align 2, 0 \n\
-_0805DC9C: .4byte 0x000002A6 \n\
-    ");
-}
-#endif
 
 void NightmareSyncSubSprites(void) {
     MultiSpriteDataInfo_T pData;
