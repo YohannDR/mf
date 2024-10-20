@@ -1126,7 +1126,7 @@ static const u16 sFrameData_3479b8_Frame2[OAM_DATA_SIZE(5)] = {
     0xc, 0x3, OBJ_PALETTE_10 | 0x30e
 };
 
-static const u16 sFrameData_347a20_Frame0[OAM_DATA_SIZE(4)] = {
+static const u16 sBoxPartOam_FrontLeftLeg_0_Frame0[OAM_DATA_SIZE(4)] = {
     4,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_HORIZONTAL | 0x8, 0x1f8, OBJ_PALETTE_8 | 0x282,
@@ -1134,7 +1134,7 @@ static const u16 sFrameData_347a20_Frame0[OAM_DATA_SIZE(4)] = {
     0x10, 0x1fb, OBJ_PALETTE_8 | 0x2e2
 };
 
-static const u16 sFrameData_347a30_Frame0[OAM_DATA_SIZE(4)] = {
+static const u16 sBoxPartOam_FrontLeftLeg_1_Frame0[OAM_DATA_SIZE(4)] = {
     4,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_HORIZONTAL | 0x8, 0x1f8, OBJ_PALETTE_8 | 0x282,
@@ -1142,7 +1142,7 @@ static const u16 sFrameData_347a30_Frame0[OAM_DATA_SIZE(4)] = {
     0xd, 0x1fb, OBJ_PALETTE_8 | 0x2e2
 };
 
-static const u16 sFrameData_347a40_Frame0[OAM_DATA_SIZE(4)] = {
+static const u16 sBoxPartOam_FrontLeftLeg_2_Frame0[OAM_DATA_SIZE(4)] = {
     4,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_HORIZONTAL | 0x8, 0x1f8, OBJ_PALETTE_8 | 0x282,
@@ -1858,25 +1858,25 @@ const struct FrameData sFrameData_347a10[2] = {
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_347a20[2] = {
+const struct FrameData sBoxPartOam_FrontLeftLeg_0[2] = {
     [0] = {
-        .pFrame = sFrameData_347a20_Frame0,
+        .pFrame = sBoxPartOam_FrontLeftLeg_0_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_347a30[2] = {
+const struct FrameData sBoxPartOam_FrontLeftLeg_1[2] = {
     [0] = {
-        .pFrame = sFrameData_347a30_Frame0,
+        .pFrame = sBoxPartOam_FrontLeftLeg_1_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_347a40[2] = {
+const struct FrameData sBoxPartOam_FrontLeftLeg_2[2] = {
     [0] = {
-        .pFrame = sFrameData_347a40_Frame0,
+        .pFrame = sBoxPartOam_FrontLeftLeg_2_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR

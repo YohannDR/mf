@@ -320,6 +320,9 @@ SECTIONS {
         asm/metroid_husk.o(.text);
         asm/neo_ridley.o(.text);
         asm/yakuza.o(.text);
+
+        src/sprites_AI/nightmare.o(.text);
+
         asm/nightmare.o(.text);
 
         src/event_checks.o(.text);

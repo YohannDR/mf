@@ -11,6 +11,7 @@
 #define SS_ROTATE_SCALE_INDIVIDUAL (1 << 7) // 0x80 ~0xff7f
 #define SS_Y_FLIP (1 << 8) // 0x100 ~0xfeff
 #define SS_FACING_RIGHT (1 << 9) // 0x200 ~0xfdff
+#define SS_FACING_DOWN (1 << 10) // 0x400 ~0xfbff
 #define SS_SAMUS_DETECTED (1 << 10) // 0x400 ~0xfbff
 #define SS_SAMUS_COLLIDING (1 << 11) // 0x800 ~0xf7ff
 #define SS_SAMUS_ON_TOP (1 << 12) // 0x1000 ~0xefff
