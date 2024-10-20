@@ -323,8 +323,6 @@ SECTIONS {
 
         src/sprites_AI/nightmare.o(.text);
 
-        asm/nightmare.o(.text);
-
         src/event_checks.o(.text);
 
         asm/disasm_0x08061004.o(.text);

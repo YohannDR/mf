@@ -10,6 +10,12 @@ struct TrackGroupROMData {
     u16 unknonw_A;
 };
 
+struct SoundEntry {
+    const u8* pHeader;
+    u16 trackGroundNumber;
+    u16 trackGroundNumber_2;
+};
+
 struct MusicInfo {
     u8 unk_0;
     u8 unk_1;
