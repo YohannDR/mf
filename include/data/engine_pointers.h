@@ -5,8 +5,7 @@
 #include "macros.h"
 
 #include "constants/sprite.h"
-
-#define MAX_AMOUNT_OF_SPRITESET 130
+#include "constants/spriteset.h"
 
 extern const Func_T sPrimarySpritesAiPointers[PSPRITE_END];
 
@@ -15,6 +14,6 @@ extern const u16* const sSpritesPalettePointers[PSPRITE_END - 0x10];
 
 extern const Func_T sSecondarySpritesAiPointers[SSPRITE_END];
 
-extern const u8* const sSpritesetPointers[MAX_AMOUNT_OF_SPRITESET];
+extern const u8* const sSpritesetPointers[SPRITESET_END];
 
 #endif /* ENGINE_POINTERS_DATA_H */

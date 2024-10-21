@@ -404,7 +404,7 @@ void CoreXAbilityWaitingAtTarget(void) {
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pOam = sCoreXAbilityOam_GettingAbsorbed;
-        ParticleSet(gSamusData.yPosition + gSamusData.drawDistanceTop / 2, gSamusData.xPosition, 0x1d);
+        ParticleSet(gSamusData.yPosition + gSamusData.drawDistanceTop / 2, gSamusData.xPosition, PE_ABSORB_CORE_X);
         switch (gCurrentSprite.spriteId) {
             case PSPRITE_MORPH_BALL_ABILITY:
                 EventCheckAdvance(EVENT_MORPH_BALL_ABILITY_RECOVERED);

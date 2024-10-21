@@ -264,8 +264,8 @@ SECTIONS {
         asm/fune_namihe.o(.text);
 
         src/sprites_AI/box.o(.text);
+        src/sprites_AI/geruda.o(.text);
 
-        asm/geruda.o(.text);
         asm/misc_pad.o(.text);
         asm/operations_room_pad.o(.text);
         asm/scientist.o(.text);
@@ -380,6 +380,7 @@ SECTIONS {
         src/data/sprites/waver.o(.rodata);
         src/data/sprites/sciser.o(.rodata);
         src/data/sprites/box.o(.rodata);
+        src/data/sprites/geruda.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);

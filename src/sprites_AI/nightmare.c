@@ -262,20 +262,20 @@ void NightmareInit(void) {
         y = gSubSpriteData1.yPosition;
         x = gSubSpriteData1.xPosition;
         primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_CHIN_SLUDGE, 0, primaryRamSlot, y, x, 0);
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_EYE_SLUDGE, 0, primaryRamSlot, y, x, 0);
-        eyeRamSlot = SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_EYE, 0, primaryRamSlot, y, x, 0);
-        mouthRamSlot = SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_MOUTH, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_CHIN_SLUDGE, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_EYE_SLUDGE, 0, primaryRamSlot, y, x, 0);
+        eyeRamSlot = SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_EYE, 0, primaryRamSlot, y, x, 0);
+        mouthRamSlot = SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_MOUTH, 0, primaryRamSlot, y, x, 0);
         gSpriteData[eyeRamSlot].work5 = mouthRamSlot;
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_RIGHT_ARM_TOP, 0, primaryRamSlot, y, x, 0);
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_RIGHT_TURRET_1, 0, primaryRamSlot, y, x, 0);
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_RIGHT_TURRET_2, 0, primaryRamSlot, y, x, 0);
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_RIGHT_TURRET_3, 0, primaryRamSlot, y, x, 0);
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_RIGHT_ARM_BOTTOM, 0, primaryRamSlot, y, x, 0);
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_GENERATOR, 0, primaryRamSlot, y, x, 0);
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_LEFT_TURRET_1, 0, primaryRamSlot, y, x, 0);
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_LEFT_TURRET_2, 0, primaryRamSlot, y, x, 0);
-        SpriteSpawnSecondary(SSPRITE_80, NIGHTMARE_PART_LEFT_TURRET_3, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_RIGHT_ARM_TOP, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_RIGHT_TURRET_1, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_RIGHT_TURRET_2, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_RIGHT_TURRET_3, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_RIGHT_ARM_BOTTOM, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_GENERATOR, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_LEFT_TURRET_1, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_LEFT_TURRET_2, 0, primaryRamSlot, y, x, 0);
+        SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_LEFT_TURRET_3, 0, primaryRamSlot, y, x, 0);
     }
 }
 
@@ -1222,7 +1222,7 @@ void NightmarePartEye(void) {
         SoundPlayNotAlreadyPlaying(0x2a7);
     else if (SPRITE_HAS_ISFT(gCurrentSprite) == 5)
         SoundPlayNotAlreadyPlaying(0x2aa);
-    switch(gCurrentSprite.pose) {
+    switch (gCurrentSprite.pose) {
         case 2: {
             if (gSpriteData[primaryRamSlot].pose == 0x1a) {
                 gCurrentSprite.status &= ~SS_HIDDEN;
@@ -1232,7 +1232,7 @@ void NightmarePartEye(void) {
                 gCurrentSprite.pose = 0x18;
                 gCurrentSprite.health = maxHealth;
                 gSubSpriteData1.health = maxHealth;
-                ParticleSet(gCurrentSprite.yPosition - 0x80,gCurrentSprite.xPosition - 0x50,0x3a);
+                ParticleSet(gCurrentSprite.yPosition - 0x80, gCurrentSprite.xPosition - 0x50, PE_0x3A);
                 unk_3b1c(0x2a9);
             }
             break;
@@ -1622,10 +1622,10 @@ void NightmarePartGenerator(void) {
                 if (gCurrentSprite.work0 == 0) {
                     gCurrentSprite.status |= SS_HIDDEN;
                     gCurrentSprite.pose = 0x22;
-                    ParticleSet(gCurrentSprite.yPosition + 0x40, gCurrentSprite.xPosition + 0x50, 0x30);
+                    ParticleSet(gCurrentSprite.yPosition + 0x40, gCurrentSprite.xPosition + 0x50, PE_0x30);
                 }
             } else if (gCurrentSprite.work0 == 30) {
-                ParticleSet(gCurrentSprite.yPosition + 0x40, gCurrentSprite.xPosition + 0x40, 0x3a);
+                ParticleSet(gCurrentSprite.yPosition + 0x40, gCurrentSprite.xPosition + 0x40, PE_0x3A);
                 gCurrentSprite.paletteRow = 0;
                 unk_3b1c(0x2a8);
             } else
@@ -1757,9 +1757,9 @@ void NightmareFallingArmMoving(void) {
     if (gCurrentSprite.work1 > 0) {
         if (--gCurrentSprite.work1 == 0) {
             if (gCurrentSprite.roomSlot == 0 || gCurrentSprite.roomSlot == 5)
-                ParticleSet(gCurrentSprite.yPosition - 0x50, gCurrentSprite.xPosition, 0x3a);
+                ParticleSet(gCurrentSprite.yPosition - 0x50, gCurrentSprite.xPosition, PE_0x3A);
             else
-                ParticleSet(gCurrentSprite.yPosition - 0x50, gCurrentSprite.xPosition, 0x22);
+                ParticleSet(gCurrentSprite.yPosition - 0x50, gCurrentSprite.xPosition, PE_0x22);
         }
     } else {
         u8 offset = gCurrentSprite.work4;

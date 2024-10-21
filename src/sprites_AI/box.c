@@ -12,6 +12,51 @@
 #include "structs/samus.h"
 #include "structs/clipdata.h"
 
+#define BOX_POSE_CRAWLING_INIT 1
+#define BOX_POSE_CRAWLING 2
+#define BOX_POSE_WAITING_TO_RUN_INIT 0x17
+#define BOX_POSE_WAITING_TO_RUN 0x18
+#define BOX_POSE_SLOW_RUN_INIT 0x19
+#define BOX_POSE_SLOW_RUN 0x1a
+#define BOX_POSE_FAST_RUN_INIT 0x1b
+#define BOX_POSE_FAST_RUN 0x1c
+#define BOX_POSE_SKIDDING_INIT 0x1d
+#define BOX_POSE_SKIDDING 0x1e
+#define BOX_POSE_STOP_SKIDDING_INIT 0x1f
+#define BOX_POSE_STOP_SKIDDING 0x20
+#define BOX_POSE_FINISHED_CRAWLING_INIT 7
+#define BOX_POSE_FINISHED_CRAWLING 8
+#define BOX_POSE_BONKING_INIT 0x37
+#define BOX_POSE_BONKING 0x38
+#define BOX_POSE_LANDING_FROM_BONK_INIT 0x4b
+#define BOX_POSE_LANDING_FROM_BONK 0x4c
+#define BOX_POSE_LANDING_INIT 0x39
+#define BOX_POSE_LANDING 0x3a
+#define BOX_POSE_JUMP_WARNING_INIT 0x3b
+#define BOX_POSE_JUMP_WARNING 0x3c
+#define BOX_POSE_JUMPING_INIT 0x3d
+#define BOX_POSE_JUMPING 0x3e
+#define BOX_POSE_STOPPING_TO_FIRE_BOMB_INIT 0x27
+#define BOX_POSE_STOPPING_TO_FIRE_BOMB 0x28
+#define BOX_POSE_LOWERING_TO_FIRE_BOMB_INIT 0x29
+#define BOX_POSE_LOWERING_TO_FIRE_BOMB 0x2a
+#define BOX_POSE_FIRING_BOMB 0x2c
+#define BOX_POSE_DONE_FIRING_BOMB 0x2e
+#define BOX_POSE_WAITING_TO_EMERGE_INIT 0x3f
+#define BOX_POSE_WAITING_TO_EMERGE 0x40
+#define BOX_POSE_FIRST_JUMP_INIT 0x41
+#define BOX_POSE_FIRST_JUMP 0x42
+#define BOX_POSE_DEFEATED_INIT 0x43
+#define BOX_POSE_DEFEATED 0x44
+#define BOX_POSE_MOVING_TO_FINAL_JUMP_INIT 0x45
+#define BOX_POSE_MOVING_TO_FINAL_JUMP 0x46
+#define BOX_POSE_WAITING_FOR_FINAL_JUMP_INIT 0x47
+#define BOX_POSE_WAITING_FOR_FINAL_JUMP 0x48
+#define BOX_POSE_CROUCHING_FOR_FINAL_JUMP_INIT 0x49
+#define BOX_POSE_CROUCHING_FOR_FINAL_JUMP 0x4a
+#define BOX_POSE_FINAL_JUMP_INIT 0x4d
+#define BOX_POSE_FINAL_JUMP 0x4e
+
 #define BOX_BRAIN_DRAW_ORDER 12
 
 void SpriteUtilUpdateSubSpriteData1Animation(void) {
@@ -106,7 +151,7 @@ void BoxInit(void) {
         gSubSpriteData1.work0 = 0;
         gCurrentSprite.work2 = 0;
         gCurrentSprite.status &= ~SS_FACING_RIGHT;
-        gCurrentSprite.pose = 0x3f;
+        gCurrentSprite.pose = BOX_POSE_WAITING_TO_EMERGE_INIT;
         SpriteSpawnSecondary(SSPRITE_BOX_PART, BOX_PART_FRONT_LEFT_LEG_COVER, gCurrentSprite.spritesetGfxSlot,
             gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
         SpriteSpawnSecondary(SSPRITE_BOX_PART, BOX_PART_FRONT_LEFT_LEG, gCurrentSprite.spritesetGfxSlot,
@@ -137,7 +182,7 @@ void BoxWaitingToEmergeInit(void) {
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gSubSpriteData1.xPosition += 0x100;
-    gCurrentSprite.pose = 0x40;
+    gCurrentSprite.pose = BOX_POSE_WAITING_TO_EMERGE;
     gCurrentSprite.work1 = 0;
     unk_3b1c(0x26d);
     ScreenShakeStartHorizontal(40, 0x81);
@@ -157,36 +202,36 @@ void BoxWaitingToEmerge(void) {
     x = gCurrentSprite.xPosition;
     switch (gCurrentSprite.work1) {
         case 0:
-            ParticleSet(y, x, 0x2e);
+            ParticleSet(y, x, PE_TAIL_EXPLOSION_SMOKE);
             break;
         case 4:
-            ParticleSet(y, x, 0x2f);
+            ParticleSet(y, x, PE_0x2F);
             break;
         case 8:
-            ParticleSet(y-0x1c, x+0x1c, 0x2e);
+            ParticleSet(y-0x1c, x+0x1c, PE_TAIL_EXPLOSION_SMOKE);
             break;
         case 16:
-            ParticleSet(y+0x20, x-0x20, 0x2f);
+            ParticleSet(y+0x20, x-0x20, PE_0x2F);
             break;
         case 20:
-            ParticleSet(y-0x1c, x-0x2e, 0x2e);
+            ParticleSet(y-0x1c, x-0x2e, PE_TAIL_EXPLOSION_SMOKE);
             break;
         case 24:
-            ParticleSet(y+0x40, x-0x40, 0x2f);
+            ParticleSet(y+0x40, x-0x40, PE_0x2F);
             break;
         case 28:
-            ParticleSet(y+0x58, x, 0x2f);
+            ParticleSet(y+0x58, x, PE_0x2F);
             break;
         case 32:
-            ParticleSet(y-0x5a, x+0x10, 0x2f);
+            ParticleSet(y-0x5a, x+0x10, PE_0x2F);
             break;
         case 36:
             gCurrentSprite.work1 = UCHAR_MAX;
     }
     gCurrentSprite.work1++;
     if (SpriteUtilCheckSamusNearSpriteLeftRight(0x200, 0x200) == NSLR_LEFT) {
-        gCurrentSprite.pose = 0x41;
-        ParticleSet(y, x-0xa0, 0x2f);
+        gCurrentSprite.pose = BOX_POSE_FIRST_JUMP_INIT;
+        ParticleSet(y, x-0xa0, PE_0x2F);
         PlayMusic(MUSIC_BOX_BATTLE, 7);
     }
 }
@@ -195,7 +240,7 @@ void BoxFirstJumpInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_Jumping;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x42;
+    gCurrentSprite.pose = BOX_POSE_FIRST_JUMP;
     gCurrentSprite.work4 = 0;
     gCurrentSprite.status &= ~SS_FACING_RIGHT;
     SoundPlay(0x265);
@@ -208,8 +253,8 @@ void BoxFirstJump(void) {
     offset = gCurrentSprite.work4;
     movement = sBoxFirstJumpSpeed[gCurrentSprite.work4];
     if (movement == SHORT_MAX) {
-        gCurrentSprite.pose = 0x19;
-        ParticleSet(gSubSpriteData1.yPosition, gSubSpriteData1.xPosition + 0xb4, 0x35);
+        gCurrentSprite.pose = BOX_POSE_SLOW_RUN_INIT;
+        ParticleSet(gSubSpriteData1.yPosition, gSubSpriteData1.xPosition + 0xb4, PE_0x35);
         SoundPlay(0x266);
         ScreenShakeStartVertical(60, 0x81);
     } else {
@@ -224,17 +269,17 @@ void BoxWaitingToRunInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_WaitingToRun;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x18;
+    gCurrentSprite.pose = BOX_POSE_WAITING_TO_RUN;
     gCurrentSprite.work1 = 0;
     SoundPlay(0x26a);
 }
 
 void BoxWaitingToRun(void) {
     if (SpriteUtilCheckNearEndSubSprite1Anim() && ++gCurrentSprite.work1 == 1) {
-        gCurrentSprite.pose = 0x19;
+        gCurrentSprite.pose = BOX_POSE_SLOW_RUN_INIT;
     }
     if (gCurrentSprite.work2 != 0) {
-        gCurrentSprite.pose = 0x3b;
+        gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
     }
 }
 
@@ -247,7 +292,7 @@ void BoxSlowRunningInit(void) {
     }
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x1a;
+    gCurrentSprite.pose = BOX_POSE_SLOW_RUN;
     gCurrentSprite.work1 = 0;
 }
 
@@ -255,12 +300,12 @@ void BoxSlowRun(void) {
     if (gSubSpriteData1.currentAnimationFrame == 3 && gSubSpriteData1.animationDurationCounter == 1) {
         SoundPlay(0x262);
     }
-    if (!BoxXMovement(gCurrentSprite.work1, 0x37)) {
+    if (!BoxXMovement(gCurrentSprite.work1, BOX_POSE_BONKING_INIT)) {
         if (SpriteUtilCheckNearEndSubSprite1Anim() && ++gCurrentSprite.work1 == 7) {
-            gCurrentSprite.pose = 0x1b;
+            gCurrentSprite.pose = BOX_POSE_FAST_RUN_INIT;
         }
         if (gCurrentSprite.work2 != 0) {
-            gCurrentSprite.pose = 0x3b;
+            gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
         }
     }
 }
@@ -273,7 +318,7 @@ void BoxFastRunInit(void) {
     }
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x1c;
+    gCurrentSprite.pose = BOX_POSE_FAST_RUN;
     gCurrentSprite.work1 = 10;
 }
 
@@ -281,24 +326,24 @@ void BoxFastRun(void) {
     if (gSubSpriteData1.currentAnimationFrame == 3 && gSubSpriteData1.animationDurationCounter == 1) {
         SoundPlay(0x262);
     }
-    if (!BoxXMovement(8, 0x37)) {
+    if (!BoxXMovement(8, BOX_POSE_BONKING_INIT)) {
         if (gCurrentSprite.work1 != 0) {
             gCurrentSprite.work1--;
             return;
         } else {
             if (gCurrentSprite.status & SS_FACING_RIGHT) {
                 if (gSubSpriteData1.xPosition - 200 > gSamusData.xPosition) {
-                    gCurrentSprite.pose = 0x1d;
+                    gCurrentSprite.pose = BOX_POSE_SKIDDING_INIT;
                 }
             } else {
                 if (gSubSpriteData1.xPosition + 200 < gSamusData.xPosition) {
-                    gCurrentSprite.pose = 0x1d;
+                    gCurrentSprite.pose = BOX_POSE_SKIDDING_INIT;
                 }
             }
         }
     }
     if (gCurrentSprite.work2 != 0) {
-        gCurrentSprite.pose = 0x3b;
+        gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
     }
 }
 
@@ -310,7 +355,7 @@ void BoxSkiddingInit(void) {
     }
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x1e;
+    gCurrentSprite.pose = BOX_POSE_SKIDDING;
     gCurrentSprite.work1 = 0x20;
     SoundPlay(0x263);
 }
@@ -319,16 +364,16 @@ void BoxSkidding(void) {
     u8 collidedPose;
 
     if (gCurrentSprite.work1 / 4 > 5) {
-        collidedPose = 0x37;
+        collidedPose = BOX_POSE_BONKING_INIT;
     } else {
-        collidedPose = 0x1f;
+        collidedPose = BOX_POSE_STOP_SKIDDING_INIT;
     }
     if (!BoxXMovement(gCurrentSprite.work1 / 4, collidedPose)) {
         if (--gCurrentSprite.work1 == 0) {
-            gCurrentSprite.pose = 0x1f;
+            gCurrentSprite.pose = BOX_POSE_STOP_SKIDDING_INIT;
         }
         if (gCurrentSprite.work2 != 0) {
-            gCurrentSprite.pose = 0x3b;
+            gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
         }
     }
 }
@@ -341,16 +386,16 @@ void BoxStopSkiddingInit(void) {
     }
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x20;
+    gCurrentSprite.pose = BOX_POSE_STOP_SKIDDING;
 }
 
 void BoxStopSkidding(void) {
     if (SpriteUtilCheckNearEndSubSprite1Anim()) {
-        gCurrentSprite.pose = 0x3b;
+        gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
         gCurrentSprite.work2 = 3;
     } else {
         if (gCurrentSprite.work2 != 0) {
-            gCurrentSprite.pose = 0x3b;
+            gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
         }
     }
 }
@@ -360,7 +405,7 @@ void BoxBonkingInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_Jumping;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x38;
+    gCurrentSprite.pose = BOX_POSE_BONKING;
     gCurrentSprite.work4 = 0;
     gCurrentSprite.status ^= SS_FACING_RIGHT;
     SoundPlay(0x267);
@@ -375,7 +420,7 @@ void BoxBonking(void) {
     blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gSubSpriteData1.yPosition, gSubSpriteData1.xPosition);
     if (gPreviousVerticalCollisionCheck != 0) {
         gSubSpriteData1.yPosition = blockTop;
-        gCurrentSprite.pose = 0x4b;
+        gCurrentSprite.pose = BOX_POSE_LANDING_FROM_BONK_INIT;
     } else {
         offset = gCurrentSprite.work4;
         movement = sBoxBonkingSpeed[offset];
@@ -399,7 +444,7 @@ void BoxLandingFromBonkInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_Landing;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x4c;
+    gCurrentSprite.pose = BOX_POSE_LANDING_FROM_BONK;
     gCurrentSprite.work2 = 0;
     gCurrentSprite.work4 = 0;
     SoundPlay(0x266);
@@ -407,7 +452,7 @@ void BoxLandingFromBonkInit(void) {
 
 void BoxLandingFromBonk(void) {
     if (SpriteUtilCheckNearEndSubSprite1Anim()) {
-        gCurrentSprite.pose = 0x17;
+        gCurrentSprite.pose = BOX_POSE_WAITING_TO_RUN_INIT;
     }
 }
 
@@ -415,7 +460,7 @@ void BoxLandingInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_Landing;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x3a;
+    gCurrentSprite.pose = BOX_POSE_LANDING;
     gCurrentSprite.work4 = 0;
     SoundPlay(0x266);
 }
@@ -423,13 +468,13 @@ void BoxLandingInit(void) {
 void BoxLanding(void) {
     if (SpriteUtilCheckNearEndSubSprite1Anim()) {
         if (gCurrentSprite.work2 == 0) {
-            gCurrentSprite.pose = 0x27;
+            gCurrentSprite.pose = BOX_POSE_STOPPING_TO_FIRE_BOMB_INIT;
         } else {
             gCurrentSprite.work2--;
             if ((gCurrentSprite.work2 & 0x7f) == 0) {
                 gCurrentSprite.work2 = 0;
             }
-            gCurrentSprite.pose = 0x3b;
+            gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
         }
     }
 }
@@ -439,7 +484,7 @@ void BoxFinishedCrawlingInit(void) {
     gCurrentSprite.work1 = 2;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 8;
+    gCurrentSprite.pose = BOX_POSE_FINISHED_CRAWLING;
     SoundPlay(0x264);
 }
 
@@ -451,12 +496,12 @@ void BoxFinishedCrawling(void) {
     } else {
         if (SpriteUtilCheckNearEndSubSprite1Anim()) {
             if (SamusCheckOnCeilingLadder()) {
-                gCurrentSprite.pose = 0x3b;
+                gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
             } else {
                 if (gCurrentSprite.work2 != 0) {
-                    gCurrentSprite.pose = 0x3b;
+                    gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
                 } else {
-                    gCurrentSprite.pose = 0x19;
+                    gCurrentSprite.pose = BOX_POSE_SLOW_RUN_INIT;
                 }
             }
         }
@@ -475,13 +520,13 @@ void BoxJumpWarningInit(void) {
         gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_JumpWarning;
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x3c;
+        gCurrentSprite.pose = BOX_POSE_JUMP_WARNING;
     }
 }
 
 void BoxJumpWarning(void) {
     if (SpriteUtilCheckNearEndSubSprite1Anim()) {
-        gCurrentSprite.pose = 0x3d;
+        gCurrentSprite.pose = BOX_POSE_JUMPING_INIT;
     }
 }
 
@@ -489,7 +534,7 @@ void BoxJumpingInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_Jumping;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x3e;
+    gCurrentSprite.pose = BOX_POSE_JUMPING;
     gCurrentSprite.work4 = 0;
     if ((gCurrentSprite.work2 & 0x80) == 0) {
         if (SamusCheckOnCeilingLadder()) {
@@ -521,12 +566,12 @@ void BoxJumping(void) {
     offset = gCurrentSprite.work4;
     movement = sBoxJumpingSpeed[offset];
     if (movement == SHORT_MAX) {
-        gCurrentSprite.pose = 0x39;
+        gCurrentSprite.pose = BOX_POSE_LANDING_INIT;
     } else {
         offset++;
         gCurrentSprite.work4 = offset;
         gSubSpriteData1.yPosition += movement;
-        BoxXMovement(0xc, 0x37);
+        BoxXMovement(0xc, BOX_POSE_BONKING_INIT);
     }
 }
 
@@ -535,7 +580,7 @@ void BoxStoppingToFireBombInit(void) {
     gCurrentSprite.work1 = 3;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x28;
+    gCurrentSprite.pose = BOX_POSE_STOPPING_TO_FIRE_BOMB;
     SoundPlay(0x264);
 }
 
@@ -546,7 +591,7 @@ void BoxStoppingToFireBomb(void) {
         }
     } else {
         if (SpriteUtilCheckNearEndSubSprite1Anim()) {
-            gCurrentSprite.pose = 0x29;
+            gCurrentSprite.pose = BOX_POSE_LOWERING_TO_FIRE_BOMB_INIT;
         }
     }
 }
@@ -555,13 +600,13 @@ void BoxLoweringToFireBombInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_LoweringToFireBomb;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x2a;
+    gCurrentSprite.pose = BOX_POSE_LOWERING_TO_FIRE_BOMB;
     SoundPlay(0x268);
 }
 
 void BoxLoweringToFireBomb(void) {
     if (SpriteUtilCheckEndSubSprite1Anim()) {
-        gCurrentSprite.pose = 0x2c;
+        gCurrentSprite.pose = BOX_POSE_FIRING_BOMB;
         gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_FiringBomb;
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
@@ -573,7 +618,7 @@ void BoxFiringBomb(void) {
     u16 y;
 
     if (SpriteUtilCheckEndSubSprite1Anim()) {
-        gCurrentSprite.pose = 0x2e;
+        gCurrentSprite.pose = BOX_POSE_DONE_FIRING_BOMB;
         gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_DoneFiringBomb;
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
@@ -596,7 +641,7 @@ void BoxFiringBomb(void) {
 
 void BoxDoneFiringBomb(void) {
     if (SpriteUtilCheckNearEndSubSprite1Anim()) {
-        gCurrentSprite.pose = 0x17;
+        gCurrentSprite.pose = BOX_POSE_WAITING_TO_RUN_INIT;
     }
 }
 
@@ -606,7 +651,7 @@ void BoxDefeatedInit(void) {
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 0;
     gCurrentSprite.work4 = 0;
-    gCurrentSprite.pose = 0x44;
+    gCurrentSprite.pose = BOX_POSE_DEFEATED;
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_Defeated;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
@@ -625,7 +670,7 @@ void BoxDefeated(void) {
         }
     } else {
         if (++gCurrentSprite.work1 > 30) {
-            gCurrentSprite.pose = 0x45;
+            gCurrentSprite.pose = BOX_POSE_MOVING_TO_FINAL_JUMP_INIT;
         }
     }
 }
@@ -636,7 +681,7 @@ void BoxMovingToFinalJumpInit(void) {
     gCurrentSprite.pOam = sBoxPartOam_Brain;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x46;
+    gCurrentSprite.pose = BOX_POSE_MOVING_TO_FINAL_JUMP;
     debrisRamSlot = SpriteUtilFindPrimarySprite(PSPRITE_BOX_DEBRIS);
     gCurrentSprite.unk_8 = gSpriteData[debrisRamSlot].xPosition;
     gCurrentSprite.work2 = debrisRamSlot;
@@ -657,13 +702,13 @@ void BoxMovingToFinalJump(void) {
     }
     if ((gFrameCounter8Bit & 7) == 0) {
         if ((gFrameCounter8Bit & 8) != 0) {
-            gCurrentSprite.paletteRow = 0xb;
+            gCurrentSprite.paletteRow = 11;
         } else {
             gCurrentSprite.paletteRow = 0;
         }
     }
     if ((gSubSpriteData1.xPosition & 0xfff8) == (gCurrentSprite.unk_8 & 0xfff8)) {
-        gCurrentSprite.pose = 0x47;
+        gCurrentSprite.pose = BOX_POSE_WAITING_FOR_FINAL_JUMP_INIT;
     } else {
         if (gCurrentSprite.status & SS_FACING_RIGHT) {
             gSubSpriteData1.xPosition += 2;
@@ -677,7 +722,7 @@ void BoxWaitingForFinalJumpInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_Defeated;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x48;
+    gCurrentSprite.pose = BOX_POSE_WAITING_FOR_FINAL_JUMP;
     SoundPlay(0x276);
 }
 
@@ -686,7 +731,7 @@ void BoxWaitingForFinalJump(void) {
 
     if ((gFrameCounter8Bit & 7) == 0) {
         if ((gFrameCounter8Bit & 8) != 0) {
-            gCurrentSprite.paletteRow = 0xb;
+            gCurrentSprite.paletteRow = 11;
         } else {
             gCurrentSprite.paletteRow = 0;
         }
@@ -694,7 +739,7 @@ void BoxWaitingForFinalJump(void) {
     xPosOnScreen = SUB_PIXEL_TO_PIXEL_(gCurrentSprite.xPosition) - SUB_PIXEL_TO_PIXEL_(gBg1XPosition);
     if (xPosOnScreen > 0x18 && xPosOnScreen < SCREEN_SIZE_X - 0x18) {
         if (SpriteUtilCheckNearEndSubSprite1Anim()) {
-            gCurrentSprite.pose = 0x49;
+            gCurrentSprite.pose = BOX_POSE_CROUCHING_FOR_FINAL_JUMP_INIT;
         }
     }
 }
@@ -703,19 +748,19 @@ void BoxCrouchingForFinalJumpInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_JumpWarning;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x4a;
+    gCurrentSprite.pose = BOX_POSE_CROUCHING_FOR_FINAL_JUMP;
 }
 
 void BoxCrouchingForFinalJump(void) {
     if ((gFrameCounter8Bit & 7) == 0) {
         if ((gFrameCounter8Bit & 8) != 0) {
-            gCurrentSprite.paletteRow = 0xb;
+            gCurrentSprite.paletteRow = 11;
         } else {
             gCurrentSprite.paletteRow = 0;
         }
     }
     if (SpriteUtilCheckNearEndSubSprite1Anim()) {
-        gCurrentSprite.pose = 0x4d;
+        gCurrentSprite.pose = BOX_POSE_FINAL_JUMP_INIT;
         unk_36c4();
     }
 }
@@ -724,15 +769,15 @@ void BoxFinalJumpInit(void) {
     gSubSpriteData1.pMultiOam = sBoxMultiSpriteData_Jumping;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x4e;
-    gCurrentSprite.work1 = 0x1e;
+    gCurrentSprite.pose = BOX_POSE_FINAL_JUMP;
+    gCurrentSprite.work1 = 30;
     SoundPlay(0x277);
 }
 
 void BoxFinalJump(void) {
     if ((gFrameCounter8Bit & 7) == 0) {
         if ((gFrameCounter8Bit & 8) != 0) {
-            gCurrentSprite.paletteRow = 0xb;
+            gCurrentSprite.paletteRow = 11;
         } else {
             gCurrentSprite.paletteRow = 0;
         }
@@ -753,11 +798,11 @@ void BoxCrawlingInit(void) {
     }
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = BOX_POSE_CRAWLING;
 }
 
 void BoxCrawling(void) {
-    BoxXMovement(1, 7);
+    BoxXMovement(1, BOX_POSE_FINISHED_CRAWLING_INIT);
 }
 
 void BoxPartSetBoxWorkVar2(u8 ramSlot, u8 value) {
@@ -768,19 +813,19 @@ void BoxPartSetBoxWorkVar2(u8 ramSlot, u8 value) {
 
 void BoxPartCenterSetImmunity(u8 ramSlot) {
     switch (gSpriteData[ramSlot].pose) {
-        case 0x29:
-        case 0x2a:
-        case 0x2c:
+        case BOX_POSE_LOWERING_TO_FIRE_BOMB_INIT:
+        case BOX_POSE_LOWERING_TO_FIRE_BOMB:
+        case BOX_POSE_FIRING_BOMB:
             if ((gSpriteData[ramSlot].work0 & 3) != 0) {
                 gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
             } else {
                 gCurrentSprite.properties &= ~SP_IMMUNE_TO_PROJECTILES;
             }
             break;
-        case 0x3f:
-        case 0x40:
-        case 0x41:
-        case 0x42:
+        case BOX_POSE_WAITING_TO_EMERGE_INIT:
+        case BOX_POSE_WAITING_TO_EMERGE:
+        case BOX_POSE_FIRST_JUMP_INIT:
+        case BOX_POSE_FIRST_JUMP:
             gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
             break;
         default:
@@ -877,15 +922,15 @@ void BoxPartFrontLeftLeg(void) {
     }
     y = gCurrentSprite.yPosition;
     x = gCurrentSprite.xPosition;
-    if (gSpriteData[brainRamSlot].pose == 0x44 && gCurrentSprite.pOam != sBoxPartOam_FrontLeftLegCoverDamaged) {
-        ParticleSet(y+0x3c, x, 0x30);
+    if (gSpriteData[brainRamSlot].pose == BOX_POSE_DEFEATED && gCurrentSprite.pOam != sBoxPartOam_FrontLeftLegCoverDamaged) {
+        ParticleSet(y+0x3c, x, PE_0x30);
         gCurrentSprite.pOam = sBoxPartOam_FrontLeftLegCoverDamaged;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     }
     if ((gSpriteData[brainRamSlot].work0 & 4) == 0 && (gFrameCounter8Bit & 7) == 0) {
         if ((gFrameCounter8Bit & 8) != 0) {
-            gCurrentSprite.paletteRow = 0xb;
+            gCurrentSprite.paletteRow = 11;
         } else {
             gCurrentSprite.paletteRow = 0;
         }
@@ -907,15 +952,15 @@ void BoxPartFrontRightLeg(void) {
     }
     y = gCurrentSprite.yPosition;
     x = gCurrentSprite.xPosition;
-    if (gSpriteData[brainRamSlot].pose == 0x44 && gCurrentSprite.pOam != sBoxPartOam_FrontRightLegCoverDamaged) {
-        ParticleSet(y+0x3c, x, 0x30);
+    if (gSpriteData[brainRamSlot].pose == BOX_POSE_DEFEATED && gCurrentSprite.pOam != sBoxPartOam_FrontRightLegCoverDamaged) {
+        ParticleSet(y+0x3c, x, PE_0x30);
         gCurrentSprite.pOam = sBoxPartOam_FrontRightLegCoverDamaged;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     }
     if ((gSpriteData[brainRamSlot].work0 & 4) == 0 && (gFrameCounter8Bit & 7) == 0) {
         if ((gFrameCounter8Bit & 8) != 0) {
-            gCurrentSprite.paletteRow = 0xb;
+            gCurrentSprite.paletteRow = 11;
         } else {
             gCurrentSprite.paletteRow = 0;
         }
@@ -939,7 +984,7 @@ void BoxPartCenter(void) {
     if ((gSpriteData[brainRamSlot].work0 & 4) == 0) {
         if ((gFrameCounter8Bit & 7) == 0) {
             if ((gFrameCounter8Bit & 8) != 0) {
-                gCurrentSprite.paletteRow = 0xc;
+                gCurrentSprite.paletteRow = 12;
             } else {
                 gCurrentSprite.paletteRow = 0;
             }
@@ -952,28 +997,28 @@ void BoxPartCenter(void) {
     BoxPartCenterSetImmunity(brainRamSlot);
     if (gCurrentSprite.health == 0) {
         gSpriteData[brainRamSlot].work0 &= ~4;
-        ParticleSet(y+0x32, x, 0x2f);
-        gSpriteData[brainRamSlot].pose = 0x43;
+        ParticleSet(y+0x32, x, PE_0x2F);
+        gSpriteData[brainRamSlot].pose = BOX_POSE_DEFEATED_INIT;
     } else if (gCurrentSprite.health < maxHealth / 4) {
         if (gCurrentSprite.pOam != sBoxPartOam_CenterHeavilyDamaged) {
             gCurrentSprite.pOam = sBoxPartOam_CenterHeavilyDamaged;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
-            ParticleSet(y+0x24, x, 0x30);
+            ParticleSet(y+0x24, x, PE_0x30);
         }
     } else if (gCurrentSprite.health < maxHealth / 2) {
         if (gCurrentSprite.pOam != sBoxPartOam_CenterModeratelyDamaged) {
             gCurrentSprite.pOam = sBoxPartOam_CenterModeratelyDamaged;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
-            ParticleSet(y+0x24, x, 0x30);
+            ParticleSet(y+0x24, x, PE_0x30);
         }
     } else if (gCurrentSprite.health < maxHealth * 3 / 4) {
         if (gCurrentSprite.pOam != sBoxPartOam_CenterSlightlyDamaged) {
             gCurrentSprite.pOam = sBoxPartOam_CenterSlightlyDamaged;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
-            ParticleSet(y+0x24, x, 0x30);
+            ParticleSet(y+0x24, x, PE_0x30);
         }
     }
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4) {
@@ -994,9 +1039,9 @@ void BoxPartCenterBottom(void) {
         return;
     }
     switch (gSpriteData[brainRamSlot].pose) {
-        case 8:
-        case 0x18:
-        case 0x3c: {
+        case BOX_POSE_FINISHED_CRAWLING:
+        case BOX_POSE_WAITING_TO_RUN:
+        case BOX_POSE_JUMP_WARNING: {
             if (gCurrentSprite.pOam != sFrameData_347ca8) {
                 gCurrentSprite.pOam = sFrameData_347ca8;
                 gCurrentSprite.animationDurationCounter = 0;
@@ -1004,15 +1049,15 @@ void BoxPartCenterBottom(void) {
             }
             break;
         }
-        case 0x44:
-        case 0x45:
-        case 0x46:
-        case 0x47:
-        case 0x48:
-        case 0x49:
-        case 0x4a:
-        case 0x4d:
-        case 0x4e: {
+        case BOX_POSE_DEFEATED:
+        case BOX_POSE_MOVING_TO_FINAL_JUMP_INIT:
+        case BOX_POSE_MOVING_TO_FINAL_JUMP:
+        case BOX_POSE_WAITING_FOR_FINAL_JUMP_INIT:
+        case BOX_POSE_WAITING_FOR_FINAL_JUMP:
+        case BOX_POSE_CROUCHING_FOR_FINAL_JUMP_INIT:
+        case BOX_POSE_CROUCHING_FOR_FINAL_JUMP:
+        case BOX_POSE_FINAL_JUMP_INIT:
+        case BOX_POSE_FINAL_JUMP: {
             if (gCurrentSprite.pOam != sFrameData_347ca8) {
                 gCurrentSprite.pOam = sFrameData_347ca8;
                 gCurrentSprite.animationDurationCounter = 0;
@@ -1020,7 +1065,7 @@ void BoxPartCenterBottom(void) {
             }
             if ((gFrameCounter8Bit & 7) == 0) {
                 if ((gFrameCounter8Bit & 8) != 0) {
-                    gCurrentSprite.paletteRow = 0xc;
+                    gCurrentSprite.paletteRow = 12;
                 } else {
                     gCurrentSprite.paletteRow = 0;
                 }
@@ -1050,18 +1095,18 @@ void BoxPartDefault(void) {
         return;
     }
     switch (gSpriteData[brainRamSlot].pose) {
-        case 0x44:
-        case 0x45:
-        case 0x46:
-        case 0x47:
-        case 0x48:
-        case 0x49:
-        case 0x4a:
-        case 0x4d:
-        case 0x4e: {
+        case BOX_POSE_DEFEATED:
+        case BOX_POSE_MOVING_TO_FINAL_JUMP_INIT:
+        case BOX_POSE_MOVING_TO_FINAL_JUMP:
+        case BOX_POSE_WAITING_FOR_FINAL_JUMP_INIT:
+        case BOX_POSE_WAITING_FOR_FINAL_JUMP:
+        case BOX_POSE_CROUCHING_FOR_FINAL_JUMP_INIT:
+        case BOX_POSE_CROUCHING_FOR_FINAL_JUMP:
+        case BOX_POSE_FINAL_JUMP_INIT:
+        case BOX_POSE_FINAL_JUMP: {
             if ((gFrameCounter8Bit & 7) == 0) {
                 if ((gFrameCounter8Bit & 8) != 0) {
-                    gCurrentSprite.paletteRow = 0xd;
+                    gCurrentSprite.paletteRow = 13;
                 } else {
                     gCurrentSprite.paletteRow = 0;
                 }
@@ -1143,7 +1188,7 @@ void BoxMissileMoving(void) {
 
 void BoxMissileExploding(void) {
     gCurrentSprite.status = 0;
-    ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0x25);
+    ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x25);
     SoundPlay(0x26c);
 }
 
@@ -1277,7 +1322,7 @@ void BoxBombLanded(void) {
                 gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition, 0);
             SpriteSpawnSecondary(SSPRITE_BOX_FIRE, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
                 gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition, SS_FACING_RIGHT);
-            ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0x22);
+            ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x22);
             gCurrentSprite.status = 0;
             SoundPlay(0x272);
         }
@@ -1285,7 +1330,7 @@ void BoxBombLanded(void) {
 }
 
 void BoxBombExploding(void) {
-    ParticleSet(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition, 0x32);
+    ParticleSet(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition, PE_0x32);
     gCurrentSprite.status = 0;
     SoundPlay(0x273);
 }
@@ -1418,15 +1463,15 @@ void BoxSpawnFallingDebris(void) {
     
     y = gCurrentSprite.yPosition;
     x = gCurrentSprite.xPosition;
-    SpriteSpawnSecondary(0x4b, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0xe8, 0);
-    SpriteSpawnSecondary(0x4b, 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x + 0xbe, 0);
-    SpriteSpawnSecondary(0x4b, 2, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0x156, 0);
-    SpriteSpawnSecondary(0x4b, 3, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0xa0, 0);
-    SpriteSpawnSecondary(0x4b, 4, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0x106, 0);
-    SpriteSpawnSecondary(0x4b, 5, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x + 0xdc, 0);
-    SpriteSpawnSecondary(0x4b, 6, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0x50, 0);
-    SpriteSpawnSecondary(0x4b, 7, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0x124, 0);
-    SpriteSpawnSecondary(0x4b, 8, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x + 0x8c, 0);
+    SpriteSpawnSecondary(SSPRITE_BOX_FALLING_DEBRIS, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0xe8, 0);
+    SpriteSpawnSecondary(SSPRITE_BOX_FALLING_DEBRIS, 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x + 0xbe, 0);
+    SpriteSpawnSecondary(SSPRITE_BOX_FALLING_DEBRIS, 2, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0x156, 0);
+    SpriteSpawnSecondary(SSPRITE_BOX_FALLING_DEBRIS, 3, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0xa0, 0);
+    SpriteSpawnSecondary(SSPRITE_BOX_FALLING_DEBRIS, 4, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0x106, 0);
+    SpriteSpawnSecondary(SSPRITE_BOX_FALLING_DEBRIS, 5, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x + 0xdc, 0);
+    SpriteSpawnSecondary(SSPRITE_BOX_FALLING_DEBRIS, 6, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0x50, 0);
+    SpriteSpawnSecondary(SSPRITE_BOX_FALLING_DEBRIS, 7, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x - 0x124, 0);
+    SpriteSpawnSecondary(SSPRITE_BOX_FALLING_DEBRIS, 8, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot, y, x + 0x8c, 0);
 }
 
 void BoxSetDebrisClipdata(u8 caa) {
@@ -1520,8 +1565,8 @@ void BoxDebrisFalling(void) {
         gCurrentSprite.yPosition = blockTop;
         gCurrentSprite.pose = 0x1e;
         ScreenShakeStartVertical(30, 0x81);
-        ParticleSet(y, x, 0x31);
-        ParticleSet(y, x+0x20,0x31);
+        ParticleSet(y, x, PE_SMOKE);
+        ParticleSet(y, x+0x20, PE_SMOKE);
         EventCheckAdvance(EVENT_BOX_DEFEATED);
         BoxSetDebrisClipdata(CAA_MAKE_SOLID);
         PlayMusic(MUSIC_BOSS_TENSION, 6);
@@ -1537,11 +1582,11 @@ void BoxDebrisFalling(void) {
             gCurrentSprite.yPosition += movement;
         }
         if ((work1 & 0xf) == 0) {
-            ParticleSet(y, x, 0x34);
+            ParticleSet(y, x, PE_TAIL_EXPLOSION);
         } else if (((work1 + 4) & 0xf) == 0) {
-            ParticleSet(y-0xa0, x+0x28, 0x33);
+            ParticleSet(y-0xa0, x+0x28, PE_0x33);
         } else if (((work1 + 8) & 0xf) == 0) {
-            ParticleSet(y-0x82, x-0x28, 0x33);
+            ParticleSet(y-0x82, x-0x28, PE_0x33);
         }
     }
 }
@@ -1681,15 +1726,15 @@ void BoxFallingDebrisFalling(void) {
                 gCurrentSprite.pose = 0x1e;
                 if (roomSlot == 0) {
                     ScreenShakeStartVertical(30, 0x81);
-                    ParticleSet(y, x-0x20, 0x31);
-                    ParticleSet(y, x+0x20, 0x31);
+                    ParticleSet(y, x-0x20, PE_SMOKE);
+                    ParticleSet(y, x+0x20, PE_SMOKE);
                 } else if (roomSlot == 1 || roomSlot == 6) {
-                    ParticleSet(y, x, 0x31);
+                    ParticleSet(y, x, PE_SMOKE);
                 } else if (roomSlot == 2 || roomSlot == 3 || roomSlot == 7) {
-                    ParticleSet(y, x-0x10, 0x27);
-                    ParticleSet(y, x+0x10, 0x27);
+                    ParticleSet(y, x-0x10, PE_HEAVY_DUST_1);
+                    ParticleSet(y, x+0x10, PE_HEAVY_DUST_1);
                 } else {
-                    ParticleSet(y, x, 0x27);
+                    ParticleSet(y, x, PE_HEAVY_DUST_1);
                 }
                 return;
             }
@@ -1698,11 +1743,11 @@ void BoxFallingDebrisFalling(void) {
             u8 offset;
             s16 movement;
             if ((work2 & 0xf) == 0) {
-                ParticleSet(y, x, 0x31);
+                ParticleSet(y, x, PE_SMOKE);
             } else if (((work2 + 4) & 0xf) == 0) {
-                ParticleSet(y-0xa0, x+0x32, 0x2e);
+                ParticleSet(y-0xa0, x+0x32, PE_TAIL_EXPLOSION_SMOKE);
             } else if (((work2 + 8) & 0xf) == 0) {
-                ParticleSet(y, x-0x20, 0x33);
+                ParticleSet(y, x-0x20, PE_0x33);
             }
             offset = gCurrentSprite.work4;
             movement = sSpritesFallingSpeedFast[offset];
@@ -1718,7 +1763,7 @@ void BoxFallingDebrisFalling(void) {
             u8 offset;
             s16 movement;
             if ((work2 & 0x1f) == 0) {
-                ParticleSet(y, x, 0x27);
+                ParticleSet(y, x, PE_HEAVY_DUST_1);
             }
             offset = gCurrentSprite.work4;
             movement = sSpritesFallingSpeedQuickAcceleration[offset];
@@ -1734,7 +1779,7 @@ void BoxFallingDebrisFalling(void) {
             u8 offset;
             s16 movement;
             if (((work2 + 7) & 0x1f) == 0) {
-                ParticleSet(y, x, 0x33);
+                ParticleSet(y, x, PE_0x33);
             }
             offset = gCurrentSprite.work4;
             movement = sSpritesFallingSpeed[offset];
@@ -1768,115 +1813,115 @@ void Box(void) {
         case SPRITE_POSE_UNINITIALIZED:
             BoxInit();
             break;
-        case 1:
+        case BOX_POSE_CRAWLING_INIT:
             BoxCrawlingInit();
-        case 2:
+        case BOX_POSE_CRAWLING:
             BoxCrawling();
             break;
-        case 0x17:
+        case BOX_POSE_WAITING_TO_RUN_INIT:
             BoxWaitingToRunInit();
-        case 0x18:
+        case BOX_POSE_WAITING_TO_RUN:
             BoxWaitingToRun();
             break;
-        case 0x19:
+        case BOX_POSE_SLOW_RUN_INIT:
             BoxSlowRunningInit();
-        case 0x1a:
+        case BOX_POSE_SLOW_RUN:
             BoxSlowRun();
             break;
-        case 0x1b:
+        case BOX_POSE_FAST_RUN_INIT:
             BoxFastRunInit();
-        case 0x1c:
+        case BOX_POSE_FAST_RUN:
             BoxFastRun();
             break;
-        case 0x1d:
+        case BOX_POSE_SKIDDING_INIT:
             BoxSkiddingInit();
-        case 0x1e:
+        case BOX_POSE_SKIDDING:
             BoxSkidding();
             break;
-        case 0x1f:
+        case BOX_POSE_STOP_SKIDDING_INIT:
             BoxStopSkiddingInit();
-        case 0x20:
+        case BOX_POSE_STOP_SKIDDING:
             BoxStopSkidding();
             break;
-        case 7:
+        case BOX_POSE_FINISHED_CRAWLING_INIT:
             BoxFinishedCrawlingInit();
-        case 8:
+        case BOX_POSE_FINISHED_CRAWLING:
             BoxFinishedCrawling();
             break;
-        case 0x37:
+        case BOX_POSE_BONKING_INIT:
             BoxBonkingInit();
-        case 0x38:
+        case BOX_POSE_BONKING:
             BoxBonking();
             break;
-        case 0x4b:
+        case BOX_POSE_LANDING_FROM_BONK_INIT:
             BoxLandingFromBonkInit();
-        case 0x4c:
+        case BOX_POSE_LANDING_FROM_BONK:
             BoxLandingFromBonk();
             break;
-        case 0x39:
+        case BOX_POSE_LANDING_INIT:
             BoxLandingInit();
-        case 0x3a:
+        case BOX_POSE_LANDING:
             BoxLanding();
             break;
-        case 0x3b:
+        case BOX_POSE_JUMP_WARNING_INIT:
             BoxJumpWarningInit();
-        case 0x3c:
+        case BOX_POSE_JUMP_WARNING:
             BoxJumpWarning();
             break;
-        case 0x3d:
+        case BOX_POSE_JUMPING_INIT:
             BoxJumpingInit();
-        case 0x3e:
+        case BOX_POSE_JUMPING:
             BoxJumping();
             break;
-        case 0x27:
+        case BOX_POSE_STOPPING_TO_FIRE_BOMB_INIT:
             BoxStoppingToFireBombInit();
-        case 0x28:
+        case BOX_POSE_STOPPING_TO_FIRE_BOMB:
             BoxStoppingToFireBomb();
             break;
-        case 0x29:
+        case BOX_POSE_LOWERING_TO_FIRE_BOMB_INIT:
             BoxLoweringToFireBombInit();
-        case 0x2a:
+        case BOX_POSE_LOWERING_TO_FIRE_BOMB:
             BoxLoweringToFireBomb();
             break;
-        case 0x2c:
+        case BOX_POSE_FIRING_BOMB:
             BoxFiringBomb();
             break;
-        case 0x2e:
+        case BOX_POSE_DONE_FIRING_BOMB:
             BoxDoneFiringBomb();
             break;
-        case 0x3f:
+        case BOX_POSE_WAITING_TO_EMERGE_INIT:
             BoxWaitingToEmergeInit();
-        case 0x40:
+        case BOX_POSE_WAITING_TO_EMERGE:
             BoxWaitingToEmerge();
             break;
-        case 0x41:
+        case BOX_POSE_FIRST_JUMP_INIT:
             BoxFirstJumpInit();
-        case 0x42:
+        case BOX_POSE_FIRST_JUMP:
             BoxFirstJump();
             break;
-        case 0x43:
+        case BOX_POSE_DEFEATED_INIT:
             BoxDefeatedInit();
-        case 0x44:
+        case BOX_POSE_DEFEATED:
             BoxDefeated();
             break;
-        case 0x45:
+        case BOX_POSE_MOVING_TO_FINAL_JUMP_INIT:
             BoxMovingToFinalJumpInit();
-        case 0x46:
+        case BOX_POSE_MOVING_TO_FINAL_JUMP:
             BoxMovingToFinalJump();
             break;
-        case 0x47:
+        case BOX_POSE_WAITING_FOR_FINAL_JUMP_INIT:
             BoxWaitingForFinalJumpInit();
-        case 0x48:
+        case BOX_POSE_WAITING_FOR_FINAL_JUMP:
             BoxWaitingForFinalJump();
             break;
-        case 0x49:
+        case BOX_POSE_CROUCHING_FOR_FINAL_JUMP_INIT:
             BoxCrouchingForFinalJumpInit();
-        case 0x4a:
+        case BOX_POSE_CROUCHING_FOR_FINAL_JUMP:
             BoxCrouchingForFinalJump();
             break;
-        case 0x4d:
+        case BOX_POSE_FINAL_JUMP_INIT:
             BoxFinalJumpInit();
-        case 0x4e:
+        case BOX_POSE_FINAL_JUMP:
             BoxFinalJump();
     }
     SpriteUtilUpdateSubSpriteData1Animation();

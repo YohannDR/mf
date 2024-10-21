@@ -113,7 +113,7 @@ def ParseOam():
 
     return result
 
-def ParseFrameData():
+def ParseFrameData(spriteName):
     startAddr = file.tell()
     frameData = []
     while True:
@@ -123,7 +123,7 @@ def ParseFrameData():
             break
         frameData.append((pFrame, timer))
 
-    result = f"const struct FrameData sFrameData_{startAddr:x}[{(len(frameData)+1)}] = " + "{\n"
+    result = f"const struct FrameData s{spriteName}Oam_{startAddr:x}[{(len(frameData)+1)}] = " + "{\n"
 
     index = 0
     for (pFrame, timer) in frameData:
@@ -137,17 +137,27 @@ file = open("../mf_us_baserom.gba", "rb")
 
 def Func():
     spriteId = int(input("Primary sprite ID or first OAM entry pointer (in hex) : "), 16)
+    spriteName = input("Name of sprite: ")
 
     if spriteId >= 0x100:
         file.seek(spriteId & 0x1ffffff)
     else:
+        file.seek(0x79a5d8 + spriteId*4 - 0x40)
+        gfxPointer = int.from_bytes(file.read(4), 'little') & 0x1ffffff
+
         file.seek(0x79a8d4 + spriteId*4 - 0x40) # usually OAM entries come right after palettes, but that's not always the case
-        palettePointer = int.from_bytes(file.read(4), 'little') & 0x1ffffff
+        palPointer = int.from_bytes(file.read(4), 'little') & 0x1ffffff
 
         file.seek(0x2e4a50 + spriteId*4 - 0x40)
-        paletteRows = int.from_bytes(file.read(4), 'little')//0x800
+        rows = int.from_bytes(file.read(4), 'little')//0x800
 
-        file.seek(palettePointer+paletteRows*16*2)
+        file.seek(palPointer+rows*16*2)
+
+        print(f"sprites/{spriteName.lower()}.gfx;{rows};0x{gfxPointer:x};2048")
+        print(f"sprites/{spriteName.lower()}.pal;{rows};0x{palPointer:x};32\n")
+
+        print(f"const u32 s{spriteName}Gfx[512 * {rows}] = INCBIN_U32(\"data/sprites/{spriteName.lower()}.gfx\");")
+        print(f"const u16 s{spriteName}Pal[512 * {rows}] = INCBIN_U32(\"data/sprites/{spriteName.lower()}.pal\");")
 
     frames = set()
     output = ""
@@ -172,19 +182,19 @@ def Func():
         if pointer not in frames:
             break
 
-        (result, frameData) = ParseFrameData()
+        (result, frameData) = ParseFrameData(spriteName)
         output += result + '\n'
         animations.append((currentAddr, len(frameData)+1))
         for i in range(len(frameData)):
             if frameData[i][0] not in namedFrames:
-                namedFrames[frameData[i][0]] = f"sFrameData_{currentAddr:x}_Frame{i}"
+                namedFrames[frameData[i][0]] = f"s{spriteName}Oam_{currentAddr:x}_Frame{i}"
 
     for (addr, name) in namedFrames.items():
         output = output.replace(f"sOam_{addr:x}", name)
     print(output)
 
     for (addr, count) in animations:
-        print(f"extern const struct FrameData sFrameData_{addr:x}[{count}];")
+        print(f"extern const struct FrameData s{spriteName}Oam_{addr:x}[{count}];")
 
     print(f"\nEnd: {file.tell():x}\n")
     Func()

@@ -8,6 +8,7 @@
 #include "data/sprites/yakuza.h"
 #include "data/sprites/x_parasite.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/particle.h"
 #include "constants/samus.h"
@@ -223,8 +224,8 @@ void YakuzaSlammingSamus(void) {
         gSubSpriteData1.yPosition = blockTop - 0x48;
         gCurrentSprite.pose = 0x2f;
         ScreenShakeStartVertical(60, 0x81);
-        ParticleSet(blockTop, gSubSpriteData1.xPosition, 0x3c);
-        ParticleSet(blockTop + 0x3c, gSubSpriteData1.xPosition, 0x3c);
+        ParticleSet(blockTop, gSubSpriteData1.xPosition, PE_OUTWARD_SMOKE);
+        ParticleSet(blockTop + 0x3c, gSubSpriteData1.xPosition, PE_OUTWARD_SMOKE);
         SoundPlay(0x13a);
     }
 }
@@ -283,8 +284,8 @@ void YakuzaInit(void) {
         gCurrentSprite.status |= (SS_HIDDEN | SS_FACING_DOWN);
         gCurrentSprite.work0 = 0;
         gCurrentSprite.pose = 0x37;
-        SpriteSpawnSecondary(SSPRITE_64, YAKUZA_PART_EYE, 0, gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-        SpriteSpawnSecondary(SSPRITE_64, YAKUZA_PART_LEGS, 0, gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+        SpriteSpawnSecondary(SSPRITE_YAKUZA_PART, YAKUZA_PART_EYE, 0, gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
+        SpriteSpawnSecondary(SSPRITE_YAKUZA_PART, YAKUZA_PART_LEGS, 0, gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
     }
 }
 
@@ -535,7 +536,7 @@ void YakuzaPhase1DyingInit(void) {
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x20;
     gCurrentSprite.work1 = 120;
-    ParticleSet(gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0x2f);
+    ParticleSet(gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, PE_0x2F);
     unk_3b1c(0x132);
 }
 
@@ -591,12 +592,12 @@ void YakuzaLosingLegsInit(void) {
         gCurrentSprite.status |= SS_FACING_RIGHT;
     primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
     y = gCurrentSprite.yPosition, x = gCurrentSprite.xPosition;
-    SpriteSpawnSecondary(SSPRITE_7F, 0, 0, primaryRamSlot, y-0x10, x-0x40, 0);
-    SpriteSpawnSecondary(SSPRITE_7F, 1, 0, primaryRamSlot, y-0x20, x-0x40, 0);
-    SpriteSpawnSecondary(SSPRITE_7F, 2, 0, primaryRamSlot, y-0x40, x-0x40, 0);
-    SpriteSpawnSecondary(SSPRITE_7F, 3, 0, primaryRamSlot, y-0x10, x+0x40, 0);
-    SpriteSpawnSecondary(SSPRITE_7F, 4, 0, primaryRamSlot, y-0x20, x+0x40, 0);
-    SpriteSpawnSecondary(SSPRITE_7F, 5, 0, primaryRamSlot, y-0x40, x+0x40, 0);
+    SpriteSpawnSecondary(SSPRITE_YAKUZA_FALLING_LEG, 0, 0, primaryRamSlot, y-0x10, x-0x40, 0);
+    SpriteSpawnSecondary(SSPRITE_YAKUZA_FALLING_LEG, 1, 0, primaryRamSlot, y-0x20, x-0x40, 0);
+    SpriteSpawnSecondary(SSPRITE_YAKUZA_FALLING_LEG, 2, 0, primaryRamSlot, y-0x40, x-0x40, 0);
+    SpriteSpawnSecondary(SSPRITE_YAKUZA_FALLING_LEG, 3, 0, primaryRamSlot, y-0x10, x+0x40, 0);
+    SpriteSpawnSecondary(SSPRITE_YAKUZA_FALLING_LEG, 4, 0, primaryRamSlot, y-0x20, x+0x40, 0);
+    SpriteSpawnSecondary(SSPRITE_YAKUZA_FALLING_LEG, 5, 0, primaryRamSlot, y-0x40, x+0x40, 0);
 }
 
 void YakuzaLosingLegs(void) {
@@ -727,29 +728,29 @@ void YakuzaPhase2Dying(void) {
     gCurrentSprite.work1--;
     switch (gCurrentSprite.work1) {
         case 40:
-            ParticleSet(y-0x40, x-0x10, 0x2f);
+            ParticleSet(y-0x40, x-0x10, PE_0x2F);
             unk_3b1c(0x134);
             break;
         case 35:
-            ParticleSet(y+0x20, x-0x10, 0x25);
+            ParticleSet(y+0x20, x-0x10, PE_0x25);
             break;
         case 30:
-            ParticleSet(y-0x20, x+0x1c, 0x2f);
+            ParticleSet(y-0x20, x+0x1c, PE_0x2F);
             break;
         case 25:
-            ParticleSet(y+0x40, x+0x20, 0x25);
+            ParticleSet(y+0x40, x+0x20, PE_0x25);
             break;
         case 20:
-            ParticleSet(y-0x20, x-0x10, 0x26);
+            ParticleSet(y-0x20, x-0x10, PE_0x26);
             break;
         case 15:
-            ParticleSet(y+0x40, x-0x10, 0x2f);
+            ParticleSet(y+0x40, x-0x10, PE_0x2F);
             break;
         case 10:
-            ParticleSet(y-0x40, x+0x1c, 0x25);
+            ParticleSet(y-0x40, x+0x1c, PE_0x25);
             break;
         case 5:
-            ParticleSet(y+0x10, x, 0x3a);
+            ParticleSet(y+0x10, x, PE_0x3A);
             break;
         case 0:
             gCurrentSprite.pose = 0x49;
@@ -934,7 +935,7 @@ void YakuzaProjectileInit(void) {
 }
 
 void YakuzaProjectileExploding(void) {
-    ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0x2d);
+    ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_EXPLOSION_SMOKE);
     SoundPlay(0x1bf);
     gCurrentSprite.status = 0;
 }
@@ -1119,9 +1120,9 @@ void YakuzaFallingLegInit(void) {
 
 void YakuzaFallingLegMoving(void) {
     if (gCurrentSprite.work1 > 0) {
-        // BUG: upper-left leg doesn't spawn explosion
+        // BUG: lower-left leg doesn't spawn explosion
         if (--gCurrentSprite.work1 == 0) {
-            ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0x25);
+            ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x25);
         }
     } else {
         u8 offset = gCurrentSprite.work4;
@@ -1146,7 +1147,7 @@ void Yakuza(void) {
         gCurrentSprite.pose = 0x47;
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
         SoundPlayNotAlreadyPlaying(0x131);
-    switch(gCurrentSprite.pose) {
+    switch (gCurrentSprite.pose) {
         case 0:
             YakuzaInit();
             break;
@@ -1269,7 +1270,7 @@ void YakuzaProjectile(void) {
         case 0x28:
             YakuzaProjectileSpitFalling();
             break;
-        case 0x37:
+        case SPRITE_POSE_SELF_DESTRUCT:
             YakuzaProjectileExploding();
             break;
         case 2:

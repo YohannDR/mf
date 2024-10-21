@@ -2839,7 +2839,7 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_MISSILES
     },
-    [SSPRITE_64] = {
+    [SSPRITE_YAKUZA_PART] = {
         1,
         65,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
@@ -3001,13 +3001,13 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK
     },
-    [SSPRITE_7F] = {
+    [SSPRITE_YAKUZA_FALLING_LEG] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_80] = {
+    [SSPRITE_NIGHTMARE_PART] = {
         600,
         50,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
