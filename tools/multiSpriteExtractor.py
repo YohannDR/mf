@@ -5,9 +5,9 @@ def toPixels(value):
     return value//4
 
 partNames = [
-    "YAKUZA_PART_LEGS",
-    "YAKUZA_PART_BODY",
     "YAKUZA_PART_EYE",
+    "YAKUZA_PART_BODY",
+    "YAKUZA_PART_LEGS",
 
     "YAKUZA_PART_END"
 ]

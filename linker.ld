@@ -319,8 +319,8 @@ SECTIONS {
         asm/ice_beam_x.o(.text);
         asm/metroid_husk.o(.text);
         asm/neo_ridley.o(.text);
-        asm/yakuza.o(.text);
 
+        src/sprites_AI/yakuza.o(.text);
         src/sprites_AI/nightmare.o(.text);
 
         src/event_checks.o(.text);

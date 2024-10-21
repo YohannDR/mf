@@ -418,8 +418,8 @@ _080100C0: .4byte 0x000002AF
 _080100C4: .4byte sSamusSetPoseFunctionPointer
 _080100C8: .4byte gSamusData
 
-	thumb_func_start TakeDamageFromYakuzaSlamming
-TakeDamageFromYakuzaSlamming: @ 0x080100CC
+	thumb_func_start SpriteUtilTakeDamageFromYakuzaSlamming
+SpriteUtilTakeDamageFromYakuzaSlamming: @ 0x080100CC
 	push {lr}
 	ldr r0, _080100EC @ =sPrimarySpriteStats
 	movs r1, #0x8e
@@ -457,8 +457,8 @@ _080100F6:
 _08010110: .4byte sSamusSetPoseFunctionPointer
 _08010114: .4byte gSamusData
 
-	thumb_func_start TakeConstantDamageFromYakuza
-TakeConstantDamageFromYakuza: @ 0x08010118
+	thumb_func_start SpriteUtilTakeConstantDamageFromYakuza
+SpriteUtilTakeConstantDamageFromYakuza: @ 0x08010118
 	push {r4, lr}
 	ldr r0, _08010150 @ =gFrameCounter8Bit
 	ldrb r0, [r0]
