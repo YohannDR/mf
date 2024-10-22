@@ -1,7 +1,7 @@
 #include "data/sprites/geruda.h"
 #include "macros.h"
 
-const s16 sGerudaIdleSpeed[65] = {
+const s16 sGerudaIdleUpwardsMovement[36] = {
     0, 0, 0, 0,
     1, 1, 1, 1,
     2, 2, 2, 2,
@@ -10,7 +10,10 @@ const s16 sGerudaIdleSpeed[65] = {
     2, 2, 2, 2,
     1, 1, 1, 1,
     0, 0, 0, 0,
-    0, 0, 0, 0,
+    0, 0, 0, 0
+};
+
+const s16 sGerudaIdleDownwardsMovement[29] = {
     -1, -1, -1, -1,
     -2, -2, -2, -2,
     -3, -3, -4, -4,
@@ -24,7 +27,7 @@ const s16 sGerudaIdleSpeed[65] = {
 const u32 sGerudaGfx[512 * 1] = INCBIN_U32("data/sprites/geruda.gfx");
 const u16 sGerudaPal[16 * 1] = INCBIN_U16("data/sprites/geruda.pal");
 
-static const u16 sGerudaOam_348c1c_Frame0[] = {
+static const u16 sGerudaOam_Idle_Frame0[] = {
     10,
     0xf3, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_8 | 0x209,
     OBJ_SHAPE_HORIZONTAL | 0x3, 0x1fb, OBJ_PALETTE_8 | 0x20d,
@@ -38,7 +41,7 @@ static const u16 sGerudaOam_348c1c_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xb, OBJ_X_FLIP | 0x1f5, OBJ_PALETTE_8 | 0x236
 };
 
-static const u16 sGerudaOam_348c1c_Frame1[] = {
+static const u16 sGerudaOam_Idle_Frame1[] = {
     10,
     0xf4, OBJ_SIZE_16x16 | 0x1fc, OBJ_PALETTE_8 | 0x209,
     OBJ_SHAPE_HORIZONTAL | 0x4, 0x1fc, OBJ_PALETTE_8 | 0x20d,
@@ -52,7 +55,7 @@ static const u16 sGerudaOam_348c1c_Frame1[] = {
     OBJ_SHAPE_HORIZONTAL | 0xd, OBJ_X_FLIP | 0x1f6, OBJ_PALETTE_8 | 0x238
 };
 
-static const u16 sGerudaOam_348c1c_Frame2[] = {
+static const u16 sGerudaOam_Idle_Frame2[] = {
     10,
     0xf5, OBJ_SIZE_16x16 | 0x1fc, OBJ_PALETTE_8 | 0x209,
     OBJ_SHAPE_HORIZONTAL | 0x5, 0x1fc, OBJ_PALETTE_8 | 0x20d,
@@ -66,7 +69,7 @@ static const u16 sGerudaOam_348c1c_Frame2[] = {
     OBJ_SHAPE_HORIZONTAL | 0xf, OBJ_X_FLIP | 0x1f6, OBJ_PALETTE_8 | 0x218
 };
 
-static const u16 sGerudaOam_348c44_Frame0[] = {
+static const u16 sGerudaOam_AttackWarning_Frame0[] = {
     10,
     0xf4, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_8 | 0x20b,
     OBJ_SHAPE_HORIZONTAL | 0x4, 0x1fb, OBJ_PALETTE_8 | 0x22d,
@@ -80,7 +83,7 @@ static const u16 sGerudaOam_348c44_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0x6, 0x1fa, OBJ_PALETTE_8 | 0x234
 };
 
-static const u16 sGerudaOam_348c54_Frame0[] = {
+static const u16 sGerudaOam_Lunging_Frame0[] = {
     10,
     0xf9, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x20f,
     0xf9, 0x8, OBJ_PALETTE_8 | 0x211,
@@ -94,7 +97,7 @@ static const u16 sGerudaOam_348c54_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0x6, 0x1fa, OBJ_PALETTE_8 | 0x234
 };
 
-static const u16 sGerudaOam_348c64_Frame0[] = {
+static const u16 sGerudaOam_Swiping_Frame0[] = {
     10,
     0xf4, OBJ_SIZE_16x16 | 0x1f7, OBJ_PALETTE_8 | 0x20f,
     0xf4, 0x7, OBJ_PALETTE_8 | 0x211,
@@ -108,7 +111,7 @@ static const u16 sGerudaOam_348c64_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0x6, 0x1fa, OBJ_PALETTE_8 | 0x234
 };
 
-static const u16 sGerudaOam_348c64_Frame1[] = {
+static const u16 sGerudaOam_Swiping_Frame1[] = {
     10,
     0xf4, OBJ_SIZE_16x16 | 0x1f3, OBJ_PALETTE_8 | 0x20b,
     OBJ_SHAPE_HORIZONTAL | 0x4, 0x1f3, OBJ_PALETTE_8 | 0x22d,
@@ -122,7 +125,7 @@ static const u16 sGerudaOam_348c64_Frame1[] = {
     OBJ_SHAPE_HORIZONTAL | 0x6, 0x1fa, OBJ_PALETTE_8 | 0x234
 };
 
-static const u16 sGerudaOam_348c64_Frame2[] = {
+static const u16 sGerudaOam_Swiping_Frame2[] = {
     10,
     0xfe, OBJ_SIZE_16x16 | 0x1f6, OBJ_PALETTE_8 | 0x209,
     OBJ_SHAPE_HORIZONTAL | 0xe, 0x1f6, OBJ_PALETTE_8 | 0x20d,
@@ -136,7 +139,7 @@ static const u16 sGerudaOam_348c64_Frame2[] = {
     OBJ_SHAPE_HORIZONTAL | 0x6, 0x1fa, OBJ_PALETTE_8 | 0x234
 };
 
-static const u16 sGerudaOam_348c64_Frame3[] = {
+static const u16 sGerudaOam_Swiping_Frame3[] = {
     10,
     0xf9, OBJ_SIZE_16x16 | 0x1fa, OBJ_PALETTE_8 | 0x209,
     OBJ_SHAPE_HORIZONTAL | 0x9, 0x1fa, OBJ_PALETTE_8 | 0x20d,
@@ -150,7 +153,7 @@ static const u16 sGerudaOam_348c64_Frame3[] = {
     OBJ_SHAPE_HORIZONTAL | 0x6, 0x1fa, OBJ_PALETTE_8 | 0x234
 };
 
-static const u16 sGerudaOam_348c64_Frame4[] = {
+static const u16 sGerudaOam_Swiping_Frame4[] = {
     10,
     0xf4, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_8 | 0x20b,
     OBJ_SHAPE_HORIZONTAL | 0x4, 0x1fb, OBJ_PALETTE_8 | 0x22d,
@@ -164,7 +167,7 @@ static const u16 sGerudaOam_348c64_Frame4[] = {
     OBJ_SHAPE_HORIZONTAL | 0x6, 0x1fa, OBJ_PALETTE_8 | 0x234
 };
 
-static const u16 sGerudaOam_348c94_Frame0[] = {
+static const u16 sGerudaOam_TurningAround_Frame0[] = {
     11,
     0xf5, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x2, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_HORIZONTAL | 0x5, OBJ_X_FLIP | 0x2, OBJ_PALETTE_8 | 0x23c,
@@ -179,69 +182,69 @@ static const u16 sGerudaOam_348c94_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xf, OBJ_X_FLIP | 0x1ee, OBJ_PALETTE_8 | 0x218
 };
 
-const struct FrameData sGerudaOam_348c1c[5] = {
+const struct FrameData sGerudaOam_Idle[5] = {
     [0] = {
-        .pFrame = sGerudaOam_348c1c_Frame0,
+        .pFrame = sGerudaOam_Idle_Frame0,
         .timer = 10
     },
     [1] = {
-        .pFrame = sGerudaOam_348c1c_Frame1,
+        .pFrame = sGerudaOam_Idle_Frame1,
         .timer = 10
     },
     [2] = {
-        .pFrame = sGerudaOam_348c1c_Frame2,
+        .pFrame = sGerudaOam_Idle_Frame2,
         .timer = 10
     },
     [3] = {
-        .pFrame = sGerudaOam_348c1c_Frame1,
+        .pFrame = sGerudaOam_Idle_Frame1,
         .timer = 10
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sGerudaOam_348c44[2] = {
+const struct FrameData sGerudaOam_AttackWarning[2] = {
     [0] = {
-        .pFrame = sGerudaOam_348c44_Frame0,
+        .pFrame = sGerudaOam_AttackWarning_Frame0,
         .timer = 6
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sGerudaOam_348c54[2] = {
+const struct FrameData sGerudaOam_Lunging[2] = {
     [0] = {
-        .pFrame = sGerudaOam_348c54_Frame0,
+        .pFrame = sGerudaOam_Lunging_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sGerudaOam_348c64[6] = {
+const struct FrameData sGerudaOam_Swiping[6] = {
     [0] = {
-        .pFrame = sGerudaOam_348c64_Frame0,
+        .pFrame = sGerudaOam_Swiping_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sGerudaOam_348c64_Frame1,
+        .pFrame = sGerudaOam_Swiping_Frame1,
         .timer = 5
     },
     [2] = {
-        .pFrame = sGerudaOam_348c64_Frame2,
+        .pFrame = sGerudaOam_Swiping_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sGerudaOam_348c64_Frame3,
+        .pFrame = sGerudaOam_Swiping_Frame3,
         .timer = 5
     },
     [4] = {
-        .pFrame = sGerudaOam_348c64_Frame4,
+        .pFrame = sGerudaOam_Swiping_Frame4,
         .timer = 5
     },
     [5] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sGerudaOam_348c94[2] = {
+const struct FrameData sGerudaOam_TurningAround[2] = {
     [0] = {
-        .pFrame = sGerudaOam_348c94_Frame0,
+        .pFrame = sGerudaOam_TurningAround_Frame0,
         .timer = 6
     },
     [1] = FRAME_DATA_TERMINATOR

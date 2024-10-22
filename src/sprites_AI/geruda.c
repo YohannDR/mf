@@ -11,13 +11,21 @@
 #include "structs/sprite.h"
 #include "structs/samus.h"
 
+#define GERUDA_POSE_TURNING_AROUND_INIT 3
+#define GERUDA_POSE_TURNING_AROUND 4
+#define GERUDA_POSE_ATTACK_WARNING_INIT 0x29
+#define GERUDA_POSE_ATTACK_WARNING 0x2a
+#define GERUDA_POSE_ATTACKING 0x2c
+
+#define SS_GERUDA_FACING_DOWN SS_SAMUS_COLLIDING
+
 u8 GerudaYMovement(u16 movement) {
-    if (gCurrentSprite.status & SS_SAMUS_COLLIDING) {
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x40, gCurrentSprite.xPosition);
+    if (gCurrentSprite.status & SS_GERUDA_FACING_DOWN) {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + BLOCK_SIZE, gCurrentSprite.xPosition);
         if (gPreviousCollisionCheck == COLLISION_SOLID) return TRUE;
         gCurrentSprite.yPosition += movement;
     } else {
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x40, gCurrentSprite.xPosition);
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - BLOCK_SIZE, gCurrentSprite.xPosition);
         if (gPreviousCollisionCheck == COLLISION_SOLID) return TRUE;
         gCurrentSprite.yPosition -= movement;
     }
@@ -26,15 +34,15 @@ u8 GerudaYMovement(u16 movement) {
 
 u8 GerudaXMovement(u16 movement) {
     if (gCurrentSprite.status & SS_X_FLIP) {
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition + 0x40);
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition + BLOCK_SIZE);
         if (gPreviousCollisionCheck == COLLISION_SOLID) return TRUE;
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition + 0x40);
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + HALF_BLOCK_SIZE, gCurrentSprite.xPosition + BLOCK_SIZE);
         if (gPreviousCollisionCheck == COLLISION_SOLID) return TRUE;
         gCurrentSprite.xPosition += movement;
     } else {
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition - 0x40);
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition - BLOCK_SIZE);
         if (gPreviousCollisionCheck == COLLISION_SOLID) return TRUE;
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition - 0x40);
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + HALF_BLOCK_SIZE, gCurrentSprite.xPosition - BLOCK_SIZE);
         if (gPreviousCollisionCheck == COLLISION_SOLID) return TRUE;
         gCurrentSprite.xPosition -= movement;
     }
@@ -42,44 +50,49 @@ u8 GerudaXMovement(u16 movement) {
 }
 
 void GerudaSetIdleSideHitboxes(void) {
-    gCurrentSprite.hitboxTop = -0x20;
-    gCurrentSprite.hitboxBottom = 0x40;
+    gCurrentSprite.hitboxTop = -PIXEL_TO_SUB_PIXEL(8);
+    gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(0x10);
     if (gCurrentSprite.status & SS_X_FLIP) {
-        gCurrentSprite.hitboxLeft = -0x20;
-        gCurrentSprite.hitboxRight = 0x30;
+        gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(8);
+        gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(0xc);
     } else {
-        gCurrentSprite.hitboxLeft = -0x30;
-        gCurrentSprite.hitboxRight = 0x20;
+        gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(0xc);
+        gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(8);
     }
 }
 
 void GerudaSetAttackingSideHitboxes(void) {
-    gCurrentSprite.hitboxTop = -0x20;
-    gCurrentSprite.hitboxBottom = 0x28;
+    gCurrentSprite.hitboxTop = -PIXEL_TO_SUB_PIXEL(8);
+    gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(0xa);
     if (gCurrentSprite.status & SS_X_FLIP) {
-        gCurrentSprite.hitboxLeft = -0x20;
-        gCurrentSprite.hitboxRight = 0x50;
+        gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(8);
+        gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(0x14);
     } else {
-        gCurrentSprite.hitboxLeft = -0x50;
-        gCurrentSprite.hitboxRight = 0x20;
+        gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(0x14);
+        gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(8);
     }
 }
 
 void GerudaUpdateLungingAnimation(void) {
-    if ((u8)SpriteUtilCheckSamusNearSpriteLeftRight(0xe0, 0xc0) != NSLR_OUT_OF_RANGE) {
-        if (gCurrentSprite.pOam != sGerudaOam_348c64) {
-            gCurrentSprite.pOam = sGerudaOam_348c64;
+    if ((u8)SpriteUtilCheckSamusNearSpriteLeftRight(PIXEL_TO_SUB_PIXEL(0x38), PIXEL_TO_SUB_PIXEL(0x30)) != NSLR_OUT_OF_RANGE) {
+        // Samus is near, set swiping animation
+        if (gCurrentSprite.pOam != sGerudaOam_Swiping) {
+            gCurrentSprite.pOam = sGerudaOam_Swiping;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         } else {
+            // Play swiping sound on a specific frame
             if (gCurrentSprite.currentAnimationFrame == 0 && gCurrentSprite.animationDurationCounter == 4)
                 SoundPlayNotAlreadyPlaying(0x18c);
         }
-    } else if (gCurrentSprite.pOam == sGerudaOam_348c64) {
+    } else if (gCurrentSprite.pOam == sGerudaOam_Swiping) {
+        // Samus is not near
+        // Play swiping sound on a specific frame
         if (gCurrentSprite.currentAnimationFrame == 0 && gCurrentSprite.animationDurationCounter == 4)
             SoundPlayNotAlreadyPlaying(0x18c);
+        // Wait for swiping animation to end and set lunging animation
         if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-            gCurrentSprite.pOam = sGerudaOam_348c54;
+            gCurrentSprite.pOam = sGerudaOam_Lunging;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
@@ -97,7 +110,7 @@ void GerudaInit(void) {
     gCurrentSprite.drawDistanceBottom = 0x18;
     gCurrentSprite.drawDistanceHorizontal = 0x20;
     GerudaSetIdleSideHitboxes();
-    gCurrentSprite.pOam = sGerudaOam_348c1c;
+    gCurrentSprite.pOam = sGerudaOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
@@ -113,10 +126,9 @@ void GerudaIdleInit(void) {
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sGerudaOam_348c1c;
+    gCurrentSprite.pOam = sGerudaOam_Idle;
     gCurrentSprite.work3 = 0;
     gCurrentSprite.work4 = 0;
-    return;
 }
 
 void GerudaIdle(void) {
@@ -129,27 +141,30 @@ void GerudaIdle(void) {
 
     if (gCurrentSprite.status & SS_HIDDEN) return;
 
-    if (gCurrentSprite.work4 < 36) {
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x40, gCurrentSprite.xPosition);
-        if (gPreviousCollisionCheck != COLLISION_AIR) gCurrentSprite.work4 = 36;
+    // Ceiling touch check
+    if (gCurrentSprite.work4 < ARRAY_SIZE(sGerudaIdleUpwardsMovement)) {
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + BLOCK_SIZE, gCurrentSprite.xPosition);
+        if (gPreviousCollisionCheck != COLLISION_AIR) gCurrentSprite.work4 = ARRAY_SIZE(sGerudaIdleUpwardsMovement); // first entry of sGerudaIdleDownwardsMovement
     }
 
+    // Move Y
     offset = gCurrentSprite.work4;
-    movement = sGerudaIdleSpeed[offset];
+    movement = sGerudaIdleUpwardsMovement[offset]; // overflows to sGerudaIdleDownwardsMovement
     if (movement == SHORT_MAX) {
-        movement = sGerudaIdleSpeed[0];
+        movement = sGerudaIdleUpwardsMovement[0];
         offset = 0;
     }
     offset++;
     gCurrentSprite.work4 = offset;
     gCurrentSprite.yPosition += movement;
 
-    if (GerudaXMovement(1)) {
-        gCurrentSprite.pose = 3;
+    // Move X, turn around if hit wall
+    if (GerudaXMovement(PIXEL_TO_SUB_PIXEL(0.25f))) {
+        gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND_INIT;
         return;
     }
 
-    nslr = SpriteUtilCheckSamusNearSpriteLeftRight(0x180, 0x180);
+    nslr = SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_TO_SUB_PIXEL(6), BLOCK_TO_SUB_PIXEL(6));
     if (gCurrentSprite.status & SS_X_FLIP) {
         if (nslr != NSLR_RIGHT) nslr = NSLR_OUT_OF_RANGE;
     } else {
@@ -157,60 +172,67 @@ void GerudaIdle(void) {
     }
 
     if (nslr != NSLR_OUT_OF_RANGE) {
-        gCurrentSprite.status &= ~SS_SAMUS_COLLIDING;
-        target = gSamusData.yPosition - 0x48;
+        // Geruda sees Samus
+        gCurrentSprite.status &= ~SS_GERUDA_FACING_DOWN;
+        target = gSamusData.yPosition - PIXEL_TO_SUB_PIXEL(0x12);
         tmp = gCurrentSprite.yPosition;
-        if (target > tmp + 0x64) {
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x40, gCurrentSprite.xPosition);
+        if (target > tmp + PIXEL_TO_SUB_PIXEL(0x19)) {
+            // Samus is below the geruda, it can't see through the floor
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + BLOCK_SIZE, gCurrentSprite.xPosition);
             if (gPreviousCollisionCheck == COLLISION_SOLID) {
-                if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = 3;
+                if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND_INIT;
                 return;
             }
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x60, gCurrentSprite.xPosition);
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + (BLOCK_SIZE + HALF_BLOCK_SIZE), gCurrentSprite.xPosition);
             if (gPreviousCollisionCheck == COLLISION_SOLID) {
-                if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = 3;
+                if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND_INIT;
                 return;
             }
             gCurrentSprite.work2 = 0;
-            gCurrentSprite.status |= SS_SAMUS_COLLIDING;
-        } else if (target < tmp - 0x64) {
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x40, gCurrentSprite.xPosition);
+            gCurrentSprite.status |= SS_GERUDA_FACING_DOWN;
+        } else if (target < tmp - PIXEL_TO_SUB_PIXEL(0x19)) {
+            // Samus is above the geruda, it can't see through the ceiling
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - BLOCK_SIZE, gCurrentSprite.xPosition);
             if (gPreviousCollisionCheck == COLLISION_SOLID) {
-                if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = 3;
+                if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND_INIT;
                 return;
             }
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x60, gCurrentSprite.xPosition);
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - (BLOCK_SIZE + HALF_BLOCK_SIZE), gCurrentSprite.xPosition);
             if (gPreviousCollisionCheck == COLLISION_SOLID) {
-                if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = 3;
+                if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND_INIT;
                 return;
             }
             gCurrentSprite.work2 = 1;
         } else {
+            // Samus is in the same level as the geruda
             gCurrentSprite.work2 = 2;
         }
         gCurrentSprite.xParasiteTimer = tmp;
         gCurrentSprite.unk_8 = target;
 
+        // Distance between Samus and geruda
         target = gSamusData.xPosition;
         tmp = gCurrentSprite.xPosition;
         if (tmp > target) tmp = tmp - target;
         else tmp = target - tmp;
 
-        if (tmp > 0x12c) gCurrentSprite.work3 = 8;
-        else if (tmp > 0xa0) gCurrentSprite.work3 = 6;
-        else gCurrentSprite.work3 = 4;
+        // Set lunging speed when not lunging straight depending on how far Samus is
+        if (tmp > PIXEL_TO_SUB_PIXEL(0x4b)) gCurrentSprite.work3 = PIXEL_TO_SUB_PIXEL(2);
+        else if (tmp > PIXEL_TO_SUB_PIXEL(0x28)) gCurrentSprite.work3 = PIXEL_TO_SUB_PIXEL(1.5f);
+        else gCurrentSprite.work3 = PIXEL_TO_SUB_PIXEL(1);
 
-        gCurrentSprite.pose = 0x29;
+        gCurrentSprite.pose = GERUDA_POSE_ATTACK_WARNING_INIT;
     } else {
-        if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = 3;
+        // Geruda doesn't see samus
+        if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND_INIT;
     }
 }
 
 void GerudaTurningAroundInit(void) {
-    gCurrentSprite.pose = 4;
+    gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sGerudaOam_348c94;
+    gCurrentSprite.pOam = sGerudaOam_TurningAround;
 }
 
 void GerudaTurningAround(void) {
@@ -223,8 +245,8 @@ void GerudaTurningAround(void) {
 void GerudaAttackWarningInit(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sGerudaOam_348c44;
-    gCurrentSprite.pose = 0x2a;
+    gCurrentSprite.pOam = sGerudaOam_AttackWarning;
+    gCurrentSprite.pose = GERUDA_POSE_ATTACK_WARNING;
     GerudaSetAttackingSideHitboxes();
 }
 
@@ -232,8 +254,8 @@ void GerudaAttackWarning(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.pOam = sGerudaOam_348c54;
-        gCurrentSprite.pose = 0x2c;
+        gCurrentSprite.pOam = sGerudaOam_Lunging;
+        gCurrentSprite.pose = GERUDA_POSE_ATTACKING;
         gCurrentSprite.work1 = 3 * 60;
     }
 }
@@ -244,34 +266,40 @@ void GerudaAttacking(void) {
     GerudaUpdateLungingAnimation();
     stopAttack = FALSE;
     if (gCurrentSprite.work2 == 0) {
-        if (GerudaXMovement(gCurrentSprite.work3)) stopAttack++;
-        if (gCurrentSprite.status & SS_SAMUS_COLLIDING) {
+        // Lunging downwards/upwards
+        if (GerudaXMovement(gCurrentSprite.work3)) stopAttack++; // Stop lunging if hit wall
+        if (gCurrentSprite.status & SS_GERUDA_FACING_DOWN) {
+            // Lunge upwards if Samus is above
             if (gCurrentSprite.yPosition >= gCurrentSprite.unk_8)
-                gCurrentSprite.status &= ~SS_SAMUS_COLLIDING;
-        }
-        else {
+                gCurrentSprite.status &= ~SS_GERUDA_FACING_DOWN;
+        } else {
+            // Stop lunging if it's above where it started lunging
             if (gCurrentSprite.yPosition <= gCurrentSprite.xParasiteTimer) stopAttack++;
         }
-        if (GerudaYMovement(4)) stopAttack++;
+        if (GerudaYMovement(PIXEL_TO_SUB_PIXEL(1))) stopAttack++;
     } else if (gCurrentSprite.work2 == 1) {
-        if (GerudaXMovement(gCurrentSprite.work3)) stopAttack++;
-        if (gCurrentSprite.yPosition <= gCurrentSprite.unk_8) stopAttack++;
-        if (GerudaYMovement(4)) stopAttack++;
+        // Lunging upwards
+        if (GerudaXMovement(gCurrentSprite.work3)) stopAttack++; // Stop lunging if hit wall
+        if (gCurrentSprite.yPosition <= gCurrentSprite.unk_8) stopAttack++; // Stop lunging if above Samus
+        if (GerudaYMovement(PIXEL_TO_SUB_PIXEL(1))) stopAttack++; // Stop lunging if hit ceiling
     } else {
-        if (GerudaXMovement(8)) stopAttack++;
+        // Lunging straight
+        if (GerudaXMovement(PIXEL_TO_SUB_PIXEL(2))) stopAttack++;
     }
+    // Stop lunging after 3 seconds of lunging
     if (--gCurrentSprite.work1 == 0) stopAttack++;
     if (stopAttack) {
+        // Turn if facing away from Samus
         if (gCurrentSprite.status & SS_X_FLIP) {
             if (gCurrentSprite.xPosition > gSamusData.xPosition)
-                gCurrentSprite.pose = 3;
+                gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND_INIT;
             else
-                gCurrentSprite.pose = 1;
+                gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
         } else {
             if (gCurrentSprite.xPosition < gSamusData.xPosition)
-                gCurrentSprite.pose = 3;
+                gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND_INIT;
             else
-                gCurrentSprite.pose = 1;
+                gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
         }
         GerudaSetIdleSideHitboxes();
     }
@@ -293,17 +321,17 @@ void Geruda(void) {
         case SPRITE_POSE_IDLE:
             GerudaIdle();
             break;
-        case 3:
+        case GERUDA_POSE_TURNING_AROUND_INIT:
             GerudaTurningAroundInit();
-        case 4:
+        case GERUDA_POSE_TURNING_AROUND:
             GerudaTurningAround();
             break;
-        case 0x29:
+        case GERUDA_POSE_ATTACK_WARNING_INIT:
             GerudaAttackWarningInit();
-        case 0x2a:
+        case GERUDA_POSE_ATTACK_WARNING:
             GerudaAttackWarning();
             break;
-        case 0x2c:
+        case GERUDA_POSE_ATTACKING:
             GerudaAttacking();
             break;
         case SPRITE_POSE_DYING_INIT:

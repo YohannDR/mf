@@ -4,15 +4,16 @@
 #include "types.h"
 #include "oam.h"
 
-extern const s16 sGerudaIdleSpeed[65];
+extern const s16 sGerudaIdleUpwardsMovement[36];
+extern const s16 sGerudaIdleDownwardsMovement[29];
 
 extern const u32 sGerudaGfx[512 * 1];
 extern const u16 sGerudaPal[16 * 1];
 
-extern const struct FrameData sGerudaOam_348c1c[5];
-extern const struct FrameData sGerudaOam_348c44[2];
-extern const struct FrameData sGerudaOam_348c54[2];
-extern const struct FrameData sGerudaOam_348c64[6];
-extern const struct FrameData sGerudaOam_348c94[2];
+extern const struct FrameData sGerudaOam_Idle[5];
+extern const struct FrameData sGerudaOam_AttackWarning[2];
+extern const struct FrameData sGerudaOam_Lunging[2];
+extern const struct FrameData sGerudaOam_Swiping[6];
+extern const struct FrameData sGerudaOam_TurningAround[2];
 
 #endif /* GERUDA_DATA_H */
