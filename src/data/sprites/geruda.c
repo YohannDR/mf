@@ -1,7 +1,7 @@
 #include "data/sprites/geruda.h"
 #include "macros.h"
 
-const s16 sGerudaIdleUpwardsMovement[36] = {
+const s16 sGerudaIdleDownwardsMovement[36] = {
     0, 0, 0, 0,
     1, 1, 1, 1,
     2, 2, 2, 2,
@@ -13,7 +13,7 @@ const s16 sGerudaIdleUpwardsMovement[36] = {
     0, 0, 0, 0
 };
 
-const s16 sGerudaIdleDownwardsMovement[29] = {
+const s16 sGerudaIdleUpwardsMovement[29] = {
     -1, -1, -1, -1,
     -2, -2, -2, -2,
     -3, -3, -4, -4,

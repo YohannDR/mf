@@ -4,8 +4,8 @@
 #include "types.h"
 #include "oam.h"
 
-extern const s16 sGerudaIdleUpwardsMovement[36];
-extern const s16 sGerudaIdleDownwardsMovement[29];
+extern const s16 sGerudaIdleDownwardsMovement[36];
+extern const s16 sGerudaIdleUpwardsMovement[29];
 
 extern const u32 sGerudaGfx[512 * 1];
 extern const u16 sGerudaPal[16 * 1];

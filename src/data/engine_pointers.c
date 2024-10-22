@@ -1,5 +1,4 @@
 #include "data/engine_pointers.h"
-#include "data/spriteset.h"
 #include "sprites_AI/sprites.h"
 
 const Func_T sPrimarySpritesAiPointers[PSPRITE_END] = {

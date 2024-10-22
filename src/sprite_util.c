@@ -1857,13 +1857,13 @@ u8 SpriteUtilCheckSamusNearSpriteLeftRight(u16 yRange, u16 xRange)
     // Check X position
     if (spriteX > samusX)
     {
-        // Sprite is on left
+        // Samus is on left
         if (spriteX - samusX < xRange)
             result = NSLR_LEFT;
     }
     else
     {
-        // Sprite is on right
+        // Samus is on right
         if (samusX - spriteX < xRange)
             result = NSLR_RIGHT;
     }

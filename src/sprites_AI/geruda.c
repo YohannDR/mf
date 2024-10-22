@@ -141,17 +141,17 @@ void GerudaIdle(void) {
 
     if (gCurrentSprite.status & SS_HIDDEN) return;
 
-    // Ceiling touch check
-    if (gCurrentSprite.work4 < ARRAY_SIZE(sGerudaIdleUpwardsMovement)) {
+    // Touch floor check
+    if (gCurrentSprite.work4 < ARRAY_SIZE(sGerudaIdleDownwardsMovement)) {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + BLOCK_SIZE, gCurrentSprite.xPosition);
-        if (gPreviousCollisionCheck != COLLISION_AIR) gCurrentSprite.work4 = ARRAY_SIZE(sGerudaIdleUpwardsMovement); // first entry of sGerudaIdleDownwardsMovement
+        if (gPreviousCollisionCheck != COLLISION_AIR) gCurrentSprite.work4 = ARRAY_SIZE(sGerudaIdleDownwardsMovement); // first entry of sGerudaIdleUpwardsMovement
     }
 
     // Move Y
     offset = gCurrentSprite.work4;
-    movement = sGerudaIdleUpwardsMovement[offset]; // overflows to sGerudaIdleDownwardsMovement
+    movement = sGerudaIdleDownwardsMovement[offset]; // overflows to sGerudaIdleUpwardsMovement
     if (movement == SHORT_MAX) {
-        movement = sGerudaIdleUpwardsMovement[0];
+        movement = sGerudaIdleDownwardsMovement[0];
         offset = 0;
     }
     offset++;
@@ -223,7 +223,7 @@ void GerudaIdle(void) {
 
         gCurrentSprite.pose = GERUDA_POSE_ATTACK_WARNING_INIT;
     } else {
-        // Geruda doesn't see samus
+        // Geruda doesn't see Samus
         if (gCurrentSprite.work4 > 61) gCurrentSprite.pose = GERUDA_POSE_TURNING_AROUND_INIT;
     }
 }
@@ -236,6 +236,7 @@ void GerudaTurningAroundInit(void) {
 }
 
 void GerudaTurningAround(void) {
+    // BUG: hitbox isn't updated after turning around
     if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
         gCurrentSprite.status ^= SS_X_FLIP;

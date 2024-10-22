@@ -5,7 +5,7 @@
 #include "macros.h"
 
 #include "constants/sprite.h"
-#include "constants/spriteset.h"
+#include "data/spriteset.h"
 
 extern const Func_T sPrimarySpritesAiPointers[PSPRITE_END];
 
