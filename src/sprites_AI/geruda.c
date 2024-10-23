@@ -216,7 +216,7 @@ void GerudaIdle(void) {
         if (tmp > target) tmp = tmp - target;
         else tmp = target - tmp;
 
-        // Set lunging speed when not lunging straight depending on how far Samus is
+        // Set lunging speed when lunging diagonally depending on how far Samus is
         if (tmp > PIXEL_TO_SUB_PIXEL(0x4b)) gCurrentSprite.work3 = PIXEL_TO_SUB_PIXEL(2);
         else if (tmp > PIXEL_TO_SUB_PIXEL(0x28)) gCurrentSprite.work3 = PIXEL_TO_SUB_PIXEL(1.5f);
         else gCurrentSprite.work3 = PIXEL_TO_SUB_PIXEL(1);
@@ -267,7 +267,7 @@ void GerudaAttacking(void) {
     GerudaUpdateLungingAnimation();
     stopAttack = FALSE;
     if (gCurrentSprite.work2 == 0) {
-        // Lunging downwards/upwards
+        // Lunging diagonally downwards/upwards
         if (GerudaXMovement(gCurrentSprite.work3)) stopAttack++; // Stop lunging if hit wall
         if (gCurrentSprite.status & SS_GERUDA_FACING_DOWN) {
             // Lunge upwards if Samus is above
@@ -279,7 +279,7 @@ void GerudaAttacking(void) {
         }
         if (GerudaYMovement(PIXEL_TO_SUB_PIXEL(1))) stopAttack++;
     } else if (gCurrentSprite.work2 == 1) {
-        // Lunging upwards
+        // Lunging diagonally upwards
         if (GerudaXMovement(gCurrentSprite.work3)) stopAttack++; // Stop lunging if hit wall
         if (gCurrentSprite.yPosition <= gCurrentSprite.unk_8) stopAttack++; // Stop lunging if above Samus
         if (GerudaYMovement(PIXEL_TO_SUB_PIXEL(1))) stopAttack++; // Stop lunging if hit ceiling

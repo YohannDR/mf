@@ -496,14 +496,11 @@ void CoreXAbility(void) {
     }
 }
 
-#ifdef NON_MATCHING
 void CoreXShell(void) {
     // https://decomp.me/scratch/4p2V6
-    u8 primaryRamSlot;
-    u16 maxHealth;
-
-    primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
-    maxHealth = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
+    u8 primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
+    u16 maxHealth = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
+    u16 tmp;
     switch (gCurrentSprite.pose) {
         case 0x18: {
             gCurrentSprite.ignoreSamusCollisionTimer = 1;
@@ -558,7 +555,8 @@ void CoreXShell(void) {
             gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
         }
         case 0x1c: {
-            if (gCurrentSprite.health == 0) {
+            tmp = gCurrentSprite.health;
+            if (tmp == 0) {
                 gCurrentSprite.samusCollision = SSC_NONE;
                 gCurrentSprite.pOam = sCoreXShellOam_Breaking;
                 gCurrentSprite.animationDurationCounter = 0;
@@ -567,15 +565,24 @@ void CoreXShell(void) {
                 gSpriteData[primaryRamSlot].pose = 0x5c;
                 SoundPlay(0xc1);
             } else {
-                if (gCurrentSprite.health <= maxHealth / 3) {
+                if (tmp <= maxHealth / 3) {
                     gCurrentSprite.pOam = sCoreXShellOam_Red;
                     gCurrentSprite.frozenPaletteRowOffset = 3;
-                } else if (gCurrentSprite.health <= maxHealth * 2 / 3) {
-                    gCurrentSprite.pOam = sCoreXShellOam_Yellow;
-                    gCurrentSprite.frozenPaletteRowOffset = 2;
+                } else {
+                    #ifndef NON_MATCHING
+                    tmp += 1;
+                    tmp -= 1;
+                    // FIXME fakematch
+                    asm("ldrh r4, [r5, #0x14]");
+                    #endif
+                    if (tmp <= maxHealth * 2 / 3) {
+                        gCurrentSprite.pOam = sCoreXShellOam_Yellow;
+                        gCurrentSprite.frozenPaletteRowOffset = 2;
+                    }
                 }
                 if (SPRITE_HAS_ISFT(gCurrentSprite) == 1) {
-                    if ((u8)SpriteUtilCountPrimarySprites(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE) < 6) {
+                    tmp = (u8)SpriteUtilCountPrimarySprites(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE);
+                    if (tmp < 6) {
                         SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0,
                             gCurrentSprite.primarySpriteRamSlot, 0x20, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                     }
@@ -598,9 +605,10 @@ void CoreXShell(void) {
                     gSpriteData[primaryRamSlot].work1 = 28;
                     gSpriteData[primaryRamSlot].work4 = 28;
                 }
-                if (gSpriteData[primaryRamSlot].work0 != 0) {
-                    if ((gSpriteData[primaryRamSlot].work0 & 3) == 0) {
-                        if ((gSpriteData[primaryRamSlot].work0 & 4) != 0) {
+                tmp = gSpriteData[primaryRamSlot].work0;
+                if (tmp != 0) {
+                    if ((tmp & 3) == 0) {
+                        if (((u8)tmp & 4) != 0) {
                             gCurrentSprite.paletteRow = 0xd - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
                         } else {
                             gCurrentSprite.paletteRow = 0;
@@ -615,461 +623,6 @@ void CoreXShell(void) {
         }
     }
 }
-#else
-NAKED_FUNCTION
-void CoreXShell(void) {
-    asm(" \n\
-    push {r4, r5, r6, r7, lr} \n\
-    mov r7, r8 \n\
-    push {r7} \n\
-    sub sp, #0x10 \n\
-    ldr r2, _08025FD4 @ =gCurrentSprite \n\
-    add r0, r2, #0 \n\
-    add r0, #0x23 \n\
-    ldrb r0, [r0] \n\
-    mov r8, r0 \n\
-    ldr r1, _08025FD8 @ =sSecondarySpriteStats \n\
-    ldrb r0, [r2, #0x1d] \n\
-    lsl r0, r0, #3 \n\
-    add r0, r0, r1 \n\
-    ldrh r6, [r0] \n\
-    add r7, r2, #0 \n\
-    add r7, #0x24 \n\
-    ldrb r4, [r7] \n\
-    add r5, r2, #0 \n\
-    cmp r4, #0 \n\
-    beq _08025FDC \n\
-    cmp r4, #0x18 \n\
-    bne _08026040 \n\
-    add r1, r5, #0 \n\
-    add r1, #0x26 \n\
-    movs r0, #1 \n\
-    strb r0, [r1] \n\
-    bl SpriteUtilCheckEndCurrentSpriteAnim \n\
-    cmp r0, #0 \n\
-    bne _08025FCE \n\
-    b _08026338 \n\
-_08025FCE: \n\
-    movs r0, #0 \n\
-    strh r0, [r5] \n\
-    b _08026338 \n\
-    .align 2, 0 \n\
-_08025FD4: .4byte gCurrentSprite \n\
-_08025FD8: .4byte sSecondarySpriteStats \n\
-_08025FDC: \n\
-    ldrh r1, [r5] \n\
-    movs r2, #0x80 \n\
-    lsl r2, r2, #8 \n\
-    add r0, r2, #0 \n\
-    movs r3, #0 \n\
-    orr r0, r1 \n\
-    strh r0, [r5] \n\
-    add r1, r5, #0 \n\
-    add r1, #0x35 \n\
-    movs r0, #1 \n\
-    strb r0, [r1] \n\
-    ldrh r1, [r5] \n\
-    ldr r0, _0802606C @ =0x0000FFFB \n\
-    and r0, r1 \n\
-    strh r0, [r5] \n\
-    add r1, r5, #0 \n\
-    add r1, #0x22 \n\
-    movs r0, #5 \n\
-    strb r0, [r1] \n\
-    ldr r0, _08026070 @ =gIoRegisters \n\
-    ldrb r1, [r0, #0xa] \n\
-    movs r0, #3 \n\
-    and r0, r1 \n\
-    add r1, r5, #0 \n\
-    add r1, #0x21 \n\
-    strb r0, [r1] \n\
-    strh r6, [r5, #0x14] \n\
-    add r0, r5, #0 \n\
-    add r0, #0x27 \n\
-    movs r2, #0x18 \n\
-    strb r2, [r0] \n\
-    add r0, #1 \n\
-    strb r2, [r0] \n\
-    add r0, #1 \n\
-    strb r2, [r0] \n\
-    ldr r1, _08026074 @ =0x0000FFB0 \n\
-    strh r1, [r5, #0xa] \n\
-    movs r0, #0x50 \n\
-    strh r0, [r5, #0xc] \n\
-    strh r1, [r5, #0xe] \n\
-    strh r0, [r5, #0x10] \n\
-    ldr r0, _08026078 @ =sCoreXShellOam_White \n\
-    str r0, [r5, #0x18] \n\
-    strb r3, [r5, #0x1c] \n\
-    strh r4, [r5, #0x16] \n\
-    add r0, r5, #0 \n\
-    add r0, #0x25 \n\
-    strb r2, [r0] \n\
-    movs r0, #2 \n\
-    strb r0, [r7] \n\
-_08026040: \n\
-    ldr r2, _0802607C @ =gSpriteData \n\
-    mov r0, r8 \n\
-    lsl r3, r0, #3 \n\
-    sub r0, r3, r0 \n\
-    lsl r0, r0, #3 \n\
-    add r0, r0, r2 \n\
-    ldrh r1, [r0, #2] \n\
-    strh r1, [r5, #2] \n\
-    ldrh r1, [r0, #4] \n\
-    strh r1, [r5, #4] \n\
-    ldrh r1, [r0] \n\
-    movs r0, #0x20 \n\
-    and r0, r1 \n\
-    mov ip, r2 \n\
-    add r7, r3, #0 \n\
-    cmp r0, #0 \n\
-    beq _08026080 \n\
-    ldrh r0, [r5] \n\
-    movs r1, #0x20 \n\
-    orr r0, r1 \n\
-    b _08026086 \n\
-    .align 2, 0 \n\
-_0802606C: .4byte 0x0000FFFB \n\
-_08026070: .4byte gIoRegisters \n\
-_08026074: .4byte 0x0000FFB0 \n\
-_08026078: .4byte sCoreXShellOam_White \n\
-_0802607C: .4byte gSpriteData \n\
-_08026080: \n\
-    ldrh r1, [r5] \n\
-    ldr r0, _080260A8 @ =0x0000FFDF \n\
-    and r0, r1 \n\
-_08026086: \n\
-    strh r0, [r5] \n\
-    mov r1, r8 \n\
-    sub r0, r7, r1 \n\
-    lsl r0, r0, #3 \n\
-    add r0, ip \n\
-    add r0, #0x24 \n\
-    ldrb r0, [r0] \n\
-    sub r0, #1 \n\
-    cmp r0, #0x1b \n\
-    bls _0802609C \n\
-    b _08026338 \n\
-_0802609C: \n\
-    lsl r0, r0, #2 \n\
-    ldr r1, _080260AC @ =_080260B0 \n\
-    add r0, r0, r1 \n\
-    ldr r0, [r0] \n\
-    mov pc, r0 \n\
-    .align 2, 0 \n\
-_080260A8: .4byte 0x0000FFDF \n\
-_080260AC: .4byte _080260B0 \n\
-_080260B0: @ jump table \n\
-    .4byte _08026134 @ case 0 \n\
-    .4byte _08026134 @ case 1 \n\
-    .4byte _08026338 @ case 2 \n\
-    .4byte _08026338 @ case 3 \n\
-    .4byte _08026338 @ case 4 \n\
-    .4byte _08026338 @ case 5 \n\
-    .4byte _08026338 @ case 6 \n\
-    .4byte _08026338 @ case 7 \n\
-    .4byte _08026338 @ case 8 \n\
-    .4byte _08026338 @ case 9 \n\
-    .4byte _08026338 @ case 10 \n\
-    .4byte _08026338 @ case 11 \n\
-    .4byte _08026338 @ case 12 \n\
-    .4byte _08026338 @ case 13 \n\
-    .4byte _08026338 @ case 14 \n\
-    .4byte _08026338 @ case 15 \n\
-    .4byte _08026338 @ case 16 \n\
-    .4byte _08026338 @ case 17 \n\
-    .4byte _08026338 @ case 18 \n\
-    .4byte _08026338 @ case 19 \n\
-    .4byte _08026338 @ case 20 \n\
-    .4byte _08026338 @ case 21 \n\
-    .4byte _08026338 @ case 22 \n\
-    .4byte _08026134 @ case 23 \n\
-    .4byte _08026338 @ case 24 \n\
-    .4byte _08026120 @ case 25 \n\
-    .4byte _08026146 @ case 26 \n\
-    .4byte _0802614E @ case 27 \n\
-_08026120: \n\
-    mov r2, r8 \n\
-    sub r0, r7, r2 \n\
-    lsl r0, r0, #3 \n\
-    add r0, ip \n\
-    add r0, #0x2e \n\
-    ldrb r0, [r0] \n\
-    cmp r0, #0x20 \n\
-    bhi _08026134 \n\
-    movs r0, #0 \n\
-    strh r0, [r5] \n\
-_08026134: \n\
-    add r1, r5, #0 \n\
-    add r1, #0x26 \n\
-    movs r0, #1 \n\
-    strb r0, [r1] \n\
-    ldrh r0, [r5] \n\
-    movs r1, #4 \n\
-    eor r0, r1 \n\
-    strh r0, [r5] \n\
-    b _08026338 \n\
-_08026146: \n\
-    ldrh r1, [r5] \n\
-    ldr r0, _08026180 @ =0x00007FFF \n\
-    and r0, r1 \n\
-    strh r0, [r5] \n\
-_0802614E: \n\
-    ldrh r4, [r5, #0x14] \n\
-    cmp r4, #0 \n\
-    bne _08026188 \n\
-    add r0, r5, #0 \n\
-    add r0, #0x25 \n\
-    strb r4, [r0] \n\
-    ldr r0, _08026184 @ =sCoreXShellOam_Breaking \n\
-    str r0, [r5, #0x18] \n\
-    strb r4, [r5, #0x1c] \n\
-    strh r4, [r5, #0x16] \n\
-    add r1, r5, #0 \n\
-    add r1, #0x24 \n\
-    movs r0, #0x18 \n\
-    strb r0, [r1] \n\
-    mov r3, r8 \n\
-    sub r0, r7, r3 \n\
-    lsl r0, r0, #3 \n\
-    add r0, ip \n\
-    add r0, #0x24 \n\
-    movs r1, #0x5c \n\
-    strb r1, [r0] \n\
-    movs r0, #0xc1 \n\
-    bl SoundPlay \n\
-    b _08026338 \n\
-    .align 2, 0 \n\
-_08026180: .4byte 0x00007FFF \n\
-_08026184: .4byte sCoreXShellOam_Breaking \n\
-_08026188: \n\
-    add r0, r6, #0 \n\
-    movs r1, #3 \n\
-    bl __udivsi3 \n\
-    lsl r0, r0, #0x10 \n\
-    lsr r0, r0, #0x10 \n\
-    cmp r4, r0 \n\
-    bhi _080261A8 \n\
-    ldr r0, _080261A4 @ =sCoreXShellOam_Red \n\
-    str r0, [r5, #0x18] \n\
-    add r1, r5, #0 \n\
-    add r1, #0x35 \n\
-    movs r0, #3 \n\
-    b _080261C0 \n\
-    .align 2, 0 \n\
-_080261A4: .4byte sCoreXShellOam_Red \n\
-_080261A8: \n\
-    ldrh r4, [r5, #0x14] \n\
-    lsl r0, r6, #1 \n\
-    movs r1, #3 \n\
-    bl __divsi3 \n\
-    cmp r4, r0 \n\
-    bgt _080261C2 \n\
-    ldr r0, _08026204 @ =sCoreXShellOam_Yellow \n\
-    str r0, [r5, #0x18] \n\
-    add r1, r5, #0 \n\
-    add r1, #0x35 \n\
-    movs r0, #2 \n\
-_080261C0: \n\
-    strb r0, [r1] \n\
-_080261C2: \n\
-    add r6, r5, #0 \n\
-    add r0, r6, #0 \n\
-    add r0, #0x2c \n\
-    ldrb r0, [r0] \n\
-    movs r1, #0x7f \n\
-    and r1, r0 \n\
-    cmp r1, #1 \n\
-    bne _08026208 \n\
-    movs r0, #0x32 \n\
-    bl SpriteUtilCountPrimarySprites \n\
-    lsl r0, r0, #0x18 \n\
-    lsr r4, r0, #0x18 \n\
-    cmp r4, #5 \n\
-    bhi _080262BE \n\
-    add r0, r6, #0 \n\
-    add r0, #0x23 \n\
-    ldrb r3, [r0] \n\
-    movs r0, #0x20 \n\
-    str r0, [sp] \n\
-    ldrh r0, [r6, #2] \n\
-    str r0, [sp, #4] \n\
-    ldrh r0, [r6, #4] \n\
-    str r0, [sp, #8] \n\
-    movs r0, #0 \n\
-    str r0, [sp, #0xc] \n\
-    movs r0, #0x32 \n\
-    movs r1, #0 \n\
-    movs r2, #0 \n\
-    bl SpriteSpawnNewXParasite \n\
-    b _080262BE \n\
-    .align 2, 0 \n\
-_08026204: .4byte sCoreXShellOam_Yellow \n\
-_08026208: \n\
-    cmp r1, #0x10 \n\
-    bne _080262BE \n\
-    movs r0, #0xc2 \n\
-    bl SoundPlay \n\
-    add r2, r5, #0 \n\
-    add r2, #0x34 \n\
-    ldrb r1, [r2] \n\
-    movs r0, #0x40 \n\
-    orr r0, r1 \n\
-    strb r0, [r2] \n\
-    ldr r1, _08026248 @ =gSpriteData \n\
-    mov r2, r8 \n\
-    sub r0, r7, r2 \n\
-    lsl r0, r0, #3 \n\
-    add r3, r0, r1 \n\
-    add r1, r3, #0 \n\
-    add r1, #0x2d \n\
-    movs r0, #0xb4 \n\
-    strb r0, [r1] \n\
-    ldrh r1, [r5, #2] \n\
-    ldr r0, _0802624C @ =gSamusData \n\
-    ldrh r0, [r0, #0x18] \n\
-    sub r0, #0x40 \n\
-    cmp r1, r0 \n\
-    ble _08026250 \n\
-    ldrh r1, [r3] \n\
-    movs r2, #0x80 \n\
-    lsl r2, r2, #3 \n\
-    add r0, r2, #0 \n\
-    orr r0, r1 \n\
-    b _08026256 \n\
-    .align 2, 0 \n\
-_08026248: .4byte gSpriteData \n\
-_0802624C: .4byte gSamusData \n\
-_08026250: \n\
-    ldrh r1, [r3] \n\
-    ldr r0, _0802627C @ =0x0000FBFF \n\
-    and r0, r1 \n\
-_08026256: \n\
-    strh r0, [r3] \n\
-    ldr r0, _08026280 @ =gCurrentSprite \n\
-    ldr r1, _08026284 @ =gSamusData \n\
-    ldrh r0, [r0, #4] \n\
-    ldrh r1, [r1, #0x16] \n\
-    cmp r0, r1 \n\
-    bls _0802628C \n\
-    ldr r0, _08026288 @ =gSpriteData \n\
-    mov r3, r8 \n\
-    sub r1, r7, r3 \n\
-    lsl r1, r1, #3 \n\
-    add r1, r1, r0 \n\
-    ldrh r2, [r1] \n\
-    movs r3, #0x80 \n\
-    lsl r3, r3, #2 \n\
-    add r0, r3, #0 \n\
-    orr r0, r2 \n\
-    b _0802629C \n\
-    .align 2, 0 \n\
-_0802627C: .4byte 0x0000FBFF \n\
-_08026280: .4byte gCurrentSprite \n\
-_08026284: .4byte gSamusData \n\
-_08026288: .4byte gSpriteData \n\
-_0802628C: \n\
-    ldr r0, _080262FC @ =gSpriteData \n\
-    mov r2, r8 \n\
-    sub r1, r7, r2 \n\
-    lsl r1, r1, #3 \n\
-    add r1, r1, r0 \n\
-    ldrh r2, [r1] \n\
-    ldr r0, _08026300 @ =0x0000FDFF \n\
-    and r0, r2 \n\
-_0802629C: \n\
-    strh r0, [r1] \n\
-    ldr r1, _080262FC @ =gSpriteData \n\
-    mov r3, r8 \n\
-    sub r0, r7, r3 \n\
-    lsl r0, r0, #3 \n\
-    add r2, r0, r1 \n\
-    add r0, r2, #0 \n\
-    add r0, #0x2f \n\
-    movs r1, #0x28 \n\
-    strb r1, [r0] \n\
-    add r0, #1 \n\
-    strb r1, [r0] \n\
-    sub r0, #2 \n\
-    movs r1, #0x1c \n\
-    strb r1, [r0] \n\
-    add r0, #3 \n\
-    strb r1, [r0] \n\
-_080262BE: \n\
-    ldr r1, _080262FC @ =gSpriteData \n\
-    mov r2, r8 \n\
-    sub r0, r7, r2 \n\
-    lsl r0, r0, #3 \n\
-    add r0, r0, r1 \n\
-    add r0, #0x2d \n\
-    ldrb r4, [r0] \n\
-    mov ip, r1 \n\
-    cmp r4, #0 \n\
-    beq _08026338 \n\
-    movs r0, #3 \n\
-    and r0, r4 \n\
-    cmp r0, #0 \n\
-    bne _0802630E \n\
-    movs r0, #4 \n\
-    and r4, r0 \n\
-    lsl r0, r4, #0x18 \n\
-    lsr r1, r0, #0x18 \n\
-    cmp r1, #0 \n\
-    beq _08026308 \n\
-    ldr r0, _08026304 @ =gCurrentSprite \n\
-    add r1, r0, #0 \n\
-    add r1, #0x35 \n\
-    ldrb r1, [r1] \n\
-    ldrb r3, [r0, #0x1f] \n\
-    add r1, r1, r3 \n\
-    movs r2, #0xd \n\
-    sub r2, r2, r1 \n\
-    add r0, #0x20 \n\
-    strb r2, [r0] \n\
-    b _0802630E \n\
-    .align 2, 0 \n\
-_080262FC: .4byte gSpriteData \n\
-_08026300: .4byte 0x0000FDFF \n\
-_08026304: .4byte gCurrentSprite \n\
-_08026308: \n\
-    ldr r0, _08026344 @ =gCurrentSprite \n\
-    add r0, #0x20 \n\
-    strb r1, [r0] \n\
-_0802630E: \n\
-    mov r1, r8 \n\
-    sub r0, r7, r1 \n\
-    lsl r0, r0, #3 \n\
-    add r0, ip \n\
-    add r0, #0x2d \n\
-    ldrb r1, [r0] \n\
-    sub r1, #1 \n\
-    strb r1, [r0] \n\
-    lsl r1, r1, #0x18 \n\
-    lsr r4, r1, #0x18 \n\
-    cmp r4, #0 \n\
-    bne _08026338 \n\
-    ldr r1, _08026344 @ =gCurrentSprite \n\
-    add r3, r1, #0 \n\
-    add r3, #0x34 \n\
-    ldrb r2, [r3] \n\
-    movs r0, #0xbf \n\
-    and r0, r2 \n\
-    strb r0, [r3] \n\
-    add r1, #0x20 \n\
-    strb r4, [r1] \n\
-_08026338: \n\
-    add sp, #0x10 \n\
-    pop {r3} \n\
-    mov r8, r3 \n\
-    pop {r4, r5, r6, r7} \n\
-    pop {r0} \n\
-    bx r0 \n\
-    .align 2, 0 \n\
-_08026344: .4byte gCurrentSprite \n\
-    ");
-}
-#endif
 
 #ifdef NON_MATCHING
 void AbilityAura(void) {

@@ -235,8 +235,8 @@ void NightmareInit(void) {
         u32 y, x;
         u8 primaryRamSlot, eyeRamSlot, mouthRamSlot;
 
-        gCurrentSprite.yPosition += 0x2c0;
-        gCurrentSprite.xPosition += 0x40;
+        gCurrentSprite.yPosition += BLOCK_TO_SUB_PIXEL(0xb);
+        gCurrentSprite.xPosition += BLOCK_SIZE;
         gSubSpriteData1.yPosition = gCurrentSprite.yPosition;
         gSubSpriteData1.xPosition = gCurrentSprite.xPosition;
         gCurrentSprite.roomSlot = NIGHTMARE_PART_BODY;
@@ -244,10 +244,10 @@ void NightmareInit(void) {
         gCurrentSprite.drawDistanceTop = 0x50;
         gCurrentSprite.drawDistanceBottom = 8;
         gCurrentSprite.drawDistanceHorizontal = 0x40;
-        gCurrentSprite.hitboxTop = -0x100;
-        gCurrentSprite.hitboxBottom = -0x20;
-        gCurrentSprite.hitboxLeft = -0xa0;
-        gCurrentSprite.hitboxRight = 0xc0;
+        gCurrentSprite.hitboxTop = -PIXEL_TO_SUB_PIXEL(0x40);
+        gCurrentSprite.hitboxBottom = -PIXEL_TO_SUB_PIXEL(8);
+        gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(0x28);
+        gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(0x30);
         gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
         gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
         gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
@@ -257,8 +257,8 @@ void NightmareInit(void) {
         gCurrentSprite.samusCollision = SSC_NONE;
         gCurrentSprite.work0 = 0;
         gCurrentSprite.pose = 0x37;
-        gCurrentSprite.work1 = 180;
-        gBossWork3 = 180;
+        gCurrentSprite.work1 = 3 * 60;
+        gBossWork3 = 3 * 60;
         y = gSubSpriteData1.yPosition;
         x = gSubSpriteData1.xPosition;
         primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
@@ -297,17 +297,17 @@ void NightmareAppearing(void) {
         gCurrentSprite.work1 = 60;
         unk_3b1c(0x2a0);
     }
-    if (gSubSpriteData1.yPosition > 0x400)
-        gSubSpriteData1.yPosition -= 1;
+    if (gSubSpriteData1.yPosition > BLOCK_TO_SUB_PIXEL(0x10))
+        gSubSpriteData1.yPosition -= PIXEL_SIZE / 4;
     else
         gCurrentSprite.pose = 0x39;
 }
 
 void NightmarePhase1Init(void) {
     gCurrentSprite.work2 = 0;
-    gCurrentSprite.work3 = 1;
+    gCurrentSprite.work3 = PIXEL_SIZE / 4;
     gCurrentSprite.work1 = 0;
-    gCurrentSprite.work4 = 1;
+    gCurrentSprite.work4 = PIXEL_SIZE / 4;
     gCurrentSprite.status &= ~(SS_IGNORE_PROJECTILES | SS_NOT_DRAWN);
     gCurrentSprite.samusCollision = SSC_RIDLEY_TAIL_SERRIS_SEGMENT;
     gCurrentSprite.pose = 0x3a;
@@ -315,13 +315,13 @@ void NightmarePhase1Init(void) {
 }
 
 void NightmarePhase1(void) {
-    NightmareMoveToPosition(gSamusData.yPosition - 0x100, gAbilityRestingXPosition + 0xc0, 0x28, 8, 2);
+    NightmareMoveToPosition(gSamusData.yPosition - BLOCK_TO_SUB_PIXEL(4), gAbilityRestingXPosition + BLOCK_TO_SUB_PIXEL(3), PIXEL_TO_SUB_PIXEL(2.5f) * 4, PIXEL_TO_SUB_PIXEL(0.5f) * 4, 2);
 }
 
 void NightmarePhase2ResettingPosition(void) {
     u8 reachedDst = 0;
-    u16 dstY = gAbilityRestingYPosition - 0x80;
-    u16 dstX = gAbilityRestingXPosition + 0x100;
+    u16 dstY = gAbilityRestingYPosition - BLOCK_TO_SUB_PIXEL(2);
+    u16 dstX = gAbilityRestingXPosition + BLOCK_TO_SUB_PIXEL(4);
     if (gSubSpriteData1.xPosition < dstX)
         gCurrentSprite.status |= SS_FACING_RIGHT;
     else
@@ -330,18 +330,18 @@ void NightmarePhase2ResettingPosition(void) {
         gCurrentSprite.status |= SS_FACING_DOWN;
     else
         gCurrentSprite.status &= ~SS_FACING_DOWN;
-    if (gSubSpriteData1.yPosition < dstY + 6 && gSubSpriteData1.yPosition > dstY - 6)
+    if (gSubSpriteData1.yPosition < dstY + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.yPosition > dstY - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_DOWN)
-        gSubSpriteData1.yPosition += 1;
+        gSubSpriteData1.yPosition += PIXEL_SIZE / 4;
     else
-        gSubSpriteData1.yPosition -= 1;
-    if (gSubSpriteData1.xPosition < dstX + 6 && gSubSpriteData1.xPosition > dstX - 6)
+        gSubSpriteData1.yPosition -= PIXEL_SIZE / 4;
+    if (gSubSpriteData1.xPosition < dstX + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.xPosition > dstX - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_RIGHT)
-        gSubSpriteData1.xPosition += 1;
+        gSubSpriteData1.xPosition += PIXEL_SIZE / 4;
     else
-        gSubSpriteData1.xPosition -= 1;
+        gSubSpriteData1.xPosition -= PIXEL_SIZE / 4;
     if (reachedDst == 2) {
         gCurrentSprite.pose = 1;
         gCurrentSprite.status &= ~SS_FACING_RIGHT;
@@ -356,8 +356,8 @@ void NightmarePhase2MovementInit(void) {
 }
 
 void NightmarePhase2Movement(void) {
-    u16 movement = sNightmarePhase2XSpeed[gCurrentSprite.xParasiteTimer >> 5];
-    if (gCurrentSprite.xParasiteTimer < (ARRAY_SIZE(sNightmarePhase2XSpeed) << 5) - 1)
+    u16 movement = sNightmarePhase2XSpeed[DIV_SHIFT(gCurrentSprite.xParasiteTimer, 32)];
+    if (gCurrentSprite.xParasiteTimer < ARRAY_SIZE(sNightmarePhase2XSpeed) * 32 - 1)
         gCurrentSprite.xParasiteTimer++;
     else {
         gCurrentSprite.status ^= SS_FACING_RIGHT;
@@ -368,8 +368,8 @@ void NightmarePhase2Movement(void) {
     else
         gSubSpriteData1.xPosition -= movement;
 
-    movement = sNightmarePhase2YSpeed[gCurrentSprite.work4 >> 3];
-    if (gCurrentSprite.work4 < (ARRAY_SIZE(sNightmarePhase2YSpeed) << 3) - 1)
+    movement = sNightmarePhase2YSpeed[DIV_SHIFT(gCurrentSprite.work4, 8)];
+    if (gCurrentSprite.work4 < ARRAY_SIZE(sNightmarePhase2YSpeed) * 8 - 1)
         gCurrentSprite.work4++;
     else
         gCurrentSprite.work4 = 0;
@@ -383,7 +383,7 @@ void NightmareMovingToPhase3Init(void) {
 void NightmareMovingToPhase3(void) {
     u8 reachedDst = 0;
     u16 dstY = gAbilityRestingYPosition;
-    u16 dstX = gAbilityRestingXPosition + 0xc0;
+    u16 dstX = gAbilityRestingXPosition + BLOCK_TO_SUB_PIXEL(3);
     if (gSubSpriteData1.xPosition < dstX)
         gCurrentSprite.status |= SS_FACING_RIGHT;
     else
@@ -392,18 +392,18 @@ void NightmareMovingToPhase3(void) {
         gCurrentSprite.status |= SS_FACING_DOWN;
     else
         gCurrentSprite.status &= ~SS_FACING_DOWN;
-    if (gSubSpriteData1.yPosition < dstY + 6 && gSubSpriteData1.yPosition > dstY - 6)
+    if (gSubSpriteData1.yPosition < dstY + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.yPosition > dstY - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_DOWN)
-        gSubSpriteData1.yPosition += 1;
+        gSubSpriteData1.yPosition += PIXEL_SIZE / 4;
     else
-        gSubSpriteData1.yPosition -= 1;
-    if (gSubSpriteData1.xPosition < dstX + 6 && gSubSpriteData1.xPosition > dstX - 6)
+        gSubSpriteData1.yPosition -= PIXEL_SIZE / 4;
+    if (gSubSpriteData1.xPosition < dstX + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.xPosition > dstX - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_RIGHT)
-        gSubSpriteData1.xPosition += 1;
+        gSubSpriteData1.xPosition += PIXEL_SIZE / 4;
     else
-        gSubSpriteData1.xPosition -= 1;
+        gSubSpriteData1.xPosition -= PIXEL_SIZE / 4;
     if (reachedDst == 2) {
         gCurrentSprite.pose = 0x19;
     }
@@ -415,16 +415,16 @@ void NightmarePhase3SlowMovementInit(void) {}
 
 void NightmarePhase3SlowMovement(void) {
     u8 switchToFastMovement = 0;
-    if (gSubSpriteData1.yPosition < gSamusData.yPosition - 0x80)
-        gSubSpriteData1.yPosition += 1;
+    if (gSubSpriteData1.yPosition < gSamusData.yPosition - PIXEL_TO_SUB_PIXEL(0x20))
+        gSubSpriteData1.yPosition += PIXEL_SIZE / 4;
     else
         switchToFastMovement++;
     // Check if Nightmare is near the wall
-    SpriteUtilCheckCollisionAtPosition(gSubSpriteData1.yPosition, gSubSpriteData1.xPosition - 0xc0);
+    SpriteUtilCheckCollisionAtPosition(gSubSpriteData1.yPosition, gSubSpriteData1.xPosition - PIXEL_TO_SUB_PIXEL(0x30));
     if (gPreviousCollisionCheck != 0) {
         switchToFastMovement++;
     } else {
-        gSubSpriteData1.xPosition -= 1;
+        gSubSpriteData1.xPosition -= PIXEL_SIZE / 4;
     }
     if (switchToFastMovement == 2)
         gCurrentSprite.pose = 0x1b;
@@ -432,9 +432,9 @@ void NightmarePhase3SlowMovement(void) {
 
 void NightmarePhase3FastMovementInit(void) {
     gCurrentSprite.work2 = 0;
-    gCurrentSprite.work3 = 1;
+    gCurrentSprite.work3 = PIXEL_SIZE / 4;
     gCurrentSprite.work1 = 0;
-    gCurrentSprite.work4 = 1;
+    gCurrentSprite.work4 = PIXEL_SIZE / 4;
     gCurrentSprite.pose = 0x1c;
     gCurrentSprite.xParasiteTimer = 5 * 60;
 }
@@ -446,10 +446,10 @@ void NightmarePhase3FastMovement(void) {
         dstY = gXParasiteTargetYPosition;
         dstX = gXParasiteTargetXPosition;
     } else {
-        dstY = gSamusData.yPosition - 0x80;
+        dstY = gSamusData.yPosition - PIXEL_TO_SUB_PIXEL(0x20);
         dstX = gSamusData.xPosition;
     }
-    NightmareMoveToPosition(dstY, dstX, 0x30, 0x30, 2);
+    NightmareMoveToPosition(dstY, dstX, PIXEL_TO_SUB_PIXEL(3) * 4, PIXEL_TO_SUB_PIXEL(3) * 4, 2);
     if (gCurrentSprite.xParasiteTimer > 0) {
         gCurrentSprite.xParasiteTimer--;
     } else {
@@ -457,7 +457,7 @@ void NightmarePhase3FastMovement(void) {
         if (posOnScreen > 0x8c && posOnScreen < SCREEN_SIZE_X - 0x18) {
             posOnScreen = SUB_PIXEL_TO_PIXEL_(gSubSpriteData1.yPosition) - SUB_PIXEL_TO_PIXEL_(gBg1YPosition);
             if (posOnScreen > 0x14 && posOnScreen < SCREEN_SIZE_Y - 0x3c)
-                if (gSamusData.xPosition < gSubSpriteData1.xPosition - 0x40)
+                if (gSamusData.xPosition < gSubSpriteData1.xPosition - PIXEL_TO_SUB_PIXEL(0x10))
                     gCurrentSprite.pose = 0x1e;
         }
     }
@@ -479,7 +479,7 @@ void NightmareMovingToDeathPosition(void) {
     NightmareDeathFlash();
     reachedDst = 0;
     dstY = gAbilityRestingYPosition;
-    dstX = gAbilityRestingXPosition + 0xc0;
+    dstX = gAbilityRestingXPosition + BLOCK_TO_SUB_PIXEL(3);
     if (gSubSpriteData1.xPosition < dstX)
         gCurrentSprite.status |= SS_FACING_RIGHT;
     else
@@ -488,18 +488,18 @@ void NightmareMovingToDeathPosition(void) {
         gCurrentSprite.status |= SS_FACING_DOWN;
     else
         gCurrentSprite.status &= ~SS_FACING_DOWN;
-    if (gSubSpriteData1.yPosition < dstY + 6 && gSubSpriteData1.yPosition > dstY - 6)
+    if (gSubSpriteData1.yPosition < dstY + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.yPosition > dstY - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_DOWN)
-        gSubSpriteData1.yPosition += 1;
+        gSubSpriteData1.yPosition += PIXEL_SIZE / 4;
     else
-        gSubSpriteData1.yPosition -= 1;
-    if (gSubSpriteData1.xPosition < dstX + 6 && gSubSpriteData1.xPosition > dstX - 6)
+        gSubSpriteData1.yPosition -= PIXEL_SIZE / 4;
+    if (gSubSpriteData1.xPosition < dstX + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.xPosition > dstX - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_RIGHT)
-        gSubSpriteData1.xPosition += 1;
+        gSubSpriteData1.xPosition += PIXEL_SIZE / 4;
     else
-        gSubSpriteData1.xPosition -= 1;
+        gSubSpriteData1.xPosition -= PIXEL_SIZE / 4;
     if (reachedDst == 2) {
         if (--gCurrentSprite.work1 == 0) {
             gCurrentSprite.pose = 0x22;
@@ -1539,7 +1539,7 @@ void NightmarePartGenerator(void) {
                 gCurrentSprite.work0 = 0;
                 gSamusPhysics.slowed = 0x80;
                 gSpriteData[primaryRamSlot].pose = 0x3b;
-                gBossWork3 = 0x3c;
+                gBossWork3 = 60;
                 SoundPlay(0x2a5);
             }
             break;
