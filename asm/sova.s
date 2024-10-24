@@ -1698,7 +1698,7 @@ _0803C476:
 	bl SovaFireDisappearing
 	b _0803C48A
 _0803C47C:
-	bl CurrentSpriteFalling
+	bl SpriteUtilCurrentSpriteFalling
 	b _0803C48A
 _0803C482:
 	bl SovaFireExplodingInit

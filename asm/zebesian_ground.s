@@ -2145,7 +2145,7 @@ _08040E1C:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08040EF6
-	bl CurrentSpriteFalling
+	bl SpriteUtilCurrentSpriteFalling
 	b _08040EB8
 _08040E2C:
 	bl ZebesianGroundJumpWarningInit

@@ -381,6 +381,12 @@ SECTIONS {
         src/data/sprites/sciser.o(.rodata);
         src/data/sprites/box.o(.rodata);
         src/data/sprites/geruda.o(.rodata);
+        src/data/sprites/yard.o(.rodata);
+        src/data/sprites/evir.o(.rodata);
+        src/data/sprites/bull.o(.rodata);
+        src/data/sprites/memu.o(.rodata);
+        src/data/sprites/geruboss.o(.rodata);
+        src/data/sprites/choot.o(.rodata);
         src/data/sprites/zebesian_ground.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);

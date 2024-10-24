@@ -18,6 +18,6 @@
 *.exe
 
 include/**/*.s
-tools/*.txt
+tools/**/*.txt
 tools/**/*.png
 .vscode

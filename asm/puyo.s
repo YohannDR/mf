@@ -870,7 +870,7 @@ _0804BDB4:
 _0804BDBA:
 	bl PuyoFallingInit
 _0804BDBE:
-	bl CurrentSpriteFalling
+	bl SpriteUtilCurrentSpriteFalling
 	b _0804BDE4
 _0804BDC4:
 	bl SpriteDyingInit

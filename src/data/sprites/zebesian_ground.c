@@ -1,4 +1,4 @@
-#include "data/sprites/zombie_researcher.h"
+#include "data/sprites/zebesian_ground.h"
 #include "macros.h"
 
 const s16 sZebesianGroundJumpingSpeedHigh[10] = {

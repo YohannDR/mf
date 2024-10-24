@@ -2823,8 +2823,8 @@ _08011424:
 	pop {r0}
 	bx r0
 
-	thumb_func_start CurrentSpriteFalling
-CurrentSpriteFalling: @ 0x08011428
+	thumb_func_start SpriteUtilCurrentSpriteFalling
+SpriteUtilCurrentSpriteFalling: @ 0x08011428
 	push {r4, r5, r6, lr}
 	ldr r4, _0801144C @ =gCurrentSprite
 	ldrh r0, [r4, #2]

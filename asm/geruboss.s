@@ -556,8 +556,8 @@ _0803F270: .4byte 0x0000019F
 _0803F274: .4byte gCurrentSprite
 _0803F278: .4byte 0x08358EEC
 
-	thumb_func_start GerubossChagningDirection
-GerubossChagningDirection: @ 0x0803F27C
+	thumb_func_start GerubossChangingDirection
+GerubossChangingDirection: @ 0x0803F27C
 	push {lr}
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
@@ -826,7 +826,7 @@ _0803F540:
 	bl GerubossGoingDown
 	b _0803F574
 _0803F546:
-	bl GerubossChagningDirection
+	bl GerubossChangingDirection
 	b _0803F574
 _0803F54C:
 	bl GerubossGoingUp

@@ -982,7 +982,7 @@ _0804B654:
 	bl GenesisSpitSplashing
 	b _0804B65E
 _0804B65A:
-	bl CurrentSpriteFalling
+	bl SpriteUtilCurrentSpriteFalling
 _0804B65E:
 	pop {r0}
 	bx r0

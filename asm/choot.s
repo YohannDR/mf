@@ -252,8 +252,8 @@ _0803F750:
 _0803F758: .4byte gCurrentSprite
 _0803F75C: .4byte 0x08359924
 
-	thumb_func_start ShootGoingUp
-ShootGoingUp: @ 0x0803F760
+	thumb_func_start ChootGoingUp
+ChootGoingUp: @ 0x0803F760
 	push {r4, r5, r6, lr}
 	ldr r4, _0803F7AC @ =gCurrentSprite
 	ldrh r0, [r4, #2]
@@ -739,7 +739,7 @@ _0803FBC4:
 _0803FBCA:
 	bl ChootGoingUpInit
 _0803FBCE:
-	bl ShootGoingUp
+	bl ChootGoingUp
 	b _0803FC00
 _0803FBD4:
 	bl ChootOpeningInit
@@ -856,7 +856,7 @@ _0803FD18:
 	bl ChootSpitExploding
 	b _0803FD22
 _0803FD1E:
-	bl CurrentSpriteFalling
+	bl SpriteUtilCurrentSpriteFalling
 _0803FD22:
 	pop {r0}
 	bx r0

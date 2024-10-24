@@ -1,8 +1,26 @@
+from array import array
 from io import BufferedReader
 import os
 import shutil
 
-file: BufferedReader = open("../mf_us_baserom.gba", "rb")
+DATA_PATH = "audio/"
+subDirs: array = [
+    "samples",
+    "tracks",
+    "voice_groups"
+]
+
+try:
+    for dir in subDirs:
+        shutil.rmtree(DATA_PATH + dir, ignore_errors=False, onerror=None)
+except:
+    pass
+
+# Create directories
+for dir in subDirs:
+    os.mkdir(DATA_PATH + dir)
+
+file: BufferedReader = open("mf_us_baserom.gba", "rb")
 
 def ReadPtr(f: BufferedReader) -> int:
     value: int = int.from_bytes(f.read(4), "little")
@@ -123,7 +141,7 @@ def ExtractVoiceGroups(f: BufferedReader):
 
         name: str = GetVoiceGroupName(x)
 
-        output = open("../audio/voice_groups/" + name + ".s", "w")
+        output = open("audio/voice_groups/" + name + ".s", "w")
         content = ".align 2\n\n.section .rodata\n.global " + name + "\n\n" + name + ":\n"
 
         for y in range(0, (voiceGroupsAddr[x+1]-addr)//12):
@@ -161,7 +179,7 @@ def ExtractVoiceGroups(f: BufferedReader):
         output.write(content)
         output.close()
 
-    output = open("../audio/voice_groups.s", "w")
+    output = open("audio/voice_groups.s", "w")
     content = ".include \"audio/m_play_def.s\"\n\n.section .rodata\n\n"
     for x in range(0, len(voiceGroupsAddr)-1):
         content += ".include \"audio/voice_groups/" + GetVoiceGroupName(x) + ".s\"\n"
@@ -186,7 +204,7 @@ def ExtractSample(f: BufferedReader, addr: int, instrType: int):
     extractedSamples[addr] = sampleNum
     sampleNum += 1
 
-    output = open("../audio/samples/" + name + ".s", "w")
+    output = open("audio/samples/" + name + ".s", "w")
 
     content = ".align 2\n\n.section .rodata\n.global " + name + "\n\n" + name + ":\n"
         
@@ -233,7 +251,7 @@ def ExtractSamples(f: BufferedReader):
         f.seek(currAddr + 4)
         f.read(4)
 
-    output = open("../audio/samples.s", "w")
+    output = open("audio/samples.s", "w")
     content = ".section .rodata\n\n"
     for (addr, x) in sorted(extractedSamples.items()):
         content += ".include \"audio/samples/sample_" + str(x) + ".s\" @ " + hex(addr) + "\n"
@@ -755,7 +773,7 @@ def ExtractSoundHeader(f: BufferedReader, addr: int, number: int):
     f.seek(addr)
 
     name: str = "track_" + str(number)
-    filePath: str = "../audio/tracks/" + name + ".s"
+    filePath: str = "audio/tracks/" + name + ".s"
 
     if os.path.exists(filePath):
         os.remove(filePath)
@@ -808,7 +826,7 @@ def ExtractTracks(f: BufferedReader):
     addr: int = 0xa8d3c
     file.seek(addr)
     
-    output = open("../audio/sound_entries.s", "w")
+    output = open("audio/sound_entries.s", "w")
     content = ".align 2\n\n.section .rodata\n.global sSoundDataEntries\n\nsSoundDataEntries:\n"
 
     for x in range(0, 745):
@@ -832,7 +850,7 @@ def ExtractTracks(f: BufferedReader):
     output.write(content)
     output.close()
 
-    output = open("../audio/tracks.s", "w")
+    output = open("audio/tracks.s", "w")
     content = ".include \"audio/m_play_def.s\"\n\n.section .rodata\n\n"
     for (addr, x) in sorted(existingHeaders.items()):
         content += ".include \"audio/tracks/track_" + str(x) + ".s\" @ " + hex(addr) + "\n"

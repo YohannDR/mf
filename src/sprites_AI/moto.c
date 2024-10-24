@@ -695,7 +695,7 @@ void Moto(void)
             MotoFallingInit();
 
         case SPRITE_POSE_FALLING:
-            CurrentSpriteFalling();
+            SpriteUtilCurrentSpriteFalling();
             break;
 
         case SPRITE_POSE_DYING_INIT:

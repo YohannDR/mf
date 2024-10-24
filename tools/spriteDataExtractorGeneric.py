@@ -193,6 +193,10 @@ def Func():
         output = output.replace(f"sOam_{addr:x}", name)
     print(output)
 
+    if spriteId < 0x100:
+        print(f"extern const u32 s{spriteName}Gfx[512 * {rows}];")
+        print(f"extern const u16 s{spriteName}Pal[16 * {rows}];\n")
+
     for (addr, count) in animations:
         print(f"extern const struct FrameData s{spriteName}Oam_{addr:x}[{count}];")
 
