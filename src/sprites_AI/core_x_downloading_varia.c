@@ -28,7 +28,7 @@ void CoreAbilityBeforeVariaCoreInit(void) {
     gCurrentSprite.hitboxBottom = 0x20;
     gCurrentSprite.hitboxLeft = -0x20;
     gCurrentSprite.hitboxRight = 0x20;
-    gCurrentSprite.pOam = sFrameData_3151fc;
+    gCurrentSprite.pOam = sCoreXAbilityBeforeVariaCoreOam_DownloadingVaria;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 2;
@@ -165,7 +165,7 @@ void CoreXShellBeforeVariaCore(void) {
         gCurrentSprite.hitboxBottom = 0x50;
         gCurrentSprite.hitboxLeft = -0x50;
         gCurrentSprite.hitboxRight = 0x50;
-        gCurrentSprite.pOam = sFrameData_3151e4;
+        gCurrentSprite.pOam = sCoreXShellBeforeVariaCoreOam;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
@@ -184,15 +184,15 @@ void CoreXShellBeforeVariaCore(void) {
             gCurrentSprite.pose = 0x1a;
             gCurrentSprite.samusCollision = SSC_NONE;
             gSpriteData[primarySpriteSlot].pose = 0x1a;
-            gSpriteData[primarySpriteSlot].pOam = sFrameData_3152bc;
+            gSpriteData[primarySpriteSlot].pOam = sCoreXAbilityBeforeVariaCoreOam_FloatingAway;
             gSpriteData[primarySpriteSlot].animationDurationCounter = 0;
             gSpriteData[primarySpriteSlot].currentAnimationFrame = 0;
         } else if (gCurrentSprite.work1 == 120) {
             gSpriteData[primarySpriteSlot].pose = 0x18;
-            gSpriteData[primarySpriteSlot].pOam = sFrameData_315284;
+            gSpriteData[primarySpriteSlot].pOam = sCoreXAbilityBeforeVariaCoreOam_ExplodingDataPad;
             gSpriteData[primarySpriteSlot].animationDurationCounter = 0;
             gSpriteData[primarySpriteSlot].currentAnimationFrame = 0;
-            gCurrentSprite.pOam = sFrameData_3151d4;
+            gCurrentSprite.pOam = sCoreXShellBeforeVariaCoreOam_Unused;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
@@ -239,13 +239,13 @@ void CoreXStaticBeforeVariaCore(void) {
         gCurrentSprite.samusCollision = SSC_NONE;
         gCurrentSprite.pose = 2;
         if (gCurrentSprite.roomSlot == 0) {
-            gCurrentSprite.pOam = sFrameData_31539c;
+            gCurrentSprite.pOam = sCoreXStaticBeforeVariaCoreOam_0;
         } else if (gCurrentSprite.roomSlot == 1) {
-            gCurrentSprite.pOam = sFrameData_3153c4;
+            gCurrentSprite.pOam = sCoreXStaticBeforeVariaCoreOam_1;
         } else if (gCurrentSprite.roomSlot == 2) {
-            gCurrentSprite.pOam = sFrameData_3153ec;
+            gCurrentSprite.pOam = sCoreXStaticBeforeVariaCoreOam_2;
         } else if (gCurrentSprite.roomSlot == 3) {
-            gCurrentSprite.pOam = sFrameData_315304;
+            gCurrentSprite.pOam = sCoreXStaticBeforeVariaCoreOam_3;
             gCurrentSprite.status &= ~SS_NOT_DRAWN;
         } else
             gCurrentSprite.status = 0;

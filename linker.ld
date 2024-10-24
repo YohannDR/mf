@@ -381,6 +381,7 @@ SECTIONS {
         src/data/sprites/sciser.o(.rodata);
         src/data/sprites/box.o(.rodata);
         src/data/sprites/geruda.o(.rodata);
+        src/data/sprites/zebesian_ground.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);

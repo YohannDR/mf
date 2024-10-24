@@ -250,4 +250,4 @@ const struct FrameData sGerudaOam_TurningAround[2] = {
     [1] = FRAME_DATA_TERMINATOR
 };
 
-static const u8 sBlob_348ca4_35dd74[] = INCBIN_U8("data/Blob_348ca4_35dd74.bin");
+static const u8 sBlob_348ca4_3599fc[] = INCBIN_U8("data/Blob_348ca4_3599fc.bin");

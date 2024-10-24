@@ -157,7 +157,7 @@ def Func():
         print(f"sprites/{spriteName.lower()}.pal;{rows};0x{palPointer:x};32\n")
 
         print(f"const u32 s{spriteName}Gfx[512 * {rows}] = INCBIN_U32(\"data/sprites/{spriteName.lower()}.gfx\");")
-        print(f"const u16 s{spriteName}Pal[512 * {rows}] = INCBIN_U32(\"data/sprites/{spriteName.lower()}.pal\");")
+        print(f"const u16 s{spriteName}Pal[16 * {rows}] = INCBIN_U16(\"data/sprites/{spriteName.lower()}.pal\");\n")
 
     frames = set()
     output = ""

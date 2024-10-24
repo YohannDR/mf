@@ -871,7 +871,7 @@ sprites/sciser.pal;0x3186c4;0x318704
 sprites/gold_sciser.gfx;0x319118;0x31a118
 sprites/gold_sciser.pal;0x31a118;0x31a158
 
-# B.O.X
+# B.O.X.
 
 sprites/box.gfx;0x343090;0x347090
 sprites/box.pal;0x347090;0x347190
@@ -880,6 +880,13 @@ sprites/box.pal;0x347090;0x347190
 
 sprites/geruda.gfx;1;0x34814c;2048
 sprites/geruda.pal;1;0x34894c;32
+
+# Zebesian (Ground)
+
+sprites/zebesian_ground.gfx;3;0x359a24;2048
+sprites/zebesian_ground.pal;3;0x35b224;32
+sprites/gold_zebesian.gfx;3;0x35c3f0;2048
+sprites/gold_zebesian.pal;3;0x35dbf0;32
 
 # Blue X
 
@@ -1006,7 +1013,7 @@ Blob_2b4408_2b5058.bin;0x2b4408;0x2b5058
 Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 Blob_2e6382_2eb8ac.bin;21802;0x2e6382;1
 Blob_31a158_3420b4.bin;0x31a158;0x3420b4
-Blob_348ca4_35dd74.bin;0x348ca4;0x35dd74
+Blob_348ca4_3599fc.bin;0x348ca4;0x3599fc
 Blob_3791d4_3b0b04.bin;3791d4;3b0b04
 Blob_3be1be_3e392c.bin;153454;0x3be1be;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1

@@ -9,15 +9,15 @@
 extern const u32 sCoreXDownloadingVariaGfx[512 * 4];
 extern const u16 sCoreXDownloadingVariaPal[16 * 4];
 
-extern const struct FrameData sFrameData_3151d4[2];
-extern const struct FrameData sFrameData_3151e4[3];
-extern const struct FrameData sFrameData_3151fc[17];
-extern const struct FrameData sFrameData_315284[7];
-extern const struct FrameData sFrameData_3152bc[9];
-extern const struct FrameData sFrameData_315304[19];
-extern const struct FrameData sFrameData_31539c[5];
-extern const struct FrameData sFrameData_3153c4[5];
-extern const struct FrameData sFrameData_3153ec[5];
+extern const struct FrameData sCoreXShellBeforeVariaCoreOam_Unused[2];
+extern const struct FrameData sCoreXShellBeforeVariaCoreOam[3];
+extern const struct FrameData sCoreXAbilityBeforeVariaCoreOam_DownloadingVaria[17];
+extern const struct FrameData sCoreXAbilityBeforeVariaCoreOam_ExplodingDataPad[7];
+extern const struct FrameData sCoreXAbilityBeforeVariaCoreOam_FloatingAway[9];
+extern const struct FrameData sCoreXStaticBeforeVariaCoreOam_3[19];
+extern const struct FrameData sCoreXStaticBeforeVariaCoreOam_0[5];
+extern const struct FrameData sCoreXStaticBeforeVariaCoreOam_1[5];
+extern const struct FrameData sCoreXStaticBeforeVariaCoreOam_2[5];
 
 extern const u32 sVariaXAfterDownloadingGfx[512 * 2];
 
