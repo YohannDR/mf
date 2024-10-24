@@ -911,7 +911,7 @@ void YakuzaProjectileInit(void) {
         gCurrentSprite.hitboxBottom = 0;
         gCurrentSprite.hitboxLeft = -0x18;
         gCurrentSprite.hitboxRight = 0x18;
-        gCurrentSprite.pOam = sFrameData_3b72c0;
+        gCurrentSprite.pOam = sYakuzaProjectileFireOam_Burning1;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 2;
@@ -925,7 +925,7 @@ void YakuzaProjectileInit(void) {
         gCurrentSprite.hitboxBottom = 0;
         gCurrentSprite.hitboxLeft = -0x1c;
         gCurrentSprite.hitboxRight = 0x1c;
-        gCurrentSprite.pOam = sFrameData_3b7288;
+        gCurrentSprite.pOam = sYakuzaProjectileSpitOam;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x28;
@@ -984,7 +984,7 @@ void YakuzaProjectileFireBurning1(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.work1 = 80;
         gCurrentSprite.pose = 0x1a;
-        gCurrentSprite.pOam = sFrameData_3b72e0;
+        gCurrentSprite.pOam = sYakuzaProjectileFireOam_Burning2;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.hitboxTop = -0x40;
@@ -1008,7 +1008,7 @@ void YakuzaProjectileFireBurning2(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.work1 = 60;
         gCurrentSprite.pose = 0x1c;
-        gCurrentSprite.pOam = sFrameData_3b7300;
+        gCurrentSprite.pOam = sYakuzaProjectileFireOam_Burning3;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.hitboxTop = -0x20;

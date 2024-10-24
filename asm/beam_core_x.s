@@ -335,7 +335,7 @@ BeamCoreXMovingToTargetInit: @ 0x0802DBC4
 	strb r1, [r0]
 	subs r0, #0xb
 	strb r1, [r0]
-	bl MakeXParasitesFlee
+	bl CoreXMakeXParasitesFlee
 	pop {r0}
 	bx r0
 	.align 2, 0

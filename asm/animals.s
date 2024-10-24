@@ -1378,7 +1378,7 @@ _0804DA14:
 	mov r1, sl
 	mov r2, sb
 	mov r3, r8
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _0804DAA0
 	ldrh r0, [r5]

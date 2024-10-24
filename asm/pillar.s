@@ -71,7 +71,7 @@ PillarProjectileCollision: @ 0x0804A914
 	str r0, [sp, #0xc]
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _0804A9B4
 _0804A9A2:
@@ -137,7 +137,7 @@ _0804A9E2:
 	str r0, [sp, #0xc]
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	bne _0804A9A2
 _0804AA26:

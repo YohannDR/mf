@@ -1559,7 +1559,7 @@ _0803CFBE:
 	ldr r1, [sp, #0x14]
 	mov r2, sl
 	mov r3, r8
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _0803D03E
 	b _0803D296

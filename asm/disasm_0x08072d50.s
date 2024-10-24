@@ -31878,7 +31878,7 @@ _080828E6:
 	mov r1, sb
 	mov r2, sl
 	adds r3, r7, #0
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _080829E6
 	mov r0, r8
@@ -31931,7 +31931,7 @@ _08082980:
 	mov r1, sb
 	mov r2, sl
 	adds r3, r7, #0
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _080829E0
 	mov r0, r8
@@ -32046,7 +32046,7 @@ _08082A54:
 	mov r1, sb
 	mov r2, sl
 	adds r3, r7, #0
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _08082B2E
 	adds r0, r4, #0
@@ -32256,7 +32256,7 @@ _08082C10:
 	ldr r1, [sp, #0x2c]
 	ldr r2, [sp, #0x30]
 	ldr r3, [sp, #0x34]
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	bne _08082C5A
 	b _08082FB0
@@ -37677,7 +37677,7 @@ _0808560C:
 	str r5, [sp, #4]
 	str r7, [sp, #8]
 	str r4, [sp, #0xc]
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _080856FA
 	mov r1, sl

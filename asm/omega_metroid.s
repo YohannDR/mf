@@ -290,7 +290,7 @@ _08053F0A:
 	ldr r1, [sp, #0x14]
 	mov r2, sl
 	mov r3, sb
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _08053F88
 	strh r7, [r4]

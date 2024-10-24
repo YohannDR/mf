@@ -251,7 +251,7 @@ void NightmareInit(void) {
         gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
         gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
         gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
-        gSubSpriteData1.pMultiOam = sMultiSpriteData_3b83bc;
+        gSubSpriteData1.pMultiOam = sNightmareMultiOam_Used; // this is the only multi OAM used
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_NONE;
@@ -1226,7 +1226,7 @@ void NightmarePartEye(void) {
         case 2: {
             if (gSpriteData[primaryRamSlot].pose == 0x1a) {
                 gCurrentSprite.status &= ~SS_HIDDEN;
-                gCurrentSprite.pOam = sFrameData_3bd5d4;
+                gCurrentSprite.pOam = sNightmarePartEyeOam_NotDrooping;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x18;
@@ -1242,7 +1242,7 @@ void NightmarePartEye(void) {
             gSubSpriteData1.health = gCurrentSprite.health;
             if (gSubSpriteData1.health < maxHealth * 2 / 3) {
                 gCurrentSprite.pose = 0x1a;
-                gCurrentSprite.pOam = sFrameData_3bd754;
+                gCurrentSprite.pOam = sNightmarePartEyeAndMouthOam_DroopALittle;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gSpriteData[mouthRamSlot].status |= SS_NOT_DRAWN;
@@ -1257,10 +1257,10 @@ void NightmarePartEye(void) {
                 gCurrentSprite.frozenPaletteRowOffset = 1;
             if (SpriteUtilCheckEndCurrentSpriteAnim()) {
                 gCurrentSprite.pose = 0x1c;
-                gCurrentSprite.pOam = sFrameData_3bd654;
+                gCurrentSprite.pOam = sNightmarePartEyeOam_DroopingALittle;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
-                gSpriteData[mouthRamSlot].pOam = sFrameData_3bd67c;
+                gSpriteData[mouthRamSlot].pOam = sNightmarePartMouthOam_DroopingALittle;
                 gSpriteData[mouthRamSlot].animationDurationCounter = 0;
                 gSpriteData[mouthRamSlot].currentAnimationFrame = 0;
                 gSpriteData[mouthRamSlot].status &= ~SS_NOT_DRAWN;
@@ -1273,7 +1273,7 @@ void NightmarePartEye(void) {
             gSubSpriteData1.health = gCurrentSprite.health;
             if (gSubSpriteData1.health < maxHealth / 3) {
                 gCurrentSprite.pose = 0x1e;
-                gCurrentSprite.pOam = sFrameData_3bd76c;
+                gCurrentSprite.pOam = sNightmarePartEyeAndMouthOam_DroopMore;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gSpriteData[mouthRamSlot].status |= SS_NOT_DRAWN;
@@ -1288,10 +1288,10 @@ void NightmarePartEye(void) {
                 gCurrentSprite.frozenPaletteRowOffset = 2;
             if (SpriteUtilCheckEndCurrentSpriteAnim()) {
                 gCurrentSprite.pose = 0x20;
-                gCurrentSprite.pOam = sFrameData_3bd6d4;
+                gCurrentSprite.pOam = sNightmarePartEyeOam_DroopingMore;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
-                gSpriteData[mouthRamSlot].pOam = sFrameData_3bd6fc;
+                gSpriteData[mouthRamSlot].pOam = sNightmarePartMouthOam_DroopingMore;
                 gSpriteData[mouthRamSlot].animationDurationCounter = 0;
                 gSpriteData[mouthRamSlot].currentAnimationFrame = 0;
                 gSpriteData[mouthRamSlot].status &= ~SS_NOT_DRAWN;
@@ -1348,7 +1348,7 @@ void NightmarePartMouth(void) {
         case 2: {
             if (gSpriteData[primaryRamSlot].pose == 0x1a) {
                 gCurrentSprite.status &= ~SS_HIDDEN;
-                gCurrentSprite.pOam = sFrameData_3bd5fc;
+                gCurrentSprite.pOam = sNightmarePartMouthOam_NotDrooping;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x18;
@@ -1377,7 +1377,7 @@ void NightmarePartEyeSludge(void) {
         case 2: {
             if (gSubSpriteData1.health < maxHealth * 2 / 3) {
                 gCurrentSprite.status &= ~SS_NOT_DRAWN;
-                gCurrentSprite.pOam = sFrameData_3bd4ec;
+                gCurrentSprite.pOam = sNightmarePartOam_EyeSludge;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x18;
@@ -1387,7 +1387,7 @@ void NightmarePartEyeSludge(void) {
         }
         case 0x18: {
             if (gSubSpriteData1.health < maxHealth / 3) {
-                gCurrentSprite.pOam = sFrameData_3bd51c;
+                gCurrentSprite.pOam = sNightmarePartOam_EyeSludgeDroppingToChin;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.work1 = 120;
@@ -1455,7 +1455,7 @@ void NightmarePartChinSludge(void) {
         case 0x18: {
             if (--gCurrentSprite.work1 == 0) {
                 gCurrentSprite.status = gCurrentSprite.status & ~SS_NOT_DRAWN;
-                gCurrentSprite.pOam = sFrameData_3bd574;
+                gCurrentSprite.pOam = sNightmarePartOam_ChinSludge;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1a;
@@ -1533,7 +1533,7 @@ void NightmarePartGenerator(void) {
             maxHealth = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
             if (gSubSpriteData1.health < maxHealth * 4 / 5) {
                 gCurrentSprite.pose = 0x18;
-                gCurrentSprite.pOam = sFrameData_3bd844;
+                gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningReallySlow;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.work0 = 0;
@@ -1552,17 +1552,17 @@ void NightmarePartGenerator(void) {
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 if (gCurrentSprite.work0 == 0)
-                    gCurrentSprite.pOam = sFrameData_3bd824;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningSlow;
                 else if (gCurrentSprite.work0 == 1)
-                    gCurrentSprite.pOam = sFrameData_3bd804;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningALittleSlower;
                 else if (gCurrentSprite.work0 == 2)
-                    gCurrentSprite.pOam = sFrameData_3bd7e4;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningALittleFaster;
                 else if (gCurrentSprite.work0 != 3) {
                     gCurrentSprite.pose = 0x1a;
-                    gCurrentSprite.pOam = sFrameData_3bd7a4;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningReallyFast;
                     break;
                 } else
-                    gCurrentSprite.pOam = sFrameData_3bd7c4;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningFast;
                 gCurrentSprite.work0++;
             }
             break;
@@ -1575,7 +1575,7 @@ void NightmarePartGenerator(void) {
                 gCurrentSprite.pose = 0x1c;
                 gCurrentSprite.work1 = 0;
                 gCurrentSprite.work0 = 0;
-                gCurrentSprite.pOam = sFrameData_3bd7c4;
+                gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningFast;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 ApplyMusicSoundFading(sMusicTrackDataRom[sSoundDataEntries[0x2a5].trackGroundNumber].pTrack, 120);
@@ -1589,14 +1589,14 @@ void NightmarePartGenerator(void) {
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 if (gCurrentSprite.work0 == 0)
-                    gCurrentSprite.pOam = sFrameData_3bd7e4;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningALittleFaster;
                 else if (gCurrentSprite.work0 == 1)
-                    gCurrentSprite.pOam = sFrameData_3bd804;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningALittleSlower;
                 else if (gCurrentSprite.work0 == 2)
-                    gCurrentSprite.pOam = sFrameData_3bd824;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningSlow;
                 else if (gCurrentSprite.work0 != 3) {
                     gCurrentSprite.pose = 0x1e;
-                    gCurrentSprite.pOam = sFrameData_3bd794;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_Stationary;
                     gCurrentSprite.work0 = 60;
                     gCurrentSprite.samusCollision = SSC_NONE;
                     gSpriteData[primaryRamSlot].pose = 0x17;
@@ -1604,7 +1604,7 @@ void NightmarePartGenerator(void) {
                     gBossWork3 = 100;
                     break;
                 } else
-                    gCurrentSprite.pOam = sFrameData_3bd844;
+                    gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningReallySlow;
                 gCurrentSprite.work0++;
             }
             break;
@@ -1653,7 +1653,7 @@ void NightmareBeamInit(void) {
     gCurrentSprite.hitboxBottom = 8;
     gCurrentSprite.hitboxLeft = -0x20;
     gCurrentSprite.hitboxRight = 0x20;
-    gCurrentSprite.pOam = sFrameData_3bd59c;
+    gCurrentSprite.pOam = sNightmareBeamOam;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 2;

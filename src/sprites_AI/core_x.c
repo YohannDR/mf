@@ -14,7 +14,7 @@
 #include "structs/samus.h"
 #include "structs/demo.h"
 
-void MakeXParasitesFlee(void) {
+void CoreXMakeXParasitesFlee(void) {
     u8 i;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++) {
@@ -348,7 +348,7 @@ void CoreXAbilityMovingToTargetInit(void) {
 }
 
 void CoreXAbilityMovingToTarget(void) {
-    MakeXParasitesFlee();
+    CoreXMakeXParasitesFlee();
     if ((gFrameCounter8Bit & 3) == 0) {
         gCurrentSprite.status ^= SS_NOT_DRAWN;
     }
@@ -647,11 +647,11 @@ void AbilityAura(void) {
         gCurrentSprite.samusCollision = SSC_NONE;
         gCurrentSprite.pose = 2;
         if (gCurrentSprite.roomSlot == 2) {
-            gCurrentSprite.pOam = sCoreXLightningOam_2;
+            gCurrentSprite.pOam = sCoreXStaticOam_2;
         } else if (gCurrentSprite.roomSlot == 1) {
-            gCurrentSprite.pOam = sCoreXLightningOam_1;
+            gCurrentSprite.pOam = sCoreXStaticOam_1;
         } else {
-            gCurrentSprite.pOam = sCoreXLightningOam_0;
+            gCurrentSprite.pOam = sCoreXStaticOam_0;
         }
     }
     gCurrentSprite.yPosition = gSpriteData[primaryRamSlot].yPosition;
@@ -760,25 +760,25 @@ void AbilityAura(void) {
     ldrb r0, [r1, #0x1e] \n\
     cmp r0, #2 \n\
     bne _080263D0 \n\
-    ldr r0, _080263CC @ =sCoreXLightningOam_2 \n\
+    ldr r0, _080263CC @ =sCoreXStaticOam_2 \n\
     b _080263E4 \n\
     .align 2, 0 \n\
 _080263BC: .4byte gCurrentSprite \n\
 _080263C0: .4byte 0x0000FFFB \n\
 _080263C4: .4byte gIoRegisters \n\
 _080263C8: .4byte 0x0000FFFC \n\
-_080263CC: .4byte sCoreXLightningOam_2 \n\
+_080263CC: .4byte sCoreXStaticOam_2 \n\
 _080263D0: \n\
     cmp r0, #1 \n\
     bne _080263E0 \n\
-    ldr r0, _080263DC @ =sCoreXLightningOam_1 \n\
+    ldr r0, _080263DC @ =sCoreXStaticOam_1 \n\
     mov r5, ip \n\
     str r0, [r5, #0x18] \n\
     b _080263E6 \n\
     .align 2, 0 \n\
-_080263DC: .4byte sCoreXLightningOam_1 \n\
+_080263DC: .4byte sCoreXStaticOam_1 \n\
 _080263E0: \n\
-    ldr r0, _08026410 @ =sCoreXLightningOam_0 \n\
+    ldr r0, _08026410 @ =sCoreXStaticOam_0 \n\
     mov r1, ip \n\
 _080263E4: \n\
     str r0, [r1, #0x18] \n\
@@ -804,7 +804,7 @@ _080263E6: \n\
     strh r0, [r5] \n\
     b _08026424 \n\
     .align 2, 0 \n\
-_08026410: .4byte sCoreXLightningOam_0 \n\
+_08026410: .4byte sCoreXStaticOam_0 \n\
 _08026414: .4byte gSpriteData \n\
 _08026418: \n\
     mov r0, ip \n\

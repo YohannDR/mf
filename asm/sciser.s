@@ -958,7 +958,7 @@ _08027BBE:
 	ldr r1, [sp, #0x14]
 	mov r2, sl
 	mov r3, sb
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	bne _08027C0C
 _08027BFA:

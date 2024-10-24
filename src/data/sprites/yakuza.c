@@ -2048,7 +2048,7 @@ static const u16 sFrameData_3b7370_Frame0[] = {
     0xf7, OBJ_X_FLIP | 0xf, OBJ_PALETTE_8 | 0x2a6
 };
 
-static const u16 sFrameData_3b72c0_Frame0[] = {
+static const u16 sYakuzaProjectileFireOam_Burning1_Frame0[] = {
     4,
     OBJ_SHAPE_VERTICAL | 0xd8, OBJ_SIZE_16x32 | 0x1f4, OBJ_PALETTE_12 | 0x20d,
     OBJ_SHAPE_VERTICAL | 0xd8, OBJ_SIZE_8x32 | 0x4, OBJ_PALETTE_12 | 0x20f,
@@ -2056,7 +2056,7 @@ static const u16 sFrameData_3b72c0_Frame0[] = {
     0xf8, 0x4, OBJ_PALETTE_12 | 0x28f
 };
 
-static const u16 sFrameData_3b72c0_Frame1[] = {
+static const u16 sYakuzaProjectileFireOam_Burning1_Frame1[] = {
     4,
     OBJ_SHAPE_VERTICAL | 0xd8, OBJ_SIZE_16x32 | 0x1f4, OBJ_PALETTE_12 | 0x210,
     OBJ_SHAPE_VERTICAL | 0xd8, OBJ_SIZE_8x32 | 0x4, OBJ_PALETTE_12 | 0x212,
@@ -2064,7 +2064,7 @@ static const u16 sFrameData_3b72c0_Frame1[] = {
     0xf8, 0x4, OBJ_PALETTE_12 | 0x292
 };
 
-static const u16 sFrameData_3b72c0_Frame2[] = {
+static const u16 sYakuzaProjectileFireOam_Burning1_Frame2[] = {
     4,
     OBJ_SHAPE_VERTICAL | 0xd8, OBJ_SIZE_16x32 | 0x1f4, OBJ_PALETTE_12 | 0x213,
     OBJ_SHAPE_VERTICAL | 0xd8, OBJ_SIZE_8x32 | 0x4, OBJ_PALETTE_12 | 0x215,
@@ -2072,68 +2072,68 @@ static const u16 sFrameData_3b72c0_Frame2[] = {
     0xf8, 0x4, OBJ_PALETTE_12 | 0x295
 };
 
-static const u16 sFrameData_3b72e0_Frame0[] = {
+static const u16 sYakuzaProjectileFireOam_Burning2_Frame0[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xe0, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_12 | 0x216
 };
 
-static const u16 sFrameData_3b72e0_Frame1[] = {
+static const u16 sYakuzaProjectileFireOam_Burning2_Frame1[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xe0, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_12 | 0x296
 };
 
-static const u16 sFrameData_3b72e0_Frame2[] = {
+static const u16 sYakuzaProjectileFireOam_Burning2_Frame2[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xe0, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_12 | 0x316
 };
 
-static const u16 sFrameData_3b7300_Frame0[] = {
+static const u16 sYakuzaProjectileFireOam_Burning3_Frame0[] = {
     2,
     0xe8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_12 | 0x328,
     OBJ_SHAPE_HORIZONTAL | 0xf8, 0x1f8, OBJ_PALETTE_12 | 0x368
 };
 
-static const u16 sFrameData_3b7300_Frame1[] = {
+static const u16 sYakuzaProjectileFireOam_Burning3_Frame1[] = {
     2,
     0xe8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_12 | 0x32a,
     OBJ_SHAPE_HORIZONTAL | 0xf8, 0x1f8, OBJ_PALETTE_12 | 0x36a
 };
 
-static const u16 sFrameData_3b7300_Frame2[] = {
+static const u16 sYakuzaProjectileFireOam_Burning3_Frame2[] = {
     2,
     0xe8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_12 | 0x32c,
     OBJ_SHAPE_HORIZONTAL | 0xf8, 0x1f8, OBJ_PALETTE_12 | 0x36c
 };
 
-static const u16 sFrameData_3b7288_Frame0[] = {
+static const u16 sYakuzaProjectileSpitOam_Frame0[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_8 | 0x2a9
 };
 
-static const u16 sFrameData_3b7288_Frame1[] = {
+static const u16 sYakuzaProjectileSpitOam_Frame1[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_8 | 0x2ac,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1f0, OBJ_PALETTE_8 | 0x2cb
 };
 
-static const u16 sFrameData_3b7288_Frame2[] = {
+static const u16 sYakuzaProjectileSpitOam_Frame2[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_8 | 0x2ae,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x8, OBJ_PALETTE_8 | 0x2d0
 };
 
-static const u16 sFrameData_3b7288_Frame3[] = {
+static const u16 sYakuzaProjectileSpitOam_Frame3[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_8 | 0x2b1,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x8, OBJ_PALETTE_8 | 0x2d3
 };
 
-static const u16 sFrameData_3b7288_Frame4[] = {
+static const u16 sYakuzaProjectileSpitOam_Frame4[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_8 | 0x2b4
 };
 
-static const u16 sFrameData_3b7288_Frame5[] = {
+static const u16 sYakuzaProjectileSpitOam_Frame5[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1f8, OBJ_PALETTE_8 | 0x30f,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1f0, OBJ_PALETTE_8 | 0x34e
@@ -2587,77 +2587,77 @@ const struct FrameData sFrameData_3b7260[5] = {
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3b7288[7] = {
+const struct FrameData sYakuzaProjectileSpitOam[7] = {
     [0] = {
-        .pFrame = sFrameData_3b7288_Frame0,
+        .pFrame = sYakuzaProjectileSpitOam_Frame0,
         .timer = 6
     },
     [1] = {
-        .pFrame = sFrameData_3b7288_Frame1,
+        .pFrame = sYakuzaProjectileSpitOam_Frame1,
         .timer = 6
     },
     [2] = {
-        .pFrame = sFrameData_3b7288_Frame2,
+        .pFrame = sYakuzaProjectileSpitOam_Frame2,
         .timer = 6
     },
     [3] = {
-        .pFrame = sFrameData_3b7288_Frame3,
+        .pFrame = sYakuzaProjectileSpitOam_Frame3,
         .timer = 6
     },
     [4] = {
-        .pFrame = sFrameData_3b7288_Frame4,
+        .pFrame = sYakuzaProjectileSpitOam_Frame4,
         .timer = 6
     },
     [5] = {
-        .pFrame = sFrameData_3b7288_Frame5,
+        .pFrame = sYakuzaProjectileSpitOam_Frame5,
         .timer = 6
     },
     [6] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3b72c0[4] = {
+const struct FrameData sYakuzaProjectileFireOam_Burning1[4] = {
     [0] = {
-        .pFrame = sFrameData_3b72c0_Frame0,
+        .pFrame = sYakuzaProjectileFireOam_Burning1_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sFrameData_3b72c0_Frame1,
+        .pFrame = sYakuzaProjectileFireOam_Burning1_Frame1,
         .timer = 3
     },
     [2] = {
-        .pFrame = sFrameData_3b72c0_Frame2,
+        .pFrame = sYakuzaProjectileFireOam_Burning1_Frame2,
         .timer = 3
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3b72e0[4] = {
+const struct FrameData sYakuzaProjectileFireOam_Burning2[4] = {
     [0] = {
-        .pFrame = sFrameData_3b72e0_Frame0,
+        .pFrame = sYakuzaProjectileFireOam_Burning2_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sFrameData_3b72e0_Frame1,
+        .pFrame = sYakuzaProjectileFireOam_Burning2_Frame1,
         .timer = 3
     },
     [2] = {
-        .pFrame = sFrameData_3b72e0_Frame2,
+        .pFrame = sYakuzaProjectileFireOam_Burning2_Frame2,
         .timer = 3
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3b7300[4] = {
+const struct FrameData sYakuzaProjectileFireOam_Burning3[4] = {
     [0] = {
-        .pFrame = sFrameData_3b7300_Frame0,
+        .pFrame = sYakuzaProjectileFireOam_Burning3_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sFrameData_3b7300_Frame1,
+        .pFrame = sYakuzaProjectileFireOam_Burning3_Frame1,
         .timer = 3
     },
     [2] = {
-        .pFrame = sFrameData_3b7300_Frame2,
+        .pFrame = sYakuzaProjectileFireOam_Burning3_Frame2,
         .timer = 3
     },
     [3] = FRAME_DATA_TERMINATOR

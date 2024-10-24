@@ -1079,7 +1079,7 @@ _08059882:
 	mov r3, r8
 	str r3, [sp, #0xc]
 	mov r3, ip
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _080598EE
 	adds r0, r5, #0
@@ -2828,8 +2828,8 @@ _0805A65C:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start RidleyPartidle
-RidleyPartidle: @ 0x0805A668
+	thumb_func_start RidleyPartIdle
+RidleyPartIdle: @ 0x0805A668
 	push {lr}
 	ldr r2, _0805A69C @ =gCurrentSprite
 	ldrh r0, [r2, #0x16]
@@ -4263,7 +4263,7 @@ _0805B248:
 	ands r0, r1
 	cmp r0, #0
 	bne _0805B2B6
-	bl RidleyPartidle
+	bl RidleyPartIdle
 	ldr r1, _0805B288 @ =gSpriteData
 	subs r0, r6, r5
 	lsls r0, r0, #3

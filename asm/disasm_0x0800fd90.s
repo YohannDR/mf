@@ -547,8 +547,8 @@ TakeKnockback: @ 0x080101B0
 _080101C8: .4byte sSamusSetPoseFunctionPointer
 _080101CC: .4byte gSamusData
 
-	thumb_func_start CheckObjectsTouching
-CheckObjectsTouching: @ 0x080101D0
+	thumb_func_start SpriteUtilCheckObjectsTouching
+SpriteUtilCheckObjectsTouching: @ 0x080101D0
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -686,7 +686,7 @@ _08010294:
 	ldr r1, [sp, #0x1c]
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp, #0x24]
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	bne _080102E2
 	bl _08010FF6

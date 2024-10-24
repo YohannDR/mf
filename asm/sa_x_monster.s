@@ -141,7 +141,7 @@ _080508AA:
 	mov r3, r8
 	str r3, [sp, #0xc]
 	mov r3, ip
-	bl CheckObjectsTouching
+	bl SpriteUtilCheckObjectsTouching
 	cmp r0, #0
 	beq _08050916
 	adds r0, r5, #0
