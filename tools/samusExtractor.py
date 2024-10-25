@@ -157,9 +157,9 @@ animNamesBase = [
     "MidAir", # 4
     "TurningAroundMidAir", # 5
     "Landing", # 6
-    "Crouching", # 7
+    "UnusedCrouching", # 7
     "TurningAroundAndCrouching", # 8
-    "ShootingAndCrouching", # 9
+    "Crouching", # 9
     "StartingSpinJump", # 0xa
     "Spinning", # 0xb
     "Morphing", # 0xc
@@ -259,12 +259,12 @@ animNamesBase = [
     "DiagonalDown_Landing",
     "Up_Landing",
 
-    # gaps for unused animations
-    "gap",
-    "gap",
-    "gap",
-    "gap",
-    "gap",
+    # unused animations
+    "UnusedCrouching",
+    "Forward_UnusedCrouching",
+    "DiagonalUp_UnusedCrouching",
+    "DiagonalDown_UnusedCrouching",
+    "Up_UnusedCrouching",
 
     "TurningAroundAndCrouching",
     "Forward_TurningAroundAndCrouching",
@@ -408,6 +408,9 @@ def ParseGfxOamAnim():
         output += f"samus/gfx/{addr:x}.gfx;{length};{addr+2:x};32\n"
 
     for (addr, name) in namedFrames.items():
+        output = output.replace(f"{addr:x}", name)
+
+    for (addr, name) in namedAnims.items():
         output = output.replace(f"{addr:x}", name)
 
     for (addr, length) in animations:

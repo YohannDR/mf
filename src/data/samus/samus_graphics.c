@@ -319,19 +319,19 @@ static const u8 sSamusGfx_Bottom_Left_DiagonalUp_Crouching_Frame0[] = {
     _INCBIN_U8("data/samus/gfx/Bottom_Left_DiagonalUp_Crouching_Frame0.gfx")
 };
 
-static const u8 sSamusGfx_Top_Left_ShootingAndCrouching_Frame1[] = {
+static const u8 sSamusGfx_Top_Left_Crouching_Frame1[] = {
     4, 2,
-    _INCBIN_U8("data/samus/gfx/Top_Left_ShootingAndCrouching_Frame1.gfx")
+    _INCBIN_U8("data/samus/gfx/Top_Left_Crouching_Frame1.gfx")
 };
 
-static const u8 sSamusGfx_Bottom_Left_ShootingAndCrouching_Frame1[] = {
+static const u8 sSamusGfx_Bottom_Left_Crouching_Frame1[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Bottom_Left_ShootingAndCrouching_Frame1.gfx")
+    _INCBIN_U8("data/samus/gfx/Bottom_Left_Crouching_Frame1.gfx")
 };
 
-static const u8 sSamusGfx_Bottom_Left_ShootingAndCrouching_Frame0[] = {
+static const u8 sSamusGfx_Bottom_Left_Crouching_Frame0[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Bottom_Left_ShootingAndCrouching_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Bottom_Left_Crouching_Frame0.gfx")
 };
 
 static const u8 sSamusGfx_Bottom_Left_DiagonalDown_Crouching_Frame1[] = {
@@ -544,14 +544,14 @@ static const u8 sSamusGfx_Bottom_Right_DiagonalUp_Crouching_Frame0[] = {
     _INCBIN_U8("data/samus/gfx/Bottom_Right_DiagonalUp_Crouching_Frame0.gfx")
 };
 
-static const u8 sSamusGfx_Bottom_Right_ShootingAndCrouching_Frame1[] = {
+static const u8 sSamusGfx_Bottom_Right_Crouching_Frame1[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Bottom_Right_ShootingAndCrouching_Frame1.gfx")
+    _INCBIN_U8("data/samus/gfx/Bottom_Right_Crouching_Frame1.gfx")
 };
 
-static const u8 sSamusGfx_Bottom_Right_ShootingAndCrouching_Frame0[] = {
+static const u8 sSamusGfx_Bottom_Right_Crouching_Frame0[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Bottom_Right_ShootingAndCrouching_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Bottom_Right_Crouching_Frame0.gfx")
 };
 
 static const u8 sSamusGfx_Bottom_Right_DiagonalDown_Crouching_Frame1[] = {
@@ -1132,7 +1132,7 @@ static const u16 sSamusOam_Left_DiagonalUp_Crouching_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1f1, 0x16
 };
 
-static const u16 sSamusOam_Left_ShootingAndCrouching_Frame1[] = {
+static const u16 sSamusOam_Left_Crouching_Frame1[] = {
     5,
     0xe8, OBJ_SIZE_16x16 | 0x1f6, 0x0,
     0xf0, 0x1ee, 0x2,
@@ -1141,7 +1141,7 @@ static const u16 sSamusOam_Left_ShootingAndCrouching_Frame1[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1f1, 0x16
 };
 
-static const u16 sSamusOam_Left_ShootingAndCrouching_Frame0[] = {
+static const u16 sSamusOam_Left_Crouching_Frame0[] = {
     4,
     0xe8, OBJ_SIZE_16x16 | 0x1f6, 0x0,
     OBJ_SHAPE_HORIZONTAL | 0xe0, 0x1f6, 0x2,
@@ -1596,7 +1596,7 @@ static const u16 sSamusOam_Right_DiagonalUp_Crouching_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_X_FLIP | 0x1f7, 0x16
 };
 
-static const u16 sSamusOam_Right_ShootingAndCrouching_Frame1[] = {
+static const u16 sSamusOam_Right_Crouching_Frame1[] = {
     4,
     0xe8, OBJ_SIZE_16x16 | 0x1fb, 0x0,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1ff, 0x14,
@@ -1604,7 +1604,7 @@ static const u16 sSamusOam_Right_ShootingAndCrouching_Frame1[] = {
     0xe0, OBJ_X_FLIP | 0x1ff, 0x2
 };
 
-static const u16 sSamusOam_Right_ShootingAndCrouching_Frame0[] = {
+static const u16 sSamusOam_Right_Crouching_Frame0[] = {
     4,
     0xe8, OBJ_SIZE_16x16 | 0x1fa, 0x0,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1ff, 0x14,
@@ -1818,7 +1818,7 @@ static const u16 sSamusOam_Right_LookingUp_HitByOmegaMetroid_Frame2[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_X_FLIP | 0x1f3, 0x16
 };
 
-const struct SamusAnimationData sSamusAnim_2bd0e8[11] = {
+const struct SamusAnimationData sSamusAnim_Left_Running[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Running_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Running_Frame0,
@@ -1882,7 +1882,7 @@ const struct SamusAnimationData sSamusAnim_2bd0e8[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd198[11] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_Running[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_Running_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Running_Frame0,
@@ -1946,7 +1946,7 @@ const struct SamusAnimationData sSamusAnim_2bd198[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd248[11] = {
+const struct SamusAnimationData sSamusAnim_Left_Forward_Running[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Forward_Running_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Running_Frame0,
@@ -2010,7 +2010,7 @@ const struct SamusAnimationData sSamusAnim_2bd248[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd2f8[11] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_Running[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_Running_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Running_Frame0,
@@ -2074,7 +2074,7 @@ const struct SamusAnimationData sSamusAnim_2bd2f8[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd3a8[4] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_Standing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_Standing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_Standing_Frame0,
@@ -2096,7 +2096,7 @@ const struct SamusAnimationData sSamusAnim_2bd3a8[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd3e8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_Shooting[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_Shooting_Frame0,
@@ -2112,7 +2112,7 @@ const struct SamusAnimationData sSamusAnim_2bd3e8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd418[4] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_Standing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_Standing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_Standing_Frame0,
@@ -2134,7 +2134,7 @@ const struct SamusAnimationData sSamusAnim_2bd418[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd458[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_Shooting[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_Standing_Frame2,
@@ -2150,7 +2150,7 @@ const struct SamusAnimationData sSamusAnim_2bd458[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd488[4] = {
+const struct SamusAnimationData sSamusAnim_Left_Standing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Standing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Standing_Frame0,
@@ -2172,7 +2172,7 @@ const struct SamusAnimationData sSamusAnim_2bd488[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd4c8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Shooting[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Standing_Frame2,
@@ -2188,7 +2188,7 @@ const struct SamusAnimationData sSamusAnim_2bd4c8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd4f8[4] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_Standing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_Standing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalDown_Standing_Frame0,
@@ -2210,7 +2210,7 @@ const struct SamusAnimationData sSamusAnim_2bd4f8[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd538[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_Shooting[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Standing_Frame2,
@@ -2226,7 +2226,7 @@ const struct SamusAnimationData sSamusAnim_2bd538[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd568[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_Crouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_Crouching_Frame0,
@@ -2242,7 +2242,7 @@ const struct SamusAnimationData sSamusAnim_2bd568[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd598[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_Crouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_Crouching_Frame0,
@@ -2258,23 +2258,23 @@ const struct SamusAnimationData sSamusAnim_2bd598[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd5c8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Crouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Shooting_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_Left_ShootingAndCrouching_Frame0,
-        .pOam = sSamusOam_Left_ShootingAndCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Left_Crouching_Frame0,
+        .pOam = sSamusOam_Left_Crouching_Frame0,
         .timer = 4
     },
     [1] = {
-        .pTopGfx = sSamusGfx_Top_Left_ShootingAndCrouching_Frame1,
-        .pBottomGfx = sSamusGfx_Bottom_Left_ShootingAndCrouching_Frame1,
-        .pOam = sSamusOam_Left_ShootingAndCrouching_Frame1,
+        .pTopGfx = sSamusGfx_Top_Left_Crouching_Frame1,
+        .pBottomGfx = sSamusGfx_Bottom_Left_Crouching_Frame1,
+        .pOam = sSamusOam_Left_Crouching_Frame1,
         .timer = 4
     },
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd5f8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_Crouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalDown_Crouching_Frame0,
@@ -2290,7 +2290,7 @@ const struct SamusAnimationData sSamusAnim_2bd5f8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd628[11] = {
+const struct SamusAnimationData sSamusAnim_Right_Running[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Running_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Running_Frame0,
@@ -2354,7 +2354,7 @@ const struct SamusAnimationData sSamusAnim_2bd628[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd6d8[11] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_Running[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalUp_Running_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Running_Frame0,
@@ -2418,7 +2418,7 @@ const struct SamusAnimationData sSamusAnim_2bd6d8[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd788[11] = {
+const struct SamusAnimationData sSamusAnim_Right_Forward_Running[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Forward_Running_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Running_Frame0,
@@ -2482,7 +2482,7 @@ const struct SamusAnimationData sSamusAnim_2bd788[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd838[11] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_Running[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_Running_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Running_Frame0,
@@ -2546,7 +2546,7 @@ const struct SamusAnimationData sSamusAnim_2bd838[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd8e8[4] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_Standing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Up_Standing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_Shooting_Frame1,
@@ -2568,7 +2568,7 @@ const struct SamusAnimationData sSamusAnim_2bd8e8[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd928[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_Shooting[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Up_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_Up_Shooting_Frame0,
@@ -2584,7 +2584,7 @@ const struct SamusAnimationData sSamusAnim_2bd928[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd958[4] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_Standing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalUp_Standing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_Standing_Frame0,
@@ -2606,7 +2606,7 @@ const struct SamusAnimationData sSamusAnim_2bd958[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd998[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_Shooting[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalUp_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_Standing_Frame2,
@@ -2622,7 +2622,7 @@ const struct SamusAnimationData sSamusAnim_2bd998[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bd9c8[4] = {
+const struct SamusAnimationData sSamusAnim_Right_Standing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Standing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Standing_Frame0,
@@ -2644,7 +2644,7 @@ const struct SamusAnimationData sSamusAnim_2bd9c8[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bda08[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Shooting[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Standing_Frame2,
@@ -2660,7 +2660,7 @@ const struct SamusAnimationData sSamusAnim_2bda08[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bda38[4] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_Standing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_Standing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalDown_Standing_Frame0,
@@ -2682,7 +2682,7 @@ const struct SamusAnimationData sSamusAnim_2bda38[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bda78[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_Shooting[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Standing_Frame2,
@@ -2698,7 +2698,7 @@ const struct SamusAnimationData sSamusAnim_2bda78[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bdaa8[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_Crouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Up_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_Up_Crouching_Frame0,
@@ -2714,7 +2714,7 @@ const struct SamusAnimationData sSamusAnim_2bdaa8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bdad8[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_Crouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalUp_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_DiagonalUp_Crouching_Frame0,
@@ -2730,23 +2730,23 @@ const struct SamusAnimationData sSamusAnim_2bdad8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bdb08[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Crouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Shooting_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_Right_ShootingAndCrouching_Frame0,
-        .pOam = sSamusOam_Right_ShootingAndCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Right_Crouching_Frame0,
+        .pOam = sSamusOam_Right_Crouching_Frame0,
         .timer = 4
     },
     [1] = {
         .pTopGfx = sSamusGfx_Top_Right_Standing_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_Right_ShootingAndCrouching_Frame1,
-        .pOam = sSamusOam_Right_ShootingAndCrouching_Frame1,
+        .pBottomGfx = sSamusGfx_Bottom_Right_Crouching_Frame1,
+        .pOam = sSamusOam_Right_Crouching_Frame1,
         .timer = 4
     },
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bdb38[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_Crouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_Shooting_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_DiagonalDown_Crouching_Frame0,
@@ -3018,7 +3018,7 @@ const struct SamusAnimationData sSamusAnim_2bdd78[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bde28[2] = {
+const struct SamusAnimationData sSamusAnim_Left_Skidding[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Skidding_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Skidding_Frame0,
@@ -3028,7 +3028,7 @@ const struct SamusAnimationData sSamusAnim_2bde28[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bde48[2] = {
+const struct SamusAnimationData sSamusAnim_Left_Armed_Skidding[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Armed_Skidding_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Skidding_Frame0,
@@ -3038,7 +3038,7 @@ const struct SamusAnimationData sSamusAnim_2bde48[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bde68[2] = {
+const struct SamusAnimationData sSamusAnim_Right_Skidding[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Skidding_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Skidding_Frame0,
@@ -3048,7 +3048,7 @@ const struct SamusAnimationData sSamusAnim_2bde68[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bde88[2] = {
+const struct SamusAnimationData sSamusAnim_Right_Armed_Skidding[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Armed_Skidding_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Skidding_Frame0,
@@ -3058,7 +3058,7 @@ const struct SamusAnimationData sSamusAnim_2bde88[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bdea8[5] = {
+const struct SamusAnimationData sSamusAnim_Left_HitByOmegaMetroid[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_HitByOmegaMetroid_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HitByOmegaMetroid_Frame0,
@@ -3086,7 +3086,7 @@ const struct SamusAnimationData sSamusAnim_2bdea8[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bdef8[5] = {
+const struct SamusAnimationData sSamusAnim_Left_LookingUp_HitByOmegaMetroid[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_LookingUp_HitByOmegaMetroid_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HitByOmegaMetroid_Frame0,
@@ -3114,7 +3114,7 @@ const struct SamusAnimationData sSamusAnim_2bdef8[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bdf48[5] = {
+const struct SamusAnimationData sSamusAnim_Right_HitByOmegaMetroid[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_HitByOmegaMetroid_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HitByOmegaMetroid_Frame0,
@@ -3142,7 +3142,7 @@ const struct SamusAnimationData sSamusAnim_2bdf48[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2bdf98[5] = {
+const struct SamusAnimationData sSamusAnim_Right_LookingUp_HitByOmegaMetroid[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_LookingUp_HitByOmegaMetroid_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HitByOmegaMetroid_Frame0,
@@ -4564,7 +4564,7 @@ static const u16 sSamusOam_Right_Sidewards_Shinesparking_Frame1[] = {
     0xf2, OBJ_X_FLIP | 0x1e2, 0x18
 };
 
-const struct SamusAnimationData sSamusAnim_2c3f88[7] = {
+const struct SamusAnimationData sSamusAnim_Left_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -4604,7 +4604,7 @@ const struct SamusAnimationData sSamusAnim_2c3f88[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c3ff8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Landing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -4620,7 +4620,7 @@ const struct SamusAnimationData sSamusAnim_2c3ff8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4028[7] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -4660,7 +4660,7 @@ const struct SamusAnimationData sSamusAnim_2c4028[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4098[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_MidAir_Frame2,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -4676,7 +4676,7 @@ const struct SamusAnimationData sSamusAnim_2c4098[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c40c8[7] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -4716,7 +4716,7 @@ const struct SamusAnimationData sSamusAnim_2c40c8[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4138[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_MidAir_Frame2,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -4732,7 +4732,7 @@ const struct SamusAnimationData sSamusAnim_2c4138[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4168[7] = {
+const struct SamusAnimationData sSamusAnim_Left_Forward_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Forward_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -4772,7 +4772,7 @@ const struct SamusAnimationData sSamusAnim_2c4168[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c41d8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Forward_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Forward_MidAir_Frame2,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -4788,7 +4788,7 @@ const struct SamusAnimationData sSamusAnim_2c41d8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4208[7] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -4828,7 +4828,7 @@ const struct SamusAnimationData sSamusAnim_2c4208[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4278[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_MidAir_Frame2,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -4894,7 +4894,7 @@ const struct SamusAnimationData sSamusAnim_2c4328[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4348[7] = {
+const struct SamusAnimationData sSamusAnim_Right_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -4934,7 +4934,7 @@ const struct SamusAnimationData sSamusAnim_2c4348[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c43b8[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Landing_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -4950,7 +4950,7 @@ const struct SamusAnimationData sSamusAnim_2c43b8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c43e8[7] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Up_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -4990,7 +4990,7 @@ const struct SamusAnimationData sSamusAnim_2c43e8[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4458[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Up_MidAir_Frame2,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -5006,7 +5006,7 @@ const struct SamusAnimationData sSamusAnim_2c4458[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4488[7] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalUp_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -5046,7 +5046,7 @@ const struct SamusAnimationData sSamusAnim_2c4488[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c44f8[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalUp_MidAir_Frame2,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -5062,7 +5062,7 @@ const struct SamusAnimationData sSamusAnim_2c44f8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4528[7] = {
+const struct SamusAnimationData sSamusAnim_Right_Forward_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Forward_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -5102,7 +5102,7 @@ const struct SamusAnimationData sSamusAnim_2c4528[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4598[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Forward_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Forward_MidAir_Frame2,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -5118,7 +5118,7 @@ const struct SamusAnimationData sSamusAnim_2c4598[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c45c8[7] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_MidAir[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_MidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MidAir_Frame0,
@@ -5158,7 +5158,7 @@ const struct SamusAnimationData sSamusAnim_2c45c8[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4638[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_Landing[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_MidAir_Frame2,
         .pBottomGfx = sSamusGfx_Bottom_Left_Landing_Frame0,
@@ -5224,7 +5224,7 @@ const struct SamusAnimationData sSamusAnim_2c46e8[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4708[7] = {
+const struct SamusAnimationData sSamusAnim_Left_GrabbedByYakuza[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_GrabbedByYakuza_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_GrabbedByYakuza_Frame0,
@@ -5264,7 +5264,7 @@ const struct SamusAnimationData sSamusAnim_2c4708[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4778[7] = {
+const struct SamusAnimationData sSamusAnim_Right_GrabbedByYakuza[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_GrabbedByYakuza_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_GrabbedByYakuza_Frame0,
@@ -5304,7 +5304,7 @@ const struct SamusAnimationData sSamusAnim_2c4778[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c47e8[9] = {
+const struct SamusAnimationData sSamusAnim_Left_Spinning[9] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Spinning_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -5356,7 +5356,7 @@ const struct SamusAnimationData sSamusAnim_2c47e8[9] = {
     [8] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4878[9] = {
+const struct SamusAnimationData sSamusAnim_Right_Spinning[9] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Spinning_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -5408,7 +5408,7 @@ const struct SamusAnimationData sSamusAnim_2c4878[9] = {
     [8] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4908[2] = {
+const struct SamusAnimationData sSamusAnim_Left_StartingSpinJump[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_StartingSpinJump_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_StartingSpinJump_Frame0,
@@ -5418,7 +5418,7 @@ const struct SamusAnimationData sSamusAnim_2c4908[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4928[2] = {
+const struct SamusAnimationData sSamusAnim_Right_StartingSpinJump[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_StartingSpinJump_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_StartingSpinJump_Frame0,
@@ -5428,7 +5428,7 @@ const struct SamusAnimationData sSamusAnim_2c4928[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4948[5] = {
+const struct SamusAnimationData sSamusAnim_Left_DelayBeforeShinesparking[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DelayBeforeShinesparking_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DelayBeforeShinesparking_Frame0,
@@ -5456,7 +5456,7 @@ const struct SamusAnimationData sSamusAnim_2c4948[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4998[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Shinesparking[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Shinesparking_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Shinesparking_Frame0,
@@ -5472,7 +5472,7 @@ const struct SamusAnimationData sSamusAnim_2c4998[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c49c8[5] = {
+const struct SamusAnimationData sSamusAnim_Right_DelayBeforeShinesparking[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DelayBeforeShinesparking_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_DelayBeforeShinesparking_Frame0,
@@ -5500,7 +5500,7 @@ const struct SamusAnimationData sSamusAnim_2c49c8[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4a18[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Shinesparking[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Shinesparking_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Shinesparking_Frame0,
@@ -5516,7 +5516,7 @@ const struct SamusAnimationData sSamusAnim_2c4a18[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4a48[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Sidewards_Shinesparking[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Sidewards_Shinesparking_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Sidewards_Shinesparking_Frame0,
@@ -5532,7 +5532,7 @@ const struct SamusAnimationData sSamusAnim_2c4a48[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4a78[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Sidewards_Shinesparking[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Sidewards_Shinesparking_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Sidewards_Shinesparking_Frame0,
@@ -5548,7 +5548,7 @@ const struct SamusAnimationData sSamusAnim_2c4a78[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4aa8[10] = {
+const struct SamusAnimationData sSamusAnim_Left_DelayAfterShinesparking[10] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Shinesparking_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Shinesparking_Frame1,
@@ -5606,7 +5606,7 @@ const struct SamusAnimationData sSamusAnim_2c4aa8[10] = {
     [9] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4b48[10] = {
+const struct SamusAnimationData sSamusAnim_Right_DelayAfterShinesparking[10] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Shinesparking_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Shinesparking_Frame1,
@@ -5664,7 +5664,7 @@ const struct SamusAnimationData sSamusAnim_2c4b48[10] = {
     [9] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4be8[10] = {
+const struct SamusAnimationData sSamusAnim_Left_Sidewards_DelayAfterShinesparking[10] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Sidewards_Shinesparking_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Sidewards_Shinesparking_Frame1,
@@ -5722,7 +5722,7 @@ const struct SamusAnimationData sSamusAnim_2c4be8[10] = {
     [9] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2c4c88[10] = {
+const struct SamusAnimationData sSamusAnim_Right_Sidewards_DelayAfterShinesparking[10] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Sidewards_Shinesparking_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Sidewards_Shinesparking_Frame1,
@@ -5780,9 +5780,9 @@ const struct SamusAnimationData sSamusAnim_2c4c88[10] = {
     [9] = SAMUS_ANIM_TERMINATOR
 };
 
-static const u8 sSamusGfx_Top_2cb348_Frame0[] = {
+static const u8 sSamusGfx_Top_Left_Up_UnusedCrouching_Frame0[] = {
     3, 2,
-    _INCBIN_U8("data/samus/gfx/Top_2cb348_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Top_Left_Up_UnusedCrouching_Frame0.gfx")
 };
 
 static const u8 sSamusGfx_2c4dca[] = {
@@ -5805,14 +5805,14 @@ static const u8 sSamusGfx_Top_Left_Up_TurningAround_Frame1[] = {
     _INCBIN_U8("data/samus/gfx/Top_Left_Up_TurningAround_Frame1.gfx")
 };
 
-static const u8 sSamusGfx_Top_2cb368_Frame0[] = {
+static const u8 sSamusGfx_Top_Right_Up_UnusedCrouching_Frame0[] = {
     3, 2,
-    _INCBIN_U8("data/samus/gfx/Top_2cb368_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Top_Right_Up_UnusedCrouching_Frame0.gfx")
 };
 
-static const u8 sSamusGfx_Top_2cb388_Frame0[] = {
+static const u8 sSamusGfx_Top_Left_DiagonalUp_UnusedCrouching_Frame0[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Top_2cb388_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Top_Left_DiagonalUp_UnusedCrouching_Frame0.gfx")
 };
 
 static const u8 sSamusGfx_2c5276[] = {
@@ -5835,14 +5835,14 @@ static const u8 sSamusGfx_Top_Left_DiagonalUp_TurningAround_Frame1[] = {
     _INCBIN_U8("data/samus/gfx/Top_Left_DiagonalUp_TurningAround_Frame1.gfx")
 };
 
-static const u8 sSamusGfx_Top_2cb3a8_Frame0[] = {
+static const u8 sSamusGfx_Top_Right_DiagonalUp_UnusedCrouching_Frame0[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Top_2cb3a8_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Top_Right_DiagonalUp_UnusedCrouching_Frame0.gfx")
 };
 
-static const u8 sSamusGfx_Top_Left_Crouching_Frame0[] = {
+static const u8 sSamusGfx_Top_Left_UnusedCrouching_Frame0[] = {
     5, 2,
-    _INCBIN_U8("data/samus/gfx/Top_Left_Crouching_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Top_Left_UnusedCrouching_Frame0.gfx")
 };
 
 static const u8 sSamusGfx_2c5782[] = {
@@ -5865,9 +5865,9 @@ static const u8 sSamusGfx_2c5a68[] = {
     _INCBIN_U8("data/samus/gfx/2c5a68.gfx")
 };
 
-static const u8 sSamusGfx_Top_2cb408_Frame0[] = {
+static const u8 sSamusGfx_Top_Left_DiagonalDown_UnusedCrouching_Frame0[] = {
     4, 4,
-    _INCBIN_U8("data/samus/gfx/Top_2cb408_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Top_Left_DiagonalDown_UnusedCrouching_Frame0.gfx")
 };
 
 static const u8 sSamusGfx_2c5c4c[] = {
@@ -5890,9 +5890,9 @@ static const u8 sSamusGfx_2c5f52[] = {
     _INCBIN_U8("data/samus/gfx/2c5f52.gfx")
 };
 
-static const u8 sSamusGfx_Bottom_2cb348_Frame0[] = {
+static const u8 sSamusGfx_Bottom_Left_Up_UnusedCrouching_Frame0[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Bottom_2cb348_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Bottom_Left_Up_UnusedCrouching_Frame0.gfx")
 };
 
 static const u8 sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0[] = {
@@ -5900,29 +5900,29 @@ static const u8 sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0[] = {
     _INCBIN_U8("data/samus/gfx/Bottom_Left_Up_TurningAroundAndCrouching_Frame0.gfx")
 };
 
-static const u8 sSamusGfx_Bottom_2cb388_Frame0[] = {
+static const u8 sSamusGfx_Bottom_Left_DiagonalUp_UnusedCrouching_Frame0[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Bottom_2cb388_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Bottom_Left_DiagonalUp_UnusedCrouching_Frame0.gfx")
 };
 
-static const u8 sSamusGfx_Bottom_Left_Crouching_Frame0[] = {
+static const u8 sSamusGfx_Bottom_Left_UnusedCrouching_Frame0[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Bottom_Left_Crouching_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Bottom_Left_UnusedCrouching_Frame0.gfx")
 };
 
-static const u8 sSamusGfx_Top_Right_Crouching_Frame0[] = {
+static const u8 sSamusGfx_Top_Right_UnusedCrouching_Frame0[] = {
     4, 2,
-    _INCBIN_U8("data/samus/gfx/Top_Right_Crouching_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Top_Right_UnusedCrouching_Frame0.gfx")
 };
 
-static const u8 sSamusGfx_Bottom_2cb408_Frame0[] = {
+static const u8 sSamusGfx_Bottom_Left_DiagonalDown_UnusedCrouching_Frame0[] = {
     3, 3,
-    _INCBIN_U8("data/samus/gfx/Bottom_2cb408_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Bottom_Left_DiagonalDown_UnusedCrouching_Frame0.gfx")
 };
 
-static const u8 sSamusGfx_Top_2cb428_Frame0[] = {
+static const u8 sSamusGfx_Top_Right_DiagonalDown_UnusedCrouching_Frame0[] = {
     3, 2,
-    _INCBIN_U8("data/samus/gfx/Top_2cb428_Frame0.gfx")
+    _INCBIN_U8("data/samus/gfx/Top_Right_DiagonalDown_UnusedCrouching_Frame0.gfx")
 };
 
 static const u8 sSamusGfx_Bottom_Left_Up_TurningAroundMidAir_Frame0[] = {
@@ -6432,7 +6432,7 @@ static const u16 sSamusOam_Left_Up_TurningAroundAndCrouching_Frame1[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_X_FLIP | 0x7, 0x16
 };
 
-static const u16 sSamusOam_2cb368_Frame0[] = {
+static const u16 sSamusOam_Right_Up_UnusedCrouching_Frame0[] = {
     4,
     0xe2, OBJ_SIZE_16x16 | 0x1f8, 0x0,
     0xda, 0x0, 0x2,
@@ -6440,7 +6440,7 @@ static const u16 sSamusOam_2cb368_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_X_FLIP | 0x7, 0x16
 };
 
-static const u16 sSamusOam_2cb388_Frame0[] = {
+static const u16 sSamusOam_Left_DiagonalUp_UnusedCrouching_Frame0[] = {
     4,
     0xe2, OBJ_SIZE_16x16 | 0x1f7, 0x0,
     OBJ_SHAPE_VERTICAL | 0xe2, 0x1ef, 0x2,
@@ -6464,7 +6464,7 @@ static const u16 sSamusOam_Left_DiagonalUp_TurningAroundAndCrouching_Frame1[] = 
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_X_FLIP | 0x7, 0x16
 };
 
-static const u16 sSamusOam_2cb3a8_Frame0[] = {
+static const u16 sSamusOam_Right_DiagonalUp_UnusedCrouching_Frame0[] = {
     4,
     0xe2, OBJ_SIZE_16x16 | 0x1f9, 0x0,
     OBJ_SHAPE_VERTICAL | 0xe2, 0x9, 0x2,
@@ -6472,7 +6472,7 @@ static const u16 sSamusOam_2cb3a8_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_X_FLIP | 0x7, 0x16
 };
 
-static const u16 sSamusOam_Left_Crouching_Frame0[] = {
+static const u16 sSamusOam_Left_UnusedCrouching_Frame0[] = {
     5,
     0xe7, OBJ_SIZE_16x16 | 0x1f7, 0x0,
     OBJ_SHAPE_HORIZONTAL | 0xdf, 0x1f7, 0x2,
@@ -6499,7 +6499,7 @@ static const u16 sSamusOam_Left_TurningAroundAndCrouching_Frame1[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_X_FLIP | 0x7, 0x16
 };
 
-static const u16 sSamusOam_Right_Crouching_Frame0[] = {
+static const u16 sSamusOam_Right_UnusedCrouching_Frame0[] = {
     4,
     0xe7, OBJ_SIZE_16x16 | 0x1f9, 0x0,
     OBJ_SHAPE_HORIZONTAL | 0xdf, 0x1f9, 0x2,
@@ -6507,7 +6507,7 @@ static const u16 sSamusOam_Right_Crouching_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_X_FLIP | 0x7, 0x16
 };
 
-static const u16 sSamusOam_2cb408_Frame0[] = {
+static const u16 sSamusOam_Left_DiagonalDown_UnusedCrouching_Frame0[] = {
     4,
     0xe7, OBJ_SIZE_16x16 | 0x1f6, 0x0,
     0xef, OBJ_SIZE_16x16 | 0x1ee, 0x2,
@@ -6533,7 +6533,7 @@ static const u16 sSamusOam_Left_DiagonalDown_TurningAroundAndCrouching_Frame1[] 
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_X_FLIP | 0x7, 0x16
 };
 
-static const u16 sSamusOam_2cb428_Frame0[] = {
+static const u16 sSamusOam_Right_DiagonalDown_UnusedCrouching_Frame0[] = {
     4,
     0xe7, OBJ_SIZE_16x16 | 0x1fb, 0x0,
     0xf7, 0x3, 0x2,
@@ -6893,7 +6893,7 @@ static const u16 sSamusOam_UnlockingHabitationsDeck_Frame4[] = {
     0xf8, 0x7, 0x16
 };
 
-const struct SamusAnimationData sSamusAnim_2caec8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_TurningAround[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAround_Frame0,
@@ -6909,7 +6909,7 @@ const struct SamusAnimationData sSamusAnim_2caec8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2caef8[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_TurningAround[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAround_Frame0,
@@ -6925,7 +6925,7 @@ const struct SamusAnimationData sSamusAnim_2caef8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2caf28[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_TurningAround[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_TurningAround_Frame0,
@@ -6941,7 +6941,7 @@ const struct SamusAnimationData sSamusAnim_2caf28[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2caf58[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_TurningAround[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_TurningAround_Frame0,
@@ -6957,7 +6957,7 @@ const struct SamusAnimationData sSamusAnim_2caf58[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2caf88[3] = {
+const struct SamusAnimationData sSamusAnim_Left_TurningAround[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_TurningAround_Frame0,
@@ -6973,7 +6973,7 @@ const struct SamusAnimationData sSamusAnim_2caf88[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cafb8[3] = {
+const struct SamusAnimationData sSamusAnim_Right_TurningAround[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_TurningAround_Frame0,
@@ -6989,7 +6989,7 @@ const struct SamusAnimationData sSamusAnim_2cafb8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cafe8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_TurningAround[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_TurningAround_Frame0,
@@ -7005,7 +7005,7 @@ const struct SamusAnimationData sSamusAnim_2cafe8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb018[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_TurningAround[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_TurningAround_Frame0,
@@ -7021,7 +7021,7 @@ const struct SamusAnimationData sSamusAnim_2cb018[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb048[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_TurningAroundAndCrouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0,
@@ -7037,7 +7037,7 @@ const struct SamusAnimationData sSamusAnim_2cb048[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb078[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_TurningAroundAndCrouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0,
@@ -7053,7 +7053,7 @@ const struct SamusAnimationData sSamusAnim_2cb078[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb0a8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_TurningAroundAndCrouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0,
@@ -7069,7 +7069,7 @@ const struct SamusAnimationData sSamusAnim_2cb0a8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb0d8[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_TurningAroundAndCrouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0,
@@ -7085,7 +7085,7 @@ const struct SamusAnimationData sSamusAnim_2cb0d8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb108[3] = {
+const struct SamusAnimationData sSamusAnim_Left_TurningAroundAndCrouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0,
@@ -7101,7 +7101,7 @@ const struct SamusAnimationData sSamusAnim_2cb108[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb138[3] = {
+const struct SamusAnimationData sSamusAnim_Right_TurningAroundAndCrouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0,
@@ -7117,7 +7117,7 @@ const struct SamusAnimationData sSamusAnim_2cb138[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb168[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_TurningAroundAndCrouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0,
@@ -7133,7 +7133,7 @@ const struct SamusAnimationData sSamusAnim_2cb168[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb198[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_TurningAroundAndCrouching[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundAndCrouching_Frame0,
@@ -7149,7 +7149,7 @@ const struct SamusAnimationData sSamusAnim_2cb198[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb1c8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_TurningAroundMidAir[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundMidAir_Frame0,
@@ -7165,7 +7165,7 @@ const struct SamusAnimationData sSamusAnim_2cb1c8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb1f8[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_TurningAroundMidAir[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundMidAir_Frame0,
@@ -7181,7 +7181,7 @@ const struct SamusAnimationData sSamusAnim_2cb1f8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb228[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_TurningAroundMidAir[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundMidAir_Frame0,
@@ -7197,7 +7197,7 @@ const struct SamusAnimationData sSamusAnim_2cb228[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb258[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_TurningAroundMidAir[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundMidAir_Frame0,
@@ -7213,7 +7213,7 @@ const struct SamusAnimationData sSamusAnim_2cb258[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb288[3] = {
+const struct SamusAnimationData sSamusAnim_Left_TurningAroundMidAir[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundMidAir_Frame0,
@@ -7229,7 +7229,7 @@ const struct SamusAnimationData sSamusAnim_2cb288[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb2b8[3] = {
+const struct SamusAnimationData sSamusAnim_Right_TurningAroundMidAir[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundMidAir_Frame0,
@@ -7245,7 +7245,7 @@ const struct SamusAnimationData sSamusAnim_2cb2b8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb2e8[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_TurningAroundMidAir[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_TurningAroundMidAir_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundMidAir_Frame0,
@@ -7261,7 +7261,7 @@ const struct SamusAnimationData sSamusAnim_2cb2e8[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb318[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_TurningAroundMidAir[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_TurningAroundMidAir_Frame0,
@@ -7277,87 +7277,87 @@ const struct SamusAnimationData sSamusAnim_2cb318[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb348[2] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_UnusedCrouching[2] = {
     [0] = {
-        .pTopGfx = sSamusGfx_Top_2cb348_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_2cb348_Frame0,
+        .pTopGfx = sSamusGfx_Top_Left_Up_UnusedCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Left_Up_UnusedCrouching_Frame0,
         .pOam = sSamusOam_Left_Up_TurningAroundAndCrouching_Frame0,
         .timer = 4
     },
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb368[2] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_UnusedCrouching[2] = {
     [0] = {
-        .pTopGfx = sSamusGfx_Top_2cb368_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_2cb348_Frame0,
-        .pOam = sSamusOam_2cb368_Frame0,
+        .pTopGfx = sSamusGfx_Top_Right_Up_UnusedCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Left_Up_UnusedCrouching_Frame0,
+        .pOam = sSamusOam_Right_Up_UnusedCrouching_Frame0,
         .timer = 4
     },
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb388[2] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_UnusedCrouching[2] = {
     [0] = {
-        .pTopGfx = sSamusGfx_Top_2cb388_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_2cb388_Frame0,
-        .pOam = sSamusOam_2cb388_Frame0,
+        .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_UnusedCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_UnusedCrouching_Frame0,
+        .pOam = sSamusOam_Left_DiagonalUp_UnusedCrouching_Frame0,
         .timer = 4
     },
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb3a8[2] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_UnusedCrouching[2] = {
     [0] = {
-        .pTopGfx = sSamusGfx_Top_2cb3a8_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_2cb388_Frame0,
-        .pOam = sSamusOam_2cb3a8_Frame0,
+        .pTopGfx = sSamusGfx_Top_Right_DiagonalUp_UnusedCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_UnusedCrouching_Frame0,
+        .pOam = sSamusOam_Right_DiagonalUp_UnusedCrouching_Frame0,
         .timer = 4
     },
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb3c8[2] = {
+const struct SamusAnimationData sSamusAnim_Left_UnusedCrouching[2] = {
     [0] = {
-        .pTopGfx = sSamusGfx_Top_Left_Crouching_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_Left_Crouching_Frame0,
-        .pOam = sSamusOam_Left_Crouching_Frame0,
+        .pTopGfx = sSamusGfx_Top_Left_UnusedCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Left_UnusedCrouching_Frame0,
+        .pOam = sSamusOam_Left_UnusedCrouching_Frame0,
         .timer = 4
     },
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb3e8[2] = {
+const struct SamusAnimationData sSamusAnim_Right_UnusedCrouching[2] = {
     [0] = {
-        .pTopGfx = sSamusGfx_Top_Right_Crouching_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_Left_Crouching_Frame0,
-        .pOam = sSamusOam_Right_Crouching_Frame0,
+        .pTopGfx = sSamusGfx_Top_Right_UnusedCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Left_UnusedCrouching_Frame0,
+        .pOam = sSamusOam_Right_UnusedCrouching_Frame0,
         .timer = 4
     },
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb408[2] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_UnusedCrouching[2] = {
     [0] = {
-        .pTopGfx = sSamusGfx_Top_2cb408_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_2cb408_Frame0,
-        .pOam = sSamusOam_2cb408_Frame0,
+        .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_UnusedCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalDown_UnusedCrouching_Frame0,
+        .pOam = sSamusOam_Left_DiagonalDown_UnusedCrouching_Frame0,
         .timer = 4
     },
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb428[2] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_UnusedCrouching[2] = {
     [0] = {
-        .pTopGfx = sSamusGfx_Top_2cb428_Frame0,
-        .pBottomGfx = sSamusGfx_Bottom_2cb408_Frame0,
-        .pOam = sSamusOam_2cb428_Frame0,
+        .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_UnusedCrouching_Frame0,
+        .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalDown_UnusedCrouching_Frame0,
+        .pOam = sSamusOam_Right_DiagonalDown_UnusedCrouching_Frame0,
         .timer = 4
     },
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb448[4] = {
+const struct SamusAnimationData sSamusAnim_Left_Morphing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Morphing_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -7379,7 +7379,7 @@ const struct SamusAnimationData sSamusAnim_2cb448[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb488[9] = {
+const struct SamusAnimationData sSamusAnim_Left_MorphBall[9] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_MorphBall_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -7431,7 +7431,7 @@ const struct SamusAnimationData sSamusAnim_2cb488[9] = {
     [8] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb518[4] = {
+const struct SamusAnimationData sSamusAnim_Left_Unmorphing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Morphing_Frame1,
         .pBottomGfx = sSamusGfx_Empty,
@@ -7453,7 +7453,7 @@ const struct SamusAnimationData sSamusAnim_2cb518[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb558[4] = {
+const struct SamusAnimationData sSamusAnim_Right_Morphing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Morphing_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -7475,7 +7475,7 @@ const struct SamusAnimationData sSamusAnim_2cb558[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb598[9] = {
+const struct SamusAnimationData sSamusAnim_Right_MorphBall[9] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_MorphBall_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -7527,7 +7527,7 @@ const struct SamusAnimationData sSamusAnim_2cb598[9] = {
     [8] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb628[4] = {
+const struct SamusAnimationData sSamusAnim_Right_Unmorphing[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Morphing_Frame1,
         .pBottomGfx = sSamusGfx_Empty,
@@ -7549,7 +7549,7 @@ const struct SamusAnimationData sSamusAnim_2cb628[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb668[5] = {
+const struct SamusAnimationData sSamusAnim_Left_OnSavePad[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAround_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_TurningAround_Frame0,
@@ -7577,7 +7577,7 @@ const struct SamusAnimationData sSamusAnim_2cb668[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb6b8[5] = {
+const struct SamusAnimationData sSamusAnim_Right_OnSavePad[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAround_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_TurningAround_Frame0,
@@ -7605,7 +7605,7 @@ const struct SamusAnimationData sSamusAnim_2cb6b8[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb708[5] = {
+const struct SamusAnimationData sSamusAnim_Left_FacingForeground[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_OnSavePad_Frame1,
         .pBottomGfx = sSamusGfx_Empty,
@@ -7633,7 +7633,7 @@ const struct SamusAnimationData sSamusAnim_2cb708[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb758[5] = {
+const struct SamusAnimationData sSamusAnim_Right_FacingForeground[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_OnSavePad_Frame1,
         .pBottomGfx = sSamusGfx_Empty,
@@ -7661,7 +7661,7 @@ const struct SamusAnimationData sSamusAnim_2cb758[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb7a8[17] = {
+const struct SamusAnimationData sSamusAnim_Left_OnNavigationPad[17] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_OnNavigationPad_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_OnNavigationPad_Frame0,
@@ -7761,7 +7761,7 @@ const struct SamusAnimationData sSamusAnim_2cb7a8[17] = {
     [16] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb8b8[5] = {
+const struct SamusAnimationData sSamusAnim_Left_FacingBackground[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_OnNavigationPad_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_OnNavigationPad_Frame1,
@@ -7789,7 +7789,7 @@ const struct SamusAnimationData sSamusAnim_2cb8b8[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cb908[17] = {
+const struct SamusAnimationData sSamusAnim_Right_OnNavigationPad[17] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_OnNavigationPad_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_OnNavigationPad_Frame0,
@@ -7889,7 +7889,7 @@ const struct SamusAnimationData sSamusAnim_2cb908[17] = {
     [16] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cba18[5] = {
+const struct SamusAnimationData sSamusAnim_Right_FacingBackground[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_OnNavigationPad_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_OnNavigationPad_Frame1,
@@ -7917,7 +7917,7 @@ const struct SamusAnimationData sSamusAnim_2cba18[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cba68[6] = {
+const struct SamusAnimationData sSamusAnim_Left_UsingAnElevator[6] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_UsingAnElevator_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_UsingAnElevator_Frame0,
@@ -7951,7 +7951,7 @@ const struct SamusAnimationData sSamusAnim_2cba68[6] = {
     [5] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cbac8[6] = {
+const struct SamusAnimationData sSamusAnim_Right_UsingAnElevator[6] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_UsingAnElevator_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_UsingAnElevator_Frame0,
@@ -7985,7 +7985,7 @@ const struct SamusAnimationData sSamusAnim_2cbac8[6] = {
     [5] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cbb28[17] = {
+const struct SamusAnimationData sSamusAnim_Left_DownloadingAbility[17] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DownloadingAbility_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DownloadingAbility_Frame0,
@@ -8085,7 +8085,7 @@ const struct SamusAnimationData sSamusAnim_2cbb28[17] = {
     [16] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cbc38[17] = {
+const struct SamusAnimationData sSamusAnim_Right_DownloadingAbility[17] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DownloadingAbility_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DownloadingAbility_Frame0,
@@ -8185,7 +8185,7 @@ const struct SamusAnimationData sSamusAnim_2cbc38[17] = {
     [16] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cbd48[9] = {
+const struct SamusAnimationData sSamusAnim_Left_BeingRecharged[9] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_BeingRecharged_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_BeingRecharged_Frame0,
@@ -8237,7 +8237,7 @@ const struct SamusAnimationData sSamusAnim_2cbd48[9] = {
     [8] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cbdd8[9] = {
+const struct SamusAnimationData sSamusAnim_Right_BeingRecharged[9] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_BeingRecharged_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_BeingRecharged_Frame0,
@@ -8289,7 +8289,7 @@ const struct SamusAnimationData sSamusAnim_2cbdd8[9] = {
     [8] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cbe68[2] = {
+const struct SamusAnimationData sSamusAnim_Left_UnlockingSecurity[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_UnlockingSecurity_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_BeingRecharged_Frame1,
@@ -8299,7 +8299,7 @@ const struct SamusAnimationData sSamusAnim_2cbe68[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cbe88[2] = {
+const struct SamusAnimationData sSamusAnim_Right_UnlockingSecurity[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_UnlockingSecurity_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_BeingRecharged_Frame1,
@@ -8309,7 +8309,7 @@ const struct SamusAnimationData sSamusAnim_2cbe88[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2cbea8[7] = {
+const struct SamusAnimationData sSamusAnim_UnlockingHabitationsDeck[7] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_UnlockingHabitationsDeck_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_UnlockingHabitationsDeck_Frame0,
@@ -10068,7 +10068,7 @@ static const u16 sSamusOam_Right_ReadyToJump_HangingOnLedge_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xfb, 0x1f9, 0x16
 };
 
-const struct SamusAnimationData sSamusAnim_2d607c[8] = {
+const struct SamusAnimationData sSamusAnim_Left_HangingFromVerticalLadder[8] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_HangingFromVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HangingFromVerticalLadder_Frame0,
@@ -10114,7 +10114,7 @@ const struct SamusAnimationData sSamusAnim_2d607c[8] = {
     [7] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d60fc[8] = {
+const struct SamusAnimationData sSamusAnim_Right_HangingFromVerticalLadder[8] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_HangingFromVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HangingFromVerticalLadder_Frame3,
@@ -10240,7 +10240,7 @@ const struct SamusAnimationData sSamusAnim_2d61ec[7] = {
     [6] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d625c[3] = {
+const struct SamusAnimationData sSamusAnim_Left_StartingToHoldYourArmCannonOutOnAVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_StartingToHoldYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_StartingToHoldYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -10256,7 +10256,7 @@ const struct SamusAnimationData sSamusAnim_2d625c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d628c[3] = {
+const struct SamusAnimationData sSamusAnim_Left_StartingToPutAwayYourArmCannonOutOnAVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_StartingToHoldYourArmCannonOutOnAVerticalLadder_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_StartingToHoldYourArmCannonOutOnAVerticalLadder_Frame1,
@@ -10272,7 +10272,7 @@ const struct SamusAnimationData sSamusAnim_2d628c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d62bc[2] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -10282,7 +10282,7 @@ const struct SamusAnimationData sSamusAnim_2d62bc[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d62dc[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalUp_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalUp_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_ShootingOnVerticalLadder_Frame0,
@@ -10298,7 +10298,7 @@ const struct SamusAnimationData sSamusAnim_2d62dc[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d630c[2] = {
+const struct SamusAnimationData sSamusAnim_Left_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -10308,7 +10308,7 @@ const struct SamusAnimationData sSamusAnim_2d630c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d632c[3] = {
+const struct SamusAnimationData sSamusAnim_Left_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_ShootingOnVerticalLadder_Frame0,
@@ -10324,7 +10324,7 @@ const struct SamusAnimationData sSamusAnim_2d632c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d635c[2] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -10334,7 +10334,7 @@ const struct SamusAnimationData sSamusAnim_2d635c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d637c[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalUp_ShootingOnVerticalLadder_Frame0,
@@ -10350,7 +10350,7 @@ const struct SamusAnimationData sSamusAnim_2d637c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d63ac[3] = {
+const struct SamusAnimationData sSamusAnim_Right_StartingToHoldYourArmCannonOutOnAVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_StartingToHoldYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_StartingToHoldYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -10366,7 +10366,7 @@ const struct SamusAnimationData sSamusAnim_2d63ac[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d63dc[3] = {
+const struct SamusAnimationData sSamusAnim_Right_StartingToPutAwayYourArmCannonOutOnAVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_StartingToHoldYourArmCannonOutOnAVerticalLadder_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Right_StartingToHoldYourArmCannonOutOnAVerticalLadder_Frame1,
@@ -10382,7 +10382,7 @@ const struct SamusAnimationData sSamusAnim_2d63dc[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d640c[2] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -10392,7 +10392,7 @@ const struct SamusAnimationData sSamusAnim_2d640c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d642c[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalUp_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalUp_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_DiagonalUp_ShootingOnVerticalLadder_Frame0,
@@ -10408,7 +10408,7 @@ const struct SamusAnimationData sSamusAnim_2d642c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d645c[2] = {
+const struct SamusAnimationData sSamusAnim_Right_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -10418,7 +10418,7 @@ const struct SamusAnimationData sSamusAnim_2d645c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d647c[3] = {
+const struct SamusAnimationData sSamusAnim_Right_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_DiagonalUp_ShootingOnVerticalLadder_Frame0,
@@ -10434,7 +10434,7 @@ const struct SamusAnimationData sSamusAnim_2d647c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d64ac[2] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -10444,7 +10444,7 @@ const struct SamusAnimationData sSamusAnim_2d64ac[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d64cc[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_DiagonalUp_ShootingOnVerticalLadder_Frame0,
@@ -10460,7 +10460,7 @@ const struct SamusAnimationData sSamusAnim_2d64cc[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d64fc[3] = {
+const struct SamusAnimationData sSamusAnim_Left_StartingWallJump[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_StartingWallJump_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -10476,7 +10476,7 @@ const struct SamusAnimationData sSamusAnim_2d64fc[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d652c[3] = {
+const struct SamusAnimationData sSamusAnim_Right_StartingWallJump[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_StartingWallJump_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -10492,7 +10492,7 @@ const struct SamusAnimationData sSamusAnim_2d652c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d655c[8] = {
+const struct SamusAnimationData sSamusAnim_Left_HangingOnLedge[8] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_HangingOnLedge_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HangingOnLedge_Frame0,
@@ -10538,7 +10538,7 @@ const struct SamusAnimationData sSamusAnim_2d655c[8] = {
     [7] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d65dc[4] = {
+const struct SamusAnimationData sSamusAnim_Left_PullingYourselfUpFromHanging[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_HangingOnLedge_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HangingOnLedge_Frame0,
@@ -10560,7 +10560,7 @@ const struct SamusAnimationData sSamusAnim_2d65dc[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d661c[5] = {
+const struct SamusAnimationData sSamusAnim_Left_PullingYourselfForwardFromHanging[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_PullingYourselfForwardFromHanging_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_PullingYourselfForwardFromHanging_Frame0,
@@ -10588,7 +10588,7 @@ const struct SamusAnimationData sSamusAnim_2d661c[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d666c[2] = {
+const struct SamusAnimationData sSamusAnim_Left_PullingYourselfIntoMorphBallTunnel[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_PullingYourselfIntoMorphBallTunnel_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -10598,7 +10598,7 @@ const struct SamusAnimationData sSamusAnim_2d666c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d668c[8] = {
+const struct SamusAnimationData sSamusAnim_Right_HangingOnLedge[8] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_HangingOnLedge_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HangingOnLedge_Frame0,
@@ -10644,7 +10644,7 @@ const struct SamusAnimationData sSamusAnim_2d668c[8] = {
     [7] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d670c[4] = {
+const struct SamusAnimationData sSamusAnim_Right_PullingYourselfUpFromHanging[4] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_HangingOnLedge_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HangingOnLedge_Frame0,
@@ -10666,7 +10666,7 @@ const struct SamusAnimationData sSamusAnim_2d670c[4] = {
     [3] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d674c[5] = {
+const struct SamusAnimationData sSamusAnim_Right_PullingYourselfForwardFromHanging[5] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_PullingYourselfForwardFromHanging_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_PullingYourselfForwardFromHanging_Frame0,
@@ -10694,7 +10694,7 @@ const struct SamusAnimationData sSamusAnim_2d674c[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d679c[2] = {
+const struct SamusAnimationData sSamusAnim_Right_PullingYourselfIntoMorphBallTunnel[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_PullingYourselfIntoMorphBallTunnel_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -10732,7 +10732,7 @@ const struct SamusAnimationData sSamusAnim_2d67bc[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d680c[11] = {
+const struct SamusAnimationData sSamusAnim_Left_MovingOnHorizontalLadder[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_MovingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MovingOnHorizontalLadder_Frame0,
@@ -10796,7 +10796,7 @@ const struct SamusAnimationData sSamusAnim_2d680c[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d68bc[3] = {
+const struct SamusAnimationData sSamusAnim_Left_TurningAroundOnHorizontalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAroundOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_TurningAroundOnHorizontalLadder_Frame0,
@@ -10812,7 +10812,7 @@ const struct SamusAnimationData sSamusAnim_2d68bc[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d68ec[3] = {
+const struct SamusAnimationData sSamusAnim_Right_TurningAroundOnHorizontalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_TurningAroundOnHorizontalLadder_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_TurningAroundOnHorizontalLadder_Frame0,
@@ -10856,7 +10856,7 @@ const struct SamusAnimationData sSamusAnim_2d691c[5] = {
     [4] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d696c[11] = {
+const struct SamusAnimationData sSamusAnim_Right_MovingOnHorizontalLadder[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_MovingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_MovingOnHorizontalLadder_Frame4,
@@ -10920,7 +10920,7 @@ const struct SamusAnimationData sSamusAnim_2d696c[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6a1c[2] = {
+const struct SamusAnimationData sSamusAnim_Left_HangingOnHorizontalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_HangingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HangingOnHorizontalLadder_Frame0,
@@ -10930,7 +10930,7 @@ const struct SamusAnimationData sSamusAnim_2d6a1c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6a3c[3] = {
+const struct SamusAnimationData sSamusAnim_Left_ShootingOnHorizontalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_ShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_ShootingOnHorizontalLadder_Frame0,
@@ -10946,7 +10946,7 @@ const struct SamusAnimationData sSamusAnim_2d6a3c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6a6c[2] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_DelayAfterShootingOnHorizontalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_DelayAfterShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalDown_DelayAfterShootingOnHorizontalLadder_Frame0,
@@ -10956,7 +10956,7 @@ const struct SamusAnimationData sSamusAnim_2d6a6c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6a8c[3] = {
+const struct SamusAnimationData sSamusAnim_Left_DiagonalDown_ShootingOnHorizontalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_DiagonalDown_ShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalDown_ShootingOnHorizontalLadder_Frame0,
@@ -10972,7 +10972,7 @@ const struct SamusAnimationData sSamusAnim_2d6a8c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6abc[2] = {
+const struct SamusAnimationData sSamusAnim_Left_Down_DelayAfterShootingOnHorizontalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Down_DelayAfterShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Down_DelayAfterShootingOnHorizontalLadder_Frame0,
@@ -10982,7 +10982,7 @@ const struct SamusAnimationData sSamusAnim_2d6abc[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6adc[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Down_ShootingOnHorizontalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Down_ShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Down_ShootingOnHorizontalLadder_Frame0,
@@ -10998,7 +10998,7 @@ const struct SamusAnimationData sSamusAnim_2d6adc[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6b0c[2] = {
+const struct SamusAnimationData sSamusAnim_Right_HangingOnHorizontalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_HangingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_HangingOnHorizontalLadder_Frame0,
@@ -11008,7 +11008,7 @@ const struct SamusAnimationData sSamusAnim_2d6b0c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6b2c[3] = {
+const struct SamusAnimationData sSamusAnim_Right_ShootingOnHorizontalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_ShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_ShootingOnHorizontalLadder_Frame0,
@@ -11024,7 +11024,7 @@ const struct SamusAnimationData sSamusAnim_2d6b2c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6b5c[2] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_DelayAfterShootingOnHorizontalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_DelayAfterShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalDown_DelayAfterShootingOnHorizontalLadder_Frame0,
@@ -11034,7 +11034,7 @@ const struct SamusAnimationData sSamusAnim_2d6b5c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6b7c[3] = {
+const struct SamusAnimationData sSamusAnim_Right_DiagonalDown_ShootingOnHorizontalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_DiagonalDown_ShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_DiagonalDown_ShootingOnHorizontalLadder_Frame0,
@@ -11050,7 +11050,7 @@ const struct SamusAnimationData sSamusAnim_2d6b7c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6bac[2] = {
+const struct SamusAnimationData sSamusAnim_Right_Down_DelayAfterShootingOnHorizontalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Down_DelayAfterShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Down_DelayAfterShootingOnHorizontalLadder_Frame0,
@@ -11060,7 +11060,7 @@ const struct SamusAnimationData sSamusAnim_2d6bac[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6bcc[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Down_ShootingOnHorizontalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Down_ShootingOnHorizontalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Down_ShootingOnHorizontalLadder_Frame0,
@@ -11076,7 +11076,7 @@ const struct SamusAnimationData sSamusAnim_2d6bcc[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6bfc[3] = {
+const struct SamusAnimationData sSamusAnim_Left_PullingYourselfDownToStartHanging[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_PullingYourselfUpFromHanging_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_PullingYourselfUpFromHanging_Frame1,
@@ -11092,7 +11092,7 @@ const struct SamusAnimationData sSamusAnim_2d6bfc[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6c2c[3] = {
+const struct SamusAnimationData sSamusAnim_Right_PullingYourselfDownToStartHanging[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_PullingYourselfUpFromHanging_Frame1,
         .pBottomGfx = sSamusGfx_Bottom_Left_PullingYourselfUpFromHanging_Frame1,
@@ -11200,7 +11200,7 @@ const struct SamusAnimationData sSamusAnim_2d6cdc[8] = {
     [7] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6d5c[2] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Up_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_Up_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -11210,7 +11210,7 @@ const struct SamusAnimationData sSamusAnim_2d6d5c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6d7c[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Up_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Up_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_Up_ShootingOnVerticalLadder_Frame0,
@@ -11226,7 +11226,7 @@ const struct SamusAnimationData sSamusAnim_2d6d7c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6dac[2] = {
+const struct SamusAnimationData sSamusAnim_Right_Down_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Down_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_Down_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -11236,7 +11236,7 @@ const struct SamusAnimationData sSamusAnim_2d6dac[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6dcc[3] = {
+const struct SamusAnimationData sSamusAnim_Right_Down_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_Down_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_Down_ShootingOnVerticalLadder_Frame0,
@@ -11252,7 +11252,7 @@ const struct SamusAnimationData sSamusAnim_2d6dcc[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6dfc[2] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -11262,7 +11262,7 @@ const struct SamusAnimationData sSamusAnim_2d6dfc[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6e1c[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Up_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Up_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Up_ShootingOnVerticalLadder_Frame0,
@@ -11278,7 +11278,7 @@ const struct SamusAnimationData sSamusAnim_2d6e1c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6e4c[2] = {
+const struct SamusAnimationData sSamusAnim_Left_Down_HoldingYourArmCannonOutOnAVerticalLadder[2] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Down_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Down_HoldingYourArmCannonOutOnAVerticalLadder_Frame0,
@@ -11288,7 +11288,7 @@ const struct SamusAnimationData sSamusAnim_2d6e4c[2] = {
     [1] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6e6c[3] = {
+const struct SamusAnimationData sSamusAnim_Left_Down_ShootingOnVerticalLadder[3] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Down_ShootingOnVerticalLadder_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_Down_ShootingOnVerticalLadder_Frame0,
@@ -11304,7 +11304,7 @@ const struct SamusAnimationData sSamusAnim_2d6e6c[3] = {
     [2] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6e9c[8] = {
+const struct SamusAnimationData sSamusAnim_Left_ReadyToJump_HangingOnLedge[8] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_ReadyToJump_HangingOnLedge_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Left_ReadyToJump_HangingOnLedge_Frame0,
@@ -11350,7 +11350,7 @@ const struct SamusAnimationData sSamusAnim_2d6e9c[8] = {
     [7] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d6f1c[8] = {
+const struct SamusAnimationData sSamusAnim_Right_ReadyToJump_HangingOnLedge[8] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Right_ReadyToJump_HangingOnLedge_Frame0,
         .pBottomGfx = sSamusGfx_Bottom_Right_ReadyToJump_HangingOnLedge_Frame0,
@@ -11460,7 +11460,7 @@ static const u16 sSamusOam_Right_SpaceJumping_Frame4[] = {
     OBJ_SHAPE_HORIZONTAL | 0xe5, OBJ_Y_FLIP | OBJ_SIZE_32x16 | 0x1f0, 0x4
 };
 
-const struct SamusAnimationData sSamusAnim_2d7fe4[9] = {
+const struct SamusAnimationData sSamusAnim_Left_SpaceJumping[9] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_SpaceJumping_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -11512,7 +11512,7 @@ const struct SamusAnimationData sSamusAnim_2d7fe4[9] = {
     [8] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d8074[9] = {
+const struct SamusAnimationData sSamusAnim_Right_SpaceJumping[9] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_SpaceJumping_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -11564,7 +11564,7 @@ const struct SamusAnimationData sSamusAnim_2d8074[9] = {
     [8] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d8104[17] = {
+const struct SamusAnimationData sSamusAnim_Left_ScrewAttacking[17] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_SpaceJumping_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -11664,7 +11664,7 @@ const struct SamusAnimationData sSamusAnim_2d8104[17] = {
     [16] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d8214[17] = {
+const struct SamusAnimationData sSamusAnim_Right_ScrewAttacking[17] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_SpaceJumping_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -11858,7 +11858,7 @@ static const u16 sSamusOam_Right_Dying_Frame8[] = {
     0xe6, OBJ_X_FLIP | 0x12, 0x1
 };
 
-const struct SamusAnimationData sSamusAnim_2d90a8[11] = {
+const struct SamusAnimationData sSamusAnim_Left_Dying[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Dying_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -11922,7 +11922,7 @@ const struct SamusAnimationData sSamusAnim_2d90a8[11] = {
     [10] = SAMUS_ANIM_TERMINATOR
 };
 
-const struct SamusAnimationData sSamusAnim_2d9158[11] = {
+const struct SamusAnimationData sSamusAnim_Right_Dying[11] = {
     [0] = {
         .pTopGfx = sSamusGfx_Top_Left_Dying_Frame0,
         .pBottomGfx = sSamusGfx_Empty,
@@ -12067,7 +12067,7 @@ static const u16 sSamusOam_LoadingSave_Frame6[] = {
     OBJ_SHAPE_VERTICAL | 0xe8, 0x4, 0x5
 };
 
-const struct SamusAnimationData sSamusAnim_2d9c04[29] = {
+const struct SamusAnimationData sSamusAnim_LoadingSave[29] = {
     [0] = {
         .pTopGfx = sSamusGfx_Empty,
         .pBottomGfx = sSamusGfx_Empty,
@@ -12832,7 +12832,7 @@ static const u16 sSamusOam_Saving_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xf8, 0x1f8, 0x1c
 };
 
-const struct SamusAnimationData sSamusAnim_2de520[73] = {
+const struct SamusAnimationData sSamusAnim_Saving[73] = {
     [0] = {
         .pTopGfx = sSamusGfx_Empty,
         .pBottomGfx = sSamusGfx_Bottom_Saving_Frame0,
