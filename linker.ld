@@ -401,6 +401,7 @@ SECTIONS {
         src/data/sprites/elevator_pad.o(.rodata);
         src/data/sprites/serris.o(.rodata);
         src/data/sprites/owtch.o(.rodata);
+        src/data/sprites/neo_ridley.o(.rodata);
         src/data/sprites/yakuza.o(.rodata);
         src/data/sprites/nightmare.o(.rodata);
         src/data/sprites/x_parasite.o(.rodata);

@@ -2,6 +2,7 @@
 
 #include "data/sprites/box.h"
 #include "data/sprites/zazabi.h"
+#include "data/sprites/neo_ridley.h"
 #include "data/sprites/yakuza.h"
 #include "data/sprites/nightmare.h"
 
@@ -307,7 +308,41 @@ const struct FrameData* const sZazabiFrameDataPointers1[57] = {
     sZazabiPartOam_EyeLandingLeft
 };
 
-static const u8 sBlob_79b458_79b784[] = INCBIN_U8("data/Blob_79b458_79b784.bin");
+static const u8 sBlob_79b458_79b708[] = INCBIN_U8("data/Blob_79b458_79b708.bin");
+
+const struct FrameData* const sRidleyFrameDataPointers[RIDLEY_OAM_END] = {
+    [RIDLEY_PART_OAM_3AF270] = sRidleyPartOam_3af270,
+    [RIDLEY_PART_OAM_3AF298] = sRidleyPartOam_3af298,
+    [RIDLEY_PART_OAM_3AF318] = sRidleyPartOam_3af318,
+    [RIDLEY_PART_OAM_3AF330] = sRidleyPartOam_3af330,
+    [RIDLEY_PART_OAM_3AF348] = sRidleyPartOam_3af348,
+    [RIDLEY_PART_OAM_3AF360] = sRidleyPartOam_3af360,
+    [RIDLEY_PART_OAM_3AF420] = sRidleyPartOam_3af420,
+    [RIDLEY_PART_OAM_3AF430] = sRidleyPartOam_3af430,
+    [RIDLEY_PART_OAM_3AF440] = sRidleyPartOam_3af440,
+    [RIDLEY_PART_OAM_3AF450] = sRidleyPartOam_3af450,
+    [RIDLEY_PART_OAM_3AF468] = sRidleyPartOam_3af468,
+    [RIDLEY_PART_OAM_3AF480] = sRidleyPartOam_3af480,
+    [RIDLEY_PART_OAM_3AF498] = sRidleyPartOam_3af498,
+    [RIDLEY_PART_OAM_3AF4A8] = sRidleyPartOam_3af4a8,
+    [RIDLEY_PART_OAM_3AF4B8] = sRidleyPartOam_3af4b8,
+    [RIDLEY_PART_OAM_3AF4C8] = sRidleyPartOam_3af4c8,
+    [RIDLEY_PART_OAM_3AF528] = sRidleyPartOam_3af528,
+    [RIDLEY_PART_OAM_3AF588] = sRidleyPartOam_3af588,
+    [RIDLEY_PART_OAM_3AF5E8] = sRidleyPartOam_3af5e8,
+    [RIDLEY_PART_OAM_3AF648] = sRidleyPartOam_3af648,
+    [RIDLEY_PART_OAM_3AF670] = sRidleyPartOam_3af670,
+    [RIDLEY_PART_OAM_3AF698] = sRidleyPartOam_3af698,
+    [RIDLEY_PART_OAM_3AF6D8] = sRidleyPartOam_3af6d8,
+    [RIDLEY_PART_OAM_3AF718] = sRidleyPartOam_3af718,
+    [RIDLEY_PART_OAM_3AF750] = sRidleyPartOam_3af750,
+    [RIDLEY_PART_OAM_3AF788] = sRidleyPartOam_3af788,
+    [RIDLEY_PART_OAM_3AF798] = sRidleyPartOam_3af798,
+    [RIDLEY_PART_OAM_3AF7D0] = sRidleyPartOam_3af7d0,
+    [RIDLEY_PART_OAM_3AF7F0] = sRidleyPartOam_3af7f0,
+    [RIDLEY_PART_OAM_3AF800] = sRidleyPartOam_3af800,
+    [RIDLEY_PART_OAM_3AF810] = sRidleyPartOam_3af810,
+};
 
 const struct FrameData* const sYakuzaFrameDataPointers[YAKUZA_OAM_END] = {
     [FRAMEDATA_3B6F08] = sFrameData_3b6f08,
