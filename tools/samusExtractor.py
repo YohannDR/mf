@@ -149,6 +149,209 @@ def ParseAnim():
 
     return (result, animationData)
 
+animNamesBase = [
+    "Standing", # 0
+    "TurningAround", # 1
+    "Shooting", # 2
+    "Running", # 3
+    "MidAir", # 4
+    "TurningAroundMidAir", # 5
+    "Landing", # 6
+    "Crouching", # 7
+    "TurningAroundAndCrouching", # 8
+    "ShootingAndCrouching", # 9
+    "StartingSpinJump", # 0xa
+    "Spinning", # 0xb
+    "Morphing", # 0xc
+    "MorphBall", # 0xd
+    "Rolling", # 0xe
+    "Unmorphing", # 0xf
+    "MorphBallMidAir", # 0x10
+    "GettingHurt", # 0x11
+    "GettingHurtInMorphBall", # 0x12
+    "GettingKnockedBack", # 0x13
+    "GettingKnockedBackInMorphBall", # 0x14
+    "StartingWallJump", # 0x15
+    "WallJumping", # 0x16
+    "UsingAnElevator", # 0x17
+    "HangingOnLedge", # 0x18
+    "PullingYourselfUpFromHanging", # 0x19
+    "PullingYourselfForwardFromHanging", # 0x1a
+    "PullingYourselfIntoMorphBallTunnel", # 0x1b
+    "PullingYourselfDownToStartHanging", # 0x1c
+    "SpaceJumping", # 0x1d
+    "ScrewAttacking", # 0x1e
+    "Skidding", # 0x1f
+    "OnSavePad", # 0x20
+    "OnRechargeOrSecurityPad", # 0x21
+    "TurningAroundToRechargeOrUnlockDoors", # 0x22
+    "DelayBeforeShinesparking", # 0x23
+    "Shinesparking", # 0x24
+    "DelayAfterShinesparking", # 0x25
+    "HangingFromVerticalLadder", # 0x26
+    "StartingToHoldYourArmCannonOutOnAVerticalLadder", # 0x27
+    "HoldingYourArmCannonOutOnAVerticalLadder", # 0x28
+    "ShootingOnVerticalLadder", # 0x29
+    "StartingToPutAwayYourArmCannonOutOnAVerticalLadder", # 0x2a
+    "HangingOnHorizontalLadder", # 0x2b
+    "MovingOnHorizontalLadder", # 0x2c
+    "TurningAroundOnHorizontalLadder", # 0x2d
+    "DelayAfterShootingOnHorizontalLadder", # 0x2e
+    "ShootingOnHorizontalLadder", # 0x2f
+    "Frozen", # 0x30
+    "FrozenAndFalling", # 0x31
+    "FrozenInMorphBall", # 0x32
+    "FrozenInMorphBallAndFalling", # 0x33
+    "UnlockingSecurity", # 0x34
+    "Saving", # 0x35
+    "OnNavigationPad", # 0x36
+    "DownloadingAbility", # 0x37
+    "BeingRecharged", # 0x38
+    "FacingForeground", # 0x39
+    "FacingBackground", # 0x3a
+    "UnlockingHabitationsDeck", # 0x3b
+    "GrabbedByZazabi", # 0x3c
+    "LoadingSave", # 0x3d
+    "Dying", # 0x3e
+    "HitByOmegaMetroid", # 0x3f
+    "GrabbedByYakuza", # 0x40
+
+    "Standing",
+    "Forward_Standing",
+    "DiagonalUp_Standing",
+    "DiagonalDown_Standing",
+    "Up_Standing",
+
+    "TurningAround",
+    "Forward_TurningAround",
+    "DiagonalUp_TurningAround",
+    "DiagonalDown_TurningAround",
+    "Up_TurningAround",
+
+    "Shooting",
+    "Forward_Shooting",
+    "DiagonalUp_Shooting",
+    "DiagonalDown_Shooting",
+    "Up_Shooting",
+
+    "Running",
+    "Forward_Running",
+    "DiagonalUp_Running",
+    "DiagonalDown_Running",
+
+    "MidAir",
+    "Forward_MidAir",
+    "DiagonalUp_MidAir",
+    "DiagonalDown_MidAir",
+    "Up_MidAir",
+    "Down_MidAir",
+
+    "TurningAroundMidAir",
+    "Forward_TurningAroundMidAir",
+    "DiagonalUp_TurningAroundMidAir",
+    "DiagonalDown_TurningAroundMidAir",
+    "Up_TurningAroundMidAir",
+    "Down_TurningAroundMidAir",
+
+    "Landing",
+    "Forward_Landing",
+    "DiagonalUp_Landing",
+    "DiagonalDown_Landing",
+    "Up_Landing",
+
+    # gaps for unused animations
+    "gap",
+    "gap",
+    "gap",
+    "gap",
+    "gap",
+
+    "TurningAroundAndCrouching",
+    "Forward_TurningAroundAndCrouching",
+    "DiagonalUp_TurningAroundAndCrouching",
+    "DiagonalDown_TurningAroundAndCrouching",
+    "Up_TurningAroundAndCrouching",
+
+    "Crouching",
+    "Forward_Crouching",
+    "DiagonalUp_Crouching",
+    "DiagonalDown_Crouching",
+    "Up_Crouching",
+
+    "HangingOnLedge",
+    "ReadyToJump_HangingOnLedge",
+
+    # there's a random gap here for screw attack electricity OAM frame data pointers for some reason
+    "gap",
+
+    "Skidding",
+    "Armed_Skidding",
+
+    "Shinesparking",
+    "Sidewards_Shinesparking",
+    "DiagonalUp_Shinesparking",
+
+    "DelayAfterShinesparking",
+    "Sidewards_DelayAfterShinesparking",
+    "DiagonalUp_DelayAfterShinesparking",
+
+    "HoldingYourArmCannonOutOnAVerticalLadder",
+    "Forward_HoldingYourArmCannonOutOnAVerticalLadder",
+    "DiagonalUp_HoldingYourArmCannonOutOnAVerticalLadder",
+    "DiagonalDown_HoldingYourArmCannonOutOnAVerticalLadder",
+    "Up_HoldingYourArmCannonOutOnAVerticalLadder",
+    "Down_HoldingYourArmCannonOutOnAVerticalLadder",
+
+    "ShootingOnVerticalLadder",
+    "Forward_ShootingOnVerticalLadder",
+    "DiagonalUp_ShootingOnVerticalLadder",
+    "DiagonalDown_ShootingOnVerticalLadder",
+    "Up_ShootingOnVerticalLadder",
+    "Down_ShootingOnVerticalLadder",
+
+    "DelayAfterShootingOnHorizontalLadder",
+    "Forward_DelayAfterShootingOnHorizontalLadder",
+    "DiagonalUp_DelayAfterShootingOnHorizontalLadder",
+    "DiagonalDown_DelayAfterShootingOnHorizontalLadder",
+    "Up_DelayAfterShootingOnHorizontalLadder",
+    "Down_DelayAfterShootingOnHorizontalLadder",
+
+    "ShootingOnHorizontalLadder",
+    "Forward_ShootingOnHorizontalLadder",
+    "DiagonalUp_ShootingOnHorizontalLadder",
+    "DiagonalDown_ShootingOnHorizontalLadder",
+    "Up_ShootingOnHorizontalLadder",
+    "Down_ShootingOnHorizontalLadder",
+
+    # gaps for unlocking security and loading save effect OAM frame data pointers
+    "gap",
+    "gap",
+
+    "HitByOmegaMetroid",
+    "LookingUp_HitByOmegaMetroid"
+]
+
+namedAnims = {}
+
+def ParseAnimNames():
+    file.seek(0x28d2bc)
+
+    for animIndex in range(len(animNamesBase)):
+        if animNamesBase[animIndex] != "gap":
+            right = int.from_bytes(file.read(4), "little") & 0x1ffffff
+            left = int.from_bytes(file.read(4), "little") & 0x1ffffff
+
+            if right == left:
+                if right not in namedAnims: # there's only 1 dirction
+                    namedAnims[right] = animNamesBase[animIndex]
+            else:
+                if right not in namedAnims:
+                    namedAnims[right] = "Right_" + animNamesBase[animIndex]
+                if left not in namedAnims:
+                    namedAnims[left] = "Left_" + animNamesBase[animIndex]
+        else:
+            file.read(8)
+
 def ParseGfxOamAnim():
     file.seek(0x2b5058)
 
@@ -190,13 +393,15 @@ def ParseGfxOamAnim():
                 break
             (result, animationData) = ParseAnim()
             output += result
+            if currentAddr not in namedAnims:
+                namedAnims[currentAddr] = f"{currentAddr:x}" # unused animation
             for i in range(len(animationData)):
                 if animationData[i][0] not in namedFrames:
-                    namedFrames[animationData[i][0]] = f"Top_{currentAddr:x}_Frame{i}"
+                    namedFrames[animationData[i][0]] = f"Top_{namedAnims[currentAddr]}_Frame{i}"
                 if animationData[i][1] not in namedFrames:
-                    namedFrames[animationData[i][1]] = f"Bottom_{currentAddr:x}_Frame{i}"
+                    namedFrames[animationData[i][1]] = f"Bottom_{namedAnims[currentAddr]}_Frame{i}"
                 if animationData[i][2] not in namedFrames:
-                    namedFrames[animationData[i][2]] = f"{currentAddr:x}_Frame{i}"
+                    namedFrames[animationData[i][2]] = f"{namedAnims[currentAddr]}_Frame{i}"
             animations.append((currentAddr, len(animationData)+1))
 
     for (addr, length) in gfxs:
@@ -206,7 +411,7 @@ def ParseGfxOamAnim():
         output = output.replace(f"{addr:x}", name)
 
     for (addr, length) in animations:
-        output += f"extern const struct SamusAnimationData sSamusAnim_{addr:x}[{length}];\n"
+        output += f"extern const struct SamusAnimationData sSamusAnim_{namedAnims[addr]}[{length}];\n"
 
     return output
 
@@ -215,10 +420,14 @@ file = open("../mf_us_baserom.gba", "rb")
 out = open("out.txt", "w")
 
 def Func():
+    ParseAnimNames()
+    '''for (addr, name) in sorted(namedAnims.items()):
+        print(f"{addr:x}: {name}")'''
     out.write(ParseGfxOamAnim())
     print(hex(file.tell()))
 
     file.close()
+    #input()
     out.close()
 
 Func()
