@@ -44,7 +44,7 @@ _0803E3E4:
 	strh r0, [r4, #0xc]
 	strh r1, [r4, #0xe]
 	strh r0, [r4, #0x10]
-	ldr r0, _0803E464 @ =0x08357540
+	ldr r0, _0803E464 @ =sBullOam_357540
 	str r0, [r4, #0x18]
 	strb r5, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -89,7 +89,7 @@ _0803E448:
 	.align 2, 0
 _0803E45C: .4byte gCurrentSprite
 _0803E460: .4byte 0x0000FFE0
-_0803E464: .4byte 0x08357540
+_0803E464: .4byte sBullOam_357540
 _0803E468: .4byte sPrimarySpriteStats
 _0803E46C: .4byte gSpriteRandomNumber
 _0803E470:
@@ -109,7 +109,7 @@ BullIdleInit: @ 0x0803E47C
 	movs r3, #0
 	movs r1, #2
 	strb r1, [r2]
-	ldr r1, _0803E49C @ =0x08357540
+	ldr r1, _0803E49C @ =sBullOam_357540
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	strh r3, [r0, #0x16]
@@ -119,7 +119,7 @@ BullIdleInit: @ 0x0803E47C
 	bx lr
 	.align 2, 0
 _0803E498: .4byte gCurrentSprite
-_0803E49C: .4byte 0x08357540
+_0803E49C: .4byte sBullOam_357540
 
 	thumb_func_start BullIdle
 BullIdle: @ 0x0803E4A0
@@ -414,7 +414,7 @@ BullSmoke: @ 0x0803E698
 	adds r0, #0x25
 	movs r2, #2
 	strb r2, [r0]
-	ldr r0, _0803E714 @ =0x08357568
+	ldr r0, _0803E714 @ =sBullOam_357568
 	str r0, [r4, #0x18]
 	strb r1, [r4, #0x1c]
 	strh r6, [r4, #0x16]
@@ -445,7 +445,7 @@ BullSmoke: @ 0x0803E698
 	.align 2, 0
 _0803E70C: .4byte gCurrentSprite
 _0803E710: .4byte 0x0000FFFB
-_0803E714: .4byte 0x08357568
+_0803E714: .4byte sBullOam_357568
 _0803E718: .4byte 0x0000FF80
 _0803E71C: .4byte gSpriteData
 _0803E720:

@@ -630,7 +630,7 @@ XParasiteAquaZebesianWaitingToMove: @ 0x080154A8
 	adds r5, r4, #0
 	adds r5, #0x31
 	ldrb r1, [r5]
-	ldr r3, _08015544 @ =0x083BE09A
+	ldr r3, _08015544 @ =sXParasiteIdleFloatingYMovement
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -650,7 +650,7 @@ _080154D8:
 	adds r5, r4, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r3, _0801554C @ =0x083BE11C
+	ldr r3, _0801554C @ =sXParasiteIdleFloatingXMovement
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -697,9 +697,9 @@ _08015506:
 	b _080155BA
 	.align 2, 0
 _08015540: .4byte gCurrentSprite
-_08015544: .4byte 0x083BE09A
+_08015544: .4byte sXParasiteIdleFloatingYMovement
 _08015548: .4byte 0x00007FFF
-_0801554C: .4byte 0x083BE11C
+_0801554C: .4byte sXParasiteIdleFloatingXMovement
 _08015550: .4byte gWrittenToMosaic_H
 _08015554: .4byte sXParasiteMosaicValues
 _08015558:

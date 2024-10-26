@@ -2780,7 +2780,7 @@ _08088DE2:
 	bne _08088E40
 	movs r7, #0
 	ldrsh r3, [r5, r7]
-	ldr r2, _08088E3C @ =0x080A4FA4
+	ldr r2, _08088E3C @ =sSineTable
 	ldrb r1, [r5, #0x13]
 	adds r0, r1, #0
 	adds r0, #0x40
@@ -2821,7 +2821,7 @@ _08088DE2:
 	movs r0, #4
 	b _08088E94
 	.align 2, 0
-_08088E3C: .4byte 0x080A4FA4
+_08088E3C: .4byte sSineTable
 _08088E40:
 	cmp r0, #4
 	bne _08088E50
@@ -2994,7 +2994,7 @@ _08088F5E:
 _08088F7A:
 	movs r2, #0
 	ldrsh r3, [r6, r2]
-	ldr r2, _08088FD8 @ =0x080A4FA4
+	ldr r2, _08088FD8 @ =sSineTable
 	ldrb r1, [r6, #0x13]
 	adds r0, r1, #0
 	adds r0, #0x40
@@ -3040,7 +3040,7 @@ _08088F7A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08088FD8: .4byte 0x080A4FA4
+_08088FD8: .4byte sSineTable
 
 	thumb_func_start NewFileIntroProcessHorizontalParticle
 NewFileIntroProcessHorizontalParticle: @ 0x08088FDC
@@ -3391,7 +3391,7 @@ _0808925C:
 	ldrb r1, [r3, #0x13]
 	adds r1, #1
 	strb r1, [r3, #0x13]
-	ldr r2, _080892D8 @ =0x080A4FA4
+	ldr r2, _080892D8 @ =sSineTable
 	ldrb r0, [r3, #0x13]
 	lsls r0, r0, #1
 	adds r0, r0, r2
@@ -3453,7 +3453,7 @@ _080892D2:
 	strb r0, [r3, #0x14]
 	b _08089482
 	.align 2, 0
-_080892D8: .4byte 0x080A4FA4
+_080892D8: .4byte sSineTable
 _080892DC:
 	cmp r0, #2
 	bne _08089358
@@ -3468,7 +3468,7 @@ _080892DC:
 	lsrs r1, r1, #0x13
 	ldrh r2, [r3, #2]
 	subs r2, r2, r1
-	ldr r1, _08089354 @ =0x080A4FA4
+	ldr r1, _08089354 @ =sSineTable
 	ldrb r0, [r3, #0x13]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -3518,7 +3518,7 @@ _0808933C:
 	strb r0, [r3, #0x14]
 	b _08089482
 	.align 2, 0
-_08089354: .4byte 0x080A4FA4
+_08089354: .4byte sSineTable
 _08089358:
 	cmp r0, #3
 	bne _080893C0
@@ -8696,7 +8696,7 @@ _0808BB98:
 _0808BBAC:
 	movs r3, #4
 	ldrsh r1, [r5, r3]
-	ldr r3, _0808BC10 @ =0x080A4FA4
+	ldr r3, _0808BC10 @ =sSineTable
 	lsls r0, r2, #0x10
 	asrs r0, r0, #0xf
 	adds r0, #0x80
@@ -8744,7 +8744,7 @@ _0808BBAC:
 	b _0808BC7C
 	.align 2, 0
 _0808BC0C: .4byte 0xFFFFFF00
-_0808BC10: .4byte 0x080A4FA4
+_0808BC10: .4byte sSineTable
 _0808BC14:
 	cmp r0, #0x9b
 	bls _0808BC1E
@@ -16354,8 +16354,8 @@ _0808F9D0:
 	ldrh r0, [r3]
 	cmp r0, #1
 	bne _0808FA04
-	ldr r2, _0808F9F8 @ =0x080A8CDC
-	ldr r0, _0808F9FC @ =0x080A8D3C
+	ldr r2, _0808F9F8 @ =sMusicTrackDataRom
+	ldr r0, _0808F9FC @ =sSoundDataEntries
 	ldr r1, _0808FA00 @ =0x00001224
 	adds r0, r0, r1
 	ldrh r1, [r0]
@@ -16368,8 +16368,8 @@ _0808F9D0:
 	bl ApplyMusicSoundFading
 	b _0808FF02
 	.align 2, 0
-_0808F9F8: .4byte 0x080A8CDC
-_0808F9FC: .4byte 0x080A8D3C
+_0808F9F8: .4byte sMusicTrackDataRom
+_0808F9FC: .4byte sSoundDataEntries
 _0808FA00: .4byte 0x00001224
 _0808FA04:
 	cmp r0, #0x1e
@@ -21693,8 +21693,8 @@ _08092362:
 	beq _080923C0
 	cmp r0, #0x10
 	bne _080923A2
-	ldr r5, _080923B0 @ =0x080A8CDC
-	ldr r4, _080923B4 @ =0x080A8D3C
+	ldr r5, _080923B0 @ =sMusicTrackDataRom
+	ldr r4, _080923B4 @ =sSoundDataEntries
 	ldr r1, _080923B8 @ =0x00000F64
 	adds r0, r4, r1
 	ldrh r1, [r0]
@@ -21722,8 +21722,8 @@ _080923A2:
 	b _08092480
 	.align 2, 0
 _080923AC: .4byte gWrittenToBldalpha_L
-_080923B0: .4byte 0x080A8CDC
-_080923B4: .4byte 0x080A8D3C
+_080923B0: .4byte sMusicTrackDataRom
+_080923B4: .4byte sSoundDataEntries
 _080923B8: .4byte 0x00000F64
 _080923BC: .4byte 0x00000F6C
 _080923C0:
@@ -22210,8 +22210,8 @@ _080927D4:
 	bhi _08092814
 	cmp r0, #0
 	bne _080927FA
-	ldr r2, _08092808 @ =0x080A8CDC
-	ldr r0, _0809280C @ =0x080A8D3C
+	ldr r2, _08092808 @ =sMusicTrackDataRom
+	ldr r0, _0809280C @ =sSoundDataEntries
 	ldr r1, _08092810 @ =0x00000F5C
 	adds r0, r0, r1
 	ldrh r1, [r0]
@@ -22229,8 +22229,8 @@ _080927FA:
 	b _0809281C
 	.align 2, 0
 _08092804: .4byte gWrittenToBldy
-_08092808: .4byte 0x080A8CDC
-_0809280C: .4byte 0x080A8D3C
+_08092808: .4byte sMusicTrackDataRom
+_0809280C: .4byte sSoundDataEntries
 _08092810: .4byte 0x00000F5C
 _08092814:
 	movs r0, #0
@@ -22626,8 +22626,8 @@ _08092B7C:
 	strh r0, [r2]
 	cmp r1, #0
 	bne _08092BB2
-	ldr r2, _08092BC0 @ =0x080A8CDC
-	ldr r0, _08092BC4 @ =0x080A8D3C
+	ldr r2, _08092BC0 @ =sMusicTrackDataRom
+	ldr r0, _08092BC4 @ =sSoundDataEntries
 	ldr r1, _08092BC8 @ =0x00000F64
 	adds r0, r0, r1
 	ldrh r1, [r0]
@@ -22645,8 +22645,8 @@ _08092BB2:
 	b _08092BDE
 	.align 2, 0
 _08092BBC: .4byte gWrittenToBldy
-_08092BC0: .4byte 0x080A8CDC
-_08092BC4: .4byte 0x080A8D3C
+_08092BC0: .4byte sMusicTrackDataRom
+_08092BC4: .4byte sSoundDataEntries
 _08092BC8: .4byte 0x00000F64
 _08092BCC:
 	movs r0, #0x84
@@ -22995,7 +22995,7 @@ _08092E78:
 	ldrb r1, [r3, #0x13]
 	adds r1, #1
 	strb r1, [r3, #0x13]
-	ldr r2, _08092EFC @ =0x080A4FA4
+	ldr r2, _08092EFC @ =sSineTable
 	ldrb r0, [r3, #0x13]
 	lsls r0, r0, #1
 	adds r0, r0, r2
@@ -23059,7 +23059,7 @@ _08092EDA:
 	bl SoundPlay
 	b _080930BA
 	.align 2, 0
-_08092EFC: .4byte 0x080A4FA4
+_08092EFC: .4byte sSineTable
 _08092F00:
 	cmp r0, #2
 	bne _08092F7C
@@ -23074,7 +23074,7 @@ _08092F00:
 	lsrs r1, r1, #0x13
 	ldrh r2, [r3, #2]
 	subs r2, r2, r1
-	ldr r1, _08092F78 @ =0x080A4FA4
+	ldr r1, _08092F78 @ =sSineTable
 	ldrb r0, [r3, #0x13]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -23124,7 +23124,7 @@ _08092F60:
 	strb r0, [r3, #0x14]
 	b _080930BA
 	.align 2, 0
-_08092F78: .4byte 0x080A4FA4
+_08092F78: .4byte sSineTable
 _08092F7C:
 	cmp r0, #3
 	bne _08092FE4
@@ -24880,8 +24880,8 @@ _08093D54:
 	bhi _08093D94
 	cmp r0, #0
 	bne _08093D7A
-	ldr r2, _08093D88 @ =0x080A8CDC
-	ldr r0, _08093D8C @ =0x080A8D3C
+	ldr r2, _08093D88 @ =sMusicTrackDataRom
+	ldr r0, _08093D8C @ =sSoundDataEntries
 	ldr r3, _08093D90 @ =0x00000F5C
 	adds r0, r0, r3
 	ldrh r1, [r0]
@@ -24899,8 +24899,8 @@ _08093D7A:
 	b _08093F00
 	.align 2, 0
 _08093D84: .4byte gWrittenToBldy
-_08093D88: .4byte 0x080A8CDC
-_08093D8C: .4byte 0x080A8D3C
+_08093D88: .4byte sMusicTrackDataRom
+_08093D8C: .4byte sSoundDataEntries
 _08093D90: .4byte 0x00000F5C
 _08093D94:
 	movs r7, #1
@@ -25008,8 +25008,8 @@ _08093E5C:
 	bhi _08093EDC
 	cmp r0, #0
 	bne _08093EB0
-	ldr r5, _08093EC4 @ =0x080A8CDC
-	ldr r4, _08093EC8 @ =0x080A8D3C
+	ldr r5, _08093EC4 @ =sMusicTrackDataRom
+	ldr r4, _08093EC8 @ =sSoundDataEntries
 	ldr r3, _08093ECC @ =0x00000F4C
 	adds r0, r4, r3
 	ldrh r1, [r0]
@@ -25044,8 +25044,8 @@ _08093EB0:
 	b _08093F00
 	.align 2, 0
 _08093EC0: .4byte gWrittenToBldalpha_R
-_08093EC4: .4byte 0x080A8CDC
-_08093EC8: .4byte 0x080A8D3C
+_08093EC4: .4byte sMusicTrackDataRom
+_08093EC8: .4byte sSoundDataEntries
 _08093ECC: .4byte 0x00000F4C
 _08093ED0: .4byte 0x00000F54
 _08093ED4: .4byte 0x000001EB
@@ -25672,7 +25672,7 @@ _08094408:
 	bne _08094480
 	movs r0, #0
 	ldrsh r3, [r5, r0]
-	ldr r2, _08094478 @ =0x080A4FA4
+	ldr r2, _08094478 @ =sSineTable
 	ldrb r1, [r5, #0x13]
 	adds r0, r1, #0
 	adds r0, #0x40
@@ -25724,7 +25724,7 @@ _08094408:
 	movs r0, #4
 	b _080944D4
 	.align 2, 0
-_08094478: .4byte 0x080A4FA4
+_08094478: .4byte sSineTable
 _0809447C: .4byte 0x00007530
 _08094480:
 	cmp r0, #4
@@ -25988,7 +25988,7 @@ _0809465A:
 _08094676:
 	movs r2, #0
 	ldrsh r3, [r6, r2]
-	ldr r2, _080946D4 @ =0x080A4FA4
+	ldr r2, _080946D4 @ =sSineTable
 	ldrb r1, [r6, #0x13]
 	adds r0, r1, #0
 	adds r0, #0x40
@@ -26034,7 +26034,7 @@ _08094676:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080946D4: .4byte 0x080A4FA4
+_080946D4: .4byte sSineTable
 
 	thumb_func_start IntroProcessSplashText
 IntroProcessSplashText: @ 0x080946D8
@@ -26180,7 +26180,7 @@ _080947D2:
 	ldrb r0, [r2, #0x13]
 	adds r0, #1
 	strb r0, [r2, #0x13]
-	ldr r1, _080947F4 @ =0x080A4FA4
+	ldr r1, _080947F4 @ =sSineTable
 	ldrb r0, [r2, #0x13]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -26194,7 +26194,7 @@ _080947F0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080947F4: .4byte 0x080A4FA4
+_080947F4: .4byte sSineTable
 
 	thumb_func_start IntroProcessBslShipSpawning_2
 IntroProcessBslShipSpawning_2: @ 0x080947F8
@@ -28305,7 +28305,7 @@ _080958EA:
 	ldrb r1, [r3, #0x13]
 	adds r1, #1
 	strb r1, [r3, #0x13]
-	ldr r2, _08095918 @ =0x080A4FA4
+	ldr r2, _08095918 @ =sSineTable
 	ldrb r0, [r3, #0x13]
 	lsls r0, r0, #1
 	adds r0, r0, r2
@@ -28324,7 +28324,7 @@ _080958EA:
 	strh r4, [r3, #0xa]
 	b _08095944
 	.align 2, 0
-_08095918: .4byte 0x080A4FA4
+_08095918: .4byte sSineTable
 _0809591C:
 	cmp r1, #2
 	bne _08095944
@@ -28337,7 +28337,7 @@ _0809591C:
 	adds r0, #1
 	strb r0, [r3, #0x13]
 _08095930:
-	ldr r1, _08095950 @ =0x080A4FA4
+	ldr r1, _08095950 @ =sSineTable
 	ldrb r0, [r3, #0x13]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -28355,7 +28355,7 @@ _08095944:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08095950: .4byte 0x080A4FA4
+_08095950: .4byte sSineTable
 _08095954: .4byte 0x0300122E
 
 	thumb_func_start EndingBslCrashingSetupOam
@@ -30083,8 +30083,8 @@ _08096828:
 	ldrh r0, [r1]
 	cmp r0, #1
 	bne _0809685C
-	ldr r2, _08096850 @ =0x080A8CDC
-	ldr r0, _08096854 @ =0x080A8D3C
+	ldr r2, _08096850 @ =sMusicTrackDataRom
+	ldr r0, _08096854 @ =sSoundDataEntries
 	ldr r1, _08096858 @ =0x00001264
 	adds r0, r0, r1
 	ldrh r1, [r0]
@@ -30097,8 +30097,8 @@ _08096828:
 	bl ApplyMusicSoundFading
 	b _080968D8
 	.align 2, 0
-_08096850: .4byte 0x080A8CDC
-_08096854: .4byte 0x080A8D3C
+_08096850: .4byte sMusicTrackDataRom
+_08096854: .4byte sSoundDataEntries
 _08096858: .4byte 0x00001264
 _0809685C:
 	cmp r0, #0xa
@@ -35389,7 +35389,7 @@ _080990D0:
 	adds r0, r1, #0
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r5, _080993E8 @ =0x080A4FA4
+	ldr r5, _080993E8 @ =sSineTable
 	adds r0, r0, r5
 	movs r2, #0
 	ldrsh r5, [r0, r2]
@@ -35398,7 +35398,7 @@ _080990D0:
 	lsls r3, r3, #0x10
 	asrs r3, r3, #0x10
 	lsls r1, r1, #1
-	ldr r0, _080993E8 @ =0x080A4FA4
+	ldr r0, _080993E8 @ =sSineTable
 	adds r1, r1, r0
 	movs r0, #0
 	ldrsh r1, [r1, r0]
@@ -35568,7 +35568,7 @@ _0809925C:
 	ldrb r0, [r2, #0x15]
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r3, _080993E8 @ =0x080A4FA4
+	ldr r3, _080993E8 @ =sSineTable
 	adds r0, r0, r3
 	movs r5, #0
 	ldrsh r4, [r0, r5]
@@ -35589,7 +35589,7 @@ _0809925C:
 	mov r2, sb
 	ldrb r0, [r2, #0x15]
 	lsls r0, r0, #1
-	ldr r3, _080993E8 @ =0x080A4FA4
+	ldr r3, _080993E8 @ =sSineTable
 	adds r0, r0, r3
 	movs r5, #0
 	ldrsh r4, [r0, r5]
@@ -35607,7 +35607,7 @@ _0809925C:
 	mov r1, sb
 	ldrb r0, [r1, #0x15]
 	lsls r0, r0, #1
-	ldr r2, _080993E8 @ =0x080A4FA4
+	ldr r2, _080993E8 @ =sSineTable
 	adds r0, r0, r2
 	ldrh r4, [r0]
 	rsbs r4, r4, #0
@@ -35631,7 +35631,7 @@ _0809925C:
 	ldrb r0, [r4, #0x15]
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r5, _080993E8 @ =0x080A4FA4
+	ldr r5, _080993E8 @ =sSineTable
 	adds r0, r0, r5
 	movs r1, #0
 	ldrsh r4, [r0, r1]
@@ -35682,7 +35682,7 @@ _08099328:
 	mov r3, sb
 	ldrb r0, [r3, #0x15]
 	lsls r0, r0, #1
-	ldr r5, _080993E8 @ =0x080A4FA4
+	ldr r5, _080993E8 @ =sSineTable
 	adds r0, r0, r5
 	movs r1, #0
 	ldrsh r5, [r0, r1]
@@ -35700,7 +35700,7 @@ _08099328:
 	mov r2, sb
 	ldrb r0, [r2, #0x15]
 	lsls r0, r0, #1
-	ldr r3, _080993E8 @ =0x080A4FA4
+	ldr r3, _080993E8 @ =sSineTable
 	adds r0, r0, r3
 	ldrh r4, [r0]
 	rsbs r4, r4, #0
@@ -35721,7 +35721,7 @@ _08099328:
 	ldrb r0, [r4, #0x15]
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r5, _080993E8 @ =0x080A4FA4
+	ldr r5, _080993E8 @ =sSineTable
 	adds r0, r0, r5
 	movs r1, #0
 	ldrsh r4, [r0, r1]
@@ -35743,7 +35743,7 @@ _08099328:
 	b _0809975A
 	.align 2, 0
 _080993E4: .4byte gOamData
-_080993E8: .4byte 0x080A4FA4
+_080993E8: .4byte sSineTable
 _080993EC: .4byte 0x000001FF
 _080993F0: .4byte 0xFFFFFE00
 _080993F4: .4byte 0x03001238
@@ -35940,7 +35940,7 @@ _08099530:
 	adds r0, r1, #0
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r2, _08099790 @ =0x080A4FA4
+	ldr r2, _08099790 @ =sSineTable
 	adds r0, r0, r2
 	movs r2, #0
 	ldrsh r5, [r0, r2]
@@ -35949,7 +35949,7 @@ _08099530:
 	lsls r3, r3, #0x10
 	asrs r3, r3, #0x10
 	lsls r1, r1, #1
-	ldr r0, _08099790 @ =0x080A4FA4
+	ldr r0, _08099790 @ =sSineTable
 	adds r1, r1, r0
 	movs r0, #0
 	ldrsh r1, [r1, r0]
@@ -36100,7 +36100,7 @@ _08099696:
 	ldrb r0, [r2, #0x15]
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r3, _08099790 @ =0x080A4FA4
+	ldr r3, _08099790 @ =sSineTable
 	adds r0, r0, r3
 	movs r4, #0
 	ldrsh r5, [r0, r4]
@@ -36121,7 +36121,7 @@ _08099696:
 	mov r1, sb
 	ldrb r0, [r1, #0x15]
 	lsls r0, r0, #1
-	ldr r2, _08099790 @ =0x080A4FA4
+	ldr r2, _08099790 @ =sSineTable
 	adds r0, r0, r2
 	movs r3, #0
 	ldrsh r5, [r0, r3]
@@ -36139,7 +36139,7 @@ _08099696:
 	mov r4, sb
 	ldrb r0, [r4, #0x15]
 	lsls r0, r0, #1
-	ldr r5, _08099790 @ =0x080A4FA4
+	ldr r5, _08099790 @ =sSineTable
 	adds r0, r0, r5
 	ldrh r4, [r0]
 	rsbs r4, r4, #0
@@ -36163,7 +36163,7 @@ _08099696:
 	ldrb r0, [r1, #0x15]
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r2, _08099790 @ =0x080A4FA4
+	ldr r2, _08099790 @ =sSineTable
 	adds r0, r0, r2
 	movs r3, #0
 	ldrsh r4, [r0, r3]
@@ -36206,7 +36206,7 @@ _08099780: .4byte gOamData
 _08099784: .4byte 0x0863A184
 _08099788: .4byte 0x0863A190
 _0809978C: .4byte 0x000001FF
-_08099790: .4byte 0x080A4FA4
+_08099790: .4byte sSineTable
 _08099794: .4byte 0xFFFFFE00
 _08099798: .4byte 0x03001238
 _0809979C: .4byte 0x000003FF
@@ -44196,7 +44196,7 @@ _0809D62A:
 	adds r0, r1, #0
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r2, _0809D7C0 @ =0x080A4FA4
+	ldr r2, _0809D7C0 @ =sSineTable
 	adds r0, r0, r2
 	movs r2, #0
 	ldrsh r5, [r0, r2]
@@ -44205,7 +44205,7 @@ _0809D62A:
 	lsls r3, r3, #0x10
 	asrs r3, r3, #0x10
 	lsls r1, r1, #1
-	ldr r0, _0809D7C0 @ =0x080A4FA4
+	ldr r0, _0809D7C0 @ =sSineTable
 	adds r1, r1, r0
 	movs r0, #0
 	ldrsh r1, [r1, r0]
@@ -44355,7 +44355,7 @@ _0809D78C:
 	ldrb r0, [r1, #0x15]
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r2, _0809D7C0 @ =0x080A4FA4
+	ldr r2, _0809D7C0 @ =sSineTable
 	adds r0, r0, r2
 	movs r3, #0
 	ldrsh r5, [r0, r3]
@@ -44368,7 +44368,7 @@ _0809D7B0: .4byte gOamData
 _0809D7B4: .4byte 0x0863A184
 _0809D7B8: .4byte 0x0863A190
 _0809D7BC: .4byte 0x000001FF
-_0809D7C0: .4byte 0x080A4FA4
+_0809D7C0: .4byte sSineTable
 _0809D7C4: .4byte 0xFFFFFE00
 _0809D7C8: .4byte 0x03001238
 _0809D7CC: .4byte 0x000003FF
@@ -44564,7 +44564,7 @@ _0809D904:
 	adds r0, r1, #0
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r2, _0809DB5C @ =0x080A4FA4
+	ldr r2, _0809DB5C @ =sSineTable
 	adds r0, r0, r2
 	movs r2, #0
 	ldrsh r5, [r0, r2]
@@ -44573,7 +44573,7 @@ _0809D904:
 	lsls r3, r3, #0x10
 	asrs r3, r3, #0x10
 	lsls r1, r1, #1
-	ldr r0, _0809DB5C @ =0x080A4FA4
+	ldr r0, _0809DB5C @ =sSineTable
 	adds r1, r1, r0
 	movs r0, #0
 	ldrsh r1, [r1, r0]
@@ -44720,7 +44720,7 @@ _0809DA62:
 	ldrb r0, [r4, #0x15]
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r1, _0809DB5C @ =0x080A4FA4
+	ldr r1, _0809DB5C @ =sSineTable
 	adds r0, r0, r1
 	movs r2, #0
 	ldrsh r5, [r0, r2]
@@ -44742,7 +44742,7 @@ _0809DA7E:
 	mov r1, r8
 	ldrb r0, [r1, #0x15]
 	lsls r0, r0, #1
-	ldr r2, _0809DB5C @ =0x080A4FA4
+	ldr r2, _0809DB5C @ =sSineTable
 	adds r0, r0, r2
 	movs r3, #0
 	ldrsh r5, [r0, r3]
@@ -44760,7 +44760,7 @@ _0809DA7E:
 	mov r4, r8
 	ldrb r0, [r4, #0x15]
 	lsls r0, r0, #1
-	ldr r1, _0809DB5C @ =0x080A4FA4
+	ldr r1, _0809DB5C @ =sSineTable
 	adds r0, r0, r1
 	ldrh r4, [r0]
 	rsbs r4, r4, #0
@@ -44784,7 +44784,7 @@ _0809DA7E:
 	ldrb r0, [r3, #0x15]
 	adds r0, #0x40
 	lsls r0, r0, #1
-	ldr r4, _0809DB5C @ =0x080A4FA4
+	ldr r4, _0809DB5C @ =sSineTable
 	adds r0, r0, r4
 	movs r1, #0
 	ldrsh r4, [r0, r1]
@@ -44827,7 +44827,7 @@ _0809DB4C: .4byte gOamData
 _0809DB50: .4byte 0x0863A184
 _0809DB54: .4byte 0x0863A190
 _0809DB58: .4byte 0x000001FF
-_0809DB5C: .4byte 0x080A4FA4
+_0809DB5C: .4byte sSineTable
 _0809DB60: .4byte 0xFFFFFE00
 _0809DB64: .4byte 0x03001238
 _0809DB68: .4byte 0x000003FF

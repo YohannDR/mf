@@ -227,7 +227,7 @@ _0803EFC8:
 	strh r0, [r3, #0xe]
 	movs r0, #0x38
 	strh r0, [r3, #0x10]
-	ldr r0, _0803F044 @ =0x08358E14
+	ldr r0, _0803F044 @ =sGerubossOam_358e14
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -263,7 +263,7 @@ _0803EFC8:
 _0803F038: .4byte gCurrentSprite
 _0803F03C: .4byte 0x0000FFE0
 _0803F040: .4byte 0x0000FFC8
-_0803F044: .4byte 0x08358E14
+_0803F044: .4byte sGerubossOam_358e14
 _0803F048: .4byte gIoRegisters
 _0803F04C: .4byte sPrimarySpriteStats
 _0803F050:
@@ -287,7 +287,7 @@ GerubossIdleInit: @ 0x0803F060
 	strb r1, [r3]
 	strb r2, [r0, #0x1c]
 	strh r2, [r0, #0x16]
-	ldr r1, _0803F080 @ =0x08358E14
+	ldr r1, _0803F080 @ =sGerubossOam_358e14
 	str r1, [r0, #0x18]
 	adds r0, #0x2e
 	movs r1, #0x30
@@ -295,7 +295,7 @@ GerubossIdleInit: @ 0x0803F060
 	bx lr
 	.align 2, 0
 _0803F07C: .4byte gCurrentSprite
-_0803F080: .4byte 0x08358E14
+_0803F080: .4byte sGerubossOam_358e14
 
 	thumb_func_start GerubossIdle
 GerubossIdle: @ 0x0803F084
@@ -345,7 +345,7 @@ _0803F0C8:
 	strb r0, [r2]
 	strb r1, [r4, #0x1c]
 	strh r1, [r4, #0x16]
-	ldr r0, _0803F100 @ =0x08358DF4
+	ldr r0, _0803F100 @ =sGerubossOam_358df4
 	str r0, [r4, #0x18]
 	adds r1, r4, #0
 	adds r1, #0x2e
@@ -357,7 +357,7 @@ _0803F0C8:
 	b _0803F154
 	.align 2, 0
 _0803F0FC: .4byte gCurrentSprite
-_0803F100: .4byte 0x08358DF4
+_0803F100: .4byte sGerubossOam_358df4
 _0803F104:
 	adds r1, r4, #0
 	adds r1, #0x2e
@@ -442,7 +442,7 @@ GerubossLaunchingInit: @ 0x0803F184
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0803F1A8 @ =0x08358E3C
+	ldr r0, _0803F1A8 @ =sGerubossOam_358e3c
 	str r0, [r1, #0x18]
 	ldr r0, _0803F1AC @ =0x0000019D
 	bl SoundPlayNotAlreadyPlaying
@@ -450,7 +450,7 @@ GerubossLaunchingInit: @ 0x0803F184
 	bx r0
 	.align 2, 0
 _0803F1A4: .4byte gCurrentSprite
-_0803F1A8: .4byte 0x08358E3C
+_0803F1A8: .4byte sGerubossOam_358e3c
 _0803F1AC: .4byte 0x0000019D
 
 	thumb_func_start GerubossCharging
@@ -467,7 +467,7 @@ GerubossCharging: @ 0x0803F1B0
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0803F1F0 @ =0x08358E6C
+	ldr r0, _0803F1F0 @ =sGerubossOam_358e6c
 	str r0, [r1, #0x18]
 	ldrh r2, [r1]
 	movs r3, #0x80
@@ -486,7 +486,7 @@ _0803F1E8:
 	bx r0
 	.align 2, 0
 _0803F1EC: .4byte gCurrentSprite
-_0803F1F0: .4byte 0x08358E6C
+_0803F1F0: .4byte sGerubossOam_358e6c
 
 	thumb_func_start GerubossGoingDown
 GerubossGoingDown: @ 0x0803F1F4
@@ -506,7 +506,7 @@ GerubossGoingDown: @ 0x0803F1F4
 	strb r1, [r2, #0x1c]
 	movs r0, #0
 	strh r1, [r2, #0x16]
-	ldr r1, _0803F224 @ =0x08358E8C
+	ldr r1, _0803F224 @ =sGerubossOam_358e8c
 	str r1, [r2, #0x18]
 	adds r1, r2, #0
 	adds r1, #0x2f
@@ -514,7 +514,7 @@ GerubossGoingDown: @ 0x0803F1F4
 	b _0803F242
 	.align 2, 0
 _0803F220: .4byte gCurrentSprite
-_0803F224: .4byte 0x08358E8C
+_0803F224: .4byte sGerubossOam_358e8c
 _0803F228:
 	adds r4, r2, #0
 	adds r4, #0x2f
@@ -545,7 +545,7 @@ _0803F242:
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0803F278 @ =0x08358EEC
+	ldr r0, _0803F278 @ =sGerubossOam_358eec
 	str r0, [r1, #0x18]
 _0803F268:
 	pop {r4}
@@ -554,7 +554,7 @@ _0803F268:
 	.align 2, 0
 _0803F270: .4byte 0x0000019F
 _0803F274: .4byte gCurrentSprite
-_0803F278: .4byte 0x08358EEC
+_0803F278: .4byte sGerubossOam_358eec
 
 	thumb_func_start GerubossChangingDirection
 GerubossChangingDirection: @ 0x0803F27C
@@ -570,7 +570,7 @@ GerubossChangingDirection: @ 0x0803F27C
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0803F2B8 @ =0x08358EAC
+	ldr r0, _0803F2B8 @ =sGerubossOam_358eac
 	str r0, [r1, #0x18]
 	ldrh r2, [r1]
 	ldr r0, _0803F2BC @ =0x0000F7FF
@@ -587,7 +587,7 @@ _0803F2B0:
 	bx r0
 	.align 2, 0
 _0803F2B4: .4byte gCurrentSprite
-_0803F2B8: .4byte 0x08358EAC
+_0803F2B8: .4byte sGerubossOam_358eac
 _0803F2BC: .4byte 0x0000F7FF
 
 	thumb_func_start GerubossGoingUp
@@ -608,7 +608,7 @@ GerubossGoingUp: @ 0x0803F2C0
 	strb r1, [r2, #0x1c]
 	movs r0, #0
 	strh r1, [r2, #0x16]
-	ldr r1, _0803F2F0 @ =0x08358ECC
+	ldr r1, _0803F2F0 @ =sGerubossOam_358ecc
 	str r1, [r2, #0x18]
 	adds r1, r2, #0
 	adds r1, #0x2f
@@ -616,7 +616,7 @@ GerubossGoingUp: @ 0x0803F2C0
 	b _0803F30E
 	.align 2, 0
 _0803F2EC: .4byte gCurrentSprite
-_0803F2F0: .4byte 0x08358ECC
+_0803F2F0: .4byte sGerubossOam_358ecc
 _0803F2F4:
 	adds r4, r2, #0
 	adds r4, #0x2f
@@ -647,7 +647,7 @@ _0803F30E:
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0803F344 @ =0x08358F3C
+	ldr r0, _0803F344 @ =sGerubossOam_358f3c
 	str r0, [r1, #0x18]
 _0803F334:
 	pop {r4}
@@ -656,7 +656,7 @@ _0803F334:
 	.align 2, 0
 _0803F33C: .4byte 0x0000019F
 _0803F340: .4byte gCurrentSprite
-_0803F344: .4byte 0x08358F3C
+_0803F344: .4byte sGerubossOam_358f3c
 
 	thumb_func_start GerubossGrabbingCeiling
 GerubossGrabbingCeiling: @ 0x0803F348

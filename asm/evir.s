@@ -185,7 +185,7 @@ EvirInit: @ 0x0803D920
 	adds r0, #0x25
 	movs r2, #2
 	strb r2, [r0]
-	ldr r0, _0803D994 @ =0x08356ABC
+	ldr r0, _0803D994 @ =sEvirOam_356abc
 	str r0, [r3, #0x18]
 	strb r4, [r3, #0x1c]
 	strh r5, [r3, #0x16]
@@ -209,7 +209,7 @@ EvirInit: @ 0x0803D920
 	.align 2, 0
 _0803D98C: .4byte gCurrentSprite
 _0803D990: .4byte sPrimarySpriteStats
-_0803D994: .4byte 0x08356ABC
+_0803D994: .4byte sEvirOam_356abc
 _0803D998:
 	adds r0, r3, #0
 	adds r0, #0x36
@@ -329,7 +329,7 @@ EvirShootingInit: @ 0x0803DA74
 	movs r3, #0
 	movs r1, #0x2a
 	strb r1, [r2]
-	ldr r1, _0803DA94 @ =0x08356B04
+	ldr r1, _0803DA94 @ =sEvirOam_356b04
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	strh r3, [r0, #0x16]
@@ -339,7 +339,7 @@ EvirShootingInit: @ 0x0803DA74
 	bx lr
 	.align 2, 0
 _0803DA90: .4byte gCurrentSprite
-_0803DA94: .4byte 0x08356B04
+_0803DA94: .4byte sEvirOam_356b04
 
 	thumb_func_start EvirShooting
 EvirShooting: @ 0x0803DA98
@@ -436,14 +436,14 @@ EvirIdleInit: @ 0x0803DB40
 	movs r3, #0
 	movs r0, #2
 	strb r0, [r2]
-	ldr r0, _0803DB5C @ =0x08356ABC
+	ldr r0, _0803DB5C @ =sEvirOam_356abc
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0803DB58: .4byte gCurrentSprite
-_0803DB5C: .4byte 0x08356ABC
+_0803DB5C: .4byte sEvirOam_356abc
 
 	thumb_func_start EvirIdle
 EvirIdle: @ 0x0803DB60
@@ -612,14 +612,14 @@ EvirTurningAroundInit: @ 0x0803DCA0
 	movs r3, #0
 	movs r0, #4
 	strb r0, [r2]
-	ldr r0, _0803DCBC @ =0x08356B44
+	ldr r0, _0803DCBC @ =sEvirOam_356b44
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0803DCB8: .4byte gCurrentSprite
-_0803DCBC: .4byte 0x08356B44
+_0803DCBC: .4byte sEvirOam_356b44
 
 	thumb_func_start EvirTurningAround
 EvirTurningAround: @ 0x0803DCC0
@@ -633,7 +633,7 @@ EvirTurningAround: @ 0x0803DCC0
 	movs r3, #0
 	movs r0, #5
 	strb r0, [r1]
-	ldr r0, _0803DCF0 @ =0x08356B64
+	ldr r0, _0803DCF0 @ =sEvirOam_356b64
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -646,7 +646,7 @@ _0803DCE6:
 	bx r0
 	.align 2, 0
 _0803DCEC: .4byte gCurrentSprite
-_0803DCF0: .4byte 0x08356B64
+_0803DCF0: .4byte sEvirOam_356b64
 
 	thumb_func_start EvirTurningAroundSecondPart
 EvirTurningAroundSecondPart: @ 0x0803DCF4
@@ -723,7 +723,7 @@ _0803DD3C:
 	adds r1, #0x22
 	movs r0, #3
 	strb r0, [r1]
-	ldr r0, _0803DDA8 @ =0x08356B84
+	ldr r0, _0803DDA8 @ =sEvirOam_356b84
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r3, [r5, #0x16]
@@ -740,7 +740,7 @@ _0803DD98: .4byte gCurrentSprite
 _0803DD9C: .4byte gSpriteData
 _0803DDA0: .4byte 0x0000FFE0
 _0803DDA4: .4byte sSecondarySpriteStats
-_0803DDA8: .4byte 0x08356B84
+_0803DDA8: .4byte sEvirOam_356b84
 _0803DDAC: .4byte 0x0000FFE8
 _0803DDB0:
 	ldr r0, _0803DDC0 @ =0x0000FFC8
@@ -931,7 +931,7 @@ EvirProjectileInit: @ 0x0803DED0
 	strh r0, [r5, #0xc]
 	strh r1, [r5, #0xe]
 	strh r0, [r5, #0x10]
-	ldr r0, _0803DF4C @ =0x08356B84
+	ldr r0, _0803DF4C @ =sEvirOam_356b84
 	str r0, [r5, #0x18]
 	strb r2, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -963,7 +963,7 @@ EvirProjectileInit: @ 0x0803DED0
 	.align 2, 0
 _0803DF44: .4byte gCurrentSprite
 _0803DF48: .4byte 0x0000FFF4
-_0803DF4C: .4byte 0x08356B84
+_0803DF4C: .4byte sEvirOam_356b84
 
 	thumb_func_start EvirProjectileMovingInit
 EvirProjectileMovingInit: @ 0x0803DF50
@@ -1042,7 +1042,7 @@ _0803DFD4:
 	adds r0, r3, #0
 	adds r0, #0x2f
 	ldrb r5, [r0]
-	ldr r1, _0803E00C @ =0x080A4FA4
+	ldr r1, _0803E00C @ =sSineTable
 	lsls r0, r5, #1
 	adds r0, r0, r1
 	movs r6, #0
@@ -1066,7 +1066,7 @@ _0803DFFC:
 	b _0803E026
 	.align 2, 0
 _0803E008: .4byte gFrameCounter8Bit
-_0803E00C: .4byte 0x080A4FA4
+_0803E00C: .4byte sSineTable
 _0803E010:
 	lsls r1, r4, #0x10
 	asrs r0, r1, #0x10
@@ -1134,7 +1134,7 @@ EvirProjectileExplodingInit: @ 0x0803E068
 	adds r0, r3, #0
 	adds r0, #0x25
 	strb r2, [r0]
-	ldr r0, _0803E0A0 @ =0x08356BAC
+	ldr r0, _0803E0A0 @ =sEvirOam_356bac
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -1149,7 +1149,7 @@ EvirProjectileExplodingInit: @ 0x0803E068
 	bx lr
 	.align 2, 0
 _0803E09C: .4byte gCurrentSprite
-_0803E0A0: .4byte 0x08356BAC
+_0803E0A0: .4byte sEvirOam_356bac
 
 	thumb_func_start EvirProjectileExploding
 EvirProjectileExploding: @ 0x0803E0A4

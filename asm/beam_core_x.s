@@ -1460,7 +1460,7 @@ _0802E470:
 	movs r0, #0xff
 	ands r3, r0
 	movs r6, #0x20
-	ldr r1, _0802E4BC @ =0x080A4FA4
+	ldr r1, _0802E4BC @ =sSineTable
 	lsls r0, r3, #1
 	adds r0, r0, r1
 	movs r4, #0
@@ -1482,7 +1482,7 @@ _0802E4AC:
 	b _0802E4D2
 	.align 2, 0
 _0802E4B8: .4byte gSpriteData
-_0802E4BC: .4byte 0x080A4FA4
+_0802E4BC: .4byte sSineTable
 _0802E4C0:
 	lsls r1, r0, #5
 	cmp r1, #0

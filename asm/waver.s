@@ -39,19 +39,19 @@ WaverSetFlyingGFX: @ 0x08026CA8
 	ands r0, r1
 	cmp r0, #0
 	beq _08026CCC
-	ldr r0, _08026CC8 @ =0x08317590
+	ldr r0, _08026CC8 @ =sFrameData_317590
 	b _08026CCE
 	.align 2, 0
 _08026CC4: .4byte gCurrentSprite
-_08026CC8: .4byte 0x08317590
+_08026CC8: .4byte sFrameData_317590
 _08026CCC:
-	ldr r0, _08026CD4 @ =0x08317580
+	ldr r0, _08026CD4 @ =sFrameData_317580
 _08026CCE:
 	str r0, [r2, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08026CD4: .4byte 0x08317580
+_08026CD4: .4byte sFrameData_317580
 
 	thumb_func_start WaverInit
 WaverInit: @ 0x08026CD8
@@ -210,7 +210,7 @@ _08026DFA:
 	cmp r7, #0
 	beq _08026E40
 	ldr r3, _08026E38 @ =gCurrentSprite
-	ldr r0, _08026E3C @ =0x083175D8
+	ldr r0, _08026E3C @ =sFrameData_3175d8
 	str r0, [r3, #0x18]
 	movs r0, #0
 	strb r0, [r3, #0x1c]
@@ -233,9 +233,9 @@ _08026DFA:
 	.align 2, 0
 _08026E34: .4byte gPreviousCollisionCheck
 _08026E38: .4byte gCurrentSprite
-_08026E3C: .4byte 0x083175D8
+_08026E3C: .4byte sFrameData_3175d8
 _08026E40:
-	ldr r1, _08026E84 @ =0x08316450
+	ldr r1, _08026E84 @ =sWaverFlyingSpeed
 	ldr r2, _08026E88 @ =gCurrentSprite
 	adds r3, r2, #0
 	adds r3, #0x31
@@ -270,18 +270,18 @@ _08026E70:
 	strh r0, [r5]
 	b _08026EDA
 	.align 2, 0
-_08026E84: .4byte 0x08316450
+_08026E84: .4byte sWaverFlyingSpeed
 _08026E88: .4byte gCurrentSprite
 _08026E8C: .4byte 0x0000FBFF
 _08026E90:
 	ldr r1, [r5, #0x18]
-	ldr r0, _08026F10 @ =0x08317590
+	ldr r0, _08026F10 @ =sFrameData_317590
 	cmp r1, r0
 	bne _08026EA8
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08026EA8
-	ldr r0, _08026F14 @ =0x08317580
+	ldr r0, _08026F14 @ =sFrameData_317580
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -308,7 +308,7 @@ _08026EB6:
 	movs r2, #0
 	orrs r0, r1
 	strh r0, [r5]
-	ldr r0, _08026F10 @ =0x08317590
+	ldr r0, _08026F10 @ =sFrameData_317590
 	str r0, [r5, #0x18]
 	strb r2, [r5, #0x1c]
 	strh r3, [r5, #0x16]
@@ -340,8 +340,8 @@ _08026EDA:
 	strh r0, [r4]
 	b _08026F56
 	.align 2, 0
-_08026F10: .4byte 0x08317590
-_08026F14: .4byte 0x08317580
+_08026F10: .4byte sFrameData_317590
+_08026F14: .4byte sFrameData_317580
 _08026F18: .4byte gCurrentSprite
 _08026F1C: .4byte gPreviousCollisionCheck
 _08026F20: .4byte 0x0000FFBF
@@ -562,14 +562,14 @@ WaverBackingOut: @ 0x0802709C
 	adds r0, #0x24
 	movs r1, #0x30
 	strb r1, [r0]
-	ldr r0, _080270D0 @ =0x083175C0
+	ldr r0, _080270D0 @ =sFrameData_3175c0
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
 	b _080270EA
 	.align 2, 0
 _080270CC: .4byte gCurrentSprite
-_080270D0: .4byte 0x083175C0
+_080270D0: .4byte sFrameData_3175c0
 _080270D4:
 	ldrh r1, [r2]
 	movs r0, #0x40
@@ -601,7 +601,7 @@ WaverCheckBackingOutAnimEnded: @ 0x080270F0
 	movs r3, #0
 	movs r0, #0x32
 	strb r0, [r1]
-	ldr r0, _08027120 @ =0x083175C0
+	ldr r0, _08027120 @ =sFrameData_3175c0
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -614,7 +614,7 @@ _08027116:
 	bx r0
 	.align 2, 0
 _0802711C: .4byte gCurrentSprite
-_08027120: .4byte 0x083175C0
+_08027120: .4byte sFrameData_3175c0
 
 	thumb_func_start WaverCheckTurningAnimNearEnded
 WaverCheckTurningAnimNearEnded: @ 0x08027124
@@ -667,7 +667,7 @@ WaverDebrisInit: @ 0x08027140
 	strh r0, [r2, #0xe]
 	movs r0, #0x28
 	strh r0, [r2, #0x10]
-	ldr r0, _080271C0 @ =0x08317608
+	ldr r0, _080271C0 @ =sFrameData_317608
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -694,7 +694,7 @@ _080271B0: .4byte gCurrentSprite
 _080271B4: .4byte 0x0000FFFB
 _080271B8: .4byte 0x0000FFE0
 _080271BC: .4byte 0x0000FFD8
-_080271C0: .4byte 0x08317608
+_080271C0: .4byte sFrameData_317608
 
 	thumb_func_start WaverDebrisFalling
 WaverDebrisFalling: @ 0x080271C4
@@ -731,7 +731,7 @@ _08027200:
 	adds r0, r0, r2
 	mov ip, r0
 	ldrb r3, [r0]
-	ldr r5, _08027230 @ =0x08316414
+	ldr r5, _08027230 @ =sWaverDebrisFallingSpeed
 	lsls r0, r3, #1
 	adds r0, r0, r5
 	ldrh r4, [r0]
@@ -749,7 +749,7 @@ _08027200:
 	b _08027242
 	.align 2, 0
 _0802722C: .4byte gCurrentSprite
-_08027230: .4byte 0x08316414
+_08027230: .4byte sWaverDebrisFallingSpeed
 _08027234: .4byte 0x00007FFF
 _08027238:
 	adds r0, r3, #1

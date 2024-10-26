@@ -180,28 +180,28 @@ SciserSetCrawlingGFX: @ 0x080275F0
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0802761C
-	ldr r0, _08027618 @ =0x083190A0
+	ldr r0, _08027618 @ =sFrameData_3190a0
 	b _0802763A
 	.align 2, 0
 _08027614: .4byte gCurrentSprite
-_08027618: .4byte 0x083190A0
+_08027618: .4byte sFrameData_3190a0
 _0802761C:
-	ldr r0, _08027620 @ =0x08319078
+	ldr r0, _08027620 @ =sFrameData_319078
 	b _0802763A
 	.align 2, 0
-_08027620: .4byte 0x08319078
+_08027620: .4byte sFrameData_319078
 _08027624:
 	adds r0, r1, #0
 	adds r0, #0x2d
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08027638
-	ldr r0, _08027634 @ =0x08318FC0
+	ldr r0, _08027634 @ =sFrameData_318fc0
 	b _0802763A
 	.align 2, 0
-_08027634: .4byte 0x08318FC0
+_08027634: .4byte sFrameData_318fc0
 _08027638:
-	ldr r0, _08027648 @ =0x08318F08
+	ldr r0, _08027648 @ =sFrameData_318f08
 _0802763A:
 	str r0, [r1, #0x18]
 	movs r0, #0
@@ -210,7 +210,7 @@ _0802763A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027648: .4byte 0x08318F08
+_08027648: .4byte sFrameData_318f08
 
 	thumb_func_start SciserSetIdleGFX
 SciserSetIdleGFX: @ 0x0802764C
@@ -229,28 +229,28 @@ SciserSetIdleGFX: @ 0x0802764C
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08027678
-	ldr r0, _08027674 @ =0x083190A0
+	ldr r0, _08027674 @ =sFrameData_3190a0
 	b _08027696
 	.align 2, 0
 _08027670: .4byte gCurrentSprite
-_08027674: .4byte 0x083190A0
+_08027674: .4byte sFrameData_3190a0
 _08027678:
-	ldr r0, _0802767C @ =0x08319078
+	ldr r0, _0802767C @ =sFrameData_319078
 	b _08027696
 	.align 2, 0
-_0802767C: .4byte 0x08319078
+_0802767C: .4byte sFrameData_319078
 _08027680:
 	adds r0, r1, #0
 	adds r0, #0x2d
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08027694
-	ldr r0, _08027690 @ =0x08318FE8
+	ldr r0, _08027690 @ =sFrameData_318fe8
 	b _08027696
 	.align 2, 0
-_08027690: .4byte 0x08318FE8
+_08027690: .4byte sFrameData_318fe8
 _08027694:
-	ldr r0, _080276A4 @ =0x08318F30
+	ldr r0, _080276A4 @ =sFrameData_318f30
 _08027696:
 	str r0, [r1, #0x18]
 	movs r0, #0
@@ -259,7 +259,7 @@ _08027696:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080276A4: .4byte 0x08318F30
+_080276A4: .4byte sFrameData_318f30
 
 	thumb_func_start SciserCheckSamusInRange
 SciserCheckSamusInRange: @ 0x080276A8
@@ -295,12 +295,12 @@ _080276CC:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _080276F4
-	ldr r0, _080276F0 @ =0x08319030
+	ldr r0, _080276F0 @ =sFrameData_319030
 	b _080276F6
 	.align 2, 0
-_080276F0: .4byte 0x08319030
+_080276F0: .4byte sFrameData_319030
 _080276F4:
-	ldr r0, _08027714 @ =0x08318F78
+	ldr r0, _08027714 @ =sFrameData_318f78
 _080276F6:
 	str r0, [r4, #0x18]
 	ldr r0, _08027718 @ =gCurrentSprite
@@ -317,7 +317,7 @@ _0802770C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027714: .4byte 0x08318F78
+_08027714: .4byte sFrameData_318f78
 _08027718: .4byte gCurrentSprite
 _0802771C: .4byte 0x00000161
 
@@ -332,7 +332,7 @@ SciserShooting: @ 0x08027720
 	cmp r0, #0
 	beq _0802775C
 	ldr r1, [r2, #0x18]
-	ldr r0, _08027754 @ =0x08319030
+	ldr r0, _08027754 @ =sFrameData_319030
 	cmp r1, r0
 	bne _08027798
 	adds r3, r2, #0
@@ -346,15 +346,15 @@ SciserShooting: @ 0x08027720
 	beq _0802774C
 	b _080278CA
 _0802774C:
-	ldr r0, _08027758 @ =0x08319000
+	ldr r0, _08027758 @ =sFrameData_319000
 	b _0802777A
 	.align 2, 0
 _08027750: .4byte gCurrentSprite
-_08027754: .4byte 0x08319030
-_08027758: .4byte 0x08319000
+_08027754: .4byte sFrameData_319030
+_08027758: .4byte sFrameData_319000
 _0802775C:
 	ldr r1, [r2, #0x18]
-	ldr r0, _08027790 @ =0x08318F78
+	ldr r0, _08027790 @ =sFrameData_318f78
 	cmp r1, r0
 	bne _08027798
 	adds r3, r2, #0
@@ -368,7 +368,7 @@ _0802775C:
 	beq _08027778
 	b _080278CA
 _08027778:
-	ldr r0, _08027794 @ =0x08318F48
+	ldr r0, _08027794 @ =sFrameData_318f48
 _0802777A:
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
@@ -380,8 +380,8 @@ _0802777A:
 	bl SoundPlayNotAlreadyPlaying
 	b _080278CA
 	.align 2, 0
-_08027790: .4byte 0x08318F78
-_08027794: .4byte 0x08318F48
+_08027790: .4byte sFrameData_318f78
+_08027794: .4byte sFrameData_318f48
 _08027798:
 	ldr r5, _080277F0 @ =gCurrentSprite
 	adds r0, r5, #0
@@ -819,13 +819,13 @@ SciserCrawling: @ 0x08027ABC
 	ands r0, r1
 	cmp r0, #0
 	beq _08027AF4
-	ldr r1, _08027AF0 @ =0x08317648
+	ldr r1, _08027AF0 @ =sSciserBackgroundSpeedRight
 	b _08027AF6
 	.align 2, 0
 _08027AEC: .4byte gCurrentSprite
-_08027AF0: .4byte 0x08317648
+_08027AF0: .4byte sSciserBackgroundSpeedRight
 _08027AF4:
-	ldr r1, _08027B18 @ =0x08317630
+	ldr r1, _08027B18 @ =sSciserBackgroundSpeedLeft
 _08027AF6:
 	adds r0, r4, #0
 	adds r0, #0x30
@@ -844,7 +844,7 @@ _08027AF6:
 	strh r0, [r2, #2]
 	b _08027B22
 	.align 2, 0
-_08027B18: .4byte 0x08317630
+_08027B18: .4byte sSciserBackgroundSpeedLeft
 _08027B1C:
 	ldrh r0, [r2, #4]
 	adds r0, r0, r1
@@ -1526,7 +1526,7 @@ SciserProjectileInit: @ 0x08028008
 	strh r1, [r2, #0xc]
 	strh r0, [r2, #0xe]
 	strh r1, [r2, #0x10]
-	ldr r0, _08028078 @ =0x08318EF0
+	ldr r0, _08028078 @ =sFrameData_318ef0
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -1550,7 +1550,7 @@ SciserProjectileInit: @ 0x08028008
 _0802806C: .4byte gCurrentSprite
 _08028070: .4byte 0x0000FFFB
 _08028074: .4byte 0x0000FFF8
-_08028078: .4byte 0x08318EF0
+_08028078: .4byte sFrameData_318ef0
 
 	thumb_func_start SciserProjectileFalling
 SciserProjectileFalling: @ 0x0802807C
@@ -1585,7 +1585,7 @@ _080280B0:
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _080280E0 @ =0x08317692
+	ldr r5, _080280E0 @ =sSciserProjectileFallingSpeed2
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -1602,7 +1602,7 @@ _080280B0:
 	adds r0, r0, r1
 	b _080280F2
 	.align 2, 0
-_080280E0: .4byte 0x08317692
+_080280E0: .4byte sSciserProjectileFallingSpeed2
 _080280E4: .4byte 0x00007FFF
 _080280E8:
 	adds r0, r2, #1
@@ -1619,7 +1619,7 @@ _080280F8:
 	adds r6, r6, r4
 	mov ip, r6
 	ldrb r2, [r6]
-	ldr r5, _08028120 @ =0x08317660
+	ldr r5, _08028120 @ =sSciserProjectileFallingSpeed1
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -1636,7 +1636,7 @@ _080280F8:
 	adds r0, r0, r1
 	b _08028132
 	.align 2, 0
-_08028120: .4byte 0x08317660
+_08028120: .4byte sSciserProjectileFallingSpeed1
 _08028124: .4byte 0x00007FFF
 _08028128:
 	adds r0, r2, #1
@@ -1692,20 +1692,20 @@ SciserProjectileExplodingInit: @ 0x08028158
 	ands r0, r1
 	cmp r0, #0
 	beq _08028194
-	ldr r0, _08028190 @ =0x083190C8
+	ldr r0, _08028190 @ =sFrameData_3190c8
 	b _08028196
 	.align 2, 0
 _08028188: .4byte gCurrentSprite
 _0802818C: .4byte gSpriteRandomNumber
-_08028190: .4byte 0x083190C8
+_08028190: .4byte sFrameData_3190c8
 _08028194:
-	ldr r0, _0802819C @ =0x083190F0
+	ldr r0, _0802819C @ =sFrameData_3190f0
 _08028196:
 	str r0, [r3, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802819C: .4byte 0x083190F0
+_0802819C: .4byte sFrameData_3190f0
 
 	thumb_func_start SciserProjectileExploding
 SciserProjectileExploding: @ 0x080281A0

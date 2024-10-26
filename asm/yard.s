@@ -19,14 +19,14 @@ YardCheckShouldStartle: @ 0x0803C490
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0803C4C0
-	ldr r0, _0803C4BC @ =0x08355490
+	ldr r0, _0803C4BC @ =sYardOam_355490
 	b _0803C4C2
 	.align 2, 0
 _0803C4B4: .4byte gCurrentPowerBomb
 _0803C4B8: .4byte gCurrentSprite
-_0803C4BC: .4byte 0x08355490
+_0803C4BC: .4byte sYardOam_355490
 _0803C4C0:
-	ldr r0, _0803C4D4 @ =0x08355370
+	ldr r0, _0803C4D4 @ =sYardOam_355370
 _0803C4C2:
 	str r0, [r1, #0x18]
 	movs r0, #0
@@ -38,7 +38,7 @@ _0803C4C2:
 	movs r0, #1
 	b _0803C4DA
 	.align 2, 0
-_0803C4D4: .4byte 0x08355370
+_0803C4D4: .4byte sYardOam_355370
 _0803C4D8:
 	movs r0, #0
 _0803C4DA:
@@ -296,28 +296,28 @@ YardSetCrawlingOam: @ 0x0803C6A8
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0803C6D4
-	ldr r0, _0803C6D0 @ =0x08355540
+	ldr r0, _0803C6D0 @ =sYardOam_355540
 	b _0803C6F2
 	.align 2, 0
 _0803C6CC: .4byte gCurrentSprite
-_0803C6D0: .4byte 0x08355540
+_0803C6D0: .4byte sYardOam_355540
 _0803C6D4:
-	ldr r0, _0803C6D8 @ =0x08355530
+	ldr r0, _0803C6D8 @ =sYardOam_355530
 	b _0803C6F2
 	.align 2, 0
-_0803C6D8: .4byte 0x08355530
+_0803C6D8: .4byte sYardOam_355530
 _0803C6DC:
 	adds r0, r1, #0
 	adds r0, #0x2d
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0803C6F0
-	ldr r0, _0803C6EC @ =0x083553E8
+	ldr r0, _0803C6EC @ =sYardOam_3553e8
 	b _0803C6F2
 	.align 2, 0
-_0803C6EC: .4byte 0x083553E8
+_0803C6EC: .4byte sYardOam_3553e8
 _0803C6F0:
-	ldr r0, _0803C700 @ =0x083552C8
+	ldr r0, _0803C700 @ =sYardOam_3552c8
 _0803C6F2:
 	str r0, [r1, #0x18]
 	movs r0, #0
@@ -326,7 +326,7 @@ _0803C6F2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803C700: .4byte 0x083552C8
+_0803C700: .4byte sYardOam_3552c8
 
 	thumb_func_start YardSetTurningAroundOam
 YardSetTurningAroundOam: @ 0x0803C704
@@ -338,13 +338,13 @@ YardSetTurningAroundOam: @ 0x0803C704
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0803C720
-	ldr r0, _0803C71C @ =0x083554C8
+	ldr r0, _0803C71C @ =sYardOam_3554c8
 	b _0803C722
 	.align 2, 0
 _0803C718: .4byte gCurrentSprite
-_0803C71C: .4byte 0x083554C8
+_0803C71C: .4byte sYardOam_3554c8
 _0803C720:
-	ldr r0, _0803C730 @ =0x083553A8
+	ldr r0, _0803C730 @ =sYardOam_3553a8
 _0803C722:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -353,7 +353,7 @@ _0803C722:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803C730: .4byte 0x083553A8
+_0803C730: .4byte sYardOam_3553a8
 
 	thumb_func_start YardSetTurningAroundSecondPartOam
 YardSetTurningAroundSecondPartOam: @ 0x0803C734
@@ -365,13 +365,13 @@ YardSetTurningAroundSecondPartOam: @ 0x0803C734
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0803C750
-	ldr r0, _0803C74C @ =0x083554E8
+	ldr r0, _0803C74C @ =sYardOam_3554e8
 	b _0803C752
 	.align 2, 0
 _0803C748: .4byte gCurrentSprite
-_0803C74C: .4byte 0x083554E8
+_0803C74C: .4byte sYardOam_3554e8
 _0803C750:
-	ldr r0, _0803C760 @ =0x083553C8
+	ldr r0, _0803C760 @ =sYardOam_3553c8
 _0803C752:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -380,7 +380,7 @@ _0803C752:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803C760: .4byte 0x083553C8
+_0803C760: .4byte sYardOam_3553c8
 
 	thumb_func_start YardSetChargingOam
 YardSetChargingOam: @ 0x0803C764
@@ -392,13 +392,13 @@ YardSetChargingOam: @ 0x0803C764
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0803C780
-	ldr r0, _0803C77C @ =0x08355408
+	ldr r0, _0803C77C @ =sYardOam_355408
 	b _0803C782
 	.align 2, 0
 _0803C778: .4byte gCurrentSprite
-_0803C77C: .4byte 0x08355408
+_0803C77C: .4byte sYardOam_355408
 _0803C780:
-	ldr r0, _0803C790 @ =0x083552E8
+	ldr r0, _0803C790 @ =sYardOam_3552e8
 _0803C782:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -407,7 +407,7 @@ _0803C782:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803C790: .4byte 0x083552E8
+_0803C790: .4byte sYardOam_3552e8
 
 	thumb_func_start YardSetShootingOam
 YardSetShootingOam: @ 0x0803C794
@@ -419,13 +419,13 @@ YardSetShootingOam: @ 0x0803C794
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0803C7B0
-	ldr r0, _0803C7AC @ =0x08355438
+	ldr r0, _0803C7AC @ =sYardOam_355438
 	b _0803C7B2
 	.align 2, 0
 _0803C7A8: .4byte gCurrentSprite
-_0803C7AC: .4byte 0x08355438
+_0803C7AC: .4byte sYardOam_355438
 _0803C7B0:
-	ldr r0, _0803C7C0 @ =0x08355318
+	ldr r0, _0803C7C0 @ =sYardOam_355318
 _0803C7B2:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -434,7 +434,7 @@ _0803C7B2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803C7C0: .4byte 0x08355318
+_0803C7C0: .4byte sYardOam_355318
 
 	thumb_func_start YardSetRecoilOam
 YardSetRecoilOam: @ 0x0803C7C4
@@ -446,13 +446,13 @@ YardSetRecoilOam: @ 0x0803C7C4
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0803C7E0
-	ldr r0, _0803C7DC @ =0x08355470
+	ldr r0, _0803C7DC @ =sYardOam_355470
 	b _0803C7E2
 	.align 2, 0
 _0803C7D8: .4byte gCurrentSprite
-_0803C7DC: .4byte 0x08355470
+_0803C7DC: .4byte sYardOam_355470
 _0803C7E0:
-	ldr r0, _0803C7F0 @ =0x08355350
+	ldr r0, _0803C7F0 @ =sYardOam_355350
 _0803C7E2:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -461,7 +461,7 @@ _0803C7E2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803C7F0: .4byte 0x08355350
+_0803C7F0: .4byte sYardOam_355350
 
 	thumb_func_start YardCheckShoot
 YardCheckShoot: @ 0x0803C7F4
@@ -2165,7 +2165,7 @@ YardProjectileInit: @ 0x0803D490
 	strh r1, [r2, #0xc]
 	strh r0, [r2, #0xe]
 	strh r1, [r2, #0x10]
-	ldr r0, _0803D508 @ =0x08355508
+	ldr r0, _0803D508 @ =sYardOam_355508
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -2192,7 +2192,7 @@ YardProjectileInit: @ 0x0803D490
 _0803D4FC: .4byte gCurrentSprite
 _0803D500: .4byte 0x0000FFFB
 _0803D504: .4byte 0x0000FFF8
-_0803D508: .4byte 0x08355508
+_0803D508: .4byte sYardOam_355508
 _0803D50C: .4byte gIoRegisters
 
 	thumb_func_start YardProjectileMoving
@@ -2252,14 +2252,14 @@ YardProjectileExplodingInit: @ 0x0803D55C
 	adds r0, r3, #0
 	adds r0, #0x25
 	strb r1, [r0]
-	ldr r0, _0803D57C @ =0x08355550
+	ldr r0, _0803D57C @ =sYardOam_355550
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
 	bx lr
 	.align 2, 0
 _0803D578: .4byte gCurrentSprite
-_0803D57C: .4byte 0x08355550
+_0803D57C: .4byte sYardOam_355550
 
 	thumb_func_start YardProjectileExploding
 YardProjectileExploding: @ 0x0803D580

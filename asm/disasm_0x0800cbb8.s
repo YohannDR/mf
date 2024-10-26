@@ -6,7 +6,7 @@
 SA_XRunningGFX: @ 0x0800CBB8
 	push {lr}
 	ldr r3, _0800CC10 @ =gSaXData
-	ldr r2, _0800CC14 @ =0x0829AC60
+	ldr r2, _0800CC14 @ =sSaXAnim_Running_Left
 	ldrb r1, [r3, #0x13]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -34,7 +34,7 @@ _0800CBEC:
 	ldr r0, _0800CC18 @ =0x00000259
 	bl SoundPlay
 _0800CBF2:
-	ldr r2, _0800CC14 @ =0x0829AC60
+	ldr r2, _0800CC14 @ =sSaXAnim_Running_Left
 	ldr r3, _0800CC10 @ =gSaXData
 	ldrb r1, [r3, #0x13]
 	lsls r0, r1, #1
@@ -51,14 +51,14 @@ _0800CC08:
 	bx r1
 	.align 2, 0
 _0800CC10: .4byte gSaXData
-_0800CC14: .4byte 0x0829AC60
+_0800CC14: .4byte sSaXAnim_Running_Left
 _0800CC18: .4byte 0x00000259
 
 	thumb_func_start SA_XWalkingGFX
 SA_XWalkingGFX: @ 0x0800CC1C
 	push {lr}
 	ldr r3, _0800CC74 @ =gSaXData
-	ldr r2, _0800CC78 @ =0x082B3F10
+	ldr r2, _0800CC78 @ =sSaXAnim_Walking_Left
 	ldrb r1, [r3, #0x13]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -87,7 +87,7 @@ _0800CC50:
 	lsls r0, r0, #2
 	bl SoundPlay
 _0800CC58:
-	ldr r2, _0800CC78 @ =0x082B3F10
+	ldr r2, _0800CC78 @ =sSaXAnim_Walking_Left
 	ldr r3, _0800CC74 @ =gSaXData
 	ldrb r1, [r3, #0x13]
 	lsls r0, r1, #1
@@ -104,13 +104,13 @@ _0800CC6E:
 	bx r1
 	.align 2, 0
 _0800CC74: .4byte gSaXData
-_0800CC78: .4byte 0x082B3F10
+_0800CC78: .4byte sSaXAnim_Walking_Left
 
 	thumb_func_start SA_XStandingGFX
 SA_XStandingGFX: @ 0x0800CC7C
 	push {lr}
 	ldr r2, _0800CCB8 @ =gSaXData
-	ldr r3, _0800CCBC @ =0x0829AF78
+	ldr r3, _0800CCBC @ =sSaXAnim_Standing_Left
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -140,13 +140,13 @@ _0800CCB0:
 	bx r1
 	.align 2, 0
 _0800CCB8: .4byte gSaXData
-_0800CCBC: .4byte 0x0829AF78
+_0800CCBC: .4byte sSaXAnim_Standing_Left
 
 	thumb_func_start SA_XShootingGFX
 SA_XShootingGFX: @ 0x0800CCC0
 	push {lr}
 	ldr r2, _0800CCF8 @ =gSaXData
-	ldr r3, _0800CCFC @ =0x0829AFA8
+	ldr r3, _0800CCFC @ =sSaXAnim_Shooting_Left
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -173,7 +173,7 @@ SA_XShootingGFX: @ 0x0800CCC0
 	b _0800CD02
 	.align 2, 0
 _0800CCF8: .4byte gSaXData
-_0800CCFC: .4byte 0x0829AFA8
+_0800CCFC: .4byte sSaXAnim_Shooting_Left
 _0800CD00:
 	movs r0, #0xff
 _0800CD02:
@@ -185,7 +185,7 @@ _0800CD02:
 SA_XTurningGFX: @ 0x0800CD08
 	push {lr}
 	ldr r2, _0800CD40 @ =gSaXData
-	ldr r3, _0800CD44 @ =0x0829B08C
+	ldr r3, _0800CD44 @ =sSaXAnim_Turning_Right
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -212,7 +212,7 @@ SA_XTurningGFX: @ 0x0800CD08
 	b _0800CD4A
 	.align 2, 0
 _0800CD40: .4byte gSaXData
-_0800CD44: .4byte 0x0829B08C
+_0800CD44: .4byte sSaXAnim_Turning_Right
 _0800CD48:
 	movs r0, #0xff
 _0800CD4A:
@@ -224,7 +224,7 @@ _0800CD4A:
 SA_XMidAirGFX: @ 0x0800CD50
 	push {lr}
 	ldr r2, _0800CD90 @ =gSaXData
-	ldr r3, _0800CD94 @ =0x082ABD88
+	ldr r3, _0800CD94 @ =sSaXAnim_MidAir_Left
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -256,14 +256,14 @@ _0800CD8A:
 	bx r1
 	.align 2, 0
 _0800CD90: .4byte gSaXData
-_0800CD94: .4byte 0x082ABD88
+_0800CD94: .4byte sSaXAnim_MidAir_Left
 _0800CD98: .4byte 0x0000025B
 
 	thumb_func_start SA_XLandingGFX
 SA_XLandingGFX: @ 0x0800CD9C
 	push {lr}
 	ldr r2, _0800CDD4 @ =gSaXData
-	ldr r3, _0800CDD8 @ =0x082A97AC
+	ldr r3, _0800CDD8 @ =sSaXAnim_Landing_Right
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -290,7 +290,7 @@ SA_XLandingGFX: @ 0x0800CD9C
 	b _0800CDDE
 	.align 2, 0
 _0800CDD4: .4byte gSaXData
-_0800CDD8: .4byte 0x082A97AC
+_0800CDD8: .4byte sSaXAnim_Landing_Right
 _0800CDDC:
 	movs r0, #0xff
 _0800CDDE:
@@ -302,7 +302,7 @@ _0800CDDE:
 SA_XShootingRestrictedLaboratoryGFX: @ 0x0800CDE4
 	push {lr}
 	ldr r2, _0800CE20 @ =gSaXData
-	ldr r3, _0800CE24 @ =0x082B0D60
+	ldr r3, _0800CE24 @ =sSaXAnim_ShootingRestrictedLaboratory
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -332,13 +332,13 @@ _0800CE18:
 	bx r1
 	.align 2, 0
 _0800CE20: .4byte gSaXData
-_0800CE24: .4byte 0x082B0D60
+_0800CE24: .4byte sSaXAnim_ShootingRestrictedLaboratory
 
 	thumb_func_start SA_XCoveredByMetroidsGFX
 SA_XCoveredByMetroidsGFX: @ 0x0800CE28
 	push {lr}
 	ldr r2, _0800CE64 @ =gSaXData
-	ldr r3, _0800CE68 @ =0x082B0FC4
+	ldr r3, _0800CE68 @ =sSaXAnim_CoveredByMetroids
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -368,7 +368,7 @@ _0800CE5C:
 	bx r1
 	.align 2, 0
 _0800CE64: .4byte gSaXData
-_0800CE68: .4byte 0x082B0FC4
+_0800CE68: .4byte sSaXAnim_CoveredByMetroids
 
 	thumb_func_start SA_XKneelingGFX
 SA_XKneelingGFX: @ 0x0800CE6C
@@ -380,7 +380,7 @@ SA_XKneelingGFX: @ 0x0800CE6C
 	movs r0, #0x9d
 	bl SoundPlay
 _0800CE7C:
-	ldr r2, _0800CEB8 @ =0x082A99C8
+	ldr r2, _0800CEB8 @ =sSaXAnim_Kneeling_Right
 	ldrb r0, [r4, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -411,13 +411,13 @@ _0800CEAC:
 	bx r1
 	.align 2, 0
 _0800CEB4: .4byte gSaXData
-_0800CEB8: .4byte 0x082A99C8
+_0800CEB8: .4byte sSaXAnim_Kneeling_Right
 
 	thumb_func_start SA_XTransformingIntoMonsterGFX
 SA_XTransformingIntoMonsterGFX: @ 0x0800CEBC
 	push {lr}
 	ldr r2, _0800CEF8 @ =gSaXData
-	ldr r3, _0800CEFC @ =0x082A9BA8
+	ldr r3, _0800CEFC @ =sSaXAnim_TransformingIntoMonster_Right
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -448,13 +448,13 @@ _0800CEF2:
 	bx r1
 	.align 2, 0
 _0800CEF8: .4byte gSaXData
-_0800CEFC: .4byte 0x082A9BA8
+_0800CEFC: .4byte sSaXAnim_TransformingIntoMonster_Right
 
 	thumb_func_start SA_XMorphingGFX
 SA_XMorphingGFX: @ 0x0800CF00
 	push {lr}
 	ldr r2, _0800CF3C @ =gSaXData
-	ldr r3, _0800CF40 @ =0x0829B188
+	ldr r3, _0800CF40 @ =sSaXAnim_Morphing_Left
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -483,7 +483,7 @@ SA_XMorphingGFX: @ 0x0800CF00
 	b _0800CF4A
 	.align 2, 0
 _0800CF3C: .4byte gSaXData
-_0800CF40: .4byte 0x0829B188
+_0800CF40: .4byte sSaXAnim_Morphing_Left
 _0800CF44: .4byte 0x0000025F
 _0800CF48:
 	movs r0, #0xff
@@ -496,7 +496,7 @@ _0800CF4A:
 SA_XUnmorphingGFX: @ 0x0800CF50
 	push {lr}
 	ldr r2, _0800CF88 @ =gSaXData
-	ldr r3, _0800CF8C @ =0x0829B1AC
+	ldr r3, _0800CF8C @ =sSaXAnim_Unmorphing_Left
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -523,7 +523,7 @@ SA_XUnmorphingGFX: @ 0x0800CF50
 	b _0800CF92
 	.align 2, 0
 _0800CF88: .4byte gSaXData
-_0800CF8C: .4byte 0x0829B1AC
+_0800CF8C: .4byte sSaXAnim_Unmorphing_Left
 _0800CF90:
 	movs r0, #0xff
 _0800CF92:
@@ -535,7 +535,7 @@ _0800CF92:
 SA_XMorphBallGFX: @ 0x0800CF98
 	push {lr}
 	ldr r2, _0800CFD4 @ =gSaXData
-	ldr r3, _0800CFD8 @ =0x0829B1D0
+	ldr r3, _0800CFD8 @ =sSaXAnim_MorphBall_Left
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -565,13 +565,13 @@ _0800CFCC:
 	bx r1
 	.align 2, 0
 _0800CFD4: .4byte gSaXData
-_0800CFD8: .4byte 0x0829B1D0
+_0800CFD8: .4byte sSaXAnim_MorphBall_Left
 
 	thumb_func_start SA_XSwagWalkGFX
 SA_XSwagWalkGFX: @ 0x0800CFDC
 	push {lr}
 	ldr r2, _0800D018 @ =gSaXData
-	ldr r3, _0800D01C @ =0x0829AD68
+	ldr r3, _0800D01C @ =sSaXAnim_SwagWalk_Left
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -601,13 +601,13 @@ _0800D010:
 	bx r1
 	.align 2, 0
 _0800D018: .4byte gSaXData
-_0800D01C: .4byte 0x0829AD68
+_0800D01C: .4byte sSaXAnim_SwagWalk_Left
 
 	thumb_func_start SA_XTurningTowardsCameraGFX
 SA_XTurningTowardsCameraGFX: @ 0x0800D020
 	push {lr}
 	ldr r2, _0800D064 @ =gSaXData
-	ldr r3, _0800D068 @ =0x0829B0F8
+	ldr r3, _0800D068 @ =sSaXAnim_TurningTowardsCamera
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -640,7 +640,7 @@ SA_XTurningTowardsCameraGFX: @ 0x0800D020
 	b _0800D076
 	.align 2, 0
 _0800D064: .4byte gSaXData
-_0800D068: .4byte 0x0829B0F8
+_0800D068: .4byte sSaXAnim_TurningTowardsCamera
 _0800D06C: .4byte gPauseScreenFlag
 _0800D070: .4byte gSubGameMode1
 _0800D074:
@@ -654,7 +654,7 @@ _0800D076:
 SA_XTurningAwayFromCameraGFX: @ 0x0800D07C
 	push {lr}
 	ldr r2, _0800D0B4 @ =gSaXData
-	ldr r3, _0800D0B8 @ =0x0829B2F0
+	ldr r3, _0800D0B8 @ =sSaXAnim_TurningAwayFromCamera
 	ldrb r0, [r2, #0x13]
 	lsls r1, r0, #1
 	adds r1, r1, r0
@@ -681,7 +681,7 @@ SA_XTurningAwayFromCameraGFX: @ 0x0800D07C
 	b _0800D0BE
 	.align 2, 0
 _0800D0B4: .4byte gSaXData
-_0800D0B8: .4byte 0x0829B2F0
+_0800D0B8: .4byte sSaXAnim_TurningAwayFromCamera
 _0800D0BC:
 	movs r0, #0xff
 _0800D0BE:
@@ -857,45 +857,45 @@ _0800D206:
 	ldrb r0, [r3, #4]
 	cmp r0, #0
 	beq _0800D218
-	ldr r2, _0800D214 @ =0x082B40F4
+	ldr r2, _0800D214 @ =sSaXOamDataPointers_Standing_Armed
 	lsls r1, r1, #2
 	ldrb r0, [r3, #3]
 	b _0800D256
 	.align 2, 0
-_0800D214: .4byte 0x082B40F4
+_0800D214: .4byte sSaXOamDataPointers_Standing_Armed
 _0800D218:
-	ldr r2, _0800D220 @ =0x082B40DC
+	ldr r2, _0800D220 @ =sSaXOamDataPointers_Standing
 	lsls r1, r1, #2
 	ldrb r0, [r3, #3]
 	b _0800D256
 	.align 2, 0
-_0800D220: .4byte 0x082B40DC
+_0800D220: .4byte sSaXOamDataPointers_Standing
 _0800D224:
 	ldrb r0, [r3, #4]
 	cmp r0, #0
 	beq _0800D238
-	ldr r2, _0800D234 @ =0x082B4124
+	ldr r2, _0800D234 @ =sSaXOamDataPointers_Shooting_Armed
 	lsls r1, r1, #2
 	ldrb r0, [r3, #3]
 	b _0800D256
 	.align 2, 0
-_0800D234: .4byte 0x082B4124
+_0800D234: .4byte sSaXOamDataPointers_Shooting_Armed
 _0800D238:
-	ldr r2, _0800D240 @ =0x082B410C
+	ldr r2, _0800D240 @ =sSaXOamDataPointers_Shooting
 	lsls r1, r1, #2
 	ldrb r0, [r3, #3]
 	b _0800D256
 	.align 2, 0
-_0800D240: .4byte 0x082B410C
+_0800D240: .4byte sSaXOamDataPointers_Shooting
 _0800D244:
-	ldr r2, _0800D24C @ =0x082B413C
+	ldr r2, _0800D24C @ =sSaXOamDataPointers_Turning
 	lsls r1, r1, #2
 	ldrb r0, [r3, #3]
 	b _0800D256
 	.align 2, 0
-_0800D24C: .4byte 0x082B413C
+_0800D24C: .4byte sSaXOamDataPointers_Turning
 _0800D250:
-	ldr r2, _0800D29C @ =0x082B403C
+	ldr r2, _0800D29C @ =sSaXOamDataPointers
 	lsls r1, r1, #2
 	ldrb r0, [r3, #1]
 _0800D256:
@@ -935,7 +935,7 @@ _0800D256:
 	adds r0, r1, r0
 	b _0800D2CE
 	.align 2, 0
-_0800D29C: .4byte 0x082B403C
+_0800D29C: .4byte sSaXOamDataPointers
 _0800D2A0: .4byte gSaXData
 _0800D2A4: .4byte sSaXPalette_MidAir
 _0800D2A8:
@@ -1954,7 +1954,7 @@ _0800DAA4: .4byte 0x00003F48
 _0800DAA8:
 	ldr r2, _0800DAE8 @ =gSaXData
 	adds r1, r2, #0
-	ldr r0, _0800DAEC @ =0x082B4018
+	ldr r0, _0800DAEC @ =sSaXData_Empty
 	ldm r0!, {r3, r5, r7}
 	stm r1!, {r3, r5, r7}
 	ldm r0!, {r3, r5, r7}
@@ -1987,7 +1987,7 @@ _0800DAE0:
 	bx r1
 	.align 2, 0
 _0800DAE8: .4byte gSaXData
-_0800DAEC: .4byte 0x082B4018
+_0800DAEC: .4byte sSaXData_Empty
 _0800DAF0: .4byte gBg1XPosition
 _0800DAF4: .4byte gBg1YPosition
 

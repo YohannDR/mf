@@ -494,7 +494,7 @@ RidleySyncSubSprites: @ 0x0805943C
 	lsls r0, r0, #1
 	adds r0, r0, r3
 	ldrh r0, [r0]
-	ldr r1, _080594A8 @ =0x0879B708
+	ldr r1, _080594A8 @ =sRidleyFrameDataPointers
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r1, [r2, #0x18]
@@ -533,7 +533,7 @@ _0805946E:
 	.align 2, 0
 _080594A0: .4byte gSubSpriteData1
 _080594A4: .4byte gCurrentSprite
-_080594A8: .4byte 0x0879B708
+_080594A8: .4byte sRidleyFrameDataPointers
 _080594AC:
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -575,7 +575,7 @@ RidleyTailSyncSubSprites: @ 0x080594D8
 	lsls r0, r0, #1
 	adds r0, r0, r3
 	ldrh r0, [r0]
-	ldr r1, _08059544 @ =0x0879B708
+	ldr r1, _08059544 @ =sRidleyFrameDataPointers
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r1, [r2, #0x18]
@@ -614,7 +614,7 @@ _0805950A:
 	.align 2, 0
 _0805953C: .4byte gSubSpriteData2
 _08059540: .4byte gCurrentSprite
-_08059544: .4byte 0x0879B708
+_08059544: .4byte sRidleyFrameDataPointers
 _08059548:
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -747,7 +747,7 @@ RidleyUpdateClawOam: @ 0x08059630
 	bne _08059660
 	ldr r1, _08059658 @ =gSubSpriteData1
 	ldr r0, [r1]
-	ldr r2, _0805965C @ =0x083A9F74
+	ldr r2, _0805965C @ =sRidleyMultiSpriteData_3a9f74
 	cmp r0, r2
 	beq _08059676
 	str r2, [r1]
@@ -758,11 +758,11 @@ RidleyUpdateClawOam: @ 0x08059630
 	.align 2, 0
 _08059654: .4byte gCurrentSprite
 _08059658: .4byte gSubSpriteData1
-_0805965C: .4byte 0x083A9F74
+_0805965C: .4byte sRidleyMultiSpriteData_3a9f74
 _08059660:
 	ldr r1, _0805967C @ =gSubSpriteData1
 	ldr r0, [r1]
-	ldr r2, _08059680 @ =0x083A9944
+	ldr r2, _08059680 @ =sRidleyMultiSpriteData_3a9944
 	cmp r0, r2
 	beq _08059676
 	str r2, [r1]
@@ -776,7 +776,7 @@ _08059676:
 	bx r0
 	.align 2, 0
 _0805967C: .4byte gSubSpriteData1
-_08059680: .4byte 0x083A9944
+_08059680: .4byte sRidleyMultiSpriteData_3a9944
 
 	thumb_func_start RidleyTailStrikingCheckPlayEffects
 RidleyTailStrikingCheckPlayEffects: @ 0x08059684
@@ -1119,10 +1119,10 @@ RidleyCheckGrabSamusLeft: @ 0x08059910
 	lsrs r7, r0, #0x10
 	ldr r0, _08059938 @ =gSubSpriteData1
 	ldr r2, [r0]
-	ldr r0, _0805993C @ =0x083A9A2C
+	ldr r0, _0805993C @ =sRidleyMultiSpriteData_3a9a2c
 	cmp r2, r0
 	beq _08059930
-	ldr r0, _08059940 @ =0x083A9A44
+	ldr r0, _08059940 @ =sRidleyMultiSpriteData_3a9a44
 	cmp r2, r0
 	bne _08059944
 _08059930:
@@ -1131,8 +1131,8 @@ _08059930:
 	b _08059948
 	.align 2, 0
 _08059938: .4byte gSubSpriteData1
-_0805993C: .4byte 0x083A9A2C
-_08059940: .4byte 0x083A9A44
+_0805993C: .4byte sRidleyMultiSpriteData_3a9a2c
+_08059940: .4byte sRidleyMultiSpriteData_3a9a44
 _08059944:
 	adds r0, r1, #0
 	subs r0, #0xe6
@@ -1181,10 +1181,10 @@ RidleyCheckGrabSamusRight: @ 0x08059988
 	lsrs r7, r0, #0x10
 	ldr r0, _080599B0 @ =gSubSpriteData1
 	ldr r2, [r0]
-	ldr r0, _080599B4 @ =0x083A9A2C
+	ldr r0, _080599B4 @ =sRidleyMultiSpriteData_3a9a2c
 	cmp r2, r0
 	beq _080599A8
-	ldr r0, _080599B8 @ =0x083A9A44
+	ldr r0, _080599B8 @ =sRidleyMultiSpriteData_3a9a44
 	cmp r2, r0
 	bne _080599BC
 _080599A8:
@@ -1193,8 +1193,8 @@ _080599A8:
 	b _080599C0
 	.align 2, 0
 _080599B0: .4byte gSubSpriteData1
-_080599B4: .4byte 0x083A9A2C
-_080599B8: .4byte 0x083A9A44
+_080599B4: .4byte sRidleyMultiSpriteData_3a9a2c
+_080599B8: .4byte sRidleyMultiSpriteData_3a9a44
 _080599BC:
 	adds r0, r1, #0
 	adds r0, #0xe6
@@ -1250,10 +1250,10 @@ RidleySamusGrabbed: @ 0x08059A00
 	strh r0, [r4, #0x18]
 	ldr r0, _08059A4C @ =gSubSpriteData1
 	ldr r1, [r0]
-	ldr r0, _08059A50 @ =0x083A9A2C
+	ldr r0, _08059A50 @ =sRidleyMultiSpriteData_3a9a2c
 	cmp r1, r0
 	beq _08059A2E
-	ldr r0, _08059A54 @ =0x083A9A44
+	ldr r0, _08059A54 @ =sRidleyMultiSpriteData_3a9a44
 	cmp r1, r0
 	bne _08059A60
 _08059A2E:
@@ -1270,8 +1270,8 @@ _08059A40: .4byte gCurrentSprite
 _08059A44: .4byte 0x0000F7FF
 _08059A48: .4byte gSamusData
 _08059A4C: .4byte gSubSpriteData1
-_08059A50: .4byte 0x083A9A2C
-_08059A54: .4byte 0x083A9A44
+_08059A50: .4byte sRidleyMultiSpriteData_3a9a2c
+_08059A54: .4byte sRidleyMultiSpriteData_3a9a44
 _08059A58:
 	ldrh r0, [r2, #4]
 	subs r0, #0x82
@@ -1490,7 +1490,7 @@ _08059BE8: .4byte gSpriteData
 RidleyScreamingInit: @ 0x08059BEC
 	push {r4, r5, lr}
 	ldr r1, _08059C3C @ =gSubSpriteData1
-	ldr r0, _08059C40 @ =0x083A9A14
+	ldr r0, _08059C40 @ =sRidleyMultiSpriteData_3a9a14
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1529,7 +1529,7 @@ _08059C20:
 	b _08059C64
 	.align 2, 0
 _08059C3C: .4byte gSubSpriteData1
-_08059C40: .4byte 0x083A9A14
+_08059C40: .4byte sRidleyMultiSpriteData_3a9a14
 _08059C44: .4byte gCurrentSprite
 _08059C48: .4byte sSamusSetPoseFunctionPointer
 _08059C4C: .4byte gSamusData
@@ -1883,7 +1883,7 @@ _08059EE0:
 	adds r1, #0x24
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _08059F04 @ =0x083A9A5C
+	ldr r0, _08059F04 @ =sRidleyMultiSpriteData_3a9a5c
 	str r0, [r4]
 	strb r2, [r4, #6]
 	strh r5, [r4, #4]
@@ -1893,7 +1893,7 @@ _08059EFA:
 	bx r0
 	.align 2, 0
 _08059F00: .4byte 0x00007FDF
-_08059F04: .4byte 0x083A9A5C
+_08059F04: .4byte sRidleyMultiSpriteData_3a9a5c
 
 	thumb_func_start RidleyScreamingAfterSpawn
 RidleyScreamingAfterSpawn: @ 0x08059F08
@@ -1912,7 +1912,7 @@ _08059F1E:
 	cmp r0, #0
 	beq _08059F6A
 	ldr r2, _08059F78 @ =gSubSpriteData1
-	ldr r0, _08059F7C @ =0x083A996C
+	ldr r0, _08059F7C @ =sRidleyMultiSpriteData_3a996c
 	str r0, [r2]
 	movs r0, #0
 	strb r0, [r2, #6]
@@ -1952,7 +1952,7 @@ _08059F6A:
 _08059F70: .4byte gCurrentSprite
 _08059F74: .4byte 0x000001DD
 _08059F78: .4byte gSubSpriteData1
-_08059F7C: .4byte 0x083A996C
+_08059F7C: .4byte sRidleyMultiSpriteData_3a996c
 _08059F80: .4byte 0x0000FFA0
 
 	thumb_func_start RidleyRisingAfterSpawn
@@ -1967,7 +1967,7 @@ RidleyRisingAfterSpawn: @ 0x08059F84
 	adds r0, #0x31
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r6, _08059FC4 @ =0x083A9F9C
+	ldr r6, _08059FC4 @ =sRidleyRisingAfterSpawnSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r6
 	ldrh r4, [r0]
@@ -1987,7 +1987,7 @@ RidleyRisingAfterSpawn: @ 0x08059F84
 _08059FB8: .4byte gSubSpriteData1
 _08059FBC: .4byte 0x0000027F
 _08059FC0: .4byte gCurrentSprite
-_08059FC4: .4byte 0x083A9F9C
+_08059FC4: .4byte sRidleyRisingAfterSpawnSpeed
 _08059FC8: .4byte 0x00007FFF
 _08059FCC:
 	adds r0, r2, #1
@@ -2099,7 +2099,7 @@ RidleyInit: @ 0x0805A024
 	strh r0, [r4, #8]
 	ldrh r0, [r7, #4]
 	strh r0, [r4, #0xa]
-	ldr r0, _0805A1D0 @ =0x083A9A5C
+	ldr r0, _0805A1D0 @ =sRidleyMultiSpriteData_3a9a5c
 	str r0, [r4]
 	strb r6, [r4, #6]
 	strh r5, [r4, #4]
@@ -2229,7 +2229,7 @@ _0805A1C0: .4byte sPrimarySpriteStats
 _0805A1C4: .4byte gSubSpriteData1
 _0805A1C8: .4byte gBossWork5
 _0805A1CC: .4byte 0x0000FFFB
-_0805A1D0: .4byte 0x083A9A5C
+_0805A1D0: .4byte sRidleyMultiSpriteData_3a9a5c
 
 	thumb_func_start RidleyIdleInit
 RidleyIdleInit: @ 0x0805A1D4
@@ -2449,7 +2449,7 @@ _0805A380: .4byte gSpriteRandomNumber
 	thumb_func_start RidleyTurningAroundInit
 RidleyTurningAroundInit: @ 0x0805A384
 	ldr r1, _0805A39C @ =gSubSpriteData1
-	ldr r0, _0805A3A0 @ =0x083A9A2C
+	ldr r0, _0805A3A0 @ =sRidleyMultiSpriteData_3a9a2c
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2461,7 +2461,7 @@ RidleyTurningAroundInit: @ 0x0805A384
 	bx lr
 	.align 2, 0
 _0805A39C: .4byte gSubSpriteData1
-_0805A3A0: .4byte 0x083A9A2C
+_0805A3A0: .4byte sRidleyMultiSpriteData_3a9a2c
 _0805A3A4: .4byte gCurrentSprite
 
 	thumb_func_start RidleyTurningAround
@@ -2472,7 +2472,7 @@ RidleyTurningAround: @ 0x0805A3A8
 	cmp r0, #0
 	beq _0805A3D8
 	ldr r1, _0805A3DC @ =gSubSpriteData1
-	ldr r0, _0805A3E0 @ =0x083A9A44
+	ldr r0, _0805A3E0 @ =sRidleyMultiSpriteData_3a9a44
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2492,7 +2492,7 @@ _0805A3D8:
 	bx r0
 	.align 2, 0
 _0805A3DC: .4byte gSubSpriteData1
-_0805A3E0: .4byte 0x083A9A44
+_0805A3E0: .4byte sRidleyMultiSpriteData_3a9a44
 _0805A3E4: .4byte gCurrentSprite
 
 	thumb_func_start RidleyTurningAroundSecondPart
@@ -2569,7 +2569,7 @@ RidleyTailAttack: @ 0x0805A45C
 	thumb_func_start RidleyShootingFireInit
 RidleyShootingFireInit: @ 0x0805A468
 	ldr r1, _0805A480 @ =gSubSpriteData1
-	ldr r0, _0805A484 @ =0x083A9994
+	ldr r0, _0805A484 @ =sRidleyMultiSpriteData_3a9994
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2581,7 +2581,7 @@ RidleyShootingFireInit: @ 0x0805A468
 	bx lr
 	.align 2, 0
 _0805A480: .4byte gSubSpriteData1
-_0805A484: .4byte 0x083A9994
+_0805A484: .4byte sRidleyMultiSpriteData_3a9994
 _0805A488: .4byte gCurrentSprite
 
 	thumb_func_start RidleyShootingFire
@@ -2921,7 +2921,7 @@ RidleyTailPartInit: @ 0x0805A6B8
 	cmp r1, #7
 	bne _0805A754
 	ldr r0, _0805A748 @ =gSubSpriteData2
-	ldr r1, _0805A74C @ =0x083A9B1C
+	ldr r1, _0805A74C @ =sRidleyMultiSpriteData_3a9b1c
 	str r1, [r0]
 	strb r5, [r0, #6]
 	strh r6, [r0, #4]
@@ -2945,7 +2945,7 @@ _0805A73C: .4byte gCurrentSprite
 _0805A740: .4byte 0x0000FFFB
 _0805A744: .4byte gIoRegisters
 _0805A748: .4byte gSubSpriteData2
-_0805A74C: .4byte 0x083A9B1C
+_0805A74C: .4byte sRidleyMultiSpriteData_3a9b1c
 _0805A750: .4byte 0x0000FFE4
 _0805A754:
 	ldr r1, _0805A768 @ =0x0000FFEC
@@ -3015,15 +3015,15 @@ RidleyTailPartIdle: @ 0x0805A7B8
 	bl RidleyTailPartHandleRotation
 	ldr r0, _0805A81C @ =gSubSpriteData1
 	ldr r1, [r0]
-	ldr r0, _0805A820 @ =0x083A9A14
+	ldr r0, _0805A820 @ =sRidleyMultiSpriteData_3a9a14
 	cmp r1, r0
 	beq _0805A7E2
 	ldr r2, _0805A824 @ =gSubSpriteData2
 	ldr r1, [r2]
-	ldr r0, _0805A828 @ =0x083A9B9C
+	ldr r0, _0805A828 @ =sRidleyMultiSpriteData_3a9b9c
 	cmp r1, r0
 	bne _0805A7E2
-	ldr r0, _0805A82C @ =0x083A9B1C
+	ldr r0, _0805A82C @ =sRidleyMultiSpriteData_3a9b1c
 	str r0, [r2]
 	movs r0, #0
 	strb r0, [r2, #6]
@@ -3045,7 +3045,7 @@ _0805A7E2:
 	movs r0, #0x38
 	strb r0, [r1]
 	ldr r1, _0805A824 @ =gSubSpriteData2
-	ldr r0, _0805A834 @ =0x083A9C1C
+	ldr r0, _0805A834 @ =sRidleyMultiSpriteData_3a9c1c
 	str r0, [r1]
 	strb r3, [r1, #6]
 	movs r0, #0
@@ -3059,12 +3059,12 @@ _0805A810:
 	.align 2, 0
 _0805A818: .4byte gCurrentSprite
 _0805A81C: .4byte gSubSpriteData1
-_0805A820: .4byte 0x083A9A14
+_0805A820: .4byte sRidleyMultiSpriteData_3a9a14
 _0805A824: .4byte gSubSpriteData2
-_0805A828: .4byte 0x083A9B9C
-_0805A82C: .4byte 0x083A9B1C
+_0805A828: .4byte sRidleyMultiSpriteData_3a9b9c
+_0805A82C: .4byte sRidleyMultiSpriteData_3a9b1c
 _0805A830: .4byte gSpriteData
-_0805A834: .4byte 0x083A9C1C
+_0805A834: .4byte sRidleyMultiSpriteData_3a9c1c
 
 	thumb_func_start RidleyTailPartWaitingTOWindUp
 RidleyTailPartWaitingTOWindUp: @ 0x0805A838
@@ -3073,7 +3073,7 @@ RidleyTailPartWaitingTOWindUp: @ 0x0805A838
 	cmp r0, #0
 	beq _0805A856
 	ldr r1, _0805A85C @ =gSubSpriteData2
-	ldr r0, _0805A860 @ =0x083A9C74
+	ldr r0, _0805A860 @ =sRidleyMultiSpriteData_3a9c74
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -3087,7 +3087,7 @@ _0805A856:
 	bx r0
 	.align 2, 0
 _0805A85C: .4byte gSubSpriteData2
-_0805A860: .4byte 0x083A9C74
+_0805A860: .4byte sRidleyMultiSpriteData_3a9c74
 _0805A864: .4byte gCurrentSprite
 
 	thumb_func_start RidleyTailPartWindingUp1
@@ -3106,7 +3106,7 @@ _0805A87E:
 	bl CheckEndOfSubSpriteData2Animation
 	cmp r0, #0
 	beq _0805A8A6
-	ldr r0, _0805A8CC @ =0x083A9CDC
+	ldr r0, _0805A8CC @ =sRidleyMultiSpriteData_3a9cdc
 	str r0, [r4]
 	movs r0, #0
 	strb r0, [r4, #6]
@@ -3139,7 +3139,7 @@ _0805A8BC: .4byte gSubSpriteData2
 _0805A8C0: .4byte 0x00FFFFFF
 _0805A8C4: .4byte 0x00010003
 _0805A8C8: .4byte 0x000001E5
-_0805A8CC: .4byte 0x083A9CDC
+_0805A8CC: .4byte sRidleyMultiSpriteData_3a9cdc
 _0805A8D0: .4byte gCurrentSprite
 _0805A8D4: .4byte gSpriteRandomNumber
 _0805A8D8: .4byte gSubSpriteData1
@@ -3238,7 +3238,7 @@ _0805A998:
 	beq _0805A9C0
 _0805A99E:
 	ldr r1, _0805A9B4 @ =gSubSpriteData2
-	ldr r0, _0805A9B8 @ =0x083A9D44
+	ldr r0, _0805A9B8 @ =sRidleyMultiSpriteData_3a9d44
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -3250,11 +3250,11 @@ _0805A99E:
 	b _0805A9FC
 	.align 2, 0
 _0805A9B4: .4byte gSubSpriteData2
-_0805A9B8: .4byte 0x083A9D44
+_0805A9B8: .4byte sRidleyMultiSpriteData_3a9d44
 _0805A9BC: .4byte gCurrentSprite
 _0805A9C0:
 	ldr r0, _0805A9E8 @ =gSubSpriteData2
-	ldr r1, _0805A9EC @ =0x083A9DF4
+	ldr r1, _0805A9EC @ =sRidleyMultiSpriteData_3a9df4
 	str r1, [r0]
 	strb r6, [r0, #6]
 	strh r6, [r0, #4]
@@ -3274,7 +3274,7 @@ _0805A9C0:
 	b _0805A9FA
 	.align 2, 0
 _0805A9E8: .4byte gSubSpriteData2
-_0805A9EC: .4byte 0x083A9DF4
+_0805A9EC: .4byte sRidleyMultiSpriteData_3a9df4
 _0805A9F0: .4byte gCurrentSprite
 _0805A9F4:
 	adds r1, r2, #0
@@ -3304,7 +3304,7 @@ _0805AA1A:
 	bl CheckEndOfSubSpriteData2Animation
 	cmp r0, #0
 	beq _0805AA50
-	ldr r0, _0805AA48 @ =0x083A9E64
+	ldr r0, _0805AA48 @ =sRidleyMultiSpriteData_3a9e64
 	str r0, [r4]
 	movs r0, #0
 	strb r0, [r4, #6]
@@ -3319,7 +3319,7 @@ _0805AA38: .4byte gSubSpriteData2
 _0805AA3C: .4byte 0x00FFFFFF
 _0805AA40: .4byte 0x00010003
 _0805AA44: .4byte 0x000001E7
-_0805AA48: .4byte 0x083A9E64
+_0805AA48: .4byte sRidleyMultiSpriteData_3a9e64
 _0805AA4C: .4byte gCurrentSprite
 _0805AA50:
 	ldrh r0, [r4, #4]
@@ -3441,7 +3441,7 @@ _0805AB3A:
 	cmp r5, #0
 	beq _0805AB5C
 	ldr r1, _0805AB54 @ =gSubSpriteData2
-	ldr r0, _0805AB58 @ =0x083A9EBC
+	ldr r0, _0805AB58 @ =sRidleyMultiSpriteData_3a9ebc
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -3453,7 +3453,7 @@ _0805AB3A:
 	b _0805AB8A
 	.align 2, 0
 _0805AB54: .4byte gSubSpriteData2
-_0805AB58: .4byte 0x083A9EBC
+_0805AB58: .4byte sRidleyMultiSpriteData_3a9ebc
 _0805AB5C:
 	ldr r0, _0805AB6C @ =gSubSpriteData2
 	ldrh r0, [r0, #4]
@@ -3508,7 +3508,7 @@ _0805ABB0:
 	ldrb r1, [r0]
 	cmp r1, #0
 	beq _0805ABEC
-	ldr r0, _0805ABE8 @ =0x083A9CDC
+	ldr r0, _0805ABE8 @ =sRidleyMultiSpriteData_3a9cdc
 	str r0, [r4]
 	movs r0, #0
 	strb r0, [r4, #6]
@@ -3523,9 +3523,9 @@ _0805ABD8: .4byte gSubSpriteData2
 _0805ABDC: .4byte 0x00FFFFFF
 _0805ABE0: .4byte 0x000001E7
 _0805ABE4: .4byte gCurrentSprite
-_0805ABE8: .4byte 0x083A9CDC
+_0805ABE8: .4byte sRidleyMultiSpriteData_3a9cdc
 _0805ABEC:
-	ldr r0, _0805AC04 @ =0x083A9F44
+	ldr r0, _0805AC04 @ =sRidleyMultiSpriteData_3a9f44
 	str r0, [r4]
 	strb r1, [r4, #6]
 	strh r1, [r4, #4]
@@ -3538,7 +3538,7 @@ _0805ABEC:
 	strb r0, [r1]
 	b _0805AC30
 	.align 2, 0
-_0805AC04: .4byte 0x083A9F44
+_0805AC04: .4byte sRidleyMultiSpriteData_3a9f44
 _0805AC08:
 	ldrh r0, [r4, #4]
 	cmp r0, #4
@@ -3620,7 +3620,7 @@ _0805AC8E:
 	cmp r0, #0
 	bne _0805ACDC
 	ldr r0, _0805ACBC @ =gSubSpriteData2
-	ldr r1, _0805ACD8 @ =0x083A9F44
+	ldr r1, _0805ACD8 @ =sRidleyMultiSpriteData_3a9f44
 	str r1, [r0]
 	strb r3, [r0, #6]
 	strh r3, [r0, #4]
@@ -3640,10 +3640,10 @@ _0805ACC8: .4byte gCurrentSprite
 _0805ACCC: .4byte gSamusData
 _0805ACD0: .4byte gSubSpriteData1
 _0805ACD4: .4byte gSpriteData
-_0805ACD8: .4byte 0x083A9F44
+_0805ACD8: .4byte sRidleyMultiSpriteData_3a9f44
 _0805ACDC:
 	ldr r0, _0805ACF0 @ =gSubSpriteData2
-	ldr r1, _0805ACF4 @ =0x083A9CDC
+	ldr r1, _0805ACF4 @ =sRidleyMultiSpriteData_3a9cdc
 	str r1, [r0]
 	strb r3, [r0, #6]
 	strh r3, [r0, #4]
@@ -3654,7 +3654,7 @@ _0805ACDC:
 	b _0805AD34
 	.align 2, 0
 _0805ACF0: .4byte gSubSpriteData2
-_0805ACF4: .4byte 0x083A9CDC
+_0805ACF4: .4byte sRidleyMultiSpriteData_3a9cdc
 _0805ACF8:
 	ldrh r0, [r6, #4]
 	subs r0, #4
@@ -3672,13 +3672,13 @@ _0805ACF8:
 	ands r0, r1
 	cmp r0, #0
 	beq _0805AD24
-	ldr r0, _0805AD20 @ =0x083AF4B8
+	ldr r0, _0805AD20 @ =sRidleyPartOam_3af4b8
 	b _0805AD26
 	.align 2, 0
 _0805AD1C: .4byte gSpriteData
-_0805AD20: .4byte 0x083AF4B8
+_0805AD20: .4byte sRidleyPartOam_3af4b8
 _0805AD24:
-	ldr r0, _0805AD3C @ =0x083AF800
+	ldr r0, _0805AD3C @ =sRidleyPartOam_3af800
 _0805AD26:
 	str r0, [r5, #0x18]
 _0805AD28:
@@ -3691,7 +3691,7 @@ _0805AD34:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805AD3C: .4byte 0x083AF800
+_0805AD3C: .4byte sRidleyPartOam_3af800
 
 	thumb_func_start RidleyTailPartDoneStriking
 RidleyTailPartDoneStriking: @ 0x0805AD40
@@ -3704,7 +3704,7 @@ RidleyTailPartDoneStriking: @ 0x0805AD40
 	cmp r0, #0
 	beq _0805ADCA
 	ldr r1, _0805ADB4 @ =gSubSpriteData2
-	ldr r0, _0805ADB8 @ =0x083A9B1C
+	ldr r0, _0805ADB8 @ =sRidleyMultiSpriteData_3a9b1c
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -3752,7 +3752,7 @@ RidleyTailPartDoneStriking: @ 0x0805AD40
 	.align 2, 0
 _0805ADB0: .4byte gCurrentSprite
 _0805ADB4: .4byte gSubSpriteData2
-_0805ADB8: .4byte 0x083A9B1C
+_0805ADB8: .4byte sRidleyMultiSpriteData_3a9b1c
 _0805ADBC: .4byte gSpriteData
 _0805ADC0: .4byte gSpriteRandomNumber
 _0805ADC4:
@@ -3807,7 +3807,7 @@ RidleyFireInit: @ 0x0805ADD4
 	strh r0, [r6, #0xc]
 	strh r1, [r6, #0xe]
 	strh r0, [r6, #0x10]
-	ldr r0, _0805AE78 @ =0x083AF7F0
+	ldr r0, _0805AE78 @ =sRidleyPartOam_3af7f0
 	str r0, [r6, #0x18]
 	strb r5, [r6, #0x1c]
 	strh r3, [r6, #0x16]
@@ -3848,7 +3848,7 @@ _0805AE68: .4byte gCurrentSprite
 _0805AE6C: .4byte 0x0000FFFB
 _0805AE70: .4byte gIoRegisters
 _0805AE74: .4byte 0x0000FFE0
-_0805AE78: .4byte 0x083AF7F0
+_0805AE78: .4byte sRidleyPartOam_3af7f0
 _0805AE7C: .4byte gSamusData
 
 	thumb_func_start RidleyFireMoving
@@ -4301,7 +4301,7 @@ _0805B292:
 	cmp r0, #1
 	bne _0805B2B6
 	ldr r1, [r1, #0x18]
-	ldr r0, _0805B2C0 @ =0x083AF648
+	ldr r0, _0805B2C0 @ =sRidleyPartOam_3af648
 	cmp r1, r0
 	beq _0805B2B6
 	movs r0, #0xf1
@@ -4313,7 +4313,7 @@ _0805B2B6:
 	bx r0
 	.align 2, 0
 _0805B2BC: .4byte gCurrentSprite
-_0805B2C0: .4byte 0x083AF648
+_0805B2C0: .4byte sRidleyPartOam_3af648
 
 	thumb_func_start RidleyTailPart
 RidleyTailPart: @ 0x0805B2C4
@@ -4407,32 +4407,32 @@ _0805B354:
 	movs r0, #0x40
 	orrs r0, r1
 	strh r0, [r4]
-	ldr r0, _0805B380 @ =0x083AF800
+	ldr r0, _0805B380 @ =sRidleyPartOam_3af800
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
 	b _0805B396
 	.align 2, 0
-_0805B380: .4byte 0x083AF800
+_0805B380: .4byte sRidleyPartOam_3af800
 _0805B384:
 	ldrh r1, [r4]
 	ldr r0, _0805B3D0 @ =0x0000FFBF
 	ands r0, r1
 	movs r1, #0
 	strh r0, [r4]
-	ldr r0, _0805B3D4 @ =0x083AF4B8
+	ldr r0, _0805B3D4 @ =sRidleyPartOam_3af4b8
 	str r0, [r4, #0x18]
 	strb r1, [r4, #0x1c]
 	strh r2, [r4, #0x16]
 _0805B396:
 	ldr r0, _0805B3D8 @ =gSubSpriteData1
 	ldr r1, [r0]
-	ldr r0, _0805B3DC @ =0x083A9A14
+	ldr r0, _0805B3DC @ =sRidleyMultiSpriteData_3a9a14
 	cmp r1, r0
 	bne _0805B3BA
 	ldr r1, _0805B3E0 @ =gSubSpriteData2
 	ldr r0, [r1]
-	ldr r2, _0805B3E4 @ =0x083A9B9C
+	ldr r2, _0805B3E4 @ =sRidleyMultiSpriteData_3a9b9c
 	cmp r0, r2
 	beq _0805B3BA
 	str r2, [r1]
@@ -4458,11 +4458,11 @@ _0805B3C6:
 	mov pc, r0
 	.align 2, 0
 _0805B3D0: .4byte 0x0000FFBF
-_0805B3D4: .4byte 0x083AF4B8
+_0805B3D4: .4byte sRidleyPartOam_3af4b8
 _0805B3D8: .4byte gSubSpriteData1
-_0805B3DC: .4byte 0x083A9A14
+_0805B3DC: .4byte sRidleyMultiSpriteData_3a9a14
 _0805B3E0: .4byte gSubSpriteData2
-_0805B3E4: .4byte 0x083A9B9C
+_0805B3E4: .4byte sRidleyMultiSpriteData_3a9b9c
 _0805B3E8: .4byte _0805B3EC
 _0805B3EC: @ jump table
 	.4byte _0805B508 @ case 0
@@ -4655,7 +4655,7 @@ _0805B5B4:
 	strh r0, [r3, #0xe]
 	movs r0, #0x60
 	strh r0, [r3, #0x10]
-	ldr r0, _0805B60C @ =0x083B0A9C
+	ldr r0, _0805B60C @ =sRidleyPreSpawnOam_3b0a9c
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r4, [r3, #0x16]
@@ -4672,7 +4672,7 @@ _0805B5FC:
 	.align 2, 0
 _0805B604: .4byte gCurrentSprite
 _0805B608: .4byte 0x0000FEE0
-_0805B60C: .4byte 0x083B0A9C
+_0805B60C: .4byte sRidleyPreSpawnOam_3b0a9c
 
 	thumb_func_start RidleyPreSpawnWaitingForSamus
 RidleyPreSpawnWaitingForSamus: @ 0x0805B610
@@ -4689,7 +4689,7 @@ RidleyPreSpawnWaitingForSamus: @ 0x0805B610
 	movs r3, #0
 	movs r1, #2
 	strb r1, [r2]
-	ldr r1, _0805B64C @ =0x083B0AAC
+	ldr r1, _0805B64C @ =sRidleyPreSpawnOam_3b0aac
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	strh r3, [r0, #0x16]
@@ -4704,7 +4704,7 @@ _0805B642:
 	bx r0
 	.align 2, 0
 _0805B648: .4byte gCurrentSprite
-_0805B64C: .4byte 0x083B0AAC
+_0805B64C: .4byte sRidleyPreSpawnOam_3b0aac
 
 	thumb_func_start RidleyPreSpawnOpeningEye
 RidleyPreSpawnOpeningEye: @ 0x0805B650
@@ -4723,7 +4723,7 @@ RidleyPreSpawnOpeningEye: @ 0x0805B650
 	adds r0, #0x24
 	movs r1, #0x18
 	strb r1, [r0]
-	ldr r0, _0805B680 @ =0x083B0AE4
+	ldr r0, _0805B680 @ =sRidleyPreSpawnOam_3b0ae4
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -4732,7 +4732,7 @@ _0805B676:
 	bx r0
 	.align 2, 0
 _0805B67C: .4byte gCurrentSprite
-_0805B680: .4byte 0x083B0AE4
+_0805B680: .4byte sRidleyPreSpawnOam_3b0ae4
 
 	thumb_func_start RidleyPreSpawnClosingEye
 RidleyPreSpawnClosingEye: @ 0x0805B684
@@ -4746,7 +4746,7 @@ RidleyPreSpawnClosingEye: @ 0x0805B684
 	movs r3, #0
 	movs r1, #0x1a
 	strb r1, [r2]
-	ldr r1, _0805B6B0 @ =0x083B0A9C
+	ldr r1, _0805B6B0 @ =sRidleyPreSpawnOam_3b0a9c
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	strh r3, [r0, #0x16]
@@ -4758,7 +4758,7 @@ _0805B6A8:
 	bx r0
 	.align 2, 0
 _0805B6AC: .4byte gCurrentSprite
-_0805B6B0: .4byte 0x083B0A9C
+_0805B6B0: .4byte sRidleyPreSpawnOam_3b0a9c
 
 	thumb_func_start RidleyPreSpawnEyeClosed
 RidleyPreSpawnEyeClosed: @ 0x0805B6B4

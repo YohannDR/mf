@@ -927,7 +927,7 @@ _08057B18:
 	ldrh r3, [r4, #0x12]
 	adds r0, #0xc
 	ldrb r7, [r0]
-	ldr r1, _08057B5C @ =0x080A4FA4
+	ldr r1, _08057B5C @ =sSineTable
 	lsls r0, r7, #1
 	adds r0, r0, r1
 	movs r5, #0
@@ -957,7 +957,7 @@ _08057B44:
 	mov ip, r1
 	b _08057B8A
 	.align 2, 0
-_08057B5C: .4byte 0x080A4FA4
+_08057B5C: .4byte sSineTable
 _08057B60: .4byte gSpriteData
 _08057B64:
 	lsls r1, r3, #0x10

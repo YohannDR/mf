@@ -3435,7 +3435,7 @@ SamusStandingGFX: @ 0x080066F0
 	ldr r0, _0800672C @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08006730 @ =0x082BD9C8
+	ldr r4, _08006730 @ =sSamusAnim_Right_Standing
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -3464,7 +3464,7 @@ _08006724:
 	bx r1
 	.align 2, 0
 _0800672C: .4byte gSamusData
-_08006730: .4byte 0x082BD9C8
+_08006730: .4byte sSamusAnim_Right_Standing
 
 	thumb_func_start SamusTurningAround
 SamusTurningAround: @ 0x08006734
@@ -3567,7 +3567,7 @@ SamusTurningAroundGFX: @ 0x080067F0
 	ldr r0, _08006828 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _0800682C @ =0x082CAFB8
+	ldr r4, _0800682C @ =sSamusAnim_Right_TurningAround
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -3592,7 +3592,7 @@ SamusTurningAroundGFX: @ 0x080067F0
 	b _08006832
 	.align 2, 0
 _08006828: .4byte gSamusData
-_0800682C: .4byte 0x082CAFB8
+_0800682C: .4byte sSamusAnim_Right_TurningAround
 _08006830:
 	movs r0, #0xff
 _08006832:
@@ -3606,7 +3606,7 @@ SamusShootingGFX: @ 0x08006838
 	ldr r0, _08006870 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08006874 @ =0x082BDA08
+	ldr r4, _08006874 @ =sSamusAnim_Right_Shooting
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -3631,7 +3631,7 @@ SamusShootingGFX: @ 0x08006838
 	b _0800687A
 	.align 2, 0
 _08006870: .4byte gSamusData
-_08006874: .4byte 0x082BDA08
+_08006874: .4byte sSamusAnim_Right_Shooting
 _08006878:
 	movs r0, #0xff
 _0800687A:
@@ -3778,7 +3778,7 @@ _08006982:
 	thumb_func_start SamusRunningGFX
 SamusRunningGFX: @ 0x08006988
 	push {r4, lr}
-	ldr r4, _080069DC @ =0x082BD628
+	ldr r4, _080069DC @ =sSamusAnim_Right_Running
 	ldr r3, _080069E0 @ =gSamusData
 	movs r0, #0x22
 	adds r0, r0, r3
@@ -3821,7 +3821,7 @@ _080069B4:
 	strb r0, [r1]
 	b _08006A46
 	.align 2, 0
-_080069DC: .4byte 0x082BD628
+_080069DC: .4byte sSamusAnim_Right_Running
 _080069E0: .4byte gSamusData
 _080069E4: .4byte gSamusPhysics
 _080069E8:
@@ -4058,7 +4058,7 @@ _08006BA4:
 _08006BA6:
 	adds r3, r1, #0
 	adds r3, #0x21
-	ldr r4, _08006BE0 @ =0x082C4348
+	ldr r4, _08006BE0 @ =sSamusAnim_Right_MidAir
 	adds r2, r1, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -4087,7 +4087,7 @@ _08006BD8:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08006BE0: .4byte 0x082C4348
+_08006BE0: .4byte sSamusAnim_Right_MidAir
 
 	thumb_func_start SamusTurningAroundMidAir
 SamusTurningAroundMidAir: @ 0x08006BE4
@@ -4172,7 +4172,7 @@ SamusTurningAroundMidAirGFX: @ 0x08006C74
 	movs r0, #0x21
 	adds r0, r0, r3
 	mov ip, r0
-	ldr r4, _08006CB8 @ =0x082CB2B8
+	ldr r4, _08006CB8 @ =sSamusAnim_Right_TurningAroundMidAir
 	adds r2, r3, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -4200,7 +4200,7 @@ SamusTurningAroundMidAirGFX: @ 0x08006C74
 	b _08006CBE
 	.align 2, 0
 _08006CB4: .4byte gSamusData
-_08006CB8: .4byte 0x082CB2B8
+_08006CB8: .4byte sSamusAnim_Right_TurningAroundMidAir
 _08006CBC:
 	movs r0, #0xff
 _08006CBE:
@@ -4214,7 +4214,7 @@ SamusLandingGFX: @ 0x08006CC4
 	ldr r0, _08006D10 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08006D14 @ =0x082C43B8
+	ldr r4, _08006D14 @ =sSamusAnim_Right_Landing
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -4250,7 +4250,7 @@ SamusLandingGFX: @ 0x08006CC4
 	b _08006D26
 	.align 2, 0
 _08006D10: .4byte gSamusData
-_08006D14: .4byte 0x082C43B8
+_08006D14: .4byte sSamusAnim_Right_Landing
 _08006D18: .4byte gPoseLock
 _08006D1C: .4byte gPreventMovementTimer
 _08006D20:
@@ -4746,7 +4746,7 @@ SamusTurningAroundAndCrouchingGFX: @ 0x080070DC
 	ldr r0, _08007114 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08007118 @ =0x082CB138
+	ldr r4, _08007118 @ =sSamusAnim_Right_TurningAroundAndCrouching
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -4771,7 +4771,7 @@ SamusTurningAroundAndCrouchingGFX: @ 0x080070DC
 	b _0800711E
 	.align 2, 0
 _08007114: .4byte gSamusData
-_08007118: .4byte 0x082CB138
+_08007118: .4byte sSamusAnim_Right_TurningAroundAndCrouching
 _0800711C:
 	movs r0, #0xff
 _0800711E:
@@ -4785,7 +4785,7 @@ SamusShootingAndCrouchingGFX: @ 0x08007124
 	ldr r0, _0800715C @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08007160 @ =0x082BDB08
+	ldr r4, _08007160 @ =sSamusAnim_Right_Crouching
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -4810,7 +4810,7 @@ SamusShootingAndCrouchingGFX: @ 0x08007124
 	b _08007166
 	.align 2, 0
 _0800715C: .4byte gSamusData
-_08007160: .4byte 0x082BDB08
+_08007160: .4byte sSamusAnim_Right_Crouching
 _08007164:
 	movs r0, #0xff
 _08007166:
@@ -4825,7 +4825,7 @@ SamusStartingASpinJumpGFX: @ 0x0800716C
 	movs r0, #0x21
 	adds r0, r0, r2
 	mov ip, r0
-	ldr r4, _080071B4 @ =0x082C4928
+	ldr r4, _080071B4 @ =sSamusAnim_Right_StartingSpinJump
 	adds r3, r2, #0
 	adds r3, #0x22
 	ldrb r0, [r3]
@@ -4857,7 +4857,7 @@ _080071A8:
 	bx r1
 	.align 2, 0
 _080071B0: .4byte gSamusData
-_080071B4: .4byte 0x082C4928
+_080071B4: .4byte sSamusAnim_Right_StartingSpinJump
 
 	thumb_func_start SamusSpinning
 SamusSpinning: @ 0x080071B8
@@ -5084,7 +5084,7 @@ _08007374: .4byte gSamusData
 	thumb_func_start SamusSpinningGFX
 SamusSpinningGFX: @ 0x08007378
 	push {r4, r5, lr}
-	ldr r4, _080073DC @ =0x082C4878
+	ldr r4, _080073DC @ =sSamusAnim_Right_Spinning
 	ldr r2, _080073E0 @ =gSamusData
 	movs r0, #0x22
 	adds r0, r0, r2
@@ -5134,7 +5134,7 @@ _080073BE:
 	bl SoundPlay
 	b _080073F2
 	.align 2, 0
-_080073DC: .4byte 0x082C4878
+_080073DC: .4byte sSamusAnim_Right_Spinning
 _080073E0: .4byte gSamusData
 _080073E4: .4byte gSamusPhysics
 _080073E8: .4byte 0x00FFFF00
@@ -5174,7 +5174,7 @@ SamusMorphingGFX: @ 0x08007420
 	ldr r0, _08007458 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _0800745C @ =0x082CB558
+	ldr r4, _0800745C @ =sSamusAnim_Right_Morphing
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -5199,7 +5199,7 @@ SamusMorphingGFX: @ 0x08007420
 	b _08007462
 	.align 2, 0
 _08007458: .4byte gSamusData
-_0800745C: .4byte 0x082CB558
+_0800745C: .4byte sSamusAnim_Right_Morphing
 _08007460:
 	movs r0, #0xff
 _08007462:
@@ -5337,7 +5337,7 @@ SamusMorphBallGFX: @ 0x08007558
 	ldr r0, _08007594 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08007598 @ =0x082CB598
+	ldr r4, _08007598 @ =sSamusAnim_Right_MorphBall
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -5366,7 +5366,7 @@ _0800758C:
 	bx r1
 	.align 2, 0
 _08007594: .4byte gSamusData
-_08007598: .4byte 0x082CB598
+_08007598: .4byte sSamusAnim_Right_MorphBall
 
 	thumb_func_start SamusRolling
 SamusRolling: @ 0x0800759C
@@ -5500,7 +5500,7 @@ SamusUnmorphingGFX: @ 0x08007690
 	ldr r0, _080076C8 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _080076CC @ =0x082CB628
+	ldr r4, _080076CC @ =sSamusAnim_Right_Unmorphing
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -5525,7 +5525,7 @@ SamusUnmorphingGFX: @ 0x08007690
 	b _080076D2
 	.align 2, 0
 _080076C8: .4byte gSamusData
-_080076CC: .4byte 0x082CB628
+_080076CC: .4byte sSamusAnim_Right_Unmorphing
 _080076D0:
 	movs r0, #0xff
 _080076D2:
@@ -5732,7 +5732,7 @@ SamusStartingWallJumpGFX: @ 0x08007840
 	ldr r0, _08007878 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _0800787C @ =0x082D652C
+	ldr r4, _0800787C @ =sSamusAnim_Right_StartingWallJump
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -5757,7 +5757,7 @@ SamusStartingWallJumpGFX: @ 0x08007840
 	b _08007882
 	.align 2, 0
 _08007878: .4byte gSamusData
-_0800787C: .4byte 0x082D652C
+_0800787C: .4byte sSamusAnim_Right_StartingWallJump
 _08007880:
 	movs r0, #0xff
 _08007882:
@@ -6008,7 +6008,7 @@ _08007A60:
 	ldr r0, _08007AA4 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08007AA8 @ =0x082CBAC8
+	ldr r4, _08007AA8 @ =sSamusAnim_Right_UsingAnElevator
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -6039,7 +6039,7 @@ _08007A60:
 _08007A9C: .4byte gSamusAnimationInfo
 _08007AA0: .4byte 0x0828BF98
 _08007AA4: .4byte gSamusData
-_08007AA8: .4byte 0x082CBAC8
+_08007AA8: .4byte sSamusAnim_Right_UsingAnElevator
 _08007AAC:
 	strb r1, [r2]
 _08007AAE:
@@ -6232,7 +6232,7 @@ _08007C04:
 	thumb_func_start SamusHangingOnLedgeGFX
 SamusHangingOnLedgeGFX: @ 0x08007C14
 	push {r4, lr}
-	ldr r4, _08007C5C @ =0x082D668C
+	ldr r4, _08007C5C @ =sSamusAnim_Right_HangingOnLedge
 	ldr r2, _08007C60 @ =gSamusData
 	adds r3, r2, #0
 	adds r3, #0x22
@@ -6270,7 +6270,7 @@ _08007C54:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08007C5C: .4byte 0x082D668C
+_08007C5C: .4byte sSamusAnim_Right_HangingOnLedge
 _08007C60: .4byte gSamusData
 _08007C64: .4byte gSamusPhysics
 
@@ -6291,7 +6291,7 @@ SamusPullingYourselfUpFromHangingGFX: @ 0x08007C78
 	ldr r0, _08007CC4 @ =gSamusData
 	adds r4, r0, #0
 	adds r4, #0x21
-	ldr r5, _08007CC8 @ =0x082D670C
+	ldr r5, _08007CC8 @ =sSamusAnim_Right_PullingYourselfUpFromHanging
 	movs r1, #0x22
 	adds r1, r1, r0
 	mov ip, r1
@@ -6327,7 +6327,7 @@ SamusPullingYourselfUpFromHangingGFX: @ 0x08007C78
 	b _08007CD4
 	.align 2, 0
 _08007CC4: .4byte gSamusData
-_08007CC8: .4byte 0x082D670C
+_08007CC8: .4byte sSamusAnim_Right_PullingYourselfUpFromHanging
 _08007CCC:
 	ldrh r0, [r3, #0x16]
 	subs r0, #8
@@ -6397,7 +6397,7 @@ SamusPullingYourselfForwardFromHangingGFX: @ 0x08007D38
 	ldr r2, _08007D80 @ =gSamusData
 	adds r4, r2, #0
 	adds r4, #0x21
-	ldr r5, _08007D84 @ =0x082D674C
+	ldr r5, _08007D84 @ =sSamusAnim_Right_PullingYourselfForwardFromHanging
 	movs r0, #0x22
 	adds r0, r0, r2
 	mov ip, r0
@@ -6432,7 +6432,7 @@ _08007D64:
 	b _08007D8E
 	.align 2, 0
 _08007D80: .4byte gSamusData
-_08007D84: .4byte 0x082D674C
+_08007D84: .4byte sSamusAnim_Right_PullingYourselfForwardFromHanging
 _08007D88: .4byte 0x0000FFC0
 _08007D8C:
 	movs r0, #0xff
@@ -6470,7 +6470,7 @@ SamusPullingYourselfIntoMorphballTunnelGFX: @ 0x08007DB8
 	ldr r2, _08007DD8 @ =gSamusData
 	adds r3, r2, #0
 	adds r3, #0x21
-	ldr r0, _08007DDC @ =0x082D679C
+	ldr r0, _08007DDC @ =sSamusAnim_Right_PullingYourselfIntoMorphBallTunnel
 	adds r1, r2, #0
 	adds r1, #0x22
 	ldrb r1, [r1]
@@ -6484,7 +6484,7 @@ SamusPullingYourselfIntoMorphballTunnelGFX: @ 0x08007DB8
 	b _08007DF2
 	.align 2, 0
 _08007DD8: .4byte gSamusData
-_08007DDC: .4byte 0x082D679C
+_08007DDC: .4byte sSamusAnim_Right_PullingYourselfIntoMorphBallTunnel
 _08007DE0:
 	ldrh r1, [r2, #0x18]
 	ldr r0, _08007DF8 @ =0x0000FFC0
@@ -6533,7 +6533,7 @@ SamusPullingYourselfDownToStartHanging_UnusedGFX: @ 0x08007E2C
 	ldr r0, _08007E64 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08007E68 @ =0x082D6C2C
+	ldr r4, _08007E68 @ =sSamusAnim_Right_PullingYourselfDownToStartHanging
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -6558,7 +6558,7 @@ SamusPullingYourselfDownToStartHanging_UnusedGFX: @ 0x08007E2C
 	b _08007E6E
 	.align 2, 0
 _08007E64: .4byte gSamusData
-_08007E68: .4byte 0x082D6C2C
+_08007E68: .4byte sSamusAnim_Right_PullingYourselfDownToStartHanging
 _08007E6C:
 	movs r0, #0xff
 _08007E6E:
@@ -6569,7 +6569,7 @@ _08007E6E:
 	thumb_func_start SamusSpaceJumpingGFX
 SamusSpaceJumpingGFX: @ 0x08007E74
 	push {r4, lr}
-	ldr r1, _08007EB8 @ =0x082D8074
+	ldr r1, _08007EB8 @ =sSamusAnim_Right_SpaceJumping
 	ldr r2, _08007EBC @ =gSamusData
 	adds r0, r2, #0
 	adds r0, #0x22
@@ -6603,7 +6603,7 @@ _08007E92:
 	bl SoundPlay
 	b _08007ED2
 	.align 2, 0
-_08007EB8: .4byte 0x082D8074
+_08007EB8: .4byte sSamusAnim_Right_SpaceJumping
 _08007EBC: .4byte gSamusData
 _08007EC0: .4byte gSamusPhysics
 _08007EC4: .4byte 0x00FFFF00
@@ -6629,7 +6629,7 @@ _08007EDC:
 	ldrb r0, [r2]
 	adds r0, #1
 	strb r0, [r2]
-	ldr r1, _08007F14 @ =0x082D8074
+	ldr r1, _08007F14 @ =sSamusAnim_Right_SpaceJumping
 	ldrb r0, [r2]
 	lsls r0, r0, #4
 	adds r0, r0, r1
@@ -6645,12 +6645,12 @@ _08007F02:
 	.align 2, 0
 _08007F0C: .4byte gSamusAnimationInfo
 _08007F10: .4byte gSamusData
-_08007F14: .4byte 0x082D8074
+_08007F14: .4byte sSamusAnim_Right_SpaceJumping
 
 	thumb_func_start SamusScrewAttackingGFX
 SamusScrewAttackingGFX: @ 0x08007F18
 	push {r4, r5, r6, r7, lr}
-	ldr r7, _08007FB4 @ =0x082D8214
+	ldr r7, _08007FB4 @ =sSamusAnim_Right_ScrewAttacking
 	ldr r5, _08007FB8 @ =gSamusData
 	adds r6, r5, #0
 	adds r6, #0x22
@@ -6731,7 +6731,7 @@ _08007FAA:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08007FB4: .4byte 0x082D8214
+_08007FB4: .4byte sSamusAnim_Right_ScrewAttacking
 _08007FB8: .4byte gSamusData
 _08007FBC: .4byte gSamusPhysics
 _08007FC0: .4byte 0x00FFFF00
@@ -6815,7 +6815,7 @@ SamusOnSavePadGFX: @ 0x0800804C
 	ldr r0, _0800808C @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08008090 @ =0x082CB6B8
+	ldr r4, _08008090 @ =sSamusAnim_Right_OnSavePad
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -6845,7 +6845,7 @@ _08008082:
 	bx r1
 	.align 2, 0
 _0800808C: .4byte gSamusData
-_08008090: .4byte 0x082CB6B8
+_08008090: .4byte sSamusAnim_Right_OnSavePad
 
 	thumb_func_start SamusTurningAroundToRechargeOrUnlockSecurityGFX
 SamusTurningAroundToRechargeOrUnlockSecurityGFX: @ 0x08008094
@@ -6853,7 +6853,7 @@ SamusTurningAroundToRechargeOrUnlockSecurityGFX: @ 0x08008094
 	ldr r0, _080080CC @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _080080D0 @ =0x082CAFB8
+	ldr r4, _080080D0 @ =sSamusAnim_Right_TurningAround
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -6878,7 +6878,7 @@ SamusTurningAroundToRechargeOrUnlockSecurityGFX: @ 0x08008094
 	b _080080D6
 	.align 2, 0
 _080080CC: .4byte gSamusData
-_080080D0: .4byte 0x082CAFB8
+_080080D0: .4byte sSamusAnim_Right_TurningAround
 _080080D4:
 	movs r0, #0xff
 _080080D6:
@@ -6896,7 +6896,7 @@ SamusDelayBeforeShinesparkingGFX: @ 0x080080DC
 	movs r0, #0x21
 	adds r0, r0, r3
 	mov ip, r0
-	ldr r4, _08008138 @ =0x082C49C8
+	ldr r4, _08008138 @ =sSamusAnim_Right_DelayBeforeShinesparking
 	adds r2, r3, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -6934,7 +6934,7 @@ _0800812C:
 	.align 2, 0
 _08008130: .4byte gSamusAnimationInfo
 _08008134: .4byte gSamusData
-_08008138: .4byte 0x082C49C8
+_08008138: .4byte sSamusAnim_Right_DelayBeforeShinesparking
 _0800813C: .4byte gButtonInput
 _08008140:
 	movs r0, #0xff
@@ -6995,7 +6995,7 @@ SamusShinesparkingGFX: @ 0x08008198
 	ldr r0, _080081D8 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _080081DC @ =0x082C4A18
+	ldr r4, _080081DC @ =sSamusAnim_Right_Shinesparking
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -7025,7 +7025,7 @@ _080081CE:
 	bx r1
 	.align 2, 0
 _080081D8: .4byte gSamusData
-_080081DC: .4byte 0x082C4A18
+_080081DC: .4byte sSamusAnim_Right_Shinesparking
 
 	thumb_func_start SamusDelayAfterShinesparkingGFX
 SamusDelayAfterShinesparkingGFX: @ 0x080081E0
@@ -7033,7 +7033,7 @@ SamusDelayAfterShinesparkingGFX: @ 0x080081E0
 	ldr r0, _08008218 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _0800821C @ =0x082C4B48
+	ldr r4, _0800821C @ =sSamusAnim_Right_DelayAfterShinesparking
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -7058,7 +7058,7 @@ SamusDelayAfterShinesparkingGFX: @ 0x080081E0
 	b _08008222
 	.align 2, 0
 _08008218: .4byte gSamusData
-_0800821C: .4byte 0x082C4B48
+_0800821C: .4byte sSamusAnim_Right_DelayAfterShinesparking
 _08008220:
 	movs r0, #0xff
 _08008222:
@@ -7317,7 +7317,7 @@ SamusHangingFromVerticalLadderGFX: @ 0x08008400
 	adds r3, r0, #0
 	cmp r2, #0
 	beq _08008464
-	ldr r5, _08008458 @ =0x082D60FC
+	ldr r5, _08008458 @ =sSamusAnim_Right_HangingFromVerticalLadder
 	ldrb r0, [r4]
 	lsls r0, r0, #4
 	adds r0, r0, r5
@@ -7354,7 +7354,7 @@ _08008426:
 	b _08008462
 	.align 2, 0
 _08008454: .4byte gSamusData
-_08008458: .4byte 0x082D60FC
+_08008458: .4byte sSamusAnim_Right_HangingFromVerticalLadder
 _0800845C: .4byte gSamusPhysics
 _08008460:
 	subs r0, r2, #1
@@ -7408,7 +7408,7 @@ _080084AA:
 	thumb_func_start SamusStartingToHoldYourArmCannonOutOnAVerticalLadderGFX
 SamusStartingToHoldYourArmCannonOutOnAVerticalLadderGFX: @ 0x080084B0
 	push {r4, lr}
-	ldr r4, _080084F0 @ =0x082D63AC
+	ldr r4, _080084F0 @ =sSamusAnim_Right_StartingToHoldYourArmCannonOutOnAVerticalLadder
 	ldr r3, _080084F4 @ =gSamusData
 	adds r2, r3, #0
 	adds r2, #0x22
@@ -7441,7 +7441,7 @@ _080084CE:
 	movs r0, #0x28
 	b _080084FE
 	.align 2, 0
-_080084F0: .4byte 0x082D63AC
+_080084F0: .4byte sSamusAnim_Right_StartingToHoldYourArmCannonOutOnAVerticalLadder
 _080084F4: .4byte gSamusData
 _080084F8: .4byte gSamusPhysics
 _080084FC:
@@ -7527,7 +7527,7 @@ _08008586:
 	thumb_func_start SamusShootingOnVerticalLadderGFX
 SamusShootingOnVerticalLadderGFX: @ 0x0800858C
 	push {r4, lr}
-	ldr r4, _080085CC @ =0x082D647C
+	ldr r4, _080085CC @ =sSamusAnim_Right_ShootingOnVerticalLadder
 	ldr r3, _080085D0 @ =gSamusData
 	adds r2, r3, #0
 	adds r2, #0x22
@@ -7560,7 +7560,7 @@ _080085AA:
 	movs r0, #0x28
 	b _080085DA
 	.align 2, 0
-_080085CC: .4byte 0x082D647C
+_080085CC: .4byte sSamusAnim_Right_ShootingOnVerticalLadder
 _080085D0: .4byte gSamusData
 _080085D4: .4byte gSamusPhysics
 _080085D8:
@@ -7605,7 +7605,7 @@ _08008612:
 	thumb_func_start SamusStartingToPutAwayYourArmCannonOnVerticalLadderGFX
 SamusStartingToPutAwayYourArmCannonOnVerticalLadderGFX: @ 0x08008618
 	push {r4, r5, lr}
-	ldr r4, _08008668 @ =0x082D63DC
+	ldr r4, _08008668 @ =sSamusAnim_Right_StartingToPutAwayYourArmCannonOutOnAVerticalLadder
 	ldr r2, _0800866C @ =gSamusData
 	adds r3, r2, #0
 	adds r3, #0x22
@@ -7645,7 +7645,7 @@ _08008636:
 	movs r0, #0x26
 	b _08008676
 	.align 2, 0
-_08008668: .4byte 0x082D63DC
+_08008668: .4byte sSamusAnim_Right_StartingToPutAwayYourArmCannonOutOnAVerticalLadder
 _0800866C: .4byte gSamusData
 _08008670: .4byte gSamusPhysics
 _08008674:
@@ -7827,7 +7827,7 @@ _080087B0: .4byte gSamusPhysics
 	thumb_func_start SamusMovingOnHorizontalLadderGFX
 SamusMovingOnHorizontalLadderGFX: @ 0x080087B4
 	push {r4, r5, lr}
-	ldr r5, _080087F4 @ =0x082D696C
+	ldr r5, _080087F4 @ =sSamusAnim_Right_MovingOnHorizontalLadder
 	ldr r4, _080087F8 @ =gSamusData
 	adds r3, r4, #0
 	adds r3, #0x22
@@ -7860,7 +7860,7 @@ _080087D2:
 	movs r0, #0x2b
 	b _0800882A
 	.align 2, 0
-_080087F4: .4byte 0x082D696C
+_080087F4: .4byte sSamusAnim_Right_MovingOnHorizontalLadder
 _080087F8: .4byte gSamusData
 _080087FC: .4byte gSamusPhysics
 _08008800:
@@ -7925,7 +7925,7 @@ _0800885E:
 	thumb_func_start SamusTurningAroundOnHorizontalLadderGFX
 SamusTurningAroundOnHorizontalLadderGFX: @ 0x08008864
 	push {r4, lr}
-	ldr r4, _080088B4 @ =0x082D68EC
+	ldr r4, _080088B4 @ =sSamusAnim_Right_TurningAroundOnHorizontalLadder
 	ldr r3, _080088B8 @ =gSamusData
 	adds r2, r3, #0
 	adds r2, #0x22
@@ -7965,7 +7965,7 @@ _08008882:
 	movs r0, #0x2e
 	b _080088CE
 	.align 2, 0
-_080088B4: .4byte 0x082D68EC
+_080088B4: .4byte sSamusAnim_Right_TurningAroundOnHorizontalLadder
 _080088B8: .4byte gSamusData
 _080088BC: .4byte gSamusPhysics
 _080088C0: .4byte gButtonInput
@@ -8049,7 +8049,7 @@ _08008946:
 	thumb_func_start SamusShootingOnHorizontalLadderGFX
 SamusShootingOnHorizontalLadderGFX: @ 0x0800894C
 	push {r4, lr}
-	ldr r4, _0800898C @ =0x082D6B2C
+	ldr r4, _0800898C @ =sSamusAnim_Right_ShootingOnHorizontalLadder
 	ldr r3, _08008990 @ =gSamusData
 	adds r2, r3, #0
 	adds r2, #0x22
@@ -8082,7 +8082,7 @@ _0800896A:
 	movs r0, #0x2e
 	b _0800899A
 	.align 2, 0
-_0800898C: .4byte 0x082D6B2C
+_0800898C: .4byte sSamusAnim_Right_ShootingOnHorizontalLadder
 _08008990: .4byte gSamusData
 _08008994: .4byte gSamusPhysics
 _08008998:
@@ -8138,7 +8138,7 @@ SamusUnlockingSecurityGFX: @ 0x080089E0
 	ldr r0, _08008A50 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08008A54 @ =0x082CBE88
+	ldr r4, _08008A54 @ =sSamusAnim_Right_UnlockingSecurity
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -8193,7 +8193,7 @@ _08008A46:
 	bx r1
 	.align 2, 0
 _08008A50: .4byte gSamusData
-_08008A54: .4byte 0x082CBE88
+_08008A54: .4byte sSamusAnim_Right_UnlockingSecurity
 _08008A58: .4byte gSamusAnimationInfo
 _08008A5C: .4byte 0x082E481C
 
@@ -8203,7 +8203,7 @@ SamusSavingGFX: @ 0x08008A60
 	ldr r0, _08008A98 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08008A9C @ =0x082DE520
+	ldr r4, _08008A9C @ =sSamusAnim_Saving
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -8228,7 +8228,7 @@ SamusSavingGFX: @ 0x08008A60
 	b _08008AA2
 	.align 2, 0
 _08008A98: .4byte gSamusData
-_08008A9C: .4byte 0x082DE520
+_08008A9C: .4byte sSamusAnim_Saving
 _08008AA0:
 	movs r0, #0xff
 _08008AA2:
@@ -8242,7 +8242,7 @@ SavingOnNavigationPadGFX: @ 0x08008AA8
 	ldr r0, _08008AE0 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08008AE4 @ =0x082CB908
+	ldr r4, _08008AE4 @ =sSamusAnim_Right_OnNavigationPad
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -8267,7 +8267,7 @@ SavingOnNavigationPadGFX: @ 0x08008AA8
 	b _08008AEA
 	.align 2, 0
 _08008AE0: .4byte gSamusData
-_08008AE4: .4byte 0x082CB908
+_08008AE4: .4byte sSamusAnim_Right_OnNavigationPad
 _08008AE8:
 	movs r0, #0xff
 _08008AEA:
@@ -8281,7 +8281,7 @@ SamusDownloadingAbilityGFX: @ 0x08008AF0
 	ldr r0, _08008B2C @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08008B30 @ =0x082CBC38
+	ldr r4, _08008B30 @ =sSamusAnim_Right_DownloadingAbility
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -8310,7 +8310,7 @@ _08008B24:
 	bx r1
 	.align 2, 0
 _08008B2C: .4byte gSamusData
-_08008B30: .4byte 0x082CBC38
+_08008B30: .4byte sSamusAnim_Right_DownloadingAbility
 
 	thumb_func_start SamusBeingRechargedGFX
 SamusBeingRechargedGFX: @ 0x08008B34
@@ -8318,7 +8318,7 @@ SamusBeingRechargedGFX: @ 0x08008B34
 	ldr r0, _08008B70 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08008B74 @ =0x082CBDD8
+	ldr r4, _08008B74 @ =sSamusAnim_Right_BeingRecharged
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -8347,7 +8347,7 @@ _08008B68:
 	bx r1
 	.align 2, 0
 _08008B70: .4byte gSamusData
-_08008B74: .4byte 0x082CBDD8
+_08008B74: .4byte sSamusAnim_Right_BeingRecharged
 
 	thumb_func_start SamusFacingForeground
 SamusFacingForeground: @ 0x08008B78
@@ -8399,7 +8399,7 @@ SamusFacingForegroundGFX: @ 0x08008BC8
 	ldr r0, _08008C08 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08008C0C @ =0x082CB758
+	ldr r4, _08008C0C @ =sSamusAnim_Right_FacingForeground
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -8428,7 +8428,7 @@ SamusFacingForegroundGFX: @ 0x08008BC8
 	b _08008C14
 	.align 2, 0
 _08008C08: .4byte gSamusData
-_08008C0C: .4byte 0x082CB758
+_08008C0C: .4byte sSamusAnim_Right_FacingForeground
 _08008C10:
 	strb r1, [r2]
 _08008C12:
@@ -8446,7 +8446,7 @@ SamusUnlockingHabitationsDeckGFX: @ 0x08008C1C
 	movs r0, #0x21
 	adds r0, r0, r3
 	mov ip, r0
-	ldr r4, _08008C68 @ =0x082CBEA8
+	ldr r4, _08008C68 @ =sSamusAnim_UnlockingHabitationsDeck
 	adds r2, r3, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -8478,7 +8478,7 @@ SamusUnlockingHabitationsDeckGFX: @ 0x08008C1C
 	b _08008C70
 	.align 2, 0
 _08008C64: .4byte gSamusData
-_08008C68: .4byte 0x082CBEA8
+_08008C68: .4byte sSamusAnim_UnlockingHabitationsDeck
 _08008C6C:
 	strb r1, [r2]
 _08008C6E:
@@ -8512,7 +8512,7 @@ SamusLoadingSaveGFX: @ 0x08008C90
 	movs r1, #0x21
 	adds r1, r1, r0
 	mov ip, r1
-	ldr r4, _08008CD4 @ =0x082D9C04
+	ldr r4, _08008CD4 @ =sSamusAnim_LoadingSave
 	adds r3, r0, #0
 	adds r3, #0x22
 	ldrb r1, [r3]
@@ -8540,7 +8540,7 @@ SamusLoadingSaveGFX: @ 0x08008C90
 	b _08008D38
 	.align 2, 0
 _08008CD0: .4byte gSamusData
-_08008CD4: .4byte 0x082D9C04
+_08008CD4: .4byte sSamusAnim_LoadingSave
 _08008CD8:
 	ldr r2, _08008D1C @ =gSamusAnimationInfo
 	ldrb r3, [r2]
@@ -8724,7 +8724,7 @@ _08008E2A:
 	ldr r2, _08008E70 @ =gSamusData
 	adds r4, r2, #0
 	adds r4, #0x21
-	ldr r5, _08008E74 @ =0x082D9158
+	ldr r5, _08008E74 @ =sSamusAnim_Right_Dying
 	movs r0, #0x22
 	adds r0, r0, r2
 	mov ip, r0
@@ -8756,7 +8756,7 @@ _08008E2A:
 _08008E68: .4byte gSamusAnimationInfo
 _08008E6C: .4byte 0x0828CDB8
 _08008E70: .4byte gSamusData
-_08008E74: .4byte 0x082D9158
+_08008E74: .4byte sSamusAnim_Right_Dying
 _08008E78:
 	movs r0, #1
 	strb r0, [r3]
@@ -8853,7 +8853,7 @@ SamusHitByOmegaMetroidGFX: @ 0x08008F18
 	ldr r0, _08008F54 @ =gSamusData
 	adds r3, r0, #0
 	adds r3, #0x21
-	ldr r4, _08008F58 @ =0x082BDF48
+	ldr r4, _08008F58 @ =sSamusAnim_Right_HitByOmegaMetroid
 	adds r2, r0, #0
 	adds r2, #0x22
 	ldrb r0, [r2]
@@ -8882,7 +8882,7 @@ _08008F4C:
 	bx r1
 	.align 2, 0
 _08008F54: .4byte gSamusData
-_08008F58: .4byte 0x082BDF48
+_08008F58: .4byte sSamusAnim_Right_HitByOmegaMetroid
 
 	thumb_func_start SamusGrabbedByYakuza
 SamusGrabbedByYakuza: @ 0x08008F5C

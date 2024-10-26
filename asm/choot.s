@@ -76,7 +76,7 @@ _0803F5EC:
 	adds r0, #0x29
 	strb r2, [r0]
 	bl ChootSetOpenHitbox
-	ldr r0, _0803F644 @ =0x083598FC
+	ldr r0, _0803F644 @ =sChootOam_3598fc
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -103,7 +103,7 @@ _0803F5EC:
 	b _0803F650
 	.align 2, 0
 _0803F640: .4byte gCurrentSprite
-_0803F644: .4byte 0x083598FC
+_0803F644: .4byte sChootOam_3598fc
 _0803F648: .4byte sPrimarySpriteStats
 _0803F64C:
 	movs r0, #1
@@ -124,12 +124,12 @@ ChootIdleInit: @ 0x0803F658
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0803F674 @ =0x083598FC
+	ldr r0, _0803F674 @ =sChootOam_3598fc
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _0803F670: .4byte gCurrentSprite
-_0803F674: .4byte 0x083598FC
+_0803F674: .4byte sChootOam_3598fc
 
 	thumb_func_start ChootIdle
 ChootIdle: @ 0x0803F678
@@ -192,7 +192,7 @@ ChootLaunchingInit: @ 0x0803F6E4
 	movs r0, #0
 	strb r0, [r1, #0x1c]
 	strh r0, [r1, #0x16]
-	ldr r0, _0803F6FC @ =0x0835990C
+	ldr r0, _0803F6FC @ =sChootOam_35990c
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #0x2a
@@ -200,7 +200,7 @@ ChootLaunchingInit: @ 0x0803F6E4
 	bx lr
 	.align 2, 0
 _0803F6F8: .4byte gCurrentSprite
-_0803F6FC: .4byte 0x0835990C
+_0803F6FC: .4byte sChootOam_35990c
 
 	thumb_func_start ChootLaunching
 ChootLaunching: @ 0x0803F700
@@ -226,7 +226,7 @@ ChootGoingUpInit: @ 0x0803F71C
 	strb r0, [r4, #0x1c]
 	movs r2, #0
 	strh r0, [r4, #0x16]
-	ldr r0, _0803F75C @ =0x08359924
+	ldr r0, _0803F75C @ =sChootOam_359924
 	str r0, [r4, #0x18]
 	adds r1, r4, #0
 	adds r1, #0x24
@@ -250,7 +250,7 @@ _0803F750:
 	bx r0
 	.align 2, 0
 _0803F758: .4byte gCurrentSprite
-_0803F75C: .4byte 0x08359924
+_0803F75C: .4byte sChootOam_359924
 
 	thumb_func_start ChootGoingUp
 ChootGoingUp: @ 0x0803F760
@@ -276,7 +276,7 @@ ChootGoingUp: @ 0x0803F760
 	adds r5, r4, #0
 	adds r5, #0x31
 	ldrb r2, [r5]
-	ldr r1, _0803F7B4 @ =0x08358F64
+	ldr r1, _0803F7B4 @ =sChootUpwardsSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r1
 	ldrh r3, [r0]
@@ -294,7 +294,7 @@ _0803F7A2:
 	.align 2, 0
 _0803F7AC: .4byte gCurrentSprite
 _0803F7B0: .4byte gPreviousCollisionCheck
-_0803F7B4: .4byte 0x08358F64
+_0803F7B4: .4byte sChootUpwardsSpeed
 _0803F7B8: .4byte 0x00007FFF
 _0803F7BC:
 	adds r0, r2, #1
@@ -314,7 +314,7 @@ ChootOpeningInit: @ 0x0803F7CC
 	movs r0, #0
 	strb r0, [r1, #0x1c]
 	strh r0, [r1, #0x16]
-	ldr r0, _0803F7EC @ =0x08359934
+	ldr r0, _0803F7EC @ =sChootOam_359934
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #0x2e
@@ -324,7 +324,7 @@ ChootOpeningInit: @ 0x0803F7CC
 	bx r0
 	.align 2, 0
 _0803F7E8: .4byte gCurrentSprite
-_0803F7EC: .4byte 0x08359934
+_0803F7EC: .4byte sChootOam_359934
 
 	thumb_func_start ChootOpening
 ChootOpening: @ 0x0803F7F0
@@ -349,7 +349,7 @@ ChootGoingDownInit: @ 0x0803F80C
 	strb r1, [r0, #0x1c]
 	movs r3, #0
 	strh r1, [r0, #0x16]
-	ldr r1, _0803F82C @ =0x0835995C
+	ldr r1, _0803F82C @ =sChootOam_35995c
 	str r1, [r0, #0x18]
 	adds r2, r0, #0
 	adds r2, #0x24
@@ -360,7 +360,7 @@ ChootGoingDownInit: @ 0x0803F80C
 	bx lr
 	.align 2, 0
 _0803F828: .4byte gCurrentSprite
-_0803F82C: .4byte 0x0835995C
+_0803F82C: .4byte sChootOam_35995c
 
 	thumb_func_start ChootGoingDown
 ChootGoingDown: @ 0x0803F830
@@ -482,7 +482,7 @@ ChootSpitInit: @ 0x0803F8CC
 	strb r0, [r1]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
-	ldr r0, _0803F940 @ =0x08359984
+	ldr r0, _0803F940 @ =sChootOam_359984
 	str r0, [r2, #0x18]
 	adds r1, #0xc
 	movs r0, #8
@@ -497,7 +497,7 @@ ChootSpitInit: @ 0x0803F8CC
 _0803F934: .4byte gCurrentSprite
 _0803F938: .4byte 0x0000FFFB
 _0803F93C: .4byte 0x0000FFE0
-_0803F940: .4byte 0x08359984
+_0803F940: .4byte sChootOam_359984
 
 	thumb_func_start ChootSpitSpawning
 ChootSpitSpawning: @ 0x0803F944
@@ -518,7 +518,7 @@ ChootSpitSpawning: @ 0x0803F944
 	bne _0803F976
 	strb r3, [r2, #0x1c]
 	strh r0, [r2, #0x16]
-	ldr r0, _0803F980 @ =0x08359994
+	ldr r0, _0803F980 @ =sChootOam_359994
 	str r0, [r2, #0x18]
 	subs r1, #0xa
 	movs r0, #0x16
@@ -531,7 +531,7 @@ _0803F976:
 	bx r0
 	.align 2, 0
 _0803F97C: .4byte gCurrentSprite
-_0803F980: .4byte 0x08359994
+_0803F980: .4byte sChootOam_359994
 
 	thumb_func_start ChootSpitExplodingInit
 ChootSpitExplodingInit: @ 0x0803F984
@@ -547,14 +547,14 @@ ChootSpitExplodingInit: @ 0x0803F984
 	ands r0, r1
 	cmp r0, #0
 	beq _0803F9B0
-	ldr r0, _0803F9AC @ =0x083599CC
+	ldr r0, _0803F9AC @ =sChootOam_3599cc
 	b _0803F9B2
 	.align 2, 0
 _0803F9A4: .4byte gCurrentSprite
 _0803F9A8: .4byte gPreviousCollisionCheck
-_0803F9AC: .4byte 0x083599CC
+_0803F9AC: .4byte sChootOam_3599cc
 _0803F9B0:
-	ldr r0, _0803F9C8 @ =0x083599A4
+	ldr r0, _0803F9C8 @ =sChootOam_3599a4
 _0803F9B2:
 	str r0, [r4, #0x18]
 	ldr r0, _0803F9CC @ =gCurrentSprite
@@ -568,7 +568,7 @@ _0803F9B2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803F9C8: .4byte 0x083599A4
+_0803F9C8: .4byte sChootOam_3599a4
 _0803F9CC: .4byte gCurrentSprite
 
 	thumb_func_start ChootSpitExploding

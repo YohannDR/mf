@@ -2743,7 +2743,7 @@ ParticleScrewAttackKilled: @ 0x08074174
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080741B0 @ =0x083EC0C0
+	ldr r0, _080741B0 @ =sParticleOam_ScrewAttackKilled
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2768,7 +2768,7 @@ _080741A6:
 	bx r0
 	.align 2, 0
 _080741AC: .4byte 0x030008B8
-_080741B0: .4byte 0x083EC0C0
+_080741B0: .4byte sParticleOam_ScrewAttackKilled
 
 	thumb_func_start ParticleSpeedboosterKilled
 ParticleSpeedboosterKilled: @ 0x080741B4
@@ -2811,7 +2811,7 @@ ParticleShinesparkKilled: @ 0x080741F8
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08074234 @ =0x083EC108
+	ldr r0, _08074234 @ =sParticleOam_ShinesparkKilled
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2836,7 +2836,7 @@ _0807422A:
 	bx r0
 	.align 2, 0
 _08074230: .4byte 0x030008B8
-_08074234: .4byte 0x083EC108
+_08074234: .4byte sParticleOam_ShinesparkKilled
 
 	thumb_func_start ParticleSudoScrewKilled
 ParticleSudoScrewKilled: @ 0x08074238
@@ -37499,7 +37499,7 @@ _08085510:
 	adds r0, r4, #0
 	adds r0, #8
 	strb r0, [r3, #0x13]
-	ldr r1, _08085548 @ =0x080A4FA4
+	ldr r1, _08085548 @ =sSineTable
 	lsls r0, r4, #1
 	adds r0, r0, r1
 	movs r7, #0
@@ -37520,7 +37520,7 @@ _0808553E:
 	subs r0, r0, r1
 	b _0808555E
 	.align 2, 0
-_08085548: .4byte 0x080A4FA4
+_08085548: .4byte sSineTable
 _0808554C:
 	muls r0, r2, r0
 	lsls r2, r2, #0x10

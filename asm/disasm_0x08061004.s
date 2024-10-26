@@ -1557,7 +1557,7 @@ XParasiteIdleFloating: @ 0x08061B7C
 	adds r5, r4, #0
 	adds r5, #0x31
 	ldrb r1, [r5]
-	ldr r3, _08061C24 @ =0x083BE09A
+	ldr r3, _08061C24 @ =sXParasiteIdleFloatingYMovement
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -1577,7 +1577,7 @@ _08061BAC:
 	adds r5, r4, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r3, _08061C2C @ =0x083BE11C
+	ldr r3, _08061C2C @ =sXParasiteIdleFloatingXMovement
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -1632,9 +1632,9 @@ _08061C16:
 	b _08061C9E
 	.align 2, 0
 _08061C20: .4byte gCurrentSprite
-_08061C24: .4byte 0x083BE09A
+_08061C24: .4byte sXParasiteIdleFloatingYMovement
 _08061C28: .4byte 0x00007FFF
-_08061C2C: .4byte 0x083BE11C
+_08061C2C: .4byte sXParasiteIdleFloatingXMovement
 _08061C30: .4byte gWrittenToMosaic_H
 _08061C34: .4byte sXParasiteMosaicValues
 _08061C38:

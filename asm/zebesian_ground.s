@@ -300,7 +300,7 @@ _0803FF22:
 	adds r2, #2
 	movs r0, #0x20
 	strb r0, [r2]
-	ldr r0, _0803FF7C @ =0x0835C190
+	ldr r0, _0803FF7C @ =sZebesianGroundOam_35c190
 	mov r2, ip
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
@@ -316,7 +316,7 @@ _0803FF6E:
 	.align 2, 0
 _0803FF74: .4byte gCurrentSprite
 _0803FF78: .4byte sPrimarySpriteStats
-_0803FF7C: .4byte 0x0835C190
+_0803FF7C: .4byte sZebesianGroundOam_35c190
 
 	thumb_func_start ZebesianGroundSpawningFromX
 ZebesianGroundSpawningFromX: @ 0x0803FF80
@@ -639,7 +639,7 @@ ZebesianGroundFallingInit: @ 0x080401E4
 	adds r0, r3, #0
 	adds r0, #0x31
 	strb r1, [r0]
-	ldr r0, _0804020C @ =0x0835C200
+	ldr r0, _0804020C @ =sZebesianGroundOam_35c200
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
@@ -648,13 +648,13 @@ ZebesianGroundFallingInit: @ 0x080401E4
 	bx r0
 	.align 2, 0
 _08040208: .4byte gCurrentSprite
-_0804020C: .4byte 0x0835C200
+_0804020C: .4byte sZebesianGroundOam_35c200
 
 	thumb_func_start ZebesianGroundIdleInit
 ZebesianGroundIdleInit: @ 0x08040210
 	push {r4, lr}
 	ldr r4, _08040234 @ =gCurrentSprite
-	ldr r0, _08040238 @ =0x0835C190
+	ldr r0, _08040238 @ =sZebesianGroundOam_35c190
 	str r0, [r4, #0x18]
 	movs r0, #0
 	strb r0, [r4, #0x1c]
@@ -671,7 +671,7 @@ ZebesianGroundIdleInit: @ 0x08040210
 	bx r0
 	.align 2, 0
 _08040234: .4byte gCurrentSprite
-_08040238: .4byte 0x0835C190
+_08040238: .4byte sZebesianGroundOam_35c190
 
 	thumb_func_start ZebesianGroundIdle
 ZebesianGroundIdle: @ 0x0804023C
@@ -922,14 +922,14 @@ ZebesianGroundTurningAroundInit: @ 0x0804041C
 	movs r3, #0
 	movs r0, #4
 	strb r0, [r2]
-	ldr r0, _08040438 @ =0x0835C328
+	ldr r0, _08040438 @ =sZebesianGroundOam_35c328
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _08040434: .4byte gCurrentSprite
-_08040438: .4byte 0x0835C328
+_08040438: .4byte sZebesianGroundOam_35c328
 
 	thumb_func_start ZebesianGroundTurningAround
 ZebesianGroundTurningAround: @ 0x0804043C
@@ -943,7 +943,7 @@ ZebesianGroundTurningAround: @ 0x0804043C
 	movs r3, #0
 	movs r0, #5
 	strb r0, [r1]
-	ldr r0, _0804046C @ =0x0835C348
+	ldr r0, _0804046C @ =sZebesianGroundOam_35c348
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -956,7 +956,7 @@ _08040462:
 	bx r0
 	.align 2, 0
 _08040468: .4byte gCurrentSprite
-_0804046C: .4byte 0x0835C348
+_0804046C: .4byte sZebesianGroundOam_35c348
 
 	thumb_func_start ZebesianGroundTurningAroundSecondPart
 ZebesianGroundTurningAroundSecondPart: @ 0x08040470
@@ -990,7 +990,7 @@ _0804049A:
 	thumb_func_start ZebesianGroundJumpWarningInit
 ZebesianGroundJumpWarningInit: @ 0x080404A0
 	ldr r1, _080404B4 @ =gCurrentSprite
-	ldr r0, _080404B8 @ =0x0835C2D8
+	ldr r0, _080404B8 @ =sZebesianGroundOam_35c2d8
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1001,7 +1001,7 @@ ZebesianGroundJumpWarningInit: @ 0x080404A0
 	bx lr
 	.align 2, 0
 _080404B4: .4byte gCurrentSprite
-_080404B8: .4byte 0x0835C2D8
+_080404B8: .4byte sZebesianGroundOam_35c2d8
 
 	thumb_func_start ZebesianGroundJumpWarning
 ZebesianGroundJumpWarning: @ 0x080404BC
@@ -1010,7 +1010,7 @@ ZebesianGroundJumpWarning: @ 0x080404BC
 	cmp r0, #0
 	beq _080404F6
 	ldr r3, _080404FC @ =gCurrentSprite
-	ldr r0, _08040500 @ =0x0835C300
+	ldr r0, _08040500 @ =sZebesianGroundOam_35c300
 	str r0, [r3, #0x18]
 	movs r0, #0
 	strb r0, [r3, #0x1c]
@@ -1037,7 +1037,7 @@ _080404F6:
 	bx r0
 	.align 2, 0
 _080404FC: .4byte gCurrentSprite
-_08040500: .4byte 0x0835C300
+_08040500: .4byte sZebesianGroundOam_35c300
 _08040504: .4byte 0x0000FF60
 _08040508: .4byte 0x000001AD
 
@@ -1110,7 +1110,7 @@ _08040586:
 	adds r4, r1, #0
 	cmp r0, #0
 	beq _080405BC
-	ldr r0, _080405B8 @ =0x08359A10
+	ldr r0, _080405B8 @ =sZebesianGroundJumpingSpeedLow
 	adds r2, r4, #0
 	adds r2, #0x31
 	ldrb r1, [r2]
@@ -1127,9 +1127,9 @@ _08040586:
 	b _080405D8
 	.align 2, 0
 _080405B4: .4byte gCurrentSprite
-_080405B8: .4byte 0x08359A10
+_080405B8: .4byte sZebesianGroundJumpingSpeedLow
 _080405BC:
-	ldr r0, _080405FC @ =0x083599FC
+	ldr r0, _080405FC @ =sZebesianGroundJumpingSpeedHigh
 	adds r2, r4, #0
 	adds r2, #0x31
 	ldrb r1, [r2]
@@ -1162,7 +1162,7 @@ _080405DC:
 	bl ZebesianGroundLandingInit
 	b _0804067A
 	.align 2, 0
-_080405FC: .4byte 0x083599FC
+_080405FC: .4byte sZebesianGroundJumpingSpeedHigh
 _08040600: .4byte gPreviousVerticalCollisionCheck
 _08040604:
 	cmp r6, #0
@@ -1234,7 +1234,7 @@ _08040680: .4byte gPreviousCollisionCheck
 ZebesianGroundLandingInit: @ 0x08040684
 	push {lr}
 	ldr r1, _080406B0 @ =gCurrentSprite
-	ldr r0, _080406B4 @ =0x0835C310
+	ldr r0, _080406B4 @ =sZebesianGroundOam_35c310
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1256,7 +1256,7 @@ _080406AC:
 	bx r0
 	.align 2, 0
 _080406B0: .4byte gCurrentSprite
-_080406B4: .4byte 0x0835C310
+_080406B4: .4byte sZebesianGroundOam_35c310
 
 	thumb_func_start ZebesianGroundLanding
 ZebesianGroundLanding: @ 0x080406B8
@@ -1365,7 +1365,7 @@ _08040784: .4byte gCurrentSprite
 ZebesianGroundWaitingInit: @ 0x08040788
 	push {lr}
 	ldr r1, _080407A4 @ =gCurrentSprite
-	ldr r0, _080407A8 @ =0x0835C1D8
+	ldr r0, _080407A8 @ =sZebesianGroundOam_35c1d8
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1378,7 +1378,7 @@ ZebesianGroundWaitingInit: @ 0x08040788
 	bx r0
 	.align 2, 0
 _080407A4: .4byte gCurrentSprite
-_080407A8: .4byte 0x0835C1D8
+_080407A8: .4byte sZebesianGroundOam_35c1d8
 
 	thumb_func_start ZebesianGroundWaiting
 ZebesianGroundWaiting: @ 0x080407AC
@@ -1399,7 +1399,7 @@ _080407C4: .4byte gCurrentSprite
 	thumb_func_start ZebesianGroundStandingInit
 ZebesianGroundStandingInit: @ 0x080407C8
 	ldr r1, _080407EC @ =gCurrentSprite
-	ldr r0, _080407F0 @ =0x0835C1D8
+	ldr r0, _080407F0 @ =sZebesianGroundOam_35c1d8
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1417,7 +1417,7 @@ ZebesianGroundStandingInit: @ 0x080407C8
 	bx lr
 	.align 2, 0
 _080407EC: .4byte gCurrentSprite
-_080407F0: .4byte 0x0835C1D8
+_080407F0: .4byte sZebesianGroundOam_35c1d8
 _080407F4: .4byte gSpriteRandomNumber
 
 	thumb_func_start ZebesianGroundStanding
@@ -1469,17 +1469,17 @@ ZebesianGroundShootingInit: @ 0x0804082C
 	adds r1, #0x2f
 	movs r0, #1
 	strb r0, [r1]
-	ldr r0, _0804085C @ =0x0835C278
+	ldr r0, _0804085C @ =sZebesianGroundOam_35c278
 	b _0804086A
 	.align 2, 0
 _08040858: .4byte gCurrentSprite
-_0804085C: .4byte 0x0835C278
+_0804085C: .4byte sZebesianGroundOam_35c278
 _08040860:
 	adds r1, r4, #0
 	adds r1, #0x2f
 	movs r0, #0
 	strb r0, [r1]
-	ldr r0, _08040878 @ =0x0835C210
+	ldr r0, _08040878 @ =sZebesianGroundOam_35c210
 _0804086A:
 	str r0, [r4, #0x18]
 	bl ZebesianGroundSetShootingHitbox
@@ -1487,7 +1487,7 @@ _0804086A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08040878: .4byte 0x0835C210
+_08040878: .4byte sZebesianGroundOam_35c210
 
 	thumb_func_start ZebesianGroundShooting
 ZebesianGroundShooting: @ 0x0804087C
@@ -1657,7 +1657,7 @@ _080409B8: .4byte gCurrentSprite
 ZebesianGroundShootingEndInit: @ 0x080409BC
 	push {lr}
 	ldr r1, _080409D8 @ =gCurrentSprite
-	ldr r0, _080409DC @ =0x0835C1D8
+	ldr r0, _080409DC @ =sZebesianGroundOam_35c1d8
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1670,7 +1670,7 @@ ZebesianGroundShootingEndInit: @ 0x080409BC
 	bx r0
 	.align 2, 0
 _080409D8: .4byte gCurrentSprite
-_080409DC: .4byte 0x0835C1D8
+_080409DC: .4byte sZebesianGroundOam_35c1d8
 
 	thumb_func_start ZebesianGroundShootingEnd
 ZebesianGroundShootingEnd: @ 0x080409E0
@@ -1788,7 +1788,7 @@ ZebesianGroundBeamInit: @ 0x08040A7C
 	mov r6, ip
 	strh r0, [r6, #0xa]
 	strh r1, [r6, #0xc]
-	ldr r0, _08040AF8 @ =0x0835C398
+	ldr r0, _08040AF8 @ =sZebesianGroundOam_35c398
 	str r0, [r6, #0x18]
 	strb r5, [r6, #0x1c]
 	strh r4, [r6, #0x16]
@@ -1818,7 +1818,7 @@ ZebesianGroundBeamInit: @ 0x08040A7C
 _08040AEC: .4byte gCurrentSprite
 _08040AF0: .4byte 0x0000FFFB
 _08040AF4: .4byte 0x0000FFF8
-_08040AF8: .4byte 0x0835C398
+_08040AF8: .4byte sZebesianGroundOam_35c398
 _08040AFC:
 	ldr r0, _08040B1C @ =0x0000FFD0
 	strh r0, [r1, #0xe]
@@ -1847,7 +1847,7 @@ ZebesianGroundBeamSpawning: @ 0x08040B24
 	cmp r0, #0
 	beq _08040B64
 	ldr r2, _08040B54 @ =gCurrentSprite
-	ldr r0, _08040B58 @ =0x0835C3C0
+	ldr r0, _08040B58 @ =sZebesianGroundOam_35c3c0
 	str r0, [r2, #0x18]
 	movs r0, #0
 	strb r0, [r2, #0x1c]
@@ -1867,7 +1867,7 @@ ZebesianGroundBeamSpawning: @ 0x08040B24
 	b _08040B62
 	.align 2, 0
 _08040B54: .4byte gCurrentSprite
-_08040B58: .4byte 0x0835C3C0
+_08040B58: .4byte sZebesianGroundOam_35c3c0
 _08040B5C:
 	ldr r0, _08040B68 @ =0x0000FFA0
 	strh r0, [r2, #0xe]
@@ -1887,7 +1887,7 @@ ZebesianGroundBeamFired: @ 0x08040B6C
 	cmp r0, #0
 	beq _08040BAC
 	ldr r2, _08040B9C @ =gCurrentSprite
-	ldr r0, _08040BA0 @ =0x0835C368
+	ldr r0, _08040BA0 @ =sZebesianGroundOam_35c368
 	str r0, [r2, #0x18]
 	movs r0, #0
 	strb r0, [r2, #0x1c]
@@ -1907,7 +1907,7 @@ ZebesianGroundBeamFired: @ 0x08040B6C
 	b _08040BAA
 	.align 2, 0
 _08040B9C: .4byte gCurrentSprite
-_08040BA0: .4byte 0x0835C368
+_08040BA0: .4byte sZebesianGroundOam_35c368
 _08040BA4:
 	ldr r0, _08040BB0 @ =0x0000FF60
 	strh r0, [r2, #0xe]

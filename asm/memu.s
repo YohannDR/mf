@@ -44,7 +44,7 @@ _0803E78C:
 	strh r0, [r4, #0xc]
 	strh r1, [r4, #0xe]
 	strh r0, [r4, #0x10]
-	ldr r0, _0803E804 @ =0x08357F14
+	ldr r0, _0803E804 @ =sMemuOam_357f14
 	str r0, [r4, #0x18]
 	strb r5, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -85,7 +85,7 @@ _0803E7E6:
 	.align 2, 0
 _0803E7FC: .4byte gCurrentSprite
 _0803E800: .4byte 0x0000FFE0
-_0803E804: .4byte 0x08357F14
+_0803E804: .4byte sMemuOam_357f14
 _0803E808: .4byte sPrimarySpriteStats
 _0803E80C: .4byte gSpriteRandomNumber
 _0803E810:
@@ -130,7 +130,7 @@ MemuIdle: @ 0x0803E840
 	adds r5, r4, #0
 	adds r5, #0x31
 	ldrb r1, [r5]
-	ldr r3, _0803E8BC @ =0x083575B0
+	ldr r3, _0803E8BC @ =sMemuIdleYSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -150,7 +150,7 @@ _0803E86C:
 	adds r5, r4, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r3, _0803E8C4 @ =0x08357632
+	ldr r3, _0803E8C4 @ =sMemuIdleXSpeed
 	lsls r0, r1, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -182,9 +182,9 @@ _0803E8B0:
 	bx r0
 	.align 2, 0
 _0803E8B8: .4byte gCurrentSprite
-_0803E8BC: .4byte 0x083575B0
+_0803E8BC: .4byte sMemuIdleYSpeed
 _0803E8C0: .4byte 0x00007FFF
-_0803E8C4: .4byte 0x08357632
+_0803E8C4: .4byte sMemuIdleXSpeed
 
 	thumb_func_start MemuChasingSamusInit
 MemuChasingSamusInit: @ 0x0803E8C8
@@ -213,7 +213,7 @@ MemuChasingSamusInit: @ 0x0803E8C8
 	strb r0, [r1]
 	movs r0, #0xc
 	strh r0, [r4, #0x12]
-	ldr r0, _0803E928 @ =0x08357F3C
+	ldr r0, _0803E928 @ =sMemuOam_357f3c
 	str r0, [r4, #0x18]
 	strb r5, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -233,7 +233,7 @@ MemuChasingSamusInit: @ 0x0803E8C8
 	.align 2, 0
 _0803E920: .4byte gCurrentSprite
 _0803E924: .4byte gSpriteRandomNumber
-_0803E928: .4byte 0x08357F3C
+_0803E928: .4byte sMemuOam_357f3c
 _0803E92C: .4byte gSamusData
 _0803E930: .4byte 0x0000FBFF
 _0803E934:
