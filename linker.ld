@@ -278,8 +278,8 @@ SECTIONS {
         asm/memu.o(.text);
         asm/geruboss.o(.text);
         asm/choot.o(.text);
-        asm/zebesian_ground.o(.text);
 
+        src/sprites_AI/zebesian_ground.o(.text);
         src/sprites_AI/blue_x.o(.text);
         src/sprites_AI/missile_hatch.o(.text);
         src/sprites_AI/super_missile_barrier.o(.text);
