@@ -221,9 +221,11 @@ SECTIONS {
         src/sprites_AI/target.o(.text);
         src/sprites_AI/unused_sprites.o(.text);
         src/sprites_AI/bubbles.o(.text);
+        src/sprites_AI/x_parasite.o(.text);
 
         asm/disasm_0x0801503C.o(.text);
 
+        src/sprites_AI/hornoad.o(.text);
         src/sprites_AI/halzyn.o(.text);
         src/sprites_AI/movable_platform.o(.text);
         src/sprites_AI/moto.o(.text);
@@ -363,6 +365,7 @@ SECTIONS {
         src/data/spriteset.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
+        src/data/sprites/hornoad.o(.rodata);
         src/data/sprites/halzyn.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
         src/data/sprites/moto.o(.rodata);

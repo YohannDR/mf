@@ -8,7 +8,7 @@ extern const s16 sHornoadSpitYMovement[21];
 extern const s16 sHornoadJumpVelocityHigh[10];
 extern const s16 sHornoadJumpVelocityLow[10];
 
-extern const u32 sHornoadGfx[1536];
+extern const u32 sHornoadGfx[512 * 3];
 extern const u16 sHornoadPal[16 * 3];
 
 extern const struct FrameData sHornoadOam_TiltingHeadHidden[5];
@@ -40,10 +40,11 @@ extern const struct FrameData sHornoadSpitOam_2eb784[4];
 extern const struct FrameData sHornoadSpitOam_2eb7a4[4];
 extern const struct FrameData sHornoadSpitOam_Exploding[4];
 
+extern const struct FrameData sHornoadSpawnerOam_2eb7e4[2];
 extern const struct FrameData sHornoadSpawnerOam_Spawning[4];
 
 extern const struct FrameData sHornoadOam_Falling[3];
 extern const struct FrameData sHornoadOam_2eb82c[3];
-extern const struct FrameData sHornoadOam_2eb844[3];
+extern const struct FrameData sHornoadOam_2eb844[13];
 
 #endif /* HORNOAD_DATA_H */

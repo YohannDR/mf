@@ -1,5 +1,4 @@
 #include "sprites_AI/hornoad.h"
-#include "sprite_util.h"
 #include "macros.h"
 
 #include "data/sprites/hornoad.h"
@@ -162,7 +161,7 @@ void HornoadInit(void)
 {
     if (gCurrentSprite.spriteId == PSPRITE_QUARANTINE_BAY_HORNOAD)
     {
-        if (!EventCheckOn_NavigationBeforeQuarantineBayHornoad())
+        if (!EventCheckOn_NavigationRoomBeforeQuarantineBay())
         {
             gCurrentSprite.status = 0;
             return;
@@ -452,7 +451,7 @@ void HornoadJumping(void)
 {
     u8 var_0;
     s16 movement;
-    u16 blockTop;
+    u32 blockTop;
 
     var_0 = FALSE;
 
@@ -661,7 +660,7 @@ void HornoadLanding(void)
  */
 void HornoadFalling(void)
 {
-    u16 blockTop;
+    u32 blockTop;
     u8 landing;
     s16 movement;
     u8 offset;
@@ -910,7 +909,7 @@ void HornoadSpitInit(void)
  */
 void HornoadSpitMoving(void)
 {
-    u16 blockTop;
+    u32 blockTop;
     u8 offset;
     s16 movement;
 

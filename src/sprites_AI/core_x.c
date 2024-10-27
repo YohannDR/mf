@@ -570,8 +570,7 @@ void CoreXShell(void) {
                     gCurrentSprite.frozenPaletteRowOffset = 3;
                 } else {
                     #ifndef NON_MATCHING
-                    tmp += 1;
-                    tmp -= 1;
+                    tmp++, tmp--;
                     // FIXME fakematch
                     asm("ldrh r4, [r5, #0x14]");
                     #endif
