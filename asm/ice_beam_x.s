@@ -228,8 +228,8 @@ _08058AE4:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start IceBeamAbilityFloatingBeforeSA_X
-IceBeamAbilityFloatingBeforeSA_X: @ 0x08058AEC
+	thumb_func_start IceBeamAbilityFloatingBeforeSaX
+IceBeamAbilityFloatingBeforeSaX: @ 0x08058AEC
 	push {r4, r5, r6, r7, lr}
 	ldr r2, _08058B54 @ =gCurrentSprite
 	adds r1, r2, #0
@@ -305,8 +305,8 @@ _08058B78:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start IceBeamAbilityTurningIntoSA_X
-IceBeamAbilityTurningIntoSA_X: @ 0x08058B80
+	thumb_func_start IceBeamAbilityTurningIntoSaX
+IceBeamAbilityTurningIntoSaX: @ 0x08058B80
 	push {lr}
 	ldr r1, _08058BB8 @ =gCurrentSprite
 	adds r2, r1, #0
@@ -363,8 +363,8 @@ _08058BEA:
 	.align 2, 0
 _08058BF0: .4byte gCurrentSprite
 
-	thumb_func_start IceBeamAbilitySpawningFromSA_XInit
-IceBeamAbilitySpawningFromSA_XInit: @ 0x08058BF4
+	thumb_func_start IceBeamAbilitySpawningFromSaXInit
+IceBeamAbilitySpawningFromSaXInit: @ 0x08058BF4
 	ldr r3, _08058C34 @ =gCurrentSprite
 	adds r1, r3, #0
 	adds r1, #0x24
@@ -797,10 +797,10 @@ _0805901C:
 	bl IceBeamAbilityEntering
 	b _0805904E
 _08059022:
-	bl IceBeamAbilityFloatingBeforeSA_X
+	bl IceBeamAbilityFloatingBeforeSaX
 	b _0805904E
 _08059028:
-	bl IceBeamAbilityTurningIntoSA_X
+	bl IceBeamAbilityTurningIntoSaX
 	b _0805904E
 _0805902E:
 	bl IceBeamAbilityInit
@@ -808,7 +808,7 @@ _08059032:
 	bl IceBeamAbilitySpawningFromX
 	b _0805904E
 _08059038:
-	bl IceBeamAbilitySpawningFromSA_XInit
+	bl IceBeamAbilitySpawningFromSaXInit
 	b _0805904E
 _0805903E:
 	bl IceBeamAbilityGoingToTarget

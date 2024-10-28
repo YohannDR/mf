@@ -9,3 +9,16 @@
 #include "data/sprites/arachnus.h"
 #include "data/sprites/serris.h"
 #include "data/sprites/elevator_pad.h"
+
+void SaXElevator(void);
+void Hornoad(void);
+void Halzyn(void);
+void ZebesianWall(void);
+void HornoadSpawner(void);
+void Gate(void);
+void MovablePlatform(void);
+void Moto(void);
+void NavPad(void);
+void Gunship(void);
+void Yameba(void);
+void SecurityPad(void);

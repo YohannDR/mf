@@ -486,7 +486,7 @@ void YakuzaOpeningMouth(void) {
             if (SpriteUtilCheckNearEndSubSprite1Anim()) {
                 u16 maxHealth = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
                 if (gCurrentSprite.health < maxHealth / 2) {
-                    gCurrentSprite.health = maxHealth / 2; // the evil thing
+                    gCurrentSprite.health = maxHealth / 2; // the evil code that regenerates yakuza to half health
                     gCurrentSprite.pose = 0x1f;
                     gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
                 } else {

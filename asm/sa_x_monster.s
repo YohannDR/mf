@@ -2,8 +2,8 @@
 
     .syntax unified
 
-	thumb_func_start SA_XMonsterSyncSubSprites
-SA_XMonsterSyncSubSprites: @ 0x080507F4
+	thumb_func_start SaXMonsterSyncSubSprites
+SaXMonsterSyncSubSprites: @ 0x080507F4
 	push {r4, lr}
 	ldr r4, _08050850 @ =gSubSpriteData1
 	ldrh r0, [r4, #4]
@@ -56,8 +56,8 @@ _08050850: .4byte gSubSpriteData1
 _08050854: .4byte gCurrentSprite
 _08050858: .4byte 0x0879B458
 
-	thumb_func_start SA_XMonsterProjectilesCollision
-SA_XMonsterProjectilesCollision: @ 0x0805085C
+	thumb_func_start SaXMonsterProjectilesCollision
+SaXMonsterProjectilesCollision: @ 0x0805085C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -169,8 +169,8 @@ _08050920:
 _08050930: .4byte gCurrentSprite
 _08050934: .4byte gProjectileData
 
-	thumb_func_start SA_XMonsterCheckScreaming
-SA_XMonsterCheckScreaming: @ 0x08050938
+	thumb_func_start SaXMonsterCheckScreaming
+SaXMonsterCheckScreaming: @ 0x08050938
 	push {lr}
 	lsls r0, r0, #0x18
 	lsrs r2, r0, #0x18
@@ -183,12 +183,12 @@ SA_XMonsterCheckScreaming: @ 0x08050938
 	bne _08050970
 	cmp r2, #0
 	beq _0805095C
-	bl SA_XMonsterScreamingAirborneInit
+	bl SaXMonsterScreamingAirborneInit
 	b _08050960
 	.align 2, 0
 _08050958: .4byte gCurrentSprite
 _0805095C:
-	bl SA_XMonsterScreamingGroundedInit
+	bl SaXMonsterScreamingGroundedInit
 _08050960:
 	ldr r0, _0805096C @ =0x000001E1
 	bl SoundPlayNotAlreadyPlaying
@@ -203,8 +203,8 @@ _08050972:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SA_XMonsterXMovement
-SA_XMonsterXMovement: @ 0x08050978
+	thumb_func_start SaXMonsterXMovement
+SaXMonsterXMovement: @ 0x08050978
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x18
 	lsrs r2, r0, #0x18
@@ -305,8 +305,8 @@ _08050A3C: .4byte gSamusData
 _08050A40: .4byte gPreviousCollisionCheck
 _08050A44: .4byte 0xFFFFFEE0
 
-	thumb_func_start SA_XMonsterSetSideHitboxes
-SA_XMonsterSetSideHitboxes: @ 0x08050A48
+	thumb_func_start SaXMonsterSetSideHitboxes
+SaXMonsterSetSideHitboxes: @ 0x08050A48
 	push {lr}
 	ldr r2, _08050A60 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -333,8 +333,8 @@ _08050A6E:
 	.align 2, 0
 _08050A74: .4byte 0x0000FF80
 
-	thumb_func_start SA_XMonsterFall
-SA_XMonsterFall: @ 0x08050A78
+	thumb_func_start SaXMonsterFall
+SaXMonsterFall: @ 0x08050A78
 	push {r4, r5, r6, lr}
 	ldr r0, _08050AA8 @ =gCurrentSprite
 	adds r5, r0, #0
@@ -405,8 +405,8 @@ _08050B00: .4byte 0x0000073E
 _08050B04: .4byte gPreviousVerticalCollisionCheck
 _08050B08: .4byte gCurrentSprite
 
-	thumb_func_start SA_XMonsterSpawningFromX
-SA_XMonsterSpawningFromX: @ 0x08050B0C
+	thumb_func_start SaXMonsterSpawningFromX
+SaXMonsterSpawningFromX: @ 0x08050B0C
 	push {lr}
 	ldr r2, _08050B30 @ =gCurrentSprite
 	adds r0, r2, #0
@@ -493,8 +493,8 @@ _08050BB4: .4byte sSpritesPalettePointers
 _08050BB8: .4byte 0x05000300
 _08050BBC: .4byte 0x80000010
 
-	thumb_func_start SA_XMonsterInit
-SA_XMonsterInit: @ 0x08050BC0
+	thumb_func_start SaXMonsterInit
+SaXMonsterInit: @ 0x08050BC0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	ldr r0, _08050C6C @ =gCurrentSprite
@@ -599,7 +599,7 @@ _08050C8A:
 	adds r1, #0x25
 	movs r0, #2
 	strb r0, [r1]
-	bl SA_XMonsterSetSideHitboxes
+	bl SaXMonsterSetSideHitboxes
 	ldrb r2, [r6, #0x1f]
 	adds r7, r6, #0
 	adds r7, #0x23
@@ -711,8 +711,8 @@ _08050C8A:
 	.align 2, 0
 _08050D8C: .4byte 0x08388F94
 
-	thumb_func_start SA_XMonsterDroppingInit
-SA_XMonsterDroppingInit: @ 0x08050D90
+	thumb_func_start SaXMonsterDroppingInit
+SaXMonsterDroppingInit: @ 0x08050D90
 	ldr r1, _08050DA4 @ =gCurrentSprite
 	adds r2, r1, #0
 	adds r2, #0x24
@@ -725,30 +725,30 @@ SA_XMonsterDroppingInit: @ 0x08050D90
 	.align 2, 0
 _08050DA4: .4byte gCurrentSprite
 
-	thumb_func_start SA_XMonsterDropping
-SA_XMonsterDropping: @ 0x08050DA8
+	thumb_func_start SaXMonsterDropping
+SaXMonsterDropping: @ 0x08050DA8
 	push {lr}
-	bl SA_XMonsterFall
+	bl SaXMonsterFall
 	ldr r0, _08050DC0 @ =gCurrentSprite
 	adds r0, #0x24
 	ldrb r0, [r0]
 	cmp r0, #0x1d
 	bne _08050DC4
 	movs r0, #0
-	bl SA_XMonsterCheckScreaming
+	bl SaXMonsterCheckScreaming
 	b _08050DCA
 	.align 2, 0
 _08050DC0: .4byte gCurrentSprite
 _08050DC4:
 	movs r0, #1
-	bl SA_XMonsterCheckScreaming
+	bl SaXMonsterCheckScreaming
 _08050DCA:
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start SA_XMonsterIdleInit
-SA_XMonsterIdleInit: @ 0x08050DD0
+	thumb_func_start SaXMonsterIdleInit
+SaXMonsterIdleInit: @ 0x08050DD0
 	push {lr}
 	ldr r2, _08050DE8 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -787,8 +787,8 @@ _08050DF8:
 _08050E14: .4byte gSubSpriteData1
 _08050E18: .4byte 0x08388DE4
 
-	thumb_func_start SA_XMonsterIdle
-SA_XMonsterIdle: @ 0x08050E1C
+	thumb_func_start SaXMonsterIdle
+SaXMonsterIdle: @ 0x08050E1C
 	push {r4, lr}
 	movs r4, #0
 	bl SpriteUtilCheckNearEndSubSprite1Anim
@@ -835,13 +835,13 @@ _08050E6E:
 	strb r0, [r1]
 _08050E70:
 	movs r0, #0
-	bl SA_XMonsterCheckScreaming
+	bl SaXMonsterCheckScreaming
 	pop {r4}
 	pop {r0}
 	bx r0
 
-	thumb_func_start SA_XMonsterJumpWarningInit
-SA_XMonsterJumpWarningInit: @ 0x08050E7C
+	thumb_func_start SaXMonsterJumpWarningInit
+SaXMonsterJumpWarningInit: @ 0x08050E7C
 	push {lr}
 	ldr r2, _08050E94 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -880,8 +880,8 @@ _08050EA4:
 _08050EC0: .4byte gSubSpriteData1
 _08050EC4: .4byte 0x08388E0C
 
-	thumb_func_start SA_XMonsterJumpWarning
-SA_XMonsterJumpWarning: @ 0x08050EC8
+	thumb_func_start SaXMonsterJumpWarning
+SaXMonsterJumpWarning: @ 0x08050EC8
 	push {lr}
 	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
@@ -921,15 +921,15 @@ _08050EF8:
 	bl SoundPlay
 _08050F18:
 	movs r0, #0
-	bl SA_XMonsterCheckScreaming
+	bl SaXMonsterCheckScreaming
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08050F24: .4byte gSubSpriteData1
 _08050F28: .4byte 0x08388E34
 
-	thumb_func_start SA_XMonsterJumping
-SA_XMonsterJumping: @ 0x08050F2C
+	thumb_func_start SaXMonsterJumping
+SaXMonsterJumping: @ 0x08050F2C
 	push {r4, r5, lr}
 	ldr r4, _08050F54 @ =gCurrentSprite
 	movs r0, #0x31
@@ -963,18 +963,18 @@ _08050F60:
 	adds r0, r0, r3
 	strh r0, [r1, #8]
 	movs r0, #0
-	bl SA_XMonsterXMovement
+	bl SaXMonsterXMovement
 _08050F74:
 	movs r0, #1
-	bl SA_XMonsterCheckScreaming
+	bl SaXMonsterCheckScreaming
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08050F80: .4byte gSubSpriteData1
 
-	thumb_func_start SA_XMonsterFallingInit
-SA_XMonsterFallingInit: @ 0x08050F84
+	thumb_func_start SaXMonsterFallingInit
+SaXMonsterFallingInit: @ 0x08050F84
 	ldr r1, _08050F98 @ =gCurrentSprite
 	adds r2, r1, #0
 	adds r2, #0x24
@@ -987,32 +987,32 @@ SA_XMonsterFallingInit: @ 0x08050F84
 	.align 2, 0
 _08050F98: .4byte gCurrentSprite
 
-	thumb_func_start SA_XMonsterFalling
-SA_XMonsterFalling: @ 0x08050F9C
+	thumb_func_start SaXMonsterFalling
+SaXMonsterFalling: @ 0x08050F9C
 	push {lr}
 	movs r0, #1
-	bl SA_XMonsterXMovement
-	bl SA_XMonsterFall
+	bl SaXMonsterXMovement
+	bl SaXMonsterFall
 	ldr r0, _08050FBC @ =gCurrentSprite
 	adds r0, #0x24
 	ldrb r0, [r0]
 	cmp r0, #0x1d
 	bne _08050FC0
 	movs r0, #0
-	bl SA_XMonsterCheckScreaming
+	bl SaXMonsterCheckScreaming
 	b _08050FC6
 	.align 2, 0
 _08050FBC: .4byte gCurrentSprite
 _08050FC0:
 	movs r0, #1
-	bl SA_XMonsterCheckScreaming
+	bl SaXMonsterCheckScreaming
 _08050FC6:
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start SA_XMonsterLandingInit
-SA_XMonsterLandingInit: @ 0x08050FCC
+	thumb_func_start SaXMonsterLandingInit
+SaXMonsterLandingInit: @ 0x08050FCC
 	push {lr}
 	ldr r2, _08050FE4 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -1053,8 +1053,8 @@ _08050FF4:
 _08051018: .4byte gSubSpriteData1
 _0805101C: .4byte 0x08388E5C
 
-	thumb_func_start SA_XMonsterLanding
-SA_XMonsterLanding: @ 0x08051020
+	thumb_func_start SaXMonsterLanding
+SaXMonsterLanding: @ 0x08051020
 	push {r4, lr}
 	movs r4, #0
 	bl SpriteUtilCheckNearEndSubSprite1Anim
@@ -1101,13 +1101,13 @@ _08051072:
 	strb r0, [r1]
 _08051074:
 	movs r0, #0
-	bl SA_XMonsterCheckScreaming
+	bl SaXMonsterCheckScreaming
 	pop {r4}
 	pop {r0}
 	bx r0
 
-	thumb_func_start SA_XMonsterTurningAroundInit
-SA_XMonsterTurningAroundInit: @ 0x08051080
+	thumb_func_start SaXMonsterTurningAroundInit
+SaXMonsterTurningAroundInit: @ 0x08051080
 	push {lr}
 	ldr r2, _08051098 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -1146,8 +1146,8 @@ _080510A8:
 _080510C4: .4byte gSubSpriteData1
 _080510C8: .4byte 0x08388F14
 
-	thumb_func_start SA_XMonsterTurningAround
-SA_XMonsterTurningAround: @ 0x080510CC
+	thumb_func_start SaXMonsterTurningAround
+SaXMonsterTurningAround: @ 0x080510CC
 	push {lr}
 	ldr r2, _08051104 @ =gCurrentSprite
 	ldrh r0, [r2, #0x16]
@@ -1162,22 +1162,22 @@ SA_XMonsterTurningAround: @ 0x080510CC
 	adds r1, r3, #0
 	eors r0, r1
 	strh r0, [r2]
-	bl SA_XMonsterSetSideHitboxes
+	bl SaXMonsterSetSideHitboxes
 _080510EC:
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _080510F8
-	bl SA_XMonsterJumpWarningInit
+	bl SaXMonsterJumpWarningInit
 _080510F8:
 	movs r0, #0
-	bl SA_XMonsterCheckScreaming
+	bl SaXMonsterCheckScreaming
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08051104: .4byte gCurrentSprite
 
-	thumb_func_start SA_XMonsterScreamingAirborneInit
-SA_XMonsterScreamingAirborneInit: @ 0x08051108
+	thumb_func_start SaXMonsterScreamingAirborneInit
+SaXMonsterScreamingAirborneInit: @ 0x08051108
 	push {lr}
 	ldr r2, _08051120 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -1219,12 +1219,12 @@ _08051130:
 _08051154: .4byte gSubSpriteData1
 _08051158: .4byte 0x08388F74
 
-	thumb_func_start SA_XMonsterScreamingAirborne
-SA_XMonsterScreamingAirborne: @ 0x0805115C
+	thumb_func_start SaXMonsterScreamingAirborne
+SaXMonsterScreamingAirborne: @ 0x0805115C
 	push {lr}
 	movs r0, #0
-	bl SA_XMonsterXMovement
-	bl SA_XMonsterFall
+	bl SaXMonsterXMovement
+	bl SaXMonsterFall
 	ldr r1, _0805118C @ =gCurrentSprite
 	adds r0, r1, #0
 	adds r0, #0x24
@@ -1284,8 +1284,8 @@ _080511D8:
 	.align 2, 0
 _080511DC: .4byte gCurrentSprite
 
-	thumb_func_start SA_XMonsterScreamingGroundedInit
-SA_XMonsterScreamingGroundedInit: @ 0x080511E0
+	thumb_func_start SaXMonsterScreamingGroundedInit
+SaXMonsterScreamingGroundedInit: @ 0x080511E0
 	push {lr}
 	ldr r2, _080511F8 @ =gCurrentSprite
 	ldrh r1, [r2]
@@ -1322,8 +1322,8 @@ _08051208:
 _08051224: .4byte gSubSpriteData1
 _08051228: .4byte 0x08388F34
 
-	thumb_func_start SA_XMonsterScreamingGrounded
-SA_XMonsterScreamingGrounded: @ 0x0805122C
+	thumb_func_start SaXMonsterScreamingGrounded
+SaXMonsterScreamingGrounded: @ 0x0805122C
 	push {r4, lr}
 	movs r4, #0
 	bl SpriteUtilCheckEndCurrentSpriteAnim
@@ -1368,12 +1368,12 @@ _0805127C:
 	cmp r4, #0
 	beq _0805128C
 _08051280:
-	bl SA_XMonsterTurningAroundInit
+	bl SaXMonsterTurningAroundInit
 	b _080512A6
 	.align 2, 0
 _08051288: .4byte gSamusData
 _0805128C:
-	bl SA_XMonsterJumpWarningInit
+	bl SaXMonsterJumpWarningInit
 	b _080512A6
 _08051292:
 	ldr r1, _080512AC @ =gCurrentSprite
@@ -1392,8 +1392,8 @@ _080512A6:
 	.align 2, 0
 _080512AC: .4byte gCurrentSprite
 
-	thumb_func_start SA_XMonsterPanting
-SA_XMonsterPanting: @ 0x080512B0
+	thumb_func_start SaXMonsterPanting
+SaXMonsterPanting: @ 0x080512B0
 	push {r4, lr}
 	ldr r1, _08051304 @ =gCurrentSprite
 	adds r2, r1, #0
@@ -1467,8 +1467,8 @@ _08051340: .4byte gSubSpriteData1
 _08051344: .4byte 0x08388F54
 _08051348: .4byte gCurrentSprite
 
-	thumb_func_start SA_XMonsterDying
-SA_XMonsterDying: @ 0x0805134C
+	thumb_func_start SaXMonsterDying
+SaXMonsterDying: @ 0x0805134C
 	push {lr}
 	ldr r3, _08051388 @ =gCurrentSprite
 	adds r1, r3, #0
@@ -1503,8 +1503,8 @@ _08051382:
 _08051388: .4byte gCurrentSprite
 _0805138C: .4byte 0x00008020
 
-	thumb_func_start SA_XMonsterTurningIntoCoreX
-SA_XMonsterTurningIntoCoreX: @ 0x08051390
+	thumb_func_start SaXMonsterTurningIntoCoreX
+SaXMonsterTurningIntoCoreX: @ 0x08051390
 	push {r4, lr}
 	ldr r4, _080513F0 @ =gCurrentSprite
 	adds r1, r4, #0
@@ -1580,8 +1580,8 @@ _0805141E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start SA_XMonsterPartInit
-SA_XMonsterPartInit: @ 0x08051424
+	thumb_func_start SaXMonsterPartInit
+SaXMonsterPartInit: @ 0x08051424
 	push {lr}
 	ldr r3, _08051470 @ =gCurrentSprite
 	ldrh r1, [r3]
@@ -1652,14 +1652,14 @@ _0805149E:
 	movs r0, #0x30
 	strb r0, [r1]
 _080514AC:
-	bl SA_XMonsterSyncSubSprites
+	bl SaXMonsterSyncSubSprites
 	pop {r0}
 	bx r0
 	.align 2, 0
 _080514B4: .4byte gIoRegisters
 
-	thumb_func_start SA_XMonsterPartIdle
-SA_XMonsterPartIdle: @ 0x080514B8
+	thumb_func_start SaXMonsterPartIdle
+SaXMonsterPartIdle: @ 0x080514B8
 	push {lr}
 	ldr r3, _080514E4 @ =gSpriteData
 	ldr r2, _080514E8 @ =gCurrentSprite
@@ -1784,10 +1784,10 @@ _080515A8:
 	.align 2, 0
 _080515AC: .4byte 0x0838FB08
 
-	thumb_func_start SA_XMonster
-SA_XMonster: @ 0x080515B0
+	thumb_func_start SaXMonster
+SaXMonster: @ 0x080515B0
 	push {lr}
-	bl SA_XMonsterProjectilesCollision
+	bl SaXMonsterProjectilesCollision
 	ldr r0, _080515CC @ =gCurrentSprite
 	adds r0, #0x24
 	ldrb r0, [r0]
@@ -1896,86 +1896,86 @@ _080515D4: @ jump table
 	.4byte _080517B8 @ case 89
 	.4byte _08051746 @ case 90
 _08051740:
-	bl SA_XMonsterInit
+	bl SaXMonsterInit
 	b _080517B8
 _08051746:
-	bl SA_XMonsterSpawningFromX
+	bl SaXMonsterSpawningFromX
 	b _080517B8
 _0805174C:
-	bl SA_XMonsterDroppingInit
+	bl SaXMonsterDroppingInit
 _08051750:
-	bl SA_XMonsterDropping
+	bl SaXMonsterDropping
 	b _080517B8
 _08051756:
-	bl SA_XMonsterIdleInit
+	bl SaXMonsterIdleInit
 _0805175A:
-	bl SA_XMonsterIdle
+	bl SaXMonsterIdle
 	b _080517B8
 _08051760:
-	bl SA_XMonsterJumpWarningInit
+	bl SaXMonsterJumpWarningInit
 _08051764:
-	bl SA_XMonsterJumpWarning
+	bl SaXMonsterJumpWarning
 	b _080517B8
 _0805176A:
-	bl SA_XMonsterJumping
+	bl SaXMonsterJumping
 	b _080517B8
 _08051770:
-	bl SA_XMonsterFallingInit
+	bl SaXMonsterFallingInit
 _08051774:
-	bl SA_XMonsterFalling
+	bl SaXMonsterFalling
 	b _080517B8
 _0805177A:
-	bl SA_XMonsterLandingInit
+	bl SaXMonsterLandingInit
 _0805177E:
-	bl SA_XMonsterLanding
+	bl SaXMonsterLanding
 	b _080517B8
 _08051784:
-	bl SA_XMonsterTurningAroundInit
+	bl SaXMonsterTurningAroundInit
 	b _080517B8
 _0805178A:
-	bl SA_XMonsterTurningAround
+	bl SaXMonsterTurningAround
 	b _080517B8
 _08051790:
-	bl SA_XMonsterScreamingGroundedInit
+	bl SaXMonsterScreamingGroundedInit
 	b _080517B8
 _08051796:
-	bl SA_XMonsterScreamingGrounded
+	bl SaXMonsterScreamingGrounded
 	b _080517B8
 _0805179C:
-	bl SA_XMonsterScreamingAirborneInit
+	bl SaXMonsterScreamingAirborneInit
 	b _080517B8
 _080517A2:
-	bl SA_XMonsterScreamingAirborne
+	bl SaXMonsterScreamingAirborne
 	b _080517B8
 _080517A8:
-	bl SA_XMonsterPanting
+	bl SaXMonsterPanting
 	b _080517B8
 _080517AE:
-	bl SA_XMonsterDying
+	bl SaXMonsterDying
 	b _080517B8
 _080517B4:
-	bl SA_XMonsterTurningIntoCoreX
+	bl SaXMonsterTurningIntoCoreX
 _080517B8:
 	bl SpriteUtilUpdateSubSpriteData1Animation
-	bl SA_XMonsterSyncSubSprites
+	bl SaXMonsterSyncSubSprites
 	pop {r0}
 	bx r0
 
-	thumb_func_start SA_XMonsterPart
-SA_XMonsterPart: @ 0x080517C4
+	thumb_func_start SaXMonsterPart
+SaXMonsterPart: @ 0x080517C4
 	push {lr}
 	ldr r0, _080517D8 @ =gCurrentSprite
 	adds r0, #0x24
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _080517DC
-	bl SA_XMonsterPartInit
+	bl SaXMonsterPartInit
 	b _080517E4
 	.align 2, 0
 _080517D8: .4byte gCurrentSprite
 _080517DC:
-	bl SA_XMonsterPartIdle
-	bl SA_XMonsterSyncSubSprites
+	bl SaXMonsterPartIdle
+	bl SaXMonsterSyncSubSprites
 _080517E4:
 	pop {r0}
 	bx r0

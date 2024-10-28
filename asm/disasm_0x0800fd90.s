@@ -209,8 +209,8 @@ _0800FF18:
 _0800FF20: .4byte sSamusSetPoseFunctionPointer
 _0800FF24: .4byte gSamusData
 
-	thumb_func_start TakeDamageFromSA_XIceBeamWithPowerSuit
-TakeDamageFromSA_XIceBeamWithPowerSuit: @ 0x0800FF28
+	thumb_func_start TakeDamageFromSaXIceBeamWithPowerSuit
+TakeDamageFromSaXIceBeamWithPowerSuit: @ 0x0800FF28
 	push {r4, lr}
 	ldr r0, _0800FF64 @ =sSecondarySpriteStats
 	ldrh r3, [r0, #2]
@@ -1925,7 +1925,7 @@ _08010D14: .4byte gSamusData
 _08010D18: .4byte gEquipment
 _08010D1C:
 	mov r0, sl
-	bl TakeDamageFromSA_XIceBeamWithPowerSuit
+	bl TakeDamageFromSaXIceBeamWithPowerSuit
 _08010D22:
 	ldr r0, _08010D6C @ =gSpriteData
 	ldr r1, [sp, #0x34]

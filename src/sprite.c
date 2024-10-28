@@ -273,7 +273,7 @@ void SpriteDrawAll_MediumPriority(void)
     drawStatus = SS_EXISTS | SS_ON_SCREEN;
 
     SpriteDebrisDrawAll();
-    SA_XUpdateGFXAndDraw();
+    SaXUpdateGFXAndDraw();
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {

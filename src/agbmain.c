@@ -247,7 +247,7 @@ void AgbMain(void)
                 break;
 
             case GAME_MODE_SA_X_CLOSE_UP:
-                if (SA_XCloseUpSubroutine())
+                if (SaXCloseUpSubroutine())
                 {
                     gMainGameMode = GAME_MODE_IN_GAME;
                     gSubGameMode1 = 0;

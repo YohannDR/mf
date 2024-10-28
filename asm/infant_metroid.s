@@ -740,8 +740,8 @@ _0804F054:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start MetroidFloatingNearSA_X
-MetroidFloatingNearSA_X: @ 0x0804F05C
+	thumb_func_start MetroidFloatingNearSaX
+MetroidFloatingNearSaX: @ 0x0804F05C
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -836,8 +836,8 @@ _0804F110: .4byte 0x083848FC
 _0804F114: .4byte 0x0000F7FF
 _0804F118: .4byte 0x0000023A
 
-	thumb_func_start MetroidFloatingTowardsSA_X
-MetroidFloatingTowardsSA_X: @ 0x0804F11C
+	thumb_func_start MetroidFloatingTowardsSaX
+MetroidFloatingTowardsSaX: @ 0x0804F11C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1333,10 +1333,10 @@ _0804F4FE:
 	bl MetroidFloatingInTube
 	b _0804F514
 _0804F504:
-	bl MetroidFloatingNearSA_X
+	bl MetroidFloatingNearSaX
 	b _0804F514
 _0804F50A:
-	bl MetroidFloatingTowardsSA_X
+	bl MetroidFloatingTowardsSaX
 	b _0804F514
 _0804F510:
 	bl MetroidSwaying

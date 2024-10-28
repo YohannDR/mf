@@ -209,8 +209,8 @@ _08053EC0: .4byte 0x8000000B
 _08053EC4: .4byte 0x050003A0
 _08053EC8: .4byte 0x050003C0
 
-	thumb_func_start OmegaMetroidSA_XIceBeamCollision
-OmegaMetroidSA_XIceBeamCollision: @ 0x08053ECC
+	thumb_func_start OmegaMetroidSaXIceBeamCollision
+OmegaMetroidSaXIceBeamCollision: @ 0x08053ECC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1784,8 +1784,8 @@ _08054AF2:
 	pop {r0}
 	bx r0
 
-	thumb_func_start OmegaMetroidWalkingBeforeSA_XInit
-OmegaMetroidWalkingBeforeSA_XInit: @ 0x08054AF8
+	thumb_func_start OmegaMetroidWalkingBeforeSaXInit
+OmegaMetroidWalkingBeforeSaXInit: @ 0x08054AF8
 	ldr r1, _08054B14 @ =gSubSpriteData1
 	ldr r0, _08054B18 @ =0x08396758
 	str r0, [r1]
@@ -1805,8 +1805,8 @@ _08054B14: .4byte gSubSpriteData1
 _08054B18: .4byte 0x08396758
 _08054B1C: .4byte gCurrentSprite
 
-	thumb_func_start OmegaMetroidWalkingBeforeSA_X
-OmegaMetroidWalkingBeforeSA_X: @ 0x08054B20
+	thumb_func_start OmegaMetroidWalkingBeforeSaX
+OmegaMetroidWalkingBeforeSaX: @ 0x08054B20
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2524,8 +2524,8 @@ _080550C6:
 	pop {r0}
 	bx r0
 
-	thumb_func_start omegaMetroidSpawnSA_X
-omegaMetroidSpawnSA_X: @ 0x080550CC
+	thumb_func_start omegaMetroidSpawnSaX
+omegaMetroidSpawnSaX: @ 0x080550CC
 	push {r4, lr}
 	sub sp, #0x10
 	ldr r4, _08055114 @ =gCurrentSprite
@@ -2566,8 +2566,8 @@ _08055114: .4byte gCurrentSprite
 _08055118: .4byte 0xFFFFFE80
 _0805511C: .4byte 0xFFFFFC80
 
-	thumb_func_start OmegaMetroidWaitingForSA_XInit
-OmegaMetroidWaitingForSA_XInit: @ 0x08055120
+	thumb_func_start OmegaMetroidWaitingForSaXInit
+OmegaMetroidWaitingForSaXInit: @ 0x08055120
 	ldr r1, _08055148 @ =gSubSpriteData1
 	ldr r0, _0805514C @ =0x083965D8
 	str r0, [r1]
@@ -2592,8 +2592,8 @@ _08055148: .4byte gSubSpriteData1
 _0805514C: .4byte 0x083965D8
 _08055150: .4byte gCurrentSprite
 
-	thumb_func_start OmegaMetroidWaitingForSA_X
-OmegaMetroidWaitingForSA_X: @ 0x08055154
+	thumb_func_start OmegaMetroidWaitingForSaX
+OmegaMetroidWaitingForSaX: @ 0x08055154
 	push {r4, r5, lr}
 	ldr r4, _08055194 @ =gSamusData
 	ldrh r0, [r4, #0x18]
@@ -2762,7 +2762,7 @@ _08055298:
 	subs r1, #0xb
 	movs r0, #0xc
 	strb r0, [r1]
-	bl omegaMetroidSpawnSA_X
+	bl omegaMetroidSpawnSaX
 	b _0805534A
 	.align 2, 0
 _080552C0: .4byte gSubSpriteData1
@@ -2834,10 +2834,10 @@ _0805534A:
 _08055350: .4byte gSubSpriteData1
 _08055354: .4byte 0x08396600
 
-	thumb_func_start OmegaMetroidWatchingSA_X
-OmegaMetroidWatchingSA_X: @ 0x08055358
+	thumb_func_start OmegaMetroidWatchingSaX
+OmegaMetroidWatchingSaX: @ 0x08055358
 	push {lr}
-	bl OmegaMetroidSA_XIceBeamCollision
+	bl OmegaMetroidSaXIceBeamCollision
 	ldr r2, _080553A0 @ =gSpriteData
 	ldr r0, _080553A4 @ =gCurrentSprite
 	mov ip, r0
@@ -2877,10 +2877,10 @@ _080553A8: .4byte gSubSpriteData1
 _080553AC: .4byte 0x08396628
 _080553B0: .4byte 0x0000021A
 
-	thumb_func_start OmegaMetroidDamagedBySA_X
-OmegaMetroidDamagedBySA_X: @ 0x080553B4
+	thumb_func_start OmegaMetroidDamagedBySaX
+OmegaMetroidDamagedBySaX: @ 0x080553B4
 	push {r4, lr}
-	bl OmegaMetroidSA_XIceBeamCollision
+	bl OmegaMetroidSaXIceBeamCollision
 	bl OmegaMetroidBodyBlinking
 	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
@@ -2914,10 +2914,10 @@ _080553F4: .4byte gSubSpriteData1
 _080553F8: .4byte 0x083968B0
 _080553FC: .4byte gCurrentSprite
 
-	thumb_func_start OmegaMetroidWalkingBackwardsFromSA_X
-OmegaMetroidWalkingBackwardsFromSA_X: @ 0x08055400
+	thumb_func_start OmegaMetroidWalkingBackwardsFromSaX
+OmegaMetroidWalkingBackwardsFromSaX: @ 0x08055400
 	push {r4, r5, r6, lr}
-	bl OmegaMetroidSA_XIceBeamCollision
+	bl OmegaMetroidSaXIceBeamCollision
 	bl OmegaMetroidBodyBlinking
 	ldr r5, _0805541C @ =gCurrentSprite
 	adds r6, r5, #0
@@ -2990,10 +2990,10 @@ _08055490:
 _08055498: .4byte gSubSpriteData1
 _0805549C: .4byte 0x08396628
 
-	thumb_func_start OmegaMetroidDamagedBySA_X2
-OmegaMetroidDamagedBySA_X2: @ 0x080554A0
+	thumb_func_start OmegaMetroidDamagedBySaX2
+OmegaMetroidDamagedBySaX2: @ 0x080554A0
 	push {r4, r5, r6, lr}
-	bl OmegaMetroidSA_XIceBeamCollision
+	bl OmegaMetroidSaXIceBeamCollision
 	bl OmegaMetroidBodyBlinking
 	ldr r5, _080554D4 @ =gSubSpriteData1
 	ldr r0, [r5, #4]
@@ -3040,10 +3040,10 @@ _080554FC:
 	.align 2, 0
 _08055504: .4byte 0x083965D8
 
-	thumb_func_start OmegaMetroidWaitingToSwipeSA_X
-OmegaMetroidWaitingToSwipeSA_X: @ 0x08055508
+	thumb_func_start OmegaMetroidWaitingToSwipeSaX
+OmegaMetroidWaitingToSwipeSaX: @ 0x08055508
 	push {lr}
-	bl OmegaMetroidSA_XIceBeamCollision
+	bl OmegaMetroidSaXIceBeamCollision
 	bl OmegaMetroidBodyBlinking
 	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
@@ -3069,10 +3069,10 @@ _0805553C: .4byte gSubSpriteData1
 _08055540: .4byte 0x08396918
 _08055544: .4byte gCurrentSprite
 
-	thumb_func_start OmegaMEtroidSwipingSA_X
-OmegaMEtroidSwipingSA_X: @ 0x08055548
+	thumb_func_start OmegaMEtroidSwipingSaX
+OmegaMEtroidSwipingSaX: @ 0x08055548
 	push {lr}
-	bl OmegaMetroidSA_XIceBeamCollision
+	bl OmegaMetroidSaXIceBeamCollision
 	bl OmegaMetroidBodyBlinking
 	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
@@ -3144,8 +3144,8 @@ _080555E0: .4byte gSpriteData
 _080555E4: .4byte gCurrentSprite
 _080555E8: .4byte 0x000002AF
 
-	thumb_func_start OmegaMetroidKilledSA_X
-OmegaMetroidKilledSA_X: @ 0x080555EC
+	thumb_func_start OmegaMetroidKilledSaX
+OmegaMetroidKilledSaX: @ 0x080555EC
 	push {r4, lr}
 	ldr r4, _08055648 @ =gSubSpriteData1
 	ldr r0, [r4, #4]
@@ -4336,9 +4336,9 @@ _08056050:
 	bl OmegaMetroidFinishedScreamingAfterFirstJump
 	b _0805610C
 _08056056:
-	bl OmegaMetroidWalkingBeforeSA_XInit
+	bl OmegaMetroidWalkingBeforeSaXInit
 _0805605A:
-	bl OmegaMetroidWalkingBeforeSA_X
+	bl OmegaMetroidWalkingBeforeSaX
 	b _0805610C
 _08056060:
 	bl OmegaMetroidSlowWalkInit
@@ -4387,30 +4387,30 @@ _080560B6:
 	bl OmegaMetroidVerticalJump
 	b _0805610C
 _080560BC:
-	bl OmegaMetroidWaitingForSA_XInit
+	bl OmegaMetroidWaitingForSaXInit
 _080560C0:
-	bl OmegaMetroidWaitingForSA_X
+	bl OmegaMetroidWaitingForSaX
 	b _0805610C
 _080560C6:
-	bl OmegaMetroidWatchingSA_X
+	bl OmegaMetroidWatchingSaX
 	b _0805610C
 _080560CC:
-	bl OmegaMetroidDamagedBySA_X
+	bl OmegaMetroidDamagedBySaX
 	b _0805610C
 _080560D2:
-	bl OmegaMetroidWalkingBackwardsFromSA_X
+	bl OmegaMetroidWalkingBackwardsFromSaX
 	b _0805610C
 _080560D8:
-	bl OmegaMetroidDamagedBySA_X2
+	bl OmegaMetroidDamagedBySaX2
 	b _0805610C
 _080560DE:
-	bl OmegaMetroidWaitingToSwipeSA_X
+	bl OmegaMetroidWaitingToSwipeSaX
 	b _0805610C
 _080560E4:
-	bl OmegaMEtroidSwipingSA_X
+	bl OmegaMEtroidSwipingSaX
 	b _0805610C
 _080560EA:
-	bl OmegaMetroidKilledSA_X
+	bl OmegaMetroidKilledSaX
 	b _0805610C
 _080560F0:
 	bl OmegaMetroidScreamingAfterIceBeamObtained

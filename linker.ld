@@ -40,6 +40,8 @@ SECTIONS {
         . = 0x00000049; gLastElevatorUsed = .;
         . = 0x0000004a; gCurrentEventBasedEffect = .;
         . = 0x0000004b; gCurrentEventBasedEffectCopy = .;
+        . = 0x0000004e; gScreenShakeXOffset = .;
+        . = 0x0000004f; gScreenShakeYOffset = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000053; gCurrentClipdataAffectingAction = .;
         . = 0x00000060; gSubEventCounter = .;
@@ -53,6 +55,8 @@ SECTIONS {
         . = 0x000000c8; gBackgroundPositions = .;
         . = 0x000000dc; gSaXSpawnPosition = .;
         . = 0x000000e8; gWindow1Border = .;
+        . = 0x000000f0; gScreenShakeY = .;
+        . = 0x000000f4; gScreenShakeX = .;
         . = 0x00000110; gCurrentPowerBomb = .;
         . = 0x00000138; gInGameTimer = .;
         . = 0x0000013c; gMaxInGameTimeFlag = .;
@@ -223,7 +227,7 @@ SECTIONS {
         src/sprites_AI/bubbles.o(.text);
         src/sprites_AI/x_parasite.o(.text);
 
-        asm/disasm_0x0801503C.o(.text);
+        asm/disasm_0x080157cc.o(.text);
 
         src/sprites_AI/hornoad.o(.text);
         src/sprites_AI/halzyn.o(.text);
@@ -327,7 +331,11 @@ SECTIONS {
 
         src/event_checks.o(.text);
 
-        asm/disasm_0x08061004.o(.text);
+        asm/x_parasite_util.o(.text);
+
+        src/screen_shake.o(.text);
+
+        asm/disasm_0x080626f4.o(.text);
 
         src/power_bomb_explosion.o(.text);
 

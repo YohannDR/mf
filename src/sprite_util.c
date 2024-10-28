@@ -117,7 +117,7 @@ void SpriteUtilTakeDamageFromSprite(u8 kbFlag, u8 spriteSlot, u16 dmgMultiplier)
  * @brief ff28 | 98 | Handles samus taking damage from the SA-X ice beam when in power suit
  * 
  */
-void SpriteUtilTakeDamageFromSA_XIceBeamWithPowerSuit(u8 spriteSlot)
+void SpriteUtilTakeDamageFromSaXIceBeamWithPowerSuit(u8 spriteSlot)
 {
     u16 damage;
     u16 reductionType;
@@ -843,7 +843,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                         if (gEquipment.suitMiscStatus & SMF_VARIA_SUIT)
                             SpriteUtilTakeDamageFromSprite(TRUE, i, 1);
                         else
-                            SpriteUtilTakeDamageFromSA_XIceBeamWithPowerSuit(i);
+                            SpriteUtilTakeDamageFromSaXIceBeamWithPowerSuit(i);
 
                         IniitializeSpriteDebris(2, 3, gSpriteData[i].yPosition - PIXEL_SIZE * 2, gSpriteData[i].xPosition - PIXEL_SIZE * 2);
                         IniitializeSpriteDebris(2, 4, gSpriteData[i].yPosition + PIXEL_SIZE * 2, gSpriteData[i].xPosition + PIXEL_SIZE * 2);
