@@ -796,7 +796,7 @@ u32 DebugMenuModifiyAbilityCount(u8 cursorX)
             gAbilityCount = ABILITY_COUNT_END - 1;
         else
             gAbilityCount += increment;
-
+        modified:
         modified = TRUE;
     }
     else if (gChangedInput & KEY_UP)
@@ -805,7 +805,7 @@ u32 DebugMenuModifiyAbilityCount(u8 cursorX)
             gAbilityCount = 0;
         else
             gAbilityCount -= increment;
-
+        goto modified; // Needed to produce matching ASM.
     }
     else if (gChangedInput & KEY_RIGHT)
     {
