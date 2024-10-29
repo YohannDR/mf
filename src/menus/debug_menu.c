@@ -780,8 +780,6 @@ void SetAbilityCount(u8 abilityCount)
 
 u32 DebugMenuModifiyAbilityCount(u8 cursorX)
 {
-    // https://decomp.me/scratch/HMmb3
-
     s32 increment;
     s32 modified;
     s32 i;
