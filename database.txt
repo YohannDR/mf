@@ -993,6 +993,11 @@ sprites/serris_phase_three.pal;32;0x378790;2
 sprites/owtch.gfx;512;0x3787d0;4
 sprites/owtch.pal;16;0x378fd0;2
 
+# Metroid husk
+
+sprites/metroid_husk.gfx;1;0x3a8704;2048
+sprites/metroid_husk.pal;1;0x3a8f04;32
+
 # Neo-Ridley
 
 sprites/neo_ridley.gfx;8;0x3aa00c;2048
@@ -1052,7 +1057,7 @@ Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 Blob_2e6382_2e9218.bin;2e6382;2e9218
 Blob_31a158_3420b4.bin;0x31a158;0x3420b4
 Blob_348ca4_3534c4.bin;0x348ca4;0x3534c4
-Blob_3791d4_3a8f54.bin;3791d4;3a8f54
+Blob_3791d4_3a8704.bin;3791d4;3a8704
 Blob_3be1be_3e392c.bin;153454;0x3be1be;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
 Blob_3e9940_3ec038.bin;9976;0x3e9940;1

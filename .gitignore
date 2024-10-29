@@ -8,6 +8,10 @@
 /audio/voice_groups.s
 /audio/tracks.s
 
+/expected/*
+/nonmatchings/*
+permuter_settings.toml
+
 *.gba
 *.elf
 *.dump
