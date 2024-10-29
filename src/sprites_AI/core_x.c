@@ -497,7 +497,6 @@ void CoreXAbility(void) {
 }
 
 void CoreXShell(void) {
-    // https://decomp.me/scratch/4p2V6
     u8 primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
     u16 maxHealth = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
     u16 tmp;
@@ -555,8 +554,7 @@ void CoreXShell(void) {
             gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
         }
         case 0x1c: {
-            tmp = gCurrentSprite.health;
-            if (tmp == 0) {
+            if (gCurrentSprite.health == 0) {
                 gCurrentSprite.samusCollision = SSC_NONE;
                 gCurrentSprite.pOam = sCoreXShellOam_Breaking;
                 gCurrentSprite.animationDurationCounter = 0;
@@ -565,19 +563,12 @@ void CoreXShell(void) {
                 gSpriteData[primaryRamSlot].pose = 0x5c;
                 SoundPlay(0xc1);
             } else {
-                if (tmp <= maxHealth / 3) {
+                if (gCurrentSprite.health <= maxHealth / 3) {
                     gCurrentSprite.pOam = sCoreXShellOam_Red;
                     gCurrentSprite.frozenPaletteRowOffset = 3;
-                } else {
-                    #ifndef NON_MATCHING
-                    tmp++, tmp--;
-                    // FIXME fakematch
-                    asm("ldrh r4, [r5, #0x14]");
-                    #endif
-                    if (tmp <= maxHealth * 2 / 3) {
-                        gCurrentSprite.pOam = sCoreXShellOam_Yellow;
-                        gCurrentSprite.frozenPaletteRowOffset = 2;
-                    }
+                } else if (gCurrentSprite.health <= maxHealth * 2 / 3) {
+                    gCurrentSprite.pOam = sCoreXShellOam_Yellow;
+                    gCurrentSprite.frozenPaletteRowOffset = 2;
                 }
                 if (SPRITE_HAS_ISFT(gCurrentSprite) == 1) {
                     tmp = (u8)SpriteUtilCountPrimarySprites(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE);
