@@ -499,7 +499,7 @@ void CoreXAbility(void) {
 void CoreXShell(void) {
     u8 primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
     u16 maxHealth = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
-    u16 tmp;
+    u8 tmp;
     switch (gCurrentSprite.pose) {
         case 0x18: {
             gCurrentSprite.ignoreSamusCollisionTimer = 1;
@@ -571,7 +571,7 @@ void CoreXShell(void) {
                     gCurrentSprite.frozenPaletteRowOffset = 2;
                 }
                 if (SPRITE_HAS_ISFT(gCurrentSprite) == 1) {
-                    tmp = (u8)SpriteUtilCountPrimarySprites(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE);
+                    tmp = SpriteUtilCountPrimarySprites(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE);
                     if (tmp < 6) {
                         SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0,
                             gCurrentSprite.primarySpriteRamSlot, 0x20, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
@@ -598,7 +598,7 @@ void CoreXShell(void) {
                 tmp = gSpriteData[primaryRamSlot].work0;
                 if (tmp != 0) {
                     if ((tmp & 3) == 0) {
-                        if (((u8)tmp & 4) != 0) {
+                        if ((tmp & 4) != 0) {
                             gCurrentSprite.paletteRow = 0xd - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
                         } else {
                             gCurrentSprite.paletteRow = 0;
