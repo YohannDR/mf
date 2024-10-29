@@ -4325,20 +4325,20 @@ void unk_136ac(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor)
 
 void SpriteUtilMoveRidleyFireball(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
 {
-    // https://decomp.me/scratch/oiQHP
-
     u8 turning;
     u16 velocity;
     u8 updatePos;
+    u8 tmp;
 
     turning = FALSE;
+    tmp = xVelocity; // Needed to produce matching ASM.
 
     if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (gCurrentSprite.work2 == 0)
         {
             updatePos = FALSE;
-            if (gCurrentSprite.work3 < xVelocity)
+            if (gCurrentSprite.work3 < tmp)
             {
                 if (gCurrentSprite.xPosition <= dstX - PIXEL_SIZE)
                 {
@@ -4372,17 +4372,17 @@ void SpriteUtilMoveRidleyFireball(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity
         if (gCurrentSprite.work2 == 0)
         {
             updatePos = FALSE;
-            if (gCurrentSprite.work3 < xVelocity)
+            if (gCurrentSprite.work3 < tmp)
             {
-                if (gCurrentSprite.xPosition <= dstX + PIXEL_SIZE)
-                {
-                    gCurrentSprite.work3++;
-                    updatePos = TRUE;
-                }
-                else
+                if (gCurrentSprite.xPosition < dstX + PIXEL_SIZE)
                 {
                     gCurrentSprite.work2 = gCurrentSprite.work3;
                     updatePos = FALSE;
+                }
+                else
+                {
+                    gCurrentSprite.work3++;
+                    updatePos = TRUE;
                 }
             }
             else
