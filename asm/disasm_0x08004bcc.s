@@ -845,7 +845,7 @@ _08005204:
 	adds r7, r0, #0
 	cmp r7, #1
 	bne _08005248
-	ldr r0, _0800523C @ =0x030012F0
+	ldr r0, _0800523C @ =gSamusEnvironmentalEffects
 	mov r1, r8
 	lsls r2, r1, #4
 	adds r0, r2, r0
@@ -861,7 +861,7 @@ _08005204:
 	bl SoundPlay
 	b _080052A2
 	.align 2, 0
-_0800523C: .4byte 0x030012F0
+_0800523C: .4byte gSamusEnvironmentalEffects
 _08005240:
 	movs r0, #0x67
 	bl SoundPlay
@@ -869,7 +869,7 @@ _08005240:
 _08005248:
 	cmp r7, #2
 	bne _08005274
-	ldr r1, _08005270 @ =0x030012F0
+	ldr r1, _08005270 @ =gSamusEnvironmentalEffects
 	mov r0, r8
 	lsls r2, r0, #4
 	adds r1, r2, r1
@@ -886,13 +886,13 @@ _08005248:
 	bl SoundPlay
 	b _080052A2
 	.align 2, 0
-_08005270: .4byte 0x030012F0
+_08005270: .4byte gSamusEnvironmentalEffects
 _08005274:
 	mov r2, r8
 	lsls r4, r2, #4
 	cmp r7, #3
 	bne _080052A2
-	ldr r0, _08005298 @ =0x030012F0
+	ldr r0, _08005298 @ =gSamusEnvironmentalEffects
 	adds r0, r4, r0
 	movs r1, #4
 	strb r1, [r0]
@@ -906,12 +906,12 @@ _0800528E:
 	bl SoundPlay
 	b _080052A2
 	.align 2, 0
-_08005298: .4byte 0x030012F0
+_08005298: .4byte gSamusEnvironmentalEffects
 _0800529C:
 	movs r0, #0x69
 	bl SoundPlay
 _080052A2:
-	ldr r0, _080052B8 @ =0x030012F0
+	ldr r0, _080052B8 @ =gSamusEnvironmentalEffects
 	adds r1, r4, r0
 	ldrb r0, [r1, #6]
 	cmp r0, #0
@@ -925,7 +925,7 @@ _080052B4:
 	strh r0, [r1, #0xa]
 	b _080055B4
 	.align 2, 0
-_080052B8: .4byte 0x030012F0
+_080052B8: .4byte gSamusEnvironmentalEffects
 _080052BC: .4byte gSamusData
 _080052C0:
 	ldr r1, _080052EC @ =gSamusData
@@ -938,7 +938,7 @@ _080052C0:
 	adds r7, r0, #0
 	cmp r7, #1
 	bne _080052F4
-	ldr r2, _080052F0 @ =0x030012F0
+	ldr r2, _080052F0 @ =gSamusEnvironmentalEffects
 	mov r0, r8
 	lsls r3, r0, #4
 	adds r1, r3, r2
@@ -951,10 +951,10 @@ _080052C0:
 	b _0800530C
 	.align 2, 0
 _080052EC: .4byte gSamusData
-_080052F0: .4byte 0x030012F0
+_080052F0: .4byte gSamusEnvironmentalEffects
 _080052F4:
 	subs r0, r7, #2
-	ldr r2, _08005310 @ =0x030012F0
+	ldr r2, _08005310 @ =gSamusEnvironmentalEffects
 	mov r1, r8
 	lsls r4, r1, #4
 	cmp r0, #1
@@ -969,7 +969,7 @@ _0800530C:
 	adds r2, r4, r2
 	b _08005402
 	.align 2, 0
-_08005310: .4byte 0x030012F0
+_08005310: .4byte gSamusEnvironmentalEffects
 _08005314:
 	ldr r1, _08005344 @ =gSamusData
 	ldrh r0, [r1, #0x18]
@@ -981,7 +981,7 @@ _08005314:
 	adds r7, r0, #0
 	cmp r7, #1
 	bne _0800534C
-	ldr r1, _08005348 @ =0x030012F0
+	ldr r1, _08005348 @ =gSamusEnvironmentalEffects
 	mov r2, r8
 	lsls r4, r2, #4
 	adds r1, r4, r1
@@ -995,11 +995,11 @@ _08005314:
 	b _080053FE
 	.align 2, 0
 _08005344: .4byte gSamusData
-_08005348: .4byte 0x030012F0
+_08005348: .4byte gSamusEnvironmentalEffects
 _0800534C:
 	cmp r7, #5
 	bne _0800537C
-	ldr r1, _08005374 @ =0x030012F0
+	ldr r1, _08005374 @ =gSamusEnvironmentalEffects
 	mov r0, r8
 	lsls r2, r0, #4
 	adds r1, r2, r1
@@ -1017,12 +1017,12 @@ _0800534C:
 	bl SoundPlay
 	b _080053FE
 	.align 2, 0
-_08005374: .4byte 0x030012F0
+_08005374: .4byte gSamusEnvironmentalEffects
 _08005378: .4byte gSamusPhysics
 _0800537C:
 	cmp r7, #2
 	bne _080053A0
-	ldr r1, _0800539C @ =0x030012F0
+	ldr r1, _0800539C @ =gSamusEnvironmentalEffects
 	mov r2, r8
 	lsls r4, r2, #4
 	adds r1, r4, r1
@@ -1035,11 +1035,11 @@ _0800537C:
 	bl SoundPlay
 	b _080053FE
 	.align 2, 0
-_0800539C: .4byte 0x030012F0
+_0800539C: .4byte gSamusEnvironmentalEffects
 _080053A0:
 	cmp r7, #3
 	bne _080053C4
-	ldr r1, _080053C0 @ =0x030012F0
+	ldr r1, _080053C0 @ =gSamusEnvironmentalEffects
 	mov r0, r8
 	lsls r4, r0, #4
 	adds r1, r4, r1
@@ -1052,7 +1052,7 @@ _080053A0:
 	bl SoundPlay
 	b _080053FE
 	.align 2, 0
-_080053C0: .4byte 0x030012F0
+_080053C0: .4byte gSamusEnvironmentalEffects
 _080053C4:
 	ldr r0, _080053D8 @ =gSamusPhysics
 	ldrb r0, [r0]
@@ -1083,7 +1083,7 @@ _080053F4:
 	mov r0, r8
 	lsls r4, r0, #4
 _080053FE:
-	ldr r0, _08005418 @ =0x030012F0
+	ldr r0, _08005418 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 _08005402:
 	ldrb r0, [r2, #6]
@@ -1098,7 +1098,7 @@ _0800540A:
 	strh r0, [r2, #0xa]
 	b _080055B4
 	.align 2, 0
-_08005418: .4byte 0x030012F0
+_08005418: .4byte gSamusEnvironmentalEffects
 _0800541C: .4byte gSamusData
 _08005420:
 	ldr r4, _08005458 @ =gSamusData
@@ -1118,7 +1118,7 @@ _08005420:
 	ldrh r6, [r6]
 	cmp r0, r6
 	bhs _08005464
-	ldr r2, _08005460 @ =0x030012F0
+	ldr r2, _08005460 @ =gSamusEnvironmentalEffects
 	mov r0, r8
 	lsls r4, r0, #4
 	cmp r7, #1
@@ -1129,9 +1129,9 @@ _08005420:
 	.align 2, 0
 _08005458: .4byte gSamusData
 _0800545C: .4byte gPreviousYPosition
-_08005460: .4byte 0x030012F0
+_08005460: .4byte gSamusEnvironmentalEffects
 _08005464:
-	ldr r2, _080054A4 @ =0x030012F0
+	ldr r2, _080054A4 @ =gSamusEnvironmentalEffects
 	mov r0, r8
 	lsls r4, r0, #4
 	cmp r7, #1
@@ -1168,7 +1168,7 @@ _08005498:
 	blo _08005534
 	b _08005550
 	.align 2, 0
-_080054A4: .4byte 0x030012F0
+_080054A4: .4byte gSamusEnvironmentalEffects
 _080054A8: .4byte gSamusData
 _080054AC: .4byte gEffectYPosition
 _080054B0: .4byte gPreviousYPosition
@@ -1190,7 +1190,7 @@ _080054B4:
 	ldrh r6, [r6]
 	cmp r0, r6
 	bhs _080054F8
-	ldr r2, _080054F4 @ =0x030012F0
+	ldr r2, _080054F4 @ =gSamusEnvironmentalEffects
 	mov r0, r8
 	lsls r4, r0, #4
 	cmp r7, #1
@@ -1201,9 +1201,9 @@ _080054B4:
 	.align 2, 0
 _080054EC: .4byte gSamusData
 _080054F0: .4byte gPreviousYPosition
-_080054F4: .4byte 0x030012F0
+_080054F4: .4byte gSamusEnvironmentalEffects
 _080054F8:
-	ldr r2, _0800553C @ =0x030012F0
+	ldr r2, _0800553C @ =gSamusEnvironmentalEffects
 	mov r0, r8
 	lsls r4, r0, #4
 	cmp r7, #1
@@ -1241,7 +1241,7 @@ _08005534:
 	ands r0, r2
 	b _080052B4
 	.align 2, 0
-_0800553C: .4byte 0x030012F0
+_0800553C: .4byte gSamusEnvironmentalEffects
 _08005540: .4byte gSamusData
 _08005544: .4byte gEffectYPosition
 _08005548: .4byte gPreviousYPosition
@@ -1263,7 +1263,7 @@ _0800555C:
 	cmp r0, #0x26
 	bne _080055B4
 _0800556E:
-	ldr r1, _080055A4 @ =0x030012F0
+	ldr r1, _080055A4 @ =gSamusEnvironmentalEffects
 	mov r2, r8
 	lsls r0, r2, #4
 	adds r3, r0, r1
@@ -1289,7 +1289,7 @@ _0800556E:
 	b _080055AC
 	.align 2, 0
 _080055A0: .4byte gSamusData
-_080055A4: .4byte 0x030012F0
+_080055A4: .4byte gSamusEnvironmentalEffects
 _080055A8:
 	ldrh r0, [r4, #0x16]
 	subs r0, #0xc
@@ -1298,7 +1298,7 @@ _080055AC:
 	movs r0, #0x93
 	bl SoundPlay
 _080055B4:
-	ldr r0, _080055D0 @ =0x030012F0
+	ldr r0, _080055D0 @ =gSamusEnvironmentalEffects
 	mov r2, r8
 	lsls r1, r2, #4
 	adds r1, r1, r0
@@ -1314,14 +1314,14 @@ _080055C6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080055D0: .4byte 0x030012F0
+_080055D0: .4byte gSamusEnvironmentalEffects
 
 	thumb_func_start SamusUpdateEnvironmentEffects
 SamusUpdateEnvironmentEffects: @ 0x080055D4
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r1, _080055F8 @ =0x030012F0
+	ldr r1, _080055F8 @ =gSamusEnvironmentalEffects
 	movs r0, #0
 	strb r0, [r1, #6]
 	strb r0, [r1, #0x16]
@@ -1338,7 +1338,7 @@ _080055EE:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080055F8: .4byte 0x030012F0
+_080055F8: .4byte gSamusEnvironmentalEffects
 _080055FC: .4byte gSamusData
 _08005600: .4byte _08005604
 _08005604: @ jump table
@@ -1439,7 +1439,7 @@ _08005710:
 	ands r1, r0
 	cmp r1, #1
 	bne _0800575E
-	ldr r1, _0800573C @ =0x030012F0
+	ldr r1, _0800573C @ =gSamusEnvironmentalEffects
 	ldrb r0, [r1, #4]
 	cmp r0, #0xdb
 	bhi _08005740
@@ -1448,7 +1448,7 @@ _08005710:
 	b _0800575E
 	.align 2, 0
 _08005738: .4byte gSamusData
-_0800573C: .4byte 0x030012F0
+_0800573C: .4byte gSamusEnvironmentalEffects
 _08005740:
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -1469,7 +1469,7 @@ _0800575E:
 	ldrb r0, [r6, #1]
 	cmp r0, #0x3e
 	bne _0800577C
-	ldr r0, _08005778 @ =0x030012F0
+	ldr r0, _08005778 @ =gSamusEnvironmentalEffects
 	movs r1, #0
 	strb r1, [r0]
 	strb r1, [r0, #0x10]
@@ -1477,9 +1477,9 @@ _0800575E:
 	b _080057FA
 	.align 2, 0
 _08005774: .4byte gSamusData
-_08005778: .4byte 0x030012F0
+_08005778: .4byte gSamusEnvironmentalEffects
 _0800577C:
-	ldr r0, _080057CC @ =0x030012F0
+	ldr r0, _080057CC @ =gSamusEnvironmentalEffects
 	ldrb r1, [r0, #0x10]
 	mov r8, r0
 	cmp r1, #0
@@ -1517,14 +1517,14 @@ _0800577C:
 	bl SoundPlay
 	b _080057EC
 	.align 2, 0
-_080057CC: .4byte 0x030012F0
+_080057CC: .4byte gSamusEnvironmentalEffects
 _080057D0: .4byte gEquipment
 _080057D4:
 	cmp r5, #3
 	bne _080057EC
 	cmp r0, #3
 	beq _080057EC
-	ldr r0, _08005824 @ =0x030012F0
+	ldr r0, _08005824 @ =gSamusEnvironmentalEffects
 	movs r2, #0
 	movs r1, #7
 	strb r1, [r0, #0x10]
@@ -1534,7 +1534,7 @@ _080057D4:
 _080057EC:
 	ldr r0, _08005828 @ =gEffectYPosition
 	ldrh r0, [r0]
-	ldr r1, _08005824 @ =0x030012F0
+	ldr r1, _08005824 @ =gSamusEnvironmentalEffects
 	mov r8, r1
 	cmp r0, #0
 	beq _080057FA
@@ -1564,7 +1564,7 @@ _08005818:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08005824: .4byte 0x030012F0
+_08005824: .4byte gSamusEnvironmentalEffects
 _08005828: .4byte gEffectYPosition
 _0800582C: .4byte _08005830
 _08005830: @ jump table
@@ -1583,23 +1583,23 @@ _08005830: @ jump table
 	.4byte _080059AC @ case 12
 	.4byte _08005A04 @ case 13
 _08005868:
-	ldr r0, _08005870 @ =0x030012F0
+	ldr r0, _08005870 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 	ldr r3, _08005874 @ =0x083ECBA4
 	b _08005A0A
 	.align 2, 0
-_08005870: .4byte 0x030012F0
+_08005870: .4byte gSamusEnvironmentalEffects
 _08005874: .4byte 0x083ECBA4
 _08005878:
-	ldr r0, _08005880 @ =0x030012F0
+	ldr r0, _08005880 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 	ldr r3, _08005884 @ =0x083ECD34
 	b _08005A0A
 	.align 2, 0
-_08005880: .4byte 0x030012F0
+_08005880: .4byte gSamusEnvironmentalEffects
 _08005884: .4byte 0x083ECD34
 _08005888:
-	ldr r0, _080058BC @ =0x030012F0
+	ldr r0, _080058BC @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 	ldr r3, _080058C0 @ =0x083ECD94
 	ldrb r0, [r2, #2]
@@ -1626,10 +1626,10 @@ _080058B2:
 	bl SoundPlay
 	b _08005A32
 	.align 2, 0
-_080058BC: .4byte 0x030012F0
+_080058BC: .4byte gSamusEnvironmentalEffects
 _080058C0: .4byte 0x083ECD94
 _080058C4:
-	ldr r0, _080058F8 @ =0x030012F0
+	ldr r0, _080058F8 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 	ldr r3, _080058FC @ =0x083ECEB4
 	ldrb r0, [r2, #2]
@@ -1656,10 +1656,10 @@ _080058EE:
 	bl SoundPlay
 	b _08005A32
 	.align 2, 0
-_080058F8: .4byte 0x030012F0
+_080058F8: .4byte gSamusEnvironmentalEffects
 _080058FC: .4byte 0x083ECEB4
 _08005900:
-	ldr r0, _0800593C @ =0x030012F0
+	ldr r0, _0800593C @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 	ldr r0, _08005940 @ =gSamusData
 	ldrh r0, [r0, #0x16]
@@ -1691,32 +1691,32 @@ _08005934:
 	strb r3, [r2, #2]
 	b _08005A32
 	.align 2, 0
-_0800593C: .4byte 0x030012F0
+_0800593C: .4byte gSamusEnvironmentalEffects
 _08005940: .4byte gSamusData
 _08005944: .4byte 0x083ECC74
 _08005948:
-	ldr r0, _08005950 @ =0x030012F0
+	ldr r0, _08005950 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 	ldr r3, _08005954 @ =0x083ECBD4
 	b _08005A0A
 	.align 2, 0
-_08005950: .4byte 0x030012F0
+_08005950: .4byte gSamusEnvironmentalEffects
 _08005954: .4byte 0x083ECBD4
 _08005958:
-	ldr r0, _08005960 @ =0x030012F0
+	ldr r0, _08005960 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 	ldr r3, _08005964 @ =0x083ECCEC
 	b _08005A0A
 	.align 2, 0
-_08005960: .4byte 0x030012F0
+_08005960: .4byte gSamusEnvironmentalEffects
 _08005964: .4byte 0x083ECCEC
 _08005968:
-	ldr r0, _08005970 @ =0x030012F0
+	ldr r0, _08005970 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 	ldr r3, _08005974 @ =0x083ECD5C
 	b _08005A0A
 	.align 2, 0
-_08005970: .4byte 0x030012F0
+_08005970: .4byte gSamusEnvironmentalEffects
 _08005974: .4byte 0x083ECD5C
 _08005978:
 	mov r0, r8
@@ -1775,7 +1775,7 @@ _080059D8:
 	.align 2, 0
 _080059E4: .4byte 0x083ECC34
 _080059E8:
-	ldr r0, _08005A00 @ =0x030012F0
+	ldr r0, _08005A00 @ =gSamusEnvironmentalEffects
 	adds r1, r4, r0
 	ldrb r0, [r1, #2]
 	lsls r0, r0, #3
@@ -1787,9 +1787,9 @@ _080059E8:
 	strb r0, [r1, #2]
 	b _08005A32
 	.align 2, 0
-_08005A00: .4byte 0x030012F0
+_08005A00: .4byte gSamusEnvironmentalEffects
 _08005A04:
-	ldr r0, _08005A68 @ =0x030012F0
+	ldr r0, _08005A68 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
 	ldr r3, _08005A6C @ =0x083ECDDC
 _08005A0A:
@@ -1819,7 +1819,7 @@ _08005A32:
 	lsls r0, r6, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r2, _08005A68 @ =0x030012F0
+	ldr r2, _08005A68 @ =gSamusEnvironmentalEffects
 	adds r0, r4, r2
 	ldrb r0, [r0, #2]
 	lsls r0, r0, #3
@@ -1843,7 +1843,7 @@ _08005A5C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08005A68: .4byte 0x030012F0
+_08005A68: .4byte gSamusEnvironmentalEffects
 _08005A6C: .4byte 0x083ECDDC
 _08005A70: .4byte 0x0828FD20
 
@@ -2587,7 +2587,7 @@ _080060A0:
 	ldrh r2, [r0]
 	ldrh r0, [r1]
 	ands r0, r2
-	ldr r3, _080060D0 @ =0x030012F0
+	ldr r3, _080060D0 @ =gSamusEnvironmentalEffects
 	cmp r0, #0
 	beq _08006116
 	ldr r2, _080060D4 @ =gEquipment
@@ -2604,23 +2604,23 @@ _080060A0:
 	.align 2, 0
 _080060C8: .4byte gButtonInput
 _080060CC: .4byte gButtonAssignments
-_080060D0: .4byte 0x030012F0
+_080060D0: .4byte gSamusEnvironmentalEffects
 _080060D4: .4byte gEquipment
 _080060D8:
-	ldr r1, _080060E4 @ =0x030012F0
+	ldr r1, _080060E4 @ =gSamusEnvironmentalEffects
 	movs r0, #0
 	strb r0, [r1, #0x13]
 	adds r3, r1, #0
 	b _08006116
 	.align 2, 0
-_080060E4: .4byte 0x030012F0
+_080060E4: .4byte gSamusEnvironmentalEffects
 _080060E8:
 	ldr r0, _08006134 @ =gButtonInput
 	ldr r1, _08006138 @ =gButtonAssignments
 	ldrh r2, [r0]
 	ldrh r0, [r1]
 	ands r0, r2
-	ldr r3, _0800613C @ =0x030012F0
+	ldr r3, _0800613C @ =gSamusEnvironmentalEffects
 	cmp r0, #0
 	beq _08006116
 	ldr r2, _08006140 @ =gEquipment
@@ -2657,7 +2657,7 @@ _08006116:
 	.align 2, 0
 _08006134: .4byte gButtonInput
 _08006138: .4byte gButtonAssignments
-_0800613C: .4byte 0x030012F0
+_0800613C: .4byte gSamusEnvironmentalEffects
 _08006140: .4byte gEquipment
 _08006144:
 	movs r0, #0
@@ -2859,7 +2859,7 @@ SamusHazardDamage: @ 0x08006290
 	bne _080062A0
 	b _080063EC
 _080062A0:
-	ldr r5, _080062DC @ =0x030012F0
+	ldr r5, _080062DC @ =gSamusEnvironmentalEffects
 	ldrb r0, [r5, #0x14]
 	adds r0, #1
 	strb r0, [r5, #0x14]
@@ -2888,7 +2888,7 @@ _080062A0:
 	b _0800636A
 	.align 2, 0
 _080062D8: .4byte gSamusData
-_080062DC: .4byte 0x030012F0
+_080062DC: .4byte gSamusEnvironmentalEffects
 _080062E0: .4byte gEquipment
 _080062E4:
 	movs r0, #0x10
@@ -2966,17 +2966,17 @@ _0800635A:
 _0800636A:
 	cmp r6, #0
 	bne _08006384
-	ldr r0, _0800637C @ =0x030012F0
+	ldr r0, _0800637C @ =gSamusEnvironmentalEffects
 	strb r6, [r0, #5]
 	strb r6, [r0, #0x14]
 	strb r6, [r0, #0x15]
 	ldr r2, _08006380 @ =gEquipment
 	b _080063D4
 	.align 2, 0
-_0800637C: .4byte 0x030012F0
+_0800637C: .4byte gSamusEnvironmentalEffects
 _08006380: .4byte gEquipment
 _08006384:
-	ldr r5, _080063A0 @ =0x030012F0
+	ldr r5, _080063A0 @ =gSamusEnvironmentalEffects
 	ldrb r0, [r5, #0x15]
 	adds r1, r0, #1
 	strb r1, [r5, #0x15]
@@ -2990,7 +2990,7 @@ _08006384:
 	beq _080063AA
 	b _080063C2
 	.align 2, 0
-_080063A0: .4byte 0x030012F0
+_080063A0: .4byte gSamusEnvironmentalEffects
 _080063A4:
 	cmp r0, #0x32
 	beq _080063B8
@@ -3011,7 +3011,7 @@ _080063C2:
 	ldr r2, _080063E4 @ =gEquipment
 	cmp r7, #0
 	beq _080063D4
-	ldr r1, _080063E8 @ =0x030012F0
+	ldr r1, _080063E8 @ =gSamusEnvironmentalEffects
 	movs r0, #0
 	strb r0, [r1, #0x14]
 	ldrh r0, [r2]
@@ -3029,7 +3029,7 @@ _080063E0:
 	b _080063EE
 	.align 2, 0
 _080063E4: .4byte gEquipment
-_080063E8: .4byte 0x030012F0
+_080063E8: .4byte gSamusEnvironmentalEffects
 _080063EC:
 	movs r0, #0
 _080063EE:
@@ -3092,7 +3092,7 @@ _0800644E:
 	ldrb r0, [r4]
 	cmp r0, #0
 	beq _08006460
-	ldr r0, _0800648C @ =0x030012F0
+	ldr r0, _0800648C @ =gSamusEnvironmentalEffects
 	movs r1, #0
 	strb r1, [r0, #0x13]
 	ldr r0, _0800647C @ =gSamusData
@@ -3114,7 +3114,7 @@ _0800647C: .4byte gSamusData
 _08006480: .4byte gSamusAnimationInfo
 _08006484: .4byte 0x0300144F
 _08006488: .4byte gPoseLock
-_0800648C: .4byte 0x030012F0
+_0800648C: .4byte gSamusEnvironmentalEffects
 _08006490: .4byte 0x0828FD58
 _08006494:
 	movs r3, #0x80
@@ -3856,7 +3856,7 @@ _08006A18:
 	bl SoundPlay
 	b _08006A46
 _08006A20:
-	ldr r1, _08006A34 @ =0x030012F0
+	ldr r1, _08006A34 @ =gSamusEnvironmentalEffects
 	ldrb r0, [r1]
 	cmp r0, #0
 	bne _08006A38
@@ -3865,7 +3865,7 @@ _08006A20:
 	bl SamusCheckSetNewEnvironmentEffect
 	b _08006A46
 	.align 2, 0
-_08006A34: .4byte 0x030012F0
+_08006A34: .4byte gSamusEnvironmentalEffects
 _08006A38:
 	ldrb r0, [r1, #0x10]
 	cmp r0, #0
@@ -13433,7 +13433,7 @@ SamusUpdateGraphics: @ 0x0800B478
 	subs r0, #1
 	strb r0, [r1, #5]
 _0800B498:
-	ldr r0, _0800B4C0 @ =0x030012F0
+	ldr r0, _0800B4C0 @ =gSamusEnvironmentalEffects
 	ldrb r1, [r0, #3]
 	mov sb, r0
 	cmp r1, #0
@@ -13454,7 +13454,7 @@ _0800B4A8:
 	b _0800B4DE
 	.align 2, 0
 _0800B4BC: .4byte gSamusData
-_0800B4C0: .4byte 0x030012F0
+_0800B4C0: .4byte gSamusEnvironmentalEffects
 _0800B4C4: .4byte 0x030012E4
 _0800B4C8:
 	ldr r2, _0800B4D8 @ =0x030012E4
@@ -15296,7 +15296,7 @@ SamusInit: @ 0x0800C450
 	cmp r0, #0
 	bne _0800C4AC
 	movs r4, #0
-	ldr r2, _0800C55C @ =0x030012F0
+	ldr r2, _0800C55C @ =gSamusEnvironmentalEffects
 	ldrb r0, [r2, #0x13]
 	cmp r0, #0xf
 	bls _0800C478
@@ -15389,7 +15389,7 @@ _0800C4D6:
 	adds r0, r4, #0
 	ldm r0!, {r5, r6, r7}
 	stm r1!, {r5, r6, r7}
-	ldr r2, _0800C55C @ =0x030012F0
+	ldr r2, _0800C55C @ =gSamusEnvironmentalEffects
 	adds r1, r2, #0
 	adds r0, r4, #0
 	ldm r0!, {r3, r5, r6}
@@ -15417,7 +15417,7 @@ _0800C54A:
 _0800C550: .4byte gPauseScreenFlag
 _0800C554: .4byte gIsLoadingFile
 _0800C558: .4byte 0x0828D258
-_0800C55C: .4byte 0x030012F0
+_0800C55C: .4byte gSamusEnvironmentalEffects
 _0800C560: .4byte 0x030012E4
 _0800C564: .4byte gSamusData
 _0800C568: .4byte 0x0300144C
@@ -15477,7 +15477,7 @@ _0800C5D8:
 	adds r7, r1, #0
 	adds r6, r7, #0
 	movs r1, #0
-	ldr r0, _0800C700 @ =0x030012F0
+	ldr r0, _0800C700 @ =gSamusEnvironmentalEffects
 	str r0, [sp, #0xc]
 	str r0, [sp, #4]
 	ldr r2, [sp]
@@ -15618,7 +15618,7 @@ _0800C69C:
 _0800C6F4: .4byte gSamusOnTopOfBackgrounds
 _0800C6F8: .4byte gNextOamSlot
 _0800C6FC: .4byte gOamData
-_0800C700: .4byte 0x030012F0
+_0800C700: .4byte gSamusEnvironmentalEffects
 _0800C704: .4byte gBg1XPosition
 _0800C708: .4byte gBg1YPosition
 _0800C70C: .4byte 0x000001FF

@@ -330,9 +330,7 @@ SECTIONS {
         src/sprites_AI/nightmare.o(.text);
 
         src/event_checks.o(.text);
-
-        asm/x_parasite_util.o(.text);
-
+        src/x_parasite_util.o(.text);
         src/screen_shake.o(.text);
 
         asm/disasm_0x080626f4.o(.text);

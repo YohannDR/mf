@@ -260,7 +260,7 @@ void CoreXAbilityMovingToSpawnPoint(void) {
                 gCurrentSprite.pose = 0x1a;
                 gCurrentSprite.status |= SS_ENABLE_MOSAIC;
                 gCurrentSprite.work1 = 44;
-                gWrittenToMosaic_H = sXParasiteMosaicValues[44];
+                gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
                 PlayMusic(MUSIC_ZAZABI_BATTLE, 7);
             }
         } else {
@@ -273,7 +273,7 @@ void CoreXAbilityMovingToSpawnPoint(void) {
                 gCurrentSprite.pose = 0x1a;
                 gCurrentSprite.status |= SS_ENABLE_MOSAIC;
                 gCurrentSprite.work1 = 44;
-                gWrittenToMosaic_H = sXParasiteMosaicValues[44];
+                gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
                 if (gDemoState == 0) {
                     PlayMusic(MUSIC_ARACHNUS_BATTLE, 7);
                 }

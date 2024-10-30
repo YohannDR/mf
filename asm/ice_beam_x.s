@@ -602,7 +602,7 @@ _08058D44:
 	ldr r1, [r0]
 	movs r0, #4
 	bl _call_via_r1
-	ldr r1, _08058E0C @ =0x030012F0
+	ldr r1, _08058E0C @ =gSamusEnvironmentalEffects
 	movs r0, #0x30
 	strb r0, [r1, #3]
 	movs r0, #0x92
@@ -619,7 +619,7 @@ _08058DFC: .4byte gPreventMovementTimer
 _08058E00: .4byte 0x083A86EC
 _08058E04: .4byte gSamusData
 _08058E08: .4byte sSamusSetPoseFunctionPointer
-_08058E0C: .4byte 0x030012F0
+_08058E0C: .4byte gSamusEnvironmentalEffects
 _08058E10:
 	ldr r0, _08058E2C @ =gFrameCounter8Bit
 	ldrb r1, [r0]

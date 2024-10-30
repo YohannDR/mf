@@ -3270,7 +3270,7 @@ unk_74560: @ 0x08074560
 	ldr r0, _08074598 @ =gArmCannonX
 	ldrh r0, [r0]
 	strh r0, [r1, #0xa]
-	ldr r0, _0807459C @ =0x030012F0
+	ldr r0, _0807459C @ =gSamusEnvironmentalEffects
 	ldrb r2, [r0, #0x13]
 	adds r3, r1, #0
 	adds r5, r0, #0
@@ -3288,7 +3288,7 @@ unk_74560: @ 0x08074560
 _08074590: .4byte 0x030008B8
 _08074594: .4byte gArmCannonY
 _08074598: .4byte gArmCannonX
-_0807459C: .4byte 0x030012F0
+_0807459C: .4byte gSamusEnvironmentalEffects
 _080745A0:
 	ldr r0, _080745B4 @ =gSamusData
 	ldrb r0, [r0, #1]
@@ -25512,13 +25512,13 @@ _0807F5F4:
 	ldm r0!, {r2, r3, r7}
 	stm r1!, {r2, r3, r7}
 	mov r1, sl
-	ldr r0, _0807F78C @ =0x030012F0
+	ldr r0, _0807F78C @ =gSamusEnvironmentalEffects
 	ldm r0!, {r2, r3, r7}
 	stm r1!, {r2, r3, r7}
 	ldr r0, [r0]
 	str r0, [r1]
 	ldr r1, [sp]
-	ldr r0, _0807F78C @ =0x030012F0
+	ldr r0, _0807F78C @ =gSamusEnvironmentalEffects
 	adds r0, #0x10
 	ldm r0!, {r2, r3, r7}
 	stm r1!, {r2, r3, r7}
@@ -25653,7 +25653,7 @@ _0807F77C: .4byte 0x0300003B
 _0807F780: .4byte gSamusData
 _0807F784: .4byte gSamusAnimationInfo
 _0807F788: .4byte 0x030012E4
-_0807F78C: .4byte 0x030012F0
+_0807F78C: .4byte gSamusEnvironmentalEffects
 _0807F790: .4byte gEquipment
 _0807F794: .4byte gPreventMovementTimer
 _0807F798: .4byte gDisableDrawingSamusAndScrollingFlag
@@ -25872,13 +25872,13 @@ _0807F920:
 	adds r0, r7, #0
 	ldm r0!, {r2, r4, r5}
 	stm r1!, {r2, r4, r5}
-	ldr r1, _0807FA78 @ =0x030012F0
+	ldr r1, _0807FA78 @ =gSamusEnvironmentalEffects
 	mov r0, r8
 	ldm r0!, {r3, r4, r5}
 	stm r1!, {r3, r4, r5}
 	ldr r0, [r0]
 	str r0, [r1]
-	ldr r1, _0807FA78 @ =0x030012F0
+	ldr r1, _0807FA78 @ =gSamusEnvironmentalEffects
 	adds r1, #0x10
 	mov r0, sb
 	ldm r0!, {r2, r3, r4}
@@ -25988,7 +25988,7 @@ _0807FA68: .4byte 0x0300003B
 _0807FA6C: .4byte gSamusData
 _0807FA70: .4byte gSamusAnimationInfo
 _0807FA74: .4byte 0x030012E4
-_0807FA78: .4byte 0x030012F0
+_0807FA78: .4byte gSamusEnvironmentalEffects
 _0807FA7C: .4byte gEquipment
 _0807FA80: .4byte gPreventMovementTimer
 _0807FA84: .4byte gDisableDrawingSamusAndScrollingFlag
@@ -29108,7 +29108,7 @@ _0808134E:
 	movs r2, #0x44
 	bl ParticleSet
 _0808136A:
-	ldr r0, _080813D4 @ =0x030012F0
+	ldr r0, _080813D4 @ =gSamusEnvironmentalEffects
 	ldrb r0, [r0, #0x13]
 	cmp r0, #0x10
 	bne _080813A4
@@ -29159,7 +29159,7 @@ _080813C4: .4byte gSamusData
 _080813C8: .4byte gSamusGraphicsInfo
 _080813CC: .4byte gArmCannonX
 _080813D0: .4byte 0x030007F8
-_080813D4: .4byte 0x030012F0
+_080813D4: .4byte gSamusEnvironmentalEffects
 _080813D8: .4byte _080813DC
 _080813DC: @ jump table
 	.4byte _08081404 @ case 0
@@ -29389,7 +29389,7 @@ _080815B8:
 	bne _080815D4
 	b _080818E4
 _080815D4:
-	ldr r0, _080815F8 @ =0x030012F0
+	ldr r0, _080815F8 @ =gSamusEnvironmentalEffects
 	ldrb r0, [r0, #0x13]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -29405,7 +29405,7 @@ _080815D4:
 	b _08081614
 	.align 2, 0
 _080815F4: .4byte gEquipment
-_080815F8: .4byte 0x030012F0
+_080815F8: .4byte gSamusEnvironmentalEffects
 _080815FC: .4byte gArmCannonY
 _08081600: .4byte gArmCannonX
 _08081604:
@@ -29421,14 +29421,14 @@ _08081614:
 	movs r2, #0
 	movs r0, #0x10
 	strb r0, [r1, #0xa]
-	ldr r0, _08081630 @ =0x030012F0
+	ldr r0, _08081630 @ =gSamusEnvironmentalEffects
 	strb r2, [r0, #0x13]
 	b _080818E4
 	.align 2, 0
 _08081624: .4byte gArmCannonY
 _08081628: .4byte gArmCannonX
 _0808162C: .4byte gSamusData
-_08081630: .4byte 0x030012F0
+_08081630: .4byte gSamusEnvironmentalEffects
 _08081634:
 	movs r0, #4
 	ands r0, r1

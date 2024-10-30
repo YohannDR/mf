@@ -579,14 +579,14 @@ _0802DDF4:
 	movs r1, #0x32
 	movs r2, #0xa
 	bl SpriteUtilRefillSamus
-	ldr r1, _0802DE10 @ =0x030012F0
+	ldr r1, _0802DE10 @ =gSamusEnvironmentalEffects
 	movs r0, #0x30
 	strb r0, [r1, #3]
 	movs r0, #0x92
 	bl SoundPlay
 	b _0802DE26
 	.align 2, 0
-_0802DE10: .4byte 0x030012F0
+_0802DE10: .4byte gSamusEnvironmentalEffects
 _0802DE14:
 	ldr r0, _0802DE30 @ =gFrameCounter8Bit
 	ldrb r1, [r0]
