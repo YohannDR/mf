@@ -113,4 +113,264 @@ const s16 sXParasiteIdleFloatingXMovement[81] = {
     SHORT_MAX
 };
 
-static const u8 sBlob_3be1be_3e392c[] = INCBIN_U8("data/Blob_3be1be_3e392c.bin");
+static const u32 align[] = {}; // to align and make it matching
+
+static const u16 sXParasiteOam_Red_Frame0[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x1c0
+};
+
+static const u16 sXParasiteOam_Red_Frame1[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x1c2
+};
+
+static const u16 sXParasiteOam_Red_Frame2[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x1c4
+};
+
+static const u16 sXParasiteOam_Red_Frame3[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x1c6
+};
+
+static const u16 sXParasiteOam_Red_Frame4[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x1c8
+};
+
+static const u16 sXParasiteOam_Red_Frame5[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x1ca
+};
+
+static const u16 sXParasiteOam_Green_Frame0[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x1c0
+};
+
+static const u16 sXParasiteOam_Green_Frame1[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x1c2
+};
+
+static const u16 sXParasiteOam_Green_Frame2[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x1c4
+};
+
+static const u16 sXParasiteOam_Green_Frame3[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x1c6
+};
+
+static const u16 sXParasiteOam_Green_Frame4[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x1c8
+};
+
+static const u16 sXParasiteOam_Green_Frame5[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x1ca
+};
+
+static const u16 sXParasiteOam_Yellow_Frame0[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_4 | 0x1c0
+};
+
+static const u16 sXParasiteOam_Yellow_Frame1[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_4 | 0x1c2
+};
+
+static const u16 sXParasiteOam_Yellow_Frame2[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_4 | 0x1c4
+};
+
+static const u16 sXParasiteOam_Yellow_Frame3[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_4 | 0x1c6
+};
+
+static const u16 sXParasiteOam_Yellow_Frame4[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_4 | 0x1c8
+};
+
+static const u16 sXParasiteOam_Yellow_Frame5[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_4 | 0x1ca
+};
+
+const struct FrameData sXParasiteOam_Yellow[7] = {
+    [0] = {
+        .pFrame = sXParasiteOam_Yellow_Frame0,
+        .timer = 5
+    },
+    [1] = {
+        .pFrame = sXParasiteOam_Yellow_Frame1,
+        .timer = 5
+    },
+    [2] = {
+        .pFrame = sXParasiteOam_Yellow_Frame2,
+        .timer = 5
+    },
+    [3] = {
+        .pFrame = sXParasiteOam_Yellow_Frame3,
+        .timer = 5
+    },
+    [4] = {
+        .pFrame = sXParasiteOam_Yellow_Frame4,
+        .timer = 5
+    },
+    [5] = {
+        .pFrame = sXParasiteOam_Yellow_Frame5,
+        .timer = 5
+    },
+    [6] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sXParasiteOam_Green[7] = {
+    [0] = {
+        .pFrame = sXParasiteOam_Green_Frame0,
+        .timer = 5
+    },
+    [1] = {
+        .pFrame = sXParasiteOam_Green_Frame1,
+        .timer = 5
+    },
+    [2] = {
+        .pFrame = sXParasiteOam_Green_Frame2,
+        .timer = 5
+    },
+    [3] = {
+        .pFrame = sXParasiteOam_Green_Frame3,
+        .timer = 5
+    },
+    [4] = {
+        .pFrame = sXParasiteOam_Green_Frame4,
+        .timer = 5
+    },
+    [5] = {
+        .pFrame = sXParasiteOam_Green_Frame5,
+        .timer = 5
+    },
+    [6] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sXParasiteOam_Red[7] = {
+    [0] = {
+        .pFrame = sXParasiteOam_Red_Frame0,
+        .timer = 5
+    },
+    [1] = {
+        .pFrame = sXParasiteOam_Red_Frame1,
+        .timer = 5
+    },
+    [2] = {
+        .pFrame = sXParasiteOam_Red_Frame2,
+        .timer = 5
+    },
+    [3] = {
+        .pFrame = sXParasiteOam_Red_Frame3,
+        .timer = 5
+    },
+    [4] = {
+        .pFrame = sXParasiteOam_Red_Frame4,
+        .timer = 5
+    },
+    [5] = {
+        .pFrame = sXParasiteOam_Red_Frame5,
+        .timer = 5
+    },
+    [6] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sXParasiteOam_3be2f8[7] = {
+    [0] = {
+        .pFrame = sXParasiteOam_Yellow_Frame0,
+        .timer = 8
+    },
+    [1] = {
+        .pFrame = sXParasiteOam_Yellow_Frame1,
+        .timer = 8
+    },
+    [2] = {
+        .pFrame = sXParasiteOam_Yellow_Frame2,
+        .timer = 8
+    },
+    [3] = {
+        .pFrame = sXParasiteOam_Yellow_Frame3,
+        .timer = 8
+    },
+    [4] = {
+        .pFrame = sXParasiteOam_Yellow_Frame4,
+        .timer = 8
+    },
+    [5] = {
+        .pFrame = sXParasiteOam_Yellow_Frame5,
+        .timer = 8
+    },
+    [6] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sXParasiteOam_3be330[7] = {
+    [0] = {
+        .pFrame = sXParasiteOam_Green_Frame0,
+        .timer = 8
+    },
+    [1] = {
+        .pFrame = sXParasiteOam_Green_Frame1,
+        .timer = 8
+    },
+    [2] = {
+        .pFrame = sXParasiteOam_Green_Frame2,
+        .timer = 8
+    },
+    [3] = {
+        .pFrame = sXParasiteOam_Green_Frame3,
+        .timer = 8
+    },
+    [4] = {
+        .pFrame = sXParasiteOam_Green_Frame4,
+        .timer = 8
+    },
+    [5] = {
+        .pFrame = sXParasiteOam_Green_Frame5,
+        .timer = 8
+    },
+    [6] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sXParasiteOam_3be368[7] = {
+    [0] = {
+        .pFrame = sXParasiteOam_Red_Frame0,
+        .timer = 8
+    },
+    [1] = {
+        .pFrame = sXParasiteOam_Red_Frame1,
+        .timer = 8
+    },
+    [2] = {
+        .pFrame = sXParasiteOam_Red_Frame2,
+        .timer = 8
+    },
+    [3] = {
+        .pFrame = sXParasiteOam_Red_Frame3,
+        .timer = 8
+    },
+    [4] = {
+        .pFrame = sXParasiteOam_Red_Frame4,
+        .timer = 8
+    },
+    [5] = {
+        .pFrame = sXParasiteOam_Red_Frame5,
+        .timer = 8
+    },
+    [6] = FRAME_DATA_TERMINATOR
+};
+
+static const u8 sBlob_3be3a0_3e392c[] = INCBIN_U8("data/Blob_3be3a0_3e392c.bin");

@@ -452,12 +452,11 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
         case 0x20: {
             if (unk == 2) {
                 if (gSpriteRandomNumber < 5 || CheckEnergyFullAndMissilesNotFull()) {
-                    // FIXME oam
-                    gCurrentSprite.pOam = (const struct FrameData*)0x83be288;
+                    gCurrentSprite.pOam = sXParasiteOam_Green;
                     gCurrentSprite.samusCollision = SSC_GREEN_X_PARASITE;
                     break;
                 } else {
-                    gCurrentSprite.pOam = (const struct FrameData*)0x83be250;
+                    gCurrentSprite.pOam = sXParasiteOam_Yellow;
                     gCurrentSprite.samusCollision = SSC_YELLOW_X_PARASITE_SPAWN_ON_ROOM_LOAD;
                     break;
                 }
@@ -472,7 +471,7 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
                 if (redXThreshold > 0) {
                     redXThreshold = 1024 - redXThreshold;
                     if (randomNumber <= 1024 && randomNumber > redXThreshold) {
-                        gCurrentSprite.pOam = (const struct FrameData*)0x83be2c0;
+                        gCurrentSprite.pOam = sXParasiteOam_Red;
                         gCurrentSprite.samusCollision = SSC_RED_X_PARASITE;
                         break;
                     }
@@ -483,11 +482,11 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
                     greenXThreshold = redXThreshold - greenXThreshold;
                     if (redXThreshold >= randomNumber && randomNumber > greenXThreshold) {
                         if (CheckMissilesFullAndEnergyNotFull()) {
-                            gCurrentSprite.pOam = (const struct FrameData*)0x83be250;
+                            gCurrentSprite.pOam = sXParasiteOam_Yellow;
                             gCurrentSprite.samusCollision = SSC_YELLOW_X_PARASITE_SPAWN_ON_ROOM_LOAD;
                             break;
                         } else {
-                            gCurrentSprite.pOam = (const struct FrameData*)0x83be288;
+                            gCurrentSprite.pOam = sXParasiteOam_Green;
                             gCurrentSprite.samusCollision = SSC_GREEN_X_PARASITE;
                             break;
                         }
@@ -497,11 +496,11 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
                 }
                 if (yellowXThreshold > 0 && greenXThreshold >= randomNumber && randomNumber > 0) {
                     if (CheckEnergyFullAndMissilesNotFull()) {
-                        gCurrentSprite.pOam = (const struct FrameData*)0x83be288;
+                        gCurrentSprite.pOam = sXParasiteOam_Green;
                         gCurrentSprite.samusCollision = SSC_GREEN_X_PARASITE;
                         break;
                     } else {
-                        gCurrentSprite.pOam = (const struct FrameData*)0x83be250;
+                        gCurrentSprite.pOam = sXParasiteOam_Yellow;
                         gCurrentSprite.samusCollision = SSC_YELLOW_X_PARASITE_SPAWN_ON_ROOM_LOAD;
                         break;
                     }
@@ -509,19 +508,19 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
                     gCurrentSprite.status = 0;
                 }
             } else {
-                gCurrentSprite.pOam = (const struct FrameData*)0x83be250;
+                gCurrentSprite.pOam = sXParasiteOam_Yellow;
                 gCurrentSprite.samusCollision = SSC_YELLOW_X_PARASITE_SPAWN_ON_ROOM_LOAD;
             }
             break;
         }
         case 0x30: {
             gCurrentSprite.invincibilityStunFlashTimer &= 0x7f;
-            gCurrentSprite.pOam = (const struct FrameData*)0x83be250;
+            gCurrentSprite.pOam = sXParasiteOam_Yellow;
             gCurrentSprite.samusCollision = SSC_YELLOW_X_PARASITE_SPAWN_ON_ROOM_LOAD;
             break;
         }
         case 0x40: {
-            gCurrentSprite.pOam = (const struct FrameData*)0x83be250;
+            gCurrentSprite.pOam = sXParasiteOam_Yellow;
             gCurrentSprite.samusCollision = SSC_YELLOW_X_PARASITE;
             break;
         }
