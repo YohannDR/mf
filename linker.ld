@@ -283,8 +283,8 @@ SECTIONS {
         asm/bull.o(.text);
         asm/memu.o(.text);
         asm/geruboss.o(.text);
-        asm/choot.o(.text);
 
+        src/sprites_AI/choot.o(.text);
         src/sprites_AI/zebesian_ground.o(.text);
         src/sprites_AI/blue_x.o(.text);
         src/sprites_AI/missile_hatch.o(.text);
