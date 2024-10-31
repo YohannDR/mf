@@ -349,7 +349,7 @@ void NettoriDyingInit(void)
 
     gCurrentSprite.status |= SS_ENABLE_MOSAIC | SS_IGNORE_PROJECTILES;
     gCurrentSprite.samusCollision = SSC_NONE;
-    gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+    gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
 
     NettoriRemoveCollision();
     PlayMusic(MUSIC_CHOZO_STATUE_CORE_X_BATTLE, 7);

@@ -69,7 +69,7 @@ void ArachnusDyingInit(void) {
     gCurrentSprite.health = 1;
     gCurrentSprite.invincibilityStunFlashTimer = 0;
     gCurrentSprite.paletteRow = 0;
-    gCurrentSprite.xParasiteTimer = 44;
+    gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     gCurrentSprite.unk_8 = 1;
     SoundPlay(0xbe);
 }
@@ -315,7 +315,7 @@ void ArachnusDying(void) {
                 return;
             case 0:
                 gCurrentSprite.unk_8 = 0;
-                gCurrentSprite.xParasiteTimer = 44;
+                gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
                 return;
         }
     } else {
@@ -426,7 +426,7 @@ void ArachnusInit(void) {
         gCurrentSprite.drawOrder = 4;
         gCurrentSprite.status &= ~(SS_ARACHNUS_HIT_BY_NORMAL_BEAM | SS_ARACHNUS_HIT_BY_NORMAL_BEAM_ATTACK_TYPE);
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-        gCurrentSprite.xParasiteTimer = 44;
+        gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     } else {
         gCurrentSprite.pose = ARACHNUS_POSE_IDLE;
     }

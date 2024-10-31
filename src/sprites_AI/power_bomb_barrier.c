@@ -28,7 +28,7 @@ void PowerBombBarrierInit(void)
     if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
     {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-        gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+        gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     }
     else
     {

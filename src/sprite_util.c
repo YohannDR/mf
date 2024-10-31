@@ -50,7 +50,7 @@ void SpriteUtilInitLocationText(void)
         gSpriteData[0].spritesetSlotAndProperties = 0x10;
 
         gSpriteData[0].freezeTimer = 0;
-        gSpriteData[0].work5 = 1;
+        gSpriteData[0].numberOfXToForm = 1;
     }
 }
 

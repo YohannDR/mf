@@ -174,7 +174,7 @@ void GeemerInit(void) {
     } else {
         if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
             gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-            gCurrentSprite.xParasiteTimer = 44;
+            gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
         } else {
             gCurrentSprite.pose = 2;
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);

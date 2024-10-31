@@ -76,7 +76,7 @@ struct SpriteData {
     u8 standingOnSprite;
     u8 properties;
     u8 frozenPaletteRowOffset;
-    u8 work5;
+    u8 numberOfXToForm;
 };
 
 struct SubSpriteData {
@@ -104,7 +104,7 @@ extern u8 gIgnoreSamusAndSpriteCollision;
 extern u8 gPreviousCollisionCheck;
 extern u8 gPreviousVerticalCollisionCheck;
 
-extern u16 gUnk_030007c0[24];
+extern u16 gUnk_030007c0[MAX_AMOUNT_OF_SPRITES];
 
 extern u8 gSpriteRandomNumber;
 

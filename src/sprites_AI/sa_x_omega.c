@@ -33,7 +33,7 @@ void SaXOmegaInit(void)
     gCurrentSprite.work0 = 0;
 
     gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-    gCurrentSprite.work1 = ARRAY_SIZE(sXParasiteMosaicValues);
+    gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
     gCurrentSprite.yPosition += (BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2);
 
     SaXSetPose(SA_X_POSE_FALLING);
@@ -311,7 +311,7 @@ void SaXOmegaHitByOmega(void)
 void SaXOmegaRevertingToXInit(void)
 {
     gCurrentSprite.pose = 0x4A;
-    gCurrentSprite.work1 = ARRAY_SIZE(sXParasiteMosaicValues);
+    gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
     gSaXData.mosaic = TRUE;
 
     EventCheckAdvance(EVENT_SA_X_KILLED_BY_OMEGA_METROID);

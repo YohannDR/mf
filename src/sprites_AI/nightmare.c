@@ -266,7 +266,7 @@ void NightmareInit(void) {
         SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_EYE_SLUDGE, 0, primaryRamSlot, y, x, 0);
         eyeRamSlot = SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_EYE, 0, primaryRamSlot, y, x, 0);
         mouthRamSlot = SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_MOUTH, 0, primaryRamSlot, y, x, 0);
-        gSpriteData[eyeRamSlot].work5 = mouthRamSlot;
+        gSpriteData[eyeRamSlot].numberOfXToForm = mouthRamSlot;
         SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_RIGHT_ARM_TOP, 0, primaryRamSlot, y, x, 0);
         SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_RIGHT_TURRET_1, 0, primaryRamSlot, y, x, 0);
         SpriteSpawnSecondary(SSPRITE_NIGHTMARE_PART, NIGHTMARE_PART_RIGHT_TURRET_2, 0, primaryRamSlot, y, x, 0);
@@ -516,7 +516,7 @@ void NightmareTurningIntoCoreX(void) {
             gCurrentSprite.status |= SS_ENABLE_MOSAIC;
             gCurrentSprite.invincibilityStunFlashTimer = 0;
             gCurrentSprite.paletteRow = 0;
-            gCurrentSprite.xParasiteTimer = 44;
+            gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
         }
     } else {
         gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
@@ -1216,7 +1216,7 @@ void NightmarePartLeftTurret3(void) {
 
 void NightmarePartEye(void) {
     u8 primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
-    u8 mouthRamSlot = gCurrentSprite.work5;
+    u8 mouthRamSlot = gCurrentSprite.numberOfXToForm;
     u16 maxHealth = gSpriteData[primaryRamSlot].health;
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 16)
         SoundPlayNotAlreadyPlaying(0x2a7);

@@ -77,7 +77,7 @@ void ZombieDying(void) {
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
         ZombieSetWaitingToForm();
-        gCurrentSprite.work5 = 1;
+        gCurrentSprite.numberOfXToForm = 1;
         gCurrentSprite.paletteRow = 0;
     }
 }

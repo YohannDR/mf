@@ -33,6 +33,23 @@
         value = (max);         \
 }
 
+#define SET_ABS_SUB(var, v1, v2)\
+{                               \
+    if ((v1) > (v2))            \
+        var = (v1) - (v2);      \
+    else                        \
+        var = (v2) - (v1);      \
+}
+#define SET_ABS_SUB_2(var, v1, v2)\
+{                                 \
+    if ((v1) < (v2))              \
+        var = (v2) - (v1);        \
+    else                          \
+        var = (v1) - (v2);        \
+}
+#define ABS_SUB(v1, v2) ((v1) > (v2) ? (v1) - (v2) : (v2) - (v1))
+#define ABS_SUB_2(v1, v2) ((v1) < (v2) ? (v2) - (v1) : (v1) - (v2))
+
 /**
  * @brief Performs a modulo (value % mod) operation on a value using the and operation (WARNING only use a value for mod that is a power of 2)
  * 

@@ -73,7 +73,7 @@ void CoreXAbilityInit(void) {
                 break;
         }
         gCurrentSprite.pose = 0x5a;
-        gCurrentSprite.xParasiteTimer = 44;
+        gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
         gCurrentSprite.status |= SS_ENABLE_MOSAIC;
         gCurrentSprite.status &= ~(SS_SAMUS_DETECTED | SS_SAMUS_COLLIDING);
     } else {
@@ -259,7 +259,7 @@ void CoreXAbilityMovingToSpawnPoint(void) {
             if (gCurrentSprite.rotation == 0) {
                 gCurrentSprite.pose = 0x1a;
                 gCurrentSprite.status |= SS_ENABLE_MOSAIC;
-                gCurrentSprite.work1 = 44;
+                gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
                 gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
                 PlayMusic(MUSIC_ZAZABI_BATTLE, 7);
             }
@@ -272,7 +272,7 @@ void CoreXAbilityMovingToSpawnPoint(void) {
             if (gCurrentSprite.rotation == 0) {
                 gCurrentSprite.pose = 0x1a;
                 gCurrentSprite.status |= SS_ENABLE_MOSAIC;
-                gCurrentSprite.work1 = 44;
+                gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
                 gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
                 if (gDemoState == 0) {
                     PlayMusic(MUSIC_ARACHNUS_BATTLE, 7);
@@ -306,7 +306,7 @@ void CoreXAbilitySpawningBoss(void) {
     if (gCurrentSprite.work1 < 8 * 4) {
         SpriteLoadGfx(gBossFormationSpriteId, 0, gCurrentSprite.work1);
     } else if (gCurrentSprite.work1 == 8 * 4) {
-        SpriteLoadPal(gBossFormationSpriteId, 0, 4);
+        SpriteLoadPal(gBossFormationSpriteId, 0, 4); // Only loads the first 4 palette rows
     }
 }
 
@@ -399,8 +399,8 @@ void CoreXAbilityWaitingAtTarget(void) {
         gCurrentSprite.work4 = 1;
         gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
         gCurrentSprite.rotation = 0;
-        gCurrentSprite.scaling = 0x100;
-        gCurrentSprite.xParasiteTimer = 0x14;
+        gCurrentSprite.scaling = Q_8_8(1);
+        gCurrentSprite.xParasiteTimer = 20;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pOam = sCoreXAbilityOam_GettingAbsorbed;
@@ -430,10 +430,8 @@ void CoreXAbilityWaitingAtTarget(void) {
         SpriteUtilRefillSamus(400, 50, 10);
         gSamusEnvironmentalEffects[0].externalTimer = 48;
         SoundPlay(0x92);
-    } else {
-        if ((gFrameCounter8Bit & 0x3f) == 0) {
-            SoundPlay(0xc3);
-        }
+    } else if ((gFrameCounter8Bit & 0x3f) == 0) {
+        SoundPlay(0xc3);
     }
 }
 
@@ -442,13 +440,11 @@ void CoreXAbilityGettingAbsorbed(void) {
     XParasiteStickToSamus();
     if (gCurrentSprite.xParasiteTimer != 0) {
         gCurrentSprite.xParasiteTimer--;
+    } else if (gCurrentSprite.scaling > Q_8_8(0.3125f)) {
+        gCurrentSprite.scaling -= Q_8_8(0.03125f);
     } else {
-        if (gCurrentSprite.scaling > Q_8_8(0.3125f)) {
-            gCurrentSprite.scaling -= Q_8_8(0.03125f);
-        } else {
-            gCurrentSprite.status = 0;
-            SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, 0, 6, 0x10, gAbilityRestingYPosition, gAbilityRestingXPosition, 0);
-        }
+        gCurrentSprite.status = 0;
+        SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, 0, 6, 0x10, gAbilityRestingYPosition, gAbilityRestingXPosition, 0);
     }
 }
 

@@ -2,6 +2,7 @@
 #include "macros.h"
 
 #include "data/sprites/hornoad.h"
+#include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
 #include "constants/clipdata.h"
@@ -221,7 +222,7 @@ void HornoadInit(void)
         if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
         {
             gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-            gCurrentSprite.xParasiteTimer = 44;
+            gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
         }
         else
         {

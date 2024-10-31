@@ -5,7 +5,7 @@ const s16 sXParasite_3bdebc[13] = {
     255, 224, 208, 192, 176, 160, 144, 128, 112, 96, 80, 64, 48
 };
 
-const u16 sXParasiteMosaicValues[44] = {
+const u16 sXParasiteMosaicValues[45] = {
     0,   17,  34,  51,
     68,  85,  102, 119,
     136, 153, 170, 187,
@@ -16,41 +16,44 @@ const u16 sXParasiteMosaicValues[44] = {
     34,  17,  34,  51,
     68,  85,  102, 119,
     136, 153, 170, 187,
-    204, 221, 238, 255
+    204, 221, 238, 255,
+    0
 };
 
-const s16 sXParasite_3bdf2e[182] = {
-    0, 0, -1, 0,
-    -2, 0, -1, -1,
+const s16 sXParasite_3bdf30[120] = {
+    0, -1, 0, -2,
     0, -1, -1, 0,
-    0, -1, -1, 0,
+    -1, -1, 0, 0,
     -1, -1, 0, -1,
-    0, -1, 0, 0,
     -1, 0, -1, 0,
-    0, 0, -1, 1,
-    0, 0, 0, 1,
-    0, 1, 0, 0,
-    1, 0, 1, 0,
-    1, 1, 0, 1,
+    -1, 0, 0, -1,
+    0, -1, 0, 0,
+    0, -1, 1, 0,
+    0, 0, 1, 0,
     1, 0, 0, 1,
-    1, 0, 1, 1,
-    1, 1, 0, 1,
     0, 1, 0, 1,
-    1, 1, 0, 1,
     1, 0, 1, 1,
     0, 0, 1, 1,
-    0, 1, 1, 0,
+    0, 1, 1, 1,
     1, 0, 1, 0,
-    0, 1, 0, 1,
+    1, 0, 1, 1,
+    1, 0, 1, 1,
+    0, 1, 1, 0,
+    0, 1, 1, 0,
+    1, 1, 0, 1,
+    0, 1, 0, 0,
+    1, 0, 1, 0,
     0, 0, 0, 0,
-    0, -1, 0, 0,
     -1, 0, 0, -1,
-    0, -1, 0, -1,
+    0, 0, -1, 0,
     -1, 0, -1, -1,
-    0, 0, -1, -1,
     0, -1, -1, 0,
-    -2, 0, -1, -1,
-    SHORT_MAX,
+    0, -1, -1, 0,
+    -1, -1, 0, -2,
+    0, -1, -1, SHORT_MAX
+};
+
+const s16 sXParasite_3be020[61] = {
     -1, 0, -2, -1,
     -1, -1, -1, -1,
     -1, -1, -1, 0,
@@ -289,7 +292,7 @@ const struct FrameData sXParasiteOam_Red[7] = {
     [6] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sXParasiteOam_3be2f8[7] = {
+const struct FrameData sXParasiteOam_Yellow_Slow[7] = {
     [0] = {
         .pFrame = sXParasiteOam_Yellow_Frame0,
         .timer = 8
@@ -317,7 +320,7 @@ const struct FrameData sXParasiteOam_3be2f8[7] = {
     [6] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sXParasiteOam_3be330[7] = {
+const struct FrameData sXParasiteOam_Green_Slow[7] = {
     [0] = {
         .pFrame = sXParasiteOam_Green_Frame0,
         .timer = 8
@@ -345,7 +348,7 @@ const struct FrameData sXParasiteOam_3be330[7] = {
     [6] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sXParasiteOam_3be368[7] = {
+const struct FrameData sXParasiteOam_Red_Slow[7] = {
     [0] = {
         .pFrame = sXParasiteOam_Red_Frame0,
         .timer = 8

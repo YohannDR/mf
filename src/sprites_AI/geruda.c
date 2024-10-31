@@ -117,7 +117,7 @@ void GerudaInit(void) {
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
     if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-        gCurrentSprite.xParasiteTimer = 44;
+        gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     }
     else gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
 }
@@ -213,8 +213,7 @@ void GerudaIdle(void) {
         // Distance between Samus and geruda
         target = gSamusData.xPosition;
         tmp = gCurrentSprite.xPosition;
-        if (tmp > target) tmp = tmp - target;
-        else tmp = target - tmp;
+        SET_ABS_SUB(tmp, tmp, target)
 
         // Set lunging speed when lunging diagonally depending on how far Samus is
         if (tmp > PIXEL_TO_SUB_PIXEL(0x4b)) gCurrentSprite.work3 = PIXEL_TO_SUB_PIXEL(2);

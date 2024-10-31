@@ -12,7 +12,7 @@
 #include "structs/sprite.h"
 #include "structs/samus.h"
 
-u32 unk_61004(void) {
+u32 CheckSpritesThatCantAbsorbX(void) {
     u8 i;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++) {
@@ -410,7 +410,7 @@ void XParasiteGettingAbsorbedInit(void) {
 void SpriteDyingInit(void) {
     gCurrentSprite.status |= SS_ENABLE_MOSAIC;
     gCurrentSprite.pose = SPRITE_POSE_DYING;
-    gCurrentSprite.work1 = 44;
+    gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
     SoundPlayNotAlreadyPlaying(0x142);
 }
 
@@ -434,7 +434,7 @@ void SpriteDying(void) {
 
 void XParasiteSpawningInit(void) {
     gCurrentSprite.status |= SS_ENABLE_MOSAIC;
-    gCurrentSprite.xParasiteTimer = 22;
+    gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX / 2;
     gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.pose = 0x5c;
@@ -442,7 +442,7 @@ void XParasiteSpawningInit(void) {
     gCurrentSprite.work4 = gCurrentSprite.work3;
 }
 
-void XParasiteDetermineType(u8 unk, u8 spriteId) {
+void XParasiteDetermineColor(u8 unk, u8 spriteId) {
     u16 randomNumber;
     u16 yellowXThreshold;
     u16 greenXThreshold;
@@ -450,17 +450,16 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
 
     switch (gCurrentSprite.spritesetSlotAndProperties & 0xf0) {
         case 0x20: {
-            if (unk == 2) {
+            if (unk == X_PARASITE_TYPE_FROM_CORE_X) {
                 if (gSpriteRandomNumber < 5 || CheckEnergyFullAndMissilesNotFull()) {
                     gCurrentSprite.pOam = sXParasiteOam_Green;
                     gCurrentSprite.samusCollision = SSC_GREEN_X_PARASITE;
-                    break;
                 } else {
                     gCurrentSprite.pOam = sXParasiteOam_Yellow;
                     gCurrentSprite.samusCollision = SSC_YELLOW_X_PARASITE_SPAWN_ON_ROOM_LOAD;
-                    break;
                 }
-            } else if (unk == 1) {
+            } else if (unk == X_PARASITE_TYPE_FROM_SPRITE) {
+                // Calculate random number between 1 and 1024 inclusive
                 randomNumber = (gSpriteRandomNumber & 3);
                 randomNumber <<= 8;
                 randomNumber |= gFrameCounter8Bit;
@@ -471,6 +470,7 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
                 if (redXThreshold > 0) {
                     redXThreshold = 1024 - redXThreshold;
                     if (randomNumber <= 1024 && randomNumber > redXThreshold) {
+                        // Eligible for red, spawn red
                         gCurrentSprite.pOam = sXParasiteOam_Red;
                         gCurrentSprite.samusCollision = SSC_RED_X_PARASITE;
                         break;
@@ -481,6 +481,7 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
                 if (greenXThreshold > 0) {
                     greenXThreshold = redXThreshold - greenXThreshold;
                     if (redXThreshold >= randomNumber && randomNumber > greenXThreshold) {
+                        // Eligible for green, spawn yellow if missiles full and energy not full, green otherwise
                         if (CheckMissilesFullAndEnergyNotFull()) {
                             gCurrentSprite.pOam = sXParasiteOam_Yellow;
                             gCurrentSprite.samusCollision = SSC_YELLOW_X_PARASITE_SPAWN_ON_ROOM_LOAD;
@@ -495,6 +496,7 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
                     greenXThreshold = redXThreshold;
                 }
                 if (yellowXThreshold > 0 && greenXThreshold >= randomNumber && randomNumber > 0) {
+                    // Eligible for yellow, spawn green if energy full and missiles not full, yellow otherwise
                     if (CheckEnergyFullAndMissilesNotFull()) {
                         gCurrentSprite.pOam = sXParasiteOam_Green;
                         gCurrentSprite.samusCollision = SSC_GREEN_X_PARASITE;
@@ -505,6 +507,7 @@ void XParasiteDetermineType(u8 unk, u8 spriteId) {
                         break;
                     }
                 } else {
+                    // That shouldn't happen if drop chances sum to 1024
                     gCurrentSprite.status = 0;
                 }
             } else {
@@ -539,7 +542,7 @@ void XParasiteInit(void) {
             gCurrentSprite.pose = 0x5c;
             gCurrentSprite.work3 = 1;
             gCurrentSprite.work4 = 1;
-            XParasiteDetermineType(0, 0);
+            XParasiteDetermineColor(X_PARASITE_TYPE_IN_ROOM, 0);
             if ((gSpriteRandomNumber & 1) != 0)
                 gCurrentSprite.drawOrder = 1;
             else
@@ -552,13 +555,13 @@ void XParasiteInit(void) {
             gCurrentSprite.pose = 0x5c;
             gCurrentSprite.work3 = 1;
             gCurrentSprite.work4 = 1;
-            XParasiteDetermineType(0, 0);
+            XParasiteDetermineColor(X_PARASITE_TYPE_IN_ROOM, 0);
             break;
         }
         case PSPRITE_X_PARASITE_CORE_X_OR_PARASITE: {
             gCurrentSprite.status &= ~SS_NOT_DRAWN;
             gCurrentSprite.status |= SS_ENABLE_MOSAIC;
-            gCurrentSprite.xParasiteTimer = 44;
+            gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
             gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
             gCurrentSprite.pose = 0x5c;
             gCurrentSprite.unk_8 = 0;
@@ -566,7 +569,7 @@ void XParasiteInit(void) {
             gCurrentSprite.work3 = 1;
             gCurrentSprite.work1 = 0;
             gCurrentSprite.work4 = 1;
-            XParasiteDetermineType(2, 0);
+            XParasiteDetermineColor(X_PARASITE_TYPE_FROM_CORE_X, 0);
             if ((gSpriteRandomNumber & 1) != 0)
                 gCurrentSprite.drawOrder = 1;
             else
@@ -576,12 +579,12 @@ void XParasiteInit(void) {
         case PSPRITE_X_PARASITE:
         case PSPRITE_X_PARASITE_AQUA_ZEBESIAN: {
             XParasiteSpawningInit();
-            XParasiteDetermineType(1, gCurrentSprite.roomSlot);
+            XParasiteDetermineColor(X_PARASITE_TYPE_FROM_SPRITE, gCurrentSprite.roomSlot);
             break;
         }
         default: {
             XParasiteSpawningInit();
-            XParasiteDetermineType(1, gCurrentSprite.spriteId);
+            XParasiteDetermineColor(X_PARASITE_TYPE_FROM_SPRITE, gCurrentSprite.spriteId);
             gCurrentSprite.spriteId = PSPRITE_X_PARASITE;
             break;
         }
@@ -595,10 +598,10 @@ void XParasiteInit(void) {
     gCurrentSprite.drawDistanceTop = 0x10;
     gCurrentSprite.drawDistanceBottom = 0x10;
     gCurrentSprite.drawDistanceHorizontal = 0x10;
-    gCurrentSprite.hitboxTop = -0x24;
-    gCurrentSprite.hitboxBottom = 0x24;
-    gCurrentSprite.hitboxLeft = -0x24;
-    gCurrentSprite.hitboxRight = 0x24;
+    gCurrentSprite.hitboxTop = -PIXEL_TO_SUB_PIXEL(9);
+    gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(9);
+    gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(9);
+    gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(9);
     gCurrentSprite.health = 1;
     gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
     gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
@@ -652,7 +655,7 @@ void XParasiteIdleFloating(void) {
     if (gCurrentSprite.status & SS_ENABLE_MOSAIC) {
         if (--gCurrentSprite.xParasiteTimer > 0) {
             gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
-            if ((gCurrentSprite.spritesetSlotAndProperties & 0xf0) == 0x30 || gCurrentSprite.xParasiteTimer > 22)
+            if ((gCurrentSprite.spritesetSlotAndProperties & 0xf0) == 0x30 || gCurrentSprite.xParasiteTimer > X_PARASITE_MOSAIC_MAX_INDEX / 2)
                 gCurrentSprite.ignoreSamusCollisionTimer = 1;
             else if (gCurrentSprite.status & SS_SAMUS_COLLIDING) {
                 if (gCurrentSprite.spriteId != PSPRITE_X_PARASITE)
@@ -741,21 +744,15 @@ u8 XParasiteFlyingMovement(void) {
             targetX = gSpriteData[i].xPosition;
 
             // Calculate and store taxicab distance from X parasite to other sprite
-            if (y > targetY)
-                distY = y - targetY;
-            else
-                distY = targetY - y;
-            if (x > targetX)
-                distX = x - targetX;
-            else
-                distX = targetX - x;
+            SET_ABS_SUB(distY, y, targetY)
+            SET_ABS_SUB(distX, x, targetX)
             gUnk_030007c0[i] = distY + distX;
             unk = 1;
             if (gCurrentSprite.pose == 0x5d)
                 gCurrentSprite.xParasiteTimer = 300;
-            if (y + 8 > targetY + gSpriteData[i].hitboxTop && y - 8 < targetY + gSpriteData[i].hitboxBottom
-                && x + 8 > targetX + gSpriteData[i].hitboxLeft && x - 8 < targetX + gSpriteData[i].hitboxRight) {
-                if (--gSpriteData[i].work5 == 0) {
+            if (y + EIGHTH_BLOCK_SIZE > targetY + gSpriteData[i].hitboxTop && y - EIGHTH_BLOCK_SIZE < targetY + gSpriteData[i].hitboxBottom
+                && x + EIGHTH_BLOCK_SIZE > targetX + gSpriteData[i].hitboxLeft && x - EIGHTH_BLOCK_SIZE < targetX + gSpriteData[i].hitboxRight) {
+                if (--gSpriteData[i].numberOfXToForm == 0) {
                     if (gSpriteData[i].spritesetSlotAndProperties >= 0x10 && gSpriteData[i].spritesetSlotAndProperties < 0x20)
                         gSpriteData[i].spritesetSlotAndProperties = 0x20;
                     gSpriteData[i].pose = 0x59;
@@ -786,23 +783,23 @@ u8 XParasiteFlyingMovement(void) {
         if (gCurrentSprite.pose == 0x5d) {
             switch (gCurrentSprite.unk_8) {
                 case 1: {
-                    targetY -= 0x40;
+                    targetY -= BLOCK_SIZE;
                     if (gCurrentSprite.status & SS_FACING_RIGHT)
-                        targetX += 0x40;
+                        targetX += BLOCK_SIZE;
                     else
-                        targetX -= 0x40;
+                        targetX -= BLOCK_SIZE;
                     break;
                 }
                 case 3: {
-                    targetY += 0x40;
+                    targetY += BLOCK_SIZE;
                     if (gCurrentSprite.status & SS_FACING_RIGHT)
-                        targetX -= 0x40;
+                        targetX -= BLOCK_SIZE;
                     else
-                        targetX += 0x40;
+                        targetX += BLOCK_SIZE;
                 }
             }
         }
-        ySpeedCap = 0x14, xSpeedCap = 0x1c, i = 1;
+        ySpeedCap = PIXEL_TO_SUB_PIXEL(5), xSpeedCap = PIXEL_TO_SUB_PIXEL(7), i = 1;
     } else {
         u8 targetRamSlot = 1;
         // Get nearest sprite by taxicab distance
@@ -813,7 +810,7 @@ u8 XParasiteFlyingMovement(void) {
         targetY = gSpriteData[targetRamSlot].yPosition + gSpriteData[targetRamSlot].hitboxTop +
             (gSpriteData[targetRamSlot].hitboxBottom - gSpriteData[targetRamSlot].hitboxTop) / 2;
         targetX = gSpriteData[targetRamSlot].xPosition;
-        ySpeedCap = 0x14, xSpeedCap = 0x14, i = 1;
+        ySpeedCap = PIXEL_TO_SUB_PIXEL(5), xSpeedCap = PIXEL_TO_SUB_PIXEL(5), i = 1;
     }
     XParasiteMove(targetY, targetX, ySpeedCap, xSpeedCap, i);
     return unk;
@@ -828,16 +825,16 @@ void XParasiteFlyingAway(void) {
         if (gCurrentPowerBomb.animationState == 0)
             gCurrentSprite.invincibilityStunFlashTimer &= 0x7f;
     } else {
-        if (gCurrentSprite.work3 < 0xc8)
+        if (gCurrentSprite.work3 < PIXEL_TO_SUB_PIXEL(6.25f) * 8)
             gCurrentSprite.work3 += 1;
-        movement = gCurrentSprite.work3 >> 3;
+        movement = DIV_SHIFT(gCurrentSprite.work3, 8);
         if (gCurrentSprite.status & SS_FACING_RIGHT)
             gCurrentSprite.xPosition += movement;
         else
             gCurrentSprite.xPosition -= movement;
-        if (gCurrentSprite.work4 < 0xc8)
+        if (gCurrentSprite.work4 < PIXEL_TO_SUB_PIXEL(6.25f) * 8)
             gCurrentSprite.work4 += 1;
-        movement = gCurrentSprite.work4 >> 3;
+        movement = DIV_SHIFT(gCurrentSprite.work4, 8);
         if (gCurrentSprite.status & SS_FACING_DOWN)
             gCurrentSprite.yPosition += movement;
         else
@@ -847,27 +844,27 @@ void XParasiteFlyingAway(void) {
     }
 }
 
-void unk_620ec(void) {
+void XParasiteTryingToFormInit(void) {
     gCurrentSprite.paletteRow = 0;
     gCurrentSprite.status |= SS_ENABLE_MOSAIC;
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.pose = 0x66;
-    gCurrentSprite.work1 = 44;
+    gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
     gCurrentSprite.scaling = Q_8_8(75.f/64);
     SoundPlayNotAlreadyPlaying(0x143);
 }
 
-void unk_6212c(void) {
+void XParasiteTryingToForm(void) {
     u8 targetRamSlot;
     u16 tmp;
 
     gCurrentSprite.scaling -= Q_8_8(1.f/256);
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     targetRamSlot = gCurrentSprite.work2;
-    if (gSpriteData[targetRamSlot].work5 == 0) {
+    if (gSpriteData[targetRamSlot].numberOfXToForm == 0) {
         gCurrentSprite.status = 0;
-    } else if (unk_61004() == 0 || gCurrentSprite.scaling == 0) {
-        gSpriteData[targetRamSlot].work5++;
+    } else if (!(CheckSpritesThatCantAbsorbX()) || gCurrentSprite.scaling == 0) {
+        gSpriteData[targetRamSlot].numberOfXToForm++;
         gCurrentSprite.pose = 0x61;
         gCurrentSprite.status &= ~(SS_ENABLE_MOSAIC | SS_NOT_DRAWN);
         gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
@@ -876,7 +873,7 @@ void unk_6212c(void) {
             gCurrentSprite.status ^= SS_NOT_DRAWN;
         }
         if (--gCurrentSprite.work1 == 0)
-            gCurrentSprite.work1 = 44;
+            gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
         gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
         if (gSpriteData[targetRamSlot].yPosition > gCurrentSprite.xParasiteTimer) {
             tmp = gSpriteData[targetRamSlot].yPosition - gCurrentSprite.xParasiteTimer;
@@ -897,16 +894,16 @@ void unk_6212c(void) {
     }
 }
 
-void unk_6224c(void) {
+void XParasiteFormingInit(void) {
     gCurrentSprite.paletteRow = 0;
     gCurrentSprite.status |= SS_ENABLE_MOSAIC;
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.pose = 0x64;
-    gCurrentSprite.xParasiteTimer = 44;
+    gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     SoundPlayNotAlreadyPlaying(0x143);
 }
 
-void unk_62288(void) {
+void XParasiteForming(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     if ((gCurrentSprite.xParasiteTimer & 1) == 0)
         gCurrentSprite.status ^= SS_NOT_DRAWN;
@@ -937,7 +934,7 @@ void unk_62328(void) {
             else
             {
                 // Increase speed if below cap
-                if (gCurrentSprite.work3 < 10)
+                if (gCurrentSprite.work3 < PIXEL_TO_SUB_PIXEL(2.5f))
                     gCurrentSprite.work3++;
 
                 // Apply speed
@@ -947,7 +944,7 @@ void unk_62328(void) {
         else
         {
             if (--gCurrentSprite.work2 != 0)
-                gCurrentSprite.xPosition += gCurrentSprite.work2 >> 1;
+                gCurrentSprite.xPosition += DIV_SHIFT(gCurrentSprite.work2, 2);
             else
             {    
                 gCurrentSprite.status &= ~SS_FACING_RIGHT;
@@ -965,7 +962,7 @@ void unk_62328(void) {
             else
             {
                 // Increase speed if below cap
-                if (gCurrentSprite.work3 < 10)
+                if (gCurrentSprite.work3 < PIXEL_TO_SUB_PIXEL(2.5f))
                     gCurrentSprite.work3++;
 
                 // Apply speed
@@ -976,7 +973,7 @@ void unk_62328(void) {
         {
             if (--gCurrentSprite.work2 != 0)
             {
-                gCurrentSprite.xPosition -= gCurrentSprite.work2 >> 1;
+                gCurrentSprite.xPosition -= DIV_SHIFT(gCurrentSprite.work2, 2);
             }
             else
             {    
@@ -996,7 +993,7 @@ void unk_62328(void) {
             else
             {
                 // Increase speed if below cap
-                if (gCurrentSprite.work4 < 10)
+                if (gCurrentSprite.work4 < PIXEL_TO_SUB_PIXEL(2.5f))
                     gCurrentSprite.work4++;
 
                 // Apply speed
@@ -1006,7 +1003,7 @@ void unk_62328(void) {
         else
         {
             if (--gCurrentSprite.work1 != 0)
-                gCurrentSprite.yPosition += gCurrentSprite.work1 >> 1;
+                gCurrentSprite.yPosition += DIV_SHIFT(gCurrentSprite.work1, 2);
             else
             {    
                 gCurrentSprite.status &= ~SS_FACING_DOWN;
@@ -1024,7 +1021,7 @@ void unk_62328(void) {
             else
             {
                 // Increase speed if below cap
-                if (gCurrentSprite.work4 < 10)
+                if (gCurrentSprite.work4 < PIXEL_TO_SUB_PIXEL(2.5f))
                     gCurrentSprite.work4++;
 
                 // Apply speed
@@ -1035,7 +1032,7 @@ void unk_62328(void) {
         {
             if (--gCurrentSprite.work1 != 0)
             {
-                gCurrentSprite.yPosition -= gCurrentSprite.work1 >> 1;
+                gCurrentSprite.yPosition -= DIV_SHIFT(gCurrentSprite.work1, 2);
             }
             else
             {    
@@ -1051,14 +1048,11 @@ void XParasiteStickToSamus(void) {
 
     currentPosition = gCurrentSprite.xPosition + 0x200;
     targetPosition = gSamusData.xPosition + 0x200;
-    if (currentPosition > targetPosition)
-        distance = currentPosition - targetPosition;
-    else
-        distance = targetPosition - currentPosition;
-    if (distance <= 8)
+    SET_ABS_SUB(distance, currentPosition, targetPosition)
+    if (distance <= EIGHTH_BLOCK_SIZE)
         movement = 0;
     else
-        movement = DIV_SHIFT(distance - 8, 2);
+        movement = DIV_SHIFT(distance - EIGHTH_BLOCK_SIZE, 2);
     if (currentPosition > targetPosition)
         gCurrentSprite.xPosition -= movement;
     else if (currentPosition < targetPosition)
@@ -1066,17 +1060,14 @@ void XParasiteStickToSamus(void) {
 
     currentPosition = gCurrentSprite.yPosition + 0x200;
     if (SpriteUtilCheckMorphed())
-        targetPosition = gSamusData.yPosition + 0x1d0;
+        targetPosition = gSamusData.yPosition + 0x200 - PIXEL_TO_SUB_PIXEL(0xc);
     else
-        targetPosition = gSamusData.yPosition + 0x1b2;
-    if (currentPosition > targetPosition)
-        distance = currentPosition - targetPosition;
-    else
-        distance = targetPosition - currentPosition;
-    if (distance <= 8)
+        targetPosition = gSamusData.yPosition + 0x200 - PIXEL_TO_SUB_PIXEL(19.5f);
+    SET_ABS_SUB(distance, currentPosition, targetPosition)
+    if (distance <= EIGHTH_BLOCK_SIZE)
         movement = 0;
     else
-        movement = DIV_SHIFT(distance - 8, 2);
+        movement = DIV_SHIFT(distance - EIGHTH_BLOCK_SIZE, 2);
     if (currentPosition > targetPosition)
         gCurrentSprite.yPosition -= movement;
     else if (currentPosition < targetPosition)

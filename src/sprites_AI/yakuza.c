@@ -761,7 +761,7 @@ void YakuzaPhase2Dying(void) {
 void YakuzaTurningIntoCoreXInit(void) {
     gCurrentSprite.pose = 0x4a;
     gCurrentSprite.status |= SS_ENABLE_MOSAIC;
-    gCurrentSprite.xParasiteTimer = 44;
+    gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
 }
 
 void YakuzaTurningIntoCoreX(void) {

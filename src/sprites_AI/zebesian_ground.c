@@ -78,7 +78,7 @@ void ZebesianGroundSetShootingHitbox(void) {
 void ZebesianGroundInit(void) {
     if (gCurrentSprite.pose == 0x59) {
         gCurrentSprite.pose = 0x5a;
-        gCurrentSprite.work1 = 44;
+        gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
     } else {
         if (gCurrentSprite.spriteId == PSPRITE_ZEBESIAN_PRE_AQUA) {
             if (gCurrentSprite.status & SS_HIDDEN) {
@@ -93,7 +93,7 @@ void ZebesianGroundInit(void) {
                     gCurrentSprite.status = 0;
                     return;
                 }
-                gCurrentSprite.work5 = 2;
+                gCurrentSprite.numberOfXToForm = 2;
             }
         }
         SpriteUtilChooseRandomXFlip();

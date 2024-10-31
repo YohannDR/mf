@@ -63,7 +63,7 @@ void YamebaInit(void)
     {
         gCurrentSprite.work0++;
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-        gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+        gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     }
 
     if (gCurrentSprite.work0 == 0)
@@ -159,7 +159,7 @@ void YamebaInit(void)
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
-        gCurrentSprite.work5 = TRUE;
+        gCurrentSprite.numberOfXToForm = 1;
 }
 
 /**

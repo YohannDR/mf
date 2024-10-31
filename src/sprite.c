@@ -1043,7 +1043,7 @@ void SpriteInitPrimary(u8 spritesetSlot, u16 yPosition, u16 xPosition, u8 roomSl
         gSpriteData[i].primarySpriteRamSlot = i;
 
         gSpriteData[i].freezeTimer = 0;
-        gSpriteData[i].work5 = 1;
+        gSpriteData[i].numberOfXToForm = 1;
         break;
     }
 }
@@ -1106,7 +1106,7 @@ u8 SpriteSpawnSecondary(u8 spriteId, u8 partNumber, u8 gfxRow, u8 ramSlot, u16 y
         // Clear slot and properties
         gSpriteData[i].spritesetSlotAndProperties = UCHAR_MAX;
         gSpriteData[i].freezeTimer = 0;
-        gSpriteData[i].work5 = 1;
+        gSpriteData[i].numberOfXToForm = 1;
 
         slot = i;
         break;
@@ -1173,7 +1173,7 @@ u8 SpriteSpawnPrimary(u8 spriteId, u8 partNumber, u8 gfxRow, u8 spritesetSlot, u
         // Set slot and properties
         gSpriteData[i].spritesetSlotAndProperties = spritesetSlot;
         gSpriteData[i].freezeTimer = 0;
-        gSpriteData[i].work5 = 1;
+        gSpriteData[i].numberOfXToForm = 1;
 
         slot = i;
         break;
@@ -1241,7 +1241,7 @@ u8 SpriteSpawnNewXParasite(u8 spriteId, u8 partNumber, u8 gfxRow, u8 ramSlot, u8
         // Set slot and properties
         gSpriteData[i].spritesetSlotAndProperties = spritesetSlot;
         gSpriteData[i].freezeTimer = 0;
-        gSpriteData[i].work5 = 1;
+        gSpriteData[i].numberOfXToForm = 1;
 
         slot = i;
         break;

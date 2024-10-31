@@ -15,7 +15,7 @@
 
 void SkreeInit(void) {
     SpriteUtilTrySetAbsorbXFlag();
-    if ((gCurrentSprite.properties & SP_CAN_ABSORB_X) && (!(gCurrentSprite.status & SS_HIDDEN))){
+    if (gCurrentSprite.properties & SP_CAN_ABSORB_X && !(gCurrentSprite.status & SS_HIDDEN)) {
         gCurrentSprite.status = 0;
     } else {
         gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
@@ -33,7 +33,7 @@ void SkreeInit(void) {
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.pose = 0x5a;
-            gCurrentSprite.xParasiteTimer = 0x2c;
+            gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
         } else {
             gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;
         }
@@ -105,7 +105,7 @@ void SkreeGoingDown(void) {
         }
         gCurrentSprite.work1++;
     } else {
-        blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition,gCurrentSprite.xPosition);
+        blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
         if (gPreviousVerticalCollisionCheck != 0) {
             gCurrentSprite.yPosition = blockTop;
             gCurrentSprite.work1 = 1;
@@ -136,11 +136,9 @@ void SkreeCrashingInit(void) {
 void SkreeCrashing(void) {
     if (gCurrentSprite.work1 != 0) {
         gCurrentSprite.work1--;
-    } else {
-        if (gCurrentSprite.unk_8 - 0xc0 < gSamusData.xPosition && gSamusData.xPosition < gCurrentSprite.unk_8 + 0xc0) {
-            gCurrentSprite.xPosition = gSamusData.xPosition;
-            gCurrentSprite.pose = 0x2d;
-        }
+    } else if (gCurrentSprite.unk_8 - 0xc0 < gSamusData.xPosition && gSamusData.xPosition < gCurrentSprite.unk_8 + 0xc0) {
+        gCurrentSprite.xPosition = gSamusData.xPosition;
+        gCurrentSprite.pose = 0x2d;
     }
 }
 
@@ -158,7 +156,7 @@ void SkreeGoingUpWarning(void) {
     u16 xPosition;
     
     if (gCurrentSprite.work2 == 0) {
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x70,gCurrentSprite.xPosition);
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x70, gCurrentSprite.xPosition);
         if ((gPreviousCollisionCheck & 0xf0) != 0) {
             gCurrentSprite.yPosition -= 4;
             return;
@@ -201,7 +199,7 @@ void SkreeGoingUpWarning(void) {
             gCurrentSprite.yPosition--;
         }
         gCurrentSprite.work2++;
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition,gCurrentSprite.xPosition);
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
         if (!gPreviousCollisionCheck) {
             gCurrentSprite.pose = 0x2f;
         }
@@ -214,13 +212,13 @@ void SkreeGoingUpInit(void) {
 }
 
 void SkreeGoingUp(void) {
-    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x80,gCurrentSprite.xPosition);
+    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x80, gCurrentSprite.xPosition);
     if (!gPreviousCollisionCheck && gCurrentSprite.xParasiteTimer < gCurrentSprite.yPosition) {
         gCurrentSprite.yPosition -= 0x10;
-        return;
+    } else {
+        gCurrentSprite.yPosition = gCurrentSprite.xParasiteTimer;
+        gCurrentSprite.pose = 1;
     }
-    gCurrentSprite.yPosition = gCurrentSprite.xParasiteTimer;
-    gCurrentSprite.pose = 1;
 }
 
 void Skree(void) {

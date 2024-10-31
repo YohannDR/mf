@@ -309,7 +309,7 @@ void ZazabiInit(void)
     if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
     {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-        gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+        gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     }
     else
     {
@@ -1370,7 +1370,7 @@ void ZazabiDyingInit(void)
     gCurrentSprite.health = 1;
     gCurrentSprite.invincibilityStunFlashTimer = 0;
     gCurrentSprite.paletteRow = 0;
-    gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+    gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     gCurrentSprite.unk_8 = 1;
 
     ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x2F);
@@ -1415,7 +1415,7 @@ void ZazabiDying(void)
 
             case 0:
                 gCurrentSprite.unk_8 = 0;
-                gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+                gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
                 break;
         }
 

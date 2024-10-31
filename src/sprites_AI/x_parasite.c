@@ -390,7 +390,7 @@ void XParasiteAquaZebesianWaitingToMove(void)
         {
             gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
 
-            if (gCurrentSprite.xParasiteTimer > 22)
+            if (gCurrentSprite.xParasiteTimer > X_PARASITE_MOSAIC_MAX_INDEX / 2)
             {
                 gCurrentSprite.ignoreSamusCollisionTimer = 1;
             }
@@ -487,17 +487,17 @@ void XParasite(void)
             break;
 
         case 0x63:
-            unk_6224c();
+            XParasiteFormingInit();
 
         case 0x64:
-            unk_62288();
+            XParasiteForming();
             break;
 
         case 0x65:
-            unk_620ec();
+            XParasiteTryingToFormInit();
 
         case 0x66:
-            unk_6212c();
+            XParasiteTryingToForm();
     }
 }
 
@@ -578,17 +578,17 @@ void XParasiteCoreXOrStabilizer(void)
             break;
 
         case 0x63:
-            unk_6224c();
+            XParasiteFormingInit();
 
         case 0x64:
-            unk_62288();
+            XParasiteForming();
             break;
 
         case 0x65:
-            unk_620ec();
+            XParasiteTryingToFormInit();
 
         case 0x66:
-            unk_6212c();
+            XParasiteTryingToForm();
     }
 }
 

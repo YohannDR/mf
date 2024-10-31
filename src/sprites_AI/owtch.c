@@ -155,7 +155,7 @@ void OwtchInit(void)
         if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
         {
             gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-            gCurrentSprite.xParasiteTimer = 0x2c;
+            gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
         }
         else
         {

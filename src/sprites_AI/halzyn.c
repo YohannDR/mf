@@ -43,7 +43,7 @@ void HalzynInit(void)
             return;
         }
 
-        gCurrentSprite.work5 = 0x2;
+        gCurrentSprite.numberOfXToForm = 2;
 
         gCurrentSprite.hitboxTop = -BLOCK_SIZE;
         gCurrentSprite.hitboxBottom = HALF_BLOCK_SIZE;
@@ -61,7 +61,7 @@ void HalzynInit(void)
     if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
     {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-        gCurrentSprite.work1 = ARRAY_SIZE(sXParasiteMosaicValues);
+        gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
         return;
     }
 
