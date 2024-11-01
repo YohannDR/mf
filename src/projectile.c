@@ -2,8 +2,6 @@
 #include "gba.h"
 #include "macros.h"
 #include "globals.h"
-#include "sprite_util.h"
-#include "sprite_debris.h"
 
 #include "data/sprite_data.h"
 
@@ -16,6 +14,7 @@
 #include "structs/sprite.h"
 #include "structs/power_bomb.h"
 #include "structs/projectile.h"
+#include "structs/sprite_debris.h"
 
 /**
  * @brief 8116c | 50 | Checks if the number of projectiles currently existing is above/under the specified limit
@@ -378,7 +377,21 @@ void ProjectileLoadBeamGraphics(void)
 
 void ProjectileLoadMissileGraphics(void)
 {
+    u8 weaponsStatus = gEquipment.weaponsStatus;
 
+    if (weaponsStatus & MBF_DIFFUSION_MISSILES) {
+        DMA_SET(3, 0x858d624, VRAM_OBJ + 0x1380, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+        DMA_SET(3, 0x858d6a4, VRAM_OBJ + 0x1780, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+    } else if (weaponsStatus & MBF_ICE_MISSILES) {
+        DMA_SET(3, 0x858d524, VRAM_OBJ + 0x1380, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+        DMA_SET(3, 0x858d5a4, VRAM_OBJ + 0x1780, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+    } else if (weaponsStatus & MBF_SUPER_MISSILES) {
+        DMA_SET(3, 0x858d424, VRAM_OBJ + 0x1380, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+        DMA_SET(3, 0x858d4a4, VRAM_OBJ + 0x1780, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+    } else if (weaponsStatus & MBF_MISSILES) {
+        DMA_SET(3, 0x858d324, VRAM_OBJ + 0x1380, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+        DMA_SET(3, 0x858d3a4, VRAM_OBJ + 0x1780, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+    }
 }
 
 /**
@@ -399,9 +412,66 @@ void ProjectileCallLoadGraphicsAndClearProjectiles(void)
         gProjectileData[i].status = 0;
 }
 
-void ProjectileMove(u8 movement)
+void ProjectileMove(u8 distance)
 {
+    s16 samusVelocity;
+    s16 leftVelocity;
+    s16 rightVelocity;
 
+    switch (gCurrentProjectile.direction)
+    {
+        case ACD_UP:
+            gCurrentProjectile.yPosition -= distance;
+            return;
+
+        case ACD_DOWN:
+            gCurrentProjectile.yPosition += distance;
+            return;
+
+        case ACD_DIAGONAL_UP:
+            distance = distance * 3 / 4;
+
+            gCurrentProjectile.yPosition -= distance;
+
+            if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+                gCurrentProjectile.xPosition += distance;
+            else
+                gCurrentProjectile.xPosition -= distance;
+            break;
+
+        case ACD_DIAGONAL_DOWN:
+            distance = distance * 3 / 4;
+
+            gCurrentProjectile.yPosition += distance;
+
+            if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+                gCurrentProjectile.xPosition += distance;
+            else
+                gCurrentProjectile.xPosition -= distance;
+            break;
+
+        default:
+            if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+                gCurrentProjectile.xPosition += distance;
+            else
+                gCurrentProjectile.xPosition -= distance;
+    }
+
+    // Check add samus' velocity if moving in the same direction
+    samusVelocity = gSamusData.xVelocity;
+    leftVelocity = VELOCITY_TO_SUB_PIXEL(gSamusData.xVelocity);
+    rightVelocity = leftVelocity;
+
+    if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+    {
+        if (samusVelocity > 0)
+            gCurrentProjectile.xPosition += leftVelocity;
+    }
+    else
+    {
+        if (samusVelocity < 0)
+            gCurrentProjectile.xPosition += rightVelocity;
+    }
 }
 
 /**
@@ -549,9 +619,9 @@ void ProjectileCheckHittingSprite(void)
 
     contactDamage = 0x0;
 
-    if (SpriteUtilCheckDamagingPose())
+    if (SpriteUtilCheckSamusDamagingPose())
         contactDamage = 0x1;
-    else if (SpriteUtilCheckSudoScrew(0x80))
+    else if (SpriteUtilCheckSamusSudoScrew(0x80))
         contactDamage = 0x2;
 
     if (contactDamage != 0x0)
@@ -1460,9 +1530,9 @@ u8 ProjectileIceBeamDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage)
  * @brief 83b78 | 34 | Sets the isft for a solid sprite
  * 
  * @param spriteSlot Sprite slot
- * @return u8 Garbage
+ * @return u32 Garbage
  */
-u8 ProjectileSetIsftForSolid(u8 spriteSlot)
+u32 ProjectileSetIsftForSolid(u8 spriteSlot)
 {
     u8 isft;
 
@@ -1472,7 +1542,7 @@ u8 ProjectileSetIsftForSolid(u8 spriteSlot)
         SPRITE_CLEAR_AND_SET_ISFT(gSpriteData[spriteSlot], isft);
     }
 
-    return gSpriteData[spriteSlot].invincibilityStunFlashTimer;
+    return;
 }
 
 /**
@@ -2027,7 +2097,20 @@ void ProjectileFlareHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition, u16 s
 
 void ProjectileStartMissileTumble(u8 spriteSlot, u8 projectileSlot)
 {
+    gProjectileData[projectileSlot].movementStage = 7;
+    gProjectileData[projectileSlot].timer = 0;
 
+    gProjectileData[projectileSlot].status &= ~PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+    gProjectileData[projectileSlot].status |= PROJ_STATUS_HIGH_BG_PRIORITY;
+
+    gProjectileData[projectileSlot].animationDurationCounter = 0;
+    gProjectileData[projectileSlot].currentAnimationFrame = 0;
+    gProjectileData[projectileSlot].pOam = (const struct FrameData*)0x858ea20;
+
+    if (gProjectileData[projectileSlot].xPosition > gSpriteData[spriteSlot].xPosition)
+        gProjectileData[projectileSlot].status |= PROJ_STATUS_X_FLIP;
+    else
+        gProjectileData[projectileSlot].status &= ~PROJ_STATUS_X_FLIP;
 }
 
 /**

@@ -9472,7 +9472,7 @@ SaXBossTrackSamus: @ 0x0801A294
 	ldr r0, _0801A2BC @ =gCurrentSprite
 	movs r1, #0
 	strh r1, [r0, #6]
-	bl SamusCheckHangingOnLedge
+	bl SpriteUtilCheckSamusHangingOnLedge
 	cmp r0, #0
 	beq _0801A2C0
 	movs r0, #0xb8
@@ -9779,7 +9779,7 @@ _0801A4E8: .4byte 0xFFFFFE70
 _0801A4EC: .4byte 0xFFFFFE80
 _0801A4F0: .4byte 0xFFFFFF00
 _0801A4F4:
-	bl SamusCheckHangingOnLedge
+	bl SpriteUtilCheckSamusHangingOnLedge
 	cmp r0, #0
 	beq _0801A55C
 	ldr r0, _0801A510 @ =gSamusData

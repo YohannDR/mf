@@ -40,7 +40,7 @@ void SpriteUpdate(void)
         // Update the debris
         SpriteDebrisUpdateAll();
 
-        if (!SpriteUtilCheckStopSpritesPose())
+        if (!SpriteUtilCheckSamusStopSpritesPose())
         {
             // Handle collision
             SpriteUtilSamusAndSpriteCollision();
@@ -1077,6 +1077,9 @@ u8 SpriteSpawnSecondary(u8 spriteId, u8 partNumber, u8 gfxRow, u8 ramSlot, u16 y
         // Found a free slot, initialize data
 
         // Set initial status
+        // The not drawn flag is set because if the spawned sprite slot is lower than the current sprite slot,
+        // the sprite is uninitialized this frame, and if the not drawn flag is not set,
+        // the sprite will look glitched for one frame before being initialized next frame.
         gSpriteData[i].status = (SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN) | statusToAdd;
 
         // Flag as secondary sprite

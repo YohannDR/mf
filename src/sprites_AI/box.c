@@ -495,7 +495,7 @@ void BoxFinishedCrawling(void) {
         }
     } else {
         if (SpriteUtilCheckNearEndSubSprite1Anim()) {
-            if (SamusCheckOnCeilingLadder()) {
+            if (SpriteUtilCheckSamusOnCeilingLadder()) {
                 gCurrentSprite.pose = BOX_POSE_JUMP_WARNING_INIT;
             } else {
                 if (gCurrentSprite.work2 != 0) {
@@ -537,7 +537,7 @@ void BoxJumpingInit(void) {
     gCurrentSprite.pose = BOX_POSE_JUMPING;
     gCurrentSprite.work4 = 0;
     if ((gCurrentSprite.work2 & 0x80) == 0) {
-        if (SamusCheckOnCeilingLadder()) {
+        if (SpriteUtilCheckSamusOnCeilingLadder()) {
             SpriteUtilMakeSpriteFaceSamusDirection();
         } else {
             SpriteUtilMakeSpriteFaceAwayFromSamusDirection();
@@ -1149,7 +1149,7 @@ void BoxMissileSpawning(void) {
     movement = gCurrentSprite.work1 / 2;
     gCurrentSprite.yPosition -= movement;
     if (movement < 3) {
-        gCurrentSprite.rotation = RotateSpriteTowardsSamus(gCurrentSprite.rotation,
+        gCurrentSprite.rotation = SpriteUtilMakeSpriteRotateTowardsTarget(gCurrentSprite.rotation,
             gSamusData.yPosition - 0x40, gSamusData.xPosition, gCurrentSprite.yPosition, gCurrentSprite.xPosition);
     }
     gCurrentSprite.work1 -= 2;
@@ -1174,15 +1174,15 @@ void BoxMissileMoving(void) {
         } else {
             targetYOffset = 0x68;
         }
-        MoveSpriteTowardsTarget((u16)(gSamusData.yPosition - targetYOffset), gSamusData.xPosition, 0x18, 0x28, 2);
-        gCurrentSprite.rotation = RotateSpriteTowardsSamus(gCurrentSprite.rotation,
+        SpriteUtilMoveTowardsTarget((u16)(gSamusData.yPosition - targetYOffset), gSamusData.xPosition, 0x18, 0x28, 2);
+        gCurrentSprite.rotation = SpriteUtilMakeSpriteRotateTowardsTarget(gCurrentSprite.rotation,
             gSamusData.yPosition - 0x40, gSamusData.xPosition, gCurrentSprite.yPosition, gCurrentSprite.xPosition);
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
         if (gPreviousCollisionCheck != 0) {
-            gCurrentSprite.pose = SPRITE_POSE_SELF_DESTRUCT;
+            gCurrentSprite.pose = SPRITE_POSE_STOPPED;
         }
     } else {
-        gCurrentSprite.pose = SPRITE_POSE_SELF_DESTRUCT;
+        gCurrentSprite.pose = SPRITE_POSE_STOPPED;
     }
 }
 
@@ -1986,7 +1986,7 @@ void BoxMissile(void) {
         case 0x18:
             BoxMissileMoving();
             break;
-        case SPRITE_POSE_SELF_DESTRUCT:
+        case SPRITE_POSE_STOPPED:
             BoxMissileExploding();
             break;
     }
@@ -2003,7 +2003,7 @@ void BoxBomb(void) {
         case 0x18:
             BoxBombLanded();
             break;
-        case SPRITE_POSE_SELF_DESTRUCT:
+        case SPRITE_POSE_STOPPED:
             BoxBombExploding();
             break;
     }

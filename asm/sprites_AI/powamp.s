@@ -128,7 +128,7 @@ PowampIdle: @ 0x0804F9B4
 	lsls r2, r2, #1
 	adds r0, r2, #0
 	movs r1, #0xc0
-	bl CheckSamusNearSpriteAboveBelowSeparateRanges
+	bl SpriteUtilCheckSamusNearSpriteAboveBelowSeparateRanges
 	cmp r0, #0
 	beq _0804F9DC
 	adds r1, r4, #0
@@ -221,7 +221,7 @@ PowampExtended: @ 0x0804FA6C
 	lsls r2, r2, #1
 	adds r0, r2, #0
 	movs r1, #0xc0
-	bl CheckSamusNearSpriteAboveBelowSeparateRanges
+	bl SpriteUtilCheckSamusNearSpriteAboveBelowSeparateRanges
 	cmp r0, #0
 	bne _0804FA86
 	ldr r0, _0804FA8C @ =gCurrentSprite
@@ -269,7 +269,7 @@ PowampRetracting: @ 0x0804FAC8
 	lsls r2, r2, #1
 	adds r0, r2, #0
 	movs r1, #0xc0
-	bl CheckSamusNearSpriteAboveBelowSeparateRanges
+	bl SpriteUtilCheckSamusNearSpriteAboveBelowSeparateRanges
 	cmp r0, #0
 	beq _0804FB00
 	ldr r1, _0804FAF4 @ =gCurrentSprite

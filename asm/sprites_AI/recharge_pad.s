@@ -266,7 +266,7 @@ RechargePadOpened: @ 0x0802C0C4
 	adds r3, r0, #0
 	cmp r3, #0
 	beq _0802C168
-	bl SpriteUtilCheckMorphed
+	bl SpriteUtilCheckSamusMorphed
 	cmp r0, #0
 	bne _0802C182
 	ldr r0, _0802C10C @ =gSamusData

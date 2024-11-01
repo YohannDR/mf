@@ -38,7 +38,7 @@ void ProjectileSudoScrewHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition);
 u8 ProjectileIceMissileDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage);
 u8 ProjectileDiffusionFlakeDealDamage(u8 spriteSlot, u8 projectileSlot);
 u8 ProjectileIceBeamDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage);
-u8 ProjectileSetIsftForSolid(u8 spriteSlot);
+u32 ProjectileSetIsftForSolid(u8 spriteSlot);
 void ProjectileNormalBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
 void ProjectileChargedNormalBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);
 void ProjectileChargeBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition, u16 xPosition);

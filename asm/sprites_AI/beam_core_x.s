@@ -286,7 +286,7 @@ BeamCoreXMoving: @ 0x0802DB8C
 	str r2, [sp, #4]
 	movs r2, #0xa
 	movs r3, #0x10
-	bl MoveBeamCoreX
+	bl SpriteUtilMoveBeamCoreX
 _0802DBB6:
 	add sp, #8
 	pop {r0}
@@ -2784,7 +2784,7 @@ _0802EF60:
 	ldrb r0, [r0]
 	cmp r0, #2
 	bhi _0802EF6E
-	bl unk_12a88
+	bl SpriteUtilMoveEyeCoreXBeamPart
 _0802EF6E:
 	ldr r0, _0802EF8C @ =gCurrentSprite
 	adds r4, r0, #0
@@ -2813,7 +2813,7 @@ _0802EF9A:
 	b _0802EFA6
 _0802EFA0:
 	movs r0, #0x10
-	bl MoveEyeCoreXBeam
+	bl SpriteUtilMoveEyeCoreXBeam
 _0802EFA6:
 	ldrb r0, [r4]
 	adds r0, #1
@@ -2824,7 +2824,7 @@ _0802EFAE:
 	strb r0, [r4]
 _0802EFB2:
 	movs r0, #0x18
-	bl MoveEyeCoreXBeam
+	bl SpriteUtilMoveEyeCoreXBeam
 	b _0802EFC4
 _0802EFBA:
 	movs r0, #0x38
@@ -2949,7 +2949,7 @@ CoreXWideBeam: @ 0x0802F09C
 	ldrb r0, [r0]
 	cmp r0, #8
 	bhi _0802F0B4
-	bl unk_12a88
+	bl SpriteUtilMoveEyeCoreXBeamPart
 _0802F0B4:
 	ldr r1, _0802F0E0 @ =gCurrentClipdataAffectingAction
 	movs r0, #6
@@ -2990,7 +2990,7 @@ _0802F0FE:
 	b _0802F10A
 _0802F104:
 	movs r0, #0x10
-	bl MoveEyeCoreXBeam
+	bl SpriteUtilMoveEyeCoreXBeam
 _0802F10A:
 	ldrb r0, [r4]
 	adds r0, #1
@@ -2998,7 +2998,7 @@ _0802F10A:
 	b _0802F118
 _0802F112:
 	movs r0, #0x18
-	bl MoveEyeCoreXBeam
+	bl SpriteUtilMoveEyeCoreXBeam
 _0802F118:
 	pop {r4}
 	pop {r0}
@@ -3117,7 +3117,7 @@ CoreXPlasmaBeam: @ 0x0802F1F4
 	ldrb r0, [r0]
 	cmp r0, #8
 	bhi _0802F20C
-	bl unk_12a88
+	bl SpriteUtilMoveEyeCoreXBeamPart
 _0802F20C:
 	ldr r1, _0802F238 @ =gCurrentClipdataAffectingAction
 	movs r0, #6
@@ -3158,7 +3158,7 @@ _0802F256:
 	b _0802F262
 _0802F25C:
 	movs r0, #0x10
-	bl MoveEyeCoreXBeam
+	bl SpriteUtilMoveEyeCoreXBeam
 _0802F262:
 	ldrb r0, [r4]
 	adds r0, #1
@@ -3166,7 +3166,7 @@ _0802F262:
 	b _0802F270
 _0802F26A:
 	movs r0, #0x18
-	bl MoveEyeCoreXBeam
+	bl SpriteUtilMoveEyeCoreXBeam
 _0802F270:
 	pop {r4}
 	pop {r0}
@@ -3330,7 +3330,7 @@ CoreXWaveIceBeam: @ 0x0802F3A4
 	ldrb r0, [r4, #0x1e]
 	cmp r0, #0
 	beq _0802F3B2
-	bl unk_12b54
+	bl SpriteUtilMoveEyeCoreXWaveBeamPart
 _0802F3B2:
 	ldr r1, _0802F3D8 @ =gCurrentClipdataAffectingAction
 	movs r0, #6
@@ -3345,7 +3345,7 @@ _0802F3B2:
 	cmp r0, #1
 	beq _0802F3E2
 	movs r0, #0x18
-	bl MoveEyeCoreXBeam
+	bl SpriteUtilMoveEyeCoreXBeam
 	b _0802F3EE
 	.align 2, 0
 _0802F3D4: .4byte gCurrentSprite
@@ -3355,7 +3355,7 @@ _0802F3DC:
 	b _0802F3E8
 _0802F3E2:
 	movs r0, #0x10
-	bl MoveEyeCoreXBeam
+	bl SpriteUtilMoveEyeCoreXBeam
 _0802F3E8:
 	ldrb r0, [r4]
 	adds r0, #1

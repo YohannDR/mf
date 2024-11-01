@@ -662,7 +662,7 @@ void NettoriPartIdle(void)
 
                         // Choose shooting position, always low if crouched/morphed, otherwise leave to rng
                         // Rng has 2/3 of being low, and 1/3 of being high
-                        if (SpriteUtilSamusCheckCrouchingOrMorphed())
+                        if (SpriteUtilCheckSamusCrouchingOrMorphed())
                             gCurrentSprite.pOam = sNettoriPartOam_PlasmaShootingLow;
                         else if (gSpriteRandomNumber >= 10)
                             gCurrentSprite.pOam = sNettoriPartOam_PlasmaShootingLow;
@@ -676,7 +676,7 @@ void NettoriPartIdle(void)
             else
             {
                 // Choose shooting position, doesn't matter because in this health threshold nettori doesn't shoot
-                if (SpriteUtilSamusCheckCrouchingOrMorphed())
+                if (SpriteUtilCheckSamusCrouchingOrMorphed())
                     gCurrentSprite.pOam = sNettoriPartOam_PlasmaShootingLow;
                 else if (gSamusData.yPosition < gCurrentSprite.yPosition - (BLOCK_SIZE * 3 + HALF_BLOCK_SIZE))
                     gCurrentSprite.pOam = sNettoriPartOam_PlasmaShootingHigh;
@@ -1141,7 +1141,7 @@ void SamusEaterBudIdle(void)
         }
     }
 
-    if (canShoot && SpriteUtilSpriteUtilCountSecondarySpritesWithRamSlot(SSPRITE_SAMUS_EATER_SPORE, gCurrentSprite.primarySpriteRamSlot) < 2)
+    if (canShoot && SpriteUtilCountSecondarySpritesWithRamSlot(SSPRITE_SAMUS_EATER_SPORE, gCurrentSprite.primarySpriteRamSlot) < 2)
     {
         // Set shooting
         gCurrentSprite.pose = SAMUS_EATER_BUD_POSE_SHOOTING;

@@ -43,9 +43,9 @@ CFLAGS = -Werror -O2 -mthumb-interwork -fhex-asm
 CPPFLAGS = -nostdinc -Iinclude/
 
 # Objects
-CSRC = $(wildcard src/**.c) $(wildcard src/**/**.c) $(wildcard src/**/**/**.c)
+CSRC = $(wildcard src/**.c) $(wildcard src/**/**.c) $(wildcard src/**/**/**.c) $(wildcard nonmatchings/*.c)
 .PRECIOUS: $(CSRC:.c=.s)
-ASMSRC = $(CSRC:.c=.s) $(wildcard asm/*.s) $(wildcard audio/*.s) $(wildcard audio/**/*.s) $(wildcard audio/**/**/*.s)
+ASMSRC = $(CSRC:.c=.s) $(wildcard asm/**.s) $(wildcard asm/**/*.s) $(wildcard audio/*.s) $(wildcard audio/**/*.s) $(wildcard audio/**/**/*.s) $(wildcard expected/*.s) $(wildcard nonmatchings/*.s)
 OBJ = $(ASMSRC:.s=.o) 
 
 # Enable verbose output

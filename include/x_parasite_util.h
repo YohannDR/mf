@@ -9,6 +9,12 @@ enum XParasiteType {
     X_PARASITE_TYPE_FROM_CORE_X
 };
 
+enum XParasiteFlyingStage {
+    X_PARASITE_FLYING_STAGE_FREE_FLOATING,
+    X_PARASITE_FLYING_STAGE_FLYING_TO_SPRITE,
+    X_PARASITE_FLYING_STAGE_TOUCHED_SPRITE
+};
+
 u32 CheckSpriteThatCantAbsorbX(void);
 u8 CountPrimarySpritesThatCantAbsorbX(void);
 void XParasiteMove(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor);
@@ -26,8 +32,8 @@ void XParasiteFlying(void);
 void XParasiteGettingAbsorbed(void);
 u8 XParasiteFlyingMovement(void);
 void XParasiteFlyingAway(void);
-void XParasiteTryingToFormInit(void);
-void XParasiteTryingToForm(void);
+void XParasiteWaitingForEnoughXToFormInit(void);
+void XParasiteWaitingForEnoughXToForm(void);
 void XParasiteFormingInit(void);
 void XParasiteForming(void);
 void SpriteSpawningFromX(void);

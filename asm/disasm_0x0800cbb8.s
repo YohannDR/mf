@@ -965,7 +965,7 @@ _0800D2CE:
 	movs r1, #0
 	movs r2, #0x10
 	movs r3, #1
-	bl SetSuitPalette
+	bl SamusSetPalette
 	movs r0, #2
 	mov r8, r0
 	ldr r0, _0800D3D0 @ =gSamusOnTopOfBackgrounds

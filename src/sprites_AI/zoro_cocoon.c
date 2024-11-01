@@ -97,7 +97,7 @@ void ZoroCocoonInit(void)
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
-    SpriteUtilSpriteChooseRandomXDirectionWithRoomSlot();
+    SpriteUtilChooseRandomXDirectionRoomSlot();
 
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
@@ -222,7 +222,7 @@ void ZoroHuskInit(void)
     gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
-    SpriteUtilSpriteChooseRandomXDirectionWithRoomSlot();
+    SpriteUtilChooseRandomXDirectionRoomSlot();
 
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 

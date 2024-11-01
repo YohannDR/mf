@@ -1204,7 +1204,7 @@ _08052314:
 	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
 	beq _08052346
-	bl SamusCheckOnCeilingLadder
+	bl SpriteUtilCheckSamusOnCeilingLadder
 	cmp r0, #0
 	beq _0805232C
 	adds r1, r4, #0
@@ -1313,7 +1313,7 @@ Box2JumpingInit: @ 0x080523B4
 	ands r0, r1
 	cmp r0, #0
 	bne _080524B2
-	bl SamusCheckOnCeilingLadder
+	bl SpriteUtilCheckSamusOnCeilingLadder
 	cmp r0, #0
 	beq _08052400
 	bl SpriteUtilMakeSpriteFaceSamusDirection
@@ -3422,7 +3422,7 @@ _080534BC:
 	ldrh r3, [r5, #2]
 	ldrh r4, [r5, #4]
 	str r4, [sp]
-	bl RotateSpriteTowardsSamus
+	bl SpriteUtilMakeSpriteRotateTowardsTarget
 	strb r0, [r7]
 _080534EC:
 	ldrb r0, [r6]
@@ -3502,7 +3502,7 @@ _08053566:
 	str r2, [sp]
 	movs r2, #0x18
 	movs r3, #0x28
-	bl MoveSpriteTowardsTarget
+	bl SpriteUtilMoveTowardsTarget
 	ldr r5, _080535D4 @ =gCurrentSprite
 	adds r6, r5, #0
 	adds r6, #0x2b
@@ -3513,7 +3513,7 @@ _08053566:
 	ldrh r3, [r5, #2]
 	ldrh r4, [r5, #4]
 	str r4, [sp]
-	bl RotateSpriteTowardsSamus
+	bl SpriteUtilMakeSpriteRotateTowardsTarget
 	strb r0, [r6]
 	ldrh r0, [r5, #2]
 	ldrh r1, [r5, #4]

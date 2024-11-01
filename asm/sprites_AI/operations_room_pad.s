@@ -212,7 +212,7 @@ OperationsRoomPadSwitchPressed: @ 0x08039B3C
 	adds r3, r0, #0
 	cmp r3, #0
 	beq _08039B90
-	bl SpriteUtilCheckMorphed
+	bl SpriteUtilCheckSamusMorphed
 	cmp r0, #0
 	bne _08039BAA
 	ldr r2, _08039B84 @ =gSamusData

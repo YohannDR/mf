@@ -252,7 +252,7 @@ void SecurityPadGrabSamus(void)
 
     if (NavPadDetectSamus())
     {
-        if (SpriteUtilCheckMorphed())
+        if (SpriteUtilCheckSamusMorphed())
             return;
 
         if (gSamusData.turning)

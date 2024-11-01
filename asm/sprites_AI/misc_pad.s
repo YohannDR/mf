@@ -312,7 +312,7 @@ MiscPadSwitchPressed: @ 0x08039494
 	bl NavPadDetectSamus
 	cmp r0, #0
 	beq _080394E4
-	bl SpriteUtilCheckMorphed
+	bl SpriteUtilCheckSamusMorphed
 	cmp r0, #0
 	bne _08039514
 	ldr r2, _080394D8 @ =gSamusData

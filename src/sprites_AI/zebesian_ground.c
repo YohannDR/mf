@@ -463,7 +463,7 @@ void ZebesianGroundShootingInit(void) {
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x2a;
     gCurrentSprite.work1 = 70;
-    if (SpriteUtilSamusCheckCrouchingOrMorphed()) {
+    if (SpriteUtilCheckSamusCrouchingOrMorphed()) {
         gCurrentSprite.work2 = TRUE;
         gCurrentSprite.pOam = sZebesianGroundOam_35c278;
     } else {

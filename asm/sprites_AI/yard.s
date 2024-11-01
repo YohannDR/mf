@@ -487,7 +487,7 @@ _0803C80C:
 	lsls r2, r2, #2
 	adds r0, r2, #0
 	adds r1, r2, #0
-	bl CheckSamusNearSpriteFrontBehindY
+	bl SpriteUtilCheckSamusNearSpriteFrontBehindY
 	b _0803C830
 _0803C824:
 	movs r2, #0xa0

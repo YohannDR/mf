@@ -326,7 +326,7 @@ u8 SaXBossTrackSamus(void)
     {
         gCurrentSprite.xParasiteTimer = 0;
 
-        if (SpriteUtilCheckHangingOnLedge())
+        if (SpriteUtilCheckSamusHangingOnLedge())
         {
             nslr = SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 11 + HALF_BLOCK_SIZE,
                 BLOCK_SIZE * 9 + QUARTER_BLOCK_SIZE + PIXEL_SIZE);
@@ -498,7 +498,7 @@ u8 SaXBossTrackSamus(void)
         }
     }
 
-    if (SpriteUtilCheckHangingOnLedge())
+    if (SpriteUtilCheckSamusHangingOnLedge())
     {
         if (gSamusData.yPosition < gCurrentSprite.yPosition)
             gSaXVision.unk_0 = 1;
@@ -1348,7 +1348,7 @@ void SaXBossTransformingIntoMonster(void)
 
         if (gCurrentSprite.work1 == 0)
         {
-            SpriteSpawnPrimary(PSPRITE_SA_X_MONSTER, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, 0x10,
+            SpriteSpawnPrimary(PSPRITE_SA_X_MONSTER, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, SSP_CAN_ABSORB_ADDITIONAL_X,
                 gCurrentSprite.yPosition + PIXEL_SIZE, gCurrentSprite.xPosition, gCurrentSprite.status & SS_FACING_RIGHT);
 
             gCurrentSprite.pose = 0x55;

@@ -522,7 +522,7 @@ void SaXUpdateGraphicsAndDraw(void)
         pPalette = sSaXPalette_Default;
     }
 
-    SetSuitPalette(pPalette, 0, 16, TRUE);
+    SamusSetPalette(pPalette, 0, 16, TRUE);
 
     priority = 2;
     if (gSamusOnTopOfBackgrounds)

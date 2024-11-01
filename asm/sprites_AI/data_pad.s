@@ -192,7 +192,7 @@ DataPadSwitchPressed: @ 0x0802AFE0
 	adds r3, r0, #0
 	cmp r3, #0
 	beq _0802B034
-	bl SpriteUtilCheckMorphed
+	bl SpriteUtilCheckSamusMorphed
 	cmp r0, #0
 	bne _0802B04E
 	ldr r2, _0802B028 @ =gSamusData

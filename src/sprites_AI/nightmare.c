@@ -315,7 +315,8 @@ void NightmarePhase1Init(void) {
 }
 
 void NightmarePhase1(void) {
-    NightmareMoveToPosition(gSamusData.yPosition - BLOCK_TO_SUB_PIXEL(4), gAbilityRestingXPosition + BLOCK_TO_SUB_PIXEL(3), PIXEL_TO_SUB_PIXEL(2.5f) * 4, PIXEL_TO_SUB_PIXEL(0.5f) * 4, 2);
+    NightmareMoveToPosition(gSamusData.yPosition - BLOCK_TO_SUB_PIXEL(4), gAbilityRestingXPosition + BLOCK_TO_SUB_PIXEL(3),
+        PIXEL_TO_SUB_PIXEL(2.5f) * 4, PIXEL_TO_SUB_PIXEL(0.5f) * 4, 2);
 }
 
 void NightmarePhase2ResettingPosition(void) {

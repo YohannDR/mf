@@ -1270,7 +1270,7 @@ void YakuzaProjectile(void) {
         case 0x28:
             YakuzaProjectileSpitFalling();
             break;
-        case SPRITE_POSE_SELF_DESTRUCT:
+        case SPRITE_POSE_STOPPED:
             YakuzaProjectileExploding();
             break;
         case 2:

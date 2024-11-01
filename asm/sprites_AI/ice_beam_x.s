@@ -646,7 +646,7 @@ IceBeamAbilityGettingAbsorbed: @ 0x08058E30
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	bl HealSamusOfOneTank
+	bl SpriteUtilHealSamusOfOneTank
 	bl XParasiteStickToSamus
 	ldrh r0, [r4, #6]
 	adds r5, r0, #0

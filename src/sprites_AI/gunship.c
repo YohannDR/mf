@@ -129,7 +129,7 @@ void GunshipNavigation(void)
  */
 void GunshipIdle(void)
 {
-    if (SpriteUtilCheckStopSpritesPose())
+    if (SpriteUtilCheckSamusStopSpritesPose())
         return;
 
     if (gCurrentSprite.status & SS_SAMUS_DETECTED)
@@ -138,7 +138,7 @@ void GunshipIdle(void)
         {
             gCurrentSprite.work2++;
         }
-        else if (!SpriteUtilCheckMorphed())
+        else if (!SpriteUtilCheckSamusMorphed())
         {
             if (gSamusData.invincibilityTimer != 0)
                 gSamusData.invincibilityTimer = 0;

@@ -70,8 +70,8 @@ _0800FE0C: .4byte gSpriteData
 _0800FE10: .4byte 0x00008017
 _0800FE14: .4byte gSamusData
 
-	thumb_func_start TakeDamageFromSprite
-TakeDamageFromSprite: @ 0x0800FE18
+	thumb_func_start SpriteUtilTakeDamageFromSprite
+SpriteUtilTakeDamageFromSprite: @ 0x0800FE18
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x18
 	lsrs r6, r0, #0x18
@@ -209,8 +209,8 @@ _0800FF18:
 _0800FF20: .4byte sSamusSetPoseFunctionPointer
 _0800FF24: .4byte gSamusData
 
-	thumb_func_start TakeDamageFromSaXIceBeamWithPowerSuit
-TakeDamageFromSaXIceBeamWithPowerSuit: @ 0x0800FF28
+	thumb_func_start SpriteUtilTakeDamageFromSaXIceBeamWithPowerSuit
+SpriteUtilTakeDamageFromSaXIceBeamWithPowerSuit: @ 0x0800FF28
 	push {r4, lr}
 	ldr r0, _0800FF64 @ =sSecondarySpriteStats
 	ldrh r3, [r0, #2]
@@ -337,8 +337,8 @@ _0801001C:
 	.align 2, 0
 _08010024: .4byte sSamusSetPoseFunctionPointer
 
-	thumb_func_start TakeDamageFromOmegaMetroidSwiping
-TakeDamageFromOmegaMetroidSwiping: @ 0x08010028
+	thumb_func_start SpriteUtilTakeDamageFromOmegaMetroidSwiping
+SpriteUtilTakeDamageFromOmegaMetroidSwiping: @ 0x08010028
 	push {lr}
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
@@ -530,8 +530,8 @@ _080101A8:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start TakeKnockback
-TakeKnockback: @ 0x080101B0
+	thumb_func_start SpriteUtilTakeKnockback
+SpriteUtilTakeKnockback: @ 0x080101B0
 	push {lr}
 	ldr r1, _080101C8 @ =sSamusSetPoseFunctionPointer
 	ldr r0, _080101CC @ =gSamusData
@@ -759,7 +759,7 @@ _0801034A:
 	b _08010470
 _08010368:
 	mov r0, sl
-	bl SamusCheckPassThroughFrozenSprite
+	bl SpriteUtilCheckSamusPassThroughSprite
 	cmp r0, #0
 	beq _08010376
 	bl _08010FEE
@@ -866,7 +866,7 @@ _08010434:
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801045A
-	bl SpriteUtilCheckMorphed
+	bl SpriteUtilCheckSamusMorphed
 	cmp r0, #0
 	bne _0801045A
 	bl _08010FEE
@@ -928,7 +928,7 @@ _0801048C: @ jump table
 	.4byte _08010854 @ case 29
 _08010504:
 	mov r0, sl
-	bl SamusCheckPassThroughFrozenSprite
+	bl SpriteUtilCheckSamusPassThroughSprite
 	cmp r0, #0
 	beq _08010512
 	bl _08010FEE
@@ -1051,7 +1051,7 @@ _080105F6:
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801061C
-	bl SpriteUtilCheckMorphed
+	bl SpriteUtilCheckSamusMorphed
 	cmp r0, #0
 	bne _0801061C
 	bl _08010FEE
@@ -1095,7 +1095,7 @@ _08010652:
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0801067A
-	bl SpriteUtilCheckMorphed
+	bl SpriteUtilCheckSamusMorphed
 	cmp r0, #0
 	bne _0801067A
 	bl _08010FEE
@@ -1139,11 +1139,11 @@ _080106C2:
 	ldrb r0, [r4, #5]
 	cmp r0, #0
 	bne _080106FA
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _080106FA
 	mov r0, sl
-	bl SamusCheckSudoScrew
+	bl SpriteUtilCheckSamusSudoScrew
 	cmp r0, #0
 	bne _080106FA
 	movs r0, #4
@@ -1160,7 +1160,7 @@ _080106F0:
 _080106F2:
 	strh r0, [r4, #0x12]
 	mov r0, sl
-	bl TakeKnockback
+	bl SpriteUtilTakeKnockback
 _080106FA:
 	ldr r1, _08010710 @ =gSpriteData
 	mov r2, sl
@@ -1179,11 +1179,11 @@ _08010714:
 	ldrb r0, [r4, #5]
 	cmp r0, #0
 	bne _0801074E
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _0801074E
 	mov r0, sl
-	bl SamusCheckSudoScrew
+	bl SpriteUtilCheckSamusSudoScrew
 	cmp r0, #0
 	bne _0801074E
 	movs r0, #4
@@ -1201,7 +1201,7 @@ _08010742:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #2
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 _0801074E:
 	ldr r1, _08010764 @ =gSpriteData
 	mov r3, sl
@@ -1230,11 +1230,11 @@ _0801077A:
 	ldrb r0, [r4, #5]
 	cmp r0, #0
 	bne _080107B6
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _080107B6
 	mov r0, sl
-	bl SamusCheckSudoScrew
+	bl SpriteUtilCheckSamusSudoScrew
 	cmp r0, #0
 	bne _080107B6
 	movs r0, #4
@@ -1253,7 +1253,7 @@ _080107AA:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 _080107B6:
 	ldr r1, _080107CC @ =gSpriteData
 	mov r2, sl
@@ -1272,11 +1272,11 @@ _080107D0:
 	ldrb r0, [r4, #5]
 	cmp r0, #0
 	bne _08010834
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _08010834
 	mov r0, sl
-	bl SamusCheckSudoScrew
+	bl SpriteUtilCheckSamusSudoScrew
 	cmp r0, #0
 	bne _08010834
 	movs r0, #4
@@ -1294,7 +1294,7 @@ _080107FE:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	ldr r0, _08010824 @ =gEquipment
 	ldrh r0, [r0]
 	cmp r0, #0
@@ -1338,7 +1338,7 @@ _08010854:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	ldr r1, _08010890 @ =gSamusData
 	movs r2, #0
 	movs r0, #0x10
@@ -1369,11 +1369,11 @@ _0801089C:
 	ldrb r0, [r4, #5]
 	cmp r0, #0
 	bne _08010900
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _08010900
 	mov r0, sl
-	bl SamusCheckSudoScrew
+	bl SpriteUtilCheckSamusSudoScrew
 	cmp r0, #0
 	bne _08010900
 	movs r0, #4
@@ -1391,7 +1391,7 @@ _080108CA:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #2
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	ldr r0, _080108F0 @ =gEquipment
 	ldrh r0, [r0]
 	cmp r0, #0
@@ -1433,7 +1433,7 @@ _0801091C:
 	cmp r0, #0
 	beq _08010998
 	mov r0, sl
-	bl TakeDamageFromOmegaMetroidSwiping
+	bl SpriteUtilTakeDamageFromOmegaMetroidSwiping
 	ldr r6, _08010964 @ =gSamusData
 	movs r7, #0
 	movs r0, #0x10
@@ -1519,7 +1519,7 @@ _080109B4:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	movs r6, #0
 	movs r0, #0x10
 	strh r0, [r4, #0x12]
@@ -1573,7 +1573,7 @@ _08010A20:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	ldrh r0, [r5]
 	cmp r0, #0
 	beq _08010A52
@@ -1613,17 +1613,17 @@ _08010A7C:
 	ldrb r0, [r4, #5]
 	cmp r0, #7
 	bhi _08010B12
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _08010B12
 	mov r0, sl
-	bl SamusCheckSudoScrew
+	bl SpriteUtilCheckSamusSudoScrew
 	cmp r0, #0
 	bne _08010B12
 	movs r0, #0
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	ldr r0, _08010ADC @ =gEquipment
 	ldrh r1, [r0]
 	cmp r1, #0
@@ -1681,13 +1681,13 @@ _08010B12:
 	.align 2, 0
 _08010B28: .4byte gSpriteData
 _08010B2C:
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	beq _08010B36
 	b _08010FE8
 _08010B36:
 	mov r0, sl
-	bl SamusCheckSudoScrew
+	bl SpriteUtilCheckSamusSudoScrew
 	cmp r0, #0
 	beq _08010B42
 	b _08010FE8
@@ -1740,13 +1740,13 @@ _08010B9A:
 	ldrb r0, [r0, #5]
 	cmp r0, #0
 	bne _08010BC0
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _08010BC0
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	b _08010FE8
 	.align 2, 0
 _08010BB8: .4byte gSamusData
@@ -1780,16 +1780,16 @@ _08010BF0:
 _08010BF2:
 	strh r0, [r4, #0x12]
 	mov r0, sl
-	bl TakeKnockback
+	bl SpriteUtilTakeKnockback
 	b _08010FE8
 _08010BFC:
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	beq _08010C06
 	b _08010FE8
 _08010C06:
 	mov r0, sl
-	bl SamusCheckSudoScrew
+	bl SpriteUtilCheckSamusSudoScrew
 	cmp r0, #0
 	beq _08010C12
 	b _08010FE8
@@ -1844,7 +1844,7 @@ _08010C6A:
 	beq _08010C74
 	b _08010FE8
 _08010C74:
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	beq _08010C7E
 	b _08010FE8
@@ -1852,7 +1852,7 @@ _08010C7E:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	b _08010FE8
 	.align 2, 0
 _08010C8C: .4byte gSamusData
@@ -1906,7 +1906,7 @@ _08010CEC:
 	ldrb r0, [r0, #5]
 	cmp r0, #0
 	bne _08010D4E
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _08010D4E
 	ldr r0, _08010D18 @ =gEquipment
@@ -1918,14 +1918,14 @@ _08010CEC:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	b _08010D22
 	.align 2, 0
 _08010D14: .4byte gSamusData
 _08010D18: .4byte gEquipment
 _08010D1C:
 	mov r0, sl
-	bl TakeDamageFromSaXIceBeamWithPowerSuit
+	bl SpriteUtilTakeDamageFromSaXIceBeamWithPowerSuit
 _08010D22:
 	ldr r0, _08010D6C @ =gSpriteData
 	ldr r1, [sp, #0x34]
@@ -1969,7 +1969,7 @@ _08010D70:
 	ldrb r0, [r4, #5]
 	cmp r0, #0
 	bne _08010D9E
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _08010D9E
 	movs r0, #4
@@ -1987,7 +1987,7 @@ _08010D92:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 _08010D9E:
 	ldr r1, _08010DBC @ =gSpriteData
 	mov r2, sl
@@ -2010,7 +2010,7 @@ _08010DC0:
 	ldrb r0, [r4, #5]
 	cmp r0, #0
 	bne _08010DEE
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _08010DEE
 	movs r0, #4
@@ -2028,7 +2028,7 @@ _08010DE2:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 _08010DEE:
 	ldr r1, _08010E0C @ =gSpriteData
 	mov r3, sl
@@ -2133,11 +2133,11 @@ _08010EBA:
 	ldrb r0, [r4, #5]
 	cmp r0, #0
 	bne _08010EF2
-	bl SamusCheckDamagingPose
+	bl SpriteUtilCheckSamusDamagingPose
 	cmp r0, #0
 	bne _08010EF2
 	mov r0, sl
-	bl SamusCheckSudoScrew
+	bl SpriteUtilCheckSamusSudoScrew
 	cmp r0, #0
 	bne _08010EF2
 	movs r0, #4
@@ -2155,7 +2155,7 @@ _08010EE6:
 	movs r0, #1
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 _08010EF2:
 	ldr r1, _08010F08 @ =gSpriteData
 	mov r3, sl
@@ -2189,7 +2189,7 @@ _08010F0C:
 	movs r0, #0
 	mov r1, sl
 	movs r2, #1
-	bl TakeDamageFromSprite
+	bl SpriteUtilTakeDamageFromSprite
 	ldr r0, _08010F5C @ =gEquipment
 	ldrh r1, [r0]
 	cmp r1, #0
@@ -2216,7 +2216,7 @@ _08010F6A:
 	movs r0, #0x89
 	bl unk_2894
 _08010F70:
-	bl SpriteUtilCheckMorphed
+	bl SpriteUtilCheckSamusMorphed
 	cmp r0, #0
 	bne _08010F80
 	ldr r0, _08010F94 @ =gSamusData
@@ -2944,8 +2944,8 @@ _08011500:
 	.align 2, 0
 _08011508: .4byte gCurrentSprite
 
-	thumb_func_start SpriteUtilSpriteChooseRandomXDirectionWithRoomSlot
-SpriteUtilSpriteChooseRandomXDirectionWithRoomSlot: @ 0x0801150C
+	thumb_func_start SpriteUtilChooseRandomXDirectionRoomSlot
+SpriteUtilChooseRandomXDirectionRoomSlot: @ 0x0801150C
 	push {lr}
 	ldr r2, _08011524 @ =gCurrentSprite
 	ldrb r1, [r2, #0x1e]
@@ -3025,8 +3025,8 @@ _0801159A:
 	pop {r0}
 	bx r0
 
-	thumb_func_start MakeSpriteFaceAwayFromSamusXFlip
-MakeSpriteFaceAwayFromSamusXFlip: @ 0x080115A0
+	thumb_func_start SpriteUtilMakeSpriteFaceAwayFromSamusXFlip
+SpriteUtilMakeSpriteFaceAwayFromSamusXFlip: @ 0x080115A0
 	push {lr}
 	ldr r2, _080115B8 @ =gCurrentSprite
 	ldr r1, _080115BC @ =gSamusData
@@ -3247,8 +3247,8 @@ _0801172C:
 	pop {r0}
 	bx r0
 
-	thumb_func_start RotateSpriteTowardsSamus
-RotateSpriteTowardsSamus: @ 0x08011734
+	thumb_func_start SpriteUtilMakeSpriteRotateTowardsTarget
+SpriteUtilMakeSpriteRotateTowardsTarget: @ 0x08011734
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -3746,8 +3746,8 @@ _08011AAA:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CheckEndOfSubSpriteData2Animation
-CheckEndOfSubSpriteData2Animation: @ 0x08011AB0
+	thumb_func_start SpriteUtilCheckEndSubSpriteData2Anim
+SpriteUtilCheckEndSubSpriteData2Anim: @ 0x08011AB0
 	push {lr}
 	ldr r0, _08011ADC @ =gSubSpriteData2
 	ldrb r1, [r0, #6]
@@ -3779,8 +3779,8 @@ _08011AE2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CheckNearEndOfSubSpriteData2Animation
-CheckNearEndOfSubSpriteData2Animation: @ 0x08011AE8
+	thumb_func_start SpriteUtilCheckNearEndSubSpriteData2Anim
+SpriteUtilCheckNearEndSubSpriteData2Anim: @ 0x08011AE8
 	push {lr}
 	ldr r0, _08011B18 @ =gSubSpriteData2
 	ldrb r1, [r0, #6]
@@ -3870,8 +3870,8 @@ _08011B7E:
 	pop {r1}
 	bx r1
 
-	thumb_func_start CheckSamusNearSpriteAboveBelow
-CheckSamusNearSpriteAboveBelow: @ 0x08011B84
+	thumb_func_start SpriteUtilCheckSamusNearSpriteAboveBelow
+SpriteUtilCheckSamusNearSpriteAboveBelow: @ 0x08011B84
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
@@ -4022,8 +4022,8 @@ _08011C80:
 	pop {r1}
 	bx r1
 
-	thumb_func_start CheckSamusNearSpriteFrontBehindY
-CheckSamusNearSpriteFrontBehindY: @ 0x08011C8C
+	thumb_func_start SpriteUtilCheckSamusNearSpriteFrontBehindY
+SpriteUtilCheckSamusNearSpriteFrontBehindY: @ 0x08011C8C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -4120,8 +4120,8 @@ _08011D2A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CheckSamusNearSpriteAboveBelowSeparateRanges
-CheckSamusNearSpriteAboveBelowSeparateRanges: @ 0x08011D38
+	thumb_func_start SpriteUtilCheckSamusNearSpriteAboveBelowSeparateRanges
+SpriteUtilCheckSamusNearSpriteAboveBelowSeparateRanges: @ 0x08011D38
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
@@ -4909,8 +4909,8 @@ _080122F6:
 _080122FC: .4byte gCurrentSprite
 _08012300: .4byte gSpriteData
 
-	thumb_func_start SetSecondarySpriteOAMPointer
-SetSecondarySpriteOAMPointer: @ 0x08012304
+	thumb_func_start SpriteUtilSetSecondarySpriteOamPointer
+SpriteUtilSetSecondarySpriteOamPointer: @ 0x08012304
 	ldr r1, _08012324 @ =gCurrentSprite
 	adds r1, #0x2f
 	ldrb r1, [r1]
@@ -4931,8 +4931,8 @@ SetSecondarySpriteOAMPointer: @ 0x08012304
 _08012324: .4byte gCurrentSprite
 _08012328: .4byte gSpriteData
 
-	thumb_func_start SetEnergyAndAmmoToMax_Unused
-SetEnergyAndAmmoToMax_Unused: @ 0x0801232C
+	thumb_func_start SpriteUtilSetEnergyAndAmmoToMax_Unused
+SpriteUtilSetEnergyAndAmmoToMax_Unused: @ 0x0801232C
 	ldr r0, _0801233C @ =gEquipment
 	ldrh r1, [r0, #2]
 	strh r1, [r0]
@@ -5085,8 +5085,8 @@ _08012420:
 	.align 2, 0
 _08012428: .4byte gEquipment
 
-	thumb_func_start HealSamusOfOneTank
-HealSamusOfOneTank: @ 0x0801242C
+	thumb_func_start SpriteUtilHealSamusOfOneTank
+SpriteUtilHealSamusOfOneTank: @ 0x0801242C
 	push {r4, r5, lr}
 	ldr r0, _0801249C @ =gEquipment
 	ldrh r3, [r0]
@@ -5148,8 +5148,8 @@ _08012494:
 	.align 2, 0
 _0801249C: .4byte gEquipment
 
-	thumb_func_start CheckEnergyFullAndMissilesNotFull
-CheckEnergyFullAndMissilesNotFull: @ 0x080124A0
+	thumb_func_start SpriteUtilCheckEnergyFullAndMissilesNotFull
+SpriteUtilCheckEnergyFullAndMissilesNotFull: @ 0x080124A0
 	push {lr}
 	ldr r2, _080124C4 @ =gEquipment
 	ldrh r0, [r2]
@@ -5176,8 +5176,8 @@ _080124CA:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CheckMissilesFullAndEnergyNotFull
-CheckMissilesFullAndEnergyNotFull: @ 0x080124D0
+	thumb_func_start SpriteUtilCheckMissilesFullAndEnergyNotFull
+SpriteUtilCheckMissilesFullAndEnergyNotFull: @ 0x080124D0
 	push {lr}
 	ldr r2, _080124F4 @ =gEquipment
 	ldrb r1, [r2, #0xb]
@@ -5205,8 +5205,8 @@ _080124FA:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SamusCheckPassThroughFrozenSprite
-SamusCheckPassThroughFrozenSprite: @ 0x08012500
+	thumb_func_start SpriteUtilCheckSamusPassThroughSprite
+SpriteUtilCheckSamusPassThroughSprite: @ 0x08012500
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r2, r0, #0x18
@@ -5281,8 +5281,8 @@ _080125BA:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SpriteUtilSamusCheckCrouchingOrMorphed
-SpriteUtilSamusCheckCrouchingOrMorphed: @ 0x080125C4
+	thumb_func_start SpriteUtilCheckSamusCrouchingOrMorphed
+SpriteUtilCheckSamusCrouchingOrMorphed: @ 0x080125C4
 	push {lr}
 	ldr r0, _080125DC @ =gSamusData
 	ldrb r0, [r0, #1]
@@ -5320,8 +5320,8 @@ _0801261A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SpriteUtilCheckMorphed
-SpriteUtilCheckMorphed: @ 0x08012620
+	thumb_func_start SpriteUtilCheckSamusMorphed
+SpriteUtilCheckSamusMorphed: @ 0x08012620
 	push {lr}
 	ldr r0, _08012638 @ =gSamusData
 	ldrb r0, [r0, #1]
@@ -5343,8 +5343,8 @@ _0801263E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SpriteUtilCheckStopSpritesPose
-SpriteUtilCheckStopSpritesPose: @ 0x08012644
+	thumb_func_start SpriteUtilCheckSamusStopSpritesPose
+SpriteUtilCheckSamusStopSpritesPose: @ 0x08012644
 	push {lr}
 	ldr r0, _08012654 @ =gPreventMovementTimer
 	ldrh r0, [r0]
@@ -5408,8 +5408,8 @@ _080126F2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SamusCheckDamagingPose
-SamusCheckDamagingPose: @ 0x080126F8
+	thumb_func_start SpriteUtilCheckSamusDamagingPose
+SpriteUtilCheckSamusDamagingPose: @ 0x080126F8
 	push {lr}
 	movs r1, #0
 	ldr r2, _08012718 @ =gSamusData
@@ -5430,8 +5430,8 @@ _08012710:
 	.align 2, 0
 _08012718: .4byte gSamusData
 
-	thumb_func_start SamusCheckSudoScrew
-SamusCheckSudoScrew: @ 0x0801271C
+	thumb_func_start SpriteUtilCheckSamusSudoScrew
+SpriteUtilCheckSamusSudoScrew: @ 0x0801271C
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r2, r0, #0x18
@@ -5494,8 +5494,8 @@ _080127B2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SamusCheckHangingOnLedge
-SamusCheckHangingOnLedge: @ 0x080127BC
+	thumb_func_start SpriteUtilCheckSamusHangingOnLedge
+SpriteUtilCheckSamusHangingOnLedge: @ 0x080127BC
 	push {lr}
 	ldr r0, _080127CC @ =gSamusData
 	ldrb r0, [r0, #1]
@@ -5512,8 +5512,8 @@ _080127D2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SamusCheckOnCeilingLadder
-SamusCheckOnCeilingLadder: @ 0x080127D8
+	thumb_func_start SpriteUtilCheckSamusOnCeilingLadder
+SpriteUtilCheckSamusOnCeilingLadder: @ 0x080127D8
 	push {lr}
 	ldr r0, _080127EC @ =gSamusData
 	ldrb r0, [r0, #1]
@@ -5532,8 +5532,8 @@ _080127F2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SamusCheckPullingSelfUp
-SamusCheckPullingSelfUp: @ 0x080127F8
+	thumb_func_start SpriteUtilCheckSamusPullingSelfUp
+SpriteUtilCheckSamusPullingSelfUp: @ 0x080127F8
 	push {lr}
 	ldr r0, _0801280C @ =gSamusData
 	ldrb r0, [r0, #1]
@@ -5720,8 +5720,8 @@ _0801293C:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start FindSecondarySprite
-FindSecondarySprite: @ 0x08012944
+	thumb_func_start SpriteUtilFindSecondarySprite
+SpriteUtilFindSecondarySprite: @ 0x08012944
 	push {r4, r5, lr}
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
@@ -5764,8 +5764,8 @@ _08012988:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SpriteUtilSpriteUtilCountSecondarySpritesWithRamSlot
-SpriteUtilSpriteUtilCountSecondarySpritesWithRamSlot: @ 0x08012990
+	thumb_func_start SpriteUtilCountSecondarySpritesWithRamSlot
+SpriteUtilCountSecondarySpritesWithRamSlot: @ 0x08012990
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x18
 	lsrs r6, r0, #0x18
@@ -5815,8 +5815,8 @@ _080129D6:
 	.align 2, 0
 _080129E8: .4byte gSpriteData
 
-	thumb_func_start MoveEyeCoreXBeam
-MoveEyeCoreXBeam: @ 0x080129EC
+	thumb_func_start SpriteUtilMoveEyeCoreXBeam
+SpriteUtilMoveEyeCoreXBeam: @ 0x080129EC
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r3, r0, #0x18
@@ -5904,8 +5904,8 @@ _08012A80:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start unk_12a88
-unk_12a88: @ 0x08012A88
+	thumb_func_start SpriteUtilMoveEyeCoreXBeamPart
+SpriteUtilMoveEyeCoreXBeamPart: @ 0x08012A88
 	push {r4, lr}
 	movs r3, #4
 	movs r4, #5
@@ -6020,8 +6020,8 @@ _08012B4E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start unk_12b54
-unk_12b54: @ 0x08012B54
+	thumb_func_start SpriteUtilMoveEyeCoreXWaveBeamPart
+SpriteUtilMoveEyeCoreXWaveBeamPart: @ 0x08012B54
 	push {r4, r5, r6, lr}
 	ldr r5, _08012B90 @ =gCurrentSprite
 	adds r0, r5, #0
@@ -6160,8 +6160,8 @@ _08012C52:
 	pop {r0}
 	bx r0
 
-	thumb_func_start MoveBeamCoreX
-MoveBeamCoreX: @ 0x08012C58
+	thumb_func_start SpriteUtilMoveBeamCoreX
+SpriteUtilMoveBeamCoreX: @ 0x08012C58
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -6591,8 +6591,8 @@ _08012F7A:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start MoveBeamCoreX_Unused
-MoveBeamCoreX_Unused: @ 0x08012F8C
+	thumb_func_start SpriteUtilMoveBeamCoreX_Unused
+SpriteUtilMoveBeamCoreX_Unused: @ 0x08012F8C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -6917,8 +6917,8 @@ _080131D8:
 	pop {r0}
 	bx r0
 
-	thumb_func_start MoveSpriteTowardsTarget
-MoveSpriteTowardsTarget: @ 0x080131E8
+	thumb_func_start SpriteUtilMoveTowardsTarget
+SpriteUtilMoveTowardsTarget: @ 0x080131E8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -7915,8 +7915,8 @@ _08013900:
 	pop {r0}
 	bx r0
 
-	thumb_func_start MoveRidleyFireBall
-MoveRidleyFireBall: @ 0x08013910
+	thumb_func_start SpriteUtilMoveRidleyFireball
+SpriteUtilMoveRidleyFireball: @ 0x08013910
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

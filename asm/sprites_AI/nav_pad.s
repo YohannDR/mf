@@ -246,7 +246,7 @@ NavPadSwitchPressed: @ 0x0802A280
 	lsrs r3, r0, #0x18
 	cmp r3, #0
 	beq _0802A2D4
-	bl SpriteUtilCheckMorphed
+	bl SpriteUtilCheckSamusMorphed
 	cmp r0, #0
 	bne _0802A2EE
 	ldr r2, _0802A2C8 @ =gSamusData

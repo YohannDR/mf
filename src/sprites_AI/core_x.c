@@ -189,32 +189,32 @@ void CoreXAbilityIdle(void) {
         if (xPosOnScreen > 20) {
             if (xPosOnScreen < SCREEN_SIZE_X - 20) {
                 ramSlot = SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_FORMATION, 0, 0,
-                    gCurrentSprite.primarySpriteRamSlot, 0x30, gCurrentSprite.yPosition + 0xb4, gCurrentSprite.xPosition - 0x14, 0);
+                    gCurrentSprite.primarySpriteRamSlot, SSP_X_UNABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition + 0xb4, gCurrentSprite.xPosition - 0x14, 0);
                 if (ramSlot != UCHAR_MAX) {
                     gSpriteData[ramSlot].xParasiteTimer = 180;
                 }
                 ramSlot = SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_FORMATION, 1, 0,
-                    gCurrentSprite.primarySpriteRamSlot, 0x30, gCurrentSprite.yPosition - 0xc8, gCurrentSprite.xPosition + 0xa, 0);
+                    gCurrentSprite.primarySpriteRamSlot, SSP_X_UNABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition - 0xc8, gCurrentSprite.xPosition + 0xa, 0);
                 if (ramSlot != UCHAR_MAX) {
                     gSpriteData[ramSlot].xParasiteTimer = 180;
                 }
                 ramSlot = SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_FORMATION, 2, 0,
-                    gCurrentSprite.primarySpriteRamSlot, 0x30, gCurrentSprite.yPosition + 0x82, gCurrentSprite.xPosition + 0x8c, 0);
+                    gCurrentSprite.primarySpriteRamSlot, SSP_X_UNABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition + 0x82, gCurrentSprite.xPosition + 0x8c, 0);
                 if (ramSlot != UCHAR_MAX) {
                     gSpriteData[ramSlot].xParasiteTimer = 180;
                 }
                 ramSlot = SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_FORMATION, 3, 0,
-                    gCurrentSprite.primarySpriteRamSlot, 0x30, gCurrentSprite.yPosition - 0x82, gCurrentSprite.xPosition + 0x96, 0);
+                    gCurrentSprite.primarySpriteRamSlot, SSP_X_UNABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition - 0x82, gCurrentSprite.xPosition + 0x96, 0);
                 if (ramSlot != UCHAR_MAX) {
                     gSpriteData[ramSlot].xParasiteTimer = 180;
                 }
                 ramSlot = SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_FORMATION, 4, 0,
-                    gCurrentSprite.primarySpriteRamSlot, 0x30, gCurrentSprite.yPosition + 0x8c, gCurrentSprite.xPosition - 0xa0, 0);
+                    gCurrentSprite.primarySpriteRamSlot, SSP_X_UNABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition + 0x8c, gCurrentSprite.xPosition - 0xa0, 0);
                 if (ramSlot != UCHAR_MAX) {
                     gSpriteData[ramSlot].xParasiteTimer = 180;
                 }
                 ramSlot = SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_FORMATION, 5, 0,
-                    gCurrentSprite.primarySpriteRamSlot, 0x30, gCurrentSprite.yPosition - 0x96, gCurrentSprite.xPosition - 0x82, 0);
+                    gCurrentSprite.primarySpriteRamSlot, SSP_X_UNABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition - 0x96, gCurrentSprite.xPosition - 0x82, 0);
                 if (ramSlot != UCHAR_MAX) {
                     gSpriteData[ramSlot].xParasiteTimer = 180;
                 }
@@ -312,17 +312,17 @@ void CoreXAbilitySpawningBoss(void) {
 
 void CoreXAbilityMovingInit(void) {
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0, gCurrentSprite.primarySpriteRamSlot,
-        0x20, gCurrentSprite.yPosition + 0x64, gCurrentSprite.xPosition, 0);
+        SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition + 0x64, gCurrentSprite.xPosition, 0);
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0, gCurrentSprite.primarySpriteRamSlot,
-        0x20, gCurrentSprite.yPosition - 0x64, gCurrentSprite.xPosition, 0);
+        SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition - 0x64, gCurrentSprite.xPosition, 0);
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0, gCurrentSprite.primarySpriteRamSlot,
-        0x20, gCurrentSprite.yPosition + 0x22, gCurrentSprite.xPosition + 0x64, 0);
+        SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition + 0x22, gCurrentSprite.xPosition + 0x64, 0);
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0, gCurrentSprite.primarySpriteRamSlot,
-        0x20, gCurrentSprite.yPosition + 0x22, gCurrentSprite.xPosition - 0x64, 0);
+        SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition + 0x22, gCurrentSprite.xPosition - 0x64, 0);
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0, gCurrentSprite.primarySpriteRamSlot,
-        0x20, gCurrentSprite.yPosition - 0x22, gCurrentSprite.xPosition + 0x64, 0);
+        SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition - 0x22, gCurrentSprite.xPosition + 0x64, 0);
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0, gCurrentSprite.primarySpriteRamSlot,
-        0x20, gCurrentSprite.yPosition - 0x22, gCurrentSprite.xPosition - 0x64, 0);
+        SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition - 0x22, gCurrentSprite.xPosition - 0x64, 0);
     gCurrentSprite.pose = 0x1c;
     gCurrentSprite.work2 = 0;
     gCurrentSprite.work3 = 1;
@@ -444,7 +444,7 @@ void CoreXAbilityGettingAbsorbed(void) {
         gCurrentSprite.scaling -= Q_8_8(0.03125f);
     } else {
         gCurrentSprite.status = 0;
-        SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, 0, 6, 0x10, gAbilityRestingYPosition, gAbilityRestingXPosition, 0);
+        SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, 0, 6, SSP_CAN_ABSORB_ADDITIONAL_X, gAbilityRestingYPosition, gAbilityRestingXPosition, 0);
     }
 }
 
@@ -569,8 +569,8 @@ void CoreXShell(void) {
                 if (SPRITE_HAS_ISFT(gCurrentSprite) == 1) {
                     tmp = SpriteUtilCountPrimarySprites(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE);
                     if (tmp < 6) {
-                        SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0,
-                            gCurrentSprite.primarySpriteRamSlot, 0x20, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+                        SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0, gCurrentSprite.primarySpriteRamSlot,
+                            SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                     }
                 } else if (SPRITE_HAS_ISFT(gCurrentSprite) == 16) {
                     SoundPlay(0xc2);

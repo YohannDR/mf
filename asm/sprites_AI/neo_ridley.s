@@ -3069,7 +3069,7 @@ _0805A834: .4byte sRidleyMultiSpriteData_3a9c1c
 	thumb_func_start RidleyTailPartWaitingTOWindUp
 RidleyTailPartWaitingTOWindUp: @ 0x0805A838
 	push {lr}
-	bl CheckEndOfSubSpriteData2Animation
+	bl SpriteUtilCheckEndSubSpriteData2Anim
 	cmp r0, #0
 	beq _0805A856
 	ldr r1, _0805A85C @ =gSubSpriteData2
@@ -3103,7 +3103,7 @@ RidleyTailPartWindingUp1: @ 0x0805A868
 	ldr r0, _0805A8C8 @ =0x000001E5
 	bl SoundPlay
 _0805A87E:
-	bl CheckEndOfSubSpriteData2Animation
+	bl SpriteUtilCheckEndSubSpriteData2Anim
 	cmp r0, #0
 	beq _0805A8A6
 	ldr r0, _0805A8CC @ =sRidleyMultiSpriteData_3a9cdc
@@ -3163,7 +3163,7 @@ _0805A8F6:
 	adds r0, #0x23
 	ldrb r4, [r0]
 	movs r6, #0
-	bl CheckEndOfSubSpriteData2Animation
+	bl SpriteUtilCheckEndSubSpriteData2Anim
 	cmp r0, #0
 	bne _0805A90A
 	b _0805A9FC
@@ -3301,7 +3301,7 @@ RidleyTailPartStrikingDown1: @ 0x0805AA04
 	ldr r0, _0805AA44 @ =0x000001E7
 	bl SoundPlay
 _0805AA1A:
-	bl CheckEndOfSubSpriteData2Animation
+	bl SpriteUtilCheckEndSubSpriteData2Anim
 	cmp r0, #0
 	beq _0805AA50
 	ldr r0, _0805AA48 @ =sRidleyMultiSpriteData_3a9e64
@@ -3368,7 +3368,7 @@ _0805AAA0:
 	adds r0, r6, #0
 	adds r0, #0x23
 	ldrb r4, [r0]
-	bl CheckEndOfSubSpriteData2Animation
+	bl SpriteUtilCheckEndSubSpriteData2Anim
 	cmp r0, #0
 	beq _0805AB5C
 	ldr r0, _0805AB20 @ =gSamusData
@@ -3499,7 +3499,7 @@ RidleyTailPartStrikingDown3: @ 0x0805AB98
 	ldr r0, _0805ABE0 @ =0x000001E7
 	bl SoundPlay
 _0805ABB0:
-	bl CheckEndOfSubSpriteData2Animation
+	bl SpriteUtilCheckEndSubSpriteData2Anim
 	cmp r0, #0
 	beq _0805AC08
 	ldr r2, _0805ABE4 @ =gCurrentSprite
@@ -3585,7 +3585,7 @@ _0805AC58:
 	adds r0, r5, #0
 	adds r0, #0x23
 	ldrb r4, [r0]
-	bl CheckEndOfSubSpriteData2Animation
+	bl SpriteUtilCheckEndSubSpriteData2Anim
 	cmp r0, #0
 	beq _0805ACF8
 	ldr r0, _0805ACCC @ =gSamusData
@@ -3700,7 +3700,7 @@ RidleyTailPartDoneStriking: @ 0x0805AD40
 	adds r0, r6, #0
 	adds r0, #0x23
 	ldrb r4, [r0]
-	bl CheckEndOfSubSpriteData2Animation
+	bl SpriteUtilCheckEndSubSpriteData2Anim
 	cmp r0, #0
 	beq _0805ADCA
 	ldr r1, _0805ADB4 @ =gSubSpriteData2
@@ -3958,7 +3958,7 @@ _0805AF2E:
 	str r2, [sp]
 	movs r2, #0x20
 	movs r3, #0x28
-	bl MoveRidleyFireBall
+	bl SpriteUtilMoveRidleyFireball
 	ldr r2, _0805AF60 @ =gCurrentSprite
 	ldrh r1, [r2]
 	movs r0, #0x80

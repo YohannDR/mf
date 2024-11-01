@@ -210,6 +210,7 @@ SECTIONS {
         asm/disasm_0x08000c28.o(.text);
         asm/syscalls.o(.text);
         asm/disasm_0x08004bcc.o(.text);
+        asm/samus.o(.text);
 
         src/demo_input.o(.text);
 
@@ -217,9 +218,7 @@ SECTIONS {
 
         src/in_game.o(.text);
         src/sprite.o(.text);
-
-        asm/disasm_0x0800fd90.o(.text);
-
+        src/sprite_util.o(.text);
         src/sprite_debris.o(.text);
         src/location_text.o(.text);
         src/sprites_AI/target.o(.text);
@@ -245,45 +244,45 @@ SECTIONS {
         src/sprites_AI/core_x.o(.text);
         src/sprites_AI/core_x_downloading_varia.o(.text);
 
-        asm/waver.o(.text);
-        asm/sciser.o(.text);
-        asm/sidehopper.o(.text);
-        asm/dessgeega.o(.text);
-        asm/missile_barrier.o(.text);
-        asm/nav_pad.o(.text);
-        asm/message_banner.o(.text);
-        asm/data_pad.o(.text);
-        asm/zebesian_wall.o(.text);
-        asm/recharge_pad.o(.text);
-        asm/atmospheric_stabilizer.o(.text);
-        asm/chozo_statue.o(.text);
-        asm/beam_core_x.o(.text);
-        asm/toxic_gas.o(.text);
-        asm/kago.o(.text);
-        asm/shake_trigger.o(.text);
-        asm/gate.o(.text);
-        asm/electric_water.o(.text);
-        asm/zoro.o(.text);
-        asm/kihunter.o(.text);
-        asm/reo.o(.text);
-        asm/lava_plume.o(.text);
-        asm/fune_namihe.o(.text);
+        asm/sprites_AI/waver.o(.text);
+        asm/sprites_AI/sciser.o(.text);
+        asm/sprites_AI/sidehopper.o(.text);
+        asm/sprites_AI/dessgeega.o(.text);
+        asm/sprites_AI/missile_barrier.o(.text);
+        asm/sprites_AI/nav_pad.o(.text);
+        asm/sprites_AI/message_banner.o(.text);
+        asm/sprites_AI/data_pad.o(.text);
+        asm/sprites_AI/zebesian_wall.o(.text);
+        asm/sprites_AI/recharge_pad.o(.text);
+        asm/sprites_AI/atmospheric_stabilizer.o(.text);
+        asm/sprites_AI/chozo_statue.o(.text);
+        asm/sprites_AI/beam_core_x.o(.text);
+        asm/sprites_AI/toxic_gas.o(.text);
+        asm/sprites_AI/kago.o(.text);
+        asm/sprites_AI/shake_trigger.o(.text);
+        asm/sprites_AI/gate.o(.text);
+        asm/sprites_AI/electric_water.o(.text);
+        asm/sprites_AI/zoro.o(.text);
+        asm/sprites_AI/kihunter.o(.text);
+        asm/sprites_AI/reo.o(.text);
+        asm/sprites_AI/lava_plume.o(.text);
+        asm/sprites_AI/fune_namihe.o(.text);
 
         src/sprites_AI/box.o(.text);
         src/sprites_AI/geruda.o(.text);
 
-        asm/misc_pad.o(.text);
-        asm/operations_room_pad.o(.text);
-        asm/scientist.o(.text);
-        asm/skultera.o(.text);
-        asm/zeela.o(.text);
-        asm/sova.o(.text);
-        asm/yard.o(.text);
-        asm/evir.o(.text);
-        asm/bull.o(.text);
-        asm/memu.o(.text);
-        asm/geruboss.o(.text);
+        asm/sprites_AI/misc_pad.o(.text);
+        asm/sprites_AI/operations_room_pad.o(.text);
+        asm/sprites_AI/scientist.o(.text);
+        asm/sprites_AI/skultera.o(.text);
+        asm/sprites_AI/zeela.o(.text);
+        asm/sprites_AI/sova.o(.text);
+        asm/sprites_AI/yard.o(.text);
+        asm/sprites_AI/evir.o(.text);
+        asm/sprites_AI/bull.o(.text);
+        asm/sprites_AI/memu.o(.text);
 
+        src/sprites_AI/geruboss.o(.text);
         src/sprites_AI/choot.o(.text);
         src/sprites_AI/zebesian_ground.o(.text);
         src/sprites_AI/blue_x.o(.text);
@@ -300,31 +299,31 @@ SECTIONS {
         src/sprites_AI/serris.o(.text);
         src/sprites_AI/owtch.o(.text);
 
-        asm/geega.o(.text);
-        asm/pillar.o(.text);
-        asm/genesis.o(.text);
-        asm/puyo.o(.text);
-        asm/fake_tank.o(.text);
-        asm/flashing_number.o(.text);
-        asm/zebesian_aqua.o(.text);
-        asm/animals.o(.text);
-        asm/infant_metroid.o(.text);
-        asm/lab_debris.o(.text);
-        asm/powamp.o(.text);
-        asm/zozoro.o(.text);
-        asm/sa_x_monster.o(.text);
-        asm/continual_x_spawner.o(.text);
-        asm/box_2.o(.text);
-        asm/omega_metroid.o(.text);
-        asm/gunship_end.o(.text);
-        asm/electric_water_box_2.o(.text);
-        asm/frozen_ridley.o(.text);
-        asm/gold_enemy_door_lock.o(.text);
-        asm/varia_x.o(.text);
-        asm/omega_metroid_husk.o(.text);
-        asm/ice_beam_x.o(.text);
-        asm/metroid_husk.o(.text);
-        asm/neo_ridley.o(.text);
+        asm/sprites_AI/geega.o(.text);
+        asm/sprites_AI/pillar.o(.text);
+        asm/sprites_AI/genesis.o(.text);
+        asm/sprites_AI/puyo.o(.text);
+        asm/sprites_AI/fake_tank.o(.text);
+        asm/sprites_AI/flashing_number.o(.text);
+        asm/sprites_AI/zebesian_aqua.o(.text);
+        asm/sprites_AI/animals.o(.text);
+        asm/sprites_AI/infant_metroid.o(.text);
+        asm/sprites_AI/lab_debris.o(.text);
+        asm/sprites_AI/powamp.o(.text);
+        asm/sprites_AI/zozoro.o(.text);
+        asm/sprites_AI/sa_x_monster.o(.text);
+        asm/sprites_AI/continual_x_spawner.o(.text);
+        asm/sprites_AI/box_2.o(.text);
+        asm/sprites_AI/omega_metroid.o(.text);
+        asm/sprites_AI/gunship_end.o(.text);
+        asm/sprites_AI/electric_water_box_2.o(.text);
+        asm/sprites_AI/frozen_ridley.o(.text);
+        asm/sprites_AI/gold_enemy_door_lock.o(.text);
+        asm/sprites_AI/varia_x.o(.text);
+        asm/sprites_AI/omega_metroid_husk.o(.text);
+        asm/sprites_AI/ice_beam_x.o(.text);
+        asm/sprites_AI/metroid_husk.o(.text);
+        asm/sprites_AI/neo_ridley.o(.text);
 
         src/sprites_AI/yakuza.o(.text);
         src/sprites_AI/nightmare.o(.text);
@@ -344,6 +343,7 @@ SECTIONS {
         src/escape.o(.text);
 
         asm/disasm_0x08072d50.o(.text);
+        asm/projectile.o(.text);
 
         src/menus/title_screen.o(.text);
 
@@ -419,6 +419,7 @@ SECTIONS {
         src/data/hud_data.o(.rodata);
         src/data/escape_data.o(.rodata);
         src/data/particle_data.o(.rodata);
+        src/data/projectile_data.o(.rodata);
         src/data/menus/title_screen.o(.rodata);
         src/data/engine_pointers.o(.rodata);
         src/data/frame_data_pointers.o(.rodata);
