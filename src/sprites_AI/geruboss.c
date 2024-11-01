@@ -74,8 +74,8 @@ void GerubossInit(void) {
     gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
-    if (gCurrentSprite.pose == 0x59) {
-        gCurrentSprite.pose = 0x5a;
+    if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
+        gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
         gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     } else {
         gCurrentSprite.yPosition -= 0x20;

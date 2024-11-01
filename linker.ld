@@ -243,8 +243,8 @@ SECTIONS {
         src/sprites_AI/arachnus.o(.text);
         src/sprites_AI/core_x.o(.text);
         src/sprites_AI/core_x_downloading_varia.o(.text);
+        src/sprites_AI/waver.o(.text);
 
-        asm/sprites_AI/waver.o(.text);
         asm/sprites_AI/sciser.o(.text);
         asm/sprites_AI/sidehopper.o(.text);
         asm/sprites_AI/dessgeega.o(.text);
@@ -342,7 +342,9 @@ SECTIONS {
         src/hud.o(.text);
         src/escape.o(.text);
 
-        asm/disasm_0x08072d50.o(.text);
+        asm/particle.o(.text);
+        asm/event.o(.text);
+        asm/disasm_0x08074ffc.o(.text);
         asm/projectile.o(.text);
 
         src/menus/title_screen.o(.text);
