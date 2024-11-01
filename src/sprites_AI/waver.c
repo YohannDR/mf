@@ -11,9 +11,16 @@
 #include "structs/sprite.h"
 #include "structs/samus.h"
 
+#define WAVER_POSE_CHARGING 0x2a
+#define WAVER_POSE_CRASHING_INIT 0x2b
+#define WAVER_POSE_CRASHING 0x2c
+#define WAVER_POSE_BACKING_OUT 0x2e
+#define WAVER_POSE_BACKING_OUT_SECOND_PART 0x30
+#define WAVER_POSE_TURNING_AFTER_BACKING_OUT 0x32
+
 u8 WaverCheckSamusInRange(void) {
     u8 inRange = FALSE;
-    if (gCurrentSprite.health > 0 && SpriteUtilCheckSamusNearSpriteFrontBehind(0x28, 0x190, 0x40) == NSFB_IN_FRONT)
+    if (gCurrentSprite.health > 0 && SpriteUtilCheckSamusNearSpriteFrontBehind(PIXEL_TO_SUB_PIXEL(0xa), BLOCK_TO_SUB_PIXEL(6.25f), PIXEL_TO_SUB_PIXEL(0x10)) == NSFB_IN_FRONT)
         inRange = TRUE;
     return inRange;
 }
@@ -37,27 +44,27 @@ void WaverInit(void) {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
         gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     } else {
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
         if ((gSpriteRandomNumber & 1) != 0)
             gCurrentSprite.status |= SS_FACING_DOWN;
     }
     gCurrentSprite.drawDistanceTop = 0x10;
     gCurrentSprite.drawDistanceBottom = 0x10;
     gCurrentSprite.drawDistanceHorizontal = 0x10;
-    gCurrentSprite.hitboxTop = -0x20;
-    gCurrentSprite.hitboxBottom = 0x20;
-    gCurrentSprite.hitboxLeft = -0x20;
-    gCurrentSprite.hitboxRight = 0x20;
+    gCurrentSprite.hitboxTop = -PIXEL_TO_SUB_PIXEL(8);
+    gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(8);
+    gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(8);
+    gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(8);
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
     gCurrentSprite.frozenPaletteRowOffset = 1;
-    gCurrentSprite.samusCollision = 2;
+    gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
     gCurrentSprite.work4 = 6 * 8;
     WaverSetFlyingGFX();
     SpriteUtilChooseRandomXFlip();
 }
 
 void WaverFlyingInit(void) {
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
     WaverSetFlyingGFX();
 }
 
@@ -83,7 +90,7 @@ void WaverFlying(void) {
         gCurrentSprite.pOam = sFrameData_3175d8;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x2a;
+        gCurrentSprite.pose = WAVER_POSE_CHARGING;
         gCurrentSprite.work3 = 0;
         gCurrentSprite.work1 = 20;
         SoundPlayNotAlreadyPlaying(0x1a6);
@@ -121,13 +128,13 @@ void WaverFlying(void) {
         if (gPreviousCollisionCheck == COLLISION_SOLID)
             gCurrentSprite.status &= ~SS_X_FLIP;
         else
-            gCurrentSprite.xPosition += 4;
+            gCurrentSprite.xPosition += PIXEL_TO_SUB_PIXEL(1);
     } else {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
         if (gPreviousCollisionCheck == COLLISION_SOLID)
             gCurrentSprite.status |= SS_X_FLIP;
         else
-            gCurrentSprite.xPosition -= 4;
+            gCurrentSprite.xPosition -= PIXEL_TO_SUB_PIXEL(1);
     }
 }
 
@@ -138,44 +145,44 @@ void WaverCharging(void) {
     if (gCurrentSprite.status & SS_X_FLIP) {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
         if (gPreviousCollisionCheck == COLLISION_SOLID) {
-            gCurrentSprite.pose = 0x2b;
+            gCurrentSprite.pose = WAVER_POSE_CRASHING_INIT;
             SpriteSpawnSecondary(SSPRITE_WAVER_DEBRIS, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
                 gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
             if (gCurrentSprite.status & SS_ON_SCREEN)
                 SoundPlayNotAlreadyPlaying(0x1a7);
+            return;
         } else {
             gCurrentSprite.xPosition += movement;
-            goto notCollided; // Needed to produce matching ASM.
         }
     } else {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
         if (gPreviousCollisionCheck == COLLISION_SOLID) {
-            gCurrentSprite.pose = 0x2b;
+            gCurrentSprite.pose = WAVER_POSE_CRASHING_INIT;
             SpriteSpawnSecondary(SSPRITE_WAVER_DEBRIS, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
                 gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SS_X_FLIP);
             if (gCurrentSprite.status & SS_ON_SCREEN)
                 SoundPlayNotAlreadyPlaying(0x1a7);
+            return;
         } else {
             gCurrentSprite.xPosition -= movement;
-            notCollided:
-            if (--gCurrentSprite.work1 == 0) {
-                gCurrentSprite.work1 = 20;
-                if (gCurrentSprite.status & SS_ON_SCREEN)
-                    SoundPlayNotAlreadyPlaying(0x1a6);
-            }
         }
+    }
+    if (--gCurrentSprite.work1 == 0) {
+        gCurrentSprite.work1 = 20;
+        if (gCurrentSprite.status & SS_ON_SCREEN)
+            SoundPlayNotAlreadyPlaying(0x1a6);
     }
 }
 
 void WaverCrashingInit(void) {
-    gCurrentSprite.pose = 0x2c;
+    gCurrentSprite.pose = WAVER_POSE_CRASHING;
     gCurrentSprite.work1 = 60;
 }
 
 void WaverCrashing(void) {
     gCurrentSprite.animationDurationCounter--; // Freeze animation
     if (--gCurrentSprite.work1 == 0) {
-        gCurrentSprite.pose = 0x2e;
+        gCurrentSprite.pose = WAVER_POSE_BACKING_OUT;
         gCurrentSprite.work1 = 68;
     }
 }
@@ -183,19 +190,19 @@ void WaverCrashing(void) {
 void WaverBackingOut(void) {
     gCurrentSprite.animationDurationCounter--; // Freeze animation
     if (--gCurrentSprite.work1 == 0) {
-        gCurrentSprite.pose = 0x30;
+        gCurrentSprite.pose = WAVER_POSE_BACKING_OUT_SECOND_PART;
         gCurrentSprite.pOam = sFrameData_3175c0;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     } else if (gCurrentSprite.status & SS_X_FLIP)
-        gCurrentSprite.xPosition -= 1;
+        gCurrentSprite.xPosition -= PIXEL_TO_SUB_PIXEL(0.25f);
     else
-        gCurrentSprite.xPosition += 1;
+        gCurrentSprite.xPosition += PIXEL_TO_SUB_PIXEL(0.25f);
 }
 
 void WaverCheckBackingOutAnimEnded(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-        gCurrentSprite.pose = 0x32;
+        gCurrentSprite.pose = WAVER_POSE_TURNING_AFTER_BACKING_OUT;
         gCurrentSprite.pOam = sFrameData_3175c0;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
@@ -214,10 +221,10 @@ void WaverDebrisInit(void) {
     gCurrentSprite.drawDistanceTop = 0x10;
     gCurrentSprite.drawDistanceBottom = 0x10;
     gCurrentSprite.drawDistanceHorizontal = 0x10;
-    gCurrentSprite.hitboxTop = -0x20;
-    gCurrentSprite.hitboxBottom = 4;
-    gCurrentSprite.hitboxLeft = -0x28;
-    gCurrentSprite.hitboxRight = 0x28;
+    gCurrentSprite.hitboxTop = -PIXEL_TO_SUB_PIXEL(8);
+    gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(1);
+    gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(0xa);
+    gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(0xa);
     gCurrentSprite.pOam = sFrameData_317608;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -274,29 +281,29 @@ void Waver(void) {
         return;
     }
     switch (gCurrentSprite.pose) {
-        case 0:
+        case SPRITE_POSE_UNINITIALIZED:
             WaverInit();
             break;
-        case 1:
+        case SPRITE_POSE_IDLE_INIT:
             WaverFlyingInit();
-        case 2:
+        case SPRITE_POSE_IDLE:
             WaverFlying();
             break;
-        case 0x2a:
+        case WAVER_POSE_CHARGING:
             WaverCharging();
             break;
-        case 0x2b:
+        case WAVER_POSE_CRASHING_INIT:
             WaverCrashingInit();
-        case 0x2c:
+        case WAVER_POSE_CRASHING:
             WaverCrashing();
             break;
-        case 0x2e:
+        case WAVER_POSE_BACKING_OUT:
             WaverBackingOut();
             break;
-        case 0x30:
+        case WAVER_POSE_BACKING_OUT_SECOND_PART:
             WaverCheckBackingOutAnimEnded();
             break;
-        case 0x32:
+        case WAVER_POSE_TURNING_AFTER_BACKING_OUT:
             WaverCheckTurningAnimNearEnded();
             break;
         case 0x57:
