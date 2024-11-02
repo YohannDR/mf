@@ -5,7 +5,7 @@
 	thumb_func_start LoadCommonGraphics
 LoadCommonGraphics: @ 0x08072D50
 	ldr r1, _08072D64 @ =0x040000D4
-	ldr r0, _08072D68 @ =0x083E419C
+	ldr r0, _08072D68 @ =sCommonOamGfx
 	str r0, [r1]
 	ldr r0, _08072D6C @ =0x06010800
 	str r0, [r1, #4]
@@ -15,7 +15,7 @@ LoadCommonGraphics: @ 0x08072D50
 	bx lr
 	.align 2, 0
 _08072D64: .4byte 0x040000D4
-_08072D68: .4byte 0x083E419C
+_08072D68: .4byte sCommonOamGfx
 _08072D6C: .4byte 0x06010800
 _08072D70: .4byte 0x80001C00
 

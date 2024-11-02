@@ -1019,6 +1019,11 @@ sprites/nightmare.pal;8;0x3bc5cc;32
 
 # Hud
 
+oam_common.pal;6;0x3e40dc;32
+oam_common.gfx;448;0x3e419c;32
+
+hud/missile_icon.gfx;4;0x3e799c;32
+hud/power_bomb_icon.gfx;4;0x3e7a1c;32
 hud/ammo_digits.gfx;1152;0x3e7a9c;1
 hud/energy_digits.gfx;320;0x3e7f1c;1
 hud/energy_tanks_full.gfx;1280;0x3e805c;1

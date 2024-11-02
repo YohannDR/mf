@@ -4,6 +4,8 @@
 #include "macros.h"
 #include "callbacks.h"
 
+#include "data/hud_data.h"
+
 #include "constants/demo.h"
 #include "constants/sa_x.h"
 
@@ -439,7 +441,7 @@ void InitAndLoadGenerics(void)
 
     gDebugFlag = FALSE;
 
-    DMA_SET(3, 0x83e40dc, PALRAM_OBJ + 0x40, C_32_2_16(DMA_ENABLE, 16 * 6));
+    DMA_SET(3, sCommonOamPal, PALRAM_OBJ + 0x40, C_32_2_16(DMA_ENABLE, 16 * 6));
 
     SamusInit();
 
