@@ -29,9 +29,9 @@ void WaverSetFlyingGFX(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     if (gCurrentSprite.status & SS_FACING_DOWN)
-        gCurrentSprite.pOam = sFrameData_317590;
+        gCurrentSprite.pOam = sWaverOam_FlyingDown;
     else
-        gCurrentSprite.pOam = sFrameData_317580;
+        gCurrentSprite.pOam = sWaverOam_FlyingUp;
 }
 
 void WaverInit(void) {
@@ -87,7 +87,7 @@ void WaverFlying(void) {
         touchedFloorCeiling = TRUE;
 
     if (WaverCheckSamusInRange()) {
-        gCurrentSprite.pOam = sFrameData_3175d8;
+        gCurrentSprite.pOam = sWaverOam_Charging;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = WAVER_POSE_CHARGING;
@@ -97,26 +97,26 @@ void WaverFlying(void) {
         return;
     }
 
-    movement = sWaverFlyingSpeed[DIV_SHIFT(gCurrentSprite.work4, 8)];
+    movement = sWaverFlyingYMovement[DIV_SHIFT(gCurrentSprite.work4, 8)];
     if (gCurrentSprite.status & SS_FACING_DOWN) {
         if (!touchedFloorCeiling)
             gCurrentSprite.yPosition += movement;
-        if (gCurrentSprite.work4 >= ARRAY_SIZE(sWaverFlyingSpeed) * 8 - 1) {
+        if (gCurrentSprite.work4 >= ARRAY_SIZE(sWaverFlyingYMovement) * 8 - 1) {
             gCurrentSprite.work4 = 0;
             gCurrentSprite.status &= ~SS_FACING_DOWN;
         }
     } else {
-        if (gCurrentSprite.pOam == sFrameData_317590 && SpriteUtilCheckEndCurrentSpriteAnim()) {
-            gCurrentSprite.pOam = sFrameData_317580;
+        if (gCurrentSprite.pOam == sWaverOam_FlyingDown && SpriteUtilCheckEndCurrentSpriteAnim()) {
+            gCurrentSprite.pOam = sWaverOam_FlyingUp;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
         if (!touchedFloorCeiling)
             gCurrentSprite.yPosition -= movement;
-        if (gCurrentSprite.work4 >= ARRAY_SIZE(sWaverFlyingSpeed) * 8 - 1) {
+        if (gCurrentSprite.work4 >= ARRAY_SIZE(sWaverFlyingYMovement) * 8 - 1) {
             gCurrentSprite.work4 = 0;
             gCurrentSprite.status |= SS_FACING_DOWN;
-            gCurrentSprite.pOam = sFrameData_317590;
+            gCurrentSprite.pOam = sWaverOam_FlyingDown;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
@@ -191,7 +191,7 @@ void WaverBackingOut(void) {
     gCurrentSprite.animationDurationCounter--; // Freeze animation
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.pose = WAVER_POSE_BACKING_OUT_SECOND_PART;
-        gCurrentSprite.pOam = sFrameData_3175c0;
+        gCurrentSprite.pOam = sWaverOam_BackingOut;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     } else if (gCurrentSprite.status & SS_X_FLIP)
@@ -203,7 +203,7 @@ void WaverBackingOut(void) {
 void WaverCheckBackingOutAnimEnded(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.pose = WAVER_POSE_TURNING_AFTER_BACKING_OUT;
-        gCurrentSprite.pOam = sFrameData_3175c0;
+        gCurrentSprite.pOam = sWaverOam_BackingOut;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.status ^= SS_X_FLIP;
@@ -225,7 +225,7 @@ void WaverDebrisInit(void) {
     gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(1);
     gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(0xa);
     gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(0xa);
-    gCurrentSprite.pOam = sFrameData_317608;
+    gCurrentSprite.pOam = sWaverDebrisOam;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 16;
@@ -267,8 +267,7 @@ void WaverDebrisFalling(void) {
         gCurrentSprite.xPosition -= PIXEL_SIZE;
 }
 
-void WaverDebrisExploding(void)
-{
+void WaverDebrisExploding(void) {
     ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0x25);
     gCurrentSprite.status = 0;
 }

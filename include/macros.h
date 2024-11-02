@@ -191,3 +191,7 @@
 
 #define FORCE_RODATA __attribute__((section(".rodata")))
 #define NAKED_FUNCTION __attribute__((naked))
+
+#define ALIGN1 asm(".align 1, 0")
+#define ALIGN2 asm(".align 2, 0")
+#define ALIGN4 asm(".align 4, 0")

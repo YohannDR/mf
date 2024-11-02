@@ -7,15 +7,16 @@
 extern const u8 sTitleScreenDebugTextCharactersGfx[768];
 extern const u8 sTitleScreenDebugText[2];
 
-extern const u32 sTitleScreenObjectsGfx[1974];
+extern const u8 sTitleScreenObjectsGfx[];
 extern const u16 sTitleScreenObjectsPal[16 * 16];
 
 extern const u16 sTitleScreen_592d74[16 * 16];
 extern const u16 sTitleScreen_592f74[16 * 16];
 extern const u16 sTitleScreenPressStartPal[16 * 8];
 
-extern const u32 sTitleScreenLogoGfx[3153];
-extern const u32 sTitleScreenLogoTileTable[597];
+extern const u8 sTitleScreenLogoGfx[];
+extern const u8 sTitleScreenLogoTileTable[];
+extern const u8 sTitleScreen_596884[];
 extern const u16 sTitleScreenLogoPal[16 * 8];
 extern const u16 sTitleScreen_596e0c[16 * 8];
 
@@ -60,8 +61,8 @@ extern const struct FrameData sTitleScreenOam_5976d8[3];
 extern const struct FrameData sTitleScreenOam_5976f0[3];
 
 
-extern const u32 sTitleScreenSpaceBackgroundGfx[3270];
+extern const u8 sTitleScreenSpaceBackgroundGfx[];
 extern const u16 sTitleScreenSpaceBackgroundPal[16 * 8];
-extern const u32 sTitleScreenSpaceBackgroundTileTable[418];
+extern const u8 sTitleScreenSpaceBackgroundTileTable[];
 
 #endif /* TITLE_SCREEN_DATA_H */

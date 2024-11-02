@@ -1046,7 +1046,8 @@ menus/title_screen/592f74.pal;256;0x592f74;2
 menus/title_screen/press_start.pal;128;0x593174;2
 
 menus/title_screen/logo.gfx.lz;0x593274
-menus/title_screen/logo.tt;597;0x5963b8;4
+menus/title_screen/logo.tt.lz;0x5963b8
+menus/title_screen/596884.tt.lz;0x596884
 menus/title_screen/logo.pal;128;0x596d0c;2
 menus/title_screen/596e0c.pal;128;0x596e0c;2
 
