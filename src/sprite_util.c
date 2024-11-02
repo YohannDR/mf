@@ -1468,7 +1468,7 @@ u8 SpriteUtilMakeSpriteRotateTowardsTarget(s16 oamRotation, s16 targetY, s16 tar
         {
             targetRotation = PI + PI / 2;
         }
-        if (targetX > spriteX) // Replace it with "else if (targetX > spriteX)" and remove the switch statement above to fix the bug.
+        if (targetX > spriteX) // Replace it with "else if (targetX > spriteX)" to fix the bug.
         {
             if (spriteY - targetY < BLOCK_SIZE)
                 targetRotation = 0;
