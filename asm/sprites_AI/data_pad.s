@@ -38,7 +38,7 @@ DataPadInit: @ 0x0802AE7C
 	movs r5, #1
 	strb r5, [r0]
 	movs r0, #0
-	bl CheckDownloadedDataItem
+	bl EventCheckDownloadedDataItem
 	cmp r0, #0
 	beq _0802AED8
 	adds r0, r4, #0
@@ -275,7 +275,7 @@ DataPadLockingSamus: @ 0x0802B070
 	movs r0, #0x78
 	strb r0, [r2]
 	movs r0, #1
-	bl CheckDownloadedDataItem
+	bl EventCheckDownloadedDataItem
 	ldr r1, _0802B0B4 @ =gDoorUnlockTimer
 	movs r0, #0x3c
 	strb r0, [r1]

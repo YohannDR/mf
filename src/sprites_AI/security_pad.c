@@ -132,7 +132,7 @@ void SecurityPadInit(void)
 
     gCurrentSprite.work3 = securityLevel;
 
-    if (CheckOrUnlockSecurityLevel(FALSE) == SECURITY_LEVEL_0)
+    if (EventCheckUnlockSecurityLevel(FALSE) == SECURITY_LEVEL_0)
     {
         gCurrentSprite.pOam = sSecurityPadOam_Pressed;
         gCurrentSprite.pose = SECURITY_PAD_POSE_INACTIVE;
@@ -417,7 +417,7 @@ void SecurityPadMonitorArmExtending(void)
 
         gCurrentSprite.pose = SECURITY_PAD_MONITOR_POSE_UNLOCKING;
 
-        CheckOrUnlockSecurityLevel(TRUE);
+        EventCheckUnlockSecurityLevel(TRUE);
 
         SAMUS_SET_POSE(SPOSE_UNLOCKING_SECURITY);
         SoundPlay(0x10E);

@@ -4645,7 +4645,7 @@ _08064C2C:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08064C3A
-	bl CheckUpdateEventAfterCutscene
+	bl EventCheckUpdateAfterCutscene
 _08064C3A:
 	ldr r0, _08064D84 @ =gPauseScreenFlag
 	movs r2, #0
@@ -4722,7 +4722,7 @@ _08064C46:
 	str r1, [r2, #4]
 	ldrb r0, [r3]
 	adds r0, #1
-	bl CheckRoomHasEventTrigger
+	bl EventCheckRoomHasEventTrigger
 	ldr r2, _08064DE8 @ =0x03004E60
 	ldr r0, _08064DEC @ =0x083C88A8
 	ldr r0, [r0]
@@ -6732,7 +6732,7 @@ _08065CEA:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	beq _08065D1C
-	bl CheckRoomEventTrigger
+	bl EventCheckRoomEventTrigger
 _08065D1C:
 	bl HazeProcess
 	cmp r0, #0

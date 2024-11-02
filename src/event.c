@@ -12,6 +12,12 @@
 #include "structs/connection.h"
 #include "structs/samus.h"
 
+void UpdateMenuOamDataID(u8 index, u8 oamId) {
+    PAUSE_SCREEN_DATA.oam[index].oamId = oamId;
+    PAUSE_SCREEN_DATA.oam[index].animationDurationCounter = 0;
+    PAUSE_SCREEN_DATA.oam[index].currentAnimationFrame = 0;
+}
+
 /**
  * @brief 74890 | 318 | Sets the current event
  * 

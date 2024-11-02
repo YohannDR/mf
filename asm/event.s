@@ -313,8 +313,8 @@ _08074BA0:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start CheckPlayCutsceneDuringTransition
-CheckPlayCutsceneDuringTransition: @ 0x08074BA8
+	thumb_func_start EventCheckPlayCutsceneDuringTransition
+EventCheckPlayCutsceneDuringTransition: @ 0x08074BA8
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -478,8 +478,8 @@ _08074CE0:
 _08074CEC: .4byte gEventCounter
 _08074CF0: .4byte gCurrentArea
 
-	thumb_func_start CheckUpdateEventAfterCutscene
-CheckUpdateEventAfterCutscene: @ 0x08074CF4
+	thumb_func_start EventCheckUpdateAfterCutscene
+EventCheckUpdateAfterCutscene: @ 0x08074CF4
 	push {r4, lr}
 	ldr r0, _08074D18 @ =gPreviousCutscene
 	ldr r2, _08074D1C @ =gCurrentCutscene
@@ -531,8 +531,8 @@ _08074D4C:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start CheckRoomHasEventTrigger
-CheckRoomHasEventTrigger: @ 0x08074D54
+	thumb_func_start EventCheckRoomHasEventTrigger
+EventCheckRoomHasEventTrigger: @ 0x08074D54
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x18
 	lsrs r6, r0, #0x18
@@ -637,8 +637,8 @@ _08074E1C:
 	.align 2, 0
 _08074E24: .4byte gPreviousNavigationConversation
 
-	thumb_func_start CheckRoomEventTrigger
-CheckRoomEventTrigger: @ 0x08074E28
+	thumb_func_start EventCheckRoomEventTrigger
+EventCheckRoomEventTrigger: @ 0x08074E28
 	push {r4, lr}
 	ldr r2, _08074E7C @ =0x08575A60
 	ldr r4, _08074E80 @ =gRoomEventTrigger
@@ -703,8 +703,8 @@ _08074EA6:
 	pop {r0}
 	bx r0
 
-	thumb_func_start CheckSetNavigationRoomEvent
-CheckSetNavigationRoomEvent: @ 0x08074EAC
+	thumb_func_start EventCheckSetNavigationRoomEvent
+EventCheckSetNavigationRoomEvent: @ 0x08074EAC
 	push {r4, r5, lr}
 	movs r5, #0
 	ldr r1, _08074F18 @ =0x08575A60
@@ -770,8 +770,8 @@ _08074F24: .4byte gCurrentArea
 _08074F28: .4byte gCurrentRoom
 _08074F2C: .4byte gEquipment
 
-	thumb_func_start CheckDownloadedDataItem
-CheckDownloadedDataItem: @ 0x08074F30
+	thumb_func_start EventCheckDownloadedDataItem
+EventCheckDownloadedDataItem: @ 0x08074F30
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r3, r0, #0x18
@@ -804,8 +804,8 @@ _08074F5E:
 _08074F68: .4byte 0x08575A60
 _08074F6C: .4byte gEventCounter
 
-	thumb_func_start CheckOrUnlockSecurityLevel
-CheckOrUnlockSecurityLevel: @ 0x08074F70
+	thumb_func_start EventCheckUnlockSecurityLevel
+EventCheckUnlockSecurityLevel: @ 0x08074F70
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18

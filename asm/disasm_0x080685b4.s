@@ -1751,7 +1751,7 @@ _080692E8:
 	lsls r0, r0, #2
 	adds r4, r4, r0
 	ldrb r0, [r4, #1]
-	bl CheckPlayCutsceneDuringTransition
+	bl EventCheckPlayCutsceneDuringTransition
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _08069348
@@ -1945,7 +1945,7 @@ _08069464:
 	lsls r0, r0, #2
 	adds r4, r4, r0
 	ldrb r0, [r4, #1]
-	bl CheckPlayCutsceneDuringTransition
+	bl EventCheckPlayCutsceneDuringTransition
 	cmp r0, #0
 	beq _0806949A
 	ldr r0, _080694C4 @ =gColorFading

@@ -208,7 +208,7 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
     [PSPRITE_PLASMA_BEAM_CORE_X - 0x10] = SPRITE_GFX_SIZE(5),
     [PSPRITE_WAVE_BEAM_CORE_X - 0x10] = SPRITE_GFX_SIZE(5),
     [PSPRITE_ZORO - 0x10] = SPRITE_GFX_SIZE(1),
-    [PSPRITE_KIHUNER_FLYING - 0x10] = SPRITE_GFX_SIZE(3),
+    [PSPRITE_KIHUNTER_FLYING - 0x10] = SPRITE_GFX_SIZE(3),
 
     [PSPRITE_KIHUNTER_GROUND - 0x10] = SPRITE_GFX_SIZE(3),
     [PSPRITE_KIHUNTER_HIVE - 0x10] = SPRITE_GFX_SIZE(3),
@@ -350,7 +350,7 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
     [PSPRITE_METROID_HUSK - 0x10] = SPRITE_GFX_SIZE(1),
     [PSPRITE_RIDLEY - 0x10] = SPRITE_GFX_SIZE(8),
 
-    [PSPRITE_PRE_SPAWN - 0x10] = SPRITE_GFX_SIZE(2),
+    [PSPRITE_RIDLEY_PRE_SPAWN - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_SA_X_TRO_2 - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_NIGHTMARE - 0x10] = SPRITE_GFX_SIZE(8)
 };
@@ -1185,7 +1185,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         250,
         1
     },
-    [PSPRITE_KIHUNER_FLYING] = {
+    [PSPRITE_KIHUNTER_FLYING] = {
         40,
         86,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
@@ -2202,7 +2202,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0
     },
-    [PSPRITE_PRE_SPAWN] = {
+    [PSPRITE_RIDLEY_PRE_SPAWN] = {
         0,
         0,
         SDRT_30_10,

@@ -3723,7 +3723,7 @@ _08076DF6:
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _08076E4C
-	bl CheckSetNavigationRoomEvent
+	bl EventCheckSetNavigationRoomEvent
 	cmp r0, #0
 	beq _08076E28
 	adds r1, r5, #0
