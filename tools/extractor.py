@@ -53,7 +53,7 @@ if __name__ == "__main__":
                 output: BufferedReader = open(DATA_PATH.__add__(name.removesuffix(".rle")), "ab")
                 output.write(decompressed)
                 output.close()
-            if name.endswith(".lz"):
+            elif name.endswith(".lz"):
                 (decompressed, size) = decomp_lz77(rom, int(info[1], 16))
 
                 output: BufferedReader = open(DATA_PATH.__add__(name), "ab")
