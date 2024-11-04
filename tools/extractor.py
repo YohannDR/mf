@@ -43,7 +43,7 @@ if __name__ == "__main__":
             name: str = info[0]
             print("Extracting", name)
             if name.endswith(".rle"):
-                (decompressed, size) = decomp_rle(int(info[1], 16))
+                (decompressed, size) = decomp_rle(rom, int(info[1], 16))
 
                 output: BufferedReader = open(DATA_PATH.__add__(name), "ab")
                 rom.seek(int(info[1], 16))
@@ -54,7 +54,7 @@ if __name__ == "__main__":
                 output.write(decompressed)
                 output.close()
             if name.endswith(".lz"):
-                (decompressed, size) = decomp_lz77(int(info[1], 16))
+                (decompressed, size) = decomp_lz77(rom, int(info[1], 16))
 
                 output: BufferedReader = open(DATA_PATH.__add__(name), "ab")
                 rom.seek(int(info[1], 16))
