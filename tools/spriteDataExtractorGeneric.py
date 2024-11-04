@@ -95,7 +95,7 @@ def ParsePart2(value):
 
 def ParseOam():
     part_count = int.from_bytes(file.read(2), "little")
-    result = f"static const u16 sOam_{file.tell()-2:x}[] = " + "{\n"
+    result = f"static const u16 sOam_{file.tell()-2:x}[] = {{\n"
     if part_count == 0:
         result += f"    0"
     else:
@@ -123,13 +123,13 @@ def ParseFrameData(spriteName):
             break
         frameData.append((pFrame, timer))
 
-    result = f"const struct FrameData s{spriteName}Oam_{startAddr:x}[{(len(frameData)+1)}] = " + "{\n"
+    result = f"const struct FrameData s{spriteName}Oam_{startAddr:x}[{(len(frameData)+1)}] = {{\n"
 
     index = 0
     for (pFrame, timer) in frameData:
-        result += f"    [{index}] = " + "{\n" + f"        .pFrame = sOam_{pFrame:x},\n" + f"        .timer = {timer}\n" + "    },\n"
+        result += f"    [{index}] = {{\n        .pFrame = sOam_{pFrame:x},\n        .timer = {timer}\n    }},\n"
         index += 1
-    result += f"    [{index}] = FRAME_DATA_TERMINATOR\n" + "};\n"
+    result += f"    [{index}] = FRAME_DATA_TERMINATOR\n}};\n"
 
     return (result, frameData)
 

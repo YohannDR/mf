@@ -47,7 +47,7 @@ void SpriteUtilInitLocationText(void)
         gSpriteData[0].ignoreSamusCollisionTimer = 1;
 
         gSpriteData[0].primarySpriteRamSlot = 0;
-        gSpriteData[0].spritesetSlotAndProperties = 0x10;
+        gSpriteData[0].spritesetSlotAndProperties = SSP_CAN_ABSORB_ADDITIONAL_X;
 
         gSpriteData[0].freezeTimer = 0;
         gSpriteData[0].numberOfXToForm = 1;
@@ -2321,9 +2321,9 @@ void unk_12008(u16 yPosition, u16 xPosition)
     u8 properties;
     u8 timer;
 
-    properties = gCurrentSprite.spritesetSlotAndProperties - 0x20;
+    properties = gCurrentSprite.spritesetSlotAndProperties;
 
-    if (properties < 0x30)
+    if (properties >= SSP_X_ABSORBABLE_BY_SAMUS && properties < SSP_40 + 0x10)
         return;
 
     if (gCurrentSprite.health != 0)
@@ -2370,9 +2370,9 @@ void unk_120ac(u16 yPosition, u16 xPosition)
     u8 properties;
     u8 timer;
 
-    properties = gCurrentSprite.spritesetSlotAndProperties - 0x20;
+    properties = gCurrentSprite.spritesetSlotAndProperties;
 
-    if (properties < 0x30)
+    if (properties >= SSP_X_ABSORBABLE_BY_SAMUS && properties < SSP_40 + 0x10)
         return;
 
     if (gCurrentSprite.health != 0)
@@ -2972,9 +2972,7 @@ void SpriteUtilTrySetAbsorbXFlag(void)
             return;
         }
 
-        if (properties == 16 || properties == 17 || properties == 18 || properties == 19 || properties == 20 || properties == 21 ||
-            properties == 22 || properties == 23 || properties == 24 || properties == 25 || properties == 26 || properties == 27 ||
-            properties == 28 || properties == 29 || properties == 30 || properties == 31)
+        if (properties >= SSP_CAN_ABSORB_ADDITIONAL_X && properties < SSP_CAN_ABSORB_ADDITIONAL_X + 0x10)
         {
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
         }

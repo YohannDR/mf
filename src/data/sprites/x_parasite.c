@@ -116,7 +116,7 @@ const s16 sXParasiteIdleFloatingXMovement[81] = {
     SHORT_MAX
 };
 
-ALIGN2; // to align and make it matching
+ALIGN2(); // to align and make it matching
 
 static const u16 sXParasiteOam_Red_Frame0[] = {
     1,

@@ -998,16 +998,17 @@ void SpriteInitPrimary(u8 spritesetSlot, u16 yPosition, u16 xPosition, u8 roomSl
         // Found a free slot, initialize data
 
         // Set initial status
-        if (spritesetSlot & 0x80)
+        if (spritesetSlot & SSP_HIDDEN_ON_LOAD)
             gSpriteData[i].status = SS_EXISTS | SS_HIDDEN;
         else
             gSpriteData[i].status = SS_EXISTS;
 
-        spritesetSlot = MOD_AND(spritesetSlot, 0x80);
+        spritesetSlot &= ~SSP_HIDDEN_ON_LOAD;
         gSpriteData[i].spritesetSlotAndProperties = spritesetSlot;
 
-        if (spritesetSlot > 0x10)
+        if (spritesetSlot > PSPRITE_UNUSED_15 + 1)
         {
+            // Non-targets
             spritesetSlot--;
             spritesetSlot %= 16;
 
@@ -1016,6 +1017,7 @@ void SpriteInitPrimary(u8 spritesetSlot, u16 yPosition, u16 xPosition, u8 roomSl
         }
         else
         {
+            // Targets
             gSpriteData[i].spritesetGfxSlot = 0;
             gSpriteData[i].spriteId = spritesetSlot - 1;
         }

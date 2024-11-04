@@ -364,9 +364,9 @@ void XParasiteMoveWithSound(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 s
 
 void SamusAbsorbX(void) {
     u16 energy, missiles, powerBombs;
-    u8 tmp = gCurrentSprite.spritesetSlotAndProperties; // Needed to produce matching ASM.
+    u8 properties = gCurrentSprite.spritesetSlotAndProperties; // Needed to produce matching ASM.
 
-    switch (tmp & 0xf0) {
+    switch (properties & 0xf0) {
         case SSP_X_ABSORBABLE_BY_SAMUS:
             if (gCurrentSprite.samusCollision == SSC_RED_X_PARASITE) {
                 energy = 500;

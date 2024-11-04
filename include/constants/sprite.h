@@ -32,8 +32,7 @@
 #define SSP_X_ABSORBABLE_BY_SAMUS 0x20
 #define SSP_X_UNABSORBABLE_BY_SAMUS 0x30
 #define SSP_40 0x40
-
-#define SSP_MASK 0xf0
+#define SSP_HIDDEN_ON_LOAD 0x80
 
 #define WEAKNESS_NONE (0 << 0) // 0
 #define WEAKNESS_CHARGE_BEAM (1 << 0) // 1

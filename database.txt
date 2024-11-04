@@ -1036,6 +1036,12 @@ hud/energy_tank_one_full_one_empty.gfx;32;0x3e907c;1
 escape/palette.pal;48;0x3e909c;2
 escape/graphics.gfx;2048;0x3e90fc;1
 
+# Projectiles
+
+projectiles/flare_horizontal.gfx;80;0x58eb78;32
+projectiles/flare_diagonal.gfx;80;0x58f578;32
+projectiles/flare_vertical.gfx;80;0x58ff78;32
+
 # Title screen
 
 menus/title_screen/characters.gfx;768;0x590998;1
@@ -1068,7 +1074,7 @@ Blob_3be3a0_3e392c.bin;3be3a0;3e392c
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
 Blob_3e9940_3ec038.bin;9976;0x3e9940;1
 Blob_3ec1a8_58b3cc.bin;3ec1a8;58b3cc
-Blob_58b3ec_590998.bin;58b3ec;590998
+Blob_58b3ec_58eb78.bin;58b3ec;58eb78
 Blob_597708_79a29c.bin;2108308;0x597708;1
 Blob_79b458_79b708.bin;79b458;79b708
 Blob_79b894_79ecc8.bin;79b894;79ecc8
