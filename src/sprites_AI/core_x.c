@@ -19,9 +19,9 @@ void CoreXMakeXParasitesFlee(void) {
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++) {
         if (gSpriteData[i].status & SS_EXISTS && !(gSpriteData[i].properties & SP_SECONDARY_SPRITE)
-            && gSpriteData[i].spriteId == PSPRITE_X_PARASITE_CORE_X_OR_PARASITE && gSpriteData[i].pose == 0x5d) {
+            && gSpriteData[i].spriteId == PSPRITE_X_PARASITE_CORE_X_OR_PARASITE && gSpriteData[i].pose == X_PARASITE_POSE_FLYING) {
             gSpriteData[i].xParasiteTimer = 0;
-            gSpriteData[i].pose = 0x61;
+            gSpriteData[i].pose = X_PARASITE_POSE_FLYING_AWAY;
         }
     }
 }
@@ -535,7 +535,7 @@ void CoreXShell(void) {
     }
     switch (gSpriteData[primaryRamSlot].pose) {
         case 0x1a: {
-            if (gSpriteData[primaryRamSlot].work1 <= 32) {
+            if (gSpriteData[primaryRamSlot].work1 <= 8 * 4) {
                 gCurrentSprite.status = 0;
             }
         }
@@ -610,7 +610,6 @@ void CoreXShell(void) {
     }
 }
 
-#ifdef NON_MATCHING
 void AbilityAura(void) {
     // https://decomp.me/scratch/wYMqx
     u8 primaryRamSlot;
@@ -657,7 +656,15 @@ void AbilityAura(void) {
             break;
         case 0x1a:
             if (gSpriteData[primaryRamSlot].work1 <= 32) {
+                // FIXME fakematch
+                #ifdef NON_MATCHING
                 gCurrentSprite.status = 0;
+                #else
+                asm("movs r0, #0 \n\
+                     mov r5, ip \n\
+                     strh r0, [r5] \n\
+                ");
+                #endif
             }
         case 1:
         case 2:
@@ -686,308 +693,3 @@ void AbilityAura(void) {
             gCurrentSprite.status = 0;
     }
 }
-#else
-NAKED_FUNCTION
-void AbilityAura(void) {
-    asm(" \n\
-    push {r4, r5, r6, lr} \n\
-    ldr r1, _080263BC @ =gCurrentSprite \n\
-    add r2, r1, #0 \n\
-    add r2, #0x26 \n\
-    movs r0, #1 \n\
-    strb r0, [r2] \n\
-    add r0, r1, #0 \n\
-    add r0, #0x23 \n\
-    ldrb r4, [r0] \n\
-    add r6, r1, #0 \n\
-    add r6, #0x24 \n\
-    ldrb r5, [r6] \n\
-    mov ip, r1 \n\
-    cmp r5, #0 \n\
-    bne _080263E6 \n\
-    ldrh r1, [r1] \n\
-    ldr r0, _080263C0 @ =0x0000FFFB \n\
-    and r0, r1 \n\
-    movs r3, #0 \n\
-    mov r1, ip \n\
-    strh r0, [r1] \n\
-    mov r0, ip \n\
-    add r0, #0x22 \n\
-    movs r2, #4 \n\
-    strb r2, [r0] \n\
-    ldr r0, _080263C4 @ =gIoRegisters \n\
-    ldrb r1, [r0, #0xa] \n\
-    movs r0, #3 \n\
-    and r0, r1 \n\
-    mov r1, ip \n\
-    add r1, #0x21 \n\
-    strb r0, [r1] \n\
-    mov r0, ip \n\
-    add r0, #0x27 \n\
-    movs r1, #0x10 \n\
-    strb r1, [r0] \n\
-    add r0, #1 \n\
-    strb r1, [r0] \n\
-    add r0, #1 \n\
-    strb r1, [r0] \n\
-    ldr r0, _080263C8 @ =0x0000FFFC \n\
-    mov r1, ip \n\
-    strh r0, [r1, #0xa] \n\
-    strh r2, [r1, #0xc] \n\
-    strh r0, [r1, #0xe] \n\
-    strh r2, [r1, #0x10] \n\
-    strb r3, [r1, #0x1c] \n\
-    strh r5, [r1, #0x16] \n\
-    mov r0, ip \n\
-    add r0, #0x25 \n\
-    strb r3, [r0] \n\
-    movs r0, #2 \n\
-    strb r0, [r6] \n\
-    ldrb r0, [r1, #0x1e] \n\
-    cmp r0, #2 \n\
-    bne _080263D0 \n\
-    ldr r0, _080263CC @ =sCoreXStaticOam_2 \n\
-    b _080263E4 \n\
-    .align 2, 0 \n\
-_080263BC: .4byte gCurrentSprite \n\
-_080263C0: .4byte 0x0000FFFB \n\
-_080263C4: .4byte gIoRegisters \n\
-_080263C8: .4byte 0x0000FFFC \n\
-_080263CC: .4byte sCoreXStaticOam_2 \n\
-_080263D0: \n\
-    cmp r0, #1 \n\
-    bne _080263E0 \n\
-    ldr r0, _080263DC @ =sCoreXStaticOam_1 \n\
-    mov r5, ip \n\
-    str r0, [r5, #0x18] \n\
-    b _080263E6 \n\
-    .align 2, 0 \n\
-_080263DC: .4byte sCoreXStaticOam_1 \n\
-_080263E0: \n\
-    ldr r0, _08026410 @ =sCoreXStaticOam_0 \n\
-    mov r1, ip \n\
-_080263E4: \n\
-    str r0, [r1, #0x18] \n\
-_080263E6: \n\
-    ldr r2, _08026414 @ =gSpriteData \n\
-    lsl r3, r4, #3 \n\
-    sub r0, r3, r4 \n\
-    lsl r0, r0, #3 \n\
-    add r0, r0, r2 \n\
-    ldrh r1, [r0, #2] \n\
-    mov r5, ip \n\
-    strh r1, [r5, #2] \n\
-    ldrh r1, [r0, #4] \n\
-    strh r1, [r5, #4] \n\
-    ldrh r1, [r0] \n\
-    movs r0, #0x20 \n\
-    and r0, r1 \n\
-    cmp r0, #0 \n\
-    beq _08026418 \n\
-    ldrh r0, [r5] \n\
-    movs r1, #0x20 \n\
-    orr r0, r1 \n\
-    strh r0, [r5] \n\
-    b _08026424 \n\
-    .align 2, 0 \n\
-_08026410: .4byte sCoreXStaticOam_0 \n\
-_08026414: .4byte gSpriteData \n\
-_08026418: \n\
-    mov r0, ip \n\
-    ldrh r1, [r0] \n\
-    ldr r0, _08026440 @ =0x0000FFDF \n\
-    and r0, r1 \n\
-    mov r1, ip \n\
-    strh r0, [r1] \n\
-_08026424: \n\
-    sub r0, r3, r4 \n\
-    lsl r0, r0, #3 \n\
-    add r0, r0, r2 \n\
-    add r0, #0x24 \n\
-    ldrb r0, [r0] \n\
-    sub r0, #1 \n\
-    cmp r0, #0x5e \n\
-    bls _08026436 \n\
-    b _08026642 \n\
-_08026436: \n\
-    lsl r0, r0, #2 \n\
-    ldr r1, _08026444 @ =_08026448 \n\
-    add r0, r0, r1 \n\
-    ldr r0, [r0] \n\
-    mov pc, r0 \n\
-    .align 2, 0 \n\
-_08026440: .4byte 0x0000FFDF \n\
-_08026444: .4byte _08026448 \n\
-_08026448: @ jump table \n\
-    .4byte _080265E2 @ case 0 \n\
-    .4byte _080265E2 @ case 1 \n\
-    .4byte _08026642 @ case 2 \n\
-    .4byte _08026642 @ case 3 \n\
-    .4byte _08026642 @ case 4 \n\
-    .4byte _08026642 @ case 5 \n\
-    .4byte _08026642 @ case 6 \n\
-    .4byte _08026642 @ case 7 \n\
-    .4byte _08026642 @ case 8 \n\
-    .4byte _08026642 @ case 9 \n\
-    .4byte _08026642 @ case 10 \n\
-    .4byte _08026642 @ case 11 \n\
-    .4byte _08026642 @ case 12 \n\
-    .4byte _08026642 @ case 13 \n\
-    .4byte _08026642 @ case 14 \n\
-    .4byte _08026642 @ case 15 \n\
-    .4byte _08026642 @ case 16 \n\
-    .4byte _08026642 @ case 17 \n\
-    .4byte _08026642 @ case 18 \n\
-    .4byte _08026642 @ case 19 \n\
-    .4byte _08026642 @ case 20 \n\
-    .4byte _08026642 @ case 21 \n\
-    .4byte _08026642 @ case 22 \n\
-    .4byte _080265E2 @ case 23 \n\
-    .4byte _08026642 @ case 24 \n\
-    .4byte _080265CE @ case 25 \n\
-    .4byte _08026642 @ case 26 \n\
-    .4byte _08026642 @ case 27 \n\
-    .4byte _08026642 @ case 28 \n\
-    .4byte _08026642 @ case 29 \n\
-    .4byte _08026642 @ case 30 \n\
-    .4byte _08026642 @ case 31 \n\
-    .4byte _08026642 @ case 32 \n\
-    .4byte _08026642 @ case 33 \n\
-    .4byte _08026642 @ case 34 \n\
-    .4byte _08026642 @ case 35 \n\
-    .4byte _08026642 @ case 36 \n\
-    .4byte _08026642 @ case 37 \n\
-    .4byte _08026642 @ case 38 \n\
-    .4byte _08026642 @ case 39 \n\
-    .4byte _08026642 @ case 40 \n\
-    .4byte _08026642 @ case 41 \n\
-    .4byte _08026642 @ case 42 \n\
-    .4byte _08026642 @ case 43 \n\
-    .4byte _08026642 @ case 44 \n\
-    .4byte _08026642 @ case 45 \n\
-    .4byte _08026642 @ case 46 \n\
-    .4byte _08026642 @ case 47 \n\
-    .4byte _08026642 @ case 48 \n\
-    .4byte _08026642 @ case 49 \n\
-    .4byte _08026642 @ case 50 \n\
-    .4byte _08026642 @ case 51 \n\
-    .4byte _08026642 @ case 52 \n\
-    .4byte _08026642 @ case 53 \n\
-    .4byte _080265C4 @ case 54 \n\
-    .4byte _080265C4 @ case 55 \n\
-    .4byte _080265C4 @ case 56 \n\
-    .4byte _080265C4 @ case 57 \n\
-    .4byte _080265C4 @ case 58 \n\
-    .4byte _08026628 @ case 59 \n\
-    .4byte _08026642 @ case 60 \n\
-    .4byte _08026642 @ case 61 \n\
-    .4byte _08026642 @ case 62 \n\
-    .4byte _08026642 @ case 63 \n\
-    .4byte _08026642 @ case 64 \n\
-    .4byte _08026642 @ case 65 \n\
-    .4byte _08026642 @ case 66 \n\
-    .4byte _08026642 @ case 67 \n\
-    .4byte _08026642 @ case 68 \n\
-    .4byte _08026642 @ case 69 \n\
-    .4byte _08026642 @ case 70 \n\
-    .4byte _08026642 @ case 71 \n\
-    .4byte _08026642 @ case 72 \n\
-    .4byte _08026642 @ case 73 \n\
-    .4byte _08026642 @ case 74 \n\
-    .4byte _08026642 @ case 75 \n\
-    .4byte _08026642 @ case 76 \n\
-    .4byte _08026642 @ case 77 \n\
-    .4byte _08026642 @ case 78 \n\
-    .4byte _08026642 @ case 79 \n\
-    .4byte _08026642 @ case 80 \n\
-    .4byte _08026642 @ case 81 \n\
-    .4byte _08026642 @ case 82 \n\
-    .4byte _08026642 @ case 83 \n\
-    .4byte _08026642 @ case 84 \n\
-    .4byte _08026642 @ case 85 \n\
-    .4byte _08026642 @ case 86 \n\
-    .4byte _08026642 @ case 87 \n\
-    .4byte _08026642 @ case 88 \n\
-    .4byte _08026642 @ case 89 \n\
-    .4byte _08026642 @ case 90 \n\
-    .4byte _080265EC @ case 91 \n\
-    .4byte _0802660C @ case 92 \n\
-    .4byte _08026628 @ case 93 \n\
-    .4byte _0802663C @ case 94 \n\
-_080265C4: \n\
-    mov r5, ip \n\
-    ldrh r1, [r5] \n\
-    movs r0, #4 \n\
-    orr r0, r1 \n\
-    b _08026640 \n\
-_080265CE: \n\
-    sub r0, r3, r4 \n\
-    lsl r0, r0, #3 \n\
-    add r0, r0, r2 \n\
-    add r0, #0x2e \n\
-    ldrb r0, [r0] \n\
-    cmp r0, #0x20 \n\
-    bhi _080265E2 \n\
-    movs r0, #0 \n\
-    mov r5, ip \n\
-    strh r0, [r5] \n\
-_080265E2: \n\
-    mov r1, ip \n\
-    ldrh r0, [r1] \n\
-    movs r1, #4 \n\
-    eor r0, r1 \n\
-    b _0802663E \n\
-_080265EC: \n\
-    mov r1, ip \n\
-    ldrb r0, [r1, #0x1e] \n\
-    cmp r0, #0 \n\
-    beq _080265FA \n\
-    movs r0, #0 \n\
-    strh r0, [r1] \n\
-    b _08026642 \n\
-_080265FA: \n\
-    mov r5, ip \n\
-    strb r0, [r5, #0x1c] \n\
-    strh r0, [r5, #0x16] \n\
-    ldr r0, _08026608 @ =sCoreXAbilityAuraOam_Fast \n\
-    str r0, [r5, #0x18] \n\
-    b _08026642 \n\
-    .align 2, 0 \n\
-_08026608: .4byte sCoreXAbilityAuraOam_Fast \n\
-_0802660C: \n\
-    ldr r0, _08026624 @ =gFrameCounter8Bit \n\
-    ldrb r1, [r0] \n\
-    movs r0, #3 \n\
-    and r0, r1 \n\
-    cmp r0, #0 \n\
-    bne _08026642 \n\
-    mov r1, ip \n\
-    ldrh r0, [r1] \n\
-    movs r1, #4 \n\
-    eor r0, r1 \n\
-    b _0802663E \n\
-    .align 2, 0 \n\
-_08026624: .4byte gFrameCounter8Bit \n\
-_08026628: \n\
-    mov r0, ip \n\
-    ldrh r1, [r0] \n\
-    ldr r0, _08026638 @ =0x0000FFFB \n\
-    and r0, r1 \n\
-    mov r1, ip \n\
-    strh r0, [r1] \n\
-    b _08026642 \n\
-    .align 2, 0 \n\
-_08026638: .4byte 0x0000FFFB \n\
-_0802663C: \n\
-    movs r0, #0 \n\
-_0802663E: \n\
-    mov r5, ip \n\
-_08026640: \n\
-    strh r0, [r5] \n\
-_08026642: \n\
-    pop {r4, r5, r6} \n\
-    pop {r0} \n\
-    bx r0 \n\
-    ");
-}
-#endif
