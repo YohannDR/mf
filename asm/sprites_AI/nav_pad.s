@@ -153,16 +153,16 @@ NavPadIdleInit: @ 0x0802A1BC
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0802A1EC
-	ldr r0, _0802A1E8 @ =0x0831E380
+	ldr r0, _0802A1E8 @ =sNavigationPadOam_31e380
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #0x46
 	b _0802A1F4
 	.align 2, 0
 _0802A1E4: .4byte gCurrentSprite
-_0802A1E8: .4byte 0x0831E380
+_0802A1E8: .4byte sNavigationPadOam_31e380
 _0802A1EC:
-	ldr r0, _0802A1FC @ =0x0831E318
+	ldr r0, _0802A1FC @ =sNavigationPadOam_31e318
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #2
@@ -171,7 +171,7 @@ _0802A1F4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802A1FC: .4byte 0x0831E318
+_0802A1FC: .4byte sNavigationPadOam_31e318
 
 	thumb_func_start NavPadIdle
 NavPadIdle: @ 0x0802A200
@@ -193,7 +193,7 @@ NavPadIdle: @ 0x0802A200
 	subs r1, #0xa
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _0802A23C @ =0x0831E278
+	ldr r0, _0802A23C @ =sNavigationPadOam_31e278
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -202,7 +202,7 @@ NavPadIdle: @ 0x0802A200
 	b _0802A24C
 	.align 2, 0
 _0802A238: .4byte gCurrentSprite
-_0802A23C: .4byte 0x0831E278
+_0802A23C: .4byte sNavigationPadOam_31e278
 _0802A240: .4byte 0x00000101
 _0802A244:
 	ldr r0, _0802A250 @ =gCurrentSprite
@@ -227,7 +227,7 @@ NavPadPressingSwitch: @ 0x0802A254
 	movs r3, #0
 	movs r0, #0x1a
 	strb r0, [r2]
-	ldr r0, _0802A27C @ =0x0831E380
+	ldr r0, _0802A27C @ =sNavigationPadOam_31e380
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -236,7 +236,7 @@ _0802A272:
 	bx r0
 	.align 2, 0
 _0802A278: .4byte gCurrentSprite
-_0802A27C: .4byte 0x0831E380
+_0802A27C: .4byte sNavigationPadOam_31e380
 
 	thumb_func_start NavPadSwitchPressed
 NavPadSwitchPressed: @ 0x0802A280
@@ -284,7 +284,7 @@ _0802A2D4:
 	adds r2, #0x24
 	movs r0, #0x1c
 	strb r0, [r2]
-	ldr r0, _0802A2F8 @ =0x0831E2F0
+	ldr r0, _0802A2F8 @ =sNavigationPadOam_31e2f0
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -297,7 +297,7 @@ _0802A2EE:
 	bx r0
 	.align 2, 0
 _0802A2F4: .4byte gCurrentSprite
-_0802A2F8: .4byte 0x0831E2F0
+_0802A2F8: .4byte sNavigationPadOam_31e2f0
 
 	thumb_func_start NavPadReleasingSwitch
 NavPadReleasingSwitch: @ 0x0802A2FC
@@ -351,7 +351,7 @@ NavPadAfterConversation: @ 0x0802A348
 	adds r2, #0x24
 	movs r0, #0x1c
 	strb r0, [r2]
-	ldr r0, _0802A378 @ =0x0831E2F0
+	ldr r0, _0802A378 @ =sNavigationPadOam_31e2f0
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -363,7 +363,7 @@ _0802A370:
 	bx r0
 	.align 2, 0
 _0802A374: .4byte gCurrentSprite
-_0802A378: .4byte 0x0831E2F0
+_0802A378: .4byte sNavigationPadOam_31e2f0
 
 	thumb_func_start NavPadUsingConsole
 NavPadUsingConsole: @ 0x0802A37C
@@ -491,7 +491,7 @@ NavConsoleInit: @ 0x0802A42C
 	adds r1, #2
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0802A48C @ =0x0831E268
+	ldr r0, _0802A48C @ =sNavigationPadOam_31e268
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -502,7 +502,7 @@ NavConsoleInit: @ 0x0802A42C
 _0802A480: .4byte gCurrentSprite
 _0802A484: .4byte 0x0000FFFB
 _0802A488: .4byte 0x0000FFFC
-_0802A48C: .4byte 0x0831E268
+_0802A48C: .4byte sNavigationPadOam_31e268
 
 	thumb_func_start NavConsoleIdle
 NavConsoleIdle: @ 0x0802A490
@@ -551,7 +551,7 @@ NavConsoleScreenInit: @ 0x0802A494
 	adds r1, #2
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0802A500 @ =0x0831E2C8
+	ldr r0, _0802A500 @ =sNavigationPadOam_31e2c8
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -562,7 +562,7 @@ NavConsoleScreenInit: @ 0x0802A494
 _0802A4F4: .4byte gCurrentSprite
 _0802A4F8: .4byte 0x0000FFFB
 _0802A4FC: .4byte 0x0000FFFC
-_0802A500: .4byte 0x0831E2C8
+_0802A500: .4byte sNavigationPadOam_31e2c8
 
 	thumb_func_start NavConsoleScreenIdle
 NavConsoleScreenIdle: @ 0x0802A504
@@ -582,21 +582,21 @@ NavConsoleScreenIdle: @ 0x0802A504
 	beq _0802A534
 	cmp r0, #0x38
 	bne _0802A538
-	ldr r0, _0802A530 @ =0x0831E2A0
+	ldr r0, _0802A530 @ =sNavigationPadOam_31e2a0
 	b _0802A536
 	.align 2, 0
 _0802A528: .4byte gCurrentSprite
 _0802A52C: .4byte gSpriteData
-_0802A530: .4byte 0x0831E2A0
+_0802A530: .4byte sNavigationPadOam_31e2a0
 _0802A534:
-	ldr r0, _0802A53C @ =0x0831E2C8
+	ldr r0, _0802A53C @ =sNavigationPadOam_31e2c8
 _0802A536:
 	str r0, [r3, #0x18]
 _0802A538:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802A53C: .4byte 0x0831E2C8
+_0802A53C: .4byte sNavigationPadOam_31e2c8
 
 	thumb_func_start NavScreenInit
 NavScreenInit: @ 0x0802A540
@@ -639,7 +639,7 @@ NavScreenInit: @ 0x0802A540
 	adds r1, #2
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0802A5B0 @ =0x0831E340
+	ldr r0, _0802A5B0 @ =sNavigationPadOam_31e340
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -653,7 +653,7 @@ NavScreenInit: @ 0x0802A540
 _0802A5A4: .4byte gCurrentSprite
 _0802A5A8: .4byte 0x0000FFFB
 _0802A5AC: .4byte 0x0000FFFC
-_0802A5B0: .4byte 0x0831E340
+_0802A5B0: .4byte sNavigationPadOam_31e340
 
 	thumb_func_start NavScreenTurningOn
 NavScreenTurningOn: @ 0x0802A5B4
@@ -662,7 +662,7 @@ NavScreenTurningOn: @ 0x0802A5B4
 	cmp r0, #0
 	beq _0802A5D0
 	ldr r1, _0802A5D4 @ =gCurrentSprite
-	ldr r0, _0802A5D8 @ =0x0831E328
+	ldr r0, _0802A5D8 @ =sNavigationPadOam_31e328
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -675,7 +675,7 @@ _0802A5D0:
 	bx r0
 	.align 2, 0
 _0802A5D4: .4byte gCurrentSprite
-_0802A5D8: .4byte 0x0831E328
+_0802A5D8: .4byte sNavigationPadOam_31e328
 
 	thumb_func_start NavScreenIdle
 NavScreenIdle: @ 0x0802A5DC
@@ -693,7 +693,7 @@ NavScreenIdle: @ 0x0802A5DC
 	ldrb r0, [r0]
 	cmp r0, #0x1e
 	bne _0802A610
-	ldr r0, _0802A61C @ =0x0831E390
+	ldr r0, _0802A61C @ =sNavigationPadOam_31e390
 	str r0, [r3, #0x18]
 	movs r0, #0
 	strb r0, [r3, #0x1c]
@@ -710,7 +710,7 @@ _0802A610:
 	.align 2, 0
 _0802A614: .4byte gCurrentSprite
 _0802A618: .4byte gSpriteData
-_0802A61C: .4byte 0x0831E390
+_0802A61C: .4byte sNavigationPadOam_31e390
 
 	thumb_func_start NavScreenTurningOff
 NavScreenTurningOff: @ 0x0802A620

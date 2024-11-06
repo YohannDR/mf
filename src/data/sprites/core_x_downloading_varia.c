@@ -4,7 +4,7 @@
 const u32 sCoreXDownloadingVariaGfx[512 * 4] = INCBIN_U32("data/sprites/core_x_downloading_varia.gfx");
 const u16 sCoreXDownloadingVariaPal[16 * 4] = INCBIN_U16("data/sprites/core_x_downloading_varia.pal");
 
-static const u16 sCoreXShellBeforeVariaCoreOam_Frame0[OAM_DATA_SIZE(6)] = {
+static const u16 sCoreXShellBeforeVariaCoreOam_Downloading_Frame0[OAM_DATA_SIZE(6)] = {
     6,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1e8, OBJ_PALETTE_9 | 0x290,
     0xe8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_9 | 0x2d5,
@@ -14,7 +14,7 @@ static const u16 sCoreXShellBeforeVariaCoreOam_Frame0[OAM_DATA_SIZE(6)] = {
     0x8, OBJ_SIZE_16x16 | 0x8, OBJ_PALETTE_9 | 0x2d7
 };
 
-static const u16 sCoreXShellBeforeVariaCoreOam_Frame1[OAM_DATA_SIZE(6)] = {
+static const u16 sCoreXShellBeforeVariaCoreOam_Downloading_Frame1[OAM_DATA_SIZE(6)] = {
     6,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1e8, OBJ_PALETTE_10 | 0x290,
     0xe8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_10 | 0x2d5,
@@ -160,21 +160,21 @@ static const u16 sCoreXAbilityBeforeVariaCoreOam_FloatingAway_Frame2[OAM_DATA_SI
     0xf0, OBJ_SIZE_32x32 | 0x1ef, OBJ_PALETTE_8 | 0x208
 };
 
-const struct FrameData sCoreXShellBeforeVariaCoreOam_Unused[2] = {
+const struct FrameData sCoreXShellBeforeVariaCoreOam_Idle[2] = {
     [0] = {
-        .pFrame = sCoreXShellBeforeVariaCoreOam_Frame0,
+        .pFrame = sCoreXShellBeforeVariaCoreOam_Downloading_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sCoreXShellBeforeVariaCoreOam[3] = {
+const struct FrameData sCoreXShellBeforeVariaCoreOam_Downloading[3] = {
     [0] = {
-        .pFrame = sCoreXShellBeforeVariaCoreOam_Frame0,
+        .pFrame = sCoreXShellBeforeVariaCoreOam_Downloading_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sCoreXShellBeforeVariaCoreOam_Frame1,
+        .pFrame = sCoreXShellBeforeVariaCoreOam_Downloading_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR

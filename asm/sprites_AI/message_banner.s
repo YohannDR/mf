@@ -115,7 +115,7 @@ _0802A8B6:
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strh r0, [r2, #0x10]
-	ldr r0, _0802A928 @ =0x0831F758
+	ldr r0, _0802A928 @ =sMessageBoxOam_31f758
 	str r0, [r2, #0x18]
 	strb r5, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -134,7 +134,7 @@ _0802A8B6:
 	.align 2, 0
 _0802A920: .4byte gCurrentSprite
 _0802A924: .4byte 0x0000FFFC
-_0802A928: .4byte 0x0831F758
+_0802A928: .4byte sMessageBoxOam_31f758
 _0802A92C:
 	mov r0, ip
 	adds r0, #0x2f
@@ -327,7 +327,7 @@ _0802AA92:
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0802AB0A
-	ldr r0, _0802AAB8 @ =0x0831F808
+	ldr r0, _0802AAB8 @ =sMessageBoxOam_31f808
 	str r0, [r4, #0x18]
 	strb r5, [r4, #0x1c]
 	strh r5, [r4, #0x16]
@@ -342,7 +342,7 @@ _0802AA92:
 	strh r0, [r4, #6]
 	b _0802AB0A
 	.align 2, 0
-_0802AAB8: .4byte 0x0831F808
+_0802AAB8: .4byte sMessageBoxOam_31f808
 _0802AABC:
 	cmp r6, #0xc
 	beq _0802AAC4
@@ -485,7 +485,7 @@ MessageBannerRemovalInit: @ 0x0802ABA0
 	bl FinishCollectingTank
 _0802ABC0:
 	ldr r1, _0802ABD8 @ =gCurrentSprite
-	ldr r0, _0802ABE0 @ =0x0831F7B0
+	ldr r0, _0802ABE0 @ =sMessageBoxOam_31f7b0
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -498,7 +498,7 @@ _0802ABC0:
 	.align 2, 0
 _0802ABD8: .4byte gCurrentSprite
 _0802ABDC: .4byte gPreventMovementTimer
-_0802ABE0: .4byte 0x0831F7B0
+_0802ABE0: .4byte sMessageBoxOam_31f7b0
 
 	thumb_func_start MesageBannerRemoval
 MesageBannerRemoval: @ 0x0802ABE4
@@ -685,7 +685,7 @@ _0802AD32:
 	strh r0, [r5, #0xc]
 	strh r1, [r5, #0xe]
 	strh r0, [r5, #0x10]
-	ldr r0, _0802ADA8 @ =0x0831F730
+	ldr r0, _0802ADA8 @ =sMessageBoxOam_31f730
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	mov r0, r8
@@ -706,7 +706,7 @@ _0802AD32:
 	.align 2, 0
 _0802ADA0: .4byte 0x0000FFFB
 _0802ADA4: .4byte 0x0000FFFC
-_0802ADA8: .4byte 0x0831F730
+_0802ADA8: .4byte sMessageBoxOam_31f730
 _0802ADAC: .4byte gSpriteData
 _0802ADB0:
 	ldr r0, _0802ADD0 @ =gChangedInput

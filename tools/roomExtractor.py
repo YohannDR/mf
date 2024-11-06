@@ -59,7 +59,7 @@ targetNames = [
     "PSPRITE_UNUSED_16"
 ]
 
-def getPointers():
+def getRoomPointers():
     pointers = {}
 
     # Rooms
@@ -72,7 +72,9 @@ def getPointers():
     for areaIdx in range(len(areaNames)-3):
         rom.seek(pRoomEntries[areaIdx])
         i = 0
+        print(f"enum {areaNames[areaIdx]}Rooms {{")
         while True:
+            print(f"    {areaNamesLowercase[areaIdx].upper()}_{i},")
             tileset = romRead(1)
             Bg0Prop = romRead(1)
             Bg1Prop = romRead(1)
@@ -134,6 +136,7 @@ def getPointers():
             music = romRead(2)
 
             if rom.tell() in pRoomEntries:
+                print("};\n")
                 break
             i += 1
 
@@ -147,7 +150,11 @@ def getPointers():
             if pScroll == 0x3c9230: # Terminator
                 break
             if pScroll not in pointers:
-                pointers[pScroll] = ([areaIdx], "Scroll")
+                currentAddr = rom.tell()
+                rom.seek(pScroll)
+                room = romRead(1)
+                rom.seek(currentAddr)
+                pointers[pScroll] = ([room, areaIdx], "Scroll")
             i += 1
 
     # Tilesets
@@ -198,51 +205,74 @@ def getPointers():
 
     return pointers
 
-def extractTilesets(pointers):
-    out = ""
-    sortedPointers = sorted(pointers.items())
-    for i in range(len(pointers)-1):
-        (pointer, (metadata, group)) = sortedPointers[i]
-        (nextPointer, (nextMetadata, nextGroup)) = sortedPointers[i+1]
+def getLabelName(metadata, group):
+    if group == "BG":
+        return f"s{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}"
+    if group == "Clipdata":
+        return f"s{areaNames[metadata[1]]}_{metadata[0]}_Clipdata"
+    if group == "SpriteData":
+        return f"s{areaNames[metadata[1]]}_{metadata[0]}_SpriteData{metadata[2]}"
+    if group == "Scroll":
+        return f"s{areaNames[metadata[1]]}_{metadata[0]}_Scrolls"
+    if group == "TileGraphics":
+        return f"sTileset_{metadata[0]}_Gfx"
+    if group == "Palette":
+        return f"sTileset_{metadata[0]}_Pal"
+    if group == "BackgroundGraphics":
+        return f"sTileset_{metadata[0]}_Bg_Gfx"
+    if group == "Tilemap":
+        return f"sTileset_{metadata[0]}_Tilemap"
+    if group == "AnimatedPalette":
+        return f"sAnimatedPal_{metadata[0]}"
 
-        out += f"\n// {pointer:x}\n"
+def extractRooms(pointers):
+    out = ""
+    header = ""
+    database = ""
+    sortedPointers = sorted(pointers.items())
+    for i in range(len(pointers)):
+        (pointer, (metadata, group)) = sortedPointers[i]
+        if i < len(pointers) - 1:
+            (nextPointer, (nextMetadata, nextGroup)) = sortedPointers[i+1]
+        labelName = getLabelName(metadata, group)
+        rom.seek(pointer)
+
+        out += f"\n"
 
         if group == "BG":
             if metadata[3] == "RLE":
-                out += f"const u8 s{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}[] = {{\n"
+                out += f"const u8 {labelName}[] = {{\n"
                 out += f"    {romRead(1)}, {romRead(1)},\n"
                 out += f"    _INCBIN_U8(\"data/rooms/{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}.tt.rle\")\n"
                 out += "};\n"
-                (decompressed, size) = decomp_rle(rom, pointer+2) # First 2 bytes hold width and height
-                pointer += size + 2
+                header += f"extern const u8 {labelName}[];\n"
+                database += f"rooms/{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}.tt.rle;0x{rom.tell():x}\n"
+                (decompressed, size) = decomp_rle(rom, rom.tell()) # First 2 bytes hold width and height
             else:
-                out += f"const u8 s{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}[] = {{\n"
+                out += f"const u8 {labelName}[] = {{\n"
                 out += f"    {romRead(1)}, {romRead(1)}, {romRead(1)}, {romRead(1)},\n"
                 out += f"    _INCBIN_U8(\"data/rooms/{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}.tt.lz\")\n"
                 out += "};\n"
-                (decompressed, size) = decomp_lz77(rom, pointer+4)
-                pointer += size + 4
+                header += f"extern const u8 {labelName}[];\n"
+                database += f"rooms/{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}.tt.lz;0x{rom.tell():x}\n"
+                (decompressed, size) = decomp_lz77(rom, rom.tell())
             if metadata[0] != nextMetadata[0] or metadata[3] == "LZ77":
                 out += "ALIGN2();\n"
-                pointer = (pointer + 3) // 4 * 4 # align if next room
-            if pointer not in pointers:
-                out += f"Unused pointer after s{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}: {pointer:x}\n"
+                rom.seek((rom.tell() + 3) // 4 * 4) # align if next room
 
         if group == "Clipdata":
-            out += f"const u8 s{areaNames[metadata[1]]}_{metadata[0]}_Clipdata[] = {{\n"
+            out += f"const u8 {labelName}[] = {{\n"
             out += f"    {romRead(1)}, {romRead(1)},\n"
             out += f"    _INCBIN_U8(\"data/rooms/{areaNames[metadata[1]]}_{metadata[0]}_Clipdata.tt.rle\")\n"
             out += "};\n"
-            (decompressed, size) = decomp_rle(rom, pointer+2) # First 2 bytes hold width and height
-            pointer += size + 2
+            header += f"extern const u8 {labelName}[];\n"
+            database += f"rooms/{areaNames[metadata[1]]}_{metadata[0]}_Clipdata.tt.rle;0x{rom.tell():x}\n"
+            (decompressed, size) = decomp_rle(rom, rom.tell()) # First 2 bytes hold width and height
             if metadata[0] != nextMetadata[0]:
                 out += "ALIGN2();\n"
-                pointer = (pointer + 3) // 4 * 4 # align if next room
-            if pointer  not in pointers:
-                out += f"Unused pointer after s{areaNames[metadata[1]]}_{metadata[0]}_Clipdata: {pointer:x}\n"
+                rom.seek((rom.tell() + 3) // 4 * 4) # align if next room
 
         if group == "SpriteData":
-            rom.seek(pointer)
             spriteData = []
             while True:
                 sprite = [romRead(1), romRead(1), romRead(1)]
@@ -250,32 +280,30 @@ def extractTilesets(pointers):
                     break
                 spriteData.append(sprite)
 
-            out += f"const u8 s{areaNames[metadata[1]]}_{metadata[0]}_SpriteData{metadata[2]}[ROOM_SPRITE_DATA_SIZE({len(spriteData)})] = {{\n"
+            out += f"const u8 {labelName}[ROOM_SPRITE_DATA_COUNT({len(spriteData)})] = {{\n"
             for sprite in spriteData:
                 spritesetSlot = ""
                 if sprite[2] <= 0x10:
-                    spritesetSlot = targetNames[sprite[2] - 1]
+                    spritesetSlot = f"ROOM_SPRITESET_IDX({targetNames[sprite[2] - 1]})"
                 else:
                     if sprite[2] & 0x80 != 0:
-                        spritesetSlot += "SSP_HIDDEN_ON_LOAD | "
+                        spritesetSlot += "SSP_HIDDEN_ON_ROOM_LOAD | "
                     if (sprite[2] >> 4) & 7 != 0:
                         spritesetSlot += f"{xParasitePropertyNames[(sprite[2] >> 4) & 7]} | "
-                    spritesetSlot += f"SPRITESET_IDX({(sprite[2] & 0xf) - 1})"
+                    spritesetSlot += f"ROOM_SPRITESET_IDX({(sprite[2] & 0xf) - 1})"
                     
                 out += f"    {sprite[0]}, {sprite[1]}, {spritesetSlot},\n"
             out += "    ROOM_SPRITE_DATA_TERMINATOR\n};\n"
-            if metadata[0] != nextMetadata[0] or rom.tell() == 0x551dc2:
+            header += f"extern const u8 {labelName}[ROOM_SPRITE_DATA_COUNT({len(spriteData)})];\n"
+            if metadata[0] != nextMetadata[0]:
                 out += "ALIGN2();\n"
                 rom.seek((rom.tell() + 3) // 4 * 4) # align if next room
-            if rom.tell() not in pointers:
-                out += f"Unused pointer after s{areaNames[metadata[1]]}_{metadata[0]}_SpriteData{metadata[2]}: {rom.tell():x}\n"
 
         if group == "Scroll":
-            rom.seek(pointer)
             room = romRead(1)
             count = romRead(1)
-            out += f"const u8 s{areaNames[metadata[0]]}_{room}_Scrolls[SCROLL_DATA_SIZE({count})] = {{\n"
-            out += f"    {room}, // Room\n"
+            out += f"const u8 {labelName}[SCROLL_DATA_COUNT({count})] = {{\n"
+            out += f"    {areaNamesLowercase[metadata[1]].upper()}_{room}, // Room\n"
             out += f"    {count}, // Count\n"
             for i in range(count):
                 out += f"\n    // Scroll {i}\n"
@@ -285,37 +313,51 @@ def extractTilesets(pointers):
                 out += f"    {fmtByte(romRead(1))}, // Breakable block direction\n"
                 out += f"    {fmtByte(romRead(1))}, // Breakable block Y bound extension\n"
             out += "};\n"
-            if rom.tell() not in pointers:
-                out += f"Unused pointer after s{areaNames[metadata[0]]}_{room}_Scrolls: {rom.tell():x}\n"
+            header += f"extern const u8 {labelName}[SCROLL_DATA_COUNT({count})];\n"
 
         if group == "TileGraphics":
-            out += f"const u8 sTileset_{metadata[0]}_Gfx[] = INCBIN_U8(\"data/tilesets/{metadata[0]}.gfx.lz\"); ALIGN2();\n"
-            (decompressed, size) = decomp_lz77(rom, pointer)
-            size = (size + 3) // 4 * 4 # align
-            if pointer + size not in pointers:
-                out += f"Unused pointer after sTileset_{metadata[0]}_Gfx: {pointer + size:x}\n"
+            out += f"const u8 {labelName}[] = INCBIN_U8(\"data/tilesets/{metadata[0]}.gfx.lz\"); ALIGN2();\n"
+            header += f"extern const u8 {labelName}[];\n"
+            database += f"tilesets/{metadata[0]}.gfx.lz;0x{pointer:x}\n"
+            (decompressed, size) = decomp_lz77(rom, rom.tell())
+            rom.seek((rom.tell() + 3) // 4 * 4) # align
 
         if group == "Palette":
-            out += f"const u16 sTileset_{metadata[0]}_Pal[14 * 16] = INCBIN_U16(\"data/tilesets/{metadata[0]}.pal\");\n"
+            out += f"const u16 {labelName}[14 * 16] = INCBIN_U16(\"data/tilesets/{metadata[0]}.pal\");\n"
+            header += f"extern const u16 {labelName}[14 * 16];\n"
+            database += f"tilesets/{metadata[0]}.pal;14;0x{pointer:x};32\n"
+            romRead(14 * 32)
 
         if group == "BackgroundGraphics":
-            out += f"const u8 sTileset_{metadata[0]}_Bg_Gfx[] = INCBIN_U8(\"data/tilesets/{metadata[0]}_Bg.gfx.lz\"); ALIGN2();\n"
-            (decompressed, size) = decomp_lz77(rom, pointer)
-            size = (size + 3) // 4 * 4 # align
-            if pointer + size not in pointers:
-                out += f"Unused pointer after sTileset_{metadata[0]}_Bg_Gfx: {pointer + size:x}\n"
+            out += f"const u8 {labelName}[] = INCBIN_U8(\"data/tilesets/{metadata[0]}_Bg.gfx.lz\"); ALIGN2();\n"
+            header += f"extern const u8 {labelName}[];\n"
+            database += f"tilesets/{metadata[0]}_Bg.gfx.lz;0x{pointer:x}\n"
+            (decompressed, size) = decomp_lz77(rom, rom.tell())
+            rom.seek((rom.tell() + 3) // 4 * 4) # align
 
         if group == "Tilemap":
-            out += f"const u16 sTileset_{metadata[0]}_Tilemap[0x{(nextPointer-pointer)//2:x}] = INCBIN_U16(\"data/tilesets/{metadata[0]}.tm\");\n"
+            out += f"const u16 {labelName}[0x{(nextPointer-pointer)//2:x}] = INCBIN_U16(\"data/tilesets/{metadata[0]}.tt\");\n"
+            header += f"extern const u16 {labelName}[0x{(nextPointer-pointer)//2:x}];\n"
+            database += f"tilesets/{metadata[0]}.tt;{(nextPointer-pointer)//2};0x{pointer:x};2\n"
+            rom.seek(nextPointer)
 
         if group == "AnimatedPalette":
-            out += f"const u16 sAnimatedPal_{metadata[0]}[{metadata[1]} * 16] = INCBIN_U16(\"data/tilesets/animated_palettes/{metadata[0]}.pal\");\n"
+            out += f"const u16 {labelName}[{metadata[1]} * 16] = INCBIN_U16(\"data/tilesets/animated_palettes/{metadata[0]}.pal\");\n"
+            header += f"extern const u16 {labelName}[{metadata[1]} * 16];\n"
+            database += f"tilesets/animated_palettes/{metadata[0]}.pal;{metadata[1]};0x{pointer:x};32\n"
+            romRead(metadata[1] * 32)
+
+        if rom.tell() not in pointers:
+                out += f"Unused pointer after {labelName}: {rom.tell():x}, current pointer: {pointer:x}, next pointer: {nextPointer:x}\n"
+
+    out += header
+    out += database
 
     return out
 
 rom = open("../mf_us_baserom.gba", "rb")
 out = open("out.txt", "w")
-pointers = getPointers()
-out.write(extractTilesets(pointers))
+pointers = getRoomPointers()
+out.write(extractRooms(pointers))
 rom.close()
 out.close()

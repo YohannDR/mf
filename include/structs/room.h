@@ -4,6 +4,12 @@
 #include "types.h"
 #include "oam.h"
 
+#define ROOM_SPRITE_DATA_COUNT(count) (count * 3 + 3)
+
+#define ROOM_SPRITE_DATA_COUNT(count) (count * 3 + 3)
+#define ROOM_SPRITESET_IDX(idx) (idx + 1)
+#define ROOM_SPRITE_DATA_TERMINATOR UCHAR_MAX, UCHAR_MAX, UCHAR_MAX
+
 struct RoomEntry {
     u8 tilesetNumber;
     u8 bg0Prop;
@@ -24,6 +30,15 @@ struct RoomEntry {
     u16 musicTrakc;
     u8 bg0Size;
     u8 bg3Size;
+    u8 animatedTileset;
+    u8 animatedPalette;
+};
+
+struct TilesetEntry {
+    const u32* pTileGraphics;
+    const u16* pPalette;
+    const u32* pBackgroundGraphics;
+    const u8* pTilemap;
     u8 animatedTileset;
     u8 animatedPalette;
 };

@@ -185,4 +185,4 @@ const struct FrameData sSpriteDebrisOam_Cloud1[12] = {
     [11] = FRAME_DATA_TERMINATOR
 };
 
-static const u8 sBlob_3ec1a8_58b3cc[] = INCBIN_U8("data/Blob_3ec1a8_58b3cc.bin");
+static const u8 sBlob_3ec1a8_413afc[] = INCBIN_U8("data/Blob_3ec1a8_413afc.bin");

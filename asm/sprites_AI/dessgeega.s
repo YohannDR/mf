@@ -20,8 +20,8 @@ _08028FAC:
 	pop {r1}
 	bx r1
 
-	thumb_func_start DesgeegaInit
-DesgeegaInit: @ 0x08028FB4
+	thumb_func_start DessgeegaInit
+DessgeegaInit: @ 0x08028FB4
 	push {r4, r5, lr}
 	bl SpriteUtilTrySetAbsorbXFlag
 	ldr r2, _08028FE0 @ =gCurrentSprite
@@ -131,7 +131,7 @@ _08029076:
 	strh r0, [r4, #0xe]
 	movs r0, #0x40
 	strh r0, [r4, #0x10]
-	ldr r0, _080290BC @ =0x0831B8F0
+	ldr r0, _080290BC @ =sDessgeegaOam_31b8f0
 	str r0, [r4, #0x18]
 	strb r1, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -155,7 +155,7 @@ _080290AE:
 	.align 2, 0
 _080290B4: .4byte 0x0000FFAC
 _080290B8: .4byte 0x0000FFC0
-_080290BC: .4byte 0x0831B8F0
+_080290BC: .4byte sDessgeegaOam_31b8f0
 _080290C0: .4byte sPrimarySpriteStats
 
 	thumb_func_start DessgeegaPreparingToJumpInit
@@ -168,15 +168,15 @@ DessgeegaPreparingToJumpInit: @ 0x080290C4
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _080290E0 @ =0x0831B960
+	ldr r0, _080290E0 @ =sDessgeegaOam_31b960
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _080290DC: .4byte gCurrentSprite
-_080290E0: .4byte 0x0831B960
+_080290E0: .4byte sDessgeegaOam_31b960
 
-	thumb_func_start DesgeegaJumpingGroundInit
-DesgeegaJumpingGroundInit: @ 0x080290E4
+	thumb_func_start DessgeegaJumpingGroundInit
+DessgeegaJumpingGroundInit: @ 0x080290E4
 	push {r4, lr}
 	ldr r3, _08029118 @ =gCurrentSprite
 	adds r1, r3, #0
@@ -190,7 +190,7 @@ DesgeegaJumpingGroundInit: @ 0x080290E4
 	adds r0, r3, #0
 	adds r0, #0x31
 	strb r4, [r0]
-	ldr r0, _0802911C @ =0x0831B980
+	ldr r0, _0802911C @ =sDessgeegaOam_31b980
 	str r0, [r3, #0x18]
 	ldr r0, _08029120 @ =gFrameCounter8Bit
 	ldrb r1, [r0]
@@ -205,7 +205,7 @@ DesgeegaJumpingGroundInit: @ 0x080290E4
 	b _0802912A
 	.align 2, 0
 _08029118: .4byte gCurrentSprite
-_0802911C: .4byte 0x0831B980
+_0802911C: .4byte sDessgeegaOam_31b980
 _08029120: .4byte gSpriteRandomNumber
 _08029124:
 	adds r0, r3, #0
@@ -219,8 +219,8 @@ _0802912A:
 	pop {r0}
 	bx r0
 
-	thumb_func_start DesgeegaLandingInit
-DesgeegaLandingInit: @ 0x08029138
+	thumb_func_start DessgeegaLandingInit
+DessgeegaLandingInit: @ 0x08029138
 	push {lr}
 	ldr r1, _08029158 @ =gCurrentSprite
 	adds r3, r1, #0
@@ -230,7 +230,7 @@ DesgeegaLandingInit: @ 0x08029138
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0802915C @ =0x0831B9A0
+	ldr r0, _0802915C @ =sDessgeegaOam_31b9a0
 	str r0, [r1, #0x18]
 	ldr r0, _08029160 @ =0x0000017F
 	bl SoundPlayNotAlreadyPlaying
@@ -238,7 +238,7 @@ DesgeegaLandingInit: @ 0x08029138
 	bx r0
 	.align 2, 0
 _08029158: .4byte gCurrentSprite
-_0802915C: .4byte 0x0831B9A0
+_0802915C: .4byte sDessgeegaOam_31b9a0
 _08029160: .4byte 0x0000017F
 
 	thumb_func_start DessgeegaIdleInit
@@ -273,15 +273,15 @@ _08029178:
 	lsrs r1, r1, #0x18
 	cmp r1, #7
 	bls _080291B4
-	ldr r0, _080291B0 @ =0x0831B8F0
+	ldr r0, _080291B0 @ =sDessgeegaOam_31b8f0
 	str r0, [r2, #0x18]
 	b _080291C0
 	.align 2, 0
 _080291A8: .4byte gCurrentSprite
 _080291AC: .4byte gSpriteRandomNumber
-_080291B0: .4byte 0x0831B8F0
+_080291B0: .4byte sDessgeegaOam_31b8f0
 _080291B4:
-	ldr r0, _080291C4 @ =0x0831B918
+	ldr r0, _080291C4 @ =sDessgeegaOam_31b918
 	str r0, [r2, #0x18]
 	movs r0, #0xc0
 	lsls r0, r0, #1
@@ -290,7 +290,7 @@ _080291C0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080291C4: .4byte 0x0831B918
+_080291C4: .4byte sDessgeegaOam_31b918
 
 	thumb_func_start DessgeegaFallingInit
 DessgeegaFallingInit: @ 0x080291C8
@@ -305,12 +305,12 @@ DessgeegaFallingInit: @ 0x080291C8
 	strh r2, [r3, #0x16]
 	adds r1, #0xd
 	strb r0, [r1]
-	ldr r0, _080291E8 @ =0x0831B980
+	ldr r0, _080291E8 @ =sDessgeegaOam_31b980
 	str r0, [r3, #0x18]
 	bx lr
 	.align 2, 0
 _080291E4: .4byte gCurrentSprite
-_080291E8: .4byte 0x0831B980
+_080291E8: .4byte sDessgeegaOam_31b980
 
 	thumb_func_start DessgeegaJumpWarningGround
 DessgeegaJumpWarningGround: @ 0x080291EC
@@ -350,7 +350,7 @@ _08029234:
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08029240
-	bl DesgeegaJumpingGroundInit
+	bl DessgeegaJumpingGroundInit
 _08029240:
 	pop {r4, r5}
 	pop {r0}
@@ -370,7 +370,7 @@ DessgeegaJumpWarningCeiling: @ 0x08029248
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _08029264
-	bl DesgeegaJumpingGroundInit
+	bl DessgeegaJumpingGroundInit
 _08029264:
 	pop {r0}
 	bx r0
@@ -387,13 +387,13 @@ DessgeegaJumpingGround: @ 0x0802926C
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08029288
-	ldr r1, _08029284 @ =0x0831AD84
+	ldr r1, _08029284 @ =sDessgeegaLittleHopVelocity
 	b _0802928A
 	.align 2, 0
 _08029280: .4byte gCurrentSprite
-_08029284: .4byte 0x0831AD84
+_08029284: .4byte sDessgeegaLittleHopVelocity
 _08029288:
-	ldr r1, _080292CC @ =0x0831AD70
+	ldr r1, _080292CC @ =sDessgeegaBigHopVelocity
 _0802928A:
 	adds r0, r2, #0
 	adds r0, #0x31
@@ -428,7 +428,7 @@ _0802928A:
 	subs r0, #6
 	b _08029310
 	.align 2, 0
-_080292CC: .4byte 0x0831AD70
+_080292CC: .4byte sDessgeegaBigHopVelocity
 _080292D0: .4byte gCurrentSprite
 _080292D4: .4byte gPreviousCollisionCheck
 _080292D8:
@@ -513,7 +513,7 @@ _0802935A:
 	cmp r0, #0
 	beq _0802937C
 	strh r1, [r4, #2]
-	bl DesgeegaLandingInit
+	bl DessgeegaLandingInit
 	b _0802943E
 	.align 2, 0
 _08029374: .4byte gCurrentSprite
@@ -548,7 +548,7 @@ _080293AE:
 _080293B2:
 	ldr r0, _080293BC @ =gCurrentSprite
 	strh r1, [r0, #2]
-	bl DesgeegaLandingInit
+	bl DessgeegaLandingInit
 	b _0802943E
 	.align 2, 0
 _080293BC: .4byte gCurrentSprite
@@ -631,13 +631,13 @@ DessgeegaJumpingCeiling: @ 0x0802944C
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08029468
-	ldr r1, _08029464 @ =0x0831AD84
+	ldr r1, _08029464 @ =sDessgeegaLittleHopVelocity
 	b _0802946A
 	.align 2, 0
 _08029460: .4byte gCurrentSprite
-_08029464: .4byte 0x0831AD84
+_08029464: .4byte sDessgeegaLittleHopVelocity
 _08029468:
-	ldr r1, _080294AC @ =0x0831AD70
+	ldr r1, _080294AC @ =sDessgeegaBigHopVelocity
 _0802946A:
 	adds r0, r2, #0
 	adds r0, #0x31
@@ -672,7 +672,7 @@ _0802946A:
 	subs r0, #6
 	b _080294F0
 	.align 2, 0
-_080294AC: .4byte 0x0831AD70
+_080294AC: .4byte sDessgeegaBigHopVelocity
 _080294B0: .4byte gCurrentSprite
 _080294B4: .4byte gPreviousCollisionCheck
 _080294B8:
@@ -828,7 +828,7 @@ _080295C4:
 	adds r0, r2, #0
 	adds r0, #0x40
 	strh r0, [r4, #2]
-	bl DesgeegaLandingInit
+	bl DessgeegaLandingInit
 	b _08029636
 	.align 2, 0
 _080295E8: .4byte gPreviousVerticalCollisionCheck
@@ -868,7 +868,7 @@ _0802962A:
 	adds r0, r2, #0
 	adds r0, #0x40
 	strh r0, [r1, #2]
-	bl DesgeegaLandingInit
+	bl DessgeegaLandingInit
 _08029636:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -928,7 +928,7 @@ _0802969A:
 _0802969E:
 	ldr r0, _080296A8 @ =gCurrentSprite
 	strh r1, [r0, #2]
-	bl DesgeegaLandingInit
+	bl DessgeegaLandingInit
 	b _080296F0
 	.align 2, 0
 _080296A8: .4byte gCurrentSprite
@@ -1014,7 +1014,7 @@ _08029742:
 	adds r0, r2, #0
 	adds r0, #0x40
 	strh r0, [r1, #2]
-	bl DesgeegaLandingInit
+	bl DessgeegaLandingInit
 	b _08029798
 	.align 2, 0
 _08029750: .4byte gCurrentSprite
@@ -1114,7 +1114,7 @@ _0802980A:
 _08029810: .4byte gCurrentSprite
 _08029814:
 	ldr r1, [r2, #0x18]
-	ldr r0, _0802982C @ =0x0831B918
+	ldr r0, _0802982C @ =sDessgeegaOam_31b918
 	cmp r1, r0
 	bne _08029824
 	movs r0, #0xc0
@@ -1125,7 +1125,7 @@ _08029824:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802982C: .4byte 0x0831B918
+_0802982C: .4byte sDessgeegaOam_31b918
 
 	thumb_func_start DessgeegaIdleCeiling
 DessgeegaIdleCeiling: @ 0x08029830
@@ -1157,7 +1157,7 @@ _0802985E:
 _08029864: .4byte gCurrentSprite
 _08029868:
 	ldr r1, [r2, #0x18]
-	ldr r0, _0802987C @ =0x0831B918
+	ldr r0, _0802987C @ =sDessgeegaOam_31b918
 	cmp r1, r0
 	bne _08029878
 	movs r0, #0xc0
@@ -1167,7 +1167,7 @@ _08029878:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802987C: .4byte 0x0831B918
+_0802987C: .4byte sDessgeegaOam_31b918
 
 	thumb_func_start DessgeegaSpikeInit
 DessgeegaSpikeInit: @ 0x08029880
@@ -1203,7 +1203,7 @@ DessgeegaSpikeInit: @ 0x08029880
 	strh r0, [r5, #0xc]
 	strh r1, [r5, #0xe]
 	strh r0, [r5, #0x10]
-	ldr r0, _080298F0 @ =0x0831B9C0
+	ldr r0, _080298F0 @ =sDessgeegaOam_31b9c0
 	str r0, [r5, #0x18]
 	strb r3, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -1224,7 +1224,7 @@ DessgeegaSpikeInit: @ 0x08029880
 _080298E4: .4byte gCurrentSprite
 _080298E8: .4byte 0x0000FFFB
 _080298EC: .4byte 0x0000FFFC
-_080298F0: .4byte 0x0831B9C0
+_080298F0: .4byte sDessgeegaOam_31b9c0
 
 	thumb_func_start DessgeegaSpikeMove
 DessgeegaSpikeMove: @ 0x080298F4
@@ -1286,14 +1286,14 @@ DessgeegaSpikeExplodingInit: @ 0x0802994C
 	adds r0, r3, #0
 	adds r0, #0x25
 	strb r1, [r0]
-	ldr r0, _0802996C @ =0x0831B9D0
+	ldr r0, _0802996C @ =sDessgeegaOam_31b9d0
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
 	bx lr
 	.align 2, 0
 _08029968: .4byte gCurrentSprite
-_0802996C: .4byte 0x0831B9D0
+_0802996C: .4byte sDessgeegaOam_31b9d0
 
 	thumb_func_start DessgeegaSpikeExploding
 DessgeegaSpikeExploding: @ 0x08029970
@@ -1536,7 +1536,7 @@ _08029A94: @ jump table
 	.4byte _08029C8A @ case 90
 	.4byte _08029C90 @ case 91
 _08029C04:
-	bl DesgeegaInit
+	bl DessgeegaInit
 	b _08029CAC
 _08029C0A:
 	bl DessgeegaPreparingToJumpInit
@@ -1600,7 +1600,7 @@ _08029C80:
 	bl SpriteDying
 	b _08029CAC
 _08029C86:
-	bl DesgeegaInit
+	bl DessgeegaInit
 _08029C8A:
 	bl SpriteSpawningFromX
 	b _08029CAC

@@ -165,7 +165,7 @@ void CoreXShellBeforeVariaCore(void) {
         gCurrentSprite.hitboxBottom = 0x50;
         gCurrentSprite.hitboxLeft = -0x50;
         gCurrentSprite.hitboxRight = 0x50;
-        gCurrentSprite.pOam = sCoreXShellBeforeVariaCoreOam;
+        gCurrentSprite.pOam = sCoreXShellBeforeVariaCoreOam_Downloading;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
@@ -192,7 +192,7 @@ void CoreXShellBeforeVariaCore(void) {
             gSpriteData[primarySpriteSlot].pOam = sCoreXAbilityBeforeVariaCoreOam_ExplodingDataPad;
             gSpriteData[primarySpriteSlot].animationDurationCounter = 0;
             gSpriteData[primarySpriteSlot].currentAnimationFrame = 0;
-            gCurrentSprite.pOam = sCoreXShellBeforeVariaCoreOam_Unused;
+            gCurrentSprite.pOam = sCoreXShellBeforeVariaCoreOam_Idle;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }

@@ -8,6 +8,7 @@
 #include "constants/samus.h"
 
 #include "structs/samus.h"
+#include "structs/scroll.h"
 
 void SamusCopyData(void)
 {

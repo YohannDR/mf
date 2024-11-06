@@ -760,15 +760,15 @@ void SpriteCheckOnScreen(void)
     {
         bgYOffScreenRange = bgBaseY + BLOCK_SIZE * 10;
         spriteOffScreenYRange = spriteY + BLOCK_SIZE * 10;
-        spriteOffScreenBottom = bgYOffScreenRange - BLOCK_SIZE * 9;
-        spriteOffScreenTop = bgYOffScreenRange + BLOCK_SIZE * 19;
+        spriteOffScreenTop = bgYOffScreenRange - BLOCK_SIZE * 9;
+        spriteOffScreenBottom = bgYOffScreenRange + SCREEN_SIZE_Y_SUB_PIXEL + BLOCK_SIZE * 9;
 
         bgXOffScreenRange = bgBaseX + BLOCK_SIZE * 10;
         spriteOffScreenXRange = spriteX + BLOCK_SIZE * 10;
         spriteOffScreenLeft = bgXOffScreenRange - BLOCK_SIZE * 9;
-        spriteOffScreenRight = bgXOffScreenRange + BLOCK_SIZE * 24;
+        spriteOffScreenRight = bgXOffScreenRange + SCREEN_SIZE_X_SUB_PIXEL + BLOCK_SIZE * 9;
 
-        if (spriteOffScreenLeft >= spriteOffScreenXRange || spriteOffScreenXRange >= spriteOffScreenRight || spriteOffScreenBottom >= spriteOffScreenYRange || spriteOffScreenYRange >= spriteOffScreenTop)
+        if (spriteOffScreenLeft >= spriteOffScreenXRange || spriteOffScreenXRange >= spriteOffScreenRight || spriteOffScreenTop >= spriteOffScreenYRange || spriteOffScreenYRange >= spriteOffScreenBottom)
             gCurrentSprite.status = 0;
     }
 }
@@ -998,19 +998,19 @@ void SpriteInitPrimary(u8 spritesetSlot, u16 yPosition, u16 xPosition, u8 roomSl
         // Found a free slot, initialize data
 
         // Set initial status
-        if (spritesetSlot & SSP_HIDDEN_ON_LOAD)
+        if (spritesetSlot & SSP_HIDDEN_ON_ROOM_LOAD)
             gSpriteData[i].status = SS_EXISTS | SS_HIDDEN;
         else
             gSpriteData[i].status = SS_EXISTS;
 
-        spritesetSlot &= ~SSP_HIDDEN_ON_LOAD;
+        spritesetSlot &= ~SSP_HIDDEN_ON_ROOM_LOAD;
         gSpriteData[i].spritesetSlotAndProperties = spritesetSlot;
 
         if (spritesetSlot > PSPRITE_UNUSED_15 + 1)
         {
             // Non-targets
             spritesetSlot--;
-            spritesetSlot %= 16;
+            spritesetSlot &= SPRITESET_SLOT_MASK;
 
             gSpriteData[i].spritesetGfxSlot = gSpritesetSpriteGfxSlots[spritesetSlot];
             gSpriteData[i].spriteId = gSpritesetSpriteIds[spritesetSlot];

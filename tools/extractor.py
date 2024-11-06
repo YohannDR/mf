@@ -13,9 +13,13 @@ subDirs: array = [
     "sprites",
     "hud",
     "escape",
+    "rooms",
+    "tilesets",
+    "tilesets/animated_palettes",
     "projectiles",
     "menus",
-    "menus/title_screen"
+    "menus/title_screen",
+    "sa_x_close_up"
 ]
 
 if __name__ == "__main__":

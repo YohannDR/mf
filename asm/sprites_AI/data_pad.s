@@ -101,16 +101,16 @@ DataPadIdleInit: @ 0x0802AF20
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0802AF50
-	ldr r0, _0802AF4C @ =0x083219C4
+	ldr r0, _0802AF4C @ =sDataPadOam_3219c4
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #2
 	b _0802AF58
 	.align 2, 0
 _0802AF48: .4byte gCurrentSprite
-_0802AF4C: .4byte 0x083219C4
+_0802AF4C: .4byte sDataPadOam_3219c4
 _0802AF50:
-	ldr r0, _0802AF60 @ =0x083219D4
+	ldr r0, _0802AF60 @ =sDataPadOam_3219d4
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #0x1e
@@ -119,7 +119,7 @@ _0802AF58:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802AF60: .4byte 0x083219D4
+_0802AF60: .4byte sDataPadOam_3219d4
 
 	thumb_func_start DataPadIdle
 DataPadIdle: @ 0x0802AF64
@@ -140,7 +140,7 @@ DataPadIdle: @ 0x0802AF64
 	subs r1, #0xa
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _0802AF9C @ =0x083219E4
+	ldr r0, _0802AF9C @ =sDataPadOam_3219e4
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -149,7 +149,7 @@ DataPadIdle: @ 0x0802AF64
 	b _0802AFAC
 	.align 2, 0
 _0802AF98: .4byte gCurrentSprite
-_0802AF9C: .4byte 0x083219E4
+_0802AF9C: .4byte sDataPadOam_3219e4
 _0802AFA0: .4byte 0x00000101
 _0802AFA4:
 	ldr r0, _0802AFB0 @ =gCurrentSprite
@@ -174,7 +174,7 @@ DataPadPressingSwitch: @ 0x0802AFB4
 	movs r3, #0
 	movs r0, #0x1a
 	strb r0, [r2]
-	ldr r0, _0802AFDC @ =0x083219D4
+	ldr r0, _0802AFDC @ =sDataPadOam_3219d4
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -183,7 +183,7 @@ _0802AFD2:
 	bx r0
 	.align 2, 0
 _0802AFD8: .4byte gCurrentSprite
-_0802AFDC: .4byte 0x083219D4
+_0802AFDC: .4byte sDataPadOam_3219d4
 
 	thumb_func_start DataPadSwitchPressed
 DataPadSwitchPressed: @ 0x0802AFE0
@@ -230,7 +230,7 @@ _0802B034:
 	adds r2, #0x24
 	movs r0, #0x1c
 	strb r0, [r2]
-	ldr r0, _0802B058 @ =0x08321A0C
+	ldr r0, _0802B058 @ =sDataPadOam_321a0c
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -243,7 +243,7 @@ _0802B04E:
 	bx r0
 	.align 2, 0
 _0802B054: .4byte gCurrentSprite
-_0802B058: .4byte 0x08321A0C
+_0802B058: .4byte sDataPadOam_321a0c
 
 	thumb_func_start DataPadReleasingSwitch
 DataPadReleasingSwitch: @ 0x0802B05C
@@ -378,7 +378,7 @@ DataPadCenterInit: @ 0x0802B0E4
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0802B174
-	ldr r0, _0802B170 @ =0x08321A44
+	ldr r0, _0802B170 @ =sDataPadOam_321a44
 	str r0, [r4, #0x18]
 	b _0802B17A
 	.align 2, 0
@@ -386,9 +386,9 @@ _0802B160: .4byte gCurrentSprite
 _0802B164: .4byte 0x0000FFFB
 _0802B168: .4byte 0x0000FFFC
 _0802B16C: .4byte gSpriteData
-_0802B170: .4byte 0x08321A44
+_0802B170: .4byte sDataPadOam_321a44
 _0802B174:
-	ldr r0, _0802B180 @ =0x08321A34
+	ldr r0, _0802B180 @ =sDataPadOam_321a34
 	mov r1, ip
 	str r0, [r1, #0x18]
 _0802B17A:
@@ -396,7 +396,7 @@ _0802B17A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802B180: .4byte 0x08321A34
+_0802B180: .4byte sDataPadOam_321a34
 
 	thumb_func_start DataPadCenterIdle
 DataPadCenterIdle: @ 0x0802B184
@@ -428,7 +428,7 @@ DataPadCenterIdle: @ 0x0802B184
 	strb r0, [r1]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
-	ldr r0, _0802B1D4 @ =0x08321A64
+	ldr r0, _0802B1D4 @ =sDataPadOam_321a64
 	str r0, [r3, #0x18]
 	movs r0, #0x85
 	lsls r0, r0, #1
@@ -439,7 +439,7 @@ _0802B1C8:
 	.align 2, 0
 _0802B1CC: .4byte gSpriteData
 _0802B1D0: .4byte gCurrentSprite
-_0802B1D4: .4byte 0x08321A64
+_0802B1D4: .4byte sDataPadOam_321a64
 
 	thumb_func_start DataPadCenterEngaging
 DataPadCenterEngaging: @ 0x0802B1D8
@@ -464,7 +464,7 @@ DataPadCenterEngaging: @ 0x0802B1D8
 	strb r0, [r2]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
-	ldr r0, _0802B21C @ =0x08321A44
+	ldr r0, _0802B21C @ =sDataPadOam_321a44
 	str r0, [r3, #0x18]
 	adds r1, r3, #0
 	adds r1, #0x2e
@@ -476,7 +476,7 @@ _0802B20E:
 	.align 2, 0
 _0802B214: .4byte gSpriteData
 _0802B218: .4byte gCurrentSprite
-_0802B21C: .4byte 0x08321A44
+_0802B21C: .4byte sDataPadOam_321a44
 
 	thumb_func_start DataPadCenterDownloadingData
 DataPadCenterDownloadingData: @ 0x0802B220
@@ -497,14 +497,14 @@ DataPadCenterDownloadingData: @ 0x0802B220
 	strb r1, [r0]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
-	ldr r0, _0802B250 @ =0x08321A34
+	ldr r0, _0802B250 @ =sDataPadOam_321a34
 	str r0, [r3, #0x18]
 _0802B246:
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0802B24C: .4byte gCurrentSprite
-_0802B250: .4byte 0x08321A34
+_0802B250: .4byte sDataPadOam_321a34
 
 	thumb_func_start DataPadSidesInit
 DataPadSidesInit: @ 0x0802B254
@@ -550,7 +550,7 @@ DataPadSidesInit: @ 0x0802B254
 	adds r1, #2
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0802B2C4 @ =0x08321A8C
+	ldr r0, _0802B2C4 @ =sDataPadOam_321a8c
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -561,7 +561,7 @@ DataPadSidesInit: @ 0x0802B254
 _0802B2B8: .4byte gCurrentSprite
 _0802B2BC: .4byte 0x0000FFFB
 _0802B2C0: .4byte 0x0000FFFC
-_0802B2C4: .4byte 0x08321A8C
+_0802B2C4: .4byte sDataPadOam_321a8c
 
 	thumb_func_start DataPadSidesIdle
 DataPadSidesIdle: @ 0x0802B2C8
@@ -586,7 +586,7 @@ DataPadSidesIdle: @ 0x0802B2C8
 	strb r0, [r2]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
-	ldr r0, _0802B30C @ =0x08321A9C
+	ldr r0, _0802B30C @ =sDataPadOam_321a9c
 	str r0, [r3, #0x18]
 	movs r0, #0x84
 	lsls r0, r0, #1
@@ -597,7 +597,7 @@ _0802B2FE:
 	.align 2, 0
 _0802B304: .4byte gSpriteData
 _0802B308: .4byte gCurrentSprite
-_0802B30C: .4byte 0x08321A9C
+_0802B30C: .4byte sDataPadOam_321a9c
 
 	thumb_func_start DataPadSidesEngaging
 DataPadSidesEngaging: @ 0x0802B310
@@ -613,14 +613,14 @@ DataPadSidesEngaging: @ 0x0802B310
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0802B338 @ =0x08321ADC
+	ldr r0, _0802B338 @ =sDataPadOam_321adc
 	str r0, [r1, #0x18]
 _0802B32E:
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0802B334: .4byte gCurrentSprite
-_0802B338: .4byte 0x08321ADC
+_0802B338: .4byte sDataPadOam_321adc
 
 	thumb_func_start DataPadSidesDownloadingData
 DataPadSidesDownloadingData: @ 0x0802B33C
@@ -689,7 +689,7 @@ DataPadSidesDoneDownloadingData: @ 0x0802B3A0
 	strb r0, [r1]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
-	ldr r0, _0802B3D4 @ =0x08321ABC
+	ldr r0, _0802B3D4 @ =sDataPadOam_321abc
 	str r0, [r3, #0x18]
 	ldr r0, _0802B3D8 @ =0x00000109
 	bl SoundPlay
@@ -698,7 +698,7 @@ _0802B3CA:
 	bx r0
 	.align 2, 0
 _0802B3D0: .4byte gCurrentSprite
-_0802B3D4: .4byte 0x08321ABC
+_0802B3D4: .4byte sDataPadOam_321abc
 _0802B3D8: .4byte 0x00000109
 
 	thumb_func_start DataPadSidesDisengaging
@@ -715,7 +715,7 @@ DataPadSidesDisengaging: @ 0x0802B3DC
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0802B408 @ =0x08321A8C
+	ldr r0, _0802B408 @ =sDataPadOam_321a8c
 	str r0, [r1, #0x18]
 	movs r0, #0
 	bl TrySpawnMessageBanner
@@ -724,7 +724,7 @@ _0802B400:
 	bx r0
 	.align 2, 0
 _0802B404: .4byte gCurrentSprite
-_0802B408: .4byte 0x08321A8C
+_0802B408: .4byte sDataPadOam_321a8c
 
 	thumb_func_start DataPad
 DataPad: @ 0x0802B40C

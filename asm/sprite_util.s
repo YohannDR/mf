@@ -6029,7 +6029,7 @@ SpriteUtilMoveEyeCoreXWaveBeamPart: @ 0x08012B54
 	ldrb r0, [r0]
 	movs r4, #7
 	ands r4, r0
-	ldr r1, _08012B94 @ =0x0858B3CC
+	ldr r1, _08012B94 @ =sWaveBeamPartVelocity
 	lsls r0, r4, #1
 	adds r0, r0, r1
 	ldrh r6, [r0]
@@ -6050,7 +6050,7 @@ SpriteUtilMoveEyeCoreXWaveBeamPart: @ 0x08012B54
 	b _08012BA6
 	.align 2, 0
 _08012B90: .4byte gCurrentSprite
-_08012B94: .4byte 0x0858B3CC
+_08012B94: .4byte sWaveBeamPartVelocity
 _08012B98: .4byte 0x3FF66666
 _08012B9C: .4byte 0x66666666
 _08012BA0:

@@ -114,7 +114,7 @@ _08029D9C:
 	adds r1, #3
 	movs r0, #0xd
 	strb r0, [r1]
-	ldr r0, _08029E08 @ =0x0831C348
+	ldr r0, _08029E08 @ =sMissileBarrierOam_31c348
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -140,7 +140,7 @@ _08029D9C:
 	.align 2, 0
 _08029E00: .4byte gCurrentSprite
 _08029E04: .4byte sPrimarySpriteStats
-_08029E08: .4byte 0x0831C348
+_08029E08: .4byte sMissileBarrierOam_31c348
 _08029E0C:
 	ldr r0, _08029E20 @ =0x0000FFC0
 	strh r0, [r4, #0xa]
@@ -202,14 +202,14 @@ XBarrierCoreIdleInit: @ 0x08029E78
 	movs r3, #0
 	movs r0, #2
 	strb r0, [r2]
-	ldr r0, _08029E94 @ =0x0831C348
+	ldr r0, _08029E94 @ =sMissileBarrierOam_31c348
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _08029E90: .4byte gCurrentSprite
-_08029E94: .4byte 0x0831C348
+_08029E94: .4byte sMissileBarrierOam_31c348
 
 	thumb_func_start XBarrierCoreIdle
 XBarrierCoreIdle: @ 0x08029E98
@@ -403,7 +403,7 @@ _08029FBC:
 	adds r1, #3
 	movs r0, #0xd
 	strb r0, [r1]
-	ldr r0, _0802A024 @ =0x0831C2F8
+	ldr r0, _0802A024 @ =sMissileBarrierOam_31c2f8
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r6, [r4, #0x16]
@@ -414,7 +414,7 @@ _0802A014: .4byte 0x0000FFFB
 _0802A018: .4byte 0x0000FF80
 _0802A01C: .4byte 0x0000FFF0
 _0802A020: .4byte sSecondarySpriteStats
-_0802A024: .4byte 0x0831C2F8
+_0802A024: .4byte sMissileBarrierOam_31c2f8
 _0802A028:
 	ldr r2, _0802A054 @ =gSpriteData
 	lsls r1, r5, #3
@@ -427,7 +427,7 @@ _0802A028:
 	bne _0802A070
 	movs r0, #0x18
 	strb r0, [r3]
-	ldr r0, _0802A058 @ =0x0831C320
+	ldr r0, _0802A058 @ =sMissileBarrierOam_31c320
 	str r0, [r4, #0x18]
 	strb r6, [r4, #0x1c]
 	strh r6, [r4, #0x16]
@@ -439,7 +439,7 @@ _0802A028:
 	b _0802A070
 	.align 2, 0
 _0802A054: .4byte gSpriteData
-_0802A058: .4byte 0x0831C320
+_0802A058: .4byte sMissileBarrierOam_31c320
 _0802A05C:
 	adds r1, r4, #0
 	adds r1, #0x26

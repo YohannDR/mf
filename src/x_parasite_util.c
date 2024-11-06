@@ -366,7 +366,7 @@ void SamusAbsorbX(void) {
     u16 energy, missiles, powerBombs;
     u8 properties = gCurrentSprite.spritesetSlotAndProperties; // Needed to produce matching ASM.
 
-    switch (properties & 0xf0) {
+    switch (properties & SSP_MASK) {
         case SSP_X_ABSORBABLE_BY_SAMUS:
             if (gCurrentSprite.samusCollision == SSC_RED_X_PARASITE) {
                 energy = 500;
@@ -442,15 +442,15 @@ void XParasiteSpawningInit(void) {
     gCurrentSprite.work4 = gCurrentSprite.work3;
 }
 
-void XParasiteDetermineColor(u8 unk, u8 spriteId) {
+void XParasiteDetermineColor(u8 type, u8 spriteId) {
     u16 randomNumber;
     u16 yellowXThreshold;
     u16 greenXThreshold;
     u16 redXThreshold;
 
-    switch (gCurrentSprite.spritesetSlotAndProperties & 0xf0) {
+    switch (gCurrentSprite.spritesetSlotAndProperties & SSP_MASK) {
         case SSP_X_ABSORBABLE_BY_SAMUS: {
-            if (unk == X_PARASITE_TYPE_FROM_CORE_X) {
+            if (type == X_PARASITE_TYPE_FROM_CORE_X) {
                 if (gSpriteRandomNumber < 5 || SpriteUtilCheckEnergyFullAndMissilesNotFull()) {
                     gCurrentSprite.pOam = sXParasiteOam_Green;
                     gCurrentSprite.samusCollision = SSC_GREEN_X_PARASITE;
@@ -458,7 +458,7 @@ void XParasiteDetermineColor(u8 unk, u8 spriteId) {
                     gCurrentSprite.pOam = sXParasiteOam_Yellow;
                     gCurrentSprite.samusCollision = SSC_YELLOW_X_PARASITE_SPAWN_ON_ROOM_LOAD;
                 }
-            } else if (unk == X_PARASITE_TYPE_FROM_SPRITE) {
+            } else if (type == X_PARASITE_TYPE_FROM_SPRITE) {
                 // Calculate random number between 1 and 1024 inclusive
                 randomNumber = (gSpriteRandomNumber & 3);
                 randomNumber <<= 8;
@@ -655,7 +655,7 @@ void XParasiteIdleFloating(void) {
     if (gCurrentSprite.status & SS_ENABLE_MOSAIC) {
         if (--gCurrentSprite.xParasiteTimer > 0) {
             gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
-            if ((gCurrentSprite.spritesetSlotAndProperties & 0xf0) == SSP_X_UNABSORBABLE_BY_SAMUS || gCurrentSprite.xParasiteTimer > X_PARASITE_MOSAIC_MAX_INDEX / 2)
+            if ((gCurrentSprite.spritesetSlotAndProperties & SSP_MASK) == SSP_X_UNABSORBABLE_BY_SAMUS || gCurrentSprite.xParasiteTimer > X_PARASITE_MOSAIC_MAX_INDEX / 2)
                 gCurrentSprite.ignoreSamusCollisionTimer = 1;
             else if (gCurrentSprite.status & SS_SAMUS_COLLIDING) {
                 if (gCurrentSprite.spriteId != PSPRITE_X_PARASITE)
@@ -664,7 +664,7 @@ void XParasiteIdleFloating(void) {
             }
         } else {
             gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
-            if ((gCurrentSprite.spritesetSlotAndProperties & 0xf0) == SSP_X_UNABSORBABLE_BY_SAMUS) {
+            if ((gCurrentSprite.spritesetSlotAndProperties & SSP_MASK) == SSP_X_UNABSORBABLE_BY_SAMUS) {
                 gCurrentSprite.ignoreSamusCollisionTimer = 1;
                 XParasiteFlyingInit();
             } else {
@@ -680,7 +680,7 @@ void XParasiteIdleFloating(void) {
 }
 
 void XParasiteFlying(void) {
-    if ((gCurrentSprite.spritesetSlotAndProperties & 0xf0) == SSP_X_UNABSORBABLE_BY_SAMUS) {
+    if ((gCurrentSprite.spritesetSlotAndProperties & SSP_MASK) == SSP_X_UNABSORBABLE_BY_SAMUS) {
         gCurrentSprite.ignoreSamusCollisionTimer = 1;
         // Set flashing
         if ((gFrameCounter8Bit & 7) == 0) {

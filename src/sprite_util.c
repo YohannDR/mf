@@ -4318,6 +4318,15 @@ void unk_136ac(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor)
     }
 }
 
+/**
+ * @brief 13910 | 532 | Handles moving one of Neo-Ridley's fireballs
+ * 
+ * @param dstY Destination Y
+ * @param dstX Destination X
+ * @param yVelocity Y velocity cap
+ * @param xVelocity X velocity cap
+ * @param speedDivisor Speed divisor
+ */
 void SpriteUtilMoveRidleyFireball(u16 dstY, u16 dstX, u8 yVelocity, u8 xVelocity, u8 speedDivisor)
 {
     u8 turning;
@@ -4515,7 +4524,7 @@ void SpriteUtilUpdateStunTimer(void)
     if (MOD_AND(isft, 4) != 0)
         return;
 
-    if (gCurrentSprite.pose >= 0x5B)
+    if (gCurrentSprite.pose >= SPRITE_POSE_TURNING_INTO_X)
         return;
 
     if (isft & 4)

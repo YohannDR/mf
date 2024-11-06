@@ -14918,7 +14918,7 @@ _0807C614: .4byte 0x02007800
 _0807C618:
 	cmp r0, #0xe
 	bne _0807C626
-	ldr r0, _0807C62C @ =0x0872F2E0
+	ldr r0, _0807C62C @ =sSaXCloseupGfx
 	movs r1, #0x80
 	lsls r1, r1, #0x12
 	bl LZ77UncompVram
@@ -14926,7 +14926,7 @@ _0807C626:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C62C: .4byte 0x0872F2E0
+_0807C62C: .4byte sSaXCloseupGfx
 
 	thumb_func_start unk_7c630
 unk_7c630: @ 0x0807C630
@@ -15442,21 +15442,21 @@ _0807CAF0: .4byte 0x00000266
 _0807CAF4: .4byte 0x0879C17C
 _0807CAF8: .4byte 0x00000265
 _0807CAFC:
-	ldr r0, _0807CB10 @ =0x087338C0
+	ldr r0, _0807CB10 @ =sSaXCloseupFirstTileTable
 	ldr r1, _0807CB14 @ =0x06007800
 	bl LZ77UncompVram
-	ldr r0, _0807CB18 @ =0x08733D58
+	ldr r0, _0807CB18 @ =sSaXCloseupSecondTileTable
 	ldr r1, _0807CB1C @ =0x0600B800
 	bl LZ77UncompVram
 	b _0807CDE8
 	.align 2, 0
-_0807CB10: .4byte 0x087338C0
+_0807CB10: .4byte sSaXCloseupFirstTileTable
 _0807CB14: .4byte 0x06007800
-_0807CB18: .4byte 0x08733D58
+_0807CB18: .4byte sSaXCloseupSecondTileTable
 _0807CB1C: .4byte 0x0600B800
 _0807CB20:
 	ldr r1, _0807CB40 @ =0x040000D4
-	ldr r0, _0807CB44 @ =0x0872F0E0
+	ldr r0, _0807CB44 @ =sSaXCloseupPalGreyscale
 	str r0, [r1]
 	movs r0, #0xa0
 	lsls r0, r0, #0x13
@@ -15472,7 +15472,7 @@ _0807CB20:
 	b _0807CDEE
 	.align 2, 0
 _0807CB40: .4byte 0x040000D4
-_0807CB44: .4byte 0x0872F0E0
+_0807CB44: .4byte sSaXCloseupPalGreyscale
 _0807CB48: .4byte 0x80000100
 _0807CB4C: .4byte PauseScreenVBLank_Unused
 _0807CB50: .4byte gNonGameplayRam
@@ -15523,7 +15523,7 @@ _0807CBB0:
 	ldrb r0, [r2]
 	adds r0, #1
 	strb r0, [r2]
-	ldr r1, _0807CBD8 @ =0x0873421C
+	ldr r1, _0807CBD8 @ =sSaXCloseupDurations
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	ldrb r1, [r1]
@@ -15538,7 +15538,7 @@ _0807CBC8:
 	b _0807CC36
 	.align 2, 0
 _0807CBD4: .4byte 0x00000266
-_0807CBD8: .4byte 0x0873421C
+_0807CBD8: .4byte sSaXCloseupDurations
 _0807CBDC: .4byte 0x00000265
 _0807CBE0:
 	ldr r1, _0807CBF8 @ =gWrittenToBldalpha_R
@@ -15573,7 +15573,7 @@ _0807CC18:
 	ldrb r0, [r2]
 	adds r0, #1
 	strb r0, [r2]
-	ldr r1, _0807CC44 @ =0x0873421C
+	ldr r1, _0807CC44 @ =sSaXCloseupDurations
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	ldrb r1, [r1, #1]
@@ -15593,7 +15593,7 @@ _0807CC38:
 	b _0807CE56
 	.align 2, 0
 _0807CC40: .4byte 0x00000266
-_0807CC44: .4byte 0x0873421C
+_0807CC44: .4byte sSaXCloseupDurations
 _0807CC48: .4byte 0x00000265
 _0807CC4C:
 	movs r2, #0x9a

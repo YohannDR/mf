@@ -13,6 +13,7 @@
 #include "structs/demo.h"
 #include "structs/samus.h"
 #include "structs/sa_x.h"
+#include "structs/scroll.h"
 
 /**
  * @brief dd24 | 234 | In game mode subroutine
@@ -437,7 +438,7 @@ void InitAndLoadGenerics(void)
     }
 
     if (gPauseScreenFlag != 0 || gCurrentCutscene != 0)
-        DmaTransfer(3, EWRAM_BASE + 0x1C000, VRAM_OBJ, 0x4000, 16);
+        DmaTransfer(3, gSpriteTilesBackup, VRAM_OBJ, 0x4000, 16);
 
     gDebugFlag = FALSE;
 
@@ -489,7 +490,7 @@ void InitAndLoadGenerics(void)
 
     if (gPauseScreenFlag != 0)
     {
-        DmaTransfer(3, EWRAM_BASE + 0x20000, VRAM_OBJ + 0x4000, 0x4000, 16);
+        DmaTransfer(3, gSpriteTilesBackup + 0x4000, VRAM_OBJ + 0x4000, 0x4000, 16);
 
         DMA_SET(3, EWRAM_BASE + 0x35700, PALRAM_OBJ + 0x100, C_32_2_16(DMA_ENABLE, 16 * 8));
     }

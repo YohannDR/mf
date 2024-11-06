@@ -9,8 +9,8 @@
 extern const u32 sCoreXDownloadingVariaGfx[512 * 4];
 extern const u16 sCoreXDownloadingVariaPal[16 * 4];
 
-extern const struct FrameData sCoreXShellBeforeVariaCoreOam_Unused[2];
-extern const struct FrameData sCoreXShellBeforeVariaCoreOam[3];
+extern const struct FrameData sCoreXShellBeforeVariaCoreOam_Idle[2];
+extern const struct FrameData sCoreXShellBeforeVariaCoreOam_Downloading[3];
 extern const struct FrameData sCoreXAbilityBeforeVariaCoreOam_DownloadingVaria[17];
 extern const struct FrameData sCoreXAbilityBeforeVariaCoreOam_ExplodingDataPad[7];
 extern const struct FrameData sCoreXAbilityBeforeVariaCoreOam_FloatingAway[9];

@@ -2,6 +2,7 @@
 #include "macros.h"
 #include "globals.h"
 
+#include "data/sprites/data_pad.h"
 #include "data/sprites/destroyed_data_pad.h"
 
 #include "constants/event.h"
@@ -18,8 +19,6 @@
  */
 void DestroyedDataPad(void)
 {
-    // FIXME data pad oam
-
     u16 yPosition;
     u16 xPosition;
 
@@ -48,7 +47,7 @@ void DestroyedDataPad(void)
 
             if (EventCheckOn_EscapedSaXNoc())
             {
-                gCurrentSprite.pOam = (const struct FrameData*)0x8321afc;
+                gCurrentSprite.pOam = sDataPadOam_321afc;
                 gCurrentSprite.work1 = 60 * 2;
                 gCurrentSprite.pose = SPRITE_POSE_IDLE;
             }
@@ -63,7 +62,7 @@ void DestroyedDataPad(void)
             gCurrentSprite.work1--;
             if (gCurrentSprite.work1 == 0)
             {
-                gCurrentSprite.pOam = (const struct FrameData*)0x8321aec;
+                gCurrentSprite.pOam = sDataPadOam_321aec;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x18;

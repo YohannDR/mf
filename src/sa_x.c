@@ -8,6 +8,7 @@
 #include "constants/samus.h"
 
 #include "structs/samus.h"
+#include "structs/scroll.h"
 
 /**
  * @brief cbb8 | 64 | SA-X running gfx subroutine

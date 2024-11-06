@@ -2467,7 +2467,7 @@ ProjectileMoveWaveBeamParts: @ 0x0808252C
 	ldrb r0, [r5, #0x1e]
 	movs r4, #7
 	ands r4, r0
-	ldr r1, _08082568 @ =0x0858B3CC
+	ldr r1, _08082568 @ =sWaveBeamPartVelocity
 	lsls r0, r4, #1
 	adds r0, r0, r1
 	ldrh r6, [r0]
@@ -2488,7 +2488,7 @@ ProjectileMoveWaveBeamParts: @ 0x0808252C
 	b _0808257A
 	.align 2, 0
 _08082564: .4byte gCurrentProjectile
-_08082568: .4byte 0x0858B3CC
+_08082568: .4byte sWaveBeamPartVelocity
 _0808256C: .4byte 0x3FF66666
 _08082570: .4byte 0x66666666
 _08082574:
@@ -10886,7 +10886,7 @@ _08086670: @ jump table
 _08086684:
 	ldr r1, _0808669C @ =0x040000D4
 	lsls r2, r2, #8
-	ldr r0, _080866A0 @ =0x0858F578
+	ldr r0, _080866A0 @ =sFlareDiagonalGfx
 	adds r0, r2, r0
 	str r0, [r1]
 	ldr r0, _080866A4 @ =0x06011280
@@ -10898,14 +10898,14 @@ _08086684:
 	b _080866F2
 	.align 2, 0
 _0808669C: .4byte 0x040000D4
-_080866A0: .4byte 0x0858F578
+_080866A0: .4byte sFlareDiagonalGfx
 _080866A4: .4byte 0x06011280
 _080866A8: .4byte 0x80000080
 _080866AC: .4byte 0x0858FA78
 _080866B0:
 	ldr r1, _080866C8 @ =0x040000D4
 	lsls r2, r2, #8
-	ldr r0, _080866CC @ =0x0858FF78
+	ldr r0, _080866CC @ =sFlareVerticalGfx
 	adds r0, r2, r0
 	str r0, [r1]
 	ldr r0, _080866D0 @ =0x06011280
@@ -10917,14 +10917,14 @@ _080866B0:
 	b _080866F2
 	.align 2, 0
 _080866C8: .4byte 0x040000D4
-_080866CC: .4byte 0x0858FF78
+_080866CC: .4byte sFlareVerticalGfx
 _080866D0: .4byte 0x06011280
 _080866D4: .4byte 0x80000080
 _080866D8: .4byte 0x08590478
 _080866DC:
 	ldr r1, _08086704 @ =0x040000D4
 	lsls r2, r2, #8
-	ldr r0, _08086708 @ =0x0858EB78
+	ldr r0, _08086708 @ =sFlareHorizontalGfx
 	adds r0, r2, r0
 	str r0, [r1]
 	ldr r0, _0808670C @ =0x06011280
@@ -10944,7 +10944,7 @@ _080866F2:
 	bx r0
 	.align 2, 0
 _08086704: .4byte 0x040000D4
-_08086708: .4byte 0x0858EB78
+_08086708: .4byte sFlareHorizontalGfx
 _0808670C: .4byte 0x06011280
 _08086710: .4byte 0x80000080
 _08086714: .4byte 0x0858F078
@@ -10954,7 +10954,7 @@ _08086718: .4byte 0x06011680
 ProjectileFlareInit: @ 0x0808671C
 	push {lr}
 	ldr r1, _08086764 @ =gCurrentProjectile
-	ldr r0, _08086768 @ =0x08590988
+	ldr r0, _08086768 @ =sFlareOam
 	str r0, [r1, #4]
 	movs r0, #0
 	strb r0, [r1, #0xe]
@@ -10989,7 +10989,7 @@ ProjectileFlareInit: @ 0x0808671C
 	mov pc, r0
 	.align 2, 0
 _08086764: .4byte gCurrentProjectile
-_08086768: .4byte 0x08590988
+_08086768: .4byte sFlareOam
 _0808676C: .4byte 0x0000FFC0
 _08086770: .4byte _08086774
 _08086774: @ jump table

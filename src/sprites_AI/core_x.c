@@ -655,7 +655,7 @@ void AbilityAura(void) {
             gCurrentSprite.status |= SS_NOT_DRAWN;
             break;
         case 0x1a:
-            if (gSpriteData[primaryRamSlot].work1 <= 32) {
+            if (gSpriteData[primaryRamSlot].work1 <= 8 * 4) {
                 // FIXME fakematch
                 #ifdef NON_MATCHING
                 gCurrentSprite.status = 0;

@@ -131,7 +131,7 @@ _08028502:
 	strh r0, [r4, #0xe]
 	movs r0, #0x40
 	strh r0, [r4, #0x10]
-	ldr r0, _08028548 @ =0x0831ACA0
+	ldr r0, _08028548 @ =sSidehopperOam_31aca0
 	str r0, [r4, #0x18]
 	strb r1, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -155,7 +155,7 @@ _0802853A:
 	.align 2, 0
 _08028540: .4byte 0x0000FFA8
 _08028544: .4byte 0x0000FFC0
-_08028548: .4byte 0x0831ACA0
+_08028548: .4byte sSidehopperOam_31aca0
 _0802854C: .4byte sPrimarySpriteStats
 
 	thumb_func_start SidehopperPreparingtoJumpInit
@@ -168,12 +168,12 @@ SidehopperPreparingtoJumpInit: @ 0x08028550
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0802856C @ =0x0831AD10
+	ldr r0, _0802856C @ =sSidehopperOam_31ad10
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _08028568: .4byte gCurrentSprite
-_0802856C: .4byte 0x0831AD10
+_0802856C: .4byte sSidehopperOam_31ad10
 
 	thumb_func_start SidehopperJumpingInit
 SidehopperJumpingInit: @ 0x08028570
@@ -190,7 +190,7 @@ SidehopperJumpingInit: @ 0x08028570
 	adds r0, r3, #0
 	adds r0, #0x31
 	strb r4, [r0]
-	ldr r0, _080285A8 @ =0x0831AD30
+	ldr r0, _080285A8 @ =sSidehopperOam_31ad30
 	str r0, [r3, #0x18]
 	ldr r0, _080285AC @ =gFrameCounter8Bit
 	ldrb r1, [r0]
@@ -205,7 +205,7 @@ SidehopperJumpingInit: @ 0x08028570
 	b _080285B6
 	.align 2, 0
 _080285A4: .4byte gCurrentSprite
-_080285A8: .4byte 0x0831AD30
+_080285A8: .4byte sSidehopperOam_31ad30
 _080285AC: .4byte gSpriteRandomNumber
 _080285B0:
 	adds r0, r3, #0
@@ -230,7 +230,7 @@ SidehopperLandingInit: @ 0x080285C4
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _080285E8 @ =0x0831AD50
+	ldr r0, _080285E8 @ =sSidehopperOam_31ad50
 	str r0, [r1, #0x18]
 	ldr r0, _080285EC @ =0x0000017B
 	bl SoundPlayNotAlreadyPlaying
@@ -238,7 +238,7 @@ SidehopperLandingInit: @ 0x080285C4
 	bx r0
 	.align 2, 0
 _080285E4: .4byte gCurrentSprite
-_080285E8: .4byte 0x0831AD50
+_080285E8: .4byte sSidehopperOam_31ad50
 _080285EC: .4byte 0x0000017B
 
 	thumb_func_start SidehopperIdle
@@ -273,7 +273,7 @@ _08028604:
 	lsrs r1, r1, #0x18
 	cmp r1, #7
 	bls _08028648
-	ldr r0, _08028644 @ =0x0831ACC8
+	ldr r0, _08028644 @ =sSidehopperOam_31acc8
 	str r0, [r2, #0x18]
 	movs r0, #0xbe
 	lsls r0, r0, #1
@@ -282,15 +282,15 @@ _08028604:
 	.align 2, 0
 _0802863C: .4byte gCurrentSprite
 _08028640: .4byte gSpriteRandomNumber
-_08028644: .4byte 0x0831ACC8
+_08028644: .4byte sSidehopperOam_31acc8
 _08028648:
-	ldr r0, _08028650 @ =0x0831ACA0
+	ldr r0, _08028650 @ =sSidehopperOam_31aca0
 	str r0, [r2, #0x18]
 _0802864C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08028650: .4byte 0x0831ACA0
+_08028650: .4byte sSidehopperOam_31aca0
 
 	thumb_func_start SidehopperFallingInit
 SidehopperFallingInit: @ 0x08028654
@@ -305,12 +305,12 @@ SidehopperFallingInit: @ 0x08028654
 	strh r2, [r3, #0x16]
 	adds r1, #0xd
 	strb r0, [r1]
-	ldr r0, _08028674 @ =0x0831AD30
+	ldr r0, _08028674 @ =sSidehopperOam_31ad30
 	str r0, [r3, #0x18]
 	bx lr
 	.align 2, 0
 _08028670: .4byte gCurrentSprite
-_08028674: .4byte 0x0831AD30
+_08028674: .4byte sSidehopperOam_31ad30
 
 	thumb_func_start SidehopperPreparingToJumpGround
 SidehopperPreparingToJumpGround: @ 0x08028678
@@ -387,13 +387,13 @@ SidehopperJumpingGround: @ 0x080286F8
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08028714
-	ldr r1, _08028710 @ =0x0831A16C
+	ldr r1, _08028710 @ =sSidehopperLittleHopVelocity
 	b _08028716
 	.align 2, 0
 _0802870C: .4byte gCurrentSprite
-_08028710: .4byte 0x0831A16C
+_08028710: .4byte sSidehopperLittleHopVelocity
 _08028714:
-	ldr r1, _08028758 @ =0x0831A158
+	ldr r1, _08028758 @ =sSidehopperBigHopVelocity
 _08028716:
 	adds r0, r2, #0
 	adds r0, #0x31
@@ -428,7 +428,7 @@ _08028716:
 	subs r0, #6
 	b _0802879C
 	.align 2, 0
-_08028758: .4byte 0x0831A158
+_08028758: .4byte sSidehopperBigHopVelocity
 _0802875C: .4byte gCurrentSprite
 _08028760: .4byte gPreviousCollisionCheck
 _08028764:
@@ -631,13 +631,13 @@ SidehopperJumpingCeiling: @ 0x080288D8
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _080288F4
-	ldr r1, _080288F0 @ =0x0831A16C
+	ldr r1, _080288F0 @ =sSidehopperLittleHopVelocity
 	b _080288F6
 	.align 2, 0
 _080288EC: .4byte gCurrentSprite
-_080288F0: .4byte 0x0831A16C
+_080288F0: .4byte sSidehopperLittleHopVelocity
 _080288F4:
-	ldr r1, _08028938 @ =0x0831A158
+	ldr r1, _08028938 @ =sSidehopperBigHopVelocity
 _080288F6:
 	adds r0, r2, #0
 	adds r0, #0x31
@@ -672,7 +672,7 @@ _080288F6:
 	subs r0, #6
 	b _0802897C
 	.align 2, 0
-_08028938: .4byte 0x0831A158
+_08028938: .4byte sSidehopperBigHopVelocity
 _0802893C: .4byte gCurrentSprite
 _08028940: .4byte gPreviousCollisionCheck
 _08028944:
@@ -1114,7 +1114,7 @@ _08028C96:
 _08028C9C: .4byte gCurrentSprite
 _08028CA0:
 	ldr r1, [r2, #0x18]
-	ldr r0, _08028CB8 @ =0x0831ACC8
+	ldr r0, _08028CB8 @ =sSidehopperOam_31acc8
 	cmp r1, r0
 	bne _08028CB0
 	movs r0, #0xbe
@@ -1125,7 +1125,7 @@ _08028CB0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08028CB8: .4byte 0x0831ACC8
+_08028CB8: .4byte sSidehopperOam_31acc8
 
 	thumb_func_start SidehopperIdleCeiling
 SidehopperIdleCeiling: @ 0x08028CBC
@@ -1157,7 +1157,7 @@ _08028CEA:
 _08028CF0: .4byte gCurrentSprite
 _08028CF4:
 	ldr r1, [r2, #0x18]
-	ldr r0, _08028D08 @ =0x0831ACC8
+	ldr r0, _08028D08 @ =sSidehopperOam_31acc8
 	cmp r1, r0
 	bne _08028D04
 	movs r0, #0xbe
@@ -1167,7 +1167,7 @@ _08028D04:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08028D08: .4byte 0x0831ACC8
+_08028D08: .4byte sSidehopperOam_31acc8
 
 	thumb_func_start Sidehopper
 Sidehopper: @ 0x08028D0C

@@ -7,6 +7,7 @@ MEMORY {
 
 SECTIONS {
     ewram (NOLOAD) : ALIGN(4) {
+        . = 0x0001c000; gSpriteTilesBackup = .;
     } >ewram
 
     iwram (NOLOAD) : ALIGN(4) {
@@ -113,6 +114,7 @@ SECTIONS {
         . = 0x00000b80; gArmCannonY = .;
         . = 0x00000b82; gArmCannonX = .;
         . = 0x00000b84; gPauseScreenFlag = .;
+        . = 0x00000b85; gUnk_03000b85 = .;
         . = 0x00000b86; gPreviousArea = .;
         . = 0x00000b87; gEventCounter = .;
         . = 0x00000b88; gPreviousNavigationConversation = .;
@@ -351,6 +353,10 @@ SECTIONS {
 
         asm/disasm_0x08087610.o(.text);
 
+        src/sa_x_close_up.o(.text);
+
+        asm/disasm_0x0809deb4.o(.text);
+
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);
         src/libgcc/fp-bit-base.o(.text);
@@ -390,6 +396,13 @@ SECTIONS {
         src/data/sprites/core_x_downloading_varia.o(.rodata);
         src/data/sprites/waver.o(.rodata);
         src/data/sprites/sciser.o(.rodata);
+        src/data/sprites/sidehopper.o(.rodata);
+        src/data/sprites/dessgeega.o(.rodata);
+        src/data/sprites/missile_barrier.o(.rodata);
+        src/data/sprites/navigation_pad.o(.rodata);
+        src/data/sprites/message_box.o(.rodata);
+        src/data/sprites/data_pad.o(.rodata);
+
         src/data/sprites/box.o(.rodata);
         src/data/sprites/geruda.o(.rodata);
         src/data/sprites/yard.o(.rodata);
@@ -421,8 +434,18 @@ SECTIONS {
         src/data/hud_data.o(.rodata);
         src/data/escape_data.o(.rodata);
         src/data/particle_data.o(.rodata);
+
+        src/data/rooms/main_deck.o(.rodata);
+        src/data/rooms/sector_1.o(.rodata);
+        src/data/rooms/sector_2.o(.rodata);
+        src/data/rooms/sector_3.o(.rodata);
+        src/data/rooms/sector_5.o(.rodata);
+        src/data/rooms/sector_4.o(.rodata);
+        src/data/rooms/sector_6.o(.rodata);
+
         src/data/projectile_data.o(.rodata);
         src/data/menus/title_screen.o(.rodata);
+        src/data/sa_x_close_up.o(.rodata);
         src/data/engine_pointers.o(.rodata);
         src/data/frame_data_pointers.o(.rodata);
     } >rom
