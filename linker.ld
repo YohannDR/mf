@@ -346,6 +346,7 @@ SECTIONS {
 
         asm/particle.o(.text);
         asm/event.o(.text);
+        asm/minimap.o(.text);
         asm/disasm_0x08074ffc.o(.text);
         asm/projectile.o(.text);
 
@@ -355,7 +356,9 @@ SECTIONS {
 
         src/sa_x_close_up.o(.text);
 
-        asm/disasm_0x0809deb4.o(.text);
+        asm/menus/game_over.o(.text);
+        asm/menus/file_select.o(.text);
+        asm/ending.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);

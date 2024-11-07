@@ -1,16 +1,16 @@
 #include "data/rooms/sector_5.h"
 
-const u8 sTileset_48_Gfx[] = INCBIN_U8("data/tilesets/48.gfx.lz"); ALIGN2();
+const u32 sTileset_48_Gfx[] = INCBIN_U32("data/tilesets/48.gfx.lz");
 
-const u8 sTileset_49_Gfx[] = INCBIN_U8("data/tilesets/49.gfx.lz"); ALIGN2();
+const u32 sTileset_49_Gfx[] = INCBIN_U32("data/tilesets/49.gfx.lz");
 
-const u8 sTileset_57_Gfx[] = INCBIN_U8("data/tilesets/57.gfx.lz"); ALIGN2();
+const u32 sTileset_57_Gfx[] = INCBIN_U32("data/tilesets/57.gfx.lz");
 
-const u8 sTileset_48_Bg_Gfx[] = INCBIN_U8("data/tilesets/48_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_48_Bg_Gfx[] = INCBIN_U32("data/tilesets/48_Bg.gfx.lz");
 
-const u8 sTileset_49_Bg_Gfx[] = INCBIN_U8("data/tilesets/49_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_49_Bg_Gfx[] = INCBIN_U32("data/tilesets/49_Bg.gfx.lz");
 
-const u8 sTileset_57_Bg_Gfx[] = INCBIN_U8("data/tilesets/57_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_57_Bg_Gfx[] = INCBIN_U32("data/tilesets/57_Bg.gfx.lz");
 
 const u16 sTileset_48_Pal[14 * 16] = INCBIN_U16("data/tilesets/48.pal");
 
@@ -1769,38 +1769,26 @@ const u8 sSector5_51_SpriteData0[ROOM_SPRITE_DATA_COUNT(5)] = {
 };
 ALIGN2();
 
-const u8 sSector5_3_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector5_3_Bg3.tt.lz")
+const u32 sSector5_3_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector5_3_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector5_7_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector5_7_Bg3.tt.lz")
+const u32 sSector5_7_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector5_7_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_46_Bg0[] = {
-    0, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_46_Bg0.tt.lz")
+const u32 sMainDeck_46_Bg0[] = {
+    0, _INCBIN_U32("data/rooms/MainDeck_46_Bg0.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector5_20_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector5_20_Bg3.tt.lz")
+const u32 sSector5_20_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/Sector5_20_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector5_20_Bg0[] = {
-    0, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector5_20_Bg0.tt.lz")
+const u32 sSector5_20_Bg0[] = {
+    0, _INCBIN_U32("data/rooms/Sector5_20_Bg0.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector5_3_Bg0[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector5_3_Bg0.tt.lz")
+const u32 sSector5_3_Bg0[] = {
+    1, _INCBIN_U32("data/rooms/Sector5_3_Bg0.tt.lz")
 };
-ALIGN2();

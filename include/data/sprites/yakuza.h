@@ -52,9 +52,9 @@ enum YakuzaPart {
 extern const s16 sYakuzaFireBurningSpeed[5];
 extern const s16 sYakuza_3b0b0e[24];
 extern const s16 sYakuzaSlammingSpeed[24];
-extern const u8 sYakuzaMouthStartChargingPalOffset[18];
-extern const u8 sYakuzaMouthChargingPalOffset[12];
-extern const u8 sYakuzaMouthEndChargingPalOffset[8];
+extern const u8 sYakuzaMouthStartGlowingPalOffset[18];
+extern const u8 sYakuzaMouthGlowingPalOffset[12];
+extern const u8 sYakuzaMouthEndGlowingPalOffset[8];
 extern const s16 sYakuzaPhase2Speed[16];
 
 extern const struct MultiSpriteData sMultiSpriteData_3b0f28[5];
@@ -85,7 +85,7 @@ extern const struct MultiSpriteData sMultiSpriteData_3b11c0[2];
 extern const u32 sYakuzaGfx[512 * 8];
 extern const u16 sYakuzaPal[8][16];
 
-extern const u16 sYakuzaMouthChargingPal[8][16];
+extern const u16 sYakuzaMouthGlowingPal[8][16];
 
 extern const struct FrameData sFrameData_3b6f08[5];
 extern const struct FrameData sFrameData_3b6f30[2];

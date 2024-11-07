@@ -7,16 +7,16 @@
 extern const u8 sTitleScreenDebugTextCharactersGfx[768];
 extern const u8 sTitleScreenDebugText[2];
 
-extern const u8 sTitleScreenObjectsGfx[];
+extern const u32 sTitleScreenObjectsGfx[];
 extern const u16 sTitleScreenObjectsPal[16 * 16];
 
 extern const u16 sTitleScreen_592d74[16 * 16];
 extern const u16 sTitleScreen_592f74[16 * 16];
 extern const u16 sTitleScreenPressStartPal[16 * 8];
 
-extern const u8 sTitleScreenLogoGfx[];
-extern const u8 sTitleScreenLogoTileTable[];
-extern const u8 sTitleScreen_596884[];
+extern const u32 sTitleScreenLogoGfx[];
+extern const u32 sTitleScreenLogoTileTable[];
+extern const u32 sTitleScreen_596884[];
 extern const u16 sTitleScreenLogoPal[16 * 8];
 extern const u16 sTitleScreen_596e0c[16 * 8];
 

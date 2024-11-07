@@ -398,8 +398,8 @@ void YakuzaOpeningMouth(void) {
                 gSubSpriteData1.animationDurationCounter = 0;
                 gSubSpriteData1.currentAnimationFrame = 0;
                 gCurrentSprite.work2++;
-                offset = sYakuzaMouthStartChargingPalOffset[0] - 8;
-                DMA_SET(3, sYakuzaMouthChargingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
+                offset = sYakuzaMouthStartGlowingPalOffset[0] - 8;
+                DMA_SET(3, sYakuzaMouthGlowingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
                 gCurrentSprite.work3 = 0;
                 gCurrentSprite.work1 = 3;
             }
@@ -410,15 +410,15 @@ void YakuzaOpeningMouth(void) {
                 if (gCurrentSprite.work3 <= 16) {
                     gCurrentSprite.work3++;
                     gCurrentSprite.work1 = 3;
-                    offset = sYakuzaMouthStartChargingPalOffset[gCurrentSprite.work3] - 8;
-                    DMA_SET(3, sYakuzaMouthChargingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
+                    offset = sYakuzaMouthStartGlowingPalOffset[gCurrentSprite.work3] - 8;
+                    DMA_SET(3, sYakuzaMouthGlowingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
                 } else {
                     gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1060;
                     gSubSpriteData1.animationDurationCounter = 0;
                     gSubSpriteData1.currentAnimationFrame = 0;
                     gCurrentSprite.work2++;
-                    offset = sYakuzaMouthChargingPalOffset[0] - 8;
-                    DMA_SET(3, sYakuzaMouthChargingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
+                    offset = sYakuzaMouthGlowingPalOffset[0] - 8;
+                    DMA_SET(3, sYakuzaMouthGlowingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
                     gCurrentSprite.work3 = 0;
                     gCurrentSprite.work1 = 4;
                 }
@@ -430,8 +430,8 @@ void YakuzaOpeningMouth(void) {
                 if (gCurrentSprite.work3 <= 10) {
                     gCurrentSprite.work3++;
                     gCurrentSprite.work1 = 4;
-                    offset = sYakuzaMouthChargingPalOffset[gCurrentSprite.work3] - 8;
-                    DMA_SET(3, sYakuzaMouthChargingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
+                    offset = sYakuzaMouthGlowingPalOffset[gCurrentSprite.work3] - 8;
+                    DMA_SET(3, sYakuzaMouthGlowingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
                 } else {
                     gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1078;
                     gSubSpriteData1.animationDurationCounter = 0;
@@ -459,8 +459,8 @@ void YakuzaOpeningMouth(void) {
                 gSubSpriteData1.animationDurationCounter = 0;
                 gSubSpriteData1.currentAnimationFrame = 0;
                 gCurrentSprite.work2++;
-                offset = sYakuzaMouthEndChargingPalOffset[0] - 8;
-                DMA_SET(3, sYakuzaMouthChargingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
+                offset = sYakuzaMouthEndGlowingPalOffset[0] - 8;
+                DMA_SET(3, sYakuzaMouthGlowingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
                 gCurrentSprite.work3 = 0;
                 gCurrentSprite.work1 = 2;
             }
@@ -471,8 +471,8 @@ void YakuzaOpeningMouth(void) {
                 if (gCurrentSprite.work3 <= 5) {
                     gCurrentSprite.work3++;
                     gCurrentSprite.work1 = 2;
-                    offset = sYakuzaMouthEndChargingPalOffset[gCurrentSprite.work3] - 8;
-                    DMA_SET(3, sYakuzaMouthChargingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
+                    offset = sYakuzaMouthEndGlowingPalOffset[gCurrentSprite.work3] - 8;
+                    DMA_SET(3, sYakuzaMouthGlowingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
                 } else {
                     gSubSpriteData1.pMultiOam = sMultiSpriteData_3b10a0;
                     gSubSpriteData1.animationDurationCounter = 0;

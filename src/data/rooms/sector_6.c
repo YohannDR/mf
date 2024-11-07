@@ -1,14 +1,14 @@
 #include "data/rooms/sector_6.h"
 
-const u8 sTileset_44_Gfx[] = INCBIN_U8("data/tilesets/44.gfx.lz"); ALIGN2();
+const u32 sTileset_44_Gfx[] = INCBIN_U32("data/tilesets/44.gfx.lz");
 
-const u8 sTileset_62_Gfx[] = INCBIN_U8("data/tilesets/62.gfx.lz"); ALIGN2();
+const u32 sTileset_62_Gfx[] = INCBIN_U32("data/tilesets/62.gfx.lz");
 
-const u8 sTileset_3_Gfx[] = INCBIN_U8("data/tilesets/3.gfx.lz"); ALIGN2();
+const u32 sTileset_3_Gfx[] = INCBIN_U32("data/tilesets/3.gfx.lz");
 
-const u8 sTileset_44_Bg_Gfx[] = INCBIN_U8("data/tilesets/44_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_44_Bg_Gfx[] = INCBIN_U32("data/tilesets/44_Bg.gfx.lz");
 
-const u8 sTileset_3_Bg_Gfx[] = INCBIN_U8("data/tilesets/3_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_3_Bg_Gfx[] = INCBIN_U32("data/tilesets/3_Bg.gfx.lz");
 
 const u16 sTileset_44_Pal[14 * 16] = INCBIN_U16("data/tilesets/44.pal");
 
@@ -1490,34 +1490,24 @@ const u8 sSector6_40_SpriteData0[ROOM_SPRITE_DATA_COUNT(10)] = {
 };
 ALIGN2();
 
-const u8 sSector6_3_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector6_3_Bg3.tt.lz")
+const u32 sSector6_3_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector6_3_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector6_16_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector6_16_Bg3.tt.lz")
+const u32 sSector6_16_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector6_16_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector6_9_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector6_9_Bg3.tt.lz")
+const u32 sSector6_9_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector6_9_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector6_3_Bg0[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector6_3_Bg0.tt.lz")
+const u32 sSector6_3_Bg0[] = {
+    1, _INCBIN_U32("data/rooms/Sector6_3_Bg0.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector6_9_Bg0[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector6_9_Bg0.tt.lz")
+const u32 sSector6_9_Bg0[] = {
+    1, _INCBIN_U32("data/rooms/Sector6_9_Bg0.tt.lz")
 };
-ALIGN2();
 
 static const u8 sBlob_5594a8_58b3cc[] = INCBIN_U8("data/Blob_5594a8_58b3cc.bin");

@@ -3,18 +3,17 @@
 
 const u8 sTitleScreenDebugTextCharactersGfx[768] = INCBIN_U8("data/menus/title_screen/characters.gfx");
 const u8 sTitleScreenDebugText[2] = " ";
-ALIGN2();
 
-const u8 sTitleScreenObjectsGfx[] = INCBIN_U8("data/menus/title_screen/objects.gfx.lz");
+const u32 sTitleScreenObjectsGfx[] = INCBIN_U32("data/menus/title_screen/objects.gfx.lz");
 const u16 sTitleScreenObjectsPal[16 * 16] = INCBIN_U16("data/menus/title_screen/objects.pal");
 
 const u16 sTitleScreen_592d74[16 * 16] = INCBIN_U16("data/menus/title_screen/592d74.pal");
 const u16 sTitleScreen_592f74[16 * 16] = INCBIN_U16("data/menus/title_screen/592f74.pal");
 const u16 sTitleScreenPressStartPal[16 * 8] = INCBIN_U16("data/menus/title_screen/press_start.pal");
 
-const u8 sTitleScreenLogoGfx[] = INCBIN_U8("data/menus/title_screen/logo.gfx.lz"); ALIGN2();
-const u8 sTitleScreenLogoTileTable[] = INCBIN_U8("data/menus/title_screen/logo.tt.lz"); ALIGN2();
-const u8 sTitleScreen_596884[] = INCBIN_U8("data/menus/title_screen/596884.tt.lz"); ALIGN2();
+const u32 sTitleScreenLogoGfx[] = INCBIN_U32("data/menus/title_screen/logo.gfx.lz");
+const u32 sTitleScreenLogoTileTable[] = INCBIN_U32("data/menus/title_screen/logo.tt.lz");
+const u32 sTitleScreen_596884[] = INCBIN_U32("data/menus/title_screen/596884.tt.lz");
 const u16 sTitleScreenLogoPal[16 * 8] = INCBIN_U16("data/menus/title_screen/logo.pal");
 const u16 sTitleScreen_596e0c[16 * 8] = INCBIN_U16("data/menus/title_screen/596e0c.pal");
 

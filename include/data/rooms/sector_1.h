@@ -7,14 +7,14 @@
 #include "structs/room.h"
 #include "structs/scroll.h"
 
-extern const u8 sTileset_2_Gfx[];
-extern const u8 sTileset_88_Gfx[];
-extern const u8 sTileset_14_Gfx[];
-extern const u8 sTileset_41_Gfx[];
-extern const u8 sTileset_4_Gfx[];
-extern const u8 sTileset_88_Bg_Gfx[];
-extern const u8 sTileset_14_Bg_Gfx[];
-extern const u8 sTileset_4_Bg_Gfx[];
+extern const u32 sTileset_2_Gfx[];
+extern const u32 sTileset_88_Gfx[];
+extern const u32 sTileset_14_Gfx[];
+extern const u32 sTileset_41_Gfx[];
+extern const u32 sTileset_4_Gfx[];
+extern const u32 sTileset_88_Bg_Gfx[];
+extern const u32 sTileset_14_Bg_Gfx[];
+extern const u32 sTileset_4_Bg_Gfx[];
 extern const u16 sTileset_2_Tilemap[0x342];
 extern const u16 sTileset_88_Tilemap[0x702];
 extern const u16 sTileset_14_Tilemap[0x702];
@@ -266,9 +266,9 @@ extern const u8 sSector1_53_Clipdata[];
 extern const u8 sSector1_53_Bg2[];
 extern const u8 sSector1_53_Bg1[];
 extern const u8 sSector1_53_SpriteData0[ROOM_SPRITE_DATA_COUNT(3)];
-extern const u8 sSector1_18_Bg3[];
-extern const u8 sSector1_4_Bg3[];
-extern const u8 sSector1_4_Bg0[];
-extern const u8 sSector1_27_Bg3[];
+extern const u32 sSector1_18_Bg3[];
+extern const u32 sSector1_4_Bg3[];
+extern const u32 sSector1_4_Bg0[];
+extern const u32 sSector1_27_Bg3[];
 
 #endif /* SECTOR_1_ROOMS_DATA_H */

@@ -1332,7 +1332,7 @@ void NightmarePartEye(void) {
             break;
         }
         default: {
-            if (gSpriteData[primaryRamSlot].spriteId == 0x48)
+            if (gSpriteData[primaryRamSlot].spriteId == PSPRITE_GRAVITY_SUIT_ABILITY)
                 gCurrentSprite.status = 0;
             break;
         }

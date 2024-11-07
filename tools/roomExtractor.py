@@ -249,14 +249,13 @@ def extractRooms(pointers):
                 database += f"rooms/{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}.tt.rle;0x{rom.tell():x}\n"
                 (decompressed, size) = decomp_rle(rom, rom.tell()) # First 2 bytes hold width and height
             else:
-                out += f"const u8 {labelName}[] = {{\n"
-                out += f"    {romRead(1)}, {romRead(1)}, {romRead(1)}, {romRead(1)},\n"
-                out += f"    _INCBIN_U8(\"data/rooms/{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}.tt.lz\")\n"
+                out += f"const u32 {labelName}[] = {{\n"
+                out += f"    {romRead(4)}, _INCBIN_U32(\"data/rooms/{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}.tt.lz\")\n"
                 out += "};\n"
-                header += f"extern const u8 {labelName}[];\n"
+                header += f"extern const u32 {labelName}[];\n"
                 database += f"rooms/{areaNames[metadata[1]]}_{metadata[0]}_Bg{metadata[2]}.tt.lz;0x{rom.tell():x}\n"
                 (decompressed, size) = decomp_lz77(rom, rom.tell())
-            if metadata[0] != nextMetadata[0] or metadata[3] == "LZ77":
+            if metadata[0] != nextMetadata[0] and metadata[3] == "RLE":
                 out += "ALIGN2();\n"
                 rom.seek((rom.tell() + 3) // 4 * 4) # align if next room
 
@@ -316,8 +315,8 @@ def extractRooms(pointers):
             header += f"extern const u8 {labelName}[SCROLL_DATA_COUNT({count})];\n"
 
         if group == "TileGraphics":
-            out += f"const u8 {labelName}[] = INCBIN_U8(\"data/tilesets/{metadata[0]}.gfx.lz\"); ALIGN2();\n"
-            header += f"extern const u8 {labelName}[];\n"
+            out += f"const u32 {labelName}[] = INCBIN_U32(\"data/tilesets/{metadata[0]}.gfx.lz\");\n"
+            header += f"extern const u32 {labelName}[];\n"
             database += f"tilesets/{metadata[0]}.gfx.lz;0x{pointer:x}\n"
             (decompressed, size) = decomp_lz77(rom, rom.tell())
             rom.seek((rom.tell() + 3) // 4 * 4) # align
@@ -329,8 +328,8 @@ def extractRooms(pointers):
             romRead(14 * 32)
 
         if group == "BackgroundGraphics":
-            out += f"const u8 {labelName}[] = INCBIN_U8(\"data/tilesets/{metadata[0]}_Bg.gfx.lz\"); ALIGN2();\n"
-            header += f"extern const u8 {labelName}[];\n"
+            out += f"const u32 {labelName}[] = INCBIN_U32(\"data/tilesets/{metadata[0]}_Bg.gfx.lz\");\n"
+            header += f"extern const u32 {labelName}[];\n"
             database += f"tilesets/{metadata[0]}_Bg.gfx.lz;0x{pointer:x}\n"
             (decompressed, size) = decomp_lz77(rom, rom.tell())
             rom.seek((rom.tell() + 3) // 4 * 4) # align

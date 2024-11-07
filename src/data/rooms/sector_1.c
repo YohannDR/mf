@@ -1,20 +1,20 @@
 #include "data/rooms/sector_1.h"
 
-const u8 sTileset_2_Gfx[] = INCBIN_U8("data/tilesets/2.gfx.lz"); ALIGN2();
+const u32 sTileset_2_Gfx[] = INCBIN_U32("data/tilesets/2.gfx.lz");
 
-const u8 sTileset_88_Gfx[] = INCBIN_U8("data/tilesets/88.gfx.lz"); ALIGN2();
+const u32 sTileset_88_Gfx[] = INCBIN_U32("data/tilesets/88.gfx.lz");
 
-const u8 sTileset_14_Gfx[] = INCBIN_U8("data/tilesets/14.gfx.lz"); ALIGN2();
+const u32 sTileset_14_Gfx[] = INCBIN_U32("data/tilesets/14.gfx.lz");
 
-const u8 sTileset_41_Gfx[] = INCBIN_U8("data/tilesets/41.gfx.lz"); ALIGN2();
+const u32 sTileset_41_Gfx[] = INCBIN_U32("data/tilesets/41.gfx.lz");
 
-const u8 sTileset_4_Gfx[] = INCBIN_U8("data/tilesets/4.gfx.lz"); ALIGN2();
+const u32 sTileset_4_Gfx[] = INCBIN_U32("data/tilesets/4.gfx.lz");
 
-const u8 sTileset_88_Bg_Gfx[] = INCBIN_U8("data/tilesets/88_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_88_Bg_Gfx[] = INCBIN_U32("data/tilesets/88_Bg.gfx.lz");
 
-const u8 sTileset_14_Bg_Gfx[] = INCBIN_U8("data/tilesets/14_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_14_Bg_Gfx[] = INCBIN_U32("data/tilesets/14_Bg.gfx.lz");
 
-const u8 sTileset_4_Bg_Gfx[] = INCBIN_U8("data/tilesets/4_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_4_Bg_Gfx[] = INCBIN_U32("data/tilesets/4_Bg.gfx.lz");
 
 const u16 sTileset_2_Tilemap[0x342] = INCBIN_U16("data/tilesets/2.tt");
 
@@ -1563,26 +1563,18 @@ const u8 sSector1_53_SpriteData0[ROOM_SPRITE_DATA_COUNT(3)] = {
 };
 ALIGN2();
 
-const u8 sSector1_18_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector1_18_Bg3.tt.lz")
+const u32 sSector1_18_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector1_18_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector1_4_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector1_4_Bg3.tt.lz")
+const u32 sSector1_4_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector1_4_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector1_4_Bg0[] = {
-    0, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector1_4_Bg0.tt.lz")
+const u32 sSector1_4_Bg0[] = {
+    0, _INCBIN_U32("data/rooms/Sector1_4_Bg0.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector1_27_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector1_27_Bg3.tt.lz")
+const u32 sSector1_27_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/Sector1_27_Bg3.tt.lz")
 };
-ALIGN2();

@@ -23,7 +23,7 @@ const s16 sYakuzaSlammingSpeed[24] = {
     20, 21, 22, SHORT_MAX
 };
 
-const u8 sYakuzaMouthStartChargingPalOffset[18] = {
+const u8 sYakuzaMouthStartGlowingPalOffset[18] = {
     8, 9, 8, 9,
     8, 9, 10, 11,
     10, 11, 10, 11,
@@ -31,13 +31,13 @@ const u8 sYakuzaMouthStartChargingPalOffset[18] = {
     14, 13
 };
 
-const u8 sYakuzaMouthChargingPalOffset[12] = {
+const u8 sYakuzaMouthGlowingPalOffset[12] = {
     14, 15, 14, 15,
     14, 15, 14, 15,
     14, 15, 14, 15
 };
 
-const u8 sYakuzaMouthEndChargingPalOffset[8] = {
+const u8 sYakuzaMouthEndGlowingPalOffset[8] = {
     14, 13, 12, 11,
     10, 9, 8, 0
 };
@@ -686,7 +686,7 @@ const struct MultiSpriteData sMultiSpriteData_3b11c0[2] = {
 const u32 sYakuzaGfx[512 * 8] = INCBIN_U32("data/sprites/yakuza.gfx");
 const u16 sYakuzaPal[8][16] = INCBIN_U16("data/sprites/yakuza.pal");
 
-const u16 sYakuzaMouthChargingPal[8][16] = INCBIN_U16("data/sprites/yakuza_mouth_charging.pal");
+const u16 sYakuzaMouthGlowingPal[8][16] = INCBIN_U16("data/sprites/yakuza_mouth_glowing.pal");
 
 static const u16 sFrameData_3b6f08_Frame0[] = {
     12,

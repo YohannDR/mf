@@ -1,26 +1,26 @@
 #include "data/rooms/sector_3.h"
 
-const u8 sTileset_53_Gfx[] = INCBIN_U8("data/tilesets/53.gfx.lz"); ALIGN2();
+const u32 sTileset_53_Gfx[] = INCBIN_U32("data/tilesets/53.gfx.lz");
 
-const u8 sTileset_33_Gfx[] = INCBIN_U8("data/tilesets/33.gfx.lz"); ALIGN2();
+const u32 sTileset_33_Gfx[] = INCBIN_U32("data/tilesets/33.gfx.lz");
 
-const u8 sTileset_34_Gfx[] = INCBIN_U8("data/tilesets/34.gfx.lz"); ALIGN2();
+const u32 sTileset_34_Gfx[] = INCBIN_U32("data/tilesets/34.gfx.lz");
 
-const u8 sTileset_51_Gfx[] = INCBIN_U8("data/tilesets/51.gfx.lz"); ALIGN2();
+const u32 sTileset_51_Gfx[] = INCBIN_U32("data/tilesets/51.gfx.lz");
 
-const u8 sTileset_40_Gfx[] = INCBIN_U8("data/tilesets/40.gfx.lz"); ALIGN2();
+const u32 sTileset_40_Gfx[] = INCBIN_U32("data/tilesets/40.gfx.lz");
 
-const u8 sTileset_42_Gfx[] = INCBIN_U8("data/tilesets/42.gfx.lz"); ALIGN2();
+const u32 sTileset_42_Gfx[] = INCBIN_U32("data/tilesets/42.gfx.lz");
 
-const u8 sTileset_53_Bg_Gfx[] = INCBIN_U8("data/tilesets/53_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_53_Bg_Gfx[] = INCBIN_U32("data/tilesets/53_Bg.gfx.lz");
 
-const u8 sTileset_33_Bg_Gfx[] = INCBIN_U8("data/tilesets/33_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_33_Bg_Gfx[] = INCBIN_U32("data/tilesets/33_Bg.gfx.lz");
 
-const u8 sTileset_34_Bg_Gfx[] = INCBIN_U8("data/tilesets/34_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_34_Bg_Gfx[] = INCBIN_U32("data/tilesets/34_Bg.gfx.lz");
 
-const u8 sTileset_40_Bg_Gfx[] = INCBIN_U8("data/tilesets/40_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_40_Bg_Gfx[] = INCBIN_U32("data/tilesets/40_Bg.gfx.lz");
 
-const u8 sTileset_42_Bg_Gfx[] = INCBIN_U8("data/tilesets/42_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_42_Bg_Gfx[] = INCBIN_U32("data/tilesets/42_Bg.gfx.lz");
 
 const u16 sTileset_53_Pal[14 * 16] = INCBIN_U16("data/tilesets/53.pal");
 
@@ -1479,32 +1479,22 @@ const u8 sSector3_38_SpriteData0[ROOM_SPRITE_DATA_COUNT(0)] = {
 };
 ALIGN2();
 
-const u8 sSector3_17_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector3_17_Bg3.tt.lz")
+const u32 sSector3_17_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector3_17_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector3_3_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector3_3_Bg3.tt.lz")
+const u32 sSector3_3_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector3_3_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector3_6_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector3_6_Bg3.tt.lz")
+const u32 sSector3_6_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector3_6_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector3_10_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector3_10_Bg3.tt.lz")
+const u32 sSector3_10_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/Sector3_10_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sSector3_11_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/Sector3_11_Bg3.tt.lz")
+const u32 sSector3_11_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/Sector3_11_Bg3.tt.lz")
 };
-ALIGN2();

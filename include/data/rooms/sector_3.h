@@ -7,17 +7,17 @@
 #include "structs/room.h"
 #include "structs/scroll.h"
 
-extern const u8 sTileset_53_Gfx[];
-extern const u8 sTileset_33_Gfx[];
-extern const u8 sTileset_34_Gfx[];
-extern const u8 sTileset_51_Gfx[];
-extern const u8 sTileset_40_Gfx[];
-extern const u8 sTileset_42_Gfx[];
-extern const u8 sTileset_53_Bg_Gfx[];
-extern const u8 sTileset_33_Bg_Gfx[];
-extern const u8 sTileset_34_Bg_Gfx[];
-extern const u8 sTileset_40_Bg_Gfx[];
-extern const u8 sTileset_42_Bg_Gfx[];
+extern const u32 sTileset_53_Gfx[];
+extern const u32 sTileset_33_Gfx[];
+extern const u32 sTileset_34_Gfx[];
+extern const u32 sTileset_51_Gfx[];
+extern const u32 sTileset_40_Gfx[];
+extern const u32 sTileset_42_Gfx[];
+extern const u32 sTileset_53_Bg_Gfx[];
+extern const u32 sTileset_33_Bg_Gfx[];
+extern const u32 sTileset_34_Bg_Gfx[];
+extern const u32 sTileset_40_Bg_Gfx[];
+extern const u32 sTileset_42_Bg_Gfx[];
 extern const u16 sTileset_53_Pal[14 * 16];
 extern const u16 sAnimatedPal_23[5 * 16];
 extern const u16 sTileset_71_Pal[14 * 16];
@@ -227,10 +227,10 @@ extern const u8 sSector3_38_Clipdata[];
 extern const u8 sSector3_38_Bg2[];
 extern const u8 sSector3_38_Bg1[];
 extern const u8 sSector3_38_SpriteData0[ROOM_SPRITE_DATA_COUNT(0)];
-extern const u8 sSector3_17_Bg3[];
-extern const u8 sSector3_3_Bg3[];
-extern const u8 sSector3_6_Bg3[];
-extern const u8 sSector3_10_Bg3[];
-extern const u8 sSector3_11_Bg3[];
+extern const u32 sSector3_17_Bg3[];
+extern const u32 sSector3_3_Bg3[];
+extern const u32 sSector3_6_Bg3[];
+extern const u32 sSector3_10_Bg3[];
+extern const u32 sSector3_11_Bg3[];
 
 #endif /* SECTOR_3_ROOMS_DATA_H */

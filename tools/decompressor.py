@@ -94,6 +94,8 @@ def decomp_lz77(rom, addr: int) -> (bytes, int):
             if remain <= 0:
                 if remain < 0:
                     raise ValueError("Too many bytes copied at end")
+                # Round compressed size up to a multiple of 4
+                rom.seek((rom.tell() + 3) // 4 * 4)
                 comp_size = rom.tell() - addr
                 return bytes(output), comp_size
             cflag <<= 1

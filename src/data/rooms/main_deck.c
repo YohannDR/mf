@@ -1,96 +1,96 @@
 #include "data/rooms/main_deck.h"
 
-const u8 sTileset_89_Gfx[] = INCBIN_U8("data/tilesets/89.gfx.lz"); ALIGN2();
+const u32 sTileset_89_Gfx[] = INCBIN_U32("data/tilesets/89.gfx.lz");
 
-const u8 sTileset_16_Gfx[] = INCBIN_U8("data/tilesets/16.gfx.lz"); ALIGN2();
+const u32 sTileset_16_Gfx[] = INCBIN_U32("data/tilesets/16.gfx.lz");
 
-const u8 sTileset_96_Gfx[] = INCBIN_U8("data/tilesets/96.gfx.lz"); ALIGN2();
+const u32 sTileset_96_Gfx[] = INCBIN_U32("data/tilesets/96.gfx.lz");
 
-const u8 sTileset_97_Gfx[] = INCBIN_U8("data/tilesets/97.gfx.lz"); ALIGN2();
+const u32 sTileset_97_Gfx[] = INCBIN_U32("data/tilesets/97.gfx.lz");
 
-const u8 sTileset_55_Gfx[] = INCBIN_U8("data/tilesets/55.gfx.lz"); ALIGN2();
+const u32 sTileset_55_Gfx[] = INCBIN_U32("data/tilesets/55.gfx.lz");
 
-const u8 sTileset_54_Gfx[] = INCBIN_U8("data/tilesets/54.gfx.lz"); ALIGN2();
+const u32 sTileset_54_Gfx[] = INCBIN_U32("data/tilesets/54.gfx.lz");
 
-const u8 sTileset_17_Gfx[] = INCBIN_U8("data/tilesets/17.gfx.lz"); ALIGN2();
+const u32 sTileset_17_Gfx[] = INCBIN_U32("data/tilesets/17.gfx.lz");
 
-const u8 sTileset_29_Gfx[] = INCBIN_U8("data/tilesets/29.gfx.lz"); ALIGN2();
+const u32 sTileset_29_Gfx[] = INCBIN_U32("data/tilesets/29.gfx.lz");
 
-const u8 sTileset_6_Gfx[] = INCBIN_U8("data/tilesets/6.gfx.lz"); ALIGN2();
+const u32 sTileset_6_Gfx[] = INCBIN_U32("data/tilesets/6.gfx.lz");
 
-const u8 sTileset_28_Gfx[] = INCBIN_U8("data/tilesets/28.gfx.lz"); ALIGN2();
+const u32 sTileset_28_Gfx[] = INCBIN_U32("data/tilesets/28.gfx.lz");
 
-const u8 sTileset_7_Gfx[] = INCBIN_U8("data/tilesets/7.gfx.lz"); ALIGN2();
+const u32 sTileset_7_Gfx[] = INCBIN_U32("data/tilesets/7.gfx.lz");
 
-const u8 sTileset_66_Gfx[] = INCBIN_U8("data/tilesets/66.gfx.lz"); ALIGN2();
+const u32 sTileset_66_Gfx[] = INCBIN_U32("data/tilesets/66.gfx.lz");
 
-const u8 sTileset_85_Gfx[] = INCBIN_U8("data/tilesets/85.gfx.lz"); ALIGN2();
+const u32 sTileset_85_Gfx[] = INCBIN_U32("data/tilesets/85.gfx.lz");
 
-const u8 sTileset_19_Gfx[] = INCBIN_U8("data/tilesets/19.gfx.lz"); ALIGN2();
+const u32 sTileset_19_Gfx[] = INCBIN_U32("data/tilesets/19.gfx.lz");
 
-const u8 sTileset_50_Gfx[] = INCBIN_U8("data/tilesets/50.gfx.lz"); ALIGN2();
+const u32 sTileset_50_Gfx[] = INCBIN_U32("data/tilesets/50.gfx.lz");
 
-const u8 sTileset_69_Gfx[] = INCBIN_U8("data/tilesets/69.gfx.lz"); ALIGN2();
+const u32 sTileset_69_Gfx[] = INCBIN_U32("data/tilesets/69.gfx.lz");
 
-const u8 sTileset_27_Gfx[] = INCBIN_U8("data/tilesets/27.gfx.lz"); ALIGN2();
+const u32 sTileset_27_Gfx[] = INCBIN_U32("data/tilesets/27.gfx.lz");
 
-const u8 sTileset_56_Gfx[] = INCBIN_U8("data/tilesets/56.gfx.lz"); ALIGN2();
+const u32 sTileset_56_Gfx[] = INCBIN_U32("data/tilesets/56.gfx.lz");
 
-const u8 sTileset_18_Gfx[] = INCBIN_U8("data/tilesets/18.gfx.lz"); ALIGN2();
+const u32 sTileset_18_Gfx[] = INCBIN_U32("data/tilesets/18.gfx.lz");
 
-const u8 sTileset_60_Gfx[] = INCBIN_U8("data/tilesets/60.gfx.lz"); ALIGN2();
+const u32 sTileset_60_Gfx[] = INCBIN_U32("data/tilesets/60.gfx.lz");
 
-const u8 sTileset_26_Gfx[] = INCBIN_U8("data/tilesets/26.gfx.lz"); ALIGN2();
+const u32 sTileset_26_Gfx[] = INCBIN_U32("data/tilesets/26.gfx.lz");
 
-const u8 sTileset_84_Gfx[] = INCBIN_U8("data/tilesets/84.gfx.lz"); ALIGN2();
+const u32 sTileset_84_Gfx[] = INCBIN_U32("data/tilesets/84.gfx.lz");
 
-const u8 sTileset_8_Gfx[] = INCBIN_U8("data/tilesets/8.gfx.lz"); ALIGN2();
+const u32 sTileset_8_Gfx[] = INCBIN_U32("data/tilesets/8.gfx.lz");
 
-const u8 sTileset_89_Bg_Gfx[] = INCBIN_U8("data/tilesets/89_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_89_Bg_Gfx[] = INCBIN_U32("data/tilesets/89_Bg.gfx.lz");
 
-const u8 sTileset_97_Bg_Gfx[] = INCBIN_U8("data/tilesets/97_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_97_Bg_Gfx[] = INCBIN_U32("data/tilesets/97_Bg.gfx.lz");
 
-const u8 sTileset_16_Bg_Gfx[] = INCBIN_U8("data/tilesets/16_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_16_Bg_Gfx[] = INCBIN_U32("data/tilesets/16_Bg.gfx.lz");
 
-const u8 sTileset_55_Bg_Gfx[] = INCBIN_U8("data/tilesets/55_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_55_Bg_Gfx[] = INCBIN_U32("data/tilesets/55_Bg.gfx.lz");
 
-const u8 sTileset_54_Bg_Gfx[] = INCBIN_U8("data/tilesets/54_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_54_Bg_Gfx[] = INCBIN_U32("data/tilesets/54_Bg.gfx.lz");
 
-const u8 sTileset_29_Bg_Gfx[] = INCBIN_U8("data/tilesets/29_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_29_Bg_Gfx[] = INCBIN_U32("data/tilesets/29_Bg.gfx.lz");
 
-const u8 sTileset_28_Bg_Gfx[] = INCBIN_U8("data/tilesets/28_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_28_Bg_Gfx[] = INCBIN_U32("data/tilesets/28_Bg.gfx.lz");
 
-const u8 sTileset_7_Bg_Gfx[] = INCBIN_U8("data/tilesets/7_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_7_Bg_Gfx[] = INCBIN_U32("data/tilesets/7_Bg.gfx.lz");
 
-const u8 sTileset_85_Bg_Gfx[] = INCBIN_U8("data/tilesets/85_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_85_Bg_Gfx[] = INCBIN_U32("data/tilesets/85_Bg.gfx.lz");
 
-const u8 sTileset_66_Bg_Gfx[] = INCBIN_U8("data/tilesets/66_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_66_Bg_Gfx[] = INCBIN_U32("data/tilesets/66_Bg.gfx.lz");
 
-const u8 sTileset_80_Bg_Gfx[] = INCBIN_U8("data/tilesets/80_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_80_Bg_Gfx[] = INCBIN_U32("data/tilesets/80_Bg.gfx.lz");
 
-const u8 sTileset_83_Bg_Gfx[] = INCBIN_U8("data/tilesets/83_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_83_Bg_Gfx[] = INCBIN_U32("data/tilesets/83_Bg.gfx.lz");
 
-const u8 sTileset_50_Bg_Gfx[] = INCBIN_U8("data/tilesets/50_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_50_Bg_Gfx[] = INCBIN_U32("data/tilesets/50_Bg.gfx.lz");
 
-const u8 sTileset_69_Bg_Gfx[] = INCBIN_U8("data/tilesets/69_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_69_Bg_Gfx[] = INCBIN_U32("data/tilesets/69_Bg.gfx.lz");
 
-const u8 sTileset_70_Bg_Gfx[] = INCBIN_U8("data/tilesets/70_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_70_Bg_Gfx[] = INCBIN_U32("data/tilesets/70_Bg.gfx.lz");
 
-const u8 sTileset_19_Bg_Gfx[] = INCBIN_U8("data/tilesets/19_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_19_Bg_Gfx[] = INCBIN_U32("data/tilesets/19_Bg.gfx.lz");
 
-const u8 sTileset_56_Bg_Gfx[] = INCBIN_U8("data/tilesets/56_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_56_Bg_Gfx[] = INCBIN_U32("data/tilesets/56_Bg.gfx.lz");
 
-const u8 sTileset_17_Bg_Gfx[] = INCBIN_U8("data/tilesets/17_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_17_Bg_Gfx[] = INCBIN_U32("data/tilesets/17_Bg.gfx.lz");
 
-const u8 sTileset_18_Bg_Gfx[] = INCBIN_U8("data/tilesets/18_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_18_Bg_Gfx[] = INCBIN_U32("data/tilesets/18_Bg.gfx.lz");
 
-const u8 sTileset_60_Bg_Gfx[] = INCBIN_U8("data/tilesets/60_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_60_Bg_Gfx[] = INCBIN_U32("data/tilesets/60_Bg.gfx.lz");
 
-const u8 sTileset_61_Bg_Gfx[] = INCBIN_U8("data/tilesets/61_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_61_Bg_Gfx[] = INCBIN_U32("data/tilesets/61_Bg.gfx.lz");
 
-const u8 sTileset_6_Bg_Gfx[] = INCBIN_U8("data/tilesets/6_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_6_Bg_Gfx[] = INCBIN_U32("data/tilesets/6_Bg.gfx.lz");
 
-const u8 sTileset_8_Bg_Gfx[] = INCBIN_U8("data/tilesets/8_Bg.gfx.lz"); ALIGN2();
+const u32 sTileset_8_Bg_Gfx[] = INCBIN_U32("data/tilesets/8_Bg.gfx.lz");
 
 const u16 sTileset_89_Tilemap[0x5c2] = INCBIN_U16("data/tilesets/89.tt");
 
@@ -3044,170 +3044,114 @@ const u8 sMainDeck_86_Bg0[] = {
 };
 ALIGN2();
 
-const u8 sMainDeck_82_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_82_Bg3.tt.lz")
+const u32 sMainDeck_82_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_82_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_63_Bg3[] = {
-    0, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_63_Bg3.tt.lz")
+const u32 sMainDeck_63_Bg3[] = {
+    0, _INCBIN_U32("data/rooms/MainDeck_63_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_63_Bg0[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_63_Bg0.tt.lz")
+const u32 sMainDeck_63_Bg0[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_63_Bg0.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_1_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_1_Bg3.tt.lz")
+const u32 sMainDeck_1_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_1_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_6_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_6_Bg3.tt.lz")
+const u32 sMainDeck_6_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_6_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_59_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_59_Bg3.tt.lz")
+const u32 sMainDeck_59_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_59_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_49_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_49_Bg3.tt.lz")
+const u32 sMainDeck_49_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_49_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_19_Bg3[] = {
-    0, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_19_Bg3.tt.lz")
+const u32 sMainDeck_19_Bg3[] = {
+    0, _INCBIN_U32("data/rooms/MainDeck_19_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_10_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_10_Bg3.tt.lz")
+const u32 sMainDeck_10_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_10_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_86_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_86_Bg3.tt.lz")
+const u32 sMainDeck_86_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_86_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_79_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_79_Bg3.tt.lz")
+const u32 sMainDeck_79_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_79_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_62_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_62_Bg3.tt.lz")
+const u32 sMainDeck_62_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_62_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_78_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_78_Bg3.tt.lz")
+const u32 sMainDeck_78_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_78_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_80_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_80_Bg3.tt.lz")
+const u32 sMainDeck_80_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_80_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_23_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_23_Bg3.tt.lz")
+const u32 sMainDeck_23_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_23_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_23_Bg0[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_23_Bg0.tt.lz")
+const u32 sMainDeck_23_Bg0[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_23_Bg0.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_71_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_71_Bg3.tt.lz")
+const u32 sMainDeck_71_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_71_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_71_Bg0[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_71_Bg0.tt.lz")
+const u32 sMainDeck_71_Bg0[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_71_Bg0.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_46_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_46_Bg3.tt.lz")
+const u32 sMainDeck_46_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_46_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_38_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_38_Bg3.tt.lz")
+const u32 sMainDeck_38_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_38_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_48_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_48_Bg3.tt.lz")
+const u32 sMainDeck_48_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_48_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_14_Bg0[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_14_Bg0.tt.lz")
+const u32 sMainDeck_14_Bg0[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_14_Bg0.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_18_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_18_Bg3.tt.lz")
+const u32 sMainDeck_18_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_18_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_20_Bg0[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_20_Bg0.tt.lz")
+const u32 sMainDeck_20_Bg0[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_20_Bg0.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_15_Bg3[] = {
-    2, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_15_Bg3.tt.lz")
+const u32 sMainDeck_15_Bg3[] = {
+    2, _INCBIN_U32("data/rooms/MainDeck_15_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_69_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_69_Bg3.tt.lz")
+const u32 sMainDeck_69_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_69_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_13_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_13_Bg3.tt.lz")
+const u32 sMainDeck_13_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_13_Bg3.tt.lz")
 };
-ALIGN2();
 
-const u8 sMainDeck_7_Bg3[] = {
-    1, 0, 0, 0,
-    _INCBIN_U8("data/rooms/MainDeck_7_Bg3.tt.lz")
+const u32 sMainDeck_7_Bg3[] = {
+    1, _INCBIN_U32("data/rooms/MainDeck_7_Bg3.tt.lz")
 };
-ALIGN2();
