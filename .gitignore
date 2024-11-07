@@ -25,3 +25,5 @@ include/**/*.s
 tools/**/*.txt
 tools/**/*.png
 .vscode
+
+*/__pycache__/*
