@@ -2,6 +2,7 @@ import os
 
 dirs = [
     "../asm/",
+    "../asm/menus",
     "../asm/sprites_AI"
 ]
 

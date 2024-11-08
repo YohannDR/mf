@@ -644,7 +644,7 @@ ParticleBomb: @ 0x08073228
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _0807326C @ =0x083EA57C
+	ldr r0, _0807326C @ =sParticleOam_Bomb
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -672,7 +672,7 @@ _08073260:
 	bx r0
 	.align 2, 0
 _08073268: .4byte 0x030008B8
-_0807326C: .4byte 0x083EA57C
+_0807326C: .4byte sParticleOam_Bomb
 
 	thumb_func_start ParticleFlareHit
 ParticleFlareHit: @ 0x08073270
@@ -681,7 +681,7 @@ ParticleFlareHit: @ 0x08073270
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080732AC @ =0x083EE3DC
+	ldr r0, _080732AC @ =sParticleOam_FlareHit
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -705,7 +705,7 @@ _080732A0:
 	bx r0
 	.align 2, 0
 _080732A8: .4byte 0x030008B8
-_080732AC: .4byte 0x083EE3DC
+_080732AC: .4byte sParticleOam_FlareHit
 
 	thumb_func_start ParticleNormalBeamHit
 ParticleNormalBeamHit: @ 0x080732B0
@@ -714,7 +714,7 @@ ParticleNormalBeamHit: @ 0x080732B0
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080732EC @ =0x083EE464
+	ldr r0, _080732EC @ =sParticleOam_NormalBeamHit
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -738,7 +738,7 @@ _080732E0:
 	bx r0
 	.align 2, 0
 _080732E8: .4byte 0x030008B8
-_080732EC: .4byte 0x083EE464
+_080732EC: .4byte sParticleOam_NormalBeamHit
 
 	thumb_func_start ParticleChargeBeamHit
 ParticleChargeBeamHit: @ 0x080732F0
@@ -747,7 +747,7 @@ ParticleChargeBeamHit: @ 0x080732F0
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _0807332C @ =0x083EE4FC
+	ldr r0, _0807332C @ =sParticleOam_ChargeBeamHit
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -771,7 +771,7 @@ _08073320:
 	bx r0
 	.align 2, 0
 _08073328: .4byte 0x030008B8
-_0807332C: .4byte 0x083EE4FC
+_0807332C: .4byte sParticleOam_ChargeBeamHit
 
 	thumb_func_start ParticleWideBeamHit
 ParticleWideBeamHit: @ 0x08073330
@@ -780,7 +780,7 @@ ParticleWideBeamHit: @ 0x08073330
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _0807336C @ =0x083EE5D0
+	ldr r0, _0807336C @ =sParticleOam_WideBeamHit
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -804,7 +804,7 @@ _08073360:
 	bx r0
 	.align 2, 0
 _08073368: .4byte 0x030008B8
-_0807336C: .4byte 0x083EE5D0
+_0807336C: .4byte sParticleOam_WideBeamHit
 
 	thumb_func_start ParticlePlasmaBeamHit
 ParticlePlasmaBeamHit: @ 0x08073370
@@ -813,7 +813,7 @@ ParticlePlasmaBeamHit: @ 0x08073370
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080733AC @ =0x083EE740
+	ldr r0, _080733AC @ =sParticleOam_PlasmaBeamHit
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -837,7 +837,7 @@ _080733A0:
 	bx r0
 	.align 2, 0
 _080733A8: .4byte 0x030008B8
-_080733AC: .4byte 0x083EE740
+_080733AC: .4byte sParticleOam_PlasmaBeamHit
 
 	thumb_func_start ParticleInvincibleHit
 ParticleInvincibleHit: @ 0x080733B0
@@ -846,7 +846,7 @@ ParticleInvincibleHit: @ 0x080733B0
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080733EC @ =0x083EE7A0
+	ldr r0, _080733EC @ =sParticleOam_InvincibleHit
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -870,7 +870,7 @@ _080733E0:
 	bx r0
 	.align 2, 0
 _080733E8: .4byte 0x030008B8
-_080733EC: .4byte 0x083EE7A0
+_080733EC: .4byte sParticleOam_InvincibleHit
 
 	thumb_func_start ParticleNormalMissileExplosion
 ParticleNormalMissileExplosion: @ 0x080733F0
@@ -879,7 +879,7 @@ ParticleNormalMissileExplosion: @ 0x080733F0
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073430 @ =0x083EAA3C
+	ldr r0, _08073430 @ =sParticleOam_NormalMissileExplosion
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -905,7 +905,7 @@ _08073426:
 	bx r0
 	.align 2, 0
 _0807342C: .4byte 0x030008B8
-_08073430: .4byte 0x083EAA3C
+_08073430: .4byte sParticleOam_NormalMissileExplosion
 
 	thumb_func_start ParticleSuperMissileExplosion
 ParticleSuperMissileExplosion: @ 0x08073434
@@ -914,7 +914,7 @@ ParticleSuperMissileExplosion: @ 0x08073434
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073484 @ =0x083EAA0C
+	ldr r0, _08073484 @ =sParticleOam_SuperMissileExplosion
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -946,7 +946,7 @@ _0807347A:
 	bx r0
 	.align 2, 0
 _08073480: .4byte 0x030008B8
-_08073484: .4byte 0x083EAA0C
+_08073484: .4byte sParticleOam_SuperMissileExplosion
 
 	thumb_func_start ParticleIceMissileExplosion
 ParticleIceMissileExplosion: @ 0x08073488
@@ -955,7 +955,7 @@ ParticleIceMissileExplosion: @ 0x08073488
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080734D8 @ =0x083EAC4C
+	ldr r0, _080734D8 @ =sParticleOam_IceMissileExplosion
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -987,7 +987,7 @@ _080734CE:
 	bx r0
 	.align 2, 0
 _080734D4: .4byte 0x030008B8
-_080734D8: .4byte 0x083EAC4C
+_080734D8: .4byte sParticleOam_IceMissileExplosion
 
 	thumb_func_start ParticleDiffusionMissileExplosion
 ParticleDiffusionMissileExplosion: @ 0x080734DC
@@ -996,7 +996,7 @@ ParticleDiffusionMissileExplosion: @ 0x080734DC
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _0807352C @ =0x083EAC7C
+	ldr r0, _0807352C @ =sParticleOam_DiffusionMissileExplosion
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1028,7 +1028,7 @@ _08073522:
 	bx r0
 	.align 2, 0
 _08073528: .4byte 0x030008B8
-_0807352C: .4byte 0x083EAC7C
+_0807352C: .4byte sParticleOam_DiffusionMissileExplosion
 
 	thumb_func_start ParticleChargedDiffusionMissileExplosion
 ParticleChargedDiffusionMissileExplosion: @ 0x08073530
@@ -1037,7 +1037,7 @@ ParticleChargedDiffusionMissileExplosion: @ 0x08073530
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073580 @ =0x083EACAC
+	ldr r0, _08073580 @ =sParticleOam_ChargedDiffusionMissileExplosion
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1069,7 +1069,7 @@ _08073576:
 	bx r0
 	.align 2, 0
 _0807357C: .4byte 0x030008B8
-_08073580: .4byte 0x083EACAC
+_08073580: .4byte sParticleOam_ChargedDiffusionMissileExplosion
 
 	thumb_func_start ParticleSuperMissileExplosionNoScreenShake
 ParticleSuperMissileExplosionNoScreenShake: @ 0x08073584
@@ -1078,7 +1078,7 @@ ParticleSuperMissileExplosionNoScreenShake: @ 0x08073584
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080735B8 @ =0x083EAA0C
+	ldr r0, _080735B8 @ =sParticleOam_SuperMissileExplosion
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1100,7 +1100,7 @@ _080735AE:
 	bx r0
 	.align 2, 0
 _080735B4: .4byte 0x030008B8
-_080735B8: .4byte 0x083EAA0C
+_080735B8: .4byte sParticleOam_SuperMissileExplosion
 
 	thumb_func_start ParticleIceBeamTrail
 ParticleIceBeamTrail: @ 0x080735BC
@@ -1494,8 +1494,8 @@ _08073876:
 _0807387C: .4byte 0x030008B8
 _08073880: .4byte 0x0858E9C8
 
-	thumb_func_start ParticleAbsordHealthX
-ParticleAbsordHealthX: @ 0x08073884
+	thumb_func_start ParticleAbsorbHealthX
+ParticleAbsorbHealthX: @ 0x08073884
 	push {r4, r5, r6, lr}
 	ldr r3, _080738B8 @ =0x030008B8
 	ldrb r0, [r3, #4]
@@ -1543,19 +1543,19 @@ _080738CC:
 	movs r0, #0
 	strh r0, [r4, #6]
 	strb r6, [r4, #1]
-	ldr r0, _080738E8 @ =0x083EA76C
+	ldr r0, _080738E8 @ =sParticleOam_3ea76c
 	bl ParticleUpdateAnimation
 	b _08073918
 	.align 2, 0
-_080738E8: .4byte 0x083EA76C
+_080738E8: .4byte sParticleOam_3ea76c
 _080738EC:
-	ldr r0, _080738F4 @ =0x083EA664
+	ldr r0, _080738F4 @ =sParticleOam_3ea664
 	bl ParticleUpdateAnimation
 	b _08073918
 	.align 2, 0
-_080738F4: .4byte 0x083EA664
+_080738F4: .4byte sParticleOam_3ea664
 _080738F8:
-	ldr r0, _08073910 @ =0x083EA76C
+	ldr r0, _08073910 @ =sParticleOam_3ea76c
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1566,7 +1566,7 @@ _080738F8:
 	strb r6, [r4]
 	b _08073918
 	.align 2, 0
-_08073910: .4byte 0x083EA76C
+_08073910: .4byte sParticleOam_3ea76c
 _08073914:
 	movs r0, #0
 	strb r0, [r4]
@@ -1625,19 +1625,19 @@ _08073968:
 	movs r0, #0
 	strh r0, [r4, #6]
 	strb r6, [r4, #1]
-	ldr r0, _08073984 @ =0x083EA8F4
+	ldr r0, _08073984 @ =sParticleOam_3ea8f4
 	bl ParticleUpdateAnimation
 	b _080739B4
 	.align 2, 0
-_08073984: .4byte 0x083EA8F4
+_08073984: .4byte sParticleOam_3ea8f4
 _08073988:
-	ldr r0, _08073990 @ =0x083EA7EC
+	ldr r0, _08073990 @ =sParticleOam_3ea7ec
 	bl ParticleUpdateAnimation
 	b _080739B4
 	.align 2, 0
-_08073990: .4byte 0x083EA7EC
+_08073990: .4byte sParticleOam_3ea7ec
 _08073994:
-	ldr r0, _080739AC @ =0x083EA8F4
+	ldr r0, _080739AC @ =sParticleOam_3ea8f4
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1648,7 +1648,7 @@ _08073994:
 	strb r6, [r4]
 	b _080739B4
 	.align 2, 0
-_080739AC: .4byte 0x083EA8F4
+_080739AC: .4byte sParticleOam_3ea8f4
 _080739B0:
 	movs r0, #0
 	strb r0, [r4]
@@ -1707,19 +1707,19 @@ _08073A04:
 	movs r0, #0
 	strh r0, [r4, #6]
 	strb r6, [r4, #1]
-	ldr r0, _08073A20 @ =0x083EABCC
+	ldr r0, _08073A20 @ =sParticleOam_3eabcc
 	bl ParticleUpdateAnimation
 	b _08073A50
 	.align 2, 0
-_08073A20: .4byte 0x083EABCC
+_08073A20: .4byte sParticleOam_3eabcc
 _08073A24:
-	ldr r0, _08073A2C @ =0x083EAAC4
+	ldr r0, _08073A2C @ =sParticleOam_3eaac4
 	bl ParticleUpdateAnimation
 	b _08073A50
 	.align 2, 0
-_08073A2C: .4byte 0x083EAAC4
+_08073A2C: .4byte sParticleOam_3eaac4
 _08073A30:
-	ldr r0, _08073A48 @ =0x083EABCC
+	ldr r0, _08073A48 @ =sParticleOam_3eabcc
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1730,7 +1730,7 @@ _08073A30:
 	strb r6, [r4]
 	b _08073A50
 	.align 2, 0
-_08073A48: .4byte 0x083EABCC
+_08073A48: .4byte sParticleOam_3eabcc
 _08073A4C:
 	movs r0, #0
 	strb r0, [r4]
@@ -1789,19 +1789,19 @@ _08073AA0:
 	movs r0, #0
 	strh r0, [r4, #6]
 	strb r6, [r4, #1]
-	ldr r0, _08073ABC @ =0x083EAEDC
+	ldr r0, _08073ABC @ =sParticleOam_3eaedc
 	bl ParticleUpdateAnimation
 	b _08073AEC
 	.align 2, 0
-_08073ABC: .4byte 0x083EAEDC
+_08073ABC: .4byte sParticleOam_3eaedc
 _08073AC0:
-	ldr r0, _08073AC8 @ =0x083EADD4
+	ldr r0, _08073AC8 @ =sParticleOam_3eadd4
 	bl ParticleUpdateAnimation
 	b _08073AEC
 	.align 2, 0
-_08073AC8: .4byte 0x083EADD4
+_08073AC8: .4byte sParticleOam_3eadd4
 _08073ACC:
-	ldr r0, _08073AE4 @ =0x083EAEDC
+	ldr r0, _08073AE4 @ =sParticleOam_3eaedc
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1812,7 +1812,7 @@ _08073ACC:
 	strb r6, [r4]
 	b _08073AEC
 	.align 2, 0
-_08073AE4: .4byte 0x083EAEDC
+_08073AE4: .4byte sParticleOam_3eaedc
 _08073AE8:
 	movs r0, #0
 	strb r0, [r4]
@@ -1840,7 +1840,7 @@ ParticleAbsorbIceXPreVaria: @ 0x08073AF4
 	strh r0, [r4, #8]
 	ldrh r0, [r2, #0x16]
 	strh r0, [r4, #0xa]
-	ldr r0, _08073B44 @ =0x083EAD14
+	ldr r0, _08073B44 @ =sParticleOam_AbsorbIceXPreVaria
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1864,7 +1864,7 @@ _08073B36:
 	.align 2, 0
 _08073B3C: .4byte 0x030008B8
 _08073B40: .4byte gSamusData
-_08073B44: .4byte 0x083EAD14
+_08073B44: .4byte sParticleOam_AbsorbIceXPreVaria
 
 	thumb_func_start ParticleIceXTrail
 ParticleIceXTrail: @ 0x08073B48
@@ -1873,7 +1873,7 @@ ParticleIceXTrail: @ 0x08073B48
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073B84 @ =0x083EAF5C
+	ldr r0, _08073B84 @ =sParticleOam_ParticleIceXTrail
 	bl ParticleUpdateAnimation
 	ldrb r0, [r4]
 	movs r1, #0x20
@@ -1899,7 +1899,7 @@ _08073B7A:
 	bx r0
 	.align 2, 0
 _08073B80: .4byte 0x030008B8
-_08073B84: .4byte 0x083EAF5C
+_08073B84: .4byte sParticleOam_ParticleIceXTrail
 
 	thumb_func_start ParticleDiffusion
 ParticleDiffusion: @ 0x08073B88
@@ -1908,7 +1908,7 @@ ParticleDiffusion: @ 0x08073B88
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073BBC @ =0x083EAF94
+	ldr r0, _08073BBC @ =sParticleOam_Diffusion
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1930,7 +1930,7 @@ _08073BB2:
 	bx r0
 	.align 2, 0
 _08073BB8: .4byte 0x030008B8
-_08073BBC: .4byte 0x083EAF94
+_08073BBC: .4byte sParticleOam_Diffusion
 
 	thumb_func_start ParticleFireBeam
 ParticleFireBeam: @ 0x08073BC0
@@ -1939,7 +1939,7 @@ ParticleFireBeam: @ 0x08073BC0
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073BFC @ =0x083EA61C
+	ldr r0, _08073BFC @ =sParticleOam_FireBeam
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1965,7 +1965,7 @@ _08073BF2:
 	bx r0
 	.align 2, 0
 _08073BF8: .4byte 0x030008B8
-_08073BFC: .4byte 0x083EA61C
+_08073BFC: .4byte sParticleOam_FireBeam
 
 	thumb_func_start ParticleExplosion1
 ParticleExplosion1: @ 0x08073C00
@@ -1974,7 +1974,7 @@ ParticleExplosion1: @ 0x08073C00
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073C34 @ =0x083EA5E4
+	ldr r0, _08073C34 @ =sParticleOam_Explosion1
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1996,7 +1996,7 @@ _08073C2A:
 	bx r0
 	.align 2, 0
 _08073C30: .4byte 0x030008B8
-_08073C34: .4byte 0x083EA5E4
+_08073C34: .4byte sParticleOam_Explosion1
 
 	thumb_func_start ParticleExplosion2
 ParticleExplosion2: @ 0x08073C38
@@ -2005,7 +2005,7 @@ ParticleExplosion2: @ 0x08073C38
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073C6C @ =0x083EA5AC
+	ldr r0, _08073C6C @ =sParticleOam_Explosion2
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2027,7 +2027,7 @@ _08073C62:
 	bx r0
 	.align 2, 0
 _08073C68: .4byte 0x030008B8
-_08073C6C: .4byte 0x083EA5AC
+_08073C6C: .4byte sParticleOam_Explosion2
 
 	thumb_func_start ParticleExplosion3
 ParticleExplosion3: @ 0x08073C70
@@ -2036,7 +2036,7 @@ ParticleExplosion3: @ 0x08073C70
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073CA4 @ =0x083EA9D4
+	ldr r0, _08073CA4 @ =sParticleOam_Explosion3
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2058,7 +2058,7 @@ _08073C9A:
 	bx r0
 	.align 2, 0
 _08073CA0: .4byte 0x030008B8
-_08073CA4: .4byte 0x083EA9D4
+_08073CA4: .4byte sParticleOam_Explosion3
 
 	thumb_func_start ParticleExplosion4
 ParticleExplosion4: @ 0x08073CA8
@@ -2067,7 +2067,7 @@ ParticleExplosion4: @ 0x08073CA8
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073CDC @ =0x083EA99C
+	ldr r0, _08073CDC @ =sParticleOam_Explosion4
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2089,7 +2089,7 @@ _08073CD2:
 	bx r0
 	.align 2, 0
 _08073CD8: .4byte 0x030008B8
-_08073CDC: .4byte 0x083EA99C
+_08073CDC: .4byte sParticleOam_Explosion4
 
 	thumb_func_start ParticleExplosion5
 ParticleExplosion5: @ 0x08073CE0
@@ -2098,7 +2098,7 @@ ParticleExplosion5: @ 0x08073CE0
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073D14 @ =0x083EAA9C
+	ldr r0, _08073D14 @ =sParticleOam_Explosion5
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2120,7 +2120,7 @@ _08073D0A:
 	bx r0
 	.align 2, 0
 _08073D10: .4byte 0x030008B8
-_08073D14: .4byte 0x083EAA9C
+_08073D14: .4byte sParticleOam_Explosion5
 
 	thumb_func_start ParticleExplosion6
 ParticleExplosion6: @ 0x08073D18
@@ -2129,7 +2129,7 @@ ParticleExplosion6: @ 0x08073D18
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073D54 @ =0x083EAA74
+	ldr r0, _08073D54 @ =sParticleOam_Explosion6
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2155,7 +2155,7 @@ _08073D4A:
 	bx r0
 	.align 2, 0
 _08073D50: .4byte 0x030008B8
-_08073D54: .4byte 0x083EAA74
+_08073D54: .4byte sParticleOam_Explosion6
 
 	thumb_func_start ParticleHeavyDust1
 ParticleHeavyDust1: @ 0x08073D58
@@ -2164,7 +2164,7 @@ ParticleHeavyDust1: @ 0x08073D58
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073D8C @ =0x083EC1A8
+	ldr r0, _08073D8C @ =sParticleOam_HeavyDust
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2186,7 +2186,7 @@ _08073D82:
 	bx r0
 	.align 2, 0
 _08073D88: .4byte 0x030008B8
-_08073D8C: .4byte 0x083EC1A8
+_08073D8C: .4byte sParticleOam_HeavyDust
 
 	thumb_func_start ParticleHeavyDust2
 ParticleHeavyDust2: @ 0x08073D90
@@ -2195,7 +2195,7 @@ ParticleHeavyDust2: @ 0x08073D90
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073DCC @ =0x083EC1A8
+	ldr r0, _08073DCC @ =sParticleOam_HeavyDust
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2221,7 +2221,7 @@ _08073DC2:
 	bx r0
 	.align 2, 0
 _08073DC8: .4byte 0x030008B8
-_08073DCC: .4byte 0x083EC1A8
+_08073DCC: .4byte sParticleOam_HeavyDust
 
 	thumb_func_start ParticleEnterOrExitWater
 ParticleEnterOrExitWater: @ 0x08073DD0
@@ -2230,7 +2230,7 @@ ParticleEnterOrExitWater: @ 0x08073DD0
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073E0C @ =0x083EC1F8
+	ldr r0, _08073E0C @ =sParticleOam_EnterOrExitWater
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2256,7 +2256,7 @@ _08073E02:
 	bx r0
 	.align 2, 0
 _08073E08: .4byte 0x030008B8
-_08073E0C: .4byte 0x083EC1F8
+_08073E0C: .4byte sParticleOam_EnterOrExitWater
 
 	thumb_func_start ParticleEnterOrExitWaterBig
 ParticleEnterOrExitWaterBig: @ 0x08073E10
@@ -2265,7 +2265,7 @@ ParticleEnterOrExitWaterBig: @ 0x08073E10
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073E4C @ =0x083EC348
+	ldr r0, _08073E4C @ =sParticleOam_EnterOrExitWaterBig
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2291,7 +2291,7 @@ _08073E42:
 	bx r0
 	.align 2, 0
 _08073E48: .4byte 0x030008B8
-_08073E4C: .4byte 0x083EC348
+_08073E4C: .4byte sParticleOam_EnterOrExitWaterBig
 
 	thumb_func_start ParticleSpriteEnterOrExitWater
 ParticleSpriteEnterOrExitWater: @ 0x08073E50
@@ -2300,7 +2300,7 @@ ParticleSpriteEnterOrExitWater: @ 0x08073E50
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073E8C @ =0x083EC390
+	ldr r0, _08073E8C @ =sParticleOam_SpriteEnterOrExitWater
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2326,7 +2326,7 @@ _08073E82:
 	bx r0
 	.align 2, 0
 _08073E88: .4byte 0x030008B8
-_08073E8C: .4byte 0x083EC390
+_08073E8C: .4byte sParticleOam_SpriteEnterOrExitWater
 
 	thumb_func_start unk_73e90
 unk_73e90: @ 0x08073E90
@@ -2335,7 +2335,7 @@ unk_73e90: @ 0x08073E90
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073ECC @ =0x083EC280
+	ldr r0, _08073ECC @ =sParticleOam_3ec280
 	bl ParticleUpdateAnimation
 	ldr r0, _08073ED0 @ =gEffectYPosition
 	ldrh r0, [r0]
@@ -2361,7 +2361,7 @@ _08073EC2:
 	bx r0
 	.align 2, 0
 _08073EC8: .4byte 0x030008B8
-_08073ECC: .4byte 0x083EC280
+_08073ECC: .4byte sParticleOam_3ec280
 _08073ED0: .4byte gEffectYPosition
 
 	thumb_func_start ParticleExplosionSmoke
@@ -2371,7 +2371,7 @@ ParticleExplosionSmoke: @ 0x08073ED4
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073F08 @ =0x083EC1D0
+	ldr r0, _08073F08 @ =sParticleOam_ExplosionSmoke
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2393,7 +2393,7 @@ _08073EFE:
 	bx r0
 	.align 2, 0
 _08073F04: .4byte 0x030008B8
-_08073F08: .4byte 0x083EC1D0
+_08073F08: .4byte sParticleOam_ExplosionSmoke
 
 	thumb_func_start ParticleTailExplosionSmoke
 ParticleTailExplosionSmoke: @ 0x08073F0C
@@ -2402,7 +2402,7 @@ ParticleTailExplosionSmoke: @ 0x08073F0C
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073F40 @ =0x083EDEE4
+	ldr r0, _08073F40 @ =sParticleOam_TailExplosionSmoke
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2424,7 +2424,7 @@ _08073F36:
 	bx r0
 	.align 2, 0
 _08073F3C: .4byte 0x030008B8
-_08073F40: .4byte 0x083EDEE4
+_08073F40: .4byte sParticleOam_TailExplosionSmoke
 
 	thumb_func_start ParticleExplosion7
 ParticleExplosion7: @ 0x08073F44
@@ -2433,7 +2433,7 @@ ParticleExplosion7: @ 0x08073F44
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073F78 @ =0x083EDF14
+	ldr r0, _08073F78 @ =sParticleOam_Explosion7
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2455,7 +2455,7 @@ _08073F6E:
 	bx r0
 	.align 2, 0
 _08073F74: .4byte 0x030008B8
-_08073F78: .4byte 0x083EDF14
+_08073F78: .4byte sParticleOam_Explosion7
 
 	thumb_func_start ParticleExplosion10
 ParticleExplosion10: @ 0x08073F7C
@@ -2464,7 +2464,7 @@ ParticleExplosion10: @ 0x08073F7C
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073FB0 @ =0x083EE0B4
+	ldr r0, _08073FB0 @ =sParticleOam_Explosion10
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2486,7 +2486,7 @@ _08073FA6:
 	bx r0
 	.align 2, 0
 _08073FAC: .4byte 0x030008B8
-_08073FB0: .4byte 0x083EE0B4
+_08073FB0: .4byte sParticleOam_Explosion10
 
 	thumb_func_start ParticleExplosion8
 ParticleExplosion8: @ 0x08073FB4
@@ -2495,7 +2495,7 @@ ParticleExplosion8: @ 0x08073FB4
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073FE8 @ =0x083EDD9C
+	ldr r0, _08073FE8 @ =sParticleOam_Explosion8
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2517,7 +2517,7 @@ _08073FDE:
 	bx r0
 	.align 2, 0
 _08073FE4: .4byte 0x030008B8
-_08073FE8: .4byte 0x083EDD9C
+_08073FE8: .4byte sParticleOam_Explosion8
 
 	thumb_func_start ParticleSmoke
 ParticleSmoke: @ 0x08073FEC
@@ -2526,7 +2526,7 @@ ParticleSmoke: @ 0x08073FEC
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08074020 @ =0x083EDC9C
+	ldr r0, _08074020 @ =sParticleOam_Smoke
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2548,7 +2548,7 @@ _08074016:
 	bx r0
 	.align 2, 0
 _0807401C: .4byte 0x030008B8
-_08074020: .4byte 0x083EDC9C
+_08074020: .4byte sParticleOam_Smoke
 
 	thumb_func_start ParticleExplosion9
 ParticleExplosion9: @ 0x08074024
@@ -2557,7 +2557,7 @@ ParticleExplosion9: @ 0x08074024
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08074058 @ =0x083EDCD4
+	ldr r0, _08074058 @ =sParticleOam_Explosion9
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2579,7 +2579,7 @@ _0807404E:
 	bx r0
 	.align 2, 0
 _08074054: .4byte 0x030008B8
-_08074058: .4byte 0x083EDCD4
+_08074058: .4byte sParticleOam_Explosion9
 
 	thumb_func_start ParticleTailSmoke1
 ParticleTailSmoke1: @ 0x0807405C
@@ -2588,7 +2588,7 @@ ParticleTailSmoke1: @ 0x0807405C
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08074090 @ =0x083EDD0C
+	ldr r0, _08074090 @ =sParticleOam_TailSmoke1
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2610,7 +2610,7 @@ _08074086:
 	bx r0
 	.align 2, 0
 _0807408C: .4byte 0x030008B8
-_08074090: .4byte 0x083EDD0C
+_08074090: .4byte sParticleOam_TailSmoke1
 
 	thumb_func_start ParticleTailExplosion
 ParticleTailExplosion: @ 0x08074094
@@ -2619,7 +2619,7 @@ ParticleTailExplosion: @ 0x08074094
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080740C8 @ =0x083EDD3C
+	ldr r0, _080740C8 @ =sParticleOam_TailExplosion
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2641,7 +2641,7 @@ _080740BE:
 	bx r0
 	.align 2, 0
 _080740C4: .4byte 0x030008B8
-_080740C8: .4byte 0x083EDD3C
+_080740C8: .4byte sParticleOam_TailExplosion
 
 	thumb_func_start ParticleTailSmoke2
 ParticleTailSmoke2: @ 0x080740CC
@@ -2650,7 +2650,7 @@ ParticleTailSmoke2: @ 0x080740CC
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08074100 @ =0x083EDEA4
+	ldr r0, _08074100 @ =sParticleOam_TailSmoke2
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2672,7 +2672,7 @@ _080740F6:
 	bx r0
 	.align 2, 0
 _080740FC: .4byte 0x030008B8
-_08074100: .4byte 0x083EDEA4
+_08074100: .4byte sParticleOam_TailSmoke2
 
 	thumb_func_start ParticleOutwardIceExplosion
 ParticleOutwardIceExplosion: @ 0x08074104
@@ -2681,7 +2681,7 @@ ParticleOutwardIceExplosion: @ 0x08074104
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08074138 @ =0x083EC3E8
+	ldr r0, _08074138 @ =sParticleOam_OutwardIceExplosion
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2703,7 +2703,7 @@ _0807412E:
 	bx r0
 	.align 2, 0
 _08074134: .4byte 0x030008B8
-_08074138: .4byte 0x083EC3E8
+_08074138: .4byte sParticleOam_OutwardIceExplosion
 
 	thumb_func_start ParticleOutwardSmoke
 ParticleOutwardSmoke: @ 0x0807413C
@@ -2712,7 +2712,7 @@ ParticleOutwardSmoke: @ 0x0807413C
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08074170 @ =0x083EC4C0
+	ldr r0, _08074170 @ =sParticleOam_OutwardSmoke
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2734,7 +2734,7 @@ _08074166:
 	bx r0
 	.align 2, 0
 _0807416C: .4byte 0x030008B8
-_08074170: .4byte 0x083EC4C0
+_08074170: .4byte sParticleOam_OutwardSmoke
 
 	thumb_func_start ParticleScrewAttackKilled
 ParticleScrewAttackKilled: @ 0x08074174
@@ -2777,7 +2777,7 @@ ParticleSpeedboosterKilled: @ 0x080741B4
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080741F0 @ =0x083EC430
+	ldr r0, _080741F0 @ =sParticleOam_SpeedboosterKilled
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2801,7 +2801,7 @@ _080741E4:
 	bx r0
 	.align 2, 0
 _080741EC: .4byte 0x030008B8
-_080741F0: .4byte 0x083EC430
+_080741F0: .4byte sParticleOam_SpeedboosterKilled
 _080741F4: .4byte 0x00000149
 
 	thumb_func_start ParticleShinesparkKilled
@@ -2845,7 +2845,7 @@ ParticleSudoScrewKilled: @ 0x08074238
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08074274 @ =0x083EC478
+	ldr r0, _08074274 @ =sParticleOam_SudoScrewKilled
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -2869,7 +2869,7 @@ _08074268:
 	bx r0
 	.align 2, 0
 _08074270: .4byte 0x030008B8
-_08074274: .4byte 0x083EC478
+_08074274: .4byte sParticleOam_SudoScrewKilled
 _08074278: .4byte 0x00000147
 
 	thumb_func_start PlayBeamChargingSound
@@ -3072,7 +3072,7 @@ _080743E6:
 	beq _08074410
 	cmp r0, #1
 	beq _08074430
-	ldr r0, _0807440C @ =0x083EEBC0
+	ldr r0, _0807440C @ =sParticleOam_3eebc0
 	bl ParticleUpdateAnimation
 	ldrb r1, [r4, #4]
 	movs r0, #0xf
@@ -3082,7 +3082,7 @@ _080743E6:
 	bl PlayBeamChargedSound
 	b _0807445C
 	.align 2, 0
-_0807440C: .4byte 0x083EEBC0
+_0807440C: .4byte sParticleOam_3eebc0
 _08074410:
 	ldrb r1, [r4]
 	movs r0, #0x10
@@ -3091,12 +3091,12 @@ _08074410:
 	ldrb r0, [r4, #3]
 	adds r0, #1
 	strb r0, [r4, #3]
-	ldr r0, _0807442C @ =0x083EEB28
+	ldr r0, _0807442C @ =sParticleOam_3eeb28
 	bl ParticleUpdateAnimation
 	bl PlayBeamChargingSound
 	b _08074464
 	.align 2, 0
-_0807442C: .4byte 0x083EEB28
+_0807442C: .4byte sParticleOam_3eeb28
 _08074430:
 	ldrb r0, [r5, #0xc]
 	cmp r0, #0x3f
@@ -3108,17 +3108,17 @@ _08074430:
 	strh r1, [r3, #6]
 	strb r0, [r3, #1]
 	strb r0, [r3, #4]
-	ldr r0, _0807444C @ =0x083EEBC0
+	ldr r0, _0807444C @ =sParticleOam_3eebc0
 	bl ParticleUpdateAnimation
 	b _08074464
 	.align 2, 0
-_0807444C: .4byte 0x083EEBC0
+_0807444C: .4byte sParticleOam_3eebc0
 _08074450:
-	ldr r0, _08074458 @ =0x083EEB28
+	ldr r0, _08074458 @ =sParticleOam_3eeb28
 	bl ParticleUpdateAnimation
 	b _08074464
 	.align 2, 0
-_08074458: .4byte 0x083EEB28
+_08074458: .4byte sParticleOam_3eeb28
 _0807445C:
 	ldr r1, _0807446C @ =0x030008B8
 	ldrb r0, [r1, #4]
@@ -3207,12 +3207,12 @@ _080744EA:
 	strh r1, [r3, #6]
 	strb r0, [r3, #1]
 _080744FC:
-	ldr r0, _08074500 @ =0x083EEBE8
+	ldr r0, _08074500 @ =sParticleOam_3eebe8
 	b _08074506
 	.align 2, 0
-_08074500: .4byte 0x083EEBE8
+_08074500: .4byte sParticleOam_3eebe8
 _08074504:
-	ldr r0, _08074510 @ =0x083EEC18
+	ldr r0, _08074510 @ =sParticleOam_3eec18
 _08074506:
 	bl ParticleUpdateAnimation
 _0807450A:
@@ -3220,7 +3220,7 @@ _0807450A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08074510: .4byte 0x083EEC18
+_08074510: .4byte sParticleOam_3eec18
 
 	thumb_func_start ParticleAbsorbingSuit
 ParticleAbsorbingSuit: @ 0x08074514
@@ -3235,7 +3235,7 @@ ParticleAbsorbingSuit: @ 0x08074514
 	ldr r0, _08074554 @ =gArmCannonX
 	ldrh r0, [r0]
 	strh r0, [r4, #0xa]
-	ldr r0, _08074558 @ =0x083ED26C
+	ldr r0, _08074558 @ =sParticleOam_AbsorbingSuit
 	bl ParticleUpdateAnimation
 	ldr r0, _0807455C @ =gSamusData
 	ldrb r0, [r0, #0xb]
@@ -3257,7 +3257,7 @@ _08074546:
 _0807454C: .4byte 0x030008B8
 _08074550: .4byte gArmCannonY
 _08074554: .4byte gArmCannonX
-_08074558: .4byte 0x083ED26C
+_08074558: .4byte sParticleOam_AbsorbingSuit
 _0807455C: .4byte gSamusData
 
 	thumb_func_start unk_74560
@@ -3323,7 +3323,7 @@ _080745CE:
 	beq _080745F8
 	cmp r0, #1
 	beq _08074618
-	ldr r0, _080745F4 @ =0x083EED58
+	ldr r0, _080745F4 @ =sParticleOam_3eed58
 	bl ParticleUpdateAnimation
 	ldrb r1, [r4, #4]
 	movs r0, #0xf
@@ -3334,7 +3334,7 @@ _080745CE:
 	bl SoundPlay
 	b _08074648
 	.align 2, 0
-_080745F4: .4byte 0x083EED58
+_080745F4: .4byte sParticleOam_3eed58
 _080745F8:
 	ldrb r1, [r4]
 	movs r0, #0x10
@@ -3343,13 +3343,13 @@ _080745F8:
 	ldrb r0, [r4, #3]
 	adds r0, #1
 	strb r0, [r4, #3]
-	ldr r0, _08074614 @ =0x083EEC40
+	ldr r0, _08074614 @ =sParticleOam_3eec40
 	bl ParticleUpdateAnimation
 	movs r0, #0xeb
 	bl SoundPlay
 	b _08074650
 	.align 2, 0
-_08074614: .4byte 0x083EEC40
+_08074614: .4byte sParticleOam_3eec40
 _08074618:
 	movs r0, #0x13
 	ldrsb r0, [r5, r0]
@@ -3362,17 +3362,17 @@ _08074618:
 	strh r1, [r3, #6]
 	strb r0, [r3, #1]
 	strb r0, [r3, #4]
-	ldr r0, _08074638 @ =0x083EED58
+	ldr r0, _08074638 @ =sParticleOam_3eed58
 	bl ParticleUpdateAnimation
 	b _08074650
 	.align 2, 0
-_08074638: .4byte 0x083EED58
+_08074638: .4byte sParticleOam_3eed58
 _0807463C:
-	ldr r0, _08074644 @ =0x083EEC40
+	ldr r0, _08074644 @ =sParticleOam_3eec40
 	bl ParticleUpdateAnimation
 	b _08074650
 	.align 2, 0
-_08074644: .4byte 0x083EEC40
+_08074644: .4byte sParticleOam_3eec40
 _08074648:
 	ldr r1, _08074658 @ =0x030008B8
 	ldrb r0, [r1, #4]
@@ -3392,7 +3392,7 @@ ParticleDust1: @ 0x0807465C
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08074690 @ =0x083EE164
+	ldr r0, _08074690 @ =sParticleOam_Dust1
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -3414,7 +3414,7 @@ _08074686:
 	bx r0
 	.align 2, 0
 _0807468C: .4byte 0x030008B8
-_08074690: .4byte 0x083EE164
+_08074690: .4byte sParticleOam_Dust1
 
 	thumb_func_start ParticleDust2
 ParticleDust2: @ 0x08074694
@@ -3423,7 +3423,7 @@ ParticleDust2: @ 0x08074694
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080746C8 @ =0x083EE194
+	ldr r0, _080746C8 @ =sParticleOam_Dust2
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -3445,7 +3445,7 @@ _080746BE:
 	bx r0
 	.align 2, 0
 _080746C4: .4byte 0x030008B8
-_080746C8: .4byte 0x083EE194
+_080746C8: .4byte sParticleOam_Dust2
 
 	thumb_func_start ParticleEscape
 ParticleEscape: @ 0x080746CC
@@ -3581,20 +3581,20 @@ _080747BC:
 	strb r0, [r4, #3]
 	strh r1, [r4, #6]
 	strb r5, [r4, #1]
-	ldr r0, _080747D8 @ =0x083ED26C
+	ldr r0, _080747D8 @ =sParticleOam_AbsorbingSuit
 	bl ParticleUpdateAnimation
 	b _08074808
 	.align 2, 0
 _080747D4: .4byte gPoseLock
-_080747D8: .4byte 0x083ED26C
+_080747D8: .4byte sParticleOam_AbsorbingSuit
 _080747DC:
-	ldr r0, _080747E4 @ =0x083ED1E4
+	ldr r0, _080747E4 @ =sParticleOam_3ed1e4
 	bl ParticleUpdateAnimation
 	b _08074808
 	.align 2, 0
-_080747E4: .4byte 0x083ED1E4
+_080747E4: .4byte sParticleOam_3ed1e4
 _080747E8:
-	ldr r0, _08074800 @ =0x083ED26C
+	ldr r0, _08074800 @ =sParticleOam_AbsorbingSuit
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -3605,7 +3605,7 @@ _080747E8:
 	strb r5, [r4]
 	b _08074808
 	.align 2, 0
-_08074800: .4byte 0x083ED26C
+_08074800: .4byte sParticleOam_AbsorbingSuit
 _08074804:
 	movs r0, #0
 	strb r0, [r4]
@@ -3634,7 +3634,7 @@ ParticleGettingSuitBeams: @ 0x08074810
 	strh r0, [r4, #8]
 	ldrh r0, [r2, #0x16]
 	strh r0, [r4, #0xa]
-	ldr r0, _08074864 @ =0x083ED18C
+	ldr r0, _08074864 @ =sParticleOam_GettingSuitBeams
 	bl ParticleUpdateAnimation
 	ldr r0, _08074868 @ =gPoseLock
 	ldrb r0, [r0]
@@ -3659,5 +3659,5 @@ _08074856:
 	.align 2, 0
 _0807485C: .4byte 0x030008B8
 _08074860: .4byte gSamusData
-_08074864: .4byte 0x083ED18C
+_08074864: .4byte sParticleOam_GettingSuitBeams
 _08074868: .4byte gPoseLock

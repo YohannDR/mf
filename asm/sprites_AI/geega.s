@@ -96,7 +96,7 @@ _0804A648:
 	strh r0, [r3, #0xe]
 	movs r0, #0x1c
 	strh r0, [r3, #0x10]
-	ldr r0, _0804A6B4 @ =0x08379AA8
+	ldr r0, _0804A6B4 @ =sGeegaOam_379aa8
 	str r0, [r3, #0x18]
 	strb r4, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -125,7 +125,7 @@ _0804A648:
 	.align 2, 0
 _0804A6AC: .4byte gCurrentSprite
 _0804A6B0: .4byte 0x0000FFD0
-_0804A6B4: .4byte 0x08379AA8
+_0804A6B4: .4byte sGeegaOam_379aa8
 _0804A6B8: .4byte sPrimarySpriteStats
 _0804A6BC:
 	movs r0, #1
@@ -301,7 +301,7 @@ _0804A808:
 	movs r0, #0x14
 	mov r1, ip
 	strb r0, [r1]
-	ldr r0, _0804A828 @ =0x08379AD0
+	ldr r0, _0804A828 @ =sGeegaOam_379ad0
 	str r0, [r6, #0x18]
 	strb r2, [r6, #0x1c]
 	strh r2, [r6, #0x16]
@@ -316,7 +316,7 @@ _0804A81E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A828: .4byte 0x08379AD0
+_0804A828: .4byte sGeegaOam_379ad0
 
 	thumb_func_start GeegaGoingForward
 GeegaGoingForward: @ 0x0804A82C
@@ -359,7 +359,7 @@ _0804A84C:
 	strh r0, [r3, #2]
 	ldrh r0, [r3, #8]
 	strh r0, [r3, #4]
-	ldr r0, _0804A88C @ =0x08379AA8
+	ldr r0, _0804A88C @ =sGeegaOam_379aa8
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r4, [r3, #0x16]
@@ -371,7 +371,7 @@ _0804A886:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A88C: .4byte 0x08379AA8
+_0804A88C: .4byte sGeegaOam_379aa8
 
 	thumb_func_start Geega
 Geega: @ 0x0804A890

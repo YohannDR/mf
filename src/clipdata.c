@@ -261,10 +261,14 @@ u32 ClipdataProcess(u16 yPosition, u16 xPosition)
     return gClipdataCodePointer(&collision);
 }
 
+/**
+ * @brief 68cc8 | 1a8 | Returns the collision type for the current position
+ * 
+ * @param pCollision Pointer to a collision data structure
+ * @return u32 Clipdata type (including solid flag)
+ */
 u32 ClipdataConvertToCollision(struct CollisionData* pCollision)
 {
-    // https://decomp.me/scratch/pP6WU
-
     s32 result;
     s32 clipdata;
     s32 hatchId;
@@ -388,7 +392,7 @@ u32 ClipdataConvertToCollision(struct CollisionData* pCollision)
             break;
 
         case CLIPDATA_TYPE_DOOR:
-            clipdata = gBackgroundsData.pClipDecomp[pCollision->tileY * gBackgroundsData.clipdataWidth + pCollision->tileX];
+            clipdata = (gBackgroundsData.pClipDecomp + pCollision->tileY * gBackgroundsData.clipdataWidth)[pCollision->tileX];
 
             if (clipdata & CLIPDATA_TILEMAP_FLAG)
             {

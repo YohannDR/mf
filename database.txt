@@ -1023,6 +1023,21 @@ sprites/serris_phase_three.pal;32;0x378790;2
 sprites/owtch.gfx;512;0x3787d0;4
 sprites/owtch.pal;16;0x378fd0;2
 
+# Geega
+
+sprites/geega.gfx;1;0x379258;2048
+sprites/geega.pal;1;0x379a58;32
+
+# Pillar
+
+sprites/pillar.gfx;1;0x379af8;2048
+sprites/pillar.pal;1;0x37a2f8;32
+
+# Genesis
+
+sprites/genesis.gfx;2;0x37abc4;2048
+sprites/genesis.pal;2;0x37bbc4;32
+
 # Metroid husk
 
 sprites/metroid_husk.gfx;1;0x3a8704;2048
@@ -1061,10 +1076,8 @@ hud/energy_tanks_empty.gfx;2816;0x3e855c;1
 hud/energy_tank_one_full.gfx;32;0x3e905c;1
 hud/energy_tank_one_full_one_empty.gfx;32;0x3e907c;1
 
-# Escape
-
-escape/palette.pal;48;0x3e909c;2
-escape/graphics.gfx;2048;0x3e90fc;1
+hud/escape_timer_digits.pal;48;0x3e909c;2
+hud/escape_timer_digits.gfx;2048;0x3e90fc;1
 
 # Rooms
 
@@ -2688,11 +2701,11 @@ Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 Blob_2e6382_2e9218.bin;2e6382;2e9218
 Blob_321b64_3420b4.bin;0x321b64;0x3420b4
 Blob_348ca4_3534c4.bin;0x348ca4;0x3534c4
-Blob_3791d4_3a8704.bin;3791d4;3a8704
+Blob_37c578_3a8704.bin;37c578;3a8704
 Blob_3be3a0_3e392c.bin;3be3a0;3e392c
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
-Blob_3e9940_3ec038.bin;9976;0x3e9940;1
-Blob_3ec1a8_413afc.bin;3ec1a8;413afc
+Blob_3ec508_3ecef4.bin;3ec508;3ecef4
+Blob_3eed78_413afc.bin;3eed78;413afc
 Blob_5594a8_58b3cc.bin;5594a8;58b3cc
 Blob_58b3ec_58eb78.bin;58b3ec;58eb78
 Blob_597708_72eee0.bin;597708;72eee0

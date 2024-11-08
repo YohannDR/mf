@@ -1169,10 +1169,10 @@ _0800D474:
 	ldrb r0, [r2, #0xc]
 	adds r0, #1
 	strb r0, [r2, #0xc]
-	ldr r3, _0800D484 @ =0x083EDF14
+	ldr r3, _0800D484 @ =sParticleOam_Explosion7
 	b _0800D496
 	.align 2, 0
-_0800D484: .4byte 0x083EDF14
+_0800D484: .4byte sParticleOam_Explosion7
 _0800D488:
 	adds r0, r5, r4
 	lsls r0, r0, #2
@@ -1180,7 +1180,7 @@ _0800D488:
 	ldrb r0, [r2, #0xc]
 	adds r0, #1
 	strb r0, [r2, #0xc]
-	ldr r3, _0800D4C0 @ =0x083EDD9C
+	ldr r3, _0800D4C0 @ =sParticleOam_Explosion8
 _0800D496:
 	ldrb r1, [r2, #0xd]
 	lsls r1, r1, #3
@@ -1204,7 +1204,7 @@ _0800D496:
 	strb r0, [r2]
 	b _0800D534
 	.align 2, 0
-_0800D4C0: .4byte 0x083EDD9C
+_0800D4C0: .4byte sParticleOam_Explosion8
 _0800D4C4:
 	adds r0, r5, r4
 	lsls r0, r0, #2

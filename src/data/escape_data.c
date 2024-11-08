@@ -22,5 +22,3 @@ const struct FrameData sEscapeTimerFrameData[2] = {
     },
     [1] = FRAME_DATA_TERMINATOR
 };
-
-static const u8 sBlob_3e9940_3ec038[9976] = INCBIN_U8("data/Blob_3e9940_3ec038.bin");

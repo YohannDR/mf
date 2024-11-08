@@ -1256,20 +1256,20 @@ void ProjectileSudoScrewHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition)
         return;
 
     gSamusData.chargeBeamCounter = 0;
-    damage = 0;
+    damage = NORMAL_BEAM_SUDO_SCREW_DAMAGE;
 
     flags = gEquipment.beamStatus;
 
     if (flags & BF_ICE_BEAM)
-        damage = 0x30;
+        damage = ICE_BEAM_SUDO_SCREW_DAMAGE;
     else if (flags & BF_WAVE_BEAM)
-        damage = 0x30;
+        damage = WAVE_BEAM_SUDO_SCREW_DAMAGE;
     else if (flags & BF_PLASMA_BEAM)
-        damage = 0x1E;
+        damage = PLASMA_BEAM_SUDO_SCREW_DAMAGE;
     else if (flags & BF_WIDE_BEAM)
-        damage = 0x15;
+        damage = WIDE_BEAM_SUDO_SCREW_DAMAGE;
     else if (flags & BF_CHARGE_BEAM)
-        damage = 0xE;
+        damage = CHARGE_BEAM_SUDO_SCREW_DAMAGE;
 
     if (damage == 0)
         return;

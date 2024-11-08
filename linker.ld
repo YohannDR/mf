@@ -428,6 +428,10 @@ SECTIONS {
         src/data/sprites/elevator_pad.o(.rodata);
         src/data/sprites/serris.o(.rodata);
         src/data/sprites/owtch.o(.rodata);
+        src/data/sprites/geega.o(.rodata);
+        src/data/sprites/pillar.o(.rodata);
+        src/data/sprites/genesis.o(.rodata);
+
         src/data/sprites/metroid_husk.o(.rodata);
         src/data/sprites/neo_ridley.o(.rodata);
         src/data/sprites/yakuza.o(.rodata);
@@ -435,7 +439,6 @@ SECTIONS {
         src/data/sprites/x_parasite.o(.rodata);
         src/data/demo_data.o(.rodata);
         src/data/hud_data.o(.rodata);
-        src/data/escape_data.o(.rodata);
         src/data/particle_data.o(.rodata);
 
         src/data/rooms/main_deck.o(.rodata);

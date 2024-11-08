@@ -2,7 +2,7 @@
 #include "globals.h"
 #include "gba.h"
 
-#include "data/escape_data.h"
+#include "data/hud_data.h"
 
 #include "constants/event.h"
 

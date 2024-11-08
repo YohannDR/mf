@@ -8637,7 +8637,7 @@ ProjectileDiffusionFlakeSubroutine: @ 0x080854B0
 	strh r0, [r3, #0x18]
 	strh r1, [r3, #0x1a]
 	strh r0, [r3, #0x1c]
-	ldr r0, _080854F4 @ =0x083EACE4
+	ldr r0, _080854F4 @ =sParticleOam_3eace4
 	str r0, [r3, #4]
 	strb r2, [r3, #0xe]
 	strh r4, [r3, #0xc]
@@ -8645,7 +8645,7 @@ ProjectileDiffusionFlakeSubroutine: @ 0x080854B0
 	.align 2, 0
 _080854EC: .4byte gCurrentProjectile
 _080854F0: .4byte 0x0000FFF0
-_080854F4: .4byte 0x083EACE4
+_080854F4: .4byte sParticleOam_3eace4
 _080854F8:
 	ldr r0, _0808550C @ =gProjectileData
 	lsls r1, r1, #5

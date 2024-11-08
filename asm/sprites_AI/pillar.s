@@ -204,7 +204,7 @@ _0804AA96:
 	adds r0, r3, #0
 	adds r0, #0x2d
 	strb r4, [r0]
-	ldr r0, _0804AAC4 @ =0x0837A984
+	ldr r0, _0804AAC4 @ =sPillarOam_37a984
 	str r0, [r3, #0x18]
 	adds r1, r3, #0
 	adds r1, #0x27
@@ -225,7 +225,7 @@ _0804AA96:
 	strh r0, [r3, #0x10]
 	b _0804AB58
 	.align 2, 0
-_0804AAC4: .4byte 0x0837A984
+_0804AAC4: .4byte sPillarOam_37a984
 _0804AAC8: .4byte 0x0000FFC4
 _0804AACC:
 	adds r0, r3, #0
@@ -234,7 +234,7 @@ _0804AACC:
 	movs r2, #0x40
 	orrs r1, r2
 	strh r1, [r3]
-	ldr r0, _0804AB08 @ =0x0837AB8C
+	ldr r0, _0804AB08 @ =sPillarOam_37ab8c
 	str r0, [r3, #0x18]
 	adds r0, r3, #0
 	adds r0, #0x27
@@ -259,14 +259,14 @@ _0804AACC:
 	strh r0, [r3, #4]
 	b _0804AB58
 	.align 2, 0
-_0804AB08: .4byte 0x0837AB8C
+_0804AB08: .4byte sPillarOam_37ab8c
 _0804AB0C: .4byte 0x0000FFE4
 _0804AB10: .4byte 0x0000FFC0
 _0804AB14:
 	adds r0, r3, #0
 	adds r0, #0x2d
 	strb r5, [r0]
-	ldr r0, _0804AB4C @ =0x0837AB8C
+	ldr r0, _0804AB4C @ =sPillarOam_37ab8c
 	str r0, [r3, #0x18]
 	adds r0, r3, #0
 	adds r0, #0x27
@@ -291,7 +291,7 @@ _0804AB14:
 	strh r0, [r3, #4]
 	b _0804AB58
 	.align 2, 0
-_0804AB4C: .4byte 0x0837AB8C
+_0804AB4C: .4byte sPillarOam_37ab8c
 _0804AB50: .4byte 0x0000FFE4
 _0804AB54:
 	movs r0, #0
@@ -403,17 +403,17 @@ _0804AC0E:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804AC28
-	ldr r0, _0804AC24 @ =0x0837A9BC
+	ldr r0, _0804AC24 @ =sPillarOam_37a9bc
 	str r0, [r2, #0x18]
 	b _0804AD5A
 	.align 2, 0
-_0804AC24: .4byte 0x0837A9BC
+_0804AC24: .4byte sPillarOam_37a9bc
 _0804AC28:
-	ldr r0, _0804AC30 @ =0x0837A7B4
+	ldr r0, _0804AC30 @ =sPillarOam_37a7b4
 	str r0, [r2, #0x18]
 	b _0804AD5A
 	.align 2, 0
-_0804AC30: .4byte 0x0837A7B4
+_0804AC30: .4byte sPillarOam_37a7b4
 _0804AC34:
 	ldrb r0, [r2, #0x1c]
 	cmp r0, #1
@@ -473,7 +473,7 @@ _0804AC7C:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804AD24
-	ldr r0, _0804ACE4 @ =0x0837AB54
+	ldr r0, _0804ACE4 @ =sPillarOam_37ab54
 	str r0, [r3, #0x18]
 	ldrh r1, [r3]
 	movs r0, #0x40
@@ -502,7 +502,7 @@ _0804AC7C:
 	b _0804AD18
 	.align 2, 0
 _0804ACE0: .4byte gCurrentSprite
-_0804ACE4: .4byte 0x0837AB54
+_0804ACE4: .4byte sPillarOam_37ab54
 _0804ACE8: .4byte gCurrentClipdataAffectingAction
 _0804ACEC:
 	ldr r4, _0804AD20 @ =gCurrentClipdataAffectingAction
@@ -531,7 +531,7 @@ _0804AD18:
 	.align 2, 0
 _0804AD20: .4byte gCurrentClipdataAffectingAction
 _0804AD24:
-	ldr r0, _0804AD60 @ =0x0837A94C
+	ldr r0, _0804AD60 @ =sPillarOam_37a94c
 	str r0, [r3, #0x18]
 	ldr r4, _0804AD64 @ =gCurrentClipdataAffectingAction
 	strb r7, [r4]
@@ -559,7 +559,7 @@ _0804AD5A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804AD60: .4byte 0x0837A94C
+_0804AD60: .4byte sPillarOam_37a94c
 _0804AD64: .4byte gCurrentClipdataAffectingAction
 
 	thumb_func_start Pillar

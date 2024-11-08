@@ -50,7 +50,7 @@ _0804ADD0:
 	strh r1, [r4, #0xe]
 	movs r0, #0x40
 	strh r0, [r4, #0x10]
-	ldr r0, _0804AE48 @ =0x0837C360
+	ldr r0, _0804AE48 @ =sGenesisOam_37c360
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -85,7 +85,7 @@ _0804ADD0:
 	.align 2, 0
 _0804AE40: .4byte gCurrentSprite
 _0804AE44: .4byte 0x0000FFC0
-_0804AE48: .4byte 0x0837C360
+_0804AE48: .4byte sGenesisOam_37c360
 _0804AE4C: .4byte gIoRegisters
 _0804AE50: .4byte sPrimarySpriteStats
 _0804AE54:
@@ -114,20 +114,20 @@ GenesisIdleInit: @ 0x0804AE60
 	ands r0, r1
 	cmp r0, #0
 	beq _0804AE90
-	ldr r0, _0804AE8C @ =0x0837C360
+	ldr r0, _0804AE8C @ =sGenesisOam_37c360
 	b _0804AE92
 	.align 2, 0
 _0804AE84: .4byte gCurrentSprite
 _0804AE88: .4byte gSpriteRandomNumber
-_0804AE8C: .4byte 0x0837C360
+_0804AE8C: .4byte sGenesisOam_37c360
 _0804AE90:
-	ldr r0, _0804AE98 @ =0x0837C398
+	ldr r0, _0804AE98 @ =sGenesisOam_37c398
 _0804AE92:
 	str r0, [r3, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804AE98: .4byte 0x0837C398
+_0804AE98: .4byte sGenesisOam_37c398
 
 	thumb_func_start GenesisIdle
 GenesisIdle: @ 0x0804AE9C
@@ -208,7 +208,7 @@ _0804AF30: .4byte gPreviousCollisionCheck
 _0804AF34:
 	ldr r2, _0804AF54 @ =gCurrentSprite
 	ldr r1, [r2, #0x18]
-	ldr r0, _0804AF58 @ =0x0837C398
+	ldr r0, _0804AF58 @ =sGenesisOam_37c398
 	movs r3, #1
 	cmp r1, r0
 	bne _0804AF42
@@ -224,7 +224,7 @@ _0804AF42:
 	b _0804AF60
 	.align 2, 0
 _0804AF54: .4byte gCurrentSprite
-_0804AF58: .4byte 0x0837C398
+_0804AF58: .4byte sGenesisOam_37c398
 _0804AF5C:
 	ldrh r0, [r2, #4]
 	subs r0, r0, r3
@@ -273,26 +273,26 @@ _0804AFD4:
 	adds r0, #0x24
 	movs r1, #0x2a
 	strb r1, [r0]
-	ldr r0, _0804AFE0 @ =0x0837C478
+	ldr r0, _0804AFE0 @ =sGenesisOam_37c478
 	b _0804AFFE
 	.align 2, 0
-_0804AFE0: .4byte 0x0837C478
+_0804AFE0: .4byte sGenesisOam_37c478
 _0804AFE4:
 	adds r0, r2, #0
 	adds r0, #0x24
 	movs r1, #0xa
 	strb r1, [r0]
-	ldr r0, _0804AFF0 @ =0x0837C478
+	ldr r0, _0804AFF0 @ =sGenesisOam_37c478
 	b _0804AFFE
 	.align 2, 0
-_0804AFF0: .4byte 0x0837C478
+_0804AFF0: .4byte sGenesisOam_37c478
 _0804AFF4:
-	ldr r0, _0804AFF8 @ =0x0837C398
+	ldr r0, _0804AFF8 @ =sGenesisOam_37c398
 	b _0804AFFE
 	.align 2, 0
-_0804AFF8: .4byte 0x0837C398
+_0804AFF8: .4byte sGenesisOam_37c398
 _0804AFFC:
-	ldr r0, _0804B008 @ =0x0837C360
+	ldr r0, _0804B008 @ =sGenesisOam_37c360
 _0804AFFE:
 	str r0, [r2, #0x18]
 _0804B000:
@@ -300,7 +300,7 @@ _0804B000:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804B008: .4byte 0x0837C360
+_0804B008: .4byte sGenesisOam_37c360
 
 	thumb_func_start GensisWaitingInit
 GensisWaitingInit: @ 0x0804B00C
@@ -312,19 +312,19 @@ GensisWaitingInit: @ 0x0804B00C
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0804B028 @ =0x0837C478
+	ldr r0, _0804B028 @ =sGenesisOam_37c478
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _0804B024: .4byte gCurrentSprite
-_0804B028: .4byte 0x0837C478
+_0804B028: .4byte sGenesisOam_37c478
 
 	thumb_func_start GenesisWaiting
 GenesisWaiting: @ 0x0804B02C
 	push {r4, lr}
 	ldr r4, _0804B04C @ =gCurrentSprite
 	ldr r1, [r4, #0x18]
-	ldr r0, _0804B050 @ =0x0837C478
+	ldr r0, _0804B050 @ =sGenesisOam_37c478
 	cmp r1, r0
 	bne _0804B058
 	bl SpriteUtilCheckEndCurrentSpriteAnim
@@ -333,13 +333,13 @@ GenesisWaiting: @ 0x0804B02C
 	movs r0, #0
 	strb r0, [r4, #0x1c]
 	strh r0, [r4, #0x16]
-	ldr r0, _0804B054 @ =0x0837C450
+	ldr r0, _0804B054 @ =sGenesisOam_37c450
 	str r0, [r4, #0x18]
 	b _0804B068
 	.align 2, 0
 _0804B04C: .4byte gCurrentSprite
-_0804B050: .4byte 0x0837C478
-_0804B054: .4byte 0x0837C450
+_0804B050: .4byte sGenesisOam_37c478
+_0804B054: .4byte sGenesisOam_37c450
 _0804B058:
 	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
@@ -364,19 +364,19 @@ GenesisReachedWallInit: @ 0x0804B070
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0804B08C @ =0x0837C478
+	ldr r0, _0804B08C @ =sGenesisOam_37c478
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _0804B088: .4byte gCurrentSprite
-_0804B08C: .4byte 0x0837C478
+_0804B08C: .4byte sGenesisOam_37c478
 
 	thumb_func_start GenesisReachedWall
 GenesisReachedWall: @ 0x0804B090
 	push {r4, lr}
 	ldr r4, _0804B0B0 @ =gCurrentSprite
 	ldr r1, [r4, #0x18]
-	ldr r0, _0804B0B4 @ =0x0837C478
+	ldr r0, _0804B0B4 @ =sGenesisOam_37c478
 	cmp r1, r0
 	bne _0804B0BC
 	bl SpriteUtilCheckEndCurrentSpriteAnim
@@ -385,13 +385,13 @@ GenesisReachedWall: @ 0x0804B090
 	movs r0, #0
 	strb r0, [r4, #0x1c]
 	strh r0, [r4, #0x16]
-	ldr r0, _0804B0B8 @ =0x0837C450
+	ldr r0, _0804B0B8 @ =sGenesisOam_37c450
 	str r0, [r4, #0x18]
 	b _0804B0CC
 	.align 2, 0
 _0804B0B0: .4byte gCurrentSprite
-_0804B0B4: .4byte 0x0837C478
-_0804B0B8: .4byte 0x0837C450
+_0804B0B4: .4byte sGenesisOam_37c478
+_0804B0B8: .4byte sGenesisOam_37c450
 _0804B0BC:
 	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	cmp r0, #0
@@ -416,12 +416,12 @@ GenesisTurningAroundInit: @ 0x0804B0D4
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0804B0F0 @ =0x0837C488
+	ldr r0, _0804B0F0 @ =sGenesisOam_37c488
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _0804B0EC: .4byte gCurrentSprite
-_0804B0F0: .4byte 0x0837C488
+_0804B0F0: .4byte sGenesisOam_37c488
 
 	thumb_func_start GenesisTurningAround
 GenesisTurningAround: @ 0x0804B0F4
@@ -433,7 +433,7 @@ GenesisTurningAround: @ 0x0804B0F4
 	movs r0, #0
 	strb r0, [r1, #0x1c]
 	strh r0, [r1, #0x16]
-	ldr r0, _0804B120 @ =0x0837C488
+	ldr r0, _0804B120 @ =sGenesisOam_37c488
 	str r0, [r1, #0x18]
 	ldrh r0, [r1]
 	movs r2, #0x40
@@ -447,7 +447,7 @@ _0804B118:
 	bx r0
 	.align 2, 0
 _0804B11C: .4byte gCurrentSprite
-_0804B120: .4byte 0x0837C488
+_0804B120: .4byte sGenesisOam_37c488
 
 	thumb_func_start GenesisTurningAroundSecondPart
 GenesisTurningAroundSecondPart: @ 0x0804B124
@@ -471,7 +471,7 @@ GenesisSpitting: @ 0x0804B140
 	sub sp, #0xc
 	ldr r4, _0804B174 @ =gCurrentSprite
 	ldr r1, [r4, #0x18]
-	ldr r0, _0804B178 @ =0x0837C478
+	ldr r0, _0804B178 @ =sGenesisOam_37c478
 	cmp r1, r0
 	bne _0804B180
 	bl SpriteUtilCheckEndCurrentSpriteAnim
@@ -480,7 +480,7 @@ GenesisSpitting: @ 0x0804B140
 	movs r0, #0
 	strb r0, [r4, #0x1c]
 	strh r0, [r4, #0x16]
-	ldr r0, _0804B17C @ =0x0837C498
+	ldr r0, _0804B17C @ =sGenesisOam_37c498
 	str r0, [r4, #0x18]
 	ldrh r1, [r4]
 	movs r0, #2
@@ -493,8 +493,8 @@ GenesisSpitting: @ 0x0804B140
 	b _0804B202
 	.align 2, 0
 _0804B174: .4byte gCurrentSprite
-_0804B178: .4byte 0x0837C478
-_0804B17C: .4byte 0x0837C498
+_0804B178: .4byte sGenesisOam_37c478
+_0804B17C: .4byte sGenesisOam_37c498
 _0804B180:
 	bl SpriteUtilCheckNearEndCurrentSpriteAnim
 	adds r5, r0, #0
@@ -618,7 +618,7 @@ GenesisSpitInit: @ 0x0804B20C
 	strb r0, [r1]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
-	ldr r0, _0804B294 @ =0x0837C548
+	ldr r0, _0804B294 @ =sGenesisOam_37c548
 	str r0, [r2, #0x18]
 	adds r1, #0xd
 	movs r0, #6
@@ -634,7 +634,7 @@ _0804B284: .4byte gCurrentSprite
 _0804B288: .4byte 0x0000FFFB
 _0804B28C: .4byte 0x0000FFE0
 _0804B290: .4byte gIoRegisters
-_0804B294: .4byte 0x0837C548
+_0804B294: .4byte sGenesisOam_37c548
 
 	thumb_func_start GenesisSpitHanging
 GenesisSpitHanging: @ 0x0804B298
@@ -667,7 +667,7 @@ _0804B2C4: .4byte gCurrentSprite
 GenesisSpitSplashingInit: @ 0x0804B2C8
 	push {lr}
 	ldr r1, _0804B2F4 @ =gCurrentSprite
-	ldr r0, _0804B2F8 @ =0x0837C558
+	ldr r0, _0804B2F8 @ =sGenesisOam_37c558
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -688,7 +688,7 @@ _0804B2EE:
 	bx r0
 	.align 2, 0
 _0804B2F4: .4byte gCurrentSprite
-_0804B2F8: .4byte 0x0837C558
+_0804B2F8: .4byte sGenesisOam_37c558
 _0804B2FC: .4byte 0x000001C9
 
 	thumb_func_start GenesisSpitSplashing
