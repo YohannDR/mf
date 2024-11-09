@@ -611,7 +611,6 @@ void CoreXShell(void) {
 }
 
 void AbilityAura(void) {
-    // https://decomp.me/scratch/wYMqx
     u8 primaryRamSlot;
     
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
@@ -654,17 +653,12 @@ void AbilityAura(void) {
         case 0x3b:
             gCurrentSprite.status |= SS_NOT_DRAWN;
             break;
+        case 0x3c:
+            gCurrentSprite.status &= ~SS_NOT_DRAWN;
+            break;
         case 0x1a:
             if (gSpriteData[primaryRamSlot].work1 <= 8 * 4) {
-                // FIXME fakematch
-                #ifdef NON_MATCHING
                 gCurrentSprite.status = 0;
-                #else
-                asm("movs r0, #0 \n\
-                     mov r5, ip \n\
-                     strh r0, [r5] \n\
-                ");
-                #endif
             }
         case 1:
         case 2:
@@ -685,7 +679,6 @@ void AbilityAura(void) {
                 gCurrentSprite.status ^= SS_NOT_DRAWN;
             }
             break;
-        case 0x3c:
         case 0x5e:
             gCurrentSprite.status &= ~SS_NOT_DRAWN;
             break;

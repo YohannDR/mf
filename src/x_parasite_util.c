@@ -433,13 +433,16 @@ void SpriteDying(void) {
 }
 
 void XParasiteSpawningInit(void) {
+    u8 offset;
+
     gCurrentSprite.status |= SS_ENABLE_MOSAIC;
     gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX / 2;
     gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.pose = X_PARASITE_POSE_IDLE;
-    gCurrentSprite.work3 = (u32)(gSpriteRandomNumber << 0x1a) >> 0x18;
-    gCurrentSprite.work4 = gCurrentSprite.work3;
+    offset = gSpriteRandomNumber * 4;
+    gCurrentSprite.work3 = offset;
+    gCurrentSprite.work4 = offset;
 }
 
 void XParasiteDetermineColor(u8 type, u8 spriteId) {
