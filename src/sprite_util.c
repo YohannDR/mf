@@ -1455,6 +1455,16 @@ void unk_1169c(s16 movement)
         gCurrentSprite.xPosition -= movement;
 }
 
+/**
+ * @brief 11734 | 200 | Calcultes the new oam rotation to rotate a sprite towards a target
+ * 
+ * @param oamRotation Current rotation
+ * @param targetY Target Y
+ * @param targetX Target X
+ * @param spriteY Current Y
+ * @param spriteX Current X
+ * @return u8 New rotation
+ */
 u8 SpriteUtilMakeSpriteRotateTowardsTarget(s16 oamRotation, s16 targetY, s16 targetX, s16 spriteY, s16 spriteX)
 {
     u8 intensity;
@@ -1468,7 +1478,7 @@ u8 SpriteUtilMakeSpriteRotateTowardsTarget(s16 oamRotation, s16 targetY, s16 tar
         {
             targetRotation = PI + PI / 2;
         }
-        if (targetX > spriteX) // Replace it with "else if (targetX > spriteX)" to fix the bug.
+        if (targetX > spriteX) // BUG: replace it with "else if (targetX > spriteX)" to fix the bug.
         {
             if (spriteY - targetY < BLOCK_SIZE)
                 targetRotation = 0;
@@ -4319,7 +4329,7 @@ void unk_136ac(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor)
 }
 
 /**
- * @brief 13910 | 532 | Handles moving one of Neo-Ridley's fireballs
+ * @brief 13910 | 214 | Handles moving one of Neo-Ridley's fireballs
  * 
  * @param dstY Destination Y
  * @param dstX Destination X
