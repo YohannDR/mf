@@ -49,13 +49,11 @@ void AreaBannerInit(void)
  */
 void AreaBannerMovingUp(void)
 {
-    do {
     if (gCurrentSprite.work1 != 0)
     {
         gCurrentSprite.animationDurationCounter--;
-        gCurrentSprite.work1--;
 
-        if (gCurrentSprite.work1 == 0)
+        if (--gCurrentSprite.work1 == 0)
             gCurrentSprite.status &= ~SS_NOT_DRAWN;
         return;
     }
@@ -78,7 +76,6 @@ void AreaBannerMovingUp(void)
             gCurrentSprite.work1 = 120;
         }
     }
-    }while(0);
 }
 
 /**
