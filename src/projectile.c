@@ -990,10 +990,13 @@ void ProjectileSetIsftForPowerBomb(u8 spriteSlot)
     }
 }
 
+/**
+ * @brief 832ec | 84 | Brings a sprite to the center of the power bomb
+ * 
+ * @param spriteSlot Sprite slot
+ */
 void ProjectileBringSpriteToPowerBombCenter(u8 spriteSlot)
 {
-    // https://decomp.me/scratch/kvjnc
-
     u16 spriteY;
     u16 spriteX;
     u16 powerBombY;
@@ -1015,16 +1018,17 @@ void ProjectileBringSpriteToPowerBombCenter(u8 spriteSlot)
     powerBombY = gCurrentPowerBomb.yPosition;
     powerBombX = gCurrentPowerBomb.xPosition;
 
-    ySpeed = QUARTER_BLOCK_SIZE + PIXEL_SIZE;
     xSpeed = QUARTER_BLOCK_SIZE + EIGHTH_BLOCK_SIZE;
 
     if (spriteY > powerBombY)
     {
-        spriteY -= ySpeed;
+        spriteY -= QUARTER_BLOCK_SIZE + PIXEL_SIZE;
     }
     else if (spriteY < powerBombY)
     {
-        spriteY += ySpeed;
+        u32 tmp = QUARTER_BLOCK_SIZE + PIXEL_SIZE + 0x10000; // Needed to produce matching ASM.
+        tmp++, tmp--;
+        spriteY += tmp;
     }
 
     if (spriteX > powerBombX)
