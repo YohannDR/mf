@@ -2662,9 +2662,41 @@ rooms/Sector6_9_Bg0.tt.lz;0x559204
 
 # Projectiles
 
-projectiles/flare_horizontal.gfx;80;0x58eb78;32
-projectiles/flare_diagonal.gfx;80;0x58f578;32
-projectiles/flare_vertical.gfx;80;0x58ff78;32
+projectiles/normal_beam.pal;1;58b464;32
+projectiles/charge_beam.pal;1;58b484;32
+projectiles/wide_beam.pal;1;58b4a4;32
+projectiles/plasma_beam.pal;1;58b4c4;32
+projectiles/wave_beam.pal;1;58b4e4;32
+projectiles/ice_beam.pal;1;58b504;32
+
+projectiles/normal_beam_top.gfx;20;0x58b524;32
+projectiles/normal_beam_bottom.gfx;20;0x58b7a4;32
+projectiles/charge_beam_top.gfx;20;0x58ba24;32
+projectiles/charge_beam_bottom.gfx;20;0x58bca4;32
+projectiles/wide_beam_top.gfx;20;0x58bf24;32
+projectiles/wide_beam_bottom.gfx;20;0x58c1a4;32
+projectiles/plasma_beam_top.gfx;20;0x58c424;32
+projectiles/plasma_beam_bottom.gfx;20;0x58c6a4;32
+projectiles/wave_beam_top.gfx;20;0x58c924;32
+projectiles/wave_beam_bottom.gfx;20;0x58cba4;32
+projectiles/ice_beam_top.gfx;20;0x58ce24;32
+projectiles/ice_beam_bottom.gfx;20;0x58d0a4;32
+
+projectiles/normal_missile_top.gfx;4;0x58d324;32
+projectiles/normal_missile_bottom.gfx;4;0x58d3a4;32
+projectiles/super_missile_top.gfx;4;0x58d424;32
+projectiles/super_missile_bottom.gfx;4;0x58d4a4;32
+projectiles/ice_missile_top.gfx;4;0x58d524;32
+projectiles/ice_missile_bottom.gfx;4;0x58d5a4;32
+projectiles/diffusion_missile_top.gfx;4;0x58d624;32
+projectiles/diffusion_missile_bottom.gfx;4;0x58d6a4;32
+
+projectiles/flare_horizontal_top.gfx;40;0x58eb78;32
+projectiles/flare_horizontal_bottom.gfx;40;0x58f078;32
+projectiles/flare_diagonal_top.gfx;40;0x58f578;32
+projectiles/flare_diagonal_bottom.gfx;40;0x58fa78;32
+projectiles/flare_vertical_top.gfx;40;0x58ff78;32
+projectiles/flare_vertical_bottom.gfx;40;0x590478;32
 
 # Title screen
 
@@ -2707,7 +2739,6 @@ Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
 Blob_3ec508_3ecef4.bin;3ec508;3ecef4
 Blob_3eed78_413afc.bin;3eed78;413afc
 Blob_5594a8_58b3cc.bin;5594a8;58b3cc
-Blob_58b3ec_58eb78.bin;58b3ec;58eb78
 Blob_597708_72eee0.bin;597708;72eee0
 Blob_73421e_79a29c.bin;73421e;79a29c
 Blob_79b458_79b708.bin;79b458;79b708

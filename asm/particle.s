@@ -592,7 +592,7 @@ ParticleNone: @ 0x080731C8
 	ldrb r0, [r4, #3]
 	cmp r0, #0
 	bne _080731EC
-	ldr r0, _080731E8 @ =0x0858EAE8
+	ldr r0, _080731E8 @ =sOam_58eae8
 	bl ParticleUpdateAnimation
 	movs r0, #0x50
 	strb r0, [r4, #3]
@@ -602,7 +602,7 @@ ParticleNone: @ 0x080731C8
 	b _0807321C
 	.align 2, 0
 _080731E4: .4byte 0x030008B8
-_080731E8: .4byte 0x0858EAE8
+_080731E8: .4byte sOam_58eae8
 _080731EC:
 	subs r0, #1
 	strb r0, [r4, #3]
@@ -610,11 +610,11 @@ _080731EC:
 	lsrs r0, r0, #0x18
 	cmp r0, #0x1e
 	bls _08073204
-	ldr r0, _08073200 @ =0x0858EAE8
+	ldr r0, _08073200 @ =sOam_58eae8
 	bl ParticleUpdateAnimation
 	b _0807321E
 	.align 2, 0
-_08073200: .4byte 0x0858EAE8
+_08073200: .4byte sOam_58eae8
 _08073204:
 	cmp r0, #0x1e
 	bne _08073210
@@ -623,7 +623,7 @@ _08073204:
 	strh r0, [r4, #6]
 	strb r1, [r4, #1]
 _08073210:
-	ldr r0, _08073224 @ =0x0858EB10
+	ldr r0, _08073224 @ =sOam_58eb10
 	bl ParticleUpdateAnimation
 	ldrb r0, [r4, #3]
 	cmp r0, #0
@@ -635,7 +635,7 @@ _0807321E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08073224: .4byte 0x0858EB10
+_08073224: .4byte sOam_58eb10
 
 	thumb_func_start ParticleBomb
 ParticleBomb: @ 0x08073228
@@ -1109,7 +1109,7 @@ ParticleIceBeamTrail: @ 0x080735BC
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080735F0 @ =0x0858E238
+	ldr r0, _080735F0 @ =sOam_58e238
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1131,7 +1131,7 @@ _080735E6:
 	bx r0
 	.align 2, 0
 _080735EC: .4byte 0x030008B8
-_080735F0: .4byte 0x0858E238
+_080735F0: .4byte sOam_58e238
 
 	thumb_func_start ParticleChargedNormalBeamTrail
 ParticleChargedNormalBeamTrail: @ 0x080735F4
@@ -1140,7 +1140,7 @@ ParticleChargedNormalBeamTrail: @ 0x080735F4
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073628 @ =0x0858D83C
+	ldr r0, _08073628 @ =sOam_58d83c
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1162,7 +1162,7 @@ _0807361E:
 	bx r0
 	.align 2, 0
 _08073624: .4byte 0x030008B8
-_08073628: .4byte 0x0858D83C
+_08073628: .4byte sOam_58d83c
 
 	thumb_func_start ParticleChargedChargeBeamTrail
 ParticleChargedChargeBeamTrail: @ 0x0807362C
@@ -1171,7 +1171,7 @@ ParticleChargedChargeBeamTrail: @ 0x0807362C
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073660 @ =0x0858DA80
+	ldr r0, _08073660 @ =sOam_58da80
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1193,7 +1193,7 @@ _08073656:
 	bx r0
 	.align 2, 0
 _0807365C: .4byte 0x030008B8
-_08073660: .4byte 0x0858DA80
+_08073660: .4byte sOam_58da80
 
 	thumb_func_start ParticleChargedWideBeamTrail
 ParticleChargedWideBeamTrail: @ 0x08073664
@@ -1202,7 +1202,7 @@ ParticleChargedWideBeamTrail: @ 0x08073664
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073698 @ =0x0858DCE4
+	ldr r0, _08073698 @ =sOam_58dce4
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1224,7 +1224,7 @@ _0807368E:
 	bx r0
 	.align 2, 0
 _08073694: .4byte 0x030008B8
-_08073698: .4byte 0x0858DCE4
+_08073698: .4byte sOam_58dce4
 
 	thumb_func_start ParticleChargedPlasmaBeamTrail
 ParticleChargedPlasmaBeamTrail: @ 0x0807369C
@@ -1233,7 +1233,7 @@ ParticleChargedPlasmaBeamTrail: @ 0x0807369C
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080736D0 @ =0x0858DE84
+	ldr r0, _080736D0 @ =sOam_58de84
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1255,7 +1255,7 @@ _080736C6:
 	bx r0
 	.align 2, 0
 _080736CC: .4byte 0x030008B8
-_080736D0: .4byte 0x0858DE84
+_080736D0: .4byte sOam_58de84
 
 	thumb_func_start ParticleChargedWaveBeamTrail
 ParticleChargedWaveBeamTrail: @ 0x080736D4
@@ -1264,7 +1264,7 @@ ParticleChargedWaveBeamTrail: @ 0x080736D4
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073708 @ =0x0858DFDC
+	ldr r0, _08073708 @ =sOam_58dfdc
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1286,7 +1286,7 @@ _080736FE:
 	bx r0
 	.align 2, 0
 _08073704: .4byte 0x030008B8
-_08073708: .4byte 0x0858DFDC
+_08073708: .4byte sOam_58dfdc
 
 	thumb_func_start ParticleChargedIceBeamTrail
 ParticleChargedIceBeamTrail: @ 0x0807370C
@@ -1295,7 +1295,7 @@ ParticleChargedIceBeamTrail: @ 0x0807370C
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073740 @ =0x0858E278
+	ldr r0, _08073740 @ =sOam_58e278
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1317,7 +1317,7 @@ _08073736:
 	bx r0
 	.align 2, 0
 _0807373C: .4byte 0x030008B8
-_08073740: .4byte 0x0858E278
+_08073740: .4byte sOam_58e278
 
 	thumb_func_start ParticleNormalMissileTrail
 ParticleNormalMissileTrail: @ 0x08073744
@@ -1326,7 +1326,7 @@ ParticleNormalMissileTrail: @ 0x08073744
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073780 @ =0x0858E888
+	ldr r0, _08073780 @ =sOam_58e888
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1352,7 +1352,7 @@ _08073776:
 	bx r0
 	.align 2, 0
 _0807377C: .4byte 0x030008B8
-_08073780: .4byte 0x0858E888
+_08073780: .4byte sOam_58e888
 
 	thumb_func_start ParticleSuperMissileTrail
 ParticleSuperMissileTrail: @ 0x08073784
@@ -1361,7 +1361,7 @@ ParticleSuperMissileTrail: @ 0x08073784
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _080737C0 @ =0x0858E7F0
+	ldr r0, _080737C0 @ =sOam_58e7f0
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1387,7 +1387,7 @@ _080737B6:
 	bx r0
 	.align 2, 0
 _080737BC: .4byte 0x030008B8
-_080737C0: .4byte 0x0858E7F0
+_080737C0: .4byte sOam_58e7f0
 
 	thumb_func_start ParticleIceMissileTrail
 ParticleIceMissileTrail: @ 0x080737C4
@@ -1396,7 +1396,7 @@ ParticleIceMissileTrail: @ 0x080737C4
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073800 @ =0x0858E8D8
+	ldr r0, _08073800 @ =sOam_58e8d8
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1422,7 +1422,7 @@ _080737F6:
 	bx r0
 	.align 2, 0
 _080737FC: .4byte 0x030008B8
-_08073800: .4byte 0x0858E8D8
+_08073800: .4byte sOam_58e8d8
 
 	thumb_func_start ParticleDiffusionMissileTrail
 ParticleDiffusionMissileTrail: @ 0x08073804
@@ -1431,7 +1431,7 @@ ParticleDiffusionMissileTrail: @ 0x08073804
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073840 @ =0x0858E928
+	ldr r0, _08073840 @ =sOam_58e928
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1457,7 +1457,7 @@ _08073836:
 	bx r0
 	.align 2, 0
 _0807383C: .4byte 0x030008B8
-_08073840: .4byte 0x0858E928
+_08073840: .4byte sOam_58e928
 
 	thumb_func_start ParticleChargedDiffusionMissileTrail
 ParticleChargedDiffusionMissileTrail: @ 0x08073844
@@ -1466,7 +1466,7 @@ ParticleChargedDiffusionMissileTrail: @ 0x08073844
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073880 @ =0x0858E9C8
+	ldr r0, _08073880 @ =sOam_58e9c8
 	bl ParticleUpdateAnimation
 	ldrh r0, [r4, #6]
 	cmp r0, #0
@@ -1492,7 +1492,7 @@ _08073876:
 	bx r0
 	.align 2, 0
 _0807387C: .4byte 0x030008B8
-_08073880: .4byte 0x0858E9C8
+_08073880: .4byte sOam_58e9c8
 
 	thumb_func_start ParticleAbsorbHealthX
 ParticleAbsorbHealthX: @ 0x08073884

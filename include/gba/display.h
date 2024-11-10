@@ -138,6 +138,9 @@
 #define WIN1_ALL_NO_COLOR_EFFECT (WIN1_BG0 | WIN1_BG1 | WIN1_BG2 | WIN1_BG3 | WIN1_OBJ)
 #define WIN1_ALL (WIN1_BG0 | WIN1_BG1 | WIN1_BG2 | WIN1_BG3 | WIN1_OBJ | WIN1_COLOR_EFFECT)
 
-#define VRAM_OBJ_ADDR(tile) (VRAM_OBJ + ((tile) * 32))
+#define VRAM_TILE_SIZE 32
+
+#define VRAM_OBJ_ADDR(tile) (VRAM_OBJ + ((tile) * VRAM_TILE_SIZE))
+#define VRAM_OBJ_ADDR_COORDS(x, y) (VRAM_OBJ + ((x + y * 32) * VRAM_TILE_SIZE))
 
 #endif /* GBA_DISPLAY_H */

@@ -2609,11 +2609,11 @@ _0802EDF8:
 	orrs r0, r1
 	strh r0, [r4]
 _0802EE04:
-	ldr r0, _0802EE0C @ =0x0858D9E8
+	ldr r0, _0802EE0C @ =sOam_58d9e8
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
-_0802EE0C: .4byte 0x0858D9E8
+_0802EE0C: .4byte sOam_58d9e8
 _0802EE10:
 	ldrh r1, [r4]
 	movs r3, #0x80
@@ -2622,17 +2622,17 @@ _0802EE10:
 	orrs r0, r1
 	strh r0, [r4]
 _0802EE1C:
-	ldr r0, _0802EE24 @ =0x0858D9F8
+	ldr r0, _0802EE24 @ =sOam_58d9f8
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
-_0802EE24: .4byte 0x0858D9F8
+_0802EE24: .4byte sOam_58d9f8
 _0802EE28:
-	ldr r0, _0802EE30 @ =0x0858D9D8
+	ldr r0, _0802EE30 @ =sOam_58d9d8
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
-_0802EE30: .4byte 0x0858D9D8
+_0802EE30: .4byte sOam_58d9d8
 _0802EE34:
 	movs r0, #0xca
 	bl SoundPlay
@@ -2670,12 +2670,12 @@ _0802EE74:
 	strh r1, [r0]
 	adds r4, r0, #0
 _0802EE84:
-	ldr r0, _0802EE90 @ =0x0858D9A8
+	ldr r0, _0802EE90 @ =sOam_58d9a8
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
 _0802EE8C: .4byte gCurrentSprite
-_0802EE90: .4byte 0x0858D9A8
+_0802EE90: .4byte sOam_58d9a8
 _0802EE94:
 	ldr r0, _0802EEAC @ =gCurrentSprite
 	ldrh r2, [r0]
@@ -2686,15 +2686,15 @@ _0802EE94:
 	strh r1, [r0]
 	adds r4, r0, #0
 _0802EEA4:
-	ldr r0, _0802EEB0 @ =0x0858D9C0
+	ldr r0, _0802EEB0 @ =sOam_58d9c0
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
 _0802EEAC: .4byte gCurrentSprite
-_0802EEB0: .4byte 0x0858D9C0
+_0802EEB0: .4byte sOam_58d9c0
 _0802EEB4:
 	ldr r1, _0802EEC0 @ =gCurrentSprite
-	ldr r0, _0802EEC4 @ =0x0858D990
+	ldr r0, _0802EEC4 @ =sOam_58d990
 	str r0, [r1, #0x18]
 _0802EEBA:
 	pop {r4}
@@ -2702,7 +2702,7 @@ _0802EEBA:
 	bx r0
 	.align 2, 0
 _0802EEC0: .4byte gCurrentSprite
-_0802EEC4: .4byte 0x0858D990
+_0802EEC4: .4byte sOam_58d990
 
 	thumb_func_start CoreXChargeBeam
 CoreXChargeBeam: @ 0x0802EEC8
@@ -2899,18 +2899,18 @@ _0802F040:
 	adds r0, r3, #0
 	orrs r0, r2
 	strh r0, [r1]
-	ldr r0, _0802F058 @ =0x0858DBFC
+	ldr r0, _0802F058 @ =sOam_58dbfc
 	b _0802F08C
 	.align 2, 0
 _0802F054: .4byte gCurrentSprite
-_0802F058: .4byte 0x0858DBFC
+_0802F058: .4byte sOam_58dbfc
 _0802F05C:
 	ldr r1, _0802F064 @ =gCurrentSprite
-	ldr r0, _0802F068 @ =0x0858DBFC
+	ldr r0, _0802F068 @ =sOam_58dbfc
 	b _0802F08C
 	.align 2, 0
 _0802F064: .4byte gCurrentSprite
-_0802F068: .4byte 0x0858DBFC
+_0802F068: .4byte sOam_58dbfc
 _0802F06C:
 	ldr r0, _0802F080 @ =gCurrentSprite
 	ldrh r2, [r0]
@@ -2921,21 +2921,21 @@ _0802F06C:
 	strh r1, [r0]
 	adds r1, r0, #0
 _0802F07C:
-	ldr r0, _0802F084 @ =0x0858DC1C
+	ldr r0, _0802F084 @ =sOam_58dc1c
 	b _0802F08C
 	.align 2, 0
 _0802F080: .4byte gCurrentSprite
-_0802F084: .4byte 0x0858DC1C
+_0802F084: .4byte sOam_58dc1c
 _0802F088:
 	ldr r1, _0802F094 @ =gCurrentSprite
-	ldr r0, _0802F098 @ =0x0858DBDC
+	ldr r0, _0802F098 @ =sOam_58dbdc
 _0802F08C:
 	str r0, [r1, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0802F094: .4byte gCurrentSprite
-_0802F098: .4byte 0x0858DBDC
+_0802F098: .4byte sOam_58dbdc
 
 	thumb_func_start CoreXWideBeam
 CoreXWideBeam: @ 0x0802F09C
@@ -3067,18 +3067,18 @@ _0802F198:
 	adds r0, r3, #0
 	orrs r0, r2
 	strh r0, [r1]
-	ldr r0, _0802F1B0 @ =0x0858DE0C
+	ldr r0, _0802F1B0 @ =sOam_58de0c
 	b _0802F1E4
 	.align 2, 0
 _0802F1AC: .4byte gCurrentSprite
-_0802F1B0: .4byte 0x0858DE0C
+_0802F1B0: .4byte sOam_58de0c
 _0802F1B4:
 	ldr r1, _0802F1BC @ =gCurrentSprite
-	ldr r0, _0802F1C0 @ =0x0858DE0C
+	ldr r0, _0802F1C0 @ =sOam_58de0c
 	b _0802F1E4
 	.align 2, 0
 _0802F1BC: .4byte gCurrentSprite
-_0802F1C0: .4byte 0x0858DE0C
+_0802F1C0: .4byte sOam_58de0c
 _0802F1C4:
 	ldr r0, _0802F1D8 @ =gCurrentSprite
 	ldrh r2, [r0]
@@ -3089,21 +3089,21 @@ _0802F1C4:
 	strh r1, [r0]
 	adds r1, r0, #0
 _0802F1D4:
-	ldr r0, _0802F1DC @ =0x0858DE24
+	ldr r0, _0802F1DC @ =sOam_58de24
 	b _0802F1E4
 	.align 2, 0
 _0802F1D8: .4byte gCurrentSprite
-_0802F1DC: .4byte 0x0858DE24
+_0802F1DC: .4byte sOam_58de24
 _0802F1E0:
 	ldr r1, _0802F1EC @ =gCurrentSprite
-	ldr r0, _0802F1F0 @ =0x0858DDF4
+	ldr r0, _0802F1F0 @ =sOam_58ddf4
 _0802F1E4:
 	str r0, [r1, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0802F1EC: .4byte gCurrentSprite
-_0802F1F0: .4byte 0x0858DDF4
+_0802F1F0: .4byte sOam_58ddf4
 
 	thumb_func_start CoreXPlasmaBeam
 CoreXPlasmaBeam: @ 0x0802F1F4
@@ -3264,28 +3264,28 @@ _0802F328:
 	ldrb r0, [r2, #0x1d]
 	cmp r0, #0x74
 	bne _0802F344
-	ldr r0, _0802F340 @ =0x0858E1E8
+	ldr r0, _0802F340 @ =sOam_58e1e8
 	b _0802F39A
 	.align 2, 0
-_0802F340: .4byte 0x0858E1E8
+_0802F340: .4byte sOam_58e1e8
 _0802F344:
-	ldr r0, _0802F348 @ =0x0858DF74
+	ldr r0, _0802F348 @ =sOam_58df74
 	b _0802F39A
 	.align 2, 0
-_0802F348: .4byte 0x0858DF74
+_0802F348: .4byte sOam_58df74
 _0802F34C:
 	ldrb r0, [r2, #0x1d]
 	cmp r0, #0x74
 	bne _0802F35C
-	ldr r0, _0802F358 @ =0x0858E1E8
+	ldr r0, _0802F358 @ =sOam_58e1e8
 	b _0802F39A
 	.align 2, 0
-_0802F358: .4byte 0x0858E1E8
+_0802F358: .4byte sOam_58e1e8
 _0802F35C:
-	ldr r0, _0802F360 @ =0x0858DF74
+	ldr r0, _0802F360 @ =sOam_58df74
 	b _0802F39A
 	.align 2, 0
-_0802F360: .4byte 0x0858DF74
+_0802F360: .4byte sOam_58df74
 _0802F364:
 	ldrh r1, [r2]
 	movs r3, #0x80
@@ -3297,31 +3297,31 @@ _0802F370:
 	ldrb r0, [r2, #0x1d]
 	cmp r0, #0x74
 	bne _0802F380
-	ldr r0, _0802F37C @ =0x0858E1F8
+	ldr r0, _0802F37C @ =sOam_58e1f8
 	b _0802F39A
 	.align 2, 0
-_0802F37C: .4byte 0x0858E1F8
+_0802F37C: .4byte sOam_58e1f8
 _0802F380:
-	ldr r0, _0802F384 @ =0x0858DF84
+	ldr r0, _0802F384 @ =sOam_58df84
 	b _0802F39A
 	.align 2, 0
-_0802F384: .4byte 0x0858DF84
+_0802F384: .4byte sOam_58df84
 _0802F388:
 	ldrb r0, [r2, #0x1d]
 	cmp r0, #0x74
 	bne _0802F398
-	ldr r0, _0802F394 @ =0x0858E1D8
+	ldr r0, _0802F394 @ =sOam_58e1d8
 	b _0802F39A
 	.align 2, 0
-_0802F394: .4byte 0x0858E1D8
+_0802F394: .4byte sOam_58e1d8
 _0802F398:
-	ldr r0, _0802F3A0 @ =0x0858DF64
+	ldr r0, _0802F3A0 @ =sOam_58df64
 _0802F39A:
 	str r0, [r2, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802F3A0: .4byte 0x0858DF64
+_0802F3A0: .4byte sOam_58df64
 
 	thumb_func_start CoreXWaveIceBeam
 CoreXWaveIceBeam: @ 0x0802F3A4

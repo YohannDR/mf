@@ -3,15 +3,21 @@
 #include "macros.h"
 #include "globals.h"
 
+#include "data/engine_pointers.h"
+#include "data/generic_data.h"
+#include "data/particle_data.h"
+#include "data/projectile_data.h"
 #include "data/sprite_data.h"
 
 #include "constants/samus.h"
 #include "constants/sprite.h"
+#include "constants/particle.h"
 #include "constants/projectile.h"
 
 #include "structs/clipdata.h"
 #include "structs/samus.h"
 #include "structs/sprite.h"
+#include "structs/particle.h"
 #include "structs/power_bomb.h"
 #include "structs/projectile.h"
 #include "structs/sprite_debris.h"
@@ -134,7 +140,286 @@ void ProjectileInitSecondary(u8 type, u16 yPosition, u16 xPosition, u8 part, u8 
 
 void ProjectileUpdate(void)
 {
+    s32 i;
+    u8 checks;
+    s32 beams, missiles;
 
+    u8 primarySlot;
+    u8 direction;
+    u8 flip;
+
+    if (gSubGameMode1 != SUB_GAME_MODE_PLAYING)
+        return;
+
+    // Update the arm cannon position offset fields
+    CallUpdateArmCannonOffset();
+
+    // Samus position is in sub pixels, the offsets are in pixel, and the final result is in sub pixels
+    gArmCannonY = PIXEL_TO_SUB_PIXEL(SUB_PIXEL_TO_PIXEL(gSamusData.yPosition) + gSamusGraphicsInfo.armCannonYOffset);
+    gArmCannonX = PIXEL_TO_SUB_PIXEL(SUB_PIXEL_TO_PIXEL(gSamusData.xPosition) + gSamusGraphicsInfo.armCannonXOffset);
+
+    // Check spawn the charging beam particle effect
+    if (gSamusData.chargeBeamCounter == 0x10)
+    {
+        checks = FALSE;
+
+        for (i = 0; i < MAX_AMOUNT_OF_PARTICLES; i++)
+        {
+            // Verify it doesn't already exist
+            if (gParticleEffects[i].status & PARTICLE_STATUS_EXISTS && gParticleEffects[i].effect == PE_CHARGING_BEAM)
+            {
+                checks++;
+                break;
+            }
+        }
+
+        if (!checks)
+        {
+            ParticleSet(gArmCannonY, gArmCannonX, PE_CHARGING_BEAM);
+            ParticleSet(gArmCannonY, gArmCannonX, PE_CHARGING_MISSILES);
+        }
+    }
+
+    if ((u32)gSamusEnvironmentalEffects[1].externalTimer == 0x10)
+    {
+        checks = FALSE;
+
+        for (i = 0; i < MAX_AMOUNT_OF_PARTICLES; i++)
+        {
+            // Verify it doesn't already exist
+            if (gParticleEffects[i].status & PARTICLE_STATUS_EXISTS && gParticleEffects[i].effect == PE_ESCAPE)
+            {
+                checks++;
+                break;
+            }
+        }
+
+        if (!checks)
+        {
+            ParticleSet(gArmCannonY, gArmCannonX, PE_ESCAPE);
+        }
+    }
+
+    // Try to spawn the requested new projectile, first it checks for the limit for that kind of projectile, then it tries to spawn it
+    // If the spawn is successful, cooldown and other things are set depending on the type of projectile.
+    switch (gSamusData.newProjectile)
+    {
+        case 1:
+            beams = gEquipment.beamStatus;
+            if (beams & BF_WAVE_BEAM)
+            {
+                if (ProjectileCount(PROJ_TYPE_WAVE_BEAM, 7))
+                {
+                    ProjectileInit(PROJ_TYPE_WAVE_BEAM, gArmCannonY, gArmCannonX, 0);
+                    ProjectileInit(PROJ_TYPE_WAVE_BEAM, gArmCannonY, gArmCannonX, 1);
+                    ProjectileInit(PROJ_TYPE_WAVE_BEAM, gArmCannonY, gArmCannonX, 2);
+                    gSamusData.cooldownTimer = 7;
+                    ParticleSet(gArmCannonY, gArmCannonX, PE_FIRE_BEAM);
+                }
+            }
+            else if (beams & BF_PLASMA_BEAM)
+            {
+                if (ProjectileCount(PROJ_TYPE_PLASMA_BEAM, 7))
+                {
+                    ProjectileInit(PROJ_TYPE_PLASMA_BEAM, gArmCannonY, gArmCannonX, 0);
+                    ProjectileInit(PROJ_TYPE_PLASMA_BEAM, gArmCannonY, gArmCannonX, 1);
+                    ProjectileInit(PROJ_TYPE_PLASMA_BEAM, gArmCannonY, gArmCannonX, 2);
+                    gSamusData.cooldownTimer = 7;
+                    ParticleSet(gArmCannonY, gArmCannonX, PE_FIRE_BEAM);
+                }
+            }
+            else if (beams & BF_WIDE_BEAM)
+            {
+                if (ProjectileCount(PROJ_TYPE_WIDE_BEAM, 7))
+                {
+                    ProjectileInit(PROJ_TYPE_WIDE_BEAM, gArmCannonY, gArmCannonX, 0);
+                    ProjectileInit(PROJ_TYPE_WIDE_BEAM, gArmCannonY, gArmCannonX, 1);
+                    ProjectileInit(PROJ_TYPE_WIDE_BEAM, gArmCannonY, gArmCannonX, 2);
+                    gSamusData.cooldownTimer = 7;
+                    ParticleSet(gArmCannonY, gArmCannonX, PE_FIRE_BEAM);
+                }
+            }
+            else if (beams & BF_CHARGE_BEAM)
+            {
+                if (ProjectileCount(PROJ_TYPE_CHARGE_BEAM, 7))
+                {
+                    primarySlot = ProjectileInit(PROJ_TYPE_CHARGE_BEAM, gArmCannonY, gArmCannonX, 0);
+                    direction = gProjectileData[primarySlot].direction;
+                    flip = gProjectileData[primarySlot].status & PROJ_STATUS_X_FLIP;
+
+                    ProjectileInitSecondary(PROJ_TYPE_CHARGE_BEAM, gArmCannonY, gArmCannonX, 1,
+                        flip, direction, primarySlot);
+                    ProjectileInitSecondary(PROJ_TYPE_CHARGE_BEAM, gArmCannonY, gArmCannonX, 2,
+                        flip, direction, primarySlot);
+
+                    gSamusData.cooldownTimer = 7;
+                    ParticleSet(gArmCannonY, gArmCannonX, PE_FIRE_BEAM);
+                }
+            }
+            else
+            {
+                if (ProjectileCount(PROJ_TYPE_NORMAL_BEAM, 3))
+                {
+                    ProjectileInit(PROJ_TYPE_NORMAL_BEAM, gArmCannonY, gArmCannonX, 0);
+                    gSamusData.cooldownTimer = 7;
+                    ParticleSet(gArmCannonY, gArmCannonX, PE_FIRE_BEAM);
+                }
+            }
+
+            gSamusData.newProjectile = 0;
+            break;
+
+        case 2:
+            missiles = gEquipment.weaponsStatus;
+            if (missiles & MBF_DIFFUSION_MISSILES)
+            {
+                if (ProjectileCount(PROJ_TYPE_DIFFUSION_MISSILE, 2))
+                {
+                    if (gSamusEnvironmentalEffects[1].externalTimer < 0)
+                        ProjectileInit(PROJ_TYPE_CHARGED_DIFFUSION_MISSILE, gArmCannonY, gArmCannonX, 0);
+                    else
+                        ProjectileInit(PROJ_TYPE_DIFFUSION_MISSILE, gArmCannonY, gArmCannonX, 0);
+                    gSamusData.cooldownTimer = 16;
+                    gSamusEnvironmentalEffects[1].externalTimer = 0;
+                }
+            }
+            else if (missiles & MBF_ICE_MISSILES)
+            {
+                if (ProjectileCount(PROJ_TYPE_ICE_MISSILE, 2))
+                {
+                    ProjectileInit(PROJ_TYPE_ICE_MISSILE, gArmCannonY, gArmCannonX, 0);
+                    gSamusData.cooldownTimer = 15;
+                }
+            }
+            else if (missiles & MBF_SUPER_MISSILES)
+            {
+                if (ProjectileCount(PROJ_TYPE_SUPER_MISSILE, 2))
+                {
+                    ProjectileInit(PROJ_TYPE_SUPER_MISSILE, gArmCannonY, gArmCannonX, 0);
+                    gSamusData.cooldownTimer = 14;
+                }
+            }
+            else
+            {
+                if (ProjectileCount(PROJ_TYPE_NORMAL_MISSILE, 2))
+                {
+                    ProjectileInit(PROJ_TYPE_NORMAL_MISSILE, gArmCannonY, gArmCannonX, 0);
+                    gSamusData.cooldownTimer = 9;
+                }
+            }
+
+            gSamusData.newProjectile = 0;
+            break;
+
+        case 4:
+            if (ProjectileCount(PROJ_TYPE_BOMB, 4))
+            {
+                ProjectileInit(PROJ_TYPE_BOMB, gSamusData.yPosition, gSamusData.xPosition, 0);
+                gSamusData.cooldownTimer = 7;
+            }
+
+            gSamusData.newProjectile = 0;
+            break;
+
+        case 6:
+            if (ProjectileCount(PROJ_TYPE_POWER_BOMB, 1) && gCurrentPowerBomb.animationState == 0)
+            {
+                ProjectileInit(PROJ_TYPE_POWER_BOMB, gSamusData.yPosition, gSamusData.xPosition, 0);
+                gSamusData.cooldownTimer = 5;
+            }
+
+            gSamusData.newProjectile = 0;
+            break;
+
+        case 5:
+            beams = gEquipment.beamStatus;
+            if (beams & BF_WAVE_BEAM)
+            {
+                if (ProjectileCount(PROJ_TYPE_CHARGED_WAVE_BEAM, 7))
+                {
+                    ProjectileInit(PROJ_TYPE_CHARGED_WAVE_BEAM, gArmCannonY, gArmCannonX, 0);
+                    ProjectileInit(PROJ_TYPE_CHARGED_WAVE_BEAM, gArmCannonY, gArmCannonX, 1);
+                    ProjectileInit(PROJ_TYPE_CHARGED_WAVE_BEAM, gArmCannonY, gArmCannonX, 2);
+                    gSamusData.cooldownTimer = 3;
+                    ProjectileInit(PROJ_TYPE_FLARE, gArmCannonY, gArmCannonX, 0);
+                }
+            }
+            else if (beams & BF_PLASMA_BEAM)
+            {
+                if (ProjectileCount(PROJ_TYPE_CHARGED_PLASMA_BEAM, 7))
+                {
+                    ProjectileInit(PROJ_TYPE_CHARGED_PLASMA_BEAM, gArmCannonY, gArmCannonX, 0);
+                    ProjectileInit(PROJ_TYPE_CHARGED_PLASMA_BEAM, gArmCannonY, gArmCannonX, 1);
+                    ProjectileInit(PROJ_TYPE_CHARGED_PLASMA_BEAM, gArmCannonY, gArmCannonX, 2);
+                    gSamusData.cooldownTimer = 3;
+                    ProjectileInit(PROJ_TYPE_FLARE, gArmCannonY, gArmCannonX, 0);
+                }
+            }
+            else if (beams & BF_WIDE_BEAM)
+            {
+                if (ProjectileCount(PROJ_TYPE_CHARGED_WIDE_BEAM, 7))
+                {
+                    ProjectileInit(PROJ_TYPE_CHARGED_WIDE_BEAM, gArmCannonY, gArmCannonX, 0);
+                    ProjectileInit(PROJ_TYPE_CHARGED_WIDE_BEAM, gArmCannonY, gArmCannonX, 1);
+                    ProjectileInit(PROJ_TYPE_CHARGED_WIDE_BEAM, gArmCannonY, gArmCannonX, 2);
+                    gSamusData.cooldownTimer = 3;
+                    ProjectileInit(PROJ_TYPE_FLARE, gArmCannonY, gArmCannonX, 0);
+                }
+            }
+            else if (beams & BF_CHARGE_BEAM)
+            {
+                if (ProjectileCount(PROJ_TYPE_CHARGED_CHARGE_BEAM, 7))
+                {
+                    primarySlot = ProjectileInit(PROJ_TYPE_CHARGED_CHARGE_BEAM, gArmCannonY, gArmCannonX, 0);
+                    direction = gProjectileData[primarySlot].direction;
+                    flip = gProjectileData[primarySlot].status & PROJ_STATUS_X_FLIP;
+
+                    ProjectileInitSecondary(PROJ_TYPE_CHARGED_CHARGE_BEAM, gArmCannonY, gArmCannonX, 1,
+                        flip, direction, primarySlot);
+                    ProjectileInitSecondary(PROJ_TYPE_CHARGED_CHARGE_BEAM, gArmCannonY, gArmCannonX, 2,
+                        flip, direction, primarySlot);
+
+                    gSamusData.cooldownTimer = 3;
+                    ProjectileInit(PROJ_TYPE_FLARE, gArmCannonY, gArmCannonX, 0);
+                }
+            }
+            else
+            {
+                if (ProjectileCount(PROJ_TYPE_CHARGED_NORMAL_BEAM, 3))
+                {
+                    ProjectileInit(PROJ_TYPE_CHARGED_NORMAL_BEAM, gArmCannonY, gArmCannonX, 0);
+                    gSamusData.cooldownTimer = 3;
+                    ProjectileInit(PROJ_TYPE_FLARE, gArmCannonY, gArmCannonX, 0);
+                }
+            }
+
+            gSamusData.newProjectile = 0;
+            break;
+
+    }
+
+    // Handle projectile/sprite collision
+    ProjectileCheckHittingSprite();
+
+    // Update projectiles
+    for (i = 0; i < MAX_AMOUNT_OF_PROJECTILES; i++)
+    {
+        if (gProjectileData[i].status & PROJ_STATUS_EXISTS)
+        {
+            // Copy to current projectile
+            gCurrentProjectile = gProjectileData[i];
+
+            // Call AI
+            sProcessProjectileFunctionPointers[gCurrentProjectile.type]();
+
+            // Update animation and check despawn
+            ProjectileUpdateAnimation();
+            ProjectileCheckDespawn();
+
+            // Copy back to projectile data
+            gProjectileData[i] = gCurrentProjectile;
+        }
+    }
 }
 
 /**
@@ -242,7 +527,7 @@ void ProjectileDraw(s32 projectileSlot)
         palette = gCurrentProjectile.palette;
 
         bgPriority = (gIoRegisters.bg1Cnt & 3);
-        if (!(gCurrentProjectile.status & PROJ_STATUS_HIGH_BG_PRIORITY))
+        if (!(gCurrentProjectile.status & PROJ_STATUS_ABOVE_BG1))
             bgPriority++;
 
         for (i = 0; i < partCount; i++)
@@ -367,12 +652,60 @@ void ProjectileCheckOnScreen(void)
 
 void ProjectileLoadEyeCoreXGraphics(void)
 {
+    u8 spriteId = gCurrentSprite.spriteId;
 
+    if (spriteId == PSPRITE_WAVE_BEAM_CORE_X) {
+        DMA_SET(3, sWaveBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 0x18), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sWaveBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 0x19), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sWaveBeamPal, PALRAM_OBJ + 12 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    } else if (spriteId == PSPRITE_PLASMA_BEAM_CORE_X) {
+        DMA_SET(3, sPlasmaBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 0x18), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sPlasmaBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 0x19), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sPlasmaBeamPal, PALRAM_OBJ + 12 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    } else if (spriteId == PSPRITE_WIDE_BEAM_CORE_X) {
+        DMA_SET(3, sWideBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 0x18), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sWideBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 0x19), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sWideBeamPal, PALRAM_OBJ + 12 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    } else if (spriteId == PSPRITE_CHARGE_BEAM_CORE_X) {
+        DMA_SET(3, sChargeBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 0x18), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sChargeBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 0x19), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sChargeBeamPal, PALRAM_OBJ + 12 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    } else {
+        DMA_SET(3, sIceBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 0x18), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sIceBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 0x19), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sIceBeamPal, PALRAM_OBJ + 12 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    }
 }
 
 void ProjectileLoadBeamGraphics(void)
 {
+    u8 beamStatus = gEquipment.beamStatus;
 
+    if (beamStatus & BF_ICE_BEAM) {
+        DMA_SET(3, sIceBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 4), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sIceBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 5), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sIceBeamPal, PALRAM_OBJ + 2 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    } else if (beamStatus & BF_WAVE_BEAM) {
+        DMA_SET(3, sWaveBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 4), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sWaveBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 5), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sWaveBeamPal, PALRAM_OBJ + 2 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    } else if (beamStatus & BF_PLASMA_BEAM) {
+        DMA_SET(3, sPlasmaBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 4), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sPlasmaBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 5), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sPlasmaBeamPal, PALRAM_OBJ + 2 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    } else if (beamStatus & BF_WIDE_BEAM) {
+        DMA_SET(3, sWideBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 4), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sWideBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 5), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sWideBeamPal, PALRAM_OBJ + 2 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    } else if (beamStatus & BF_CHARGE_BEAM) {
+        DMA_SET(3, sChargeBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 4), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sChargeBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 5), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sChargeBeamPal, PALRAM_OBJ + 2 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    } else {
+        DMA_SET(3, sNormalBeamGfx_Top, VRAM_OBJ_ADDR_COORDS(0, 4), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sNormalBeamGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0, 5), C_32_2_16(DMA_ENABLE, 0x14 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sNormalBeamPal, PALRAM_OBJ + 2 * 32, C_32_2_16(DMA_ENABLE, 5 * sizeof(u16) / 2));
+    }
 }
 
 void ProjectileLoadMissileGraphics(void)
@@ -380,17 +713,17 @@ void ProjectileLoadMissileGraphics(void)
     u8 weaponsStatus = gEquipment.weaponsStatus;
 
     if (weaponsStatus & MBF_DIFFUSION_MISSILES) {
-        DMA_SET(3, 0x858d624, VRAM_OBJ + 0x1380, C_32_2_16(DMA_ENABLE, 0x80 / 2))
-        DMA_SET(3, 0x858d6a4, VRAM_OBJ + 0x1780, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+        DMA_SET(3, sDiffusionMissileGfx_Top, VRAM_OBJ_ADDR_COORDS(0x1c, 4), C_32_2_16(DMA_ENABLE, 4 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sDiffusionMissileGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0x1c, 5), C_32_2_16(DMA_ENABLE, 4 * VRAM_TILE_SIZE / 2));
     } else if (weaponsStatus & MBF_ICE_MISSILES) {
-        DMA_SET(3, 0x858d524, VRAM_OBJ + 0x1380, C_32_2_16(DMA_ENABLE, 0x80 / 2))
-        DMA_SET(3, 0x858d5a4, VRAM_OBJ + 0x1780, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+        DMA_SET(3, sIceMissileGfx_Top, VRAM_OBJ_ADDR_COORDS(0x1c, 4), C_32_2_16(DMA_ENABLE, 4 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sIceMissileGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0x1c, 5), C_32_2_16(DMA_ENABLE, 4 * VRAM_TILE_SIZE / 2));
     } else if (weaponsStatus & MBF_SUPER_MISSILES) {
-        DMA_SET(3, 0x858d424, VRAM_OBJ + 0x1380, C_32_2_16(DMA_ENABLE, 0x80 / 2))
-        DMA_SET(3, 0x858d4a4, VRAM_OBJ + 0x1780, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+        DMA_SET(3, sSuperMissileGfx_Top, VRAM_OBJ_ADDR_COORDS(0x1c, 4), C_32_2_16(DMA_ENABLE, 4 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sSuperMissileGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0x1c, 5), C_32_2_16(DMA_ENABLE, 4 * VRAM_TILE_SIZE / 2));
     } else if (weaponsStatus & MBF_MISSILES) {
-        DMA_SET(3, 0x858d324, VRAM_OBJ + 0x1380, C_32_2_16(DMA_ENABLE, 0x80 / 2))
-        DMA_SET(3, 0x858d3a4, VRAM_OBJ + 0x1780, C_32_2_16(DMA_ENABLE, 0x80 / 2))
+        DMA_SET(3, sNormalMissileGfx_Top, VRAM_OBJ_ADDR_COORDS(0x1c, 4), C_32_2_16(DMA_ENABLE, 4 * VRAM_TILE_SIZE / 2));
+        DMA_SET(3, sNormalMissileGfx_Bottom, VRAM_OBJ_ADDR_COORDS(0x1c, 5), C_32_2_16(DMA_ENABLE, 4 * VRAM_TILE_SIZE / 2));
     }
 }
 
@@ -493,34 +826,424 @@ u32 ProjectileCheckHittingSolid(void)
     return FALSE;
 }
 
+/**
+ * @brief 8222c | 238 | Checks the vertical collision for a projectile
+ * 
+ * @param pProj Projectile data pointer
+ * @return u32 Collision result
+ */
 u32 ProjectileCheckVerticalCollisionAtPosition(void)
 {
+    u16 yPosition;
+    u16 xPosition;
+    u32 clipdata;
+    u32 result;
+    u16 collisionY;
+    u16 collisionX;
 
+    if (!(gCurrentProjectile.status & PROJ_STATUS_CAN_AFFECT_ENVIRONMENT))
+    {
+        gCurrentClipdataAffectingAction = CAA_NONE;
+        result = COLLISION_AIR;
+        return result;
+    }
+
+    yPosition = gCurrentProjectile.yPosition;
+    xPosition = gCurrentProjectile.xPosition;
+    collisionY = yPosition;
+    collisionX = xPosition;
+
+    clipdata = ClipdataProcess(yPosition, xPosition);
+
+    if (clipdata & CLIPDATA_TYPE_SOLID_FLAG)
+    {
+        result = COLLISION_SOLID;
+    }
+    else
+    {
+        result = COLLISION_AIR;
+        return result;
+    }
+
+    switch (LOW_BYTE(clipdata))
+    {
+        case CLIPDATA_TYPE_RIGHT_STEEP_FLOOR_SLOPE:
+            collisionY = (s16)((yPosition & BLOCK_POSITION_FLAG) - ((xPosition & SUB_PIXEL_POSITION_FLAG) - 0x3F));
+            collisionX = (s16)((xPosition & BLOCK_POSITION_FLAG) - ((yPosition & SUB_PIXEL_POSITION_FLAG) - SUB_PIXEL_POSITION_FLAG));
+            result = COLLISION_RIGHT_STEEP_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_RIGHT_LOWER_SLIGHT_FLOOR_SLOPE:
+            collisionY = (s16)((yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) >> 1) - 0x3F));
+            collisionX = (xPosition & BLOCK_POSITION_FLAG) - (((yPosition & SUB_PIXEL_POSITION_FLAG) << 1) - 0x7E);
+            result = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_RIGHT_UPPER_SLIGHT_FLOOR_SLOPE:
+            collisionY = (s16)((yPosition & BLOCK_POSITION_FLAG) - (((xPosition & SUB_PIXEL_POSITION_FLAG) >> 1) - 0x1F));
+            collisionX = (xPosition & BLOCK_POSITION_FLAG) - (((yPosition & SUB_PIXEL_POSITION_FLAG) << 1) - 0x3E);
+            result = COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_STEEP_FLOOR_SLOPE:
+            collisionY = (yPosition & BLOCK_POSITION_FLAG) | (xPosition & SUB_PIXEL_POSITION_FLAG);
+            collisionX = (xPosition & BLOCK_POSITION_FLAG) | (yPosition & SUB_PIXEL_POSITION_FLAG);
+            result = COLLISION_LEFT_STEEP_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_LOWER_SLIGHT_FLOOR_SLOPE:
+            collisionY = (yPosition & BLOCK_POSITION_FLAG) | (((xPosition & SUB_PIXEL_POSITION_FLAG) >> 1) + 0x1F);
+            collisionX = (xPosition & BLOCK_POSITION_FLAG) + (((yPosition & SUB_PIXEL_POSITION_FLAG) << 1) - 0x3F);
+            result = COLLISION_LEFT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_LEFT_UPPER_SLIGHT_FLOOR_SLOPE:
+            collisionY = (yPosition & BLOCK_POSITION_FLAG) | ((xPosition & SUB_PIXEL_POSITION_FLAG) >> 1);
+            collisionX = (xPosition & BLOCK_POSITION_FLAG) + (((yPosition & SUB_PIXEL_POSITION_FLAG) << 1));
+            result = COLLISION_LEFT_SLIGHT_FLOOR_SLOPE;
+            break;
+
+        case CLIPDATA_TYPE_PASS_THROUGH_BOTTOM:
+            collisionY = yPosition & BLOCK_POSITION_FLAG;
+            result = COLLISION_PASS_THROUGH_BOTTOM;
+            break;
+
+        default:
+            collisionY = yPosition & BLOCK_POSITION_FLAG;
+            collisionX = xPosition & BLOCK_POSITION_FLAG;
+            if (!(gCurrentProjectile.status & PROJ_STATUS_X_FLIP))
+                collisionX += BLOCK_SIZE;
+            break;
+    }
+
+    switch (gCurrentProjectile.direction)
+    {
+        case ACD_DIAGONAL_UP:
+        case ACD_DIAGONAL_DOWN:
+            if (result == COLLISION_PASS_THROUGH_BOTTOM)
+                result = COLLISION_AIR;
+            break;
+
+        case ACD_UP:
+            if (result == COLLISION_SOLID)
+                gCurrentProjectile.yPosition = collisionY + BLOCK_SIZE;
+            else
+                result = COLLISION_AIR;
+            break;
+
+        case ACD_DOWN:
+            if (yPosition >= collisionY)
+                gCurrentProjectile.yPosition = collisionY;
+            else
+                result = COLLISION_AIR;
+            break;
+
+        default:
+            if (result != 0xC)
+            {
+                if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+                {
+                    if (xPosition >= collisionX)
+                        gCurrentProjectile.xPosition = collisionX;
+                    else
+                        result = COLLISION_AIR;
+                }
+                else
+                {
+                    if (xPosition <= collisionX)
+                        gCurrentProjectile.xPosition = collisionX;
+                    else
+                        result = COLLISION_AIR;
+                }
+            }
+            else
+                result = COLLISION_AIR;
+            break;
+    }
+
+    return result;
 }
 
 void ProjectileMovePart(void)
 {
+    u16 diagonalMovement = PIXEL_SIZE;
+    u16 straightMovement = diagonalMovement * 1.4;
 
+    switch (gCurrentProjectile.direction) {
+        case ACD_DIAGONAL_DOWN:
+            if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP) {
+                if (gCurrentProjectile.part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                }
+            } else {
+                if (gCurrentProjectile.part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                }
+            }
+            break;
+        case ACD_DIAGONAL_UP:
+            if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP) {
+                if (gCurrentProjectile.part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                }
+            } else {
+                if (gCurrentProjectile.part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                }
+            }
+            break;
+        case ACD_UP:
+        case ACD_DOWN:
+            if (gCurrentProjectile.part == 1)
+                gCurrentProjectile.xPosition -= straightMovement;
+            else
+                gCurrentProjectile.xPosition += straightMovement;
+            break;
+        case ACD_FORWARD:
+        default:
+            if (gCurrentProjectile.part == 1)
+                gCurrentProjectile.yPosition -= straightMovement;
+            else
+                gCurrentProjectile.yPosition += straightMovement;
+            break;
+    }
 }
 
 void ProjectileMoveWaveBeamParts(void)
 {
+    u8 offset = MOD_AND(gCurrentProjectile.timer, 8);
+    u16 diagonalMovement = sWaveBeamPartVelocity[offset];
+    u16 straightMovement = diagonalMovement * 1.4;
+    u8 part = gCurrentProjectile.part;
 
+    if (offset >= 4) {
+        if (part == 1)
+            part = 2;
+        else if (part == 2)
+            part = 1;
+    }
+
+    switch (gCurrentProjectile.direction) {
+        case ACD_DIAGONAL_DOWN:
+            if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP) {
+                if (part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                }
+            } else {
+                if (part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                }
+            }
+            break;
+        case ACD_DIAGONAL_UP:
+            if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP) {
+                if (part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                }
+            } else {
+                if (part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                }
+            }
+            break;
+        case ACD_UP:
+        case ACD_DOWN:
+            if (part == 1)
+                gCurrentProjectile.xPosition -= straightMovement;
+            else
+                gCurrentProjectile.xPosition += straightMovement;
+            break;
+        case ACD_FORWARD:
+        default:
+            if (part == 1)
+                gCurrentProjectile.yPosition -= straightMovement;
+            else
+                gCurrentProjectile.yPosition += straightMovement;
+            break;
+    }
 }
 
 void ProjectileMoveWaveBeamParts_Unused(void)
 {
+    u8 offset = MOD_AND(gCurrentProjectile.timer, 16);
+    u16 diagonalMovement = sWaveBeamPartVelocity_Unused[offset];
+    u16 straightMovement = diagonalMovement * 1.4;
+    u8 part = gCurrentProjectile.part;
 
+    if (offset >= 8) {
+        if (part == 1)
+            part = 2;
+        else if (part == 2)
+            part = 1;
+    }
+
+    switch (gCurrentProjectile.direction) {
+        case ACD_DIAGONAL_DOWN:
+            if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP) {
+                if (part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                }
+            } else {
+                if (part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                }
+            }
+            break;
+        case ACD_DIAGONAL_UP:
+            if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP) {
+                if (part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                }
+            } else {
+                if (part == 1) {
+                    gCurrentProjectile.yPosition -= diagonalMovement;
+                    gCurrentProjectile.xPosition += diagonalMovement;
+                } else {
+                    gCurrentProjectile.yPosition += diagonalMovement;
+                    gCurrentProjectile.xPosition -= diagonalMovement;
+                }
+            }
+            break;
+        case ACD_UP:
+        case ACD_DOWN:
+            if (part == 1)
+                gCurrentProjectile.xPosition -= straightMovement;
+            else
+                gCurrentProjectile.xPosition += straightMovement;
+            break;
+        case ACD_FORWARD:
+        default:
+            if (part == 1)
+                gCurrentProjectile.yPosition -= straightMovement;
+            else
+                gCurrentProjectile.yPosition += straightMovement;
+            break;
+    }
 }
 
 void ProjectileSetMissileTrail(u8 particle, u8 delay)
 {
-
+    if ((gCurrentProjectile.part & delay) == 0) {
+        u16 movement = 0x20;
+        u16 y = gCurrentProjectile.yPosition;
+        u16 x = gCurrentProjectile.xPosition;
+        u16 particleY, particleX;
+        switch (gCurrentProjectile.direction) {
+            case ACD_UP:
+                y += movement;
+                break;
+            case ACD_DOWN:
+                y -= movement;
+                break;
+            case ACD_DIAGONAL_UP:
+                y += movement * 3 / 4;
+                if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+                    x -= movement * 3 / 4;
+                else
+                    x += movement * 3 / 4;
+                break;
+            case ACD_DIAGONAL_DOWN:
+                y -= movement * 3 / 4;
+                if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP) {
+                    x -= movement * 3 / 4;
+                } else {
+                    x += movement * 3 / 4;
+                }
+                break;
+            default:
+                if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+                    x -= movement;
+                else
+                    x += movement;
+                break;
+        }
+        ParticleSet(y, x, particle);
+    }
+    gCurrentProjectile.part++;
 }
 
 void ProjectileSetBeamTrail(u8 particle, u8 delay)
 {
-
+    if ((gCurrentProjectile.timer & delay) == 0) {
+        u16 movement = 0x20;
+        u16 y = gCurrentProjectile.yPosition;
+        u16 x = gCurrentProjectile.xPosition;
+        u16 particleY, particleX;
+        switch (gCurrentProjectile.direction) {
+            case ACD_UP:
+                y += movement;
+                break;
+            case ACD_DOWN:
+                y -= movement;
+                break;
+            case ACD_DIAGONAL_UP:
+                y += movement * 3 / 4;
+                if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+                    x -= movement * 3 / 4;
+                else
+                    x += movement * 3 / 4;
+                break;
+            case ACD_DIAGONAL_DOWN:
+                y -= movement * 3 / 4;
+                if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP) {
+                    x -= movement * 3 / 4;
+                } else {
+                    x += movement * 3 / 4;
+                }
+                break;
+            default:
+                if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+                    x -= movement;
+                else
+                    x += movement;
+                break;
+        }
+        ParticleSet(y, x, particle);
+    }
 }
 
 /**
@@ -2105,11 +2828,11 @@ void ProjectileStartMissileTumble(u8 spriteSlot, u8 projectileSlot)
     gProjectileData[projectileSlot].timer = 0;
 
     gProjectileData[projectileSlot].status &= ~PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
-    gProjectileData[projectileSlot].status |= PROJ_STATUS_HIGH_BG_PRIORITY;
+    gProjectileData[projectileSlot].status |= PROJ_STATUS_ABOVE_BG1;
 
     gProjectileData[projectileSlot].animationDurationCounter = 0;
     gProjectileData[projectileSlot].currentAnimationFrame = 0;
-    gProjectileData[projectileSlot].pOam = (const struct FrameData*)0x858ea20;
+    gProjectileData[projectileSlot].pOam = sOam_58ea20;
 
     if (gProjectileData[projectileSlot].xPosition > gSpriteData[spriteSlot].xPosition)
         gProjectileData[projectileSlot].status |= PROJ_STATUS_X_FLIP;
@@ -2487,72 +3210,544 @@ void ProjectileDealDamageToZazabi(u16 damage)
 
 void ProjectileChargedNormalBeamInit(void)
 {
-
+    SoundPlay(0xc8);
+    gCurrentProjectile.status |= PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+    gCurrentProjectile.animationDurationCounter = 0;
+    gCurrentProjectile.currentAnimationFrame = 0;
+    gCurrentProjectile.drawDistanceY = 0x10;
+    gCurrentProjectile.drawDistanceX = 0x10;
+    gCurrentProjectile.hitboxTop = -0x10;
+    gCurrentProjectile.hitboxBottom = 0x10;
+    gCurrentProjectile.hitboxLeft = -0x10;
+    gCurrentProjectile.hitboxRight = 0x10;
+    gCurrentProjectile.status &= ~PROJ_STATUS_NOT_DRAWN;
+    switch (gCurrentProjectile.direction) {
+        case ACD_DIAGONAL_DOWN:
+            gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
+        case ACD_DIAGONAL_UP:
+            gCurrentProjectile.pOam = sOam_58d80c;
+            break;
+        case ACD_DOWN:
+            gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
+        case ACD_UP:
+            gCurrentProjectile.pOam = sOam_58d824;
+            break;
+        case ACD_FORWARD:
+        default:
+            gCurrentProjectile.pOam = sOam_58d7f4;
+            break;
+    }
 }
 
 void ProjectileChargedNormalBeamSubroutine(void)
 {
-
+    gCurrentClipdataAffectingAction = CAA_BEAM;
+    if (ProjectileCheckVerticalCollisionAtPosition()) {
+        gCurrentProjectile.status = 0;
+        ParticleSet(gCurrentProjectile.yPosition, gCurrentProjectile.xPosition, PE_NORMAL_BEAM_HIT);
+        return;
+    }
+    switch (gCurrentProjectile.movementStage) {
+        default:
+            ProjectileMove(0x18);
+            ProjectileSetBeamTrail(PE_CHARGED_NORMAL_BEAM_TRAIL, 4-1);
+            break;
+        case 0:
+            ProjectileChargedNormalBeamInit();
+            gCurrentProjectile.movementStage++;
+            break;
+        case 1:
+            ProjectileMove(0x10);
+            gCurrentProjectile.movementStage++;
+            break;
+    }
+    gCurrentProjectile.timer++;
 }
 
 void ProjectileNormalBeamInit(void)
 {
-
+    SoundPlay(0xc8);
+    gCurrentProjectile.status |= PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+    gCurrentProjectile.animationDurationCounter = 0;
+    gCurrentProjectile.currentAnimationFrame = 0;
+    gCurrentProjectile.drawDistanceY = 0x10;
+    gCurrentProjectile.drawDistanceX = 0x10;
+    gCurrentProjectile.hitboxTop = -0x8;
+    gCurrentProjectile.hitboxBottom = 0x8;
+    gCurrentProjectile.hitboxLeft = -0x8;
+    gCurrentProjectile.hitboxRight = 0x8;
+    gCurrentProjectile.status &= ~PROJ_STATUS_NOT_DRAWN;
+    switch (gCurrentProjectile.direction) {
+        case ACD_DIAGONAL_DOWN:
+            gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
+        case ACD_DIAGONAL_UP:
+            gCurrentProjectile.pOam = sOam_58d7c4;
+            break;
+        case ACD_DOWN:
+            gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
+        case ACD_UP:
+            gCurrentProjectile.pOam = sOam_58d7dc;
+            break;
+        case ACD_FORWARD:
+        default:
+            gCurrentProjectile.pOam = sOam_58d7ac;
+            break;
+    }
 }
 
 void ProjectileNormalBeamSubroutine(void)
 {
-
+    gCurrentClipdataAffectingAction = CAA_BEAM;
+    if (ProjectileCheckVerticalCollisionAtPosition()) {
+        gCurrentProjectile.status = 0;
+        ParticleSet(gCurrentProjectile.yPosition, gCurrentProjectile.xPosition, PE_NORMAL_BEAM_HIT);
+        return;
+    }
+    switch (gCurrentProjectile.movementStage) {
+        default:
+            ProjectileMove(0x18);
+            break;
+        case 0:
+            ProjectileNormalBeamInit();
+            gCurrentProjectile.movementStage++;
+            break;
+        case 1:
+            ProjectileMove(0x10);
+            gCurrentProjectile.movementStage++;
+            break;
+    }
+    gCurrentProjectile.timer++;
 }
 
 void ProjectileMissileInit(u8 type)
 {
-
+    // Decrement missiles, and if no missiles, toggle off missiles
+    if (gEquipment.currentMissiles > 0)
+        if (--gEquipment.currentMissiles == 0)
+            gSamusData.weaponHighlighted ^= 1;
+    gCurrentProjectile.animationDurationCounter = 0;
+    gCurrentProjectile.currentAnimationFrame = 0;
+    gCurrentProjectile.drawDistanceY = 0x10;
+    gCurrentProjectile.drawDistanceX = 0x10;
+    gCurrentProjectile.status &= ~PROJ_STATUS_NOT_DRAWN;
+    gCurrentProjectile.status |= PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+    gCurrentProjectile.movementStage++;
+    switch (gCurrentProjectile.direction) {
+        case ACD_DIAGONAL_DOWN:
+            gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
+        case ACD_DIAGONAL_UP:
+            if (type == 0)
+                gCurrentProjectile.pOam = sOam_58e7c0;
+            else if (type == 1)
+                gCurrentProjectile.pOam = sOam_58e858;
+            else
+                gCurrentProjectile.pOam = sOam_58e998;
+            break;
+        case ACD_DOWN:
+            gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
+        case ACD_UP:
+            if (type == 0)
+                gCurrentProjectile.pOam = sOam_58e7d8;
+            else if (type == 1)
+                gCurrentProjectile.pOam = sOam_58e870;
+            else
+                gCurrentProjectile.pOam = sOam_58e9b0;
+            break;
+        case ACD_FORWARD:
+        default:
+            if (type == 0)
+                gCurrentProjectile.pOam = sOam_58e7a8;
+            else if (type == 1)
+                gCurrentProjectile.pOam = sOam_58e840;
+            else
+                gCurrentProjectile.pOam = sOam_58e980;
+            break;
+    }
 }
 
 void ProjectileMoveTumblingMissile(void)
 {
-
+    if (!(gCurrentProjectile.status & PROJ_STATUS_ON_SCREEN)) {
+        gCurrentProjectile.status = 0;
+    } else {
+        u8 offset = gCurrentProjectile.timer;
+        s16 movement = sTumblingMissileFallingVelocity[offset];
+        if (movement == SHORT_MAX) {
+            movement = sTumblingMissileFallingVelocity[offset - 1];
+            gCurrentProjectile.yPosition += movement;
+        } else {
+            offset++;
+            gCurrentProjectile.timer = offset;
+            gCurrentProjectile.yPosition += movement;
+        }
+        if (gCurrentProjectile.status & PROJ_STATUS_X_FLIP)
+            gCurrentProjectile.xPosition += PIXEL_SIZE;
+        else
+            gCurrentProjectile.xPosition -= PIXEL_SIZE;
+    }
 }
 
 void ProjectileNormalMissileSubroutine(void)
 {
-
+    gCurrentClipdataAffectingAction = CAA_MISSILE;
+    if (ProjectileCheckVerticalCollisionAtPosition()) {
+        gCurrentProjectile.status = 0;
+        ParticleSet(gCurrentProjectile.yPosition, gCurrentProjectile.xPosition, PE_MISSILE_EXPLOSION);
+        return;
+    }
+    switch (gCurrentProjectile.movementStage) {
+        case 0:
+            gCurrentProjectile.hitboxTop = -8;
+            gCurrentProjectile.hitboxBottom = 8;
+            gCurrentProjectile.hitboxLeft = -8;
+            gCurrentProjectile.hitboxRight = 8;
+            ProjectileMissileInit(0);
+            SoundPlay(0xce);
+            SoundPlay(0xcf);
+            break;
+        case 1:
+            gCurrentProjectile.movementStage = 2;
+            ProjectileMove(0x30);
+            break;
+        case 7:
+            ProjectileMoveTumblingMissile();
+            break;
+        default:
+            ProjectileMove(sNormalMissileVelocity[gCurrentProjectile.timer / 4]);
+            if (gCurrentProjectile.timer < ARRAY_SIZE(sNormalMissileVelocity) * 4 - 1)
+                gCurrentProjectile.timer += 1;
+            ProjectileSetMissileTrail(PE_MISSILE_TRAIL, 8-1);
+    }
 }
 
 void ProjectileSuperMissileSubroutine(void)
 {
-
+    gCurrentClipdataAffectingAction = CAA_MISSILE;
+    if (ProjectileCheckVerticalCollisionAtPosition()) {
+        gCurrentProjectile.status = 0;
+        ParticleSet(gCurrentProjectile.yPosition, gCurrentProjectile.xPosition, PE_SUPER_MISSILE_EXPLOSION);
+        return;
+    }
+    switch (gCurrentProjectile.movementStage) {
+        case 0:
+            gCurrentProjectile.hitboxTop = -0xc;
+            gCurrentProjectile.hitboxBottom = 0xc;
+            gCurrentProjectile.hitboxLeft = -0xc;
+            gCurrentProjectile.hitboxRight = 0xc;
+            ProjectileMissileInit(0);
+            SoundPlay(0xd1);
+            SoundPlay(0xd2);
+            break;
+        case 1:
+            gCurrentProjectile.movementStage = 2;
+            ProjectileMove(0x30);
+            break;
+        case 7:
+            ProjectileMoveTumblingMissile();
+            break;
+        default:
+            ProjectileMove(sSuperMissileVelocity[gCurrentProjectile.timer / 4]);
+            if (gCurrentProjectile.timer < ARRAY_SIZE(sSuperMissileVelocity) * 4 - 1)
+                gCurrentProjectile.timer += 1;
+            ProjectileSetMissileTrail(PE_SUPER_MISSILE_TRAIL, 8-1);
+    }
 }
 
-void ProjectileIceMissilesSubroutine(void)
+void ProjectileIceMissileSubroutine(void)
 {
-
+    gCurrentClipdataAffectingAction = CAA_MISSILE;
+    if (ProjectileCheckVerticalCollisionAtPosition()) {
+        gCurrentProjectile.status = 0;
+        ParticleSet(gCurrentProjectile.yPosition, gCurrentProjectile.xPosition, PE_ICE_MISSILE_EXPLOSION);
+        return;
+    }
+    switch (gCurrentProjectile.movementStage) {
+        case 0:
+            gCurrentProjectile.hitboxTop = -0xc;
+            gCurrentProjectile.hitboxBottom = 0xc;
+            gCurrentProjectile.hitboxLeft = -0x10;
+            gCurrentProjectile.hitboxRight = 0x10;
+            ProjectileMissileInit(1);
+            SoundPlay(0xd4);
+            SoundPlay(0xd5);
+            break;
+        case 1:
+            gCurrentProjectile.movementStage = 2;
+            ProjectileMove(0x30);
+            break;
+        case 7:
+            ProjectileMoveTumblingMissile();
+            break;
+        default:
+            ProjectileMove(sIceMissileVelocity[gCurrentProjectile.timer / 4]);
+            if (gCurrentProjectile.timer < ARRAY_SIZE(sIceMissileVelocity) * 4 - 1)
+                gCurrentProjectile.timer += 1;
+            ProjectileSetMissileTrail(PE_ICE_MISSILE_TRAIL, 4-1);
+    }
 }
 
 void ProjectileDiffusionMissileSubroutine(void)
 {
-
+    u16 y = gCurrentProjectile.yPosition;
+    u16 x = gCurrentProjectile.xPosition;
+    gCurrentClipdataAffectingAction = CAA_MISSILE;
+    if (ProjectileCheckVerticalCollisionAtPosition()) {
+        if (gCurrentProjectile.type != PROJ_TYPE_CHARGED_DIFFUSION_MISSILE) {
+            ParticleSet(y, x, PE_DIFFUSION_MISSILE_EXPLOSION);
+            gCurrentProjectile.status = 0;
+            return;
+        }
+        ParticleSet(y, x, PE_CHARGED_DIFFUSION_MISSILE_EXPLOSION);
+        gCurrentProjectile.movementStage = 3;
+        gCurrentProjectile.timer = 0;
+        gCurrentProjectile.status &= ~PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+        gCurrentProjectile.status |= PROJ_STATUS_NOT_DRAWN;
+        ProjectileInitSecondary(PROJ_TYPE_DIFFUSION_FLAKE, y, x, 0, 0, 0, gCurrentProjectile.primaryProjectileSlot);
+        ProjectileInitSecondary(PROJ_TYPE_DIFFUSION_FLAKE, y, x, Q_8_8(0.25f), 0, 0, gCurrentProjectile.primaryProjectileSlot);
+        ProjectileInitSecondary(PROJ_TYPE_DIFFUSION_FLAKE, y, x, Q_8_8(0.5f), 0, 0, gCurrentProjectile.primaryProjectileSlot);
+        ProjectileInitSecondary(PROJ_TYPE_DIFFUSION_FLAKE, y, x, Q_8_8(0.75f), 0, 0, gCurrentProjectile.primaryProjectileSlot);
+    }
+    switch (gCurrentProjectile.movementStage) {
+        case 0:
+            gCurrentProjectile.hitboxTop = -0xc;
+            gCurrentProjectile.hitboxBottom = 0xc;
+            gCurrentProjectile.hitboxLeft = -0x10;
+            gCurrentProjectile.hitboxRight = 0x10;
+            if (gCurrentProjectile.type == PROJ_TYPE_CHARGED_DIFFUSION_MISSILE) {
+                ProjectileMissileInit(2);
+                ProjectileSetMissileTrail(PE_CHARGED_DIFFUSION_MISSILE_TRAIL, 4-1);
+                SoundPlay(0xda);
+                SoundPlay(0xdb);
+            } else {
+                ProjectileMissileInit(2);
+                ProjectileSetMissileTrail(PE_DIFFUSION_MISSILE_TRAIL, 4-1);
+                SoundPlay(0xd7);
+                SoundPlay(0xd8);
+            }
+            break;
+        case 1:
+            gCurrentProjectile.movementStage = 2;
+            ProjectileMove(0x30);
+            break;
+        case 3:
+            if (++gCurrentProjectile.timer > 2 * 60)
+                gCurrentProjectile.status = 0;
+            break;
+        case 7:
+            ProjectileMoveTumblingMissile();
+            break;
+        default:
+            ProjectileMove(sDiffusionMissileVelocity[gCurrentProjectile.timer / 4]);
+            if (gCurrentProjectile.timer < ARRAY_SIZE(sDiffusionMissileVelocity) * 4 - 1)
+                gCurrentProjectile.timer += 1;
+            if (gCurrentProjectile.type == PROJ_TYPE_CHARGED_DIFFUSION_MISSILE)
+                ProjectileSetMissileTrail(PE_CHARGED_DIFFUSION_MISSILE_TRAIL, 4-1);
+            else
+                ProjectileSetMissileTrail(PE_DIFFUSION_MISSILE_TRAIL, 4-1);
+    }
 }
 
 void ProjectileDiffusionFlakeSubroutine(void)
 {
+    s16 distance;
+    u32 direction;
+    s16 sin, cos;
+    u16 offset;
 
+    u8 primarySlot = gCurrentProjectile.primaryProjectileSlot;
+    if (gCurrentProjectile.movementStage == 0) {
+        gCurrentProjectile.movementStage++;
+        gCurrentProjectile.status |= PROJ_STATUS_CAN_AFFECT_ENVIRONMENT | PROJ_STATUS_ABOVE_BG1;
+        gCurrentProjectile.status &= ~PROJ_STATUS_NOT_DRAWN;
+        gCurrentProjectile.drawDistanceY = 0x10;
+        gCurrentProjectile.drawDistanceX = 0x10;
+        gCurrentProjectile.hitboxTop = -0x10;
+        gCurrentProjectile.hitboxBottom = 0x10;
+        gCurrentProjectile.hitboxLeft = -0x10;
+        gCurrentProjectile.hitboxRight = 0x10;
+        gCurrentProjectile.pOam = sDiffusionFlakeOam;
+        gCurrentProjectile.animationDurationCounter = 0;
+        gCurrentProjectile.currentAnimationFrame = 0;
+        return;
+    }
+    if (gProjectileData[primarySlot].status == 0) {
+        gCurrentProjectile.status = 0;
+        return;
+    }
+
+    gCurrentProjectile.direction += 2;
+    distance = gCurrentProjectile.direction * 2;
+    direction = gCurrentProjectile.part;
+    gCurrentProjectile.part += 8;
+
+    sin = SIN(direction);
+    if (SIN(direction) < 0) {
+        offset = Q_8_8_TO_INT(distance * -sin);
+        gCurrentProjectile.yPosition = gProjectileData[primarySlot].yPosition - offset;
+    } else {
+        offset = Q_8_8_TO_INT(distance * sin);
+        gCurrentProjectile.yPosition = gProjectileData[primarySlot].yPosition + offset;
+    }
+
+    cos = COS(direction);
+    if (COS(direction) < 0) {
+        offset = Q_8_8_TO_INT(-cos * distance);
+        gCurrentProjectile.xPosition = gProjectileData[primarySlot].xPosition - offset;
+    } else {
+        offset = Q_8_8_TO_INT(distance * cos);
+        gCurrentProjectile.xPosition = gProjectileData[primarySlot].xPosition + offset;
+    }
+
+    if ((gFrameCounter8Bit & 3) == 0)
+        ParticleSet(gCurrentProjectile.yPosition, gCurrentProjectile.xPosition, PE_DIFFUSION_PARTICLES);
+    gCurrentClipdataAffectingAction = CAA_MISSILE;
+    ProjectileCheckHittingSolid();
 }
 
 void ProjectileCheckSamusBombBounce(void)
 {
+    u16 samusY;
+    u16 samusX;
+    u16 previousX;
+    u16 samusTop;
+    u16 samusBottom;
+    u16 samusLeft;
+    u16 samusRight;
 
+    u16 projY;
+    u16 projX;
+    u16 projTop;
+    u16 projBottom;
+    u16 projLeft;
+    u16 projRight;
+    u8 direction;
+    u16 bombMiddleX;
+
+    samusY = gSamusData.yPosition;
+    samusX = gSamusData.xPosition;
+
+    if (!(ClipdataProcess(samusY + HALF_BLOCK_SIZE, samusX) & CLIPDATA_TYPE_SOLID_FLAG) ||
+        !(ClipdataProcess(samusY - (BLOCK_SIZE + HALF_BLOCK_SIZE), samusX) & CLIPDATA_TYPE_SOLID_FLAG))
+    {
+        previousX = gPreviousXPosition;
+        samusTop = samusY + gSamusData.drawDistanceTop;
+        samusBottom = samusY + gSamusData.drawDistanceBottom;
+        samusLeft = samusX + gSamusData.drawDistanceLeft;
+        samusRight = samusX + gSamusData.drawDistanceRight;
+    
+        projY = gCurrentProjectile.yPosition;
+        projX = gCurrentProjectile.xPosition;
+        projTop = projY + gCurrentProjectile.hitboxTop;
+        projBottom = projY + gCurrentProjectile.hitboxBottom;
+        projLeft = projX + gCurrentProjectile.hitboxLeft;
+        projRight = projX + gCurrentProjectile.hitboxRight;
+    
+        if (SpriteUtilCheckObjectsTouching(samusTop, samusBottom, samusLeft, samusRight, projTop, projBottom, projLeft, projRight))
+        {
+            if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
+            {
+                gBossWork0 = 1;
+            }
+            else
+            {
+                bombMiddleX = projLeft + (projRight - projLeft) / 2;
+                if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckSamusDamagingPose())
+                {
+                    if (samusY - HALF_BLOCK_SIZE > projY)
+                        direction = FORCED_MOVEMENT_BOMB_JUMP_ABOVE;
+                    else
+                        direction = FORCED_MOVEMENT_BOMB_JUMP;
+        
+                    if (samusX < projX + (PIXEL_SIZE + ONE_SUB_PIXEL) && samusX > projX - (PIXEL_SIZE + ONE_SUB_PIXEL))
+                        SamusBombBounce(direction + FORCED_MOVEMENT_BOMB_JUMP_UP);
+                    else if (bombMiddleX >= previousX)
+                        SamusBombBounce(direction + FORCED_MOVEMENT_BOMB_JUMP_LEFT);
+                    else
+                        SamusBombBounce(direction + FORCED_MOVEMENT_BOMB_JUMP_RIGHT);
+                }
+            }
+        }
+    }
 }
 
 void ProjectileBombInit(void)
 {
-
+    SoundPlay(0xdd);
+    gCurrentProjectile.pOam = sOam_58eae8;
+    gCurrentProjectile.animationDurationCounter = 0;
+    gCurrentProjectile.currentAnimationFrame = 0;
+    gCurrentProjectile.drawDistanceY = 8;
+    gCurrentProjectile.drawDistanceX = 8;
+    gCurrentProjectile.hitboxTop = -0x20;
+    gCurrentProjectile.hitboxBottom = 0x1c;
+    gCurrentProjectile.hitboxLeft = -0x20;
+    gCurrentProjectile.hitboxRight = 0x20;
+    gCurrentProjectile.status &= ~PROJ_STATUS_NOT_DRAWN;
+    gCurrentProjectile.status |= PROJ_STATUS_ABOVE_BG1;
+    gCurrentProjectile.timer = 50;
+    gCurrentProjectile.movementStage++;
 }
 
 void ProjectileBombSubroutine(void)
 {
-
+    switch (gCurrentProjectile.movementStage) {
+        case 0:
+            ProjectileBombInit();
+            break;
+        case 1:
+            if (--gCurrentProjectile.timer == 0) {
+                gCurrentProjectile.pOam = sOam_58eb10;
+                gCurrentProjectile.animationDurationCounter = 0;
+                gCurrentProjectile.currentAnimationFrame = 0;
+                gCurrentProjectile.timer = 30;
+                gCurrentProjectile.movementStage++;
+            }
+            break;
+        case 2:
+            if (--gCurrentProjectile.timer == 0) {
+                gCurrentProjectile.timer = 16;
+                gCurrentProjectile.movementStage++;
+                gCurrentProjectile.status |= PROJ_STATUS_CAN_AFFECT_ENVIRONMENT | PROJ_STATUS_NOT_DRAWN;
+                ParticleSet(gCurrentProjectile.yPosition, gCurrentProjectile.xPosition, PE_BOMB);
+            }
+            break;
+        case 3:
+            if (--gCurrentProjectile.timer > 0) {
+                if (gCurrentProjectile.timer == 15) {
+                    gCurrentClipdataAffectingAction = CAA_BOMB;
+                    ClipdataProcess(gCurrentProjectile.yPosition - 8, gCurrentProjectile.xPosition);
+                    ProjectileCheckSamusBombBounce();
+                    gCurrentProjectile.status &= ~PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+                } else if (gCurrentProjectile.timer == 14) {
+                    gCurrentClipdataAffectingAction = CAA_BOMB;
+                    ClipdataProcess(gCurrentProjectile.yPosition + 0x38, gCurrentProjectile.xPosition);
+                } else if (gCurrentProjectile.timer == 13) {
+                    gCurrentClipdataAffectingAction = CAA_BOMB;
+                    ClipdataProcess(gCurrentProjectile.yPosition - 8, gCurrentProjectile.xPosition + 0x30);
+                } else if (gCurrentProjectile.timer == 12) {
+                    gCurrentClipdataAffectingAction = CAA_BOMB;
+                    ClipdataProcess(gCurrentProjectile.yPosition - 8, gCurrentProjectile.xPosition - 0x30);
+                } else if (gCurrentProjectile.timer == 11) {
+                    gCurrentClipdataAffectingAction = CAA_BOMB;
+                    ClipdataProcess(gCurrentProjectile.yPosition + 0x38, gCurrentProjectile.xPosition + 0x24);
+                } else if (gCurrentProjectile.timer == 10) {
+                    gCurrentClipdataAffectingAction = CAA_BOMB;
+                    ClipdataProcess(gCurrentProjectile.yPosition + 0x38, gCurrentProjectile.xPosition - 0x24);
+                } else if (gCurrentProjectile.timer == 9) {
+                    gCurrentClipdataAffectingAction = CAA_BOMB;
+                    ClipdataProcess(gCurrentProjectile.yPosition - 0x48, gCurrentProjectile.xPosition);
+                } else if (gCurrentProjectile.timer == 8) {
+                    gCurrentClipdataAffectingAction = CAA_BOMB;
+                    ClipdataProcess(gCurrentProjectile.yPosition - 0x48, gCurrentProjectile.xPosition + 0x24);
+                } else if (gCurrentProjectile.timer == 7) {
+                    gCurrentClipdataAffectingAction = CAA_BOMB;
+                    ClipdataProcess(gCurrentProjectile.yPosition - 0x48, gCurrentProjectile.xPosition - 0x24);
+                }
+            } else {
+                gCurrentProjectile.status = 0;
+            }
+            break;
+    }
 }
 
 void ProjectilePowerBombInit(void)
@@ -2647,15 +3842,83 @@ void ProjectileWaveBeamSubroutine(void)
 
 void ProjectileFlareLoadGraphics(u8 stage)
 {
-
+    switch (gCurrentProjectile.direction) {
+        case ACD_DIAGONAL_UP:
+        case ACD_DIAGONAL_DOWN:
+            DMA_SET(3, sFlareDiagonalGfx_Top + stage * 8 * VRAM_TILE_SIZE, VRAM_OBJ_ADDR_COORDS(0x14, 4), C_32_2_16(DMA_ENABLE, 8 * VRAM_TILE_SIZE / 2));
+            DMA_SET(3, sFlareDiagonalGfx_Bottom + stage * 8 * VRAM_TILE_SIZE, VRAM_OBJ_ADDR_COORDS(0x14, 5), C_32_2_16(DMA_ENABLE, 8 * VRAM_TILE_SIZE / 2));
+            break;
+        case ACD_UP:
+        case ACD_DOWN:
+            DMA_SET(3, sFlareVerticalGfx_Top + stage * 8 * VRAM_TILE_SIZE, VRAM_OBJ_ADDR_COORDS(0x14, 4), C_32_2_16(DMA_ENABLE, 8 * VRAM_TILE_SIZE / 2));
+            DMA_SET(3, sFlareVerticalGfx_Bottom + stage * 8 * VRAM_TILE_SIZE, VRAM_OBJ_ADDR_COORDS(0x14, 5), C_32_2_16(DMA_ENABLE, 8 * VRAM_TILE_SIZE / 2));
+            break;
+        case ACD_FORWARD:
+        default:
+            DMA_SET(3, sFlareHorizontalGfx_Top + stage * 8 * VRAM_TILE_SIZE, VRAM_OBJ_ADDR_COORDS(0x14, 4), C_32_2_16(DMA_ENABLE, 8 * VRAM_TILE_SIZE / 2));
+            DMA_SET(3, sFlareHorizontalGfx_Bottom + stage * 8 * VRAM_TILE_SIZE, VRAM_OBJ_ADDR_COORDS(0x14, 5), C_32_2_16(DMA_ENABLE, 8 * VRAM_TILE_SIZE / 2));
+            break;
+    }
 }
 
 void ProjectileFlareInit(void)
 {
-
+    gCurrentProjectile.pOam = sFlareOam;
+    gCurrentProjectile.animationDurationCounter = 0;
+    gCurrentProjectile.currentAnimationFrame = 0;
+    gCurrentProjectile.drawDistanceY = 0x10;
+    gCurrentProjectile.drawDistanceX = 0x10;
+    gCurrentProjectile.hitboxTop = -0x40;
+    gCurrentProjectile.hitboxBottom = 0x40;
+    gCurrentProjectile.hitboxLeft = -0x40;
+    gCurrentProjectile.hitboxRight = 0x40;
+    gCurrentProjectile.status &= ~PROJ_STATUS_NOT_DRAWN;
+    gCurrentProjectile.status |= PROJ_STATUS_ABOVE_BG1;
+    gCurrentProjectile.movementStage++;
+    switch (gCurrentProjectile.direction) {
+        case ACD_DIAGONAL_UP:
+            break;
+        case ACD_DIAGONAL_DOWN:
+            gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
+            break;
+        case ACD_UP:
+            break;
+        case ACD_DOWN:
+            gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
+        case ACD_FORWARD:
+        default:
+            break;
+    }
+    ProjectileFlareLoadGraphics(0);
+    SoundPlay(0xf6);
 }
 
 void ProjectileFlareSubroutine(void)
 {
-
+    gCurrentClipdataAffectingAction = CAA_BEAM;
+    ProjectileCheckVerticalCollisionAtPosition();
+    switch (gCurrentProjectile.timer) {
+        case 0:
+            ProjectileFlareInit();
+            gCurrentProjectile.status |= PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+            break;
+        case 1:
+            gCurrentProjectile.status &= ~PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
+            break;
+        case 2:
+            ProjectileFlareLoadGraphics(1);
+            break;
+        case 4:
+            ProjectileFlareLoadGraphics(2);
+            break;
+        case 6:
+            ProjectileFlareLoadGraphics(3);
+            break;
+        case 8:
+            ProjectileFlareLoadGraphics(4);
+            break;
+        case 10:
+            gCurrentProjectile.status = 0;
+    }
+    gCurrentProjectile.timer++;
 }

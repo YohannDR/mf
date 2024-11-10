@@ -27,7 +27,7 @@ extern const struct FrameData sParticleOam_3eabcc[16];
 extern const struct FrameData sParticleOam_IceMissileExplosion[6];
 extern const struct FrameData sParticleOam_DiffusionMissileExplosion[6];
 extern const struct FrameData sParticleOam_ChargedDiffusionMissileExplosion[7];
-extern const struct FrameData sParticleOam_3eace4[6];
+extern const struct FrameData sDiffusionFlakeOam[6];
 extern const struct FrameData sParticleOam_AbsorbIceXPreVaria[24];
 extern const struct FrameData sParticleOam_3eadd4[33];
 extern const struct FrameData sParticleOam_3eaedc[16];

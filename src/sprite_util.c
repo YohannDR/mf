@@ -3182,11 +3182,11 @@ void SpriteUtilMoveEyeCoreXBeamPart(void)
     u16 straightMovement;
 
     diagonalMovement = PIXEL_SIZE;
-    straightMovement = PIXEL_SIZE + ONE_SUB_PIXEL;
+    straightMovement = diagonalMovement * 1.4;
 
     switch (gCurrentSprite.work0)
     {
-        case 3:
+        case ACD_DIAGONAL_DOWN:
             if (gCurrentSprite.status & SS_X_FLIP)
             {
                 if (gCurrentSprite.roomSlot == 1)
@@ -3215,7 +3215,7 @@ void SpriteUtilMoveEyeCoreXBeamPart(void)
             }
             break;
 
-        case 2:
+        case ACD_DIAGONAL_UP:
             if (gCurrentSprite.status & SS_X_FLIP)
             {
                 if (gCurrentSprite.roomSlot == 1)
@@ -3244,15 +3244,15 @@ void SpriteUtilMoveEyeCoreXBeamPart(void)
             }
             break;
 
-        case 4:
-        case 5:
+        case ACD_UP:
+        case ACD_DOWN:
             if (gCurrentSprite.roomSlot == 1)
                 gCurrentSprite.xPosition -= straightMovement;
             else
                 gCurrentSprite.xPosition += straightMovement;
             break;
 
-        case 1:
+        case ACD_FORWARD:
         default:
             if (gCurrentSprite.roomSlot == 1)
                 gCurrentSprite.yPosition -= straightMovement;
@@ -3280,7 +3280,7 @@ void SpriteUtilMoveEyeCoreXWaveBeamPart(void)
 
     roomSlot = gCurrentSprite.roomSlot;
 
-    if (offset > 3)
+    if (offset >= 4)
     {
         if (roomSlot == 1)
             roomSlot = 2;
@@ -3290,7 +3290,7 @@ void SpriteUtilMoveEyeCoreXWaveBeamPart(void)
 
     switch (gCurrentSprite.work0)
     {
-        case 3:
+        case ACD_DIAGONAL_DOWN:
             if (gCurrentSprite.status & SS_X_FLIP)
             {
                 if (roomSlot == 1)
@@ -3319,7 +3319,7 @@ void SpriteUtilMoveEyeCoreXWaveBeamPart(void)
             }
             break;
 
-        case 2:
+        case ACD_DIAGONAL_UP:
             if (gCurrentSprite.status & SS_X_FLIP)
             {
                 if (roomSlot == 1)
@@ -3348,15 +3348,15 @@ void SpriteUtilMoveEyeCoreXWaveBeamPart(void)
             }
             break;
 
-        case 4:
-        case 5:
+        case ACD_UP:
+        case ACD_DOWN:
             if (roomSlot == 1)
                 gCurrentSprite.xPosition -= straightMovement;
             else
                 gCurrentSprite.xPosition += straightMovement;
             break;
 
-        case 1:
+        case ACD_FORWARD:
         default:
             if (roomSlot == 1)
                 gCurrentSprite.yPosition -= straightMovement;

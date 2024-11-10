@@ -8831,7 +8831,7 @@ NewFileIntroProcessHorizontalMissile: @ 0x0808BC9C
 	cmp r0, #0
 	bne _0808BD24
 	ldrb r2, [r4, #0x13]
-	ldr r1, _0808BCE8 @ =0x0858B40C
+	ldr r1, _0808BCE8 @ =sNormalMissileVelocity
 	movs r5, #4
 	ldrsh r0, [r4, r5]
 	lsls r0, r0, #1
@@ -8861,7 +8861,7 @@ _0808BCE0:
 	strh r0, [r4]
 	b _0808BD04
 	.align 2, 0
-_0808BCE8: .4byte 0x0858B40C
+_0808BCE8: .4byte sNormalMissileVelocity
 _0808BCEC:
 	cmp r0, #1
 	bne _0808BD04
@@ -8927,7 +8927,7 @@ NewFileIntroProcessFirstDiagonalMissile: @ 0x0808BD50
 	cmp r0, #0
 	bne _0808BE10
 	ldrb r1, [r4, #0x13]
-	ldr r2, _0808BDBC @ =0x0858B40C
+	ldr r2, _0808BDBC @ =sNormalMissileVelocity
 	movs r3, #4
 	ldrsh r0, [r4, r3]
 	lsls r0, r0, #1
@@ -8973,7 +8973,7 @@ _0808BDB2:
 	strh r0, [r4, #2]
 	b _0808BDD8
 	.align 2, 0
-_0808BDBC: .4byte 0x0858B40C
+_0808BDBC: .4byte sNormalMissileVelocity
 _0808BDC0:
 	cmp r0, #1
 	bne _0808BDD8
@@ -9241,7 +9241,7 @@ NewFileIntroProcessSecondDiagonalMissile: @ 0x0808BFB0
 	cmp r0, #0
 	bne _0808C058
 	ldrb r1, [r4, #0x13]
-	ldr r2, _0808C01C @ =0x0858B40C
+	ldr r2, _0808C01C @ =sNormalMissileVelocity
 	movs r3, #4
 	ldrsh r0, [r4, r3]
 	lsls r0, r0, #1
@@ -9287,7 +9287,7 @@ _0808C010:
 	strh r0, [r4, #2]
 	b _0808C038
 	.align 2, 0
-_0808C01C: .4byte 0x0858B40C
+_0808C01C: .4byte sNormalMissileVelocity
 _0808C020:
 	cmp r0, #1
 	bne _0808C038

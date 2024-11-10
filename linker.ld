@@ -97,6 +97,7 @@ SECTIONS {
         . = 0x000007f4; gBossWork3 = .;
         . = 0x000007f5; gBossWork4 = .;
         . = 0x000007f6; gBossWork5 = .;
+        . = 0x000007f8; gParticleEffects = .;
         . = 0x000008c4; gMissileHighlightStatus = .;
         . = 0x000008c5; gPowerBombHighlightStatus = .;
         . = 0x000008c6; gMinimapUpdateFlag = .;

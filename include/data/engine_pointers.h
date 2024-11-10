@@ -4,8 +4,11 @@
 #include "types.h"
 #include "macros.h"
 
+#include "constants/projectile.h"
 #include "constants/sprite.h"
 #include "data/spriteset.h"
+
+extern const Func_T sProcessProjectileFunctionPointers[PROJ_TYPE_END];
 
 extern const Func_T sPrimarySpritesAiPointers[PSPRITE_END];
 

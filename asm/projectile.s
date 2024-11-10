@@ -1459,127 +1459,127 @@ ProjectileLoadEyeCoreXGraphics: @ 0x08081CFC
 	cmp r0, #0x59
 	bne _08081D48
 	ldr r1, _08081D2C @ =0x040000D4
-	ldr r0, _08081D30 @ =0x0858C924
+	ldr r0, _08081D30 @ =sWaveBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081D34 @ =0x06016000
 	str r0, [r1, #4]
 	ldr r2, _08081D38 @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081D3C @ =0x0858CBA4
+	ldr r0, _08081D3C @ =sWaveBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081D40 @ =0x06016400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081D44 @ =0x0858B4E4
+	ldr r0, _08081D44 @ =sWaveBeamPal
 	b _08081E26
 	.align 2, 0
 _08081D28: .4byte gCurrentSprite
 _08081D2C: .4byte 0x040000D4
-_08081D30: .4byte 0x0858C924
+_08081D30: .4byte sWaveBeamGfx_Top
 _08081D34: .4byte 0x06016000
 _08081D38: .4byte 0x80000140
-_08081D3C: .4byte 0x0858CBA4
+_08081D3C: .4byte sWaveBeamGfx_Bottom
 _08081D40: .4byte 0x06016400
-_08081D44: .4byte 0x0858B4E4
+_08081D44: .4byte sWaveBeamPal
 _08081D48:
 	cmp r0, #0x58
 	bne _08081D88
 	ldr r1, _08081D6C @ =0x040000D4
-	ldr r0, _08081D70 @ =0x0858C424
+	ldr r0, _08081D70 @ =sPlasmaBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081D74 @ =0x06016000
 	str r0, [r1, #4]
 	ldr r2, _08081D78 @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081D7C @ =0x0858C6A4
+	ldr r0, _08081D7C @ =sPlasmaBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081D80 @ =0x06016400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081D84 @ =0x0858B4C4
+	ldr r0, _08081D84 @ =sPlasmaBeamPal
 	b _08081E26
 	.align 2, 0
 _08081D6C: .4byte 0x040000D4
-_08081D70: .4byte 0x0858C424
+_08081D70: .4byte sPlasmaBeamGfx_Top
 _08081D74: .4byte 0x06016000
 _08081D78: .4byte 0x80000140
-_08081D7C: .4byte 0x0858C6A4
+_08081D7C: .4byte sPlasmaBeamGfx_Bottom
 _08081D80: .4byte 0x06016400
-_08081D84: .4byte 0x0858B4C4
+_08081D84: .4byte sPlasmaBeamPal
 _08081D88:
 	cmp r0, #0x57
 	bne _08081DC8
 	ldr r1, _08081DAC @ =0x040000D4
-	ldr r0, _08081DB0 @ =0x0858BF24
+	ldr r0, _08081DB0 @ =sWideBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081DB4 @ =0x06016000
 	str r0, [r1, #4]
 	ldr r2, _08081DB8 @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081DBC @ =0x0858C1A4
+	ldr r0, _08081DBC @ =sWideBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081DC0 @ =0x06016400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081DC4 @ =0x0858B4A4
+	ldr r0, _08081DC4 @ =sWideBeamPal
 	b _08081E26
 	.align 2, 0
 _08081DAC: .4byte 0x040000D4
-_08081DB0: .4byte 0x0858BF24
+_08081DB0: .4byte sWideBeamGfx_Top
 _08081DB4: .4byte 0x06016000
 _08081DB8: .4byte 0x80000140
-_08081DBC: .4byte 0x0858C1A4
+_08081DBC: .4byte sWideBeamGfx_Bottom
 _08081DC0: .4byte 0x06016400
-_08081DC4: .4byte 0x0858B4A4
+_08081DC4: .4byte sWideBeamPal
 _08081DC8:
 	cmp r1, #0x56
 	bne _08081E08
 	ldr r1, _08081DEC @ =0x040000D4
-	ldr r0, _08081DF0 @ =0x0858BA24
+	ldr r0, _08081DF0 @ =sChargeBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081DF4 @ =0x06016000
 	str r0, [r1, #4]
 	ldr r2, _08081DF8 @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081DFC @ =0x0858BCA4
+	ldr r0, _08081DFC @ =sChargeBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081E00 @ =0x06016400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081E04 @ =0x0858B484
+	ldr r0, _08081E04 @ =sChargeBeamPal
 	b _08081E26
 	.align 2, 0
 _08081DEC: .4byte 0x040000D4
-_08081DF0: .4byte 0x0858BA24
+_08081DF0: .4byte sChargeBeamGfx_Top
 _08081DF4: .4byte 0x06016000
 _08081DF8: .4byte 0x80000140
-_08081DFC: .4byte 0x0858BCA4
+_08081DFC: .4byte sChargeBeamGfx_Bottom
 _08081E00: .4byte 0x06016400
-_08081E04: .4byte 0x0858B484
+_08081E04: .4byte sChargeBeamPal
 _08081E08:
 	ldr r1, _08081E38 @ =0x040000D4
-	ldr r0, _08081E3C @ =0x0858CE24
+	ldr r0, _08081E3C @ =sIceBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081E40 @ =0x06016000
 	str r0, [r1, #4]
 	ldr r2, _08081E44 @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081E48 @ =0x0858D0A4
+	ldr r0, _08081E48 @ =sIceBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081E4C @ =0x06016400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081E50 @ =0x0858B504
+	ldr r0, _08081E50 @ =sIceBeamPal
 _08081E26:
 	str r0, [r1]
 	ldr r0, _08081E54 @ =0x05000380
@@ -1591,12 +1591,12 @@ _08081E26:
 	bx r0
 	.align 2, 0
 _08081E38: .4byte 0x040000D4
-_08081E3C: .4byte 0x0858CE24
+_08081E3C: .4byte sIceBeamGfx_Top
 _08081E40: .4byte 0x06016000
 _08081E44: .4byte 0x80000140
-_08081E48: .4byte 0x0858D0A4
+_08081E48: .4byte sIceBeamGfx_Bottom
 _08081E4C: .4byte 0x06016400
-_08081E50: .4byte 0x0858B504
+_08081E50: .4byte sIceBeamPal
 _08081E54: .4byte 0x05000380
 _08081E58: .4byte 0x80000005
 
@@ -1611,162 +1611,162 @@ ProjectileLoadBeamGraphics: @ 0x08081E5C
 	cmp r0, #0
 	beq _08081EAC
 	ldr r1, _08081E90 @ =0x040000D4
-	ldr r0, _08081E94 @ =0x0858CE24
+	ldr r0, _08081E94 @ =sIceBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081E98 @ =0x06011000
 	str r0, [r1, #4]
 	ldr r2, _08081E9C @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081EA0 @ =0x0858D0A4
+	ldr r0, _08081EA0 @ =sIceBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081EA4 @ =0x06011400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081EA8 @ =0x0858B504
+	ldr r0, _08081EA8 @ =sIceBeamPal
 	b _08081FDA
 	.align 2, 0
 _08081E8C: .4byte gEquipment
 _08081E90: .4byte 0x040000D4
-_08081E94: .4byte 0x0858CE24
+_08081E94: .4byte sIceBeamGfx_Top
 _08081E98: .4byte 0x06011000
 _08081E9C: .4byte 0x80000140
-_08081EA0: .4byte 0x0858D0A4
+_08081EA0: .4byte sIceBeamGfx_Bottom
 _08081EA4: .4byte 0x06011400
-_08081EA8: .4byte 0x0858B504
+_08081EA8: .4byte sIceBeamPal
 _08081EAC:
 	movs r0, #8
 	ands r0, r1
 	cmp r0, #0
 	beq _08081EF0
 	ldr r1, _08081ED4 @ =0x040000D4
-	ldr r0, _08081ED8 @ =0x0858C924
+	ldr r0, _08081ED8 @ =sWaveBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081EDC @ =0x06011000
 	str r0, [r1, #4]
 	ldr r2, _08081EE0 @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081EE4 @ =0x0858CBA4
+	ldr r0, _08081EE4 @ =sWaveBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081EE8 @ =0x06011400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081EEC @ =0x0858B4E4
+	ldr r0, _08081EEC @ =sWaveBeamPal
 	b _08081FDA
 	.align 2, 0
 _08081ED4: .4byte 0x040000D4
-_08081ED8: .4byte 0x0858C924
+_08081ED8: .4byte sWaveBeamGfx_Top
 _08081EDC: .4byte 0x06011000
 _08081EE0: .4byte 0x80000140
-_08081EE4: .4byte 0x0858CBA4
+_08081EE4: .4byte sWaveBeamGfx_Bottom
 _08081EE8: .4byte 0x06011400
-_08081EEC: .4byte 0x0858B4E4
+_08081EEC: .4byte sWaveBeamPal
 _08081EF0:
 	movs r0, #4
 	ands r0, r1
 	cmp r0, #0
 	beq _08081F34
 	ldr r1, _08081F18 @ =0x040000D4
-	ldr r0, _08081F1C @ =0x0858C424
+	ldr r0, _08081F1C @ =sPlasmaBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081F20 @ =0x06011000
 	str r0, [r1, #4]
 	ldr r2, _08081F24 @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081F28 @ =0x0858C6A4
+	ldr r0, _08081F28 @ =sPlasmaBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081F2C @ =0x06011400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081F30 @ =0x0858B4C4
+	ldr r0, _08081F30 @ =sPlasmaBeamPal
 	b _08081FDA
 	.align 2, 0
 _08081F18: .4byte 0x040000D4
-_08081F1C: .4byte 0x0858C424
+_08081F1C: .4byte sPlasmaBeamGfx_Top
 _08081F20: .4byte 0x06011000
 _08081F24: .4byte 0x80000140
-_08081F28: .4byte 0x0858C6A4
+_08081F28: .4byte sPlasmaBeamGfx_Bottom
 _08081F2C: .4byte 0x06011400
-_08081F30: .4byte 0x0858B4C4
+_08081F30: .4byte sPlasmaBeamPal
 _08081F34:
 	movs r0, #2
 	ands r1, r0
 	cmp r1, #0
 	beq _08081F78
 	ldr r1, _08081F5C @ =0x040000D4
-	ldr r0, _08081F60 @ =0x0858BF24
+	ldr r0, _08081F60 @ =sWideBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081F64 @ =0x06011000
 	str r0, [r1, #4]
 	ldr r2, _08081F68 @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081F6C @ =0x0858C1A4
+	ldr r0, _08081F6C @ =sWideBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081F70 @ =0x06011400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081F74 @ =0x0858B4A4
+	ldr r0, _08081F74 @ =sWideBeamPal
 	b _08081FDA
 	.align 2, 0
 _08081F5C: .4byte 0x040000D4
-_08081F60: .4byte 0x0858BF24
+_08081F60: .4byte sWideBeamGfx_Top
 _08081F64: .4byte 0x06011000
 _08081F68: .4byte 0x80000140
-_08081F6C: .4byte 0x0858C1A4
+_08081F6C: .4byte sWideBeamGfx_Bottom
 _08081F70: .4byte 0x06011400
-_08081F74: .4byte 0x0858B4A4
+_08081F74: .4byte sWideBeamPal
 _08081F78:
 	movs r0, #1
 	ands r2, r0
 	cmp r2, #0
 	beq _08081FBC
 	ldr r1, _08081FA0 @ =0x040000D4
-	ldr r0, _08081FA4 @ =0x0858BA24
+	ldr r0, _08081FA4 @ =sChargeBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081FA8 @ =0x06011000
 	str r0, [r1, #4]
 	ldr r2, _08081FAC @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081FB0 @ =0x0858BCA4
+	ldr r0, _08081FB0 @ =sChargeBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08081FB4 @ =0x06011400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081FB8 @ =0x0858B484
+	ldr r0, _08081FB8 @ =sChargeBeamPal
 	b _08081FDA
 	.align 2, 0
 _08081FA0: .4byte 0x040000D4
-_08081FA4: .4byte 0x0858BA24
+_08081FA4: .4byte sChargeBeamGfx_Top
 _08081FA8: .4byte 0x06011000
 _08081FAC: .4byte 0x80000140
-_08081FB0: .4byte 0x0858BCA4
+_08081FB0: .4byte sChargeBeamGfx_Bottom
 _08081FB4: .4byte 0x06011400
-_08081FB8: .4byte 0x0858B484
+_08081FB8: .4byte sChargeBeamPal
 _08081FBC:
 	ldr r1, _08081FEC @ =0x040000D4
-	ldr r0, _08081FF0 @ =0x0858B524
+	ldr r0, _08081FF0 @ =sNormalBeamGfx_Top
 	str r0, [r1]
 	ldr r0, _08081FF4 @ =0x06011000
 	str r0, [r1, #4]
 	ldr r2, _08081FF8 @ =0x80000140
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08081FFC @ =0x0858B7A4
+	ldr r0, _08081FFC @ =sNormalBeamGfx_Bottom
 	str r0, [r1]
 	ldr r0, _08082000 @ =0x06011400
 	str r0, [r1, #4]
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08082004 @ =0x0858B464
+	ldr r0, _08082004 @ =sNormalBeamPal
 _08081FDA:
 	str r0, [r1]
 	ldr r0, _08082008 @ =0x05000240
@@ -1778,12 +1778,12 @@ _08081FDA:
 	bx r0
 	.align 2, 0
 _08081FEC: .4byte 0x040000D4
-_08081FF0: .4byte 0x0858B524
+_08081FF0: .4byte sNormalBeamGfx_Top
 _08081FF4: .4byte 0x06011000
 _08081FF8: .4byte 0x80000140
-_08081FFC: .4byte 0x0858B7A4
+_08081FFC: .4byte sNormalBeamGfx_Bottom
 _08082000: .4byte 0x06011400
-_08082004: .4byte 0x0858B464
+_08082004: .4byte sNormalBeamPal
 _08082008: .4byte 0x05000240
 _0808200C: .4byte 0x80000005
 
@@ -1798,78 +1798,78 @@ ProjectileLoadMissileGraphics: @ 0x08082010
 	cmp r0, #0
 	beq _0808204C
 	ldr r0, _08082038 @ =0x040000D4
-	ldr r1, _0808203C @ =0x0858D624
+	ldr r1, _0808203C @ =sDiffusionMissileGfx_Top
 	str r1, [r0]
 	ldr r1, _08082040 @ =0x06011380
 	str r1, [r0, #4]
 	ldr r2, _08082044 @ =0x80000040
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08082048 @ =0x0858D6A4
+	ldr r1, _08082048 @ =sDiffusionMissileGfx_Bottom
 	b _080820C6
 	.align 2, 0
 _08082034: .4byte gEquipment
 _08082038: .4byte 0x040000D4
-_0808203C: .4byte 0x0858D624
+_0808203C: .4byte sDiffusionMissileGfx_Top
 _08082040: .4byte 0x06011380
 _08082044: .4byte 0x80000040
-_08082048: .4byte 0x0858D6A4
+_08082048: .4byte sDiffusionMissileGfx_Bottom
 _0808204C:
 	movs r0, #4
 	ands r0, r1
 	cmp r0, #0
 	beq _0808207C
 	ldr r0, _08082068 @ =0x040000D4
-	ldr r1, _0808206C @ =0x0858D524
+	ldr r1, _0808206C @ =sIceMissileGfx_Top
 	str r1, [r0]
 	ldr r1, _08082070 @ =0x06011380
 	str r1, [r0, #4]
 	ldr r2, _08082074 @ =0x80000040
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08082078 @ =0x0858D5A4
+	ldr r1, _08082078 @ =sIceMissileGfx_Bottom
 	b _080820C6
 	.align 2, 0
 _08082068: .4byte 0x040000D4
-_0808206C: .4byte 0x0858D524
+_0808206C: .4byte sIceMissileGfx_Top
 _08082070: .4byte 0x06011380
 _08082074: .4byte 0x80000040
-_08082078: .4byte 0x0858D5A4
+_08082078: .4byte sIceMissileGfx_Bottom
 _0808207C:
 	movs r0, #2
 	ands r1, r0
 	cmp r1, #0
 	beq _080820AC
 	ldr r0, _08082098 @ =0x040000D4
-	ldr r1, _0808209C @ =0x0858D424
+	ldr r1, _0808209C @ =sSuperMissileGfx_Top
 	str r1, [r0]
 	ldr r1, _080820A0 @ =0x06011380
 	str r1, [r0, #4]
 	ldr r2, _080820A4 @ =0x80000040
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _080820A8 @ =0x0858D4A4
+	ldr r1, _080820A8 @ =sSuperMissileGfx_Bottom
 	b _080820C6
 	.align 2, 0
 _08082098: .4byte 0x040000D4
-_0808209C: .4byte 0x0858D424
+_0808209C: .4byte sSuperMissileGfx_Top
 _080820A0: .4byte 0x06011380
 _080820A4: .4byte 0x80000040
-_080820A8: .4byte 0x0858D4A4
+_080820A8: .4byte sSuperMissileGfx_Bottom
 _080820AC:
 	movs r0, #1
 	ands r2, r0
 	cmp r2, #0
 	beq _080820D0
 	ldr r0, _080820D4 @ =0x040000D4
-	ldr r1, _080820D8 @ =0x0858D324
+	ldr r1, _080820D8 @ =sNormalMissileGfx_Top
 	str r1, [r0]
 	ldr r1, _080820DC @ =0x06011380
 	str r1, [r0, #4]
 	ldr r2, _080820E0 @ =0x80000040
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _080820E4 @ =0x0858D3A4
+	ldr r1, _080820E4 @ =sNormalMissileGfx_Bottom
 _080820C6:
 	str r1, [r0]
 	ldr r1, _080820E8 @ =0x06011780
@@ -1881,10 +1881,10 @@ _080820D0:
 	bx r0
 	.align 2, 0
 _080820D4: .4byte 0x040000D4
-_080820D8: .4byte 0x0858D324
+_080820D8: .4byte sNormalMissileGfx_Top
 _080820DC: .4byte 0x06011380
 _080820E0: .4byte 0x80000040
-_080820E4: .4byte 0x0858D3A4
+_080820E4: .4byte sNormalMissileGfx_Bottom
 _080820E8: .4byte 0x06011780
 
 	thumb_func_start ProjectileCallLoadGraphicsAndClearProjectiles
@@ -2603,7 +2603,7 @@ ProjectileMoveWaveBeamParts_Unused: @ 0x08082628
 	ldrb r0, [r5, #0x1e]
 	movs r4, #0xf
 	ands r4, r0
-	ldr r1, _08082664 @ =0x0858B3EC
+	ldr r1, _08082664 @ =sWaveBeamPartVelocity_Unused
 	lsls r0, r4, #1
 	adds r0, r0, r1
 	ldrh r6, [r0]
@@ -2624,7 +2624,7 @@ ProjectileMoveWaveBeamParts_Unused: @ 0x08082628
 	b _08082676
 	.align 2, 0
 _08082660: .4byte gCurrentProjectile
-_08082664: .4byte 0x0858B3EC
+_08082664: .4byte sWaveBeamPartVelocity_Unused
 _08082668: .4byte 0x3FF66666
 _0808266C: .4byte 0x66666666
 _08082670:
@@ -6808,7 +6808,7 @@ ProjectileStartMissileTumble: @ 0x08084660
 	strh r4, [r6, #0xc]
 	adds r5, #4
 	adds r1, r1, r5
-	ldr r2, _080846AC @ =0x0858EA20
+	ldr r2, _080846AC @ =sOam_58ea20
 	str r2, [r1]
 	ldr r2, _080846B0 @ =gSpriteData
 	lsls r1, r0, #3
@@ -6825,7 +6825,7 @@ ProjectileStartMissileTumble: @ 0x08084660
 	b _080846BA
 	.align 2, 0
 _080846A8: .4byte gProjectileData
-_080846AC: .4byte 0x0858EA20
+_080846AC: .4byte sOam_58ea20
 _080846B0: .4byte gSpriteData
 _080846B4:
 	ldrb r1, [r6]
@@ -7742,11 +7742,11 @@ _08084DD4:
 	strb r1, [r0]
 	adds r1, r0, #0
 _08084DE0:
-	ldr r0, _08084DE8 @ =0x0858D80C
+	ldr r0, _08084DE8 @ =sOam_58d80c
 	b _08084E08
 	.align 2, 0
 _08084DE4: .4byte gCurrentProjectile
-_08084DE8: .4byte 0x0858D80C
+_08084DE8: .4byte sOam_58d80c
 _08084DEC:
 	ldr r0, _08084DFC @ =gCurrentProjectile
 	ldrb r2, [r0]
@@ -7755,21 +7755,21 @@ _08084DEC:
 	strb r1, [r0]
 	adds r1, r0, #0
 _08084DF8:
-	ldr r0, _08084E00 @ =0x0858D824
+	ldr r0, _08084E00 @ =sOam_58d824
 	b _08084E08
 	.align 2, 0
 _08084DFC: .4byte gCurrentProjectile
-_08084E00: .4byte 0x0858D824
+_08084E00: .4byte sOam_58d824
 _08084E04:
 	ldr r1, _08084E10 @ =gCurrentProjectile
-	ldr r0, _08084E14 @ =0x0858D7F4
+	ldr r0, _08084E14 @ =sOam_58d7f4
 _08084E08:
 	str r0, [r1, #4]
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08084E10: .4byte gCurrentProjectile
-_08084E14: .4byte 0x0858D7F4
+_08084E14: .4byte sOam_58d7f4
 
 	thumb_func_start ProjectileChargedNormalBeamSubroutine
 ProjectileChargedNormalBeamSubroutine: @ 0x08084E18
@@ -7880,12 +7880,12 @@ _08084EEC:
 	strb r1, [r0]
 	adds r2, r0, #0
 _08084EF8:
-	ldr r0, _08084F04 @ =0x0858D7C4
+	ldr r0, _08084F04 @ =sOam_58d7c4
 	str r0, [r2, #4]
 	b _08084F2A
 	.align 2, 0
 _08084F00: .4byte gCurrentProjectile
-_08084F04: .4byte 0x0858D7C4
+_08084F04: .4byte sOam_58d7c4
 _08084F08:
 	ldr r0, _08084F1C @ =gCurrentProjectile
 	ldrb r2, [r0]
@@ -7894,22 +7894,22 @@ _08084F08:
 	strb r1, [r0]
 	adds r2, r0, #0
 _08084F14:
-	ldr r0, _08084F20 @ =0x0858D7DC
+	ldr r0, _08084F20 @ =sOam_58d7dc
 	str r0, [r2, #4]
 	b _08084F2A
 	.align 2, 0
 _08084F1C: .4byte gCurrentProjectile
-_08084F20: .4byte 0x0858D7DC
+_08084F20: .4byte sOam_58d7dc
 _08084F24:
 	ldr r1, _08084F30 @ =gCurrentProjectile
-	ldr r0, _08084F34 @ =0x0858D7AC
+	ldr r0, _08084F34 @ =sOam_58d7ac
 	str r0, [r1, #4]
 _08084F2A:
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08084F30: .4byte gCurrentProjectile
-_08084F34: .4byte 0x0858D7AC
+_08084F34: .4byte sOam_58d7ac
 
 	thumb_func_start ProjectileNormalBeamSubroutine
 ProjectileNormalBeamSubroutine: @ 0x08084F38
@@ -8030,22 +8030,22 @@ _0808501C:
 _08085024:
 	cmp r4, #0
 	bne _08085030
-	ldr r0, _0808502C @ =0x0858E7C0
+	ldr r0, _0808502C @ =sOam_58e7c0
 	b _08085086
 	.align 2, 0
-_0808502C: .4byte 0x0858E7C0
+_0808502C: .4byte sOam_58e7c0
 _08085030:
 	cmp r4, #1
 	bne _0808503C
-	ldr r0, _08085038 @ =0x0858E858
+	ldr r0, _08085038 @ =sOam_58e858
 	b _08085086
 	.align 2, 0
-_08085038: .4byte 0x0858E858
+_08085038: .4byte sOam_58e858
 _0808503C:
-	ldr r0, _08085040 @ =0x0858E998
+	ldr r0, _08085040 @ =sOam_58e998
 	b _08085086
 	.align 2, 0
-_08085040: .4byte 0x0858E998
+_08085040: .4byte sOam_58e998
 _08085044:
 	ldrb r1, [r2]
 	movs r0, #0x20
@@ -8054,45 +8054,45 @@ _08085044:
 _0808504C:
 	cmp r4, #0
 	bne _08085058
-	ldr r0, _08085054 @ =0x0858E7D8
+	ldr r0, _08085054 @ =sOam_58e7d8
 	b _08085086
 	.align 2, 0
-_08085054: .4byte 0x0858E7D8
+_08085054: .4byte sOam_58e7d8
 _08085058:
 	cmp r4, #1
 	bne _08085064
-	ldr r0, _08085060 @ =0x0858E870
+	ldr r0, _08085060 @ =sOam_58e870
 	b _08085086
 	.align 2, 0
-_08085060: .4byte 0x0858E870
+_08085060: .4byte sOam_58e870
 _08085064:
-	ldr r0, _08085068 @ =0x0858E9B0
+	ldr r0, _08085068 @ =sOam_58e9b0
 	b _08085086
 	.align 2, 0
-_08085068: .4byte 0x0858E9B0
+_08085068: .4byte sOam_58e9b0
 _0808506C:
 	cmp r4, #0
 	bne _08085078
-	ldr r0, _08085074 @ =0x0858E7A8
+	ldr r0, _08085074 @ =sOam_58e7a8
 	b _08085086
 	.align 2, 0
-_08085074: .4byte 0x0858E7A8
+_08085074: .4byte sOam_58e7a8
 _08085078:
 	cmp r4, #1
 	bne _08085084
-	ldr r0, _08085080 @ =0x0858E840
+	ldr r0, _08085080 @ =sOam_58e840
 	b _08085086
 	.align 2, 0
-_08085080: .4byte 0x0858E840
+_08085080: .4byte sOam_58e840
 _08085084:
-	ldr r0, _08085090 @ =0x0858E980
+	ldr r0, _08085090 @ =sOam_58e980
 _08085086:
 	str r0, [r2, #4]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08085090: .4byte 0x0858E980
+_08085090: .4byte sOam_58e980
 
 	thumb_func_start ProjectileMoveTumblingMissile
 ProjectileMoveTumblingMissile: @ 0x08085094
@@ -8111,7 +8111,7 @@ ProjectileMoveTumblingMissile: @ 0x08085094
 _080850AC: .4byte gCurrentProjectile
 _080850B0:
 	ldrb r3, [r2, #0x1e]
-	ldr r5, _080850D4 @ =0x0858B444
+	ldr r5, _080850D4 @ =sTumblingMissileFallingVelocity
 	lsls r0, r3, #1
 	adds r0, r0, r5
 	ldrh r4, [r0]
@@ -8128,7 +8128,7 @@ _080850B0:
 	adds r0, r0, r1
 	b _080850E4
 	.align 2, 0
-_080850D4: .4byte 0x0858B444
+_080850D4: .4byte sTumblingMissileFallingVelocity
 _080850D8: .4byte 0x00007FFF
 _080850DC:
 	adds r0, r3, #1
@@ -8219,7 +8219,7 @@ _08085180:
 	bl ProjectileMoveTumblingMissile
 	b _080851A8
 _08085186:
-	ldr r0, _080851B0 @ =0x0858B40C
+	ldr r0, _080851B0 @ =sNormalMissileVelocity
 	ldrb r1, [r4, #0x1e]
 	lsrs r1, r1, #2
 	lsls r1, r1, #1
@@ -8240,7 +8240,7 @@ _080851A8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080851B0: .4byte 0x0858B40C
+_080851B0: .4byte sNormalMissileVelocity
 
 	thumb_func_start ProjectileSuperMissileSubroutine
 ProjectileSuperMissileSubroutine: @ 0x080851B4
@@ -8305,7 +8305,7 @@ _08085230:
 	bl ProjectileMoveTumblingMissile
 	b _08085258
 _08085236:
-	ldr r0, _08085260 @ =0x0858B41A
+	ldr r0, _08085260 @ =sSuperMissileVelocity
 	ldrb r1, [r4, #0x1e]
 	lsrs r1, r1, #2
 	lsls r1, r1, #1
@@ -8326,10 +8326,10 @@ _08085258:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08085260: .4byte 0x0858B41A
+_08085260: .4byte sSuperMissileVelocity
 
-	thumb_func_start ProjectileIceMissilesSubroutine
-ProjectileIceMissilesSubroutine: @ 0x08085264
+	thumb_func_start ProjectileIceMissileSubroutine
+ProjectileIceMissileSubroutine: @ 0x08085264
 	push {r4, lr}
 	ldr r0, _08085288 @ =gCurrentClipdataAffectingAction
 	movs r1, #8
@@ -8394,7 +8394,7 @@ _080852E8:
 	bl ProjectileMoveTumblingMissile
 	b _08085310
 _080852EE:
-	ldr r0, _08085318 @ =0x0858B428
+	ldr r0, _08085318 @ =sIceMissileVelocity
 	ldrb r1, [r4, #0x1e]
 	lsrs r1, r1, #2
 	lsls r1, r1, #1
@@ -8415,7 +8415,7 @@ _08085310:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08085318: .4byte 0x0858B428
+_08085318: .4byte sIceMissileVelocity
 
 	thumb_func_start ProjectileDiffusionMissileSubroutine
 ProjectileDiffusionMissileSubroutine: @ 0x0808531C
@@ -8575,7 +8575,7 @@ _08085464:
 	bl ProjectileMoveTumblingMissile
 	b _080854A4
 _0808546A:
-	ldr r0, _08085498 @ =0x0858B436
+	ldr r0, _08085498 @ =sDiffusionMissileVelocity
 	adds r5, r4, #0
 	ldrb r1, [r5, #0x1e]
 	lsrs r1, r1, #2
@@ -8597,7 +8597,7 @@ _08085486:
 	bl ProjectileSetMissileTrail
 	b _080854A4
 	.align 2, 0
-_08085498: .4byte 0x0858B436
+_08085498: .4byte sDiffusionMissileVelocity
 _0808549C:
 	movs r0, #0x18
 	movs r1, #3
@@ -8637,7 +8637,7 @@ ProjectileDiffusionFlakeSubroutine: @ 0x080854B0
 	strh r0, [r3, #0x18]
 	strh r1, [r3, #0x1a]
 	strh r0, [r3, #0x1c]
-	ldr r0, _080854F4 @ =sParticleOam_3eace4
+	ldr r0, _080854F4 @ =sDiffusionFlakeOam
 	str r0, [r3, #4]
 	strb r2, [r3, #0xe]
 	strh r4, [r3, #0xc]
@@ -8645,7 +8645,7 @@ ProjectileDiffusionFlakeSubroutine: @ 0x080854B0
 	.align 2, 0
 _080854EC: .4byte gCurrentProjectile
 _080854F0: .4byte 0x0000FFF0
-_080854F4: .4byte sParticleOam_3eace4
+_080854F4: .4byte sDiffusionFlakeOam
 _080854F8:
 	ldr r0, _0808550C @ =gProjectileData
 	lsls r1, r1, #5
@@ -8927,7 +8927,7 @@ ProjectileBombInit: @ 0x0808570C
 	movs r0, #0xdd
 	bl SoundPlay
 	ldr r1, _08085750 @ =gCurrentProjectile
-	ldr r0, _08085754 @ =0x0858EAE8
+	ldr r0, _08085754 @ =sOam_58eae8
 	str r0, [r1, #4]
 	movs r0, #0
 	strb r0, [r1, #0xe]
@@ -8957,7 +8957,7 @@ ProjectileBombInit: @ 0x0808570C
 	bx r0
 	.align 2, 0
 _08085750: .4byte gCurrentProjectile
-_08085754: .4byte 0x0858EAE8
+_08085754: .4byte sOam_58eae8
 _08085758: .4byte 0x0000FFE0
 
 	thumb_func_start ProjectileBombSubroutine
@@ -8993,7 +8993,7 @@ _08085784:
 	beq _08085794
 	b _080858DA
 _08085794:
-	ldr r0, _080857A8 @ =0x0858EB10
+	ldr r0, _080857A8 @ =sOam_58eb10
 	str r0, [r4, #4]
 	strb r1, [r4, #0xe]
 	strh r1, [r4, #0xc]
@@ -9004,7 +9004,7 @@ _08085794:
 	strb r0, [r4, #0x12]
 	b _080858DA
 	.align 2, 0
-_080857A8: .4byte 0x0858EB10
+_080857A8: .4byte sOam_58eb10
 _080857AC:
 	ldrb r0, [r4, #0x1e]
 	subs r0, #1
@@ -9186,7 +9186,7 @@ ProjectilePowerBombInit: @ 0x080858E0
 	strb r1, [r0, #8]
 _080858FE:
 	ldr r1, _0808597C @ =gCurrentProjectile
-	ldr r0, _08085980 @ =0x0858EB38
+	ldr r0, _08085980 @ =sOam_58eb38
 	str r0, [r1, #4]
 	movs r0, #0
 	strb r0, [r1, #0xe]
@@ -9248,7 +9248,7 @@ _08085956:
 _08085974: .4byte gEquipment
 _08085978: .4byte gSamusData
 _0808597C: .4byte gCurrentProjectile
-_08085980: .4byte 0x0858EB38
+_08085980: .4byte sOam_58eb38
 _08085984: .4byte 0x0000FFF0
 _08085988: .4byte gSpriteData
 _0808598C: .4byte gCurrentPowerBomb
@@ -9282,7 +9282,7 @@ _080859B4:
 	lsrs r1, r0, #0x18
 	cmp r1, #0
 	bne _08085A00
-	ldr r0, _080859D8 @ =0x0858EB58
+	ldr r0, _080859D8 @ =sOam_58eb58
 	str r0, [r4, #4]
 	strb r1, [r4, #0xe]
 	strh r1, [r4, #0xc]
@@ -9293,7 +9293,7 @@ _080859B4:
 	strb r0, [r4, #0x12]
 	b _08085A00
 	.align 2, 0
-_080859D8: .4byte 0x0858EB58
+_080859D8: .4byte sOam_58eb58
 _080859DC:
 	ldr r0, _08085A08 @ =gSubGameMode1
 	movs r1, #0
@@ -9368,28 +9368,28 @@ _08085A6C:
 	orrs r0, r1
 	strb r0, [r4]
 _08085A74:
-	ldr r0, _08085A7C @ =0x0858DA60
+	ldr r0, _08085A7C @ =sOam_58da60
 	str r0, [r4, #4]
 	b _08085B16
 	.align 2, 0
-_08085A7C: .4byte 0x0858DA60
+_08085A7C: .4byte sOam_58da60
 _08085A80:
 	ldrb r1, [r4]
 	movs r0, #0x20
 	orrs r0, r1
 	strb r0, [r4]
 _08085A88:
-	ldr r0, _08085A90 @ =0x0858DA70
+	ldr r0, _08085A90 @ =sOam_58da70
 	str r0, [r4, #4]
 	b _08085B16
 	.align 2, 0
-_08085A90: .4byte 0x0858DA70
+_08085A90: .4byte sOam_58da70
 _08085A94:
-	ldr r0, _08085A9C @ =0x0858DA50
+	ldr r0, _08085A9C @ =sOam_58da50
 	str r0, [r4, #4]
 	b _08085B16
 	.align 2, 0
-_08085A9C: .4byte 0x0858DA50
+_08085A9C: .4byte sOam_58da50
 _08085AA0:
 	movs r0, #0xed
 	bl SoundPlay
@@ -9422,12 +9422,12 @@ _08085AD8:
 	strb r1, [r0]
 	adds r4, r0, #0
 _08085AE4:
-	ldr r0, _08085AF0 @ =0x0858DA20
+	ldr r0, _08085AF0 @ =sOam_58da20
 	str r0, [r4, #4]
 	b _08085B16
 	.align 2, 0
 _08085AEC: .4byte gCurrentProjectile
-_08085AF0: .4byte 0x0858DA20
+_08085AF0: .4byte sOam_58da20
 _08085AF4:
 	ldr r0, _08085B08 @ =gCurrentProjectile
 	ldrb r2, [r0]
@@ -9436,15 +9436,15 @@ _08085AF4:
 	strb r1, [r0]
 	adds r4, r0, #0
 _08085B00:
-	ldr r0, _08085B0C @ =0x0858DA38
+	ldr r0, _08085B0C @ =sOam_58da38
 	str r0, [r4, #4]
 	b _08085B16
 	.align 2, 0
 _08085B08: .4byte gCurrentProjectile
-_08085B0C: .4byte 0x0858DA38
+_08085B0C: .4byte sOam_58da38
 _08085B10:
 	ldr r1, _08085B1C @ =gCurrentProjectile
-	ldr r0, _08085B20 @ =0x0858DA08
+	ldr r0, _08085B20 @ =sOam_58da08
 	str r0, [r1, #4]
 _08085B16:
 	pop {r4}
@@ -9452,7 +9452,7 @@ _08085B16:
 	bx r0
 	.align 2, 0
 _08085B1C: .4byte gCurrentProjectile
-_08085B20: .4byte 0x0858DA08
+_08085B20: .4byte sOam_58da08
 
 	thumb_func_start ProjectileChargedChargeBeamSubroutine
 ProjectileChargedChargeBeamSubroutine: @ 0x08085B24
@@ -9633,28 +9633,28 @@ _08085C90:
 	orrs r0, r1
 	strb r0, [r4]
 _08085C98:
-	ldr r0, _08085CA0 @ =0x0858D9E8
+	ldr r0, _08085CA0 @ =sOam_58d9e8
 	str r0, [r4, #4]
 	b _08085D3A
 	.align 2, 0
-_08085CA0: .4byte 0x0858D9E8
+_08085CA0: .4byte sOam_58d9e8
 _08085CA4:
 	ldrb r1, [r4]
 	movs r0, #0x20
 	orrs r0, r1
 	strb r0, [r4]
 _08085CAC:
-	ldr r0, _08085CB4 @ =0x0858D9F8
+	ldr r0, _08085CB4 @ =sOam_58d9f8
 	str r0, [r4, #4]
 	b _08085D3A
 	.align 2, 0
-_08085CB4: .4byte 0x0858D9F8
+_08085CB4: .4byte sOam_58d9f8
 _08085CB8:
-	ldr r0, _08085CC0 @ =0x0858D9D8
+	ldr r0, _08085CC0 @ =sOam_58d9d8
 	str r0, [r4, #4]
 	b _08085D3A
 	.align 2, 0
-_08085CC0: .4byte 0x0858D9D8
+_08085CC0: .4byte sOam_58d9d8
 _08085CC4:
 	movs r0, #0xca
 	bl SoundPlay
@@ -9687,12 +9687,12 @@ _08085CFC:
 	strb r1, [r0]
 	adds r4, r0, #0
 _08085D08:
-	ldr r0, _08085D14 @ =0x0858D9A8
+	ldr r0, _08085D14 @ =sOam_58d9a8
 	str r0, [r4, #4]
 	b _08085D3A
 	.align 2, 0
 _08085D10: .4byte gCurrentProjectile
-_08085D14: .4byte 0x0858D9A8
+_08085D14: .4byte sOam_58d9a8
 _08085D18:
 	ldr r0, _08085D2C @ =gCurrentProjectile
 	ldrb r2, [r0]
@@ -9701,15 +9701,15 @@ _08085D18:
 	strb r1, [r0]
 	adds r4, r0, #0
 _08085D24:
-	ldr r0, _08085D30 @ =0x0858D9C0
+	ldr r0, _08085D30 @ =sOam_58d9c0
 	str r0, [r4, #4]
 	b _08085D3A
 	.align 2, 0
 _08085D2C: .4byte gCurrentProjectile
-_08085D30: .4byte 0x0858D9C0
+_08085D30: .4byte sOam_58d9c0
 _08085D34:
 	ldr r1, _08085D40 @ =gCurrentProjectile
-	ldr r0, _08085D44 @ =0x0858D990
+	ldr r0, _08085D44 @ =sOam_58d990
 	str r0, [r1, #4]
 _08085D3A:
 	pop {r4}
@@ -9717,7 +9717,7 @@ _08085D3A:
 	bx r0
 	.align 2, 0
 _08085D40: .4byte gCurrentProjectile
-_08085D44: .4byte 0x0858D990
+_08085D44: .4byte sOam_58d990
 
 	thumb_func_start ProjectileChargeBeamSubroutine
 ProjectileChargeBeamSubroutine: @ 0x08085D48
@@ -9892,18 +9892,18 @@ _08085EA8:
 	movs r0, #0x20
 	orrs r0, r2
 	strb r0, [r1]
-	ldr r0, _08085EBC @ =0x0858DC54
+	ldr r0, _08085EBC @ =sOam_58dc54
 	b _08085EF0
 	.align 2, 0
 _08085EB8: .4byte gCurrentProjectile
-_08085EBC: .4byte 0x0858DC54
+_08085EBC: .4byte sOam_58dc54
 _08085EC0:
 	ldr r1, _08085EC8 @ =gCurrentProjectile
-	ldr r0, _08085ECC @ =0x0858DC54
+	ldr r0, _08085ECC @ =sOam_58dc54
 	b _08085EF0
 	.align 2, 0
 _08085EC8: .4byte gCurrentProjectile
-_08085ECC: .4byte 0x0858DC54
+_08085ECC: .4byte sOam_58dc54
 _08085ED0:
 	ldr r0, _08085EE4 @ =gCurrentProjectile
 	ldrb r2, [r0]
@@ -9912,15 +9912,15 @@ _08085ED0:
 	strb r1, [r0]
 	adds r2, r0, #0
 _08085EDC:
-	ldr r0, _08085EE8 @ =0x0858DC6C
+	ldr r0, _08085EE8 @ =sOam_58dc6c
 	str r0, [r2, #4]
 	b _08085EF2
 	.align 2, 0
 _08085EE4: .4byte gCurrentProjectile
-_08085EE8: .4byte 0x0858DC6C
+_08085EE8: .4byte sOam_58dc6c
 _08085EEC:
 	ldr r1, _08085EF8 @ =gCurrentProjectile
-	ldr r0, _08085EFC @ =0x0858DC3C
+	ldr r0, _08085EFC @ =sOam_58dc3c
 _08085EF0:
 	str r0, [r1, #4]
 _08085EF2:
@@ -9928,7 +9928,7 @@ _08085EF2:
 	bx r0
 	.align 2, 0
 _08085EF8: .4byte gCurrentProjectile
-_08085EFC: .4byte 0x0858DC3C
+_08085EFC: .4byte sOam_58dc3c
 
 	thumb_func_start ProjectileChargedWideBeamSubroutine
 ProjectileChargedWideBeamSubroutine: @ 0x08085F00
@@ -10051,18 +10051,18 @@ _08085FEC:
 	movs r0, #0x20
 	orrs r0, r2
 	strb r0, [r1]
-	ldr r0, _08086000 @ =0x0858DBFC
+	ldr r0, _08086000 @ =sOam_58dbfc
 	b _08086030
 	.align 2, 0
 _08085FFC: .4byte gCurrentProjectile
-_08086000: .4byte 0x0858DBFC
+_08086000: .4byte sOam_58dbfc
 _08086004:
 	ldr r1, _0808600C @ =gCurrentProjectile
-	ldr r0, _08086010 @ =0x0858DBFC
+	ldr r0, _08086010 @ =sOam_58dbfc
 	b _08086030
 	.align 2, 0
 _0808600C: .4byte gCurrentProjectile
-_08086010: .4byte 0x0858DBFC
+_08086010: .4byte sOam_58dbfc
 _08086014:
 	ldr r0, _08086024 @ =gCurrentProjectile
 	ldrb r2, [r0]
@@ -10071,21 +10071,21 @@ _08086014:
 	strb r1, [r0]
 	adds r1, r0, #0
 _08086020:
-	ldr r0, _08086028 @ =0x0858DC1C
+	ldr r0, _08086028 @ =sOam_58dc1c
 	b _08086030
 	.align 2, 0
 _08086024: .4byte gCurrentProjectile
-_08086028: .4byte 0x0858DC1C
+_08086028: .4byte sOam_58dc1c
 _0808602C:
 	ldr r1, _08086038 @ =gCurrentProjectile
-	ldr r0, _0808603C @ =0x0858DBDC
+	ldr r0, _0808603C @ =sOam_58dbdc
 _08086030:
 	str r0, [r1, #4]
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08086038: .4byte gCurrentProjectile
-_0808603C: .4byte 0x0858DBDC
+_0808603C: .4byte sOam_58dbdc
 
 	thumb_func_start ProjectileWideBeamSubroutine
 ProjectileWideBeamSubroutine: @ 0x08086040
@@ -10209,18 +10209,18 @@ _0808612C:
 	movs r0, #0x20
 	orrs r0, r2
 	strb r0, [r1]
-	ldr r0, _08086140 @ =0x0858DE54
+	ldr r0, _08086140 @ =sOam_58de54
 	b _08086174
 	.align 2, 0
 _0808613C: .4byte gCurrentProjectile
-_08086140: .4byte 0x0858DE54
+_08086140: .4byte sOam_58de54
 _08086144:
 	ldr r1, _0808614C @ =gCurrentProjectile
-	ldr r0, _08086150 @ =0x0858DE54
+	ldr r0, _08086150 @ =sOam_58de54
 	b _08086174
 	.align 2, 0
 _0808614C: .4byte gCurrentProjectile
-_08086150: .4byte 0x0858DE54
+_08086150: .4byte sOam_58de54
 _08086154:
 	ldr r0, _08086168 @ =gCurrentProjectile
 	ldrb r2, [r0]
@@ -10229,15 +10229,15 @@ _08086154:
 	strb r1, [r0]
 	adds r2, r0, #0
 _08086160:
-	ldr r0, _0808616C @ =0x0858DE6C
+	ldr r0, _0808616C @ =sOam_58de6c
 	str r0, [r2, #4]
 	b _08086176
 	.align 2, 0
 _08086168: .4byte gCurrentProjectile
-_0808616C: .4byte 0x0858DE6C
+_0808616C: .4byte sOam_58de6c
 _08086170:
 	ldr r1, _0808617C @ =gCurrentProjectile
-	ldr r0, _08086180 @ =0x0858DE3C
+	ldr r0, _08086180 @ =sOam_58de3c
 _08086174:
 	str r0, [r1, #4]
 _08086176:
@@ -10245,7 +10245,7 @@ _08086176:
 	bx r0
 	.align 2, 0
 _0808617C: .4byte gCurrentProjectile
-_08086180: .4byte 0x0858DE3C
+_08086180: .4byte sOam_58de3c
 
 	thumb_func_start ProjectileChargedPlasmaBeamSubroutine
 ProjectileChargedPlasmaBeamSubroutine: @ 0x08086184
@@ -10369,18 +10369,18 @@ _08086274:
 	movs r0, #0x20
 	orrs r0, r2
 	strb r0, [r1]
-	ldr r0, _08086288 @ =0x0858DE0C
+	ldr r0, _08086288 @ =sOam_58de0c
 	b _080862BC
 	.align 2, 0
 _08086284: .4byte gCurrentProjectile
-_08086288: .4byte 0x0858DE0C
+_08086288: .4byte sOam_58de0c
 _0808628C:
 	ldr r1, _08086294 @ =gCurrentProjectile
-	ldr r0, _08086298 @ =0x0858DE0C
+	ldr r0, _08086298 @ =sOam_58de0c
 	b _080862BC
 	.align 2, 0
 _08086294: .4byte gCurrentProjectile
-_08086298: .4byte 0x0858DE0C
+_08086298: .4byte sOam_58de0c
 _0808629C:
 	ldr r0, _080862B0 @ =gCurrentProjectile
 	ldrb r2, [r0]
@@ -10389,15 +10389,15 @@ _0808629C:
 	strb r1, [r0]
 	adds r2, r0, #0
 _080862A8:
-	ldr r0, _080862B4 @ =0x0858DE24
+	ldr r0, _080862B4 @ =sOam_58de24
 	str r0, [r2, #4]
 	b _080862BE
 	.align 2, 0
 _080862B0: .4byte gCurrentProjectile
-_080862B4: .4byte 0x0858DE24
+_080862B4: .4byte sOam_58de24
 _080862B8:
 	ldr r1, _080862C4 @ =gCurrentProjectile
-	ldr r0, _080862C8 @ =0x0858DDF4
+	ldr r0, _080862C8 @ =sOam_58ddf4
 _080862BC:
 	str r0, [r1, #4]
 _080862BE:
@@ -10405,7 +10405,7 @@ _080862BE:
 	bx r0
 	.align 2, 0
 _080862C4: .4byte gCurrentProjectile
-_080862C8: .4byte 0x0858DDF4
+_080862C8: .4byte sOam_58ddf4
 
 	thumb_func_start ProjectilePlasmaBeamSubroutine
 ProjectilePlasmaBeamSubroutine: @ 0x080862CC
@@ -10549,29 +10549,29 @@ _080863E0:
 	ands r4, r0
 	cmp r4, #0
 	beq _080863F8
-	ldr r0, _080863F4 @ =0x0858E218
+	ldr r0, _080863F4 @ =sOam_58e218
 	b _0808644A
 	.align 2, 0
-_080863F4: .4byte 0x0858E218
+_080863F4: .4byte sOam_58e218
 _080863F8:
-	ldr r0, _080863FC @ =0x0858DFAC
+	ldr r0, _080863FC @ =sOam_58dfac
 	b _0808644A
 	.align 2, 0
-_080863FC: .4byte 0x0858DFAC
+_080863FC: .4byte sOam_58dfac
 _08086400:
 	movs r0, #0x10
 	ands r4, r0
 	cmp r4, #0
 	beq _08086410
-	ldr r0, _0808640C @ =0x0858E218
+	ldr r0, _0808640C @ =sOam_58e218
 	b _0808644A
 	.align 2, 0
-_0808640C: .4byte 0x0858E218
+_0808640C: .4byte sOam_58e218
 _08086410:
-	ldr r0, _08086414 @ =0x0858DFAC
+	ldr r0, _08086414 @ =sOam_58dfac
 	b _0808644A
 	.align 2, 0
-_08086414: .4byte 0x0858DFAC
+_08086414: .4byte sOam_58dfac
 _08086418:
 	ldrb r1, [r2]
 	movs r0, #0x20
@@ -10582,33 +10582,33 @@ _08086420:
 	ands r4, r0
 	cmp r4, #0
 	beq _08086430
-	ldr r0, _0808642C @ =0x0858E228
+	ldr r0, _0808642C @ =sOam_58e228
 	b _0808644A
 	.align 2, 0
-_0808642C: .4byte 0x0858E228
+_0808642C: .4byte sOam_58e228
 _08086430:
-	ldr r0, _08086434 @ =0x0858DFC4
+	ldr r0, _08086434 @ =sOam_58dfc4
 	b _0808644A
 	.align 2, 0
-_08086434: .4byte 0x0858DFC4
+_08086434: .4byte sOam_58dfc4
 _08086438:
 	movs r0, #0x10
 	ands r4, r0
 	cmp r4, #0
 	beq _08086448
-	ldr r0, _08086444 @ =0x0858E208
+	ldr r0, _08086444 @ =sOam_58e208
 	b _0808644A
 	.align 2, 0
-_08086444: .4byte 0x0858E208
+_08086444: .4byte sOam_58e208
 _08086448:
-	ldr r0, _08086454 @ =0x0858DF94
+	ldr r0, _08086454 @ =sOam_58df94
 _0808644A:
 	str r0, [r2, #4]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08086454: .4byte 0x0858DF94
+_08086454: .4byte sOam_58df94
 
 	thumb_func_start ProjectileChargedWaveBeamSubroutine
 ProjectileChargedWaveBeamSubroutine: @ 0x08086458
@@ -10743,29 +10743,29 @@ _08086564:
 	ands r4, r0
 	cmp r4, #0
 	beq _0808657C
-	ldr r0, _08086578 @ =0x0858E1E8
+	ldr r0, _08086578 @ =sOam_58e1e8
 	b _080865CE
 	.align 2, 0
-_08086578: .4byte 0x0858E1E8
+_08086578: .4byte sOam_58e1e8
 _0808657C:
-	ldr r0, _08086580 @ =0x0858DF74
+	ldr r0, _08086580 @ =sOam_58df74
 	b _080865CE
 	.align 2, 0
-_08086580: .4byte 0x0858DF74
+_08086580: .4byte sOam_58df74
 _08086584:
 	movs r0, #0x10
 	ands r4, r0
 	cmp r4, #0
 	beq _08086594
-	ldr r0, _08086590 @ =0x0858E1E8
+	ldr r0, _08086590 @ =sOam_58e1e8
 	b _080865CE
 	.align 2, 0
-_08086590: .4byte 0x0858E1E8
+_08086590: .4byte sOam_58e1e8
 _08086594:
-	ldr r0, _08086598 @ =0x0858DF74
+	ldr r0, _08086598 @ =sOam_58df74
 	b _080865CE
 	.align 2, 0
-_08086598: .4byte 0x0858DF74
+_08086598: .4byte sOam_58df74
 _0808659C:
 	ldrb r1, [r2]
 	movs r0, #0x20
@@ -10776,33 +10776,33 @@ _080865A4:
 	ands r4, r0
 	cmp r4, #0
 	beq _080865B4
-	ldr r0, _080865B0 @ =0x0858E1F8
+	ldr r0, _080865B0 @ =sOam_58e1f8
 	b _080865CE
 	.align 2, 0
-_080865B0: .4byte 0x0858E1F8
+_080865B0: .4byte sOam_58e1f8
 _080865B4:
-	ldr r0, _080865B8 @ =0x0858DF84
+	ldr r0, _080865B8 @ =sOam_58df84
 	b _080865CE
 	.align 2, 0
-_080865B8: .4byte 0x0858DF84
+_080865B8: .4byte sOam_58df84
 _080865BC:
 	movs r0, #0x10
 	ands r4, r0
 	cmp r4, #0
 	beq _080865CC
-	ldr r0, _080865C8 @ =0x0858E1D8
+	ldr r0, _080865C8 @ =sOam_58e1d8
 	b _080865CE
 	.align 2, 0
-_080865C8: .4byte 0x0858E1D8
+_080865C8: .4byte sOam_58e1d8
 _080865CC:
-	ldr r0, _080865D8 @ =0x0858DF64
+	ldr r0, _080865D8 @ =sOam_58df64
 _080865CE:
 	str r0, [r2, #4]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080865D8: .4byte 0x0858DF64
+_080865D8: .4byte sOam_58df64
 
 	thumb_func_start ProjectileWaveBeamSubroutine
 ProjectileWaveBeamSubroutine: @ 0x080865DC
@@ -10886,7 +10886,7 @@ _08086670: @ jump table
 _08086684:
 	ldr r1, _0808669C @ =0x040000D4
 	lsls r2, r2, #8
-	ldr r0, _080866A0 @ =sFlareDiagonalGfx
+	ldr r0, _080866A0 @ =sFlareDiagonalGfx_Top
 	adds r0, r2, r0
 	str r0, [r1]
 	ldr r0, _080866A4 @ =0x06011280
@@ -10894,18 +10894,18 @@ _08086684:
 	ldr r3, _080866A8 @ =0x80000080
 	str r3, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _080866AC @ =0x0858FA78
+	ldr r0, _080866AC @ =sFlareDiagonalGfx_Bottom
 	b _080866F2
 	.align 2, 0
 _0808669C: .4byte 0x040000D4
-_080866A0: .4byte sFlareDiagonalGfx
+_080866A0: .4byte sFlareDiagonalGfx_Top
 _080866A4: .4byte 0x06011280
 _080866A8: .4byte 0x80000080
-_080866AC: .4byte 0x0858FA78
+_080866AC: .4byte sFlareDiagonalGfx_Bottom
 _080866B0:
 	ldr r1, _080866C8 @ =0x040000D4
 	lsls r2, r2, #8
-	ldr r0, _080866CC @ =sFlareVerticalGfx
+	ldr r0, _080866CC @ =sFlareVerticalGfx_Top
 	adds r0, r2, r0
 	str r0, [r1]
 	ldr r0, _080866D0 @ =0x06011280
@@ -10913,18 +10913,18 @@ _080866B0:
 	ldr r3, _080866D4 @ =0x80000080
 	str r3, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _080866D8 @ =0x08590478
+	ldr r0, _080866D8 @ =sFlareVerticalGfx_Bottom
 	b _080866F2
 	.align 2, 0
 _080866C8: .4byte 0x040000D4
-_080866CC: .4byte sFlareVerticalGfx
+_080866CC: .4byte sFlareVerticalGfx_Top
 _080866D0: .4byte 0x06011280
 _080866D4: .4byte 0x80000080
-_080866D8: .4byte 0x08590478
+_080866D8: .4byte sFlareVerticalGfx_Bottom
 _080866DC:
 	ldr r1, _08086704 @ =0x040000D4
 	lsls r2, r2, #8
-	ldr r0, _08086708 @ =sFlareHorizontalGfx
+	ldr r0, _08086708 @ =sFlareHorizontalGfx_Top
 	adds r0, r2, r0
 	str r0, [r1]
 	ldr r0, _0808670C @ =0x06011280
@@ -10932,7 +10932,7 @@ _080866DC:
 	ldr r3, _08086710 @ =0x80000080
 	str r3, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08086714 @ =0x0858F078
+	ldr r0, _08086714 @ =sFlareHorizontalGfx_Bottom
 _080866F2:
 	adds r2, r2, r0
 	str r2, [r1]
@@ -10944,10 +10944,10 @@ _080866F2:
 	bx r0
 	.align 2, 0
 _08086704: .4byte 0x040000D4
-_08086708: .4byte sFlareHorizontalGfx
+_08086708: .4byte sFlareHorizontalGfx_Top
 _0808670C: .4byte 0x06011280
 _08086710: .4byte 0x80000080
-_08086714: .4byte 0x0858F078
+_08086714: .4byte sFlareHorizontalGfx_Bottom
 _08086718: .4byte 0x06011680
 
 	thumb_func_start ProjectileFlareInit

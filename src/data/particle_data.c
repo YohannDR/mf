@@ -1929,7 +1929,7 @@ const struct FrameData sParticleOam_ChargedDiffusionMissileExplosion[7] = {
     [6] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_3eace4[6] = {
+const struct FrameData sDiffusionFlakeOam[6] = {
     [0] = {
         .pFrame = sParticleOam_IceMissileExplosion_Frame0,
         .timer = 4

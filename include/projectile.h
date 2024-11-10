@@ -69,7 +69,7 @@ void ProjectileMissileInit(u8 type);
 void ProjectileMoveTumblingMissile(void);
 void ProjectileNormalMissileSubroutine(void);
 void ProjectileSuperMissileSubroutine(void);
-void ProjectileIceMissilesSubroutine(void);
+void ProjectileIceMissileSubroutine(void);
 void ProjectileDiffusionMissileSubroutine(void);
 void ProjectileDiffusionFlakeSubroutine(void);
 void ProjectileCheckSamusBombBounce(void);

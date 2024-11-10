@@ -136,8 +136,13 @@ def ParseFrameData(spriteName):
 file = open("../mf_us_baserom.gba", "rb")
 
 def Func():
-    spriteId = int(input("Primary sprite ID or first OAM entry pointer (in hex) : "), 16)
+    spriteId = int(input("Primary sprite ID or first OAM entry pointer (in hex): "), 16)
+    stopRepeatAddr = input("Repeat until this address (leave it blank to not repeat): ")
     spriteName = input("Name of sprite: ")
+    if stopRepeatAddr == "":
+        stopRepeatAddr = 0
+    else:
+        stopRepeatAddr = int(stopRepeatAddr, 16) & 0x1ffffff
 
     if spriteId >= 0x100:
         file.seek(spriteId & 0x1ffffff)
@@ -161,36 +166,44 @@ def Func():
 
     frames = set()
     output = ""
-    while True:
-        currentAddr = file.tell()
-        if currentAddr % 4 != 0:
-            file.read(4 - (currentAddr % 4)) # align
-        pointer = int.from_bytes(file.read(4), 'little')
-        if pointer in frames:
-            file.seek(file.tell()-4)
-            break
-        file.seek(currentAddr)
-        frames |= {currentAddr | 0x8000000}
-        output += ParseOam() + '\n'
-
     animations = []
     namedFrames = {}
-    while True:
-        currentAddr = file.tell()
-        pointer = int.from_bytes(file.read(4), 'little')
-        file.seek(currentAddr)
-        if pointer not in frames:
-            break
+    gaps = {}
 
-        (result, frameData) = ParseFrameData(spriteName)
-        output += result + '\n'
-        animations.append((currentAddr, len(frameData)+1))
-        for i in range(len(frameData)):
-            if frameData[i][0] not in namedFrames:
-                namedFrames[frameData[i][0]] = f"s{spriteName}Oam_{currentAddr:x}_Frame{i}"
+    while True:
+        while True:
+            currentAddr = file.tell()
+            if currentAddr % 4 != 0:
+                file.read(4 - (currentAddr % 4)) # align
+            pointer = int.from_bytes(file.read(4), 'little')
+            if pointer in frames:
+                file.seek(file.tell()-4)
+                break
+            file.seek(currentAddr)
+            frames |= {currentAddr | 0x8000000}
+            output += ParseOam() + '\n'
+
+        while True:
+            currentAddr = file.tell()
+            pointer = int.from_bytes(file.read(4), 'little')
+            file.seek(currentAddr)
+            if pointer not in frames:
+                break
+
+            (result, frameData) = ParseFrameData(spriteName)
+            output += result + '\n'
+            animations.append((currentAddr, len(frameData)+1))
+            for i in range(len(frameData)):
+                if frameData[i][0] not in namedFrames:
+                    namedFrames[frameData[i][0]] = f"s{spriteName}Oam_{currentAddr:x}_Frame{i}"
+
+        animations.append((file.tell(), 0)) # leave a gap in extern
+        if file.tell() >= stopRepeatAddr:
+            break
 
     for (addr, name) in namedFrames.items():
         output = output.replace(f"sOam_{addr:x}", name)
+
     print(output)
 
     if spriteId < 0x100:
@@ -198,9 +211,12 @@ def Func():
         print(f"extern const u16 s{spriteName}Pal[16 * {rows}];\n")
 
     for (addr, count) in animations:
-        print(f"extern const struct FrameData s{spriteName}Oam_{addr:x}[{count}];")
+        if count == 0:
+            print("") # gap
+        else:
+            print(f"extern const struct FrameData s{spriteName}Oam_{addr:x}[{count}];")
 
-    print(f"\nEnd: {file.tell():x}\n")
+    print(f"End: {file.tell():x}\n")
     Func()
 
 Func()

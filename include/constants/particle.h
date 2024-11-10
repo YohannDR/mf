@@ -76,4 +76,7 @@ enum ParticleId {
     PE_END
 };
 
+#define PARTICLE_STATUS_NONE               0
+#define PARTICLE_STATUS_EXISTS             (1 << 0)
+
 #endif /* PARTICLE_CONSTANTS_H */
