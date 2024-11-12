@@ -5,10 +5,10 @@ def toPixels(value):
     return value//4
 
 bodyPartNames = [
-    "RIDLEY_PART_0",
-    "RIDLEY_PART_1",
-    "RIDLEY_PART_2",
-    "RIDLEY_PART_3",
+    "RIDLEY_PART_FRONT_WING",
+    "RIDLEY_PART_TAIL_START",
+    "RIDLEY_PART_BODY",
+    "RIDLEY_PART_BACK_WING",
 
     "RIDLEY_PART_END"
 ]
@@ -21,7 +21,7 @@ tailPartNames = [
     "RIDLEY_TAIL_PART_4",
     "RIDLEY_TAIL_PART_5",
     "RIDLEY_TAIL_PART_6",
-    "RIDLEY_TAIL_PART_7",
+    "RIDLEY_TAIL_PART_TIP",
 
     "RIDLEY_TAIL_PART_END"
 ]

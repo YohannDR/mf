@@ -105,7 +105,7 @@ void ZebesianGroundInit(void) {
     gCurrentSprite.drawDistanceTop = 0x38;
     gCurrentSprite.drawDistanceBottom = 0;
     gCurrentSprite.drawDistanceHorizontal = 0x20;
-    gCurrentSprite.pOam = sZebesianGroundOam_35c190;
+    gCurrentSprite.pOam = sZebesianGroundOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work2 = FALSE;
@@ -174,14 +174,14 @@ void ZebesianGroundTurningIntoX(void) {
 void ZebesianGroundFallingInit(void) {
     gCurrentSprite.pose = 0x16;
     gCurrentSprite.work4 = 0;
-    gCurrentSprite.pOam = sZebesianGroundOam_35c200;
+    gCurrentSprite.pOam = sZebesianGroundOam_Falling;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     ZebesianGroundSetIdleHitbox();
 }
 
 void ZebesianGroundIdleInit(void) {
-    gCurrentSprite.pOam = sZebesianGroundOam_35c190;
+    gCurrentSprite.pOam = sZebesianGroundOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 2;
@@ -272,7 +272,7 @@ void ZebesianGroundIdle(void) {
 
 void ZebesianGroundTurningAroundInit(void) {
     gCurrentSprite.pose = 4;
-    gCurrentSprite.pOam = sZebesianGroundOam_35c328;
+    gCurrentSprite.pOam = sZebesianGroundOam_TurningAround;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -280,7 +280,7 @@ void ZebesianGroundTurningAroundInit(void) {
 void ZebesianGroundTurningAround(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.pose = 5;
-        gCurrentSprite.pOam = sZebesianGroundOam_35c348;
+        gCurrentSprite.pOam = sZebesianGroundOam_TurningAroundSecondPart;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.status ^= SS_X_FLIP;
@@ -298,7 +298,7 @@ void ZebesianGroundTurningAroundSecondPart(void) {
 }
 
 void ZebesianGroundJumpWarningInit(void) {
-    gCurrentSprite.pOam = sZebesianGroundOam_35c2d8;
+    gCurrentSprite.pOam = sZebesianGroundOam_StartJumping;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x18;
@@ -306,7 +306,7 @@ void ZebesianGroundJumpWarningInit(void) {
 
 void ZebesianGroundJumpWarning(void) {
     if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
-        gCurrentSprite.pOam = sZebesianGroundOam_35c300;
+        gCurrentSprite.pOam = sZebesianGroundOam_Jumping;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x1a;
@@ -392,7 +392,7 @@ void ZebesianGroundJumping(void) {
 }
 
 void ZebesianGroundLandingInit(void) {
-    gCurrentSprite.pOam = sZebesianGroundOam_35c310;
+    gCurrentSprite.pOam = sZebesianGroundOam_Landing;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x1c;
@@ -433,7 +433,7 @@ void ZebesianGroundLanding(void) {
 }
 
 void ZebesianGroundWaitingInit(void) {
-    gCurrentSprite.pOam = sZebesianGroundOam_35c1d8;
+    gCurrentSprite.pOam = sZebesianGroundOam_Waiting;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 8;
@@ -445,7 +445,7 @@ void ZebesianGroundWaiting(void) {
 }
 
 void ZebesianGroundStandingInit(void) {
-    gCurrentSprite.pOam = sZebesianGroundOam_35c1d8;
+    gCurrentSprite.pOam = sZebesianGroundOam_Waiting;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 10;
@@ -465,10 +465,10 @@ void ZebesianGroundShootingInit(void) {
     gCurrentSprite.work1 = 70;
     if (SpriteUtilCheckSamusCrouchingOrMorphed()) {
         gCurrentSprite.work2 = TRUE;
-        gCurrentSprite.pOam = sZebesianGroundOam_35c278;
+        gCurrentSprite.pOam = sZebesianGroundOam_ShootingWhileCrouching;
     } else {
         gCurrentSprite.work2 = FALSE;
-        gCurrentSprite.pOam = sZebesianGroundOam_35c210;
+        gCurrentSprite.pOam = sZebesianGroundOam_ShootingWhileStanding;
     }
     ZebesianGroundSetShootingHitbox();
 }
@@ -508,7 +508,7 @@ void ZebesianGroundShooting(void) {
 }
 
 void ZebesianGroundShootingEndInit(void) {
-    gCurrentSprite.pOam = sZebesianGroundOam_35c1d8;
+    gCurrentSprite.pOam = sZebesianGroundOam_Waiting;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x2c;
@@ -550,7 +550,7 @@ void ZebesianGroundBeamInit(void) {
     gCurrentSprite.drawDistanceHorizontal = 0x30;
     gCurrentSprite.hitboxTop = -8;
     gCurrentSprite.hitboxBottom = 8;
-    gCurrentSprite.pOam = sZebesianGroundOam_35c398;
+    gCurrentSprite.pOam = sZebesianGroundBeamOam_Spawning;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 2;
@@ -570,7 +570,7 @@ void ZebesianGroundBeamInit(void) {
 
 void ZebesianGroundBeamSpawning(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-        gCurrentSprite.pOam = sZebesianGroundOam_35c3c0;
+        gCurrentSprite.pOam = sZebesianGroundBeamOam_SpawningSecondPart;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x18;
@@ -584,9 +584,9 @@ void ZebesianGroundBeamSpawning(void) {
     }
 }
 
-void ZebesianGroundBeamFired(void) {
+void ZebesianGroundBeamSpawningSecondPart(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-        gCurrentSprite.pOam = sZebesianGroundOam_35c368;
+        gCurrentSprite.pOam = sZebesianGroundBeamOam_Fired;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x1a;
@@ -718,7 +718,7 @@ void ZebesianGroundBeam(void) {
             ZebesianGroundBeamSpawning();
             break;
         case 0x18:
-            ZebesianGroundBeamFired();
+            ZebesianGroundBeamSpawningSecondPart();
     }
     if (gCurrentSprite.status & SS_X_FLIP)
         gCurrentSprite.xPosition += 10;

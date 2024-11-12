@@ -9842,8 +9842,8 @@ _08085E38:
 	.align 2, 0
 _08085E40: .4byte gCurrentProjectile
 
-	thumb_func_start ProjectileChargedWideBeaminit
-ProjectileChargedWideBeaminit: @ 0x08085E44
+	thumb_func_start ProjectileChargedWideBeamInit
+ProjectileChargedWideBeamInit: @ 0x08085E44
 	push {lr}
 	movs r0, #0xee
 	bl SoundPlay
@@ -9974,7 +9974,7 @@ _08085F3C:
 	.align 2, 0
 _08085F54: .4byte gCurrentProjectile
 _08085F58:
-	bl ProjectileChargedWideBeaminit
+	bl ProjectileChargedWideBeamInit
 	b _08085F64
 _08085F5E:
 	movs r0, #0x10

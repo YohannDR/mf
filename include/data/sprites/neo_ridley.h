@@ -43,10 +43,10 @@ enum RidleyOam {
 };
 
 enum RidleyPart {
-    RIDLEY_PART_0,
-    RIDLEY_PART_1,
-    RIDLEY_PART_2,
-    RIDLEY_PART_3,
+    RIDLEY_PART_FRONT_WING,
+    RIDLEY_PART_TAIL_START,
+    RIDLEY_PART_BODY,
+    RIDLEY_PART_BACK_WING,
 
     RIDLEY_PART_END
 };
@@ -59,7 +59,7 @@ enum RidleyTailPart {
     RIDLEY_TAIL_PART_4,
     RIDLEY_TAIL_PART_5,
     RIDLEY_TAIL_PART_6,
-    RIDLEY_TAIL_PART_7,
+    RIDLEY_TAIL_PART_TIP,
 
     RIDLEY_TAIL_PART_END
 };
@@ -103,8 +103,8 @@ extern const struct FrameData sRidleyPartOam_3af450[3];
 extern const struct FrameData sRidleyPartOam_3af468[3];
 extern const struct FrameData sRidleyPartOam_3af480[3];
 extern const struct FrameData sRidleyPartOam_3af498[2];
-extern const struct FrameData sRidleyPartOam_3af4a8[2];
-extern const struct FrameData sRidleyPartOam_3af4b8[2];
+extern const struct FrameData sRidleyPartOam_TailSegment[2];
+extern const struct FrameData sRidleyPartOam_TailTip[2];
 extern const struct FrameData sRidleyPartOam_3af4c8[12];
 extern const struct FrameData sRidleyPartOam_3af528[12];
 extern const struct FrameData sRidleyPartOam_3af588[12];

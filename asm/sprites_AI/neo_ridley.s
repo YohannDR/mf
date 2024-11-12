@@ -3066,8 +3066,8 @@ _0805A82C: .4byte sRidleyMultiSpriteData_3a9b1c
 _0805A830: .4byte gSpriteData
 _0805A834: .4byte sRidleyMultiSpriteData_3a9c1c
 
-	thumb_func_start RidleyTailPartWaitingTOWindUp
-RidleyTailPartWaitingTOWindUp: @ 0x0805A838
+	thumb_func_start RidleyTailPartWaitingToWindUp
+RidleyTailPartWaitingToWindUp: @ 0x0805A838
 	push {lr}
 	bl SpriteUtilCheckEndSubSpriteData2Anim
 	cmp r0, #0
@@ -3672,11 +3672,11 @@ _0805ACF8:
 	ands r0, r1
 	cmp r0, #0
 	beq _0805AD24
-	ldr r0, _0805AD20 @ =sRidleyPartOam_3af4b8
+	ldr r0, _0805AD20 @ =sRidleyPartOam_TailTip
 	b _0805AD26
 	.align 2, 0
 _0805AD1C: .4byte gSpriteData
-_0805AD20: .4byte sRidleyPartOam_3af4b8
+_0805AD20: .4byte sRidleyPartOam_TailTip
 _0805AD24:
 	ldr r0, _0805AD3C @ =sRidleyPartOam_3af800
 _0805AD26:
@@ -4420,7 +4420,7 @@ _0805B384:
 	ands r0, r1
 	movs r1, #0
 	strh r0, [r4]
-	ldr r0, _0805B3D4 @ =sRidleyPartOam_3af4b8
+	ldr r0, _0805B3D4 @ =sRidleyPartOam_TailTip
 	str r0, [r4, #0x18]
 	strb r1, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -4458,7 +4458,7 @@ _0805B3C6:
 	mov pc, r0
 	.align 2, 0
 _0805B3D0: .4byte 0x0000FFBF
-_0805B3D4: .4byte sRidleyPartOam_3af4b8
+_0805B3D4: .4byte sRidleyPartOam_TailTip
 _0805B3D8: .4byte gSubSpriteData1
 _0805B3DC: .4byte sRidleyMultiSpriteData_3a9a14
 _0805B3E0: .4byte gSubSpriteData2
@@ -4543,7 +4543,7 @@ _0805B50E:
 	bl RidleyTailPartIdle
 	b _0805B542
 _0805B514:
-	bl RidleyTailPartWaitingTOWindUp
+	bl RidleyTailPartWaitingToWindUp
 	b _0805B542
 _0805B51A:
 	bl RidleyTailPartWindingUp1

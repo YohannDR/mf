@@ -30,13 +30,13 @@
 
 #define ARACHNUS_PROJECTILE_POSE_ARACHNUS_DYING 0x38
 
-#define mArachnusAttackTimer gCurrentSprite.work1
-#define mArachnusShellSlot gCurrentSprite.work2
-#define mArachnusRollingSpeedIndex gCurrentSprite.work3
-#define mArachnusFallingSpeedIndex gCurrentSprite.work4
+#define ARACHNUS_ATTACK_TIMER gCurrentSprite.work1
+#define ARACHNUS_SHELL_SLOT gCurrentSprite.work2
+#define ARACHNUS_ROLLING_SPEED_INDEX gCurrentSprite.work3
+#define ARACHNUS_FALLING_SPEED_INDEX gCurrentSprite.work4
 
-#define mArachnusProjectileTimer gCurrentSprite.work1
-#define mArachnusSlashTrailSlot gCurrentSprite.work2
+#define ARACHNUS_PROJECTILE_TIMER gCurrentSprite.work1
+#define ARACHNUS_SLASH_TRAIL_SLOT gCurrentSprite.work2
 
 void Arachnus(void);
 void ArachnusShell(void);

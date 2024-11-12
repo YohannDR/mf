@@ -81,7 +81,7 @@ void ProjectileChargedChargeBeamInit(void);
 void ProjectileChargedChargeBeamSubroutine(void);
 void ProjectileChargeBeamInit(void);
 void ProjectileChargeBeamSubroutine(void);
-void ProjectileChargedWideBeaminit(void);
+void ProjectileChargedWideBeamInit(void);
 void ProjectileChargedWideBeamSubroutine(void);
 void ProjectileWideBeamInit(void);
 void ProjectileWideBeamSubroutine(void);

@@ -2287,11 +2287,11 @@ void ProjectileNormalBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPositi
     if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
     {
         ProjectileSetIsftForSolid(spriteSlot);
-        ParticleSet(yPosition, xPosition, 0x3);
+        ParticleSet(yPosition, xPosition, PE_NORMAL_BEAM_HIT);
     }
     else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
     {
-        ParticleSet(yPosition, xPosition, 0x7);
+        ParticleSet(yPosition, xPosition, PE_INVINCIBLE_HIT);
     }
     else if (ProjectileGetSpriteWeakness(spriteSlot) & WEAKNESS_BEAM_BOMBS)
     {
@@ -2302,12 +2302,12 @@ void ProjectileNormalBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPositi
             ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
         }
 
-        ParticleSet(yPosition, xPosition, 0x3);
+        ParticleSet(yPosition, xPosition, PE_NORMAL_BEAM_HIT);
     }
     else
     {
         ProjectileSetIsftForSolid(spriteSlot);
-        ParticleSet(yPosition, xPosition, 0x7);
+        ParticleSet(yPosition, xPosition, PE_INVINCIBLE_HIT);
     }
 
     gProjectileData[projectileSlot].status = 0;
@@ -2369,11 +2369,11 @@ void ProjectileChargeBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPositi
     if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
     {
         ProjectileSetIsftForSolid(spriteSlot);
-        ParticleSet(yPosition, xPosition, 0x4);
+        ParticleSet(yPosition, xPosition, PE_CHARGE_BEAM_HIT);
     }
     else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
     {
-        ParticleSet(yPosition, xPosition, 0x7);
+        ParticleSet(yPosition, xPosition, PE_INVINCIBLE_HIT);
     }
     else if (ProjectileGetSpriteWeakness(spriteSlot) & WEAKNESS_BEAM_BOMBS)
     {
@@ -2384,12 +2384,12 @@ void ProjectileChargeBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPositi
             ProjectileRandomSpriteDebris(1, isft, yPosition, xPosition);
         }
 
-        ParticleSet(yPosition, xPosition, 0x4);
+        ParticleSet(yPosition, xPosition, PE_CHARGE_BEAM_HIT);
     }
     else
     {
         ProjectileSetIsftForSolid(spriteSlot);
-        ParticleSet(yPosition, xPosition, 0x7);
+        ParticleSet(yPosition, xPosition, PE_INVINCIBLE_HIT);
     }
 
     if (gProjectileData[projectileSlot].status & PROJ_STATUS_NOT_DRAWN)
@@ -3550,7 +3550,7 @@ void ProjectileDiffusionMissileSubroutine(void)
 void ProjectileDiffusionFlakeSubroutine(void)
 {
     s16 distance;
-    u32 direction;
+    u32 angle;
     s16 sin, cos;
     u16 offset;
 
@@ -3577,11 +3577,11 @@ void ProjectileDiffusionFlakeSubroutine(void)
 
     gCurrentProjectile.direction += 2;
     distance = gCurrentProjectile.direction * 2;
-    direction = gCurrentProjectile.part;
+    angle = gCurrentProjectile.part;
     gCurrentProjectile.part += 8;
 
-    sin = SIN(direction);
-    if (SIN(direction) < 0) {
+    sin = SIN(angle);
+    if (sin < 0) {
         offset = Q_8_8_TO_INT(distance * -sin);
         gCurrentProjectile.yPosition = gProjectileData[primarySlot].yPosition - offset;
     } else {
@@ -3589,8 +3589,8 @@ void ProjectileDiffusionFlakeSubroutine(void)
         gCurrentProjectile.yPosition = gProjectileData[primarySlot].yPosition + offset;
     }
 
-    cos = COS(direction);
-    if (COS(direction) < 0) {
+    cos = COS(angle);
+    if (cos < 0) {
         offset = Q_8_8_TO_INT(-cos * distance);
         gCurrentProjectile.xPosition = gProjectileData[primarySlot].xPosition - offset;
     } else {
@@ -3780,7 +3780,7 @@ void ProjectileChargeBeamSubroutine(void)
 
 }
 
-void ProjectileChargedWideBeaminit(void)
+void ProjectileChargedWideBeamInit(void)
 {
 
 }

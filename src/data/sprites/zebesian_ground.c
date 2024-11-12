@@ -12,7 +12,7 @@ const s16 sZebesianGroundJumpingSpeedLow[10] = {
 const u32 sZebesianGroundGfx[512 * 3] = INCBIN_U32("data/sprites/zebesian_ground.gfx");
 const u16 sZebesianGroundPal[16 * 3] = INCBIN_U16("data/sprites/zebesian_ground.pal");
 
-static const u16 sZebesianGroundOam_35c190_Frame0[] = {
+static const u16 sZebesianGroundOam_Idle_Frame0[] = {
     12,
     OBJ_SHAPE_HORIZONTAL | 0xdf, OBJ_SIZE_32x16 | 0x1ec, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd4, 0x1fc, OBJ_PALETTE_8 | 0x204,
@@ -28,7 +28,7 @@ static const u16 sZebesianGroundOam_35c190_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xde, OBJ_SIZE_32x16 | 0x1e9, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c190_Frame1[] = {
+static const u16 sZebesianGroundOam_Idle_Frame1[] = {
     11,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1eb, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd6, 0x1fc, OBJ_PALETTE_8 | 0x205,
@@ -43,7 +43,7 @@ static const u16 sZebesianGroundOam_35c190_Frame1[] = {
     OBJ_SHAPE_HORIZONTAL | 0xde, OBJ_SIZE_32x16 | 0x1ea, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c190_Frame2[] = {
+static const u16 sZebesianGroundOam_Idle_Frame2[] = {
     11,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1ec, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd6, 0x1fc, OBJ_PALETTE_8 | 0x205,
@@ -58,7 +58,7 @@ static const u16 sZebesianGroundOam_35c190_Frame2[] = {
     OBJ_SHAPE_HORIZONTAL | 0xde, OBJ_SIZE_32x16 | 0x1e9, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c190_Frame3[] = {
+static const u16 sZebesianGroundOam_Idle_Frame3[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0xdf, OBJ_SIZE_32x16 | 0x1ec, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd4, 0x1fc, OBJ_PALETTE_8 | 0x205,
@@ -75,7 +75,7 @@ static const u16 sZebesianGroundOam_35c190_Frame3[] = {
     OBJ_SHAPE_HORIZONTAL | 0xde, OBJ_SIZE_32x16 | 0x1e9, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c190_Frame4[] = {
+static const u16 sZebesianGroundOam_Idle_Frame4[] = {
     12,
     OBJ_SHAPE_HORIZONTAL | 0xdf, OBJ_SIZE_32x16 | 0x1ec, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd4, 0x1fc, OBJ_PALETTE_8 | 0x204,
@@ -91,7 +91,7 @@ static const u16 sZebesianGroundOam_35c190_Frame4[] = {
     OBJ_SHAPE_HORIZONTAL | 0xdf, OBJ_SIZE_32x16 | 0x1e9, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c190_Frame5[] = {
+static const u16 sZebesianGroundOam_Idle_Frame5[] = {
     11,
     OBJ_SHAPE_HORIZONTAL | 0xdf, OBJ_SIZE_32x16 | 0x1ec, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd6, 0x1fc, OBJ_PALETTE_8 | 0x205,
@@ -106,7 +106,7 @@ static const u16 sZebesianGroundOam_35c190_Frame5[] = {
     OBJ_SHAPE_HORIZONTAL | 0xde, OBJ_SIZE_32x16 | 0x1e9, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c190_Frame6[] = {
+static const u16 sZebesianGroundOam_Idle_Frame6[] = {
     11,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1ed, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd6, 0x1fc, OBJ_PALETTE_8 | 0x205,
@@ -121,7 +121,7 @@ static const u16 sZebesianGroundOam_35c190_Frame6[] = {
     OBJ_SHAPE_HORIZONTAL | 0xde, OBJ_SIZE_32x16 | 0x1ea, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c190_Frame7[] = {
+static const u16 sZebesianGroundOam_Idle_Frame7[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0xdf, OBJ_SIZE_32x16 | 0x1ec, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd4, 0x1fc, OBJ_PALETTE_8 | 0x205,
@@ -138,7 +138,7 @@ static const u16 sZebesianGroundOam_35c190_Frame7[] = {
     OBJ_SHAPE_HORIZONTAL | 0xde, OBJ_SIZE_32x16 | 0x1e9, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c1d8_Frame0[] = {
+static const u16 sZebesianGroundOam_Waiting_Frame0[] = {
     12,
     OBJ_SHAPE_HORIZONTAL | 0xe2, OBJ_SIZE_32x16 | 0x1eb, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd8, 0x1fc, OBJ_PALETTE_8 | 0x204,
@@ -154,7 +154,7 @@ static const u16 sZebesianGroundOam_35c1d8_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xe1, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c1d8_Frame1[] = {
+static const u16 sZebesianGroundOam_Waiting_Frame1[] = {
     12,
     OBJ_SHAPE_HORIZONTAL | 0xe1, OBJ_SIZE_32x16 | 0x1eb, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd7, 0x1fc, OBJ_PALETTE_8 | 0x204,
@@ -170,7 +170,7 @@ static const u16 sZebesianGroundOam_35c1d8_Frame1[] = {
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c1d8_Frame2[] = {
+static const u16 sZebesianGroundOam_Waiting_Frame2[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1eb, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd6, 0x1fc, OBJ_PALETTE_8 | 0x204,
@@ -187,7 +187,7 @@ static const u16 sZebesianGroundOam_35c1d8_Frame2[] = {
     OBJ_SHAPE_HORIZONTAL | 0xdf, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c200_Frame0[] = {
+static const u16 sZebesianGroundOam_Falling_Frame0[] = {
     10,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1f2, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd7, 0x1fd, OBJ_PALETTE_8 | 0x206,
@@ -201,7 +201,7 @@ static const u16 sZebesianGroundOam_35c200_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0xf2, 0x1ff, OBJ_PALETTE_8 | 0x244
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame0[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame0[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0xe2, OBJ_SIZE_32x16 | 0x1ee, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd8, 0x1fd, OBJ_PALETTE_8 | 0x205,
@@ -218,7 +218,7 @@ static const u16 sZebesianGroundOam_35c210_Frame0[] = {
     0xd7, OBJ_SIZE_16x16 | 0x1f1, OBJ_PALETTE_8 | 0x202
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame1[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame1[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0xe4, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xd9, OBJ_X_FLIP | 0x1fe, OBJ_PALETTE_8 | 0x204,
@@ -235,7 +235,7 @@ static const u16 sZebesianGroundOam_35c210_Frame1[] = {
     0xd7, OBJ_SIZE_16x16 | 0x1f1, OBJ_PALETTE_8 | 0x202
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame2[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame2[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1e7, OBJ_PALETTE_8 | 0x283,
     OBJ_SHAPE_VERTICAL | 0xda, OBJ_X_FLIP | 0x1ff, OBJ_PALETTE_8 | 0x204,
@@ -253,7 +253,7 @@ static const u16 sZebesianGroundOam_35c210_Frame2[] = {
     0xd6, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_8 | 0x202
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame3[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame3[] = {
     15,
     OBJ_SHAPE_HORIZONTAL | 0xdf, OBJ_SIZE_32x16 | 0x1e7, OBJ_PALETTE_8 | 0x283,
     OBJ_SHAPE_VERTICAL | 0xd9, OBJ_X_FLIP | 0x1ff, OBJ_PALETTE_8 | 0x204,
@@ -272,7 +272,7 @@ static const u16 sZebesianGroundOam_35c210_Frame3[] = {
     0xd1, OBJ_SIZE_16x16 | 0x1f6, OBJ_PALETTE_8 | 0x253
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame4[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame4[] = {
     19,
     0xda, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x25b,
     0xda, 0x1f0, OBJ_PALETTE_8 | 0x258,
@@ -295,7 +295,7 @@ static const u16 sZebesianGroundOam_35c210_Frame4[] = {
     OBJ_SHAPE_HORIZONTAL | 0xe5, 0x1e1, OBJ_PALETTE_8 | 0x277
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame5[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame5[] = {
     21,
     0xda, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x25b,
     0xda, 0x1f0, OBJ_PALETTE_8 | 0x258,
@@ -320,7 +320,7 @@ static const u16 sZebesianGroundOam_35c210_Frame5[] = {
     OBJ_SHAPE_VERTICAL | 0xda, 0x1e2, OBJ_PALETTE_8 | 0x25d
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame6[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame6[] = {
     21,
     0xda, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x25b,
     0xda, 0x1f0, OBJ_PALETTE_8 | 0x258,
@@ -345,7 +345,7 @@ static const u16 sZebesianGroundOam_35c210_Frame6[] = {
     OBJ_SHAPE_VERTICAL | 0xda, 0x1df, OBJ_PALETTE_8 | 0x25e
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame7[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame7[] = {
     23,
     OBJ_SHAPE_VERTICAL | 0xd6, OBJ_Y_FLIP | 0x1f3, OBJ_PALETTE_8 | 0x25f,
     OBJ_SHAPE_VERTICAL | 0xe6, 0x1f3, OBJ_PALETTE_8 | 0x25f,
@@ -372,7 +372,7 @@ static const u16 sZebesianGroundOam_35c210_Frame7[] = {
     OBJ_SHAPE_HORIZONTAL | 0xe5, 0x1e1, OBJ_PALETTE_8 | 0x277
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame8[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame8[] = {
     19,
     0xda, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x25b,
     0xda, 0x1f1, OBJ_PALETTE_8 | 0x258,
@@ -395,7 +395,7 @@ static const u16 sZebesianGroundOam_35c210_Frame8[] = {
     OBJ_SHAPE_HORIZONTAL | 0xe5, 0x1e2, OBJ_PALETTE_8 | 0x277
 };
 
-static const u16 sZebesianGroundOam_35c210_Frame9[] = {
+static const u16 sZebesianGroundOam_ShootingWhileStanding_Frame9[] = {
     19,
     0xda, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x259,
     OBJ_SHAPE_HORIZONTAL | 0xea, 0x1f5, OBJ_PALETTE_8 | 0x277,
@@ -418,7 +418,7 @@ static const u16 sZebesianGroundOam_35c210_Frame9[] = {
     0xd5, 0x1dc, OBJ_PALETTE_8 | 0x258
 };
 
-static const u16 sZebesianGroundOam_35c278_Frame0[] = {
+static const u16 sZebesianGroundOam_ShootingWhileCrouching_Frame0[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0xe5, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_8 | 0x280,
     OBJ_SHAPE_VERTICAL | 0xda, OBJ_X_FLIP | 0x1fd, OBJ_PALETTE_8 | 0x204,
@@ -435,7 +435,7 @@ static const u16 sZebesianGroundOam_35c278_Frame0[] = {
     0xd7, OBJ_SIZE_16x16 | 0x1f4, OBJ_PALETTE_8 | 0x202
 };
 
-static const u16 sZebesianGroundOam_35c278_Frame1[] = {
+static const u16 sZebesianGroundOam_ShootingWhileCrouching_Frame1[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xe3, OBJ_SIZE_32x16 | 0x1e7, OBJ_PALETTE_8 | 0x283,
     0xdd, OBJ_SIZE_16x16 | 0x1fa, OBJ_PALETTE_8 | 0x207,
@@ -453,7 +453,7 @@ static const u16 sZebesianGroundOam_35c278_Frame1[] = {
     0xd9, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_8 | 0x202
 };
 
-static const u16 sZebesianGroundOam_35c278_Frame2[] = {
+static const u16 sZebesianGroundOam_ShootingWhileCrouching_Frame2[] = {
     18,
     0xe1, OBJ_SIZE_16x16 | 0x1f6, OBJ_PALETTE_8 | 0x25b,
     0xe1, 0x1ee, OBJ_PALETTE_8 | 0x258,
@@ -475,7 +475,7 @@ static const u16 sZebesianGroundOam_35c278_Frame2[] = {
     0xd9, OBJ_SIZE_16x16 | 0x1f4, OBJ_PALETTE_8 | 0x253
 };
 
-static const u16 sZebesianGroundOam_35c278_Frame3[] = {
+static const u16 sZebesianGroundOam_ShootingWhileCrouching_Frame3[] = {
     18,
     0xe8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x25b,
     0xe8, 0x1f0, OBJ_PALETTE_8 | 0x258,
@@ -497,7 +497,7 @@ static const u16 sZebesianGroundOam_35c278_Frame3[] = {
     0xdc, OBJ_SIZE_16x16 | 0x1f1, OBJ_PALETTE_8 | 0x255
 };
 
-static const u16 sZebesianGroundOam_35c278_Frame4[] = {
+static const u16 sZebesianGroundOam_ShootingWhileCrouching_Frame4[] = {
     20,
     0xe8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x25b,
     0xe8, 0x1f0, OBJ_PALETTE_8 | 0x258,
@@ -521,7 +521,7 @@ static const u16 sZebesianGroundOam_35c278_Frame4[] = {
     OBJ_SHAPE_VERTICAL | 0xe4, 0x1e4, OBJ_PALETTE_8 | 0x25d
 };
 
-static const u16 sZebesianGroundOam_35c278_Frame5[] = {
+static const u16 sZebesianGroundOam_ShootingWhileCrouching_Frame5[] = {
     20,
     0xe8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x25b,
     0xe8, 0x1f0, OBJ_PALETTE_8 | 0x258,
@@ -545,7 +545,7 @@ static const u16 sZebesianGroundOam_35c278_Frame5[] = {
     OBJ_SHAPE_VERTICAL | 0xe4, 0x1e1, OBJ_PALETTE_8 | 0x25e
 };
 
-static const u16 sZebesianGroundOam_35c278_Frame6[] = {
+static const u16 sZebesianGroundOam_ShootingWhileCrouching_Frame6[] = {
     22,
     OBJ_SHAPE_VERTICAL | 0xe5, OBJ_Y_FLIP | 0x1f3, OBJ_PALETTE_8 | 0x25f,
     OBJ_SHAPE_VERTICAL | 0xf5, 0x1f3, OBJ_PALETTE_8 | 0x25f,
@@ -571,7 +571,7 @@ static const u16 sZebesianGroundOam_35c278_Frame6[] = {
     0xdc, OBJ_SIZE_16x16 | 0x1f1, OBJ_PALETTE_8 | 0x255
 };
 
-static const u16 sZebesianGroundOam_35c278_Frame7[] = {
+static const u16 sZebesianGroundOam_ShootingWhileCrouching_Frame7[] = {
     18,
     0xe8, OBJ_SIZE_16x16 | 0x1fa, OBJ_PALETTE_8 | 0x25b,
     0xe8, 0x1f2, OBJ_PALETTE_8 | 0x258,
@@ -593,7 +593,7 @@ static const u16 sZebesianGroundOam_35c278_Frame7[] = {
     0xdd, OBJ_SIZE_16x16 | 0x1f2, OBJ_PALETTE_8 | 0x255
 };
 
-static const u16 sZebesianGroundOam_35c278_Frame8[] = {
+static const u16 sZebesianGroundOam_ShootingWhileCrouching_Frame8[] = {
     18,
     0xe8, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x259,
     OBJ_SHAPE_HORIZONTAL | 0xf8, 0x1f6, OBJ_PALETTE_8 | 0x277,
@@ -615,7 +615,7 @@ static const u16 sZebesianGroundOam_35c278_Frame8[] = {
     0xdc, OBJ_SIZE_16x16 | 0x1f1, OBJ_PALETTE_8 | 0x255
 };
 
-static const u16 sZebesianGroundOam_35c2d8_Frame0[] = {
+static const u16 sZebesianGroundOam_StartJumping_Frame0[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xeb, OBJ_SIZE_32x16 | 0x1f4, OBJ_PALETTE_8 | 0x280,
     0xe2, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_8 | 0x207,
@@ -633,7 +633,7 @@ static const u16 sZebesianGroundOam_35c2d8_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xe8, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x280
 };
 
-static const u16 sZebesianGroundOam_35c2d8_Frame1[] = {
+static const u16 sZebesianGroundOam_StartJumping_Frame1[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xe2, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x283,
     0xdc, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_8 | 0x207,
@@ -651,7 +651,7 @@ static const u16 sZebesianGroundOam_35c2d8_Frame1[] = {
     0xd8, OBJ_SIZE_16x16 | 0x1f1, OBJ_PALETTE_8 | 0x202
 };
 
-static const u16 sZebesianGroundOam_35c2d8_Frame2[] = {
+static const u16 sZebesianGroundOam_StartJumping_Frame2[] = {
     13,
     OBJ_SHAPE_VERTICAL | 0xca, OBJ_SIZE_16x32 | 0x1e6, OBJ_PALETTE_8 | 0x247,
     0xd9, OBJ_SIZE_16x16 | 0x1f1, OBJ_PALETTE_8 | 0x202,
@@ -668,7 +668,7 @@ static const u16 sZebesianGroundOam_35c2d8_Frame2[] = {
     OBJ_SHAPE_VERTICAL | 0xc1, OBJ_SIZE_16x32 | 0x1e9, OBJ_PALETTE_8 | 0x247
 };
 
-static const u16 sZebesianGroundOam_35c2d8_Frame3[] = {
+static const u16 sZebesianGroundOam_StartJumping_Frame3[] = {
     15,
     0xcf, 0x1eb, OBJ_PALETTE_8 | 0x28c,
     OBJ_SHAPE_VERTICAL | 0xd7, 0x1eb, OBJ_PALETTE_8 | 0x28b,
@@ -687,7 +687,7 @@ static const u16 sZebesianGroundOam_35c2d8_Frame3[] = {
     0xdb, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_8 | 0x202
 };
 
-static const u16 sZebesianGroundOam_35c300_Frame0[] = {
+static const u16 sZebesianGroundOam_Jumping_Frame0[] = {
     16,
     0xd4, 0x1eb, OBJ_PALETTE_8 | 0x28c,
     OBJ_SHAPE_VERTICAL | 0xdc, 0x1eb, OBJ_PALETTE_8 | 0x28b,
@@ -707,7 +707,7 @@ static const u16 sZebesianGroundOam_35c300_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0xda, 0x1ef, OBJ_PALETTE_8 | 0x28b
 };
 
-static const u16 sZebesianGroundOam_35c328_Frame1[] = {
+static const u16 sZebesianGroundOam_TurningAround_Frame1[] = {
     17,
     0xe1, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1f2, OBJ_PALETTE_8 | 0x293,
     0xd0, OBJ_SIZE_16x16 | 0x1ee, OBJ_PALETTE_8 | 0x297,
@@ -728,7 +728,7 @@ static const u16 sZebesianGroundOam_35c328_Frame1[] = {
     OBJ_SHAPE_VERTICAL | 0xd6, 0x1f3, OBJ_PALETTE_8 | 0x204
 };
 
-static const u16 sZebesianGroundOam_35c328_Frame2[] = {
+static const u16 sZebesianGroundOam_TurningAround_Frame2[] = {
     16,
     0xe1, OBJ_SIZE_16x16 | 0x1, OBJ_PALETTE_8 | 0x293,
     0xd0, OBJ_SIZE_16x16 | 0x1f3, OBJ_PALETTE_8 | 0x28d,
@@ -748,7 +748,7 @@ static const u16 sZebesianGroundOam_35c328_Frame2[] = {
     OBJ_SHAPE_VERTICAL | 0xd6, 0x1f4, OBJ_PALETTE_8 | 0x204
 };
 
-static const u16 sZebesianGroundOam_35c368_Frame3[] = {
+static const u16 sZebesianGroundBeamOam_Fired_Frame3[] = {
     4,
     0xfc, 0x1d0, OBJ_PALETTE_8 | 0x2ba,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1d8, OBJ_PALETTE_8 | 0x29c,
@@ -756,7 +756,7 @@ static const u16 sZebesianGroundOam_35c368_Frame3[] = {
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1e8, OBJ_PALETTE_8 | 0x29c
 };
 
-static const u16 sZebesianGroundOam_35c368_Frame0[] = {
+static const u16 sZebesianGroundBeamOam_Fired_Frame0[] = {
     4,
     0xfc, 0x1d0, OBJ_PALETTE_8 | 0x2bb,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1d8, OBJ_PALETTE_8 | 0x2bc,
@@ -764,7 +764,7 @@ static const u16 sZebesianGroundOam_35c368_Frame0[] = {
     0xfc, OBJ_X_FLIP | OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2bb
 };
 
-static const u16 sZebesianGroundOam_35c368_Frame4[] = {
+static const u16 sZebesianGroundBeamOam_Fired_Frame4[] = {
     4,
     0xfc, OBJ_Y_FLIP | 0x1d0, OBJ_PALETTE_8 | 0x2bb,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_Y_FLIP | 0x1d8, OBJ_PALETTE_8 | 0x2bc,
@@ -772,7 +772,7 @@ static const u16 sZebesianGroundOam_35c368_Frame4[] = {
     0xfc, OBJ_X_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2bb
 };
 
-static const u16 sZebesianGroundOam_35c368_Frame1[] = {
+static const u16 sZebesianGroundBeamOam_Fired_Frame1[] = {
     4,
     0xfc, OBJ_Y_FLIP | 0x1d0, OBJ_PALETTE_8 | 0x2ba,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_Y_FLIP | 0x1d8, OBJ_PALETTE_8 | 0x29c,
@@ -780,7 +780,7 @@ static const u16 sZebesianGroundOam_35c368_Frame1[] = {
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_Y_FLIP | 0x1e8, OBJ_PALETTE_8 | 0x29c
 };
 
-static const u16 sZebesianGroundOam_35c368_Frame2[] = {
+static const u16 sZebesianGroundBeamOam_Fired_Frame2[] = {
     4,
     0xfc, 0x1d0, OBJ_PALETTE_8 | 0x2ba,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1d8, OBJ_PALETTE_8 | 0x29a,
@@ -788,358 +788,358 @@ static const u16 sZebesianGroundOam_35c368_Frame2[] = {
     0xfc, OBJ_X_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2ba
 };
 
-static const u16 sZebesianGroundOam_35c398_Frame0[] = {
+static const u16 sZebesianGroundBeamOam_Spawning_Frame0[] = {
     2,
     0xfc, 0x1f0, OBJ_PALETTE_8 | 0x2ba,
     0xfc, OBJ_X_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2ba
 };
 
-static const u16 sZebesianGroundOam_35c398_Frame1[] = {
+static const u16 sZebesianGroundBeamOam_Spawning_Frame1[] = {
     2,
     0xfc, 0x1f0, OBJ_PALETTE_8 | 0x2bb,
     0xfc, OBJ_X_FLIP | OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2bb
 };
 
-static const u16 sZebesianGroundOam_35c398_Frame3[] = {
+static const u16 sZebesianGroundBeamOam_Spawning_Frame3[] = {
     2,
     0xfc, OBJ_Y_FLIP | 0x1f0, OBJ_PALETTE_8 | 0x2bb,
     0xfc, OBJ_X_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2bb
 };
 
-static const u16 sZebesianGroundOam_35c3c0_Frame0[] = {
+static const u16 sZebesianGroundBeamOam_SpawningSecondPart_Frame0[] = {
     3,
     0xfc, 0x1e0, OBJ_PALETTE_8 | 0x2ba,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1e8, OBJ_PALETTE_8 | 0x29c,
     0xfc, OBJ_X_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2ba
 };
 
-static const u16 sZebesianGroundOam_35c3c0_Frame3[] = {
+static const u16 sZebesianGroundBeamOam_SpawningSecondPart_Frame3[] = {
     3,
     0xfc, 0x1e0, OBJ_PALETTE_8 | 0x2bb,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1e8, OBJ_PALETTE_8 | 0x2bc,
     0xfc, OBJ_X_FLIP | OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2bb
 };
 
-static const u16 sZebesianGroundOam_35c3c0_Frame4[] = {
+static const u16 sZebesianGroundBeamOam_SpawningSecondPart_Frame4[] = {
     3,
     0xfc, OBJ_Y_FLIP | 0x1e0, OBJ_PALETTE_8 | 0x2bb,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_Y_FLIP | 0x1e8, OBJ_PALETTE_8 | 0x2bc,
     0xfc, OBJ_X_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2bb
 };
 
-static const u16 sZebesianGroundOam_35c3c0_Frame1[] = {
+static const u16 sZebesianGroundBeamOam_SpawningSecondPart_Frame1[] = {
     3,
     0xfc, OBJ_Y_FLIP | 0x1e0, OBJ_PALETTE_8 | 0x2ba,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_Y_FLIP | 0x1e8, OBJ_PALETTE_8 | 0x29c,
     0xfc, OBJ_X_FLIP | OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2ba
 };
 
-static const u16 sZebesianGroundOam_35c3c0_Frame2[] = {
+static const u16 sZebesianGroundBeamOam_SpawningSecondPart_Frame2[] = {
     3,
     0xfc, 0x1e0, OBJ_PALETTE_8 | 0x2ba,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1e8, OBJ_PALETTE_8 | 0x29a,
     0xfc, OBJ_X_FLIP | 0x1f8, OBJ_PALETTE_8 | 0x2ba
 };
 
-const struct FrameData sZebesianGroundOam_35c190[9] = {
+const struct FrameData sZebesianGroundOam_Idle[9] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c190_Frame0,
+        .pFrame = sZebesianGroundOam_Idle_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c190_Frame1,
+        .pFrame = sZebesianGroundOam_Idle_Frame1,
         .timer = 5
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c190_Frame2,
+        .pFrame = sZebesianGroundOam_Idle_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sZebesianGroundOam_35c190_Frame3,
+        .pFrame = sZebesianGroundOam_Idle_Frame3,
         .timer = 5
     },
     [4] = {
-        .pFrame = sZebesianGroundOam_35c190_Frame4,
+        .pFrame = sZebesianGroundOam_Idle_Frame4,
         .timer = 5
     },
     [5] = {
-        .pFrame = sZebesianGroundOam_35c190_Frame5,
+        .pFrame = sZebesianGroundOam_Idle_Frame5,
         .timer = 5
     },
     [6] = {
-        .pFrame = sZebesianGroundOam_35c190_Frame6,
+        .pFrame = sZebesianGroundOam_Idle_Frame6,
         .timer = 5
     },
     [7] = {
-        .pFrame = sZebesianGroundOam_35c190_Frame7,
+        .pFrame = sZebesianGroundOam_Idle_Frame7,
         .timer = 5
     },
     [8] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c1d8[5] = {
+const struct FrameData sZebesianGroundOam_Waiting[5] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c1d8_Frame0,
+        .pFrame = sZebesianGroundOam_Waiting_Frame0,
         .timer = 20
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c1d8_Frame1,
+        .pFrame = sZebesianGroundOam_Waiting_Frame1,
         .timer = 17
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c1d8_Frame2,
+        .pFrame = sZebesianGroundOam_Waiting_Frame2,
         .timer = 12
     },
     [3] = {
-        .pFrame = sZebesianGroundOam_35c1d8_Frame1,
+        .pFrame = sZebesianGroundOam_Waiting_Frame1,
         .timer = 17
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c200[2] = {
+const struct FrameData sZebesianGroundOam_Falling[2] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c200_Frame0,
+        .pFrame = sZebesianGroundOam_Falling_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c210[13] = {
+const struct FrameData sZebesianGroundOam_ShootingWhileStanding[13] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame0,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame1,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame2,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame3,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame3,
         .timer = 4
     },
     [4] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame4,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame4,
         .timer = 2
     },
     [5] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame5,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame5,
         .timer = 1
     },
     [6] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame6,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame6,
         .timer = 1
     },
     [7] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame7,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame7,
         .timer = 1
     },
     [8] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame8,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame8,
         .timer = 4
     },
     [9] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame9,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame9,
         .timer = 10
     },
     [10] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame2,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame2,
         .timer = 8
     },
     [11] = {
-        .pFrame = sZebesianGroundOam_35c210_Frame1,
+        .pFrame = sZebesianGroundOam_ShootingWhileStanding_Frame1,
         .timer = 8
     },
     [12] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c278[12] = {
+const struct FrameData sZebesianGroundOam_ShootingWhileCrouching[12] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame0,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame1,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame2,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame2,
         .timer = 4
     },
     [3] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame3,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame3,
         .timer = 2
     },
     [4] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame4,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame4,
         .timer = 1
     },
     [5] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame5,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame5,
         .timer = 1
     },
     [6] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame6,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame6,
         .timer = 1
     },
     [7] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame7,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame7,
         .timer = 4
     },
     [8] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame8,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame8,
         .timer = 12
     },
     [9] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame1,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame1,
         .timer = 8
     },
     [10] = {
-        .pFrame = sZebesianGroundOam_35c278_Frame0,
+        .pFrame = sZebesianGroundOam_ShootingWhileCrouching_Frame0,
         .timer = 8
     },
     [11] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c2d8[5] = {
+const struct FrameData sZebesianGroundOam_StartJumping[5] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c2d8_Frame0,
+        .pFrame = sZebesianGroundOam_StartJumping_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c2d8_Frame1,
+        .pFrame = sZebesianGroundOam_StartJumping_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c2d8_Frame2,
+        .pFrame = sZebesianGroundOam_StartJumping_Frame2,
         .timer = 4
     },
     [3] = {
-        .pFrame = sZebesianGroundOam_35c2d8_Frame3,
+        .pFrame = sZebesianGroundOam_StartJumping_Frame3,
         .timer = 4
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c300[2] = {
+const struct FrameData sZebesianGroundOam_Jumping[2] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c300_Frame0,
+        .pFrame = sZebesianGroundOam_Jumping_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c310[3] = {
+const struct FrameData sZebesianGroundOam_Landing[3] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c2d8_Frame0,
+        .pFrame = sZebesianGroundOam_StartJumping_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c2d8_Frame1,
+        .pFrame = sZebesianGroundOam_StartJumping_Frame1,
         .timer = 6
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c328[4] = {
+const struct FrameData sZebesianGroundOam_TurningAround[4] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c1d8_Frame0,
+        .pFrame = sZebesianGroundOam_Waiting_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c328_Frame1,
+        .pFrame = sZebesianGroundOam_TurningAround_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c328_Frame2,
+        .pFrame = sZebesianGroundOam_TurningAround_Frame2,
         .timer = 3
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c348[4] = {
+const struct FrameData sZebesianGroundOam_TurningAroundSecondPart[4] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c328_Frame2,
+        .pFrame = sZebesianGroundOam_TurningAround_Frame2,
         .timer = 3
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c328_Frame1,
+        .pFrame = sZebesianGroundOam_TurningAround_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c1d8_Frame0,
+        .pFrame = sZebesianGroundOam_Waiting_Frame0,
         .timer = 2
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c368[6] = {
+const struct FrameData sZebesianGroundBeamOam_Fired[6] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c368_Frame0,
+        .pFrame = sZebesianGroundBeamOam_Fired_Frame0,
         .timer = 1
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c368_Frame1,
+        .pFrame = sZebesianGroundBeamOam_Fired_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c368_Frame2,
+        .pFrame = sZebesianGroundBeamOam_Fired_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sZebesianGroundOam_35c368_Frame3,
+        .pFrame = sZebesianGroundBeamOam_Fired_Frame3,
         .timer = 2
     },
     [4] = {
-        .pFrame = sZebesianGroundOam_35c368_Frame4,
+        .pFrame = sZebesianGroundBeamOam_Fired_Frame4,
         .timer = 1
     },
     [5] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c398[5] = {
+const struct FrameData sZebesianGroundBeamOam_Spawning[5] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c398_Frame0,
+        .pFrame = sZebesianGroundBeamOam_Spawning_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c398_Frame1,
+        .pFrame = sZebesianGroundBeamOam_Spawning_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c398_Frame0,
+        .pFrame = sZebesianGroundBeamOam_Spawning_Frame0,
         .timer = 4
     },
     [3] = {
-        .pFrame = sZebesianGroundOam_35c398_Frame3,
+        .pFrame = sZebesianGroundBeamOam_Spawning_Frame3,
         .timer = 3
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sZebesianGroundOam_35c3c0[6] = {
+const struct FrameData sZebesianGroundBeamOam_SpawningSecondPart[6] = {
     [0] = {
-        .pFrame = sZebesianGroundOam_35c3c0_Frame0,
+        .pFrame = sZebesianGroundBeamOam_SpawningSecondPart_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sZebesianGroundOam_35c3c0_Frame1,
+        .pFrame = sZebesianGroundBeamOam_SpawningSecondPart_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sZebesianGroundOam_35c3c0_Frame2,
+        .pFrame = sZebesianGroundBeamOam_SpawningSecondPart_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sZebesianGroundOam_35c3c0_Frame3,
+        .pFrame = sZebesianGroundBeamOam_SpawningSecondPart_Frame3,
         .timer = 2
     },
     [4] = {
-        .pFrame = sZebesianGroundOam_35c3c0_Frame4,
+        .pFrame = sZebesianGroundBeamOam_SpawningSecondPart_Frame4,
         .timer = 2
     },
     [5] = FRAME_DATA_TERMINATOR
