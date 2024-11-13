@@ -70,19 +70,20 @@ void WaverFlyingInit(void) {
 
 void WaverFlying(void) {
     u8 touchedFloorCeiling;
-    u32 yBoundary;
+    u32 yBoundary, x;
     s16 movement;
-    struct SpriteData *currentSprite;
 
     if (gCurrentSprite.status & SS_HIDDEN) return;
 
     touchedFloorCeiling = FALSE;
-    currentSprite = &gCurrentSprite; // Needed to produce matching ASM.
-    if (gCurrentSprite.status & SS_FACING_DOWN)
+    if (gCurrentSprite.status & SS_FACING_DOWN) {
         yBoundary = gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom;
-    else
+        x = gCurrentSprite.xPosition;
+    } else {
         yBoundary = gCurrentSprite.yPosition + gCurrentSprite.hitboxTop;
-    SpriteUtilCheckCollisionAtPosition(yBoundary, (*currentSprite).xPosition);
+        x = gCurrentSprite.xPosition;
+    }
+    SpriteUtilCheckCollisionAtPosition(yBoundary, x);
     if (gPreviousCollisionCheck == COLLISION_SOLID)
         touchedFloorCeiling = TRUE;
 
