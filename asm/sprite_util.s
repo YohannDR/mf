@@ -3081,8 +3081,8 @@ _080115FA:
 	.align 2, 0
 _08011600: .4byte 0x0000FDFF
 
-	thumb_func_start unk_11604
-unk_11604: @ 0x08011604
+	thumb_func_start SpriteUtilMoveXPosForwardOnSlopeDirection
+SpriteUtilMoveXPosForwardOnSlopeDirection: @ 0x08011604
 	push {r4, r5, lr}
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
@@ -3163,8 +3163,8 @@ _08011694:
 	pop {r0}
 	bx r0
 
-	thumb_func_start unk_1169c
-unk_1169c: @ 0x0801169C
+	thumb_func_start SpriteUtilMoveXPosForwardOnSlopeXFlip
+SpriteUtilMoveXPosForwardOnSlopeXFlip: @ 0x0801169C
 	push {r4, r5, lr}
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10

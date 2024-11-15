@@ -1377,11 +1377,11 @@ void SpriteUtilMakeSpriteFaceAwayFromSamusDirection(void)
 }
 
 /**
- * @brief 11604 | 98 | To document
+ * @brief 11604 | 98 | Moves the current sprite's X position forward (direction), slowing down on slopes
  * 
  * @param movement Movement
  */
-void unk_11604(s16 movement)
+void SpriteUtilMoveXPosForwardOnSlopeDirection(s16 movement)
 {
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
@@ -1415,11 +1415,11 @@ void unk_11604(s16 movement)
 }
 
 /**
- * @brief 1169c | 98 | To document
+ * @brief 1169c | 98 | Moves the current sprite's X position forward (X flip), slowing down on slopes
  * 
  * @param movement Movement
  */
-void unk_1169c(s16 movement)
+void SpriteUtilMoveXPosForwardOnSlopeXFlip(s16 movement)
 {
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 

@@ -35,31 +35,31 @@ void CoreAbilityBeforeVariaCoreInit(void) {
     gCurrentSprite.work3 = 0;
     gCurrentSprite.work4 = 0;
 
-    ramSlot = SpriteSpawnSecondary(SSPRITE_CORE_X_BEFORE_VARIA_CORE, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
+    ramSlot = SpriteSpawnSecondary(SSPRITE_CORE_X_SHELL_BEFORE_VARIA_CORE, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
     if (ramSlot == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    ramSlot = SpriteSpawnSecondary(SSPRITE_5C, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+    ramSlot = SpriteSpawnSecondary(SSPRITE_CORE_X_STATIC_BEFORE_VARIA_CORE, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
         gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
     if (ramSlot == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    ramSlot = SpriteSpawnSecondary(SSPRITE_5C, 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+    ramSlot = SpriteSpawnSecondary(SSPRITE_CORE_X_STATIC_BEFORE_VARIA_CORE, 1, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
         gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
     if (ramSlot == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    ramSlot = SpriteSpawnSecondary(SSPRITE_5C, 2, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+    ramSlot = SpriteSpawnSecondary(SSPRITE_CORE_X_STATIC_BEFORE_VARIA_CORE, 2, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
         gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
     if (ramSlot == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    ramSlot = SpriteSpawnSecondary(SSPRITE_5C, 3, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+    ramSlot = SpriteSpawnSecondary(SSPRITE_CORE_X_STATIC_BEFORE_VARIA_CORE, 3, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
         gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
     if (ramSlot == UCHAR_MAX) {
         gCurrentSprite.status = 0;

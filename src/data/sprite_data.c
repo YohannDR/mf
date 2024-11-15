@@ -2791,13 +2791,13 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_5C] = {
+    [SSPRITE_CORE_X_STATIC_BEFORE_VARIA_CORE] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_CORE_X_BEFORE_VARIA_CORE] = {
+    [SSPRITE_CORE_X_SHELL_BEFORE_VARIA_CORE] = {
         180,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,

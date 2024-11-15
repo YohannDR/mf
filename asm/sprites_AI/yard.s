@@ -1348,7 +1348,7 @@ _0803CE8E:
 	ldrb r0, [r0]
 	lsrs r4, r0, #3
 	adds r0, r4, #0
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrh r1, [r5]
 	movs r0, #0x80
 	lsls r0, r0, #2

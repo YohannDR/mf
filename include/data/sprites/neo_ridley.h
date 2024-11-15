@@ -118,15 +118,8 @@ extern const struct FrameData sRidleyPartOam_3af750[7];
 extern const struct FrameData sRidleyPartOam_3af788[2];
 extern const struct FrameData sRidleyPartOam_3af798[7];
 extern const struct FrameData sRidleyPartOam_3af7d0[4];
-extern const struct FrameData sRidleyPartOam_3af7f0[2];
+extern const struct FrameData sRidleyFireballOam_Big[2];
 extern const struct FrameData sRidleyPartOam_3af800[2];
 extern const struct FrameData sRidleyPartOam_3af810[5];
-
-extern const u32 sRidleyPreSpawnGfx[512 * 2];
-extern const u16 sRidleyPreSpawnPal[16 * 2];
-
-extern const struct FrameData sRidleyPreSpawnOam_3b0a9c[2];
-extern const struct FrameData sRidleyPreSpawnOam_3b0aac[7];
-extern const struct FrameData sRidleyPreSpawnOam_3b0ae4[4];
 
 #endif /* NEO_RIDLEY_DATA_H */

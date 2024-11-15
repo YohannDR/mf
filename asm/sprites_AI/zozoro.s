@@ -933,7 +933,7 @@ _08050442:
 	cmp r1, #0
 	bne _08050454
 	mov r0, sb
-	bl unk_1169c
+	bl SpriteUtilMoveXPosForwardOnSlopeXFlip
 _0805044E:
 	mov r2, r8
 	cmp r2, #0

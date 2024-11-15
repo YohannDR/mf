@@ -143,7 +143,7 @@ void SaXOmegaRunningInit(void)
  */
 void SaXOmegaRunning(void)
 {
-    unk_11604(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
+    SpriteUtilMoveXPosForwardOnSlopeDirection(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
 
     if (gCurrentSprite.work3 < ARRAY_SIZE(sSaXRunningSpeed) * 8 - 1)
         gCurrentSprite.work3++;
@@ -185,7 +185,7 @@ void SaXOmegaShootingOmegaInit(void)
 {
     gCurrentSprite.pose = 0x44;
 
-    SpriteSapwnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+    SpriteSpawnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
         gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SS_X_FLIP);
 
     gSaXData.missilesArmed = FALSE;
@@ -236,7 +236,7 @@ void SaXOmegaAfterShootingOmega(void)
             break;
 
         default:
-            unk_11604(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
+            SpriteUtilMoveXPosForwardOnSlopeDirection(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
 
             if (gCurrentSprite.work3 < ARRAY_SIZE(sSaXRunningSpeed) * 8 - 1)
                 gCurrentSprite.work3++;
@@ -256,7 +256,7 @@ void SaXOmegaAfterShootingOmega(void)
             {
                 gCurrentSprite.work1 = 40;
 
-                SpriteSapwnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+                SpriteSpawnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
                     gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SS_X_FLIP);
 
                 gSaXData.missilesArmed = FALSE;

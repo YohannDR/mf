@@ -356,7 +356,7 @@ void MotoWalking(void)
         speed = PIXEL_SIZE / 2;
     }
 
-    unk_1169c(speed);
+    SpriteUtilMoveXPosForwardOnSlopeXFlip(speed);
 
     if (gCurrentSprite.pose == SPRITE_POSE_IDLE)
     {

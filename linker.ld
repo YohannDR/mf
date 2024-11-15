@@ -326,7 +326,8 @@ SECTIONS {
         asm/sprites_AI/omega_metroid_husk.o(.text);
         asm/sprites_AI/ice_beam_x.o(.text);
         asm/sprites_AI/metroid_husk.o(.text);
-        asm/sprites_AI/neo_ridley.o(.text);
+        src/sprites_AI/neo_ridley.o(.text);
+        asm/sprites_AI/ridley_pre_spawn.o(.text);
 
         src/sprites_AI/yakuza.o(.text);
         src/sprites_AI/nightmare.o(.text);
@@ -435,6 +436,7 @@ SECTIONS {
 
         src/data/sprites/metroid_husk.o(.rodata);
         src/data/sprites/neo_ridley.o(.rodata);
+        src/data/sprites/ridley_pre_spawn.o(.rodata);
         src/data/sprites/yakuza.o(.rodata);
         src/data/sprites/nightmare.o(.rodata);
         src/data/sprites/x_parasite.o(.rodata);

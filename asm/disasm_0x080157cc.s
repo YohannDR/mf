@@ -1743,7 +1743,7 @@ SaXWalking: @ 0x080164BC
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _080164F8
@@ -1909,7 +1909,7 @@ SaXRunning: @ 0x080165FC
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _08016638
@@ -3353,7 +3353,7 @@ _080170CA:
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r5]
 	cmp r0, #0x3e
 	bhi _080170EA
@@ -5371,7 +5371,7 @@ _080180EC:
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _0801811C
@@ -5492,7 +5492,7 @@ _080181D2:
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _08018202
@@ -6570,7 +6570,7 @@ _08018AA8:
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _08018ADE
@@ -6743,7 +6743,7 @@ SaXNocWalking: @ 0x08018BE4
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _08018C20
@@ -6780,7 +6780,7 @@ SaXNocRunning: @ 0x08018C30
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _08018C6C
@@ -7983,7 +7983,7 @@ _0801962C:
 	adds r0, r0, r1
 	movs r1, #0
 	ldrsh r0, [r0, r1]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _0801964E
@@ -8163,7 +8163,7 @@ SaXArcRunning: @ 0x0801976C
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _080197A8
@@ -9887,7 +9887,7 @@ SaXBossRunning: @ 0x0801A598
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _0801A5D4
@@ -12006,7 +12006,7 @@ SaXOmegaRunning: @ 0x0801B6B0
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r5]
 	cmp r0, #0x3e
 	bhi _0801B6D4
@@ -12197,7 +12197,7 @@ _0801B824:
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _0801B844
@@ -13457,7 +13457,7 @@ _0801C290:
 	adds r0, r0, r1
 	movs r1, #0
 	ldrsh r0, [r0, r1]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _0801C2B2
@@ -13677,7 +13677,7 @@ SaXTro2Running: @ 0x0801C424
 	adds r1, r1, r0
 	movs r2, #0
 	ldrsh r0, [r1, r2]
-	bl unk_11604
+	bl SpriteUtilMoveXPosForwardOnSlopeDirection
 	ldrb r0, [r4]
 	cmp r0, #0x3e
 	bhi _0801C460

@@ -6,6 +6,7 @@
 #include "structs/menus/title_screen.h"
 #include "structs/sa_x_close_up.h"
 
+// FIXME size of ClipdataConvertToCollision
 struct InGameData {
     u8 clipdataCode[640];
 };
