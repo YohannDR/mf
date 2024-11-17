@@ -2524,8 +2524,8 @@ _080550C6:
 	pop {r0}
 	bx r0
 
-	thumb_func_start omegaMetroidSpawnSaX
-omegaMetroidSpawnSaX: @ 0x080550CC
+	thumb_func_start OmegaMetroidSpawnSaX
+OmegaMetroidSpawnSaX: @ 0x080550CC
 	push {r4, lr}
 	sub sp, #0x10
 	ldr r4, _08055114 @ =gCurrentSprite
@@ -2762,7 +2762,7 @@ _08055298:
 	subs r1, #0xb
 	movs r0, #0xc
 	strb r0, [r1]
-	bl omegaMetroidSpawnSaX
+	bl OmegaMetroidSpawnSaX
 	b _0805534A
 	.align 2, 0
 _080552C0: .4byte gSubSpriteData1

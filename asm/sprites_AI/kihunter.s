@@ -497,8 +497,8 @@ _08032054:
 	pop {r0}
 	bx r0
 
-	thumb_func_start kihunterGroundJumpWarning
-kihunterGroundJumpWarning: @ 0x08032058
+	thumb_func_start KihunterGroundJumpWarning
+KihunterGroundJumpWarning: @ 0x08032058
 	push {r4, r5, lr}
 	ldr r4, _0803208C @ =gCurrentSprite
 	ldrh r0, [r4, #2]
@@ -3326,7 +3326,7 @@ _08033670:
 _08033676:
 	bl KihunterGroundJumpWarningInit
 _0803367A:
-	bl kihunterGroundJumpWarning
+	bl KihunterGroundJumpWarning
 	b _080336C6
 _08033680:
 	bl KihunterGroundJumping
