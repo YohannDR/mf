@@ -2723,23 +2723,22 @@ sa_x_close_up/second.tt.lz;0x733d58
 
 # Blobs
 
-Blob_a5224_a5710.bin;1260;0xa5224;1
-Blob_289970_28998c.bin;289970;28998c
-Blob_289994_28fd04.bin;289994;28fd04
-Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
-Blob_2b4154_2b4168.bin;0x2b4154;0x2b4168
-Blob_2b4408_2b5058.bin;0x2b4408;0x2b5058
-Blob_2de9b0_2e4904.bin;2de9b0;2e4904
-Blob_2e6382_2e9218.bin;2e6382;2e9218
-Blob_321b64_3420b4.bin;0x321b64;0x3420b4
-Blob_348ca4_3534c4.bin;0x348ca4;0x3534c4
-Blob_37c578_3a8704.bin;37c578;3a8704
-Blob_3be3a0_3e392c.bin;3be3a0;3e392c
-Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
-Blob_3ec508_3ecef4.bin;3ec508;3ecef4
-Blob_3eed78_413afc.bin;3eed78;413afc
-Blob_5594a8_58b3cc.bin;5594a8;58b3cc
-Blob_597708_72eee0.bin;597708;72eee0
-Blob_73421e_79a29c.bin;73421e;79a29c
-Blob_79b458_79b708.bin;79b458;79b708
-Blob_79b894_79ecc8.bin;79b894;79ecc8
+Blob_a5224_a5710.bin;1260;0xa5224;1; Sound stuff
+Blob_289970_28998c.bin;289970;28998c; Samus data
+Blob_289994_28fd04.bin;289994;28fd04; Samus data
+Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60; Samus data
+Blob_2b4154_2b4168.bin;0x2b4154;0x2b4168; SA-X
+Blob_2b4408_2b5058.bin;0x2b4408;0x2b5058; SA-X
+Blob_2de9b0_2e4904.bin;2de9b0;2e4904; Arm cannon data and more?
+Blob_2e6382_2e9218.bin;2e6382;2e9218; Sprites
+Blob_321b64_3420b4.bin;0x321b64;0x3420b4; Sprites
+Blob_348ca4_3534c4.bin;0x348ca4;0x3534c4; Sprites
+Blob_37c578_3a8704.bin;37c578;3a8704; Sprites
+Blob_3be3a0_3e392c.bin;3be3a0;3e392c; Clipdata and room entries
+Blob_3ec508_3ecef4.bin;3ec508;3ecef4; Possibly Samus environmental effects
+Blob_3eed78_413afc.bin;3eed78;413afc; Room data
+Blob_5594a8_58b3cc.bin;5594a8;58b3cc; Animated graphics, pause screen, events, computer conservation, SRAM
+Blob_597708_72eee0.bin;597708;72eee0; Cutscenes
+Blob_73421e_79a29c.bin;73421e;79a29c; Game over, file select and ending
+Blob_79b458_79b708.bin;79b458;79b708; Room data pointers
+Blob_79b894_79ecc8.bin;79b894;79ecc8; More room data pointers, cutscene data pointers, text

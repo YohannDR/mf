@@ -18,6 +18,34 @@
 #include "structs/projectile.h"
 #include "structs/samus.h"
 
+#define RIDLEY_POSE_SCREAMING_AFTER_SPAWN 0x18
+#define RIDLEY_POSE_RISING_AFTER_SPAWN 0x1a
+#define RIDLEY_POSE_SCREAMING_INIT 0x1f
+#define RIDLEY_POSE_SCREAMING 0x20
+#define RIDLEY_POSE_TURNING_INTO_CORE_X 0x38
+#define RIDLEY_POSE_FLYING_BACKWARDS_INIT 9
+#define RIDLEY_POSE_FLYING_BACKWARDS 0xa
+#define RIDLEY_POSE_TURNING_AROUND_INIT 3
+#define RIDLEY_POSE_TURNING_AROUND_1 4
+#define RIDLEY_POSE_TURNING_AROUND_2 5
+#define RIDLEY_POSE_PREPARING_TAIL_ATTACK 0x29
+#define RIDLEY_POSE_TAIL_ATTACK 0x2a
+#define RIDLEY_POSE_SHOOTING_FIRE_INIT 0x2f
+#define RIDLEY_POSE_SHOOTING_FIRE 0x30
+
+#define RIDLEY_TAIL_POSE_WAITING_TO_WIND_UP 0x38
+#define RIDLEY_TAIL_POSE_WINDING_UP_1 0x3a
+#define RIDLEY_TAIL_POSE_WINDING_UP_2 0x3c
+#define RIDLEY_TAIL_POSE_STRIKING_DOWN_1 0x3e
+#define RIDLEY_TAIL_POSE_STRIKING_DOWN_2 0x40
+#define RIDLEY_TAIL_POSE_STRIKING_DOWN_3 0x42
+#define RIDLEY_TAIL_POSE_STRIKING_FORWARD 0x44
+#define RIDLEY_TAIL_POSE_END_STRIKING 0x46
+
+#define RIDLEY_FIRE_POSE_MOVING_TOWARD_SAMUS 0x18
+
+#define RIDLEY_SCREAM_HEALTH_THRESHOLD 500
+
 void RidleyMove(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor) {
     u8 flip;
     u16 velocity;
@@ -113,7 +141,7 @@ void RidleyMove(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor)
         gCurrentSprite.status ^= SS_FACING_RIGHT;
         gCurrentSprite.work3 = 1;
         if (gCurrentSprite.samusCollision != SSC_RIDLEY_CLAW_GRABBED)
-            gCurrentSprite.pose = 3;
+            gCurrentSprite.pose = RIDLEY_POSE_TURNING_AROUND_INIT;
     }
 
     flip = FALSE;
@@ -183,7 +211,7 @@ void RidleyMove(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 speedDivisor)
     }
 }
 
-void UpdateSubSpriteData2Animation(void) {
+void SpriteUtilUpdateSubSpriteData2Animation(void) {
     gSubSpriteData2.animationDurationCounter++;
     if (gSubSpriteData2.pMultiOam[gSubSpriteData2.currentAnimationFrame].timer < gSubSpriteData2.animationDurationCounter) {
         gSubSpriteData2.animationDurationCounter = 1;
@@ -194,7 +222,7 @@ void UpdateSubSpriteData2Animation(void) {
     }
 }
 
-void RidleySyncSubSpritesPosition(void) {
+void RidleyTailSyncSubSpritesPosition(void) {
     MultiSpriteDataInfo_T pData;
 
     pData = gSubSpriteData2.pMultiOam[gSubSpriteData2.currentAnimationFrame].pData;
@@ -232,8 +260,9 @@ void RidleySyncSubSprites(void) {
         gCurrentSprite.xPosition = gSubSpriteData1.xPosition + pData[gCurrentSprite.roomSlot][MULTI_SPRITE_DATA_ELEMENT_X_OFFSET];
     }
 
-    if (gCurrentSprite.roomSlot == 1)
+    if (gCurrentSprite.roomSlot == RIDLEY_PART_TAIL_START)
     {
+        // Sync tail's position
         gSubSpriteData2.yPosition = gCurrentSprite.yPosition;
         gSubSpriteData2.xPosition = gCurrentSprite.xPosition;
     }
@@ -302,14 +331,14 @@ void RidleySetBackgroundPriority(void) {
 
 void RidleyUpdateClawOam(void) {
     if (gCurrentSprite.samusCollision == SSC_RIDLEY_CLAW_GRABBED) {
-        if (gSubSpriteData1.pMultiOam != sRidleyMultiSpriteData_3a9f74) {
-            gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_3a9f74;
+        if (gSubSpriteData1.pMultiOam != sRidleyMultiSpriteData_GrabbingSamus) {
+            gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_GrabbingSamus;
             gSubSpriteData1.animationDurationCounter = 0;
             gSubSpriteData1.currentAnimationFrame = 0;
         }
     } else {
-        if (gSubSpriteData1.pMultiOam != sRidleyMultiSpriteData_3a9944) {
-            gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_3a9944;
+        if (gSubSpriteData1.pMultiOam != sRidleyMultiSpriteData_Idle) {
+            gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_Idle;
             gSubSpriteData1.animationDurationCounter = 0;
             gSubSpriteData1.currentAnimationFrame = 0;
             gCurrentSprite.samusCollision = SSC_RIDLEY_CLAW_CAN_GRAB;
@@ -360,16 +389,16 @@ void RidleyUpdateHealthThreshold(void) {
 
     if (gCurrentSprite.health == 0 && gSubSpriteData1.health > 0) {
         // Final hit, start to die
-        gCurrentSprite.pose = 0x1f;
+        gCurrentSprite.pose = RIDLEY_POSE_SCREAMING_INIT;
         gBossWork5 = 0;
     } else {
         // Accumulated health
         gBossWork5 += gSubSpriteData1.health - gCurrentSprite.health;
 
-        if (gBossWork5 > 500) {
+        if (gBossWork5 > RIDLEY_SCREAM_HEALTH_THRESHOLD) {
             // Scream and reset accumulated health if taken enough damage
-            if (gCurrentSprite.pose != 0x18 && gCurrentSprite.pose != 0x1a)
-                gCurrentSprite.pose = 0x1f;
+            if (gCurrentSprite.pose != RIDLEY_POSE_SCREAMING_AFTER_SPAWN && gCurrentSprite.pose != RIDLEY_POSE_RISING_AFTER_SPAWN)
+                gCurrentSprite.pose = RIDLEY_POSE_SCREAMING_INIT;
             gBossWork5 = 0;
         } else {
             if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
@@ -422,7 +451,7 @@ u32 RidleyCheckGrabSamusLeft(u16 yPosition, u16 xPosition) {
     u16 clawY, clawX;
 
     clawY = yPosition + 0xb4;
-    if (gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_3a9a2c || gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_3a9a44)
+    if (gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_TurningAround1 || gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_TurningAround2)
         clawX = xPosition - 0x82;
     else
         clawX = xPosition - 0xe6;
@@ -439,7 +468,7 @@ u32 RidleyCheckGrabSamusRight(u16 yPosition, u16 xPosition) {
     u16 clawY, clawX;
 
     clawY = yPosition + 0xb4;
-    if (gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_3a9a2c || gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_3a9a44)
+    if (gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_TurningAround1 || gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_TurningAround2)
         clawX = xPosition + 0x82;
     else
         clawX = xPosition + 0xe6;
@@ -456,7 +485,7 @@ void RidleySamusGrabbed(void) {
     if (gCurrentSprite.status & SS_SAMUS_COLLIDING) {
         gCurrentSprite.status &= ~SS_SAMUS_COLLIDING;
         gSamusData.yPosition = gCurrentSprite.yPosition + 0xb4;
-        if (gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_3a9a2c || gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_3a9a44) {
+        if (gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_TurningAround1 || gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_TurningAround2) {
             if (gCurrentSprite.status & SS_X_FLIP)
                 gSamusData.xPosition = gCurrentSprite.xPosition + 0x82;
             else
@@ -534,16 +563,16 @@ u8 RidleyTailXMovement(u16 movement) {
 }
 
 void RidleyScreamingInit(void) {
-    gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_3a9a14;
+    gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_ScreamingInPain;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x20;
+    gCurrentSprite.pose = RIDLEY_POSE_SCREAMING;
     if (gCurrentSprite.samusCollision == SSC_RIDLEY_CLAW_GRABBED)
         // Drop Samus
         SAMUS_SET_POSE(SPOSE_HURT_REQUEST);
     if (gCurrentSprite.health > 0) {
         // Not dying
-        gCurrentSprite.samusCollision = 2;
+        gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
         gCurrentSprite.rotation = 60;
         SoundPlay(0x1de);
     } else {
@@ -560,10 +589,10 @@ void RidleyScreaming(void) {
     if (--gCurrentSprite.rotation == 0) {
         if (gCurrentSprite.health > 0) {
             RidleyUpdateClawOam();
-            gCurrentSprite.pose = 0x29;
+            gCurrentSprite.pose = RIDLEY_POSE_PREPARING_TAIL_ATTACK;
         } else {
             // Start reverting to core-X
-            gCurrentSprite.pose = 0x38;
+            gCurrentSprite.pose = RIDLEY_POSE_TURNING_INTO_CORE_X;
             gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
             gCurrentSprite.status |= SS_ENABLE_MOSAIC;
             gCurrentSprite.invincibilityStunFlashTimer = 0;
@@ -571,11 +600,10 @@ void RidleyScreaming(void) {
             gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
             gCurrentSprite.status &= ~SS_NOT_DRAWN;
         }
-        return; // Remove this line to fix the bugs noted below.
+        return;
     }
 
     if (gCurrentSprite.health > 0) {
-        // BUG: after finishing screaming, he doesn't move for one frame
         if (gCurrentSprite.rotation < 30)
             RidleyFloatingMovement();
         return;
@@ -636,9 +664,9 @@ void RidleyTurningIntoCoreX(void) {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X_INIT;
         gCurrentSprite.spriteId = PSPRITE_SCREW_ATTACK_ABILITY;
     }
-    if (gCurrentSprite.xParasiteTimer < ARRAY_SIZE(sScrewAttackCoreXGfx) / 512 * 4)
+    if (gCurrentSprite.xParasiteTimer < sizeof(sScrewAttackCoreXGfx) / 512)
         SpriteLoadGfx(PSPRITE_SCREW_ATTACK_ABILITY, 0, gCurrentSprite.xParasiteTimer);
-    else if (gCurrentSprite.xParasiteTimer == ARRAY_SIZE(sScrewAttackCoreXGfx) / 512 * 4)
+    else if (gCurrentSprite.xParasiteTimer == sizeof(sScrewAttackCoreXGfx) / 512)
         SpriteLoadPal(PSPRITE_SCREW_ATTACK_ABILITY, 0, ARRAY_SIZE(sScrewAttackCoreXPal) / 16);
 }
 
@@ -650,8 +678,8 @@ void RidleyForming(void) {
         gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
     } else {
         gCurrentSprite.status &= ~(SS_IGNORE_PROJECTILES | SS_ENABLE_MOSAIC);
-        gCurrentSprite.pose = 0x18;
-        gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_3a9a5c;
+        gCurrentSprite.pose = RIDLEY_POSE_SCREAMING_AFTER_SPAWN;
+        gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_ScreamingAfterSpawn;
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
     }
@@ -661,10 +689,10 @@ void RidleyScreamingAfterSpawn(void) {
     if (gCurrentSprite.currentAnimationFrame == 4 && gCurrentSprite.animationDurationCounter == 1)
         SoundPlay(0x1dd);
     if (SpriteUtilCheckEndSubSprite1Anim()) {
-        gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_3a996c;
+        gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_RisingAfterSpawn;
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x1a;
+        gCurrentSprite.pose = RIDLEY_POSE_RISING_AFTER_SPAWN;
         gCurrentSprite.work4 = 0;
         gSubSpriteData1.yPosition -= 0xe0;
         gCurrentSprite.yPosition -= 0xe0;
@@ -689,7 +717,7 @@ void RidleyRisingAfterSpawn(void) {
         }
     } else if (SpriteUtilCheckEndSubSprite1Anim()) {
         RidleyUpdateClawOam();
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
         gCurrentSprite.work2 = 0;
         gCurrentSprite.work3 = 1;
         gCurrentSprite.work1 = 0;
@@ -718,38 +746,38 @@ void RidleyInit(void) {
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gSubSpriteData1.yPosition = gCurrentSprite.yPosition;
     gSubSpriteData1.xPosition = gCurrentSprite.xPosition;
-    gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_3a9a5c;
+    gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_ScreamingAfterSpawn;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gSubSpriteData1.work0 = 0;
 
-    SpriteSpawnSecondary(SSPRITE_7B, RIDLEY_PART_FRONT_WING, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_PART, RIDLEY_PART_FRONT_WING, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7B, RIDLEY_PART_TAIL_START, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_PART, RIDLEY_PART_TAIL_START, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7C, RIDLEY_TAIL_PART_TIP, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_TAIL_PART, RIDLEY_TAIL_PART_TIP, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7C, RIDLEY_TAIL_PART_6, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_TAIL_PART, RIDLEY_TAIL_PART_6, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7C, RIDLEY_TAIL_PART_5, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_TAIL_PART, RIDLEY_TAIL_PART_5, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7C, RIDLEY_TAIL_PART_4, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_TAIL_PART, RIDLEY_TAIL_PART_4, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7C, RIDLEY_TAIL_PART_3, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_TAIL_PART, RIDLEY_TAIL_PART_3, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7C, RIDLEY_TAIL_PART_2, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_TAIL_PART, RIDLEY_TAIL_PART_2, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7C, RIDLEY_TAIL_PART_1, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_TAIL_PART, RIDLEY_TAIL_PART_1, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7C, RIDLEY_TAIL_PART_0, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_TAIL_PART, RIDLEY_TAIL_PART_0, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
-    SpriteSpawnSecondary(SSPRITE_7B, RIDLEY_PART_BACK_WING, gCurrentSprite.spritesetGfxSlot,
+    SpriteSpawnSecondary(SSPRITE_RIDLEY_PART, RIDLEY_PART_BACK_WING, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, 0);
 }
 
 void RidleyIdleInit(void) {
     RidleyUpdateClawOam();
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
     gCurrentSprite.rotation = (gSpriteRandomNumber + 1) * 16 - 1;
     gCurrentSprite.work2 = 0;
     gCurrentSprite.work3 = 1;
@@ -768,7 +796,7 @@ void RidleyIdle(void) {
         if (gCurrentSprite.samusCollision != SSC_RIDLEY_CLAW_GRABBED) {
             if (SpriteUtilCountSecondarySprites(SSPRITE_RIDLEY_FIRE) == 0) {
                 gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
-                gCurrentSprite.pose = 0x2f;
+                gCurrentSprite.pose = RIDLEY_POSE_SHOOTING_FIRE_INIT;
                 return;
             }
         }
@@ -790,16 +818,16 @@ void RidleyIdle(void) {
             if (gSpriteRandomNumber != 0) return;
             if (SpriteUtilCountSecondarySprites(SSPRITE_RIDLEY_FIRE) == 0) {
                 gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
-                gCurrentSprite.pose = 0x2f;
+                gCurrentSprite.pose = RIDLEY_POSE_SHOOTING_FIRE_INIT;
             }
         } else {
             if (targetX < gSubSpriteData1.xPosition)
-                gCurrentSprite.pose = 9;
+                gCurrentSprite.pose = RIDLEY_POSE_FLYING_BACKWARDS_INIT;
         }
     } else {
-        if ((gCurrentSprite.status & SS_FACING_RIGHT)) {
+        if (gCurrentSprite.status & SS_FACING_RIGHT) {
             if (targetX > gSubSpriteData1.xPosition)
-                gCurrentSprite.pose = 9;
+                gCurrentSprite.pose = RIDLEY_POSE_FLYING_BACKWARDS_INIT;
         } else {
             if (gCurrentSprite.samusCollision == SSC_RIDLEY_CLAW_GRABBED) return;
             if (gSamusData.yPosition <= gSubSpriteData1.yPosition + 0x80) return;
@@ -808,26 +836,26 @@ void RidleyIdle(void) {
             if (gSpriteRandomNumber != 0) return;
             if (SpriteUtilCountSecondarySprites(SSPRITE_RIDLEY_FIRE) == 0) {
                 gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
-                gCurrentSprite.pose = 0x2f;
+                gCurrentSprite.pose = RIDLEY_POSE_SHOOTING_FIRE_INIT;
             }
         }
     }
 }
 
 void RidleyTurningAroundInit(void) {
-    gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_3a9a2c;
+    gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_TurningAround1;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 4;
+    gCurrentSprite.pose = RIDLEY_POSE_TURNING_AROUND_1;
 }
 
 void RidleyTurningAround(void) {
     RidleyFloatingMovement();
     if (SpriteUtilCheckEndSubSprite1Anim()) {
-        gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_3a9a44;
+        gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_TurningAround2;
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 5;
+        gCurrentSprite.pose = RIDLEY_POSE_TURNING_AROUND_2;
         gCurrentSprite.status ^= SS_X_FLIP;
         RidleySetSideHitboxes();
     }
@@ -838,12 +866,12 @@ void RidleyTurningAroundSecondPart(void) {
     RidleyFloatingMovement();
     if (SpriteUtilCheckEndSubSprite1Anim()) {
         RidleyUpdateClawOam();
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
     }
 }
 
 void RidleyFlyingBackwardsInit(void) {
-    gCurrentSprite.pose = 10;
+    gCurrentSprite.pose = RIDLEY_POSE_FLYING_BACKWARDS;
     gCurrentSprite.rotation = 10;
 }
 
@@ -851,7 +879,7 @@ void RidleyFlyingBackwards(void) {
     RidleyUpdateClawOam();
     RidleyFloatingMovement();
     if (--gCurrentSprite.rotation == 0)
-        gCurrentSprite.pose = 3;
+        gCurrentSprite.pose = RIDLEY_POSE_TURNING_AROUND_INIT;
 }
 
 void RidleyPreparingTailAttack(void) {
@@ -863,10 +891,10 @@ void RidleyTailAttack(void) {
 }
 
 void RidleyShootingFireInit(void) {
-    gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_3a9994;
+    gSubSpriteData1.pMultiOam = sRidleyMultiSpriteData_ShootingFire;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x30;
+    gCurrentSprite.pose = RIDLEY_POSE_SHOOTING_FIRE;
 }
 
 void RidleyShootingFire(void) {
@@ -876,14 +904,14 @@ void RidleyShootingFire(void) {
     if (SpriteUtilCheckNearEndSubSprite1Anim()) {
         if (gCurrentSprite.status & SS_X_FLIP) {
             if (gSamusData.xPosition < gSubSpriteData1.xPosition)
-                gCurrentSprite.pose = 3;
+                gCurrentSprite.pose = RIDLEY_POSE_TURNING_AROUND_INIT;
             else
-                gCurrentSprite.pose = 1;
+                gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
         } else {
             if (gSamusData.xPosition > gSubSpriteData1.xPosition)
-                gCurrentSprite.pose = 3;
+                gCurrentSprite.pose = RIDLEY_POSE_TURNING_AROUND_INIT;
             else
-                gCurrentSprite.pose = 1;
+                gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
         }
         return;
     }
@@ -912,7 +940,7 @@ void RidleyShootingFire(void) {
 void RidleyPartInit(void) {
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
     switch (gCurrentSprite.roomSlot) {
         case RIDLEY_PART_FRONT_WING:
             gCurrentSprite.drawOrder = 3;
@@ -926,7 +954,6 @@ void RidleyPartInit(void) {
             gCurrentSprite.samusCollision = SSC_NONE;
             break;
         case RIDLEY_PART_TAIL_START:
-            //gCurrentSprite.drawOrder = 4;
             gCurrentSprite.drawDistanceTop = 1;
             gCurrentSprite.drawDistanceBottom = 1;
             gCurrentSprite.drawDistanceHorizontal = 1;
@@ -971,7 +998,7 @@ void RidleyPartIdle(void) {
 void RidleyTailPartInit(void) {
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
     gCurrentSprite.drawDistanceTop = 0x10;
     gCurrentSprite.drawDistanceBottom = 0x10;
     gCurrentSprite.drawDistanceHorizontal = 0x10;
@@ -980,7 +1007,7 @@ void RidleyTailPartInit(void) {
     gCurrentSprite.drawOrder = gCurrentSprite.roomSlot + 4;
     gCurrentSprite.samusCollision = SSC_RIDLEY_TAIL_SERRIS_SEGMENT;
     if (gCurrentSprite.roomSlot == RIDLEY_TAIL_PART_TIP) {
-        gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9b1c;
+        gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_Idle;
         gSubSpriteData2.animationDurationCounter = 0;
         gSubSpriteData2.currentAnimationFrame = 0;
         gCurrentSprite.status |= SS_ROTATE_SCALE_WHOLE;
@@ -999,7 +1026,7 @@ void RidleyTailPartInit(void) {
     }
 }
 
-void RidleyTailPartHandleRotation(void) {
+void RidleyTailPartTipHandleRotation(void) {
     if (gCurrentSprite.status & SS_FACING_DOWN) {
         if (gCurrentSprite.rotation == Q_8_8(7.f/8))
             gCurrentSprite.status &= ~SS_FACING_DOWN;
@@ -1015,15 +1042,15 @@ void RidleyTailPartHandleRotation(void) {
 
 void RidleyTailPartIdle(void) {
     u8 primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
-    RidleyTailPartHandleRotation();
-    if (gSubSpriteData1.pMultiOam != sRidleyMultiSpriteData_3a9a14 && gSubSpriteData2.pMultiOam == sRidleyMultiSpriteData_3a9b9c) {
-        gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9b1c;
+    RidleyTailPartTipHandleRotation();
+    if (gSubSpriteData1.pMultiOam != sRidleyMultiSpriteData_ScreamingInPain && gSubSpriteData2.pMultiOam == sRidleyTailMultiSpriteData_RidleyInPain) {
+        gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_Idle;
         gSubSpriteData2.animationDurationCounter = 0;
         gSubSpriteData2.currentAnimationFrame = 0;
     }
-    if (gSpriteData[primaryRamSlot].pose == 0x29) {
-        gCurrentSprite.pose = 0x38;
-        gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9c1c;
+    if (gSpriteData[primaryRamSlot].pose == RIDLEY_POSE_PREPARING_TAIL_ATTACK) {
+        gCurrentSprite.pose = RIDLEY_TAIL_POSE_WAITING_TO_WIND_UP;
+        gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_WaitingToWindUp;
         gSubSpriteData2.animationDurationCounter = 0;
         gSubSpriteData2.currentAnimationFrame = 0;
         gCurrentSprite.rotation = 0;
@@ -1032,10 +1059,10 @@ void RidleyTailPartIdle(void) {
 
 void RidleyTailPartWaitingToWindUp(void) {
     if (SpriteUtilCheckEndSubSpriteData2Anim()) {
-        gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9c74;
+        gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_WindingUp1;
         gSubSpriteData2.animationDurationCounter = 0;
         gSubSpriteData2.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x3a;
+        gCurrentSprite.pose = RIDLEY_TAIL_POSE_WINDING_UP_1;
     }
 }
 
@@ -1043,10 +1070,10 @@ void RidleyTailPartWindingUp1(void) {
     if (gSubSpriteData2.currentAnimationFrame == 3 && gSubSpriteData2.animationDurationCounter == 1)
         SoundPlay(0x1e5);
     if (SpriteUtilCheckEndSubSpriteData2Anim()) {
-        gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9cdc;
+        gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_WindingUp2;
         gSubSpriteData2.animationDurationCounter = 0;
         gSubSpriteData2.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x3c;
+        gCurrentSprite.pose = RIDLEY_TAIL_POSE_WINDING_UP_2;
         gCurrentSprite.work1 = (gSpriteRandomNumber / 2) + 2;
     }
     if (gSubSpriteData1.yPosition >= 0x280)
@@ -1065,8 +1092,8 @@ void RidleyTailPartWindingUp2(void) {
     if (!SpriteUtilCheckEndSubSpriteData2Anim())
         return;
 
-    gSpriteData[primaryRamSlot].pose = 0x2a;
-    gCurrentSprite.samusCollision = SSC_19;
+    gSpriteData[primaryRamSlot].pose = RIDLEY_POSE_TAIL_ATTACK;
+    gCurrentSprite.samusCollision = SSC_RIDLEY_TAIL_TIP_STRIKING;
 
     if (gSpriteData[primaryRamSlot].status & SS_X_FLIP) {
         if (gSubSpriteData1.xPosition > gSamusData.xPosition) {
@@ -1085,15 +1112,16 @@ void RidleyTailPartWindingUp2(void) {
     }
 
     if (facingSamus) {
-        gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9d44;
+        gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_StrikingForward;
         gSubSpriteData2.animationDurationCounter = 0;
         gSubSpriteData2.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x44;
+        gCurrentSprite.pose = RIDLEY_TAIL_POSE_STRIKING_FORWARD;
     } else {
-        gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9df4;
+        gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_StrikingDown1;
         gSubSpriteData2.animationDurationCounter = 0;
         gSubSpriteData2.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x3e;
+        gCurrentSprite.pose = RIDLEY_TAIL_POSE_STRIKING_DOWN_1;
+        // BUG: no "gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;"? (previous Y position for RidleyTailStrikingCheckPlayEffects)
         if (gCurrentSprite.status & SS_X_FLIP)
             gCurrentSprite.rotation = Q_8_8(7.f/8);
         else
@@ -1105,10 +1133,10 @@ void RidleyTailPartStrikingDown1(void) {
     if (gSubSpriteData2.currentAnimationFrame == 3 && gSubSpriteData2.animationDurationCounter == 1)
         SoundPlay(0x1e7);
     if (SpriteUtilCheckEndSubSpriteData2Anim()) {
-        gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9e64;
+        gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_StrikingDown2;
         gSubSpriteData2.animationDurationCounter = 0;
         gSubSpriteData2.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 0x40;
+        gCurrentSprite.pose = RIDLEY_TAIL_POSE_STRIKING_DOWN_2;
         return;
     }
     if (gSubSpriteData2.currentAnimationFrame < 8)
@@ -1142,10 +1170,10 @@ void RidleyTailPartStrikingDown2(void) {
         }
 
         if (ended) {
-            gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9ebc;
+            gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_StrikingDown3;
             gSubSpriteData2.animationDurationCounter = 0;
             gSubSpriteData2.currentAnimationFrame = 0;
-            gCurrentSprite.pose = 0x42;
+            gCurrentSprite.pose = RIDLEY_TAIL_POSE_STRIKING_DOWN_3;
             return;
         }
     }
@@ -1162,15 +1190,15 @@ void RidleyTailPartStrikingDown3(void) {
         SoundPlay(0x1e7);
     if (SpriteUtilCheckEndSubSpriteData2Anim()) {
         if (gCurrentSprite.work1 > 0) {
-            gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9cdc;
+            gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_WindingUp2;
             gSubSpriteData2.animationDurationCounter = 0;
             gSubSpriteData2.currentAnimationFrame = 0;
-            gCurrentSprite.pose = 0x3c;
+            gCurrentSprite.pose = RIDLEY_TAIL_POSE_WINDING_UP_2;
         } else {
-            gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9f44;
+            gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_DoneStriking;
             gSubSpriteData2.animationDurationCounter = 0;
             gSubSpriteData2.currentAnimationFrame = 0;
-            gCurrentSprite.pose = 0x46;
+            gCurrentSprite.pose = RIDLEY_TAIL_POSE_END_STRIKING;
             gCurrentSprite.samusCollision = SSC_RIDLEY_TAIL_SERRIS_SEGMENT;
         }
         return;
@@ -1195,23 +1223,23 @@ void RidleyTailPartStrikingForward(void) {
         if (gSamusData.yPosition < gSubSpriteData1.yPosition || gSpriteData[primaryRamSlot].samusCollision == SSC_RIDLEY_CLAW_GRABBED)
             gCurrentSprite.work1 = 1;
             if (--gCurrentSprite.work1 == 0) {
-                gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9f44;
+                gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_DoneStriking;
                 gSubSpriteData2.animationDurationCounter = 0;
                 gSubSpriteData2.currentAnimationFrame = 0;
-                gCurrentSprite.pose = 0x46;
+                gCurrentSprite.pose = RIDLEY_TAIL_POSE_END_STRIKING;
                 gCurrentSprite.samusCollision = SSC_RIDLEY_TAIL_SERRIS_SEGMENT;
             } else {
-                gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9cdc;
+                gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_WindingUp2;
                 gSubSpriteData2.animationDurationCounter = 0;
                 gSubSpriteData2.currentAnimationFrame = 0;
-                gCurrentSprite.pose = 0x3c;
+                gCurrentSprite.pose = RIDLEY_TAIL_POSE_WINDING_UP_2;
             }
     } else {
         if (gSubSpriteData2.currentAnimationFrame >= 4 && gSubSpriteData2.currentAnimationFrame <= 12) {
             if (gSpriteData[primaryRamSlot].status & SS_X_FLIP)
                 gCurrentSprite.pOam = sRidleyPartOam_TailTip;
             else
-                gCurrentSprite.pOam = sRidleyPartOam_3af800;
+                gCurrentSprite.pOam = sRidleyPartOam_TailTip_XFlipped;
         }
         RidleyTailStrikeYMovement(4);
         RidleyTailXMovement(1);
@@ -1222,11 +1250,11 @@ void RidleyTailPartDoneStriking(void) {
     u8 primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
 
     if (SpriteUtilCheckEndSubSpriteData2Anim()) {
-        gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9b1c;
+        gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_Idle;
         gSubSpriteData2.animationDurationCounter = 0;
         gSubSpriteData2.currentAnimationFrame = 0;
-        gCurrentSprite.pose = 2;
-        gSpriteData[primaryRamSlot].pose = 2;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
+        gSpriteData[primaryRamSlot].pose = SPRITE_POSE_IDLE;
         gSpriteData[primaryRamSlot].work2 = 0;
         gSpriteData[primaryRamSlot].work3 = 1;
         gSpriteData[primaryRamSlot].work1 = 0;
@@ -1243,7 +1271,7 @@ void RidleyFireInit(void) {
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
     gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
-    gCurrentSprite.drawOrder = 2;
+    gCurrentSprite.drawOrder = SPRITE_POSE_IDLE;
     gCurrentSprite.drawDistanceTop = 0xc;
     gCurrentSprite.drawDistanceBottom = 0xc;
     gCurrentSprite.drawDistanceHorizontal = 0xc;
@@ -1258,7 +1286,7 @@ void RidleyFireInit(void) {
     gCurrentSprite.scaling = 0x100;
     gCurrentSprite.work1 = 16;
     gCurrentSprite.work3 = 0;
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS_DIES_WHEN_HIT;
     if (gCurrentSprite.yPosition < gSamusData.yPosition)
         gCurrentSprite.status |= SS_FACING_DOWN;
@@ -1276,7 +1304,7 @@ void RidleyFireMoving(void) {
     else
         gCurrentSprite.rotation += Q_8_8(1.f/8);
     if (--gCurrentSprite.work1 == 0) {
-        gCurrentSprite.pose = 0x18;
+        gCurrentSprite.pose = RIDLEY_FIRE_POSE_MOVING_TOWARD_SAMUS;
         gCurrentSprite.work2 = 0;
         gCurrentSprite.work3 = 0x10;
         gCurrentSprite.work1 = 0;
@@ -1327,18 +1355,18 @@ void Ridley(void) {
         case SPRITE_POSE_SPAWNING_FROM_X:
             RidleyForming();
             break;
-        case 0x18:
+        case RIDLEY_POSE_SCREAMING_AFTER_SPAWN:
             RidleyScreamingAfterSpawn();
             break;
-        case 0x1a:
+        case RIDLEY_POSE_RISING_AFTER_SPAWN:
             RidleyRisingAfterSpawn();
             break;
-        case 0x1f:
+        case RIDLEY_POSE_SCREAMING_INIT:
             RidleyScreamingInit();
-        case 0x20:
+        case RIDLEY_POSE_SCREAMING:
             RidleyScreaming();
             break;
-        case 0x38:
+        case RIDLEY_POSE_TURNING_INTO_CORE_X:
             RidleyTurningIntoCoreX();
             break;
         case SPRITE_POSE_IDLE_INIT:
@@ -1346,28 +1374,28 @@ void Ridley(void) {
         case SPRITE_POSE_IDLE:
             RidleyIdle();
             break;
-        case 9:
+        case RIDLEY_POSE_FLYING_BACKWARDS_INIT:
             RidleyFlyingBackwardsInit();
-        case 10:
+        case RIDLEY_POSE_FLYING_BACKWARDS:
             RidleyFlyingBackwards();
             break;
-        case 3:
+        case RIDLEY_POSE_TURNING_AROUND_INIT:
             RidleyTurningAroundInit();
-        case 4:
+        case RIDLEY_POSE_TURNING_AROUND_1:
             RidleyTurningAround();
             break;
-        case 5:
+        case RIDLEY_POSE_TURNING_AROUND_2:
             RidleyTurningAroundSecondPart();
             break;
-        case 0x29:
+        case RIDLEY_POSE_PREPARING_TAIL_ATTACK:
             RidleyPreparingTailAttack();
             break;
-        case 0x2a:
+        case RIDLEY_POSE_TAIL_ATTACK:
             RidleyTailAttack();
             break;
-        case 0x2f:
+        case RIDLEY_POSE_SHOOTING_FIRE_INIT:
             RidleyShootingFireInit();
-        case 0x30:
+        case RIDLEY_POSE_SHOOTING_FIRE:
             RidleyShootingFire();
             break;
     }
@@ -1380,7 +1408,7 @@ void Ridley(void) {
 void RidleyPart(void) {
     u8 primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
 
-    if (gCurrentSprite.pose == 0) {
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED) {
         RidleyPartInit();
         return;
     }
@@ -1405,12 +1433,12 @@ void RidleyPart(void) {
     if (!(gCurrentSprite.status & SS_HIDDEN)) {
         RidleyPartIdle();
         if (gSpriteData[primaryRamSlot].paletteRow != 0)
-            gCurrentSprite.paletteRow = 13 - gCurrentSprite.frozenPaletteRowOffset;
+            gCurrentSprite.paletteRow = SPRITE_FLASHING_PALETTE_ROW + 8 - gCurrentSprite.frozenPaletteRowOffset;
         else
             gCurrentSprite.paletteRow = 0;
         if (gCurrentSprite.roomSlot == RIDLEY_PART_FRONT_WING)
             if (gCurrentSprite.currentAnimationFrame == 0 && gCurrentSprite.animationDurationCounter == 1)
-                if (gCurrentSprite.pOam != sRidleyPartOam_3af648)
+                if (gCurrentSprite.pOam != sRidleyPartOam_FrontWingShootingFireOrScreaming)
                     SoundPlay(0x1e2);
     }
 }
@@ -1440,7 +1468,7 @@ void RidleyTailPart(void) {
     } else {
         if (gSpriteData[primaryRamSlot].status & SS_X_FLIP) {
             gCurrentSprite.status |= SS_X_FLIP;
-            gCurrentSprite.pOam = sRidleyPartOam_3af800;
+            gCurrentSprite.pOam = sRidleyPartOam_TailTip_XFlipped;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         } else {
@@ -1449,11 +1477,11 @@ void RidleyTailPart(void) {
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
-        if (gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_3a9a14 && gSubSpriteData2.pMultiOam != sRidleyMultiSpriteData_3a9b9c) {
-            gSubSpriteData2.pMultiOam = sRidleyMultiSpriteData_3a9b9c;
+        if (gSubSpriteData1.pMultiOam == sRidleyMultiSpriteData_ScreamingInPain && gSubSpriteData2.pMultiOam != sRidleyTailMultiSpriteData_RidleyInPain) {
+            gSubSpriteData2.pMultiOam = sRidleyTailMultiSpriteData_RidleyInPain;
             gSubSpriteData2.animationDurationCounter = 0;
             gSubSpriteData2.currentAnimationFrame = 0;
-            gCurrentSprite.pose = 2;
+            gCurrentSprite.pose = SPRITE_POSE_IDLE;
         }
         switch (gCurrentSprite.pose) {
             case SPRITE_POSE_UNINITIALIZED:
@@ -1462,33 +1490,33 @@ void RidleyTailPart(void) {
             case SPRITE_POSE_IDLE:
                 RidleyTailPartIdle();
                 break;
-            case 0x38:
+            case RIDLEY_TAIL_POSE_WAITING_TO_WIND_UP:
                 RidleyTailPartWaitingToWindUp();
                 break;
-            case 0x3a:
+            case RIDLEY_TAIL_POSE_WINDING_UP_1:
                 RidleyTailPartWindingUp1();
                 break;
-            case 0x3c:
+            case RIDLEY_TAIL_POSE_WINDING_UP_2:
                 RidleyTailPartWindingUp2();
                 break;
-            case 0x3e:
+            case RIDLEY_TAIL_POSE_STRIKING_DOWN_1:
                 RidleyTailPartStrikingDown1();
                 break;
-            case 0x40:
+            case RIDLEY_TAIL_POSE_STRIKING_DOWN_2:
                 RidleyTailPartStrikingDown2();
                 break;
-            case 0x42:
+            case RIDLEY_TAIL_POSE_STRIKING_DOWN_3:
                 RidleyTailPartStrikingDown3();
                 break;
-            case 0x44:
+            case RIDLEY_TAIL_POSE_STRIKING_FORWARD:
                 RidleyTailPartStrikingForward();
                 break;
-            case 0x46:
+            case RIDLEY_TAIL_POSE_END_STRIKING:
                 RidleyTailPartDoneStriking();
                 break;
         }
-        UpdateSubSpriteData2Animation();
-        RidleySyncSubSpritesPosition();
+        SpriteUtilUpdateSubSpriteData2Animation();
+        RidleyTailSyncSubSpritesPosition();
     }
 }
 
@@ -1497,10 +1525,10 @@ void RidleyFire(void) {
         case SPRITE_POSE_UNINITIALIZED:
             RidleyFireInit();
             break;
-        case 2:
+        case SPRITE_POSE_IDLE:
             RidleyFireMoving();
             break;
-        case 0x18:
+        case RIDLEY_FIRE_POSE_MOVING_TOWARD_SAMUS:
             RidleyFireMovingTowardsSamus();
             break;
         case SPRITE_POSE_STOPPED:

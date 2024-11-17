@@ -624,7 +624,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     gIgnoreSamusAndSpriteCollision = TRUE;
                     break;
 
-                case SSC_19:
+                case SSC_RIDLEY_TAIL_TIP_STRIKING:
                     if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckSamusDamagingPose() && !SpriteUtilCheckSamusSudoScrew(i))
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
@@ -2224,7 +2224,7 @@ void SpriteUtilUpdateFreezeTimer(void)
     {
         if (MOD_AND(freezeTimer, 2))
         {
-            gCurrentSprite.paletteRow = 15 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FROZEN_PALETTE_ROW);
         }
         else
         {
@@ -2263,7 +2263,7 @@ void SpriteUtilUpdateSecondarySpritesFreezeTimer(u8 spriteId, u8 ramSlot)
         if (gSpriteData[i].freezeTimer < gCurrentSprite.freezeTimer && !(gSpriteData[i].properties & SP_DESTROYED))
         {
             gSpriteData[i].freezeTimer = gCurrentSprite.freezeTimer;
-            gSpriteData[i].paletteRow = 15 - (gSpriteData[i].spritesetGfxSlot + gSpriteData[i].frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[i], SPRITE_FROZEN_PALETTE_ROW);
         }
     }
 }
@@ -2284,7 +2284,7 @@ void SpriteUtilUpdatePrimarySpriteFreezeTimer(void)
     if (gSpriteData[ramSlot].freezeTimer < gCurrentSprite.freezeTimer && !(gSpriteData[ramSlot].properties & SP_DESTROYED))
     {
         gSpriteData[ramSlot].freezeTimer = gCurrentSprite.freezeTimer;
-        gSpriteData[ramSlot].paletteRow = 15 - (gSpriteData[ramSlot].spritesetGfxSlot + gSpriteData[ramSlot].frozenPaletteRowOffset);
+        SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[ramSlot], SPRITE_FROZEN_PALETTE_ROW);
     }
 }
 
@@ -4540,7 +4540,7 @@ void SpriteUtilUpdateStunTimer(void)
     if (isft & 4)
     {
         if (gCurrentSprite.health != 0)
-            gCurrentSprite.paletteRow = 13 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FLASHING_PALETTE_ROW);
 
         return;
     }
@@ -4548,7 +4548,7 @@ void SpriteUtilUpdateStunTimer(void)
     if (gCurrentSprite.health != 0)
     {
         if (gCurrentSprite.freezeTimer != 0)
-            gCurrentSprite.paletteRow = 15 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FROZEN_PALETTE_ROW);
         else
             gCurrentSprite.paletteRow = 0;
     }

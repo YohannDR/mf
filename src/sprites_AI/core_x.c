@@ -121,7 +121,7 @@ void CoreXAbilityInit(void) {
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work3 = 0;
     gCurrentSprite.work4 = 0;
-    bossAlreadyDead = SpriteSpawnSecondary(secondarySpriteId, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, // Need to reuse variable to make it matching.
+    bossAlreadyDead = SpriteSpawnSecondary(secondarySpriteId, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
     if (bossAlreadyDead == UCHAR_MAX) {
         gCurrentSprite.status = 0;
@@ -595,7 +595,7 @@ void CoreXShell(void) {
                 if (tmp != 0) {
                     if ((tmp & 3) == 0) {
                         if ((tmp & 4) != 0) {
-                            gCurrentSprite.paletteRow = 0xd - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+                            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FLASHING_PALETTE_ROW);
                         } else {
                             gCurrentSprite.paletteRow = 0;
                         }

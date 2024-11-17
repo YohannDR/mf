@@ -75,7 +75,7 @@ void ArachnusDyingInit(void) {
 }
 
 void ArachnusRollingInit(void) {
-    u32 shellSpriteSlot;
+    u8 shellSpriteSlot;
 
     gCurrentSprite.pose = ARACHNUS_POSE_ROLLING;
     gCurrentSprite.status |= SS_HIDDEN;
@@ -144,11 +144,11 @@ void ArachnusSlashing(void) {
 }
 
 void ArachnusRolling(void) {
-    u32 shellSpriteSlot;
+    u8 shellSpriteSlot;
     u16 speed;
     u32 hitWall;
-    u32 xPosition;
-    u32 yPosition;
+    u16 xPosition;
+    u16 yPosition;
 
     shellSpriteSlot = ARACHNUS_SHELL_SLOT;
     if (gSpriteData[shellSpriteSlot].pOam == sArachnusOam_Curling) {
@@ -223,7 +223,7 @@ void ArachnusRolling(void) {
 }
 
 void ArachnusBonking(void) {
-    u32 shellSpriteSlot;
+    u8 shellSpriteSlot;
     u8 offset;
     u16 movement;
     u16 xSpeed;
@@ -340,9 +340,9 @@ void ArachnusDying(void) {
                 gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X_INIT;
                 gCurrentSprite.spriteId = gCoreXFormationSpriteId;
         }
-        if (gCurrentSprite.xParasiteTimer < ARRAY_SIZE(sMorphBallCoreXGfx) / 512 * 4) {
+        if (gCurrentSprite.xParasiteTimer < sizeof(sMorphBallCoreXGfx) / 512) {
             SpriteLoadGfx(gCoreXFormationSpriteId, 0, gCurrentSprite.xParasiteTimer);
-        } else if (gCurrentSprite.xParasiteTimer == ARRAY_SIZE(sMorphBallCoreXGfx) / 512 * 4) {
+        } else if (gCurrentSprite.xParasiteTimer == sizeof(sMorphBallCoreXGfx) / 512) {
             SpriteLoadPal(gCoreXFormationSpriteId, 0, ARRAY_SIZE(sMorphBallCoreXPal) / 16);
         }
     }
@@ -531,7 +531,7 @@ void ArachnusWalking(void) {
 }
 
 void ArachnusIdleInit(void) {
-    u32 shellSpriteSlot;
+    u8 shellSpriteSlot;
 
     shellSpriteSlot = ARACHNUS_SHELL_SLOT;
     if (ARACHNUS_ATTACK_TIMER == UCHAR_MAX) {
@@ -673,7 +673,7 @@ void Arachnus(void) {
 }
 
 void ArachnusShell(void) {
-    u32 arachnusRamSlot;
+    u8 arachnusRamSlot;
 
     arachnusRamSlot = gCurrentSprite.primarySpriteRamSlot;
     if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED) {
@@ -721,7 +721,7 @@ void ArachnusShell(void) {
 }
 
 void ArachnusPart(void) {
-    u32 arachnusRamSlot;
+    u8 arachnusRamSlot;
 
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     arachnusRamSlot = gCurrentSprite.primarySpriteRamSlot;
@@ -811,7 +811,7 @@ void ArachnusArm2(void) {
 }
 
 void ArachnusFire(void) {
-    u32 arachnusRamSlot; // needed for matching
+    u8 arachnusRamSlot;
 
     arachnusRamSlot = gCurrentSprite.primarySpriteRamSlot;
     if (gSpriteData[arachnusRamSlot].pose == ARACHNUS_POSE_DYING && gCurrentSprite.pose != ARACHNUS_PROJECTILE_POSE_ARACHNUS_DYING) {

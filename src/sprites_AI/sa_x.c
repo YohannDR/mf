@@ -2570,7 +2570,7 @@ u8 SaXUpdateFreezeTimer(void)
             if (MOD_AND(freezeTimer, 4) == 0)
             {
                 if (freezeTimer & 4)
-                    gCurrentSprite.paletteRow = 15 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+                    SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FROZEN_PALETTE_ROW);
                 else
                     gCurrentSprite.paletteRow = 0;
             }

@@ -1724,7 +1724,6 @@ void ProjectileBringSpriteToPowerBombCenter(u8 spriteSlot)
     u16 spriteX;
     u16 powerBombY;
     u16 powerBombX;
-    u16 ySpeed;
     u16 xSpeed;
 
     if (gCurrentPowerBomb.animationState != 4)
@@ -2087,7 +2086,7 @@ u8 ProjectileIceMissileDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage)
     {
         gSpriteData[spriteSlot].standingOnSprite = FALSE;
         gSpriteData[spriteSlot].freezeTimer = freezeTimer;
-        gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+        SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[spriteSlot], SPRITE_FROZEN_PALETTE_ROW);
         SoundPlayNotAlreadyPlaying(0x146);
     }
 
@@ -2170,7 +2169,7 @@ u8 ProjectileDiffusionFlakeDealDamage(u8 spriteSlot, u8 projectileSlot)
     {
         gSpriteData[spriteSlot].standingOnSprite = FALSE;
         gSpriteData[spriteSlot].freezeTimer = freezeTimer;
-        gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+        SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[spriteSlot], SPRITE_FROZEN_PALETTE_ROW);
         SoundPlayNotAlreadyPlaying(0x146);
     }
 
@@ -2246,7 +2245,7 @@ u8 ProjectileIceBeamDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage)
     {
         gSpriteData[spriteSlot].standingOnSprite = FALSE;
         gSpriteData[spriteSlot].freezeTimer = freezeTimer;
-        gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+        SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[spriteSlot], SPRITE_FROZEN_PALETTE_ROW);
         SoundPlayNotAlreadyPlaying(0x146);
     }
 
@@ -2628,7 +2627,7 @@ void ProjectileWaveBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPosition
         {
             gSpriteData[spriteSlot].standingOnSprite = FALSE;
             gSpriteData[spriteSlot].freezeTimer = 60 * 4;
-            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[spriteSlot], SPRITE_FROZEN_PALETTE_ROW);
         }
     }
     else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
@@ -2689,7 +2688,7 @@ void ProjectileChargedWaveBeamHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yP
         {
             gSpriteData[spriteSlot].standingOnSprite = FALSE;
             gSpriteData[spriteSlot].freezeTimer = 60 * 4;
-            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[spriteSlot], SPRITE_FROZEN_PALETTE_ROW);
         }
     }
     else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
@@ -2951,7 +2950,7 @@ void ProjectileIceMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPositi
         {
             gSpriteData[spriteSlot].standingOnSprite = FALSE;
             gSpriteData[spriteSlot].freezeTimer = 60 * 4;
-            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[spriteSlot], SPRITE_FROZEN_PALETTE_ROW);
         }
     }
     else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
@@ -3014,7 +3013,7 @@ void ProjectileDiffusionMissileHitSprite(u8 spriteSlot, u8 projectileSlot, u16 y
         {
             gSpriteData[spriteSlot].standingOnSprite = FALSE;
             gSpriteData[spriteSlot].freezeTimer = 60 * 4;
-            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[spriteSlot], SPRITE_FROZEN_PALETTE_ROW);
         }
     }
     else if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
@@ -3092,7 +3091,7 @@ void ProjectileDiffusionFlakeHitSprite(u8 spriteSlot, u8 projectileSlot, u16 yPo
         {
             gSpriteData[spriteSlot].standingOnSprite = FALSE;
             gSpriteData[spriteSlot].freezeTimer = 60 * 4;
-            gSpriteData[spriteSlot].paletteRow = 15 - (gSpriteData[spriteSlot].spritesetGfxSlot + gSpriteData[spriteSlot].frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gSpriteData[spriteSlot], SPRITE_FROZEN_PALETTE_ROW);
         }
     }
     else if (gSpriteData[spriteSlot].freezeTimer == 0 && ProjectileGetSpriteWeakness(spriteSlot) & WEAKNESS_CAN_BE_FROZEN)

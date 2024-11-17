@@ -5,6 +5,7 @@
 
 #include "data/generic_data.h"
 #include "data/sprite_data.h"
+#include "data/sprites/core_x.h"
 #include "data/sprites/x_parasite.h"
 #include "data/sprites/serris.h"
 
@@ -610,7 +611,7 @@ void SerrisDying(void)
     {
         // Make serris flicker between regular palette and the stun palette
         if (gCurrentSprite.work1 & 4)
-            gCurrentSprite.paletteRow = 13 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FLASHING_PALETTE_ROW);
         else
             gCurrentSprite.paletteRow = 0;
     }
@@ -700,13 +701,13 @@ void SerrisTurningIntoX(void)
     }
 
     // Load speedbooster ability graphics and palette
-    if (gCurrentSprite.xParasiteTimer < 20)
+    if (gCurrentSprite.xParasiteTimer < sizeof(sSpeedBoosterCoreXGfx) / 512)
     {
         SpriteLoadGfx(PSPRITE_SPEEDBOOSTER_ABILITY, 0, gCurrentSprite.xParasiteTimer);
     }
-    else if (gCurrentSprite.xParasiteTimer == 20)
+    else if (gCurrentSprite.xParasiteTimer == sizeof(sSpeedBoosterCoreXGfx) / 512)
     {
-        SpriteLoadPal(PSPRITE_SPEEDBOOSTER_ABILITY, 0, 5);
+        SpriteLoadPal(PSPRITE_SPEEDBOOSTER_ABILITY, 0, ARRAY_SIZE(sSpeedBoosterCoreXPal) / 16);
     }
 }
 

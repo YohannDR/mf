@@ -2977,13 +2977,13 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_7B] = {
+    [SSPRITE_RIDLEY_PART] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_7C] = {
+    [SSPRITE_RIDLEY_TAIL_PART] = {
         100,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,

@@ -155,7 +155,7 @@ void HalzynSwinging(void)
 
     if (gCurrentSprite.work4 == 0)
     {
-        xMovement = (u16)sHalzynSwingingXVelocity[gCurrentSprite.work3 / 4]; //have to do this to make it matching
+        xMovement = (u16)sHalzynSwingingXVelocity[gCurrentSprite.work3 / 4];
         yMovement = (u16)sHalzynSwingingYVelocity[gCurrentSprite.work3 / 4];
 
         if (gCurrentSprite.status & SS_FACING_RIGHT)

@@ -637,7 +637,7 @@ void OwtchFalling(void)
             yCollisionPoint += gCurrentSprite.hitboxBottom;
     }
     
-    blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(yCollisionPoint, xCollisionPoint); // Have to make it output u32 to make it matching.
+    blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(yCollisionPoint, xCollisionPoint);
 
     if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
     {

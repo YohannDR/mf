@@ -326,9 +326,9 @@ SECTIONS {
         asm/sprites_AI/omega_metroid_husk.o(.text);
         asm/sprites_AI/ice_beam_x.o(.text);
         asm/sprites_AI/metroid_husk.o(.text);
-        src/sprites_AI/neo_ridley.o(.text);
-        asm/sprites_AI/ridley_pre_spawn.o(.text);
 
+        src/sprites_AI/neo_ridley.o(.text);
+        src/sprites_AI/ridley_pre_spawn.o(.text);
         src/sprites_AI/yakuza.o(.text);
         src/sprites_AI/nightmare.o(.text);
 

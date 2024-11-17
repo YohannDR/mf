@@ -468,7 +468,7 @@ void NightmareDeathFlash(void) {
     u8 work2 = gCurrentSprite.work2++;
     if ((work2 & 3) == 0) {
         if ((work2 & 4) != 0)
-            gCurrentSprite.paletteRow = 13 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FLASHING_PALETTE_ROW);
         else
             gCurrentSprite.paletteRow = 0;
     }
@@ -525,9 +525,9 @@ void NightmareTurningIntoCoreX(void) {
             gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X_INIT;
             gCurrentSprite.spriteId = PSPRITE_GRAVITY_SUIT_ABILITY;
         }
-        if (gCurrentSprite.xParasiteTimer < ARRAY_SIZE(sGravityCoreXGfx) / 512 * 4)
+        if (gCurrentSprite.xParasiteTimer < sizeof(sGravityCoreXGfx) / 512)
             SpriteLoadGfx(PSPRITE_GRAVITY_SUIT_ABILITY, 0, gCurrentSprite.xParasiteTimer);
-        else if (gCurrentSprite.xParasiteTimer == ARRAY_SIZE(sGravityCoreXGfx) / 512 * 4)
+        else if (gCurrentSprite.xParasiteTimer == sizeof(sGravityCoreXGfx) / 512)
             SpriteLoadPal(PSPRITE_GRAVITY_SUIT_ABILITY, 0, ARRAY_SIZE(sGravityCoreXPal) / 16);
     }
 }
@@ -1319,7 +1319,7 @@ void NightmarePartEye(void) {
             u8 work1 = gCurrentSprite.work1++;
             if ((work1 & 3) == 0) {
                 if ((work1 & 4) != 0)
-                    gCurrentSprite.paletteRow = 13 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+                    SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FLASHING_PALETTE_ROW);
                 else
                     gCurrentSprite.paletteRow = 0;
             }
@@ -1504,7 +1504,7 @@ void NightmarePartGeneratorUpdateDyingPalette(void) {
     u8 work1 = gCurrentSprite.work1++;
     if ((work1 & 3) == 0) {
         if ((work1 & 4) != 0)
-            gCurrentSprite.paletteRow = 13 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FLASHING_PALETTE_ROW);
         else
             gCurrentSprite.paletteRow = 0;
     }

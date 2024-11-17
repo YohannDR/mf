@@ -547,7 +547,7 @@ void YakuzaPhase1Dying(void) {
     work1 = gCurrentSprite.work1;
     if ((work1 & 3) == 0) {
         if (work1 & 4)
-            gCurrentSprite.paletteRow = 13 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+            SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FLASHING_PALETTE_ROW);
         else
             gCurrentSprite.paletteRow = 0;
     }
@@ -767,9 +767,9 @@ void YakuzaTurningIntoCoreXInit(void) {
 void YakuzaTurningIntoCoreX(void) {
     gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
     gCurrentSprite.xParasiteTimer--;
-    if (gCurrentSprite.xParasiteTimer < ARRAY_SIZE(sSpaceJumpCoreXGfx) / 512 * 4)
+    if (gCurrentSprite.xParasiteTimer < sizeof(sSpaceJumpCoreXGfx) / 512)
         SpriteLoadGfx(PSPRITE_SPACE_JUMP_ABILITY, 0, gCurrentSprite.xParasiteTimer);
-    else if (gCurrentSprite.xParasiteTimer == ARRAY_SIZE(sSpaceJumpCoreXGfx) / 512 * 4)
+    else if (gCurrentSprite.xParasiteTimer == sizeof(sSpaceJumpCoreXGfx) / 512)
         SpriteLoadPal(PSPRITE_SPACE_JUMP_ABILITY, 0, ARRAY_SIZE(sSpaceJumpCoreXPal) / 16);
     if (gCurrentSprite.xParasiteTimer == 0) {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X_INIT;
@@ -862,7 +862,7 @@ void YakuzaPartEyeIdle(void) {
         if (gCurrentSprite.work2 == 0) {
             if (SPRITE_HAS_ISFT(gSpriteData[primaryRamSlot]) == 16) {
                 gCurrentSprite.work1 = 2;
-                gCurrentSprite.work2 += 1; // Needed to make it matching.
+                gCurrentSprite.work2++;
                 gCurrentSprite.pOam = sFrameData_3b7240;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;

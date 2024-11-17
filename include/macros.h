@@ -161,6 +161,8 @@
     SPRITE_SET_ISFT(sprite, value);             \
 }
 
+#define SPRITE_SET_ABSOLUTE_PALETTE_ROW(sprite, row) ((sprite).paletteRow = (row) + 8 - ((sprite).spritesetGfxSlot + (sprite).frozenPaletteRowOffset))
+
 #define SUB_PIXEL_TO_PIXEL(pixel) ((pixel) / SUB_PIXEL_RATIO)
 #define SUB_PIXEL_TO_PIXEL_(pixel) (DIV_SHIFT(pixel, SUB_PIXEL_RATIO))
 #define PIXEL_TO_SUB_PIXEL(pixel) ((s32)((pixel) * SUB_PIXEL_RATIO))

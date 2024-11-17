@@ -4,6 +4,7 @@
 
 #include "data/frame_data_pointers.h"
 #include "data/sprite_data.h"
+#include "data/sprites/core_x.h"
 #include "data/sprites/x_parasite.h"
 #include "data/sprites/zazabi.h"
 
@@ -91,7 +92,7 @@ void ZazabiProjectilesCollision(void)
         if ((gCurrentSprite.invincibilityStunFlashTimer % 4) == 0)
         {
             if (gCurrentSprite.invincibilityStunFlashTimer & 4)
-                gCurrentSprite.paletteRow = 13 - (gCurrentSprite.spritesetGfxSlot + gCurrentSprite.frozenPaletteRowOffset);
+                SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FLASHING_PALETTE_ROW);
             else
                 gCurrentSprite.paletteRow = 0;
         }
@@ -1450,13 +1451,13 @@ void ZazabiDying(void)
             break;
     }
 
-    if (gCurrentSprite.xParasiteTimer < 20)
+    if (gCurrentSprite.xParasiteTimer < sizeof(sHiJumpCoreXGfx) / 512)
     {
         SpriteLoadGfx(gCoreXFormationSpriteId, 0, gCurrentSprite.xParasiteTimer);
     }
-    else if (gCurrentSprite.xParasiteTimer == 20)
+    else if (gCurrentSprite.xParasiteTimer == sizeof(sHiJumpCoreXGfx) / 512)
     {
-        SpriteLoadPal(gCoreXFormationSpriteId, 0, 5);
+        SpriteLoadPal(gCoreXFormationSpriteId, 0, ARRAY_SIZE(sHiJumpCoreXPal) / 16);
     }
 }
 
