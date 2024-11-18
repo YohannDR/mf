@@ -33,7 +33,7 @@ This produces the following ROMs:
 - **WINDOWS ONLY** : Install and setup [WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
 - Install the dependencies (an `apt update` might be necessary for binutils)
 - Build agbcc (run `./build.sh`)
-- Add agbcc to your path (export PATH="agbcc path:$PATH")
+- Add agbcc to your path (export PATH="path/to/agbcc:$PATH")
 - Build preproc (run `make` in tools/preproc)
 
 ## Build
