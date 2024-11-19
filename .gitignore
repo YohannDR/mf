@@ -13,6 +13,7 @@
 permuter_settings.toml
 
 *.gba
+*.sav
 *.elf
 *.dump
 *.o
