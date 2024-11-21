@@ -27,4 +27,4 @@ tools/**/*.txt
 tools/**/*.png
 .vscode
 
-*/__pycache__/*
+*.pyc
