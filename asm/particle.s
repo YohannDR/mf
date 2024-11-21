@@ -2335,7 +2335,7 @@ unk_73e90: @ 0x08073E90
 	ldrb r0, [r4, #4]
 	adds r0, #1
 	strb r0, [r4, #4]
-	ldr r0, _08073ECC @ =sParticleOam_3ec280
+	ldr r0, _08073ECC @ =sWaterDropOam_Splashing
 	bl ParticleUpdateAnimation
 	ldr r0, _08073ED0 @ =gEffectYPosition
 	ldrh r0, [r0]
@@ -2361,7 +2361,7 @@ _08073EC2:
 	bx r0
 	.align 2, 0
 _08073EC8: .4byte 0x030008B8
-_08073ECC: .4byte sParticleOam_3ec280
+_08073ECC: .4byte sWaterDropOam_Splashing
 _08073ED0: .4byte gEffectYPosition
 
 	thumb_func_start ParticleExplosionSmoke

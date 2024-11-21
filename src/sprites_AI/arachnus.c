@@ -377,23 +377,17 @@ void ArachnusDetermineAttack(void) {
     } else {
         if (gCurrentSprite.status & SS_ARACHNUS_HIT_BY_NORMAL_BEAM) {
             // hit by normal beam
-            if (SpriteUtilCountSecondarySprites(SSPRITE_ARACHNUS_FIRE_BALL) == 0 && !(gCurrentSprite.status & SS_ARACHNUS_HIT_BY_NORMAL_BEAM_ATTACK_TYPE)) {
+            if (SpriteUtilCountSecondarySprites(SSPRITE_ARACHNUS_FIRE_BALL) == 0 && !(gCurrentSprite.status & SS_ARACHNUS_HIT_BY_NORMAL_BEAM_ATTACK_TYPE))
                 ArachnusShootingFireInit();
-            } else {
+            else
                 ArachnusRollingInit();
-            }
         } else {
-            if (SpriteUtilCheckSamusHangingOnLedge()) {
+            if (SpriteUtilCheckSamusHangingOnLedge())
                 ArachnusRollingInit();
-            } else {
-                if (SpriteUtilCheckSamusNearSpriteFrontBehind(BLOCK_TO_SUB_PIXEL(3), BLOCK_TO_SUB_PIXEL(6), BLOCK_TO_SUB_PIXEL(6)) == NSFB_IN_FRONT) {
-                    ArachnusSlashingInit();
-                } else {
-                    if (SpriteUtilCheckSamusNearSpriteFrontBehind(BLOCK_TO_SUB_PIXEL(3), BLOCK_TO_SUB_PIXEL(8), BLOCK_TO_SUB_PIXEL(8)) == NSFB_IN_FRONT) {
-                        ArachnusRollingInit();
-                    }
-                }
-            }
+            else if (SpriteUtilCheckSamusNearSpriteFrontBehind(BLOCK_TO_SUB_PIXEL(3), BLOCK_TO_SUB_PIXEL(6), BLOCK_TO_SUB_PIXEL(6)) == NSFB_IN_FRONT)
+                ArachnusSlashingInit();
+            else if (SpriteUtilCheckSamusNearSpriteFrontBehind(BLOCK_TO_SUB_PIXEL(3), BLOCK_TO_SUB_PIXEL(8), BLOCK_TO_SUB_PIXEL(8)) == NSFB_IN_FRONT)
+                ArachnusRollingInit();
         }
     }
 }

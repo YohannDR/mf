@@ -119,6 +119,8 @@ def Func():
     spritemapAddr = paletteAddr+0x20*rows # doesn't work with a few sprites
     if spriteIndex == 0x51: # yakuza
         spritemapAddr += 0x100
+    if spriteIndex == 0xBE or spriteIndex == 0x4D: # zozoro and ice beam X (omega)
+        spritemapAddr -= 0x20
 
     romSeek(paletteAddr)
     palette555 = [romRead(2) for i in range(rows*16)]

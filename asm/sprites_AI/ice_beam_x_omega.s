@@ -87,7 +87,7 @@ IceBeamAbilityInit: @ 0x080589A8
 	strh r0, [r3, #0xc]
 	strh r1, [r3, #0xe]
 	strh r0, [r3, #0x10]
-	ldr r0, _08058A10 @ =0x083A86A4
+	ldr r0, _08058A10 @ =sIceBeamAbilityOmegaOam_Idle
 	str r0, [r3, #0x18]
 	strb r6, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -113,7 +113,7 @@ IceBeamAbilityInit: @ 0x080589A8
 _08058A04: .4byte gCurrentSprite
 _08058A08: .4byte 0x0000FFFB
 _08058A0C: .4byte 0x0000FFDC
-_08058A10: .4byte 0x083A86A4
+_08058A10: .4byte sIceBeamAbilityOmegaOam_Idle
 _08058A14:
 	movs r0, #1
 	strb r0, [r1]
@@ -246,7 +246,7 @@ IceBeamAbilityFloatingBeforeSaX: @ 0x08058AEC
 	adds r5, r2, #0
 	adds r5, #0x31
 	ldrb r1, [r5]
-	ldr r4, _08058B58 @ =0x083A74A8
+	ldr r4, _08058B58 @ =sIceBeamAbilityOmegaFloatingBeforeSaXYMovement
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -266,7 +266,7 @@ _08058B22:
 	adds r5, r2, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r4, _08058B60 @ =0x083A752A
+	ldr r4, _08058B60 @ =sIceBeamAbilityOmegaFloatingBeforeSaXXMovement
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -285,9 +285,9 @@ _08058B46:
 	b _08058B78
 	.align 2, 0
 _08058B54: .4byte gCurrentSprite
-_08058B58: .4byte 0x083A74A8
+_08058B58: .4byte sIceBeamAbilityOmegaFloatingBeforeSaXYMovement
 _08058B5C: .4byte 0x00007FFF
-_08058B60: .4byte 0x083A752A
+_08058B60: .4byte sIceBeamAbilityOmegaFloatingBeforeSaXXMovement
 _08058B64:
 	movs r0, #0x2c
 	strb r0, [r1]
@@ -580,7 +580,7 @@ _08058D44:
 	strb r6, [r3, #0x1c]
 	movs r0, #0
 	strh r0, [r3, #0x16]
-	ldr r0, _08058E00 @ =0x083A86EC
+	ldr r0, _08058E00 @ =sIceBeamAbilityOmegaOam_GettingAbsorbed
 	str r0, [r3, #0x18]
 	ldr r4, _08058E04 @ =gSamusData
 	movs r5, #0x26
@@ -616,7 +616,7 @@ _08058DF0: .4byte sCoreXIdleYSpeed
 _08058DF4: .4byte 0x00007FFF
 _08058DF8: .4byte sCoreXIdleXSpeed
 _08058DFC: .4byte gPreventMovementTimer
-_08058E00: .4byte 0x083A86EC
+_08058E00: .4byte sIceBeamAbilityOmegaOam_GettingAbsorbed
 _08058E04: .4byte gSamusData
 _08058E08: .4byte sSamusSetPoseFunctionPointer
 _08058E0C: .4byte gSamusEnvironmentalEffects

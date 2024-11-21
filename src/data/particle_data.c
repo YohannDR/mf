@@ -2462,70 +2462,70 @@ static const u16 sParticleOam_EnterOrExitWater_Frame7[] = {
     0xf8, 0x1f8, OBJ_PALETTE_3 | 0x15c
 };
 
-static const u16 sParticleOam_3ec240_Frame0[] = {
+static const u16 sWaterDropOam_Spawning_Frame0[] = {
     1,
     0xfe, 0x1fc, OBJ_PALETTE_3 | 0x161
 };
 
-static const u16 sParticleOam_3ec240_Frame1[] = {
+static const u16 sWaterDropOam_Spawning_Frame1[] = {
     1,
     0x0, 0x1fc, OBJ_PALETTE_3 | 0x161
 };
 
-static const u16 sParticleOam_3ec240_Frame2[] = {
+static const u16 sWaterDropOam_Spawning_Frame2[] = {
     1,
     0x0, 0x1fc, OBJ_PALETTE_3 | 0x162
 };
 
-static const u16 sParticleOam_3ec270_Frame0[] = {
+static const u16 sWaterDropOam_Falling_Frame0[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_3 | 0x160
 };
 
-static const u16 sParticleOam_3ec280_Frame0[] = {
+static const u16 sWaterDropOam_Splashing_Frame0[] = {
     2,
     0xf8, 0x1fa, OBJ_PALETTE_3 | 0xc0,
     0xf8, 0x1fe, OBJ_PALETTE_3 | 0xc0
 };
 
-static const u16 sParticleOam_3ec280_Frame1[] = {
+static const u16 sWaterDropOam_Splashing_Frame1[] = {
     2,
     0xf8, 0x1fa, OBJ_PALETTE_3 | 0xc1,
     0xf8, 0x1fe, OBJ_PALETTE_3 | 0xc1
 };
 
-static const u16 sParticleOam_3ec280_Frame2[] = {
+static const u16 sWaterDropOam_Splashing_Frame2[] = {
     2,
     0xf8, OBJ_X_FLIP | 0x1fa, OBJ_PALETTE_3 | 0xc2,
     0xf8, 0x1fe, OBJ_PALETTE_3 | 0xc2
 };
 
-static const u16 sParticleOam_3ec280_Frame3[] = {
+static const u16 sWaterDropOam_Splashing_Frame3[] = {
     2,
     0xf8, 0x1fa, OBJ_PALETTE_3 | 0xc3,
     0xf8, OBJ_X_FLIP | 0x1fe, OBJ_PALETTE_3 | 0xc3
 };
 
-static const u16 sParticleOam_3ec280_Frame4[] = {
+static const u16 sWaterDropOam_Splashing_Frame4[] = {
     2,
     0xf8, OBJ_X_FLIP | 0x1fa, OBJ_PALETTE_3 | 0xc4,
     0xf8, 0x1fe, OBJ_PALETTE_3 | 0xc4
 };
 
-static const u16 sParticleOam_3ec2b0_Frame0[] = {
+static const u16 sBubbles1Oam_Idle_Frame0[] = {
     2,
     0xfa, 0x1f9, OBJ_PALETTE_3 | 0x178,
     0xf9, 0x1fd, OBJ_PALETTE_3 | 0x17a
 };
 
-static const u16 sParticleOam_3ec2b0_Frame1[] = {
+static const u16 sBubbles1Oam_Idle_Frame1[] = {
     3,
     0xf6, 0x1f9, OBJ_PALETTE_3 | 0x179,
     0xfa, 0x1fe, OBJ_PALETTE_3 | 0x178,
     0xfe, 0x1fc, OBJ_PALETTE_3 | 0x178
 };
 
-static const u16 sParticleOam_3ec2b0_Frame2[] = {
+static const u16 sBubbles1Oam_Idle_Frame2[] = {
     5,
     0xf4, 0x1f8, OBJ_PALETTE_3 | 0x17a,
     0xf8, 0x1fe, OBJ_PALETTE_3 | 0x179,
@@ -2534,7 +2534,7 @@ static const u16 sParticleOam_3ec2b0_Frame2[] = {
     0xfe, 0x1fb, OBJ_PALETTE_3 | 0x179
 };
 
-static const u16 sParticleOam_3ec2b0_Frame3[] = {
+static const u16 sBubbles1Oam_Idle_Frame3[] = {
     5,
     0xf2, 0x1f7, OBJ_PALETTE_3 | 0x17b,
     0xf6, 0x1fe, OBJ_PALETTE_3 | 0x17a,
@@ -2543,7 +2543,7 @@ static const u16 sParticleOam_3ec2b0_Frame3[] = {
     0xfc, 0x1fb, OBJ_PALETTE_3 | 0x17a
 };
 
-static const u16 sParticleOam_3ec2b0_Frame4[] = {
+static const u16 sBubbles1Oam_Idle_Frame4[] = {
     5,
     0xf4, 0x1ff, OBJ_PALETTE_3 | 0x17b,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x17a,
@@ -2552,42 +2552,42 @@ static const u16 sParticleOam_3ec2b0_Frame4[] = {
     0xfc, 0x1fd, OBJ_PALETTE_3 | 0x179
 };
 
-static const u16 sParticleOam_3ec2b0_Frame5[] = {
+static const u16 sBubbles1Oam_Idle_Frame5[] = {
     2,
     0xf6, 0x1fc, OBJ_PALETTE_3 | 0x17b,
     0xfa, 0x1fd, OBJ_PALETTE_3 | 0x179
 };
 
-static const u16 sParticleOam_3ec2b0_Frame6[] = {
+static const u16 sBubbles1Oam_Idle_Frame6[] = {
     1,
     0xf8, 0x1fd, OBJ_PALETTE_3 | 0x17a
 };
 
-static const u16 sParticleOam_3ec2b0_Frame7[] = {
+static const u16 sBubbles1Oam_Idle_Frame7[] = {
     1,
     0xf6, 0x1fd, OBJ_PALETTE_3 | 0x17b
 };
 
-static const u16 sParticleOam_3ec2f8_Frame0[] = {
+static const u16 sBubbles2Oam_Idle_Frame0[] = {
     2,
     0xf6, 0x1fb, OBJ_PALETTE_3 | 0x178,
     0xfb, 0x1fb, OBJ_PALETTE_3 | 0x179
 };
 
-static const u16 sParticleOam_3ec2f8_Frame1[] = {
+static const u16 sBubbles2Oam_Idle_Frame1[] = {
     2,
     0xf3, 0x1fc, OBJ_PALETTE_3 | 0x179,
     0xfa, 0x1fc, OBJ_PALETTE_3 | 0x178
 };
 
-static const u16 sParticleOam_3ec2f8_Frame2[] = {
+static const u16 sBubbles2Oam_Idle_Frame2[] = {
     3,
     0xf1, 0x1fd, OBJ_PALETTE_3 | 0x17a,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x179,
     0xfa, 0x0, OBJ_PALETTE_3 | 0x178
 };
 
-static const u16 sParticleOam_3ec2f8_Frame3[] = {
+static const u16 sBubbles2Oam_Idle_Frame3[] = {
     4,
     0xee, 0x1fe, OBJ_PALETTE_3 | 0x17b,
     0xf6, 0x1fc, OBJ_PALETTE_3 | 0x17a,
@@ -2595,7 +2595,7 @@ static const u16 sParticleOam_3ec2f8_Frame3[] = {
     0xee, 0x3, OBJ_PALETTE_3 | 0x179
 };
 
-static const u16 sParticleOam_3ec2f8_Frame4[] = {
+static const u16 sBubbles2Oam_Idle_Frame4[] = {
     4,
     0xf4, 0x1fc, OBJ_PALETTE_3 | 0x17b,
     0xf6, 0x1, OBJ_PALETTE_3 | 0x17a,
@@ -2603,7 +2603,7 @@ static const u16 sParticleOam_3ec2f8_Frame4[] = {
     0xec, 0x5, OBJ_PALETTE_3 | 0x17a
 };
 
-static const u16 sParticleOam_3ec2f8_Frame5[] = {
+static const u16 sBubbles2Oam_Idle_Frame5[] = {
     4,
     0xf4, 0x2, OBJ_PALETTE_3 | 0x17b,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x179,
@@ -2611,19 +2611,19 @@ static const u16 sParticleOam_3ec2f8_Frame5[] = {
     0xea, 0x6, OBJ_PALETTE_3 | 0x17b
 };
 
-static const u16 sParticleOam_3ec2f8_Frame6[] = {
+static const u16 sBubbles2Oam_Idle_Frame6[] = {
     2,
     0xf6, 0x1fc, OBJ_PALETTE_3 | 0x17a,
     0xec, 0x1fe, OBJ_PALETTE_3 | 0x17b
 };
 
-static const u16 sParticleOam_3ec2f8_Frame7[] = {
+static const u16 sBubbles2Oam_Idle_Frame7[] = {
     2,
     0xf4, 0x1fc, OBJ_PALETTE_3 | 0x17b,
     0xfb, 0x1fb, OBJ_PALETTE_3 | 0x178
 };
 
-static const u16 sParticleOam_3ec2f8_Frame8[] = {
+static const u16 sBubbles2Oam_Idle_Frame8[] = {
     1,
     0xf8, 0x1fb, OBJ_PALETTE_3 | 0x179
 };
@@ -3759,133 +3759,133 @@ const struct FrameData sParticleOam_EnterOrExitWater[9] = {
     [8] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_3ec240[6] = {
+const struct FrameData sWaterDropOam_Spawning[6] = {
     [0] = {
-        .pFrame = sParticleOam_3ec240_Frame0,
+        .pFrame = sWaterDropOam_Spawning_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sParticleOam_3ec240_Frame1,
+        .pFrame = sWaterDropOam_Spawning_Frame1,
         .timer = 10
     },
     [2] = {
-        .pFrame = sParticleOam_3ec240_Frame2,
+        .pFrame = sWaterDropOam_Spawning_Frame2,
         .timer = 12
     },
     [3] = {
-        .pFrame = sParticleOam_3ec240_Frame1,
+        .pFrame = sWaterDropOam_Spawning_Frame1,
         .timer = 4
     },
     [4] = {
-        .pFrame = sParticleOam_3ec240_Frame0,
+        .pFrame = sWaterDropOam_Spawning_Frame0,
         .timer = 4
     },
     [5] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_3ec270[2] = {
+const struct FrameData sWaterDropOam_Falling[2] = {
     [0] = {
-        .pFrame = sParticleOam_3ec270_Frame0,
+        .pFrame = sWaterDropOam_Falling_Frame0,
         .timer = 4
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_3ec280[6] = {
+const struct FrameData sWaterDropOam_Splashing[6] = {
     [0] = {
-        .pFrame = sParticleOam_3ec280_Frame0,
+        .pFrame = sWaterDropOam_Splashing_Frame0,
         .timer = 6
     },
     [1] = {
-        .pFrame = sParticleOam_3ec280_Frame1,
+        .pFrame = sWaterDropOam_Splashing_Frame1,
         .timer = 6
     },
     [2] = {
-        .pFrame = sParticleOam_3ec280_Frame2,
+        .pFrame = sWaterDropOam_Splashing_Frame2,
         .timer = 6
     },
     [3] = {
-        .pFrame = sParticleOam_3ec280_Frame3,
+        .pFrame = sWaterDropOam_Splashing_Frame3,
         .timer = 6
     },
     [4] = {
-        .pFrame = sParticleOam_3ec280_Frame4,
+        .pFrame = sWaterDropOam_Splashing_Frame4,
         .timer = 6
     },
     [5] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_3ec2b0[9] = {
+const struct FrameData sBubbles1Oam_Idle[9] = {
     [0] = {
-        .pFrame = sParticleOam_3ec2b0_Frame0,
+        .pFrame = sBubbles1Oam_Idle_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sParticleOam_3ec2b0_Frame1,
+        .pFrame = sBubbles1Oam_Idle_Frame1,
         .timer = 8
     },
     [2] = {
-        .pFrame = sParticleOam_3ec2b0_Frame2,
+        .pFrame = sBubbles1Oam_Idle_Frame2,
         .timer = 8
     },
     [3] = {
-        .pFrame = sParticleOam_3ec2b0_Frame3,
+        .pFrame = sBubbles1Oam_Idle_Frame3,
         .timer = 8
     },
     [4] = {
-        .pFrame = sParticleOam_3ec2b0_Frame4,
+        .pFrame = sBubbles1Oam_Idle_Frame4,
         .timer = 8
     },
     [5] = {
-        .pFrame = sParticleOam_3ec2b0_Frame5,
+        .pFrame = sBubbles1Oam_Idle_Frame5,
         .timer = 8
     },
     [6] = {
-        .pFrame = sParticleOam_3ec2b0_Frame6,
+        .pFrame = sBubbles1Oam_Idle_Frame6,
         .timer = 8
     },
     [7] = {
-        .pFrame = sParticleOam_3ec2b0_Frame7,
+        .pFrame = sBubbles1Oam_Idle_Frame7,
         .timer = 8
     },
     [8] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_3ec2f8[10] = {
+const struct FrameData sBubbles2Oam_Idle[10] = {
     [0] = {
-        .pFrame = sParticleOam_3ec2f8_Frame0,
+        .pFrame = sBubbles2Oam_Idle_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sParticleOam_3ec2f8_Frame1,
+        .pFrame = sBubbles2Oam_Idle_Frame1,
         .timer = 8
     },
     [2] = {
-        .pFrame = sParticleOam_3ec2f8_Frame2,
+        .pFrame = sBubbles2Oam_Idle_Frame2,
         .timer = 8
     },
     [3] = {
-        .pFrame = sParticleOam_3ec2f8_Frame3,
+        .pFrame = sBubbles2Oam_Idle_Frame3,
         .timer = 8
     },
     [4] = {
-        .pFrame = sParticleOam_3ec2f8_Frame4,
+        .pFrame = sBubbles2Oam_Idle_Frame4,
         .timer = 8
     },
     [5] = {
-        .pFrame = sParticleOam_3ec2f8_Frame5,
+        .pFrame = sBubbles2Oam_Idle_Frame5,
         .timer = 8
     },
     [6] = {
-        .pFrame = sParticleOam_3ec2f8_Frame6,
+        .pFrame = sBubbles2Oam_Idle_Frame6,
         .timer = 8
     },
     [7] = {
-        .pFrame = sParticleOam_3ec2f8_Frame7,
+        .pFrame = sBubbles2Oam_Idle_Frame7,
         .timer = 8
     },
     [8] = {
-        .pFrame = sParticleOam_3ec2f8_Frame8,
+        .pFrame = sBubbles2Oam_Idle_Frame8,
         .timer = 8
     },
     [9] = FRAME_DATA_TERMINATOR

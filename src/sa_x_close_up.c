@@ -59,7 +59,7 @@ void SaXCloseUpInit(void) {
     DMA_SET(3, VRAM_OBJ, gSpriteTilesBackup, C_32_2_16(DMA_ENABLE, sizeof(gSpriteTilesBackup) / 2));
     CallLZ77UncompVram(sSaXCloseupGfx, BGCNT_TO_VRAM_CHAR_BASE(0));
     DMA_SET(3, sSaXCloseupPal, PALRAM_BASE, C_32_2_16(DMA_ENABLE, sizeof(sSaXCloseupPal) / 2));
-    write16(PALRAM_BASE, 0);
+    write16(PALRAM_BASE, COLOR_BLACK);
     CallLZ77UncompVram(sSaXCloseupFirstTileTable, BGCNT_TO_VRAM_TILE_BASE(0x18));
     CallLZ77UncompVram(sSaXCloseupSecondTileTable, BGCNT_TO_VRAM_TILE_BASE(0x1a));
 

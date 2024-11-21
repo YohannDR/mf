@@ -477,7 +477,7 @@ void SpriteDraw(s32 slot)
             }
 
             // Rotates and scales objects at their centers independently if SS_ROTATE_SCALE_INDIVIDUAL is set
-            // Breaks if any of the objects are flipped
+            // Breaks if any of the objects are flipped (not the sprite status)
             if (rotateScaleIndividual)
             {
                 if (doubleSize)

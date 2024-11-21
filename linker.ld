@@ -323,10 +323,11 @@ SECTIONS {
         asm/sprites_AI/frozen_ridley.o(.text);
         asm/sprites_AI/gold_enemy_door_lock.o(.text);
         asm/sprites_AI/varia_x.o(.text);
-        asm/sprites_AI/omega_metroid_husk.o(.text);
-        asm/sprites_AI/ice_beam_x.o(.text);
-        asm/sprites_AI/metroid_husk.o(.text);
 
+        src/sprites_AI/omega_metroid_husk.o(.text);
+        asm/sprites_AI/ice_beam_x_omega.o(.text);
+
+        src/sprites_AI/metroid_husk.o(.text);
         src/sprites_AI/neo_ridley.o(.text);
         src/sprites_AI/ridley_pre_spawn.o(.text);
         src/sprites_AI/yakuza.o(.text);
@@ -410,6 +411,7 @@ SECTIONS {
 
         src/data/sprites/box.o(.rodata);
         src/data/sprites/geruda.o(.rodata);
+
         src/data/sprites/yard.o(.rodata);
         src/data/sprites/evir.o(.rodata);
         src/data/sprites/bull.o(.rodata);
@@ -434,6 +436,8 @@ SECTIONS {
         src/data/sprites/pillar.o(.rodata);
         src/data/sprites/genesis.o(.rodata);
 
+        src/data/sprites/omega_metroid_husk.o(.rodata);
+        src/data/sprites/ice_beam_x_omega.o(.rodata);
         src/data/sprites/metroid_husk.o(.rodata);
         src/data/sprites/neo_ridley.o(.rodata);
         src/data/sprites/ridley_pre_spawn.o(.rodata);

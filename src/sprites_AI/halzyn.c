@@ -142,7 +142,7 @@ void HalzynSwingingInit(void)
 }
 
 /**
- * @brief 1dd0c | 44 | Handles an halzyn swinging
+ * @brief 1dd0c | 168 | Handles an halzyn swinging
  * 
  */
 void HalzynSwinging(void)

@@ -2,8 +2,8 @@
 
     .syntax unified
 
-	thumb_func_start OmegaHuskSetCollision
-OmegaHuskSetCollision: @ 0x08058534
+	thumb_func_start OmegaMetroidHuskSetInvisibleWallCollision
+OmegaMetroidHuskSetInvisibleWallCollision: @ 0x08058534
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -124,7 +124,7 @@ OmegaMetroidHuskInit: @ 0x080585F8
 	adds r1, #0x24
 	movs r0, #1
 	strb r0, [r1]
-	ldr r0, _0805865C @ =0x083A7458
+	ldr r0, _0805865C @ =sOmegaMetroidHuskOam_Idle
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -135,7 +135,7 @@ OmegaMetroidHuskInit: @ 0x080585F8
 _08058650: .4byte gCurrentSprite
 _08058654: .4byte 0x0000FFFB
 _08058658: .4byte 0x0000FFFC
-_0805865C: .4byte 0x083A7458
+_0805865C: .4byte sOmegaMetroidHuskOam_Idle
 
 	thumb_func_start OmegaMetroidHuskWaitingForSamus
 OmegaMetroidHuskWaitingForSamus: @ 0x08058660
@@ -154,7 +154,7 @@ OmegaMetroidHuskWaitingForSamus: @ 0x08058660
 	ldr r0, _0805868C @ =gDisableScrolling
 	strb r1, [r0]
 	movs r0, #2
-	bl OmegaHuskSetCollision
+	bl OmegaMetroidHuskSetInvisibleWallCollision
 _08058684:
 	pop {r0}
 	bx r0
@@ -298,7 +298,7 @@ OmegaMetroidHuskGettingCrushedInit: @ 0x080587B4
 	movs r3, #0
 	movs r0, #0x18
 	strb r0, [r2]
-	ldr r0, _080587D8 @ =0x083A7468
+	ldr r0, _080587D8 @ =sOmegaMetroidHuskOam_GettingCrushed
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -308,7 +308,7 @@ OmegaMetroidHuskGettingCrushedInit: @ 0x080587B4
 	bx r0
 	.align 2, 0
 _080587D4: .4byte gCurrentSprite
-_080587D8: .4byte 0x083A7468
+_080587D8: .4byte sOmegaMetroidHuskOam_GettingCrushed
 _080587DC: .4byte 0x00000225
 
 	thumb_func_start OmegaMetroidHuskGettingCrushed
@@ -323,7 +323,7 @@ OmegaMetroidHuskGettingCrushed: @ 0x080587E0
 	movs r3, #0
 	movs r1, #0x1a
 	strb r1, [r2]
-	ldr r1, _0805880C @ =0x083A7498
+	ldr r1, _0805880C @ =sOmegaMetroidHuskOam_Crushed
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	strh r3, [r0, #0x16]
@@ -335,7 +335,7 @@ _08058804:
 	bx r0
 	.align 2, 0
 _08058808: .4byte gCurrentSprite
-_0805880C: .4byte 0x083A7498
+_0805880C: .4byte sOmegaMetroidHuskOam_Crushed
 
 	thumb_func_start OmegaMetroidHuskWaiting
 OmegaMetroidHuskWaiting: @ 0x08058810

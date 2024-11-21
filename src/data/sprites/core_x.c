@@ -64,7 +64,7 @@ static const u16 sCoreXShellOam_Yellow_Frame0[OAM_DATA_SIZE(4)] = {
     0x8, OBJ_SIZE_16x16 | 0x8, OBJ_PALETTE_10 | 0x310
 };
 
-static const u16 sCoreXShellOam_Breaking_Frame0[OAM_DATA_SIZE(4)] = {
+static const u16 sCoreXShellOam_Red_Frame0[OAM_DATA_SIZE(4)] = {
     4,
     0xe8, OBJ_SIZE_32x32 | 0x1e8, OBJ_PALETTE_11 | 0x28c,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x8, OBJ_PALETTE_11 | 0x290,
@@ -604,7 +604,7 @@ const struct FrameData sCoreXStaticOam_Unused[19] = {
 
 const struct FrameData sCoreXShellOam_Breaking[9] = {
     [0] = {
-        .pFrame = sCoreXShellOam_Breaking_Frame0,
+        .pFrame = sCoreXShellOam_Red_Frame0,
         .timer = 8
     },
     [1] = {
@@ -984,7 +984,7 @@ const struct FrameData sCoreXShellOam_Yellow[2] = {
 
 const struct FrameData sCoreXShellOam_Red[2] = {
     [0] = {
-        .pFrame = sCoreXShellOam_Breaking_Frame0,
+        .pFrame = sCoreXShellOam_Red_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
