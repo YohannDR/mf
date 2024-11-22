@@ -287,7 +287,7 @@ static const u16 sCoreXShellOam_Breaking_Frame7[OAM_DATA_SIZE(8)] = {
     0x0, OBJ_X_FLIP | 0x8, OBJ_PALETTE_9 | 0x333
 };
 
-static const u16 sCoreXStaticOam_0_Frame3[OAM_DATA_SIZE(1)] = {
+static const u16 sCoreXOam_Empty[OAM_DATA_SIZE(1)] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_9 | 0x2ef
 };
@@ -480,7 +480,7 @@ const struct FrameData sCoreXStaticOam_0[5] = {
         .timer = 2
     },
     [3] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 20
     },
     [4] = FRAME_DATA_TERMINATOR
@@ -500,7 +500,7 @@ const struct FrameData sCoreXStaticOam_1[5] = {
         .timer = 2
     },
     [3] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 40
     },
     [4] = FRAME_DATA_TERMINATOR
@@ -520,7 +520,7 @@ const struct FrameData sCoreXStaticOam_2[5] = {
         .timer = 2
     },
     [3] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 60
     },
     [4] = FRAME_DATA_TERMINATOR
@@ -644,7 +644,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [1] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [2] = {
@@ -652,7 +652,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [3] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [4] = {
@@ -660,7 +660,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [5] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [6] = {
@@ -668,7 +668,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [7] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [8] = {
@@ -676,7 +676,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [9] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [10] = {
@@ -684,7 +684,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [11] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [12] = {
@@ -692,7 +692,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [13] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [14] = {
@@ -700,7 +700,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [15] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [16] = {
@@ -708,7 +708,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [17] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [18] = {
@@ -716,7 +716,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [19] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [20] = {
@@ -724,7 +724,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [21] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [22] = {
@@ -732,7 +732,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [23] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [24] = {
@@ -740,7 +740,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [25] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [26] = {
@@ -748,7 +748,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [27] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [28] = {
@@ -756,7 +756,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [29] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [30] = {
@@ -764,7 +764,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [31] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [32] = {
@@ -772,7 +772,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [33] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [34] = {
@@ -780,7 +780,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [35] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [36] = {
@@ -788,7 +788,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [37] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [38] = {
@@ -796,7 +796,7 @@ const struct FrameData sCoreXAbilityAuraOam_Slow[41] = {
         .timer = 2
     },
     [39] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 2
     },
     [40] = FRAME_DATA_TERMINATOR
@@ -808,7 +808,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [1] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [2] = {
@@ -816,7 +816,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [3] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [4] = {
@@ -824,7 +824,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [5] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [6] = {
@@ -832,7 +832,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [7] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [8] = {
@@ -840,7 +840,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [9] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [10] = {
@@ -848,7 +848,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [11] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [12] = {
@@ -856,7 +856,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [13] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [14] = {
@@ -864,7 +864,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [15] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [16] = {
@@ -872,7 +872,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [17] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [18] = {
@@ -880,7 +880,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [19] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [20] = {
@@ -888,7 +888,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [21] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [22] = {
@@ -896,7 +896,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [23] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [24] = {
@@ -904,7 +904,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [25] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [26] = {
@@ -912,7 +912,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [27] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [28] = {
@@ -920,7 +920,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [29] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [30] = {
@@ -928,7 +928,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [31] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [32] = {
@@ -936,7 +936,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [33] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [34] = {
@@ -944,7 +944,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [35] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [36] = {
@@ -952,7 +952,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [37] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [38] = {
@@ -960,7 +960,7 @@ const struct FrameData sCoreXAbilityAuraOam_Fast[41] = {
         .timer = 1
     },
     [39] = {
-        .pFrame = sCoreXStaticOam_0_Frame3,
+        .pFrame = sCoreXOam_Empty,
         .timer = 1
     },
     [40] = FRAME_DATA_TERMINATOR

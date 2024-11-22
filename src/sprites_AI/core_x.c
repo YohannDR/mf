@@ -44,7 +44,7 @@ void CoreXAbilityTransfromation(void) {
 
 
 void CoreXAbilityInit(void) {
-    u8 bossAlreadyDead = FALSE;
+    u8 tmp = FALSE;
     u8 bossSpriteId = PSPRITE_ARACHNUS;
     u8 secondarySpriteId = SSPRITE_CORE_X_SHELL_MORPH_BALL;
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
@@ -80,21 +80,21 @@ void CoreXAbilityInit(void) {
         switch (gCurrentSprite.spriteId) {
             case PSPRITE_MORPH_BALL_ABILITY:
                 if (gEquipment.suitMiscStatus & SMF_MORPH_BALL) {
-                    bossAlreadyDead = TRUE;
+                    tmp = TRUE;
                 }
                 break;
             case PSPRITE_HIGH_JUMP_ABILITY:
                 if (gEquipment.suitMiscStatus & SMF_HIGH_JUMP) {
-                    bossAlreadyDead = TRUE;
+                    tmp = TRUE;
                 }
                 bossSpriteId = PSPRITE_ZAZABI;
                 secondarySpriteId = SSPRITE_CORE_X_SHELL_HIGH_JUMP;
                 break;
             default:
-                bossAlreadyDead = TRUE;
+                tmp = TRUE;
                 break;
         }
-        if (bossAlreadyDead) {
+        if (tmp) {
             gCurrentSprite.status = 0;
             return;
         }
@@ -121,27 +121,27 @@ void CoreXAbilityInit(void) {
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work3 = 0;
     gCurrentSprite.work4 = 0;
-    bossAlreadyDead = SpriteSpawnSecondary(secondarySpriteId, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
+    tmp = SpriteSpawnSecondary(secondarySpriteId, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-    if (bossAlreadyDead == UCHAR_MAX) {
+    if (tmp == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    bossAlreadyDead = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 0, gCurrentSprite.spritesetGfxSlot,
+    tmp = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 0, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-    if (bossAlreadyDead == UCHAR_MAX) {
+    if (tmp == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    bossAlreadyDead = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 1, gCurrentSprite.spritesetGfxSlot,
+    tmp = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 1, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-    if (bossAlreadyDead == UCHAR_MAX) {
+    if (tmp == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
-    bossAlreadyDead = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 2, gCurrentSprite.spritesetGfxSlot,
+    tmp = SpriteSpawnSecondary(SSPRITE_ABILITY_AURA, 2, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-    if (bossAlreadyDead == UCHAR_MAX) {
+    if (tmp == UCHAR_MAX) {
         gCurrentSprite.status = 0;
         return;
     }
