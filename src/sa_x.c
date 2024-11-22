@@ -1024,10 +1024,11 @@ u8 SaXElevatorBeforeJumping(void)
 
 u8 SaXElevatorBeforeShootingDoor(void)
 {
-    // https://decomp.me/scratch/BRs1V
+    // https://decomp.me/scratch/LIK2p
 
     s32 ended;
     s32 i;
+    register s32 tmp asm("r8"); // FIXME fakematch
 
     ended = FALSE;
 
@@ -1060,13 +1061,14 @@ u8 SaXElevatorBeforeShootingDoor(void)
             break;
 
         case 80:
+            tmp = ++ended;
             for (i = 0; i < 7; i++)
             {
                 gSaXElevatorSprites[i] = sSaXElevatorSpritesShootingDoor[i];
             }
 
             gSaXElevatorData.timer = 0;
-            ended++;
+            ended = tmp;
     }
 
     return ended;

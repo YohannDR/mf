@@ -1509,7 +1509,7 @@ void ProjectileCheckHittingSprite(void)
 
                     case PROJ_TYPE_NORMAL_MISSILE:
                         if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X)
-                            ProjectileMissileHitSprite(i, j, o2Y, o2X);
+                            ProjectileNormalMissileHitSprite(i, j, o2Y, o2X);
                         else
                             unk_84ce4(i, j, o2Y, o2X);
                         break;
@@ -3645,7 +3645,8 @@ void ProjectileCheckSamusBombBounce(void)
         {
             if (gSamusData.pose == SPOSE_GRABBED_BY_ZAZABI)
             {
-                gBossWork0 = 1;
+                // Make Zazabi spit Samus after enough bombs
+                gBossWork0 = TRUE;
             }
             else
             {

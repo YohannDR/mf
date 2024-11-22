@@ -339,7 +339,7 @@ const struct FrameData* const sRidleyFrameDataPointers[RIDLEY_OAM_END] = {
     [RIDLEY_OAM_3AF788] = sRidleyOam_3af788,
     [RIDLEY_OAM_3AF798] = sRidleyOam_3af798,
     [RIDLEY_OAM_3AF7D0] = sRidleyOam_3af7d0,
-    [RIDLEY_FIREBALL_OAM_BIG] = sRidleyFireballOam_Big,
+    [RIDLEY_OAM_FIREBALL_BIG] = sRidleyFireballOam_Big,
     [RIDLEY_OAM_PART_TAIL_TIP_X_FLIPPED] = sRidleyPartOam_TailTip_XFlipped,
     [RIDLEY_OAM_PART_BODY_GRABBING_SAMUS] = sRidleyPartOam_BodyGrabbingSamus,
 };
