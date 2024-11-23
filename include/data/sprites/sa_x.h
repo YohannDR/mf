@@ -110,6 +110,8 @@ extern const struct SaXAnimationData* const sSaXOamDataPointers_Shooting[DIAG_AI
 
 extern const struct SaXAnimationData* const sSaXOamDataPointers_Turning[DIAG_AIM_END][2];
 
+extern const u8 sSaX_2b4154[20];
+
 extern const u16 sSaXPalette_Fading[16 * 16];
 extern const u16 sSaXPalette_MidAir[4 * 16];
 extern const u16 sSaXPalette_TransformingIntoMonster[1 * 16];
@@ -119,8 +121,28 @@ extern const SaXGfxFunc_T sSaXPoseGfxFunctionPointers[SA_X_POSE_END];
 extern const u8 sSaXElevatorGraphics_RocksTop[416];
 extern const u8 sSaXElevatorGraphics_RocksBottom[416];
 
+extern const struct FrameData sOam_2b47d0[2];
+extern const struct FrameData sOam_2b47e0[2];
+extern const struct FrameData sOam_2b47f0[2];
+extern const struct FrameData sOam_2b4800[2];
+extern const struct FrameData sOam_2b4810[2];
+extern const struct FrameData sOam_2b4820[2];
+
 extern const u8 sSaXElevatorGraphics_CloudsTop[704];
 extern const u8 sSaXElevatorGraphics_CloudsBottom[704];
+
+extern const struct FrameData sOam_2b4e44[2];
+extern const struct FrameData sOam_2b4e54[2];
+
+extern const u16 sSaXElevatorRocksAndCloudPal[1 * 16];
+
+extern const struct FrameData* const sSaXElevatorSpritesOamPointers[10];
+
+extern const SaXElevatorFunc_T sSaXElevatorFunctionPointers[1];
+extern const SaXElevatorFunc_T sSaXElevatorSubroutinesPointers[6];
+
+extern const struct SaXElevatorSprite sSaXElevatorSpritesBlowingUpWall[MAX_AMOUNT_OF_SA_X_ELEVATOR_SPRITES + 2];
+extern const struct SaXElevatorSprite sSaXElevatorSpritesShootingDoor[7];
 
 // ...
 
@@ -172,18 +194,5 @@ extern const u16 sSaXPalette_Default[2 * 16];
 // ...
 
 extern const struct FrameData sSaxElevatorOam_2e8038[3];
-extern const struct FrameData* const sSaXElevatorSpritesOamPointers[10];
-
-// ...
-
-extern const SaXElevatorFunc_T sSaXElevatorFunctionPointers[1];
-extern const SaXElevatorFunc_T sSaXElevatorSubroutinesPointers[6];
-
-extern const struct SaXElevatorSprite sSaXElevatorSpritesBlowingUpWall[MAX_AMOUNT_OF_SA_X_ELEVATOR_SPRITES + 2];
-extern const struct SaXElevatorSprite sSaXElevatorSpritesShootingDoor[7];
-
-// ...
-
-extern const u16 sSaXElevatorRocksAndCloudPal[1 * 16];
 
 #endif /* SA_X_DATA */

@@ -1,5 +1,9 @@
 #include "macros.h"
 
+#include "samus.h"
+#include "sa_x.h"
+
+#include "data/particle_data.h"
 #include "data/sprites/sa_x.h"
 #include "structs/sa_x.h"
 
@@ -5337,10 +5341,439 @@ const struct SaXAnimationData* const sSaXOamDataPointers_Turning[DIAG_AIM_END][2
     }
 };
 
-static const u8 sBlob_2b4154_2b4168[] = INCBIN_U8("data/Blob_2b4154_2b4168.bin");
+const u8 sSaX_2b4154[20] = {
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0
+};
 
 const u16 sSaXPalette_Fading[16 * 16] = INCBIN_U16("data/sa_x/fading.pal");
 const u16 sSaXPalette_MidAir[4 * 16] = INCBIN_U16("data/sa_x/screw_attack.pal");
 const u16 sSaXPalette_TransformingIntoMonster[1 * 16] = INCBIN_U16("data/sa_x/transforming_into_monster.pal");
 
-static const u8 sBlob_2b4408_2b5058[] = INCBIN_U8("data/Blob_2b4408_2b5058.bin");
+const SaXGfxFunc_T sSaXPoseGfxFunctionPointers[SA_X_POSE_END] = {
+    [SA_X_POSE_RUNNING] = SaXRunningGfx,
+    [SA_X_POSE_WALKING] = SaXWalkingGfx,
+    [SA_X_POSE_STANDING] = SaXStandingGfx,
+    [SA_X_POSE_SHOOTING] = SaXShootingGfx,
+    [SA_X_POSE_TURNING] = SaXTurningGfx,
+    [SA_X_POSE_MID_AIR] = SaXMidAirGfx,
+    [SA_X_POSE_LANDING] = SaXLandingGfx,
+    [SA_X_POSE_FALLING] = SamusInactivity,
+    [SA_X_POSE_GETTING_HURT] = SamusInactivity,
+    [SA_X_POSE_SHOOTING_RESTRICTED_LABORATORY] = SaXShootingRestrictedLaboratoryGfx,
+    [SA_X_POSE_COVERED_BY_METROIDS] = SaXCoveredByMetroidsGfx,
+    [SA_X_POSE_KNEELING] = SaXKneelingGfx,
+    [SA_X_POSE_TRANSFORMING_INTO_MONSTER] = SaXTransformingIntoMonsterGfx,
+    [SA_X_POSE_MORPHING] = SaXMorphingGfx,
+    [SA_X_POSE_UNMORPHING] = SaXUnmorphingGfx,
+    [SA_X_POSE_MORPH_BALL] = SaXMorphBallGfx,
+    [SA_X_POSE_ROLLING] = SaXMorphBallGfx,
+    [SA_X_POSE_SWAG_WALK] = SaXSwagWalkGfx,
+    [SA_X_POSE_TURNING_TOWARDS_CAMERA] = SaXTurningTowardsCameraGfx,
+    [SA_X_POSE_TURNING_AWAY_FROM_CAMERA] = SaXTurningAwayFromCameraGfx
+};
+
+const u8 sSaXElevatorGraphics_RocksTop[416] = INCBIN_U8("data/sa_x/elevator_rocks_top.gfx");
+const u8 sSaXElevatorGraphics_RocksBottom[416] = INCBIN_U8("data/sa_x/elevator_rocks_bottom.gfx");
+
+static const u16 sOam_2b47d0_Frame0[] = {
+    1,
+    0xf0, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_9 | 0x253
+};
+
+static const u16 sOam_2b47e0_Frame0[] = {
+    1,
+    0xf1, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_9 | 0x255
+};
+
+static const u16 sOam_2b47f0_Frame0[] = {
+    1,
+    0xf1, OBJ_SIZE_16x16 | 0x1f6, OBJ_PALETTE_9 | 0x257
+};
+
+static const u16 sOam_2b4800_Frame0[] = {
+    1,
+    0xf1, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_9 | 0x259
+};
+
+static const u16 sOam_2b4810_Frame0[] = {
+    1,
+    0xf1, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_9 | 0x25b
+};
+
+static const u16 sOam_2b4820_Frame0[] = {
+    2,
+    0xf0, OBJ_SIZE_16x16 | 0x1f2, OBJ_PALETTE_9 | 0x25d,
+    OBJ_SHAPE_VERTICAL | 0xf0, 0x2, OBJ_PALETTE_9 | 0x25f
+};
+
+const struct FrameData sOam_2b47d0[2] = {
+    [0] = {
+        .pFrame = sOam_2b47d0_Frame0,
+        .timer = 4
+    },
+    [1] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sOam_2b47e0[2] = {
+    [0] = {
+        .pFrame = sOam_2b47e0_Frame0,
+        .timer = 4
+    },
+    [1] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sOam_2b47f0[2] = {
+    [0] = {
+        .pFrame = sOam_2b47f0_Frame0,
+        .timer = 4
+    },
+    [1] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sOam_2b4800[2] = {
+    [0] = {
+        .pFrame = sOam_2b4800_Frame0,
+        .timer = 4
+    },
+    [1] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sOam_2b4810[2] = {
+    [0] = {
+        .pFrame = sOam_2b4810_Frame0,
+        .timer = 4
+    },
+    [1] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sOam_2b4820[2] = {
+    [0] = {
+        .pFrame = sOam_2b4820_Frame0,
+        .timer = 4
+    },
+    [1] = FRAME_DATA_TERMINATOR
+};
+
+const u8 sSaXElevatorGraphics_CloudsTop[704] = INCBIN_U8("data/sa_x/elevator_clouds_top.gfx");
+const u8 sSaXElevatorGraphics_CloudsBottom[704] = INCBIN_U8("data/sa_x/elevator_clouds_bottom.gfx");
+
+static const u16 sOam_2b4e44_Frame0[] = {
+    12,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1d0, OBJ_PALETTE_3 | 0x280,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_3 | 0x284,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x10, OBJ_PALETTE_3 | 0x288,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xf0, OBJ_SIZE_32x16 | 0x1d0, OBJ_PALETTE_3 | 0x28c,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xf0, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_3 | 0x290,
+    OBJ_MODE_SEMI_TRANSPARENT | 0xf0, OBJ_SIZE_16x16 | 0x10, OBJ_PALETTE_3 | 0x294,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x0, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x8, OBJ_PALETTE_3 | 0x280,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x0, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_3 | 0x284,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x0, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x1c8, OBJ_PALETTE_3 | 0x288,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x10, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x8, OBJ_PALETTE_3 | 0x28c,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x10, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_3 | 0x290,
+    OBJ_MODE_SEMI_TRANSPARENT | 0x10, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1c8, OBJ_PALETTE_3 | 0x294
+};
+
+static const u16 sOam_2b4e54_Frame0[] = {
+    12,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1d0, OBJ_PALETTE_3 | 0x280,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_3 | 0x284,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_SIZE_32x16 | 0x10, OBJ_PALETTE_3 | 0x288,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xf0, OBJ_SIZE_32x16 | 0x1d0, OBJ_PALETTE_3 | 0x28c,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0xf0, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_3 | 0x290,
+    OBJ_MODE_SEMI_TRANSPARENT | 0xf0, OBJ_SIZE_16x16 | 0x10, OBJ_PALETTE_3 | 0x294,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x0, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x8, OBJ_PALETTE_3 | 0x280,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x0, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_3 | 0x284,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x0, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x1c8, OBJ_PALETTE_3 | 0x288,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x10, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x8, OBJ_PALETTE_3 | 0x28c,
+    OBJ_MODE_SEMI_TRANSPARENT | OBJ_SHAPE_HORIZONTAL | 0x10, OBJ_X_FLIP | OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_3 | 0x290,
+    OBJ_MODE_SEMI_TRANSPARENT | 0x10, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1c8, OBJ_PALETTE_3 | 0x294
+};
+
+const struct FrameData sOam_2b4e44[2] = {
+    [0] = {
+        .pFrame = sOam_2b4e44_Frame0,
+        .timer = 4
+    },
+    [1] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sOam_2b4e54[2] = {
+    [0] = {
+        .pFrame = sOam_2b4e54_Frame0,
+        .timer = 4
+    },
+    [1] = FRAME_DATA_TERMINATOR
+};
+
+const u16 sSaXElevatorRocksAndCloudPal[1 * 16] = INCBIN_U16("data/sa_x/elevator_rocks_and_clouds.pal");
+
+const struct FrameData* const sSaXElevatorSpritesOamPointers[10] = {
+    sParticleOam_Explosion7,
+    sParticleOam_Explosion7,
+    sParticleOam_Explosion8,
+    sOam_2b47d0,
+    sOam_2b47f0,
+    sOam_2b4800,
+    sOam_2b4810,
+    sOam_2b4e44,
+    sOam_2b4e54,
+    //sSaxElevatorOam_2e8038
+    (const struct FrameData*)0x82e8038
+};
+
+const SaXElevatorFunc_T sSaXElevatorFunctionPointers[1] = { unk_d694 };
+
+const SaXElevatorFunc_T sSaXElevatorSubroutinesPointers[6] = {
+    SaXElevatorBeforeBlowingUpWall,
+    SaXElevatorBlowingUpWall,
+    SaXElevatorWalkingBeforeTurningToCamera,
+    SaXElevatorBeforeJumping,
+    SaXElevatorBeforeShootingDoor,
+    SaXElevatorWalkingOut
+};
+
+const struct SaXElevatorSprite sSaXElevatorSpritesBlowingUpWall[MAX_AMOUNT_OF_SA_X_ELEVATOR_SPRITES + 2] = {
+    [0] = {
+        .unk_0 = 1,
+        .type = 0,
+        .unk_2 = 25,
+        .xPosition = PIXEL_TO_SUB_PIXEL(44.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(92.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [1] = {
+        .unk_0 = 1,
+        .type = 0,
+        .unk_2 = 31,
+        .xPosition = PIXEL_TO_SUB_PIXEL(35.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(99.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [2] = {
+        .unk_0 = 1,
+        .type = 0,
+        .unk_2 = 36,
+        .xPosition = PIXEL_TO_SUB_PIXEL(51.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(98.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [3] = {
+        .unk_0 = 1,
+        .type = 2,
+        .unk_2 = 45,
+        .xPosition = PIXEL_TO_SUB_PIXEL(35.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(89.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [4] = {
+        .unk_0 = 1,
+        .type = 4,
+        .unk_2 = 40,
+        .xPosition = PIXEL_TO_SUB_PIXEL(49.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(69.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(3.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(3.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [5] = {
+        .unk_0 = 1,
+        .type = 3,
+        .unk_2 = 42,
+        .xPosition = PIXEL_TO_SUB_PIXEL(46.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(92.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(2.5f),
+        .yVelocity = PIXEL_TO_VELOCITY(1.5f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [6] = {
+        .unk_0 = 1,
+        .type = 5,
+        .unk_2 = 43,
+        .xPosition = PIXEL_TO_SUB_PIXEL(40.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(87.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(1.25f),
+        .yVelocity = PIXEL_TO_VELOCITY(3.75f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [7] = {
+        .unk_0 = 1,
+        .type = 6,
+        .unk_2 = 43,
+        .xPosition = PIXEL_TO_SUB_PIXEL(39.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(67.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(1.5625f),
+        .yVelocity = PIXEL_TO_VELOCITY(2.1875f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [8] = {
+        .unk_0 = 1,
+        .type = 5,
+        .unk_2 = 43,
+        .xPosition = PIXEL_TO_SUB_PIXEL(48.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(86.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.9375f),
+        .yVelocity = PIXEL_TO_VELOCITY(2.5f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [9] = {
+        .unk_0 = 1,
+        .type = 6,
+        .unk_2 = 41,
+        .xPosition = PIXEL_TO_SUB_PIXEL(57.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(75.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.625f),
+        .yVelocity = PIXEL_TO_VELOCITY(1.5625f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [10] = {
+        .unk_0 = 2,
+        .type = 7,
+        .unk_2 = 0,
+        .xPosition = PIXEL_TO_SUB_PIXEL(35.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(100.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(-0.25f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [11] = {
+        .unk_0 = 2,
+        .type = 8,
+        .unk_2 = 0,
+        .xPosition = PIXEL_TO_SUB_PIXEL(242.5f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(100.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.25f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [12] = {
+        .unk_0 = 2,
+        .type = 9,
+        .unk_2 = 0,
+        .xPosition = PIXEL_TO_SUB_PIXEL(0.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(0.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(3.75f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    }
+};
+
+const struct SaXElevatorSprite sSaXElevatorSpritesShootingDoor[7] = {
+    [0] = {
+        .unk_0 = 1,
+        .type = 1,
+        .unk_2 = 1,
+        .xPosition = PIXEL_TO_SUB_PIXEL(219.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(92.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [1] = {
+        .unk_0 = 1,
+        .type = 1,
+        .unk_2 = 15,
+        .xPosition = PIXEL_TO_SUB_PIXEL(222.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(80.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [2] = {
+        .unk_0 = 1,
+        .type = 1,
+        .unk_2 = 28,
+        .xPosition = PIXEL_TO_SUB_PIXEL(226.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(98.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [3] = {
+        .unk_0 = 1,
+        .type = 2,
+        .unk_2 = 50,
+        .xPosition = PIXEL_TO_SUB_PIXEL(210.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(89.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [4] = {
+        .unk_0 = 1,
+        .type = 2,
+        .unk_2 = 61,
+        .xPosition = PIXEL_TO_SUB_PIXEL(230.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(76.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [5] = {
+        .unk_0 = 1,
+        .type = 2,
+        .unk_2 = 65,
+        .xPosition = PIXEL_TO_SUB_PIXEL(213.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(101.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    },
+    [6] = {
+        .unk_0 = 1,
+        .type = 2,
+        .unk_2 = 73,
+        .xPosition = PIXEL_TO_SUB_PIXEL(228.0f),
+        .yPosition = PIXEL_TO_SUB_PIXEL(107.0f),
+        .xVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .yVelocity = PIXEL_TO_VELOCITY(0.0f),
+        .animationDurationCounter = 0,
+        .currentAnimationFrame = 0,
+        .pOamFrame = NULL
+    }
+};

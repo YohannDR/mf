@@ -170,6 +170,7 @@
 #define BLOCK_TO_SUB_PIXEL(block) ((s32)((block) * BLOCK_SIZE))
 #define VELOCITY_TO_SUB_PIXEL(velocity) (DIV_SHIFT((velocity), 8))
 #define SUB_PIXEL_TO_VELOCITY(velocity) ((s32)((velocity) * 8))
+#define PIXEL_TO_VELOCITY(velocity) ((s32)((velocity) * SUB_PIXEL_RATIO * 8))
 
 #define SCREEN_SIZE_X_SUB_PIXEL (PIXEL_TO_SUB_PIXEL(SCREEN_SIZE_X))
 #define SCREEN_SIZE_Y_SUB_PIXEL (PIXEL_TO_SUB_PIXEL(SCREEN_SIZE_Y))

@@ -2,8 +2,8 @@
 
     .syntax unified
 
-	thumb_func_start SaXRunningGFX
-SaXRunningGFX: @ 0x0800CBB8
+	thumb_func_start SaXRunningGfx
+SaXRunningGfx: @ 0x0800CBB8
 	push {lr}
 	ldr r3, _0800CC10 @ =gSaXData
 	ldr r2, _0800CC14 @ =sSaXAnim_Running_Left
@@ -54,8 +54,8 @@ _0800CC10: .4byte gSaXData
 _0800CC14: .4byte sSaXAnim_Running_Left
 _0800CC18: .4byte 0x00000259
 
-	thumb_func_start SaXWalkingGFX
-SaXWalkingGFX: @ 0x0800CC1C
+	thumb_func_start SaXWalkingGfx
+SaXWalkingGfx: @ 0x0800CC1C
 	push {lr}
 	ldr r3, _0800CC74 @ =gSaXData
 	ldr r2, _0800CC78 @ =sSaXAnim_Walking_Left
@@ -106,8 +106,8 @@ _0800CC6E:
 _0800CC74: .4byte gSaXData
 _0800CC78: .4byte sSaXAnim_Walking_Left
 
-	thumb_func_start SaXStandingGFX
-SaXStandingGFX: @ 0x0800CC7C
+	thumb_func_start SaXStandingGfx
+SaXStandingGfx: @ 0x0800CC7C
 	push {lr}
 	ldr r2, _0800CCB8 @ =gSaXData
 	ldr r3, _0800CCBC @ =sSaXAnim_Standing_Left
@@ -142,8 +142,8 @@ _0800CCB0:
 _0800CCB8: .4byte gSaXData
 _0800CCBC: .4byte sSaXAnim_Standing_Left
 
-	thumb_func_start SaXShootingGFX
-SaXShootingGFX: @ 0x0800CCC0
+	thumb_func_start SaXShootingGfx
+SaXShootingGfx: @ 0x0800CCC0
 	push {lr}
 	ldr r2, _0800CCF8 @ =gSaXData
 	ldr r3, _0800CCFC @ =sSaXAnim_Shooting_Left
@@ -181,8 +181,8 @@ _0800CD02:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SaXTurningGFX
-SaXTurningGFX: @ 0x0800CD08
+	thumb_func_start SaXTurningGfx
+SaXTurningGfx: @ 0x0800CD08
 	push {lr}
 	ldr r2, _0800CD40 @ =gSaXData
 	ldr r3, _0800CD44 @ =sSaXAnim_Turning_Right
@@ -220,8 +220,8 @@ _0800CD4A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SaXMidAirGFX
-SaXMidAirGFX: @ 0x0800CD50
+	thumb_func_start SaXMidAirGfx
+SaXMidAirGfx: @ 0x0800CD50
 	push {lr}
 	ldr r2, _0800CD90 @ =gSaXData
 	ldr r3, _0800CD94 @ =sSaXAnim_MidAir_Left
@@ -259,8 +259,8 @@ _0800CD90: .4byte gSaXData
 _0800CD94: .4byte sSaXAnim_MidAir_Left
 _0800CD98: .4byte 0x0000025B
 
-	thumb_func_start SaXLandingGFX
-SaXLandingGFX: @ 0x0800CD9C
+	thumb_func_start SaXLandingGfx
+SaXLandingGfx: @ 0x0800CD9C
 	push {lr}
 	ldr r2, _0800CDD4 @ =gSaXData
 	ldr r3, _0800CDD8 @ =sSaXAnim_Landing_Right
@@ -298,8 +298,8 @@ _0800CDDE:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SaXShootingRestrictedLaboratoryGFX
-SaXShootingRestrictedLaboratoryGFX: @ 0x0800CDE4
+	thumb_func_start SaXShootingRestrictedLaboratoryGfx
+SaXShootingRestrictedLaboratoryGfx: @ 0x0800CDE4
 	push {lr}
 	ldr r2, _0800CE20 @ =gSaXData
 	ldr r3, _0800CE24 @ =sSaXAnim_ShootingRestrictedLaboratory
@@ -334,8 +334,8 @@ _0800CE18:
 _0800CE20: .4byte gSaXData
 _0800CE24: .4byte sSaXAnim_ShootingRestrictedLaboratory
 
-	thumb_func_start SaXCoveredByMetroidsGFX
-SaXCoveredByMetroidsGFX: @ 0x0800CE28
+	thumb_func_start SaXCoveredByMetroidsGfx
+SaXCoveredByMetroidsGfx: @ 0x0800CE28
 	push {lr}
 	ldr r2, _0800CE64 @ =gSaXData
 	ldr r3, _0800CE68 @ =sSaXAnim_CoveredByMetroids
@@ -370,8 +370,8 @@ _0800CE5C:
 _0800CE64: .4byte gSaXData
 _0800CE68: .4byte sSaXAnim_CoveredByMetroids
 
-	thumb_func_start SaXKneelingGFX
-SaXKneelingGFX: @ 0x0800CE6C
+	thumb_func_start SaXKneelingGfx
+SaXKneelingGfx: @ 0x0800CE6C
 	push {r4, lr}
 	ldr r4, _0800CEB4 @ =gSaXData
 	ldrh r0, [r4, #0x12]
@@ -413,8 +413,8 @@ _0800CEAC:
 _0800CEB4: .4byte gSaXData
 _0800CEB8: .4byte sSaXAnim_Kneeling_Right
 
-	thumb_func_start SaXTransformingIntoMonsterGFX
-SaXTransformingIntoMonsterGFX: @ 0x0800CEBC
+	thumb_func_start SaXTransformingIntoMonsterGfx
+SaXTransformingIntoMonsterGfx: @ 0x0800CEBC
 	push {lr}
 	ldr r2, _0800CEF8 @ =gSaXData
 	ldr r3, _0800CEFC @ =sSaXAnim_TransformingIntoMonster_Right
@@ -450,8 +450,8 @@ _0800CEF2:
 _0800CEF8: .4byte gSaXData
 _0800CEFC: .4byte sSaXAnim_TransformingIntoMonster_Right
 
-	thumb_func_start SaXMorphingGFX
-SaXMorphingGFX: @ 0x0800CF00
+	thumb_func_start SaXMorphingGfx
+SaXMorphingGfx: @ 0x0800CF00
 	push {lr}
 	ldr r2, _0800CF3C @ =gSaXData
 	ldr r3, _0800CF40 @ =sSaXAnim_Morphing_Left
@@ -492,8 +492,8 @@ _0800CF4A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SaXUnmorphingGFX
-SaXUnmorphingGFX: @ 0x0800CF50
+	thumb_func_start SaXUnmorphingGfx
+SaXUnmorphingGfx: @ 0x0800CF50
 	push {lr}
 	ldr r2, _0800CF88 @ =gSaXData
 	ldr r3, _0800CF8C @ =sSaXAnim_Unmorphing_Left
@@ -531,8 +531,8 @@ _0800CF92:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SaXMorphBallGFX
-SaXMorphBallGFX: @ 0x0800CF98
+	thumb_func_start SaXMorphBallGfx
+SaXMorphBallGfx: @ 0x0800CF98
 	push {lr}
 	ldr r2, _0800CFD4 @ =gSaXData
 	ldr r3, _0800CFD8 @ =sSaXAnim_MorphBall_Left
@@ -567,8 +567,8 @@ _0800CFCC:
 _0800CFD4: .4byte gSaXData
 _0800CFD8: .4byte sSaXAnim_MorphBall_Left
 
-	thumb_func_start SaXSwagWalkGFX
-SaXSwagWalkGFX: @ 0x0800CFDC
+	thumb_func_start SaXSwagWalkGfx
+SaXSwagWalkGfx: @ 0x0800CFDC
 	push {lr}
 	ldr r2, _0800D018 @ =gSaXData
 	ldr r3, _0800D01C @ =sSaXAnim_SwagWalk_Left
@@ -603,8 +603,8 @@ _0800D010:
 _0800D018: .4byte gSaXData
 _0800D01C: .4byte sSaXAnim_SwagWalk_Left
 
-	thumb_func_start SaXTurningTowardsCameraGFX
-SaXTurningTowardsCameraGFX: @ 0x0800D020
+	thumb_func_start SaXTurningTowardsCameraGfx
+SaXTurningTowardsCameraGfx: @ 0x0800D020
 	push {lr}
 	ldr r2, _0800D064 @ =gSaXData
 	ldr r3, _0800D068 @ =sSaXAnim_TurningTowardsCamera
@@ -650,8 +650,8 @@ _0800D076:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start SaXTurningAwayFromCameraGFX
-SaXTurningAwayFromCameraGFX: @ 0x0800D07C
+	thumb_func_start SaXTurningAwayFromCameraGfx
+SaXTurningAwayFromCameraGfx: @ 0x0800D07C
 	push {lr}
 	ldr r2, _0800D0B4 @ =gSaXData
 	ldr r3, _0800D0B8 @ =sSaXAnim_TurningAwayFromCamera
@@ -1439,8 +1439,8 @@ _0800D688: .4byte gDisableDrawingSamusAndScrollingFlag
 _0800D68C: .4byte gSaXData
 _0800D690: .4byte gSubGameMode1
 
-	thumb_func_start SaXUpdate
-SaXUpdate: @ 0x0800D694
+	thumb_func_start unk_d694
+unk_d694: @ 0x0800D694
 	push {r4, r5, r6, lr}
 	movs r6, #0
 	ldr r1, _0800D6D8 @ =0x082B4EB0

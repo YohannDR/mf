@@ -235,6 +235,14 @@ sa_x/fading.pal;16;0x2b4168;32
 sa_x/screw_attack.pal;4;0x2b4368;32
 sa_x/transforming_into_monster.pal;1;0x2b43e8;32
 
+sa_x/elevator_rocks_top.gfx;1;0x2b4458;416
+sa_x/elevator_rocks_bottom.gfx;1;0x2b45f8;416
+
+sa_x/elevator_clouds_top.gfx;1;0x2b4830;704
+sa_x/elevator_clouds_bottom.gfx;1;0x2b4af0;704
+
+sa_x/elevator_rocks_and_clouds.pal;1;0x2b4e64;32
+
 # Samus
 
 samus/gfx/Top_Left_Running_Frame0.gfx;5;2b505a;32
@@ -2748,10 +2756,6 @@ Blob_a5224_a5710.bin;1260;0xa5224;1
 Blob_289970_28998c.bin;289970;28998c
 Blob_289994_28fd04.bin;289994;28fd04
 Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
-
-# SA-X
-Blob_2b4154_2b4168.bin;0x2b4154;0x2b4168
-Blob_2b4408_2b5058.bin;0x2b4408;0x2b5058
 
 # Arm cannon data and more?
 Blob_2de9b0_2e4904.bin;2de9b0;2e4904
