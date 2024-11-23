@@ -349,7 +349,7 @@ SECTIONS {
         asm/event.o(.text);
         asm/minimap.o(.text);
         asm/disasm_0x08074ffc.o(.text);
-        asm/projectile.o(.text);
+        src/projectile.o(.text);
 
         src/menus/title_screen.o(.text);
 
@@ -458,7 +458,8 @@ SECTIONS {
         src/data/projectile_data.o(.rodata);
         src/data/menus/title_screen.o(.rodata);
         src/data/sa_x_close_up.o(.rodata);
-        src/data/engine_pointers.o(.rodata);
+        src/data/sprite_pointers.o(.rodata);
         src/data/frame_data_pointers.o(.rodata);
+        src/data/engine_pointers.o(.rodata);
     } >rom
 }

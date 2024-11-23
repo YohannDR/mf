@@ -2802,4 +2802,5 @@ Blob_73421e_79a29c.bin;73421e;79a29c
 Blob_79b458_79b708.bin;79b458;79b708
 
 # More room data pointers, cutscene data pointers, text
-Blob_79b894_79ecc8.bin;79b894;79ecc8
+Blob_79b894_79c27c.bin;79b894;79c27c
+Blob_79c2c8_79ecc8.bin;79c2c8;79ecc8

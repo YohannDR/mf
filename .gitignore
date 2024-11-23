@@ -25,6 +25,8 @@ permuter_settings.toml
 include/**/*.s
 tools/**/*.txt
 tools/**/*.png
+tools/agbcc
+tools/agbcc.exe
 .vscode
 
 *.pyc
