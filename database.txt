@@ -778,6 +778,11 @@ samus/gfx/Top_Saving_Frame18.gfx;11;2dd844;32
 samus/gfx/Top_Saving_Frame20.gfx;11;2dd9a6;32
 samus/gfx/Top_Saving_Frame22.gfx;9;2ddb08;32
 
+# Sprite placeholder graphics
+
+sprites/placeholder.gfx;1;0x2e6384;2048
+sprites/placeholder.pal;1;0x2e6b84;32
+
 # SA-X weapons and default palette
 
 sa_x/weapons.gfx;2;0x2e6d60;2048
@@ -2771,7 +2776,6 @@ Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
 Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 
 # Sprites
-Blob_2e6382_2e6ba4.bin;2e6382;2e6ba4
 Blob_321b64_3420b4.bin;0x321b64;0x3420b4
 Blob_348ca4_3534c4.bin;0x348ca4;0x3534c4
 Blob_37c578_3a5f58.bin;37c578;3a5f58
