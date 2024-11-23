@@ -99,13 +99,13 @@ u8 SaXShootingGfx(void)
  */
 u8 SaXTurningGfx(void)
 {
-    if (gSaXData.animationDurationCounter < sSaXAnim_Turning_Left[gSaXData.currentAnimationFrame].timer)
+    if (gSaXData.animationDurationCounter < sSaXAnim_Turning_Right[gSaXData.currentAnimationFrame].timer)
         return SA_X_POSE_NONE;
 
     gSaXData.animationDurationCounter = 0;
     gSaXData.currentAnimationFrame++;
 
-    if (sSaXAnim_Turning_Left[gSaXData.currentAnimationFrame].timer != 0)
+    if (sSaXAnim_Turning_Right[gSaXData.currentAnimationFrame].timer != 0)
         return SA_X_POSE_NONE;
 
     return SA_X_POSE_STANDING;
@@ -140,13 +140,13 @@ u8 SaXMidAirGfx(void)
  */
 u8 SaXLandingGfx(void)
 {
-    if (gSaXData.animationDurationCounter < sSaXAnim_Landing_Left[gSaXData.currentAnimationFrame].timer)
+    if (gSaXData.animationDurationCounter < sSaXAnim_Landing_Right[gSaXData.currentAnimationFrame].timer)
         return SA_X_POSE_NONE;
 
     gSaXData.animationDurationCounter = 0;
     gSaXData.currentAnimationFrame++;
 
-    if (sSaXAnim_Landing_Left[gSaXData.currentAnimationFrame].timer != 0)
+    if (sSaXAnim_Landing_Right[gSaXData.currentAnimationFrame].timer != 0)
         return SA_X_POSE_NONE;
 
     return SA_X_POSE_STANDING;
@@ -198,7 +198,7 @@ u8 SaXCoveredByMetroidsGfx(void)
 u8 SaXKneelingGfx(void)
 {
     if (gSaXData.animationDurationCounter == 1 && gSaXData.currentAnimationFrame == 0)
-        SooundPlay(0x9D);
+        SoundPlay(0x9D);
 
     if (gSaXData.animationDurationCounter < sSaXAnim_Kneeling_Right[gSaXData.currentAnimationFrame].timer)
         return SA_X_POSE_NONE;
@@ -238,13 +238,13 @@ u8 SaXTransformingIntoMonsterGfx(void)
  */
 u8 SaXMorphingGfx(void)
 {
-    if (gSaXData.animationDurationCounter < sSaXAnim_Morphing_Right[gSaXData.currentAnimationFrame].timer)
+    if (gSaXData.animationDurationCounter < sSaXAnim_Morphing_Left[gSaXData.currentAnimationFrame].timer)
         return SA_X_POSE_NONE;
 
     gSaXData.animationDurationCounter = 0;
     gSaXData.currentAnimationFrame++;
 
-    if (sSaXAnim_Morphing_Right[gSaXData.currentAnimationFrame].timer != 0)
+    if (sSaXAnim_Morphing_Left[gSaXData.currentAnimationFrame].timer != 0)
         return SA_X_POSE_NONE;
 
     SoundPlay(0x25F);
@@ -632,12 +632,12 @@ void SaXUpdateElevatorSprite(s32 spriteSlot)
         case 9:
             gSaXElevatorSprites[spriteSlot].animationDurationCounter++;
 
-            if (gSaXElevatorSprites[spriteSlot].animationDurationCounter >= sSaxElevatorOam_2e8038[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer)
+            if (gSaXElevatorSprites[spriteSlot].animationDurationCounter >= sSaXElevatorOam_2e8038[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer)
             {
                 gSaXElevatorSprites[spriteSlot].animationDurationCounter = 0;
                 gSaXElevatorSprites[spriteSlot].currentAnimationFrame++;
     
-                if (sSaxElevatorOam_2e8038[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer == 0)
+                if (sSaXElevatorOam_2e8038[gSaXElevatorSprites[spriteSlot].currentAnimationFrame].timer == 0)
                     gSaXElevatorSprites[spriteSlot].currentAnimationFrame = 0;
             }
 
@@ -900,7 +900,7 @@ u8 SaXElevatorBlowingUpWall(void)
             break;
 
         case 40:
-            UpdateBg1AndSubEventDuringSaXElevator(0x0);
+            UpdateBg1AndSubEventDuringSaXElevatorCutscene(0x0);
             break;
 
         case 52:
@@ -1093,7 +1093,7 @@ u8 SaXElevatorWalkingOut(void)
             break;
 
         case 35:
-            UpdateBg1AndSubEventDuringSaXElevator(0x1);
+            UpdateBg1AndSubEventDuringSaXElevatorCutscene(0x1);
             break;
 
         case 50:

@@ -161,8 +161,8 @@ def Func():
         print(f"sprites/{spriteName.lower()}.gfx;{rows};0x{gfxPointer:x};2048")
         print(f"sprites/{spriteName.lower()}.pal;{rows};0x{palPointer:x};32\n")
 
-        print(f"const u32 s{spriteName}Gfx[512 * {rows}] = INCBIN_U32(\"data/sprites/{spriteName.lower()}.gfx\");")
-        print(f"const u16 s{spriteName}Pal[16 * {rows}] = INCBIN_U16(\"data/sprites/{spriteName.lower()}.pal\");\n")
+        print(f"const u32 s{spriteName}Gfx[{rows} * 512] = INCBIN_U32(\"data/sprites/{spriteName.lower()}.gfx\");")
+        print(f"const u16 s{spriteName}Pal[{rows} * 16] = INCBIN_U16(\"data/sprites/{spriteName.lower()}.pal\");\n")
 
     frames = set()
     output = ""
@@ -207,8 +207,8 @@ def Func():
     print(output)
 
     if spriteId < 0x100:
-        print(f"extern const u32 s{spriteName}Gfx[512 * {rows}];")
-        print(f"extern const u16 s{spriteName}Pal[16 * {rows}];\n")
+        print(f"extern const u32 s{spriteName}Gfx[{rows} * 512];")
+        print(f"extern const u16 s{spriteName}Pal[{rows} * 16];\n")
 
     for (addr, count) in animations:
         if count == 0:

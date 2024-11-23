@@ -166,33 +166,30 @@ extern const s16 sSaXBossJumpYVelocity_1[10];
 extern const s16 sSaXBossJumpYVelocity_2[10];
 extern const s16 sSaXBossJumpYVelocity_3[10];
 
-// ...
-
-extern const struct FrameData sSaXBeamOam_Forward[2];
-extern const struct FrameData sSaXBeamOam_Diagonal[2];
-
-extern const struct FrameData sSaXMissileOam_Diagonal[2];
-extern const struct FrameData sSaXMissileOam_Forward[2];
-
-extern const struct FrameData sSaXPowerBombOam_SpinningSlow[6];
-extern const struct FrameData sSaXPowerBombOam_SpinningFast[7];
-
-extern const struct FrameData sLabExplosionOam_Idle[49];
-
-// ...
-
-extern const u16 sSaXMosaicValues[30];
-
-// ...
+extern const s16 sSaX_2e6cc6[6];
 
 extern const s16 sSaXBossKnockbackYMovement[12];
 
-// ...
+extern const s16 sSaX_2e6cea[28];
 
+extern const u16 sSaXMosaicValues[30];
+
+extern const u32 sSaXWeaponsGfx[2 * 512];
 extern const u16 sSaXPalette_Default[2 * 16];
 
-// ...
+extern const struct FrameData sSaXOam_Placeholder[2];
+extern const struct FrameData sSaXBeamOam_Forward[2];
+extern const struct FrameData sSaXBeamOam_Diagonal[2];
+extern const struct FrameData sSaXBeamOam_Vertical[2];
+extern const struct FrameData sSaXMissileOam_Diagonal[3];
+extern const struct FrameData sSaXMissileOam_Forward[3];
+extern const struct FrameData sSaXPowerBombOam_SpinningSlow[4];
+extern const struct FrameData sSaXPowerBombOam_SpinningFast[4];
+extern const struct FrameData sSaXMissileOam_Diagonal_XFlipped[3];
+extern const struct FrameData sSaXElevatorOam_2e8038[3];
+extern const struct FrameData sLabExplosionOam_Idle[49];
 
-extern const struct FrameData sSaxElevatorOam_2e8038[3];
+extern const u32 sSaXLabExplosionsGfx[2 * 512];
+extern const u16 sSaXLabExplosionsPal[2 * 16];
 
 #endif /* SA_X_DATA */

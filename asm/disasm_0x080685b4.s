@@ -12291,7 +12291,7 @@ _0806E3E4: @ jump table
 	.4byte _0806E418 @ case 11
 	.4byte _0806E460 @ case 12
 _0806E418:
-	bl SaXUpdateGFXAndDraw
+	bl SaXUpdateGraphicsAndDraw
 _0806E41C:
 	ldr r0, _0806E434 @ =gColorFading
 	ldrb r0, [r0, #1]

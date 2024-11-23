@@ -1471,7 +1471,7 @@ SaXFallingInit: @ 0x080162C0
 	ldr r0, _080162F0 @ =0x0000FF88
 	strh r0, [r5, #0xa]
 	movs r0, #7
-	bl SetSaXPose
+	bl SaXSetPose
 	adds r0, r5, #0
 	adds r0, #0x2d
 	strb r4, [r0]
@@ -1549,7 +1549,7 @@ _0801635E:
 	movs r0, #1
 	strb r0, [r5]
 	movs r0, #6
-	bl SetSaXPose
+	bl SaXSetPose
 	b _080163C0
 	.align 2, 0
 _08016380: .4byte gPreviousVerticalCollisionCheck
@@ -1605,7 +1605,7 @@ SaXStandingInit: @ 0x080163C8
 	ldr r0, _080163EC @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1713,7 +1713,7 @@ SaXWalkingInit: @ 0x08016490
 	ldr r0, _080164B8 @ =0x0000FF88
 	strh r0, [r3, #0xa]
 	movs r0, #1
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1768,7 +1768,7 @@ SaXTurningInit: @ 0x08016508
 	ldr r0, _08016528 @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #4
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1812,7 +1812,7 @@ SaXTurningChaseStartInit: @ 0x0801655C
 	ldr r0, _0801657C @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #4
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1878,7 +1878,7 @@ SaXRunningStart: @ 0x080165C8
 	cmp r0, #0
 	bne _080165F0
 	movs r0, #0
-	bl SetSaXPose
+	bl SaXSetPose
 _080165F0:
 	pop {r0}
 	bx r0
@@ -1942,7 +1942,7 @@ SaXMidAirInit: @ 0x08016648
 	subs r0, #0x20
 	strh r0, [r5, #2]
 	movs r0, #5
-	bl SetSaXPose
+	bl SaXSetPose
 	adds r0, r5, #0
 	adds r0, #0x2d
 	strb r4, [r0]
@@ -2170,7 +2170,7 @@ _080167FC:
 	movs r0, #1
 	strb r0, [r1]
 	movs r0, #6
-	bl SetSaXPose
+	bl SaXSetPose
 	b _08016850
 	.align 2, 0
 _08016830: .4byte 0x082E6BDC
@@ -2206,7 +2206,7 @@ SaXDelayBeforeShootingBeamInit: @ 0x0801685C
 	movs r0, #0x10
 	strb r0, [r1]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	ldrh r1, [r4]
 	movs r0, #0x80
 	lsls r0, r0, #2
@@ -2474,7 +2474,7 @@ _08016A62:
 	movs r0, #0
 	strb r0, [r1, #4]
 	movs r0, #3
-	bl SetSaXPose
+	bl SaXSetPose
 	add sp, #0xc
 	pop {r4}
 	pop {r0}
@@ -2781,7 +2781,7 @@ _08016C9A:
 	movs r0, #1
 	strb r0, [r1, #4]
 	movs r0, #3
-	bl SetSaXPose
+	bl SaXSetPose
 	add sp, #0xc
 	pop {r0}
 	bx r0
@@ -2935,7 +2935,7 @@ SaXMorphingInit: @ 0x08016DAC
 	ldr r0, _08016DCC @ =0x0000FFB0
 	strh r0, [r2, #0xa]
 	movs r0, #0xd
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2971,7 +2971,7 @@ SaXRollingInit: @ 0x08016DF0
 	ldr r0, _08016E10 @ =0x0000FFD8
 	strh r0, [r2, #0xa]
 	movs r0, #0x10
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -3080,7 +3080,7 @@ SaXUnmorphingInit: @ 0x08016ECC
 	ldr r0, _08016EEC @ =0x0000FFB0
 	strh r0, [r2, #0xa]
 	movs r0, #0xe
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -3133,7 +3133,7 @@ SaXIdleBeforeShootingDoorInit: @ 0x08016F24
 	ldr r0, _08016F4C @ =gSaXData
 	strb r3, [r0, #3]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -3190,7 +3190,7 @@ SaXShootingDoorInit: @ 0x08016F74
 	ldr r0, _08016FBC @ =gSaXData
 	strb r4, [r0, #4]
 	movs r0, #3
-	bl SetSaXPose
+	bl SaXSetPose
 	add sp, #0xc
 	pop {r4}
 	pop {r0}
@@ -3231,7 +3231,7 @@ SaXIdleAfterShootingDoorInit: @ 0x08016FE0
 	ldr r0, _08017004 @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -3274,7 +3274,7 @@ SaXWalkingToDoorInit: @ 0x0801702C
 	ldr r0, _08017054 @ =0x0000FF88
 	strh r0, [r3, #0xa]
 	movs r0, #1
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -4625,7 +4625,7 @@ SaXUpdateGraphics: @ 0x08017AC8
 	lsrs r0, r0, #0x18
 	cmp r0, #0xff
 	beq _08017AFC
-	bl SetSaXPose
+	bl SaXSetPose
 _08017AFC:
 	ldrh r1, [r4]
 	movs r0, #1
@@ -6324,7 +6324,7 @@ _080188C0:
 	movs r0, #0x19
 	strb r0, [r1]
 	movs r0, #1
-	bl SetSaXPose
+	bl SaXSetPose
 	b _08018920
 	.align 2, 0
 _080188F0: .4byte gCurrentSprite
@@ -6346,7 +6346,7 @@ _080188F4:
 	movs r0, #0x3c
 	strb r0, [r1]
 	movs r0, #0
-	bl SetSaXPose
+	bl SaXSetPose
 	b _08018920
 _0801891E:
 	strh r0, [r4]
@@ -6597,7 +6597,7 @@ SaXNocIdleBeforeLayingPowerBombInit: @ 0x08018AE8
 	ldr r0, _08018B0C @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -6636,7 +6636,7 @@ SaXNocMorphingToLayPowerBombInit: @ 0x08018B34
 	ldr r0, _08018B54 @ =0x0000FFB0
 	strh r0, [r2, #0xa]
 	movs r0, #0xd
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -7704,7 +7704,7 @@ _080193F4:
 	movs r0, #0x19
 	strb r0, [r1]
 	movs r0, #1
-	bl SetSaXPose
+	bl SaXSetPose
 	b _08019454
 	.align 2, 0
 _08019424: .4byte gCurrentSprite
@@ -7726,7 +7726,7 @@ _08019428:
 	movs r0, #0x3c
 	strb r0, [r1]
 	movs r0, #0
-	bl SetSaXPose
+	bl SaXSetPose
 	b _08019454
 _08019452:
 	strh r0, [r4]
@@ -8012,7 +8012,7 @@ SaXArcStoppedAtPillarInit: @ 0x08019660
 	ldr r0, _08019684 @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8054,7 +8054,7 @@ SaXArcIdleAfterHearingWeaponInit: @ 0x080196AC
 	ldr r0, _080196D0 @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8093,7 +8093,7 @@ SaXArcTurningAroundAfterHearingWeaponStart: @ 0x080196F8
 	ldr r0, _08019718 @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #4
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8248,7 +8248,7 @@ _08019832:
 	strh r0, [r2]
 	bl SaXSetDirection
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8367,7 +8367,7 @@ _08019922:
 	movs r0, #0
 	strb r0, [r1, #4]
 	movs r0, #3
-	bl SetSaXPose
+	bl SaXSetPose
 	add sp, #0xc
 	pop {r4}
 	pop {r0}
@@ -8714,7 +8714,7 @@ SaXLabShootingLabInit: @ 0x08019C60
 	movs r0, #0x64
 	strb r0, [r1]
 	movs r0, #9
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8752,7 +8752,7 @@ SaXLabGettingCoveredByMetroids: @ 0x08019C9C
 	movs r1, #0x1a
 	strb r1, [r0]
 	movs r0, #0xa
-	bl SetSaXPose
+	bl SaXSetPose
 	movs r0, #0x64
 	strb r0, [r4]
 _08019CC2:
@@ -9825,7 +9825,7 @@ _0801A536:
 	adds r0, #0x2f
 	strb r1, [r0]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	movs r0, #1
 	b _0801A55E
 	.align 2, 0
@@ -9856,7 +9856,7 @@ SaXBossRunningInit: @ 0x0801A564
 	cmp r0, #0
 	bne _0801A58C
 	movs r0, #0
-	bl SetSaXPose
+	bl SaXSetPose
 _0801A58C:
 	pop {r0}
 	bx r0
@@ -9920,7 +9920,7 @@ SaXBossSpinJumpingInit: @ 0x0801A5E4
 	subs r0, #0x20
 	strh r0, [r5, #2]
 	movs r0, #5
-	bl SetSaXPose
+	bl SaXSetPose
 	adds r0, r5, #0
 	adds r0, #0x2d
 	strb r4, [r0]
@@ -10190,7 +10190,7 @@ _0801A7E8:
 	movs r0, #1
 	strb r0, [r1]
 	movs r0, #6
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801A83C
 	.align 2, 0
 _0801A81C: .4byte 0x082E6BDC
@@ -10230,7 +10230,7 @@ SaXBossWaitingToAppearInit: @ 0x0801A848
 	movs r0, #0x42
 	strb r0, [r1]
 	movs r0, #7
-	bl SetSaXPose
+	bl SaXSetPose
 	adds r4, #0x2e
 	strb r5, [r4]
 	pop {r4, r5}
@@ -10380,7 +10380,7 @@ SaXBossFallingInit: @ 0x0801A984
 	ldr r0, _0801A9B4 @ =0x0000FF88
 	strh r0, [r5, #0xa]
 	movs r0, #7
-	bl SetSaXPose
+	bl SaXSetPose
 	adds r0, r5, #0
 	adds r0, #0x2d
 	strb r4, [r0]
@@ -10447,7 +10447,7 @@ _0801AA0C:
 	movs r0, #1
 	strb r0, [r5]
 	movs r0, #6
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801AA6C
 	.align 2, 0
 _0801AA2C: .4byte gPreviousVerticalCollisionCheck
@@ -10500,7 +10500,7 @@ SaXBossTurningAroundDuringChaseInit: @ 0x0801AA74
 	ldr r0, _0801AA94 @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #4
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -10565,7 +10565,7 @@ SaXBossFallingFromKnockbackInit: @ 0x0801AAE8
 	ldr r0, _0801AB18 @ =0x0000FF88
 	strh r0, [r5, #0xa]
 	movs r0, #7
-	bl SetSaXPose
+	bl SaXSetPose
 	adds r0, r5, #0
 	adds r0, #0x2d
 	strb r4, [r0]
@@ -10650,7 +10650,7 @@ _0801AB94:
 	movs r0, #1
 	strb r0, [r5]
 	movs r0, #6
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801ABF4
 	.align 2, 0
 _0801ABB4: .4byte gPreviousVerticalCollisionCheck
@@ -10725,7 +10725,7 @@ _0801AC1E:
 	subs r0, #0x20
 	strh r0, [r4, #2]
 	movs r0, #5
-	bl SetSaXPose
+	bl SaXSetPose
 	ldr r0, _0801AC5C @ =gSamusData
 	ldrh r0, [r0, #0x16]
 	ldrh r1, [r4, #4]
@@ -10952,7 +10952,7 @@ _0801ADD4:
 	movs r0, #1
 	strb r0, [r1]
 	movs r0, #6
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801AEE6
 	.align 2, 0
 _0801AE04: .4byte 0x082E6C8A
@@ -11150,7 +11150,7 @@ SaXBossKnockbackInit: @ 0x0801AF5C
 	orrs r0, r1
 	strh r0, [r4]
 	movs r0, #8
-	bl SetSaXPose
+	bl SaXSetPose
 	ldr r0, _0801AFAC @ =gSamusData
 	ldrh r0, [r0, #0x16]
 	ldrh r1, [r4, #4]
@@ -11339,7 +11339,7 @@ SaXBossKneelingInit: @ 0x0801B0DC
 	orrs r0, r1
 	strh r0, [r4]
 	movs r0, #0xb
-	bl SetSaXPose
+	bl SaXSetPose
 	adds r1, r4, #0
 	adds r1, #0x2e
 	movs r0, #0x78
@@ -11372,7 +11372,7 @@ SaXBossKneeling: @ 0x0801B130
 	cmp r0, #0
 	bne _0801B16A
 	movs r0, #0xc
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801B16A
 	.align 2, 0
 _0801B150: .4byte gCurrentSprite
@@ -11804,7 +11804,7 @@ SaXOmegaInit: @ 0x0801B518
 	adds r0, #0x48
 	strh r0, [r2, #2]
 	movs r0, #7
-	bl SetSaXPose
+	bl SaXSetPose
 	ldr r1, _0801B560 @ =gSaXData
 	movs r0, #1
 	strb r0, [r1, #6]
@@ -11892,7 +11892,7 @@ _0801B5E0:
 	movs r0, #1
 	strb r0, [r5]
 	movs r0, #6
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801B640
 	.align 2, 0
 _0801B600: .4byte gPreviousVerticalCollisionCheck
@@ -11982,7 +11982,7 @@ SaXOmegaRunningInit: @ 0x0801B684
 	adds r0, #0x30
 	strb r2, [r0]
 	movs r0, #0
-	bl SetSaXPose
+	bl SaXSetPose
 	adds r1, r4, #0
 	adds r1, #0x2e
 	movs r0, #0x1e
@@ -12047,7 +12047,7 @@ SaXOmegaIdleBeforeShootingOmegaInit: @ 0x0801B6F8
 	movs r0, #1
 	strb r0, [r1, #3]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -12105,7 +12105,7 @@ SaXOmegaShootingOmegaInit: @ 0x0801B748
 	ldr r0, _0801B794 @ =gSaXData
 	strb r4, [r0, #4]
 	movs r0, #3
-	bl SetSaXPose
+	bl SaXSetPose
 	add sp, #0xc
 	pop {r4}
 	pop {r0}
@@ -12150,7 +12150,7 @@ SaXOmegaAfterShootingOmegaInit: @ 0x0801B7B8
 	ldr r0, _0801B7E4 @ =0x0000FF88
 	strh r0, [r3, #0xa]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -12176,7 +12176,7 @@ SaXOmegaAfterShootingOmega: @ 0x0801B7E8
 	movs r4, #0
 	strb r4, [r1, #3]
 	movs r0, #0
-	bl SetSaXPose
+	bl SaXSetPose
 	adds r0, r5, #0
 	adds r0, #0x30
 	strb r4, [r0]
@@ -12218,7 +12218,7 @@ _0801B844:
 	movs r0, #1
 	strb r0, [r1, #3]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801B8B0
 	.align 2, 0
 _0801B868: .4byte 0x082E6BCC
@@ -12253,7 +12253,7 @@ _0801B870:
 	ldr r0, _0801B8B8 @ =gSaXData
 	strb r4, [r0, #4]
 	movs r0, #3
-	bl SetSaXPose
+	bl SaXSetPose
 _0801B8B0:
 	add sp, #0xc
 	pop {r4, r5, r6}
@@ -12277,7 +12277,7 @@ SaXOmegaHitByOmegaInit: @ 0x0801B8BC
 	adds r0, #3
 	strb r2, [r0]
 	movs r0, #8
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -13257,7 +13257,7 @@ SaXTro2Init: @ 0x0801C0E8
 	adds r4, #0x24
 	movs r0, #1
 	strb r0, [r4]
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801C1B2
 	.align 2, 0
 _0801C118: .4byte gCurrentSprite
@@ -13314,7 +13314,7 @@ _0801C158:
 	movs r0, #0xc8
 	strb r0, [r1]
 	movs r0, #1
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801C1B2
 	.align 2, 0
 _0801C190: .4byte gCurrentSprite
@@ -13328,7 +13328,7 @@ _0801C198:
 	movs r0, #0x5a
 	strb r0, [r1]
 	movs r0, #0
-	bl SetSaXPose
+	bl SaXSetPose
 	b _0801C1B2
 _0801C1AE:
 	ldr r0, _0801C1B8 @ =gCurrentSprite
@@ -13486,7 +13486,7 @@ SaXTro2StoppedAtDoorInit: @ 0x0801C2C4
 	ldr r0, _0801C2E8 @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -13568,7 +13568,7 @@ SaXTro2IdleAfterHearingWeaponInit: @ 0x0801C364
 	ldr r0, _0801C388 @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -13607,7 +13607,7 @@ SaXTro2TurningAfterHearingWeaponInit: @ 0x0801C3B0
 	ldr r0, _0801C3D0 @ =0x0000FF88
 	strh r0, [r2, #0xa]
 	movs r0, #4
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -13762,7 +13762,7 @@ _0801C4EA:
 	strh r0, [r2]
 	bl SaXSetDirection
 	movs r0, #2
-	bl SetSaXPose
+	bl SaXSetPose
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -13881,7 +13881,7 @@ _0801C5DA:
 	movs r0, #0
 	strb r0, [r1, #4]
 	movs r0, #3
-	bl SetSaXPose
+	bl SaXSetPose
 	add sp, #0xc
 	pop {r4}
 	pop {r0}

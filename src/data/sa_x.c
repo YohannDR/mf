@@ -5517,8 +5517,7 @@ const struct FrameData* const sSaXElevatorSpritesOamPointers[10] = {
     sOam_2b4810,
     sOam_2b4e44,
     sOam_2b4e54,
-    //sSaxElevatorOam_2e8038
-    (const struct FrameData*)0x82e8038
+    sSaXElevatorOam_2e8038
 };
 
 const SaXElevatorFunc_T sSaXElevatorFunctionPointers[1] = { unk_d694 };

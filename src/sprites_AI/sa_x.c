@@ -793,9 +793,7 @@ void SaXInit(void)
     gCurrentSprite.hitboxLeft = -QUARTER_BLOCK_SIZE;
     gCurrentSprite.hitboxRight = QUARTER_BLOCK_SIZE;
 
-    // FIME
-    // gCurrentSprite.pOam = sSaXOam_Idle;
-    gCurrentSprite.pOam = (const struct FrameData*)0x82e7f70;
+    gCurrentSprite.pOam = sSaXOam_Placeholder;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 
