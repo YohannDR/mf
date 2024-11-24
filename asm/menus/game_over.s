@@ -143,7 +143,7 @@ GameOverInit: @ 0x0809DF58
 	strh r1, [r0]
 	ldr r6, _0809E0D0 @ =0x06010000
 	str r6, [r7]
-	ldr r0, _0809E0D4 @ =0x0201C000
+	ldr r0, _0809E0D4 @ =gSpriteTilesBackup
 	str r0, [r7, #4]
 	ldr r0, _0809E0D8 @ =0x84002000
 	str r0, [r7, #8]
@@ -263,7 +263,7 @@ _0809E0C4: .4byte 0x04000050
 _0809E0C8: .4byte gWrittenToBldy
 _0809E0CC: .4byte 0x04000054
 _0809E0D0: .4byte 0x06010000
-_0809E0D4: .4byte 0x0201C000
+_0809E0D4: .4byte gSpriteTilesBackup
 _0809E0D8: .4byte 0x84002000
 _0809E0DC: .4byte gNextOamSlot
 _0809E0E0: .4byte 0x0400000E

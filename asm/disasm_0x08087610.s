@@ -36504,7 +36504,7 @@ CutsceneInit: @ 0x080999C4
 	ldr r4, _08099AB4 @ =0x040000D4
 	ldr r0, _08099AB8 @ =0x06010000
 	str r0, [r4]
-	ldr r0, _08099ABC @ =0x0201C000
+	ldr r0, _08099ABC @ =gSpriteTilesBackup
 	str r0, [r4, #4]
 	ldr r0, _08099AC0 @ =0x84002000
 	str r0, [r4, #8]
@@ -36585,7 +36585,7 @@ _08099AAC: .4byte gWrittenToBldy
 _08099AB0: .4byte 0x04000054
 _08099AB4: .4byte 0x040000D4
 _08099AB8: .4byte 0x06010000
-_08099ABC: .4byte 0x0201C000
+_08099ABC: .4byte gSpriteTilesBackup
 _08099AC0: .4byte 0x84002000
 _08099AC4: .4byte gNextOamSlot
 _08099AC8: .4byte gNonGameplayRam

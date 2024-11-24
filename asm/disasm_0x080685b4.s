@@ -4658,7 +4658,7 @@ UpdateNightmareShadow: @ 0x0806A978
 	ldrb r0, [r0]
 	cmp r0, #4
 	bls _0806A992
-	ldr r0, _0806A9B4 @ =0x030000F4
+	ldr r0, _0806A9B4 @ =gScreenShakeX
 	ldrb r0, [r0]
 	cmp r0, #7
 	bhi _0806A992
@@ -4683,7 +4683,7 @@ _0806A9A4:
 	mov pc, r0
 	.align 2, 0
 _0806A9B0: .4byte 0x03004E30
-_0806A9B4: .4byte 0x030000F4
+_0806A9B4: .4byte gScreenShakeX
 _0806A9B8: .4byte _0806A9BC
 _0806A9BC: @ jump table
 	.4byte _0806A9DC @ case 0

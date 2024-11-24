@@ -427,7 +427,7 @@ _08074C5E:
 	ldr r1, _08074CAC @ =gPreviousNavigationConversation
 	movs r0, #0xfe
 	strb r0, [r1]
-	ldr r1, _08074CB0 @ =0x03000B85
+	ldr r1, _08074CB0 @ =gUnk_03000b85
 	movs r0, #0
 	strb r0, [r1]
 _08074C90:
@@ -443,7 +443,7 @@ _08074C90:
 _08074CA4: .4byte gPreviousCutscene
 _08074CA8: .4byte gCurrentCutscene
 _08074CAC: .4byte gPreviousNavigationConversation
-_08074CB0: .4byte 0x03000B85
+_08074CB0: .4byte gUnk_03000b85
 _08074CB4:
 	adds r4, #8
 	adds r1, #1

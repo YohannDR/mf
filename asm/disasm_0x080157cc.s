@@ -1404,7 +1404,7 @@ SaXInit: @ 0x0801621C
 	adds r0, #0x68
 	strh r0, [r5, #0xe]
 	strh r1, [r5, #0x10]
-	ldr r0, _08016298 @ =0x082E7F70
+	ldr r0, _08016298 @ =sSaXOam_Placeholder
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r3, [r5, #0x16]
@@ -1437,7 +1437,7 @@ SaXInit: @ 0x0801621C
 	.align 2, 0
 _08016290: .4byte gCurrentSprite
 _08016294: .4byte 0x0000FF88
-_08016298: .4byte 0x082E7F70
+_08016298: .4byte sSaXOam_Placeholder
 _0801629C: .4byte 0x0000FBFF
 _080162A0: .4byte sPrimarySpriteStats
 _080162A4: .4byte gSaXData
@@ -1734,7 +1734,7 @@ SaXWalking: @ 0x080164BC
 	ldrb r0, [r0]
 	cmp r0, #2
 	bne _080164F8
-	ldr r0, _08016504 @ =0x082E6BBC
+	ldr r0, _08016504 @ =sSaXWalkingSpeed
 	adds r4, r1, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -1755,7 +1755,7 @@ _080164F8:
 	bx r0
 	.align 2, 0
 _08016500: .4byte gCurrentSprite
-_08016504: .4byte 0x082E6BBC
+_08016504: .4byte sSaXWalkingSpeed
 
 	thumb_func_start SaXTurningInit
 SaXTurningInit: @ 0x08016508
@@ -1900,7 +1900,7 @@ SaXRunning: @ 0x080165FC
 	ldrb r0, [r0]
 	cmp r0, #0x18
 	bne _08016638
-	ldr r0, _08016644 @ =0x082E6BCC
+	ldr r0, _08016644 @ =sSaXRunningSpeed
 	adds r4, r1, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -1921,7 +1921,7 @@ _08016638:
 	bx r0
 	.align 2, 0
 _08016640: .4byte gCurrentSprite
-_08016644: .4byte 0x082E6BCC
+_08016644: .4byte sSaXRunningSpeed
 
 	thumb_func_start SaXMidAirInit
 SaXMidAirInit: @ 0x08016648
@@ -2019,7 +2019,7 @@ _080166F2:
 	ands r0, r1
 	cmp r0, #0
 	beq _08016714
-	ldr r1, _08016710 @ =0x082E6BCC
+	ldr r1, _08016710 @ =sSaXRunningSpeed
 	adds r0, r3, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -2029,7 +2029,7 @@ _080166F2:
 	ldrh r5, [r0]
 	b _08016716
 	.align 2, 0
-_08016710: .4byte 0x082E6BCC
+_08016710: .4byte sSaXRunningSpeed
 _08016714:
 	movs r5, #4
 _08016716:
@@ -2093,23 +2093,23 @@ _08016784:
 	adds r6, r1, #0
 	cmp r0, #1
 	bne _080167A4
-	ldr r0, _080167A0 @ =0x082E6BF0
+	ldr r0, _080167A0 @ =sSaXJumpYVelocity_1
 	b _080167E2
 	.align 2, 0
 _08016798: .4byte gPreviousCollisionCheck
 _0801679C: .4byte gCurrentSprite
-_080167A0: .4byte 0x082E6BF0
+_080167A0: .4byte sSaXJumpYVelocity_1
 _080167A4:
 	cmp r0, #2
 	bne _080167B0
-	ldr r0, _080167AC @ =0x082E6C04
+	ldr r0, _080167AC @ =sSaXJumpYVelocity_2
 	b _080167E2
 	.align 2, 0
-_080167AC: .4byte 0x082E6C04
+_080167AC: .4byte sSaXJumpYVelocity_2
 _080167B0:
 	cmp r0, #3
 	bne _080167D4
-	ldr r0, _080167D0 @ =0x082E6C18
+	ldr r0, _080167D0 @ =sSaXJumpYVelocity_3
 	adds r4, r6, #0
 	adds r4, #0x31
 	ldrb r3, [r4]
@@ -2123,16 +2123,16 @@ _080167B0:
 	bhi _080167FC
 	b _080167F8
 	.align 2, 0
-_080167D0: .4byte 0x082E6C18
+_080167D0: .4byte sSaXJumpYVelocity_3
 _080167D4:
 	cmp r0, #4
 	bne _080167E0
-	ldr r0, _080167DC @ =0x082E6C3C
+	ldr r0, _080167DC @ =sSaXJumpYVelocity_4
 	b _080167E2
 	.align 2, 0
-_080167DC: .4byte 0x082E6C3C
+_080167DC: .4byte sSaXJumpYVelocity_4
 _080167E0:
-	ldr r0, _08016830 @ =0x082E6BDC
+	ldr r0, _08016830 @ =sSaXJumpYVelocity_0
 _080167E2:
 	adds r4, r6, #0
 	adds r4, #0x31
@@ -2173,7 +2173,7 @@ _080167FC:
 	bl SaXSetPose
 	b _08016850
 	.align 2, 0
-_08016830: .4byte 0x082E6BDC
+_08016830: .4byte sSaXJumpYVelocity_0
 _08016834: .4byte gPreviousVerticalCollisionCheck
 _08016838:
 	ldrh r0, [r6, #2]
@@ -3344,7 +3344,7 @@ _080170C2:
 	strb r0, [r1]
 	b _08017100
 _080170CA:
-	ldr r0, _08017108 @ =0x082E6BBC
+	ldr r0, _08017108 @ =sSaXWalkingSpeed
 	adds r5, r4, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
@@ -3375,7 +3375,7 @@ _08017100:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08017108: .4byte 0x082E6BBC
+_08017108: .4byte sSaXWalkingSpeed
 _0801710C: .4byte gPreviousCollisionCheck
 
 	thumb_func_start SaXBeamInit
@@ -3426,26 +3426,26 @@ SaXBeamInit: @ 0x08017110
 	ldrb r0, [r2, #0x1e]
 	cmp r0, #0
 	bne _08017184
-	ldr r0, _08017180 @ =0x082E7F80
+	ldr r0, _08017180 @ =sSaXBeamOam_Forward
 	str r0, [r2, #0x18]
 	b _080171D0
 	.align 2, 0
 _08017174: .4byte gCurrentSprite
 _08017178: .4byte 0x0000FFFB
 _0801717C: .4byte 0x0000FFF4
-_08017180: .4byte 0x082E7F80
+_08017180: .4byte sSaXBeamOam_Forward
 _08017184:
 	cmp r0, #1
 	bne _08017194
-	ldr r0, _08017190 @ =0x082E7F90
+	ldr r0, _08017190 @ =sSaXBeamOam_Diagonal
 	str r0, [r2, #0x18]
 	b _080171D0
 	.align 2, 0
-_08017190: .4byte 0x082E7F90
+_08017190: .4byte sSaXBeamOam_Diagonal
 _08017194:
 	cmp r0, #2
 	bne _080171B0
-	ldr r0, _080171AC @ =0x082E7F90
+	ldr r0, _080171AC @ =sSaXBeamOam_Diagonal
 	str r0, [r2, #0x18]
 	movs r0, #0x80
 	lsls r0, r0, #1
@@ -3455,7 +3455,7 @@ _08017194:
 	strh r0, [r2]
 	b _080171D0
 	.align 2, 0
-_080171AC: .4byte 0x082E7F90
+_080171AC: .4byte sSaXBeamOam_Diagonal
 _080171B0:
 	cmp r0, #0x80
 	bne _080171CC
@@ -3463,13 +3463,13 @@ _080171B0:
 	adds r1, r3, #0
 	orrs r1, r0
 	strh r1, [r2]
-	ldr r0, _080171C8 @ =0x082E7F80
+	ldr r0, _080171C8 @ =sSaXBeamOam_Forward
 	str r0, [r2, #0x18]
 	mov r1, ip
 	strb r4, [r1]
 	b _080171D0
 	.align 2, 0
-_080171C8: .4byte 0x082E7F80
+_080171C8: .4byte sSaXBeamOam_Forward
 _080171CC:
 	strh r5, [r2]
 	b _080171D8
@@ -3523,10 +3523,10 @@ _08017222:
 	subs r0, #0xf
 _08017226:
 	strh r0, [r4, #4]
-	ldr r7, _08017248 @ =0x082E6BAC
+	ldr r7, _08017248 @ =sSaXBeamDiagonalYMovement
 	lsls r0, r5, #1
 	adds r1, r0, r7
-	ldr r6, _0801724C @ =0x082E6BB4
+	ldr r6, _0801724C @ =sSaXBeamDiagonalXMovement
 	adds r0, r0, r6
 	ldrh r3, [r0]
 	ldrh r2, [r1]
@@ -3540,8 +3540,8 @@ _08017226:
 	ldrh r3, [r6]
 	b _08017288
 	.align 2, 0
-_08017248: .4byte 0x082E6BAC
-_0801724C: .4byte 0x082E6BB4
+_08017248: .4byte sSaXBeamDiagonalYMovement
+_0801724C: .4byte sSaXBeamDiagonalXMovement
 _08017250: .4byte 0x00007FFF
 _08017254:
 	ldrh r0, [r4, #2]
@@ -3560,7 +3560,7 @@ _0801726A:
 	subs r0, #0xf
 _0801726E:
 	strh r0, [r4, #4]
-	ldr r6, _080172A0 @ =0x082E6BAC
+	ldr r6, _080172A0 @ =sSaXBeamDiagonalYMovement
 	lsls r0, r5, #1
 	adds r0, r0, r6
 	ldrh r2, [r0]
@@ -3585,14 +3585,14 @@ _08017288:
 	strh r0, [r4, #4]
 	b _080172D2
 	.align 2, 0
-_080172A0: .4byte 0x082E6BAC
+_080172A0: .4byte sSaXBeamDiagonalYMovement
 _080172A4: .4byte 0x7FFF0000
 _080172A8:
 	ldrh r0, [r4, #4]
 	subs r0, #0x14
 _080172AC:
 	strh r0, [r4, #4]
-	ldr r3, _08017304 @ =0x082E6BA4
+	ldr r3, _08017304 @ =sSaXBeamForwardYMovement
 	lsls r0, r5, #1
 	adds r0, r0, r3
 	ldrh r2, [r0]
@@ -3638,7 +3638,7 @@ _080172FE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08017304: .4byte 0x082E6BA4
+_08017304: .4byte sSaXBeamForwardYMovement
 _08017308: .4byte 0x00007FFF
 _0801730C: .4byte gCurrentClipdataAffectingAction
 
@@ -3685,26 +3685,26 @@ SaXMissileInit: @ 0x08017310
 	ldrb r0, [r2, #0x1e]
 	cmp r0, #0
 	bne _08017378
-	ldr r0, _08017374 @ =0x082E7FC8
+	ldr r0, _08017374 @ =sSaXMissileOam_Forward
 	str r0, [r2, #0x18]
 	b _080173A8
 	.align 2, 0
 _08017368: .4byte gCurrentSprite
 _0801736C: .4byte 0x0000FFFB
 _08017370: .4byte 0x0000FFF4
-_08017374: .4byte 0x082E7FC8
+_08017374: .4byte sSaXMissileOam_Forward
 _08017378:
 	cmp r0, #1
 	bne _08017388
-	ldr r0, _08017384 @ =0x082E7FB0
+	ldr r0, _08017384 @ =sSaXMissileOam_Diagonal
 	str r0, [r2, #0x18]
 	b _080173A8
 	.align 2, 0
-_08017384: .4byte 0x082E7FB0
+_08017384: .4byte sSaXMissileOam_Diagonal
 _08017388:
 	cmp r0, #2
 	bne _080173A4
-	ldr r0, _080173A0 @ =0x082E7FB0
+	ldr r0, _080173A0 @ =sSaXMissileOam_Diagonal
 	str r0, [r2, #0x18]
 	movs r0, #0x80
 	lsls r0, r0, #1
@@ -3714,7 +3714,7 @@ _08017388:
 	strh r0, [r2]
 	b _080173A8
 	.align 2, 0
-_080173A0: .4byte 0x082E7FB0
+_080173A0: .4byte sSaXMissileOam_Diagonal
 _080173A4:
 	strh r4, [r2]
 	b _080173AE
@@ -3877,7 +3877,7 @@ SaXPowerBombInit: @ 0x08017498
 	strh r0, [r4, #0xc]
 	strh r1, [r4, #0xe]
 	strh r0, [r4, #0x10]
-	ldr r0, _08017508 @ =0x082E7FE0
+	ldr r0, _08017508 @ =sSaXPowerBombOam_SpinningSlow
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -3901,7 +3901,7 @@ SaXPowerBombInit: @ 0x08017498
 _080174FC: .4byte gCurrentSprite
 _08017500: .4byte 0x0000FFFB
 _08017504: .4byte 0x0000FFFC
-_08017508: .4byte 0x082E7FE0
+_08017508: .4byte sSaXPowerBombOam_SpinningSlow
 
 	thumb_func_start SaXPowerBombSpinningSlowly
 SaXPowerBombSpinningSlowly: @ 0x0801750C
@@ -3920,7 +3920,7 @@ SaXPowerBombSpinningSlowly: @ 0x0801750C
 	lsrs r1, r0, #0x18
 	cmp r1, #0
 	bne _0801753E
-	ldr r0, _08017548 @ =0x082E8000
+	ldr r0, _08017548 @ =sSaXPowerBombOam_SpinningFast
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
 	strh r1, [r2, #0x16]
@@ -3935,7 +3935,7 @@ _0801753E:
 	bx r0
 	.align 2, 0
 _08017544: .4byte gCurrentSprite
-_08017548: .4byte 0x082E8000
+_08017548: .4byte sSaXPowerBombOam_SpinningFast
 
 	thumb_func_start SaXPowerBombSpinningQuickly
 SaXPowerBombSpinningQuickly: @ 0x0801754C
@@ -4032,7 +4032,7 @@ LabExplosionInit: @ 0x080175C8
 	strh r0, [r4, #0xc]
 	strh r1, [r4, #0xe]
 	strh r0, [r4, #0x10]
-	ldr r0, _08017630 @ =0x082E8050
+	ldr r0, _08017630 @ =sLabExplosionOam_Idle
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -4053,7 +4053,7 @@ LabExplosionInit: @ 0x080175C8
 _08017624: .4byte gCurrentSprite
 _08017628: .4byte 0x0000FFFB
 _0801762C: .4byte 0x0000FFFC
-_08017630: .4byte 0x082E8050
+_08017630: .4byte sLabExplosionOam_Idle
 
 	thumb_func_start LabExplosionExploding
 LabExplosionExploding: @ 0x08017634
@@ -4615,7 +4615,7 @@ SaXUpdateGraphics: @ 0x08017AC8
 	adds r0, #0x20
 	ldrb r0, [r0]
 	strb r0, [r5, #5]
-	ldr r1, _08017B24 @ =0x082B4408
+	ldr r1, _08017B24 @ =sSaXPoseGfxFunctionPointers
 	ldrb r0, [r5, #1]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -4646,7 +4646,7 @@ _08017AFC:
 	.align 2, 0
 _08017B1C: .4byte gSaXData
 _08017B20: .4byte gCurrentSprite
-_08017B24: .4byte 0x082B4408
+_08017B24: .4byte sSaXPoseGfxFunctionPointers
 _08017B28:
 	movs r0, #1
 _08017B2A:
@@ -5362,7 +5362,7 @@ _080180EC:
 	ldrb r0, [r0]
 	cmp r0, #2
 	bne _0801811C
-	ldr r0, _08018128 @ =0x082E6BBC
+	ldr r0, _08018128 @ =sSaXWalkingSpeed
 	adds r4, r1, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -5383,7 +5383,7 @@ _0801811C:
 	bx r0
 	.align 2, 0
 _08018124: .4byte gCurrentSprite
-_08018128: .4byte 0x082E6BBC
+_08018128: .4byte sSaXWalkingSpeed
 
 	thumb_func_start SaXTro1Running
 SaXTro1Running: @ 0x0801812C
@@ -5483,7 +5483,7 @@ _080181D2:
 	ldrb r0, [r0]
 	cmp r0, #0x18
 	bne _08018202
-	ldr r0, _0801820C @ =0x082E6BCC
+	ldr r0, _0801820C @ =sSaXRunningSpeed
 	adds r4, r1, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -5504,7 +5504,7 @@ _08018202:
 	bx r0
 	.align 2, 0
 _08018208: .4byte gCurrentSprite
-_0801820C: .4byte 0x082E6BCC
+_0801820C: .4byte sSaXRunningSpeed
 
 	thumb_func_start SaXTro1TurningDuringChase
 SaXTro1TurningDuringChase: @ 0x08018210
@@ -6562,7 +6562,7 @@ _08018AA8:
 	ldrb r0, [r0]
 	cmp r0, #0x1a
 	bne _08018ADE
-	ldr r0, _08018AE4 @ =0x082E6BBC
+	ldr r0, _08018AE4 @ =sSaXWalkingSpeed
 	adds r4, #0x30
 	ldrb r1, [r4]
 	lsrs r1, r1, #3
@@ -6581,7 +6581,7 @@ _08018ADE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08018AE4: .4byte 0x082E6BBC
+_08018AE4: .4byte sSaXWalkingSpeed
 
 	thumb_func_start SaXNocIdleBeforeLayingPowerBombInit
 SaXNocIdleBeforeLayingPowerBombInit: @ 0x08018AE8
@@ -6734,7 +6734,7 @@ SaXNocWalking: @ 0x08018BE4
 	ldrb r0, [r0]
 	cmp r0, #2
 	bne _08018C20
-	ldr r0, _08018C2C @ =0x082E6BBC
+	ldr r0, _08018C2C @ =sSaXWalkingSpeed
 	adds r4, r1, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -6755,7 +6755,7 @@ _08018C20:
 	bx r0
 	.align 2, 0
 _08018C28: .4byte gCurrentSprite
-_08018C2C: .4byte 0x082E6BBC
+_08018C2C: .4byte sSaXWalkingSpeed
 
 	thumb_func_start SaXNocRunning
 SaXNocRunning: @ 0x08018C30
@@ -6771,7 +6771,7 @@ SaXNocRunning: @ 0x08018C30
 	ldrb r0, [r0]
 	cmp r0, #0x18
 	bne _08018C6C
-	ldr r0, _08018C78 @ =0x082E6BCC
+	ldr r0, _08018C78 @ =sSaXRunningSpeed
 	adds r4, r1, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -6792,7 +6792,7 @@ _08018C6C:
 	bx r0
 	.align 2, 0
 _08018C74: .4byte gCurrentSprite
-_08018C78: .4byte 0x082E6BCC
+_08018C78: .4byte sSaXRunningSpeed
 
 	thumb_func_start SaXNocTurningDuringChase
 SaXNocTurningDuringChase: @ 0x08018C7C
@@ -7973,7 +7973,7 @@ _08019628:
 	movs r0, #0x4d
 	strb r0, [r2]
 _0801962C:
-	ldr r1, _08019658 @ =0x082E6BBC
+	ldr r1, _08019658 @ =sSaXWalkingSpeed
 	ldr r0, _0801965C @ =gCurrentSprite
 	adds r4, r0, #0
 	adds r4, #0x30
@@ -7995,7 +7995,7 @@ _0801964E:
 	bx r0
 	.align 2, 0
 _08019654: .4byte gSaXVision
-_08019658: .4byte 0x082E6BBC
+_08019658: .4byte sSaXWalkingSpeed
 _0801965C: .4byte gCurrentSprite
 
 	thumb_func_start SaXArcStoppedAtPillarInit
@@ -8154,7 +8154,7 @@ SaXArcRunning: @ 0x0801976C
 	ldrb r0, [r0]
 	cmp r0, #0x18
 	bne _080197A8
-	ldr r0, _080197B4 @ =0x082E6BCC
+	ldr r0, _080197B4 @ =sSaXRunningSpeed
 	adds r4, r1, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -8175,7 +8175,7 @@ _080197A8:
 	bx r0
 	.align 2, 0
 _080197B0: .4byte gCurrentSprite
-_080197B4: .4byte 0x082E6BCC
+_080197B4: .4byte sSaXRunningSpeed
 
 	thumb_func_start SaXArcTurningAroundDuringChase
 SaXArcTurningAroundDuringChase: @ 0x080197B8
@@ -9878,7 +9878,7 @@ SaXBossRunning: @ 0x0801A598
 	ldrb r0, [r0]
 	cmp r0, #0x18
 	bne _0801A5D4
-	ldr r0, _0801A5E0 @ =0x082E6BCC
+	ldr r0, _0801A5E0 @ =sSaXRunningSpeed
 	adds r4, r1, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -9899,7 +9899,7 @@ _0801A5D4:
 	bx r0
 	.align 2, 0
 _0801A5DC: .4byte gCurrentSprite
-_0801A5E0: .4byte 0x082E6BCC
+_0801A5E0: .4byte sSaXRunningSpeed
 
 	thumb_func_start SaXBossSpinJumpingInit
 SaXBossSpinJumpingInit: @ 0x0801A5E4
@@ -10010,7 +10010,7 @@ _0801A6A0:
 	ands r0, r1
 	cmp r0, #0
 	beq _0801A6C4
-	ldr r1, _0801A6C0 @ =0x082E6BCC
+	ldr r1, _0801A6C0 @ =sSaXRunningSpeed
 	adds r0, r2, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -10020,7 +10020,7 @@ _0801A6A0:
 	ldrh r5, [r0]
 	b _0801A6C6
 	.align 2, 0
-_0801A6C0: .4byte 0x082E6BCC
+_0801A6C0: .4byte sSaXRunningSpeed
 _0801A6C4:
 	movs r5, #4
 _0801A6C6:
@@ -10084,16 +10084,16 @@ _0801A734:
 	adds r6, r1, #0
 	cmp r0, #1
 	bne _0801A754
-	ldr r0, _0801A750 @ =0x082E6BF0
+	ldr r0, _0801A750 @ =sSaXJumpYVelocity_1
 	b _0801A7CE
 	.align 2, 0
 _0801A748: .4byte gPreviousCollisionCheck
 _0801A74C: .4byte gCurrentSprite
-_0801A750: .4byte 0x082E6BF0
+_0801A750: .4byte sSaXJumpYVelocity_1
 _0801A754:
 	cmp r0, #2
 	bne _0801A778
-	ldr r0, _0801A774 @ =0x082E6C50
+	ldr r0, _0801A774 @ =sSaXBossSpinJumpYVelocity_2
 	adds r4, r6, #0
 	adds r4, #0x31
 	ldrb r3, [r4]
@@ -10107,11 +10107,11 @@ _0801A754:
 	bhi _0801A7E8
 	b _0801A7E4
 	.align 2, 0
-_0801A774: .4byte 0x082E6C50
+_0801A774: .4byte sSaXBossSpinJumpYVelocity_2
 _0801A778:
 	cmp r0, #3
 	bne _0801A79C
-	ldr r0, _0801A798 @ =0x082E6C18
+	ldr r0, _0801A798 @ =sSaXJumpYVelocity_3
 	adds r4, r6, #0
 	adds r4, #0x31
 	ldrb r3, [r4]
@@ -10125,18 +10125,18 @@ _0801A778:
 	bhi _0801A7E8
 	b _0801A7E4
 	.align 2, 0
-_0801A798: .4byte 0x082E6C18
+_0801A798: .4byte sSaXJumpYVelocity_3
 _0801A79C:
 	cmp r0, #4
 	bne _0801A7A8
-	ldr r0, _0801A7A4 @ =0x082E6C3C
+	ldr r0, _0801A7A4 @ =sSaXJumpYVelocity_4
 	b _0801A7CE
 	.align 2, 0
-_0801A7A4: .4byte 0x082E6C3C
+_0801A7A4: .4byte sSaXJumpYVelocity_4
 _0801A7A8:
 	cmp r0, #5
 	bne _0801A7CC
-	ldr r0, _0801A7C8 @ =0x082E6C66
+	ldr r0, _0801A7C8 @ =sSaXBossSpinJumpYVelocity_5
 	adds r4, r6, #0
 	adds r4, #0x31
 	ldrb r3, [r4]
@@ -10150,9 +10150,9 @@ _0801A7A8:
 	bhi _0801A7E8
 	b _0801A7E4
 	.align 2, 0
-_0801A7C8: .4byte 0x082E6C66
+_0801A7C8: .4byte sSaXBossSpinJumpYVelocity_5
 _0801A7CC:
-	ldr r0, _0801A81C @ =0x082E6BDC
+	ldr r0, _0801A81C @ =sSaXJumpYVelocity_0
 _0801A7CE:
 	adds r4, r6, #0
 	adds r4, #0x31
@@ -10193,7 +10193,7 @@ _0801A7E8:
 	bl SaXSetPose
 	b _0801A83C
 	.align 2, 0
-_0801A81C: .4byte 0x082E6BDC
+_0801A81C: .4byte sSaXJumpYVelocity_0
 _0801A820: .4byte gPreviousVerticalCollisionCheck
 _0801A824:
 	ldrh r0, [r6, #2]
@@ -10825,7 +10825,7 @@ _0801ACEE:
 	.align 2, 0
 _0801ACF4: .4byte gSaXVision
 _0801ACF8:
-	ldr r2, _0801AD50 @ =0x082E6BCC
+	ldr r2, _0801AD50 @ =sSaXRunningSpeed
 	adds r0, r4, #0
 	adds r0, #0x30
 	ldrb r1, [r0]
@@ -10867,7 +10867,7 @@ _0801ACF8:
 	adds r0, r0, r6
 	b _0801AD86
 	.align 2, 0
-_0801AD50: .4byte 0x082E6BCC
+_0801AD50: .4byte sSaXRunningSpeed
 _0801AD54: .4byte gSpriteRandomNumber
 _0801AD58: .4byte gPreviousCollisionCheck
 _0801AD5C:
@@ -10900,21 +10900,21 @@ _0801AD88:
 	adds r5, r1, #0
 	cmp r0, #0x4a
 	bne _0801ADA8
-	ldr r1, _0801ADA4 @ =0x082E6CB2
+	ldr r1, _0801ADA4 @ =sSaXBossJumpYVelocity_3
 	b _0801ADB6
 	.align 2, 0
 _0801AD9C: .4byte gPreviousCollisionCheck
 _0801ADA0: .4byte gCurrentSprite
-_0801ADA4: .4byte 0x082E6CB2
+_0801ADA4: .4byte sSaXBossJumpYVelocity_3
 _0801ADA8:
 	cmp r0, #0x48
 	bne _0801ADB4
-	ldr r1, _0801ADB0 @ =0x082E6C9E
+	ldr r1, _0801ADB0 @ =sSaXBossJumpYVelocity_2
 	b _0801ADB6
 	.align 2, 0
-_0801ADB0: .4byte 0x082E6C9E
+_0801ADB0: .4byte sSaXBossJumpYVelocity_2
 _0801ADB4:
-	ldr r1, _0801AE04 @ =0x082E6C8A
+	ldr r1, _0801AE04 @ =sSaXBossJumpYVelocity_1
 _0801ADB6:
 	adds r0, r5, #0
 	adds r0, #0x31
@@ -10955,7 +10955,7 @@ _0801ADD4:
 	bl SaXSetPose
 	b _0801AEE6
 	.align 2, 0
-_0801AE04: .4byte 0x082E6C8A
+_0801AE04: .4byte sSaXBossJumpYVelocity_1
 _0801AE08: .4byte gPreviousVerticalCollisionCheck
 _0801AE0C:
 	ldrb r0, [r7]
@@ -11116,7 +11116,7 @@ _0801AF3C:
 	strb r0, [r3]
 _0801AF40:
 	ldr r2, _0801AF54 @ =gWrittenToMosaic_H
-	ldr r1, _0801AF58 @ =0x082E6D22
+	ldr r1, _0801AF58 @ =sSaXMosaicValues
 	ldrb r0, [r3]
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -11127,7 +11127,7 @@ _0801AF4E:
 	bx r0
 	.align 2, 0
 _0801AF54: .4byte gWrittenToMosaic_H
-_0801AF58: .4byte 0x082E6D22
+_0801AF58: .4byte sSaXMosaicValues
 
 	thumb_func_start SaXBossKnockbackInit
 SaXBossKnockbackInit: @ 0x0801AF5C
@@ -11247,7 +11247,7 @@ SaXBossKnockback: @ 0x0801B044
 	adds r0, r0, r2
 	mov ip, r0
 	ldrb r3, [r0]
-	ldr r1, _0801B074 @ =0x082E6CD2
+	ldr r1, _0801B074 @ =sSaXBossKnockbackYMovement
 	lsls r0, r3, #1
 	adds r0, r0, r1
 	ldrh r5, [r0]
@@ -11264,7 +11264,7 @@ SaXBossKnockback: @ 0x0801B044
 	b _0801B088
 	.align 2, 0
 _0801B070: .4byte gCurrentSprite
-_0801B074: .4byte 0x082E6CD2
+_0801B074: .4byte sSaXBossKnockbackYMovement
 _0801B078: .4byte 0x00007FFF
 _0801B07C:
 	adds r0, r3, #1
@@ -11996,7 +11996,7 @@ _0801B6AC: .4byte gCurrentSprite
 	thumb_func_start SaXOmegaRunning
 SaXOmegaRunning: @ 0x0801B6B0
 	push {r4, r5, lr}
-	ldr r0, _0801B6F0 @ =0x082E6BCC
+	ldr r0, _0801B6F0 @ =sSaXRunningSpeed
 	ldr r4, _0801B6F4 @ =gCurrentSprite
 	adds r5, r4, #0
 	adds r5, #0x30
@@ -12029,7 +12029,7 @@ _0801B6EA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801B6F0: .4byte 0x082E6BCC
+_0801B6F0: .4byte sSaXRunningSpeed
 _0801B6F4: .4byte gCurrentSprite
 
 	thumb_func_start SaXOmegaIdleBeforeShootingOmegaInit
@@ -12188,7 +12188,7 @@ SaXOmegaAfterShootingOmega: @ 0x0801B7E8
 _0801B81C: .4byte gCurrentSprite
 _0801B820: .4byte gSaXData
 _0801B824:
-	ldr r0, _0801B868 @ =0x082E6BCC
+	ldr r0, _0801B868 @ =sSaXRunningSpeed
 	adds r4, r5, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -12221,7 +12221,7 @@ _0801B844:
 	bl SaXSetPose
 	b _0801B8B0
 	.align 2, 0
-_0801B868: .4byte 0x082E6BCC
+_0801B868: .4byte sSaXRunningSpeed
 _0801B86C: .4byte gSaXData
 _0801B870:
 	adds r1, r5, #0
@@ -12291,7 +12291,7 @@ SaXOmegaHitByOmega: @ 0x0801B8E4
 	adds r0, r0, r2
 	mov ip, r0
 	ldrb r3, [r0]
-	ldr r1, _0801B910 @ =0x082E6CD2
+	ldr r1, _0801B910 @ =sSaXBossKnockbackYMovement
 	lsls r0, r3, #1
 	adds r0, r0, r1
 	ldrh r4, [r0]
@@ -12307,7 +12307,7 @@ SaXOmegaHitByOmega: @ 0x0801B8E4
 	b _0801B924
 	.align 2, 0
 _0801B90C: .4byte gCurrentSprite
-_0801B910: .4byte 0x082E6CD2
+_0801B910: .4byte sSaXBossKnockbackYMovement
 _0801B914: .4byte 0x00007FFF
 _0801B918:
 	adds r0, r3, #1
@@ -13447,7 +13447,7 @@ _0801C28C:
 	movs r0, #0x4d
 	strb r0, [r2]
 _0801C290:
-	ldr r1, _0801C2BC @ =0x082E6BBC
+	ldr r1, _0801C2BC @ =sSaXWalkingSpeed
 	ldr r0, _0801C2C0 @ =gCurrentSprite
 	adds r4, r0, #0
 	adds r4, #0x30
@@ -13469,7 +13469,7 @@ _0801C2B2:
 	bx r0
 	.align 2, 0
 _0801C2B8: .4byte gSaXVision
-_0801C2BC: .4byte 0x082E6BBC
+_0801C2BC: .4byte sSaXWalkingSpeed
 _0801C2C0: .4byte gCurrentSprite
 
 	thumb_func_start SaXTro2StoppedAtDoorInit
@@ -13668,7 +13668,7 @@ SaXTro2Running: @ 0x0801C424
 	ldrb r0, [r0]
 	cmp r0, #0x18
 	bne _0801C460
-	ldr r0, _0801C46C @ =0x082E6BCC
+	ldr r0, _0801C46C @ =sSaXRunningSpeed
 	adds r4, r1, #0
 	adds r4, #0x30
 	ldrb r1, [r4]
@@ -13689,7 +13689,7 @@ _0801C460:
 	bx r0
 	.align 2, 0
 _0801C468: .4byte gCurrentSprite
-_0801C46C: .4byte 0x082E6BCC
+_0801C46C: .4byte sSaXRunningSpeed
 
 	thumb_func_start SaXTro2TurningDuringChase
 SaXTro2TurningDuringChase: @ 0x0801C470

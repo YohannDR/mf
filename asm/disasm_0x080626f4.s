@@ -2301,7 +2301,7 @@ _08063956:
 	strh r0, [r5, #8]
 	movs r6, #2
 _0806397E:
-	ldr r0, _080639A4 @ =0x030000F0
+	ldr r0, _080639A4 @ =gScreenShakeY
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08063988
@@ -2316,7 +2316,7 @@ _08063994: .4byte 0x03004E4C
 _08063998: .4byte 0x027F0000
 _0806399C: .4byte gWaterLowered
 _080639A0: .4byte 0x03004E3A
-_080639A4: .4byte 0x030000F0
+_080639A4: .4byte gScreenShakeY
 _080639A8:
 	ldrh r0, [r2]
 	cmp r0, #0
@@ -3202,7 +3202,7 @@ _08064048:
 	ldr r1, _08064074 @ =0x040000D4
 	ldr r0, _08064078 @ =0x06000800
 	str r0, [r1]
-	ldr r0, _0806407C @ =0x0201C000
+	ldr r0, _0806407C @ =gSpriteTilesBackup
 	str r0, [r1, #4]
 	ldr r0, _08064080 @ =0x80000400
 	str r0, [r1, #8]
@@ -3214,7 +3214,7 @@ _0806406C: .4byte gIoRegisters
 _08064070: .4byte 0x0000FEFF
 _08064074: .4byte 0x040000D4
 _08064078: .4byte 0x06000800
-_0806407C: .4byte 0x0201C000
+_0806407C: .4byte gSpriteTilesBackup
 _08064080: .4byte 0x80000400
 _08064084:
 	mov r1, sp
@@ -3582,7 +3582,7 @@ _08064354: .4byte gPoseLock
 _08064358: .4byte gPreventMovementTimer
 _0806435C:
 	ldr r1, _08064378 @ =0x040000D4
-	ldr r0, _0806437C @ =0x0201C000
+	ldr r0, _0806437C @ =gSpriteTilesBackup
 	str r0, [r1]
 	ldr r0, _08064380 @ =0x06000800
 	str r0, [r1, #4]
@@ -3596,7 +3596,7 @@ _0806435C:
 	b _08064422
 	.align 2, 0
 _08064378: .4byte 0x040000D4
-_0806437C: .4byte 0x0201C000
+_0806437C: .4byte gSpriteTilesBackup
 _08064380: .4byte 0x06000800
 _08064384: .4byte 0x80000400
 _08064388: .4byte gIoRegisters
@@ -4519,7 +4519,7 @@ RoomResetInfo: @ 0x08064AEC
 	ldrb r0, [r2]
 	cmp r0, #0
 	beq _08064B1C
-	ldr r0, _08064BCC @ =0x030000F4
+	ldr r0, _08064BCC @ =gScreenShakeX
 	ldr r1, _08064BD0 @ =0x083C88C8
 	ldr r1, [r1]
 	str r1, [r0]
@@ -4613,7 +4613,7 @@ _08064BBE:
 	.align 2, 0
 _08064BC4: .4byte gColorFading
 _08064BC8: .4byte gCurrentPowerBomb
-_08064BCC: .4byte 0x030000F4
+_08064BCC: .4byte gScreenShakeX
 _08064BD0: .4byte 0x083C88C8
 _08064BD4: .4byte 0x083C88B4
 _08064BD8: .4byte gWrittenToBldcnt
@@ -4695,7 +4695,7 @@ _08064C46:
 	ldr r1, _08064DC4 @ =0x0300002F
 	ldrb r0, [r4]
 	strb r0, [r1]
-	ldr r2, _08064DC8 @ =0x03000030
+	ldr r2, _08064DC8 @ =gDisplayLocationName
 	ldrb r0, [r4]
 	lsrs r0, r0, #6
 	movs r1, #1
@@ -4733,7 +4733,7 @@ _08064CDC:
 	subs r1, #4
 	cmp r1, r2
 	bge _08064CDC
-	ldr r6, _08064DF0 @ =0x030000F4
+	ldr r6, _08064DF0 @ =gScreenShakeX
 	mov sb, r6
 	ldr r0, _08064DF4 @ =0x083C88C8
 	mov r8, r0
@@ -4741,9 +4741,9 @@ _08064CDC:
 	mov sl, r1
 	ldr r3, _08064DFC @ =0x03004FB8
 	ldr r5, _08064E00 @ =0x03000027
-	ldr r6, _08064E04 @ =0x030000F0
-	ldr r7, _08064E08 @ =0x0300004E
-	ldr r2, _08064E0C @ =0x0300004F
+	ldr r6, _08064E04 @ =gScreenShakeY
+	ldr r7, _08064E08 @ =gScreenShakeXOffset
+	ldr r2, _08064E0C @ =gScreenShakeYOffset
 	mov ip, r2
 	ldr r2, _08064E10 @ =0x03004EE0
 	ldr r0, _08064DEC @ =0x083C88A8
@@ -4833,7 +4833,7 @@ _08064DB8: .4byte gCurrentArea
 _08064DBC: .4byte gLastDoorUsed
 _08064DC0: .4byte gCurrentRoom
 _08064DC4: .4byte 0x0300002F
-_08064DC8: .4byte 0x03000030
+_08064DC8: .4byte gDisplayLocationName
 _08064DCC: .4byte gDoorPositionStart
 _08064DD0: .4byte gSaXSpawnPosition
 _08064DD4: .4byte 0x083C88A4
@@ -4843,14 +4843,14 @@ _08064DE0: .4byte 0x03004E30
 _08064DE4: .4byte 0x083C88DC
 _08064DE8: .4byte 0x03004E60
 _08064DEC: .4byte 0x083C88A8
-_08064DF0: .4byte 0x030000F4
+_08064DF0: .4byte gScreenShakeX
 _08064DF4: .4byte 0x083C88C8
 _08064DF8: .4byte gIsLoadingFile
 _08064DFC: .4byte 0x03004FB8
 _08064E00: .4byte 0x03000027
-_08064E04: .4byte 0x030000F0
-_08064E08: .4byte 0x0300004E
-_08064E0C: .4byte 0x0300004F
+_08064E04: .4byte gScreenShakeY
+_08064E08: .4byte gScreenShakeXOffset
+_08064E0C: .4byte gScreenShakeYOffset
 _08064E10: .4byte 0x03004EE0
 _08064E14: .4byte 0x03004FA8
 _08064E18: .4byte 0x083C88AC

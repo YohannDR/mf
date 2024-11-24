@@ -37,7 +37,7 @@ CheckResetHudAndParticles: @ 0x08072D74
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bne _08072E1E
-	ldr r4, _08072DAC @ =0x030007F8
+	ldr r4, _08072DAC @ =gParticleEffects
 	movs r5, #0xf
 _08072D98:
 	ldrb r0, [r4, #2]
@@ -48,7 +48,7 @@ _08072D98:
 	.align 2, 0
 _08072DA4: .4byte gUnk_03000be3
 _08072DA8: .4byte gPauseScreenFlag
-_08072DAC: .4byte 0x030007F8
+_08072DAC: .4byte gParticleEffects
 _08072DB0:
 	cmp r0, #0x46
 	bne _08072DBE
@@ -75,7 +75,7 @@ _08072DC8:
 	mov r8, r1
 	ldr r2, _08072E48 @ =gEscapeStatus
 	mov sb, r2
-	ldr r1, _08072E4C @ =0x030007F8
+	ldr r1, _08072E4C @ =gParticleEffects
 	movs r2, #0
 	adds r0, r1, #0
 	adds r0, #0xb4
@@ -124,7 +124,7 @@ _08072E3C: .4byte gMissileHighlightStatus
 _08072E40: .4byte gPowerBombHighlightStatus
 _08072E44: .4byte gMinimapUpdateFlag
 _08072E48: .4byte gEscapeStatus
-_08072E4C: .4byte 0x030007F8
+_08072E4C: .4byte gParticleEffects
 
 	thumb_func_start CheckParticleIsOnScreen
 CheckParticleIsOnScreen: @ 0x08072E50
@@ -355,7 +355,7 @@ ParticleUpdate: @ 0x08073000
 	cmp r0, #2
 	bne _080730CA
 	movs r6, #0
-	ldr r2, _080730D8 @ =0x030007F8
+	ldr r2, _080730D8 @ =gParticleEffects
 	movs r5, #0
 _08073016:
 	adds r3, r5, r2
@@ -389,7 +389,7 @@ _08073016:
 	adds r0, r6, #0
 	bl DrawParticle
 _08073058:
-	ldr r2, _080730D8 @ =0x030007F8
+	ldr r2, _080730D8 @ =gParticleEffects
 	adds r1, r5, r2
 	ldr r0, _080730DC @ =0x030008B8
 	ldm r0!, {r3, r4, r7}
@@ -433,7 +433,7 @@ _0807306E:
 	adds r0, r6, #0
 	bl DrawParticle
 _080730B0:
-	ldr r2, _080730D8 @ =0x030007F8
+	ldr r2, _080730D8 @ =gParticleEffects
 	mov r0, r8
 	adds r1, r0, r2
 	ldr r0, _080730DC @ =0x030008B8
@@ -454,7 +454,7 @@ _080730CA:
 	bx r0
 	.align 2, 0
 _080730D4: .4byte gSubGameMode1
-_080730D8: .4byte 0x030007F8
+_080730D8: .4byte gParticleEffects
 _080730DC: .4byte 0x030008B8
 _080730E0: .4byte 0x0879BCC0
 
@@ -473,7 +473,7 @@ ParticleSet: @ 0x080730E4
 	mov r8, r2
 	movs r4, #0
 	movs r2, #0
-	ldr r0, _08073178 @ =0x030007F8
+	ldr r0, _08073178 @ =gParticleEffects
 	ldrb r1, [r0]
 	adds r6, r0, #0
 	cmp r1, #0
@@ -495,7 +495,7 @@ _0807311E:
 	bne _0807314C
 	movs r5, #0xff
 	movs r2, #0
-	ldr r0, _08073178 @ =0x030007F8
+	ldr r0, _08073178 @ =gParticleEffects
 	adds r3, r0, #2
 _0807312A:
 	ldrb r0, [r3]
@@ -542,7 +542,7 @@ _0807316E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08073178: .4byte 0x030007F8
+_08073178: .4byte gParticleEffects
 
 	thumb_func_start ParticleUpdateAnimation
 ParticleUpdateAnimation: @ 0x0807317C

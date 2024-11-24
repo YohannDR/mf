@@ -5836,7 +5836,7 @@ SamusHangingOnLedge: @ 0x08007AB8
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r0, _08007AE0 @ =0x030000F4
+	ldr r0, _08007AE0 @ =gScreenShakeX
 	ldrb r0, [r0]
 	cmp r0, #0x1d
 	bls _08007ACC
@@ -5853,7 +5853,7 @@ _08007ACC:
 	adds r0, #0x20
 	b _08007AEE
 	.align 2, 0
-_08007AE0: .4byte 0x030000F4
+_08007AE0: .4byte gScreenShakeX
 _08007AE4: .4byte gSamusData
 _08007AE8:
 	mov r1, sl

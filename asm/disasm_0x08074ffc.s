@@ -1087,7 +1087,7 @@ PauseScreenSubroutine: @ 0x080765F8
 	movs r1, #0
 	strb r1, [r0]
 	movs r7, #0
-	ldr r0, _08076620 @ =0x03000B85
+	ldr r0, _08076620 @ =gUnk_03000b85
 	ldrb r1, [r0]
 	adds r5, r0, #0
 	cmp r1, #4
@@ -1101,7 +1101,7 @@ _08076610:
 	mov pc, r0
 	.align 2, 0
 _0807661C: .4byte gNextOamSlot
-_08076620: .4byte 0x03000B85
+_08076620: .4byte gUnk_03000b85
 _08076624: .4byte _08076628
 _08076628: @ jump table
 	.4byte _0807663C @ case 0
@@ -1260,7 +1260,7 @@ _08076764:
 	movs r0, #0xff
 	strh r0, [r1]
 _0807676E:
-	ldr r1, _08076798 @ =0x03000B85
+	ldr r1, _08076798 @ =gUnk_03000b85
 	ldrb r0, [r1]
 	adds r0, #1
 	strb r0, [r1]
@@ -1278,7 +1278,7 @@ _08076776:
 	.align 2, 0
 _08076790: .4byte gWrittenToBldy
 _08076794: .4byte 0x04000050
-_08076798: .4byte 0x03000B85
+_08076798: .4byte gUnk_03000b85
 _0807679C: .4byte gNonGameplayRam
 _080767A0:
 	ldr r0, _080767D4 @ =gNonGameplayRam
@@ -1377,7 +1377,7 @@ _08076834:
 	ldr r1, _08076894 @ =gCurrentCutscene
 	movs r0, #7
 	strb r0, [r1]
-	ldr r1, _08076898 @ =0x0201C000
+	ldr r1, _08076898 @ =gSpriteTilesBackup
 	ldr r2, _0807689C @ =0x06010000
 	movs r3, #0x80
 	lsls r3, r3, #8
@@ -1387,7 +1387,7 @@ _08076834:
 	bl DmaTransfer
 _0807686A:
 	movs r7, #1
-	ldr r1, _080768A0 @ =0x03000B85
+	ldr r1, _080768A0 @ =gUnk_03000b85
 	movs r0, #0
 	strb r0, [r1]
 _08076872:
@@ -1404,9 +1404,9 @@ _08076888: .4byte gPauseScreenFlag
 _0807688C: .4byte gEventCounter
 _08076890: .4byte gPreviousCutscene
 _08076894: .4byte gCurrentCutscene
-_08076898: .4byte 0x0201C000
+_08076898: .4byte gSpriteTilesBackup
 _0807689C: .4byte 0x06010000
-_080768A0: .4byte 0x03000B85
+_080768A0: .4byte gUnk_03000b85
 
 	thumb_func_start PauseScreenVBLank
 PauseScreenVBLank: @ 0x080768A4
@@ -1576,7 +1576,7 @@ PauseScreenInit: @ 0x08076990
 	cmp r0, #4
 	beq _08076A10
 	ldr r1, _08076A78 @ =0x06010000
-	ldr r2, _08076A7C @ =0x0201C000
+	ldr r2, _08076A7C @ =gSpriteTilesBackup
 	movs r3, #0x80
 	lsls r3, r3, #8
 	movs r0, #0x10
@@ -1628,7 +1628,7 @@ _08076A6C: .4byte gOamData
 _08076A70: .4byte 0x84000100
 _08076A74: .4byte gPauseScreenFlag
 _08076A78: .4byte 0x06010000
-_08076A7C: .4byte 0x0201C000
+_08076A7C: .4byte gSpriteTilesBackup
 _08076A80: .4byte gCurrentArea
 _08076A84: .4byte 0x00000212
 _08076A88: .4byte 0x03000031
@@ -21166,7 +21166,7 @@ _08080584:
 	strb r1, [r0]
 	ldr r0, _08080650 @ =gPauseScreenFlag
 	strb r1, [r0]
-	ldr r0, _08080654 @ =0x03000B85
+	ldr r0, _08080654 @ =gUnk_03000b85
 	strb r1, [r0]
 	ldr r0, _08080658 @ =0x0300002B
 	strb r1, [r0]
@@ -21205,7 +21205,7 @@ _08080644: .4byte gMaxInGameTimeFlag
 _08080648: .4byte 0x03000022
 _0808064C: .4byte gSkipDoorTransition
 _08080650: .4byte gPauseScreenFlag
-_08080654: .4byte 0x03000B85
+_08080654: .4byte gUnk_03000b85
 _08080658: .4byte 0x0300002B
 _0808065C: .4byte gSamusDoorPositionOffset
 _08080660: .4byte gDebugFlag
@@ -21282,7 +21282,7 @@ _080806E0:
 	strb r1, [r0]
 	ldr r0, _08080730 @ =gPauseScreenFlag
 	strb r1, [r0]
-	ldr r0, _08080734 @ =0x03000B85
+	ldr r0, _08080734 @ =gUnk_03000b85
 	strb r1, [r0]
 	ldr r0, _08080738 @ =0x0300002B
 	strb r1, [r0]
@@ -21302,7 +21302,7 @@ _08080724: .4byte gMaxInGameTimeFlag
 _08080728: .4byte 0x03000022
 _0808072C: .4byte gSkipDoorTransition
 _08080730: .4byte gPauseScreenFlag
-_08080734: .4byte 0x03000B85
+_08080734: .4byte gUnk_03000b85
 _08080738: .4byte 0x0300002B
 _0808073C: .4byte gSamusDoorPositionOffset
 _08080740: .4byte gDebugFlag
