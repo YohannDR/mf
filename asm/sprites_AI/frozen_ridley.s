@@ -65,7 +65,7 @@ FrozenRidleyInit: @ 0x08056DF4
 	bne _08056E74
 	movs r1, #1
 	strh r0, [r4, #0x14]
-	ldr r0, _08056E70 @ =0x083A123C
+	ldr r0, _08056E70 @ =sFrozenRidleyCorpseOam_3a123c
 	str r0, [r4, #0x18]
 	adds r0, r4, #0
 	adds r0, #0x24
@@ -79,11 +79,11 @@ FrozenRidleyInit: @ 0x08056DF4
 _08056E64: .4byte gCurrentSprite
 _08056E68: .4byte 0x0000FE98
 _08056E6C: .4byte 0x0000FFA0
-_08056E70: .4byte 0x083A123C
+_08056E70: .4byte sFrozenRidleyCorpseOam_3a123c
 _08056E74:
 	cmp r0, #2
 	bne _08056E90
-	ldr r0, _08056E8C @ =0x083A12F4
+	ldr r0, _08056E8C @ =sFrozenRidleyCorpseOam_3a12f4
 	str r0, [r4, #0x18]
 	adds r1, r4, #0
 	adds r1, #0x24
@@ -94,12 +94,12 @@ _08056E74:
 	strb r5, [r0]
 	b _08056EAE
 	.align 2, 0
-_08056E8C: .4byte 0x083A12F4
+_08056E8C: .4byte sFrozenRidleyCorpseOam_3a12f4
 _08056E90:
 	movs r2, #1
 	movs r0, #1
 	strh r0, [r4, #0x14]
-	ldr r0, _08056EB4 @ =0x083A123C
+	ldr r0, _08056EB4 @ =sFrozenRidleyCorpseOam_3a123c
 	str r0, [r4, #0x18]
 	adds r1, r4, #0
 	adds r1, #0x24
@@ -115,7 +115,7 @@ _08056EAE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056EB4: .4byte 0x083A123C
+_08056EB4: .4byte sFrozenRidleyCorpseOam_3a123c
 
 	thumb_func_start FrozenRidleyWaitForSamus
 FrozenRidleyWaitForSamus: @ 0x08056EB8
@@ -132,7 +132,7 @@ FrozenRidleyWaitForSamus: @ 0x08056EB8
 	movs r3, #0
 	movs r1, #2
 	strb r1, [r2]
-	ldr r1, _08056EF4 @ =0x083A124C
+	ldr r1, _08056EF4 @ =sFrozenRidleyCorpseOam_3a124c
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	strh r3, [r0, #0x16]
@@ -147,7 +147,7 @@ _08056EEA:
 	bx r0
 	.align 2, 0
 _08056EF0: .4byte gCurrentSprite
-_08056EF4: .4byte 0x083A124C
+_08056EF4: .4byte sFrozenRidleyCorpseOam_3a124c
 
 	thumb_func_start FrozenRidleySpawningX
 FrozenRidleySpawningX: @ 0x08056EF8
@@ -166,7 +166,7 @@ FrozenRidleySpawningX: @ 0x08056EF8
 	subs r1, #0xa
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _08056F48 @ =0x083A1284
+	ldr r0, _08056F48 @ =sFrozenRidleyCorpseOam_3a1284
 	str r0, [r2, #0x18]
 	strb r4, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -191,7 +191,7 @@ _08056F3C:
 	bx r0
 	.align 2, 0
 _08056F44: .4byte gCurrentSprite
-_08056F48: .4byte 0x083A1284
+_08056F48: .4byte sFrozenRidleyCorpseOam_3a1284
 
 	thumb_func_start FrozenRidleyClosingEye
 FrozenRidleyClosingEye: @ 0x08056F4C
@@ -205,7 +205,7 @@ FrozenRidleyClosingEye: @ 0x08056F4C
 	movs r3, #0
 	movs r1, #0x1a
 	strb r1, [r2]
-	ldr r1, _08056F78 @ =0x083A123C
+	ldr r1, _08056F78 @ =sFrozenRidleyCorpseOam_3a123c
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	strh r3, [r0, #0x16]
@@ -217,7 +217,7 @@ _08056F70:
 	bx r0
 	.align 2, 0
 _08056F74: .4byte gCurrentSprite
-_08056F78: .4byte 0x083A123C
+_08056F78: .4byte sFrozenRidleyCorpseOam_3a123c
 
 	thumb_func_start FrozenRidleyXSpawning
 FrozenRidleyXSpawning: @ 0x08056F7C
@@ -235,7 +235,7 @@ FrozenRidleyXSpawning: @ 0x08056F7C
 	subs r1, #0xa
 	movs r0, #0x1c
 	strb r0, [r1]
-	ldr r0, _08056FB8 @ =0x083A12A4
+	ldr r0, _08056FB8 @ =sFrozenRidleyCorpseOam_3a12a4
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	movs r0, #0
@@ -250,7 +250,7 @@ _08056FAE:
 	bx r0
 	.align 2, 0
 _08056FB4: .4byte gCurrentSprite
-_08056FB8: .4byte 0x083A12A4
+_08056FB8: .4byte sFrozenRidleyCorpseOam_3a12a4
 _08056FBC: .4byte 0x00000235
 
 	thumb_func_start FrozenRidleyCrumbling
@@ -265,7 +265,7 @@ FrozenRidleyCrumbling: @ 0x08056FC0
 	movs r3, #0
 	movs r0, #8
 	strb r0, [r2]
-	ldr r0, _08056FEC @ =0x083A12F4
+	ldr r0, _08056FEC @ =sFrozenRidleyCorpseOam_3a12f4
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -274,7 +274,7 @@ FrozenRidleyCrumbling: @ 0x08056FC0
 	b _08057008
 	.align 2, 0
 _08056FE8: .4byte gCurrentSprite
-_08056FEC: .4byte 0x083A12F4
+_08056FEC: .4byte sFrozenRidleyCorpseOam_3a12f4
 _08056FF0:
 	ldr r1, _0805700C @ =gCurrentSprite
 	ldrh r0, [r1, #0x16]
@@ -465,7 +465,7 @@ _08057148:
 	adds r6, r6, r2
 	mov ip, r6
 	ldrb r3, [r6]
-	ldr r5, _08057184 @ =0x0839F718
+	ldr r5, _08057184 @ =sFrozenRidleyXFlyingAwayYMovement
 	lsls r0, r3, #1
 	adds r0, r0, r5
 	ldrh r4, [r0]
@@ -482,7 +482,7 @@ _08057148:
 	adds r0, r0, r1
 	b _08057196
 	.align 2, 0
-_08057184: .4byte 0x0839F718
+_08057184: .4byte sFrozenRidleyXFlyingAwayYMovement
 _08057188: .4byte 0x00007FFF
 _0805718C:
 	adds r0, r3, #1

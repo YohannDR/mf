@@ -2959,7 +2959,7 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_GUNSHIP_END_BOTTOM] = {
+    [SSPRITE_MEGA_X] = {
         100,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,

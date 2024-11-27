@@ -38,7 +38,7 @@ ElectricWaterDamageBox2Init: @ 0x08056C24
 	adds r1, #0x24
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _08056C80 @ =0x0839F658
+	ldr r0, _08056C80 @ =sBox2ElectricWaterDamageOam_39f658
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -48,7 +48,7 @@ ElectricWaterDamageBox2Init: @ 0x08056C24
 	.align 2, 0
 _08056C78: .4byte gCurrentSprite
 _08056C7C: .4byte 0x0000FF80
-_08056C80: .4byte 0x0839F658
+_08056C80: .4byte sBox2ElectricWaterDamageOam_39f658
 
 	thumb_func_start ElectricWaterDamageBox2Idle
 ElectricWaterDamageBox2Idle: @ 0x08056C84
@@ -121,7 +121,7 @@ _08056CEE:
 	subs r1, #0xa
 	movs r0, #0x1a
 	strb r0, [r1]
-	ldr r0, _08056D20 @ =0x0839F6C8
+	ldr r0, _08056D20 @ =sBox2ElectricWaterDamageOam_39f6c8
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	movs r1, #0
@@ -134,7 +134,7 @@ _08056D18:
 	bx r0
 	.align 2, 0
 _08056D1C: .4byte 0x03001346
-_08056D20: .4byte 0x0839F6C8
+_08056D20: .4byte sBox2ElectricWaterDamageOam_39f6c8
 
 	thumb_func_start ElectricWaterDamageBox2Stopping
 ElectricWaterDamageBox2Stopping: @ 0x08056D24
@@ -157,7 +157,7 @@ ElectricWaterDamageBox2Stopping: @ 0x08056D24
 	movs r1, #4
 	orrs r0, r1
 	strh r0, [r4]
-	ldr r0, _08056D74 @ =0x0839F658
+	ldr r0, _08056D74 @ =sBox2ElectricWaterDamageOam_39f658
 	str r0, [r4, #0x18]
 	strb r5, [r4, #0x1c]
 	movs r0, #0
@@ -176,7 +176,7 @@ _08056D64:
 	.align 2, 0
 _08056D6C: .4byte gCurrentSprite
 _08056D70: .4byte gSamusData
-_08056D74: .4byte 0x0839F658
+_08056D74: .4byte sBox2ElectricWaterDamageOam_39f658
 
 	thumb_func_start ElectricWaterDamageBox2
 ElectricWaterDamageBox2: @ 0x08056D78

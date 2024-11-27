@@ -3322,7 +3322,7 @@ _080023C6:
 	blo _080023C6
 _080023EA:
 	mov r0, r8
-	bl unk_24ec
+	bl DoSoundAction
 	movs r3, #0
 	ldr r2, _08002468 @ =gMusicInfo
 	ldrb r0, [r2, #5]
@@ -3421,8 +3421,8 @@ _080024E0: .4byte 0x8100001A
 _080024E4: .4byte 0x03003504
 _080024E8: .4byte 0x8100001C
 
-	thumb_func_start unk_24ec
-unk_24ec: @ 0x080024EC
+	thumb_func_start DoSoundAction
+DoSoundAction: @ 0x080024EC
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _0800259C @ =gMusicInfo
@@ -7348,7 +7348,7 @@ _080045FA:
 	lsrs r2, r6, #0x1f
 	beq _08004616
 	lsrs r0, r6, #0x18
-	bl unk_24ec
+	bl DoSoundAction
 _08004616:
 	lsls r6, r6, #0x18
 	lsrs r6, r6, #0x18

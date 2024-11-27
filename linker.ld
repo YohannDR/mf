@@ -320,8 +320,8 @@ SECTIONS {
         asm/sprites_AI/electric_water_box_2.o(.text);
         asm/sprites_AI/frozen_ridley.o(.text);
         asm/sprites_AI/gold_enemy_door_lock.o(.text);
-        asm/sprites_AI/varia_core_x.o(.text);
 
+        src/sprites_AI/varia_core_x.o(.text);
         src/sprites_AI/omega_metroid_husk.o(.text);
         asm/sprites_AI/ice_beam_x_omega.o(.text);
 

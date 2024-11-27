@@ -1,6 +1,7 @@
 #include "macros.h"
 #include "globals.h"
 
+#include "data/sprites/message_box.h"
 #include "data/sprites/core_x.h"
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
@@ -52,11 +53,10 @@ void CoreXAbilityTransfromation(void) {
         gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
         gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
     }
-    if (gCurrentSprite.xParasiteTimer < 8) {
+    if (gCurrentSprite.xParasiteTimer < sizeof(sMessageBoxGfx) / 512)
         SpriteLoadGfx(PSPRITE_MESSAGE_BOX, 6, gCurrentSprite.xParasiteTimer);
-    } else if (gCurrentSprite.xParasiteTimer == 8) {
-        SpriteLoadPal(PSPRITE_MESSAGE_BOX, 6, 2);
-    }
+    else if (gCurrentSprite.xParasiteTimer == sizeof(sMessageBoxGfx) / 512)
+        SpriteLoadPal(PSPRITE_MESSAGE_BOX, 6, ARRAY_SIZE(sMessageBoxPal) / 16);
 }
 
 /**

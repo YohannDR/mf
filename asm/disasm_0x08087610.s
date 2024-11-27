@@ -24465,7 +24465,7 @@ IntroSpaceViewInit: @ 0x08093980
 	bl CallbackSetVBlank
 	movs r0, #0x80
 	lsls r0, r0, #0x11
-	bl unk_24ec
+	bl DoSoundAction
 	bl StopAllMusicsAndSounds
 	movs r6, #0
 	str r6, [sp]

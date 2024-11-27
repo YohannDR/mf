@@ -202,7 +202,7 @@ GunshipEndInit: @ 0x08056278
 	adds r1, #0x24
 	movs r0, #1
 	strb r0, [r1]
-	ldr r0, _08056300 @ =0x0839EC68
+	ldr r0, _08056300 @ =sStarshipEndOam_39ec68
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -213,7 +213,7 @@ GunshipEndInit: @ 0x08056278
 _080562F4: .4byte gCurrentSprite
 _080562F8: .4byte 0x0000FFFB
 _080562FC: .4byte 0x0000FFFC
-_08056300: .4byte 0x0839EC68
+_08056300: .4byte sStarshipEndOam_39ec68
 
 	thumb_func_start GunshipEndWaiting
 GunshipEndWaiting: @ 0x08056304
@@ -346,7 +346,7 @@ GunshipEndWaitingToEnter: @ 0x080563E8
 	adds r0, r0, r3
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _0805643C @ =0x0839AAE0
+	ldr r5, _0805643C @ =sStarshipEndEnteringYMovement
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r4, [r0]
@@ -384,7 +384,7 @@ _08056432:
 	bx r0
 	.align 2, 0
 _08056438: .4byte gCurrentSprite
-_0805643C: .4byte 0x0839AAE0
+_0805643C: .4byte sStarshipEndEnteringYMovement
 _08056440: .4byte 0x00007FFF
 
 	thumb_func_start GunshipEndEntering
@@ -399,7 +399,7 @@ GunshipEndEntering: @ 0x08056444
 	add r1, ip
 	mov r8, r1
 	ldrb r2, [r1]
-	ldr r4, _080564B4 @ =0x0839AAE0
+	ldr r4, _080564B4 @ =sStarshipEndEnteringYMovement
 	lsls r0, r2, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -420,7 +420,7 @@ _0805646E:
 	adds r4, r0, r3
 	movs r5, #0
 	strh r4, [r1, #2]
-	ldr r2, _080564BC @ =0x0839AC90
+	ldr r2, _080564BC @ =sStarshipEndEnteringScaling
 	mov r6, ip
 	adds r6, #0x2e
 	ldrb r3, [r6]
@@ -445,9 +445,9 @@ _0805646E:
 	b _08056576
 	.align 2, 0
 _080564B0: .4byte gCurrentSprite
-_080564B4: .4byte 0x0839AAE0
+_080564B4: .4byte sStarshipEndEnteringYMovement
 _080564B8: .4byte 0x00007FFF
-_080564BC: .4byte 0x0839AC90
+_080564BC: .4byte sStarshipEndEnteringScaling
 _080564C0:
 	mov r3, ip
 	ldrh r1, [r3]
@@ -458,7 +458,7 @@ _080564C0:
 	adds r1, #0x24
 	movs r0, #0x1a
 	strb r0, [r1]
-	ldr r0, _08056588 @ =0x0839EB48
+	ldr r0, _08056588 @ =sStarshipEndOam_39eb48
 	str r0, [r3, #0x18]
 	strb r5, [r3, #0x1c]
 	strh r7, [r3, #0x16]
@@ -500,7 +500,7 @@ _080564C0:
 	strh r0, [r6]
 	adds r2, #0x18
 	adds r1, r1, r2
-	ldr r0, _08056594 @ =0x0839EC30
+	ldr r0, _08056594 @ =sStarshipEndOam_39ec30
 	str r0, [r1]
 	strb r5, [r6, #0x1c]
 	strh r7, [r6, #0x16]
@@ -548,10 +548,10 @@ _08056576:
 	bx r0
 	.align 2, 0
 _08056584: .4byte 0x0000FFF7
-_08056588: .4byte 0x0839EB48
+_08056588: .4byte sStarshipEndOam_39eb48
 _0805658C: .4byte gSpriteData
 _08056590: .4byte 0x0000FFFB
-_08056594: .4byte 0x0839EC30
+_08056594: .4byte sStarshipEndOam_39ec30
 _08056598: .4byte 0x0000FFFC
 
 	thumb_func_start GunshipEndWaitingForSamus
@@ -709,7 +709,7 @@ GunshipEndStartingEngine1: @ 0x080566A8
 	movs r3, #0
 	movs r0, #0x3a
 	strb r0, [r1]
-	ldr r0, _0805671C @ =0x0839EC68
+	ldr r0, _0805671C @ =sStarshipEndOam_39ec68
 	str r0, [r4, #0x18]
 	strb r3, [r4, #0x1c]
 	movs r2, #0
@@ -753,7 +753,7 @@ _08056712:
 	bx r0
 	.align 2, 0
 _08056718: .4byte gCurrentSprite
-_0805671C: .4byte 0x0839EC68
+_0805671C: .4byte sStarshipEndOam_39ec68
 _08056720: .4byte gSpriteData
 _08056724: .4byte 0x082F474E
 _08056728: .4byte 0x040000D4
@@ -769,7 +769,7 @@ GunshipEndStartingEngine2: @ 0x08056738
 	adds r0, r0, r2
 	mov ip, r0
 	ldrb r3, [r0]
-	ldr r5, _08056798 @ =0x0839ABC4
+	ldr r5, _08056798 @ =sStarshipEndStartingEngineYMovement
 	lsls r0, r3, #1
 	adds r0, r0, r5
 	ldrh r4, [r0]
@@ -801,7 +801,7 @@ _0805675A:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080567FE
-	ldr r0, _080567A0 @ =0x0839EC08
+	ldr r0, _080567A0 @ =sStarshipEndOam_39ec08
 	str r0, [r2, #0x18]
 	strb r4, [r2, #0x1c]
 	strh r1, [r2, #0x16]
@@ -812,9 +812,9 @@ _0805675A:
 	b _080567FE
 	.align 2, 0
 _08056794: .4byte gCurrentSprite
-_08056798: .4byte 0x0839ABC4
+_08056798: .4byte sStarshipEndStartingEngineYMovement
 _0805679C: .4byte 0x00007FFF
-_080567A0: .4byte 0x0839EC08
+_080567A0: .4byte sStarshipEndOam_39ec08
 _080567A4:
 	cmp r1, #1
 	bne _080567D0
@@ -827,7 +827,7 @@ _080567A4:
 	lsrs r1, r0, #0x18
 	cmp r1, #0
 	bne _080567FE
-	ldr r0, _080567CC @ =0x0839EC78
+	ldr r0, _080567CC @ =sStarshipEndOam_39ec78
 	str r0, [r2, #0x18]
 	strb r4, [r2, #0x1c]
 	strh r1, [r2, #0x16]
@@ -837,7 +837,7 @@ _080567A4:
 	strb r0, [r5]
 	b _080567FE
 	.align 2, 0
-_080567CC: .4byte 0x0839EC78
+_080567CC: .4byte sStarshipEndOam_39ec78
 _080567D0:
 	adds r3, r2, #0
 	adds r3, #0x2e
@@ -917,7 +917,7 @@ _08056858:
 	strb r0, [r3]
 _0805685A:
 	ldr r3, _0805688C @ =gCurrentSprite
-	ldr r1, _08056890 @ =0x0839ACD0
+	ldr r1, _08056890 @ =sStarshipEndTakingOffScaling
 	adds r2, r3, #0
 	adds r2, #0x2e
 	ldrb r0, [r2]
@@ -932,7 +932,7 @@ _0805685A:
 	asrs r0, r0, #2
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
-	ldr r1, _08056894 @ =0x0839AC84
+	ldr r1, _08056894 @ =sStarshipEndTakingOffRotation
 	adds r0, r0, r1
 	ldrb r1, [r0]
 	adds r0, r3, #0
@@ -943,8 +943,8 @@ _08056886:
 	bx r0
 	.align 2, 0
 _0805688C: .4byte gCurrentSprite
-_08056890: .4byte 0x0839ACD0
-_08056894: .4byte 0x0839AC84
+_08056890: .4byte sStarshipEndTakingOffScaling
+_08056894: .4byte sStarshipEndTakingOffRotation
 
 	thumb_func_start GunshipEndDone
 GunshipEndDone: @ 0x08056898
@@ -1048,7 +1048,7 @@ GunshiEndpBeamInit: @ 0x08056910
 	strh r1, [r2, #0xc]
 	strh r0, [r2, #0xe]
 	strh r1, [r2, #0x10]
-	ldr r0, _08056980 @ =0x0839EBB8
+	ldr r0, _08056980 @ =sStarshipEndOam_39ebb8
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -1069,7 +1069,7 @@ GunshiEndpBeamInit: @ 0x08056910
 _08056974: .4byte gCurrentSprite
 _08056978: .4byte 0x0000FFFB
 _0805697C: .4byte 0x0000FFFC
-_08056980: .4byte 0x0839EBB8
+_08056980: .4byte sStarshipEndOam_39ebb8
 
 	thumb_func_start GunshipEndBeamMovingDown
 GunshipEndBeamMovingDown: @ 0x08056984
