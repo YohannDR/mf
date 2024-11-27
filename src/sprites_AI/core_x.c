@@ -14,6 +14,19 @@
 #include "structs/samus.h"
 #include "structs/demo.h"
 
+#define CORE_X_POSE_MOVING_TO_SPAWN_POINT 0x18
+#define CORE_X_POSE_SPAWINING_BOSS 0x1a
+#define CORE_X_POSE_MOVING_INIT 0x1b
+#define CORE_X_POSE_MOVING 0x1c
+#define CORE_X_POSE_MOVING_TO_TARGET_INIT 0x5c
+#define CORE_X_POSE_MOVING_TO_TARGET 0x5d
+#define CORE_X_POSE_WAITING_AT_TARGET 0x5e
+#define CORE_X_POSE_GETTING_ABSORBED 0x5f
+
+/**
+ * @brief Makes the X parasites around a core-X flee
+ * 
+ */
 void CoreXMakeXParasitesFlee(void) {
     u8 i;
 
@@ -26,12 +39,16 @@ void CoreXMakeXParasitesFlee(void) {
     }
 }
 
+/**
+ * @brief Handles a core-X transforming from a boss
+ * 
+ */
 void CoreXAbilityTransfromation(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     if (--gCurrentSprite.xParasiteTimer != 0) {
         gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
     } else {
-        gCurrentSprite.pose = 0x1b;
+        gCurrentSprite.pose = CORE_X_POSE_MOVING_INIT;
         gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
         gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
     }
@@ -42,16 +59,19 @@ void CoreXAbilityTransfromation(void) {
     }
 }
 
-
+/**
+ * @brief Initializes a core-X sprite
+ * 
+ */
 void CoreXAbilityInit(void) {
     u8 tmp = FALSE;
     u8 bossSpriteId = PSPRITE_ARACHNUS;
     u8 secondarySpriteId = SSPRITE_CORE_X_SHELL_MORPH_BALL;
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
-    if (gCurrentSprite.pose == 0x59) {
+    if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
         switch (gCurrentSprite.spriteId) {
             case PSPRITE_MORPH_BALL_ABILITY:
-                gCurrentSprite.yPosition -= 0x80;
+                gCurrentSprite.yPosition -= BLOCK_SIZE * 2;
                 secondarySpriteId = SSPRITE_CORE_X_SHELL_MORPH_BALL;
                 break;
             case PSPRITE_HIGH_JUMP_ABILITY:
@@ -64,15 +84,15 @@ void CoreXAbilityInit(void) {
                 secondarySpriteId = SSPRITE_CORE_X_SHELL_SPACE_JUMP;
                 break;
             case PSPRITE_GRAVITY_SUIT_ABILITY:
-                gCurrentSprite.yPosition -= 0x80;
-                gCurrentSprite.xPosition -= 0x40;
+                gCurrentSprite.yPosition -= BLOCK_SIZE * 2;
+                gCurrentSprite.xPosition -= BLOCK_SIZE;
                 secondarySpriteId = SSPRITE_CORE_X_SHELL_GRAVITY;
                 break;
             case PSPRITE_SCREW_ATTACK_ABILITY:
                 secondarySpriteId = SSPRITE_CORE_X_SHELL_SCREW_ATTACK;
                 break;
         }
-        gCurrentSprite.pose = 0x5a;
+        gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
         gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
         gCurrentSprite.status |= SS_ENABLE_MOSAIC;
         gCurrentSprite.status &= ~(SS_SAMUS_DETECTED | SS_SAMUS_COLLIDING);
@@ -102,20 +122,20 @@ void CoreXAbilityInit(void) {
         gCoreXFormationSpriteId = gCurrentSprite.spriteId;
         gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;
         gCurrentSprite.unk_8 = gCurrentSprite.xPosition;
-        gCurrentSprite.yPosition -= 0x180;
-        gCurrentSprite.pose = 1;
+        gCurrentSprite.yPosition -= BLOCK_SIZE * 6;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
     }
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
     gCurrentSprite.drawOrder = 6;
     gCurrentSprite.samusCollision = SSC_NONE;
-    gCurrentSprite.status |= 0x8000;
+    gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
     gCurrentSprite.drawDistanceTop = 0x10;
     gCurrentSprite.drawDistanceBottom = 0x10;
     gCurrentSprite.drawDistanceHorizontal = 0x10;
-    gCurrentSprite.hitboxTop = -0x20;
-    gCurrentSprite.hitboxBottom = 0x20;
-    gCurrentSprite.hitboxLeft = -0x20;
-    gCurrentSprite.hitboxRight = 0x20;
+    gCurrentSprite.hitboxTop = -HALF_BLOCK_SIZE;
+    gCurrentSprite.hitboxBottom = HALF_BLOCK_SIZE;
+    gCurrentSprite.hitboxLeft = -HALF_BLOCK_SIZE;
+    gCurrentSprite.hitboxRight = HALF_BLOCK_SIZE;
     gCurrentSprite.pOam = sCoreXAbilityOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -147,14 +167,22 @@ void CoreXAbilityInit(void) {
     }
 }
 
+/**
+ * @brief Initializes a core-X to be idle before spawning a boss
+ * 
+ */
 void CoreXAbilityIdleInit(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
     gCurrentSprite.pOam = sCoreXAbilityOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
 
+/**
+ * @brief Handles a core-X being idle before spawning a boss
+ * 
+ */
 void CoreXAbilityIdle(void) {
     u8 offset;
     s16 movement;
@@ -218,7 +246,7 @@ void CoreXAbilityIdle(void) {
                 if (ramSlot != UCHAR_MAX) {
                     gSpriteData[ramSlot].xParasiteTimer = 180;
                 }
-                gCurrentSprite.pose = 0x18;
+                gCurrentSprite.pose = CORE_X_POSE_MOVING_TO_SPAWN_POINT;
                 gCurrentSprite.work1 = 80;
                 gCurrentSprite.rotation = 190;
             }
@@ -226,6 +254,10 @@ void CoreXAbilityIdle(void) {
     }
 }
 
+/**
+ * @brief Handles a core-X moving down to a position where it will spawn a boss
+ * 
+ */
 void CoreXAbilityMovingToSpawnPoint(void) {
     u8 offset;
     s16 movement;
@@ -254,23 +286,23 @@ void CoreXAbilityMovingToSpawnPoint(void) {
     gCurrentSprite.xPosition += movement;
 
     if (gBossFormationSpriteId == PSPRITE_ZAZABI) {
-        if (gCurrentSprite.yPosition >= gCurrentSprite.xParasiteTimer - 0x140) {
-            gCurrentSprite.yPosition = gCurrentSprite.xParasiteTimer - 0x140;
+        if (gCurrentSprite.yPosition >= gCurrentSprite.xParasiteTimer - PIXEL_TO_SUB_PIXEL(0x50)) {
+            gCurrentSprite.yPosition = gCurrentSprite.xParasiteTimer - PIXEL_TO_SUB_PIXEL(0x50);
             if (gCurrentSprite.rotation == 0) {
-                gCurrentSprite.pose = 0x1a;
+                gCurrentSprite.pose = CORE_X_POSE_SPAWINING_BOSS;
                 gCurrentSprite.status |= SS_ENABLE_MOSAIC;
                 gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
                 gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
                 PlayMusic(MUSIC_ZAZABI_BATTLE, 7);
             }
         } else {
-            gCurrentSprite.yPosition += 1;
+            gCurrentSprite.yPosition += PIXEL_SIZE / 4;
         }
     } else {
-        if (gCurrentSprite.yPosition >= gCurrentSprite.xParasiteTimer - 0x64) {
-            gCurrentSprite.yPosition = gCurrentSprite.xParasiteTimer - 0x64;
+        if (gCurrentSprite.yPosition >= gCurrentSprite.xParasiteTimer - PIXEL_TO_SUB_PIXEL(0x19)) {
+            gCurrentSprite.yPosition = gCurrentSprite.xParasiteTimer - PIXEL_TO_SUB_PIXEL(0x19);
             if (gCurrentSprite.rotation == 0) {
-                gCurrentSprite.pose = 0x1a;
+                gCurrentSprite.pose = CORE_X_POSE_SPAWINING_BOSS;
                 gCurrentSprite.status |= SS_ENABLE_MOSAIC;
                 gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
                 gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
@@ -279,7 +311,7 @@ void CoreXAbilityMovingToSpawnPoint(void) {
                 }
             }
         } else {
-            gCurrentSprite.yPosition += 1;
+            gCurrentSprite.yPosition += PIXEL_SIZE / 4;
         }
     }
     if (gCurrentSprite.rotation != 0) {
@@ -293,6 +325,10 @@ void CoreXAbilityMovingToSpawnPoint(void) {
     }
 }
 
+/**
+ * @brief Handles a core-X spawning a boss
+ * 
+ */
 void CoreXAbilitySpawningBoss(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     gCurrentSprite.status ^= SS_NOT_DRAWN;
@@ -304,12 +340,16 @@ void CoreXAbilitySpawningBoss(void) {
         gCurrentSprite.spriteId = gBossFormationSpriteId;
     }
     if (gCurrentSprite.work1 < 8 * 4) {
-        SpriteLoadGfx(gBossFormationSpriteId, 0, gCurrentSprite.work1);
+        SpriteLoadGfx(gBossFormationSpriteId, 0, gCurrentSprite.work1); // Loads 8 graphics rows
     } else if (gCurrentSprite.work1 == 8 * 4) {
         SpriteLoadPal(gBossFormationSpriteId, 0, 4); // Only loads the first 4 palette rows
     }
 }
 
+/**
+ * @brief Initializes a core-X moving and spawns 6 X parasites around it
+ * 
+ */
 void CoreXAbilityMovingInit(void) {
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0, gCurrentSprite.primarySpriteRamSlot,
         SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition + 0x64, gCurrentSprite.xPosition, 0);
@@ -323,7 +363,7 @@ void CoreXAbilityMovingInit(void) {
         SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition - 0x22, gCurrentSprite.xPosition + 0x64, 0);
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE_CORE_X_OR_PARASITE, 0, 0, gCurrentSprite.primarySpriteRamSlot,
         SSP_X_ABSORBABLE_BY_SAMUS, gCurrentSprite.yPosition - 0x22, gCurrentSprite.xPosition - 0x64, 0);
-    gCurrentSprite.pose = 0x1c;
+    gCurrentSprite.pose = CORE_X_POSE_MOVING;
     gCurrentSprite.work2 = 0;
     gCurrentSprite.work3 = 1;
     gCurrentSprite.work1 = 0;
@@ -331,10 +371,18 @@ void CoreXAbilityMovingInit(void) {
     gCurrentSprite.work0 = 0;
 }
 
+/**
+ * @brief Handles a core-X moving towards Samus
+ * 
+ */
 void CoreXAbilityMoving(void) {
-    XParasiteMoveWithSound((u16)(gSamusData.yPosition - 0x48), gSamusData.xPosition, 0x1c, 0x28, 2, 0xc0);
+    XParasiteMoveWithSound((u16)(gSamusData.yPosition - PIXEL_TO_SUB_PIXEL(0x12)), gSamusData.xPosition, PIXEL_TO_SUB_PIXEL(1.75f) * 4, PIXEL_TO_SUB_PIXEL(2.5f) * 4, LOG2(4), 0xc0);
 }
 
+/**
+ * @brief Initializes a core-X moving to resting position after its shell breaks
+ * 
+ */
 void CoreXAbilityMovingToTargetInit(void) {
     gCurrentSprite.pose = 0x5d;
     gCurrentSprite.samusCollision = SSC_CORE_X_ABILITY;
@@ -347,13 +395,17 @@ void CoreXAbilityMovingToTargetInit(void) {
     PlayMusic(MUSIC_BOSS_TENSION, 6);
 }
 
+/**
+ * @brief Handles a core-X moving to resting position after its shell breaks
+ * 
+ */
 void CoreXAbilityMovingToTarget(void) {
     CoreXMakeXParasitesFlee();
-    if ((gFrameCounter8Bit & 3) == 0) {
+    if (MOD_AND(gFrameCounter8Bit, 4) == 0) {
         gCurrentSprite.status ^= SS_NOT_DRAWN;
     }
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
-    XParasiteMoveWithSound(gAbilityRestingYPosition, gAbilityRestingXPosition, 0x10, 0x18, 2, 0x141);
+    XParasiteMoveWithSound(gAbilityRestingYPosition, gAbilityRestingXPosition, PIXEL_SIZE * 4, PIXEL_TO_SUB_PIXEL(1.5f) * 4, LOG2(4), 0x141);
     if (gCurrentSprite.yPosition < gAbilityRestingYPosition + 6 && gCurrentSprite.yPosition > gAbilityRestingYPosition - 6) {
         if (gCurrentSprite.xPosition < gAbilityRestingXPosition + 6 && gCurrentSprite.xPosition > gAbilityRestingXPosition - 6) {
             gCurrentSprite.pose = 0x5e;
@@ -364,6 +416,10 @@ void CoreXAbilityMovingToTarget(void) {
     }
 }
 
+/**
+ * @brief Handles a core-X waiting to get absorbed by Samus
+ * 
+ */
 void CoreXAbilityWaitingAtTarget(void) {
     u8 offset;
     s16 movement;
@@ -430,11 +486,15 @@ void CoreXAbilityWaitingAtTarget(void) {
         SpriteUtilRefillSamus(400, 50, 10);
         gSamusEnvironmentalEffects[0].externalTimer = 48;
         SoundPlay(0x92);
-    } else if ((gFrameCounter8Bit & 0x3f) == 0) {
+    } else if (MOD_AND(gFrameCounter8Bit, 64) == 0) {
         SoundPlay(0xc3);
     }
 }
 
+/**
+ * @brief Handles a core-X getting absorbed by Samus
+ * 
+ */
 void CoreXAbilityGettingAbsorbed(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     XParasiteStickToSamus();
@@ -448,50 +508,58 @@ void CoreXAbilityGettingAbsorbed(void) {
     }
 }
 
+/**
+ * @brief Core-X ability AI
+ * 
+ */
 void CoreXAbility(void) {
     switch (gCurrentSprite.pose) {
-        case 0x59:
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
             CoreXAbilityInit();
-        case 0x5a:
+        case SPRITE_POSE_SPAWNING_FROM_X:
             CoreXAbilityTransfromation();
             break;
-        case 0:
+        case SPRITE_POSE_UNINITIALIZED:
             CoreXAbilityInit();
             break;
-        case 1:
+        case SPRITE_POSE_IDLE_INIT:
             CoreXAbilityIdleInit();
-        case 2:
+        case SPRITE_POSE_IDLE:
             CoreXAbilityIdle();
             break;
-        case 0x18:
+        case CORE_X_POSE_MOVING_TO_SPAWN_POINT:
             CoreXAbilityMovingToSpawnPoint();
             break;
-        case 0x1a:
+        case CORE_X_POSE_SPAWINING_BOSS:
             CoreXAbilitySpawningBoss();
             break;
-        case 0x1b:
+        case CORE_X_POSE_MOVING_INIT:
             CoreXAbilityMovingInit();
-        case 0x1c:
+        case CORE_X_POSE_MOVING:
             CoreXAbilityMoving();
             break;
-        case 0x5c:
+        case CORE_X_POSE_MOVING_TO_TARGET_INIT:
             CoreXAbilityMovingToTargetInit();
             break;
-        case 0x5d:
+        case CORE_X_POSE_MOVING_TO_TARGET:
             CoreXAbilityMovingToTarget();
             break;
-        case 0x5e:
+        case CORE_X_POSE_WAITING_AT_TARGET:
             CoreXAbilityWaitingAtTarget();
             break;
-        case 0x5f:
+        case CORE_X_POSE_GETTING_ABSORBED:
             CoreXAbilityGettingAbsorbed();
     }
-    if (gCurrentSprite.pose <= 0x1a) {
+    if (gCurrentSprite.pose <= CORE_X_POSE_SPAWINING_BOSS) {
         gXParasiteTargetYPosition = gCurrentSprite.yPosition;
         gXParasiteTargetXPosition = gCurrentSprite.xPosition;
     }
 }
 
+/**
+ * @brief Core-X shell AI
+ * 
+ */
 void CoreXShell(void) {
     u8 primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
     u16 maxHealth = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
@@ -504,7 +572,7 @@ void CoreXShell(void) {
             }
             return;
         }
-        case 0: {
+        case SPRITE_POSE_UNINITIALIZED: {
             gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
             gCurrentSprite.frozenPaletteRowOffset = 1;
             gCurrentSprite.status &= ~SS_NOT_DRAWN;
@@ -514,15 +582,15 @@ void CoreXShell(void) {
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 0x18;
             gCurrentSprite.drawDistanceHorizontal = 0x18;
-            gCurrentSprite.hitboxTop = -0x50;
-            gCurrentSprite.hitboxBottom = 0x50;
-            gCurrentSprite.hitboxLeft = -0x50;
-            gCurrentSprite.hitboxRight = 0x50;
+            gCurrentSprite.hitboxTop = -PIXEL_TO_SUB_PIXEL(0x14);
+            gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(0x14);
+            gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(0x14);
+            gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(0x14);
             gCurrentSprite.pOam = sCoreXShellOam_White;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.samusCollision = SSC_RIDLEY_TAIL_SERRIS_SEGMENT;
-            gCurrentSprite.pose = 2;
+            gCurrentSprite.pose = SPRITE_POSE_IDLE;
             break;
         }
     }
@@ -534,29 +602,29 @@ void CoreXShell(void) {
         gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
     }
     switch (gSpriteData[primaryRamSlot].pose) {
-        case 0x1a: {
+        case CORE_X_POSE_SPAWINING_BOSS: {
             if (gSpriteData[primaryRamSlot].work1 <= 8 * 4) {
                 gCurrentSprite.status = 0;
             }
         }
-        case 1:
-        case 2:
-        case 0x18: {
+        case SPRITE_POSE_IDLE_INIT:
+        case SPRITE_POSE_IDLE:
+        case CORE_X_POSE_MOVING_TO_SPAWN_POINT: {
             gCurrentSprite.ignoreSamusCollisionTimer = 1;
             gCurrentSprite.status ^= SS_NOT_DRAWN;
             break;
         }
-        case 0x1b: {
+        case CORE_X_POSE_MOVING_INIT: {
             gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
         }
-        case 0x1c: {
+        case CORE_X_POSE_MOVING: {
             if (gCurrentSprite.health == 0) {
                 gCurrentSprite.samusCollision = SSC_NONE;
                 gCurrentSprite.pOam = sCoreXShellOam_Breaking;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x18;
-                gSpriteData[primaryRamSlot].pose = 0x5c;
+                gSpriteData[primaryRamSlot].pose = CORE_X_POSE_MOVING_TO_TARGET_INIT;
                 SoundPlay(0xc1);
             } else {
                 if (gCurrentSprite.health <= maxHealth / 3) {
@@ -576,7 +644,7 @@ void CoreXShell(void) {
                     SoundPlay(0xc2);
                     gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
                     gSpriteData[primaryRamSlot].work0 = 180;
-                    if (gCurrentSprite.yPosition > gSamusData.yPosition - 0x40) {
+                    if (gCurrentSprite.yPosition > gSamusData.yPosition - BLOCK_SIZE) {
                         gSpriteData[primaryRamSlot].status |= SS_SAMUS_DETECTED;
                     } else {
                         gSpriteData[primaryRamSlot].status &= ~SS_SAMUS_DETECTED;
@@ -586,14 +654,14 @@ void CoreXShell(void) {
                     } else {
                         gSpriteData[primaryRamSlot].status &= ~SS_FACING_RIGHT;
                     }
-                    gSpriteData[primaryRamSlot].work2 = 40;
-                    gSpriteData[primaryRamSlot].work3 = 40;
-                    gSpriteData[primaryRamSlot].work1 = 28;
-                    gSpriteData[primaryRamSlot].work4 = 28;
+                    gSpriteData[primaryRamSlot].work2 = PIXEL_TO_SUB_PIXEL(2.5f) * 4;
+                    gSpriteData[primaryRamSlot].work3 = PIXEL_TO_SUB_PIXEL(2.5f) * 4;
+                    gSpriteData[primaryRamSlot].work1 = PIXEL_TO_SUB_PIXEL(1.75f) * 4;
+                    gSpriteData[primaryRamSlot].work4 = PIXEL_TO_SUB_PIXEL(1.75f) * 4;
                 }
                 tmp = gSpriteData[primaryRamSlot].work0;
                 if (tmp != 0) {
-                    if ((tmp & 3) == 0) {
+                    if (MOD_AND(tmp, 4) == 0) {
                         if ((tmp & 4) != 0) {
                             SPRITE_SET_ABSOLUTE_PALETTE_ROW(gCurrentSprite, SPRITE_FLASHING_PALETTE_ROW);
                         } else {
@@ -610,26 +678,30 @@ void CoreXShell(void) {
     }
 }
 
+/**
+ * @brief Core-X static/aura AI
+ * 
+ */
 void AbilityAura(void) {
     u8 primaryRamSlot;
     
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
-    if (gCurrentSprite.pose == 0) {
+    if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED) {
         gCurrentSprite.status &= ~SS_NOT_DRAWN;
         gCurrentSprite.drawOrder = 4;
         gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
         gCurrentSprite.drawDistanceTop = 0x10;
         gCurrentSprite.drawDistanceBottom = 0x10;
         gCurrentSprite.drawDistanceHorizontal = 0x10;
-        gCurrentSprite.hitboxTop = -4;
-        gCurrentSprite.hitboxBottom = 4;
-        gCurrentSprite.hitboxLeft = -4;
-        gCurrentSprite.hitboxRight = 4;
+        gCurrentSprite.hitboxTop = -PIXEL_SIZE;
+        gCurrentSprite.hitboxBottom = PIXEL_SIZE;
+        gCurrentSprite.hitboxLeft = -PIXEL_SIZE;
+        gCurrentSprite.hitboxRight = PIXEL_SIZE;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_NONE;
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
         if (gCurrentSprite.roomSlot == 2) {
             gCurrentSprite.pOam = sCoreXStaticOam_2;
         } else if (gCurrentSprite.roomSlot == 1) {
@@ -656,16 +728,16 @@ void AbilityAura(void) {
         case 0x3c:
             gCurrentSprite.status &= ~SS_NOT_DRAWN;
             break;
-        case 0x1a:
+        case CORE_X_POSE_SPAWINING_BOSS:
             if (gSpriteData[primaryRamSlot].work1 <= 8 * 4) {
                 gCurrentSprite.status = 0;
             }
-        case 1:
-        case 2:
-        case 0x18:
+        case SPRITE_POSE_IDLE_INIT:
+        case SPRITE_POSE_IDLE:
+        case CORE_X_POSE_MOVING_TO_SPAWN_POINT:
             gCurrentSprite.status ^= SS_NOT_DRAWN;
             break;
-        case 0x5c:
+        case CORE_X_POSE_MOVING_TO_TARGET_INIT:
             if (gCurrentSprite.roomSlot != 0) {
                 gCurrentSprite.status = 0;
             } else {
@@ -674,15 +746,15 @@ void AbilityAura(void) {
                 gCurrentSprite.pOam = sCoreXAbilityAuraOam_Fast;
             }
             break;
-        case 0x5d:
-            if ((gFrameCounter8Bit & 3) == 0) {
+        case CORE_X_POSE_MOVING_TO_TARGET:
+            if (MOD_AND(gFrameCounter8Bit, 4) == 0) {
                 gCurrentSprite.status ^= SS_NOT_DRAWN;
             }
             break;
-        case 0x5e:
+        case CORE_X_POSE_WAITING_AT_TARGET:
             gCurrentSprite.status &= ~SS_NOT_DRAWN;
             break;
-        case 0x5f:
+        case CORE_X_POSE_GETTING_ABSORBED:
             gCurrentSprite.status = 0;
     }
 }

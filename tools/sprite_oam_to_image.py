@@ -133,10 +133,10 @@ def Func():
             paletteRgba[(i+0x80)*4+2] = (palette555[i] >> 10 & 0x1F) << 3
             paletteRgba[(i+0x80)*4+3] = 255
 
-    tiles = [[0]*0x20]*0x200
+    tiles = [[0]*0x20]*0x400
     romSeek(tilesAddr)
     for i in range(0x40*rows):
-        tiles.append([romRead() for j in range(0x20)])
+        tiles[0x200+i] = [romRead() for j in range(0x20)] # in case of overflow
 
     romSeek(spritemapAddr)
     imageIndex = 0

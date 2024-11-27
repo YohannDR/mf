@@ -1067,6 +1067,26 @@ sprites/genesis.pal;2;0x37bbc4;32
 
 # ...
 
+# Starship (end)
+
+sprites/starship_end.gfx;7;0x39ad58;2048
+sprites/starship_end.pal;7;0x39e558;32
+
+# Electric water damage (B.O.X 2)
+
+sprites/electric_water_box_2.gfx;1;0x39ec90;2048
+sprites/electric_water_box_2.pal;1;0x39f490;32
+
+# Frozen Ridley corpse
+
+sprites/frozen_ridley_corpse.gfx;2;0x39f780;2048
+sprites/frozen_ridley_corpse.pal;2;0x3a0780;32
+
+# Varia Core-X
+
+sprites/varia_core_x.gfx;8;0x3a13f8;2048
+sprites/varia_core_x.pal;8;0x3a53f8;32
+
 # Omega metroid husk
 
 sprites/omega_metroid_husk.gfx;2;0x3a5f58;2048
@@ -2778,7 +2798,7 @@ Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 # Sprites
 Blob_321b64_3420b4.bin;0x321b64;0x3420b4
 Blob_348ca4_3534c4.bin;0x348ca4;0x3534c4
-Blob_37c578_3a5f58.bin;37c578;3a5f58
+Blob_37c578_39aa34.bin;37c578;39aa34
 
 # Clipdata and room entries
 Blob_3be3a0_3e392c.bin;3be3a0;3e392c

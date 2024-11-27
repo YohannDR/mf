@@ -16920,7 +16920,7 @@ _0808FE20:
 	movs r2, #0
 	bl NewFileIntroArrivingAtBslSetupOam
 	ldr r0, _0808FE9C @ =0x00000245
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	movs r0, #0x85
 	lsls r0, r0, #2
 	adds r1, r4, r0
@@ -19398,7 +19398,7 @@ NewFileIntroProcessBslDoor: @ 0x08091178
 	ldr r0, _080911A4 @ =0x085FE370
 	str r0, [r4, #0x1c]
 	ldr r0, _080911A8 @ =0x00000246
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	movs r0, #1
 	strb r0, [r4, #0x14]
 	b _080911FE
@@ -23255,7 +23255,7 @@ _0809304A:
 	movs r0, #6
 	strb r0, [r3, #0x14]
 	ldr r0, _0809308C @ =0x000001F3
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	ldr r1, _08093090 @ =gNonGameplayRam
 	movs r2, #0x84
 	lsls r2, r2, #2
@@ -27620,7 +27620,7 @@ _080953D4:
 	cmp r2, #0x10
 	bne _080953E6
 	ldr r0, _080953F4 @ =0x0000024B
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _080953E6:
 	ldrh r0, [r4]
 	subs r0, #1
@@ -31833,7 +31833,7 @@ DiedOnSr388CollisionInit: @ 0x080974C4
 	movs r0, #0xe
 	strh r0, [r1]
 	ldr r0, _080976A4 @ =0x0000024D
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	movs r0, #2
 	movs r1, #0xa4
 	movs r2, #0x28
@@ -38956,7 +38956,7 @@ _0809AE48:
 	bne _0809AE58
 	movs r0, #0x92
 	lsls r0, r0, #2
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _0809AE58:
 	bl CutsceneFadeIn
 	ldrh r0, [r5]
@@ -41531,7 +41531,7 @@ _0809C1F8:
 	cmp r0, #0x10
 	bne _0809C206
 	ldr r0, _0809C21C @ =0x00000247
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _0809C206:
 	bl CutsceneFadeIn
 	ldrh r0, [r5]

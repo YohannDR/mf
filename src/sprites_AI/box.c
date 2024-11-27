@@ -184,7 +184,7 @@ void BoxWaitingToEmergeInit(void) {
     gSubSpriteData1.xPosition += 0x100;
     gCurrentSprite.pose = BOX_POSE_WAITING_TO_EMERGE;
     gCurrentSprite.work1 = 0;
-    unk_3b1c(0x26d);
+    SoundPlay_3b1c(0x26d);
     ScreenShakeStartHorizontal(40, 0x81);
     gCurrentSprite.work4 = 0;
 }
@@ -194,7 +194,7 @@ void BoxWaitingToEmerge(void) {
     u16 x;
 
     if (++gCurrentSprite.work4 > 60) {
-        unk_3b1c(0x26d);
+        SoundPlay_3b1c(0x26d);
         ScreenShakeStartHorizontal(40, 0x81);
         gCurrentSprite.work4 = 0;
     }
@@ -1543,7 +1543,7 @@ void BoxDebrisWaitToFall(void) {
         ScreenShakeStartHorizontal(40, 0x81);
         ScreenShakeStartVertical(40, 0x81);
         BoxSpawnFallingDebris();
-        unk_3b1c(0x230);
+        SoundPlay_3b1c(0x230);
     }
 }
 

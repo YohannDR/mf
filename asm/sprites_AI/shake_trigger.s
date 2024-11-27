@@ -279,7 +279,7 @@ _080303DA:
 	strb r0, [r1]
 	movs r0, #0x8b
 	lsls r0, r0, #2
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	ldr r0, _08030400 @ =0x08337DF4
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
@@ -413,7 +413,7 @@ _08030500:
 	cmp r4, #1
 	bne _08030510
 	ldr r0, _0803050C @ =0x0000022B
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	b _08030560
 	.align 2, 0
 _0803050C: .4byte 0x0000022B
@@ -421,7 +421,7 @@ _08030510:
 	cmp r4, #4
 	bne _08030560
 	ldr r0, _0803051C @ =0x00000237
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	b _08030560
 	.align 2, 0
 _0803051C: .4byte 0x00000237
@@ -659,7 +659,7 @@ _080306DE:
 	movs r1, #0x81
 	bl ScreenShakeStartVertical
 	ldr r0, _08030718 @ =0x0000022E
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	ldrh r1, [r4]
 	movs r0, #2
 	ands r0, r1

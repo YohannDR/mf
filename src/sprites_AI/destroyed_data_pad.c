@@ -85,7 +85,7 @@ void DestroyedDataPad(void)
             if (gCurrentSprite.work1 == 60 * 2)
             {
                 ParticleSet(yPosition + QUARTER_BLOCK_SIZE, xPosition, PE_0x2F);
-                unk_3b1c(0x232);
+                SoundPlay_3b1c(0x232);
             }
             else if (gCurrentSprite.work1 == 110)
             {

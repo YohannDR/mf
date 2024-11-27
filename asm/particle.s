@@ -1056,7 +1056,7 @@ _0807354E:
 	movs r0, #0xdb
 	bl SoundStop
 	movs r0, #0xdc
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	movs r0, #0x28
 	movs r1, #0x81
 	bl ScreenShakeStartHorizontal

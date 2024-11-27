@@ -383,7 +383,7 @@ void SaXSetPose(u8 pose)
             break;
 
         case SA_X_POSE_TRANSFORMING_INTO_MONSTER:
-            unk_3b1c(0x9E);
+            SoundPlay_3b1c(0x9E);
             gSaXData.diagonalAim = DIAG_AIM_NONE;
             break;
 
@@ -896,7 +896,7 @@ u8 SaXElevatorBlowingUpWall(void)
 
         case 25:
             ScreenShakeStartHorizontal(60, 0x1);
-            unk_3b1c(0x226);
+            SoundPlay_3b1c(0x226);
             break;
 
         case 40:
@@ -1089,7 +1089,7 @@ u8 SaXElevatorWalkingOut(void)
     {
         case 5:
             ScreenShakeStartHorizontal(60, 0x1);
-            unk_3b1c(0x227);
+            SoundPlay_3b1c(0x227);
             break;
 
         case 35:

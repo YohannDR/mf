@@ -735,4 +735,4 @@ const struct FrameData sGenesisOam_37c558[4] = {
     [3] = FRAME_DATA_TERMINATOR
 };
 
-static const u8 sBlob_37c578_3a5f58[] = INCBIN_U8("data/Blob_37c578_3a5f58.bin");
+static const u8 sBlob_37c578_39aa34[] = INCBIN_U8("data/Blob_37c578_39aa34.bin");

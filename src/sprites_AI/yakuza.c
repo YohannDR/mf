@@ -303,7 +303,7 @@ void YakuzaAboutToAppear(void) {
         ScreenShakeStartHorizontal(60, 0x81);
         ScreenShakeStartVertical(60, 0x81);
         gBossWork2 = 1;
-        unk_3b1c(0x12f);
+        SoundPlay_3b1c(0x12f);
     }
 }
 
@@ -446,7 +446,7 @@ void YakuzaOpeningMouth(void) {
                     if (gBossWork2) {
                         gBossWork2 = FALSE;
                         PlayMusic(MUSIC_SERRIS_YAKUZA_BATTLE, 7);
-                        unk_3b1c(0x130);
+                        SoundPlay_3b1c(0x130);
                     } else
                         SoundPlay(0x139);
                 }
@@ -537,7 +537,7 @@ void YakuzaPhase1DyingInit(void) {
     gCurrentSprite.pose = 0x20;
     gCurrentSprite.work1 = 120;
     ParticleSet(gSubSpriteData1.yPosition, gSubSpriteData1.xPosition, PE_0x2F);
-    unk_3b1c(0x132);
+    SoundPlay_3b1c(0x132);
 }
 
 void YakuzaPhase1Dying(void) {
@@ -729,7 +729,7 @@ void YakuzaPhase2Dying(void) {
     switch (gCurrentSprite.work1) {
         case 40:
             ParticleSet(y-0x40, x-0x10, PE_0x2F);
-            unk_3b1c(0x134);
+            SoundPlay_3b1c(0x134);
             break;
         case 35:
             ParticleSet(y+0x20, x-0x10, PE_0x25);
@@ -1071,7 +1071,7 @@ void YakuzaFallingLegInit(void) {
             gCurrentSprite.work3 = 2;
             gCurrentSprite.work1 = 0;
             ScreenShakeStartVertical(60, 0x81);
-            unk_3b1c(0x133);
+            SoundPlay_3b1c(0x133);
             break;
         case 1:
             gCurrentSprite.pOam = sFrameData_3b7330;

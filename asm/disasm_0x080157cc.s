@@ -4372,7 +4372,7 @@ _080178DE:
 	movs r2, #0x2f
 	bl ParticleSet
 	ldr r0, _08017904 @ =0x0000023F
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	b _08017922
 	.align 2, 0
 _08017904: .4byte 0x0000023F
@@ -4387,7 +4387,7 @@ _08017908:
 	movs r2, #0x2f
 	bl ParticleSet
 	ldr r0, _08017970 @ =0x0000023F
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _08017922:
 	movs r0, #0x14
 	movs r1, #0x81
@@ -10277,7 +10277,7 @@ SaXBossWaitingToAppear: @ 0x0801A878
 	movs r0, #0
 	bl FadeMusic
 	movs r0, #0x9b
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	b _0801A908
 	.align 2, 0
 _0801A8CC: .4byte gCurrentSprite

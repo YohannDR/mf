@@ -320,7 +320,7 @@ SECTIONS {
         asm/sprites_AI/electric_water_box_2.o(.text);
         asm/sprites_AI/frozen_ridley.o(.text);
         asm/sprites_AI/gold_enemy_door_lock.o(.text);
-        asm/sprites_AI/varia_x.o(.text);
+        asm/sprites_AI/varia_core_x.o(.text);
 
         src/sprites_AI/omega_metroid_husk.o(.text);
         asm/sprites_AI/ice_beam_x_omega.o(.text);
@@ -435,6 +435,10 @@ SECTIONS {
         src/data/sprites/pillar.o(.rodata);
         src/data/sprites/genesis.o(.rodata);
 
+        src/data/sprites/starship_end.o(.rodata);
+        src/data/sprites/electric_water_box_2.o(.rodata);
+        src/data/sprites/frozen_ridley.o(.rodata);
+        src/data/sprites/varia_core_x.o(.rodata);
         src/data/sprites/omega_metroid_husk.o(.rodata);
         src/data/sprites/ice_beam_x_omega.o(.rodata);
         src/data/sprites/metroid_husk.o(.rodata);

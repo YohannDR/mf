@@ -2044,7 +2044,7 @@ _080529F8:
 	movs r2, #0x30
 	bl ParticleSet
 	ldr r0, _08052A40 @ =0x0000026E
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	b _08052AAC
 	.align 2, 0
 _08052A38: .4byte gCurrentSprite

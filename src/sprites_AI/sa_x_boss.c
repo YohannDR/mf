@@ -745,7 +745,7 @@ void SaXBossWaitingToAppear(void)
                 ScreenShakeStartHorizontal(60, 0x80 | 1);
                 gCurrentSprite.work1 = 80;
                 FadeMusic(0);
-                unk_3b1c(0x9B);
+                SoundPlay_3b1c(0x9B);
             }
         }
     }

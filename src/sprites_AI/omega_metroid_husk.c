@@ -82,7 +82,7 @@ void OmegaMetroidHuskWaitForOmegaMetroidToSpawn(void) {
         SpriteDebrisInit(0, DEBRIS_TYPE_HOPPING_FAST_LEFT, y - 0xf0, x + 0x3a);
         SpriteDebrisInit(0, DEBRIS_TYPE_LIGHT_SLOW_LEFT, y - 200, x + 0x3c);
         SpriteDebrisInit(0, DEBRIS_TYPE_HOPPING_SLOW_LEFT, y - 0x8c, x + 0x30);
-        unk_3b1c(0x218);
+        SoundPlay_3b1c(0x218);
     }
 }
 

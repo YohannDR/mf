@@ -2083,7 +2083,7 @@ _08063798:
 	cmp r0, #0x17
 	beq _080637FE
 	movs r0, #0x33
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	b _08063802
 	.align 2, 0
 _080637A8: .4byte gSamusData
@@ -3260,7 +3260,7 @@ _080640B4:
 	movs r2, #0x42
 	bl ParticleSet
 	movs r0, #0x4d
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	b _08064422
 _080640E8:
 	ldrh r0, [r2, #2]

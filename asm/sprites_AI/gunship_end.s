@@ -258,7 +258,7 @@ GunshipEndMovingUp: @ 0x08056338
 	cmp r0, #0
 	bne _08056356
 	ldr r0, _08056378 @ =0x00000249
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _08056356:
 	movs r4, #0
 	ldr r3, _08056374 @ =gCurrentSprite
@@ -746,7 +746,7 @@ GunshipEndStartingEngine1: @ 0x080566A8
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
 	ldr r0, _08056734 @ =0x0000024A
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _08056712:
 	pop {r4, r5, r6}
 	pop {r0}

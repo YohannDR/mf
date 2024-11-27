@@ -703,7 +703,7 @@ _08050C8A:
 	movs r1, #0xa
 	bl SpriteSpawnSecondary
 	movs r0, #0x9f
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -1046,7 +1046,7 @@ _08050FF4:
 	adds r0, #0x35
 	strb r2, [r0]
 	movs r0, #0xa1
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1407,7 +1407,7 @@ SaXMonsterPanting: @ 0x080512B0
 	cmp r0, #2
 	bne _080512CE
 	movs r0, #0xa8
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _080512CE:
 	ldr r4, _08051304 @ =gCurrentSprite
 	ldrh r0, [r4, #4]
@@ -1457,7 +1457,7 @@ _0805131C:
 	movs r0, #0xa0
 	strb r0, [r1]
 	movs r0, #0xa7
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _0805133A:
 	pop {r4}
 	pop {r0}

@@ -285,7 +285,7 @@ void NightmareWaitingToAppear(void) {
         ScreenShakeStartHorizontal(60, 0x81);
         ScreenShakeStartVertical(60, 0x81);
         gCurrentSprite.work1 = 60;
-        unk_3b1c(0x2a0);
+        SoundPlay_3b1c(0x2a0);
     }
 }
 
@@ -295,7 +295,7 @@ void NightmareAppearing(void) {
         ScreenShakeStartHorizontal(60, 0x81);
         ScreenShakeStartVertical(60, 0x81);
         gCurrentSprite.work1 = 60;
-        unk_3b1c(0x2a0);
+        SoundPlay_3b1c(0x2a0);
     }
     if (gSubSpriteData1.yPosition > BLOCK_TO_SUB_PIXEL(0x10))
         gSubSpriteData1.yPosition -= PIXEL_SIZE / 4;
@@ -505,7 +505,7 @@ void NightmareMovingToDeathPosition(void) {
         if (--gCurrentSprite.work1 == 0) {
             gCurrentSprite.pose = 0x22;
             gCurrentSprite.work1 = 60;
-            unk_3b1c(0x2a4);
+            SoundPlay_3b1c(0x2a4);
         }
     }
 }
@@ -1234,7 +1234,7 @@ void NightmarePartEye(void) {
                 gCurrentSprite.health = maxHealth;
                 gSubSpriteData1.health = maxHealth;
                 ParticleSet(gCurrentSprite.yPosition - 0x80, gCurrentSprite.xPosition - 0x50, PE_0x3A);
-                unk_3b1c(0x2a9);
+                SoundPlay_3b1c(0x2a9);
             }
             break;
         }
@@ -1628,7 +1628,7 @@ void NightmarePartGenerator(void) {
             } else if (gCurrentSprite.work0 == 30) {
                 ParticleSet(gCurrentSprite.yPosition + 0x40, gCurrentSprite.xPosition + 0x40, PE_0x3A);
                 gCurrentSprite.paletteRow = 0;
-                unk_3b1c(0x2a8);
+                SoundPlay_3b1c(0x2a8);
             } else
                 NightmarePartGeneratorUpdateDyingPalette();
             break;

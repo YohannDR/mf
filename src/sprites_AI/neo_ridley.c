@@ -579,7 +579,7 @@ void RidleyScreamingInit(void) {
         // Dying
         gCurrentSprite.samusCollision = 0;
         gCurrentSprite.rotation = 3 * 60;
-        unk_3b1c(0x1e0);
+        SoundPlay_3b1c(0x1e0);
     }
 }
 

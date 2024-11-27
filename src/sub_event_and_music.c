@@ -298,7 +298,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_SA_X_ELEVATOR_CUTSCENE_DOOR_SHOT:
-            unk_3b1c(0x229);
+            SoundPlay_3b1c(0x229);
             updateSubEvent = TRUE;
             break;
 

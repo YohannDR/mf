@@ -272,7 +272,7 @@ OmegaMetroidHuskWaitForOmegaMetroidToSpawn: @ 0x08058690
 	bl SpriteDebrisInit
 	movs r0, #0x86
 	lsls r0, r0, #2
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _08058784:
 	pop {r4, r5, r6}
 	pop {r0}

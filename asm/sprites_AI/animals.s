@@ -981,7 +981,7 @@ DachoraWaitingToRun: @ 0x0804D768
 	strh r2, [r3, #0x16]
 	movs r0, #0x92
 	lsls r0, r0, #1
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _0804D794:
 	pop {r0}
 	bx r0

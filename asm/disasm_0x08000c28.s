@@ -6409,8 +6409,8 @@ _08003B0C:
 _08003B14: .4byte sMusicTrackDataRom
 _08003B18: .4byte sSoundDataEntries
 
-	thumb_func_start unk_3b1c
-unk_3b1c: @ 0x08003B1C
+	thumb_func_start SoundPlay_3b1c
+SoundPlay_3b1c: @ 0x08003B1C
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
@@ -6533,7 +6533,7 @@ _08003BF2:
 	cmp r0, #9
 	bhi _08003C0A
 	adds r0, r2, #0
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 	b _08003C10
 _08003C0A:
 	adds r0, r3, #0

@@ -301,7 +301,7 @@ _0802AA5C:
 	cmp r0, #7
 	bls _0802AA66
 	movs r0, #0x14
-	bl unk_3b1c
+	bl SoundPlay_3b1c
 _0802AA66:
 	ldr r1, _0802AA84 @ =gCurrentSprite
 	adds r2, r1, #0

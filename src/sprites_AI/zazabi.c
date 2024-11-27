@@ -23,6 +23,10 @@
 #define ZAZABI_HEIGHT (BLOCK_SIZE * 4 + HALF_BLOCK_SIZE)
 #define ZAZABI_WIDTH (BLOCK_SIZE + HALF_BLOCK_SIZE + PIXEL_SIZE)
 
+/**
+ * @brief Synchronize the sub sprites of Zazabi
+ * 
+ */
 void ZazabiSyncSubSprites(void)
 {
     MultiSpriteDataInfo_T pData;
@@ -1375,7 +1379,7 @@ void ZazabiDyingInit(void)
     gCurrentSprite.unk_8 = 1;
 
     ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x2F);
-    unk_3b1c(0x286);
+    SoundPlay_3b1c(0x286);
 }
 
 /**
@@ -2044,7 +2048,7 @@ void ZazabiPart(void)
             {
                 ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x2F);
                 gCurrentSprite.status = 0;
-                unk_3b1c(0x284);
+                SoundPlay_3b1c(0x284);
             }
             else
             {
@@ -2058,7 +2062,7 @@ void ZazabiPart(void)
             {
                 ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x2F);
                 gCurrentSprite.status = 0;
-                unk_3b1c(0x284);
+                SoundPlay_3b1c(0x284);
             }
             else
             {
@@ -2072,7 +2076,7 @@ void ZazabiPart(void)
             {
                 ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x2F);
                 gCurrentSprite.status = 0;
-                unk_3b1c(0x284);
+                SoundPlay_3b1c(0x284);
             }
             else
             {
