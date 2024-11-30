@@ -116,18 +116,16 @@ void ZebesianGroundSpawningFromX(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
     if (--gCurrentSprite.work1 > 0) {
         gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
+    } else if (gCurrentSprite.spriteId == PSPRITE_ZEBESIAN_PRE_AQUA) {
+        gCurrentSprite.spritesetGfxSlot = 0;
+        gCurrentSprite.spriteId = PSPRITE_ZEBESIAN_AQUA;
+        gCurrentSprite.properties &= ~SP_CAN_ABSORB_X;
+        gCurrentSprite.pose = 0x59;
+        gCurrentSprite.yPosition -= 0x40;
     } else {
-        if (gCurrentSprite.spriteId == PSPRITE_ZEBESIAN_PRE_AQUA) {
-            gCurrentSprite.spritesetGfxSlot = 0;
-            gCurrentSprite.spriteId = PSPRITE_ZEBESIAN_AQUA;
-            gCurrentSprite.properties &= ~SP_CAN_ABSORB_X;
-            gCurrentSprite.pose = 0x59;
-            gCurrentSprite.yPosition -= 0x40;
-        } else {
-            gCurrentSprite.pose = 2;
-            gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
-            gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
-        }
+        gCurrentSprite.pose = 2;
+        gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
+        gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
     }
 }
 

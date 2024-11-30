@@ -1364,23 +1364,23 @@ _08005830: @ jump table
 _08005868:
 	ldr r0, _08005870 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
-	ldr r3, _08005874 @ =0x083ECBA4
+	ldr r3, _08005874 @ =sSamusEnvironmentalEffectOam_3ecba4
 	b _08005A0A
 	.align 2, 0
 _08005870: .4byte gSamusEnvironmentalEffects
-_08005874: .4byte 0x083ECBA4
+_08005874: .4byte sSamusEnvironmentalEffectOam_3ecba4
 _08005878:
 	ldr r0, _08005880 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
-	ldr r3, _08005884 @ =0x083ECD34
+	ldr r3, _08005884 @ =sSamusEnvironmentalEffectOam_3ecd34
 	b _08005A0A
 	.align 2, 0
 _08005880: .4byte gSamusEnvironmentalEffects
-_08005884: .4byte 0x083ECD34
+_08005884: .4byte sSamusEnvironmentalEffectOam_3ecd34
 _08005888:
 	ldr r0, _080058BC @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
-	ldr r3, _080058C0 @ =0x083ECD94
+	ldr r3, _080058C0 @ =sSamusEnvironmentalEffectOam_3ecd94
 	ldrb r0, [r2, #2]
 	lsls r0, r0, #3
 	adds r0, r0, r3
@@ -1406,11 +1406,11 @@ _080058B2:
 	b _08005A32
 	.align 2, 0
 _080058BC: .4byte gSamusEnvironmentalEffects
-_080058C0: .4byte 0x083ECD94
+_080058C0: .4byte sSamusEnvironmentalEffectOam_3ecd94
 _080058C4:
 	ldr r0, _080058F8 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
-	ldr r3, _080058FC @ =0x083ECEB4
+	ldr r3, _080058FC @ =sSamusEnvironmentalEffectOam_3eceb4
 	ldrb r0, [r2, #2]
 	lsls r0, r0, #3
 	adds r0, r0, r3
@@ -1436,7 +1436,7 @@ _080058EE:
 	b _08005A32
 	.align 2, 0
 _080058F8: .4byte gSamusEnvironmentalEffects
-_080058FC: .4byte 0x083ECEB4
+_080058FC: .4byte sSamusEnvironmentalEffectOam_3eceb4
 _08005900:
 	ldr r0, _0800593C @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
@@ -1444,7 +1444,7 @@ _08005900:
 	ldrh r0, [r0, #0x16]
 	movs r3, #0
 	strh r0, [r2, #8]
-	ldr r5, _08005944 @ =0x083ECC74
+	ldr r5, _08005944 @ =sSamusEnvironmentalEffectOam_3ecc74
 	ldrb r0, [r2, #2]
 	lsls r0, r0, #3
 	adds r0, r0, r5
@@ -1472,35 +1472,35 @@ _08005934:
 	.align 2, 0
 _0800593C: .4byte gSamusEnvironmentalEffects
 _08005940: .4byte gSamusData
-_08005944: .4byte 0x083ECC74
+_08005944: .4byte sSamusEnvironmentalEffectOam_3ecc74
 _08005948:
 	ldr r0, _08005950 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
-	ldr r3, _08005954 @ =0x083ECBD4
+	ldr r3, _08005954 @ =sSamusEnvironmentalEffectOam_3ecbd4
 	b _08005A0A
 	.align 2, 0
 _08005950: .4byte gSamusEnvironmentalEffects
-_08005954: .4byte 0x083ECBD4
+_08005954: .4byte sSamusEnvironmentalEffectOam_3ecbd4
 _08005958:
 	ldr r0, _08005960 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
-	ldr r3, _08005964 @ =0x083ECCEC
+	ldr r3, _08005964 @ =sSamusEnvironmentalEffectOam_3eccec
 	b _08005A0A
 	.align 2, 0
 _08005960: .4byte gSamusEnvironmentalEffects
-_08005964: .4byte 0x083ECCEC
+_08005964: .4byte sSamusEnvironmentalEffectOam_3eccec
 _08005968:
 	ldr r0, _08005970 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
-	ldr r3, _08005974 @ =0x083ECD5C
+	ldr r3, _08005974 @ =sSamusEnvironmentalEffectOam_3ecd5c
 	b _08005A0A
 	.align 2, 0
 _08005970: .4byte gSamusEnvironmentalEffects
-_08005974: .4byte 0x083ECD5C
+_08005974: .4byte sSamusEnvironmentalEffectOam_3ecd5c
 _08005978:
 	mov r0, r8
 	adds r3, r4, r0
-	ldr r0, _080059A8 @ =0x083ECBD4
+	ldr r0, _080059A8 @ =sSamusEnvironmentalEffectOam_3ecbd4
 	ldrb r1, [r3, #2]
 	lsls r1, r1, #3
 	adds r1, r1, r0
@@ -1522,11 +1522,11 @@ _08005978:
 	beq _080059D8
 	b _080059E8
 	.align 2, 0
-_080059A8: .4byte 0x083ECBD4
+_080059A8: .4byte sSamusEnvironmentalEffectOam_3ecbd4
 _080059AC:
 	mov r2, r8
 	adds r3, r4, r2
-	ldr r0, _080059E4 @ =0x083ECC34
+	ldr r0, _080059E4 @ =sSamusEnvironmentalEffectOam_3ecc34
 	ldrb r1, [r3, #2]
 	lsls r1, r1, #3
 	adds r1, r1, r0
@@ -1552,7 +1552,7 @@ _080059D8:
 	bl SamusCheckSetNewEnvironmentEffect
 	b _08005A32
 	.align 2, 0
-_080059E4: .4byte 0x083ECC34
+_080059E4: .4byte sSamusEnvironmentalEffectOam_3ecc34
 _080059E8:
 	ldr r0, _08005A00 @ =gSamusEnvironmentalEffects
 	adds r1, r4, r0
@@ -1570,7 +1570,7 @@ _08005A00: .4byte gSamusEnvironmentalEffects
 _08005A04:
 	ldr r0, _08005A68 @ =gSamusEnvironmentalEffects
 	adds r2, r4, r0
-	ldr r3, _08005A6C @ =0x083ECDDC
+	ldr r3, _08005A6C @ =sSamusEnvironmentalEffectOam_3ecddc
 _08005A0A:
 	ldrb r0, [r2, #2]
 	lsls r0, r0, #3
@@ -1623,7 +1623,7 @@ _08005A5C:
 	bx r0
 	.align 2, 0
 _08005A68: .4byte gSamusEnvironmentalEffects
-_08005A6C: .4byte 0x083ECDDC
+_08005A6C: .4byte sSamusEnvironmentalEffectOam_3ecddc
 _08005A70: .4byte 0x0828FD20
 
 	thumb_func_start SamusAimCannonStanding

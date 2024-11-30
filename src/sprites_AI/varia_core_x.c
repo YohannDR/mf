@@ -249,7 +249,7 @@ void MegaXShieldInit(void) {
     gCurrentSprite.pOam = sVariaCoreXOam_3a5ef8;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.samusCollision = 2;
+    gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
     gCurrentSprite.health = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
     gCurrentSprite.pose = 2;
     gCurrentSprite.scaling = 0x100;

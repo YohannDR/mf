@@ -323,26 +323,31 @@ void NightmarePhase2ResettingPosition(void) {
     u8 reachedDst = 0;
     u16 dstY = gAbilityRestingYPosition - BLOCK_TO_SUB_PIXEL(2);
     u16 dstX = gAbilityRestingXPosition + BLOCK_TO_SUB_PIXEL(4);
+
     if (gSubSpriteData1.xPosition < dstX)
         gCurrentSprite.status |= SS_FACING_RIGHT;
     else
         gCurrentSprite.status &= ~SS_FACING_RIGHT;
+
     if (gSubSpriteData1.yPosition < dstY)
         gCurrentSprite.status |= SS_FACING_DOWN;
     else
         gCurrentSprite.status &= ~SS_FACING_DOWN;
+
     if (gSubSpriteData1.yPosition < dstY + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.yPosition > dstY - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_DOWN)
         gSubSpriteData1.yPosition += PIXEL_SIZE / 4;
     else
         gSubSpriteData1.yPosition -= PIXEL_SIZE / 4;
+
     if (gSubSpriteData1.xPosition < dstX + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.xPosition > dstX - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_RIGHT)
         gSubSpriteData1.xPosition += PIXEL_SIZE / 4;
     else
         gSubSpriteData1.xPosition -= PIXEL_SIZE / 4;
+
     if (reachedDst == 2) {
         gCurrentSprite.pose = 1;
         gCurrentSprite.status &= ~SS_FACING_RIGHT;
@@ -385,32 +390,37 @@ void NightmareMovingToPhase3(void) {
     u8 reachedDst = 0;
     u16 dstY = gAbilityRestingYPosition;
     u16 dstX = gAbilityRestingXPosition + BLOCK_TO_SUB_PIXEL(3);
+
     if (gSubSpriteData1.xPosition < dstX)
         gCurrentSprite.status |= SS_FACING_RIGHT;
     else
         gCurrentSprite.status &= ~SS_FACING_RIGHT;
+
     if (gSubSpriteData1.yPosition < dstY)
         gCurrentSprite.status |= SS_FACING_DOWN;
     else
         gCurrentSprite.status &= ~SS_FACING_DOWN;
+
     if (gSubSpriteData1.yPosition < dstY + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.yPosition > dstY - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_DOWN)
         gSubSpriteData1.yPosition += PIXEL_SIZE / 4;
     else
         gSubSpriteData1.yPosition -= PIXEL_SIZE / 4;
+
     if (gSubSpriteData1.xPosition < dstX + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.xPosition > dstX - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_RIGHT)
         gSubSpriteData1.xPosition += PIXEL_SIZE / 4;
     else
         gSubSpriteData1.xPosition -= PIXEL_SIZE / 4;
+
     if (reachedDst == 2) {
         gCurrentSprite.pose = 0x19;
     }
 }
 
-void NightmareReachedPhase3Position() {}
+void NightmareReachedPhase3Position(void) {}
 
 void NightmarePhase3SlowMovementInit(void) {}
 
@@ -477,30 +487,36 @@ void NightmareDeathFlash(void) {
 void NightmareMovingToDeathPosition(void) {
     u8 reachedDst;
     u16 dstY, dstX;
+
     NightmareDeathFlash();
     reachedDst = 0;
     dstY = gAbilityRestingYPosition;
     dstX = gAbilityRestingXPosition + BLOCK_TO_SUB_PIXEL(3);
+
     if (gSubSpriteData1.xPosition < dstX)
         gCurrentSprite.status |= SS_FACING_RIGHT;
     else
         gCurrentSprite.status &= ~SS_FACING_RIGHT;
+
     if (gSubSpriteData1.yPosition < dstY)
         gCurrentSprite.status |= SS_FACING_DOWN;
     else
         gCurrentSprite.status &= ~SS_FACING_DOWN;
+
     if (gSubSpriteData1.yPosition < dstY + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.yPosition > dstY - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_DOWN)
         gSubSpriteData1.yPosition += PIXEL_SIZE / 4;
     else
         gSubSpriteData1.yPosition -= PIXEL_SIZE / 4;
+
     if (gSubSpriteData1.xPosition < dstX + PIXEL_TO_SUB_PIXEL(1.5f) && gSubSpriteData1.xPosition > dstX - PIXEL_TO_SUB_PIXEL(1.5f))
         reachedDst++;
     else if (gCurrentSprite.status & SS_FACING_RIGHT)
         gSubSpriteData1.xPosition += PIXEL_SIZE / 4;
     else
         gSubSpriteData1.xPosition -= PIXEL_SIZE / 4;
+
     if (reachedDst == 2) {
         if (--gCurrentSprite.work1 == 0) {
             gCurrentSprite.pose = 0x22;
@@ -754,7 +770,7 @@ void NightmarePartRightArmTop(void) {
         }
         case 0x18: {
             if (gSpriteData[primaryRamSlot].pose == 0x22) {
-                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, 0, 0, primaryRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, NIGHTMARE_FALLING_PART_RIGHT_ARM_TOP, 0, primaryRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.status |= SS_HIDDEN;
                 gCurrentSprite.pose = 0x1e;
             } else if (gSpriteData[primaryRamSlot].pose == 0x20)
@@ -782,7 +798,7 @@ void NightmarePartRightArmBottom(void) {
         }
         case 0x18: {
             if (gSpriteData[primaryRamSlot].pose == 0x22) {
-                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, 4, 0, primaryRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, NIGHTMARE_FALLING_PART_RIGHT_ARM_BOTTOM, 0, primaryRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.status |= SS_HIDDEN;
                 gCurrentSprite.pose = 0x1e;
             } else if (gSpriteData[primaryRamSlot].pose == 0x20)
@@ -850,7 +866,7 @@ void NightmarePartRightTurret1(void) {
         case 0x1c: {
             NightmarePartDying(gCurrentSprite.primarySpriteRamSlot);
             if (gSpriteData[primaryRamSlot].pose == 0x22) {
-                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, 1, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, NIGHTMARE_FALLING_PART_RIGHT_TURRET_1, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.status |= SS_HIDDEN;
                 gCurrentSprite.pose = 0x1e;
             }
@@ -921,7 +937,7 @@ void NightmarePartRightTurret2(void) {
         case 0x1c: {
             NightmarePartDying(gCurrentSprite.primarySpriteRamSlot);
             if (gSpriteData[primaryRamSlot].pose == 0x22) {
-                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, 2, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, NIGHTMARE_FALLING_PART_RIGHT_TURRET_2, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.status |= SS_HIDDEN;
                 gCurrentSprite.pose = 0x1e;
             }
@@ -991,7 +1007,7 @@ void NightmarePartRightTurret3(void) {
         case 0x1c: {
             NightmarePartDying(gCurrentSprite.primarySpriteRamSlot);
             if (gSpriteData[primaryRamSlot].pose == 0x22) {
-                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, 3, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, NIGHTMARE_FALLING_PART_RIGHT_TURRET_3, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.status |= SS_HIDDEN;
                 gCurrentSprite.pose = 0x1e;
             }
@@ -1062,7 +1078,7 @@ void NightmarePartLeftTurret1(void) {
         case 0x1c: {
             NightmarePartDying(gCurrentSprite.primarySpriteRamSlot);
             if (gSpriteData[primaryRamSlot].pose == 0x22) {
-                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, 5, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, NIGHTMARE_FALLING_PART_LEFT_TURRET_1, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.status |= SS_HIDDEN;
                 gCurrentSprite.pose = 0x1e;
             }
@@ -1133,7 +1149,7 @@ void NightmarePartLeftTurret2(void) {
         case 0x1c: {
             NightmarePartDying(gCurrentSprite.primarySpriteRamSlot);
             if (gSpriteData[primaryRamSlot].pose == 0x22) {
-                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, 6, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, NIGHTMARE_FALLING_PART_LEFT_TURRET_2, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.status |= SS_HIDDEN;
                 gCurrentSprite.pose = 0x1e;
             }
@@ -1202,7 +1218,7 @@ void NightmarePartLeftTurret3(void) {
         case 0x1c: {
             NightmarePartDying(gCurrentSprite.primarySpriteRamSlot);
             if (gSpriteData[primaryRamSlot].pose == 0x22) {
-                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, 7, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
+                SpriteSpawnSecondary(SSPRITE_NIGHTMARE_FALLING_ARM, NIGHTMARE_FALLING_PART_LEFT_TURRET_3, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.status |= SS_HIDDEN;
                 gCurrentSprite.pose = 0x1e;
             }
@@ -1684,7 +1700,7 @@ void NightmareFallingArmInit(void) {
     gCurrentSprite.work4 = 0;
     gCurrentSprite.health = 0;
     switch (gCurrentSprite.roomSlot) {
-        case 0:
+        case NIGHTMARE_FALLING_PART_RIGHT_ARM_TOP:
             gCurrentSprite.pOam = sFrameData_3bd864;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 0x10;
@@ -1692,7 +1708,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work3 = 2;
             gCurrentSprite.work1 = 10;
             break;
-        case 1:
+        case NIGHTMARE_FALLING_PART_RIGHT_TURRET_1:
             gCurrentSprite.pOam = sFrameData_3bd874;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 8;
@@ -1700,7 +1716,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work3 = 3;
             gCurrentSprite.work1 = 8;
             break;
-        case 2:
+        case NIGHTMARE_FALLING_PART_RIGHT_TURRET_2:
             gCurrentSprite.pOam = sFrameData_3bd884;
             gCurrentSprite.drawDistanceTop = 0x20;
             gCurrentSprite.drawDistanceBottom = 0x10;
@@ -1708,7 +1724,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work3 = 4;
             gCurrentSprite.work1 = 6;
             break;
-        case 3:
+        case NIGHTMARE_FALLING_PART_RIGHT_TURRET_3:
             gCurrentSprite.pOam = sFrameData_3bd894;
             gCurrentSprite.drawDistanceTop = 0x1c;
             gCurrentSprite.drawDistanceBottom = 8;
@@ -1716,7 +1732,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work3 = 5;
             gCurrentSprite.work1 = 4;
             break;
-        case 4:
+        case NIGHTMARE_FALLING_PART_RIGHT_ARM_BOTTOM:
             gCurrentSprite.pOam = sFrameData_3bd8a4;
             gCurrentSprite.drawDistanceTop = 0x10;
             gCurrentSprite.drawDistanceBottom = 0x10;
@@ -1724,7 +1740,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work3 = 6;
             gCurrentSprite.work1 = 2;
             break;
-        case 5:
+        case NIGHTMARE_FALLING_PART_LEFT_TURRET_1:
             gCurrentSprite.pOam = sFrameData_3bd8b4;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 8;
@@ -1732,7 +1748,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work3 = 3;
             gCurrentSprite.work1 = 8;
             break;
-        case 6:
+        case NIGHTMARE_FALLING_PART_LEFT_TURRET_2:
             gCurrentSprite.pOam = sFrameData_3bd8c4;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 8;
@@ -1740,7 +1756,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work3 = 4;
             gCurrentSprite.work1 = 6;
             break;
-        case 7:
+        case NIGHTMARE_FALLING_PART_LEFT_TURRET_3:
             gCurrentSprite.pOam = sFrameData_3bd8d4;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 10;

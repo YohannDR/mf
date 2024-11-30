@@ -56,7 +56,20 @@ extern const struct FrameData sParticleOam_SpeedboosterKilled[9];
 extern const struct FrameData sParticleOam_SudoScrewKilled[9];
 extern const struct FrameData sParticleOam_OutwardSmoke[9];
 
-// ...
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ecba4[6];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ecbd4[6];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ecc04[6];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ecc34[8];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ecc74[8];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3eccb4[7];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3eccec[9];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ecd34[5];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ecd5c[7];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ecd94[9];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ecddc[9];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ece24[12];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3ece84[6];
+extern const struct FrameData sSamusEnvironmentalEffectOam_3eceb4[8];
 
 extern const struct FrameData sParticleOam_GettingSuitBeams[11];
 extern const struct FrameData sParticleOam_3ed1e4[17];

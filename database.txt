@@ -2803,14 +2803,12 @@ Blob_37c578_39aa34.bin;37c578;39aa34
 # Clipdata and room entries
 Blob_3be3a0_3e392c.bin;3be3a0;3e392c
 
-# Possibly Samus environmental effects
-Blob_3ec508_3ecef4.bin;3ec508;3ecef4
-
 # Room data
 Blob_3eed78_413afc.bin;3eed78;413afc
 
 # Animated graphics, pause screen, events, computer conservation, SRAM
-Blob_5594a8_58b3cc.bin;5594a8;58b3cc
+Blob_5594a8_575a60.bin;5594a8;575a60
+Blob_57604c_58b3cc.bin;57604c;58b3cc
 
 # Cutscenes
 Blob_597708_72eee0.bin;597708;72eee0

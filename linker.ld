@@ -459,6 +459,8 @@ SECTIONS {
         src/data/rooms/sector_4.o(.rodata);
         src/data/rooms/sector_6.o(.rodata);
 
+        src/data/event_data.o(.rodata);
+
         src/data/projectile_data.o(.rodata);
         src/data/menus/title_screen.o(.rodata);
         src/data/sa_x_close_up.o(.rodata);

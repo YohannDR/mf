@@ -9414,7 +9414,7 @@ static const u16 sSamusOam_Right_DiagonalDown_ShootingOnVerticalLadder_Frame0[] 
 static const u16 sSamusOam_Left_StartingWallJump_Frame0[] = {
     3,
     0xdf, OBJ_SIZE_16x16 | 0x1ea, 0x4,
-    OBJ_SHAPE_VERTICAL | 0xdf, 0xfa, 0x6,
+    OBJ_SHAPE_VERTICAL | 0xdf, 0xfa, 0x6, // BUG: should be 0x1fa instead of 0xfa
     OBJ_SHAPE_HORIZONTAL | 0xef, OBJ_SIZE_32x16 | 0x1e8, 0x0
 };
 

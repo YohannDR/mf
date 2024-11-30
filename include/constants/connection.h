@@ -10,9 +10,9 @@ enum Area {
     AREA_SECTOR_5,
     AREA_SECTOR_6,
 
-    AREA_NORMAL_END = AREA_SECTOR_6,
+    AREA_NORMAL_END,
 
-    AREA_DEBUG_1,
+    AREA_DEBUG_1 = AREA_NORMAL_END,
     AREA_DEBUG_2,
     AREA_DEBUG_3,
 
@@ -32,6 +32,8 @@ enum NavigationRoom {
     NAV_ROOM_SECTOR_6_ROOM_2,
     NAV_ROOM_MAIN_DECK_ROOM_56,
     NAV_ROOM_MAIN_DECK_ROOM_66,
+
+    NAV_ROOM_END
 };
 
 enum DoorType {

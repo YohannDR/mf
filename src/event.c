@@ -254,7 +254,7 @@ void EventCheckRoomEventTrigger(void)
     // Check in range
     if (BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].xStart) <= gSamusData.xPosition &&
         BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].xEnd) >= gSamusData.xPosition &&
-        BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].ySart) <= gSamusData.yPosition &&
+        BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].yStart) <= gSamusData.yPosition &&
         BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].yEnd) >= gSamusData.yPosition)
     {
         // Set room trigger event

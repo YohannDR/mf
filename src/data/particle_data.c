@@ -4115,7 +4115,1052 @@ const struct FrameData sParticleOam_OutwardSmoke[9] = {
     [8] = FRAME_DATA_TERMINATOR
 };
 
-static const u8 sBlob_3ec508_3ecef4[] = INCBIN_U8("data/Blob_3ec508_3ecef4.bin");
+static const u16 sSamusEnvironmentalEffectOam_3ecba4_Frame0[] = {
+    1,
+    0xf8, 0x1fc, OBJ_PALETTE_3 | 0xc0
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecba4_Frame1[] = {
+    1,
+    0xf8, 0x1fc, OBJ_PALETTE_3 | 0xc1
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecba4_Frame2[] = {
+    1,
+    0xf8, 0x1fc, OBJ_PALETTE_3 | 0xc2
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecba4_Frame3[] = {
+    1,
+    0xf8, 0x1fc, OBJ_PALETTE_3 | 0xc3
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecba4_Frame4[] = {
+    1,
+    0xf8, 0x1fc, OBJ_PALETTE_3 | 0xc4
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecbd4_Frame0[] = {
+    2,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0xc0,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0xc0
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecbd4_Frame1[] = {
+    2,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0xc1,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0xc1
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecbd4_Frame2[] = {
+    2,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0xc2,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0xc2
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecbd4_Frame3[] = {
+    2,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0xc3,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0xc3
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecbd4_Frame4[] = {
+    2,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0xc4,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0xc4
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc04_Frame0[] = {
+    1,
+    0xf8, 0x1fc, OBJ_PALETTE_3 | 0x158
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc04_Frame1[] = {
+    1,
+    0xf7, 0x1fc, OBJ_PALETTE_3 | 0x159
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc04_Frame2[] = {
+    1,
+    0xf6, 0x1fc, OBJ_PALETTE_3 | 0x15a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc04_Frame3[] = {
+    1,
+    0xf5, 0x1fc, OBJ_PALETTE_3 | 0x15b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc04_Frame4[] = {
+    1,
+    0xf4, 0x1fc, OBJ_PALETTE_3 | 0x15c
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece84_Frame0[] = {
+    2,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0x158,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0x158
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece84_Frame1[] = {
+    2,
+    0xf7, 0x1f6, OBJ_PALETTE_3 | 0x159,
+    0xf7, 0x2, OBJ_PALETTE_3 | 0x159
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece84_Frame2[] = {
+    2,
+    0xf6, 0x1f4, OBJ_PALETTE_3 | 0x15a,
+    0xf6, 0x4, OBJ_PALETTE_3 | 0x15a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece84_Frame3[] = {
+    2,
+    0xf5, 0x1f2, OBJ_PALETTE_3 | 0x15b,
+    0xf5, 0x6, OBJ_PALETTE_3 | 0x15b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece84_Frame4[] = {
+    2,
+    0xf4, 0x1f0, OBJ_PALETTE_3 | 0x15c,
+    0xf4, 0x8, OBJ_PALETTE_3 | 0x15c
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc74_Frame0[] = {
+    3,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0x158,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0x158,
+    0xf4, 0x1fc, OBJ_PALETTE_3 | 0x15c
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc74_Frame1[] = {
+    2,
+    0xf6, 0x1f6, OBJ_PALETTE_3 | 0x159,
+    0xf6, 0x2, OBJ_PALETTE_3 | 0x159
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc74_Frame2[] = {
+    4,
+    0xf4, 0x1f4, OBJ_PALETTE_3 | 0x15a,
+    0xf4, 0x4, OBJ_PALETTE_3 | 0x15a,
+    0xfc, 0x0, OBJ_PALETTE_3 | 0x158,
+    0xfc, 0x1f8, OBJ_PALETTE_3 | 0x158
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc74_Frame3[] = {
+    5,
+    0xf2, 0x1f2, OBJ_PALETTE_3 | 0x15b,
+    0xf2, 0x6, OBJ_PALETTE_3 | 0x15b,
+    0xfb, 0x1f6, OBJ_PALETTE_3 | 0x159,
+    0xfb, 0x2, OBJ_PALETTE_3 | 0x159,
+    0xfc, 0x1fc, OBJ_PALETTE_3 | 0x158
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc74_Frame4[] = {
+    5,
+    0xf0, 0x1f0, OBJ_PALETTE_3 | 0x15c,
+    0xf0, 0x8, OBJ_PALETTE_3 | 0x15c,
+    0xfa, 0x1f4, OBJ_PALETTE_3 | 0x15a,
+    0xfa, 0x4, OBJ_PALETTE_3 | 0x15a,
+    0xfa, 0x1fc, OBJ_PALETTE_3 | 0x159
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc74_Frame5[] = {
+    3,
+    0xf9, 0x1f2, OBJ_PALETTE_3 | 0x15b,
+    0xf9, 0x6, OBJ_PALETTE_3 | 0x15b,
+    0xf8, 0x1fc, OBJ_PALETTE_3 | 0x15a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc74_Frame6[] = {
+    3,
+    0xf8, 0x1f0, OBJ_PALETTE_3 | 0x15c,
+    0xf8, 0x8, OBJ_PALETTE_3 | 0x15c,
+    0xf6, 0x1fc, OBJ_PALETTE_3 | 0x15b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc34_Frame0[] = {
+    4,
+    0xfa, 0x2, OBJ_PALETTE_3 | 0x158,
+    0xfa, 0x1fe, OBJ_PALETTE_3 | 0x159,
+    0xfa, OBJ_X_FLIP | 0x1f6, OBJ_PALETTE_3 | 0x158,
+    0xfa, OBJ_X_FLIP | 0x1fa, OBJ_PALETTE_3 | 0x159
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc34_Frame1[] = {
+    6,
+    0xfa, 0x6, OBJ_PALETTE_3 | 0x158,
+    0xfa, 0x2, OBJ_PALETTE_3 | 0x159,
+    0xfa, 0x1fe, OBJ_PALETTE_3 | 0x15a,
+    0xfa, OBJ_X_FLIP | 0x1f2, OBJ_PALETTE_3 | 0x158,
+    0xfa, OBJ_X_FLIP | 0x1f6, OBJ_PALETTE_3 | 0x159,
+    0xfa, OBJ_X_FLIP | 0x1fa, OBJ_PALETTE_3 | 0x15a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc34_Frame2[] = {
+    8,
+    0xf9, 0x8, OBJ_PALETTE_3 | 0x158,
+    0xfa, 0x5, OBJ_PALETTE_3 | 0x159,
+    0xfa, 0x2, OBJ_PALETTE_3 | 0x15a,
+    0xfa, 0x1fe, OBJ_PALETTE_3 | 0x15b,
+    0xf9, OBJ_X_FLIP | 0x1f0, OBJ_PALETTE_3 | 0x158,
+    0xfa, OBJ_X_FLIP | 0x1f3, OBJ_PALETTE_3 | 0x159,
+    0xfa, OBJ_X_FLIP | 0x1f6, OBJ_PALETTE_3 | 0x15a,
+    0xfa, OBJ_X_FLIP | 0x1fa, OBJ_PALETTE_3 | 0x15b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc34_Frame3[] = {
+    6,
+    0xf9, 0x2, OBJ_PALETTE_3 | 0x15b,
+    0xf8, 0x6, OBJ_PALETTE_3 | 0x15a,
+    0xf7, 0x9, OBJ_PALETTE_3 | 0x159,
+    0xf9, OBJ_X_FLIP | 0x1f6, OBJ_PALETTE_3 | 0x15b,
+    0xf8, OBJ_X_FLIP | 0x1f2, OBJ_PALETTE_3 | 0x15a,
+    0xf7, OBJ_X_FLIP | 0x1ef, OBJ_PALETTE_3 | 0x159
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc34_Frame4[] = {
+    6,
+    0xf5, 0x8, OBJ_PALETTE_3 | 0x15a,
+    0xf7, 0x6, OBJ_PALETTE_3 | 0x15b,
+    0xf8, 0x2, OBJ_PALETTE_3 | 0x15c,
+    0xf5, OBJ_X_FLIP | 0x1f0, OBJ_PALETTE_3 | 0x15a,
+    0xf7, OBJ_X_FLIP | 0x1f2, OBJ_PALETTE_3 | 0x15b,
+    0xf8, OBJ_X_FLIP | 0x1f6, OBJ_PALETTE_3 | 0x15c
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc34_Frame5[] = {
+    4,
+    0xf7, 0x3, OBJ_PALETTE_3 | 0x15c,
+    0xf4, 0x7, OBJ_PALETTE_3 | 0x15b,
+    0xf7, OBJ_X_FLIP | 0x1f5, OBJ_PALETTE_3 | 0x15c,
+    0xf4, OBJ_X_FLIP | 0x1f1, OBJ_PALETTE_3 | 0x15b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecc34_Frame6[] = {
+    2,
+    0xf4, 0x7, OBJ_PALETTE_3 | 0x15c,
+    0xf4, OBJ_X_FLIP | 0x1f1, OBJ_PALETTE_3 | 0x15c
+};
+
+static const u16 sOam_3ec76e[] = {
+    1,
+    0xf8, 0x1fa, OBJ_PALETTE_3 | 0x178
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccb4_Frame0[] = {
+    2,
+    0xf6, 0x1fa, OBJ_PALETTE_3 | 0x179,
+    0xf8, 0x1fe, OBJ_PALETTE_3 | 0x178
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccb4_Frame1[] = {
+    3,
+    0xf4, 0x1fa, OBJ_PALETTE_3 | 0x17a,
+    0xf6, 0x1fe, OBJ_PALETTE_3 | 0x179,
+    0xf8, 0x1fc, OBJ_PALETTE_3 | 0x178
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccb4_Frame2[] = {
+    3,
+    0xf2, 0x1fa, OBJ_PALETTE_3 | 0x17b,
+    0xf4, 0x1fe, OBJ_PALETTE_3 | 0x17a,
+    0xf7, 0x1fc, OBJ_PALETTE_3 | 0x179
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccb4_Frame3[] = {
+    2,
+    0xf2, 0x1fe, OBJ_PALETTE_3 | 0x17b,
+    0xf6, 0x1fc, OBJ_PALETTE_3 | 0x17a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccb4_Frame4[] = {
+    1,
+    0xf5, 0x1fc, OBJ_PALETTE_3 | 0x17b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccb4_Frame5[] = {
+    1,
+    0xf4, 0x1fc, OBJ_PALETTE_3 | 0x17b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecddc_Frame0[] = {
+    2,
+    0xfa, 0x1f9, OBJ_PALETTE_3 | 0x178,
+    0xf9, 0x1fd, OBJ_PALETTE_3 | 0x17a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecddc_Frame1[] = {
+    3,
+    0xf6, 0x1f9, OBJ_PALETTE_3 | 0x179,
+    0xfa, 0x1fe, OBJ_PALETTE_3 | 0x178,
+    0xfe, 0x1fc, OBJ_PALETTE_3 | 0x178
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecddc_Frame2[] = {
+    5,
+    0xf4, 0x1f8, OBJ_PALETTE_3 | 0x17a,
+    0xf8, 0x1fe, OBJ_PALETTE_3 | 0x179,
+    0xfc, 0x1fc, OBJ_PALETTE_3 | 0x178,
+    0xf0, 0x1fc, OBJ_PALETTE_3 | 0x179,
+    0xfe, 0x1fb, OBJ_PALETTE_3 | 0x179
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecddc_Frame3[] = {
+    5,
+    0xf2, 0x1f7, OBJ_PALETTE_3 | 0x17b,
+    0xf6, 0x1fe, OBJ_PALETTE_3 | 0x17a,
+    0xfa, 0x1fc, OBJ_PALETTE_3 | 0x179,
+    0xee, 0x1fd, OBJ_PALETTE_3 | 0x17a,
+    0xfc, 0x1fb, OBJ_PALETTE_3 | 0x17a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecddc_Frame4[] = {
+    5,
+    0xf4, 0x1ff, OBJ_PALETTE_3 | 0x17b,
+    0xf8, 0x1fc, OBJ_PALETTE_3 | 0x17a,
+    0xec, 0x1fe, OBJ_PALETTE_3 | 0x17b,
+    0xfb, 0x1fa, OBJ_PALETTE_3 | 0x17b,
+    0xfc, 0x1fd, OBJ_PALETTE_3 | 0x179
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecddc_Frame5[] = {
+    2,
+    0xf6, 0x1fc, OBJ_PALETTE_3 | 0x17b,
+    0xfa, 0x1fd, OBJ_PALETTE_3 | 0x179
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecddc_Frame6[] = {
+    1,
+    0xf8, 0x1fd, OBJ_PALETTE_3 | 0x17a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecddc_Frame7[] = {
+    1,
+    0xf6, 0x1fd, OBJ_PALETTE_3 | 0x17b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd5c_Frame0[] = {
+    1,
+    0xf0, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x188
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd5c_Frame1[] = {
+    2,
+    0xec, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18a,
+    0xf0, OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_3 | 0x188
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd5c_Frame2[] = {
+    3,
+    0xe8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18c,
+    0xec, OBJ_SIZE_16x16 | 0x1, OBJ_PALETTE_3 | 0x18a,
+    0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_3 | 0x188
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd5c_Frame3[] = {
+    3,
+    0xe4, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18e,
+    0xe8, OBJ_SIZE_16x16 | 0x2, OBJ_PALETTE_3 | 0x18c,
+    0xec, OBJ_SIZE_16x16 | 0x1ef, OBJ_PALETTE_3 | 0x18a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd5c_Frame4[] = {
+    2,
+    0xe4, OBJ_SIZE_16x16 | 0x3, OBJ_PALETTE_3 | 0x18e,
+    0xe8, OBJ_SIZE_16x16 | 0x1ee, OBJ_PALETTE_3 | 0x18c
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd5c_Frame5[] = {
+    1,
+    0xe4, OBJ_SIZE_16x16 | 0x1ed, OBJ_PALETTE_3 | 0x18e
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd34_Frame0[] = {
+    1,
+    0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x188
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd34_Frame1[] = {
+    1,
+    0xf6, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18a
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd34_Frame2[] = {
+    1,
+    0xf4, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18c
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd34_Frame3[] = {
+    1,
+    0xf2, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18e
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd94_Frame0[] = {
+    3,
+    0xfb, 0x1fb, OBJ_PALETTE_3 | 0x15f,
+    0xfb, 0x1fd, OBJ_PALETTE_3 | 0x15f,
+    0xfb, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x188
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd94_Frame1[] = {
+    3,
+    0xf8, 0x1fa, OBJ_PALETTE_3 | 0x15f,
+    0xf8, 0x1fd, OBJ_PALETTE_3 | 0x15f,
+    0xfc, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x188
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd94_Frame2[] = {
+    5,
+    0xfd, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18a,
+    0xf4, 0x1fa, OBJ_PALETTE_3 | 0x15f,
+    0xf4, 0x1fe, OBJ_PALETTE_3 | 0x15f,
+    0xfa, 0x1fa, OBJ_PALETTE_3 | 0x17f,
+    0xfa, 0x1fe, OBJ_PALETTE_3 | 0x17f
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd94_Frame3[] = {
+    7,
+    0xf0, OBJ_X_FLIP | 0x1ff, OBJ_PALETTE_3 | 0x15f,
+    0xf0, OBJ_X_FLIP | 0x1f9, OBJ_PALETTE_3 | 0x15f,
+    0xf8, OBJ_X_FLIP | 0x1ff, OBJ_PALETTE_3 | 0x17f,
+    0xf8, OBJ_X_FLIP | 0x1f9, OBJ_PALETTE_3 | 0x17f,
+    0xfe, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18a,
+    0xec, 0x0, OBJ_PALETTE_3 | 0x15b,
+    0xec, 0x1f8, OBJ_PALETTE_3 | 0x15b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd94_Frame4[] = {
+    7,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0x17f,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0x17f,
+    0xf2, 0x1f8, OBJ_PALETTE_3 | 0x15f,
+    0xf2, 0x0, OBJ_PALETTE_3 | 0x15f,
+    0xea, 0x0, OBJ_PALETTE_3 | 0x15b,
+    0xea, 0x1f8, OBJ_PALETTE_3 | 0x15b,
+    0xff, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18c
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd94_Frame5[] = {
+    7,
+    0x0, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18c,
+    0xfa, OBJ_X_FLIP | 0x1f7, OBJ_PALETTE_3 | 0x17f,
+    0xfa, OBJ_X_FLIP | 0x1, OBJ_PALETTE_3 | 0x17f,
+    0xf5, OBJ_X_FLIP | 0x1f7, OBJ_PALETTE_3 | 0x15f,
+    0xf5, OBJ_X_FLIP | 0x1, OBJ_PALETTE_3 | 0x15f,
+    0xee, 0x0, OBJ_PALETTE_3 | 0x15b,
+    0xee, 0x1f8, OBJ_PALETTE_3 | 0x15b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd94_Frame6[] = {
+    5,
+    0xf8, 0x1f7, OBJ_PALETTE_3 | 0x15f,
+    0xf8, 0x1, OBJ_PALETTE_3 | 0x15f,
+    0xf4, 0x0, OBJ_PALETTE_3 | 0x15c,
+    0xf4, 0x1f8, OBJ_PALETTE_3 | 0x15c,
+    0x1, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18e
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ecd94_Frame7[] = {
+    5,
+    0x2, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18e,
+    0xfc, OBJ_X_FLIP | 0x1f6, OBJ_PALETTE_3 | 0x15f,
+    0xfc, OBJ_X_FLIP | 0x2, OBJ_PALETTE_3 | 0x15f,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0x15c,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0x15c
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame0[] = {
+    1,
+    0xfc, 0x1fc, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame1[] = {
+    2,
+    0xfa, 0x1fd, OBJ_PALETTE_6 | 0x148,
+    0xfc, 0x1fb, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame2[] = {
+    2,
+    0xf8, 0x1fd, OBJ_PALETTE_6 | 0x148,
+    0xfb, 0x1fa, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame3[] = {
+    2,
+    0xf7, 0x1fe, OBJ_PALETTE_6 | 0x148,
+    0xfa, 0x1f9, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame4[] = {
+    2,
+    0xf5, 0x1ff, OBJ_PALETTE_6 | 0x148,
+    0xf8, 0x1f9, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame5[] = {
+    2,
+    0xf3, 0x0, OBJ_PALETTE_6 | 0x148,
+    0xf7, 0x1f8, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame6[] = {
+    3,
+    0xf1, 0x1, OBJ_PALETTE_6 | 0x148,
+    0xfc, 0x1fc, OBJ_PALETTE_6 | 0x148,
+    0xf6, 0x1f7, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame7[] = {
+    3,
+    0xef, 0x1, OBJ_PALETTE_6 | 0x148,
+    0xfa, 0x1fc, OBJ_PALETTE_6 | 0x148,
+    0xf4, 0x1f6, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame8[] = {
+    2,
+    0xf8, 0x1fb, OBJ_PALETTE_6 | 0x148,
+    0xed, 0x2, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame9[] = {
+    1,
+    0xf6, 0x1fc, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3ece24_Frame10[] = {
+    1,
+    0xf4, 0x1fc, OBJ_PALETTE_6 | 0x148
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccec_Frame0[] = {
+    1,
+    0xfa, 0x1fa, OBJ_PALETTE_3 | 0x178
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccec_Frame1[] = {
+    2,
+    0xf8, 0x1f9, OBJ_PALETTE_3 | 0x179,
+    0xf8, 0x1fe, OBJ_PALETTE_3 | 0x178
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccec_Frame2[] = {
+    3,
+    0xf6, 0x1ff, OBJ_PALETTE_3 | 0x179,
+    0xf6, 0x1f8, OBJ_PALETTE_3 | 0x17a,
+    0xfa, 0x1fc, OBJ_PALETTE_3 | 0x178
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccec_Frame3[] = {
+    3,
+    0xf5, 0x1f7, OBJ_PALETTE_3 | 0x17b,
+    0xf5, 0x0, OBJ_PALETTE_3 | 0x17a,
+    0xf8, 0x1fb, OBJ_PALETTE_3 | 0x179
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccec_Frame4[] = {
+    3,
+    0xf4, 0x1, OBJ_PALETTE_3 | 0x17b,
+    0xf6, 0x1fa, OBJ_PALETTE_3 | 0x17a,
+    0xfa, 0x1ff, OBJ_PALETTE_3 | 0x179
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccec_Frame5[] = {
+    3,
+    0xf4, 0x1f9, OBJ_PALETTE_3 | 0x17b,
+    0xf8, 0x1ff, OBJ_PALETTE_3 | 0x17a,
+    0xf3, 0x2, OBJ_PALETTE_3 | 0x17b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccec_Frame6[] = {
+    2,
+    0xf6, 0x1ff, OBJ_PALETTE_3 | 0x17b,
+    0xf3, 0x1f8, OBJ_PALETTE_3 | 0x17b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eccec_Frame7[] = {
+    1,
+    0xf4, 0x1ff, OBJ_PALETTE_3 | 0x17b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eceb4_Frame0[] = {
+    2,
+    0xf9, 0x1ff, OBJ_PALETTE_3 | 0xc0,
+    0xf9, 0x1f9, OBJ_PALETTE_3 | 0xc0
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eceb4_Frame1[] = {
+    4,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0xc1,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0xc1,
+    0xf7, 0x0, OBJ_PALETTE_3 | 0x15b,
+    0xf7, 0x1f8, OBJ_PALETTE_3 | 0x15b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eceb4_Frame2[] = {
+    4,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0xc2,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0xc2,
+    0xf5, 0x0, OBJ_PALETTE_3 | 0x15b,
+    0xf5, 0x1f8, OBJ_PALETTE_3 | 0x15b
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eceb4_Frame3[] = {
+    4,
+    0xf2, 0x0, OBJ_PALETTE_3 | 0x15b,
+    0xf2, 0x1f8, OBJ_PALETTE_3 | 0x15b,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0xc3,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0xc3
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eceb4_Frame4[] = {
+    4,
+    0xef, 0x1, OBJ_PALETTE_3 | 0x15b,
+    0xef, 0x1f7, OBJ_PALETTE_3 | 0x15b,
+    0xf8, 0x1f8, OBJ_PALETTE_3 | 0xc4,
+    0xf8, 0x0, OBJ_PALETTE_3 | 0xc4
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eceb4_Frame5[] = {
+    4,
+    0xf3, 0x2, OBJ_PALETTE_3 | 0x15c,
+    0xf3, 0x1f6, OBJ_PALETTE_3 | 0x15c,
+    0xf9, 0x1f8, OBJ_PALETTE_3 | 0xc4,
+    0xf9, 0x0, OBJ_PALETTE_3 | 0xc4
+};
+
+static const u16 sSamusEnvironmentalEffectOam_3eceb4_Frame6[] = {
+    4,
+    0xf6, 0x2, OBJ_PALETTE_3 | 0x15c,
+    0xf6, 0x1f6, OBJ_PALETTE_3 | 0x15c,
+    0xf9, 0x1f8, OBJ_PALETTE_3 | 0xc4,
+    0xf9, 0x0, OBJ_PALETTE_3 | 0xc4
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ecba4[6] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecba4_Frame0,
+        .timer = 6
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecba4_Frame1,
+        .timer = 6
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecba4_Frame2,
+        .timer = 6
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecba4_Frame3,
+        .timer = 6
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecba4_Frame4,
+        .timer = 6
+    },
+    [5] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ecbd4[6] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecbd4_Frame0,
+        .timer = 6
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecbd4_Frame1,
+        .timer = 6
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecbd4_Frame2,
+        .timer = 6
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecbd4_Frame3,
+        .timer = 6
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecbd4_Frame4,
+        .timer = 6
+    },
+    [5] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ecc04[6] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc04_Frame0,
+        .timer = 6
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc04_Frame1,
+        .timer = 6
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc04_Frame2,
+        .timer = 6
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc04_Frame3,
+        .timer = 6
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc04_Frame4,
+        .timer = 6
+    },
+    [5] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ecc34[8] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc34_Frame0,
+        .timer = 4
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc34_Frame1,
+        .timer = 5
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc34_Frame2,
+        .timer = 6
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc34_Frame3,
+        .timer = 7
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc34_Frame4,
+        .timer = 8
+    },
+    [5] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc34_Frame5,
+        .timer = 9
+    },
+    [6] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc34_Frame6,
+        .timer = 10
+    },
+    [7] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ecc74[8] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc74_Frame0,
+        .timer = 4
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc74_Frame1,
+        .timer = 4
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc74_Frame2,
+        .timer = 4
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc74_Frame3,
+        .timer = 4
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc74_Frame4,
+        .timer = 4
+    },
+    [5] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc74_Frame5,
+        .timer = 4
+    },
+    [6] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecc74_Frame6,
+        .timer = 4
+    },
+    [7] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3eccb4[7] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccb4_Frame0,
+        .timer = 6
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccb4_Frame1,
+        .timer = 6
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccb4_Frame2,
+        .timer = 6
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccb4_Frame3,
+        .timer = 6
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccb4_Frame4,
+        .timer = 6
+    },
+    [5] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccb4_Frame5,
+        .timer = 6
+    },
+    [6] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3eccec[9] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccec_Frame0,
+        .timer = 6
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccec_Frame1,
+        .timer = 6
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccec_Frame2,
+        .timer = 6
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccec_Frame3,
+        .timer = 6
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccec_Frame4,
+        .timer = 6
+    },
+    [5] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccec_Frame5,
+        .timer = 6
+    },
+    [6] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccec_Frame6,
+        .timer = 6
+    },
+    [7] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eccec_Frame7,
+        .timer = 6
+    },
+    [8] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ecd34[5] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd34_Frame0,
+        .timer = 6
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd34_Frame1,
+        .timer = 6
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd34_Frame2,
+        .timer = 6
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd34_Frame3,
+        .timer = 6
+    },
+    [4] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ecd5c[7] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd5c_Frame0,
+        .timer = 8
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd5c_Frame1,
+        .timer = 8
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd5c_Frame2,
+        .timer = 8
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd5c_Frame3,
+        .timer = 8
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd5c_Frame4,
+        .timer = 8
+    },
+    [5] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd5c_Frame5,
+        .timer = 8
+    },
+    [6] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ecd94[9] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd94_Frame0,
+        .timer = 2
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd94_Frame1,
+        .timer = 3
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd94_Frame2,
+        .timer = 4
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd94_Frame3,
+        .timer = 4
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd94_Frame4,
+        .timer = 4
+    },
+    [5] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd94_Frame5,
+        .timer = 4
+    },
+    [6] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd94_Frame6,
+        .timer = 4
+    },
+    [7] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecd94_Frame7,
+        .timer = 4
+    },
+    [8] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ecddc[9] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecddc_Frame0,
+        .timer = 8
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecddc_Frame1,
+        .timer = 8
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecddc_Frame2,
+        .timer = 8
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecddc_Frame3,
+        .timer = 8
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecddc_Frame4,
+        .timer = 8
+    },
+    [5] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecddc_Frame5,
+        .timer = 8
+    },
+    [6] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecddc_Frame6,
+        .timer = 8
+    },
+    [7] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ecddc_Frame7,
+        .timer = 8
+    },
+    [8] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ece24[12] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame0,
+        .timer = 6
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame1,
+        .timer = 6
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame2,
+        .timer = 6
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame3,
+        .timer = 6
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame4,
+        .timer = 6
+    },
+    [5] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame5,
+        .timer = 6
+    },
+    [6] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame6,
+        .timer = 6
+    },
+    [7] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame7,
+        .timer = 6
+    },
+    [8] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame8,
+        .timer = 6
+    },
+    [9] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame9,
+        .timer = 6
+    },
+    [10] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece24_Frame10,
+        .timer = 6
+    },
+    [11] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3ece84[6] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece84_Frame0,
+        .timer = 6
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece84_Frame1,
+        .timer = 6
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece84_Frame2,
+        .timer = 6
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece84_Frame3,
+        .timer = 6
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3ece84_Frame4,
+        .timer = 6
+    },
+    [5] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sSamusEnvironmentalEffectOam_3eceb4[8] = {
+    [0] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eceb4_Frame0,
+        .timer = 2
+    },
+    [1] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eceb4_Frame1,
+        .timer = 3
+    },
+    [2] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eceb4_Frame2,
+        .timer = 4
+    },
+    [3] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eceb4_Frame3,
+        .timer = 4
+    },
+    [4] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eceb4_Frame4,
+        .timer = 4
+    },
+    [5] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eceb4_Frame5,
+        .timer = 4
+    },
+    [6] = {
+        .pFrame = sSamusEnvironmentalEffectOam_3eceb4_Frame6,
+        .timer = 4
+    },
+    [7] = FRAME_DATA_TERMINATOR
+};
 
 static const u16 sParticleOam_3ed1e4_Frame1[] = {
     1,

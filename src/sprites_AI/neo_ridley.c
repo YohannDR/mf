@@ -1283,7 +1283,7 @@ void RidleyFireInit(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.rotation = 0;
-    gCurrentSprite.scaling = 0x100;
+    gCurrentSprite.scaling = Q_8_8(1);
     gCurrentSprite.work1 = 16;
     gCurrentSprite.work3 = 0;
     gCurrentSprite.pose = SPRITE_POSE_IDLE;

@@ -1510,4 +1510,4 @@ const u32 sSector6_9_Bg0[] = {
     1, _INCBIN_U32("data/rooms/Sector6_9_Bg0.tt.lz")
 };
 
-static const u8 sBlob_5594a8_58b3cc[] = INCBIN_U8("data/Blob_5594a8_58b3cc.bin");
+static const u8 sBlob_5594a8_575a60[] = INCBIN_U8("data/Blob_5594a8_575a60.bin");
