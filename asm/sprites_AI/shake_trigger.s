@@ -241,7 +241,7 @@ _0803036E:
 	strh r0, [r3, #0xc]
 	strh r1, [r3, #0xe]
 	strh r0, [r3, #0x10]
-	ldr r0, _080303C4 @ =0x08337E0C
+	ldr r0, _080303C4 @ =sShakeTriggerOam_337e0c
 	str r0, [r3, #0x18]
 	strb r4, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -259,7 +259,7 @@ _080303B2:
 	.align 2, 0
 _080303BC: .4byte gCurrentSprite
 _080303C0: .4byte 0x0000FFFC
-_080303C4: .4byte 0x08337E0C
+_080303C4: .4byte sShakeTriggerOam_337e0c
 _080303C8: .4byte gDebugFlag
 _080303CC:
 	cmp r4, #0
@@ -280,14 +280,14 @@ _080303DA:
 	movs r0, #0x8b
 	lsls r0, r0, #2
 	bl SoundPlay_3b1c
-	ldr r0, _08030400 @ =0x08337DF4
+	ldr r0, _08030400 @ =sShakeTriggerOam_337df4
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r4, [r5, #0x16]
 	b _08030560
 	.align 2, 0
 _080303FC: .4byte gCurrentSprite
-_08030400: .4byte 0x08337DF4
+_08030400: .4byte sShakeTriggerOam_337df4
 _08030404:
 	cmp r4, #1
 	bne _08030430
@@ -305,11 +305,11 @@ _08030412:
 	adds r1, #0xa
 	movs r0, #8
 	strb r0, [r1]
-	ldr r0, _0803042C @ =0x08337DF4
+	ldr r0, _0803042C @ =sShakeTriggerOam_337df4
 	b _08030484
 	.align 2, 0
 _08030428: .4byte gCurrentSprite
-_0803042C: .4byte 0x08337DF4
+_0803042C: .4byte sShakeTriggerOam_337df4
 _08030430:
 	cmp r4, #4
 	bne _0803045C
@@ -327,11 +327,11 @@ _0803043E:
 	adds r1, #0xa
 	movs r0, #8
 	strb r0, [r1]
-	ldr r0, _08030458 @ =0x08337DF4
+	ldr r0, _08030458 @ =sShakeTriggerOam_337df4
 	b _08030484
 	.align 2, 0
 _08030454: .4byte gCurrentSprite
-_08030458: .4byte 0x08337DF4
+_08030458: .4byte sShakeTriggerOam_337df4
 _0803045C:
 	cmp r4, #2
 	bne _08030494
@@ -352,7 +352,7 @@ _0803046A:
 	adds r1, #1
 	movs r0, #0x14
 	strb r0, [r1]
-	ldr r0, _08030490 @ =0x08337E1C
+	ldr r0, _08030490 @ =sShakeTriggerOam_337e1c
 _08030484:
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
@@ -360,7 +360,7 @@ _08030484:
 	b _08030560
 	.align 2, 0
 _0803048C: .4byte gCurrentSprite
-_08030490: .4byte 0x08337E1C
+_08030490: .4byte sShakeTriggerOam_337e1c
 _08030494:
 	cmp r4, #3
 	bne _08030560
@@ -373,7 +373,7 @@ _08030494:
 	movs r3, #0
 	movs r0, #0x1c
 	strb r0, [r2]
-	ldr r0, _080304C0 @ =0x08337E1C
+	ldr r0, _080304C0 @ =sShakeTriggerOam_337e1c
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -382,7 +382,7 @@ _08030494:
 	b _08030560
 	.align 2, 0
 _080304BC: .4byte gCurrentSprite
-_080304C0: .4byte 0x08337E1C
+_080304C0: .4byte sShakeTriggerOam_337e1c
 _080304C4: .4byte 0x00000239
 _080304C8:
 	adds r1, r2, #0
@@ -529,7 +529,7 @@ _080305A8:
 	strh r0, [r4, #0xc]
 	strh r1, [r4, #0xe]
 	strh r0, [r4, #0x10]
-	ldr r0, _08030604 @ =0x08337E0C
+	ldr r0, _08030604 @ =sShakeTriggerOam_337e0c
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -546,7 +546,7 @@ _080305F6:
 	b _08030808
 	.align 2, 0
 _08030600: .4byte 0x0000FFFC
-_08030604: .4byte 0x08337E0C
+_08030604: .4byte sShakeTriggerOam_337e0c
 _08030608: .4byte gDebugFlag
 _0803060C:
 	movs r0, #6
@@ -563,7 +563,7 @@ _0803061A:
 _08030624:
 	movs r0, #0x18
 	strb r0, [r5]
-	ldr r0, _08030640 @ =0x08337DF4
+	ldr r0, _08030640 @ =sShakeTriggerOam_337df4
 	str r0, [r4, #0x18]
 	movs r0, #0
 	strb r0, [r4, #0x1c]
@@ -575,7 +575,7 @@ _08030624:
 	strb r0, [r1]
 	b _08030808
 	.align 2, 0
-_08030640: .4byte 0x08337DF4
+_08030640: .4byte sShakeTriggerOam_337df4
 _08030644:
 	adds r2, r4, #0
 	adds r2, #0x2e

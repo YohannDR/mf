@@ -174,16 +174,16 @@ RechargePadIdleInit: @ 0x0802C004
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0802C034
-	ldr r0, _0802C030 @ =0x083257E0
+	ldr r0, _0802C030 @ =sRechargePadOam_3257e0
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #0x46
 	b _0802C03C
 	.align 2, 0
 _0802C02C: .4byte gCurrentSprite
-_0802C030: .4byte 0x083257E0
+_0802C030: .4byte sRechargePadOam_3257e0
 _0802C034:
-	ldr r0, _0802C044 @ =0x083257D0
+	ldr r0, _0802C044 @ =sRechargePadOam_3257d0
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #2
@@ -192,7 +192,7 @@ _0802C03C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802C044: .4byte 0x083257D0
+_0802C044: .4byte sRechargePadOam_3257d0
 
 	thumb_func_start RechargePadIdle
 RechargePadIdle: @ 0x0802C048
@@ -213,7 +213,7 @@ RechargePadIdle: @ 0x0802C048
 	subs r1, #0xa
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _0802C080 @ =0x08325780
+	ldr r0, _0802C080 @ =sRechargePadOam_325780
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -222,7 +222,7 @@ RechargePadIdle: @ 0x0802C048
 	b _0802C090
 	.align 2, 0
 _0802C07C: .4byte gCurrentSprite
-_0802C080: .4byte 0x08325780
+_0802C080: .4byte sRechargePadOam_325780
 _0802C084: .4byte 0x00000101
 _0802C088:
 	ldr r0, _0802C094 @ =gCurrentSprite
@@ -247,7 +247,7 @@ RechargePadOpening: @ 0x0802C098
 	movs r3, #0
 	movs r0, #0x1a
 	strb r0, [r2]
-	ldr r0, _0802C0C0 @ =0x083257E0
+	ldr r0, _0802C0C0 @ =sRechargePadOam_3257e0
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -256,7 +256,7 @@ _0802C0B6:
 	bx r0
 	.align 2, 0
 _0802C0BC: .4byte gCurrentSprite
-_0802C0C0: .4byte 0x083257E0
+_0802C0C0: .4byte sRechargePadOam_3257e0
 
 	thumb_func_start RechargePadOpened
 RechargePadOpened: @ 0x0802C0C4
@@ -345,7 +345,7 @@ _0802C168:
 	adds r2, #0x24
 	movs r0, #0x1c
 	strb r0, [r2]
-	ldr r0, _0802C18C @ =0x083257A8
+	ldr r0, _0802C18C @ =sRechargePadOam_3257a8
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -358,7 +358,7 @@ _0802C182:
 	bx r0
 	.align 2, 0
 _0802C188: .4byte gCurrentSprite
-_0802C18C: .4byte 0x083257A8
+_0802C18C: .4byte sRechargePadOam_3257a8
 
 	thumb_func_start RechargePadClosing
 RechargePadClosing: @ 0x0802C190
@@ -569,7 +569,7 @@ RechargePadMonitorInit: @ 0x0802C2C8
 	adds r1, #0x24
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0802C338 @ =0x08325700
+	ldr r0, _0802C338 @ =sRechargePadOam_325700
 	str r0, [r5, #0x18]
 	strb r3, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -580,7 +580,7 @@ RechargePadMonitorInit: @ 0x0802C2C8
 _0802C32C: .4byte gCurrentSprite
 _0802C330: .4byte 0x0000FFFB
 _0802C334: .4byte 0x0000FFFC
-_0802C338: .4byte 0x08325700
+_0802C338: .4byte sRechargePadOam_325700
 
 	thumb_func_start RechargePadMonitorIdle
 RechargePadMonitorIdle: @ 0x0802C33C
@@ -598,7 +598,7 @@ RechargePadMonitorIdle: @ 0x0802C33C
 	ldrb r0, [r0]
 	cmp r0, #0x3a
 	bne _0802C370
-	ldr r0, _0802C37C @ =0x08325710
+	ldr r0, _0802C37C @ =sRechargePadOam_325710
 	str r0, [r3, #0x18]
 	movs r0, #0
 	strb r0, [r3, #0x1c]
@@ -615,7 +615,7 @@ _0802C370:
 	.align 2, 0
 _0802C374: .4byte gSpriteData
 _0802C378: .4byte gCurrentSprite
-_0802C37C: .4byte 0x08325710
+_0802C37C: .4byte sRechargePadOam_325710
 
 	thumb_func_start RechargePadMonitorExtended
 RechargePadMonitorExtended: @ 0x0802C380
@@ -624,7 +624,7 @@ RechargePadMonitorExtended: @ 0x0802C380
 	cmp r0, #0
 	beq _0802C3B4
 	ldr r1, _0802C3B8 @ =gCurrentSprite
-	ldr r0, _0802C3BC @ =0x08325738
+	ldr r0, _0802C3BC @ =sRechargePadOam_325738
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -647,7 +647,7 @@ _0802C3B4:
 	bx r0
 	.align 2, 0
 _0802C3B8: .4byte gCurrentSprite
-_0802C3BC: .4byte 0x08325738
+_0802C3BC: .4byte sRechargePadOam_325738
 _0802C3C0: .4byte sSamusSetPoseFunctionPointer
 _0802C3C4: .4byte gSamusData
 _0802C3C8: .4byte 0x00000111
@@ -668,7 +668,7 @@ RechargePadMonitorRetractingInit: @ 0x0802C3CC
 	ldrb r0, [r0]
 	cmp r0, #0x3c
 	bne _0802C400
-	ldr r0, _0802C40C @ =0x08325758
+	ldr r0, _0802C40C @ =sRechargePadOam_325758
 	str r0, [r3, #0x18]
 	movs r0, #0
 	strb r0, [r3, #0x1c]
@@ -685,7 +685,7 @@ _0802C400:
 	.align 2, 0
 _0802C404: .4byte gSpriteData
 _0802C408: .4byte gCurrentSprite
-_0802C40C: .4byte 0x08325758
+_0802C40C: .4byte sRechargePadOam_325758
 
 	thumb_func_start RechargePadMonitorRetracting
 RechargePadMonitorRetracting: @ 0x0802C410
@@ -694,7 +694,7 @@ RechargePadMonitorRetracting: @ 0x0802C410
 	cmp r0, #0
 	beq _0802C42C
 	ldr r1, _0802C430 @ =gCurrentSprite
-	ldr r0, _0802C434 @ =0x08325700
+	ldr r0, _0802C434 @ =sRechargePadOam_325700
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -707,7 +707,7 @@ _0802C42C:
 	bx r0
 	.align 2, 0
 _0802C430: .4byte gCurrentSprite
-_0802C434: .4byte 0x08325700
+_0802C434: .4byte sRechargePadOam_325700
 
 	thumb_func_start RechargePadScreenInit
 RechargePadScreenInit: @ 0x0802C438
@@ -758,7 +758,7 @@ RechargePadScreenInit: @ 0x0802C438
 	ldrb r2, [r5, #0x1e]
 	cmp r2, #0
 	beq _0802C4B4
-	ldr r0, _0802C4B0 @ =0x083256B8
+	ldr r0, _0802C4B0 @ =sRechargePadOam_3256b8
 	str r0, [r5, #0x18]
 	mov r0, ip
 	adds r0, #0x22
@@ -768,7 +768,7 @@ RechargePadScreenInit: @ 0x0802C438
 _0802C4A4: .4byte gCurrentSprite
 _0802C4A8: .4byte 0x0000FFFB
 _0802C4AC: .4byte 0x0000FFFC
-_0802C4B0: .4byte 0x083256B8
+_0802C4B0: .4byte sRechargePadOam_3256b8
 _0802C4B4:
 	mov r1, ip
 	adds r1, #0x22
@@ -782,31 +782,31 @@ _0802C4B4:
 	ldrb r0, [r0, #0x1d]
 	cmp r0, #0x28
 	bne _0802C4DC
-	ldr r0, _0802C4D8 @ =0x08325640
+	ldr r0, _0802C4D8 @ =sRechargePadOam_325640
 	mov r1, ip
 	str r0, [r1, #0x18]
 	b _0802C500
 	.align 2, 0
 _0802C4D4: .4byte gSpriteData
-_0802C4D8: .4byte 0x08325640
+_0802C4D8: .4byte sRechargePadOam_325640
 _0802C4DC:
 	cmp r0, #0x29
 	bne _0802C4EC
-	ldr r0, _0802C4E8 @ =0x08325668
+	ldr r0, _0802C4E8 @ =sRechargePadOam_325668
 	mov r2, ip
 	str r0, [r2, #0x18]
 	b _0802C500
 	.align 2, 0
-_0802C4E8: .4byte 0x08325668
+_0802C4E8: .4byte sRechargePadOam_325668
 _0802C4EC:
 	cmp r0, #0x2a
 	bne _0802C4FC
-	ldr r0, _0802C4F8 @ =0x08325690
+	ldr r0, _0802C4F8 @ =sRechargePadOam_325690
 	mov r5, ip
 	str r0, [r5, #0x18]
 	b _0802C500
 	.align 2, 0
-_0802C4F8: .4byte 0x08325690
+_0802C4F8: .4byte sRechargePadOam_325690
 _0802C4FC:
 	mov r0, ip
 	strh r2, [r0]

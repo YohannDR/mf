@@ -137,7 +137,7 @@ ZebesianWallInit: @ 0x0802B738
 	adds r1, #0x29
 	movs r0, #0x20
 	strb r0, [r1]
-	ldr r0, _0802B794 @ =0x083236E0
+	ldr r0, _0802B794 @ =sZebesianWallOam_3236e0
 	str r0, [r4, #0x18]
 	strb r6, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -153,7 +153,7 @@ ZebesianWallInit: @ 0x0802B738
 	.align 2, 0
 _0802B78C: .4byte gCurrentSprite
 _0802B790: .4byte sPrimarySpriteStats
-_0802B794: .4byte 0x083236E0
+_0802B794: .4byte sZebesianWallOam_3236e0
 _0802B798:
 	adds r2, r4, #0
 	adds r2, #0x21
@@ -322,7 +322,7 @@ _0802B8A4:
 	thumb_func_start ZebesianWallMovingVerticallyInit
 ZebesianWallMovingVerticallyInit: @ 0x0802B8D0
 	ldr r0, _0802B8EC @ =gCurrentSprite
-	ldr r1, _0802B8F0 @ =0x083236E0
+	ldr r1, _0802B8F0 @ =sZebesianWallOam_3236e0
 	str r1, [r0, #0x18]
 	movs r1, #0
 	strb r1, [r0, #0x1c]
@@ -337,7 +337,7 @@ ZebesianWallMovingVerticallyInit: @ 0x0802B8D0
 	bx lr
 	.align 2, 0
 _0802B8EC: .4byte gCurrentSprite
-_0802B8F0: .4byte 0x083236E0
+_0802B8F0: .4byte sZebesianWallOam_3236e0
 
 	thumb_func_start ZebesianWallMoveVertically
 ZebesianWallMoveVertically: @ 0x0802B8F4
@@ -416,7 +416,7 @@ _0802B978:
 	thumb_func_start ZebesianWallTurningAroundInit
 ZebesianWallTurningAroundInit: @ 0x0802B97C
 	ldr r1, _0802B990 @ =gCurrentSprite
-	ldr r0, _0802B994 @ =0x083237D0
+	ldr r0, _0802B994 @ =sZebesianWallOam_3237d0
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -427,7 +427,7 @@ ZebesianWallTurningAroundInit: @ 0x0802B97C
 	bx lr
 	.align 2, 0
 _0802B990: .4byte gCurrentSprite
-_0802B994: .4byte 0x083237D0
+_0802B994: .4byte sZebesianWallOam_3237d0
 
 	thumb_func_start ZebesianWallTurningAround
 ZebesianWallTurningAround: @ 0x0802B998
@@ -436,7 +436,7 @@ ZebesianWallTurningAround: @ 0x0802B998
 	cmp r0, #0
 	beq _0802B9F0
 	ldr r3, _0802B9D8 @ =gCurrentSprite
-	ldr r0, _0802B9DC @ =0x08323850
+	ldr r0, _0802B9DC @ =sZebesianWallOam_323850
 	str r0, [r3, #0x18]
 	movs r0, #0
 	strb r0, [r3, #0x1c]
@@ -464,7 +464,7 @@ ZebesianWallTurningAround: @ 0x0802B998
 	b _0802B9E4
 	.align 2, 0
 _0802B9D8: .4byte gCurrentSprite
-_0802B9DC: .4byte 0x08323850
+_0802B9DC: .4byte sZebesianWallOam_323850
 _0802B9E0:
 	ldrh r0, [r3, #4]
 	subs r0, #0x80
@@ -486,10 +486,10 @@ ZebesianWallJumping: @ 0x0802B9F8
 	adds r0, r2, #0
 	adds r0, #0x31
 	ldrb r5, [r0]
-	ldr r4, _0802BA2C @ =0x08321B64
+	ldr r4, _0802BA2C @ =sZebesianWallJumpYVelocity
 	lsls r0, r5, #1
 	adds r3, r0, r4
-	ldr r1, _0802BA30 @ =0x08321BA8
+	ldr r1, _0802BA30 @ =sZebesianWallJumpXVelocity
 	adds r0, r0, r1
 	ldrh r6, [r0]
 	ldrh r0, [r2, #2]
@@ -506,8 +506,8 @@ ZebesianWallJumping: @ 0x0802B9F8
 	b _0802BA38
 	.align 2, 0
 _0802BA28: .4byte gCurrentSprite
-_0802BA2C: .4byte 0x08321B64
-_0802BA30: .4byte 0x08321BA8
+_0802BA2C: .4byte sZebesianWallJumpYVelocity
+_0802BA30: .4byte sZebesianWallJumpXVelocity
 _0802BA34:
 	ldrh r0, [r2, #4]
 	subs r0, r0, r6
@@ -537,7 +537,7 @@ _0802BA60: .4byte 0x00007FFF
 	thumb_func_start ZebesianWallIdleInit
 ZebesianWallIdleInit: @ 0x0802BA64
 	ldr r1, _0802BA78 @ =gCurrentSprite
-	ldr r0, _0802BA7C @ =0x08323728
+	ldr r0, _0802BA7C @ =sZebesianWallOam_323728
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -548,7 +548,7 @@ ZebesianWallIdleInit: @ 0x0802BA64
 	bx lr
 	.align 2, 0
 _0802BA78: .4byte gCurrentSprite
-_0802BA7C: .4byte 0x08323728
+_0802BA7C: .4byte sZebesianWallOam_323728
 
 	thumb_func_start ZebesianWallIdle
 ZebesianWallIdle: @ 0x0802BA80
@@ -565,7 +565,7 @@ _0802BA8E:
 	thumb_func_start ZebesianWallShootingInit
 ZebesianWallShootingInit: @ 0x0802BA94
 	ldr r1, _0802BAA8 @ =gCurrentSprite
-	ldr r0, _0802BAAC @ =0x08323890
+	ldr r0, _0802BAAC @ =sZebesianWallOam_323890
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -576,7 +576,7 @@ ZebesianWallShootingInit: @ 0x0802BA94
 	bx lr
 	.align 2, 0
 _0802BAA8: .4byte gCurrentSprite
-_0802BAAC: .4byte 0x08323890
+_0802BAAC: .4byte sZebesianWallOam_323890
 
 	thumb_func_start ZebesianWallShooting
 ZebesianWallShooting: @ 0x0802BAB0
@@ -674,7 +674,7 @@ ZebesianBeamInit: @ 0x0802BB30
 	mov r6, ip
 	strh r0, [r6, #0xa]
 	strh r1, [r6, #0xc]
-	ldr r0, _0802BBAC @ =0x08323998
+	ldr r0, _0802BBAC @ =sZebesianWallOam_323998
 	str r0, [r6, #0x18]
 	strb r5, [r6, #0x1c]
 	strh r4, [r6, #0x16]
@@ -704,7 +704,7 @@ ZebesianBeamInit: @ 0x0802BB30
 _0802BBA0: .4byte gCurrentSprite
 _0802BBA4: .4byte 0x0000FFFB
 _0802BBA8: .4byte 0x0000FFF8
-_0802BBAC: .4byte 0x08323998
+_0802BBAC: .4byte sZebesianWallOam_323998
 _0802BBB0: .4byte 0x0000FFD0
 _0802BBB4:
 	movs r0, #0x10
@@ -727,7 +727,7 @@ ZebesianBeamSpawning: @ 0x0802BBCC
 	cmp r0, #0
 	beq _0802BC10
 	ldr r2, _0802BBFC @ =gCurrentSprite
-	ldr r0, _0802BC00 @ =0x083239C0
+	ldr r0, _0802BC00 @ =sZebesianWallOam_3239c0
 	str r0, [r2, #0x18]
 	movs r0, #0
 	strb r0, [r2, #0x1c]
@@ -747,7 +747,7 @@ ZebesianBeamSpawning: @ 0x0802BBCC
 	b _0802BC0E
 	.align 2, 0
 _0802BBFC: .4byte gCurrentSprite
-_0802BC00: .4byte 0x083239C0
+_0802BC00: .4byte sZebesianWallOam_3239c0
 _0802BC04: .4byte 0x0000FFA0
 _0802BC08:
 	movs r0, #0x20
@@ -766,7 +766,7 @@ ZebesianBeamExtending: @ 0x0802BC14
 	cmp r0, #0
 	beq _0802BC58
 	ldr r2, _0802BC44 @ =gCurrentSprite
-	ldr r0, _0802BC48 @ =0x08323968
+	ldr r0, _0802BC48 @ =sZebesianWallOam_323968
 	str r0, [r2, #0x18]
 	movs r0, #0
 	strb r0, [r2, #0x1c]
@@ -786,7 +786,7 @@ ZebesianBeamExtending: @ 0x0802BC14
 	b _0802BC56
 	.align 2, 0
 _0802BC44: .4byte gCurrentSprite
-_0802BC48: .4byte 0x08323968
+_0802BC48: .4byte sZebesianWallOam_323968
 _0802BC4C: .4byte 0x0000FF60
 _0802BC50:
 	movs r0, #0x20

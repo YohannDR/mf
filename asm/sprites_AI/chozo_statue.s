@@ -177,7 +177,7 @@ _0802D680:
 	movs r2, #0
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0802D6C8 @ =0x08328380
+	ldr r0, _0802D6C8 @ =sChozoStatueOam_328380
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -207,7 +207,7 @@ _0802D6BC:
 	bx r0
 	.align 2, 0
 _0802D6C4: .4byte 0x0000FFA0
-_0802D6C8: .4byte 0x08328380
+_0802D6C8: .4byte sChozoStatueOam_328380
 
 	thumb_func_start ChozoStatueIdle
 ChozoStatueIdle: @ 0x0802D6CC
@@ -372,7 +372,7 @@ _0802D804:
 	movs r2, #0
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0802D81C @ =0x08328390
+	ldr r0, _0802D81C @ =sChozoStatueOam_328390
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -380,7 +380,7 @@ _0802D804:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802D81C: .4byte 0x08328390
+_0802D81C: .4byte sChozoStatueOam_328390
 
 	thumb_func_start FakeChozoBallIdle
 FakeChozoBallIdle: @ 0x0802D820
@@ -413,7 +413,7 @@ FakeChozoBallExposedInit: @ 0x0802D838
 	adds r1, r5, #0
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r0, _0802D874 @ =0x083283A0
+	ldr r0, _0802D874 @ =sChozoStatueOam_3283a0
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -429,7 +429,7 @@ FakeChozoBallExposedInit: @ 0x0802D838
 	bx r0
 	.align 2, 0
 _0802D870: .4byte gCurrentSprite
-_0802D874: .4byte 0x083283A0
+_0802D874: .4byte sChozoStatueOam_3283a0
 
 	thumb_func_start FakeChozoBallExposed
 FakeChozoBallExposed: @ 0x0802D878

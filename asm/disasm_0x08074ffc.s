@@ -6,7 +6,7 @@
 MapScreenCountTanks: @ 0x08075D28
 	push {r4, r5, r6, r7, lr}
 	ldr r4, _08075DE4 @ =gNonGameplayRam
-	ldr r7, _08075DE8 @ =0x08575F88
+	ldr r7, _08075DE8 @ =sNumberOfTanksPerArea
 	ldrb r1, [r7, #0x15]
 	ldr r2, _08075DEC @ =0x0000027B
 	adds r0, r4, r2
@@ -97,7 +97,7 @@ MapScreenCountTanks: @ 0x08075D28
 	b _08075E0A
 	.align 2, 0
 _08075DE4: .4byte gNonGameplayRam
-_08075DE8: .4byte 0x08575F88
+_08075DE8: .4byte sNumberOfTanksPerArea
 _08075DEC: .4byte 0x0000027B
 _08075DF0: .4byte gEquipment
 _08075DF4: .4byte 0x0000027E
@@ -7409,7 +7409,7 @@ DisplayMessage: @ 0x080798E0
 	bhi _08079964
 	movs r2, #0x12
 	ldr r0, _0807992C @ =gEventCounter
-	ldr r1, _08079930 @ =0x08575FA0
+	ldr r1, _08079930 @ =sObtainItemEvents
 	ldrb r0, [r0]
 	ldr r7, _08079934 @ =0x0879CDF4
 	ldr r6, _08079938 @ =0x03000011
@@ -7429,17 +7429,17 @@ _0807990E:
 _0807991C:
 	cmp r2, #0
 	beq _08079940
-	ldr r1, _0807993C @ =0x08575FB4
+	ldr r1, _0807993C @ =sAbilityRamValues
 	lsls r0, r2, #3
 	adds r0, r0, r1
 	ldrb r2, [r0, #4]
 	b _08079952
 	.align 2, 0
 _0807992C: .4byte gEventCounter
-_08079930: .4byte 0x08575FA0
+_08079930: .4byte sObtainItemEvents
 _08079934: .4byte 0x0879CDF4
 _08079938: .4byte 0x03000011
-_0807993C: .4byte 0x08575FB4
+_0807993C: .4byte sAbilityRamValues
 _08079940:
 	ldr r1, _08079970 @ =gEquipment
 	ldrb r0, [r1, #0xd]
@@ -8725,7 +8725,7 @@ NavigationConversationGetCurrentConversation: @ 0x0807A2DC
 	push {r4, r5, lr}
 	ldr r0, _0807A330 @ =gEventCounter
 	ldrb r2, [r0]
-	ldr r3, _0807A334 @ =0x08575A60
+	ldr r3, _0807A334 @ =sEventLocationAndNavigationInfo
 	ldr r4, _0807A338 @ =gNonGameplayRam
 	ldr r5, _0807A33C @ =gPreviousNavigationConversation
 	cmp r2, #0
@@ -8768,7 +8768,7 @@ _0807A310:
 	b _0807A34A
 	.align 2, 0
 _0807A330: .4byte gEventCounter
-_0807A334: .4byte 0x08575A60
+_0807A334: .4byte sEventLocationAndNavigationInfo
 _0807A338: .4byte gNonGameplayRam
 _0807A33C: .4byte gPreviousNavigationConversation
 _0807A340: .4byte 0x00000221
@@ -11935,7 +11935,7 @@ GetFlashingSectorNumber: @ 0x0807BBF0
 	ldr r1, _0807BC84 @ =gEventCounter
 	ldrb r2, [r1]
 	adds r6, r0, #0
-	ldr r1, _0807BC88 @ =0x08575A60
+	ldr r1, _0807BC88 @ =sEventLocationAndNavigationInfo
 	ldr r7, _0807BC8C @ =gPreviousNavigationConversation
 	cmp r2, #0
 	ble _0807BC2A
@@ -12008,7 +12008,7 @@ _0807BC76:
 	.align 2, 0
 _0807BC80: .4byte 0x0300004D
 _0807BC84: .4byte gEventCounter
-_0807BC88: .4byte 0x08575A60
+_0807BC88: .4byte sEventLocationAndNavigationInfo
 _0807BC8C: .4byte gPreviousNavigationConversation
 _0807BC90: .4byte 0x085766E4
 _0807BC94: .4byte 0x08576066
@@ -16290,7 +16290,7 @@ SetAbilityCount: @ 0x0807DF04
 	ldr r6, _0807DF5C @ =gEquipment
 	cmp r2, #0
 	beq _0807DF42
-	ldr r0, _0807DF60 @ =0x08575FB4
+	ldr r0, _0807DF60 @ =sAbilityRamValues
 	movs r5, #0
 	movs r4, #0
 	movs r3, #0
@@ -16324,7 +16324,7 @@ _0807DF42:
 	.align 2, 0
 _0807DF58: .4byte gAbilityCount
 _0807DF5C: .4byte gEquipment
-_0807DF60: .4byte 0x08575FB4
+_0807DF60: .4byte sAbilityRamValues
 
 	thumb_func_start DebugMenuModifyAbilityCount
 DebugMenuModifyAbilityCount: @ 0x0807DF64
@@ -16417,7 +16417,7 @@ _0807E000:
 	ldrb r0, [r4]
 	cmp r3, r0
 	bgt _0807E038
-	ldr r2, _0807E058 @ =0x08575FB4
+	ldr r2, _0807E058 @ =sAbilityRamValues
 _0807E016:
 	ldrb r1, [r2]
 	ldr r0, [sp]
@@ -16452,7 +16452,7 @@ _0807E044:
 	.align 2, 0
 _0807E050: .4byte gAbilityCount
 _0807E054: .4byte gEquipment
-_0807E058: .4byte 0x08575FB4
+_0807E058: .4byte sAbilityRamValues
 
 	thumb_func_start DebugMenuDrawAbilityCount
 DebugMenuDrawAbilityCount: @ 0x0807E05C

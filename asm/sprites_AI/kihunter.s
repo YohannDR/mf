@@ -256,7 +256,7 @@ _08031E64:
 	strh r0, [r4, #0xe]
 	movs r0, #0x28
 	strh r0, [r4, #0x10]
-	ldr r0, _08031ED0 @ =0x0833E5B4
+	ldr r0, _08031ED0 @ =sKihunterOam_33e5b4
 	str r0, [r4, #0x18]
 	strb r1, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -288,7 +288,7 @@ _08031EAC:
 	b _08031EDC
 	.align 2, 0
 _08031ECC: .4byte 0x0000FFA0
-_08031ED0: .4byte 0x0833E5B4
+_08031ED0: .4byte sKihunterOam_33e5b4
 _08031ED4: .4byte sPrimarySpriteStats
 _08031ED8:
 	movs r0, #1
@@ -326,23 +326,23 @@ KihunterGroundJumpWarningInit: @ 0x08031EE4
 	adds r0, #0x30
 	movs r1, #0
 	strb r1, [r0]
-	ldr r0, _08031F24 @ =0x0833E554
+	ldr r0, _08031F24 @ =sKihunterOam_33e554
 	b _08031F30
 	.align 2, 0
 _08031F1C: .4byte gCurrentSprite
 _08031F20: .4byte gSpriteRandomNumber
-_08031F24: .4byte 0x0833E554
+_08031F24: .4byte sKihunterOam_33e554
 _08031F28:
 	adds r0, r3, #0
 	adds r0, #0x30
 	strb r2, [r0]
-	ldr r0, _08031F38 @ =0x0833E57C
+	ldr r0, _08031F38 @ =sKihunterOam_33e57c
 _08031F30:
 	str r0, [r3, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08031F38: .4byte 0x0833E57C
+_08031F38: .4byte sKihunterOam_33e57c
 
 	thumb_func_start KihhunterGroundJumpInit
 KihhunterGroundJumpInit: @ 0x08031F3C
@@ -366,16 +366,16 @@ KihhunterGroundJumpInit: @ 0x08031F3C
 	ldrh r0, [r3, #2]
 	subs r0, #0x30
 	strh r0, [r3, #2]
-	ldr r0, _08031F6C @ =0x0833E70C
+	ldr r0, _08031F6C @ =sKihunterOam_33e70c
 	b _08031F78
 	.align 2, 0
 _08031F68: .4byte gCurrentSprite
-_08031F6C: .4byte 0x0833E70C
+_08031F6C: .4byte sKihunterOam_33e70c
 _08031F70:
 	ldrh r0, [r3, #2]
 	subs r0, #0x20
 	strh r0, [r3, #2]
-	ldr r0, _08031F84 @ =0x0833E6FC
+	ldr r0, _08031F84 @ =sKihunterOam_33e6fc
 _08031F78:
 	str r0, [r3, #0x18]
 	ldr r0, _08031F88 @ =0x00000175
@@ -383,7 +383,7 @@ _08031F78:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08031F84: .4byte 0x0833E6FC
+_08031F84: .4byte sKihunterOam_33e6fc
 _08031F88: .4byte 0x00000175
 
 	thumb_func_start KihunterGroundLandingInit
@@ -396,12 +396,12 @@ KihunterGroundLandingInit: @ 0x08031F8C
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _08031FA8 @ =0x0833E5A4
+	ldr r0, _08031FA8 @ =sKihunterOam_33e5a4
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _08031FA4: .4byte gCurrentSprite
-_08031FA8: .4byte 0x0833E5A4
+_08031FA8: .4byte sKihunterOam_33e5a4
 
 	thumb_func_start KihunterIdleInit
 KihunterIdleInit: @ 0x08031FAC
@@ -413,12 +413,12 @@ KihunterIdleInit: @ 0x08031FAC
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _08031FC8 @ =0x0833E5B4
+	ldr r0, _08031FC8 @ =sKihunterOam_33e5b4
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _08031FC4: .4byte gCurrentSprite
-_08031FC8: .4byte 0x0833E5B4
+_08031FC8: .4byte sKihunterOam_33e5b4
 
 	thumb_func_start KihunterFallingInit
 KihunterFallingInit: @ 0x08031FCC
@@ -433,12 +433,12 @@ KihunterFallingInit: @ 0x08031FCC
 	strb r1, [r0]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
-	ldr r0, _08031FEC @ =0x0833E70C
+	ldr r0, _08031FEC @ =sKihunterOam_33e70c
 	str r0, [r3, #0x18]
 	bx lr
 	.align 2, 0
 _08031FE8: .4byte gCurrentSprite
-_08031FEC: .4byte 0x0833E70C
+_08031FEC: .4byte sKihunterOam_33e70c
 
 	thumb_func_start KihunterGroundTurningAroundInit
 KihunterGroundTurningAroundInit: @ 0x08031FF0
@@ -453,12 +453,12 @@ KihunterGroundTurningAroundInit: @ 0x08031FF0
 	strh r2, [r3, #0x16]
 	adds r1, #0xb
 	strb r0, [r1]
-	ldr r0, _08032010 @ =0x0833E5EC
+	ldr r0, _08032010 @ =sKihunterOam_33e5ec
 	str r0, [r3, #0x18]
 	bx lr
 	.align 2, 0
 _0803200C: .4byte gCurrentSprite
-_08032010: .4byte 0x0833E5EC
+_08032010: .4byte sKihunterOam_33e5ec
 
 	thumb_func_start KihunterGroundSpittingInit
 KihunterGroundSpittingInit: @ 0x08032014
@@ -469,7 +469,7 @@ KihunterGroundSpittingInit: @ 0x08032014
 	movs r2, #0
 	movs r0, #0x2a
 	strb r0, [r1]
-	ldr r0, _08032044 @ =0x0833E684
+	ldr r0, _08032044 @ =sKihunterOam_33e684
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -486,7 +486,7 @@ KihunterGroundSpittingInit: @ 0x08032014
 	b _08032054
 	.align 2, 0
 _08032040: .4byte gCurrentSprite
-_08032044: .4byte 0x0833E684
+_08032044: .4byte sKihunterOam_33e684
 _08032048: .4byte gSpriteRandomNumber
 _0803204C:
 	adds r1, r3, #0
@@ -546,13 +546,13 @@ KihunterGroundJumping: @ 0x080320A8
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _080320C4
-	ldr r1, _080320C0 @ =0x0833C266
+	ldr r1, _080320C0 @ =sKihunterGroundLowJumpSpeed
 	b _080320C6
 	.align 2, 0
 _080320BC: .4byte gCurrentSprite
-_080320C0: .4byte 0x0833C266
+_080320C0: .4byte sKihunterGroundLowJumpSpeed
 _080320C4:
-	ldr r1, _08032108 @ =0x0833C252
+	ldr r1, _08032108 @ =sKihunterGroundHighJumpSpeed
 _080320C6:
 	adds r0, r2, #0
 	adds r0, #0x31
@@ -586,7 +586,7 @@ _080320C6:
 	subs r0, #4
 	b _08032148
 	.align 2, 0
-_08032108: .4byte 0x0833C252
+_08032108: .4byte sKihunterGroundHighJumpSpeed
 _0803210C: .4byte gCurrentSprite
 _08032110: .4byte gPreviousCollisionCheck
 _08032114:
@@ -948,7 +948,7 @@ _080323B8:
 	strb r0, [r1]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
-	ldr r0, _080323E8 @ =0x0833E604
+	ldr r0, _080323E8 @ =sKihunterOam_33e604
 	str r0, [r4, #0x18]
 _080323DC:
 	pop {r4}
@@ -956,7 +956,7 @@ _080323DC:
 	bx r0
 	.align 2, 0
 _080323E4: .4byte gCurrentSprite
-_080323E8: .4byte 0x0833E604
+_080323E8: .4byte sKihunterOam_33e604
 
 	thumb_func_start KihunterGroundTurningAroundSecondPart
 KihunterGroundTurningAroundSecondPart: @ 0x080323EC
@@ -1195,7 +1195,7 @@ _08032590:
 	strh r0, [r4, #0xe]
 	movs r0, #0x28
 	strh r0, [r4, #0x10]
-	ldr r0, _08032600 @ =0x0833E454
+	ldr r0, _08032600 @ =sKihunterOam_33e454
 	str r0, [r4, #0x18]
 	strb r1, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -1232,7 +1232,7 @@ _08032590:
 	b _08032610
 	.align 2, 0
 _080325FC: .4byte 0x0000FFA0
-_08032600: .4byte 0x0833E454
+_08032600: .4byte sKihunterOam_33e454
 _08032604: .4byte sPrimarySpriteStats
 _08032608: .4byte 0x0000FFFB
 _0803260C:
@@ -1284,7 +1284,7 @@ KihunterFlyingIdleInit: @ 0x08032654
 	strb r2, [r3, #0x1c]
 	movs r1, #0
 	strh r2, [r3, #0x16]
-	ldr r0, _0803267C @ =0x0833E454
+	ldr r0, _0803267C @ =sKihunterOam_33e454
 	str r0, [r3, #0x18]
 	adds r0, r3, #0
 	adds r0, #0x2e
@@ -1294,7 +1294,7 @@ KihunterFlyingIdleInit: @ 0x08032654
 	bx lr
 	.align 2, 0
 _08032678: .4byte gCurrentSprite
-_0803267C: .4byte 0x0833E454
+_0803267C: .4byte sKihunterOam_33e454
 
 	thumb_func_start KihunterFlyingTurningAroundInit
 KihunterFlyingTurningAroundInit: @ 0x08032680
@@ -1306,12 +1306,12 @@ KihunterFlyingTurningAroundInit: @ 0x08032680
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0803269C @ =0x0833E5EC
+	ldr r0, _0803269C @ =sKihunterOam_33e5ec
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _08032698: .4byte gCurrentSprite
-_0803269C: .4byte 0x0833E5EC
+_0803269C: .4byte sKihunterOam_33e5ec
 
 	thumb_func_start KihunterFlyingIdle
 KihunterFlyingIdle: @ 0x080326A0
@@ -1322,7 +1322,7 @@ KihunterFlyingIdle: @ 0x080326A0
 	adds r6, r3, #0
 	adds r6, #0x31
 	ldrb r2, [r6]
-	ldr r5, _080326DC @ =0x0833C27A
+	ldr r5, _080326DC @ =sKihunterFlyingIdleYMovement
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r4, [r0]
@@ -1345,7 +1345,7 @@ _080326C4:
 	b _080326EE
 	.align 2, 0
 _080326D8: .4byte gCurrentSprite
-_080326DC: .4byte 0x0833C27A
+_080326DC: .4byte sKihunterFlyingIdleYMovement
 _080326E0: .4byte 0x00007FFF
 _080326E4:
 	ldrh r0, [r3, #2]
@@ -1474,7 +1474,7 @@ KihunterTurningAround: @ 0x080327B4
 	strb r0, [r1]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
-	ldr r0, _080327E8 @ =0x0833E604
+	ldr r0, _080327E8 @ =sKihunterOam_33e604
 	str r0, [r2, #0x18]
 _080327DC:
 	pop {r4}
@@ -1482,7 +1482,7 @@ _080327DC:
 	bx r0
 	.align 2, 0
 _080327E4: .4byte gCurrentSprite
-_080327E8: .4byte 0x0833E604
+_080327E8: .4byte sKihunterOam_33e604
 
 	thumb_func_start KihunterFlyingTurningAroundSecondPart
 KihunterFlyingTurningAroundSecondPart: @ 0x080327EC
@@ -1512,7 +1512,7 @@ KihunterFlyingUpdateSwipeAnimation: @ 0x08032800
 	cmp r0, #0
 	beq _0803284E
 	ldr r0, [r4, #0x18]
-	ldr r1, _08032834 @ =0x0833E50C
+	ldr r1, _08032834 @ =sKihunterOam_33e50c
 	cmp r0, r1
 	beq _08032838
 	str r1, [r4, #0x18]
@@ -1522,7 +1522,7 @@ KihunterFlyingUpdateSwipeAnimation: @ 0x08032800
 	b _0803287E
 	.align 2, 0
 _08032830: .4byte gCurrentSprite
-_08032834: .4byte 0x0833E50C
+_08032834: .4byte sKihunterOam_33e50c
 _08032838:
 	ldrh r0, [r4, #0x16]
 	cmp r0, #2
@@ -1536,7 +1536,7 @@ _08032838:
 	b _0803287E
 _0803284E:
 	ldr r1, [r4, #0x18]
-	ldr r0, _08032884 @ =0x0833E50C
+	ldr r0, _08032884 @ =sKihunterOam_33e50c
 	cmp r1, r0
 	bne _0803287E
 	ldrh r0, [r4, #0x16]
@@ -1553,7 +1553,7 @@ _0803286A:
 	cmp r0, #0
 	beq _0803287E
 	ldr r0, _08032888 @ =gCurrentSprite
-	ldr r1, _0803288C @ =0x0833E454
+	ldr r1, _0803288C @ =sKihunterOam_33e454
 	str r1, [r0, #0x18]
 	movs r1, #0
 	strb r1, [r0, #0x1c]
@@ -1563,9 +1563,9 @@ _0803287E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08032884: .4byte 0x0833E50C
+_08032884: .4byte sKihunterOam_33e50c
 _08032888: .4byte gCurrentSprite
-_0803288C: .4byte 0x0833E454
+_0803288C: .4byte sKihunterOam_33e454
 
 	thumb_func_start KihunterFlyingSwoopingDownInit
 KihunterFlyingSwoopingDownInit: @ 0x08032890
@@ -1603,7 +1603,7 @@ KihunterFlyingSwoopingDownInit: @ 0x08032890
 	cmp r0, #0xa
 	bls _08032900
 _080328D2:
-	ldr r0, _080328F8 @ =0x0833E4A4
+	ldr r0, _080328F8 @ =sKihunterOam_33e4a4
 	str r0, [r3, #0x18]
 	strb r4, [r3, #0x1c]
 	strh r4, [r3, #0x16]
@@ -1618,7 +1618,7 @@ _080328D2:
 _080328EC: .4byte gCurrentSprite
 _080328F0: .4byte gSamusData
 _080328F4: .4byte gSpriteRandomNumber
-_080328F8: .4byte 0x0833E4A4
+_080328F8: .4byte sKihunterOam_33e4a4
 _080328FC: .4byte 0x00000177
 _08032900:
 	ldr r0, _0803290C @ =0x00000179
@@ -1714,7 +1714,7 @@ _080329B0:
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _080329D8 @ =0x0833C2DC
+	ldr r5, _080329D8 @ =KihunterFlyingSwoopingDownYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -1731,7 +1731,7 @@ _080329B0:
 	adds r0, r0, r1
 	b _080329EA
 	.align 2, 0
-_080329D8: .4byte 0x0833C2DC
+_080329D8: .4byte KihunterFlyingSwoopingDownYSpeed
 _080329DC: .4byte 0x00007FFF
 _080329E0:
 	adds r0, r2, #1
@@ -1815,7 +1815,7 @@ _08032A64:
 	adds r6, r4, #0
 	adds r6, #0x31
 	ldrb r2, [r6]
-	ldr r5, _08032A9C @ =0x0833C2FC
+	ldr r5, _08032A9C @ =KihunterFlyingSwoopingAcrossYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -1833,7 +1833,7 @@ _08032A64:
 	strh r0, [r4, #2]
 	b _08032AC2
 	.align 2, 0
-_08032A9C: .4byte 0x0833C2FC
+_08032A9C: .4byte KihunterFlyingSwoopingAcrossYSpeed
 _08032AA0: .4byte 0x00007FFF
 _08032AA4:
 	adds r0, r2, #1
@@ -1876,7 +1876,7 @@ KihunterFlyingAfterSwoopingInit: @ 0x08032AC8
 	ldrb r0, [r1]
 	cmp r0, #3
 	bne _08032AF4
-	ldr r0, _08032AFC @ =0x0833E454
+	ldr r0, _08032AFC @ =sKihunterOam_33e454
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -1887,7 +1887,7 @@ _08032AF4:
 	bx r0
 	.align 2, 0
 _08032AF8: .4byte gCurrentSprite
-_08032AFC: .4byte 0x0833E454
+_08032AFC: .4byte sKihunterOam_33e454
 
 	thumb_func_start KihunterFlyingAfterSwooping
 KihunterFlyingAfterSwooping: @ 0x08032B00
@@ -1901,10 +1901,10 @@ KihunterFlyingAfterSwooping: @ 0x08032B00
 	beq _08032B24
 	ldr r2, _08032B7C @ =gCurrentSprite
 	ldr r1, [r2, #0x18]
-	ldr r0, _08032B80 @ =0x0833E50C
+	ldr r0, _08032B80 @ =sKihunterOam_33e50c
 	cmp r1, r0
 	bne _08032B24
-	ldr r0, _08032B84 @ =0x0833E454
+	ldr r0, _08032B84 @ =sKihunterOam_33e454
 	str r0, [r2, #0x18]
 	strb r7, [r2, #0x1c]
 	strh r7, [r2, #0x16]
@@ -1934,7 +1934,7 @@ _08032B24:
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r1, _08032B8C @ =0x0833C30C
+	ldr r1, _08032B8C @ =KihunterFlyingAfterSwoopingAccceleratingYSpeed
 	mov r8, r1
 	lsls r0, r2, #1
 	add r0, r8
@@ -1953,10 +1953,10 @@ _08032B24:
 	b _08032C00
 	.align 2, 0
 _08032B7C: .4byte gCurrentSprite
-_08032B80: .4byte 0x0833E50C
-_08032B84: .4byte 0x0833E454
+_08032B80: .4byte sKihunterOam_33e50c
+_08032B84: .4byte sKihunterOam_33e454
 _08032B88: .4byte gPreviousCollisionCheck
-_08032B8C: .4byte 0x0833C30C
+_08032B8C: .4byte KihunterFlyingAfterSwoopingAccceleratingYSpeed
 _08032B90: .4byte 0x00007FFF
 _08032B94:
 	adds r0, r2, #1
@@ -1983,7 +1983,7 @@ _08032BAE:
 	adds r5, r5, r4
 	mov r8, r5
 	ldrb r2, [r5]
-	ldr r6, _08032BE4 @ =0x0833C324
+	ldr r6, _08032BE4 @ =KihunterFlyingAfterSwoopingDeceleratingYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r6
 	ldrh r1, [r0]
@@ -2001,7 +2001,7 @@ _08032BAE:
 	strh r0, [r4, #2]
 	b _08032C00
 	.align 2, 0
-_08032BE4: .4byte 0x0833C324
+_08032BE4: .4byte KihunterFlyingAfterSwoopingDeceleratingYSpeed
 _08032BE8: .4byte 0x00007FFF
 _08032BEC:
 	adds r0, r2, #1
@@ -2123,7 +2123,7 @@ _08032C88:
 	subs r1, #2
 	movs r0, #3
 	strb r0, [r1]
-	ldr r0, _08032CEC @ =0x0833E474
+	ldr r0, _08032CEC @ =sKihunterOam_33e474
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -2135,7 +2135,7 @@ _08032CDC: .4byte gCurrentSprite
 _08032CE0: .4byte gSpriteData
 _08032CE4: .4byte 0x0000FFFB
 _08032CE8: .4byte 0x0000FFFC
-_08032CEC: .4byte 0x0833E474
+_08032CEC: .4byte sKihunterOam_33e474
 
 	thumb_func_start KihunterWingsIdle
 KihunterWingsIdle: @ 0x08032CF0
@@ -2216,7 +2216,7 @@ _08032D6E:
 	movs r2, #0
 	movs r0, #0x38
 	strb r0, [r1]
-	ldr r0, _08032DB0 @ =0x0833E4C4
+	ldr r0, _08032DB0 @ =sKihunterOam_33e4c4
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	movs r1, #0
@@ -2237,7 +2237,7 @@ _08032D6E:
 	b _08032DB8
 	.align 2, 0
 _08032DAC: .4byte 0x0000FFBF
-_08032DB0: .4byte 0x0833E4C4
+_08032DB0: .4byte sKihunterOam_33e4c4
 _08032DB4:
 	ldrh r0, [r3, #4]
 	adds r0, #0x20
@@ -2345,7 +2345,7 @@ KihunterSpitInit: @ 0x08032E34
 	strh r1, [r2, #0xc]
 	strh r0, [r2, #0xe]
 	strh r1, [r2, #0x10]
-	ldr r0, _08032EA0 @ =0x0833E64C
+	ldr r0, _08032EA0 @ =sKihunterOam_33e64c
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -2366,7 +2366,7 @@ KihunterSpitInit: @ 0x08032E34
 _08032E94: .4byte gCurrentSprite
 _08032E98: .4byte 0x0000FFFB
 _08032E9C: .4byte 0x0000FFF8
-_08032EA0: .4byte 0x0833E64C
+_08032EA0: .4byte sKihunterOam_33e64c
 
 	thumb_func_start KihunterSpitMoving
 KihunterSpitMoving: @ 0x08032EA4
@@ -2394,7 +2394,7 @@ _08032ED0:
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _08032EF8 @ =0x0833C228
+	ldr r5, _08032EF8 @ =sKihunterSpitFallingSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -2411,7 +2411,7 @@ _08032ED0:
 	adds r0, r0, r1
 	b _08032F0A
 	.align 2, 0
-_08032EF8: .4byte 0x0833C228
+_08032EF8: .4byte sKihunterSpitFallingSpeed
 _08032EFC: .4byte 0x00007FFF
 _08032F00:
 	adds r0, r2, #1
@@ -2453,14 +2453,14 @@ KihunterSpitExplodingInit: @ 0x08032F30
 	adds r0, r3, #0
 	adds r0, #0x25
 	strb r1, [r0]
-	ldr r0, _08032F50 @ =0x0833E664
+	ldr r0, _08032F50 @ =sKihunterOam_33e664
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
 	bx lr
 	.align 2, 0
 _08032F4C: .4byte gCurrentSprite
-_08032F50: .4byte 0x0833E664
+_08032F50: .4byte sKihunterOam_33e664
 
 	thumb_func_start KihunterSpitExploding
 KihunterSpitExploding: @ 0x08032F54
@@ -2529,7 +2529,7 @@ _08032FA0:
 	subs r1, #0x13
 	movs r0, #0xd
 	strb r0, [r1]
-	ldr r0, _08033040 @ =0x0833E61C
+	ldr r0, _08033040 @ =sKihunterOam_33e61c
 	str r0, [r5, #0x18]
 	strb r2, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -2580,7 +2580,7 @@ _08033032:
 	bx r0
 	.align 2, 0
 _0803303C: .4byte 0x0000FFC0
-_08033040: .4byte 0x0833E61C
+_08033040: .4byte sKihunterOam_33e61c
 _08033044: .4byte sPrimarySpriteStats
 
 	thumb_func_start KihunterHiveSpawnKihunter
@@ -2713,7 +2713,7 @@ KihunterBugInit: @ 0x08033114
 	strh r0, [r4, #0xc]
 	strh r1, [r4, #0xe]
 	strh r0, [r4, #0x10]
-	ldr r0, _0803318C @ =0x0833E62C
+	ldr r0, _0803318C @ =sKihunterOam_33e62c
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -2746,7 +2746,7 @@ KihunterBugInit: @ 0x08033114
 _08033180: .4byte gCurrentSprite
 _08033184: .4byte 0x0000FFFB
 _08033188: .4byte 0x0000FFFC
-_0803318C: .4byte 0x0833E62C
+_0803318C: .4byte sKihunterOam_33e62c
 _08033190: .4byte gSpriteRandomNumber
 _08033194:
 	mov r1, ip
@@ -2766,7 +2766,7 @@ KihunterBugIdle: @ 0x080331A4
 	adds r5, r3, #0
 	adds r5, #0x31
 	ldrb r1, [r5]
-	ldr r4, _08033220 @ =0x0833C104
+	ldr r4, _08033220 @ =sKihunterBugIdleYMovement
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r2, [r0]
@@ -2786,7 +2786,7 @@ _080331C4:
 	adds r5, r3, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r4, _08033228 @ =0x0833C186
+	ldr r4, _08033228 @ =sKihunterBugIdleXMovement
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r2, [r0]
@@ -2826,9 +2826,9 @@ _08033216:
 	bx r0
 	.align 2, 0
 _0803321C: .4byte gCurrentSprite
-_08033220: .4byte 0x0833C104
+_08033220: .4byte sKihunterBugIdleYMovement
 _08033224: .4byte 0x00007FFF
-_08033228: .4byte 0x0833C186
+_08033228: .4byte sKihunterBugIdleXMovement
 _0803322C: .4byte gSpriteData
 
 	thumb_func_start KihunterBugChasingSamusInit

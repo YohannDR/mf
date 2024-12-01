@@ -66,7 +66,7 @@ LavaPlumeInit: @ 0x080344EC
 	adds r0, #0x78
 	adds r1, #0x2f
 	strb r0, [r1]
-	ldr r0, _08034588 @ =0x0833FEB8
+	ldr r0, _08034588 @ =sLavaPlumeOam_33feb8
 	mov r1, ip
 	str r0, [r1, #0x18]
 	strb r2, [r1, #0x1c]
@@ -78,7 +78,7 @@ _08034578: .4byte sPrimarySpriteStats
 _0803457C: .4byte 0x0000FFF0
 _08034580: .4byte 0x00008004
 _08034584: .4byte gSpriteRandomNumber
-_08034588: .4byte 0x0833FEB8
+_08034588: .4byte sLavaPlumeOam_33feb8
 
 	thumb_func_start LavaPlumeGoUpInit
 LavaPlumeGoUpInit: @ 0x0803458C
@@ -86,7 +86,7 @@ LavaPlumeGoUpInit: @ 0x0803458C
 	sub sp, #0xc
 	ldr r0, _080345D4 @ =gCurrentSprite
 	mov ip, r0
-	ldr r0, _080345D8 @ =0x0833FE38
+	ldr r0, _080345D8 @ =sLavaPlumeOam_33fe38
 	mov r1, ip
 	str r0, [r1, #0x18]
 	movs r4, #0
@@ -118,7 +118,7 @@ LavaPlumeGoUpInit: @ 0x0803458C
 	bx r0
 	.align 2, 0
 _080345D4: .4byte gCurrentSprite
-_080345D8: .4byte 0x0833FE38
+_080345D8: .4byte sLavaPlumeOam_33fe38
 
 	thumb_func_start LavaPlumeGoUp
 LavaPlumeGoUp: @ 0x080345DC
@@ -200,7 +200,7 @@ LavaPlumeStopFromSamusContact: @ 0x0803465C
 LavaPlumeStopInit: @ 0x0803466C
 	push {lr}
 	ldr r1, _080346A0 @ =gCurrentSprite
-	ldr r0, _080346A4 @ =0x0833FEC8
+	ldr r0, _080346A4 @ =sLavaPlumeOam_33fec8
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -226,7 +226,7 @@ _0803469C:
 	bx r0
 	.align 2, 0
 _080346A0: .4byte gCurrentSprite
-_080346A4: .4byte 0x0833FEC8
+_080346A4: .4byte sLavaPlumeOam_33fec8
 _080346A8: .4byte 0x00000185
 
 	thumb_func_start LavaPlumeStop
@@ -256,7 +256,7 @@ LavaPlumeStop: @ 0x080346AC
 	adds r1, r4, #0
 	adds r1, #0x2f
 	strb r0, [r1]
-	ldr r0, _080346F8 @ =0x0833FEB8
+	ldr r0, _080346F8 @ =sLavaPlumeOam_33feb8
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	movs r0, #0
@@ -268,7 +268,7 @@ _080346EA:
 	.align 2, 0
 _080346F0: .4byte gCurrentSprite
 _080346F4: .4byte gSpriteRandomNumber
-_080346F8: .4byte 0x0833FEB8
+_080346F8: .4byte sLavaPlumeOam_33feb8
 
 	thumb_func_start LavaPlumeIdle
 LavaPlumeIdle: @ 0x080346FC
@@ -337,7 +337,7 @@ LavaPlumeWarningInit: @ 0x08034730
 	adds r1, #0x24
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _08034794 @ =0x0833FDE0
+	ldr r0, _08034794 @ =sLavaPlumeOam_33fde0
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -348,7 +348,7 @@ LavaPlumeWarningInit: @ 0x08034730
 _08034788: .4byte gCurrentSprite
 _0803478C: .4byte 0x0000FFFB
 _08034790: .4byte 0x0000FFFC
-_08034794: .4byte 0x0833FDE0
+_08034794: .4byte sLavaPlumeOam_33fde0
 
 	thumb_func_start LavaPlumeWarningIdle
 LavaPlumeWarningIdle: @ 0x08034798
@@ -384,15 +384,15 @@ _080347C4:
 	cmp r0, #7
 	bls _080347EC
 	ldr r0, [r3, #0x18]
-	ldr r2, _080347E8 @ =0x0833FE08
+	ldr r2, _080347E8 @ =sLavaPlumeOam_33fe08
 	b _080347F0
 	.align 2, 0
 _080347E0: .4byte gFrameCounter8Bit
 _080347E4: .4byte gSpriteRandomNumber
-_080347E8: .4byte 0x0833FE08
+_080347E8: .4byte sLavaPlumeOam_33fe08
 _080347EC:
 	ldr r0, [r3, #0x18]
-	ldr r2, _08034800 @ =0x0833FDE0
+	ldr r2, _08034800 @ =sLavaPlumeOam_33fde0
 _080347F0:
 	cmp r0, r2
 	beq _080347FA
@@ -403,7 +403,7 @@ _080347FA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08034800: .4byte 0x0833FDE0
+_08034800: .4byte sLavaPlumeOam_33fde0
 
 	thumb_func_start LavaPlume
 LavaPlume: @ 0x08034804

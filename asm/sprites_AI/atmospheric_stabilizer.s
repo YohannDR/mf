@@ -92,12 +92,12 @@ _0802C854:
 	adds r0, r1, #0
 	adds r0, #0x2f
 	strb r3, [r0]
-	ldr r0, _0802C868 @ =0x083277F8
+	ldr r0, _0802C868 @ =sAtmosphericStabilizerOam_3277f8
 	b _0802C888
 	.align 2, 0
 _0802C860: .4byte gCurrentSprite
 _0802C864: .4byte 0x0000FFA0
-_0802C868: .4byte 0x083277F8
+_0802C868: .4byte sAtmosphericStabilizerOam_3277f8
 _0802C86C:
 	movs r6, #0x13
 	ldr r1, _0802C8C0 @ =gCurrentSprite
@@ -112,7 +112,7 @@ _0802C86C:
 	adds r2, #0x2f
 	movs r0, #1
 	strb r0, [r2]
-	ldr r0, _0802C8C8 @ =0x08327660
+	ldr r0, _0802C8C8 @ =sAtmosphericStabilizerOam_327660
 _0802C888:
 	str r0, [r1, #0x18]
 	adds r4, r1, #0
@@ -139,23 +139,23 @@ _0802C888:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0802C8D4
-	ldr r0, _0802C8D0 @ =0x08327640
+	ldr r0, _0802C8D0 @ =sAtmosphericStabilizerOam_327640
 	b _0802C8D6
 	.align 2, 0
 _0802C8C0: .4byte gCurrentSprite
 _0802C8C4: .4byte 0x0000FFA0
-_0802C8C8: .4byte 0x08327660
+_0802C8C8: .4byte sAtmosphericStabilizerOam_327660
 _0802C8CC: .4byte gAtmosphericStabilizersOnline
-_0802C8D0: .4byte 0x08327640
+_0802C8D0: .4byte sAtmosphericStabilizerOam_327640
 _0802C8D4:
-	ldr r0, _0802C8E0 @ =0x083277D8
+	ldr r0, _0802C8E0 @ =sAtmosphericStabilizerOam_3277d8
 _0802C8D6:
 	str r0, [r4, #0x18]
 	movs r0, #0xfe
 	bl SoundPlay
 	b _0802CA26
 	.align 2, 0
-_0802C8E0: .4byte 0x083277D8
+_0802C8E0: .4byte sAtmosphericStabilizerOam_3277d8
 _0802C8E4:
 	adds r2, r4, #0
 	adds r2, #0x25
@@ -350,13 +350,13 @@ AtmosphericStabilizerBackOnlineInit: @ 0x0802CA3C
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0802CA6C
-	ldr r0, _0802CA68 @ =0x083276E0
+	ldr r0, _0802CA68 @ =sAtmosphericStabilizerOam_3276e0
 	b _0802CA6E
 	.align 2, 0
 _0802CA64: .4byte gCurrentSprite
-_0802CA68: .4byte 0x083276E0
+_0802CA68: .4byte sAtmosphericStabilizerOam_3276e0
 _0802CA6C:
-	ldr r0, _0802CA7C @ =0x08327878
+	ldr r0, _0802CA7C @ =sAtmosphericStabilizerOam_327878
 _0802CA6E:
 	str r0, [r3, #0x18]
 	movs r0, #0x80
@@ -365,7 +365,7 @@ _0802CA6E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802CA7C: .4byte 0x08327878
+_0802CA7C: .4byte sAtmosphericStabilizerOam_327878
 
 	thumb_func_start AtmosphericStabilizerBackOnline
 AtmosphericStabilizerBackOnline: @ 0x0802CA80
@@ -386,13 +386,13 @@ AtmosphericStabilizerBackOnline: @ 0x0802CA80
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0802CAB0
-	ldr r0, _0802CAAC @ =0x08327640
+	ldr r0, _0802CAAC @ =sAtmosphericStabilizerOam_327640
 	b _0802CAB2
 	.align 2, 0
 _0802CAA8: .4byte gCurrentSprite
-_0802CAAC: .4byte 0x08327640
+_0802CAAC: .4byte sAtmosphericStabilizerOam_327640
 _0802CAB0:
-	ldr r0, _0802CAC0 @ =0x083277D8
+	ldr r0, _0802CAC0 @ =sAtmosphericStabilizerOam_3277d8
 _0802CAB2:
 	str r0, [r3, #0x18]
 	movs r0, #1
@@ -401,7 +401,7 @@ _0802CABA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802CAC0: .4byte 0x083277D8
+_0802CAC0: .4byte sAtmosphericStabilizerOam_3277d8
 
 	thumb_func_start AtmosphericStabilizerCoverInit
 AtmosphericStabilizerCoverInit: @ 0x0802CAC4
@@ -468,7 +468,7 @@ _0802CB48:
 	ldr r0, _0802CB68 @ =0x0000FFFB
 	ands r0, r1
 	strh r0, [r2]
-	ldr r0, _0802CB6C @ =0x08327A30
+	ldr r0, _0802CB6C @ =sAtmosphericStabilizerOam_327a30
 	str r0, [r2, #0x18]
 	ldr r0, _0802CB70 @ =0x0000FFA0
 	strh r0, [r2, #0xa]
@@ -481,22 +481,22 @@ _0802CB48:
 	b _0802CC38
 	.align 2, 0
 _0802CB68: .4byte 0x0000FFFB
-_0802CB6C: .4byte 0x08327A30
+_0802CB6C: .4byte sAtmosphericStabilizerOam_327a30
 _0802CB70: .4byte 0x0000FFA0
 _0802CB74:
-	ldr r0, _0802CB80 @ =0x08327A30
+	ldr r0, _0802CB80 @ =sAtmosphericStabilizerOam_327a30
 	str r0, [r2, #0x18]
 	movs r1, #0x20
 	strh r1, [r2, #0xa]
 	b _0802CC26
 	.align 2, 0
-_0802CB80: .4byte 0x08327A30
+_0802CB80: .4byte sAtmosphericStabilizerOam_327a30
 _0802CB84:
 	ldrh r1, [r2]
 	ldr r0, _0802CB9C @ =0x0000FFFB
 	ands r0, r1
 	strh r0, [r2]
-	ldr r0, _0802CBA0 @ =0x08327A40
+	ldr r0, _0802CBA0 @ =sAtmosphericStabilizerOam_327a40
 	str r0, [r2, #0x18]
 	movs r0, #0x20
 	strh r0, [r2, #0xa]
@@ -506,17 +506,17 @@ _0802CB84:
 	b _0802CC08
 	.align 2, 0
 _0802CB9C: .4byte 0x0000FFFB
-_0802CBA0: .4byte 0x08327A40
+_0802CBA0: .4byte sAtmosphericStabilizerOam_327a40
 _0802CBA4: .4byte 0x0000FFA0
 _0802CBA8:
-	ldr r0, _0802CBB4 @ =0x08327A40
+	ldr r0, _0802CBB4 @ =sAtmosphericStabilizerOam_327a40
 	str r0, [r2, #0x18]
 	ldr r1, _0802CBB8 @ =0x0000FFA0
 	strh r1, [r2, #0xa]
 	ldr r0, _0802CBBC @ =0x0000FFE0
 	b _0802CC28
 	.align 2, 0
-_0802CBB4: .4byte 0x08327A40
+_0802CBB4: .4byte sAtmosphericStabilizerOam_327a40
 _0802CBB8: .4byte 0x0000FFA0
 _0802CBBC: .4byte 0x0000FFE0
 _0802CBC0:
@@ -524,7 +524,7 @@ _0802CBC0:
 	ldr r0, _0802CBD8 @ =0x0000FFFB
 	ands r0, r1
 	strh r0, [r2]
-	ldr r0, _0802CBDC @ =0x08327A20
+	ldr r0, _0802CBDC @ =sAtmosphericStabilizerOam_327a20
 	str r0, [r2, #0x18]
 	movs r0, #0x20
 	strh r0, [r2, #0xa]
@@ -534,23 +534,23 @@ _0802CBC0:
 	b _0802CC08
 	.align 2, 0
 _0802CBD8: .4byte 0x0000FFFB
-_0802CBDC: .4byte 0x08327A20
+_0802CBDC: .4byte sAtmosphericStabilizerOam_327a20
 _0802CBE0: .4byte 0x0000FFA0
 _0802CBE4:
-	ldr r0, _0802CBF0 @ =0x08327A20
+	ldr r0, _0802CBF0 @ =sAtmosphericStabilizerOam_327a20
 	str r0, [r2, #0x18]
 	movs r1, #0x20
 	strh r1, [r2, #0xa]
 	b _0802CC26
 	.align 2, 0
-_0802CBF0: .4byte 0x08327A20
+_0802CBF0: .4byte sAtmosphericStabilizerOam_327a20
 _0802CBF4:
 	ldrh r1, [r2]
 	ldr r0, _0802CC10 @ =0x0000FFFB
 	ands r0, r1
 	movs r1, #0
 	strh r0, [r2]
-	ldr r0, _0802CC14 @ =0x08327A60
+	ldr r0, _0802CC14 @ =sAtmosphericStabilizerOam_327a60
 	str r0, [r2, #0x18]
 	ldr r0, _0802CC18 @ =0x0000FFA0
 	strh r0, [r2, #0xa]
@@ -562,10 +562,10 @@ _0802CC08:
 	b _0802CC38
 	.align 2, 0
 _0802CC10: .4byte 0x0000FFFB
-_0802CC14: .4byte 0x08327A60
+_0802CC14: .4byte sAtmosphericStabilizerOam_327a60
 _0802CC18: .4byte 0x0000FFA0
 _0802CC1C:
-	ldr r0, _0802CC30 @ =0x08327A60
+	ldr r0, _0802CC30 @ =sAtmosphericStabilizerOam_327a60
 	str r0, [r2, #0x18]
 	movs r1, #0
 	movs r0, #0x20
@@ -578,7 +578,7 @@ _0802CC28:
 	strh r0, [r2, #0x10]
 	b _0802CC38
 	.align 2, 0
-_0802CC30: .4byte 0x08327A60
+_0802CC30: .4byte sAtmosphericStabilizerOam_327a60
 _0802CC34:
 	mov r2, ip
 	strh r4, [r2]
@@ -1320,7 +1320,7 @@ _0802D20C:
 	thumb_func_start AtmosphericStabilizerParasiteIdleInit
 AtmosphericStabilizerParasiteIdleInit: @ 0x0802D214
 	ldr r0, _0802D230 @ =gCurrentSprite
-	ldr r1, _0802D234 @ =0x08327970
+	ldr r1, _0802D234 @ =sAtmosphericStabilizerOam_327970
 	str r1, [r0, #0x18]
 	movs r1, #0
 	strb r1, [r0, #0x1c]
@@ -1335,7 +1335,7 @@ AtmosphericStabilizerParasiteIdleInit: @ 0x0802D214
 	bx lr
 	.align 2, 0
 _0802D230: .4byte gCurrentSprite
-_0802D234: .4byte 0x08327970
+_0802D234: .4byte sAtmosphericStabilizerOam_327970
 
 	thumb_func_start AtmosphericStabilizerParasiteIdle
 AtmosphericStabilizerParasiteIdle: @ 0x0802D238
@@ -1378,7 +1378,7 @@ _0802D270:
 	adds r1, #0x24
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _0802D2B0 @ =0x083279F8
+	ldr r0, _0802D2B0 @ =sAtmosphericStabilizerOam_3279f8
 	str r0, [r4, #0x18]
 	movs r0, #0
 	strb r0, [r4, #0x1c]
@@ -1399,7 +1399,7 @@ _0802D2AA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802D2B0: .4byte 0x083279F8
+_0802D2B0: .4byte sAtmosphericStabilizerOam_3279f8
 _0802D2B4: .4byte gWrittenToMosaic_H
 _0802D2B8: .4byte sXParasiteMosaicValues
 
@@ -1476,7 +1476,7 @@ AtmosphericStabilizerParasiteDeath: @ 0x0802D344
 	adds r0, r1, #0
 	adds r0, #0x23
 	ldrb r2, [r0]
-	ldr r0, _0802D394 @ =0x08327970
+	ldr r0, _0802D394 @ =sAtmosphericStabilizerOam_327970
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1511,7 +1511,7 @@ _0802D38C:
 	bx r0
 	.align 2, 0
 _0802D390: .4byte gCurrentSprite
-_0802D394: .4byte 0x08327970
+_0802D394: .4byte sAtmosphericStabilizerOam_327970
 _0802D398: .4byte gSpriteData
 _0802D39C: .4byte gAtmosphericStabilizersOnline
 

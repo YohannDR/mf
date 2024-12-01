@@ -169,7 +169,7 @@ IceBeamAbilityEntering: @ 0x08058A60
 	adds r0, r0, r2
 	mov ip, r0
 	ldrb r3, [r0]
-	ldr r5, _08058AD0 @ =0x08328480
+	ldr r5, _08058AD0 @ =sIceBeamAbilityFloatingYMovement
 	lsls r0, r3, #1
 	adds r0, r0, r5
 	ldrh r4, [r0]
@@ -215,7 +215,7 @@ _08058A8A:
 	b _08058AE4
 	.align 2, 0
 _08058ACC: .4byte gCurrentSprite
-_08058AD0: .4byte 0x08328480
+_08058AD0: .4byte sIceBeamAbilityFloatingYMovement
 _08058AD4: .4byte 0x00007FFF
 _08058AD8: .4byte gBg1XPosition
 _08058ADC: .4byte 0xFFC60000

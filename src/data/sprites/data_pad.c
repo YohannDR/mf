@@ -687,5 +687,3 @@ const struct FrameData sDataPadOam_321b1c[9] = {
     },
     [8] = FRAME_DATA_TERMINATOR
 };
-
-static const u8 sBlob_321b64_3420b4[] = INCBIN_U8("data/Blob_321b64_3420b4.bin");

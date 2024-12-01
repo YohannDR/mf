@@ -80,7 +80,7 @@ _080349C6:
 	strh r3, [r4, #0xa]
 	movs r5, #0x28
 	strh r5, [r4, #0xc]
-	ldr r0, _08034A34 @ =0x08341568
+	ldr r0, _08034A34 @ =sFuneOam_341568
 	str r0, [r4, #0x18]
 	strb r6, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -113,7 +113,7 @@ _080349C6:
 	.align 2, 0
 _08034A2C: .4byte gPreviousCollisionCheck
 _08034A30: .4byte 0x0000FFD8
-_08034A34: .4byte 0x08341568
+_08034A34: .4byte sFuneOam_341568
 _08034A38: .4byte sPrimarySpriteStats
 _08034A3C: .4byte 0x0000FFC0
 _08034A40:
@@ -212,7 +212,7 @@ _08034ADC: .4byte gCurrentSprite
 	thumb_func_start FuneIdleInit
 FuneIdleInit: @ 0x08034AE0
 	ldr r1, _08034AF4 @ =gCurrentSprite
-	ldr r0, _08034AF8 @ =0x08341568
+	ldr r0, _08034AF8 @ =sFuneOam_341568
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -223,7 +223,7 @@ FuneIdleInit: @ 0x08034AE0
 	bx lr
 	.align 2, 0
 _08034AF4: .4byte gCurrentSprite
-_08034AF8: .4byte 0x08341568
+_08034AF8: .4byte sFuneOam_341568
 
 	thumb_func_start FuneIdle
 FuneIdle: @ 0x08034AFC
@@ -346,7 +346,7 @@ _08034BDE:
 	thumb_func_start FuneSpittingInit
 FuneSpittingInit: @ 0x08034BE4
 	ldr r1, _08034BF8 @ =gCurrentSprite
-	ldr r0, _08034BFC @ =0x083415B0
+	ldr r0, _08034BFC @ =sFuneOam_3415b0
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -357,7 +357,7 @@ FuneSpittingInit: @ 0x08034BE4
 	bx lr
 	.align 2, 0
 _08034BF8: .4byte gCurrentSprite
-_08034BFC: .4byte 0x083415B0
+_08034BFC: .4byte sFuneOam_3415b0
 
 	thumb_func_start FuneSpitting
 FuneSpitting: @ 0x08034C00
@@ -504,7 +504,7 @@ _08034D0E:
 FuneLungingInit: @ 0x08034D18
 	push {lr}
 	ldr r1, _08034D38 @ =gCurrentSprite
-	ldr r0, _08034D3C @ =0x083415F8
+	ldr r0, _08034D3C @ =sFuneOam_3415f8
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -518,7 +518,7 @@ FuneLungingInit: @ 0x08034D18
 	bx r0
 	.align 2, 0
 _08034D38: .4byte gCurrentSprite
-_08034D3C: .4byte 0x083415F8
+_08034D3C: .4byte sFuneOam_3415f8
 _08034D40: .4byte 0x00000187
 
 	thumb_func_start FuneLunging
@@ -707,7 +707,7 @@ FuneSpitInit: @ 0x08034E80
 	strh r1, [r2, #0xc]
 	strh r0, [r2, #0xe]
 	strh r1, [r2, #0x10]
-	ldr r0, _08034EF4 @ =0x083416D0
+	ldr r0, _08034EF4 @ =sFuneOam_3416d0
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -731,7 +731,7 @@ FuneSpitInit: @ 0x08034E80
 _08034EE8: .4byte gCurrentSprite
 _08034EEC: .4byte 0x0000FFFB
 _08034EF0: .4byte 0x0000FFF0
-_08034EF4: .4byte 0x083416D0
+_08034EF4: .4byte sFuneOam_3416d0
 
 	thumb_func_start FuneSpitMoving
 FuneSpitMoving: @ 0x08034EF8
@@ -782,14 +782,14 @@ FuneSpitExplodingInit: @ 0x08034F3C
 	adds r0, r3, #0
 	adds r0, #0x25
 	strb r1, [r0]
-	ldr r0, _08034F5C @ =0x083416F0
+	ldr r0, _08034F5C @ =sFuneOam_3416f0
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
 	bx lr
 	.align 2, 0
 _08034F58: .4byte gCurrentSprite
-_08034F5C: .4byte 0x083416F0
+_08034F5C: .4byte sFuneOam_3416f0
 
 	thumb_func_start FuneSpitExploding
 FuneSpitExploding: @ 0x08034F60
@@ -889,7 +889,7 @@ _08034FF2:
 	strh r3, [r4, #0xa]
 	movs r5, #0x28
 	strh r5, [r4, #0xc]
-	ldr r0, _08035058 @ =0x08341E6C
+	ldr r0, _08035058 @ =sNamiheOam_341e6c
 	str r0, [r4, #0x18]
 	strb r6, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -919,7 +919,7 @@ _08034FF2:
 	.align 2, 0
 _08035050: .4byte gPreviousCollisionCheck
 _08035054: .4byte 0x0000FFD8
-_08035058: .4byte 0x08341E6C
+_08035058: .4byte sNamiheOam_341e6c
 _0803505C: .4byte sPrimarySpriteStats
 _08035060: .4byte 0x0000FFC0
 _08035064:
@@ -1018,7 +1018,7 @@ _08035100: .4byte gCurrentSprite
 	thumb_func_start NamiheIdleInit
 NamiheIdleInit: @ 0x08035104
 	ldr r1, _08035118 @ =gCurrentSprite
-	ldr r0, _0803511C @ =0x08341E6C
+	ldr r0, _0803511C @ =sNamiheOam_341e6c
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1029,7 +1029,7 @@ NamiheIdleInit: @ 0x08035104
 	bx lr
 	.align 2, 0
 _08035118: .4byte gCurrentSprite
-_0803511C: .4byte 0x08341E6C
+_0803511C: .4byte sNamiheOam_341e6c
 
 	thumb_func_start NamiheIdle
 NamiheIdle: @ 0x08035120
@@ -1152,7 +1152,7 @@ _08035202:
 	thumb_func_start NamiheSpittingInit
 NamiheSpittingInit: @ 0x08035208
 	ldr r1, _0803521C @ =gCurrentSprite
-	ldr r0, _08035220 @ =0x08341EB4
+	ldr r0, _08035220 @ =sNamiheOam_341eb4
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1163,7 +1163,7 @@ NamiheSpittingInit: @ 0x08035208
 	bx lr
 	.align 2, 0
 _0803521C: .4byte gCurrentSprite
-_08035220: .4byte 0x08341EB4
+_08035220: .4byte sNamiheOam_341eb4
 
 	thumb_func_start NamiheSpitting
 NamiheSpitting: @ 0x08035224
@@ -1315,7 +1315,7 @@ _0803533E:
 NamiheLungingInit: @ 0x08035348
 	push {lr}
 	ldr r1, _08035368 @ =gCurrentSprite
-	ldr r0, _0803536C @ =0x08341F3C
+	ldr r0, _0803536C @ =sNamiheOam_341f3c
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1330,7 +1330,7 @@ NamiheLungingInit: @ 0x08035348
 	bx r0
 	.align 2, 0
 _08035368: .4byte gCurrentSprite
-_0803536C: .4byte 0x08341F3C
+_0803536C: .4byte sNamiheOam_341f3c
 
 	thumb_func_start NamiheLunging
 NamiheLunging: @ 0x08035370
@@ -1522,7 +1522,7 @@ NamiheSpitInit: @ 0x080354BC
 	strh r1, [r2, #0xc]
 	strh r0, [r2, #0xe]
 	strh r1, [r2, #0x10]
-	ldr r0, _08035544 @ =0x08342074
+	ldr r0, _08035544 @ =sNamiheOam_342074
 	str r0, [r2, #0x18]
 	strb r4, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -1558,7 +1558,7 @@ NamiheSpitInit: @ 0x080354BC
 _08035538: .4byte gCurrentSprite
 _0803553C: .4byte 0x0000FFFB
 _08035540: .4byte 0x0000FFF0
-_08035544: .4byte 0x08342074
+_08035544: .4byte sNamiheOam_342074
 _08035548: .4byte gSamusData
 _0803554C:
 	mov r3, ip
@@ -1664,14 +1664,14 @@ NamiheSpitExplodingInit: @ 0x080355F4
 	adds r0, r3, #0
 	adds r0, #0x25
 	strb r1, [r0]
-	ldr r0, _08035614 @ =0x08342094
+	ldr r0, _08035614 @ =sNamiheOam_342094
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
 	bx lr
 	.align 2, 0
 _08035610: .4byte gCurrentSprite
-_08035614: .4byte 0x08342094
+_08035614: .4byte sNamiheOam_342094
 
 	thumb_func_start NamiheSpitExploding
 NamiheSpitExploding: @ 0x08035618

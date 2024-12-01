@@ -407,7 +407,21 @@ SECTIONS {
         src/data/sprites/navigation_pad.o(.rodata);
         src/data/sprites/message_box.o(.rodata);
         src/data/sprites/data_pad.o(.rodata);
-
+        src/data/sprites/zebesian_wall.o(.rodata);
+        src/data/sprites/recharge_pad.o(.rodata);
+        src/data/sprites/atmospheric_stabilizer.o(.rodata);
+        src/data/sprites/chozo_statue.o(.rodata);
+        src/data/sprites/beam_core_x.o(.rodata);
+        src/data/sprites/toxic_gas.o(.rodata);
+        src/data/sprites/kago.o(.rodata);
+        src/data/sprites/shake_trigger.o(.rodata);
+        src/data/sprites/gate.o(.rodata);
+        src/data/sprites/electric_water.o(.rodata);
+        src/data/sprites/zoro.o(.rodata);
+        src/data/sprites/kihunter.o(.rodata);
+        src/data/sprites/reo.o(.rodata);
+        src/data/sprites/lava_plume.o(.rodata);
+        src/data/sprites/fune_namihe.o(.rodata);
         src/data/sprites/box.o(.rodata);
         src/data/sprites/geruda.o(.rodata);
 

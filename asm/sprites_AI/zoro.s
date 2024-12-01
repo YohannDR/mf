@@ -182,13 +182,13 @@ ZoroSetCrawlingOam: @ 0x08031198
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _080311B4
-	ldr r0, _080311B0 @ =0x0833C09C
+	ldr r0, _080311B0 @ =sZoroOam_33c09c
 	b _080311B6
 	.align 2, 0
 _080311AC: .4byte gCurrentSprite
-_080311B0: .4byte 0x0833C09C
+_080311B0: .4byte sZoroOam_33c09c
 _080311B4:
-	ldr r0, _080311C4 @ =0x0833C034
+	ldr r0, _080311C4 @ =sZoroOam_33c034
 _080311B6:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -197,7 +197,7 @@ _080311B6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080311C4: .4byte 0x0833C034
+_080311C4: .4byte sZoroOam_33c034
 
 	thumb_func_start ZoroSetTurningOam
 ZoroSetTurningOam: @ 0x080311C8
@@ -209,13 +209,13 @@ ZoroSetTurningOam: @ 0x080311C8
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _080311E4
-	ldr r0, _080311E0 @ =0x0833C0D4
+	ldr r0, _080311E0 @ =sZoroOam_33c0d4
 	b _080311E6
 	.align 2, 0
 _080311DC: .4byte gCurrentSprite
-_080311E0: .4byte 0x0833C0D4
+_080311E0: .4byte sZoroOam_33c0d4
 _080311E4:
-	ldr r0, _080311F4 @ =0x0833C06C
+	ldr r0, _080311F4 @ =sZoroOam_33c06c
 _080311E6:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -224,7 +224,7 @@ _080311E6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080311F4: .4byte 0x0833C06C
+_080311F4: .4byte sZoroOam_33c06c
 
 	thumb_func_start ZoroSetTurningAroundSecondPartOam
 ZoroSetTurningAroundSecondPartOam: @ 0x080311F8
@@ -242,17 +242,17 @@ ZoroSetTurningAroundSecondPartOam: @ 0x080311F8
 	adds r1, r3, #0
 	eors r0, r1
 	strh r0, [r2]
-	ldr r0, _0803121C @ =0x0833C0EC
+	ldr r0, _0803121C @ =sZoroOam_33c0ec
 	b _0803122A
 	.align 2, 0
 _08031218: .4byte gCurrentSprite
-_0803121C: .4byte 0x0833C0EC
+_0803121C: .4byte sZoroOam_33c0ec
 _08031220:
 	ldrh r0, [r2]
 	movs r1, #0x40
 	eors r0, r1
 	strh r0, [r2]
-	ldr r0, _08031238 @ =0x0833C084
+	ldr r0, _08031238 @ =sZoroOam_33c084
 _0803122A:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -261,7 +261,7 @@ _0803122A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08031238: .4byte 0x0833C084
+_08031238: .4byte sZoroOam_33c084
 
 	thumb_func_start ZoroSetDeathPosition
 ZoroSetDeathPosition: @ 0x0803123C

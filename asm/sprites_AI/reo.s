@@ -163,7 +163,7 @@ _08033B4E:
 	adds r1, #1
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _08033BB8 @ =0x0833F128
+	ldr r0, _08033BB8 @ =sReoOam_33f128
 	str r0, [r5, #0x18]
 	strb r6, [r5, #0x1c]
 	movs r0, #0
@@ -199,7 +199,7 @@ _08033B4E:
 _08033BAC: .4byte 0x0000FFC8
 _08033BB0: .4byte 0x0000FFD8
 _08033BB4: .4byte gCurrentSprite
-_08033BB8: .4byte 0x0833F128
+_08033BB8: .4byte sReoOam_33f128
 _08033BBC: .4byte sPrimarySpriteStats
 _08033BC0:
 	movs r0, #1
@@ -249,7 +249,7 @@ ReoFallInit: @ 0x08033C04
 	strb r2, [r3, #0x1c]
 	movs r1, #0
 	strh r2, [r3, #0x16]
-	ldr r0, _08033C3C @ =0x0833F178
+	ldr r0, _08033C3C @ =sReoOam_33f178
 	str r0, [r3, #0x18]
 	adds r0, r3, #0
 	adds r0, #0x31
@@ -268,7 +268,7 @@ ReoFallInit: @ 0x08033C04
 	bx lr
 	.align 2, 0
 _08033C38: .4byte gCurrentSprite
-_08033C3C: .4byte 0x0833F178
+_08033C3C: .4byte sReoOam_33f178
 _08033C40: .4byte gSpriteData
 
 	thumb_func_start ReoFalling
@@ -377,7 +377,7 @@ ReoLanding: @ 0x08033CF4
 	subs r1, #0xa
 	movs r0, #0x2d
 	strb r0, [r1]
-	ldr r0, _08033D38 @ =0x0833F128
+	ldr r0, _08033D38 @ =sReoOam_33f128
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -398,7 +398,7 @@ _08033D30:
 	bx r0
 	.align 2, 0
 _08033D34: .4byte gCurrentSprite
-_08033D38: .4byte 0x0833F128
+_08033D38: .4byte sReoOam_33f128
 _08033D3C: .4byte gSpriteData
 _08033D40: .4byte 0x0000FFFB
 
@@ -413,7 +413,7 @@ ReoIdleInit: @ 0x08033D44
 	strb r2, [r3, #0x1c]
 	movs r1, #0
 	strh r2, [r3, #0x16]
-	ldr r0, _08033D6C @ =0x0833F128
+	ldr r0, _08033D6C @ =sReoOam_33f128
 	str r0, [r3, #0x18]
 	adds r0, r3, #0
 	adds r0, #0x30
@@ -423,7 +423,7 @@ ReoIdleInit: @ 0x08033D44
 	bx lr
 	.align 2, 0
 _08033D68: .4byte gCurrentSprite
-_08033D6C: .4byte 0x0833F128
+_08033D6C: .4byte sReoOam_33f128
 
 	thumb_func_start ReoIdle
 ReoIdle: @ 0x08033D70
@@ -448,7 +448,7 @@ ReoIdle: @ 0x08033D70
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _08033E30 @ =0x0833E724
+	ldr r5, _08033E30 @ =sReoIdleYMovement
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -523,7 +523,7 @@ _08033E0E:
 	b _08033E44
 	.align 2, 0
 _08033E2C: .4byte gCurrentSprite
-_08033E30: .4byte 0x0833E724
+_08033E30: .4byte sReoIdleYMovement
 _08033E34: .4byte 0x00007FFF
 _08033E38: .4byte gSamusData
 _08033E3C:
@@ -632,7 +632,7 @@ _08033EE2:
 	b _08033F36
 _08033F00:
 	ldrb r2, [r6]
-	ldr r5, _08033F24 @ =0x0833E786
+	ldr r5, _08033F24 @ =sReoGoingDownYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -649,7 +649,7 @@ _08033F00:
 	adds r0, r0, r1
 	b _08033F34
 	.align 2, 0
-_08033F24: .4byte 0x0833E786
+_08033F24: .4byte sReoGoingDownYSpeed
 _08033F28: .4byte 0x00007FFF
 _08033F2C:
 	adds r0, r2, #1
@@ -736,7 +736,7 @@ _08033FB8:
 	adds r6, r4, #0
 	adds r6, #0x31
 	ldrb r2, [r6]
-	ldr r5, _08033FF0 @ =0x0833E79E
+	ldr r5, _08033FF0 @ =sReoSlidingYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -754,7 +754,7 @@ _08033FB8:
 	strh r0, [r4, #2]
 	b _08034016
 	.align 2, 0
-_08033FF0: .4byte 0x0833E79E
+_08033FF0: .4byte sReoSlidingYSpeed
 _08033FF4: .4byte 0x00007FFF
 _08033FF8:
 	adds r0, r2, #1
@@ -828,7 +828,7 @@ ReoGoingUp: @ 0x08034038
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _080340A8 @ =0x0833E7BE
+	ldr r5, _080340A8 @ =sReoGoingUpAccceleratingYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -847,7 +847,7 @@ ReoGoingUp: @ 0x08034038
 	.align 2, 0
 _080340A0: .4byte gCurrentSprite
 _080340A4: .4byte gPreviousCollisionCheck
-_080340A8: .4byte 0x0833E7BE
+_080340A8: .4byte sReoGoingUpAccceleratingYSpeed
 _080340AC: .4byte 0x00007FFF
 _080340B0:
 	adds r0, r2, #1
@@ -874,7 +874,7 @@ _080340CA:
 	adds r7, r4, #0
 	adds r7, #0x31
 	ldrb r2, [r7]
-	ldr r6, _08034100 @ =0x0833E7D6
+	ldr r6, _08034100 @ =sReoGoingUpDeceleratingYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r6
 	ldrh r5, [r0]
@@ -892,7 +892,7 @@ _080340CA:
 	strh r0, [r4, #2]
 	b _0803411C
 	.align 2, 0
-_08034100: .4byte 0x0833E7D6
+_08034100: .4byte sReoGoingUpDeceleratingYSpeed
 _08034104: .4byte 0x00007FFF
 _08034108:
 	adds r0, r2, #1
@@ -969,7 +969,7 @@ _0803414C:
 	subs r1, #2
 	movs r0, #5
 	strb r0, [r1]
-	ldr r0, _080341B0 @ =0x0833F150
+	ldr r0, _080341B0 @ =sReoOam_33f150
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -981,7 +981,7 @@ _080341A0: .4byte gCurrentSprite
 _080341A4: .4byte gSpriteData
 _080341A8: .4byte 0x0000FFFB
 _080341AC: .4byte 0x0000FFFC
-_080341B0: .4byte 0x0833F150
+_080341B0: .4byte sReoOam_33f150
 
 	thumb_func_start ReoWingsIdle
 ReoWingsIdle: @ 0x080341B4

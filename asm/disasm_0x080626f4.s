@@ -3393,7 +3393,7 @@ _080641C8:
 	movs r5, #0xe
 _080641DA:
 	ldr r2, _080641FC @ =gEquipment
-	ldr r1, _08064200 @ =0x08575FB4
+	ldr r1, _08064200 @ =sAbilityRamValues
 	lsls r0, r5, #3
 	adds r0, r0, r1
 	ldrb r1, [r2, #0xc]
@@ -3410,7 +3410,7 @@ _080641F0:
 	.align 2, 0
 _080641F8: .4byte gEventCounter
 _080641FC: .4byte gEquipment
-_08064200: .4byte 0x08575FB4
+_08064200: .4byte sAbilityRamValues
 _08064204: .4byte gPreventMovementTimer
 _08064208:
 	ldrh r0, [r2, #2]

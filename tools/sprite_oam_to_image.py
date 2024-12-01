@@ -23,6 +23,9 @@ def romRead(n = 1, address = None):
 def romSeek(address):
     return rom.seek(gba2hex(address))
 
+def romTell():
+    return hex2gba(rom.tell())
+
 tile_dimensions = [[(8,8),(16,16),(32,32),(64,64)],[(16,8),(32,8),(32,16),(64,32)],[(8,16),(8,32),(16,32),(32,64)]]
 
 ''' Modified From SpriteSomething (https://github.com/Artheau/SpriteSomething) '''
@@ -127,11 +130,10 @@ def Func():
 
     paletteRgba = [0]*(4*256)
     for i in range(rows*16):
-        if i % 16 != 0: # if not transparent:
-            paletteRgba[(i+0x80)*4] = (palette555[i] & 0x1F) << 3
-            paletteRgba[(i+0x80)*4+1] = (palette555[i] >> 5 & 0x1F) << 3
-            paletteRgba[(i+0x80)*4+2] = (palette555[i] >> 10 & 0x1F) << 3
-            paletteRgba[(i+0x80)*4+3] = 255
+        paletteRgba[(i+0x80)*4] = (palette555[i] & 0x1F) << 3
+        paletteRgba[(i+0x80)*4+1] = (palette555[i] >> 5 & 0x1F) << 3
+        paletteRgba[(i+0x80)*4+2] = (palette555[i] >> 10 & 0x1F) << 3
+        paletteRgba[(i+0x80)*4+3] = 255
 
     tiles = [[0]*0x20]*0x400
     romSeek(tilesAddr)
@@ -146,22 +148,28 @@ def Func():
     while True:
         spritemap = []
 
-        possibleOamAddr = romRead(4, rom.tell())
-        if possibleOamAddr & 0xFFFF == 0 or possibleOamAddr & 0xFFFF > 128 or possibleOamAddr in usedImages:
-            if spriteIndex == 0x3A and rom.tell()+2 == 0x3028F4: # arachnus
-                romSeek(0x302E3C)
+        if spritemapAddr % 4 != 0:
+            romRead(4 - (spritemapAddr % 4)) # align
+        possibleOamAddr = romRead(4, romTell())
+        if possibleOamAddr in usedImages: # start of animations
+            if spriteIndex == 0x3A and romTell() == 0x83028F4: # arachnus
+                spritemapAddr = 0x8302E3C
             else:
                 break
+        romSeek(spritemapAddr)
         usedImages |= {hex2gba(spritemapAddr)}
 
         for i in range(romRead(2)):
             spritemap.append([romRead(2), romRead(2), romRead(2)])
 
+        if len(spritemap) > 128:
+            break
+
         image = image_from_raw_data(spritemap, tiles)
         image.putpalette(paletteRgba, 'RGBA')
         image.save(f'0x{spriteIndex:x}/0x{spriteIndex:02x}_{imageIndex}_0x{gba2hex(spritemapAddr):x}.png')
         imageIndex += 1
-        spritemapAddr = rom.tell()
+        spritemapAddr = romTell()
 
     Func()
 

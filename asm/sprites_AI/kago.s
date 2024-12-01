@@ -187,11 +187,11 @@ KagoInit: @ 0x0802F764
 	strb r1, [r0]
 	movs r0, #0x10
 	strh r0, [r2, #0xc]
-	ldr r0, _0802F79C @ =0x08337B24
+	ldr r0, _0802F79C @ =sKagoOam_337b24
 	b _0802F7C0
 	.align 2, 0
 _0802F798: .4byte gCurrentSprite
-_0802F79C: .4byte 0x08337B24
+_0802F79C: .4byte sKagoOam_337b24
 _0802F7A0:
 	movs r0, #0xf7
 	ands r0, r3
@@ -208,7 +208,7 @@ _0802F7A0:
 	strb r0, [r1]
 	movs r0, #0xc0
 	strh r0, [r2, #0xc]
-	ldr r0, _0802F830 @ =0x08337B4C
+	ldr r0, _0802F830 @ =sKagoOam_337b4c
 _0802F7C0:
 	str r0, [r2, #0x18]
 	ldr r6, _0802F834 @ =gCurrentSprite
@@ -264,7 +264,7 @@ _0802F7C0:
 	bl SoundPlayNotAlreadyPlaying
 	b _0802F864
 	.align 2, 0
-_0802F830: .4byte 0x08337B4C
+_0802F830: .4byte sKagoOam_337b4c
 _0802F834: .4byte gCurrentSprite
 _0802F838: .4byte sPrimarySpriteStats
 _0802F83C: .4byte 0x0000FF88
@@ -419,7 +419,7 @@ _0802F950: .4byte gCurrentSprite
 KagoInsectExplodingInit: @ 0x0802F954
 	push {lr}
 	ldr r0, _0802F97C @ =gCurrentSprite
-	ldr r1, _0802F980 @ =0x08337DC4
+	ldr r1, _0802F980 @ =sKagoOam_337dc4
 	str r1, [r0, #0x18]
 	movs r1, #0
 	strb r1, [r0, #0x1c]
@@ -438,7 +438,7 @@ KagoInsectExplodingInit: @ 0x0802F954
 	bx r0
 	.align 2, 0
 _0802F97C: .4byte gCurrentSprite
-_0802F980: .4byte 0x08337DC4
+_0802F980: .4byte sKagoOam_337dc4
 
 	thumb_func_start KagoInsectExploding
 KagoInsectExploding: @ 0x0802F984
@@ -484,7 +484,7 @@ KagoInsectInit: @ 0x0802F9A8
 	adds r0, #0x35
 	movs r5, #1
 	strb r5, [r0]
-	ldr r0, _0802FA30 @ =0x08337DA4
+	ldr r0, _0802FA30 @ =sKagoOam_337da4
 	str r0, [r3, #0x18]
 	strb r4, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -528,7 +528,7 @@ KagoInsectInit: @ 0x0802F9A8
 _0802FA24: .4byte gCurrentSprite
 _0802FA28: .4byte 0x0000FFFB
 _0802FA2C: .4byte sSecondarySpriteStats
-_0802FA30: .4byte 0x08337DA4
+_0802FA30: .4byte sKagoOam_337da4
 _0802FA34: .4byte 0x0000FFD8
 _0802FA38: .4byte gSpriteRandomNumber
 _0802FA3C:
@@ -560,14 +560,14 @@ KagoInsectJumpWarningInit: @ 0x0802FA64
 	movs r3, #0
 	movs r0, #2
 	strb r0, [r2]
-	ldr r0, _0802FA80 @ =0x08337D84
+	ldr r0, _0802FA80 @ =sKagoOam_337d84
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0802FA7C: .4byte gCurrentSprite
-_0802FA80: .4byte 0x08337D84
+_0802FA80: .4byte sKagoOam_337d84
 
 	thumb_func_start KagoInsectJumpingInit
 KagoInsectJumpingInit: @ 0x0802FA84
@@ -578,7 +578,7 @@ KagoInsectJumpingInit: @ 0x0802FA84
 	movs r2, #0
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _0802FAC4 @ =0x08337DA4
+	ldr r0, _0802FAC4 @ =sKagoOam_337da4
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	movs r4, #0
@@ -602,7 +602,7 @@ KagoInsectJumpingInit: @ 0x0802FA84
 	b _0802FAD2
 	.align 2, 0
 _0802FAC0: .4byte gCurrentSprite
-_0802FAC4: .4byte 0x08337DA4
+_0802FAC4: .4byte sKagoOam_337da4
 _0802FAC8: .4byte gSpriteRandomNumber
 _0802FACC:
 	adds r0, r3, #0
@@ -655,7 +655,7 @@ KagoInsectFallingInit: @ 0x0802FB1C
 	movs r3, #0
 	movs r1, #0x16
 	strb r1, [r2]
-	ldr r1, _0802FB3C @ =0x08337DA4
+	ldr r1, _0802FB3C @ =sKagoOam_337da4
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	movs r1, #0
@@ -665,7 +665,7 @@ KagoInsectFallingInit: @ 0x0802FB1C
 	bx lr
 	.align 2, 0
 _0802FB38: .4byte gCurrentSprite
-_0802FB3C: .4byte 0x08337DA4
+_0802FB3C: .4byte sKagoOam_337da4
 
 	thumb_func_start KagoInsectJumpWarning
 KagoInsectJumpWarning: @ 0x0802FB40
@@ -749,22 +749,22 @@ _0802FBBC:
 	eors r0, r1
 	movs r1, #0
 	strh r0, [r3]
-	ldr r0, _0802FBE4 @ =0x08337DB4
+	ldr r0, _0802FBE4 @ =sKagoOam_337db4
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	b _0802FBF2
 	.align 2, 0
-_0802FBE4: .4byte 0x08337DB4
+_0802FBE4: .4byte sKagoOam_337db4
 _0802FBE8:
 	cmp r0, #0x16
 	bne _0802FBF4
-	ldr r0, _0802FC08 @ =0x08337DA4
+	ldr r0, _0802FC08 @ =sKagoOam_337da4
 	str r0, [r3, #0x18]
 	strb r7, [r3, #0x1c]
 _0802FBF2:
 	strh r7, [r3, #0x16]
 _0802FBF4:
-	ldr r1, _0802FC0C @ =0x08336878
+	ldr r1, _0802FC0C @ =sKagoInsectLowJumpVelocity
 	adds r0, r3, #0
 	adds r0, #0x31
 	ldrb r0, [r0]
@@ -774,10 +774,10 @@ _0802FBF4:
 	ldrh r6, [r0]
 	b _0802FCD4
 	.align 2, 0
-_0802FC08: .4byte 0x08337DA4
-_0802FC0C: .4byte 0x08336878
+_0802FC08: .4byte sKagoOam_337da4
+_0802FC0C: .4byte sKagoInsectLowJumpVelocity
 _0802FC10:
-	ldr r1, _0802FC58 @ =0x08336864
+	ldr r1, _0802FC58 @ =sKagoInsectMediumJumpVelocity
 	adds r0, r3, #0
 	adds r0, #0x31
 	ldrb r0, [r0]
@@ -813,7 +813,7 @@ _0802FC10:
 	ands r0, r1
 	b _0802FCAA
 	.align 2, 0
-_0802FC58: .4byte 0x08336864
+_0802FC58: .4byte sKagoInsectMediumJumpVelocity
 _0802FC5C: .4byte gPreviousCollisionCheck
 _0802FC60: .4byte 0x0000FFBF
 _0802FC64:
@@ -855,14 +855,14 @@ _0802FC7E:
 	orrs r0, r1
 _0802FCAA:
 	strh r0, [r3]
-	ldr r0, _0802FCBC @ =0x08337DB4
+	ldr r0, _0802FCBC @ =sKagoOam_337db4
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r7, [r3, #0x16]
 	b _0802FCD4
 	.align 2, 0
 _0802FCB8: .4byte gPreviousCollisionCheck
-_0802FCBC: .4byte 0x08337DB4
+_0802FCBC: .4byte sKagoOam_337db4
 _0802FCC0:
 	lsls r0, r6, #0x10
 	cmp r0, #0
@@ -1133,12 +1133,12 @@ _0802FEB4:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0802FEFA
-	ldr r0, _0802FED8 @ =0x08337B4C
+	ldr r0, _0802FED8 @ =sKagoOam_337b4c
 	str r0, [r2, #0x18]
 	b _0802FEFA
 	.align 2, 0
 _0802FED4: .4byte 0x0000FF78
-_0802FED8: .4byte 0x08337B4C
+_0802FED8: .4byte sKagoOam_337b4c
 _0802FEDC:
 	adds r0, r2, #0
 	adds r0, #0x2c
@@ -1148,10 +1148,10 @@ _0802FEDC:
 	cmp r0, #1
 	bne _0802FEFA
 	ldr r1, [r2, #0x18]
-	ldr r0, _0802FF58 @ =0x08337B4C
+	ldr r0, _0802FF58 @ =sKagoOam_337b4c
 	cmp r1, r0
 	bne _0802FEFA
-	ldr r0, _0802FF5C @ =0x08337CA4
+	ldr r0, _0802FF5C @ =sKagoOam_337ca4
 	str r0, [r2, #0x18]
 	movs r0, #0x3c
 	strb r0, [r3]
@@ -1201,8 +1201,8 @@ _0802FF28:
 	bl KagoSetCollision
 	b _0802FFE6
 	.align 2, 0
-_0802FF58: .4byte 0x08337B4C
-_0802FF5C: .4byte 0x08337CA4
+_0802FF58: .4byte sKagoOam_337b4c
+_0802FF5C: .4byte sKagoOam_337ca4
 _0802FF60: .4byte gCurrentSprite
 _0802FF64: .4byte 0x0000FF88
 _0802FF68:

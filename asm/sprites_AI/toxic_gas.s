@@ -19,7 +19,7 @@ ToxicGasInit: @ 0x0802F404
 	adds r0, r3, #0
 	adds r0, #0x25
 	strb r2, [r0]
-	ldr r0, _0802F48C @ =0x08336828
+	ldr r0, _0802F48C @ =sToxicGasOam_336828
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r1, [r3, #0x16]
@@ -70,7 +70,7 @@ ToxicGasInit: @ 0x0802F404
 	.align 2, 0
 _0802F484: .4byte gCurrentSprite
 _0802F488: .4byte sPrimarySpriteStats
-_0802F48C: .4byte 0x08336828
+_0802F48C: .4byte sToxicGasOam_336828
 _0802F490: .4byte 0x0000FFD0
 _0802F494: .4byte 0x000001FF
 
@@ -199,7 +199,7 @@ ToxicGasExplosion: @ 0x0802F54C
 	adds r0, #0x25
 	movs r2, #2
 	strb r2, [r0]
-	ldr r0, _0802F5D0 @ =0x083367D0
+	ldr r0, _0802F5D0 @ =sToxicGasOam_3367d0
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	strh r5, [r3, #0x16]
@@ -237,7 +237,7 @@ ToxicGasExplosion: @ 0x0802F54C
 	.align 2, 0
 _0802F5C8: .4byte gCurrentSprite
 _0802F5CC: .4byte 0x0000FFFB
-_0802F5D0: .4byte 0x083367D0
+_0802F5D0: .4byte sToxicGasOam_3367d0
 _0802F5D4: .4byte 0x0000FF80
 _0802F5D8: .4byte gSpriteData
 _0802F5DC:

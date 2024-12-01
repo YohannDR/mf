@@ -109,34 +109,34 @@ _080308E4:
 	b _08030924
 _080308EE:
 	movs r5, #1
-	ldr r0, _080308F4 @ =0x08339084
+	ldr r0, _080308F4 @ =sGateOam_339084
 	b _08030908
 	.align 2, 0
-_080308F4: .4byte 0x08339084
+_080308F4: .4byte sGateOam_339084
 _080308F8:
 	movs r5, #2
-	ldr r0, _08030900 @ =0x08339084
+	ldr r0, _08030900 @ =sGateOam_339084
 	b _08030918
 	.align 2, 0
-_08030900: .4byte 0x08339084
+_08030900: .4byte sGateOam_339084
 _08030904:
 	movs r5, #3
-	ldr r0, _08030910 @ =0x083391F4
+	ldr r0, _08030910 @ =sGateOam_3391f4
 _08030908:
 	mov r1, ip
 	str r0, [r1, #0x18]
 	b _0803095E
 	.align 2, 0
-_08030910: .4byte 0x083391F4
+_08030910: .4byte sGateOam_3391f4
 _08030914:
 	movs r5, #4
-	ldr r0, _08030920 @ =0x083391F4
+	ldr r0, _08030920 @ =sGateOam_3391f4
 _08030918:
 	mov r4, ip
 	str r0, [r4, #0x18]
 	b _0803095E
 	.align 2, 0
-_08030920: .4byte 0x083391F4
+_08030920: .4byte sGateOam_3391f4
 _08030924:
 	movs r5, #5
 	bl EventCheckAfter_AnimalsReleased
@@ -147,15 +147,15 @@ _08030924:
 	adds r1, #0x24
 	movs r0, #0x1a
 	strb r0, [r1]
-	ldr r0, _08030944 @ =0x08338F84
+	ldr r0, _08030944 @ =sGateOam_338f84
 	str r0, [r2, #0x18]
 	b _08030990
 	.align 2, 0
 _08030940: .4byte gCurrentSprite
-_08030944: .4byte 0x08338F84
+_08030944: .4byte sGateOam_338f84
 _08030948:
 	ldr r2, _08030998 @ =gCurrentSprite
-	ldr r0, _0803099C @ =0x08339084
+	ldr r0, _0803099C @ =sGateOam_339084
 	str r0, [r2, #0x18]
 	adds r3, r2, #0
 	adds r3, #0x34
@@ -196,7 +196,7 @@ _08030990:
 	bx r0
 	.align 2, 0
 _08030998: .4byte gCurrentSprite
-_0803099C: .4byte 0x08339084
+_0803099C: .4byte sGateOam_339084
 
 	thumb_func_start GateClosed
 GateClosed: @ 0x080309A0
@@ -250,7 +250,7 @@ GateOpeningInit: @ 0x080309D8
 	blt _08030A2C
 	cmp r0, #0x12
 	bgt _08030A14
-	ldr r0, _08030A10 @ =0x0833900C
+	ldr r0, _08030A10 @ =sGateOam_33900c
 	str r0, [r3, #0x18]
 	movs r0, #0x8a
 	lsls r0, r0, #1
@@ -258,21 +258,21 @@ GateOpeningInit: @ 0x080309D8
 	b _08030A3A
 	.align 2, 0
 _08030A0C: .4byte gCurrentSprite
-_08030A10: .4byte 0x0833900C
+_08030A10: .4byte sGateOam_33900c
 _08030A14:
 	cmp r0, #0x14
 	bgt _08030A2C
-	ldr r0, _08030A24 @ =0x0833917C
+	ldr r0, _08030A24 @ =sGateOam_33917c
 	str r0, [r3, #0x18]
 	ldr r0, _08030A28 @ =0x00000115
 	bl SoundPlay
 	b _08030A3A
 	.align 2, 0
-_08030A24: .4byte 0x0833917C
+_08030A24: .4byte sGateOam_33917c
 _08030A28: .4byte 0x00000115
 _08030A2C:
 	ldr r0, _08030A40 @ =gCurrentSprite
-	ldr r1, _08030A44 @ =0x0833900C
+	ldr r1, _08030A44 @ =sGateOam_33900c
 	str r1, [r0, #0x18]
 	movs r0, #0x8a
 	lsls r0, r0, #1
@@ -282,7 +282,7 @@ _08030A3A:
 	bx r0
 	.align 2, 0
 _08030A40: .4byte gCurrentSprite
-_08030A44: .4byte 0x0833900C
+_08030A44: .4byte sGateOam_33900c
 
 	thumb_func_start GateOpening
 GateOpening: @ 0x08030A48
@@ -307,20 +307,20 @@ GateOpening: @ 0x08030A48
 	ble _08030A80
 	cmp r0, #0x14
 	bgt _08030A80
-	ldr r0, _08030A7C @ =0x083390F4
+	ldr r0, _08030A7C @ =sGateOam_3390f4
 	b _08030A82
 	.align 2, 0
 _08030A78: .4byte gCurrentSprite
-_08030A7C: .4byte 0x083390F4
+_08030A7C: .4byte sGateOam_3390f4
 _08030A80:
-	ldr r0, _08030A88 @ =0x08338F84
+	ldr r0, _08030A88 @ =sGateOam_338f84
 _08030A82:
 	str r0, [r1, #0x18]
 _08030A84:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08030A88: .4byte 0x08338F84
+_08030A88: .4byte sGateOam_338f84
 
 	thumb_func_start GateSwitchInit
 GateSwitchInit: @ 0x08030A8C
@@ -391,22 +391,22 @@ _08030B0A:
 	strh r0, [r1, #0xe]
 	adds r0, #0x20
 	strh r0, [r1, #0x10]
-	ldr r0, _08030B1C @ =0x0833928C
+	ldr r0, _08030B1C @ =sGateOam_33928c
 	str r0, [r1, #0x18]
 	b _08030B38
 	.align 2, 0
 _08030B18: .4byte 0x0000FF6C
-_08030B1C: .4byte 0x0833928C
+_08030B1C: .4byte sGateOam_33928c
 _08030B20:
 	movs r0, #0x74
 	strh r0, [r1, #0xe]
 	movs r0, #0x94
 	strh r0, [r1, #0x10]
-	ldr r0, _08030B30 @ =0x083392C4
+	ldr r0, _08030B30 @ =sGateOam_3392c4
 	str r0, [r1, #0x18]
 	b _08030B38
 	.align 2, 0
-_08030B30: .4byte 0x083392C4
+_08030B30: .4byte sGateOam_3392c4
 _08030B34:
 	movs r0, #0
 	strh r0, [r1]
@@ -450,17 +450,17 @@ _08030B74:
 	beq _08030B88
 	b _08030B94
 _08030B7E:
-	ldr r0, _08030B84 @ =0x083392AC
+	ldr r0, _08030B84 @ =sGateOam_3392ac
 	str r0, [r2, #0x18]
 	b _08030B98
 	.align 2, 0
-_08030B84: .4byte 0x083392AC
+_08030B84: .4byte sGateOam_3392ac
 _08030B88:
-	ldr r0, _08030B90 @ =0x083392E4
+	ldr r0, _08030B90 @ =sGateOam_3392e4
 	str r0, [r2, #0x18]
 	b _08030B98
 	.align 2, 0
-_08030B90: .4byte 0x083392E4
+_08030B90: .4byte sGateOam_3392e4
 _08030B94:
 	movs r0, #0
 	strh r0, [r2]
@@ -516,20 +516,20 @@ _08030BEC:
 	b _08030C18
 _08030BF6:
 	ldr r1, _08030C00 @ =gCurrentSprite
-	ldr r0, _08030C04 @ =0x083392FC
+	ldr r0, _08030C04 @ =sGateOam_3392fc
 	str r0, [r1, #0x18]
 	b _08030C1E
 	.align 2, 0
 _08030C00: .4byte gCurrentSprite
-_08030C04: .4byte 0x083392FC
+_08030C04: .4byte sGateOam_3392fc
 _08030C08:
 	ldr r1, _08030C10 @ =gCurrentSprite
-	ldr r0, _08030C14 @ =0x0833930C
+	ldr r0, _08030C14 @ =sGateOam_33930c
 	str r0, [r1, #0x18]
 	b _08030C1E
 	.align 2, 0
 _08030C10: .4byte gCurrentSprite
-_08030C14: .4byte 0x0833930C
+_08030C14: .4byte sGateOam_33930c
 _08030C18:
 	ldr r1, _08030C24 @ =gCurrentSprite
 	movs r0, #0

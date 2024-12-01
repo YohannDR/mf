@@ -115,7 +115,7 @@ BeamCoreXTransformationInit: @ 0x0802D9E4
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strh r0, [r2, #0x10]
-	ldr r0, _0802DAAC @ =0x0832AF80
+	ldr r0, _0802DAAC @ =sBeamCoreXOam_32af80
 	str r0, [r2, #0x18]
 	strb r4, [r2, #0x1c]
 	strh r5, [r2, #0x16]
@@ -142,7 +142,7 @@ _0802DA9C: .4byte gCurrentSprite
 _0802DAA0: .4byte 0x0000F3FB
 _0802DAA4: .4byte sPrimarySpriteStats
 _0802DAA8: .4byte 0x0000FFE0
-_0802DAAC: .4byte 0x0832AF80
+_0802DAAC: .4byte sBeamCoreXOam_32af80
 _0802DAB0:
 	cmp r0, #0x59
 	beq _0802DAD2
@@ -523,7 +523,7 @@ _0802DD20:
 	strb r6, [r4, #0x1c]
 	movs r0, #0
 	strh r0, [r4, #0x16]
-	ldr r0, _0802DDC4 @ =0x0832AFC8
+	ldr r0, _0802DDC4 @ =sBeamCoreXOam_32afc8
 	str r0, [r4, #0x18]
 	ldr r2, _0802DDC8 @ =gSamusData
 	movs r7, #0x26
@@ -550,7 +550,7 @@ _0802DDB4: .4byte sCoreXIdleYSpeed
 _0802DDB8: .4byte 0x00007FFF
 _0802DDBC: .4byte sCoreXIdleXSpeed
 _0802DDC0: .4byte gPreventMovementTimer
-_0802DDC4: .4byte 0x0832AFC8
+_0802DDC4: .4byte sBeamCoreXOam_32afc8
 _0802DDC8: .4byte gSamusData
 _0802DDCC:
 	cmp r1, #0x58
@@ -760,7 +760,7 @@ _0802DF4C:
 	adds r0, r0, r5
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r4, _0802DFB0 @ =0x08328480
+	ldr r4, _0802DFB0 @ =sIceBeamAbilityFloatingYMovement
 	lsls r0, r2, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -805,7 +805,7 @@ _0802DFA2:
 	.align 2, 0
 _0802DFA8: .4byte gFrameCounter8Bit
 _0802DFAC: .4byte gCurrentSprite
-_0802DFB0: .4byte 0x08328480
+_0802DFB0: .4byte sIceBeamAbilityFloatingYMovement
 _0802DFB4: .4byte 0x00007FFF
 
 	thumb_func_start BeamCoreXShellInit
@@ -852,7 +852,7 @@ BeamCoreXShellInit: @ 0x0802DFB8
 	strh r0, [r6, #0xc]
 	strh r1, [r6, #0xe]
 	strh r0, [r6, #0x10]
-	ldr r0, _0802E054 @ =0x0832B0A8
+	ldr r0, _0802E054 @ =sBeamCoreXOam_32b0a8
 	str r0, [r6, #0x18]
 	strb r5, [r6, #0x1c]
 	strh r4, [r6, #0x16]
@@ -885,7 +885,7 @@ _0802E044: .4byte gCurrentSprite
 _0802E048: .4byte 0x0000FFFB
 _0802E04C: .4byte sSecondarySpriteStats
 _0802E050: .4byte 0x0000FFC0
-_0802E054: .4byte 0x0832B0A8
+_0802E054: .4byte sBeamCoreXOam_32b0a8
 _0802E058: .4byte gSamusData
 _0802E05C:
 	adds r0, r2, #0
@@ -1054,7 +1054,7 @@ BeamCoreXEyeInit: @ 0x0802E138
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strh r0, [r2, #0x10]
-	ldr r0, _0802E1D4 @ =0x0832B0B8
+	ldr r0, _0802E1D4 @ =sBeamCoreXOam_32b0b8
 	str r0, [r2, #0x18]
 	strb r4, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -1084,7 +1084,7 @@ BeamCoreXEyeInit: @ 0x0802E138
 _0802E1C8: .4byte gCurrentSprite
 _0802E1CC: .4byte sSecondarySpriteStats
 _0802E1D0: .4byte 0x0000FFD8
-_0802E1D4: .4byte 0x0832B0B8
+_0802E1D4: .4byte sBeamCoreXOam_32b0b8
 _0802E1D8: .4byte gSamusData
 _0802E1DC:
 	adds r0, r2, #0
@@ -1608,7 +1608,7 @@ BeamCoreXEyeClosed: @ 0x0802E584
 	ands r0, r1
 	movs r1, #0
 	strh r0, [r2]
-	ldr r0, _0802E5C4 @ =0x0832B0C8
+	ldr r0, _0802E5C4 @ =sBeamCoreXOam_32b0c8
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -1622,7 +1622,7 @@ _0802E5B8:
 	.align 2, 0
 _0802E5BC: .4byte gCurrentSprite
 _0802E5C0: .4byte 0x0000FFFB
-_0802E5C4: .4byte 0x0832B0C8
+_0802E5C4: .4byte sBeamCoreXOam_32b0c8
 
 	thumb_func_start BeamCoreXEyeOpening
 BeamCoreXEyeOpening: @ 0x0802E5C8
@@ -1638,7 +1638,7 @@ BeamCoreXEyeOpening: @ 0x0802E5C8
 	movs r2, #0
 	movs r3, #0
 	strh r0, [r1]
-	ldr r0, _0802E608 @ =0x0832B100
+	ldr r0, _0802E608 @ =sBeamCoreXOam_32b100
 	str r0, [r1, #0x18]
 	strb r2, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -1655,7 +1655,7 @@ _0802E5FA:
 	.align 2, 0
 _0802E600: .4byte gCurrentSprite
 _0802E604: .4byte 0x00007FFF
-_0802E608: .4byte 0x0832B100
+_0802E608: .4byte sBeamCoreXOam_32b100
 
 	thumb_func_start BeamCoreXEyeOpened
 BeamCoreXEyeOpened: @ 0x0802E60C
@@ -1694,7 +1694,7 @@ _0802E644:
 	adds r0, r1, #0
 	cmp r0, #0x6e
 	bne _0802E668
-	ldr r0, _0802E664 @ =0x0832B110
+	ldr r0, _0802E664 @ =sBeamCoreXOam_32b110
 	str r0, [r5, #0x18]
 	movs r0, #0
 	strb r0, [r5, #0x1c]
@@ -1702,11 +1702,11 @@ _0802E644:
 	b _0802E6E0
 	.align 2, 0
 _0802E660: .4byte gCurrentSprite
-_0802E664: .4byte 0x0832B110
+_0802E664: .4byte sBeamCoreXOam_32b110
 _0802E668:
 	cmp r0, #0x3c
 	bne _0802E6A0
-	ldr r0, _0802E698 @ =0x0832B160
+	ldr r0, _0802E698 @ =sBeamCoreXOam_32b160
 	str r0, [r5, #0x18]
 	movs r4, #0
 	strb r4, [r5, #0x1c]
@@ -1728,7 +1728,7 @@ _0802E668:
 	bl SpriteSpawnSecondary
 	b _0802E6E0
 	.align 2, 0
-_0802E698: .4byte 0x0832B160
+_0802E698: .4byte sBeamCoreXOam_32b160
 _0802E69C: .4byte gSpriteData
 _0802E6A0:
 	cmp r0, #0x3b
@@ -1778,7 +1778,7 @@ _0802E6E0:
 	beq _0802E6F8
 	b _0802E8DE
 _0802E6F8:
-	ldr r0, _0802E72C @ =0x0832B100
+	ldr r0, _0802E72C @ =sBeamCoreXOam_32b100
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
 	strh r1, [r2, #0x16]
@@ -1802,7 +1802,7 @@ _0802E6F8:
 	.align 2, 0
 _0802E724: .4byte gSpriteData
 _0802E728: .4byte gCurrentSprite
-_0802E72C: .4byte 0x0832B100
+_0802E72C: .4byte sBeamCoreXOam_32b100
 _0802E730:
 	movs r0, #0x1e
 	strb r0, [r3]
@@ -2090,7 +2090,7 @@ _0802E922:
 	orrs r0, r1
 	mov r1, ip
 	strh r0, [r1]
-	ldr r0, _0802E978 @ =0x0832B1B0
+	ldr r0, _0802E978 @ =sBeamCoreXOam_32b1b0
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r2, [r1, #0x16]
@@ -2113,7 +2113,7 @@ _0802E96C:
 	bx r0
 	.align 2, 0
 _0802E974: .4byte gCurrentSprite
-_0802E978: .4byte 0x0832B1B0
+_0802E978: .4byte sBeamCoreXOam_32b1b0
 _0802E97C: .4byte gSpriteData
 
 	thumb_func_start BeamCoreXEyeClosing
@@ -2132,7 +2132,7 @@ BeamCoreXEyeClosing: @ 0x0802E980
 	adds r1, #0xb
 	movs r0, #0x64
 	strb r0, [r1]
-	ldr r0, _0802E9B8 @ =0x0832B0B8
+	ldr r0, _0802E9B8 @ =sBeamCoreXOam_32b0b8
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -2145,7 +2145,7 @@ _0802E9B0:
 	bx r0
 	.align 2, 0
 _0802E9B4: .4byte gCurrentSprite
-_0802E9B8: .4byte 0x0832B0B8
+_0802E9B8: .4byte sBeamCoreXOam_32b0b8
 
 	thumb_func_start BeamCoreXGlowingInit
 BeamCoreXGlowingInit: @ 0x0802E9BC
@@ -2180,7 +2180,7 @@ BeamCoreXGlowingInit: @ 0x0802E9BC
 	strh r0, [r6, #0xc]
 	strh r1, [r6, #0xe]
 	strh r0, [r6, #0x10]
-	ldr r0, _0802EA48 @ =0x0832AFE0
+	ldr r0, _0802EA48 @ =sBeamCoreXOam_32afe0
 	str r0, [r6, #0x18]
 	strb r3, [r6, #0x1c]
 	strh r4, [r6, #0x16]
@@ -2218,7 +2218,7 @@ _0802EA36:
 _0802EA3C: .4byte gCurrentSprite
 _0802EA40: .4byte 0x0000FFFB
 _0802EA44: .4byte 0x0000FFFC
-_0802EA48: .4byte 0x0832AFE0
+_0802EA48: .4byte sBeamCoreXOam_32afe0
 _0802EA4C: .4byte gSpriteData
 _0802EA50: .4byte gIoRegisters
 

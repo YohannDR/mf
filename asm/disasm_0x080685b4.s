@@ -15924,7 +15924,7 @@ _080700F0: .4byte gSubEventCounter
 	thumb_func_start UpdateSubEventCounterAfterAbility
 UpdateSubEventCounterAfterAbility: @ 0x080700F4
 	push {lr}
-	ldr r1, _08070114 @ =0x08575FB4
+	ldr r1, _08070114 @ =sAbilityRamValues
 	ldr r0, _08070118 @ =gAbilityCount
 	ldrb r0, [r0]
 	lsls r0, r0, #3
@@ -15940,7 +15940,7 @@ _08070110:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08070114: .4byte 0x08575FB4
+_08070114: .4byte sAbilityRamValues
 _08070118: .4byte gAbilityCount
 _0807011C: .4byte gSubEventCounter
 

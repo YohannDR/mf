@@ -61,7 +61,7 @@ _080572DC:
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strh r0, [r2, #0x10]
-	ldr r0, _08057334 @ =0x08337FA4
+	ldr r0, _08057334 @ =sShakeTriggerOam_337fa4
 	str r0, [r2, #0x18]
 	strb r5, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -86,7 +86,7 @@ _08057328:
 	b _08057348
 	.align 2, 0
 _08057330: .4byte 0x0000FFFC
-_08057334: .4byte 0x08337FA4
+_08057334: .4byte sShakeTriggerOam_337fa4
 _08057338: .4byte gIoRegisters
 _0805733C: .4byte gDebugFlag
 _08057340: .4byte 0x03000047
@@ -157,7 +157,7 @@ _08057398:
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strh r0, [r2, #0x10]
-	ldr r0, _080573F0 @ =0x08337FA4
+	ldr r0, _080573F0 @ =sShakeTriggerOam_337fa4
 	str r0, [r2, #0x18]
 	strb r5, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -182,7 +182,7 @@ _080573E4:
 	b _08057404
 	.align 2, 0
 _080573EC: .4byte 0x0000FFFC
-_080573F0: .4byte 0x08337FA4
+_080573F0: .4byte sShakeTriggerOam_337fa4
 _080573F4: .4byte gIoRegisters
 _080573F8: .4byte gDebugFlag
 _080573FC: .4byte 0x03000047

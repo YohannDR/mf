@@ -93,9 +93,9 @@ def ParsePart2(value):
 
     return result
 
-def ParseOam():
+def ParseOam(spriteName):
     part_count = int.from_bytes(file.read(2), "little")
-    result = f"static const u16 sOam_{file.tell()-2:x}[] = {{\n"
+    result = f"static const u16 s{spriteName}Oam_{file.tell()-2:x}[] = {{\n"
     if part_count == 0:
         result += f"    0"
     else:
@@ -127,7 +127,7 @@ def ParseFrameData(spriteName):
 
     index = 0
     for (pFrame, timer) in frameData:
-        result += f"    [{index}] = {{\n        .pFrame = sOam_{pFrame:x},\n        .timer = {timer}\n    }},\n"
+        result += f"    [{index}] = {{\n        .pFrame = s{spriteName}Oam_{pFrame:x},\n        .timer = {timer}\n    }},\n"
         index += 1
     result += f"    [{index}] = FRAME_DATA_TERMINATOR\n}};\n"
 
@@ -181,7 +181,7 @@ def Func():
                 break
             file.seek(currentAddr)
             frames |= {currentAddr | 0x8000000}
-            output += ParseOam() + '\n'
+            output += ParseOam(spriteName) + '\n'
 
         while True:
             currentAddr = file.tell()
@@ -202,7 +202,7 @@ def Func():
             break
 
     for (addr, name) in namedFrames.items():
-        output = output.replace(f"sOam_{addr:x}", name)
+        output = output.replace(f"s{spriteName}Oam_{addr:x}", name)
 
     print(output)
 

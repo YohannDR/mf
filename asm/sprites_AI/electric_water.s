@@ -38,7 +38,7 @@ ElectricWaterDamageInit: @ 0x08030CC0
 	adds r1, #0x24
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _08030D1C @ =0x0833AB94
+	ldr r0, _08030D1C @ =sElectricWaterDamageOam_Idle
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -48,7 +48,7 @@ ElectricWaterDamageInit: @ 0x08030CC0
 	.align 2, 0
 _08030D14: .4byte gCurrentSprite
 _08030D18: .4byte 0x0000FF80
-_08030D1C: .4byte 0x0833AB94
+_08030D1C: .4byte sElectricWaterDamageOam_Idle
 
 	thumb_func_start ElectricWaterDamageIdle
 ElectricWaterDamageIdle: @ 0x08030D20
@@ -121,7 +121,7 @@ _08030D8A:
 	subs r1, #0xa
 	movs r0, #0x1a
 	strb r0, [r1]
-	ldr r0, _08030DBC @ =0x0833AC04
+	ldr r0, _08030DBC @ =sElectricWaterDamageOam_Stopping
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	movs r1, #0
@@ -134,7 +134,7 @@ _08030DB4:
 	bx r0
 	.align 2, 0
 _08030DB8: .4byte 0x03001346
-_08030DBC: .4byte 0x0833AC04
+_08030DBC: .4byte sElectricWaterDamageOam_Stopping
 
 	thumb_func_start ElectricWaterDamageStopping
 ElectricWaterDamageStopping: @ 0x08030DC0
@@ -157,7 +157,7 @@ ElectricWaterDamageStopping: @ 0x08030DC0
 	movs r1, #4
 	orrs r0, r1
 	strh r0, [r4]
-	ldr r0, _08030E10 @ =0x0833AB94
+	ldr r0, _08030E10 @ =sElectricWaterDamageOam_Idle
 	str r0, [r4, #0x18]
 	strb r5, [r4, #0x1c]
 	movs r0, #0
@@ -176,7 +176,7 @@ _08030E00:
 	.align 2, 0
 _08030E08: .4byte gCurrentSprite
 _08030E0C: .4byte gSamusData
-_08030E10: .4byte 0x0833AB94
+_08030E10: .4byte sElectricWaterDamageOam_Idle
 
 	thumb_func_start ElectricWireInit
 ElectricWireInit: @ 0x08030E14
@@ -204,7 +204,7 @@ ElectricWireInit: @ 0x08030E14
 	strh r0, [r4, #0xc]
 	strb r5, [r4, #0x1c]
 	strh r1, [r4, #0x16]
-	ldr r0, _08030E84 @ =0x0833AC54
+	ldr r0, _08030E84 @ =sElectricWireOam
 	str r0, [r4, #0x18]
 	ldr r0, _08030E88 @ =gIoRegisters
 	ldrb r1, [r0, #0xa]
@@ -234,7 +234,7 @@ ElectricWireInit: @ 0x08030E14
 	.align 2, 0
 _08030E7C: .4byte gCurrentSprite
 _08030E80: .4byte 0x0000FFD0
-_08030E84: .4byte 0x0833AC54
+_08030E84: .4byte sElectricWireOam
 _08030E88: .4byte gIoRegisters
 _08030E8C: .4byte gPreviousCollisionCheck
 _08030E90:
@@ -338,7 +338,7 @@ ElectricWaterInit: @ 0x08030F00
 	mov r0, ip
 	strb r3, [r0, #0x1c]
 	strh r4, [r0, #0x16]
-	ldr r0, _08030F78 @ =0x0833ADCC
+	ldr r0, _08030F78 @ =sElectricWaterOam
 	mov r1, ip
 	str r0, [r1, #0x18]
 	movs r0, #0x8b
@@ -351,7 +351,7 @@ ElectricWaterInit: @ 0x08030F00
 _08030F6C: .4byte gCurrentSprite
 _08030F70: .4byte 0x0000FFC0
 _08030F74: .4byte 0x0000FE20
-_08030F78: .4byte 0x0833ADCC
+_08030F78: .4byte sElectricWaterOam
 
 	thumb_func_start ElectricWaterIdle
 ElectricWaterIdle: @ 0x08030F7C

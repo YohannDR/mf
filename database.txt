@@ -924,6 +924,86 @@ sprites/message_box.pal;2;0x31f3d0;32
 sprites/datapad.gfx;3;0x31f818;2048
 sprites/datapad.pal;3;0x321018;32
 
+# Zebesian (wall)
+
+sprites/zebesian_wall.gfx;2;0x321bec;2048
+sprites/zebesian_wall.pal;2;0x322bec;32
+
+# Recharge pad
+
+sprites/recharge_pad.gfx;3;0x3239f0;2048
+sprites/recharge_pad.pal;3;0x3251f0;32
+
+# Atmospheric stabilizer
+
+sprites/atmospheric_stabilizer.gfx;3;0x3257f0;2048
+sprites/atmospheric_stabilizer.pal;3;0x326ff0;32
+
+# Chozo statue
+
+sprites/chozo_statue.gfx;1;0x327b10;2048
+sprites/chozo_statue.pal;1;0x328310;32
+
+# Beam Core-X
+
+sprites/charge_beam_core_x.gfx;5;0x328504;2048
+sprites/charge_beam_core_x.pal;5;0x32ad04;32
+sprites/wide_beam_core_x.gfx;5;0x32b1e8;2048
+sprites/wide_beam_core_x.pal;5;0x32d9e8;32
+sprites/plasma_beam_core_x.gfx;5;0x32da88;2048
+sprites/plasma_beam_core_x.pal;5;0x330288;32
+sprites/wave_beam_core_x.gfx;5;0x330328;2048
+sprites/wave_beam_core_x.pal;5;0x332b28;32
+sprites/ice_beam_core_x.gfx;5;0x332bc8;2048
+sprites/ice_beam_core_x.pal;5;0x3353c8;32
+
+# Toxic gas
+
+sprites/toxic_gas.gfx;2;0x335468;2048
+sprites/toxic_gas.pal;2;0x336468;32
+
+# Kago
+
+sprites/kago.gfx;2;0x33688c;2048
+sprites/kago.pal;2;0x33788c;32
+
+# Gate
+
+sprites/gate.gfx;1;0x337fbc;2048
+sprites/gate.pal;1;0x3387bc;32
+
+# Electric water
+
+sprites/electric_water.gfx;2;0x33931c;2048
+sprites/electric_water.pal;2;0x33a31c;32
+
+# Zoro
+
+sprites/zoro.gfx;1;0x33ae14;2048
+sprites/blue_zoro.gfx;1;0x33b614;2048
+sprites/zoro.pal;1;0x33be14;32
+sprites/blue_zoro.pal;1;0x33be34;32
+
+# Kihunter
+
+sprites/kihunter.gfx;3;0x33c33c;2048
+sprites/kihunter.pal;3;0x33db3c;32
+
+# Reo
+
+sprites/reo.gfx;1;0x33e7f8;2048
+sprites/reo.pal;1;0x33eff8;32
+
+# Lava plume
+
+sprites/lava_plume.gfx;1;0x33f198;2048
+sprites/lava_plume.pal;1;0x33f998;32
+
+# Fune and namihe
+
+sprites/fune_namihe.gfx;2;0x33ff08;2048
+sprites/fune_namihe.pal;2;0x340f08;32
+
 # ...
 
 # B.O.X.
@@ -2785,7 +2865,7 @@ sa_x_close_up/second.tt.lz;0x733d58
 # Blobs
 
 # Sound stuff
-Blob_a5224_a5710.bin;1260;0xa5224;1
+Blob_a5258_a5710.bin;a5258;a5710
 
 # Samus data
 Blob_289970_28998c.bin;289970;28998c
@@ -2796,7 +2876,6 @@ Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
 Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 
 # Sprites
-Blob_321b64_3420b4.bin;0x321b64;0x3420b4
 Blob_348ca4_3534c4.bin;0x348ca4;0x3534c4
 Blob_37c578_39aa34.bin;37c578;39aa34
 

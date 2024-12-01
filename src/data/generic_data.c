@@ -1,5 +1,7 @@
 #include "data/generic_data.h"
 
+#include "callbacks.h"
+
 const s16 sSineTable[Q_8_8(1.f) + PI / 2] = {
     Q_8_8(0),           // sin(0*(π/128))
     Q_8_8(0.0234375),   // sin(1*(π/128))
@@ -323,4 +325,22 @@ const s16 sSineTable[Q_8_8(1.f) + PI / 2] = {
     Q_8_8(0.99609375),  // sin(319*(π/128))
 };
 
-static const u8 sBlob_a5224_a5710[] = INCBIN_U8("data/Blob_a5224_a5710.bin");
+void DMA2InterruptCode(void); // FIXME temp
+
+const Func_T sIntrTable[13] = {
+    DMA2InterruptCode,
+    CallbackCallVblank,
+    CallbackCallHBlank,
+    CallbackCallVCount,
+    Callback_Empty,
+    Callback_Empty,
+    Callback_Empty,
+    Callback_Empty,
+    Callback_Empty,
+    Callback_Empty,
+    Callback_Empty,
+    Callback_Empty,
+    Callback_Empty,
+};
+
+static const u8 sBlob_a5258_a5710[] = INCBIN_U8("data/Blob_a5258_a5710.bin");

@@ -206,7 +206,7 @@ _08051940:
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strh r0, [r2, #0x10]
-	ldr r0, _08051994 @ =0x08337FA4
+	ldr r0, _08051994 @ =sShakeTriggerOam_337fa4
 	str r0, [r2, #0x18]
 	strb r4, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -228,7 +228,7 @@ _08051940:
 	b _080519A4
 	.align 2, 0
 _08051990: .4byte 0x0000FFFC
-_08051994: .4byte 0x08337FA4
+_08051994: .4byte sShakeTriggerOam_337fa4
 _08051998: .4byte gIoRegisters
 _0805199C: .4byte gDebugFlag
 _080519A0:

@@ -263,7 +263,7 @@ _08074B3A:
 _08074B3E:
 	movs r4, #0x12
 	ldr r3, _08074B78 @ =gEventCounter
-	ldr r2, _08074B7C @ =0x08575FA0
+	ldr r2, _08074B7C @ =sObtainItemEvents
 _08074B44:
 	adds r1, r4, r2
 	ldrb r0, [r3]
@@ -273,7 +273,7 @@ _08074B44:
 	ldr r0, _08074B80 @ =gAbilityCount
 	strb r4, [r0]
 	ldr r3, _08074B84 @ =gEquipment
-	ldr r1, _08074B88 @ =0x08575FB4
+	ldr r1, _08074B88 @ =sAbilityRamValues
 	lsls r0, r4, #3
 	adds r2, r0, r1
 	ldrb r0, [r3, #0xa]
@@ -291,10 +291,10 @@ _08074B44:
 	b _08074B94
 	.align 2, 0
 _08074B78: .4byte gEventCounter
-_08074B7C: .4byte 0x08575FA0
+_08074B7C: .4byte sObtainItemEvents
 _08074B80: .4byte gAbilityCount
 _08074B84: .4byte gEquipment
-_08074B88: .4byte 0x08575FB4
+_08074B88: .4byte sAbilityRamValues
 _08074B8C:
 	ldrb r0, [r3, #0xc]
 	ldrb r1, [r2, #2]
@@ -543,7 +543,7 @@ EventCheckRoomHasEventTrigger: @ 0x08074D54
 	movs r0, #0
 	strb r0, [r1]
 	movs r5, #0
-	ldr r4, _08074DA4 @ =0x08575A60
+	ldr r4, _08074DA4 @ =sEventLocationAndNavigationInfo
 	lsls r0, r3, #1
 	adds r0, r0, r3
 	lsls r0, r0, #2
@@ -572,7 +572,7 @@ _08074D72:
 	.align 2, 0
 _08074D9C: .4byte gEventCounter
 _08074DA0: .4byte gRoomEventTrigger
-_08074DA4: .4byte 0x08575A60
+_08074DA4: .4byte sEventLocationAndNavigationInfo
 _08074DA8: .4byte gCurrentArea
 _08074DAC:
 	ldrb r0, [r2, #8]
@@ -590,7 +590,7 @@ _08074DBC:
 	ldrb r3, [r0]
 	cmp r3, #0
 	ble _08074E1C
-	ldr r0, _08074DEC @ =0x08575A60
+	ldr r0, _08074DEC @ =sEventLocationAndNavigationInfo
 	lsls r1, r3, #1
 	adds r1, r1, r3
 	lsls r1, r1, #2
@@ -607,7 +607,7 @@ _08074DBC:
 	b _08074E1C
 	.align 2, 0
 _08074DE8: .4byte gEventCounter
-_08074DEC: .4byte 0x08575A60
+_08074DEC: .4byte sEventLocationAndNavigationInfo
 _08074DF0: .4byte gPreviousNavigationConversation
 _08074DF4:
 	lsls r0, r3, #0x18
@@ -640,7 +640,7 @@ _08074E24: .4byte gPreviousNavigationConversation
 	thumb_func_start EventCheckRoomEventTrigger
 EventCheckRoomEventTrigger: @ 0x08074E28
 	push {r4, lr}
-	ldr r2, _08074E7C @ =0x08575A60
+	ldr r2, _08074E7C @ =sEventLocationAndNavigationInfo
 	ldr r4, _08074E80 @ =gRoomEventTrigger
 	movs r1, #0
 	ldrsb r1, [r4, r1]
@@ -680,7 +680,7 @@ EventCheckRoomEventTrigger: @ 0x08074E28
 	movs r0, #0x8b
 	b _08074E92
 	.align 2, 0
-_08074E7C: .4byte 0x08575A60
+_08074E7C: .4byte sEventLocationAndNavigationInfo
 _08074E80: .4byte gRoomEventTrigger
 _08074E84: .4byte gSamusData
 _08074E88: .4byte gEventCounter
@@ -707,7 +707,7 @@ _08074EA6:
 EventCheckSetNavigationRoomEvent: @ 0x08074EAC
 	push {r4, r5, lr}
 	movs r5, #0
-	ldr r1, _08074F18 @ =0x08575A60
+	ldr r1, _08074F18 @ =sEventLocationAndNavigationInfo
 	ldr r0, _08074F1C @ =gEventCounter
 	ldrb r0, [r0]
 	adds r3, r0, #1
@@ -763,7 +763,7 @@ _08074F10:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08074F18: .4byte 0x08575A60
+_08074F18: .4byte sEventLocationAndNavigationInfo
 _08074F1C: .4byte gEventCounter
 _08074F20: .4byte 0x0857604C
 _08074F24: .4byte gCurrentArea
@@ -776,7 +776,7 @@ EventCheckDownloadedDataItem: @ 0x08074F30
 	lsls r0, r0, #0x18
 	lsrs r3, r0, #0x18
 	movs r4, #0
-	ldr r1, _08074F68 @ =0x08575A60
+	ldr r1, _08074F68 @ =sEventLocationAndNavigationInfo
 	ldr r0, _08074F6C @ =gEventCounter
 	ldrb r0, [r0]
 	adds r2, r0, #1
@@ -801,7 +801,7 @@ _08074F5E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08074F68: .4byte 0x08575A60
+_08074F68: .4byte sEventLocationAndNavigationInfo
 _08074F6C: .4byte gEventCounter
 
 	thumb_func_start EventCheckUnlockSecurityLevel
