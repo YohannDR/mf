@@ -1,3 +1,5 @@
+import labels
+
 primarySpriteNames = [
     "PSPRITE_TARGET_CIRCLES",
     "PSPRITE_TARGET_DIAGONAL",
@@ -341,19 +343,7 @@ secondarySpriteNames = [
     "SSPRITE_NIGHTMARE_BEAM",
 ]
 
-labelsFile = open("./mf_us.map")
-labels = {}
-
-line = labelsFile.readline()
-while line != '':
-    line = line.splitlines()[0]
-    if line.startswith("                0x08"):
-        split = line.split()
-        if len(split) == 2:
-            labels[int(split[0], 16)] = split[1]
-    line = labelsFile.readline()
-
-labelsFile.close()
+labels = labels.extract_labels()
 
 file = open("./mf_us_baserom.gba", "rb")
 

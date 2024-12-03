@@ -31,7 +31,7 @@ extern const struct FrameData sDiffusionFlakeOam[6];
 extern const struct FrameData sParticleOam_AbsorbIceXPreVaria[24];
 extern const struct FrameData sParticleOam_3eadd4[33];
 extern const struct FrameData sParticleOam_3eaedc[16];
-extern const struct FrameData sParticleOam_ParticleIceXTrail[7];
+extern const struct FrameData sParticleOam_IceXTrail[7];
 extern const struct FrameData sParticleOam_Diffusion[8];
 
 extern const struct FrameData sSpriteDebrisOam_Cloud2[12];
@@ -104,10 +104,10 @@ extern const struct FrameData sParticleOam_WideBeamHit[8];
 extern const struct FrameData sParticleOam_PlasmaBeamHit[7];
 extern const struct FrameData sParticleOam_InvincibleHit[6];
 
-extern const struct FrameData sParticleOam_3eeb28[19];
-extern const struct FrameData sParticleOam_3eebc0[5];
-extern const struct FrameData sParticleOam_3eebe8[6];
-extern const struct FrameData sParticleOam_3eec18[5];
+extern const struct FrameData sParticleOam_ChargingBeamBegin[19];
+extern const struct FrameData sParticleOam_ChargingBeamCharged[5];
+extern const struct FrameData sParticleOam_ChargingMissileCharged[6];
+extern const struct FrameData sParticleOam_ChargingMissileBegin[5];
 extern const struct FrameData sParticleOam_3eec40[35];
 extern const struct FrameData sParticleOam_3eed58[4];
 

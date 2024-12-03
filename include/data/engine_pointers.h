@@ -4,9 +4,14 @@
 #include "types.h"
 #include "macros.h"
 
+#include "constants/particle.h"
 #include "constants/projectile.h"
 #include "constants/sprite.h"
 #include "data/spriteset.h"
+
+extern const Func_T sProcessParticleFunctionPointers[PE_END];
+
+// ...
 
 extern const Func_T sProcessProjectileFunctionPointers[PROJ_TYPE_END];
 

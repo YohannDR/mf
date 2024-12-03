@@ -353,9 +353,32 @@ mbf = {
     0x20: "MBF_POWER_BOMBS"
 }
 
+subEventTriggerTypes = {
+    0: "SEVENT_TTYPE_NONE",
+    2: "SEVENT_TTYPE_STARTING_ROOM_LOAD",
+    3: "SEVENT_TTYPE_3",
+    4: "SEVENT_TTYPE_CUTSCENE_START",
+    5: "SEVENT_TTYPE_CUTSCENE_END",
+    6: "SEVENT_TTYPE_STARTING_NAVIGATION_CONVERSATION",
+    7: "SEVENT_TTYPE_ENDING_NAVIGATION_CONVERSATION",
+    8: "SEVENT_TTYPE_SA_X_ENCOUNTER",
+    9: "SEVENT_TTYPE_DOWNLOADING_ITEM",
+    10: "SEVENT_TTYPE_UNLOCKING_SECURITY",
+    11: "SEVENT_TTYPE_11",
+    32: "SEVENT_TTYPE_32",
+    33: "SEVENT_TTYPE_ENTERING_ROOM",
+    34: "SEVENT_TTYPE_34",
+    64: "SEVENT_TTYPE_STARTING_ELEVATOR_RIDE_UP",
+    65: "SEVENT_TTYPE_STARTING_ELEVATOR_RIDE_DOWN",
+    66: "SEVENT_TTYPE_ENDING_ELEVATOR_RIDE_UP",
+    67: "SEVENT_TTYPE_ENDING_ELEVATOR_RIDE_DOWN",
+    128: "SEVENT_TTYPE_128"
+}
+
 file = open("./mf_us_baserom.gba", "rb")
 
-file.seek(0x575a60)
+# event_data.c
+'''file.seek(0x575a60)
 print("const struct EventLocationAndNavigationInfo sEventLocationAndNavigationInfo[EVENT_END] = {")
 for i in range(len(eventNames)):
     print(f"    [{len(eventNames) if i == len(eventNames) else eventNames[i]}] = {{")
@@ -408,8 +431,21 @@ for i in range(len(abilityCount)):
     subEvent = int.from_bytes(file.read(2), "little")
     print(f"        .subEvent = {"SUB_EVENT_NONE" if subEvent == 0 else f"{subEvents[subEvent + 1]} - 1"}")
     print("    },")
+print("};\n")'''
+
+# sub_event_data.c
+file.seek(0x79bbcc)
+print("const u16 sSubEventNavConversations[22][2] = {")
+for i in range(22):
+    print(f"    [{i}] = {{")
+    print(f"        NAV_CONVERSATION_{int.from_bytes(file.read(2), "little")}, {subEvents[int.from_bytes(file.read(2), "little")]}")
+    print("    },")
 print("};\n")
 
+print("const u8 sSubEventTriggerTypes[SUB_EVENT_END] = {")
+for subEvent in subEvents:
+    print(f"    [{subEvent}] = {subEventTriggerTypes[int.from_bytes(file.read(1), "little")]},")
+print("};\n")
 '''print("enum NavigationConversation {\n    NAV_CONVERSATION_NONE,")
 for i in range(1, 58):
     print(f"    NAV_CONVERSATION_{i},")

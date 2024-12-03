@@ -98,6 +98,7 @@ SECTIONS {
         . = 0x000007f5; gBossWork4 = .;
         . = 0x000007f6; gBossWork5 = .;
         . = 0x000007f8; gParticleEffects = .;
+        . = 0x000008b8; gCurrentParticle = .;
         . = 0x000008c4; gMissileHighlightStatus = .;
         . = 0x000008c5; gPowerBombHighlightStatus = .;
         . = 0x000008c6; gMinimapUpdateFlag = .;
@@ -110,6 +111,7 @@ SECTIONS {
         . = 0x000008d9; gEscapeTimerDigits = .;
         . = 0x000008e0; gEscapeDigitsOam = .;
         . = 0x00000912; gAmmoDigitsGfx = .;
+        . = 0x00000954; gCurrentParticleEffectOamFramePointer = .;
         . = 0x00000960; gProjectileData = .;
         . = 0x00000b60; gCurrentProjectile = .;
         . = 0x00000b80; gArmCannonY = .;
@@ -345,7 +347,8 @@ SECTIONS {
         src/hud.o(.text);
         src/escape.o(.text);
 
-        asm/particle.o(.text);
+        asm/hud_generic.o(.text);
+        src/particle.o(.text);
         asm/event.o(.text);
         asm/minimap.o(.text);
         asm/disasm_0x08074ffc.o(.text);

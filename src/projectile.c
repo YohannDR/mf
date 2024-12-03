@@ -187,7 +187,7 @@ void ProjectileUpdate(void)
         for (i = 0; i < MAX_AMOUNT_OF_PARTICLES; i++)
         {
             // Verify it doesn't already exist
-            if (gParticleEffects[i].status & PARTICLE_STATUS_EXISTS && gParticleEffects[i].effect == PE_ESCAPE)
+            if (gParticleEffects[i].status & PARTICLE_STATUS_EXISTS && gParticleEffects[i].effect == PE_0x45)
             {
                 checks++;
                 break;
@@ -196,7 +196,7 @@ void ProjectileUpdate(void)
 
         if (!checks)
         {
-            ParticleSet(gArmCannonY, gArmCannonX, PE_ESCAPE);
+            ParticleSet(gArmCannonY, gArmCannonX, PE_0x45);
         }
     }
 

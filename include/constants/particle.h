@@ -71,6 +71,7 @@ enum ParticleId {
     PE_GETTING_SUIT,
     PE_CHARGING_BEAM,
     PE_CHARGING_MISSILES,
+    PE_0x45,
     PE_ESCAPE,
 
     PE_END
@@ -78,5 +79,11 @@ enum ParticleId {
 
 #define PARTICLE_STATUS_NONE               0
 #define PARTICLE_STATUS_EXISTS             (1 << 0)
+#define PARTICLE_STATUS_ONSCREEN           (1 << 1)
+#define PARTICLE_STATUS_HIGH_OAM_PRIORITY          (1 << 2)
+#define PARTICLE_STATUS_NOT_DRAWN          (1 << 3)
+#define PARTICLE_STATUS_LIVE_OFF_SCREEN    (1 << 4)
+#define PARTICLE_STATUS_LOW_BG_PRIORITY       (1 << 5)
+#define PARTICLE_STATUS_ABSOLUTE_POSITION  (1 << 6)
 
 #endif /* PARTICLE_CONSTANTS_H */

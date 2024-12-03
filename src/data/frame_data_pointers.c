@@ -418,4 +418,4 @@ const struct FrameData* const sNightmareFrameDataPointers[NIGHTMARE_OAM_END] = {
     [FRAMEDATA_3BDBC4] = sFrameData_3bdbc4
 };
 
-static const u8 sBlob_79b894_79c27c[] = INCBIN_U8("data/Blob_79b894_79c27c.bin");
+static const u8 sBlob_79b894_79bcc0[] = INCBIN_U8("data/Blob_79b894_79bcc0.bin");

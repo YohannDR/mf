@@ -18,5 +18,7 @@ struct ParticleEffect {
 #define MAX_AMOUNT_OF_PARTICLES 16
 
 extern struct ParticleEffect gParticleEffects[MAX_AMOUNT_OF_PARTICLES];
+extern struct ParticleEffect gCurrentParticle;
+extern const u16* gCurrentParticleEffectOamFramePointer;
 
 #endif /* PARTICLE_STRUCT_H */
