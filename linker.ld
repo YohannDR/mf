@@ -348,8 +348,7 @@ SECTIONS {
         src/demo.o(.text);
         src/hud.o(.text);
         src/escape.o(.text);
-
-        asm/hud_generic.o(.text);
+        src/hud_generic.o(.text);
         src/particle.o(.text);
         asm/event.o(.text);
         asm/minimap.o(.text);

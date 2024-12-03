@@ -413,7 +413,7 @@ void InitAndLoadGenerics(void)
     if (gUnk_03000be3 == 0)
     {
         ClearGfxRam();
-        LoadCommonGraphics();
+        HudGenericLoadCommonSpriteGfx();
     }
 
     gWrittenToBldy = BLDY_MAX_VALUE;
@@ -484,7 +484,7 @@ void InitAndLoadGenerics(void)
             break;
     }
 
-    CheckResetHudAndParticles();
+    HudGenericResetHUDData();
     SpriteLoadAllData();
     ProjectileCallLoadGraphicsAndClearProjectiles();
 
