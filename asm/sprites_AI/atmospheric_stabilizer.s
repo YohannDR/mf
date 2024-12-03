@@ -2,6 +2,63 @@
 
     .syntax unified
 
+	thumb_func_start AtmosphericSbabilizerCheckIsInfected
+AtmosphericSbabilizerCheckIsInfected: @ 0x0802C738
+	push {r4, r5, lr}
+	movs r3, #0
+	ldr r5, _0802C784 @ =gSpriteData
+	movs r4, #1
+_0802C740:
+	lsls r0, r3, #3
+	subs r0, r0, r3
+	lsls r0, r0, #3
+	adds r2, r0, r5
+	ldrh r1, [r2]
+	adds r0, r4, #0
+	ands r0, r1
+	cmp r0, #0
+	beq _0802C78C
+	adds r0, r2, #0
+	adds r0, #0x34
+	ldrb r1, [r0]
+	movs r0, #0x80
+	ands r0, r1
+	cmp r0, #0
+	bne _0802C78C
+	ldrb r0, [r2, #0x1d]
+	cmp r0, #0x30
+	bgt _0802C78C
+	cmp r0, #0x2c
+	blt _0802C78C
+	adds r1, r0, #0
+	subs r1, #0x2c
+	lsls r1, r1, #0x18
+	lsrs r1, r1, #0x18
+	ldr r0, _0802C788 @ =gAtmosphericStabilizersOnline
+	ldrh r0, [r0]
+	asrs r0, r1
+	ands r0, r4
+	cmp r0, #0
+	bne _0802C796
+	movs r0, #1
+	b _0802C798
+	.align 2, 0
+_0802C784: .4byte gSpriteData
+_0802C788: .4byte gAtmosphericStabilizersOnline
+_0802C78C:
+	adds r0, r3, #1
+	lsls r0, r0, #0x18
+	lsrs r3, r0, #0x18
+	cmp r3, #0x17
+	bls _0802C740
+_0802C796:
+	movs r0, #0
+_0802C798:
+	pop {r4, r5}
+	pop {r1}
+	bx r1
+	.align 2, 0
+
 	thumb_func_start AtmosphericStabilizerInit
 AtmosphericStabilizerInit: @ 0x0802C7A0
 	push {r4, r5, r6, lr}

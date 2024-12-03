@@ -549,7 +549,7 @@ void GeemerFlashingLight(void) {
         gCurrentSprite.pOam = sFrameData_2fcd78;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.samusCollision = 0;
+        gCurrentSprite.samusCollision = SSC_NONE;
         gCurrentSprite.pose = 2;
         if (gSpriteData[geemerSlot].work0) {
             if (gSpriteData[geemerSlot].status & SS_X_FLIP) {

@@ -43,7 +43,7 @@ void OmegaMetroidHuskSetInvisibleWallCollision(u8 caa) {
 void OmegaMetroidHuskInit(void) {
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.drawOrder = 5;
-    gCurrentSprite.samusCollision = 0;
+    gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.drawDistanceTop = 0x38;
     gCurrentSprite.drawDistanceBottom = 0x10;
     gCurrentSprite.drawDistanceHorizontal = 0x58;

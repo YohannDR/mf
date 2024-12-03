@@ -30,7 +30,7 @@ void RidleyPreSpawnInit(void) {
     gCurrentSprite.pOam = sRidleyPreSpawnOam_3b0a9c;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.samusCollision = 0;
+    gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.pose = 1;
 }
 

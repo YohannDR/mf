@@ -7,8 +7,8 @@
 extern const u32 sMissileBarrierGfx[512 * 1];
 extern const u16 sMissileBarrierPal[16 * 1];
 
-extern const struct FrameData sMissileBarrierOam_31c2f8[5];
-extern const struct FrameData sMissileBarrierOam_31c320[5];
-extern const struct FrameData sMissileBarrierOam_31c348[5];
+extern const struct FrameData sMissileBarrierStemOam_Idle[5];
+extern const struct FrameData sMissileBarrierStemOam_Destroyed[5];
+extern const struct FrameData sMissileBarrierOam_Idle[5];
 
 #endif /* MISSILE_BARRIER_DATA_H */

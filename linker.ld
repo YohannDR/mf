@@ -251,12 +251,14 @@ SECTIONS {
         asm/sprites_AI/sciser.o(.text);
         asm/sprites_AI/sidehopper.o(.text);
         asm/sprites_AI/dessgeega.o(.text);
-        asm/sprites_AI/missile_barrier.o(.text);
-        asm/sprites_AI/nav_pad.o(.text);
-        asm/sprites_AI/message_banner.o(.text);
-        asm/sprites_AI/data_pad.o(.text);
-        asm/sprites_AI/zebesian_wall.o(.text);
-        asm/sprites_AI/recharge_pad.o(.text);
+
+        src/sprites_AI/missile_barrier.o(.text);
+        src/sprites_AI/navigation_pad.o(.text);
+        src/sprites_AI/message_banner.o(.text);
+        src/sprites_AI/data_pad.o(.text);
+        src/sprites_AI/zebesian_wall.o(.text);
+        src/sprites_AI/recharge_pad.o(.text);
+
         asm/sprites_AI/atmospheric_stabilizer.o(.text);
         asm/sprites_AI/chozo_statue.o(.text);
         asm/sprites_AI/beam_core_x.o(.text);
