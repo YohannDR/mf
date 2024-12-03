@@ -1016,6 +1016,42 @@ sprites/box.pal;0x347090;0x347190
 sprites/geruda.gfx;1;0x34814c;2048
 sprites/geruda.pal;1;0x34894c;32
 
+# Misc pad
+
+sprites/control_pad.gfx;2;0x348ca4;2048
+sprites/control_pad.pal;2;0x349ca4;32
+
+sprites/habitation_pad.gfx;1;0x34a104;2048
+sprites/habitation_pad.pal;1;0x34a904;32
+
+# Operations room pad
+
+sprites/operations_room_pad.gfx;2;0x34ad9c;2048
+sprites/operations_room_pad.pal;2;0x34bd9c;32
+
+# Scientist
+
+sprites/scientist.gfx;2;0x34c37c;2048
+sprites/scientist.pal;2;0x34d37c;32
+
+# Skultera
+
+sprites/skultera.gfx;2;0x34dcf4;2048
+sprites/skultera.pal;2;0x34ecf4;32
+
+# Zeela
+
+sprites/zeela.gfx;2;0x34f14c;2048
+sprites/zeela.pal;2;0x35014c;32
+
+sprites/red_zeela.gfx;2;0x3506bc;2048
+sprites/red_zeela.pal;2;0x3516bc;32
+
+# Sova
+
+sprites/sova.gfx;3;0x35171c;2048
+sprites/sova.pal;3;0x352f1c;32
+
 # ...
 
 # Yard
@@ -2876,7 +2912,6 @@ Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
 Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 
 # Sprites
-Blob_348ca4_3534c4.bin;0x348ca4;0x3534c4
 Blob_37c578_39aa34.bin;37c578;39aa34
 
 # Clipdata and room entries

@@ -429,7 +429,12 @@ SECTIONS {
         src/data/sprites/fune_namihe.o(.rodata);
         src/data/sprites/box.o(.rodata);
         src/data/sprites/geruda.o(.rodata);
-
+        src/data/sprites/misc_pad.o(.rodata);
+        src/data/sprites/operations_room_pad.o(.rodata);
+        src/data/sprites/scientist.o(.rodata);
+        src/data/sprites/skultera.o(.rodata);
+        src/data/sprites/zeela.o(.rodata);
+        src/data/sprites/sova.o(.rodata);
         src/data/sprites/yard.o(.rodata);
         src/data/sprites/evir.o(.rodata);
         src/data/sprites/bull.o(.rodata);
