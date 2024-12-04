@@ -466,6 +466,8 @@ SECTIONS {
         src/data/sprites/lab_debris.o(.rodata);
         src/data/sprites/powamp.o(.rodata);
         src/data/sprites/zozoro.o(.rodata);
+        src/data/sprites/sa_x_monster.o(.rodata);
+        src/data/sprites/box_2.o(.rodata);
 
         src/data/sprites/starship_end.o(.rodata);
         src/data/sprites/electric_water_box_2.o(.rodata);

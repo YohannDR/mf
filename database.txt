@@ -1232,6 +1232,16 @@ sprites/powamp.pal;1;0x3864ac;32
 sprites/zozoro.gfx;2;0x386718;2048
 sprites/zozoro.pal;1;0x387718;32
 
+# SA-X monster
+
+sprites/sa_x_monster.gfx;8;0x388fb4;2048
+sprites/sa_x_monster.pal;8;0x38cfb4;32
+
+# B.O.X. 2
+
+sprites/box_2.gfx;7;0x391554;2048
+sprites/box_2.pal;7;0x394d54;32
+
 # ...
 
 # Starship (end)
@@ -2963,7 +2973,7 @@ Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
 Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 
 # Sprites
-Blob_388224_39aa34.bin;388224;39aa34
+Blob_395900_39aa34.bin;395900;39aa34
 
 # Clipdata and room entries
 Blob_3be3a0_3e392c.bin;3be3a0;3e392c
@@ -2981,8 +2991,8 @@ Blob_597708_72eee0.bin;597708;72eee0
 # Game over, file select and ending
 Blob_73421e_79a29c.bin;73421e;79a29c
 
-# Room data pointers
-Blob_79b458_79b708.bin;79b458;79b708
+# Subsprite frame data pointers
+Blob_79b618_79b708.bin;79b618;79b708
 
 # More room data pointers, cutscene data pointers, text
 Blob_79b894_79bcc0.bin;79b894;79bcc0

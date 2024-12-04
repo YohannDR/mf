@@ -4,29 +4,24 @@ def toPixels(value):
 
     return value//4
 
-bodyPartNames = [
-    "RIDLEY_PART_FRONT_WING",
-    "RIDLEY_PART_TAIL_START",
-    "RIDLEY_PART_BODY",
-    "RIDLEY_PART_BACK_WING",
+partNames = [
+    "BOX_2_PART_FRONT_LEFT_LEG_COVER",
+    "BOX_2_PART_FRONT_LEFT_LEG",
+    "BOX_2_PART_FRONT_RIGHT_LEG_COVER",
+    "BOX_2_PART_FRONT_RIGHT_LEG",
+    "BOX_2_PART_MIDDLE_LEFT_LEG",
+    "BOX_2_PART_MIDDLE_RIGHT_LEG",
+    "BOX_2_PART_CENTER",
+    "BOX_2_PART_BRAIN",
+    "BOX_2_PART_CENTER_BOTTOM",
+    "BOX_2_PART_LAUNCHER",
+    "BOX_2_PART_BACK_LEFT_LEG",
+    "BOX_2_PART_BACK_RIGHT_LEG",
 
-    "RIDLEY_PART_END"
+    "BOX_2_PART_END"
 ]
 
-tailPartNames = [
-    "RIDLEY_TAIL_PART_0",
-    "RIDLEY_TAIL_PART_1",
-    "RIDLEY_TAIL_PART_2",
-    "RIDLEY_TAIL_PART_3",
-    "RIDLEY_TAIL_PART_4",
-    "RIDLEY_TAIL_PART_5",
-    "RIDLEY_TAIL_PART_6",
-    "RIDLEY_TAIL_PART_TIP",
-
-    "RIDLEY_TAIL_PART_END"
-]
-
-def ParseMultiSpriteFrame(partNames):
+def ParseMultiSpriteFrame():
     global animations
     startAddr = file.tell()
     multiSpriteData = []
@@ -38,7 +33,7 @@ def ParseMultiSpriteFrame(partNames):
 
     result = f"static const s16 sMultiSpriteFrame_{startAddr:x}[{partNames[len(partNames)-1]}][MULTI_SPRITE_DATA_ELEMENT_END] = " + "{\n"
     for i in range(len(partNames)-1):
-        result += f"    [{partNames[i]}] = MULTI_SPRITE_DATA_INFO(RIDLEY_PART_OAM_{animations[multiSpriteData[i][0]]:X}, {toPixels(multiSpriteData[i][1])}, {toPixels(multiSpriteData[i][2])})"
+        result += f"    [{partNames[i]}] = MULTI_SPRITE_DATA_INFO(Box2Oam_{animations[multiSpriteData[i][0]]:x}, {toPixels(multiSpriteData[i][1])}, {toPixels(multiSpriteData[i][2])})"
         if i < len(partNames)-2:
             result += ",\n"
     result += "\n};\n"
@@ -55,7 +50,7 @@ def ParseMultiSpriteData():
             break
         frameData.append((pFrame, timer))
 
-    result = f"const struct MultiSpriteData sRidleyMultiSpriteData_{startAddr:x}[{(len(frameData)+1)}] = " + "{\n"
+    result = f"const struct MultiSpriteData sBox2MultiSpriteData_{startAddr:x}[{(len(frameData)+1)}] = " + "{\n"
 
     index = 0
     for (pFrame, timer) in frameData:
@@ -66,20 +61,20 @@ def ParseMultiSpriteData():
     return (result, frameData)
 
 file = open("../mf_us_baserom.gba", "rb")
-file.seek(0x79b708)
-animations = [int.from_bytes(file.read(4), 'little') & 0x1ffffff for i in range(31)]
+file.seek(0x79b560)
+animations = [int.from_bytes(file.read(4), 'little') & 0x1ffffff for i in range(46)]
 
-print("const struct FrameData* const sRidleyFrameDataPointers[RIDLEY_OAM_END] = {")
+print("const struct FrameData* const sBox2FrameDataPointers[BOX_2_OAM_END] = {")
 for addr in animations:
-    print(f"    [RIDLEY_PART_OAM_{addr:X}] = sRidleyPartOam_{addr:x},")
+    print(f"    [Box2Oam_{addr:x}] = sBox2Oam_{addr:x},")
 print("};\n")
 
-print("enum RidleyOam {")
+print("enum Box2Oam {")
 for addr in animations:
-    print(f"    RIDLEY_PART_OAM_{addr:X},")
-print("\n    RIDLEY_OAM_END\n};\n")
+    print(f"    Box2Oam_{addr:x},")
+print("\n    BOX_2_OAM_END\n};\n")
 
-file.seek(0x3a8f54)
+file.seek(0x3905fa)
 frames = set()
 output = ""
 while True:
@@ -92,10 +87,7 @@ while True:
         break
     file.seek(currentAddr)
     frames |= {currentAddr | 0x8000000}
-    if currentAddr < 0x3a917c or currentAddr >= 0x3a98fc:
-        output += ParseMultiSpriteFrame(bodyPartNames) + '\n'
-    else:
-        output += ParseMultiSpriteFrame(tailPartNames) + '\n'
+    output += ParseMultiSpriteFrame() + '\n'
 
 animations = []
 namedFrames = {}
@@ -111,15 +103,16 @@ while True:
     animations.append((currentAddr, len(frameData)+1))
     for i in range(len(frameData)):
         if frameData[i][0] not in namedFrames:
-            namedFrames[frameData[i][0]] = f"sRidleyMultiSpriteData_{currentAddr:x}_Frame{i}"
+            namedFrames[frameData[i][0]] = f"sBox2MultiSpriteData_{currentAddr:x}_Frame{i}"
 
 for (addr, name) in namedFrames.items():
     output = output.replace(f"sMultiSpriteFrame_{addr:x}", name)
 print(output)
 
 for (addr, count) in animations:
-    print(f"extern const struct MultiSpriteData sRidleyMultiSpriteData_{addr:x}[{count}];")
+    print(f"extern const struct MultiSpriteData sBox2MultiSpriteData_{addr:x}[{count}];")
 
 print(f"\nEnd: {file.tell():x}\n")
 
+file.close()
 input()
