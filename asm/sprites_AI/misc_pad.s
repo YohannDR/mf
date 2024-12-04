@@ -187,30 +187,30 @@ MiscPadIdleInit: @ 0x08039394
 	ldrb r0, [r1, #0x1d]
 	cmp r0, #0x68
 	bne _080393C4
-	ldr r0, _080393C0 @ =0x0834AD8C
+	ldr r0, _080393C0 @ =sHabitationPadOam_34ad8c
 	b _080393C6
 	.align 2, 0
 _080393BC: .4byte gCurrentSprite
-_080393C0: .4byte 0x0834AD8C
+_080393C0: .4byte sHabitationPadOam_34ad8c
 _080393C4:
-	ldr r0, _080393D0 @ =0x0834A0F4
+	ldr r0, _080393D0 @ =sControlPadOam_34a0f4
 _080393C6:
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #0x46
 	b _080393EC
 	.align 2, 0
-_080393D0: .4byte 0x0834A0F4
+_080393D0: .4byte sControlPadOam_34a0f4
 _080393D4:
 	ldrb r0, [r1, #0x1d]
 	cmp r0, #0x68
 	bne _080393E4
-	ldr r0, _080393E0 @ =0x0834AD7C
+	ldr r0, _080393E0 @ =sHabitationPadOam_34ad7c
 	b _080393E6
 	.align 2, 0
-_080393E0: .4byte 0x0834AD7C
+_080393E0: .4byte sHabitationPadOam_34ad7c
 _080393E4:
-	ldr r0, _080393F4 @ =0x0834A0E4
+	ldr r0, _080393F4 @ =sControlPadOam_34a0e4
 _080393E6:
 	str r0, [r1, #0x18]
 	adds r1, #0x24
@@ -220,7 +220,7 @@ _080393EC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080393F4: .4byte 0x0834A0E4
+_080393F4: .4byte sControlPadOam_34a0e4
 
 	thumb_func_start MiscPadIdle
 MiscPadIdle: @ 0x080393F8
@@ -241,13 +241,13 @@ MiscPadIdle: @ 0x080393F8
 	ldrb r0, [r3, #0x1d]
 	cmp r0, #0x68
 	bne _08039428
-	ldr r0, _08039424 @ =0x0834AD2C
+	ldr r0, _08039424 @ =sHabitationPadOam_34ad2c
 	b _0803942A
 	.align 2, 0
 _08039420: .4byte gCurrentSprite
-_08039424: .4byte 0x0834AD2C
+_08039424: .4byte sHabitationPadOam_34ad2c
 _08039428:
-	ldr r0, _08039444 @ =0x0834A094
+	ldr r0, _08039444 @ =sControlPadOam_34a094
 _0803942A:
 	str r0, [r3, #0x18]
 	adds r2, r3, #0
@@ -261,7 +261,7 @@ _0803942A:
 	bl SoundPlay
 	b _08039450
 	.align 2, 0
-_08039444: .4byte 0x0834A094
+_08039444: .4byte sControlPadOam_34a094
 _08039448:
 	ldr r0, _08039454 @ =gCurrentSprite
 	adds r0, #0x2e
@@ -284,13 +284,13 @@ MiscPadPressingSwitch: @ 0x08039458
 	adds r3, r0, #0
 	cmp r1, #0x68
 	bne _08039478
-	ldr r0, _08039474 @ =0x0834AD8C
+	ldr r0, _08039474 @ =sHabitationPadOam_34ad8c
 	b _0803947A
 	.align 2, 0
 _08039470: .4byte gCurrentSprite
-_08039474: .4byte 0x0834AD8C
+_08039474: .4byte sHabitationPadOam_34ad8c
 _08039478:
-	ldr r0, _08039490 @ =0x0834A0F4
+	ldr r0, _08039490 @ =sControlPadOam_34a0f4
 _0803947A:
 	str r0, [r3, #0x18]
 	adds r2, r3, #0
@@ -304,7 +304,7 @@ _0803948A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08039490: .4byte 0x0834A0F4
+_08039490: .4byte sControlPadOam_34a0f4
 
 	thumb_func_start MiscPadSwitchPressed
 MiscPadSwitchPressed: @ 0x08039494
@@ -350,13 +350,13 @@ _080394E4:
 	adds r3, r0, #0
 	cmp r1, #0x68
 	bne _080394FC
-	ldr r0, _080394F8 @ =0x0834AD54
+	ldr r0, _080394F8 @ =sHabitationPadOam_34ad54
 	b _080394FE
 	.align 2, 0
 _080394F4: .4byte gCurrentSprite
-_080394F8: .4byte 0x0834AD54
+_080394F8: .4byte sHabitationPadOam_34ad54
 _080394FC:
-	ldr r0, _0803951C @ =0x0834A0BC
+	ldr r0, _0803951C @ =sControlPadOam_34a0bc
 _080394FE:
 	str r0, [r3, #0x18]
 	adds r2, r3, #0
@@ -373,7 +373,7 @@ _08039514:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803951C: .4byte 0x0834A0BC
+_0803951C: .4byte sControlPadOam_34a0bc
 
 	thumb_func_start MiscPadReleasingSwitch
 MiscPadReleasingSwitch: @ 0x08039520
@@ -589,7 +589,7 @@ MiscPadWaitForWideBeamCoreX: @ 0x08039680
 	subs r1, #0xb
 	movs r0, #0x1c
 	strb r0, [r1]
-	ldr r0, _080396D0 @ =0x0834A0BC
+	ldr r0, _080396D0 @ =sControlPadOam_34a0bc
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -603,7 +603,7 @@ _080396C2:
 	.align 2, 0
 _080396C8: .4byte gCurrentSprite
 _080396CC: .4byte gPreventMovementTimer
-_080396D0: .4byte 0x0834A0BC
+_080396D0: .4byte sControlPadOam_34a0bc
 
 	thumb_func_start MiscPadConsoleInit
 MiscPadConsoleInit: @ 0x080396D4
@@ -660,7 +660,7 @@ MiscPadConsoleInit: @ 0x080396D4
 	bl EventCheckOn_Meltdown
 	cmp r0, #0
 	beq _08039790
-	ldr r0, _0803975C @ =0x0834A044
+	ldr r0, _0803975C @ =sControlPadOam_34a044
 	str r0, [r4, #0x18]
 	adds r1, r4, #0
 	adds r1, #0x24
@@ -671,7 +671,7 @@ _0803974C: .4byte gCurrentSprite
 _08039750: .4byte 0x0000FFFB
 _08039754: .4byte 0x0000FFFC
 _08039758: .4byte gSpriteData
-_0803975C: .4byte 0x0834A044
+_0803975C: .4byte sControlPadOam_34a044
 _08039760:
 	adds r0, #0x2f
 	ldrb r0, [r0]
@@ -679,12 +679,12 @@ _08039760:
 	beq _08039784
 	cmp r1, #0x68
 	bne _08039774
-	ldr r0, _08039770 @ =0x0834ACDC
+	ldr r0, _08039770 @ =sHabitationPadOam_34acdc
 	b _08039776
 	.align 2, 0
-_08039770: .4byte 0x0834ACDC
+_08039770: .4byte sHabitationPadOam_34acdc
 _08039774:
-	ldr r0, _08039780 @ =0x0834A044
+	ldr r0, _08039780 @ =sControlPadOam_34a044
 _08039776:
 	str r0, [r4, #0x18]
 	adds r1, r4, #0
@@ -692,16 +692,16 @@ _08039776:
 	movs r0, #2
 	b _0803979A
 	.align 2, 0
-_08039780: .4byte 0x0834A044
+_08039780: .4byte sControlPadOam_34a044
 _08039784:
 	cmp r1, #0x68
 	bne _08039790
-	ldr r0, _0803978C @ =0x0834AD04
+	ldr r0, _0803978C @ =sHabitationPadOam_34ad04
 	b _08039792
 	.align 2, 0
-_0803978C: .4byte 0x0834AD04
+_0803978C: .4byte sHabitationPadOam_34ad04
 _08039790:
-	ldr r0, _080397A4 @ =0x0834A06C
+	ldr r0, _080397A4 @ =sControlPadOam_34a06c
 _08039792:
 	str r0, [r4, #0x18]
 	adds r1, r4, #0
@@ -713,7 +713,7 @@ _0803979A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080397A4: .4byte 0x0834A06C
+_080397A4: .4byte sControlPadOam_34a06c
 
 	thumb_func_start MiscPadConsoleIdle
 MiscPadConsoleIdle: @ 0x080397A8
@@ -735,14 +735,14 @@ MiscPadConsoleIdle: @ 0x080397A8
 	ldrb r0, [r1, #0x1d]
 	cmp r0, #0x68
 	bne _080397DC
-	ldr r0, _080397D8 @ =0x0834AD04
+	ldr r0, _080397D8 @ =sHabitationPadOam_34ad04
 	b _080397DE
 	.align 2, 0
 _080397D0: .4byte gCurrentSprite
 _080397D4: .4byte gSpriteData
-_080397D8: .4byte 0x0834AD04
+_080397D8: .4byte sHabitationPadOam_34ad04
 _080397DC:
-	ldr r0, _080397F4 @ =0x0834A06C
+	ldr r0, _080397F4 @ =sControlPadOam_34a06c
 _080397DE:
 	str r0, [r3, #0x18]
 	adds r2, r3, #0
@@ -756,7 +756,7 @@ _080397EE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080397F4: .4byte 0x0834A06C
+_080397F4: .4byte sControlPadOam_34a06c
 
 	thumb_func_start MiscPad
 MiscPad: @ 0x080397F8

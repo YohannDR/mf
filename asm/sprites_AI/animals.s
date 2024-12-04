@@ -146,7 +146,7 @@ _0804D110:
 	adds r1, #0x24
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0804D18C @ =0x0838451C
+	ldr r0, _0804D18C @ =sAnimalsOam_38451c
 	str r0, [r5, #0x18]
 	strb r4, [r5, #0x1c]
 	strh r6, [r5, #0x16]
@@ -163,7 +163,7 @@ _0804D17C:
 	.align 2, 0
 _0804D184: .4byte gCurrentSprite
 _0804D188: .4byte 0x0000FFFC
-_0804D18C: .4byte 0x0838451C
+_0804D18C: .4byte sAnimalsOam_38451c
 
 	thumb_func_start DachoraIdleInit
 DachoraIdleInit: @ 0x0804D190
@@ -173,7 +173,7 @@ DachoraIdleInit: @ 0x0804D190
 	movs r2, #0
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0804D1C0 @ =0x0838451C
+	ldr r0, _0804D1C0 @ =sAnimalsOam_38451c
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	movs r1, #0
@@ -191,7 +191,7 @@ DachoraIdleInit: @ 0x0804D190
 	bx lr
 	.align 2, 0
 _0804D1BC: .4byte gCurrentSprite
-_0804D1C0: .4byte 0x0838451C
+_0804D1C0: .4byte sAnimalsOam_38451c
 _0804D1C4: .4byte gSpriteRandomNumber
 
 	thumb_func_start DachoraIdle
@@ -340,7 +340,7 @@ DachoraStandingInit: @ 0x0804D2DC
 	movs r3, #0
 	movs r1, #8
 	strb r1, [r2]
-	ldr r1, _0804D2FC @ =0x0838450C
+	ldr r1, _0804D2FC @ =sAnimalsOam_38450c
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	strh r3, [r0, #0x16]
@@ -350,7 +350,7 @@ DachoraStandingInit: @ 0x0804D2DC
 	bx lr
 	.align 2, 0
 _0804D2F8: .4byte gCurrentSprite
-_0804D2FC: .4byte 0x0838450C
+_0804D2FC: .4byte sAnimalsOam_38450c
 
 	thumb_func_start DachoraStanding
 DachoraStanding: @ 0x0804D300
@@ -387,27 +387,27 @@ DachoraHeadMovementInit: @ 0x0804D324
 	adds r2, r0, #0
 	cmp r1, #1
 	bne _0804D348
-	ldr r0, _0804D344 @ =0x083845C4
+	ldr r0, _0804D344 @ =sAnimalsOam_3845c4
 	b _0804D362
 	.align 2, 0
 _0804D340: .4byte gCurrentSprite
-_0804D344: .4byte 0x083845C4
+_0804D344: .4byte sAnimalsOam_3845c4
 _0804D348:
 	cmp r1, #2
 	bne _0804D354
-	ldr r0, _0804D350 @ =0x083845E4
+	ldr r0, _0804D350 @ =sAnimalsOam_3845e4
 	b _0804D362
 	.align 2, 0
-_0804D350: .4byte 0x083845E4
+_0804D350: .4byte sAnimalsOam_3845e4
 _0804D354:
 	cmp r1, #3
 	bne _0804D360
-	ldr r0, _0804D35C @ =0x083845FC
+	ldr r0, _0804D35C @ =sAnimalsOam_3845fc
 	b _0804D362
 	.align 2, 0
-_0804D35C: .4byte 0x083845FC
+_0804D35C: .4byte sAnimalsOam_3845fc
 _0804D360:
-	ldr r0, _0804D370 @ =0x08384584
+	ldr r0, _0804D370 @ =sAnimalsOam_384584
 _0804D362:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -416,7 +416,7 @@ _0804D362:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804D370: .4byte 0x08384584
+_0804D370: .4byte sAnimalsOam_384584
 
 	thumb_func_start DachoraHeadMovement
 DachoraHeadMovement: @ 0x0804D374
@@ -462,14 +462,14 @@ DachoraTurningAroundInit: @ 0x0804D3B4
 	movs r3, #0
 	movs r0, #4
 	strb r0, [r2]
-	ldr r0, _0804D3D0 @ =0x08384554
+	ldr r0, _0804D3D0 @ =sAnimalsOam_384554
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0804D3CC: .4byte gCurrentSprite
-_0804D3D0: .4byte 0x08384554
+_0804D3D0: .4byte sAnimalsOam_384554
 
 	thumb_func_start DachoraTurningAround
 DachoraTurningAround: @ 0x0804D3D4
@@ -483,7 +483,7 @@ DachoraTurningAround: @ 0x0804D3D4
 	movs r3, #0
 	movs r0, #5
 	strb r0, [r1]
-	ldr r0, _0804D40C @ =0x0838456C
+	ldr r0, _0804D40C @ =sAnimalsOam_38456c
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -499,7 +499,7 @@ DachoraTurningAround: @ 0x0804D3D4
 	b _0804D412
 	.align 2, 0
 _0804D408: .4byte gCurrentSprite
-_0804D40C: .4byte 0x0838456C
+_0804D40C: .4byte sAnimalsOam_38456c
 _0804D410:
 	movs r0, #0xe
 _0804D412:
@@ -532,14 +532,14 @@ DachoraTurningAroundWhileLeavingInit: @ 0x0804D434
 	movs r3, #0
 	movs r0, #0x38
 	strb r0, [r2]
-	ldr r0, _0804D450 @ =0x08384554
+	ldr r0, _0804D450 @ =sAnimalsOam_384554
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0804D44C: .4byte gCurrentSprite
-_0804D450: .4byte 0x08384554
+_0804D450: .4byte sAnimalsOam_384554
 
 	thumb_func_start DachoraTurningAroundWhileLeaving
 DachoraTurningAroundWhileLeaving: @ 0x0804D454
@@ -553,7 +553,7 @@ DachoraTurningAroundWhileLeaving: @ 0x0804D454
 	movs r3, #0
 	movs r0, #0x3a
 	strb r0, [r1]
-	ldr r0, _0804D484 @ =0x0838456C
+	ldr r0, _0804D484 @ =sAnimalsOam_38456c
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -566,7 +566,7 @@ _0804D47A:
 	bx r0
 	.align 2, 0
 _0804D480: .4byte gCurrentSprite
-_0804D484: .4byte 0x0838456C
+_0804D484: .4byte sAnimalsOam_38456c
 
 	thumb_func_start DachoraTurningAroundWhileLeavingSecondPart
 DachoraTurningAroundWhileLeavingSecondPart: @ 0x0804D488
@@ -613,7 +613,7 @@ DachoraLeavingEnclosure: @ 0x0804D4C8
 	adds r0, r0, r2
 	mov ip, r0
 	ldrb r3, [r0]
-	ldr r1, _0804D500 @ =0x0838188C
+	ldr r1, _0804D500 @ =sAnimalLeavingEnclosureYSpeed
 	lsls r0, r3, #1
 	adds r0, r0, r1
 	ldrh r4, [r0]
@@ -634,7 +634,7 @@ DachoraLeavingEnclosure: @ 0x0804D4C8
 	b _0804D534
 	.align 2, 0
 _0804D4FC: .4byte gCurrentSprite
-_0804D500: .4byte 0x0838188C
+_0804D500: .4byte sAnimalLeavingEnclosureYSpeed
 _0804D504: .4byte 0x00007FFF
 _0804D508:
 	adds r1, r2, #0
@@ -671,7 +671,7 @@ _0804D534:
 	thumb_func_start DachoraWalkingToWaitingSpotInit
 DachoraWalkingToWaitingSpotInit: @ 0x0804D53C
 	ldr r1, _0804D550 @ =gCurrentSprite
-	ldr r0, _0804D554 @ =0x0838451C
+	ldr r0, _0804D554 @ =sAnimalsOam_38451c
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -682,7 +682,7 @@ DachoraWalkingToWaitingSpotInit: @ 0x0804D53C
 	bx lr
 	.align 2, 0
 _0804D550: .4byte gCurrentSprite
-_0804D554: .4byte 0x0838451C
+_0804D554: .4byte sAnimalsOam_38451c
 
 	thumb_func_start DachoraWalkingToWaitingSpot
 DachoraWalkingToWaitingSpot: @ 0x0804D558
@@ -701,7 +701,7 @@ DachoraWalkingToWaitingSpot: @ 0x0804D558
 _0804D570: .4byte gCurrentSprite
 _0804D574: .4byte gAbilityRestingXPosition
 _0804D578:
-	ldr r0, _0804D58C @ =0x083846CC
+	ldr r0, _0804D58C @ =sAnimalsOam_3846cc
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -713,7 +713,7 @@ _0804D588:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804D58C: .4byte 0x083846CC
+_0804D58C: .4byte sAnimalsOam_3846cc
 
 	thumb_func_start DachorawaitingForOthers
 DachorawaitingForOthers: @ 0x0804D590
@@ -908,7 +908,7 @@ DachoraBowing: @ 0x0804D6E4
 	lsrs r1, r0, #0x18
 	cmp r1, #0
 	bne _0804D71C
-	ldr r0, _0804D714 @ =0x08384584
+	ldr r0, _0804D714 @ =sAnimalsOam_384584
 	str r0, [r4, #0x18]
 	strb r1, [r4, #0x1c]
 	strh r1, [r4, #0x16]
@@ -917,7 +917,7 @@ DachoraBowing: @ 0x0804D6E4
 	b _0804D75E
 	.align 2, 0
 _0804D710: .4byte gCurrentSprite
-_0804D714: .4byte 0x08384584
+_0804D714: .4byte sAnimalsOam_384584
 _0804D718: .4byte 0x00000123
 _0804D71C:
 	ldrh r0, [r4, #0x16]
@@ -948,7 +948,7 @@ _0804D732:
 	strb r0, [r1]
 	movs r0, #0x3c
 	strb r0, [r5]
-	ldr r0, _0804D764 @ =0x083846CC
+	ldr r0, _0804D764 @ =sAnimalsOam_3846cc
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -957,7 +957,7 @@ _0804D75E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804D764: .4byte 0x083846CC
+_0804D764: .4byte sAnimalsOam_3846cc
 
 	thumb_func_start DachoraWaitingToRun
 DachoraWaitingToRun: @ 0x0804D768
@@ -975,7 +975,7 @@ DachoraWaitingToRun: @ 0x0804D768
 	subs r1, #0xa
 	movs r0, #0x20
 	strb r0, [r1]
-	ldr r0, _0804D79C @ =0x0838451C
+	ldr r0, _0804D79C @ =sAnimalsOam_38451c
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -987,7 +987,7 @@ _0804D794:
 	bx r0
 	.align 2, 0
 _0804D798: .4byte gCurrentSprite
-_0804D79C: .4byte 0x0838451C
+_0804D79C: .4byte sAnimalsOam_38451c
 
 	thumb_func_start DachoraRunning
 DachoraRunning: @ 0x0804D7A0
@@ -1057,7 +1057,7 @@ BabyDachoraInit: @ 0x0804D7C8
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strh r0, [r2, #0x10]
-	ldr r0, _0804D844 @ =0x0838462C
+	ldr r0, _0804D844 @ =sAnimalsOam_38462c
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -1075,7 +1075,7 @@ BabyDachoraInit: @ 0x0804D7C8
 _0804D838: .4byte gCurrentSprite
 _0804D83C: .4byte 0x0000FFFB
 _0804D840: .4byte 0x0000FFFC
-_0804D844: .4byte 0x0838462C
+_0804D844: .4byte sAnimalsOam_38462c
 
 	thumb_func_start BabyDachoraWalkingToGate
 BabyDachoraWalkingToGate: @ 0x0804D848
@@ -1115,7 +1115,7 @@ BabyDachoraLeavingEnclosure: @ 0x0804D87C
 	adds r0, r0, r2
 	mov ip, r0
 	ldrb r3, [r0]
-	ldr r1, _0804D8B4 @ =0x0838188C
+	ldr r1, _0804D8B4 @ =sAnimalLeavingEnclosureYSpeed
 	lsls r0, r3, #1
 	adds r0, r0, r1
 	ldrh r4, [r0]
@@ -1137,7 +1137,7 @@ BabyDachoraLeavingEnclosure: @ 0x0804D87C
 	b _0804D8CE
 	.align 2, 0
 _0804D8B0: .4byte gCurrentSprite
-_0804D8B4: .4byte 0x0838188C
+_0804D8B4: .4byte sAnimalLeavingEnclosureYSpeed
 _0804D8B8: .4byte 0x00007FFF
 _0804D8BC:
 	adds r0, r3, #1
@@ -1181,7 +1181,7 @@ _0804D8F8:
 	subs r1, #2
 	movs r0, #5
 	strb r0, [r1]
-	ldr r0, _0804D914 @ =0x083846F4
+	ldr r0, _0804D914 @ =sAnimalsOam_3846f4
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -1189,7 +1189,7 @@ _0804D90E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804D914: .4byte 0x083846F4
+_0804D914: .4byte sAnimalsOam_3846f4
 
 	thumb_func_start BabyDachoraWaitingToRun
 BabyDachoraWaitingToRun: @ 0x0804D918
@@ -1259,14 +1259,14 @@ BabyDachoraRunning: @ 0x0804D97C
 	lsrs r1, r0, #0x18
 	cmp r1, #0
 	bne _0804D9CE
-	ldr r0, _0804D9A4 @ =0x0838462C
+	ldr r0, _0804D9A4 @ =sAnimalsOam_38462c
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
 	strh r1, [r2, #0x16]
 	b _0804D9CE
 	.align 2, 0
 _0804D9A0: .4byte gCurrentSprite
-_0804D9A4: .4byte 0x0838462C
+_0804D9A4: .4byte sAnimalsOam_38462c
 _0804D9A8:
 	ldrh r0, [r2, #4]
 	adds r0, #8
@@ -1567,7 +1567,7 @@ _0804DC04:
 	movs r2, #0
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0804DC38 @ =0x0838429C
+	ldr r0, _0804DC38 @ =sAnimalsOam_38429c
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	movs r1, #0
@@ -1588,7 +1588,7 @@ _0804DC2E:
 	bx r0
 	.align 2, 0
 _0804DC34: .4byte gCurrentSprite
-_0804DC38: .4byte 0x0838429C
+_0804DC38: .4byte sAnimalsOam_38429c
 _0804DC3C: .4byte gSpriteRandomNumber
 
 	thumb_func_start EtecoonIdleInit
@@ -1600,7 +1600,7 @@ EtecoonIdleInit: @ 0x0804DC40
 	movs r2, #0
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0804DC88 @ =0x0838429C
+	ldr r0, _0804DC88 @ =sAnimalsOam_38429c
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	movs r4, #0
@@ -1628,7 +1628,7 @@ EtecoonIdleInit: @ 0x0804DC40
 	b _0804DC98
 	.align 2, 0
 _0804DC84: .4byte gCurrentSprite
-_0804DC88: .4byte 0x0838429C
+_0804DC88: .4byte sAnimalsOam_38429c
 _0804DC8C: .4byte gSpriteRandomNumber
 _0804DC90:
 	adds r1, r3, #0
@@ -1825,7 +1825,7 @@ EtecoonStandingInit: @ 0x0804DDFC
 	movs r3, #0
 	movs r1, #8
 	strb r1, [r2]
-	ldr r1, _0804DE1C @ =0x0838428C
+	ldr r1, _0804DE1C @ =sAnimalsOam_38428c
 	str r1, [r0, #0x18]
 	strb r3, [r0, #0x1c]
 	strh r3, [r0, #0x16]
@@ -1835,20 +1835,20 @@ EtecoonStandingInit: @ 0x0804DDFC
 	bx lr
 	.align 2, 0
 _0804DE18: .4byte gCurrentSprite
-_0804DE1C: .4byte 0x0838428C
+_0804DE1C: .4byte sAnimalsOam_38428c
 
 	thumb_func_start EtecoonStanding
 EtecoonStanding: @ 0x0804DE20
 	push {r4, lr}
 	ldr r4, _0804DE40 @ =gCurrentSprite
 	ldr r1, [r4, #0x18]
-	ldr r0, _0804DE44 @ =0x0838428C
+	ldr r0, _0804DE44 @ =sAnimalsOam_38428c
 	cmp r1, r0
 	bne _0804DE4C
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0804DE62
-	ldr r0, _0804DE48 @ =0x08384254
+	ldr r0, _0804DE48 @ =sAnimalsOam_384254
 	str r0, [r4, #0x18]
 	movs r0, #0
 	strb r0, [r4, #0x1c]
@@ -1856,8 +1856,8 @@ EtecoonStanding: @ 0x0804DE20
 	b _0804DE62
 	.align 2, 0
 _0804DE40: .4byte gCurrentSprite
-_0804DE44: .4byte 0x0838428C
-_0804DE48: .4byte 0x08384254
+_0804DE44: .4byte sAnimalsOam_38428c
+_0804DE48: .4byte sAnimalsOam_384254
 _0804DE4C:
 	adds r1, r4, #0
 	adds r1, #0x2e
@@ -1889,27 +1889,27 @@ EtecoonFacingForegroundInit: @ 0x0804DE68
 	adds r1, r0, #0
 	cmp r2, #1
 	bne _0804DE8C
-	ldr r0, _0804DE88 @ =0x083842D4
+	ldr r0, _0804DE88 @ =sAnimalsOam_3842d4
 	b _0804DEA6
 	.align 2, 0
 _0804DE84: .4byte gCurrentSprite
-_0804DE88: .4byte 0x083842D4
+_0804DE88: .4byte sAnimalsOam_3842d4
 _0804DE8C:
 	cmp r2, #2
 	bne _0804DE98
-	ldr r0, _0804DE94 @ =0x0838431C
+	ldr r0, _0804DE94 @ =sAnimalsOam_38431c
 	b _0804DEA6
 	.align 2, 0
-_0804DE94: .4byte 0x0838431C
+_0804DE94: .4byte sAnimalsOam_38431c
 _0804DE98:
 	cmp r2, #3
 	bne _0804DEA4
-	ldr r0, _0804DEA0 @ =0x08384374
+	ldr r0, _0804DEA0 @ =sAnimalsOam_384374
 	b _0804DEA6
 	.align 2, 0
-_0804DEA0: .4byte 0x08384374
+_0804DEA0: .4byte sAnimalsOam_384374
 _0804DEA4:
-	ldr r0, _0804DEBC @ =0x08384264
+	ldr r0, _0804DEBC @ =sAnimalsOam_384264
 _0804DEA6:
 	str r0, [r1, #0x18]
 	movs r0, #0
@@ -1923,7 +1923,7 @@ _0804DEA6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804DEBC: .4byte 0x08384264
+_0804DEBC: .4byte sAnimalsOam_384264
 _0804DEC0: .4byte gSpriteRandomNumber
 
 	thumb_func_start EtecoonFacingForeground
@@ -1955,7 +1955,7 @@ EtecoonFacingForeground: @ 0x0804DEC4
 	strb r3, [r0, #0x1c]
 	movs r4, #0
 	strh r3, [r0, #0x16]
-	ldr r0, _0804DF24 @ =0x083843CC
+	ldr r0, _0804DF24 @ =sAnimalsOam_3843cc
 	mov r1, ip
 	str r0, [r1, #0x18]
 	ldr r1, _0804DF28 @ =gSpriteData
@@ -1967,7 +1967,7 @@ EtecoonFacingForeground: @ 0x0804DEC4
 	strh r3, [r2, #0x16]
 	adds r1, #0x18
 	adds r0, r0, r1
-	ldr r1, _0804DF2C @ =0x0838447C
+	ldr r1, _0804DF2C @ =sAnimalsOam_38447c
 	str r1, [r0]
 	ldrh r0, [r2, #4]
 	mov r1, ip
@@ -1975,9 +1975,9 @@ EtecoonFacingForeground: @ 0x0804DEC4
 	b _0804DF82
 	.align 2, 0
 _0804DF20: .4byte gCurrentSprite
-_0804DF24: .4byte 0x083843CC
+_0804DF24: .4byte sAnimalsOam_3843cc
 _0804DF28: .4byte gSpriteData
-_0804DF2C: .4byte 0x0838447C
+_0804DF2C: .4byte sAnimalsOam_38447c
 _0804DF30:
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
@@ -2008,7 +2008,7 @@ _0804DF60:
 	movs r2, #0
 	movs r0, #5
 	strb r0, [r1]
-	ldr r0, _0804DF88 @ =0x0838428C
+	ldr r0, _0804DF88 @ =sAnimalsOam_38428c
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -2025,7 +2025,7 @@ _0804DF82:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804DF88: .4byte 0x0838428C
+_0804DF88: .4byte sAnimalsOam_38428c
 _0804DF8C: .4byte gSpriteRandomNumber
 
 	thumb_func_start EtecoonTurningAroundInit
@@ -2036,14 +2036,14 @@ EtecoonTurningAroundInit: @ 0x0804DF90
 	movs r3, #0
 	movs r0, #4
 	strb r0, [r2]
-	ldr r0, _0804DFAC @ =0x083842C4
+	ldr r0, _0804DFAC @ =sAnimalsOam_3842c4
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0804DFA8: .4byte gCurrentSprite
-_0804DFAC: .4byte 0x083842C4
+_0804DFAC: .4byte sAnimalsOam_3842c4
 
 	thumb_func_start EtecoonTurningAround
 EtecoonTurningAround: @ 0x0804DFB0
@@ -2057,7 +2057,7 @@ EtecoonTurningAround: @ 0x0804DFB0
 	movs r3, #0
 	movs r0, #5
 	strb r0, [r1]
-	ldr r0, _0804DFE8 @ =0x083842C4
+	ldr r0, _0804DFE8 @ =sAnimalsOam_3842c4
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -2073,7 +2073,7 @@ EtecoonTurningAround: @ 0x0804DFB0
 	b _0804DFEE
 	.align 2, 0
 _0804DFE4: .4byte gCurrentSprite
-_0804DFE8: .4byte 0x083842C4
+_0804DFE8: .4byte sAnimalsOam_3842c4
 _0804DFEC:
 	movs r0, #0xe
 _0804DFEE:
@@ -2116,7 +2116,7 @@ EtecoonJumpingToTire: @ 0x0804E010
 	strb r3, [r5, #0x1c]
 	movs r4, #0
 	strh r3, [r5, #0x16]
-	ldr r0, _0804E060 @ =0x083843F4
+	ldr r0, _0804E060 @ =sAnimalsOam_3843f4
 	str r0, [r5, #0x18]
 	ldr r0, _0804E064 @ =gFrameCounter8Bit
 	ldrb r0, [r0]
@@ -2132,7 +2132,7 @@ EtecoonJumpingToTire: @ 0x0804E010
 	strh r3, [r1, #0x16]
 	adds r2, #0x18
 	adds r0, r0, r2
-	ldr r1, _0804E06C @ =0x0838449C
+	ldr r1, _0804E06C @ =sAnimalsOam_38449c
 	str r1, [r0]
 _0804E056:
 	pop {r4, r5, r6}
@@ -2140,10 +2140,10 @@ _0804E056:
 	bx r0
 	.align 2, 0
 _0804E05C: .4byte gCurrentSprite
-_0804E060: .4byte 0x083843F4
+_0804E060: .4byte sAnimalsOam_3843f4
 _0804E064: .4byte gSpriteRandomNumber
 _0804E068: .4byte gSpriteData
-_0804E06C: .4byte 0x0838449C
+_0804E06C: .4byte sAnimalsOam_38449c
 
 	thumb_func_start EtecoonSwingingFromTire
 EtecoonSwingingFromTire: @ 0x0804E070
@@ -2169,14 +2169,14 @@ EtecoonSwingingFromTire: @ 0x0804E070
 	ands r0, r1
 	cmp r0, #0
 	beq _0804E0B0
-	ldr r0, _0804E0AC @ =0x083843F4
+	ldr r0, _0804E0AC @ =sAnimalsOam_3843f4
 	b _0804E0B2
 	.align 2, 0
 _0804E0A4: .4byte gCurrentSprite
 _0804E0A8: .4byte gSpriteRandomNumber
-_0804E0AC: .4byte 0x083843F4
+_0804E0AC: .4byte sAnimalsOam_3843f4
 _0804E0B0:
-	ldr r0, _0804E0C0 @ =0x0838441C
+	ldr r0, _0804E0C0 @ =sAnimalsOam_38441c
 _0804E0B2:
 	str r0, [r4, #0x18]
 	ldr r1, _0804E0C4 @ =gCurrentSprite
@@ -2185,7 +2185,7 @@ _0804E0B2:
 	strh r0, [r1, #0x16]
 	b _0804E0F0
 	.align 2, 0
-_0804E0C0: .4byte 0x0838441C
+_0804E0C0: .4byte sAnimalsOam_38441c
 _0804E0C4: .4byte gCurrentSprite
 _0804E0C8:
 	adds r1, r4, #0
@@ -2195,7 +2195,7 @@ _0804E0C8:
 	strb r5, [r4, #0x1c]
 	movs r3, #0
 	strh r5, [r4, #0x16]
-	ldr r0, _0804E0F8 @ =0x08384444
+	ldr r0, _0804E0F8 @ =sAnimalsOam_384444
 	str r0, [r4, #0x18]
 	ldr r2, _0804E0FC @ =gSpriteData
 	lsls r0, r6, #3
@@ -2206,16 +2206,16 @@ _0804E0C8:
 	strh r5, [r1, #0x16]
 	adds r2, #0x18
 	adds r0, r0, r2
-	ldr r1, _0804E100 @ =0x083844BC
+	ldr r1, _0804E100 @ =sAnimalsOam_3844bc
 	str r1, [r0]
 _0804E0F0:
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804E0F8: .4byte 0x08384444
+_0804E0F8: .4byte sAnimalsOam_384444
 _0804E0FC: .4byte gSpriteData
-_0804E100: .4byte 0x083844BC
+_0804E100: .4byte sAnimalsOam_3844bc
 
 	thumb_func_start EtecoonFallingFromTire
 EtecoonFallingFromTire: @ 0x0804E104
@@ -2229,7 +2229,7 @@ EtecoonFallingFromTire: @ 0x0804E104
 	movs r2, #0
 	movs r0, #5
 	strb r0, [r1]
-	ldr r0, _0804E13C @ =0x0838428C
+	ldr r0, _0804E13C @ =sAnimalsOam_38428c
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -2246,7 +2246,7 @@ _0804E132:
 	bx r0
 	.align 2, 0
 _0804E138: .4byte gCurrentSprite
-_0804E13C: .4byte 0x0838428C
+_0804E13C: .4byte sAnimalsOam_38428c
 _0804E140: .4byte gSpriteRandomNumber
 
 	thumb_func_start EtecoonTurningAroundWhileLeavingInit
@@ -2257,14 +2257,14 @@ EtecoonTurningAroundWhileLeavingInit: @ 0x0804E144
 	movs r3, #0
 	movs r0, #0x3e
 	strb r0, [r2]
-	ldr r0, _0804E160 @ =0x083842C4
+	ldr r0, _0804E160 @ =sAnimalsOam_3842c4
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0804E15C: .4byte gCurrentSprite
-_0804E160: .4byte 0x083842C4
+_0804E160: .4byte sAnimalsOam_3842c4
 
 	thumb_func_start EtecoonTurningAroundWhileLeaving
 EtecoonTurningAroundWhileLeaving: @ 0x0804E164
@@ -2278,7 +2278,7 @@ EtecoonTurningAroundWhileLeaving: @ 0x0804E164
 	movs r3, #0
 	movs r0, #0x40
 	strb r0, [r1]
-	ldr r0, _0804E194 @ =0x083842C4
+	ldr r0, _0804E194 @ =sAnimalsOam_3842c4
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -2291,7 +2291,7 @@ _0804E18A:
 	bx r0
 	.align 2, 0
 _0804E190: .4byte gCurrentSprite
-_0804E194: .4byte 0x083842C4
+_0804E194: .4byte sAnimalsOam_3842c4
 
 	thumb_func_start EtecoonTurningAroundWhileLeavingSecondPart
 EtecoonTurningAroundWhileLeavingSecondPart: @ 0x0804E198
@@ -2338,7 +2338,7 @@ EtecoonLeavingEnclosure: @ 0x0804E1D8
 	adds r0, r0, r2
 	mov ip, r0
 	ldrb r4, [r0]
-	ldr r1, _0804E214 @ =0x0838188C
+	ldr r1, _0804E214 @ =sAnimalLeavingEnclosureYSpeed
 	lsls r0, r4, #1
 	adds r0, r0, r1
 	ldrh r5, [r0]
@@ -2362,7 +2362,7 @@ EtecoonLeavingEnclosure: @ 0x0804E1D8
 	b _0804E23E
 	.align 2, 0
 _0804E210: .4byte gCurrentSprite
-_0804E214: .4byte 0x0838188C
+_0804E214: .4byte sAnimalLeavingEnclosureYSpeed
 _0804E218: .4byte 0x00007FFF
 _0804E21C: .4byte 0x0000FFF8
 _0804E220: .4byte gAbilityRestingXPosition
@@ -2459,7 +2459,7 @@ _0804E2B8:
 	thumb_func_start EtecoonWalkingToWaitingSpotInit
 EtecoonWalkingToWaitingSpotInit: @ 0x0804E2C0
 	ldr r1, _0804E2D4 @ =gCurrentSprite
-	ldr r0, _0804E2D8 @ =0x0838429C
+	ldr r0, _0804E2D8 @ =sAnimalsOam_38429c
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -2470,7 +2470,7 @@ EtecoonWalkingToWaitingSpotInit: @ 0x0804E2C0
 	bx lr
 	.align 2, 0
 _0804E2D4: .4byte gCurrentSprite
-_0804E2D8: .4byte 0x0838429C
+_0804E2D8: .4byte sAnimalsOam_38429c
 
 	thumb_func_start EtecoonWalkingToWaitingSpot
 EtecoonWalkingToWaitingSpot: @ 0x0804E2DC
@@ -2564,7 +2564,7 @@ _0804E37C:
 	thumb_func_start EtecoonWaitingForOthersInit
 EtecoonWaitingForOthersInit: @ 0x0804E384
 	ldr r1, _0804E398 @ =gCurrentSprite
-	ldr r0, _0804E39C @ =0x0838471C
+	ldr r0, _0804E39C @ =sAnimalsOam_38471c
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -2575,7 +2575,7 @@ EtecoonWaitingForOthersInit: @ 0x0804E384
 	bx lr
 	.align 2, 0
 _0804E398: .4byte gCurrentSprite
-_0804E39C: .4byte 0x0838471C
+_0804E39C: .4byte sAnimalsOam_38471c
 
 	thumb_func_start EtecoonWaitingForOthers
 EtecoonWaitingForOthers: @ 0x0804E3A0
@@ -2657,14 +2657,14 @@ EtecoonRunning: @ 0x0804E420
 	lsrs r1, r0, #0x18
 	cmp r1, #0
 	bne _0804E468
-	ldr r0, _0804E448 @ =0x0838429C
+	ldr r0, _0804E448 @ =sAnimalsOam_38429c
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
 	strh r1, [r2, #0x16]
 	b _0804E468
 	.align 2, 0
 _0804E444: .4byte gCurrentSprite
-_0804E448: .4byte 0x0838429C
+_0804E448: .4byte sAnimalsOam_38429c
 _0804E44C:
 	ldrh r0, [r2, #4]
 	adds r0, #0x10
@@ -2725,7 +2725,7 @@ TireSwingInit: @ 0x0804E46C
 	adds r1, #0x24
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _0804E4D4 @ =0x0838446C
+	ldr r0, _0804E4D4 @ =sAnimalsOam_38446c
 	mov r1, ip
 	str r0, [r1, #0x18]
 	strb r2, [r1, #0x1c]
@@ -2735,7 +2735,7 @@ TireSwingInit: @ 0x0804E46C
 _0804E4C8: .4byte gCurrentSprite
 _0804E4CC: .4byte 0x0000FFC0
 _0804E4D0: .4byte 0x0000FFFC
-_0804E4D4: .4byte 0x0838446C
+_0804E4D4: .4byte sAnimalsOam_38446c
 
 	thumb_func_start TireSwingIdle
 TireSwingIdle: @ 0x0804E4D8
@@ -2748,13 +2748,13 @@ TireSwingIdle: @ 0x0804E4D8
 	cmp r0, #0
 	beq _0804E50A
 	ldr r1, [r4, #0x18]
-	ldr r0, _0804E514 @ =0x083844BC
+	ldr r0, _0804E514 @ =sAnimalsOam_3844bc
 	cmp r1, r0
 	bne _0804E50A
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0
 	beq _0804E50A
-	ldr r0, _0804E518 @ =0x0838446C
+	ldr r0, _0804E518 @ =sAnimalsOam_38446c
 	str r0, [r4, #0x18]
 	movs r0, #0
 	strb r0, [r4, #0x1c]
@@ -2769,8 +2769,8 @@ _0804E50A:
 	bx r0
 	.align 2, 0
 _0804E510: .4byte gCurrentSprite
-_0804E514: .4byte 0x083844BC
-_0804E518: .4byte 0x0838446C
+_0804E514: .4byte sAnimalsOam_3844bc
+_0804E518: .4byte sAnimalsOam_38446c
 _0804E51C: .4byte 0x0000FBFF
 
 	thumb_func_start Dachora
@@ -3196,14 +3196,14 @@ _0804E968:
 	bl EventCheckAfter_AnimalsReleased
 	cmp r0, #0
 	beq _0804E988
-	ldr r0, _0804E984 @ =0x08384744
+	ldr r0, _0804E984 @ =sAnimalsOam_384744
 	str r0, [r4, #0x18]
 	b _0804E998
 	.align 2, 0
 _0804E980: .4byte 0x0000FFFB
-_0804E984: .4byte 0x08384744
+_0804E984: .4byte sAnimalsOam_384744
 _0804E988:
-	ldr r0, _0804E9E8 @ =0x08384674
+	ldr r0, _0804E9E8 @ =sAnimalsOam_384674
 	str r0, [r4, #0x18]
 	adds r2, r4, #0
 	adds r2, #0x34
@@ -3253,14 +3253,14 @@ _0804E998:
 	strb r2, [r0]
 	b _0804EA08
 	.align 2, 0
-_0804E9E8: .4byte 0x08384674
+_0804E9E8: .4byte sAnimalsOam_384674
 _0804E9EC: .4byte gCurrentSprite
 _0804E9F0: .4byte 0x0000FFFC
 _0804E9F4:
 	bl EventCheckAfter_AnimalsReleased
 	cmp r0, #0
 	beq _0804EA08
-	ldr r0, _0804EA10 @ =0x08384744
+	ldr r0, _0804EA10 @ =sAnimalsOam_384744
 	str r0, [r4, #0x18]
 	strb r6, [r4, #0x1c]
 	strh r6, [r4, #0x16]
@@ -3271,7 +3271,7 @@ _0804EA08:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804EA10: .4byte 0x08384744
+_0804EA10: .4byte sAnimalsOam_384744
 
 	thumb_func_start HabitationGate
 HabitationGate: @ 0x0804EA14
@@ -3328,7 +3328,7 @@ _0804EA42:
 	strh r0, [r4, #0xc]
 	strh r1, [r4, #0xe]
 	strh r0, [r4, #0x10]
-	ldr r0, _0804EA94 @ =0x08384684
+	ldr r0, _0804EA94 @ =sAnimalsOam_384684
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r5, [r4, #0x16]
@@ -3339,7 +3339,7 @@ _0804EA42:
 	b _0804EAE4
 	.align 2, 0
 _0804EA90: .4byte 0x0000FFFC
-_0804EA94: .4byte 0x08384684
+_0804EA94: .4byte sAnimalsOam_384684
 _0804EA98:
 	ldrh r1, [r4]
 	ldr r0, _0804EAB4 @ =0x0000FFFB
@@ -3360,14 +3360,14 @@ _0804EAB8:
 	bl EventCheckAfter_AnimalsReleased
 	cmp r0, #0
 	beq _0804EAE4
-	ldr r0, _0804EACC @ =0x08384694
+	ldr r0, _0804EACC @ =sAnimalsOam_384694
 	str r0, [r4, #0x18]
 	strb r5, [r4, #0x1c]
 	strh r5, [r4, #0x16]
 	movs r0, #0x18
 	b _0804EAE2
 	.align 2, 0
-_0804EACC: .4byte 0x08384694
+_0804EACC: .4byte sAnimalsOam_384694
 _0804EAD0:
 	bl SpriteUtilCheckEndCurrentSpriteAnim
 	cmp r0, #0

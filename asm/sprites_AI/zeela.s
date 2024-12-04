@@ -175,13 +175,13 @@ ZeelaSetCrawlingOam: @ 0x0803AB50
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0803AB6C
-	ldr r0, _0803AB68 @ =0x083505DC
+	ldr r0, _0803AB68 @ =sZeelaOam_3505dc
 	b _0803AB6E
 	.align 2, 0
 _0803AB64: .4byte gCurrentSprite
-_0803AB68: .4byte 0x083505DC
+_0803AB68: .4byte sZeelaOam_3505dc
 _0803AB6C:
-	ldr r0, _0803AB7C @ =0x08350584
+	ldr r0, _0803AB7C @ =sZeelaOam_350584
 _0803AB6E:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -190,7 +190,7 @@ _0803AB6E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803AB7C: .4byte 0x08350584
+_0803AB7C: .4byte sZeelaOam_350584
 
 	thumb_func_start ZeelaSetFallingOam
 ZeelaSetFallingOam: @ 0x0803AB80
@@ -202,13 +202,13 @@ ZeelaSetFallingOam: @ 0x0803AB80
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0803AB9C
-	ldr r0, _0803AB98 @ =0x0835060C
+	ldr r0, _0803AB98 @ =sZeelaOam_35060c
 	b _0803AB9E
 	.align 2, 0
 _0803AB94: .4byte gCurrentSprite
-_0803AB98: .4byte 0x0835060C
+_0803AB98: .4byte sZeelaOam_35060c
 _0803AB9C:
-	ldr r0, _0803ABAC @ =0x083505B4
+	ldr r0, _0803ABAC @ =sZeelaOam_3505b4
 _0803AB9E:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -217,7 +217,7 @@ _0803AB9E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803ABAC: .4byte 0x083505B4
+_0803ABAC: .4byte sZeelaOam_3505b4
 
 	thumb_func_start ZeelaShootProjectiles
 ZeelaShootProjectiles: @ 0x0803ABB0
@@ -1189,7 +1189,7 @@ ZeelaProjectileInit: @ 0x0803B2C4
 	strh r1, [r2, #0xc]
 	strh r0, [r2, #0xe]
 	strh r1, [r2, #0x10]
-	ldr r0, _0803B334 @ =0x08350634
+	ldr r0, _0803B334 @ =sZeelaOam_350634
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -1213,7 +1213,7 @@ ZeelaProjectileInit: @ 0x0803B2C4
 _0803B328: .4byte gCurrentSprite
 _0803B32C: .4byte 0x0000FFFB
 _0803B330: .4byte 0x0000FFF8
-_0803B334: .4byte 0x08350634
+_0803B334: .4byte sZeelaOam_350634
 
 	thumb_func_start ZeelaProjectileMoving
 ZeelaProjectileMoving: @ 0x0803B338
@@ -1244,7 +1244,7 @@ _0803B36C:
 	adds r5, r4, #0
 	adds r5, #0x31
 	ldrb r2, [r5]
-	ldr r3, _0803B390 @ =0x0834F10C
+	ldr r3, _0803B390 @ =sZeelaProjectileMovement
 	lsls r0, r2, #1
 	adds r0, r0, r3
 	ldrh r4, [r0]
@@ -1259,7 +1259,7 @@ _0803B36C:
 	ldrh r4, [r0]
 	b _0803B39C
 	.align 2, 0
-_0803B390: .4byte 0x0834F10C
+_0803B390: .4byte sZeelaProjectileMovement
 _0803B394: .4byte 0x00007FFF
 _0803B398:
 	adds r0, r2, #1
@@ -1348,20 +1348,20 @@ ZeelaProjectileExplodingInit: @ 0x0803B400
 	ands r0, r1
 	cmp r0, #0
 	beq _0803B43C
-	ldr r0, _0803B438 @ =0x0835066C
+	ldr r0, _0803B438 @ =sZeelaOam_35066c
 	b _0803B43E
 	.align 2, 0
 _0803B430: .4byte gCurrentSprite
 _0803B434: .4byte gSpriteRandomNumber
-_0803B438: .4byte 0x0835066C
+_0803B438: .4byte sZeelaOam_35066c
 _0803B43C:
-	ldr r0, _0803B444 @ =0x08350694
+	ldr r0, _0803B444 @ =sZeelaOam_350694
 _0803B43E:
 	str r0, [r3, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803B444: .4byte 0x08350694
+_0803B444: .4byte sZeelaOam_350694
 
 	thumb_func_start ZeelaProjectileExploding
 ZeelaProjectileExploding: @ 0x0803B448

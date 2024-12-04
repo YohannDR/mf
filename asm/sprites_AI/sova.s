@@ -173,23 +173,23 @@ SovaSetCrawlingOam: @ 0x0803B7E4
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0803B800
-	ldr r0, _0803B7FC @ =0x0835335C
+	ldr r0, _0803B7FC @ =sSovaOam_35335c
 	b _0803B816
 	.align 2, 0
 _0803B7F8: .4byte gCurrentSprite
-_0803B7FC: .4byte 0x0835335C
+_0803B7FC: .4byte sSovaOam_35335c
 _0803B800:
 	adds r0, r2, #0
 	adds r0, #0x2f
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0803B814
-	ldr r0, _0803B810 @ =0x08353384
+	ldr r0, _0803B810 @ =sSovaOam_353384
 	b _0803B816
 	.align 2, 0
-_0803B810: .4byte 0x08353384
+_0803B810: .4byte sSovaOam_353384
 _0803B814:
-	ldr r0, _0803B824 @ =0x08353334
+	ldr r0, _0803B824 @ =sSovaOam_353334
 _0803B816:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -198,7 +198,7 @@ _0803B816:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803B824: .4byte 0x08353334
+_0803B824: .4byte sSovaOam_353334
 
 	thumb_func_start SovaTurningIntoX
 SovaTurningIntoX: @ 0x0803B828
@@ -899,10 +899,10 @@ _0803BD84:
 	beq _0803BE18
 	ldr r2, _0803BDD4 @ =gCurrentSprite
 	ldr r1, [r2, #0x18]
-	ldr r0, _0803BDD8 @ =0x083533AC
+	ldr r0, _0803BDD8 @ =sSovaOam_3533ac
 	cmp r1, r0
 	bne _0803BDAA
-	ldr r0, _0803BDDC @ =0x08353334
+	ldr r0, _0803BDDC @ =sSovaOam_353334
 	str r0, [r2, #0x18]
 	ldrh r1, [r2]
 	movs r0, #0x40
@@ -935,8 +935,8 @@ _0803BDAA:
 	b _0803BE02
 	.align 2, 0
 _0803BDD4: .4byte gCurrentSprite
-_0803BDD8: .4byte 0x083533AC
-_0803BDDC: .4byte 0x08353334
+_0803BDD8: .4byte sSovaOam_3533ac
+_0803BDDC: .4byte sSovaOam_353334
 _0803BDE0: .4byte 0x0000FFBF
 _0803BDE4: .4byte gPreviousCollisionCheck
 _0803BDE8:
@@ -972,10 +972,10 @@ _0803BE18:
 _0803BE20:
 	ldr r2, _0803BE68 @ =gCurrentSprite
 	ldr r1, [r2, #0x18]
-	ldr r0, _0803BE6C @ =0x08353334
+	ldr r0, _0803BE6C @ =sSovaOam_353334
 	cmp r1, r0
 	bne _0803BE2E
-	ldr r0, _0803BE70 @ =0x083533AC
+	ldr r0, _0803BE70 @ =sSovaOam_3533ac
 	str r0, [r2, #0x18]
 _0803BE2E:
 	ldr r0, _0803BE74 @ =gPreviousVerticalCollisionCheck
@@ -987,10 +987,10 @@ _0803BE2E:
 _0803BE3A:
 	ldr r2, _0803BE68 @ =gCurrentSprite
 	ldr r1, [r2, #0x18]
-	ldr r0, _0803BE6C @ =0x08353334
+	ldr r0, _0803BE6C @ =sSovaOam_353334
 	cmp r1, r0
 	bne _0803BE50
-	ldr r0, _0803BE70 @ =0x083533AC
+	ldr r0, _0803BE70 @ =sSovaOam_3533ac
 	str r0, [r2, #0x18]
 	ldrh r1, [r2]
 	movs r0, #0x40
@@ -1011,8 +1011,8 @@ _0803BE50:
 	b _0803BE7E
 	.align 2, 0
 _0803BE68: .4byte gCurrentSprite
-_0803BE6C: .4byte 0x08353334
-_0803BE70: .4byte 0x083533AC
+_0803BE6C: .4byte sSovaOam_353334
+_0803BE70: .4byte sSovaOam_3533ac
 _0803BE74: .4byte gPreviousVerticalCollisionCheck
 _0803BE78:
 	ldrh r0, [r2, #4]
@@ -1286,7 +1286,7 @@ SovaFireInit: @ 0x0803C010
 	ldrb r0, [r1, #0x1e]
 	cmp r0, #0
 	beq _0803C094
-	ldr r0, _0803C090 @ =0x0835346C
+	ldr r0, _0803C090 @ =sSovaOam_35346c
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #0x16
@@ -1299,9 +1299,9 @@ SovaFireInit: @ 0x0803C010
 _0803C084: .4byte gCurrentSprite
 _0803C088: .4byte 0x0000FFFB
 _0803C08C: .4byte 0x0000FFD8
-_0803C090: .4byte 0x0835346C
+_0803C090: .4byte sSovaOam_35346c
 _0803C094:
-	ldr r0, _0803C0AC @ =0x083533D4
+	ldr r0, _0803C0AC @ =sSovaOam_3533d4
 	mov r1, ip
 	str r0, [r1, #0x18]
 	mov r0, ip
@@ -1315,7 +1315,7 @@ _0803C0A6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803C0AC: .4byte 0x083533D4
+_0803C0AC: .4byte sSovaOam_3533d4
 
 	thumb_func_start SovaFireBig
 SovaFireBig: @ 0x0803C0B0
@@ -1335,7 +1335,7 @@ SovaFireBig: @ 0x0803C0B0
 	movs r1, #0
 	ldr r0, _0803C0F0 @ =0x0000FFE4
 	strh r0, [r2, #0xa]
-	ldr r0, _0803C0F4 @ =0x083533FC
+	ldr r0, _0803C0F4 @ =sSovaOam_3533fc
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -1352,7 +1352,7 @@ _0803C0E6:
 	.align 2, 0
 _0803C0EC: .4byte gCurrentSprite
 _0803C0F0: .4byte 0x0000FFE4
-_0803C0F4: .4byte 0x083533FC
+_0803C0F4: .4byte sSovaOam_3533fc
 
 	thumb_func_start SovaFireSmall
 SovaFireSmall: @ 0x0803C0F8
@@ -1372,7 +1372,7 @@ SovaFireSmall: @ 0x0803C0F8
 	movs r1, #0
 	ldr r0, _0803C138 @ =0x0000FFF0
 	strh r0, [r2, #0xa]
-	ldr r0, _0803C13C @ =0x08353424
+	ldr r0, _0803C13C @ =sSovaOam_353424
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
 	strh r3, [r2, #0x16]
@@ -1389,7 +1389,7 @@ _0803C12E:
 	.align 2, 0
 _0803C134: .4byte gCurrentSprite
 _0803C138: .4byte 0x0000FFF0
-_0803C13C: .4byte 0x08353424
+_0803C13C: .4byte sSovaOam_353424
 
 	thumb_func_start SovaFireDisappearing
 SovaFireDisappearing: @ 0x0803C140
@@ -1428,7 +1428,7 @@ _0803C174: .4byte gCurrentSprite
 SovaFireExplodingInit: @ 0x0803C178
 	push {lr}
 	ldr r1, _0803C1A4 @ =gCurrentSprite
-	ldr r0, _0803C1A8 @ =0x08353494
+	ldr r0, _0803C1A8 @ =sSovaOam_353494
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -1449,7 +1449,7 @@ _0803C19E:
 	bx r0
 	.align 2, 0
 _0803C1A4: .4byte gCurrentSprite
-_0803C1A8: .4byte 0x08353494
+_0803C1A8: .4byte sSovaOam_353494
 _0803C1AC: .4byte 0x0000018F
 
 	thumb_func_start SovaFireExploding

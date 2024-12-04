@@ -251,7 +251,7 @@ _0803A3EA:
 	movs r0, #0xfd
 	ands r0, r1
 	strb r0, [r2]
-	ldr r0, _0803A444 @ =0x0834F074
+	ldr r0, _0803A444 @ =sSkulteraOam_34f074
 	str r0, [r3, #0x18]
 	adds r1, r3, #0
 	adds r1, #0x27
@@ -274,10 +274,10 @@ _0803A3EA:
 	b _0803A484
 	.align 2, 0
 _0803A440: .4byte gCurrentSprite
-_0803A444: .4byte 0x0834F074
+_0803A444: .4byte sSkulteraOam_34f074
 _0803A448: .4byte 0x0000FF80
 _0803A44C:
-	ldr r0, _0803A4A0 @ =0x0834EFEC
+	ldr r0, _0803A4A0 @ =sSkulteraOam_34efec
 	str r0, [r3, #0x18]
 	ldrb r0, [r3, #0x1d]
 	cmp r0, #0xb5
@@ -321,7 +321,7 @@ _0803A498:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803A4A0: .4byte 0x0834EFEC
+_0803A4A0: .4byte sSkulteraOam_34efec
 _0803A4A4: .4byte 0x0000FFC0
 _0803A4A8: .4byte sPrimarySpriteStats
 
@@ -345,7 +345,7 @@ SkulteraIdleInit: @ 0x0803A4AC
 	ldrb r0, [r0]
 	cmp r0, #2
 	bne _0803A4E4
-	ldr r0, _0803A4E0 @ =0x0834F074
+	ldr r0, _0803A4E0 @ =sSkulteraOam_34f074
 	mov r1, ip
 	str r0, [r1, #0x18]
 	adds r1, #0x2e
@@ -353,9 +353,9 @@ SkulteraIdleInit: @ 0x0803A4AC
 	b _0803A4EE
 	.align 2, 0
 _0803A4DC: .4byte gCurrentSprite
-_0803A4E0: .4byte 0x0834F074
+_0803A4E0: .4byte sSkulteraOam_34f074
 _0803A4E4:
-	ldr r0, _0803A4F4 @ =0x0834EFEC
+	ldr r0, _0803A4F4 @ =sSkulteraOam_34efec
 	mov r1, ip
 	str r0, [r1, #0x18]
 	adds r1, #0x2e
@@ -365,7 +365,7 @@ _0803A4EE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803A4F4: .4byte 0x0834EFEC
+_0803A4F4: .4byte sSkulteraOam_34efec
 
 	thumb_func_start SkulteraIdle
 SkulteraIdle: @ 0x0803A4F8
@@ -506,19 +506,19 @@ SkulteraChasingSamusInit: @ 0x0803A5D8
 	ldrb r0, [r0]
 	cmp r0, #2
 	bne _0803A600
-	ldr r0, _0803A5FC @ =0x0834F0E4
+	ldr r0, _0803A5FC @ =sSkulteraOam_34f0e4
 	b _0803A602
 	.align 2, 0
 _0803A5F8: .4byte gCurrentSprite
-_0803A5FC: .4byte 0x0834F0E4
+_0803A5FC: .4byte sSkulteraOam_34f0e4
 _0803A600:
-	ldr r0, _0803A608 @ =0x0834F054
+	ldr r0, _0803A608 @ =sSkulteraOam_34f054
 _0803A602:
 	str r0, [r3, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803A608: .4byte 0x0834F054
+_0803A608: .4byte sSkulteraOam_34f054
 
 	thumb_func_start SkulteraChasingSamus
 SkulteraChasingSamus: @ 0x0803A60C
@@ -688,7 +688,7 @@ SkulteraTurningAroundInit: @ 0x0803A738
 	ldrb r1, [r0]
 	cmp r1, #2
 	bne _0803A78C
-	ldr r0, _0803A780 @ =0x0834F09C
+	ldr r0, _0803A780 @ =sSkulteraOam_34f09c
 	str r0, [r3, #0x18]
 	ldrh r2, [r3]
 	movs r0, #0x80
@@ -708,11 +708,11 @@ SkulteraTurningAroundInit: @ 0x0803A738
 	b _0803A7B2
 	.align 2, 0
 _0803A77C: .4byte gCurrentSprite
-_0803A780: .4byte 0x0834F09C
+_0803A780: .4byte sSkulteraOam_34f09c
 _0803A784: .4byte 0x03001346
 _0803A788: .4byte 0x00000193
 _0803A78C:
-	ldr r0, _0803A7B8 @ =0x0834F00C
+	ldr r0, _0803A7B8 @ =sSkulteraOam_34f00c
 	str r0, [r3, #0x18]
 	ldrh r2, [r3]
 	movs r0, #0x80
@@ -734,7 +734,7 @@ _0803A7B2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803A7B8: .4byte 0x0834F00C
+_0803A7B8: .4byte sSkulteraOam_34f00c
 _0803A7BC: .4byte 0x03001346
 _0803A7C0: .4byte 0x00000191
 

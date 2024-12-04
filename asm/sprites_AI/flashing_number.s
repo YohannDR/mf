@@ -66,53 +66,53 @@ BigFlashingNumber: @ 0x0804C578
 	bne _0804C658
 	cmp r5, #7
 	bne _0804C608
-	ldr r0, _0804C604 @ =0x0837EDFC
+	ldr r0, _0804C604 @ =sBigFlashingNumberOam_37edfc
 	str r0, [r4, #0x18]
 	b _0804C65A
 	.align 2, 0
 _0804C5FC: .4byte gCurrentSprite
 _0804C600: .4byte 0x0000FFFC
-_0804C604: .4byte 0x0837EDFC
+_0804C604: .4byte sBigFlashingNumberOam_37edfc
 _0804C608:
 	cmp r5, #8
 	bne _0804C618
-	ldr r0, _0804C614 @ =0x0837EE44
+	ldr r0, _0804C614 @ =sBigFlashingNumberOam_37ee44
 	str r0, [r4, #0x18]
 	b _0804C65A
 	.align 2, 0
-_0804C614: .4byte 0x0837EE44
+_0804C614: .4byte sBigFlashingNumberOam_37ee44
 _0804C618:
 	cmp r5, #9
 	bne _0804C628
-	ldr r0, _0804C624 @ =0x0837EE8C
+	ldr r0, _0804C624 @ =sBigFlashingNumberOam_37ee8c
 	str r0, [r4, #0x18]
 	b _0804C65A
 	.align 2, 0
-_0804C624: .4byte 0x0837EE8C
+_0804C624: .4byte sBigFlashingNumberOam_37ee8c
 _0804C628:
 	cmp r5, #0xa
 	bne _0804C638
-	ldr r0, _0804C634 @ =0x0837EED4
+	ldr r0, _0804C634 @ =sBigFlashingNumberOam_37eed4
 	str r0, [r4, #0x18]
 	b _0804C65A
 	.align 2, 0
-_0804C634: .4byte 0x0837EED4
+_0804C634: .4byte sBigFlashingNumberOam_37eed4
 _0804C638:
 	cmp r5, #0xb
 	bne _0804C648
-	ldr r0, _0804C644 @ =0x0837EF1C
+	ldr r0, _0804C644 @ =sBigFlashingNumberOam_37ef1c
 	str r0, [r4, #0x18]
 	b _0804C65A
 	.align 2, 0
-_0804C644: .4byte 0x0837EF1C
+_0804C644: .4byte sBigFlashingNumberOam_37ef1c
 _0804C648:
 	cmp r7, #0xc
 	bne _0804C658
-	ldr r0, _0804C654 @ =0x0837EF64
+	ldr r0, _0804C654 @ =sBigFlashingNumberOam_37ef64
 	str r0, [r4, #0x18]
 	b _0804C65A
 	.align 2, 0
-_0804C654: .4byte 0x0837EF64
+_0804C654: .4byte sBigFlashingNumberOam_37ef64
 _0804C658:
 	strh r6, [r4]
 _0804C65A:
@@ -181,53 +181,53 @@ FlashingNumber: @ 0x0804C660
 	bne _0804C73C
 	cmp r5, #1
 	bne _0804C6EC
-	ldr r0, _0804C6E8 @ =0x0837F948
+	ldr r0, _0804C6E8 @ =sFlashingNumberOam_37f948
 	str r0, [r4, #0x18]
 	b _0804C73E
 	.align 2, 0
 _0804C6E0: .4byte gCurrentSprite
 _0804C6E4: .4byte 0x0000FFFC
-_0804C6E8: .4byte 0x0837F948
+_0804C6E8: .4byte sFlashingNumberOam_37f948
 _0804C6EC:
 	cmp r5, #2
 	bne _0804C6FC
-	ldr r0, _0804C6F8 @ =0x0837F990
+	ldr r0, _0804C6F8 @ =sFlashingNumberOam_37f990
 	str r0, [r4, #0x18]
 	b _0804C73E
 	.align 2, 0
-_0804C6F8: .4byte 0x0837F990
+_0804C6F8: .4byte sFlashingNumberOam_37f990
 _0804C6FC:
 	cmp r5, #3
 	bne _0804C70C
-	ldr r0, _0804C708 @ =0x0837F9D8
+	ldr r0, _0804C708 @ =sFlashingNumberOam_37f9d8
 	str r0, [r4, #0x18]
 	b _0804C73E
 	.align 2, 0
-_0804C708: .4byte 0x0837F9D8
+_0804C708: .4byte sFlashingNumberOam_37f9d8
 _0804C70C:
 	cmp r5, #4
 	bne _0804C71C
-	ldr r0, _0804C718 @ =0x0837FA20
+	ldr r0, _0804C718 @ =sFlashingNumberOam_37fa20
 	str r0, [r4, #0x18]
 	b _0804C73E
 	.align 2, 0
-_0804C718: .4byte 0x0837FA20
+_0804C718: .4byte sFlashingNumberOam_37fa20
 _0804C71C:
 	cmp r5, #5
 	bne _0804C72C
-	ldr r0, _0804C728 @ =0x0837FA68
+	ldr r0, _0804C728 @ =sFlashingNumberOam_37fa68
 	str r0, [r4, #0x18]
 	b _0804C73E
 	.align 2, 0
-_0804C728: .4byte 0x0837FA68
+_0804C728: .4byte sFlashingNumberOam_37fa68
 _0804C72C:
 	cmp r7, #6
 	bne _0804C73C
-	ldr r0, _0804C738 @ =0x0837FAB0
+	ldr r0, _0804C738 @ =sFlashingNumberOam_37fab0
 	str r0, [r4, #0x18]
 	b _0804C73E
 	.align 2, 0
-_0804C738: .4byte 0x0837FAB0
+_0804C738: .4byte sFlashingNumberOam_37fab0
 _0804C73C:
 	strh r6, [r4]
 _0804C73E:

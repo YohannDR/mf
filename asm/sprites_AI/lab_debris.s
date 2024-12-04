@@ -92,7 +92,7 @@ _0804F590:
 	mov r0, ip
 	adds r0, #0x2f
 	strb r3, [r0]
-	ldr r1, _0804F5EC @ =0x08385C1C
+	ldr r1, _0804F5EC @ =sLabDebrisOam_385c1c
 	str r1, [r4, #0x18]
 	strb r3, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -100,23 +100,23 @@ _0804F590:
 	ldrb r0, [r0]
 	cmp r0, #0x14
 	bne _0804F5F4
-	ldr r0, _0804F5F0 @ =0x08385C2C
+	ldr r0, _0804F5F0 @ =sLabDebrisOam_385c2c
 	str r0, [r4, #0x18]
 	b _0804F608
 	.align 2, 0
 _0804F5E4: .4byte gCurrentSprite
 _0804F5E8: .4byte 0x0000FFFC
-_0804F5EC: .4byte 0x08385C1C
-_0804F5F0: .4byte 0x08385C2C
+_0804F5EC: .4byte sLabDebrisOam_385c1c
+_0804F5F0: .4byte sLabDebrisOam_385c2c
 _0804F5F4:
 	cmp r0, #0x15
 	bne _0804F604
-	ldr r0, _0804F600 @ =0x08385C3C
+	ldr r0, _0804F600 @ =sLabDebrisOam_385c3c
 	mov r1, ip
 	str r0, [r1, #0x18]
 	b _0804F608
 	.align 2, 0
-_0804F600: .4byte 0x08385C3C
+_0804F600: .4byte sLabDebrisOam_385c3c
 _0804F604:
 	mov r4, ip
 	str r1, [r4, #0x18]

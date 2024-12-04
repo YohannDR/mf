@@ -121,16 +121,16 @@ OperationsRoomPadIdleInit: @ 0x08039A7C
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08039AAC
-	ldr r0, _08039AA8 @ =0x0834C344
+	ldr r0, _08039AA8 @ =sOperationsRoomPadOam_34c344
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #0x46
 	b _08039AB4
 	.align 2, 0
 _08039AA4: .4byte gCurrentSprite
-_08039AA8: .4byte 0x0834C344
+_08039AA8: .4byte sOperationsRoomPadOam_34c344
 _08039AAC:
-	ldr r0, _08039ABC @ =0x0834C2F4
+	ldr r0, _08039ABC @ =sOperationsRoomPadOam_34c2f4
 	str r0, [r1, #0x18]
 	adds r1, #0x24
 	movs r0, #2
@@ -139,7 +139,7 @@ _08039AB4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08039ABC: .4byte 0x0834C2F4
+_08039ABC: .4byte sOperationsRoomPadOam_34c2f4
 
 	thumb_func_start OperationsRoomPadIdle
 OperationsRoomPadIdle: @ 0x08039AC0
@@ -160,7 +160,7 @@ OperationsRoomPadIdle: @ 0x08039AC0
 	subs r1, #0xa
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _08039AF8 @ =0x0834C254
+	ldr r0, _08039AF8 @ =sOperationsRoomPadOam_34c254
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -169,7 +169,7 @@ OperationsRoomPadIdle: @ 0x08039AC0
 	b _08039B08
 	.align 2, 0
 _08039AF4: .4byte gCurrentSprite
-_08039AF8: .4byte 0x0834C254
+_08039AF8: .4byte sOperationsRoomPadOam_34c254
 _08039AFC: .4byte 0x00000101
 _08039B00:
 	ldr r0, _08039B0C @ =gCurrentSprite
@@ -194,7 +194,7 @@ OperationsRoomPadPressingSwitch: @ 0x08039B10
 	movs r3, #0
 	movs r0, #0x1a
 	strb r0, [r2]
-	ldr r0, _08039B38 @ =0x0834C344
+	ldr r0, _08039B38 @ =sOperationsRoomPadOam_34c344
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -203,7 +203,7 @@ _08039B2E:
 	bx r0
 	.align 2, 0
 _08039B34: .4byte gCurrentSprite
-_08039B38: .4byte 0x0834C344
+_08039B38: .4byte sOperationsRoomPadOam_34c344
 
 	thumb_func_start OperationsRoomPadSwitchPressed
 OperationsRoomPadSwitchPressed: @ 0x08039B3C
@@ -250,7 +250,7 @@ _08039B90:
 	adds r2, #0x24
 	movs r0, #0x1c
 	strb r0, [r2]
-	ldr r0, _08039BB4 @ =0x0834C2CC
+	ldr r0, _08039BB4 @ =sOperationsRoomPadOam_34c2cc
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -263,7 +263,7 @@ _08039BAA:
 	bx r0
 	.align 2, 0
 _08039BB0: .4byte gCurrentSprite
-_08039BB4: .4byte 0x0834C2CC
+_08039BB4: .4byte sOperationsRoomPadOam_34c2cc
 
 	thumb_func_start OperationsRoomPadReleasing
 OperationsRoomPadReleasing: @ 0x08039BB8
@@ -388,7 +388,7 @@ OperationsRoomPadConsoleInit: @ 0x08039C60
 	adds r1, #2
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _08039CC0 @ =0x0834C244
+	ldr r0, _08039CC0 @ =sOperationsRoomPadOam_34c244
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -399,7 +399,7 @@ OperationsRoomPadConsoleInit: @ 0x08039C60
 _08039CB4: .4byte gCurrentSprite
 _08039CB8: .4byte 0x0000FFFB
 _08039CBC: .4byte 0x0000FFFC
-_08039CC0: .4byte 0x0834C244
+_08039CC0: .4byte sOperationsRoomPadOam_34c244
 
 	thumb_func_start OperationsRoomPadConsoleIdle
 OperationsRoomPadConsoleIdle: @ 0x08039CC4
@@ -459,7 +459,7 @@ OperationsRoomPadConsoleScreenInit: @ 0x08039CC8
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08039D50
-	ldr r0, _08039D4C @ =0x0834C27C
+	ldr r0, _08039D4C @ =sOperationsRoomPadOam_34c27c
 	mov r1, ip
 	str r0, [r1, #0x18]
 	adds r1, #0x24
@@ -470,9 +470,9 @@ _08039D3C: .4byte gCurrentSprite
 _08039D40: .4byte 0x0000FFFB
 _08039D44: .4byte 0x0000FFFC
 _08039D48: .4byte gSpriteData
-_08039D4C: .4byte 0x0834C27C
+_08039D4C: .4byte sOperationsRoomPadOam_34c27c
 _08039D50:
-	ldr r0, _08039D64 @ =0x0834C2A4
+	ldr r0, _08039D64 @ =sOperationsRoomPadOam_34c2a4
 	mov r2, ip
 	str r0, [r2, #0x18]
 	mov r1, ip
@@ -484,7 +484,7 @@ _08039D5C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08039D64: .4byte 0x0834C2A4
+_08039D64: .4byte sOperationsRoomPadOam_34c2a4
 
 	thumb_func_start OperationsRoomPadConsoleScreenIdle
 OperationsRoomPadConsoleScreenIdle: @ 0x08039D68
@@ -507,7 +507,7 @@ OperationsRoomPadConsoleScreenIdle: @ 0x08039D68
 	movs r2, #0
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _08039DA4 @ =0x0834C27C
+	ldr r0, _08039DA4 @ =sOperationsRoomPadOam_34c27c
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -517,7 +517,7 @@ _08039D96:
 	.align 2, 0
 _08039D9C: .4byte gSpriteData
 _08039DA0: .4byte gCurrentSprite
-_08039DA4: .4byte 0x0834C27C
+_08039DA4: .4byte sOperationsRoomPadOam_34c27c
 
 	thumb_func_start OperationsRoomPadScreenInit
 OperationsRoomPadScreenInit: @ 0x08039DA8
@@ -560,7 +560,7 @@ OperationsRoomPadScreenInit: @ 0x08039DA8
 	adds r1, #2
 	movs r0, #2
 	strb r0, [r1]
-	ldr r0, _08039E18 @ =0x0834C31C
+	ldr r0, _08039E18 @ =sOperationsRoomPadOam_34c31c
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -574,7 +574,7 @@ OperationsRoomPadScreenInit: @ 0x08039DA8
 _08039E0C: .4byte gCurrentSprite
 _08039E10: .4byte 0x0000FFFB
 _08039E14: .4byte 0x0000FFFC
-_08039E18: .4byte 0x0834C31C
+_08039E18: .4byte sOperationsRoomPadOam_34c31c
 
 	thumb_func_start OperationsRoomPadScreenTurningOn
 OperationsRoomPadScreenTurningOn: @ 0x08039E1C
@@ -583,7 +583,7 @@ OperationsRoomPadScreenTurningOn: @ 0x08039E1C
 	cmp r0, #0
 	beq _08039E38
 	ldr r1, _08039E3C @ =gCurrentSprite
-	ldr r0, _08039E40 @ =0x0834C304
+	ldr r0, _08039E40 @ =sOperationsRoomPadOam_34c304
 	str r0, [r1, #0x18]
 	movs r0, #0
 	strb r0, [r1, #0x1c]
@@ -596,7 +596,7 @@ _08039E38:
 	bx r0
 	.align 2, 0
 _08039E3C: .4byte gCurrentSprite
-_08039E40: .4byte 0x0834C304
+_08039E40: .4byte sOperationsRoomPadOam_34c304
 
 	thumb_func_start OperationsRoomPadScreenIdle
 OperationsRoomPadScreenIdle: @ 0x08039E44
@@ -614,7 +614,7 @@ OperationsRoomPadScreenIdle: @ 0x08039E44
 	ldrb r0, [r0]
 	cmp r0, #0x1e
 	bne _08039E78
-	ldr r0, _08039E84 @ =0x0834C354
+	ldr r0, _08039E84 @ =sOperationsRoomPadOam_34c354
 	str r0, [r3, #0x18]
 	movs r0, #0
 	strb r0, [r3, #0x1c]
@@ -631,7 +631,7 @@ _08039E78:
 	.align 2, 0
 _08039E7C: .4byte gCurrentSprite
 _08039E80: .4byte gSpriteData
-_08039E84: .4byte 0x0834C354
+_08039E84: .4byte sOperationsRoomPadOam_34c354
 
 	thumb_func_start OperationsRoomPadScreenTurningOff
 OperationsRoomPadScreenTurningOff: @ 0x08039E88

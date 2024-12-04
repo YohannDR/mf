@@ -48,7 +48,7 @@ _0804B694:
 	strh r1, [r4, #0xe]
 	movs r0, #0x20
 	strh r0, [r4, #0x10]
-	ldr r0, _0804B6FC @ =0x0837CE44
+	ldr r0, _0804B6FC @ =sPuyoOam_37ce44
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -76,7 +76,7 @@ _0804B694:
 	.align 2, 0
 _0804B6F4: .4byte gCurrentSprite
 _0804B6F8: .4byte 0x0000FFE0
-_0804B6FC: .4byte 0x0837CE44
+_0804B6FC: .4byte sPuyoOam_37ce44
 _0804B700: .4byte sPrimarySpriteStats
 _0804B704:
 	movs r0, #1
@@ -98,14 +98,14 @@ PuyoFallingInit: @ 0x0804B710
 	adds r0, r3, #0
 	adds r0, #0x31
 	strb r1, [r0]
-	ldr r0, _0804B730 @ =0x0837CE44
+	ldr r0, _0804B730 @ =sPuyoOam_37ce44
 	str r0, [r3, #0x18]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
 	bx lr
 	.align 2, 0
 _0804B72C: .4byte gCurrentSprite
-_0804B730: .4byte 0x0837CE44
+_0804B730: .4byte sPuyoOam_37ce44
 
 	thumb_func_start PuyoIdleInit
 PuyoIdleInit: @ 0x0804B734
@@ -115,14 +115,14 @@ PuyoIdleInit: @ 0x0804B734
 	movs r3, #0
 	movs r0, #2
 	strb r0, [r2]
-	ldr r0, _0804B750 @ =0x0837CE6C
+	ldr r0, _0804B750 @ =sPuyoOam_37ce6c
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0804B74C: .4byte gCurrentSprite
-_0804B750: .4byte 0x0837CE6C
+_0804B750: .4byte sPuyoOam_37ce6c
 
 	thumb_func_start PuyoIdle
 PuyoIdle: @ 0x0804B754
@@ -304,7 +304,7 @@ PuyoWaitingInit: @ 0x0804B8A0
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0804B8C8 @ =0x0837CE44
+	ldr r0, _0804B8C8 @ =sPuyoOam_37ce44
 	str r0, [r1, #0x18]
 	ldr r0, _0804B8CC @ =gFrameCounter8Bit
 	ldrb r0, [r0]
@@ -315,7 +315,7 @@ PuyoWaitingInit: @ 0x0804B8A0
 	bx lr
 	.align 2, 0
 _0804B8C4: .4byte gCurrentSprite
-_0804B8C8: .4byte 0x0837CE44
+_0804B8C8: .4byte sPuyoOam_37ce44
 _0804B8CC: .4byte gSpriteRandomNumber
 
 	thumb_func_start PuyoWaiting
@@ -352,7 +352,7 @@ _0804B8F0:
 	adds r0, #0x24
 	movs r1, #2
 	strb r1, [r0]
-	ldr r0, _0804B924 @ =0x0837CE6C
+	ldr r0, _0804B924 @ =sPuyoOam_37ce6c
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -361,7 +361,7 @@ _0804B91C:
 	bx r0
 	.align 2, 0
 _0804B920: .4byte gCurrentSprite
-_0804B924: .4byte 0x0837CE6C
+_0804B924: .4byte sPuyoOam_37ce6c
 
 	thumb_func_start PuyoJumpWarningInit
 PuyoJumpWarningInit: @ 0x0804B928
@@ -373,12 +373,12 @@ PuyoJumpWarningInit: @ 0x0804B928
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0804B944 @ =0x0837CEA4
+	ldr r0, _0804B944 @ =sPuyoOam_37cea4
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _0804B940: .4byte gCurrentSprite
-_0804B944: .4byte 0x0837CEA4
+_0804B944: .4byte sPuyoOam_37cea4
 
 	thumb_func_start PuyoJumpWarning
 PuyoJumpWarning: @ 0x0804B948
@@ -395,7 +395,7 @@ PuyoJumpWarning: @ 0x0804B948
 	strb r2, [r3, #0x1c]
 	movs r1, #0
 	strh r2, [r3, #0x16]
-	ldr r0, _0804B988 @ =0x0837CEC4
+	ldr r0, _0804B988 @ =sPuyoOam_37cec4
 	str r0, [r3, #0x18]
 	adds r0, r3, #0
 	adds r0, #0x31
@@ -413,7 +413,7 @@ _0804B980:
 	bx r0
 	.align 2, 0
 _0804B984: .4byte gCurrentSprite
-_0804B988: .4byte 0x0837CEC4
+_0804B988: .4byte sPuyoOam_37cec4
 
 	thumb_func_start PuyoJumpingUp
 PuyoJumpingUp: @ 0x0804B98C
@@ -454,7 +454,7 @@ _0804B9BC:
 	b _0804BA0A
 _0804B9D4:
 	ldrb r2, [r3]
-	ldr r6, _0804B9F8 @ =0x0837C578
+	ldr r6, _0804B9F8 @ =sPuyoJumpingUpSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r6
 	ldrh r5, [r0]
@@ -471,7 +471,7 @@ _0804B9D4:
 	adds r0, r0, r1
 	b _0804BA08
 	.align 2, 0
-_0804B9F8: .4byte 0x0837C578
+_0804B9F8: .4byte sPuyoJumpingUpSpeed
 _0804B9FC: .4byte 0x00007FFF
 _0804BA00:
 	adds r0, r2, #1
@@ -579,7 +579,7 @@ PuyoJumpingDown: @ 0x0804BAA0
 	strb r0, [r1]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
-	ldr r0, _0804BAE8 @ =0x0837CED4
+	ldr r0, _0804BAE8 @ =sPuyoOam_37ced4
 	str r0, [r4, #0x18]
 	ldrh r1, [r4]
 	movs r0, #2
@@ -592,14 +592,14 @@ PuyoJumpingDown: @ 0x0804BAA0
 	.align 2, 0
 _0804BAE0: .4byte gCurrentSprite
 _0804BAE4: .4byte gPreviousVerticalCollisionCheck
-_0804BAE8: .4byte 0x0837CED4
+_0804BAE8: .4byte sPuyoOam_37ced4
 _0804BAEC: .4byte 0x000001C5
 _0804BAF0:
 	movs r0, #0x31
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _0804BB18 @ =0x0837C5B8
+	ldr r5, _0804BB18 @ =sPuyoJumpingDownSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -616,7 +616,7 @@ _0804BAF0:
 	adds r0, r0, r1
 	b _0804BB2A
 	.align 2, 0
-_0804BB18: .4byte 0x0837C5B8
+_0804BB18: .4byte sPuyoJumpingDownSpeed
 _0804BB1C: .4byte 0x00007FFF
 _0804BB20:
 	adds r0, r2, #1

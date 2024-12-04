@@ -1181,6 +1181,57 @@ sprites/pillar.pal;1;0x37a2f8;32
 sprites/genesis.gfx;2;0x37abc4;2048
 sprites/genesis.pal;2;0x37bbc4;32
 
+# Puyo
+
+sprites/puyo.gfx;1;0x37c5d8;2048
+sprites/puyo.pal;1;0x37cdd8;32
+
+# Fake tank
+
+sprites/fake_energy_tank.gfx;1;0x37cf70;2048
+sprites/fake_energy_tank.pal;1;0x37d770;32
+
+sprites/fake_missile_tank.gfx;1;0x37d8e4;2048
+sprites/fake_missile_tank.pal;1;0x37e0e4;32
+
+# Flashing number
+
+sprites/big_flashing_number.gfx;1;0x37e2a4;2048
+sprites/big_flashing_number.pal;1;0x37eaa4;32
+
+sprites/flashing_number.gfx;1;0x37efac;2048
+sprites/flashing_number.pal;1;0x37f7ac;32
+
+# Zebesian (aqua)
+
+sprites/zebesian_aqua.gfx;2;0x37faf8;2048
+sprites/zebesian_aqua.pal;2;0x380af8;32
+
+# Animals
+
+sprites/animals.gfx;4;0x3818a8;2048
+sprites/animals.pal;4;0x3838a8;32
+
+# Infant metroid
+
+sprites/infant_metroid.gfx;1;0x38499c;2048
+sprites/infant_metroid.pal;1;0x38519c;32
+
+# Lab debris
+
+sprites/lab_debris.gfx;1;0x38537c;2048
+sprites/lab_debris.pal;1;0x385b7c;32
+
+# Powamp
+
+sprites/powamp.gfx;1;0x385cac;2048
+sprites/powamp.pal;1;0x3864ac;32
+
+# Zozoro
+
+sprites/zozoro.gfx;2;0x386718;2048
+sprites/zozoro.pal;1;0x387718;32
+
 # ...
 
 # Starship (end)
@@ -2912,7 +2963,7 @@ Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
 Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 
 # Sprites
-Blob_37c578_39aa34.bin;37c578;39aa34
+Blob_388224_39aa34.bin;388224;39aa34
 
 # Clipdata and room entries
 Blob_3be3a0_3e392c.bin;3be3a0;3e392c

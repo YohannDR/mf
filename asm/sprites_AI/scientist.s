@@ -58,7 +58,7 @@ _0803A0B4:
 	adds r0, r2, #0
 	adds r0, #0x24
 	strb r5, [r0]
-	ldr r0, _0803A10C @ =0x0834D9EC
+	ldr r0, _0803A10C @ =sScientistOam_34d9ec
 	str r0, [r2, #0x18]
 	strb r1, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -69,7 +69,7 @@ _0803A0FC:
 	.align 2, 0
 _0803A104: .4byte 0x0000FFFB
 _0803A108: .4byte 0x0000FF88
-_0803A10C: .4byte 0x0834D9EC
+_0803A10C: .4byte sScientistOam_34d9ec
 
 	thumb_func_start ScientistIdle
 ScientistIdle: @ 0x0803A110
@@ -87,7 +87,7 @@ ScientistIdle: @ 0x0803A110
 	movs r2, #0
 	movs r0, #0x18
 	strb r0, [r1]
-	ldr r0, _0803A148 @ =0x0834DAC4
+	ldr r0, _0803A148 @ =sScientistOam_34dac4
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r2, [r3, #0x16]
@@ -100,7 +100,7 @@ _0803A13E:
 	bx r0
 	.align 2, 0
 _0803A144: .4byte gCurrentSprite
-_0803A148: .4byte 0x0834DAC4
+_0803A148: .4byte sScientistOam_34dac4
 
 	thumb_func_start ScientistTurning
 ScientistTurning: @ 0x0803A14C

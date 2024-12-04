@@ -457,6 +457,15 @@ SECTIONS {
         src/data/sprites/geega.o(.rodata);
         src/data/sprites/pillar.o(.rodata);
         src/data/sprites/genesis.o(.rodata);
+        src/data/sprites/puyo.o(.rodata);
+        src/data/sprites/fake_tank.o(.rodata);
+        src/data/sprites/flashing_number.o(.rodata);
+        src/data/sprites/zebesian_aqua.o(.rodata);
+        src/data/sprites/animals.o(.rodata);
+        src/data/sprites/infant_metroid.o(.rodata);
+        src/data/sprites/lab_debris.o(.rodata);
+        src/data/sprites/powamp.o(.rodata);
+        src/data/sprites/zozoro.o(.rodata);
 
         src/data/sprites/starship_end.o(.rodata);
         src/data/sprites/electric_water_box_2.o(.rodata);

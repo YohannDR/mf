@@ -147,7 +147,7 @@ _0804C840:
 	strb r0, [r2]
 	strb r1, [r3, #0x1c]
 	strh r1, [r3, #0x16]
-	ldr r0, _0804C8A0 @ =0x08381764
+	ldr r0, _0804C8A0 @ =sZebesianAquaOam_381764
 	str r0, [r3, #0x18]
 	adds r1, r3, #0
 	adds r1, #0x27
@@ -187,7 +187,7 @@ _0804C840:
 	b _0804C8B0
 	.align 2, 0
 _0804C89C: .4byte gCurrentSprite
-_0804C8A0: .4byte 0x08381764
+_0804C8A0: .4byte sZebesianAquaOam_381764
 _0804C8A4: .4byte 0x0000FF90
 _0804C8A8: .4byte sPrimarySpriteStats
 _0804C8AC:
@@ -211,14 +211,14 @@ ZebesianAquaIdleInit: @ 0x0804C8B4
 	strb r0, [r2]
 	strb r3, [r1, #0x1c]
 	strh r4, [r1, #0x16]
-	ldr r0, _0804C8DC @ =0x08381764
+	ldr r0, _0804C8DC @ =sZebesianAquaOam_381764
 	str r0, [r1, #0x18]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0804C8D8: .4byte gCurrentSprite
-_0804C8DC: .4byte 0x08381764
+_0804C8DC: .4byte sZebesianAquaOam_381764
 
 	thumb_func_start ZebesianAquaIdle
 ZebesianAquaIdle: @ 0x0804C8E0
@@ -520,12 +520,12 @@ ZebesianAquaShootingInit: @ 0x0804CB1C
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0804CB38 @ =0x083817C4
+	ldr r0, _0804CB38 @ =sZebesianAquaOam_3817c4
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _0804CB34: .4byte gCurrentSprite
-_0804CB38: .4byte 0x083817C4
+_0804CB38: .4byte sZebesianAquaOam_3817c4
 
 	thumb_func_start ZebesianAquaShooting
 ZebesianAquaShooting: @ 0x0804CB3C
@@ -688,12 +688,12 @@ ZebesianAquaTurningAroundInit: @ 0x0804CC74
 	strb r0, [r3]
 	strb r2, [r1, #0x1c]
 	strh r2, [r1, #0x16]
-	ldr r0, _0804CC90 @ =0x0838179C
+	ldr r0, _0804CC90 @ =sZebesianAquaOam_38179c
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _0804CC8C: .4byte gCurrentSprite
-_0804CC90: .4byte 0x0838179C
+_0804CC90: .4byte sZebesianAquaOam_38179c
 
 	thumb_func_start ZebesianAquaTurningAround
 ZebesianAquaTurningAround: @ 0x0804CC94
@@ -819,7 +819,7 @@ ZebesianAquaProjectileInit: @ 0x0804CD50
 	strh r0, [r1, #0xa]
 	movs r0, #0xc
 	strh r0, [r1, #0xc]
-	ldr r0, _0804CDD0 @ =0x0838182C
+	ldr r0, _0804CDD0 @ =sZebesianAquaOam_38182c
 	str r0, [r1, #0x18]
 	strb r5, [r1, #0x1c]
 	strh r4, [r1, #0x16]
@@ -851,7 +851,7 @@ ZebesianAquaProjectileInit: @ 0x0804CD50
 _0804CDC4: .4byte gCurrentSprite
 _0804CDC8: .4byte 0x0000FFFB
 _0804CDCC: .4byte 0x0000FFF4
-_0804CDD0: .4byte 0x0838182C
+_0804CDD0: .4byte sZebesianAquaOam_38182c
 _0804CDD4:
 	ldr r0, _0804CDF0 @ =0x0000FFE8
 	strh r0, [r1, #0xe]

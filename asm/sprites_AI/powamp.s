@@ -31,7 +31,7 @@ PowampInit: @ 0x0804F8D8
 	adds r1, #0x25
 	movs r0, #0xe
 	strb r0, [r1]
-	ldr r0, _0804F940 @ =0x08386638
+	ldr r0, _0804F940 @ =sPowampOam_386638
 	str r0, [r3, #0x18]
 	strb r2, [r3, #0x1c]
 	strh r4, [r3, #0x16]
@@ -53,7 +53,7 @@ PowampInit: @ 0x0804F8D8
 	.align 2, 0
 _0804F938: .4byte gCurrentSprite
 _0804F93C: .4byte sPrimarySpriteStats
-_0804F940: .4byte 0x08386638
+_0804F940: .4byte sPowampOam_386638
 _0804F944:
 	ldr r0, _0804F954 @ =0x0000FFB8
 	strh r0, [r3, #0xa]
@@ -105,14 +105,14 @@ PowampIdleInit: @ 0x0804F994
 	movs r3, #0
 	movs r0, #2
 	strb r0, [r2]
-	ldr r0, _0804F9B0 @ =0x08386638
+	ldr r0, _0804F9B0 @ =sPowampOam_386638
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0804F9AC: .4byte gCurrentSprite
-_0804F9B0: .4byte 0x08386638
+_0804F9B0: .4byte sPowampOam_386638
 
 	thumb_func_start PowampIdle
 PowampIdle: @ 0x0804F9B4
@@ -151,7 +151,7 @@ PowampExtendingInit: @ 0x0804F9E8
 	movs r3, #0
 	movs r0, #0x18
 	strb r0, [r2]
-	ldr r0, _0804FA18 @ =0x08386678
+	ldr r0, _0804FA18 @ =sPowampOam_386678
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -168,7 +168,7 @@ _0804FA10:
 	bx r0
 	.align 2, 0
 _0804FA14: .4byte gCurrentSprite
-_0804FA18: .4byte 0x08386678
+_0804FA18: .4byte sPowampOam_386678
 
 	thumb_func_start PowampExtending
 PowampExtending: @ 0x0804FA1C
@@ -205,14 +205,14 @@ PowampExtendedInit: @ 0x0804FA4C
 	movs r3, #0
 	movs r0, #0x1a
 	strb r0, [r2]
-	ldr r0, _0804FA68 @ =0x08386658
+	ldr r0, _0804FA68 @ =sPowampOam_386658
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _0804FA64: .4byte gCurrentSprite
-_0804FA68: .4byte 0x08386658
+_0804FA68: .4byte sPowampOam_386658
 
 	thumb_func_start PowampExtended
 PowampExtended: @ 0x0804FA6C
@@ -243,7 +243,7 @@ PowampRetractingInit: @ 0x0804FA90
 	movs r3, #0
 	movs r0, #0x1c
 	strb r0, [r2]
-	ldr r0, _0804FAC0 @ =0x083866B0
+	ldr r0, _0804FAC0 @ =sPowampOam_3866b0
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -259,7 +259,7 @@ _0804FAB6:
 	bx r0
 	.align 2, 0
 _0804FABC: .4byte gCurrentSprite
-_0804FAC0: .4byte 0x083866B0
+_0804FAC0: .4byte sPowampOam_3866b0
 _0804FAC4: .4byte 0x000001CF
 
 	thumb_func_start PowampRetracting
@@ -278,7 +278,7 @@ PowampRetracting: @ 0x0804FAC8
 	movs r3, #0
 	movs r0, #0x1a
 	strb r0, [r2]
-	ldr r0, _0804FAF8 @ =0x08386658
+	ldr r0, _0804FAF8 @ =sPowampOam_386658
 	str r0, [r1, #0x18]
 	strb r3, [r1, #0x1c]
 	strh r3, [r1, #0x16]
@@ -287,7 +287,7 @@ PowampRetracting: @ 0x0804FAC8
 	b _0804FB22
 	.align 2, 0
 _0804FAF4: .4byte gCurrentSprite
-_0804FAF8: .4byte 0x08386658
+_0804FAF8: .4byte sPowampOam_386658
 _0804FAFC: .4byte 0x0000FF74
 _0804FB00:
 	ldr r1, _0804FB28 @ =gCurrentSprite

@@ -68,7 +68,7 @@ _0804EB3E:
 	mov ip, r5
 	movs r0, #0x18
 	strb r0, [r5]
-	ldr r0, _0804EBBC @ =0x083852BC
+	ldr r0, _0804EBBC @ =sMetroidOam_3852bc
 	str r0, [r4, #0x18]
 	movs r0, #0xb4
 	strh r0, [r4, #6]
@@ -104,7 +104,7 @@ _0804EBAC: .4byte gCurrentSprite
 _0804EBB0: .4byte 0x0000FFFC
 _0804EBB4: .4byte gSpriteRandomNumber
 _0804EBB8: .4byte sPrimarySpriteStats
-_0804EBBC: .4byte 0x083852BC
+_0804EBBC: .4byte sMetroidOam_3852bc
 _0804EBC0: .4byte gSamusData
 _0804EBC4: .4byte 0xFFFFFEC0
 _0804EBC8:
@@ -215,15 +215,15 @@ _0804EC8A:
 	ldrh r1, [r0, #2]
 	subs r1, #0x20
 	strh r1, [r0, #2]
-	ldr r1, _0804ECA4 @ =0x083852E4
+	ldr r1, _0804ECA4 @ =sMetroidOam_3852e4
 	str r1, [r0, #0x18]
 	b _0804ED06
 	.align 2, 0
 _0804ECA0: .4byte gCurrentSprite
-_0804ECA4: .4byte 0x083852E4
+_0804ECA4: .4byte sMetroidOam_3852e4
 _0804ECA8:
 	ldr r1, _0804ECCC @ =gCurrentSprite
-	ldr r0, _0804ECD0 @ =0x083852BC
+	ldr r0, _0804ECD0 @ =sMetroidOam_3852bc
 	str r0, [r1, #0x18]
 	ldrh r2, [r1]
 	movs r0, #0x80
@@ -241,7 +241,7 @@ _0804ECA8:
 	b _0804ECE2
 	.align 2, 0
 _0804ECCC: .4byte gCurrentSprite
-_0804ECD0: .4byte 0x083852BC
+_0804ECD0: .4byte sMetroidOam_3852bc
 _0804ECD4: .4byte gSpriteRandomNumber
 _0804ECD8:
 	ldr r2, _0804ECF8 @ =gFrameCounter8Bit
@@ -286,7 +286,7 @@ MetroidSwaying: @ 0x0804ED14
 	adds r5, r2, #0
 	adds r5, #0x31
 	ldrb r1, [r5]
-	ldr r4, _0804ED6C @ =0x0838487C
+	ldr r4, _0804ED6C @ =sMetroidSwayingYMovement
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -306,7 +306,7 @@ _0804ED34:
 	adds r5, r2, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r4, _0804ED74 @ =0x083848FC
+	ldr r4, _0804ED74 @ =sMetroidSwayingXMovement
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -327,9 +327,9 @@ _0804ED58:
 	bx r0
 	.align 2, 0
 _0804ED68: .4byte gCurrentSprite
-_0804ED6C: .4byte 0x0838487C
+_0804ED6C: .4byte sMetroidSwayingYMovement
 _0804ED70: .4byte 0x00007FFF
-_0804ED74: .4byte 0x083848FC
+_0804ED74: .4byte sMetroidSwayingXMovement
 
 	thumb_func_start MetroidFloatingInTube
 MetroidFloatingInTube: @ 0x0804ED78
@@ -362,7 +362,7 @@ _0804EDA6:
 	adds r0, r0, r3
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r1, _0804EDD8 @ =0x0838475C
+	ldr r1, _0804EDD8 @ =sMetroidFloatingInTubeYMovement_Background
 	lsls r0, r2, #1
 	adds r0, r0, r1
 	ldrh r6, [r0]
@@ -385,7 +385,7 @@ _0804EDD2:
 	strb r4, [r2]
 	b _0804EE50
 	.align 2, 0
-_0804EDD8: .4byte 0x0838475C
+_0804EDD8: .4byte sMetroidFloatingInTubeYMovement_Background
 _0804EDDC: .4byte 0x00007FFF
 _0804EDE0: .4byte gSpriteRandomNumber
 _0804EDE4:
@@ -455,7 +455,7 @@ _0804EE50:
 	adds r5, r3, #0
 	adds r5, #0x30
 	ldrb r2, [r5]
-	ldr r1, _0804EE94 @ =0x0838479C
+	ldr r1, _0804EE94 @ =sMetroidFloatingInTubeXMovement_Background
 	lsls r0, r2, #1
 	adds r0, r0, r1
 	ldrh r6, [r0]
@@ -488,7 +488,7 @@ _0804EE6A:
 	bls _0804EEC2
 	b _0804EEBC
 	.align 2, 0
-_0804EE94: .4byte 0x0838479C
+_0804EE94: .4byte sMetroidFloatingInTubeXMovement_Background
 _0804EE98: .4byte 0x00007FFF
 _0804EE9C: .4byte gBg1XPosition
 _0804EEA0:
@@ -549,7 +549,7 @@ _0804EEF8:
 	adds r0, r0, r3
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r1, _0804EF2C @ =0x083847EC
+	ldr r1, _0804EF2C @ =sMetroidFloatingInTubeYMovement
 	lsls r0, r2, #1
 	adds r0, r0, r1
 	ldrh r6, [r0]
@@ -572,7 +572,7 @@ _0804EF24:
 	strb r4, [r2]
 	b _0804EFA4
 	.align 2, 0
-_0804EF2C: .4byte 0x083847EC
+_0804EF2C: .4byte sMetroidFloatingInTubeYMovement
 _0804EF30: .4byte 0x00007FFF
 _0804EF34: .4byte gSpriteRandomNumber
 _0804EF38:
@@ -642,7 +642,7 @@ _0804EFA4:
 	adds r5, r3, #0
 	adds r5, #0x30
 	ldrb r2, [r5]
-	ldr r1, _0804EFD8 @ =0x0838482C
+	ldr r1, _0804EFD8 @ =sMetroidFloatingInTubeXMovement
 	lsls r0, r2, #1
 	adds r0, r0, r1
 	ldrh r6, [r0]
@@ -667,7 +667,7 @@ _0804EFD0:
 	strb r0, [r5]
 	b _0804F054
 	.align 2, 0
-_0804EFD8: .4byte 0x0838482C
+_0804EFD8: .4byte sMetroidFloatingInTubeXMovement
 _0804EFDC: .4byte 0x00007FFF
 _0804EFE0: .4byte gSpriteRandomNumber
 _0804EFE4:
@@ -750,7 +750,7 @@ MetroidFloatingNearSaX: @ 0x0804F05C
 	adds r0, r0, r2
 	mov ip, r0
 	ldrb r1, [r0]
-	ldr r4, _0804F108 @ =0x0838487C
+	ldr r4, _0804F108 @ =sMetroidSwayingYMovement
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -773,7 +773,7 @@ _0804F082:
 	adds r5, r2, #0
 	adds r5, #0x30
 	ldrb r1, [r5]
-	ldr r4, _0804F110 @ =0x083848FC
+	ldr r4, _0804F110 @ =sMetroidSwayingXMovement
 	lsls r0, r1, #1
 	adds r0, r0, r4
 	ldrh r3, [r0]
@@ -830,9 +830,9 @@ _0804F0FA:
 	bx r0
 	.align 2, 0
 _0804F104: .4byte gCurrentSprite
-_0804F108: .4byte 0x0838487C
+_0804F108: .4byte sMetroidSwayingYMovement
 _0804F10C: .4byte 0x00007FFF
-_0804F110: .4byte 0x083848FC
+_0804F110: .4byte sMetroidSwayingXMovement
 _0804F114: .4byte 0x0000F7FF
 _0804F118: .4byte 0x0000023A
 

@@ -168,13 +168,13 @@ ZozoroSetCrawlingOam: @ 0x0804FE74
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0804FE90
-	ldr r0, _0804FE8C @ =0x08387F64
+	ldr r0, _0804FE8C @ =sZozoroOam_387f64
 	b _0804FE92
 	.align 2, 0
 _0804FE88: .4byte gCurrentSprite
-_0804FE8C: .4byte 0x08387F64
+_0804FE8C: .4byte sZozoroOam_387f64
 _0804FE90:
-	ldr r0, _0804FEA0 @ =0x08387ED4
+	ldr r0, _0804FEA0 @ =sZozoroOam_387ed4
 _0804FE92:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -183,7 +183,7 @@ _0804FE92:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FEA0: .4byte 0x08387ED4
+_0804FEA0: .4byte sZozoroOam_387ed4
 
 	thumb_func_start ZozoroSetTurningAroundOam
 ZozoroSetTurningAroundOam: @ 0x0804FEA4
@@ -195,13 +195,13 @@ ZozoroSetTurningAroundOam: @ 0x0804FEA4
 	adds r2, r0, #0
 	cmp r1, #0
 	beq _0804FEC0
-	ldr r0, _0804FEBC @ =0x08387FCC
+	ldr r0, _0804FEBC @ =sZozoroOam_387fcc
 	b _0804FEC2
 	.align 2, 0
 _0804FEB8: .4byte gCurrentSprite
-_0804FEBC: .4byte 0x08387FCC
+_0804FEBC: .4byte sZozoroOam_387fcc
 _0804FEC0:
-	ldr r0, _0804FED0 @ =0x08387F3C
+	ldr r0, _0804FED0 @ =sZozoroOam_387f3c
 _0804FEC2:
 	str r0, [r2, #0x18]
 	movs r0, #0
@@ -210,7 +210,7 @@ _0804FEC2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FED0: .4byte 0x08387F3C
+_0804FED0: .4byte sZozoroOam_387f3c
 
 	thumb_func_start ZozoroTurningIntoX
 ZozoroTurningIntoX: @ 0x0804FED4
@@ -788,7 +788,7 @@ _0805032C:
 	cmp r5, #0
 	beq _080503A4
 	ldr r0, [r4, #0x18]
-	ldr r1, _08050368 @ =0x08387ED4
+	ldr r1, _08050368 @ =sZozoroOam_387ed4
 	cmp r0, r1
 	beq _08050342
 	str r1, [r4, #0x18]
@@ -814,7 +814,7 @@ _08050342:
 	adds r1, #0x30
 	b _0805038A
 	.align 2, 0
-_08050368: .4byte 0x08387ED4
+_08050368: .4byte sZozoroOam_387ed4
 _0805036C: .4byte gPreviousCollisionCheck
 _08050370:
 	ldrh r0, [r4, #2]
@@ -854,31 +854,31 @@ _080503A4:
 	cmp r3, #2
 	bne _080503C0
 	ldr r1, [r4, #0x18]
-	ldr r2, _080503BC @ =0x08388054
+	ldr r2, _080503BC @ =sZozoroOam_388054
 	b _080503E8
 	.align 2, 0
-_080503BC: .4byte 0x08388054
+_080503BC: .4byte sZozoroOam_388054
 _080503C0:
 	cmp r3, #4
 	bne _080503D0
 	ldr r1, [r4, #0x18]
-	ldr r2, _080503CC @ =0x08388114
+	ldr r2, _080503CC @ =sZozoroOam_388114
 	b _080503E8
 	.align 2, 0
-_080503CC: .4byte 0x08388114
+_080503CC: .4byte sZozoroOam_388114
 _080503D0:
 	cmp r3, #3
 	bne _080503E0
 	ldr r1, [r4, #0x18]
-	ldr r2, _080503DC @ =0x08387FF4
+	ldr r2, _080503DC @ =sZozoroOam_387ff4
 	b _080503E8
 	.align 2, 0
-_080503DC: .4byte 0x08387FF4
+_080503DC: .4byte sZozoroOam_387ff4
 _080503E0:
 	cmp r3, #5
 	bne _08050442
 	ldr r1, [r4, #0x18]
-	ldr r2, _080503F4 @ =0x083880B4
+	ldr r2, _080503F4 @ =sZozoroOam_3880b4
 _080503E8:
 	cmp r1, r2
 	beq _08050442
@@ -887,28 +887,28 @@ _080503E8:
 	strh r5, [r4, #0x16]
 	b _08050442
 	.align 2, 0
-_080503F4: .4byte 0x083880B4
+_080503F4: .4byte sZozoroOam_3880b4
 _080503F8:
 	cmp r3, #3
 	bne _08050408
 	ldr r1, [r4, #0x18]
-	ldr r3, _08050404 @ =0x08388054
+	ldr r3, _08050404 @ =sZozoroOam_388054
 	b _08050420
 	.align 2, 0
-_08050404: .4byte 0x08388054
+_08050404: .4byte sZozoroOam_388054
 _08050408:
 	cmp r3, #5
 	bne _08050418
 	ldr r1, [r4, #0x18]
-	ldr r3, _08050414 @ =0x08388114
+	ldr r3, _08050414 @ =sZozoroOam_388114
 	b _08050420
 	.align 2, 0
-_08050414: .4byte 0x08388114
+_08050414: .4byte sZozoroOam_388114
 _08050418:
 	cmp r3, #2
 	bne _08050430
 	ldr r1, [r4, #0x18]
-	ldr r3, _0805042C @ =0x08387FF4
+	ldr r3, _0805042C @ =sZozoroOam_387ff4
 _08050420:
 	cmp r1, r3
 	beq _08050442
@@ -917,12 +917,12 @@ _08050420:
 	strh r2, [r4, #0x16]
 	b _08050442
 	.align 2, 0
-_0805042C: .4byte 0x08387FF4
+_0805042C: .4byte sZozoroOam_387ff4
 _08050430:
 	cmp r3, #4
 	bne _08050442
 	ldr r1, [r7, #0x18]
-	ldr r3, _08050468 @ =0x083880B4
+	ldr r3, _08050468 @ =sZozoroOam_3880b4
 	cmp r1, r3
 	beq _08050442
 	str r3, [r7, #0x18]
@@ -952,7 +952,7 @@ _0805045C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08050468: .4byte 0x083880B4
+_08050468: .4byte sZozoroOam_3880b4
 _0805046C: .4byte gCurrentSprite
 
 	thumb_func_start ZozoroTurningAroundInit
