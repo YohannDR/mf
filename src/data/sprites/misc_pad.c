@@ -3,7 +3,7 @@
 const u32 sControlPadGfx[2 * 512] = INCBIN_U32("data/sprites/control_pad.gfx");
 const u16 sControlPadPal[2 * 16] = INCBIN_U16("data/sprites/control_pad.pal");
 
-static const u16 sControlPadOam_34a044_Frame0[] = {
+static const u16 sControlPadConsoleOam_Inactive_Frame0[] = {
     12,
     0xf0, OBJ_SIZE_16x16 | 0x1e8, OBJ_PALETTE_8 | 0x240,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1f8, OBJ_PALETTE_8 | 0x242,
@@ -19,7 +19,7 @@ static const u16 sControlPadOam_34a044_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0xd0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x24b
 };
 
-static const u16 sControlPadOam_34a044_Frame1[] = {
+static const u16 sControlPadConsoleOam_Inactive_Frame1[] = {
     12,
     0xf0, OBJ_SIZE_16x16 | 0x1e8, OBJ_PALETTE_8 | 0x240,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1f8, OBJ_PALETTE_8 | 0x242,
@@ -35,7 +35,7 @@ static const u16 sControlPadOam_34a044_Frame1[] = {
     OBJ_SHAPE_VERTICAL | 0xd0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x248
 };
 
-static const u16 sControlPadOam_34a044_Frame2[] = {
+static const u16 sControlPadConsoleOam_Inactive_Frame2[] = {
     8,
     OBJ_SHAPE_VERTICAL | 0xe0, OBJ_SIZE_16x32 | 0x1e8, OBJ_PALETTE_8 | 0x200,
     OBJ_SHAPE_VERTICAL | 0xe0, OBJ_SIZE_8x32 | 0x1f8, OBJ_PALETTE_8 | 0x202,
@@ -47,7 +47,7 @@ static const u16 sControlPadOam_34a044_Frame2[] = {
     OBJ_SHAPE_VERTICAL | 0xd0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x245
 };
 
-static const u16 sControlPadOam_34a06c_Frame0[] = {
+static const u16 sControlPadConsoleOam_Active_Frame0[] = {
     12,
     0xf0, OBJ_SIZE_16x16 | 0x1e8, OBJ_PALETTE_8 | 0x240,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1f8, OBJ_PALETTE_8 | 0x242,
@@ -63,7 +63,7 @@ static const u16 sControlPadOam_34a06c_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0xd0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x253
 };
 
-static const u16 sControlPadOam_34a06c_Frame1[] = {
+static const u16 sControlPadConsoleOam_Active_Frame1[] = {
     12,
     OBJ_SHAPE_VERTICAL | 0xe0, 0x1e8, OBJ_PALETTE_8 | 0x200,
     0xf0, OBJ_SIZE_16x16 | 0x1e8, OBJ_PALETTE_8 | 0x240,
@@ -79,7 +79,7 @@ static const u16 sControlPadOam_34a06c_Frame1[] = {
     OBJ_SHAPE_VERTICAL | 0xd0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x256
 };
 
-static const u16 sControlPadOam_34a06c_Frame2[] = {
+static const u16 sControlPadConsoleOam_Active_Frame2[] = {
     12,
     OBJ_SHAPE_VERTICAL | 0xe0, 0x1e8, OBJ_PALETTE_8 | 0x200,
     0xf0, OBJ_SIZE_16x16 | 0x1e8, OBJ_PALETTE_8 | 0x240,
@@ -95,7 +95,7 @@ static const u16 sControlPadOam_34a06c_Frame2[] = {
     0xe0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_8 | 0x218
 };
 
-static const u16 sControlPadOam_34a0e4_Frame0[] = {
+static const u16 sControlPadOam_SwitchUnpressed_Frame0[] = {
     15,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_9 | 0x20e,
     0x0, 0x1f8, OBJ_PALETTE_9 | 0x210,
@@ -114,7 +114,7 @@ static const u16 sControlPadOam_34a0e4_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_9 | 0x213
 };
 
-static const u16 sControlPadOam_34a094_Frame0[] = {
+static const u16 sControlPadOam_PressingSwitch_Frame0[] = {
     15,
     0x8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_9 | 0x20c,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_9 | 0x20e,
@@ -133,7 +133,7 @@ static const u16 sControlPadOam_34a094_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_9 | 0x213
 };
 
-static const u16 sControlPadOam_34a094_Frame1[] = {
+static const u16 sControlPadOam_PressingSwitch_Frame1[] = {
     15,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_9 | 0x22e,
     0x0, 0x1f8, OBJ_PALETTE_9 | 0x230,
@@ -152,7 +152,7 @@ static const u16 sControlPadOam_34a094_Frame1[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_9 | 0x213
 };
 
-static const u16 sControlPadOam_34a094_Frame2[] = {
+static const u16 sControlPadOam_PressingSwitch_Frame2[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_9 | 0x24e,
     0x0, 0x1f8, OBJ_PALETTE_9 | 0x250,
@@ -169,7 +169,7 @@ static const u16 sControlPadOam_34a094_Frame2[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_9 | 0x213
 };
 
-static const u16 sControlPadOam_34a094_Frame3[] = {
+static const u16 sControlPadOam_PressingSwitch_Frame3[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_9 | 0x24e,
     0x0, 0x1f8, OBJ_PALETTE_9 | 0x250,
@@ -198,97 +198,97 @@ static const u16 sControlPadOam_34a040[] = {
     0
 };
 
-const struct FrameData sControlPadOam_34a044[5] = {
+const struct FrameData sControlPadConsoleOam_Inactive[5] = {
     [0] = {
-        .pFrame = sControlPadOam_34a044_Frame0,
+        .pFrame = sControlPadConsoleOam_Inactive_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sControlPadOam_34a044_Frame1,
+        .pFrame = sControlPadConsoleOam_Inactive_Frame1,
         .timer = 8
     },
     [2] = {
-        .pFrame = sControlPadOam_34a044_Frame2,
+        .pFrame = sControlPadConsoleOam_Inactive_Frame2,
         .timer = 8
     },
     [3] = {
-        .pFrame = sControlPadOam_34a044_Frame1,
+        .pFrame = sControlPadConsoleOam_Inactive_Frame1,
         .timer = 8
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sControlPadOam_34a06c[5] = {
+const struct FrameData sControlPadConsoleOam_Active[5] = {
     [0] = {
-        .pFrame = sControlPadOam_34a06c_Frame0,
+        .pFrame = sControlPadConsoleOam_Active_Frame0,
         .timer = 10
     },
     [1] = {
-        .pFrame = sControlPadOam_34a06c_Frame1,
+        .pFrame = sControlPadConsoleOam_Active_Frame1,
         .timer = 10
     },
     [2] = {
-        .pFrame = sControlPadOam_34a06c_Frame2,
+        .pFrame = sControlPadConsoleOam_Active_Frame2,
         .timer = 10
     },
     [3] = {
-        .pFrame = sControlPadOam_34a06c_Frame1,
+        .pFrame = sControlPadConsoleOam_Active_Frame1,
         .timer = 10
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sControlPadOam_34a094[5] = {
+const struct FrameData sControlPadOam_PressingSwitch[5] = {
     [0] = {
-        .pFrame = sControlPadOam_34a094_Frame0,
+        .pFrame = sControlPadOam_PressingSwitch_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sControlPadOam_34a094_Frame1,
+        .pFrame = sControlPadOam_PressingSwitch_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sControlPadOam_34a094_Frame2,
+        .pFrame = sControlPadOam_PressingSwitch_Frame2,
         .timer = 4
     },
     [3] = {
-        .pFrame = sControlPadOam_34a094_Frame3,
+        .pFrame = sControlPadOam_PressingSwitch_Frame3,
         .timer = 4
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sControlPadOam_34a0bc[5] = {
+const struct FrameData sControlPadOam_ReleasingSwitch[5] = {
     [0] = {
-        .pFrame = sControlPadOam_34a094_Frame3,
+        .pFrame = sControlPadOam_PressingSwitch_Frame3,
         .timer = 6
     },
     [1] = {
-        .pFrame = sControlPadOam_34a094_Frame2,
+        .pFrame = sControlPadOam_PressingSwitch_Frame2,
         .timer = 6
     },
     [2] = {
-        .pFrame = sControlPadOam_34a094_Frame1,
+        .pFrame = sControlPadOam_PressingSwitch_Frame1,
         .timer = 6
     },
     [3] = {
-        .pFrame = sControlPadOam_34a094_Frame0,
+        .pFrame = sControlPadOam_PressingSwitch_Frame0,
         .timer = 6
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sControlPadOam_34a0e4[2] = {
+const struct FrameData sControlPadOam_SwitchUnpressed[2] = {
     [0] = {
-        .pFrame = sControlPadOam_34a0e4_Frame0,
+        .pFrame = sControlPadOam_SwitchUnpressed_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sControlPadOam_34a0f4[2] = {
+const struct FrameData sControlPadOam_SwitchPressed[2] = {
     [0] = {
-        .pFrame = sControlPadOam_34a094_Frame3,
+        .pFrame = sControlPadOam_PressingSwitch_Frame3,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
@@ -297,7 +297,7 @@ const struct FrameData sControlPadOam_34a0f4[2] = {
 const u32 sHabitationPadGfx[1 * 512] = INCBIN_U32("data/sprites/habitation_pad.gfx");
 const u16 sHabitationPadPal[1 * 16] = INCBIN_U16("data/sprites/habitation_pad.pal");
 
-static const u16 sHabitationPadOam_34acdc_Frame0[] = {
+static const u16 sHabitationPadConsoleOam_Inactive_Frame0[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xe0, 0x1f0, OBJ_PALETTE_8 | 0x204,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x204,
@@ -315,7 +315,7 @@ static const u16 sHabitationPadOam_34acdc_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xd8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x236
 };
 
-static const u16 sHabitationPadOam_34acdc_Frame1[] = {
+static const u16 sHabitationPadConsoleOam_Inactive_Frame1[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xe0, 0x1f0, OBJ_PALETTE_8 | 0x222,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x222,
@@ -333,7 +333,7 @@ static const u16 sHabitationPadOam_34acdc_Frame1[] = {
     OBJ_SHAPE_HORIZONTAL | 0xd8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x218
 };
 
-static const u16 sHabitationPadOam_34acdc_Frame2[] = {
+static const u16 sHabitationPadConsoleOam_Inactive_Frame2[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xe0, 0x1f0, OBJ_PALETTE_8 | 0x202,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x202,
@@ -351,7 +351,7 @@ static const u16 sHabitationPadOam_34acdc_Frame2[] = {
     OBJ_SHAPE_HORIZONTAL | 0xd8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x238
 };
 
-static const u16 sHabitationPadOam_34ad04_Frame0[] = {
+static const u16 sHabitationPadConsoleOam_Active_Frame0[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xe0, 0x1f0, OBJ_PALETTE_8 | 0x224,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x224,
@@ -369,7 +369,7 @@ static const u16 sHabitationPadOam_34ad04_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xd8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sHabitationPadOam_34ad04_Frame1[] = {
+static const u16 sHabitationPadConsoleOam_Active_Frame1[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xe0, 0x1f0, OBJ_PALETTE_8 | 0x206,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x206,
@@ -387,7 +387,7 @@ static const u16 sHabitationPadOam_34ad04_Frame1[] = {
     OBJ_SHAPE_HORIZONTAL | 0xd8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x234
 };
 
-static const u16 sHabitationPadOam_34ad04_Frame2[] = {
+static const u16 sHabitationPadConsoleOam_Active_Frame2[] = {
     14,
     OBJ_SHAPE_HORIZONTAL | 0xe0, 0x1f0, OBJ_PALETTE_8 | 0x226,
     OBJ_SHAPE_HORIZONTAL | 0xe0, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x226,
@@ -405,7 +405,7 @@ static const u16 sHabitationPadOam_34ad04_Frame2[] = {
     OBJ_SHAPE_HORIZONTAL | 0xd8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x216
 };
 
-static const u16 sHabitationPadOam_34ad7c_Frame0[] = {
+static const u16 sHabitationPadOam_SwitchUnpressed_Frame0[] = {
     15,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_8 | 0x20e,
     0x0, 0x1f8, OBJ_PALETTE_8 | 0x210,
@@ -424,7 +424,7 @@ static const u16 sHabitationPadOam_34ad7c_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x213
 };
 
-static const u16 sHabitationPadOam_34ad2c_Frame0[] = {
+static const u16 sHabitationPadOam_PressingSwitch_Frame0[] = {
     15,
     0x8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x20c,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_8 | 0x20e,
@@ -443,7 +443,7 @@ static const u16 sHabitationPadOam_34ad2c_Frame0[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x213
 };
 
-static const u16 sHabitationPadOam_34ad2c_Frame1[] = {
+static const u16 sHabitationPadOam_PressingSwitch_Frame1[] = {
     15,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_8 | 0x22e,
     0x0, 0x1f8, OBJ_PALETTE_8 | 0x230,
@@ -462,7 +462,7 @@ static const u16 sHabitationPadOam_34ad2c_Frame1[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x213
 };
 
-static const u16 sHabitationPadOam_34ad2c_Frame2[] = {
+static const u16 sHabitationPadOam_PressingSwitch_Frame2[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_8 | 0x23a,
     0x0, 0x1f8, OBJ_PALETTE_8 | 0x23c,
@@ -479,7 +479,7 @@ static const u16 sHabitationPadOam_34ad2c_Frame2[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x213
 };
 
-static const u16 sHabitationPadOam_34ad2c_Frame3[] = {
+static const u16 sHabitationPadOam_PressingSwitch_Frame3[] = {
     13,
     OBJ_SHAPE_HORIZONTAL | 0x0, 0x1e8, OBJ_PALETTE_8 | 0x23a,
     0x0, 0x1f8, OBJ_PALETTE_8 | 0x23c,
@@ -496,97 +496,97 @@ static const u16 sHabitationPadOam_34ad2c_Frame3[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_8 | 0x213
 };
 
-const struct FrameData sHabitationPadOam_34acdc[5] = {
+const struct FrameData sHabitationPadConsoleOam_Inactive[5] = {
     [0] = {
-        .pFrame = sHabitationPadOam_34acdc_Frame0,
+        .pFrame = sHabitationPadConsoleOam_Inactive_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sHabitationPadOam_34acdc_Frame1,
+        .pFrame = sHabitationPadConsoleOam_Inactive_Frame1,
         .timer = 8
     },
     [2] = {
-        .pFrame = sHabitationPadOam_34acdc_Frame2,
+        .pFrame = sHabitationPadConsoleOam_Inactive_Frame2,
         .timer = 8
     },
     [3] = {
-        .pFrame = sHabitationPadOam_34acdc_Frame1,
+        .pFrame = sHabitationPadConsoleOam_Inactive_Frame1,
         .timer = 8
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sHabitationPadOam_34ad04[5] = {
+const struct FrameData sHabitationPadConsoleOam_Active[5] = {
     [0] = {
-        .pFrame = sHabitationPadOam_34ad04_Frame0,
+        .pFrame = sHabitationPadConsoleOam_Active_Frame0,
         .timer = 10
     },
     [1] = {
-        .pFrame = sHabitationPadOam_34ad04_Frame1,
+        .pFrame = sHabitationPadConsoleOam_Active_Frame1,
         .timer = 10
     },
     [2] = {
-        .pFrame = sHabitationPadOam_34ad04_Frame2,
+        .pFrame = sHabitationPadConsoleOam_Active_Frame2,
         .timer = 10
     },
     [3] = {
-        .pFrame = sHabitationPadOam_34ad04_Frame1,
+        .pFrame = sHabitationPadConsoleOam_Active_Frame1,
         .timer = 10
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sHabitationPadOam_34ad2c[5] = {
+const struct FrameData sHabitationPadOam_PressingSwitch[5] = {
     [0] = {
-        .pFrame = sHabitationPadOam_34ad2c_Frame0,
+        .pFrame = sHabitationPadOam_PressingSwitch_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sHabitationPadOam_34ad2c_Frame1,
+        .pFrame = sHabitationPadOam_PressingSwitch_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sHabitationPadOam_34ad2c_Frame2,
+        .pFrame = sHabitationPadOam_PressingSwitch_Frame2,
         .timer = 4
     },
     [3] = {
-        .pFrame = sHabitationPadOam_34ad2c_Frame3,
+        .pFrame = sHabitationPadOam_PressingSwitch_Frame3,
         .timer = 4
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sHabitationPadOam_34ad54[5] = {
+const struct FrameData sHabitationPadOam_ReleasingSwitch[5] = {
     [0] = {
-        .pFrame = sHabitationPadOam_34ad2c_Frame3,
+        .pFrame = sHabitationPadOam_PressingSwitch_Frame3,
         .timer = 6
     },
     [1] = {
-        .pFrame = sHabitationPadOam_34ad2c_Frame2,
+        .pFrame = sHabitationPadOam_PressingSwitch_Frame2,
         .timer = 6
     },
     [2] = {
-        .pFrame = sHabitationPadOam_34ad2c_Frame1,
+        .pFrame = sHabitationPadOam_PressingSwitch_Frame1,
         .timer = 6
     },
     [3] = {
-        .pFrame = sHabitationPadOam_34ad2c_Frame0,
+        .pFrame = sHabitationPadOam_PressingSwitch_Frame0,
         .timer = 6
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sHabitationPadOam_34ad7c[2] = {
+const struct FrameData sHabitationPadOam_SwitchUnpressed[2] = {
     [0] = {
-        .pFrame = sHabitationPadOam_34ad7c_Frame0,
+        .pFrame = sHabitationPadOam_SwitchUnpressed_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sHabitationPadOam_34ad8c[2] = {
+const struct FrameData sHabitationPadOam_SwitchPressed[2] = {
     [0] = {
-        .pFrame = sHabitationPadOam_34ad2c_Frame3,
+        .pFrame = sHabitationPadOam_PressingSwitch_Frame3,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR

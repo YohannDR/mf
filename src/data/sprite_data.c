@@ -145,9 +145,9 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
     [PSPRITE_SAMUS_EATER_BUD - 0x10] = SPRITE_GFX_SIZE(8),
     [PSPRITE_SAMUS_EATER - 0x10] = SPRITE_GFX_SIZE(8),
 
-    [PSPRITE_RECHARGE_PAD_1 - 0x10] = SPRITE_GFX_SIZE(3),
-    [PSPRITE_RECHARGE_PAD_2 - 0x10] = SPRITE_GFX_SIZE(3),
-    [PSPRITE_RECHARGE_PAD_3 - 0x10] = SPRITE_GFX_SIZE(3),
+    [PSPRITE_ENERGY_RECHARGE_PAD - 0x10] = SPRITE_GFX_SIZE(3),
+    [PSPRITE_AMMO_RECHARGE_PAD - 0x10] = SPRITE_GFX_SIZE(3),
+    [PSPRITE_ENERGY_AMMO_RECHARGE_PAD - 0x10] = SPRITE_GFX_SIZE(3),
     [PSPRITE_ATMOSPHERIC_STABILIZER_PARASITE - 0x10] = SPRITE_GFX_SIZE(3),
 
     [PSPRITE_ATMOSPHERIC_STABILIZER_2 - 0x10] = SPRITE_GFX_SIZE(3),
@@ -726,7 +726,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0
     },
-    [PSPRITE_RECHARGE_PAD_1] = {
+    [PSPRITE_ENERGY_RECHARGE_PAD] = {
         0,
         0,
         SDRT_30_10,
@@ -735,7 +735,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0
     },
-    [PSPRITE_RECHARGE_PAD_2] = {
+    [PSPRITE_AMMO_RECHARGE_PAD] = {
         0,
         0,
         SDRT_30_10,
@@ -744,7 +744,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0
     },
-    [PSPRITE_RECHARGE_PAD_3] = {
+    [PSPRITE_ENERGY_AMMO_RECHARGE_PAD] = {
         0,
         0,
         SDRT_30_10,

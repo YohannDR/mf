@@ -79,25 +79,25 @@ const s16 sKihunterFlyingIdleYMovement[49] = {
     SHORT_MAX
 };
 
-const s16 KihunterFlyingSwoopingDownYSpeed[16] = {
+const s16 sKihunterFlyingSwoopingDownYSpeed[16] = {
     1, 2, 3, 4,
     5, 6, 7, 8,
     10, 12, 14, 12,
     10, 8, 6, SHORT_MAX
 };
 
-const s16 KihunterFlyingSwoopingAcrossYSpeed[8] = {
+const s16 sKihunterFlyingSwoopingAcrossYSpeed[8] = {
     5, 5, 4, 4,
     3, 3, 2, SHORT_MAX
 };
 
-const s16 KihunterFlyingAfterSwoopingAccceleratingYSpeed[12] = {
+const s16 sKihunterFlyingAfterSwoopingAccceleratingYSpeed[12] = {
     -1, -1, -2, -2,
     -3, -3, -4, -5,
     -6, -7, -8, SHORT_MAX
 };
 
-const s16 KihunterFlyingAfterSwoopingDeceleratingYSpeed[12] = {
+const s16 sKihunterFlyingAfterSwoopingDeceleratingYSpeed[12] = {
     -7, -7, -6, -6,
     -5, -5, -4, -4,
     -4, -3, -2, SHORT_MAX

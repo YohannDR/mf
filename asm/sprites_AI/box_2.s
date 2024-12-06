@@ -18,7 +18,7 @@ Box2SyncSubSprites: @ 0x080519AC
 	lsls r0, r0, #1
 	adds r0, r0, r3
 	ldrh r0, [r0]
-	ldr r1, _08051A10 @ =0x0879B560
+	ldr r1, _08051A10 @ =sBox2FrameDataPointers
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r1, [r2, #0x18]
@@ -54,7 +54,7 @@ _080519DE:
 	.align 2, 0
 _08051A08: .4byte gSubSpriteData1
 _08051A0C: .4byte gCurrentSprite
-_08051A10: .4byte 0x0879B560
+_08051A10: .4byte sBox2FrameDataPointers
 
 	thumb_func_start Box2XMovement
 Box2XMovement: @ 0x08051A14
@@ -212,7 +212,7 @@ _08051ADC:
 	movs r0, #0x40
 	orrs r0, r1
 	strb r0, [r2]
-	ldr r0, _08051C9C @ =0x08395658
+	ldr r0, _08051C9C @ =sBox2Oam_395658
 	str r0, [r6, #0x18]
 	strb r5, [r6, #0x1c]
 	strh r7, [r6, #0x16]
@@ -221,7 +221,7 @@ _08051ADC:
 	strh r0, [r4, #8]
 	ldrh r0, [r6, #4]
 	strh r0, [r4, #0xa]
-	ldr r0, _08051CA4 @ =0x0839126C
+	ldr r0, _08051CA4 @ =sBox2MultiSpriteData_39126c
 	str r0, [r4]
 	strb r5, [r4, #6]
 	strh r7, [r4, #4]
@@ -368,16 +368,16 @@ _08051C8C: .4byte gCurrentSprite
 _08051C90: .4byte 0x0000FFD8
 _08051C94: .4byte 0x0000FFD0
 _08051C98: .4byte sPrimarySpriteStats
-_08051C9C: .4byte 0x08395658
+_08051C9C: .4byte sBox2Oam_395658
 _08051CA0: .4byte gSubSpriteData1
-_08051CA4: .4byte 0x0839126C
+_08051CA4: .4byte sBox2MultiSpriteData_39126c
 _08051CA8: .4byte 0x0000FDFF
 
 	thumb_func_start Box2WaitingToRunInit
 Box2WaitingToRunInit: @ 0x08051CAC
 	push {lr}
 	ldr r1, _08051CD4 @ =gSubSpriteData1
-	ldr r0, _08051CD8 @ =0x083913DC
+	ldr r0, _08051CD8 @ =sBox2MultiSpriteData_3913dc
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -396,7 +396,7 @@ Box2WaitingToRunInit: @ 0x08051CAC
 	bx r0
 	.align 2, 0
 _08051CD4: .4byte gSubSpriteData1
-_08051CD8: .4byte 0x083913DC
+_08051CD8: .4byte sBox2MultiSpriteData_3913dc
 _08051CDC: .4byte gCurrentSprite
 _08051CE0: .4byte 0x0000026A
 
@@ -447,15 +447,15 @@ Box2SlowRunningInit: @ 0x08051D24
 	cmp r0, #0
 	beq _08051D4C
 	ldr r1, _08051D44 @ =gSubSpriteData1
-	ldr r0, _08051D48 @ =0x08391354
+	ldr r0, _08051D48 @ =sBox2MultiSpriteData_391354
 	b _08051D50
 	.align 2, 0
 _08051D40: .4byte gCurrentSprite
 _08051D44: .4byte gSubSpriteData1
-_08051D48: .4byte 0x08391354
+_08051D48: .4byte sBox2MultiSpriteData_391354
 _08051D4C:
 	ldr r1, _08051D6C @ =gSubSpriteData1
-	ldr r0, _08051D70 @ =0x083912C4
+	ldr r0, _08051D70 @ =sBox2MultiSpriteData_3912c4
 _08051D50:
 	str r0, [r1]
 	movs r0, #0
@@ -473,7 +473,7 @@ _08051D50:
 	bx r0
 	.align 2, 0
 _08051D6C: .4byte gSubSpriteData1
-_08051D70: .4byte 0x083912C4
+_08051D70: .4byte sBox2MultiSpriteData_3912c4
 _08051D74: .4byte gCurrentSprite
 
 	thumb_func_start Box2SlowRunning
@@ -567,15 +567,15 @@ Box2FastRunningInit: @ 0x08051E1C
 	cmp r0, #0
 	beq _08051E40
 	ldr r1, _08051E38 @ =gSubSpriteData1
-	ldr r0, _08051E3C @ =0x08391384
+	ldr r0, _08051E3C @ =sBox2MultiSpriteData_391384
 	b _08051E44
 	.align 2, 0
 _08051E34: .4byte gCurrentSprite
 _08051E38: .4byte gSubSpriteData1
-_08051E3C: .4byte 0x08391384
+_08051E3C: .4byte sBox2MultiSpriteData_391384
 _08051E40:
 	ldr r1, _08051E60 @ =gSubSpriteData1
-	ldr r0, _08051E64 @ =0x083912F4
+	ldr r0, _08051E64 @ =sBox2MultiSpriteData_3912f4
 _08051E44:
 	str r0, [r1]
 	movs r0, #0
@@ -592,7 +592,7 @@ _08051E44:
 	bx r0
 	.align 2, 0
 _08051E60: .4byte gSubSpriteData1
-_08051E64: .4byte 0x083912F4
+_08051E64: .4byte sBox2MultiSpriteData_3912f4
 
 	thumb_func_start Box2FastRunning
 Box2FastRunning: @ 0x08051E68
@@ -712,15 +712,15 @@ Box2SkiddingInit: @ 0x08051F40
 	cmp r0, #0
 	beq _08051F64
 	ldr r1, _08051F5C @ =gSubSpriteData1
-	ldr r0, _08051F60 @ =0x08391444
+	ldr r0, _08051F60 @ =sBox2MultiSpriteData_391444
 	b _08051F68
 	.align 2, 0
 _08051F58: .4byte gCurrentSprite
 _08051F5C: .4byte gSubSpriteData1
-_08051F60: .4byte 0x08391444
+_08051F60: .4byte sBox2MultiSpriteData_391444
 _08051F64:
 	ldr r1, _08051F88 @ =gSubSpriteData1
-	ldr r0, _08051F8C @ =0x08391424
+	ldr r0, _08051F8C @ =sBox2MultiSpriteData_391424
 _08051F68:
 	str r0, [r1]
 	movs r0, #0
@@ -739,7 +739,7 @@ _08051F68:
 	bx r0
 	.align 2, 0
 _08051F88: .4byte gSubSpriteData1
-_08051F8C: .4byte 0x08391424
+_08051F8C: .4byte sBox2MultiSpriteData_391424
 _08051F90: .4byte 0x00000263
 
 	thumb_func_start Box2Skidding
@@ -797,15 +797,15 @@ Box2StopSkiddingInit: @ 0x08051FE4
 	cmp r0, #0
 	beq _08052008
 	ldr r1, _08052000 @ =gSubSpriteData1
-	ldr r0, _08052004 @ =0x08391454
+	ldr r0, _08052004 @ =sBox2MultiSpriteData_391454
 	b _0805200C
 	.align 2, 0
 _08051FFC: .4byte gCurrentSprite
 _08052000: .4byte gSubSpriteData1
-_08052004: .4byte 0x08391454
+_08052004: .4byte sBox2MultiSpriteData_391454
 _08052008:
 	ldr r1, _08052020 @ =gSubSpriteData1
-	ldr r0, _08052024 @ =0x08391434
+	ldr r0, _08052024 @ =sBox2MultiSpriteData_391434
 _0805200C:
 	str r0, [r1]
 	movs r0, #0
@@ -819,7 +819,7 @@ _0805200C:
 	bx r0
 	.align 2, 0
 _08052020: .4byte gSubSpriteData1
-_08052024: .4byte 0x08391434
+_08052024: .4byte sBox2MultiSpriteData_391434
 
 	thumb_func_start Box2StopSkidding
 Box2StopSkidding: @ 0x08052028
@@ -863,7 +863,7 @@ Box2BonkingInit: @ 0x08052064
 	movs r3, #0
 	movs r2, #0
 	strh r0, [r1, #8]
-	ldr r0, _080520AC @ =0x08391214
+	ldr r0, _080520AC @ =sBox2MultiSpriteData_391214
 	str r0, [r1]
 	strb r3, [r1, #6]
 	strh r2, [r1, #4]
@@ -890,7 +890,7 @@ Box2BonkingInit: @ 0x08052064
 	bx r0
 	.align 2, 0
 _080520A8: .4byte gSubSpriteData1
-_080520AC: .4byte 0x08391214
+_080520AC: .4byte sBox2MultiSpriteData_391214
 _080520B0: .4byte gCurrentSprite
 _080520B4: .4byte 0x00000267
 
@@ -922,7 +922,7 @@ _080520E8:
 	adds r0, r0, r6
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _08052118 @ =0x08390550
+	ldr r5, _08052118 @ =sBox2BonkingSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -941,7 +941,7 @@ _080520E8:
 	b _0805217A
 	.align 2, 0
 _08052114: .4byte gCurrentSprite
-_08052118: .4byte 0x08390550
+_08052118: .4byte sBox2BonkingSpeed
 _0805211C: .4byte 0x00007FFF
 _08052120:
 	adds r0, r2, #1
@@ -1018,7 +1018,7 @@ _080521A8: .4byte gSubSpriteData1
 Box2LandingFromBonkInit: @ 0x080521AC
 	push {lr}
 	ldr r1, _080521DC @ =gSubSpriteData1
-	ldr r0, _080521E0 @ =0x08391224
+	ldr r0, _080521E0 @ =sBox2MultiSpriteData_391224
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1040,7 +1040,7 @@ Box2LandingFromBonkInit: @ 0x080521AC
 	bx r0
 	.align 2, 0
 _080521DC: .4byte gSubSpriteData1
-_080521E0: .4byte 0x08391224
+_080521E0: .4byte sBox2MultiSpriteData_391224
 _080521E4: .4byte gCurrentSprite
 _080521E8: .4byte 0x0000027A
 
@@ -1095,7 +1095,7 @@ _08052240:
 Box2LandingInit: @ 0x08052244
 	push {lr}
 	ldr r1, _0805226C @ =gSubSpriteData1
-	ldr r0, _08052270 @ =0x08391224
+	ldr r0, _08052270 @ =sBox2MultiSpriteData_391224
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1114,7 +1114,7 @@ Box2LandingInit: @ 0x08052244
 	bx r0
 	.align 2, 0
 _0805226C: .4byte gSubSpriteData1
-_08052270: .4byte 0x08391224
+_08052270: .4byte sBox2MultiSpriteData_391224
 _08052274: .4byte gCurrentSprite
 _08052278: .4byte 0x0000027A
 
@@ -1156,7 +1156,7 @@ _080522B0:
 Box2FinishedCrawlingInit: @ 0x080522B4
 	push {r4, lr}
 	ldr r2, _080522E4 @ =gSubSpriteData1
-	ldr r0, _080522E8 @ =0x083913B4
+	ldr r0, _080522E8 @ =sBox2MultiSpriteData_3913b4
 	str r0, [r2]
 	ldr r1, _080522EC @ =gCurrentSprite
 	movs r0, #0x2e
@@ -1179,7 +1179,7 @@ Box2FinishedCrawlingInit: @ 0x080522B4
 	bx r0
 	.align 2, 0
 _080522E4: .4byte gSubSpriteData1
-_080522E8: .4byte 0x083913B4
+_080522E8: .4byte sBox2MultiSpriteData_3913b4
 _080522EC: .4byte gCurrentSprite
 
 	thumb_func_start Box2FinishCrawling
@@ -1254,7 +1254,7 @@ Box2JumpWarningInit: @ 0x0805234C
 _08052370: .4byte gSamusData
 _08052374: .4byte gSubSpriteData1
 _08052378:
-	ldr r0, _08052390 @ =0x08391244
+	ldr r0, _08052390 @ =sBox2MultiSpriteData_391244
 	str r0, [r3]
 	movs r0, #0
 	strb r0, [r3, #6]
@@ -1268,7 +1268,7 @@ _0805238A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08052390: .4byte 0x08391244
+_08052390: .4byte sBox2MultiSpriteData_391244
 _08052394: .4byte gCurrentSprite
 
 	thumb_func_start Box2JumpWarning
@@ -1294,7 +1294,7 @@ Box2JumpingInit: @ 0x080523B4
 	push {r7}
 	movs r5, #0
 	ldr r1, _080523F4 @ =gSubSpriteData1
-	ldr r0, _080523F8 @ =0x08391214
+	ldr r0, _080523F8 @ =sBox2MultiSpriteData_391214
 	str r0, [r1]
 	strb r5, [r1, #6]
 	movs r2, #0
@@ -1320,7 +1320,7 @@ Box2JumpingInit: @ 0x080523B4
 	b _08052404
 	.align 2, 0
 _080523F4: .4byte gSubSpriteData1
-_080523F8: .4byte 0x08391214
+_080523F8: .4byte sBox2MultiSpriteData_391214
 _080523FC: .4byte gCurrentSprite
 _08052400:
 	bl SpriteUtilMakeSpriteFaceAwayFromSamusDirection
@@ -1432,7 +1432,7 @@ Box2Jumping: @ 0x080524D4
 	adds r4, r3, #0
 	adds r4, #0x31
 	ldrb r2, [r4]
-	ldr r1, _08052500 @ =0x08390518
+	ldr r1, _08052500 @ =sBox2JumpingSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r1
 	ldrh r5, [r0]
@@ -1448,7 +1448,7 @@ Box2Jumping: @ 0x080524D4
 	b _08052570
 	.align 2, 0
 _080524FC: .4byte gCurrentSprite
-_08052500: .4byte 0x08390518
+_08052500: .4byte sBox2JumpingSpeed
 _08052504: .4byte 0x00007FFF
 _08052508:
 	adds r0, r2, #1
@@ -1509,7 +1509,7 @@ _08052570:
 Box2StoppingToFireMissilesInit: @ 0x08052578
 	push {r4, lr}
 	ldr r2, _080525A8 @ =gSubSpriteData1
-	ldr r0, _080525AC @ =0x083913B4
+	ldr r0, _080525AC @ =sBox2MultiSpriteData_3913b4
 	str r0, [r2]
 	ldr r1, _080525B0 @ =gCurrentSprite
 	movs r0, #0x2e
@@ -1532,7 +1532,7 @@ Box2StoppingToFireMissilesInit: @ 0x08052578
 	bx r0
 	.align 2, 0
 _080525A8: .4byte gSubSpriteData1
-_080525AC: .4byte 0x083913B4
+_080525AC: .4byte sBox2MultiSpriteData_3913b4
 _080525B0: .4byte gCurrentSprite
 
 	thumb_func_start Box2StoppingToFireMissiles
@@ -1571,7 +1571,7 @@ _080525E8:
 Box2LoweringToFireMissilesInit: @ 0x080525F0
 	push {lr}
 	ldr r1, _08052614 @ =gSubSpriteData1
-	ldr r0, _08052618 @ =0x08391464
+	ldr r0, _08052618 @ =sBox2MultiSpriteData_391464
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1587,7 +1587,7 @@ Box2LoweringToFireMissilesInit: @ 0x080525F0
 	bx r0
 	.align 2, 0
 _08052614: .4byte gSubSpriteData1
-_08052618: .4byte 0x08391464
+_08052618: .4byte sBox2MultiSpriteData_391464
 _0805261C: .4byte gCurrentSprite
 
 	thumb_func_start Box2LoweringToFireMissiles
@@ -1602,7 +1602,7 @@ Box2LoweringToFireMissiles: @ 0x08052620
 	movs r1, #0x2c
 	strb r1, [r0]
 	ldr r0, _08052648 @ =gSubSpriteData1
-	ldr r1, _0805264C @ =0x083914A4
+	ldr r1, _0805264C @ =sBox2MultiSpriteData_3914a4
 	str r1, [r0]
 	strb r2, [r0, #6]
 	strh r2, [r0, #4]
@@ -1612,7 +1612,7 @@ _0805263E:
 	.align 2, 0
 _08052644: .4byte gCurrentSprite
 _08052648: .4byte gSubSpriteData1
-_0805264C: .4byte 0x083914A4
+_0805264C: .4byte sBox2MultiSpriteData_3914a4
 
 	thumb_func_start Box2FiringMissiles
 Box2FiringMissiles: @ 0x08052650
@@ -1628,7 +1628,7 @@ Box2FiringMissiles: @ 0x08052650
 	movs r1, #0x2e
 	strb r1, [r0]
 	ldr r0, _08052680 @ =gSubSpriteData1
-	ldr r1, _08052684 @ =0x0839150C
+	ldr r1, _08052684 @ =sBox2MultiSpriteData_39150c
 	str r1, [r0]
 	strb r2, [r0, #6]
 	strh r2, [r0, #4]
@@ -1638,7 +1638,7 @@ Box2FiringMissiles: @ 0x08052650
 	.align 2, 0
 _0805267C: .4byte gCurrentSprite
 _08052680: .4byte gSubSpriteData1
-_08052684: .4byte 0x0839150C
+_08052684: .4byte sBox2MultiSpriteData_39150c
 _08052688: .4byte 0x00000269
 _0805268C:
 	ldr r3, _080526C4 @ =gCurrentSprite
@@ -1758,7 +1758,7 @@ _08052770: .4byte gCurrentSprite
 	thumb_func_start Box2DyingInit
 Box2DyingInit: @ 0x08052774
 	ldr r0, _0805279C @ =gCurrentSprite
-	ldr r1, _080527A0 @ =0x08395658
+	ldr r1, _080527A0 @ =sBox2Oam_395658
 	str r1, [r0, #0x18]
 	movs r2, #0
 	strb r2, [r0, #0x1c]
@@ -1771,16 +1771,16 @@ Box2DyingInit: @ 0x08052774
 	movs r1, #0x44
 	strb r1, [r0]
 	ldr r0, _080527A4 @ =gSubSpriteData1
-	ldr r1, _080527A8 @ =0x0839126C
+	ldr r1, _080527A8 @ =sBox2MultiSpriteData_39126c
 	str r1, [r0]
 	strb r3, [r0, #6]
 	strh r2, [r0, #4]
 	bx lr
 	.align 2, 0
 _0805279C: .4byte gCurrentSprite
-_080527A0: .4byte 0x08395658
+_080527A0: .4byte sBox2Oam_395658
 _080527A4: .4byte gSubSpriteData1
-_080527A8: .4byte 0x0839126C
+_080527A8: .4byte sBox2MultiSpriteData_39126c
 
 	thumb_func_start Box2Dying
 Box2Dying: @ 0x080527AC
@@ -1816,7 +1816,7 @@ _080527E2:
 	thumb_func_start Box2ExplodingInit
 Box2ExplodingInit: @ 0x080527E8
 	ldr r1, _08052808 @ =gCurrentSprite
-	ldr r0, _0805280C @ =0x083956B8
+	ldr r0, _0805280C @ =sBox2Oam_3956b8
 	str r0, [r1, #0x18]
 	movs r2, #0
 	strb r2, [r1, #0x1c]
@@ -1826,16 +1826,16 @@ Box2ExplodingInit: @ 0x080527E8
 	movs r0, #0x46
 	strb r0, [r1]
 	ldr r0, _08052810 @ =gSubSpriteData1
-	ldr r1, _08052814 @ =0x0839126C
+	ldr r1, _08052814 @ =sBox2MultiSpriteData_39126c
 	str r1, [r0]
 	strb r3, [r0, #6]
 	strh r2, [r0, #4]
 	bx lr
 	.align 2, 0
 _08052808: .4byte gCurrentSprite
-_0805280C: .4byte 0x083956B8
+_0805280C: .4byte sBox2Oam_3956b8
 _08052810: .4byte gSubSpriteData1
-_08052814: .4byte 0x0839126C
+_08052814: .4byte sBox2MultiSpriteData_39126c
 
 	thumb_func_start Box2Exploding
 Box2Exploding: @ 0x08052818
@@ -1892,7 +1892,7 @@ _08052874: .4byte 0xFFE70000
 Box2BrainRisingInit: @ 0x08052878
 	push {lr}
 	ldr r3, _080528A4 @ =gCurrentSprite
-	ldr r0, _080528A8 @ =0x083958C8
+	ldr r0, _080528A8 @ =sBox2Oam_3958c8
 	str r0, [r3, #0x18]
 	movs r0, #0
 	strb r0, [r3, #0x1c]
@@ -1913,7 +1913,7 @@ Box2BrainRisingInit: @ 0x08052878
 	bx r0
 	.align 2, 0
 _080528A4: .4byte gCurrentSprite
-_080528A8: .4byte 0x083958C8
+_080528A8: .4byte sBox2Oam_3958c8
 
 	thumb_func_start Box2BrainRising
 Box2BrainRising: @ 0x080528AC
@@ -2154,15 +2154,15 @@ Box2IdleInit: @ 0x08052AE4
 	cmp r0, #0
 	beq _08052B08
 	ldr r1, _08052B00 @ =gSubSpriteData1
-	ldr r0, _08052B04 @ =0x08391324
+	ldr r0, _08052B04 @ =sBox2MultiSpriteData_391324
 	b _08052B0C
 	.align 2, 0
 _08052AFC: .4byte gCurrentSprite
 _08052B00: .4byte gSubSpriteData1
-_08052B04: .4byte 0x08391324
+_08052B04: .4byte sBox2MultiSpriteData_391324
 _08052B08:
 	ldr r1, _08052B20 @ =gSubSpriteData1
-	ldr r0, _08052B24 @ =0x08391294
+	ldr r0, _08052B24 @ =sBox2MultiSpriteData_391294
 _08052B0C:
 	str r0, [r1]
 	movs r0, #0
@@ -2176,7 +2176,7 @@ _08052B0C:
 	bx r0
 	.align 2, 0
 _08052B20: .4byte gSubSpriteData1
-_08052B24: .4byte 0x08391294
+_08052B24: .4byte sBox2MultiSpriteData_391294
 
 	thumb_func_start Box2Crawling
 Box2Crawling: @ 0x08052B28
@@ -2440,7 +2440,7 @@ _08052D34:
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	strh r0, [r4, #0x14]
-	ldr r0, _08052D7C @ =0x08395868
+	ldr r0, _08052D7C @ =sBox2Oam_395868
 	str r0, [r4, #0x18]
 	strb r2, [r4, #0x1c]
 	strh r3, [r4, #0x16]
@@ -2450,7 +2450,7 @@ _08052D34:
 _08052D70: .4byte 0x0000FFD0
 _08052D74: .4byte 0x0000FFE0
 _08052D78: .4byte sSecondarySpriteStats
-_08052D7C: .4byte 0x08395868
+_08052D7C: .4byte sBox2Oam_395868
 _08052D80:
 	ldr r0, _08052DB8 @ =0x0000FFE0
 	strh r0, [r4, #0xa]
@@ -2668,16 +2668,16 @@ _08052F28:
 	cmp r1, r0
 	bhs _08052F38
 	ldr r0, [r4, #0x18]
-	ldr r1, _08052F34 @ =0x08395420
+	ldr r1, _08052F34 @ =sBox2Oam_395420
 	b _08052F42
 	.align 2, 0
-_08052F34: .4byte 0x08395420
+_08052F34: .4byte sBox2Oam_395420
 _08052F38:
 	lsrs r0, r5, #1
 	cmp r1, r0
 	bhs _08052F68
 	ldr r0, [r4, #0x18]
-	ldr r1, _08052F64 @ =0x08395410
+	ldr r1, _08052F64 @ =sBox2Oam_395410
 _08052F42:
 	cmp r0, r1
 	beq _08052F96
@@ -2695,7 +2695,7 @@ _08052F5A:
 	bl Box2PartSetBoxWorkVar2
 	b _08052F96
 	.align 2, 0
-_08052F64: .4byte 0x08395410
+_08052F64: .4byte sBox2Oam_395410
 _08052F68:
 	ldrh r1, [r4, #0x14]
 	lsls r0, r5, #1
@@ -2704,7 +2704,7 @@ _08052F68:
 	cmp r1, r0
 	bge _08052F96
 	ldr r0, [r4, #0x18]
-	ldr r1, _08052FA4 @ =0x08395400
+	ldr r1, _08052FA4 @ =sBox2Oam_395400
 	cmp r0, r1
 	beq _08052F96
 	str r1, [r4, #0x18]
@@ -2727,7 +2727,7 @@ _08052F96:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08052FA4: .4byte 0x08395400
+_08052FA4: .4byte sBox2Oam_395400
 
 	thumb_func_start Box2PartFrontRightLeg
 Box2PartFrontRightLeg: @ 0x08052FA8
@@ -2878,16 +2878,16 @@ _080530C4:
 	cmp r1, r0
 	bhs _080530D4
 	ldr r0, [r4, #0x18]
-	ldr r1, _080530D0 @ =0x08395588
+	ldr r1, _080530D0 @ =sBox2Oam_395588
 	b _080530DE
 	.align 2, 0
-_080530D0: .4byte 0x08395588
+_080530D0: .4byte sBox2Oam_395588
 _080530D4:
 	lsrs r0, r5, #1
 	cmp r1, r0
 	bhs _08053104
 	ldr r0, [r4, #0x18]
-	ldr r1, _08053100 @ =0x08395578
+	ldr r1, _08053100 @ =sBox2Oam_395578
 _080530DE:
 	cmp r0, r1
 	beq _08053132
@@ -2905,7 +2905,7 @@ _080530F6:
 	bl Box2PartSetBoxWorkVar2
 	b _08053132
 	.align 2, 0
-_08053100: .4byte 0x08395578
+_08053100: .4byte sBox2Oam_395578
 _08053104:
 	ldrh r1, [r4, #0x14]
 	lsls r0, r5, #1
@@ -2914,7 +2914,7 @@ _08053104:
 	cmp r1, r0
 	bge _08053132
 	ldr r0, [r4, #0x18]
-	ldr r1, _08053144 @ =0x08395568
+	ldr r1, _08053144 @ =sBox2Oam_395568
 	cmp r0, r1
 	beq _08053132
 	str r1, [r4, #0x18]
@@ -2938,7 +2938,7 @@ _08053132:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08053144: .4byte 0x08395568
+_08053144: .4byte sBox2Oam_395568
 
 	thumb_func_start Box2PartTopShell
 Box2PartTopShell: @ 0x08053148
@@ -3021,19 +3021,19 @@ _080531E0:
 	cmp r1, r0
 	bhs _080531F0
 	ldr r0, [r4, #0x18]
-	ldr r1, _080531EC @ =0x08395648
+	ldr r1, _080531EC @ =sBox2Oam_395648
 	b _08053210
 	.align 2, 0
-_080531EC: .4byte 0x08395648
+_080531EC: .4byte sBox2Oam_395648
 _080531F0:
 	lsrs r0, r6, #1
 	cmp r1, r0
 	bhs _08053200
 	ldr r0, [r4, #0x18]
-	ldr r1, _080531FC @ =0x08395638
+	ldr r1, _080531FC @ =sBox2Oam_395638
 	b _08053210
 	.align 2, 0
-_080531FC: .4byte 0x08395638
+_080531FC: .4byte sBox2Oam_395638
 _08053200:
 	ldrh r1, [r4, #0x14]
 	lsls r0, r6, #1
@@ -3042,7 +3042,7 @@ _08053200:
 	cmp r1, r0
 	bge _0805322C
 	ldr r0, [r4, #0x18]
-	ldr r1, _08053228 @ =0x08395628
+	ldr r1, _08053228 @ =sBox2Oam_395628
 _08053210:
 	cmp r0, r1
 	beq _08053252
@@ -3056,12 +3056,12 @@ _08053210:
 	bl ParticleSet
 	b _08053252
 	.align 2, 0
-_08053228: .4byte 0x08395628
+_08053228: .4byte sBox2Oam_395628
 _0805322C:
 	cmp r1, r6
 	bhs _08053252
 	ldr r0, [r4, #0x18]
-	ldr r2, _08053280 @ =0x08395618
+	ldr r2, _08053280 @ =sBox2Oam_395618
 	cmp r0, r2
 	beq _08053252
 	adds r1, r4, #0
@@ -3100,7 +3100,7 @@ _08053270:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08053280: .4byte 0x08395618
+_08053280: .4byte sBox2Oam_395618
 _08053284: .4byte gCurrentSprite
 
 	thumb_func_start Box2PartBottomShell
@@ -3155,13 +3155,13 @@ _080532DE:
 	b _08053330
 _080532E8:
 	ldr r0, [r3, #0x18]
-	ldr r1, _080532F0 @ =0x08395728
+	ldr r1, _080532F0 @ =sBox2Oam_395728
 	b _08053334
 	.align 2, 0
-_080532F0: .4byte 0x08395728
+_080532F0: .4byte sBox2Oam_395728
 _080532F4:
 	ldr r0, [r3, #0x18]
-	ldr r2, _0805331C @ =0x08395728
+	ldr r2, _0805331C @ =sBox2Oam_395728
 	cmp r0, r2
 	beq _08053302
 	str r2, [r3, #0x18]
@@ -3182,7 +3182,7 @@ _08053302:
 	strb r0, [r3]
 	b _08053340
 	.align 2, 0
-_0805331C: .4byte 0x08395728
+_0805331C: .4byte sBox2Oam_395728
 _08053320: .4byte gFrameCounter8Bit
 _08053324:
 	strb r1, [r3]
@@ -3194,7 +3194,7 @@ _08053328:
 	b _08053340
 _08053330:
 	ldr r0, [r3, #0x18]
-	ldr r1, _08053348 @ =0x08395718
+	ldr r1, _08053348 @ =sBox2Oam_395718
 _08053334:
 	cmp r0, r1
 	beq _08053340
@@ -3207,7 +3207,7 @@ _08053340:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08053348: .4byte 0x08395718
+_08053348: .4byte sBox2Oam_395718
 
 	thumb_func_start Box2PartDefault
 Box2PartDefault: @ 0x0805334C
@@ -3341,7 +3341,7 @@ Box2MissileInit: @ 0x080533F8
 	strh r0, [r4, #0xc]
 	strh r1, [r4, #0xe]
 	strh r0, [r4, #0x10]
-	ldr r0, _08053498 @ =0x083957E8
+	ldr r0, _08053498 @ =sBox2Oam_3957e8
 	str r0, [r4, #0x18]
 	strb r3, [r4, #0x1c]
 	strh r2, [r4, #0x16]
@@ -3382,7 +3382,7 @@ _08053488: .4byte gCurrentSprite
 _0805348C: .4byte 0x0000FFFB
 _08053490: .4byte gIoRegisters
 _08053494: .4byte 0x0000FFF8
-_08053498: .4byte 0x083957E8
+_08053498: .4byte sBox2Oam_3957e8
 _0805349C: .4byte sSecondarySpriteStats
 _080534A0: .4byte 0x0000026B
 
@@ -3616,7 +3616,7 @@ Box2BrainTopInit: @ 0x08053624
 	strh r0, [r5, #0xc]
 	strh r1, [r5, #0xe]
 	strh r2, [r5, #0x10]
-	ldr r0, _080536C0 @ =0x08395808
+	ldr r0, _080536C0 @ =sBox2Oam_395808
 	str r0, [r5, #0x18]
 	strb r3, [r5, #0x1c]
 	strh r4, [r5, #0x16]
@@ -3659,7 +3659,7 @@ _080536B0: .4byte gCurrentSprite
 _080536B4: .4byte 0x0000FFFB
 _080536B8: .4byte gIoRegisters
 _080536BC: .4byte 0x0000FFE0
-_080536C0: .4byte 0x08395808
+_080536C0: .4byte sBox2Oam_395808
 _080536C4: .4byte sSecondarySpriteStats
 
 	thumb_func_start Box2BrainTopRising
@@ -3775,7 +3775,7 @@ _0805378C:
 	adds r0, r0, r3
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _080537F0 @ =0x08390578
+	ldr r5, _080537F0 @ =sBox2BrainFloatingMovement
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r4, [r0]
@@ -3823,7 +3823,7 @@ _080537E6:
 	bx r0
 	.align 2, 0
 _080537EC: .4byte gSpriteData
-_080537F0: .4byte 0x08390578
+_080537F0: .4byte sBox2BrainFloatingMovement
 _080537F4: .4byte 0x00007FFF
 
 	thumb_func_start Box2BrainTopTransformingInit
@@ -3952,7 +3952,7 @@ Box2BrainBottomInit: @ 0x0805389C
 	strh r0, [r2, #0xc]
 	strh r1, [r2, #0xe]
 	strh r0, [r2, #0x10]
-	ldr r0, _08053918 @ =0x083958D8
+	ldr r0, _08053918 @ =sBox2Oam_3958d8
 	str r0, [r2, #0x18]
 	strb r3, [r2, #0x1c]
 	strh r4, [r2, #0x16]
@@ -3971,7 +3971,7 @@ _08053908: .4byte gCurrentSprite
 _0805390C: .4byte 0x0000FFFB
 _08053910: .4byte gIoRegisters
 _08053914: .4byte 0x0000FFFC
-_08053918: .4byte 0x083958D8
+_08053918: .4byte sBox2Oam_3958d8
 
 	thumb_func_start Box2BrainBottomIdle
 Box2BrainBottomIdle: @ 0x0805391C

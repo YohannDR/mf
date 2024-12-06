@@ -18,7 +18,7 @@ SaXMonsterSyncSubSprites: @ 0x080507F4
 	lsls r0, r0, #1
 	adds r0, r0, r3
 	ldrh r0, [r0]
-	ldr r1, _08050858 @ =0x0879B458
+	ldr r1, _08050858 @ =sSaXMonsterFrameDataPointers
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r1, [r2, #0x18]
@@ -54,7 +54,7 @@ _08050826:
 	.align 2, 0
 _08050850: .4byte gSubSpriteData1
 _08050854: .4byte gCurrentSprite
-_08050858: .4byte 0x0879B458
+_08050858: .4byte sSaXMonsterFrameDataPointers
 
 	thumb_func_start SaXMonsterProjectilesCollision
 SaXMonsterProjectilesCollision: @ 0x0805085C
@@ -340,7 +340,7 @@ SaXMonsterFall: @ 0x08050A78
 	adds r5, r0, #0
 	adds r5, #0x31
 	ldrb r2, [r5]
-	ldr r3, _08050AAC @ =0x08388274
+	ldr r3, _08050AAC @ =sSaXMonsterFallingSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r3
 	ldrh r4, [r0]
@@ -361,7 +361,7 @@ SaXMonsterFall: @ 0x08050A78
 	b _08050AC6
 	.align 2, 0
 _08050AA8: .4byte gCurrentSprite
-_08050AAC: .4byte 0x08388274
+_08050AAC: .4byte sSaXMonsterFallingSpeed
 _08050AB0: .4byte 0x00007FFF
 _08050AB4: .4byte gSubSpriteData1
 _08050AB8:
@@ -578,7 +578,7 @@ SaXMonsterInit: @ 0x08050BC0
 	adds r5, r1, #0
 	cmp r2, #0
 	beq _08050C88
-	ldr r0, _08050C84 @ =0x08388FA4
+	ldr r0, _08050C84 @ =sSaXMonsterMultiSpriteData_388fa4
 	b _08050C8A
 	.align 2, 0
 _08050C6C: .4byte gCurrentSprite
@@ -587,9 +587,9 @@ _08050C74: .4byte 0x0000FEE0
 _08050C78: .4byte gIoRegisters
 _08050C7C: .4byte sPrimarySpriteStats
 _08050C80: .4byte gSubSpriteData1
-_08050C84: .4byte 0x08388FA4
+_08050C84: .4byte sSaXMonsterMultiSpriteData_388fa4
 _08050C88:
-	ldr r0, _08050D8C @ =0x08388F94
+	ldr r0, _08050D8C @ =sSaXMonsterMultiSpriteData_388f94
 _08050C8A:
 	str r0, [r5]
 	movs r4, #0
@@ -709,7 +709,7 @@ _08050C8A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08050D8C: .4byte 0x08388F94
+_08050D8C: .4byte sSaXMonsterMultiSpriteData_388f94
 
 	thumb_func_start SaXMonsterDroppingInit
 SaXMonsterDroppingInit: @ 0x08050D90
@@ -759,15 +759,15 @@ SaXMonsterIdleInit: @ 0x08050DD0
 	cmp r0, #0
 	beq _08050DF4
 	ldr r1, _08050DEC @ =gSubSpriteData1
-	ldr r0, _08050DF0 @ =0x08388E7C
+	ldr r0, _08050DF0 @ =sSaXMonsterMultiSpriteData_388e7c
 	b _08050DF8
 	.align 2, 0
 _08050DE8: .4byte gCurrentSprite
 _08050DEC: .4byte gSubSpriteData1
-_08050DF0: .4byte 0x08388E7C
+_08050DF0: .4byte sSaXMonsterMultiSpriteData_388e7c
 _08050DF4:
 	ldr r1, _08050E14 @ =gSubSpriteData1
-	ldr r0, _08050E18 @ =0x08388DE4
+	ldr r0, _08050E18 @ =sSaXMonsterMultiSpriteData_388de4
 _08050DF8:
 	str r0, [r1]
 	movs r0, #0
@@ -785,7 +785,7 @@ _08050DF8:
 	bx r0
 	.align 2, 0
 _08050E14: .4byte gSubSpriteData1
-_08050E18: .4byte 0x08388DE4
+_08050E18: .4byte sSaXMonsterMultiSpriteData_388de4
 
 	thumb_func_start SaXMonsterIdle
 SaXMonsterIdle: @ 0x08050E1C
@@ -852,15 +852,15 @@ SaXMonsterJumpWarningInit: @ 0x08050E7C
 	cmp r0, #0
 	beq _08050EA0
 	ldr r1, _08050E98 @ =gSubSpriteData1
-	ldr r0, _08050E9C @ =0x08388EA4
+	ldr r0, _08050E9C @ =sSaXMonsterMultiSpriteData_388ea4
 	b _08050EA4
 	.align 2, 0
 _08050E94: .4byte gCurrentSprite
 _08050E98: .4byte gSubSpriteData1
-_08050E9C: .4byte 0x08388EA4
+_08050E9C: .4byte sSaXMonsterMultiSpriteData_388ea4
 _08050EA0:
 	ldr r1, _08050EC0 @ =gSubSpriteData1
-	ldr r0, _08050EC4 @ =0x08388E0C
+	ldr r0, _08050EC4 @ =sSaXMonsterMultiSpriteData_388e0c
 _08050EA4:
 	str r0, [r1]
 	movs r0, #0
@@ -878,7 +878,7 @@ _08050EA4:
 	bx r0
 	.align 2, 0
 _08050EC0: .4byte gSubSpriteData1
-_08050EC4: .4byte 0x08388E0C
+_08050EC4: .4byte sSaXMonsterMultiSpriteData_388e0c
 
 	thumb_func_start SaXMonsterJumpWarning
 SaXMonsterJumpWarning: @ 0x08050EC8
@@ -894,15 +894,15 @@ SaXMonsterJumpWarning: @ 0x08050EC8
 	cmp r0, #0
 	beq _08050EF4
 	ldr r1, _08050EEC @ =gSubSpriteData1
-	ldr r0, _08050EF0 @ =0x08388ECC
+	ldr r0, _08050EF0 @ =sSaXMonsterMultiSpriteData_388ecc
 	b _08050EF8
 	.align 2, 0
 _08050EE8: .4byte gCurrentSprite
 _08050EEC: .4byte gSubSpriteData1
-_08050EF0: .4byte 0x08388ECC
+_08050EF0: .4byte sSaXMonsterMultiSpriteData_388ecc
 _08050EF4:
 	ldr r1, _08050F24 @ =gSubSpriteData1
-	ldr r0, _08050F28 @ =0x08388E34
+	ldr r0, _08050F28 @ =sSaXMonsterMultiSpriteData_388e34
 _08050EF8:
 	str r0, [r1]
 	adds r3, r1, #0
@@ -926,7 +926,7 @@ _08050F18:
 	bx r0
 	.align 2, 0
 _08050F24: .4byte gSubSpriteData1
-_08050F28: .4byte 0x08388E34
+_08050F28: .4byte sSaXMonsterMultiSpriteData_388e34
 
 	thumb_func_start SaXMonsterJumping
 SaXMonsterJumping: @ 0x08050F2C
@@ -936,7 +936,7 @@ SaXMonsterJumping: @ 0x08050F2C
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r1, _08050F58 @ =0x08388224
+	ldr r1, _08050F58 @ =sSaXMonsterJumpingSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r1
 	ldrh r3, [r0]
@@ -952,7 +952,7 @@ SaXMonsterJumping: @ 0x08050F2C
 	b _08050F74
 	.align 2, 0
 _08050F54: .4byte gCurrentSprite
-_08050F58: .4byte 0x08388224
+_08050F58: .4byte sSaXMonsterJumpingSpeed
 _08050F5C: .4byte 0x00007FFF
 _08050F60:
 	adds r0, r2, #1
@@ -1023,15 +1023,15 @@ SaXMonsterLandingInit: @ 0x08050FCC
 	cmp r0, #0
 	beq _08050FF0
 	ldr r1, _08050FE8 @ =gSubSpriteData1
-	ldr r0, _08050FEC @ =0x08388EF4
+	ldr r0, _08050FEC @ =sSaXMonsterMultiSpriteData_388ef4
 	b _08050FF4
 	.align 2, 0
 _08050FE4: .4byte gCurrentSprite
 _08050FE8: .4byte gSubSpriteData1
-_08050FEC: .4byte 0x08388EF4
+_08050FEC: .4byte sSaXMonsterMultiSpriteData_388ef4
 _08050FF0:
 	ldr r1, _08051018 @ =gSubSpriteData1
-	ldr r0, _0805101C @ =0x08388E5C
+	ldr r0, _0805101C @ =sSaXMonsterMultiSpriteData_388e5c
 _08050FF4:
 	str r0, [r1]
 	movs r0, #0
@@ -1051,7 +1051,7 @@ _08050FF4:
 	bx r0
 	.align 2, 0
 _08051018: .4byte gSubSpriteData1
-_0805101C: .4byte 0x08388E5C
+_0805101C: .4byte sSaXMonsterMultiSpriteData_388e5c
 
 	thumb_func_start SaXMonsterLanding
 SaXMonsterLanding: @ 0x08051020
@@ -1118,15 +1118,15 @@ SaXMonsterTurningAroundInit: @ 0x08051080
 	cmp r0, #0
 	beq _080510A4
 	ldr r1, _0805109C @ =gSubSpriteData1
-	ldr r0, _080510A0 @ =0x08388F24
+	ldr r0, _080510A0 @ =sSaXMonsterMultiSpriteData_388f24
 	b _080510A8
 	.align 2, 0
 _08051098: .4byte gCurrentSprite
 _0805109C: .4byte gSubSpriteData1
-_080510A0: .4byte 0x08388F24
+_080510A0: .4byte sSaXMonsterMultiSpriteData_388f24
 _080510A4:
 	ldr r1, _080510C4 @ =gSubSpriteData1
-	ldr r0, _080510C8 @ =0x08388F14
+	ldr r0, _080510C8 @ =sSaXMonsterMultiSpriteData_388f14
 _080510A8:
 	str r0, [r1]
 	movs r0, #0
@@ -1144,7 +1144,7 @@ _080510A8:
 	bx r0
 	.align 2, 0
 _080510C4: .4byte gSubSpriteData1
-_080510C8: .4byte 0x08388F14
+_080510C8: .4byte sSaXMonsterMultiSpriteData_388f14
 
 	thumb_func_start SaXMonsterTurningAround
 SaXMonsterTurningAround: @ 0x080510CC
@@ -1188,15 +1188,15 @@ SaXMonsterScreamingAirborneInit: @ 0x08051108
 	cmp r0, #0
 	beq _0805112C
 	ldr r1, _08051124 @ =gSubSpriteData1
-	ldr r0, _08051128 @ =0x08388F84
+	ldr r0, _08051128 @ =sSaXMonsterMultiSpriteData_388f84
 	b _08051130
 	.align 2, 0
 _08051120: .4byte gCurrentSprite
 _08051124: .4byte gSubSpriteData1
-_08051128: .4byte 0x08388F84
+_08051128: .4byte sSaXMonsterMultiSpriteData_388f84
 _0805112C:
 	ldr r1, _08051154 @ =gSubSpriteData1
-	ldr r0, _08051158 @ =0x08388F74
+	ldr r0, _08051158 @ =sSaXMonsterMultiSpriteData_388f74
 _08051130:
 	str r0, [r1]
 	movs r0, #0
@@ -1217,7 +1217,7 @@ _08051130:
 	bx r0
 	.align 2, 0
 _08051154: .4byte gSubSpriteData1
-_08051158: .4byte 0x08388F74
+_08051158: .4byte sSaXMonsterMultiSpriteData_388f74
 
 	thumb_func_start SaXMonsterScreamingAirborne
 SaXMonsterScreamingAirborne: @ 0x0805115C
@@ -1241,15 +1241,15 @@ SaXMonsterScreamingAirborne: @ 0x0805115C
 	cmp r0, #0
 	beq _08051198
 	ldr r1, _08051190 @ =gSubSpriteData1
-	ldr r0, _08051194 @ =0x08388F44
+	ldr r0, _08051194 @ =sSaXMonsterMultiSpriteData_388f44
 	b _0805119C
 	.align 2, 0
 _0805118C: .4byte gCurrentSprite
 _08051190: .4byte gSubSpriteData1
-_08051194: .4byte 0x08388F44
+_08051194: .4byte sSaXMonsterMultiSpriteData_388f44
 _08051198:
 	ldr r1, _080511B8 @ =gSubSpriteData1
-	ldr r0, _080511BC @ =0x08388F34
+	ldr r0, _080511BC @ =sSaXMonsterMultiSpriteData_388f34
 _0805119C:
 	str r0, [r1]
 	movs r0, #0
@@ -1266,7 +1266,7 @@ _0805119C:
 	b _080511D8
 	.align 2, 0
 _080511B8: .4byte gSubSpriteData1
-_080511BC: .4byte 0x08388F34
+_080511BC: .4byte sSaXMonsterMultiSpriteData_388f34
 _080511C0: .4byte gCurrentSprite
 _080511C4:
 	ldr r1, _080511DC @ =gCurrentSprite
@@ -1295,15 +1295,15 @@ SaXMonsterScreamingGroundedInit: @ 0x080511E0
 	cmp r0, #0
 	beq _08051204
 	ldr r1, _080511FC @ =gSubSpriteData1
-	ldr r0, _08051200 @ =0x08388F44
+	ldr r0, _08051200 @ =sSaXMonsterMultiSpriteData_388f44
 	b _08051208
 	.align 2, 0
 _080511F8: .4byte gCurrentSprite
 _080511FC: .4byte gSubSpriteData1
-_08051200: .4byte 0x08388F44
+_08051200: .4byte sSaXMonsterMultiSpriteData_388f44
 _08051204:
 	ldr r1, _08051224 @ =gSubSpriteData1
-	ldr r0, _08051228 @ =0x08388F34
+	ldr r0, _08051228 @ =sSaXMonsterMultiSpriteData_388f34
 _08051208:
 	str r0, [r1]
 	movs r0, #0
@@ -1320,7 +1320,7 @@ _08051208:
 	bx r0
 	.align 2, 0
 _08051224: .4byte gSubSpriteData1
-_08051228: .4byte 0x08388F34
+_08051228: .4byte sSaXMonsterMultiSpriteData_388f34
 
 	thumb_func_start SaXMonsterScreamingGrounded
 SaXMonsterScreamingGrounded: @ 0x0805122C
@@ -1432,17 +1432,17 @@ _080512CE:
 	cmp r0, #0
 	beq _08051318
 	ldr r1, _08051310 @ =gSubSpriteData1
-	ldr r0, _08051314 @ =0x08388F64
+	ldr r0, _08051314 @ =sSaXMonsterMultiSpriteData_388f64
 	b _0805131C
 	.align 2, 0
 _08051304: .4byte gCurrentSprite
 _08051308: .4byte gBg1XPosition
 _0805130C: .4byte 0xFFE70000
 _08051310: .4byte gSubSpriteData1
-_08051314: .4byte 0x08388F64
+_08051314: .4byte sSaXMonsterMultiSpriteData_388f64
 _08051318:
 	ldr r1, _08051340 @ =gSubSpriteData1
-	ldr r0, _08051344 @ =0x08388F54
+	ldr r0, _08051344 @ =sSaXMonsterMultiSpriteData_388f54
 _0805131C:
 	str r0, [r1]
 	movs r0, #0
@@ -1464,7 +1464,7 @@ _0805133A:
 	bx r0
 	.align 2, 0
 _08051340: .4byte gSubSpriteData1
-_08051344: .4byte 0x08388F54
+_08051344: .4byte sSaXMonsterMultiSpriteData_388f54
 _08051348: .4byte gCurrentSprite
 
 	thumb_func_start SaXMonsterDying
@@ -1720,16 +1720,16 @@ _08051504:
 	cmp r0, #0
 	beq _08051560
 	ldr r1, [r1, #0x18]
-	ldr r0, _08051550 @ =0x0838FE68
+	ldr r0, _08051550 @ =sSaXMonsterPartOam_38fe68
 	cmp r1, r0
 	beq _08051568
-	ldr r0, _08051554 @ =0x0838FED0
+	ldr r0, _08051554 @ =sSaXMonsterPartOam_38fed0
 	cmp r1, r0
 	beq _0805157A
-	ldr r0, _08051558 @ =0x0838FF98
+	ldr r0, _08051558 @ =sSaXMonsterPartOam_38ff98
 	cmp r1, r0
 	beq _0805158E
-	ldr r0, _0805155C @ =0x083902B8
+	ldr r0, _0805155C @ =sSaXMonsterPartOam_3902b8
 	cmp r1, r0
 	bne _080515A8
 	movs r0, #0xa5
@@ -1737,13 +1737,13 @@ _08051504:
 	b _080515A8
 	.align 2, 0
 _0805154C: .4byte 0x0000FFFB
-_08051550: .4byte 0x0838FE68
-_08051554: .4byte 0x0838FED0
-_08051558: .4byte 0x0838FF98
-_0805155C: .4byte 0x083902B8
+_08051550: .4byte sSaXMonsterPartOam_38fe68
+_08051554: .4byte sSaXMonsterPartOam_38fed0
+_08051558: .4byte sSaXMonsterPartOam_38ff98
+_0805155C: .4byte sSaXMonsterPartOam_3902b8
 _08051560:
 	ldr r1, [r2, #0x18]
-	ldr r0, _08051570 @ =0x0838F9B0
+	ldr r0, _08051570 @ =sSaXMonsterPartOam_38f9b0
 	cmp r1, r0
 	bne _08051574
 _08051568:
@@ -1751,9 +1751,9 @@ _08051568:
 	bl SoundPlay
 	b _080515A8
 	.align 2, 0
-_08051570: .4byte 0x0838F9B0
+_08051570: .4byte sSaXMonsterPartOam_38f9b0
 _08051574:
-	ldr r0, _08051584 @ =0x0838FA18
+	ldr r0, _08051584 @ =sSaXMonsterPartOam_38fa18
 	cmp r1, r0
 	bne _08051588
 _0805157A:
@@ -1761,9 +1761,9 @@ _0805157A:
 	bl SoundPlay
 	b _080515A8
 	.align 2, 0
-_08051584: .4byte 0x0838FA18
+_08051584: .4byte sSaXMonsterPartOam_38fa18
 _08051588:
-	ldr r0, _08051598 @ =0x0838FAE0
+	ldr r0, _08051598 @ =sSaXMonsterPartOam_38fae0
 	cmp r1, r0
 	bne _0805159C
 _0805158E:
@@ -1771,9 +1771,9 @@ _0805158E:
 	bl SoundPlay
 	b _080515A8
 	.align 2, 0
-_08051598: .4byte 0x0838FAE0
+_08051598: .4byte sSaXMonsterPartOam_38fae0
 _0805159C:
-	ldr r0, _080515AC @ =0x0838FB08
+	ldr r0, _080515AC @ =sSaXMonsterPartOam_38fb08
 	cmp r1, r0
 	bne _080515A8
 	movs r0, #0xa5
@@ -1782,7 +1782,7 @@ _080515A8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080515AC: .4byte 0x0838FB08
+_080515AC: .4byte sSaXMonsterPartOam_38fb08
 
 	thumb_func_start SaXMonster
 SaXMonster: @ 0x080515B0

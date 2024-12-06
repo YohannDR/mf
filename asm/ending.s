@@ -1796,7 +1796,7 @@ _080A22CC: .4byte 0x0879ECBC
 _080A22D0:
 	adds r7, #1
 	movs r0, #0x1e
-	bl FadeMusic
+	bl MusicFade
 _080A22D8:
 	adds r0, r7, #0
 	pop {r4, r5, r6, r7}

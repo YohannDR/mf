@@ -1714,7 +1714,7 @@ _080329B0:
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r5, _080329D8 @ =KihunterFlyingSwoopingDownYSpeed
+	ldr r5, _080329D8 @ =sKihunterFlyingSwoopingDownYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -1731,7 +1731,7 @@ _080329B0:
 	adds r0, r0, r1
 	b _080329EA
 	.align 2, 0
-_080329D8: .4byte KihunterFlyingSwoopingDownYSpeed
+_080329D8: .4byte sKihunterFlyingSwoopingDownYSpeed
 _080329DC: .4byte 0x00007FFF
 _080329E0:
 	adds r0, r2, #1
@@ -1815,7 +1815,7 @@ _08032A64:
 	adds r6, r4, #0
 	adds r6, #0x31
 	ldrb r2, [r6]
-	ldr r5, _08032A9C @ =KihunterFlyingSwoopingAcrossYSpeed
+	ldr r5, _08032A9C @ =sKihunterFlyingSwoopingAcrossYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r5
 	ldrh r3, [r0]
@@ -1833,7 +1833,7 @@ _08032A64:
 	strh r0, [r4, #2]
 	b _08032AC2
 	.align 2, 0
-_08032A9C: .4byte KihunterFlyingSwoopingAcrossYSpeed
+_08032A9C: .4byte sKihunterFlyingSwoopingAcrossYSpeed
 _08032AA0: .4byte 0x00007FFF
 _08032AA4:
 	adds r0, r2, #1
@@ -1934,7 +1934,7 @@ _08032B24:
 	adds r0, r0, r4
 	mov ip, r0
 	ldrb r2, [r0]
-	ldr r1, _08032B8C @ =KihunterFlyingAfterSwoopingAccceleratingYSpeed
+	ldr r1, _08032B8C @ =sKihunterFlyingAfterSwoopingAccceleratingYSpeed
 	mov r8, r1
 	lsls r0, r2, #1
 	add r0, r8
@@ -1956,7 +1956,7 @@ _08032B7C: .4byte gCurrentSprite
 _08032B80: .4byte sKihunterOam_33e50c
 _08032B84: .4byte sKihunterOam_33e454
 _08032B88: .4byte gPreviousCollisionCheck
-_08032B8C: .4byte KihunterFlyingAfterSwoopingAccceleratingYSpeed
+_08032B8C: .4byte sKihunterFlyingAfterSwoopingAccceleratingYSpeed
 _08032B90: .4byte 0x00007FFF
 _08032B94:
 	adds r0, r2, #1
@@ -1983,7 +1983,7 @@ _08032BAE:
 	adds r5, r5, r4
 	mov r8, r5
 	ldrb r2, [r5]
-	ldr r6, _08032BE4 @ =KihunterFlyingAfterSwoopingDeceleratingYSpeed
+	ldr r6, _08032BE4 @ =sKihunterFlyingAfterSwoopingDeceleratingYSpeed
 	lsls r0, r2, #1
 	adds r0, r0, r6
 	ldrh r1, [r0]
@@ -2001,7 +2001,7 @@ _08032BAE:
 	strh r0, [r4, #2]
 	b _08032C00
 	.align 2, 0
-_08032BE4: .4byte KihunterFlyingAfterSwoopingDeceleratingYSpeed
+_08032BE4: .4byte sKihunterFlyingAfterSwoopingDeceleratingYSpeed
 _08032BE8: .4byte 0x00007FFF
 _08032BEC:
 	adds r0, r2, #1

@@ -3509,7 +3509,7 @@ OmegaMetroidDying1: @ 0x08055894
 	movs r0, #0x78
 	strb r0, [r3]
 	movs r0, #0
-	bl FadeMusic
+	bl MusicFade
 _080558D2:
 	pop {r4}
 	pop {r0}

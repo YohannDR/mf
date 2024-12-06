@@ -457,7 +457,7 @@ _0809E252:
 	lsls r0, r0, #1
 	bl SoundPlay
 	movs r0, #0xa
-	bl FadeMusic
+	bl MusicFade
 	ldr r0, _0809E288 @ =0x0879E868
 	ldr r0, [r0, #4]
 	str r0, [r4, #0x10]
@@ -476,7 +476,7 @@ _0809E290:
 	lsls r0, r0, #1
 	bl SoundPlay
 	movs r0, #0xa
-	bl FadeMusic
+	bl MusicFade
 	ldr r0, _0809E2C4 @ =0x0879E868
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x10]

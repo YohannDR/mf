@@ -12535,11 +12535,11 @@ _0806E60E:
 	cmp r0, #0
 	bne _0806E634
 	ldr r0, _0806E65C @ =0x030054B0
-	bl StopMusic
+	bl StopTrack
 	ldr r0, _0806E660 @ =0x030055F0
-	bl StopMusic
+	bl StopTrack
 	ldr r0, _0806E664 @ =0x030054F0
-	bl StopMusic
+	bl StopTrack
 _0806E634:
 	ldr r1, _0806E668 @ =gNextOamSlot
 	movs r0, #0
@@ -13071,7 +13071,7 @@ _0806EA78: .4byte 0x0000E0FF
 _0806EA7C:
 	bl unk_6ee8c
 	movs r0, #0x69
-	bl FadeMusic
+	bl MusicFade
 	ldr r0, _0806EA9C @ =gPauseScreenFlag
 	strb r4, [r0]
 	ldr r1, _0806EAA0 @ =gCurrentCutscene
@@ -16265,7 +16265,7 @@ _080704C0:
 _080704C8: .4byte gCurrentNavigationRoom
 _080704CC:
 	movs r0, #0xb4
-	bl FadeMusic
+	bl MusicFade
 	bl _08071588
 _080704D6:
 	ldr r0, _080704EC @ =gLastElevatorUsed
@@ -16322,7 +16322,7 @@ _0807053A:
 	cmp r0, #0x3c
 	bne _08070554
 	movs r0, #0x3c
-	bl FadeMusic
+	bl MusicFade
 	b _0807056A
 	.align 2, 0
 _08070550: .4byte gDestinationDoor
@@ -16435,7 +16435,7 @@ _0807062A:
 	.align 2, 0
 _08070638: .4byte gCurrentRoom
 _0807063C:
-	bl unk_36c4
+	bl MusicStop
 	movs r0, #0xfc
 	bl SoundStop
 	bl _08071588
@@ -16446,7 +16446,7 @@ _0807064A:
 _08070652:
 	movs r0, #0x96
 	lsls r0, r0, #1
-	bl FadeMusic
+	bl MusicFade
 	bl _08071588
 _0807065E:
 	ldr r0, _08070668 @ =0x00000229
@@ -16571,7 +16571,7 @@ _0807074E:
 	cmp r0, #1
 	bne _08070768
 	movs r0, #0x3c
-	bl FadeMusic
+	bl MusicFade
 	bl _08071588
 	.align 2, 0
 _08070764: .4byte gDestinationDoor
@@ -16612,7 +16612,7 @@ _080707A4:
 _080707B0:
 	movs r0, #0x96
 	lsls r0, r0, #1
-	bl FadeMusic
+	bl MusicFade
 	bl _08071588
 	.align 2, 0
 _080707BC: .4byte gLastElevatorUsed
@@ -16784,7 +16784,7 @@ _08070918: .4byte gDestinationDoor
 _0807091C: .4byte gCurrentRoom
 _08070920:
 	movs r0, #0xc8
-	bl FadeMusic
+	bl MusicFade
 	bl _08071588
 _0807092A:
 	ldr r0, _08070940 @ =gLastElevatorUsed
@@ -17010,7 +17010,7 @@ _08070AEE:
 	bne _08070B08
 _08070AFA:
 	movs r0, #0x1e
-	bl FadeMusic
+	bl MusicFade
 	bl _0807158A
 	.align 2, 0
 _08070B04: .4byte gDestinationDoor
@@ -17096,7 +17096,7 @@ _08070B9E:
 _08070BAC: .4byte gCurrentRoom
 _08070BB0:
 	movs r0, #0x1e
-	bl FadeMusic
+	bl MusicFade
 	bl _08071588
 _08070BBA:
 	movs r0, #0x78
@@ -17295,7 +17295,7 @@ _08070D4A:
 	cmp r0, #0
 	bne _08070D64
 	movs r0, #0x46
-	bl FadeMusic
+	bl MusicFade
 	b _08070D7A
 	.align 2, 0
 _08070D60: .4byte gDestinationDoor
@@ -17405,7 +17405,7 @@ _08070E2C:
 	cmp r0, #0x14
 	bne _08070E44
 	movs r0, #0x3c
-	bl FadeMusic
+	bl MusicFade
 	b _08070E5A
 	.align 2, 0
 _08070E40: .4byte gDestinationDoor
@@ -17521,7 +17521,7 @@ _08070EFC:
 	bne _08070F14
 _08070F08:
 	movs r0, #0x46
-	bl FadeMusic
+	bl MusicFade
 	b _0807158A
 	.align 2, 0
 _08070F10: .4byte gDestinationDoor
@@ -17578,7 +17578,7 @@ _08070F6A:
 _08070F6C: .4byte gCurrentNavigationRoom
 _08070F70:
 	movs r0, #0
-	bl FadeMusic
+	bl MusicFade
 	b _08071588
 _08070F78:
 	movs r0, #0x59
@@ -17659,7 +17659,7 @@ _08070FF6:
 	cmp r0, #0x33
 	bne _08071014
 	movs r0, #0x3c
-	bl FadeMusic
+	bl MusicFade
 	ldr r1, _08071010 @ =gSubEventCounter
 	movs r0, #0x69
 	b _08071106
@@ -17698,7 +17698,7 @@ _08071042:
 	.align 2, 0
 _08071048: .4byte gCurrentRoom
 _0807104C:
-	bl unk_36c4
+	bl MusicStop
 	b _08071588
 _08071052:
 	movs r0, #0x2e
@@ -17767,7 +17767,7 @@ _080710B4:
 	bne _080710CC
 _080710C0:
 	movs r0, #2
-	bl FadeMusic
+	bl MusicFade
 	b _0807158A
 	.align 2, 0
 _080710C8: .4byte gDestinationDoor
@@ -17837,7 +17837,7 @@ _08071138: .4byte gDestinationDoor
 _0807113C: .4byte gEventCounter
 _08071140:
 	movs r0, #0x1e
-	bl FadeMusic
+	bl MusicFade
 	b _08071588
 _08071148:
 	ldrb r0, [r2]
@@ -18045,7 +18045,7 @@ _080712A4:
 	b _0807158A
 _080712AE:
 	movs r0, #0xc8
-	bl FadeMusic
+	bl MusicFade
 	b _08071588
 	.align 2, 0
 _080712B8: .4byte gDestinationDoor
@@ -18093,7 +18093,7 @@ _080712F8:
 	bne _08071310
 _08071304:
 	movs r0, #0x32
-	bl FadeMusic
+	bl MusicFade
 	b _0807158A
 	.align 2, 0
 _0807130C: .4byte gDestinationDoor
@@ -18131,7 +18131,7 @@ _0807133E:
 	cmp r0, #0x10
 	bne _08071358
 	movs r0, #0x14
-	bl FadeMusic
+	bl MusicFade
 	b _0807136E
 	.align 2, 0
 _08071354: .4byte gDestinationDoor
@@ -18186,7 +18186,7 @@ _080713A8:
 	cmp r0, #0x4e
 	bne _080713C4
 	movs r0, #0x28
-	bl FadeMusic
+	bl MusicFade
 	bl unk_3cfc
 	b _0807158A
 	.align 2, 0
@@ -18209,7 +18209,7 @@ _080713D4:
 _080713DC: .4byte gCurrentRoom
 _080713E0:
 	movs r0, #0x14
-	bl FadeMusic
+	bl MusicFade
 	b _08071588
 _080713E8:
 	ldrb r0, [r2]
@@ -18224,7 +18224,7 @@ _080713F0:
 	cmp r0, #0x4f
 	bne _08071408
 	movs r0, #0x3c
-	bl FadeMusic
+	bl MusicFade
 	b _0807141E
 	.align 2, 0
 _08071404: .4byte gDestinationDoor
@@ -18253,7 +18253,7 @@ _08071430: .4byte 0x000002C9
 _08071434:
 	movs r0, #0x96
 	lsls r0, r0, #2
-	bl FadeMusic
+	bl MusicFade
 	bl unk_3cfc
 	b _08071588
 _08071442:
@@ -18263,7 +18263,7 @@ _08071442:
 _08071448:
 	movs r0, #0x96
 	lsls r0, r0, #1
-	bl FadeMusic
+	bl MusicFade
 	b _08071588
 _08071452:
 	ldr r0, _08071464 @ =gLastElevatorUsed
@@ -18341,7 +18341,7 @@ _080714C8:
 	bne _080714E8
 _080714DA:
 	movs r0, #0x28
-	bl FadeMusic
+	bl MusicFade
 	b _0807158A
 	.align 2, 0
 _080714E4: .4byte gDestinationDoor
@@ -18383,7 +18383,7 @@ _0807151C:
 	bne _0807153C
 _0807152E:
 	movs r0, #0x3c
-	bl FadeMusic
+	bl MusicFade
 	b _0807158A
 	.align 2, 0
 _08071538: .4byte gDestinationDoor
@@ -18410,7 +18410,7 @@ _08071554:
 	cmp r0, #0x3f
 	bne _08071574
 	movs r0, #0
-	bl FadeMusic
+	bl MusicFade
 	b _0807158A
 	.align 2, 0
 _08071570: .4byte gDestinationDoor

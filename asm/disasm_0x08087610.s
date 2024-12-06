@@ -53,7 +53,7 @@ _08087664:
 	movs r0, #0x14
 	bl unk_27e8
 	movs r0, #0x14
-	bl FadeMusic
+	bl MusicFade
 _0808767C:
 	ldr r4, _0808769C @ =gSubGameMode1
 	movs r2, #0
@@ -16642,7 +16642,7 @@ _0808FC0C:
 	strh r0, [r1]
 	movs r0, #0x80
 	lsls r0, r0, #1
-	bl FadeMusic
+	bl MusicFade
 	b _0808FF02
 	.align 2, 0
 _0808FC30: .4byte gWrittenToBldalpha_L
@@ -30054,7 +30054,7 @@ _080967DC:
 	ldr r0, _08096818 @ =0x00000203
 	bl SoundPlay
 	movs r0, #0xa
-	bl FadeMusic
+	bl MusicFade
 	movs r2, #0x85
 	lsls r2, r2, #2
 	adds r1, r5, r2
@@ -39017,7 +39017,7 @@ CutsceneRestrictedLabDetachingInit: @ 0x0809AEA4
 	strh r0, [r3]
 	ldr r0, _0809AFB0 @ =unk_9c1bc
 	bl CallbackSetVBlank
-	bl unk_36c4
+	bl MusicStop
 	movs r0, #0x80
 	lsls r0, r0, #0x13
 	mov r8, r0

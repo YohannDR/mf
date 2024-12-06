@@ -1639,7 +1639,7 @@ _08076A94:
 	bne _08076AA2
 	movs r0, #2
 	strb r0, [r4]
-	bl unk_36c4
+	bl MusicStop
 	b _08076AA8
 _08076AA2:
 	cmp r0, #4

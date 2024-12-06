@@ -282,7 +282,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_POST_ARACHNUS_NAV_CONVERSATION_ENDED:
-            unk_36c4();
+            MusicStop();
             SoundStop(0xFC);
             updateSubEvent = TRUE;
             break;
@@ -1183,7 +1183,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_106:
-            unk_36c4();
+            MusicStop();
             updateSubEvent = TRUE;
             break;
 

@@ -3731,7 +3731,7 @@ SoundStop: @ 0x08002738
 	cmp r1, r0
 	bne _08002768
 	adds r0, r2, #0
-	bl StopMusic
+	bl StopTrack
 _08002768:
 	pop {r0}
 	bx r0
@@ -3755,7 +3755,7 @@ StopAllMusicsAndSounds: @ 0x08002774
 	adds r5, r0, r1
 _0800278C:
 	ldr r0, [r5]
-	bl StopMusic
+	bl StopTrack
 	subs r5, #0xc
 	subs r4, #1
 	cmp r4, #0
@@ -3790,7 +3790,7 @@ _080027C0:
 	cmp r0, #0
 	bne _080027D2
 	adds r0, r2, #0
-	bl StopMusic
+	bl StopTrack
 _080027D2:
 	subs r5, #0xc
 	subs r4, #1
@@ -4046,7 +4046,7 @@ ApplyMusicSoundFading: @ 0x080029A8
 	lsrs r1, r1, #0x10
 	cmp r1, #0
 	bne _080029BA
-	bl StopMusic
+	bl StopTrack
 	b _080029F2
 _080029BA:
 	ldrb r0, [r4, #0x1c]
@@ -4241,7 +4241,7 @@ unk_2b08: @ 0x08002B08
 	cmp r0, #0
 	bne _08002B20
 	adds r0, r5, #0
-	bl StopMusic
+	bl StopTrack
 	b _08002B62
 _08002B20:
 	ldrb r1, [r5]
@@ -4254,7 +4254,7 @@ _08002B20:
 	cmp r0, r1
 	bhi _08002B62
 	adds r0, r5, #0
-	bl StopMusic
+	bl StopTrack
 _08002B38:
 	adds r0, r5, #0
 	adds r1, r4, #0
@@ -5752,7 +5752,7 @@ _08003614:
 	cmp r0, #0
 	bne _0800369C
 	adds r0, r3, #0
-	bl StopMusic
+	bl StopTrack
 	b _0800369C
 	.align 2, 0
 _0800362C: .4byte gMusicInfo
@@ -5769,7 +5769,7 @@ _08003630:
 	cmp r0, #0
 	beq _08003654
 	adds r0, r2, #0
-	bl StopMusic
+	bl StopTrack
 	b _0800365E
 	.align 2, 0
 _08003650: .4byte sMusicTrackDataRom
@@ -5801,7 +5801,7 @@ _08003674:
 	cmp r0, #0
 	bne _0800368A
 	adds r0, r3, #0
-	bl StopMusic
+	bl StopTrack
 _0800368A:
 	ldr r0, _080036BC @ =sSoundDataEntries
 	adds r0, r7, r0
@@ -5832,8 +5832,8 @@ _080036B8: .4byte sMusicTrackDataRom
 _080036BC: .4byte sSoundDataEntries
 _080036C0: .4byte gMusicInfo
 
-	thumb_func_start unk_36c4
-unk_36c4: @ 0x080036C4
+	thumb_func_start MusicStop
+MusicStop: @ 0x080036C4
 	push {lr}
 	ldr r0, _080036D8 @ =gMusicInfo
 	adds r0, #0x20
@@ -5850,14 +5850,14 @@ _080036E0:
 	ldr r0, _080036EC @ =sMusicTrackDataRom
 	ldr r0, [r0, #0xc]
 _080036E4:
-	bl StopMusic
+	bl StopTrack
 	pop {r0}
 	bx r0
 	.align 2, 0
 _080036EC: .4byte sMusicTrackDataRom
 
-	thumb_func_start FadeMusic
-FadeMusic: @ 0x080036F0
+	thumb_func_start MusicFade
+MusicFade: @ 0x080036F0
 	push {lr}
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
@@ -5883,7 +5883,7 @@ _08003714:
 	.align 2, 0
 _08003720: .4byte sMusicTrackDataRom
 _08003724:
-	bl StopMusic
+	bl StopTrack
 _08003728:
 	pop {r0}
 	bx r0
@@ -6072,7 +6072,7 @@ _08003870:
 	cmp r0, #0
 	bne _08003886
 	adds r0, r3, #0
-	bl StopMusic
+	bl StopTrack
 _08003886:
 	ldr r1, _080038A4 @ =gMusicInfo
 	movs r0, #0
@@ -6216,7 +6216,7 @@ _0800398C:
 	cmp r0, #1
 	bls _0800399E
 	adds r0, r3, #0
-	bl StopMusic
+	bl StopTrack
 _0800399E:
 	ldr r1, _080039C8 @ =gMusicInfo
 	movs r0, #0
@@ -6279,7 +6279,7 @@ _08003A0E:
 	cmp r0, #1
 	bls _08003A1A
 	adds r0, r1, #0
-	bl StopMusic
+	bl StopTrack
 _08003A1A:
 	ldr r1, _08003A7C @ =sSoundDataEntries
 	lsls r0, r4, #3
@@ -6358,7 +6358,7 @@ _08003AAC:
 	.align 2, 0
 _08003AB8: .4byte sMusicTrackDataRom
 _08003ABC:
-	bl StopMusic
+	bl StopTrack
 _08003AC0:
 	pop {r0}
 	bx r0
@@ -6553,7 +6553,7 @@ unk_3c14: @ 0x08003C14
 	bhi _08003C2C
 	cmp r1, #0
 	bne _08003C30
-	bl unk_36c4
+	bl MusicStop
 	b _08003C30
 _08003C2C:
 	bl SoundStop
@@ -7395,8 +7395,8 @@ _0800465C:
 	pop {r0}
 	bx r0
 
-	thumb_func_start StopMusic
-StopMusic: @ 0x08004664
+	thumb_func_start StopTrack
+StopTrack: @ 0x08004664
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	ldrb r6, [r7, #0x1c]

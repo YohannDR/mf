@@ -275,9 +275,9 @@ SECTIONS {
 
         src/sprites_AI/box.o(.text);
         src/sprites_AI/geruda.o(.text);
+        src/sprites_AI/misc_pad.o(.text);
+        src/sprites_AI/operations_room_pad.o(.text);
 
-        asm/sprites_AI/misc_pad.o(.text);
-        asm/sprites_AI/operations_room_pad.o(.text);
         asm/sprites_AI/scientist.o(.text);
         asm/sprites_AI/skultera.o(.text);
         asm/sprites_AI/zeela.o(.text);

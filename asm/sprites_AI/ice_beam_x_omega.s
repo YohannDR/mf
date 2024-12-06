@@ -608,7 +608,7 @@ _08058D44:
 	movs r0, #0x92
 	bl SoundPlay
 	movs r0, #0
-	bl FadeMusic
+	bl MusicFade
 	b _08058E22
 	.align 2, 0
 _08058DEC: .4byte gCurrentSprite

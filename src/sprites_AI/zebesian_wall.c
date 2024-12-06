@@ -71,7 +71,7 @@ void ZebesianWallInit(void) {
         gCurrentSprite.bgPriority = 1;
         gCurrentSprite.pose = 2;
         gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;
-        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition,gCurrentSprite.xPosition + BLOCK_SIZE);
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + BLOCK_SIZE);
         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
             gCurrentSprite.status |= SS_X_FLIP;
             gCurrentSprite.xPosition += 0x20;

@@ -151,7 +151,7 @@ _0809E6BC:
 	adds r0, #1
 	strh r0, [r1]
 	movs r0, #0x14
-	bl FadeMusic
+	bl MusicFade
 	b _0809E738
 	.align 2, 0
 _0809E6DC: .4byte gNonGameplayRam

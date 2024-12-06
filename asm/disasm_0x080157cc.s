@@ -10275,7 +10275,7 @@ SaXBossWaitingToAppear: @ 0x0801A878
 	movs r0, #0x50
 	strb r0, [r4]
 	movs r0, #0
-	bl FadeMusic
+	bl MusicFade
 	movs r0, #0x9b
 	bl SoundPlay_3b1c
 	b _0801A908

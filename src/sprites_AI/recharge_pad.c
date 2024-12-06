@@ -138,12 +138,12 @@ void RechargePadRefilling(void) {
         return;
     }
     spriteId = gCurrentSprite.spriteId;
-    if (spriteId == PSPRITE_RECHARGE_PAD_1) {
+    if (spriteId == PSPRITE_ENERGY_RECHARGE_PAD) {
         if (SpriteUtilRefillEnergy()) return;
-    } else if (spriteId == PSPRITE_RECHARGE_PAD_2) {
+    } else if (spriteId == PSPRITE_AMMO_RECHARGE_PAD) {
         if (SpriteUtilRefillMissiles()) return;
         if (SpriteUtilRefillPowerBombs()) return;
-    } else if (spriteId == PSPRITE_RECHARGE_PAD_3) {
+    } else if (spriteId == PSPRITE_ENERGY_AMMO_RECHARGE_PAD) {
         if (SpriteUtilRefillEnergy()) return;
         if (SpriteUtilRefillMissiles()) return;
         if (SpriteUtilRefillPowerBombs()) return;
@@ -159,11 +159,11 @@ void RechargePadRetracting(void) {
         gCurrentSprite.pose = 0x1e;
         SAMUS_SET_POSE(SPOSE_STANDING);
         gPreventMovementTimer = 1000;
-        if (gCurrentSprite.spriteId == PSPRITE_RECHARGE_PAD_1)
+        if (gCurrentSprite.spriteId == PSPRITE_ENERGY_RECHARGE_PAD)
             TrySpawnMessageBanner(16);
-        else if (gCurrentSprite.spriteId == PSPRITE_RECHARGE_PAD_2)
+        else if (gCurrentSprite.spriteId == PSPRITE_AMMO_RECHARGE_PAD)
             TrySpawnMessageBanner(15);
-        else if (gCurrentSprite.spriteId == PSPRITE_RECHARGE_PAD_3) {
+        else if (gCurrentSprite.spriteId == PSPRITE_ENERGY_AMMO_RECHARGE_PAD) {
             if (gEquipment.weaponsStatus & MBF_ANY_MISSILE)
                 TrySpawnMessageBanner(17);
             else
@@ -253,11 +253,11 @@ void RechargePadScreenInit(void) {
     } else {
         gCurrentSprite.drawOrder = 3;
         primaryId = gSpriteData[primarySlot].spriteId;
-        if (primaryId == PSPRITE_RECHARGE_PAD_1)
+        if (primaryId == PSPRITE_ENERGY_RECHARGE_PAD)
             gCurrentSprite.pOam = sRechargePadOam_325640;
-        else if (primaryId == PSPRITE_RECHARGE_PAD_2)
+        else if (primaryId == PSPRITE_AMMO_RECHARGE_PAD)
             gCurrentSprite.pOam = sRechargePadOam_325668;
-        else if (primaryId == PSPRITE_RECHARGE_PAD_3)
+        else if (primaryId == PSPRITE_ENERGY_AMMO_RECHARGE_PAD)
             gCurrentSprite.pOam = sRechargePadOam_325690;
         else
             gCurrentSprite.status = 0;
