@@ -569,7 +569,7 @@ void SerrisFirstArcEnd(void)
         {
             // Is main sprite, set first arc done
             gCurrentSprite.pose = SERRIS_POSE_FIRST_ARC_DONE;
-            PlayMusic(MUSIC_SERRIS_YAKUZA_BATTLE, 7);
+            MusicPlay(MUSIC_SERRIS_YAKUZA_BATTLE, 7);
         }
         else
         {

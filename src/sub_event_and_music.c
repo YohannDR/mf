@@ -5,6 +5,7 @@
 #include "data/event_data.h"
 #include "data/sub_event_data.h"
 
+#include "constants/audio.h"
 #include "constants/connection.h"
 #include "constants/clipdata.h"
 #include "constants/event.h"
@@ -124,7 +125,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_FIRST_CONVERSATION_STARTED:
-            MusicPlay(0x1E, 2);
+            MusicPlay(MUSIC_1E, 2);
             updateSubEvent = TRUE;
             break;
 
@@ -139,7 +140,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 20)
             {
-                MusicPlay(0x2B, 2);
+                MusicPlay(MUSIC_2B, 2);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -160,7 +161,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2)
             {
-                MusicPlay(0x2C, 2);
+                MusicPlay(MUSIC_2C, 2);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -179,7 +180,7 @@ void SubEventUpdateMusic(u8 triggerType)
             if (gLastElevatorUsed != ELEVATOR_MAIN_DECK_TO_OPERATIONS_DECK)
                 break;
 
-            MusicPlay(0x3, 2);
+            MusicPlay(MUSIC_3, 2);
             updateSubEvent = TRUE;
             break;
 
@@ -194,7 +195,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 13)
             {
-                MusicPlay(0x2E, 2);
+                MusicPlay(MUSIC_2E, 2);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -210,7 +211,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 60)
             {
-                MusicPlay(0x1E, 2);
+                MusicPlay(MUSIC_1E, 2);
                 updateSubEvent = TRUE;
             }
 
@@ -229,8 +230,8 @@ void SubEventUpdateMusic(u8 triggerType)
             if (gCurrentNavigationRoom != NAV_ROOM_MAIN_DECK_ROOM_32)
                 break;
 
-            MusicPlay(0x34, 2);
-            unk_38a8(0x33, 0);
+            MusicPlay(MUSIC_OPERATIONS_DECK_ELEVATOR_OFFLINE_AMBIENCE, 2);
+            MusicPlay_38a8(MUSIC_OPERATIONS_DECK_ELEVATOR_OFFLINE, 0);
             updateSubEvent = TRUE;
             break;
 
@@ -240,7 +241,7 @@ void SubEventUpdateMusic(u8 triggerType)
 
             if (gCurrentRoom == 35)
             {
-                unk_372c(0x1E, 0x2C, 0x2);
+                unk_372c(30, MUSIC_2C, 0x2);
                 updateSubEvent = TRUE;
             }
             break;
@@ -256,7 +257,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 38)
             {
-                MusicPlay(0x18, 2);
+                MusicPlay(MUSIC_BOSS_TENSION, 2);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -272,7 +273,7 @@ void SubEventUpdateMusic(u8 triggerType)
 
             if (gCurrentRoom == 14)
             {
-                unk_372c(0x1E, 0x2C, 0x2);
+                unk_372c(30, MUSIC_2C, 0x2);
                 updateSubEvent = TRUE;
             }
             break;
@@ -288,7 +289,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_SA_X_ELEVATOR_CUTSCENE_START:
-            MusicPlay(0x31, 2);
+            MusicPlay(MUSIC_31, 2);
             updateSubEvent = TRUE;
             break;
 
@@ -303,7 +304,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_SA_X_ELEVATOR_CUTSCENE_RUMBLE_1:
-            MusicPlay(0x1E, 2);
+            MusicPlay(MUSIC_1E, 2);
             updateSubEvent = TRUE;
             break;
 
@@ -318,7 +319,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2)
             {
-                MusicPlay(0xB, 3);
+                MusicPlay(MUSIC_NAVIGATION_ROOM, 3);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -339,7 +340,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 40)
             {
-                MusicPlay(0x18, 6);
+                MusicPlay(MUSIC_BOSS_TENSION, 6);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -360,7 +361,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom != 40)
             {
-                MusicPlay(0x4, 3);
+                MusicPlay(MUSIC_SECTOR_1, 3);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -377,7 +378,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2)
             {
-                MusicPlay(0xB, 3);
+                MusicPlay(MUSIC_NAVIGATION_ROOM, 3);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -410,7 +411,7 @@ void SubEventUpdateMusic(u8 triggerType)
 
             if (gCurrentRoom == 1)
             {
-                MusicPlay(0x4, 0);
+                MusicPlay(MUSIC_SECTOR_1, 0);
                 gSubEventCounter = SUB_EVENT_LEAVING_SECTOR_1_NAV_CONVERSATION_ENDED;
                 updateSubEvent = TRUE + 1;
             }
@@ -446,7 +447,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2)
             {
-                MusicPlay(0xB, 4);
+                MusicPlay(MUSIC_NAVIGATION_ROOM, 4);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -467,7 +468,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 0)
             {
-                MusicPlay(0x6, 0);
+                MusicPlay(MUSIC_SECTOR_2, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -492,7 +493,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 18)
             {
-                MusicPlay(0x18, 4);
+                MusicPlay(MUSIC_BOSS_TENSION, 4);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -513,14 +514,14 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom != 18)
             {
-                MusicPlay(0x6, 0);
+                MusicPlay(MUSIC_SECTOR_2, 0);
                 updateSubEvent = TRUE;
                 break;
             }
             break;
 
         case SUB_EVENT_LEFT_ZAZABI_ROOM:
-            unk_372c(0x1E, 0x15, 0x8);
+            unk_372c(30, MUSIC_15, 0x8);
             updateSubEvent = TRUE;
             break;
 
@@ -535,7 +536,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom != 45)
             {
-                MusicPlay(0x6, 0);
+                MusicPlay(MUSIC_SECTOR_2, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -558,7 +559,7 @@ void SubEventUpdateMusic(u8 triggerType)
             if (gLastElevatorUsed != ELEVATOR_MAIN_DECK_TO_SECTOR_2)
                 break;
 
-            MusicPlay(0x1E, 11);
+            MusicPlay(MUSIC_1E, 11);
             updateSubEvent = TRUE;
             break;
 
@@ -573,7 +574,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2)
             {
-                MusicPlay(0xB, 11);
+                MusicPlay(MUSIC_NAVIGATION_ROOM, 11);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -594,7 +595,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 0)
             {
-                MusicPlay(0x9, 0);
+                MusicPlay(MUSIC_SECTOR_4, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -611,7 +612,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 31)
             {
-                MusicPlay(0x5F, 5);
+                MusicPlay(MUSIC_5F, 5);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -628,7 +629,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 42)
             {
-                MusicPlay(0x18, 6);
+                MusicPlay(MUSIC_BOSS_TENSION, 6);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -649,7 +650,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom != 42)
             {
-                MusicPlay(0x9, 0);
+                MusicPlay(MUSIC_SECTOR_4, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -670,7 +671,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 4)
             {
-                MusicPlay(0xF, 10);
+                MusicPlay(MUSIC_F, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -691,7 +692,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom != 4)
             {
-                MusicPlay(0x7, 10);
+                MusicPlay(MUSIC_SECTOR_3, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -708,7 +709,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 21)
             {
-                MusicPlay(0xF, 10);
+                MusicPlay(MUSIC_F, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -729,7 +730,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom != 21)
             {
-                MusicPlay(0x18, 6);
+                MusicPlay(MUSIC_BOSS_TENSION, 6);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -749,7 +750,7 @@ void SubEventUpdateMusic(u8 triggerType)
 
             if (gCurrentRoom != 23)
             {
-                unk_372c(0x14, 0x7, 0x0);
+                unk_372c(20, MUSIC_SECTOR_3, 0x0);
                 updateSubEvent = TRUE;
             }
             break;
@@ -764,7 +765,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_SECRET_CONVERSATION_STARTED:
-            unk_372c(0x78, 0x1E, 0xB);
+            unk_372c(120, MUSIC_1E, 0xB);
             SoundPlay(0xFC);
             updateSubEvent = TRUE;
             break;
@@ -780,7 +781,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2)
             {
-                MusicPlay(0xB, 0xB);
+                MusicPlay(MUSIC_NAVIGATION_ROOM, 0xB);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -791,7 +792,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_68:
-            unk_372c(0xA, 0x15, 0x8);
+            unk_372c(10, MUSIC_15, 0x8);
             updateSubEvent = TRUE;
             break;
 
@@ -806,7 +807,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 0)
             {
-                MusicPlay(0xA, 0);
+                MusicPlay(MUSIC_SECTOR_6, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -823,7 +824,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 10)
             {
-                MusicPlay(0xA, 0);
+                MusicPlay(MUSIC_SECTOR_6, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -840,7 +841,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 12)
             {
-                MusicPlay(0x18, 6);
+                MusicPlay(MUSIC_BOSS_TENSION, 6);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -861,7 +862,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom != 13)
             {
-                MusicPlay(0xA, 0);
+                MusicPlay(MUSIC_SECTOR_6, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -882,7 +883,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 7)
             {
-                MusicPlay(0x8, 0);
+                MusicPlay(MUSIC_SECTOR_5, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -906,7 +907,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 0)
             {
-                MusicPlay(0x5A, 11);
+                MusicPlay(MUSIC_5A, 11);
                 updateSubEvent = TRUE;
             }
 
@@ -947,7 +948,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 29)
             {
-                MusicPlay(0x7, 0);
+                MusicPlay(MUSIC_SECTOR_3, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -968,7 +969,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 46)
             {
-                MusicPlay(0x5C, 10);
+                MusicPlay(MUSIC_5C, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -984,7 +985,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 20)
             {
-                MusicPlay(0x2C, 10);
+                MusicPlay(MUSIC_2C, 10);
                 updateSubEvent = TRUE;
             }
 
@@ -1000,7 +1001,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_87:
-            unk_372c(0x1E, 0x1E, 0x0);
+            unk_372c(30, MUSIC_1E, 0x0);
             updateSubEvent = TRUE + 1;
             gSubEventCounter = SUB_EVENT_84;
             break;
@@ -1020,7 +1021,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 7)
             {
-                MusicPlay(0x8, 0);
+                MusicPlay(MUSIC_SECTOR_5, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1041,14 +1042,14 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 43)
             {
-                MusicPlay(0x5F, 10);
+                MusicPlay(MUSIC_5F, 10);
                 updateSubEvent = TRUE;
                 break;
             }
             break;
 
         case SUB_EVENT_92:
-            unk_372c(0xA, 0x15, 0x8);
+            unk_372c(10, MUSIC_15, 0x8);
             updateSubEvent = TRUE;
             break;
 
@@ -1063,7 +1064,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 22)
             {
-                MusicPlay(0x8, 0);
+                MusicPlay(MUSIC_SECTOR_5, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1074,7 +1075,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_95:
-            unk_372c(0x60, 0x3, 0xB);
+            unk_372c(96, MUSIC_3, 0xB);
             updateSubEvent = TRUE;
             break;
 
@@ -1084,7 +1085,7 @@ void SubEventUpdateMusic(u8 triggerType)
 
             if (gCurrentRoom == 31)
             {
-                unk_372c(0x1E, 0x5C, 0xB);
+                unk_372c(30, MUSIC_5C, 0xB);
                 updateSubEvent = TRUE;
             }
             break;
@@ -1106,7 +1107,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_100:
-            MusicPlay(0x59, 10);
+            MusicPlay(MUSIC_59, 10);
             updateSubEvent = TRUE;
             break;
 
@@ -1121,7 +1122,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 49)
             {
-                MusicPlay(0x5F, 10);
+                MusicPlay(MUSIC_5F, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1138,7 +1139,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 86)
             {
-                MusicPlay(0x18, 6);
+                MusicPlay(MUSIC_BOSS_TENSION, 6);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1165,7 +1166,7 @@ void SubEventUpdateMusic(u8 triggerType)
 
             if (gDestinationDoor == 54)
             {
-                unk_372c(0x1E, 0x3, 0xA);
+                unk_372c(30, MUSIC_3, 0xA);
                 gSubEventCounter = SUB_EVENT_106;
                 updateSubEvent = TRUE + 1;
             }
@@ -1177,7 +1178,7 @@ void SubEventUpdateMusic(u8 triggerType)
 
             if (gCurrentRoom == 51)
             {
-                MusicPlay(0x3, 10);
+                MusicPlay(MUSIC_3, 10);
                 updateSubEvent = TRUE;
             }
             break;
@@ -1188,7 +1189,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_107:
-            MusicPlay(0x2E, 10);
+            MusicPlay(MUSIC_2E, 10);
             updateSubEvent = TRUE;
             break;
 
@@ -1203,7 +1204,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2)
             {
-                MusicPlay(0xB, 10);
+                MusicPlay(MUSIC_NAVIGATION_ROOM, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1224,7 +1225,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 24)
             {
-                MusicPlay(0x15, 8);
+                MusicPlay(MUSIC_15, 8);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1241,7 +1242,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 55)
             {
-                MusicPlay(0x1E, 0);
+                MusicPlay(MUSIC_1E, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1253,7 +1254,7 @@ void SubEventUpdateMusic(u8 triggerType)
 
             if (gCurrentRoom == 24)
             {
-                MusicPlay(0x15, 8);
+                MusicPlay(MUSIC_15, 8);
                 gSubEventCounter = SUB_EVENT_111;
                 updateSubEvent = TRUE + 1;
             }
@@ -1287,7 +1288,7 @@ void SubEventUpdateMusic(u8 triggerType)
 
             if (gCurrentRoom == 32)
             {
-                MusicPlay(0x6, 0);
+                MusicPlay(MUSIC_SECTOR_2, 0);
                 updateSubEvent = TRUE;
             }
             break;
@@ -1303,7 +1304,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 22)
             {
-                MusicPlay(0x44, 7);
+                MusicPlay(MUSIC_NETTORI_BATTLE, 7);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1324,7 +1325,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 12)
             {
-                MusicPlay(0x6, 0);
+                MusicPlay(MUSIC_SECTOR_2, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1345,7 +1346,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 0)
             {
-                MusicPlay(0x32, 10);
+                MusicPlay(MUSIC_32, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1362,7 +1363,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 20)
             {
-                MusicPlay(0x18, 6);
+                MusicPlay(MUSIC_BOSS_TENSION, 6);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1383,7 +1384,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 27)
             {
-                MusicPlay(0x2C, 10);
+                MusicPlay(MUSIC_2C, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1400,7 +1401,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 14)
             {
-                MusicPlay(0x3C, 0);
+                MusicPlay(MUSIC_3C, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1433,7 +1434,7 @@ void SubEventUpdateMusic(u8 triggerType)
             if (gLastElevatorUsed != ELEVATOR_MAIN_DECK_TO_SECTOR_3)
                 break;
 
-            MusicPlay(0x1E, 11);
+            MusicPlay(MUSIC_1E, 11);
             updateSubEvent = TRUE;
             break;
 
@@ -1447,7 +1448,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2)
             {
-                MusicPlay(0xB, 11);
+                MusicPlay(MUSIC_NAVIGATION_ROOM, 11);
                 updateSubEvent = TRUE;
             }
             break;
@@ -1467,7 +1468,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 0)
             {
-                MusicPlay(0xA, 0);
+                MusicPlay(MUSIC_SECTOR_6, 0);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1492,7 +1493,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 16)
             {
-                MusicPlay(0x1B, 7);
+                MusicPlay(MUSIC_BOX_BATTLE, 7);
                 updateSubEvent = TRUE;
             }
 
@@ -1527,7 +1528,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 78)
             {
-                MusicPlay(0x5F, 10);
+                MusicPlay(MUSIC_5F, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1548,7 +1549,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 79)
             {
-                MusicPlay(0x17, 10);
+                MusicPlay(MUSIC_SA_X_CHASE, 10);
                 updateSubEvent = TRUE;
             }
 
@@ -1563,7 +1564,7 @@ void SubEventUpdateMusic(u8 triggerType)
             break;
 
         case SUB_EVENT_142:
-            MusicPlay(0x3, 10);
+            MusicPlay(MUSIC_3, 10);
             updateSubEvent = TRUE;
             break;
 
@@ -1584,7 +1585,7 @@ void SubEventUpdateMusic(u8 triggerType)
             if (gLastElevatorUsed != ELEVATOR_RESTRICTED_ZONE_TO_SECTOR_1)
                 break;
 
-            MusicPlay(0x1E, 10);
+            MusicPlay(MUSIC_1E, 10);
             updateSubEvent = TRUE;
             break;
 
@@ -1599,7 +1600,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 30)
             {
-                MusicPlay(0x32, 10);
+                MusicPlay(MUSIC_32, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1616,7 +1617,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 27)
             {
-                MusicPlay(0x18, 6);
+                MusicPlay(MUSIC_BOSS_TENSION, 6);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1637,7 +1638,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 26)
             {
-                MusicPlay(0x32, 10);
+                MusicPlay(MUSIC_32, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1653,7 +1654,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2)
             {
-                MusicPlay(0xB, 10);
+                MusicPlay(MUSIC_NAVIGATION_ROOM, 10);
                 updateSubEvent = TRUE;
             }
             break;
@@ -1673,7 +1674,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 85)
             {
-                MusicPlay(0x2E, 10);
+                MusicPlay(MUSIC_2E, 10);
                 updateSubEvent = TRUE;
                 break;
             }
@@ -1694,7 +1695,7 @@ void SubEventUpdateMusic(u8 triggerType)
             }
             else if (type == 0x2 && gCurrentRoom == 63)
             {
-                MusicPlay(0x58, 7);
+                MusicPlay(MUSIC_58, 7);
                 updateSubEvent = TRUE;
                 break;
             }

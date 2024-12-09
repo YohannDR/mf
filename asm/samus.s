@@ -8539,11 +8539,11 @@ _08008E74: .4byte sSamusAnim_Right_Dying
 _08008E78:
 	movs r0, #1
 	strb r0, [r3]
-	ldr r1, _08008E84 @ =0x03000018
+	ldr r1, _08008E84 @ =gMonochromeBgFading
 	movs r0, #2
 	b _08008EA6
 	.align 2, 0
-_08008E84: .4byte 0x03000018
+_08008E84: .4byte gMonochromeBgFading
 _08008E88:
 	cmp r0, #4
 	bne _08008E94
@@ -9722,7 +9722,7 @@ _08009868:
 	ldr r0, _080098C0 @ =gDisableScrolling
 	movs r1, #1
 	strb r1, [r0]
-	ldr r0, _080098C4 @ =0x03000018
+	ldr r0, _080098C4 @ =gMonochromeBgFading
 	strb r1, [r0]
 	ldr r0, _080098C8 @ =gPoseLock
 	strb r2, [r0]
@@ -9765,7 +9765,7 @@ _080098AC:
 	bx r0
 	.align 2, 0
 _080098C0: .4byte gDisableScrolling
-_080098C4: .4byte 0x03000018
+_080098C4: .4byte gMonochromeBgFading
 _080098C8: .4byte gPoseLock
 _080098CC: .4byte gSamusData
 _080098D0: .4byte gBg1XPosition

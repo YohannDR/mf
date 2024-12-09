@@ -10,7 +10,6 @@
 #include "constants/samus.h"
 
 #include "structs/clipdata.h"
-#include "structs/event.h"
 #include "structs/sprite.h"
 #include "structs/samus.h"
 

@@ -232,7 +232,7 @@ void BoxWaitingToEmerge(void) {
     if (SpriteUtilCheckSamusNearSpriteLeftRight(0x200, 0x200) == NSLR_LEFT) {
         gCurrentSprite.pose = BOX_POSE_FIRST_JUMP_INIT;
         ParticleSet(y, x-0xa0, PE_0x2F);
-        PlayMusic(MUSIC_BOX_BATTLE, 7);
+        MusicPlay(MUSIC_BOX_BATTLE, 7);
     }
 }
 
@@ -1569,7 +1569,7 @@ void BoxDebrisFalling(void) {
         ParticleSet(y, x+0x20, PE_SMOKE);
         EventCheckAdvance(EVENT_BOX_DEFEATED);
         BoxSetDebrisClipdata(CAA_MAKE_SOLID);
-        PlayMusic(MUSIC_BOSS_TENSION, 6);
+        MusicPlay(MUSIC_BOSS_TENSION, 6);
     } else {
         offset = gCurrentSprite.work4;
         movement = sSpritesFallingSpeedFast[offset];

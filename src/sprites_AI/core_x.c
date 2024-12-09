@@ -293,7 +293,7 @@ void CoreXAbilityMovingToSpawnPoint(void) {
                 gCurrentSprite.status |= SS_ENABLE_MOSAIC;
                 gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
                 gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
-                PlayMusic(MUSIC_ZAZABI_BATTLE, 7);
+                MusicPlay(MUSIC_ZAZABI_BATTLE, 7);
             }
         } else {
             gCurrentSprite.yPosition += PIXEL_SIZE / 4;
@@ -307,7 +307,7 @@ void CoreXAbilityMovingToSpawnPoint(void) {
                 gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
                 gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.work1];
                 if (gDemoState == 0) {
-                    PlayMusic(MUSIC_ARACHNUS_BATTLE, 7);
+                    MusicPlay(MUSIC_ARACHNUS_BATTLE, 7);
                 }
             }
         } else {
@@ -392,7 +392,7 @@ void CoreXAbilityMovingToTargetInit(void) {
     gCurrentSprite.work1 = 0;
     gCurrentSprite.work4 = 1;
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
-    PlayMusic(MUSIC_BOSS_TENSION, 6);
+    MusicPlay(MUSIC_BOSS_TENSION, 6);
 }
 
 /**

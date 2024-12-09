@@ -200,7 +200,7 @@ void EscapeCheckReloadGraphics(void)
  */
 void EscapeStart(void)
 {
-    // FIXME Load graphics
+    // Load graphics
     DMA_SET(3, sEscapeDigitsGfx, VRAM_OBJ + 0x7800, C_32_2_16(DMA_ENABLE, sizeof(sEscapeDigitsGfx) / sizeof(u16)));
     DMA_SET(3, sEscapeDigitsPal, PALRAM_OBJ + 0x1E0, C_32_2_16(DMA_ENABLE, 16));
 

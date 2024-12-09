@@ -27,7 +27,7 @@ struct RoomEntry {
     u8 visualEffect;
     u16 effectY;
     u8 damagingEffect;
-    u16 musicTrakc;
+    u16 musicTrack;
     u8 bg0Size;
     u8 bg3Size;
     u8 animatedTileset;

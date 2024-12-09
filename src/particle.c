@@ -286,19 +286,19 @@ void ParticleUpdateAnimation(const struct FrameData* pOam)
 
 void ParticleNone(void) {
     if (gCurrentParticle.stage == 0) {
-        ParticleUpdateAnimation(sOam_58eae8);
+        ParticleUpdateAnimation(sBombOam_Slow);
         gCurrentParticle.stage = 80;
         gCurrentParticle.status |= (PARTICLE_STATUS_LIVE_OFF_SCREEN | PARTICLE_STATUS_HIGH_OAM_PRIORITY);
     } else {
         gCurrentParticle.stage--;
         if (gCurrentParticle.stage > 30) {
-            ParticleUpdateAnimation(sOam_58eae8);
+            ParticleUpdateAnimation(sBombOam_Slow);
             return;
         } else if (gCurrentParticle.stage == 30) {
             gCurrentParticle.currentAnimationFrame = 0;
             gCurrentParticle.animationDurationCounter = 0;
         }
-        ParticleUpdateAnimation(sOam_58eb10);
+        ParticleUpdateAnimation(sBombOam_Fast);
         if (gCurrentParticle.stage == 0)
             gCurrentParticle.status = 0;
     }

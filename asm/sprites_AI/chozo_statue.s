@@ -237,7 +237,7 @@ ChozoStatueTransformingInit: @ 0x0802D6D0
 	bl ChozoStatueSetCollision
 	movs r0, #0x43
 	movs r1, #7
-	bl PlayMusic
+	bl MusicPlay
 	pop {r0}
 	bx r0
 	.align 2, 0

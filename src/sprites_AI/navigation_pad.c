@@ -5,6 +5,7 @@
 #include "data/sprites/navigation_pad.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
@@ -117,7 +118,7 @@ void NavPadReleasingSwitch(void) {
 void NavPadAfterConversationInit(void) {
     if ((u8)EventCheckOn_Escape() == TRUE && gEscapeStatus == ESCAPE_STATUS_NONE) {
         EscapeStart();
-        PlayMusic(0x35,10);
+        MusicPlay(MUSIC_MAIN_BOILER_COOLDOWN_MISSION, 10);
     }
     gCurrentSprite.pose = 0x1e;
 }

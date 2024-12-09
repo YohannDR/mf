@@ -4200,7 +4200,7 @@ _08077F44:
 	bls _08077F44
 _08077F5A:
 	movs r4, #0
-	ldr r1, _08077F8C @ =0x03000014
+	ldr r1, _08077F8C @ =gGameCompletion
 	movs r0, #0
 	ldrsb r0, [r1, r0]
 	cmp r0, #0
@@ -4224,7 +4224,7 @@ _08077F72:
 	.align 2, 0
 _08077F84: .4byte gNonGameplayRam
 _08077F88: .4byte 0x08576150
-_08077F8C: .4byte 0x03000014
+_08077F8C: .4byte gGameCompletion
 _08077F90:
 	mov r1, r8
 	cmp r1, #0
@@ -7211,7 +7211,7 @@ DrawLocationText: @ 0x08079740
 	str r1, [r4, #8]
 	ldr r1, [r4, #8]
 	ldr r2, _080797B8 @ =0x0879CDD8
-	ldr r1, _080797BC @ =0x03000011
+	ldr r1, _080797BC @ =gLanguage
 	ldrb r1, [r1]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
@@ -7249,7 +7249,7 @@ _080797AC: .4byte 0x0000FFFF
 _080797B0: .4byte 0x040000D4
 _080797B4: .4byte 0x81000400
 _080797B8: .4byte 0x0879CDD8
-_080797BC: .4byte 0x03000011
+_080797BC: .4byte gLanguage
 _080797C0: .4byte 0x06014000
 _080797C4: .4byte 0x840000E0
 _080797C8: .4byte 0x02000400
@@ -7278,7 +7278,7 @@ TextDrawMessageBanner: @ 0x080797D0
 _080797F4:
 	adds r2, #0x15
 	ldr r1, _0807981C @ =0x0879CDF4
-	ldr r0, _08079820 @ =0x03000011
+	ldr r0, _08079820 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -7298,7 +7298,7 @@ _0807980E:
 	b _08079830
 	.align 2, 0
 _0807981C: .4byte 0x0879CDF4
-_08079820: .4byte 0x03000011
+_08079820: .4byte gLanguage
 _08079824: .4byte 0x0000FFFF
 _08079828:
 	cmp r3, #6
@@ -7412,7 +7412,7 @@ DisplayMessage: @ 0x080798E0
 	ldr r1, _08079930 @ =sObtainItemEvents
 	ldrb r0, [r0]
 	ldr r7, _08079934 @ =0x0879CDF4
-	ldr r6, _08079938 @ =0x03000011
+	ldr r6, _08079938 @ =gLanguage
 	ldrb r4, [r1, #0x12]
 	cmp r0, r4
 	beq _0807991C
@@ -7438,7 +7438,7 @@ _0807991C:
 _0807992C: .4byte gEventCounter
 _08079930: .4byte sObtainItemEvents
 _08079934: .4byte 0x0879CDF4
-_08079938: .4byte 0x03000011
+_08079938: .4byte gLanguage
 _0807993C: .4byte sAbilityRamValues
 _08079940:
 	ldr r1, _08079970 @ =gEquipment
@@ -7921,7 +7921,7 @@ _08079CC0:
 	adds r3, #1
 _08079CE4:
 	ldr r1, _08079D28 @ =0x0879C0F0
-	ldr r0, _08079D2C @ =0x03000011
+	ldr r0, _08079D2C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -7957,7 +7957,7 @@ _08079D1A:
 	.align 2, 0
 _08079D24: .4byte gPreviousNavigationConversation
 _08079D28: .4byte 0x0879C0F0
-_08079D2C: .4byte 0x03000011
+_08079D2C: .4byte gLanguage
 _08079D30: .4byte _08079D34
 _08079D34: @ jump table
 	.4byte _08079F2C @ case 0
@@ -8184,10 +8184,10 @@ _08079EC4:
 	beq _08079F9A
 	movs r0, #0x2a
 	movs r1, #2
-	bl PlayMusic
+	bl MusicPlay
 	movs r0, #0
 	movs r1, #0xb
-	bl SetSubEventAndUpdateMusic
+	bl SubEventUpdate
 	b _08079F9A
 	.align 2, 0
 _08079EE8: .4byte 0x0000B003
@@ -8500,7 +8500,7 @@ _0807A124:
 	mov r8, r1
 _0807A13A:
 	ldr r1, _0807A174 @ =0x0879CDF4
-	ldr r0, _0807A178 @ =0x03000011
+	ldr r0, _0807A178 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -8529,7 +8529,7 @@ _0807A13A:
 	b _0807A1D2
 	.align 2, 0
 _0807A174: .4byte 0x0879CDF4
-_0807A178: .4byte 0x03000011
+_0807A178: .4byte gLanguage
 _0807A17C: .4byte 0x06007000
 _0807A180:
 	movs r2, #0xff
@@ -8920,7 +8920,7 @@ _0807A468:
 	adds r3, #1
 _0807A4A6:
 	ldr r1, _0807A4DC @ =0x0879C0F0
-	ldr r0, _0807A4E0 @ =0x03000011
+	ldr r0, _0807A4E0 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -8946,7 +8946,7 @@ _0807A4A6:
 _0807A4D4: .4byte gNonGameplayRam
 _0807A4D8: .4byte 0x00000221
 _0807A4DC: .4byte 0x0879C0F0
-_0807A4E0: .4byte 0x03000011
+_0807A4E0: .4byte gLanguage
 _0807A4E4: .4byte 0x0000E201
 _0807A4E8:
 	ldr r0, _0807A500 @ =0x0000E202
@@ -9204,7 +9204,7 @@ _0807A6C0:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0807A6E6
-	bl UpdateSubEventAfterNavigationConversation
+	bl SubEventUpdateForNavCounversation
 _0807A6E6:
 	ldr r0, _0807A6F4 @ =gNonGameplayRam
 	ldrb r1, [r0, #7]
@@ -11536,7 +11536,7 @@ ProcessPauseScreenText: @ 0x0807B8D4
 	bl BitFill
 	movs r6, #0
 	ldr r2, _0807B940 @ =0x0879C10C
-	ldr r0, _0807B944 @ =0x03000011
+	ldr r0, _0807B944 @ =gLanguage
 	movs r1, #0
 	ldrsb r1, [r0, r1]
 	lsls r1, r1, #2
@@ -11574,7 +11574,7 @@ _0807B926:
 	.align 2, 0
 _0807B93C: .4byte 0x0200C000
 _0807B940: .4byte 0x0879C10C
-_0807B944: .4byte 0x03000011
+_0807B944: .4byte gLanguage
 _0807B948: .4byte gEventCounter
 _0807B94C:
 	movs r0, #0x83
@@ -11705,7 +11705,7 @@ _0807BA30:
 	mov sl, r1
 _0807BA3C:
 	ldr r1, _0807BA8C @ =0x0879CDF4
-	ldr r0, _0807BA90 @ =0x03000011
+	ldr r0, _0807BA90 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -11744,7 +11744,7 @@ _0807BA80: .4byte 0x0200D000
 _0807BA84: .4byte 0x0200E000
 _0807BA88: .4byte 0x0200F000
 _0807BA8C: .4byte 0x0879CDF4
-_0807BA90: .4byte 0x03000011
+_0807BA90: .4byte gLanguage
 _0807BA94:
 	movs r0, #0x83
 	lsls r0, r0, #8
@@ -11830,7 +11830,7 @@ _0807BB24:
 	ldr r2, _0807BB64 @ =0x0200F000
 	mov sl, r2
 	ldr r1, _0807BB68 @ =0x0879CDF4
-	ldr r0, _0807BB6C @ =0x03000011
+	ldr r0, _0807BB6C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -11858,7 +11858,7 @@ _0807BB24:
 _0807BB60: .4byte 0x000001BF
 _0807BB64: .4byte 0x0200F000
 _0807BB68: .4byte 0x0879CDF4
-_0807BB6C: .4byte 0x03000011
+_0807BB6C: .4byte gLanguage
 _0807BB70:
 	ldrh r1, [r6]
 	movs r0, #0x80
@@ -18636,7 +18636,7 @@ _0807F136:
 	ldr r1, _0807F150 @ =gDisableSoftReset
 	movs r0, #1
 	strb r0, [r1]
-	ldr r0, _0807F154 @ =0x03000014
+	ldr r0, _0807F154 @ =gGameCompletion
 	movs r2, #1
 	strb r2, [r0, #1]
 	ldrb r1, [r4]
@@ -18648,7 +18648,7 @@ _0807F136:
 	b _0807F222
 	.align 2, 0
 _0807F150: .4byte gDisableSoftReset
-_0807F154: .4byte 0x03000014
+_0807F154: .4byte gGameCompletion
 _0807F158:
 	ldr r0, _0807F174 @ =0x0858225C
 	adds r0, r2, r0
@@ -18684,7 +18684,7 @@ _0807F194:
 	ldr r1, _0807F1D8 @ =gDisableSoftReset
 	movs r0, #1
 	strb r0, [r1]
-	ldr r3, _0807F1DC @ =0x03000014
+	ldr r3, _0807F1DC @ =gGameCompletion
 	movs r2, #1
 	strb r2, [r3, #1]
 	ldrb r1, [r4]
@@ -18715,7 +18715,7 @@ _0807F194:
 	b _0807F222
 	.align 2, 0
 _0807F1D8: .4byte gDisableSoftReset
-_0807F1DC: .4byte 0x03000014
+_0807F1DC: .4byte gGameCompletion
 _0807F1E0: .4byte 0x0858225C
 _0807F1E4:
 	bl Sram_WriteHeaderAndGameInfo
@@ -18771,7 +18771,7 @@ Sram_WriteHeaderAndGameInfo: @ 0x0807F230
 	str r0, [r6, #0x10]
 	subs r0, #1
 	str r0, [r6, #0x14]
-	ldr r1, _0807F2AC @ =0x03000014
+	ldr r1, _0807F2AC @ =gGameCompletion
 	ldrb r0, [r1, #1]
 	strb r0, [r6, #0x19]
 	ldrb r0, [r1]
@@ -18816,7 +18816,7 @@ _0807F26E:
 _0807F2A0: .4byte 0x0858225C
 _0807F2A4: .4byte 0x03000B8D
 _0807F2A8: .4byte 0x08582200
-_0807F2AC: .4byte 0x03000014
+_0807F2AC: .4byte gGameCompletion
 _0807F2B0: .4byte 0x085821F8
 
 	thumb_func_start Sram_ProcessEndingSave
@@ -18842,12 +18842,12 @@ _0807F2D4:
 	bl ReadMostRecentFileFromGamePak
 	b _0807F330
 _0807F2DA:
-	ldr r0, _0807F2E4 @ =0x03000014
+	ldr r0, _0807F2E4 @ =gGameCompletion
 	strb r1, [r0]
 	bl Sram_CopyGameCompletion
 	b _0807F330
 	.align 2, 0
-_0807F2E4: .4byte 0x03000014
+_0807F2E4: .4byte gGameCompletion
 _0807F2E8:
 	bl WriteMostRecentFileToGamePak
 	ldr r2, _0807F304 @ =0x03000B94
@@ -18857,14 +18857,14 @@ _0807F2E8:
 	adds r0, r0, r1
 	lsls r0, r0, #2
 	adds r0, r0, r2
-	ldr r1, _0807F30C @ =0x03000014
+	ldr r1, _0807F30C @ =gGameCompletion
 	ldrb r1, [r1]
 	strb r1, [r0, #0x10]
 	b _0807F330
 	.align 2, 0
 _0807F304: .4byte 0x03000B94
 _0807F308: .4byte 0x03000B8D
-_0807F30C: .4byte 0x03000014
+_0807F30C: .4byte gGameCompletion
 _0807F310:
 	ldr r1, _0807F338 @ =0x0858225C
 	ldr r0, _0807F33C @ =0x03000B8D
@@ -18903,7 +18903,7 @@ Sram_CopyGameCompletion: @ 0x0807F344
 	str r0, [r3, #0x10]
 	subs r0, #1
 	str r0, [r3, #0x14]
-	ldr r0, _0807F3A8 @ =0x03000014
+	ldr r0, _0807F3A8 @ =gGameCompletion
 	ldrb r0, [r0]
 	strb r0, [r3, #0x18]
 	ldrb r0, [r1]
@@ -18941,7 +18941,7 @@ _0807F36C:
 	.align 2, 0
 _0807F3A0: .4byte 0x0858225C
 _0807F3A4: .4byte 0x03000B8D
-_0807F3A8: .4byte 0x03000014
+_0807F3A8: .4byte gGameCompletion
 
 	thumb_func_start Sram_QuickSave
 Sram_QuickSave: @ 0x0807F3AC
@@ -19073,7 +19073,7 @@ SramWrite_ToEwram: @ 0x0807F450
 	str r0, [r4, #0x10]
 	subs r0, #1
 	str r0, [r4, #0x14]
-	ldr r0, _0807F718 @ =0x03000014
+	ldr r0, _0807F718 @ =gGameCompletion
 	ldr r0, [r0]
 	str r0, [r4, #0x18]
 	ldr r0, _0807F71C @ =0x03000B90
@@ -19374,7 +19374,7 @@ _0807F708: .4byte 0xFFFF00FF
 _0807F70C: .4byte 0x0858225C
 _0807F710: .4byte 0x03000B8D
 _0807F714: .4byte 0x08582200
-_0807F718: .4byte 0x03000014
+_0807F718: .4byte gGameCompletion
 _0807F71C: .4byte 0x03000B90
 _0807F720: .4byte gCurrentArea
 _0807F724: .4byte gCurrentRoom
@@ -19431,7 +19431,7 @@ SramRead_FromEwram: @ 0x0807F7C0
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r2, [r0]
-	ldr r1, _0807FA00 @ =0x03000014
+	ldr r1, _0807FA00 @ =gGameCompletion
 	ldr r0, [r2, #0x18]
 	str r0, [r1]
 	ldr r1, _0807FA04 @ =0x03000B90
@@ -19708,7 +19708,7 @@ _0807F920:
 	.align 2, 0
 _0807F9F8: .4byte 0x0858225C
 _0807F9FC: .4byte 0x03000B8D
-_0807FA00: .4byte 0x03000014
+_0807FA00: .4byte gGameCompletion
 _0807FA04: .4byte 0x03000B90
 _0807FA08: .4byte gCurrentArea
 _0807FA0C: .4byte gCurrentRoom
@@ -20691,7 +20691,7 @@ SramWrite_Language: @ 0x080801D4
 	strh r1, [r5, #2]
 	ldr r0, _08080258 @ =0x0000FFFF
 	strh r0, [r5, #4]
-	ldr r0, _0808025C @ =0x03000011
+	ldr r0, _0808025C @ =gLanguage
 	ldrb r0, [r0]
 	strb r0, [r5, #0x16]
 	ldr r2, _08080260 @ =0x085822A8
@@ -20746,7 +20746,7 @@ _0808020E:
 	.align 2, 0
 _08080254: .4byte 0x0203F040
 _08080258: .4byte 0x0000FFFF
-_0808025C: .4byte 0x03000011
+_0808025C: .4byte gLanguage
 _08080260: .4byte 0x085822A8
 
 	thumb_func_start SramRead_Language
@@ -20906,11 +20906,11 @@ _08080384:
 _08080390:
 	cmp r4, #0
 	bne _080803C8
-	ldr r1, _0808039C @ =0x03000011
+	ldr r1, _0808039C @ =gLanguage
 	ldrb r0, [r5, #0x16]
 	b _080803CC
 	.align 2, 0
-_0808039C: .4byte 0x03000011
+_0808039C: .4byte gLanguage
 _080803A0:
 	ldr r1, _080803BC @ =0x040000D4
 	ldr r2, _080803C0 @ =0x08582280
@@ -20929,7 +20929,7 @@ _080803BC: .4byte 0x040000D4
 _080803C0: .4byte 0x08582280
 _080803C4: .4byte 0x80000020
 _080803C8:
-	ldr r1, _080803E0 @ =0x03000011
+	ldr r1, _080803E0 @ =gLanguage
 	movs r0, #0
 _080803CC:
 	strb r0, [r1]
@@ -20942,7 +20942,7 @@ _080803CC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080803E0: .4byte 0x03000011
+_080803E0: .4byte gLanguage
 
 	thumb_func_start Sram_InitSaveFile
 Sram_InitSaveFile: @ 0x080803E4
@@ -21153,7 +21153,7 @@ _08080584:
 	strb r1, [r0]
 	ldr r0, _08080638 @ =gUnk_03000be3
 	strb r1, [r0]
-	ldr r0, _0808063C @ =0x03000018
+	ldr r0, _0808063C @ =gMonochromeBgFading
 	strb r1, [r0]
 	ldr r0, _08080640 @ =gDisableSoftReset
 	strb r1, [r0]
@@ -21199,7 +21199,7 @@ _0808062C: .4byte 0x0300004C
 _08080630: .4byte 0x0300004D
 _08080634: .4byte gIsLoadingFile
 _08080638: .4byte gUnk_03000be3
-_0808063C: .4byte 0x03000018
+_0808063C: .4byte gMonochromeBgFading
 _08080640: .4byte gDisableSoftReset
 _08080644: .4byte gMaxInGameTimeFlag
 _08080648: .4byte 0x03000022
@@ -21238,7 +21238,7 @@ Sram_CheckLoadSaveFile: @ 0x08080664
 	cmp r5, #0
 	bne _080806DC
 	bl Sram_InitSaveFile
-	ldr r2, _080806D8 @ =0x03000014
+	ldr r2, _080806D8 @ =gGameCompletion
 	ldrb r1, [r4]
 	lsls r0, r1, #2
 	adds r0, r0, r1
@@ -21263,14 +21263,14 @@ _080806C8: .4byte 0x085822E4
 _080806CC: .4byte gIsLoadingFile
 _080806D0: .4byte 0x03000B94
 _080806D4: .4byte 0x03000B8D
-_080806D8: .4byte 0x03000014
+_080806D8: .4byte gGameCompletion
 _080806DC:
 	bl SramLoad_CurrentSave
 _080806E0:
 	ldr r0, _08080718 @ =gUnk_03000be3
 	movs r1, #0
 	strb r1, [r0]
-	ldr r0, _0808071C @ =0x03000018
+	ldr r0, _0808071C @ =gMonochromeBgFading
 	strb r1, [r0]
 	ldr r0, _08080720 @ =gDisableSoftReset
 	strb r1, [r0]
@@ -21296,7 +21296,7 @@ _080806E0:
 	bx r0
 	.align 2, 0
 _08080718: .4byte gUnk_03000be3
-_0808071C: .4byte 0x03000018
+_0808071C: .4byte gMonochromeBgFading
 _08080720: .4byte gDisableSoftReset
 _08080724: .4byte gMaxInGameTimeFlag
 _08080728: .4byte 0x03000022
@@ -22107,7 +22107,7 @@ EraseSramMenuInit: @ 0x08080CF8
 	ldr r0, _08080E7C @ =gNextOamSlot
 	strb r5, [r0]
 	bl ResetFreeOam
-	ldr r1, _08080E80 @ =0x03000011
+	ldr r1, _08080E80 @ =gLanguage
 	ldrb r0, [r1]
 	strb r0, [r4, #2]
 	subs r0, #2
@@ -22240,7 +22240,7 @@ _08080E70: .4byte 0x040000D4
 _08080E74: .4byte gNonGameplayRam
 _08080E78: .4byte 0x85000150
 _08080E7C: .4byte gNextOamSlot
-_08080E80: .4byte 0x03000011
+_08080E80: .4byte gLanguage
 _08080E84: .4byte 0x04000006
 _08080E88: .4byte 0x085823D0
 _08080E8C: .4byte 0x085822F0

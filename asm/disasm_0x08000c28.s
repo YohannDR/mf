@@ -1752,7 +1752,7 @@ _08001914:
 	bne _08001938
 	ldrh r0, [r5, #0x20]
 	ldrb r1, [r5, #0x1f]
-	bl PlayMusic
+	bl MusicPlay
 	strb r4, [r5, #0x1c]
 	movs r0, #0
 	strh r7, [r5, #0x20]
@@ -5625,8 +5625,8 @@ _0800352C: .4byte gMusicInfo
 _08003530: .4byte sMusicTrackDataRom
 _08003534: .4byte sSoundDataEntries
 
-	thumb_func_start PlayMusic
-PlayMusic: @ 0x08003538
+	thumb_func_start MusicPlay
+MusicPlay: @ 0x08003538
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
@@ -5901,7 +5901,7 @@ unk_372c: @ 0x0800372C
 	bne _08003748
 	adds r0, r1, #0
 	adds r1, r2, #0
-	bl PlayMusic
+	bl MusicPlay
 	b _0800376E
 _08003748:
 	ldr r0, _08003758 @ =gMusicInfo
@@ -6092,8 +6092,8 @@ _0800389C:
 	.align 2, 0
 _080038A4: .4byte gMusicInfo
 
-	thumb_func_start unk_38a8
-unk_38a8: @ 0x080038A8
+	thumb_func_start MusicPlay_38a8
+MusicPlay_38a8: @ 0x080038A8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -6521,7 +6521,7 @@ unk_3bd4: @ 0x08003BD4
 	bne _08003C10
 	adds r0, r2, #0
 	movs r1, #1
-	bl PlayMusic
+	bl MusicPlay
 	b _08003C10
 _08003BF2:
 	cmp r1, #0

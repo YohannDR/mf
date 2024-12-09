@@ -3185,7 +3185,7 @@ _08055606:
 	strb r1, [r0]
 	movs r0, #0x32
 	movs r1, #7
-	bl PlayMusic
+	bl MusicPlay
 _08055640:
 	pop {r4}
 	pop {r0}

@@ -311,7 +311,7 @@ void NightmarePhase1Init(void) {
     gCurrentSprite.status &= ~(SS_IGNORE_PROJECTILES | SS_NOT_DRAWN);
     gCurrentSprite.samusCollision = SSC_RIDLEY_TAIL_SERRIS_SEGMENT;
     gCurrentSprite.pose = 0x3a;
-    PlayMusic(MUSIC_NIGHTMARE_BATTLE, 7);
+    MusicPlay(MUSIC_NIGHTMARE_BATTLE, 7);
 }
 
 void NightmarePhase1(void) {
@@ -1532,7 +1532,7 @@ void NightmarePartGenerator(void) {
         SoundPlayNotAlreadyPlaying(0x2a7);
     else if (SPRITE_HAS_ISFT(gCurrentSprite) == 5)
         SoundPlayNotAlreadyPlaying(0x2aa);
-    switch(gCurrentSprite.pose) {
+    switch (gCurrentSprite.pose) {
         case 1: {
             gCurrentSprite.status ^= SS_NOT_DRAWN;
             if (gSpriteData[primaryRamSlot].pose == 0x3a) {

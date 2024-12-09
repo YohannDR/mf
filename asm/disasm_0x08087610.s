@@ -164,7 +164,7 @@ _0808772C: @ jump table
 _08087760:
 	bl StopAllMusicsAndSounds
 	bl NewFileIntroInit
-	ldr r0, _08087778 @ =0x03000014
+	ldr r0, _08087778 @ =gGameCompletion
 	ldrb r0, [r0, #1]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -173,7 +173,7 @@ _08087760:
 	movs r0, #1
 	b _08087918
 	.align 2, 0
-_08087778: .4byte 0x03000014
+_08087778: .4byte gGameCompletion
 _0808777C:
 	ldr r1, _08087784 @ =gSubGameMode1
 	movs r0, #1
@@ -848,7 +848,7 @@ _08087D1C:
 	strh r1, [r3, #0xe]
 	strh r1, [r3, #0xc]
 	ldr r1, _08087D54 @ =0x0879C5A4
-	ldr r0, _08087D58 @ =0x03000011
+	ldr r0, _08087D58 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -866,7 +866,7 @@ _08087D1C:
 	.align 2, 0
 _08087D50: .4byte 0x00000212
 _08087D54: .4byte 0x0879C5A4
-_08087D58: .4byte 0x03000011
+_08087D58: .4byte gLanguage
 _08087D5C:
 	bl SpecialCutsceneGetRandomNumber
 	lsls r0, r0, #0x18
@@ -1310,7 +1310,7 @@ _08088116:
 	strh r4, [r2, #0xe]
 	strh r4, [r2, #0xc]
 	ldr r1, _08088144 @ =0x0879C5A4
-	ldr r0, _08088148 @ =0x03000011
+	ldr r0, _08088148 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -1325,7 +1325,7 @@ _08088116:
 	.align 2, 0
 _08088140: .4byte 0x00000212
 _08088144: .4byte 0x0879C5A4
-_08088148: .4byte 0x03000011
+_08088148: .4byte gLanguage
 _0808814C:
 	strh r4, [r3]
 	movs r3, #0x86
@@ -4668,7 +4668,7 @@ _08089B36:
 	str r0, [r1]
 	movs r0, #4
 	movs r1, #0xd
-	bl PlayMusic
+	bl MusicPlay
 	movs r1, #0x80
 	lsls r1, r1, #0x13
 	movs r2, #0xe0
@@ -4800,7 +4800,7 @@ _08089D90:
 	strh r0, [r4, #0xe]
 	strh r0, [r4, #0xc]
 	ldr r1, _08089DBC @ =0x0879C5A4
-	ldr r0, _08089DC0 @ =0x03000011
+	ldr r0, _08089DC0 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -4813,7 +4813,7 @@ _08089D90:
 	.align 2, 0
 _08089DB8: .4byte 0x00000212
 _08089DBC: .4byte 0x0879C5A4
-_08089DC0: .4byte 0x03000011
+_08089DC0: .4byte gLanguage
 _08089DC4:
 	cmp r0, #0x3a
 	bne _08089DE0
@@ -6395,7 +6395,7 @@ _0808AA68:
 	strh r1, [r4, #0xe]
 	strh r1, [r4, #0xc]
 	ldr r1, _0808AA9C @ =0x0879C5A4
-	ldr r0, _0808AAA0 @ =0x03000011
+	ldr r0, _0808AAA0 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -6412,7 +6412,7 @@ _0808AA68:
 	.align 2, 0
 _0808AA98: .4byte 0x00000212
 _0808AA9C: .4byte 0x0879C5A4
-_0808AAA0: .4byte 0x03000011
+_0808AAA0: .4byte gLanguage
 _0808AAA4:
 	movs r2, #0x84
 	lsls r2, r2, #2
@@ -6477,7 +6477,7 @@ _0808AB00:
 	strh r1, [r4, #0xe]
 	strh r1, [r4, #0xc]
 	ldr r1, _0808AB3C @ =0x0879C5A4
-	ldr r0, _0808AB40 @ =0x03000011
+	ldr r0, _0808AB40 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -6493,7 +6493,7 @@ _0808AB00:
 	b _0808AB74
 	.align 2, 0
 _0808AB3C: .4byte 0x0879C5A4
-_0808AB40: .4byte 0x03000011
+_0808AB40: .4byte gLanguage
 _0808AB44:
 	adds r2, r4, #0
 	movs r3, #0x84
@@ -10957,7 +10957,7 @@ _0808CE1E:
 	strh r1, [r3, #0xe]
 	strh r1, [r3, #0xc]
 	ldr r1, _0808CE50 @ =0x0879C5A4
-	ldr r0, _0808CE54 @ =0x03000011
+	ldr r0, _0808CE54 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -10974,7 +10974,7 @@ _0808CE1E:
 	.align 2, 0
 _0808CE4C: .4byte 0x00000212
 _0808CE50: .4byte 0x0879C5A4
-_0808CE54: .4byte 0x03000011
+_0808CE54: .4byte gLanguage
 _0808CE58:
 	movs r2, #0x84
 	lsls r2, r2, #2
@@ -13440,7 +13440,7 @@ _0808E1EE:
 	strh r1, [r5, #0xe]
 	strh r1, [r5, #0xc]
 	ldr r1, _0808E220 @ =0x0879C5A4
-	ldr r0, _0808E224 @ =0x03000011
+	ldr r0, _0808E224 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -13456,7 +13456,7 @@ _0808E1EE:
 	.align 2, 0
 _0808E21C: .4byte 0x00000212
 _0808E220: .4byte 0x0879C5A4
-_0808E224: .4byte 0x03000011
+_0808E224: .4byte gLanguage
 _0808E228:
 	movs r1, #0x84
 	lsls r1, r1, #2
@@ -13699,7 +13699,7 @@ _0808E3EA:
 	strh r1, [r5, #0xe]
 	strh r1, [r5, #0xc]
 	ldr r1, _0808E41C @ =0x0879C5A4
-	ldr r0, _0808E420 @ =0x03000011
+	ldr r0, _0808E420 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -13715,7 +13715,7 @@ _0808E3EA:
 	.align 2, 0
 _0808E418: .4byte 0x00000212
 _0808E41C: .4byte 0x0879C5A4
-_0808E420: .4byte 0x03000011
+_0808E420: .4byte gLanguage
 _0808E424:
 	movs r0, #0x84
 	lsls r0, r0, #2
@@ -13772,7 +13772,7 @@ _0808E464:
 	strh r2, [r5, #0xe]
 	strh r2, [r5, #0xc]
 	ldr r1, _0808E4B4 @ =0x0879C5A4
-	ldr r0, _0808E4B8 @ =0x03000011
+	ldr r0, _0808E4B8 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -13792,7 +13792,7 @@ _0808E4A8: .4byte 0x0600D000
 _0808E4AC: .4byte 0x85000400
 _0808E4B0: .4byte 0x00000212
 _0808E4B4: .4byte 0x0879C5A4
-_0808E4B8: .4byte 0x03000011
+_0808E4B8: .4byte gLanguage
 _0808E4BC:
 	movs r3, #0x84
 	lsls r3, r3, #2
@@ -13939,7 +13939,7 @@ _0808E5B8:
 	strh r2, [r5, #0xe]
 	strh r2, [r5, #0xc]
 	ldr r1, _0808E614 @ =0x0879C5A4
-	ldr r0, _0808E618 @ =0x03000011
+	ldr r0, _0808E618 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -13959,7 +13959,7 @@ _0808E608: .4byte 0x0600D000
 _0808E60C: .4byte 0x85000400
 _0808E610: .4byte 0x00000212
 _0808E614: .4byte 0x0879C5A4
-_0808E618: .4byte 0x03000011
+_0808E618: .4byte gLanguage
 _0808E61C:
 	movs r3, #0x84
 	lsls r3, r3, #2
@@ -15324,7 +15324,7 @@ _0808F10C:
 	strh r1, [r3, #0xe]
 	strh r1, [r3, #0xc]
 	ldr r1, _0808F154 @ =0x0879C5A4
-	ldr r0, _0808F158 @ =0x03000011
+	ldr r0, _0808F158 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -15342,7 +15342,7 @@ _0808F10C:
 _0808F14C: .4byte 0x04000050
 _0808F150: .4byte 0x00000212
 _0808F154: .4byte 0x0879C5A4
-_0808F158: .4byte 0x03000011
+_0808F158: .4byte gLanguage
 _0808F15C:
 	movs r0, #0x84
 	lsls r0, r0, #2
@@ -16536,7 +16536,7 @@ _0808FB3E:
 	adds r0, r4, r5
 	strb r1, [r0]
 	ldr r1, _0808FB84 @ =0x0879C5A4
-	ldr r0, _0808FB88 @ =0x03000011
+	ldr r0, _0808FB88 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -16559,7 +16559,7 @@ _0808FB3E:
 	.align 2, 0
 _0808FB80: .4byte 0x00000212
 _0808FB84: .4byte 0x0879C5A4
-_0808FB88: .4byte 0x03000011
+_0808FB88: .4byte gLanguage
 _0808FB8C:
 	ldr r2, _0808FBB0 @ =gNonGameplayRam
 	movs r3, #0x84
@@ -17850,7 +17850,7 @@ _0809053C:
 	strh r0, [r2, #0xe]
 	strh r0, [r2, #0xc]
 	ldr r1, _08090568 @ =0x0879C5A4
-	ldr r0, _0809056C @ =0x03000011
+	ldr r0, _0809056C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -17864,7 +17864,7 @@ _0809053C:
 _08090560: .4byte gNonGameplayRam
 _08090564: .4byte 0x00000212
 _08090568: .4byte 0x0879C5A4
-_0809056C: .4byte 0x03000011
+_0809056C: .4byte gLanguage
 _08090570:
 	cmp r1, #2
 	bne _0809058E
@@ -19154,7 +19154,7 @@ _08090FB4:
 	strb r0, [r1]
 	movs r0, #0x1e
 	movs r1, #0xd
-	bl PlayMusic
+	bl MusicPlay
 	b _0809103C
 _08090FD0:
 	ldr r0, _08090FEC @ =0x0300122E
@@ -22537,7 +22537,7 @@ _08092AC4:
 	bne _08092AD8
 	movs r0, #0x49
 	movs r1, #0xf
-	bl PlayMusic
+	bl MusicPlay
 _08092AD8:
 	bl SpecialCutsceneGetRandomNumber
 	lsls r0, r0, #0x18
@@ -24622,7 +24622,7 @@ _08093AA4:
 	bl CallbackSetVBlank
 	movs r0, #0x60
 	movs r1, #0xf
-	bl PlayMusic
+	bl MusicPlay
 	add sp, #8
 	pop {r4, r5, r6}
 	pop {r0}
@@ -29655,7 +29655,7 @@ _080964DC: .4byte gWrittenToBldy
 _080964E0:
 	movs r0, #0x56
 	movs r1, #0xe
-	bl PlayMusic
+	bl MusicPlay
 	movs r2, #0x85
 	lsls r2, r2, #2
 	adds r1, r5, r2
@@ -29689,7 +29689,7 @@ _08096500:
 	adds r0, r5, r1
 	strb r4, [r0]
 	ldr r1, _08096548 @ =0x0879C5A4
-	ldr r0, _0809654C @ =0x03000011
+	ldr r0, _0809654C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -29706,7 +29706,7 @@ _08096500:
 	.align 2, 0
 _08096544: .4byte 0x00000212
 _08096548: .4byte 0x0879C5A4
-_0809654C: .4byte 0x03000011
+_0809654C: .4byte gLanguage
 _08096550:
 	ldr r0, [r5]
 	ldrh r1, [r0]
@@ -30143,7 +30143,7 @@ _080968A0:
 	bne _080968B6
 	movs r0, #0x53
 	movs r1, #0xe
-	bl PlayMusic
+	bl MusicPlay
 	b _080968D8
 _080968B6:
 	movs r0, #0xa0
@@ -30632,7 +30632,7 @@ _08096C2A:
 	strh r0, [r2, #0xe]
 	strh r0, [r2, #0xc]
 	ldr r1, _08096C5C @ =0x0879C3AC
-	ldr r0, _08096C60 @ =0x03000011
+	ldr r0, _08096C60 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -30649,7 +30649,7 @@ _08096C2A:
 _08096C54: .4byte gNonGameplayRam
 _08096C58: .4byte 0x00000212
 _08096C5C: .4byte 0x0879C3AC
-_08096C60: .4byte 0x03000011
+_08096C60: .4byte gLanguage
 _08096C64:
 	cmp r0, #2
 	bne _08096C82
@@ -36969,7 +36969,7 @@ _08099E16:
 	subs r0, #1
 	strh r0, [r2, #0xa]
 	ldr r1, _08099E58 @ =0x0879C5A4
-	ldr r0, _08099E5C @ =0x03000011
+	ldr r0, _08099E5C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -36994,7 +36994,7 @@ _08099E16:
 _08099E50: .4byte gNonGameplayRam
 _08099E54: .4byte gCurrentCutscene
 _08099E58: .4byte 0x0879C5A4
-_08099E5C: .4byte 0x03000011
+_08099E5C: .4byte gLanguage
 _08099E60: .4byte CutsceneElevatorMonologueVblank
 
 	thumb_func_start CutsceneElevatorMonologueProcess
@@ -37746,7 +37746,7 @@ CutsceneInternalMonologueInit: @ 0x0809A3AC
 	subs r0, #1
 	strh r0, [r2, #0xa]
 	ldr r1, _0809A4DC @ =0x0879C5A4
-	ldr r0, _0809A4E0 @ =0x03000011
+	ldr r0, _0809A4E0 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -37790,7 +37790,7 @@ _0809A4D0: .4byte gWrittenToBldy
 _0809A4D4: .4byte gNonGameplayRam
 _0809A4D8: .4byte gCurrentCutscene
 _0809A4DC: .4byte 0x0879C5A4
-_0809A4E0: .4byte 0x03000011
+_0809A4E0: .4byte gLanguage
 _0809A4E4: .4byte CutsceneInternalMonologueVblank
 
 	thumb_func_start CutsceneInternalMonologueProcess
@@ -38139,7 +38139,7 @@ CutsceneFederationMonologueInit: @ 0x0809A6CC
 	subs r0, #1
 	strh r0, [r2, #0xa]
 	ldr r1, _0809A83C @ =0x0879C5A4
-	ldr r0, _0809A840 @ =0x03000011
+	ldr r0, _0809A840 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -38189,7 +38189,7 @@ _0809A830: .4byte gWrittenToBldy
 _0809A834: .4byte gNonGameplayRam
 _0809A838: .4byte gCurrentCutscene
 _0809A83C: .4byte 0x0879C5A4
-_0809A840: .4byte 0x03000011
+_0809A840: .4byte gLanguage
 _0809A844: .4byte CutsceneFederationMonologueVblank
 
 	thumb_func_start CutsceneFederationMonologueProcess

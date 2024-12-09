@@ -2831,7 +2831,7 @@ void ProjectileStartMissileTumble(u8 spriteSlot, u8 projectileSlot)
 
     gProjectileData[projectileSlot].animationDurationCounter = 0;
     gProjectileData[projectileSlot].currentAnimationFrame = 0;
-    gProjectileData[projectileSlot].pOam = sOam_58ea20;
+    gProjectileData[projectileSlot].pOam = sMissileOam_Tumbling;
 
     if (gProjectileData[projectileSlot].xPosition > gSpriteData[spriteSlot].xPosition)
         gProjectileData[projectileSlot].status |= PROJ_STATUS_X_FLIP;
@@ -3224,16 +3224,16 @@ void ProjectileChargedNormalBeamInit(void)
         case ACD_DIAGONAL_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_DIAGONAL_UP:
-            gCurrentProjectile.pOam = sOam_58d80c;
+            gCurrentProjectile.pOam = sChargedNormalBeamOam_Diagonal;
             break;
         case ACD_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_UP:
-            gCurrentProjectile.pOam = sOam_58d824;
+            gCurrentProjectile.pOam = sChargedNormalBeamOam_Vertical;
             break;
         case ACD_FORWARD:
         default:
-            gCurrentProjectile.pOam = sOam_58d7f4;
+            gCurrentProjectile.pOam = sChargedNormalBeamOam_Horizontal;
             break;
     }
 }
@@ -3280,16 +3280,16 @@ void ProjectileNormalBeamInit(void)
         case ACD_DIAGONAL_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_DIAGONAL_UP:
-            gCurrentProjectile.pOam = sOam_58d7c4;
+            gCurrentProjectile.pOam = sNormalBeamOam_Diagonal;
             break;
         case ACD_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_UP:
-            gCurrentProjectile.pOam = sOam_58d7dc;
+            gCurrentProjectile.pOam = sNormalBeamOam_Vertical;
             break;
         case ACD_FORWARD:
         default:
-            gCurrentProjectile.pOam = sOam_58d7ac;
+            gCurrentProjectile.pOam = sNormalBeamOam_Horizontal;
             break;
     }
 }
@@ -3336,30 +3336,30 @@ void ProjectileMissileInit(u8 type)
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_DIAGONAL_UP:
             if (type == 0)
-                gCurrentProjectile.pOam = sOam_58e7c0;
+                gCurrentProjectile.pOam = sNormalSuperMissileOam_Diagonal;
             else if (type == 1)
-                gCurrentProjectile.pOam = sOam_58e858;
+                gCurrentProjectile.pOam = sIceMissileOam_Diagonal;
             else
-                gCurrentProjectile.pOam = sOam_58e998;
+                gCurrentProjectile.pOam = sDiffusionMissileOam_Diagonal;
             break;
         case ACD_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_UP:
             if (type == 0)
-                gCurrentProjectile.pOam = sOam_58e7d8;
+                gCurrentProjectile.pOam = sNormalSuperMissileOam_Vertical;
             else if (type == 1)
-                gCurrentProjectile.pOam = sOam_58e870;
+                gCurrentProjectile.pOam = sIceMissileOam_Vertical;
             else
-                gCurrentProjectile.pOam = sOam_58e9b0;
+                gCurrentProjectile.pOam = sDiffusionMissileOam_Vertical;
             break;
         case ACD_FORWARD:
         default:
             if (type == 0)
-                gCurrentProjectile.pOam = sOam_58e7a8;
+                gCurrentProjectile.pOam = sNormalSuperMissileOam_Horizontal;
             else if (type == 1)
-                gCurrentProjectile.pOam = sOam_58e840;
+                gCurrentProjectile.pOam = sIceMissileOam_Horizontal;
             else
-                gCurrentProjectile.pOam = sOam_58e980;
+                gCurrentProjectile.pOam = sDiffusionMissileOam_Horizontal;
             break;
     }
 }
@@ -3673,7 +3673,7 @@ void ProjectileCheckSamusBombBounce(void)
 void ProjectileBombInit(void)
 {
     SoundPlay(0xdd);
-    gCurrentProjectile.pOam = sOam_58eae8;
+    gCurrentProjectile.pOam = sBombOam_Slow;
     gCurrentProjectile.animationDurationCounter = 0;
     gCurrentProjectile.currentAnimationFrame = 0;
     gCurrentProjectile.drawDistanceY = 8;
@@ -3696,7 +3696,7 @@ void ProjectileBombSubroutine(void)
             break;
         case 1:
             if (--gCurrentProjectile.timer == 0) {
-                gCurrentProjectile.pOam = sOam_58eb10;
+                gCurrentProjectile.pOam = sBombOam_Fast;
                 gCurrentProjectile.animationDurationCounter = 0;
                 gCurrentProjectile.currentAnimationFrame = 0;
                 gCurrentProjectile.timer = 30;
@@ -3758,7 +3758,7 @@ void ProjectilePowerBombInit(void)
     if (gEquipment.currentPowerBombs > 0)
         if (--gEquipment.currentPowerBombs == 0)
             gSamusData.weaponHighlighted ^= 0x10;
-    gCurrentProjectile.pOam = sOam_58eb38;
+    gCurrentProjectile.pOam = sPowerBombOam_Slow;
     gCurrentProjectile.animationDurationCounter = 0;
     gCurrentProjectile.currentAnimationFrame = 0;
     gCurrentProjectile.drawDistanceY = 8;
@@ -3790,7 +3790,7 @@ void ProjectilePowerBombSubroutine(void)
             break;
         case 1:
             if (--gCurrentProjectile.timer == 0) {
-                gCurrentProjectile.pOam = sOam_58eb58;
+                gCurrentProjectile.pOam = sPowerBombOam_Fast;
                 gCurrentProjectile.animationDurationCounter = 0;
                 gCurrentProjectile.currentAnimationFrame = 0;
                 gCurrentProjectile.timer = 70;
@@ -3823,16 +3823,16 @@ void ProjectileChargedChargeBeamInit(void)
             case ACD_DIAGONAL_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             case ACD_DIAGONAL_UP:
-                gCurrentProjectile.pOam = sOam_58da60;
+                gCurrentProjectile.pOam = sChargedChargeBeamOam_SingleDiagonal;
                 break;
             case ACD_DOWN:
                 gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             case ACD_UP:
-                gCurrentProjectile.pOam = sOam_58da70;
+                gCurrentProjectile.pOam = sChargedChargeBeamOam_SingleVertical;
                 break;
             case ACD_FORWARD:
             default:
-                gCurrentProjectile.pOam = sOam_58da50;
+                gCurrentProjectile.pOam = sChargedChargeBeamOam_SingleHorizontal;
                 break;
         }
     } else {
@@ -3842,16 +3842,16 @@ void ProjectileChargedChargeBeamInit(void)
             case ACD_DIAGONAL_DOWN:
                 gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             case ACD_DIAGONAL_UP:
-                gCurrentProjectile.pOam = sOam_58da20;
+                gCurrentProjectile.pOam = sChargedChargeBeamOam_DoubleDiagonal;
                 break;
             case ACD_DOWN:
                 gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             case ACD_UP:
-                gCurrentProjectile.pOam = sOam_58da38;
+                gCurrentProjectile.pOam = sChargedChargeBeamOam_DoubleVertical;
                 break;
             case ACD_FORWARD:
             default:
-                gCurrentProjectile.pOam = sOam_58da08;
+                gCurrentProjectile.pOam = sChargedChargeBeamOam_DoubleHorizontal;
                 break;
         }
     }
@@ -3912,18 +3912,18 @@ void ProjectileChargeBeamInit(void)
         gCurrentProjectile.status |= PROJ_STATUS_CAN_AFFECT_ENVIRONMENT;
         switch (gCurrentProjectile.direction) {
             case ACD_DIAGONAL_DOWN:
-            gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
+                gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             case ACD_DIAGONAL_UP:
-                gCurrentProjectile.pOam = sOam_58d9e8;
+                gCurrentProjectile.pOam = sChargeBeamOam_SingleDiagonal;
                 break;
             case ACD_DOWN:
                 gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             case ACD_UP:
-                gCurrentProjectile.pOam = sOam_58d9f8;
+                gCurrentProjectile.pOam = sChargeBeamOam_SingleVertical;
                 break;
             case ACD_FORWARD:
             default:
-                gCurrentProjectile.pOam = sOam_58d9d8;
+                gCurrentProjectile.pOam = sChargeBeamOam_SingleHorizontal;
                 break;
         }
     } else {
@@ -3933,16 +3933,16 @@ void ProjectileChargeBeamInit(void)
             case ACD_DIAGONAL_DOWN:
                 gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             case ACD_DIAGONAL_UP:
-                gCurrentProjectile.pOam = sOam_58d9a8;
+                gCurrentProjectile.pOam = sChargeBeamOam_DoubleDiagonal;
                 break;
             case ACD_DOWN:
                 gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             case ACD_UP:
-                gCurrentProjectile.pOam = sOam_58d9c0;
+                gCurrentProjectile.pOam = sChargeBeamOam_DoubleVertical;
                 break;
             case ACD_FORWARD:
             default:
-                gCurrentProjectile.pOam = sOam_58d990;
+                gCurrentProjectile.pOam = sChargeBeamOam_DoubleHorizontal;
                 break;
         }
     }
@@ -4003,19 +4003,19 @@ void ProjectileChargedWideBeamInit(void)
     switch (gCurrentProjectile.direction) {
         case ACD_DIAGONAL_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
-            gCurrentProjectile.pOam = sOam_58dc54;
+            gCurrentProjectile.pOam = sChargedWideBeamOam_Diagonal;
             break;
         case ACD_DIAGONAL_UP:
-            gCurrentProjectile.pOam = sOam_58dc54;
+            gCurrentProjectile.pOam = sChargedWideBeamOam_Diagonal;
             break;
         case ACD_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_UP:
-            gCurrentProjectile.pOam = sOam_58dc6c;
+            gCurrentProjectile.pOam = sChargedWideBeamOam_Vertical;
             break;
         case ACD_FORWARD:
         default:
-            gCurrentProjectile.pOam = sOam_58dc3c;
+            gCurrentProjectile.pOam = sChargedWideBeamOam_Horizontal;
             break;
     }
 }
@@ -4065,19 +4065,19 @@ void ProjectileWideBeamInit(void)
     switch (gCurrentProjectile.direction) {
         case ACD_DIAGONAL_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
-            gCurrentProjectile.pOam = sOam_58dbfc;
+            gCurrentProjectile.pOam = sWideBeamOam_Diagonal;
             break;
         case ACD_DIAGONAL_UP:
-            gCurrentProjectile.pOam = sOam_58dbfc;
+            gCurrentProjectile.pOam = sWideBeamOam_Diagonal;
             break;
         case ACD_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_UP:
-            gCurrentProjectile.pOam = sOam_58dc1c;
+            gCurrentProjectile.pOam = sWideBeamOam_Vertical;
             break;
         case ACD_FORWARD:
         default:
-            gCurrentProjectile.pOam = sOam_58dbdc;
+            gCurrentProjectile.pOam = sWideBeamOam_Horizontal;
             break;
     }
 }
@@ -4127,19 +4127,19 @@ void ProjectileChargedPlasmaBeamInit(void)
     switch (gCurrentProjectile.direction) {
         case ACD_DIAGONAL_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
-            gCurrentProjectile.pOam = sOam_58de54;
+            gCurrentProjectile.pOam = sChargedPlasmaBeamOam_Diagonal;
             break;
         case ACD_DIAGONAL_UP:
-            gCurrentProjectile.pOam = sOam_58de54;
+            gCurrentProjectile.pOam = sChargedPlasmaBeamOam_Diagonal;
             break;
         case ACD_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_UP:
-            gCurrentProjectile.pOam = sOam_58de6c;
+            gCurrentProjectile.pOam = sChargedPlasmaBeamOam_Vertical;
             break;
         case ACD_FORWARD:
         default:
-            gCurrentProjectile.pOam = sOam_58de3c;
+            gCurrentProjectile.pOam = sChargedPlasmaBeamOam_Horizontal;
             break;
     }
 }
@@ -4189,19 +4189,19 @@ void ProjectilePlasmaBeamInit(void)
     switch (gCurrentProjectile.direction) {
         case ACD_DIAGONAL_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
-            gCurrentProjectile.pOam = sOam_58de0c;
+            gCurrentProjectile.pOam = sPlasmaBeamOam_Diagonal;
             break;
         case ACD_DIAGONAL_UP:
-            gCurrentProjectile.pOam = sOam_58de0c;
+            gCurrentProjectile.pOam = sPlasmaBeamOam_Diagonal;
             break;
         case ACD_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_UP:
-            gCurrentProjectile.pOam = sOam_58de24;
+            gCurrentProjectile.pOam = sPlasmaBeamOam_Vertical;
             break;
         case ACD_FORWARD:
         default:
-            gCurrentProjectile.pOam = sOam_58ddf4;
+            gCurrentProjectile.pOam = sPlasmaBeamOam_Horizontal;
             break;
     }
 }
@@ -4260,30 +4260,30 @@ void ProjectileChargedWaveBeamInit(void)
         case ACD_DIAGONAL_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             if (equippedBeams & BF_ICE_BEAM)
-                gCurrentProjectile.pOam = sOam_58e218;
+                gCurrentProjectile.pOam = sChargedIceBeamOam_Diagonal;
             else
-                gCurrentProjectile.pOam = sOam_58dfac;
+                gCurrentProjectile.pOam = sChargedWaveBeamOam_Diagonal;
             break;
         case ACD_DIAGONAL_UP:
             if (equippedBeams & BF_ICE_BEAM)
-                gCurrentProjectile.pOam = sOam_58e218;
+                gCurrentProjectile.pOam = sChargedIceBeamOam_Diagonal;
             else
-                gCurrentProjectile.pOam = sOam_58dfac;
+                gCurrentProjectile.pOam = sChargedWaveBeamOam_Diagonal;
             break;
         case ACD_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_UP:
             if (equippedBeams & BF_ICE_BEAM)
-                gCurrentProjectile.pOam = sOam_58e228;
+                gCurrentProjectile.pOam = sChargedIceBeamOam_Vertical;
             else
-                gCurrentProjectile.pOam = sOam_58dfc4;
+                gCurrentProjectile.pOam = sChargedWaveBeamOam_Vertical;
             break;
         case ACD_FORWARD:
         default:
             if (equippedBeams & BF_ICE_BEAM)
-                gCurrentProjectile.pOam = sOam_58e208;
+                gCurrentProjectile.pOam = sChargedIceBeamOam_Horizontal;
             else
-                gCurrentProjectile.pOam = sOam_58df94;
+                gCurrentProjectile.pOam = sChargedWaveBeamOam_Horizontal;
             break;
     }
 }
@@ -4340,30 +4340,30 @@ void ProjectileWaveBeamInit(void)
         case ACD_DIAGONAL_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
             if (equippedBeams & BF_ICE_BEAM)
-                gCurrentProjectile.pOam = sOam_58e1e8;
+                gCurrentProjectile.pOam = sIceBeamOam_Diagonal;
             else
-                gCurrentProjectile.pOam = sOam_58df74;
+                gCurrentProjectile.pOam = sWaveBeamOam_Diagonal;
             break;
         case ACD_DIAGONAL_UP:
             if (equippedBeams & BF_ICE_BEAM)
-                gCurrentProjectile.pOam = sOam_58e1e8;
+                gCurrentProjectile.pOam = sIceBeamOam_Diagonal;
             else
-                gCurrentProjectile.pOam = sOam_58df74;
+                gCurrentProjectile.pOam = sWaveBeamOam_Diagonal;
             break;
         case ACD_DOWN:
             gCurrentProjectile.status |= PROJ_STATUS_Y_FLIP;
         case ACD_UP:
             if (equippedBeams & BF_ICE_BEAM)
-                gCurrentProjectile.pOam = sOam_58e1f8;
+                gCurrentProjectile.pOam = sIceBeamOam_Vertical;
             else
-                gCurrentProjectile.pOam = sOam_58df84;
+                gCurrentProjectile.pOam = sWaveBeamOam_Vertical;
             break;
         case ACD_FORWARD:
         default:
             if (equippedBeams & BF_ICE_BEAM)
-                gCurrentProjectile.pOam = sOam_58e1d8;
+                gCurrentProjectile.pOam = sIceBeamOam_Horizontal;
             else
-                gCurrentProjectile.pOam = sOam_58df64;
+                gCurrentProjectile.pOam = sWaveBeamOam_Horizontal;
             break;
     }
 }

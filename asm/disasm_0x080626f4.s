@@ -2405,7 +2405,7 @@ _08063A32:
 _08063A3C:
 	movs r0, #0x6b
 	movs r1, #0xb
-	bl SetSubEventAndUpdateMusic
+	bl SubEventUpdate
 	ldr r0, _08063A54 @ =0x03004FC8
 	ldr r1, _08063A58 @ =gCurrentRoomEntry
 	ldrb r1, [r1, #0x1b]
@@ -2423,7 +2423,7 @@ _08063A5C:
 	bne _08063A76
 	movs r0, #0x14
 	movs r1, #0xb
-	bl SetSubEventAndUpdateMusic
+	bl SubEventUpdate
 	movs r0, #0x1e
 	movs r1, #1
 	bl ScreenShakeStartHorizontal
@@ -2441,7 +2441,7 @@ _08063A7C:
 _08063A84:
 	movs r0, #0x15
 	movs r1, #0xb
-	bl SetSubEventAndUpdateMusic
+	bl SubEventUpdate
 	movs r6, #2
 	b _08063C2E
 _08063A90:
@@ -2500,7 +2500,7 @@ _08063ADC:
 	movs r0, #0x5f
 _08063AF2:
 	movs r1, #0xb
-	bl SetSubEventAndUpdateMusic
+	bl SubEventUpdate
 	movs r6, #1
 	b _08063C2E
 	.align 2, 0
@@ -2562,7 +2562,7 @@ _08063B5E:
 	bne _08063AD4
 	movs r0, #0x64
 	movs r1, #0xb
-	bl SetSubEventAndUpdateMusic
+	bl SubEventUpdate
 	b _08063AD4
 	.align 2, 0
 _08063B70: .4byte gSubEventCounter
@@ -2847,7 +2847,7 @@ _08063D8C:
 	beq _08063DDA
 _08063D90:
 	movs r1, #1
-	ldr r0, _08063DE4 @ =0x03000014
+	ldr r0, _08063DE4 @ =gGameCompletion
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -2889,7 +2889,7 @@ _08063DDA:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08063DE4: .4byte 0x03000014
+_08063DE4: .4byte gGameCompletion
 
 	thumb_func_start CheckLockHatchesWithTimer
 CheckLockHatchesWithTimer: @ 0x08063DE8
@@ -3795,7 +3795,7 @@ _080644E2:
 	beq _08064540
 	movs r0, #0x9a
 	movs r1, #0xb
-	bl SetSubEventAndUpdateMusic
+	bl SubEventUpdate
 	ldrh r0, [r4]
 	adds r0, #1
 	strh r0, [r4]
@@ -6298,7 +6298,7 @@ _08065992:
 	thumb_func_start unk_659a0
 unk_659a0: @ 0x080659A0
 	push {lr}
-	ldr r0, _080659D4 @ =0x03000018
+	ldr r0, _080659D4 @ =gMonochromeBgFading
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _080659AE
@@ -6322,7 +6322,7 @@ _080659CE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080659D4: .4byte 0x03000018
+_080659D4: .4byte gMonochromeBgFading
 _080659D8: .4byte 0x03004E44
 _080659DC: .4byte gElevatorDirection
 
@@ -6343,14 +6343,14 @@ unk_659e4: @ 0x080659E4
 	cmp r0, #1
 	bne _08065A08
 	movs r0, #0x42
-	bl CheckUpdateSubEventAndMusic
+	bl SubEventUpdateMusic
 	b _08065A0E
 	.align 2, 0
 _08065A00: .4byte gSamusData
 _08065A04: .4byte gElevatorDirection
 _08065A08:
 	movs r0, #0x43
-	bl CheckUpdateSubEventAndMusic
+	bl SubEventUpdateMusic
 _08065A0E:
 	ldr r1, _08065A18 @ =gElevatorDirection
 	movs r0, #0

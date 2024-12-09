@@ -352,7 +352,7 @@ void NettoriDyingInit(void)
     gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
 
     NettoriRemoveCollision();
-    PlayMusic(MUSIC_CHOZO_STATUE_CORE_X_BATTLE, 7);
+    MusicPlay(MUSIC_CHOZO_STATUE_CORE_X_BATTLE, 7);
 }
 
 /**

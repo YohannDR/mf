@@ -69,7 +69,7 @@ void RidleyPreSpawnEyeClosed(void) {
         gCurrentSprite.pose = 0x1c;
         gCurrentSprite.status |= SS_ENABLE_MOSAIC;
         gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
-        PlayMusic(MUSIC_NEO_RIDLEY_BATTLE, 7);
+        MusicPlay(MUSIC_NEO_RIDLEY_BATTLE, 7);
     }
 }
 

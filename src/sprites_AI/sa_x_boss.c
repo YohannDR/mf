@@ -8,6 +8,7 @@
 #include "data/sprite_data.h"
 #include "data/engine_pointers.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
@@ -757,7 +758,7 @@ void SaXBossWaitingToAppear(void)
             gCurrentSprite.pose = 0x45;
             gCurrentSprite.work3 = 8;
             gCurrentSprite.status &= ~SS_HIDDEN;
-            MusicPlay(0x51, 7);
+            MusicPlay(MUSIC_SA_X_BATTLE, 7);
         }
     }
 }

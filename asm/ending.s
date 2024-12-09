@@ -244,7 +244,7 @@ _080A1660: .4byte gNonGameplayRam
 EndingImageLoadTextOam: @ 0x080A1664
 	push {r4, r5, r6, r7, lr}
 	adds r1, r0, #0
-	ldr r0, _080A1680 @ =0x03000011
+	ldr r0, _080A1680 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -256,7 +256,7 @@ EndingImageLoadTextOam: @ 0x080A1664
 	beq _080A1692
 	b _080A1A28
 	.align 2, 0
-_080A1680: .4byte 0x03000011
+_080A1680: .4byte gLanguage
 _080A1684:
 	cmp r0, #5
 	bne _080A168A
@@ -889,7 +889,7 @@ _080A1B5C: .4byte 0x0874DD80
 EndingImageDisplayLinePermanently: @ 0x080A1B60
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, _080A1B7C @ =0x03000011
+	ldr r0, _080A1B7C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -901,7 +901,7 @@ EndingImageDisplayLinePermanently: @ 0x080A1B60
 	beq _080A1B8A
 	b _080A1BEC
 	.align 2, 0
-_080A1B7C: .4byte 0x03000011
+_080A1B7C: .4byte gLanguage
 _080A1B80:
 	cmp r0, #5
 	beq _080A1BBC
@@ -1543,7 +1543,7 @@ _080A20AE:
 _080A20C4:
 	movs r0, #0x55
 	movs r1, #0xe
-	bl PlayMusic
+	bl MusicPlay
 	ldr r0, _080A20E8 @ =CreditsVblank
 	bl CallbackSetVBlank
 	add sp, #4
@@ -3307,7 +3307,7 @@ _080A2F0E:
 	ldr r0, _080A2F58 @ =0x80000100
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _080A2F5C @ =0x03000011
+	ldr r0, _080A2F5C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3329,7 +3329,7 @@ _080A2F4C: .4byte 0x0600F800
 _080A2F50: .4byte 0x040000D4
 _080A2F54: .4byte 0x0874A558
 _080A2F58: .4byte 0x80000100
-_080A2F5C: .4byte 0x03000011
+_080A2F5C: .4byte gLanguage
 _080A2F60:
 	cmp r0, #5
 	beq _080A2F7C
@@ -3489,7 +3489,7 @@ EndingImage: @ 0x080A30AC
 	sub sp, #8
 	movs r0, #0
 	str r0, [sp]
-	ldr r0, _080A30D4 @ =0x03000011
+	ldr r0, _080A30D4 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3501,7 +3501,7 @@ EndingImage: @ 0x080A30AC
 	blt _080A30DC
 	b _080A3106
 	.align 2, 0
-_080A30D4: .4byte 0x03000011
+_080A30D4: .4byte gLanguage
 _080A30D8:
 	cmp r0, #6
 	beq _080A3106

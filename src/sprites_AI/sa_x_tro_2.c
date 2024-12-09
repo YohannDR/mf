@@ -9,6 +9,7 @@
 #include "data/sprite_data.h"
 #include "data/engine_pointers.h"
 
+#include "constants/audio.h"
 #include "constants/connection.h"
 #include "constants/clipdata.h"
 #include "constants/event.h"
@@ -973,5 +974,5 @@ void SaXTro2(void)
     SaXUpdateGraphics();
 
     if (gCurrentSprite.status & SS_SAMUS_DETECTED)
-        MusicPlay(0x17, 9);
+        MusicPlay(MUSIC_SA_X_CHASE, 9);
 }

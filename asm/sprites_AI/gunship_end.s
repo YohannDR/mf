@@ -233,7 +233,7 @@ GunshipEndWaiting: @ 0x08056304
 	strb r1, [r0]
 	movs r0, #0x5b
 	movs r1, #0xe
-	bl PlayMusic
+	bl MusicPlay
 	movs r0, #0x1e
 	strb r0, [r4]
 _0805632C:

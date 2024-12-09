@@ -1573,12 +1573,12 @@ _0802E55C:
 _0802E562:
 	movs r0, #0x18
 	movs r1, #6
-	bl PlayMusic
+	bl MusicPlay
 	b _0802E574
 _0802E56C:
 	movs r0, #0xa
 	movs r1, #0
-	bl PlayMusic
+	bl MusicPlay
 _0802E574:
 	add sp, #8
 	pop {r3, r4, r5}
@@ -2609,11 +2609,11 @@ _0802EDF8:
 	orrs r0, r1
 	strh r0, [r4]
 _0802EE04:
-	ldr r0, _0802EE0C @ =sOam_58d9e8
+	ldr r0, _0802EE0C @ =sChargeBeamOam_SingleDiagonal
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
-_0802EE0C: .4byte sOam_58d9e8
+_0802EE0C: .4byte sChargeBeamOam_SingleDiagonal
 _0802EE10:
 	ldrh r1, [r4]
 	movs r3, #0x80
@@ -2622,17 +2622,17 @@ _0802EE10:
 	orrs r0, r1
 	strh r0, [r4]
 _0802EE1C:
-	ldr r0, _0802EE24 @ =sOam_58d9f8
+	ldr r0, _0802EE24 @ =sChargeBeamOam_SingleVertical
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
-_0802EE24: .4byte sOam_58d9f8
+_0802EE24: .4byte sChargeBeamOam_SingleVertical
 _0802EE28:
-	ldr r0, _0802EE30 @ =sOam_58d9d8
+	ldr r0, _0802EE30 @ =sChargeBeamOam_SingleHorizontal
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
-_0802EE30: .4byte sOam_58d9d8
+_0802EE30: .4byte sChargeBeamOam_SingleHorizontal
 _0802EE34:
 	movs r0, #0xca
 	bl SoundPlay
@@ -2670,12 +2670,12 @@ _0802EE74:
 	strh r1, [r0]
 	adds r4, r0, #0
 _0802EE84:
-	ldr r0, _0802EE90 @ =sOam_58d9a8
+	ldr r0, _0802EE90 @ =sChargeBeamOam_DoubleDiagonal
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
 _0802EE8C: .4byte gCurrentSprite
-_0802EE90: .4byte sOam_58d9a8
+_0802EE90: .4byte sChargeBeamOam_DoubleDiagonal
 _0802EE94:
 	ldr r0, _0802EEAC @ =gCurrentSprite
 	ldrh r2, [r0]
@@ -2686,15 +2686,15 @@ _0802EE94:
 	strh r1, [r0]
 	adds r4, r0, #0
 _0802EEA4:
-	ldr r0, _0802EEB0 @ =sOam_58d9c0
+	ldr r0, _0802EEB0 @ =sChargeBeamOam_DoubleVertical
 	str r0, [r4, #0x18]
 	b _0802EEBA
 	.align 2, 0
 _0802EEAC: .4byte gCurrentSprite
-_0802EEB0: .4byte sOam_58d9c0
+_0802EEB0: .4byte sChargeBeamOam_DoubleVertical
 _0802EEB4:
 	ldr r1, _0802EEC0 @ =gCurrentSprite
-	ldr r0, _0802EEC4 @ =sOam_58d990
+	ldr r0, _0802EEC4 @ =sChargeBeamOam_DoubleHorizontal
 	str r0, [r1, #0x18]
 _0802EEBA:
 	pop {r4}
@@ -2702,7 +2702,7 @@ _0802EEBA:
 	bx r0
 	.align 2, 0
 _0802EEC0: .4byte gCurrentSprite
-_0802EEC4: .4byte sOam_58d990
+_0802EEC4: .4byte sChargeBeamOam_DoubleHorizontal
 
 	thumb_func_start CoreXChargeBeam
 CoreXChargeBeam: @ 0x0802EEC8
@@ -2899,18 +2899,18 @@ _0802F040:
 	adds r0, r3, #0
 	orrs r0, r2
 	strh r0, [r1]
-	ldr r0, _0802F058 @ =sOam_58dbfc
+	ldr r0, _0802F058 @ =sWideBeamOam_Diagonal
 	b _0802F08C
 	.align 2, 0
 _0802F054: .4byte gCurrentSprite
-_0802F058: .4byte sOam_58dbfc
+_0802F058: .4byte sWideBeamOam_Diagonal
 _0802F05C:
 	ldr r1, _0802F064 @ =gCurrentSprite
-	ldr r0, _0802F068 @ =sOam_58dbfc
+	ldr r0, _0802F068 @ =sWideBeamOam_Diagonal
 	b _0802F08C
 	.align 2, 0
 _0802F064: .4byte gCurrentSprite
-_0802F068: .4byte sOam_58dbfc
+_0802F068: .4byte sWideBeamOam_Diagonal
 _0802F06C:
 	ldr r0, _0802F080 @ =gCurrentSprite
 	ldrh r2, [r0]
@@ -2921,21 +2921,21 @@ _0802F06C:
 	strh r1, [r0]
 	adds r1, r0, #0
 _0802F07C:
-	ldr r0, _0802F084 @ =sOam_58dc1c
+	ldr r0, _0802F084 @ =sWideBeamOam_Vertical
 	b _0802F08C
 	.align 2, 0
 _0802F080: .4byte gCurrentSprite
-_0802F084: .4byte sOam_58dc1c
+_0802F084: .4byte sWideBeamOam_Vertical
 _0802F088:
 	ldr r1, _0802F094 @ =gCurrentSprite
-	ldr r0, _0802F098 @ =sOam_58dbdc
+	ldr r0, _0802F098 @ =sWideBeamOam_Horizontal
 _0802F08C:
 	str r0, [r1, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0802F094: .4byte gCurrentSprite
-_0802F098: .4byte sOam_58dbdc
+_0802F098: .4byte sWideBeamOam_Horizontal
 
 	thumb_func_start CoreXWideBeam
 CoreXWideBeam: @ 0x0802F09C
@@ -3067,18 +3067,18 @@ _0802F198:
 	adds r0, r3, #0
 	orrs r0, r2
 	strh r0, [r1]
-	ldr r0, _0802F1B0 @ =sOam_58de0c
+	ldr r0, _0802F1B0 @ =sPlasmaBeamOam_Diagonal
 	b _0802F1E4
 	.align 2, 0
 _0802F1AC: .4byte gCurrentSprite
-_0802F1B0: .4byte sOam_58de0c
+_0802F1B0: .4byte sPlasmaBeamOam_Diagonal
 _0802F1B4:
 	ldr r1, _0802F1BC @ =gCurrentSprite
-	ldr r0, _0802F1C0 @ =sOam_58de0c
+	ldr r0, _0802F1C0 @ =sPlasmaBeamOam_Diagonal
 	b _0802F1E4
 	.align 2, 0
 _0802F1BC: .4byte gCurrentSprite
-_0802F1C0: .4byte sOam_58de0c
+_0802F1C0: .4byte sPlasmaBeamOam_Diagonal
 _0802F1C4:
 	ldr r0, _0802F1D8 @ =gCurrentSprite
 	ldrh r2, [r0]
@@ -3089,21 +3089,21 @@ _0802F1C4:
 	strh r1, [r0]
 	adds r1, r0, #0
 _0802F1D4:
-	ldr r0, _0802F1DC @ =sOam_58de24
+	ldr r0, _0802F1DC @ =sPlasmaBeamOam_Vertical
 	b _0802F1E4
 	.align 2, 0
 _0802F1D8: .4byte gCurrentSprite
-_0802F1DC: .4byte sOam_58de24
+_0802F1DC: .4byte sPlasmaBeamOam_Vertical
 _0802F1E0:
 	ldr r1, _0802F1EC @ =gCurrentSprite
-	ldr r0, _0802F1F0 @ =sOam_58ddf4
+	ldr r0, _0802F1F0 @ =sPlasmaBeamOam_Horizontal
 _0802F1E4:
 	str r0, [r1, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0802F1EC: .4byte gCurrentSprite
-_0802F1F0: .4byte sOam_58ddf4
+_0802F1F0: .4byte sPlasmaBeamOam_Horizontal
 
 	thumb_func_start CoreXPlasmaBeam
 CoreXPlasmaBeam: @ 0x0802F1F4
@@ -3264,28 +3264,28 @@ _0802F328:
 	ldrb r0, [r2, #0x1d]
 	cmp r0, #0x74
 	bne _0802F344
-	ldr r0, _0802F340 @ =sOam_58e1e8
+	ldr r0, _0802F340 @ =sIceBeamOam_Diagonal
 	b _0802F39A
 	.align 2, 0
-_0802F340: .4byte sOam_58e1e8
+_0802F340: .4byte sIceBeamOam_Diagonal
 _0802F344:
-	ldr r0, _0802F348 @ =sOam_58df74
+	ldr r0, _0802F348 @ =sWaveBeamOam_Diagonal
 	b _0802F39A
 	.align 2, 0
-_0802F348: .4byte sOam_58df74
+_0802F348: .4byte sWaveBeamOam_Diagonal
 _0802F34C:
 	ldrb r0, [r2, #0x1d]
 	cmp r0, #0x74
 	bne _0802F35C
-	ldr r0, _0802F358 @ =sOam_58e1e8
+	ldr r0, _0802F358 @ =sIceBeamOam_Diagonal
 	b _0802F39A
 	.align 2, 0
-_0802F358: .4byte sOam_58e1e8
+_0802F358: .4byte sIceBeamOam_Diagonal
 _0802F35C:
-	ldr r0, _0802F360 @ =sOam_58df74
+	ldr r0, _0802F360 @ =sWaveBeamOam_Diagonal
 	b _0802F39A
 	.align 2, 0
-_0802F360: .4byte sOam_58df74
+_0802F360: .4byte sWaveBeamOam_Diagonal
 _0802F364:
 	ldrh r1, [r2]
 	movs r3, #0x80
@@ -3297,31 +3297,31 @@ _0802F370:
 	ldrb r0, [r2, #0x1d]
 	cmp r0, #0x74
 	bne _0802F380
-	ldr r0, _0802F37C @ =sOam_58e1f8
+	ldr r0, _0802F37C @ =sIceBeamOam_Vertical
 	b _0802F39A
 	.align 2, 0
-_0802F37C: .4byte sOam_58e1f8
+_0802F37C: .4byte sIceBeamOam_Vertical
 _0802F380:
-	ldr r0, _0802F384 @ =sOam_58df84
+	ldr r0, _0802F384 @ =sWaveBeamOam_Vertical
 	b _0802F39A
 	.align 2, 0
-_0802F384: .4byte sOam_58df84
+_0802F384: .4byte sWaveBeamOam_Vertical
 _0802F388:
 	ldrb r0, [r2, #0x1d]
 	cmp r0, #0x74
 	bne _0802F398
-	ldr r0, _0802F394 @ =sOam_58e1d8
+	ldr r0, _0802F394 @ =sIceBeamOam_Horizontal
 	b _0802F39A
 	.align 2, 0
-_0802F394: .4byte sOam_58e1d8
+_0802F394: .4byte sIceBeamOam_Horizontal
 _0802F398:
-	ldr r0, _0802F3A0 @ =sOam_58df64
+	ldr r0, _0802F3A0 @ =sWaveBeamOam_Horizontal
 _0802F39A:
 	str r0, [r2, #0x18]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802F3A0: .4byte sOam_58df64
+_0802F3A0: .4byte sWaveBeamOam_Horizontal
 
 	thumb_func_start CoreXWaveIceBeam
 CoreXWaveIceBeam: @ 0x0802F3A4

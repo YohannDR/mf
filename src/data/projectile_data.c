@@ -72,62 +72,62 @@ const u8 sIceMissileGfx_Bottom[4 * 32] = INCBIN_U8("data/projectiles/ice_missile
 const u8 sDiffusionMissileGfx_Top[4 * 32] = INCBIN_U8("data/projectiles/diffusion_missile_top.gfx");
 const u8 sDiffusionMissileGfx_Bottom[4 * 32] = INCBIN_U8("data/projectiles/diffusion_missile_bottom.gfx");
 
-static const u16 sOam_58d7ac_Frame0[] = {
+static const u16 sNormalBeamOam_Horizontal_Frame0[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_2 | 0x80
 };
 
-static const u16 sOam_58d7ac_Frame1[] = {
+static const u16 sNormalBeamOam_Horizontal_Frame1[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1fa, OBJ_PALETTE_2 | 0xa0
 };
 
-static const u16 sOam_58d7c4_Frame0[] = {
+static const u16 sNormalBeamOam_Diagonal_Frame0[] = {
     1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x83
 };
 
-static const u16 sOam_58d7c4_Frame1[] = {
+static const u16 sNormalBeamOam_Diagonal_Frame1[] = {
     1,
     0xfa, OBJ_SIZE_16x16 | 0x1fa, OBJ_PALETTE_2 | 0x8b
 };
 
-static const u16 sOam_58d7dc_Frame0[] = {
+static const u16 sNormalBeamOam_Vertical_Frame0[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fc, OBJ_PALETTE_2 | 0x82
 };
 
-static const u16 sOam_58d7dc_Frame1[] = {
+static const u16 sNormalBeamOam_Vertical_Frame1[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xfa, 0x1fc, OBJ_PALETTE_2 | 0x8a
 };
 
-static const u16 sOam_58d7f4_Frame0[] = {
+static const u16 sChargedNormalBeamOam_Horizontal_Frame0[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_2 | 0x88
 };
 
-static const u16 sOam_58d7f4_Frame1[] = {
+static const u16 sChargedNormalBeamOam_Horizontal_Frame1[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1fa, OBJ_PALETTE_2 | 0xa8
 };
 
-static const u16 sOam_58d80c_Frame0[] = {
+static const u16 sChargedNormalBeamOam_Diagonal_Frame0[] = {
     1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x86
 };
 
-static const u16 sOam_58d80c_Frame1[] = {
+static const u16 sChargedNormalBeamOam_Diagonal_Frame1[] = {
     1,
     0xfa, OBJ_SIZE_16x16 | 0x1fa, OBJ_PALETTE_2 | 0x8e
 };
 
-static const u16 sOam_58d824_Frame0[] = {
+static const u16 sChargedNormalBeamOam_Vertical_Frame0[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fc, OBJ_PALETTE_2 | 0x85
 };
 
-static const u16 sOam_58d824_Frame1[] = {
+static const u16 sChargedNormalBeamOam_Vertical_Frame1[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xfa, 0x1fc, OBJ_PALETTE_2 | 0x8d
 };
@@ -157,73 +157,73 @@ static const u16 sParticleOam_ChargedNormalBeamTrail_Frame4[] = {
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0xb3
 };
 
-const struct FrameData sOam_58d7ac[3] = {
+const struct FrameData sNormalBeamOam_Horizontal[3] = {
     [0] = {
-        .pFrame = sOam_58d7ac_Frame0,
+        .pFrame = sNormalBeamOam_Horizontal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58d7ac_Frame1,
+        .pFrame = sNormalBeamOam_Horizontal_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d7c4[3] = {
+const struct FrameData sNormalBeamOam_Diagonal[3] = {
     [0] = {
-        .pFrame = sOam_58d7c4_Frame0,
+        .pFrame = sNormalBeamOam_Diagonal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58d7c4_Frame1,
+        .pFrame = sNormalBeamOam_Diagonal_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d7dc[3] = {
+const struct FrameData sNormalBeamOam_Vertical[3] = {
     [0] = {
-        .pFrame = sOam_58d7dc_Frame0,
+        .pFrame = sNormalBeamOam_Vertical_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58d7dc_Frame1,
+        .pFrame = sNormalBeamOam_Vertical_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d7f4[3] = {
+const struct FrameData sChargedNormalBeamOam_Horizontal[3] = {
     [0] = {
-        .pFrame = sOam_58d7f4_Frame0,
+        .pFrame = sChargedNormalBeamOam_Horizontal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58d7f4_Frame1,
+        .pFrame = sChargedNormalBeamOam_Horizontal_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d80c[3] = {
+const struct FrameData sChargedNormalBeamOam_Diagonal[3] = {
     [0] = {
-        .pFrame = sOam_58d80c_Frame0,
+        .pFrame = sChargedNormalBeamOam_Diagonal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58d80c_Frame1,
+        .pFrame = sChargedNormalBeamOam_Diagonal_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d824[3] = {
+const struct FrameData sChargedNormalBeamOam_Vertical[3] = {
     [0] = {
-        .pFrame = sOam_58d824_Frame0,
+        .pFrame = sChargedNormalBeamOam_Vertical_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58d824_Frame1,
+        .pFrame = sChargedNormalBeamOam_Vertical_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
@@ -253,7 +253,7 @@ const struct FrameData sParticleOam_ChargedNormalBeamTrail[6] = {
     [5] = FRAME_DATA_TERMINATOR
 };
 
-static const u16 sOam_58d9d8_Frame0[] = {
+static const u16 sChargeBeamOam_SingleHorizontal_Frame0[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0x92
 };
@@ -263,7 +263,7 @@ static const u16 sOam_58d874[] = {
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0xb2
 };
 
-static const u16 sOam_58d9e8_Frame0[] = {
+static const u16 sChargeBeamOam_SingleDiagonal_Frame0[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0x92
 };
@@ -273,7 +273,7 @@ static const u16 sOam_58d884[] = {
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0xb2
 };
 
-static const u16 sOam_58d9f8_Frame0[] = {
+static const u16 sChargeBeamOam_SingleVertical_Frame0[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0x92
 };
@@ -283,86 +283,86 @@ static const u16 sOam_58d894[] = {
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0xb2
 };
 
-static const u16 sOam_58d990_Frame0[] = {
+static const u16 sChargeBeamOam_DoubleHorizontal_Frame0[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fc, OBJ_PALETTE_2 | 0x80
 };
 
-static const u16 sOam_58d990_Frame1[] = {
+static const u16 sChargeBeamOam_DoubleHorizontal_Frame1[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fe, OBJ_PALETTE_2 | 0x8a
 };
 
-static const u16 sOam_58d9a8_Frame0[] = {
+static const u16 sChargeBeamOam_DoubleDiagonal_Frame0[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfa, 0x1fa, OBJ_PALETTE_2 | 0x81,
     0x2, 0x1fa, OBJ_PALETTE_2 | 0xa1
 };
 
-static const u16 sOam_58d9a8_Frame1[] = {
+static const u16 sChargeBeamOam_DoubleDiagonal_Frame1[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1fc, OBJ_PALETTE_2 | 0x8b,
     0x4, 0x1fc, OBJ_PALETTE_2 | 0xab
 };
 
-static const u16 sOam_58d9c0_Frame0[] = {
+static const u16 sChargeBeamOam_DoubleVertical_Frame0[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_2 | 0x83
 };
 
-static const u16 sOam_58d9c0_Frame1[] = {
+static const u16 sChargeBeamOam_DoubleVertical_Frame1[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfe, 0x1f8, OBJ_PALETTE_2 | 0xa3
 };
 
-static const u16 sOam_58da08_Frame0[] = {
+static const u16 sChargedChargeBeamOam_DoubleHorizontal_Frame0[] = {
     3,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1f8, OBJ_PALETTE_2 | 0x85,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1ff, OBJ_PALETTE_2 | 0x85,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x6, OBJ_PALETTE_2 | 0x8d
 };
 
-static const u16 sOam_58da08_Frame1[] = {
+static const u16 sChargedChargeBeamOam_DoubleHorizontal_Frame1[] = {
     3,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x0, OBJ_PALETTE_2 | 0x8d,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x7, OBJ_PALETTE_2 | 0x8d,
     OBJ_SHAPE_VERTICAL | 0xf8, 0xe, OBJ_PALETTE_2 | 0x8d
 };
 
-static const u16 sOam_58da20_Frame0[] = {
+static const u16 sChargedChargeBeamOam_DoubleDiagonal_Frame0[] = {
     3,
     0xf6, OBJ_SIZE_16x16 | 0x1f6, OBJ_PALETTE_2 | 0x86,
     0xfb, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_2 | 0x86,
     0x0, OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_2 | 0x86
 };
 
-static const u16 sOam_58da20_Frame1[] = {
+static const u16 sChargedChargeBeamOam_DoubleDiagonal_Frame1[] = {
     3,
     0xfa, OBJ_SIZE_16x16 | 0x1fa, OBJ_PALETTE_2 | 0x8e,
     0xff, OBJ_SIZE_16x16 | 0x1ff, OBJ_PALETTE_2 | 0x8e,
     0x4, OBJ_SIZE_16x16 | 0x4, OBJ_PALETTE_2 | 0x8e
 };
 
-static const u16 sOam_58da38_Frame0[] = {
+static const u16 sChargedChargeBeamOam_DoubleVertical_Frame0[] = {
     3,
     OBJ_SHAPE_HORIZONTAL | 0xf8, 0x1f8, OBJ_PALETTE_2 | 0x88,
     OBJ_SHAPE_HORIZONTAL | 0xff, 0x1f8, OBJ_PALETTE_2 | 0x88,
     OBJ_SHAPE_HORIZONTAL | 0x6, 0x1f8, OBJ_PALETTE_2 | 0x88
 };
 
-static const u16 sOam_58da38_Frame1[] = {
+static const u16 sChargedChargeBeamOam_DoubleVertical_Frame1[] = {
     3,
     OBJ_SHAPE_HORIZONTAL | 0xfe, 0x1f8, OBJ_PALETTE_2 | 0x90,
     OBJ_SHAPE_HORIZONTAL | 0x5, 0x1f8, OBJ_PALETTE_2 | 0x90,
     OBJ_SHAPE_HORIZONTAL | 0xc, 0x1f8, OBJ_PALETTE_2 | 0x90
 };
 
-static const u16 sOam_58da50_Frame0[] = {
+static const u16 sChargedChargeBeamOam_SingleHorizontal_Frame0[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0x93
 };
 
-static const u16 sOam_58da60_Frame0[] = {
+static const u16 sChargedChargeBeamOam_SingleDiagonal_Frame0[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0x93
 };
@@ -397,121 +397,121 @@ static const u16 sParticleOam_ChargedChargeBeamTrail_Frame4[] = {
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0xb2
 };
 
-const struct FrameData sOam_58d990[3] = {
+const struct FrameData sChargeBeamOam_DoubleHorizontal[3] = {
     [0] = {
-        .pFrame = sOam_58d990_Frame0,
+        .pFrame = sChargeBeamOam_DoubleHorizontal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58d990_Frame1,
+        .pFrame = sChargeBeamOam_DoubleHorizontal_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d9a8[3] = {
+const struct FrameData sChargeBeamOam_DoubleDiagonal[3] = {
     [0] = {
-        .pFrame = sOam_58d9a8_Frame0,
+        .pFrame = sChargeBeamOam_DoubleDiagonal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58d9a8_Frame1,
+        .pFrame = sChargeBeamOam_DoubleDiagonal_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d9c0[3] = {
+const struct FrameData sChargeBeamOam_DoubleVertical[3] = {
     [0] = {
-        .pFrame = sOam_58d9c0_Frame0,
+        .pFrame = sChargeBeamOam_DoubleVertical_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58d9c0_Frame1,
+        .pFrame = sChargeBeamOam_DoubleVertical_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d9d8[2] = {
+const struct FrameData sChargeBeamOam_SingleHorizontal[2] = {
     [0] = {
-        .pFrame = sOam_58d9d8_Frame0,
+        .pFrame = sChargeBeamOam_SingleHorizontal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d9e8[2] = {
+const struct FrameData sChargeBeamOam_SingleDiagonal[2] = {
     [0] = {
-        .pFrame = sOam_58d9e8_Frame0,
+        .pFrame = sChargeBeamOam_SingleDiagonal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58d9f8[2] = {
+const struct FrameData sChargeBeamOam_SingleVertical[2] = {
     [0] = {
-        .pFrame = sOam_58d9f8_Frame0,
+        .pFrame = sChargeBeamOam_SingleVertical_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58da08[3] = {
+const struct FrameData sChargedChargeBeamOam_DoubleHorizontal[3] = {
     [0] = {
-        .pFrame = sOam_58da08_Frame0,
+        .pFrame = sChargedChargeBeamOam_DoubleHorizontal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58da08_Frame1,
+        .pFrame = sChargedChargeBeamOam_DoubleHorizontal_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58da20[3] = {
+const struct FrameData sChargedChargeBeamOam_DoubleDiagonal[3] = {
     [0] = {
-        .pFrame = sOam_58da20_Frame0,
+        .pFrame = sChargedChargeBeamOam_DoubleDiagonal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58da20_Frame1,
+        .pFrame = sChargedChargeBeamOam_DoubleDiagonal_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58da38[3] = {
+const struct FrameData sChargedChargeBeamOam_DoubleVertical[3] = {
     [0] = {
-        .pFrame = sOam_58da38_Frame0,
+        .pFrame = sChargedChargeBeamOam_DoubleVertical_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58da38_Frame1,
+        .pFrame = sChargedChargeBeamOam_DoubleVertical_Frame1,
         .timer = 4
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58da50[2] = {
+const struct FrameData sChargedChargeBeamOam_SingleHorizontal[2] = {
     [0] = {
-        .pFrame = sOam_58da50_Frame0,
+        .pFrame = sChargedChargeBeamOam_SingleHorizontal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58da60[2] = {
+const struct FrameData sChargedChargeBeamOam_SingleDiagonal[2] = {
     [0] = {
-        .pFrame = sOam_58da60_Frame0,
+        .pFrame = sChargedChargeBeamOam_SingleDiagonal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58da70[2] = {
+const struct FrameData sChargedChargeBeamOam_SingleVertical[2] = {
     [0] = {
-        .pFrame = sOam_58da60_Frame0,
+        .pFrame = sChargedChargeBeamOam_SingleDiagonal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
@@ -541,80 +541,80 @@ const struct FrameData sParticleOam_ChargedChargeBeamTrail[6] = {
     [5] = FRAME_DATA_TERMINATOR
 };
 
-static const u16 sOam_58dbdc_Frame0[] = {
+static const u16 sWideBeamOam_Horizontal_Frame0[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fc, OBJ_PALETTE_2 | 0x80
 };
 
-static const u16 sOam_58dbdc_Frame1[] = {
+static const u16 sWideBeamOam_Horizontal_Frame1[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fc, OBJ_PALETTE_2 | 0x81
 };
 
-static const u16 sOam_58dbdc_Frame2[] = {
+static const u16 sWideBeamOam_Horizontal_Frame2[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fc, OBJ_PALETTE_2 | 0x82
 };
 
-static const u16 sOam_58dbfc_Frame0[] = {
+static const u16 sWideBeamOam_Diagonal_Frame0[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfa, 0x1fa, OBJ_PALETTE_2 | 0x83,
     0x2, 0x1fa, OBJ_PALETTE_2 | 0xa3
 };
 
-static const u16 sOam_58dbfc_Frame1[] = {
+static const u16 sWideBeamOam_Diagonal_Frame1[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfa, 0x1fa, OBJ_PALETTE_2 | 0x85,
     0x2, 0x1fa, OBJ_PALETTE_2 | 0xa4
 };
 
-static const u16 sOam_58dbfc_Frame2[] = {
+static const u16 sWideBeamOam_Diagonal_Frame2[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfa, 0x1fa, OBJ_PALETTE_2 | 0x87,
     0x2, 0x1fa, OBJ_PALETTE_2 | 0xa5
 };
 
-static const u16 sOam_58dc1c_Frame0[] = {
+static const u16 sWideBeamOam_Vertical_Frame0[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_2 | 0xa6
 };
 
-static const u16 sOam_58dc1c_Frame1[] = {
+static const u16 sWideBeamOam_Vertical_Frame1[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_2 | 0x89
 };
 
-static const u16 sOam_58dc1c_Frame2[] = {
+static const u16 sWideBeamOam_Vertical_Frame2[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_2 | 0xa9
 };
 
-static const u16 sOam_58dc3c_Frame0[] = {
+static const u16 sChargedWideBeamOam_Horizontal_Frame0[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fc, OBJ_PALETTE_2 | 0x8b
 };
 
-static const u16 sOam_58dc3c_Frame1[] = {
+static const u16 sChargedWideBeamOam_Horizontal_Frame1[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fd, OBJ_PALETTE_2 | 0x8b
 };
 
-static const u16 sOam_58dc54_Frame0[] = {
+static const u16 sChargedWideBeamOam_Diagonal_Frame0[] = {
     1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x8c
 };
 
-static const u16 sOam_58dc54_Frame1[] = {
+static const u16 sChargedWideBeamOam_Diagonal_Frame1[] = {
     1,
     0xf9, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_2 | 0x8c
 };
 
-static const u16 sOam_58dc6c_Frame0[] = {
+static const u16 sChargedWideBeamOam_Vertical_Frame0[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_2 | 0x8e
 };
 
-static const u16 sOam_58dc6c_Frame1[] = {
+static const u16 sChargedWideBeamOam_Vertical_Frame1[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfd, 0x1f8, OBJ_PALETTE_2 | 0x8e
 };
@@ -686,85 +686,85 @@ static const u16 sParticleOam_ChargedWideBeamTrail_Frame4[] = {
     0x0, OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_2 | 0xb3
 };
 
-const struct FrameData sOam_58dbdc[4] = {
+const struct FrameData sWideBeamOam_Horizontal[4] = {
     [0] = {
-        .pFrame = sOam_58dbdc_Frame0,
+        .pFrame = sWideBeamOam_Horizontal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58dbdc_Frame1,
+        .pFrame = sWideBeamOam_Horizontal_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sOam_58dbdc_Frame2,
+        .pFrame = sWideBeamOam_Horizontal_Frame2,
         .timer = 4
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58dbfc[4] = {
+const struct FrameData sWideBeamOam_Diagonal[4] = {
     [0] = {
-        .pFrame = sOam_58dbfc_Frame0,
+        .pFrame = sWideBeamOam_Diagonal_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58dbfc_Frame1,
+        .pFrame = sWideBeamOam_Diagonal_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sOam_58dbfc_Frame2,
+        .pFrame = sWideBeamOam_Diagonal_Frame2,
         .timer = 4
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58dc1c[4] = {
+const struct FrameData sWideBeamOam_Vertical[4] = {
     [0] = {
-        .pFrame = sOam_58dc1c_Frame0,
+        .pFrame = sWideBeamOam_Vertical_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sOam_58dc1c_Frame1,
+        .pFrame = sWideBeamOam_Vertical_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sOam_58dc1c_Frame2,
+        .pFrame = sWideBeamOam_Vertical_Frame2,
         .timer = 4
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58dc3c[3] = {
+const struct FrameData sChargedWideBeamOam_Horizontal[3] = {
     [0] = {
-        .pFrame = sOam_58dc3c_Frame0,
+        .pFrame = sChargedWideBeamOam_Horizontal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58dc3c_Frame1,
+        .pFrame = sChargedWideBeamOam_Horizontal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58dc54[3] = {
+const struct FrameData sChargedWideBeamOam_Diagonal[3] = {
     [0] = {
-        .pFrame = sOam_58dc54_Frame0,
+        .pFrame = sChargedWideBeamOam_Diagonal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58dc54_Frame1,
+        .pFrame = sChargedWideBeamOam_Diagonal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58dc6c[3] = {
+const struct FrameData sChargedWideBeamOam_Vertical[3] = {
     [0] = {
-        .pFrame = sOam_58dc6c_Frame0,
+        .pFrame = sChargedWideBeamOam_Vertical_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58dc6c_Frame1,
+        .pFrame = sChargedWideBeamOam_Vertical_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
@@ -842,73 +842,73 @@ const struct FrameData sParticleOam_ChargedWideBeamTrail[6] = {
     [5] = FRAME_DATA_TERMINATOR
 };
 
-static const u16 sOam_58ddf4_Frame0[] = {
+static const u16 sPlasmaBeamOam_Horizontal_Frame0[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f0, OBJ_PALETTE_2 | 0x80,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_X_FLIP | 0x0, OBJ_PALETTE_2 | 0x80
 };
 
-static const u16 sOam_58ddf4_Frame1[] = {
+static const u16 sPlasmaBeamOam_Horizontal_Frame1[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f0, OBJ_PALETTE_2 | 0xa0,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_X_FLIP | 0x0, OBJ_PALETTE_2 | 0xa0
 };
 
-static const u16 sOam_58de0c_Frame0[] = {
+static const u16 sPlasmaBeamOam_Diagonal_Frame0[] = {
     2,
     0xf2, OBJ_SIZE_16x16 | 0x1f2, OBJ_PALETTE_2 | 0x82,
     0xfe, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1fe, OBJ_PALETTE_2 | 0x82
 };
 
-static const u16 sOam_58de0c_Frame1[] = {
+static const u16 sPlasmaBeamOam_Diagonal_Frame1[] = {
     2,
     0xf2, OBJ_SIZE_16x16 | 0x1f2, OBJ_PALETTE_2 | 0x86,
     0xfe, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1fe, OBJ_PALETTE_2 | 0x86
 };
 
-static const u16 sOam_58de24_Frame0[] = {
+static const u16 sPlasmaBeamOam_Vertical_Frame0[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1fc, OBJ_PALETTE_2 | 0x84,
     OBJ_SHAPE_VERTICAL | 0x0, OBJ_Y_FLIP | 0x1fc, OBJ_PALETTE_2 | 0x84
 };
 
-static const u16 sOam_58de24_Frame1[] = {
+static const u16 sPlasmaBeamOam_Vertical_Frame1[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1fc, OBJ_PALETTE_2 | 0x85,
     OBJ_SHAPE_VERTICAL | 0x0, OBJ_Y_FLIP | 0x1fc, OBJ_PALETTE_2 | 0x85
 };
 
-static const u16 sOam_58de3c_Frame0[] = {
+static const u16 sChargedPlasmaBeamOam_Horizontal_Frame0[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f0, OBJ_PALETTE_2 | 0x88,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_X_FLIP | 0x0, OBJ_PALETTE_2 | 0x88
 };
 
-static const u16 sOam_58de3c_Frame1[] = {
+static const u16 sChargedPlasmaBeamOam_Horizontal_Frame1[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f0, OBJ_PALETTE_2 | 0xa8,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_X_FLIP | 0x0, OBJ_PALETTE_2 | 0xa8
 };
 
-static const u16 sOam_58de54_Frame0[] = {
+static const u16 sChargedPlasmaBeamOam_Diagonal_Frame0[] = {
     2,
     0xf3, OBJ_SIZE_16x16 | 0x1f3, OBJ_PALETTE_2 | 0x8a,
     0xfd, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1fd, OBJ_PALETTE_2 | 0x8a
 };
 
-static const u16 sOam_58de54_Frame1[] = {
+static const u16 sChargedPlasmaBeamOam_Diagonal_Frame1[] = {
     2,
     0xf3, OBJ_SIZE_16x16 | 0x1f3, OBJ_PALETTE_2 | 0x8d,
     0xfd, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1fd, OBJ_PALETTE_2 | 0x8d
 };
 
-static const u16 sOam_58de6c_Frame0[] = {
+static const u16 sChargedPlasmaBeamOam_Vertical_Frame0[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1fc, OBJ_PALETTE_2 | 0x8c,
     OBJ_SHAPE_VERTICAL | 0x0, OBJ_Y_FLIP | 0x1fc, OBJ_PALETTE_2 | 0x8c
 };
 
-static const u16 sOam_58de6c_Frame1[] = {
+static const u16 sChargedPlasmaBeamOam_Vertical_Frame1[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1fc, OBJ_PALETTE_2 | 0x8f,
     OBJ_SHAPE_VERTICAL | 0x0, OBJ_Y_FLIP | 0x1fc, OBJ_PALETTE_2 | 0x8f
@@ -949,73 +949,73 @@ static const u16 sParticleOam_ChargedPlasmaBeamTrail_Frame6[] = {
     0xfc, 0x1fc, OBJ_PALETTE_2 | 0xb2
 };
 
-const struct FrameData sOam_58ddf4[3] = {
+const struct FrameData sPlasmaBeamOam_Horizontal[3] = {
     [0] = {
-        .pFrame = sOam_58ddf4_Frame0,
+        .pFrame = sPlasmaBeamOam_Horizontal_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sOam_58ddf4_Frame1,
-        .timer = 3
-    },
-    [2] = FRAME_DATA_TERMINATOR
-};
-
-const struct FrameData sOam_58de0c[3] = {
-    [0] = {
-        .pFrame = sOam_58de0c_Frame0,
-        .timer = 3
-    },
-    [1] = {
-        .pFrame = sOam_58de0c_Frame1,
+        .pFrame = sPlasmaBeamOam_Horizontal_Frame1,
         .timer = 3
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58de24[3] = {
+const struct FrameData sPlasmaBeamOam_Diagonal[3] = {
     [0] = {
-        .pFrame = sOam_58de24_Frame0,
+        .pFrame = sPlasmaBeamOam_Diagonal_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sOam_58de24_Frame1,
+        .pFrame = sPlasmaBeamOam_Diagonal_Frame1,
         .timer = 3
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58de3c[3] = {
+const struct FrameData sPlasmaBeamOam_Vertical[3] = {
     [0] = {
-        .pFrame = sOam_58de3c_Frame0,
+        .pFrame = sPlasmaBeamOam_Vertical_Frame0,
+        .timer = 3
+    },
+    [1] = {
+        .pFrame = sPlasmaBeamOam_Vertical_Frame1,
+        .timer = 3
+    },
+    [2] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sChargedPlasmaBeamOam_Horizontal[3] = {
+    [0] = {
+        .pFrame = sChargedPlasmaBeamOam_Horizontal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58de3c_Frame1,
+        .pFrame = sChargedPlasmaBeamOam_Horizontal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58de54[3] = {
+const struct FrameData sChargedPlasmaBeamOam_Diagonal[3] = {
     [0] = {
-        .pFrame = sOam_58de54_Frame0,
+        .pFrame = sChargedPlasmaBeamOam_Diagonal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58de54_Frame1,
+        .pFrame = sChargedPlasmaBeamOam_Diagonal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58de6c[3] = {
+const struct FrameData sChargedPlasmaBeamOam_Vertical[3] = {
     [0] = {
-        .pFrame = sOam_58de6c_Frame0,
+        .pFrame = sChargedPlasmaBeamOam_Vertical_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58de6c_Frame1,
+        .pFrame = sChargedPlasmaBeamOam_Vertical_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
@@ -1053,55 +1053,55 @@ const struct FrameData sParticleOam_ChargedPlasmaBeamTrail[8] = {
     [7] = FRAME_DATA_TERMINATOR
 };
 
-static const u16 sOam_58df64_Frame0[] = {
+static const u16 sWaveBeamOam_Horizontal_Frame0[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f0, OBJ_PALETTE_2 | 0x80,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x0, OBJ_PALETTE_2 | 0x80
 };
 
-static const u16 sOam_58df74_Frame0[] = {
+static const u16 sWaveBeamOam_Diagonal_Frame0[] = {
     2,
     0xf2, OBJ_SIZE_16x16 | 0x1f2, OBJ_PALETTE_2 | 0x82,
     0xfe, OBJ_SIZE_16x16 | 0x1fe, OBJ_PALETTE_2 | 0x82
 };
 
-static const u16 sOam_58df84_Frame0[] = {
+static const u16 sWaveBeamOam_Vertical_Frame0[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1fc, OBJ_PALETTE_2 | 0x84,
     OBJ_SHAPE_VERTICAL | 0x0, 0x1fc, OBJ_PALETTE_2 | 0x84
 };
 
-static const u16 sOam_58df94_Frame0[] = {
+static const u16 sChargedWaveBeamOam_Horizontal_Frame0[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x0, OBJ_PALETTE_2 | 0x87,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f0, OBJ_PALETTE_2 | 0x87
 };
 
-static const u16 sOam_58df94_Frame1[] = {
+static const u16 sChargedWaveBeamOam_Horizontal_Frame1[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f0, OBJ_PALETTE_2 | 0xa7,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x0, OBJ_PALETTE_2 | 0xa7
 };
 
-static const u16 sOam_58dfac_Frame0[] = {
+static const u16 sChargedWaveBeamOam_Diagonal_Frame0[] = {
     2,
     0xf2, OBJ_SIZE_16x16 | 0x1f2, OBJ_PALETTE_2 | 0x89,
     0xfe, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1fe, OBJ_PALETTE_2 | 0x89
 };
 
-static const u16 sOam_58dfac_Frame1[] = {
+static const u16 sChargedWaveBeamOam_Diagonal_Frame1[] = {
     2,
     0xfe, OBJ_SIZE_16x16 | 0x1fe, OBJ_PALETTE_2 | 0x8b,
     0xf2, OBJ_SIZE_16x16 | 0x1f2, OBJ_PALETTE_2 | 0x8b
 };
 
-static const u16 sOam_58dfc4_Frame0[] = {
+static const u16 sChargedWaveBeamOam_Vertical_Frame0[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1fc, OBJ_PALETTE_2 | 0x86,
     OBJ_SHAPE_VERTICAL | 0x0, 0x1fc, OBJ_PALETTE_2 | 0x86
 };
 
-static const u16 sOam_58dfc4_Frame1[] = {
+static const u16 sChargedWaveBeamOam_Vertical_Frame1[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0x0, 0x1fc, OBJ_PALETTE_2 | 0x85,
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1fc, OBJ_PALETTE_2 | 0x85
@@ -1127,61 +1127,61 @@ static const u16 sParticleOam_ChargedWaveBeamTrail_Frame3[] = {
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x92
 };
 
-const struct FrameData sOam_58df64[2] = {
+const struct FrameData sWaveBeamOam_Horizontal[2] = {
     [0] = {
-        .pFrame = sOam_58df64_Frame0,
+        .pFrame = sWaveBeamOam_Horizontal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58df74[2] = {
+const struct FrameData sWaveBeamOam_Diagonal[2] = {
     [0] = {
-        .pFrame = sOam_58df74_Frame0,
+        .pFrame = sWaveBeamOam_Diagonal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58df84[2] = {
+const struct FrameData sWaveBeamOam_Vertical[2] = {
     [0] = {
-        .pFrame = sOam_58df84_Frame0,
+        .pFrame = sWaveBeamOam_Vertical_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58df94[3] = {
+const struct FrameData sChargedWaveBeamOam_Horizontal[3] = {
     [0] = {
-        .pFrame = sOam_58df94_Frame0,
+        .pFrame = sChargedWaveBeamOam_Horizontal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58df94_Frame1,
+        .pFrame = sChargedWaveBeamOam_Horizontal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58dfac[3] = {
+const struct FrameData sChargedWaveBeamOam_Diagonal[3] = {
     [0] = {
-        .pFrame = sOam_58dfac_Frame0,
+        .pFrame = sChargedWaveBeamOam_Diagonal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58dfac_Frame1,
+        .pFrame = sChargedWaveBeamOam_Diagonal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58dfc4[3] = {
+const struct FrameData sChargedWaveBeamOam_Vertical[3] = {
     [0] = {
-        .pFrame = sOam_58dfc4_Frame0,
+        .pFrame = sChargedWaveBeamOam_Vertical_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58dfc4_Frame1,
+        .pFrame = sChargedWaveBeamOam_Vertical_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
@@ -1207,35 +1207,35 @@ const struct FrameData sParticleOam_ChargedWaveBeamTrail[5] = {
     [4] = FRAME_DATA_TERMINATOR
 };
 
-static const u16 sOam_58e1d8_Frame0[] = {
+static const u16 sIceBeamOam_Horizontal_Frame0[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f4, OBJ_PALETTE_2 | 0x80,
     0xfc, 0x4, OBJ_PALETTE_2 | 0xa0
 };
 
-static const u16 sOam_58e1e8_Frame0[] = {
+static const u16 sIceBeamOam_Diagonal_Frame0[] = {
     2,
     0xf7, OBJ_SIZE_16x16 | 0x1f7, OBJ_PALETTE_2 | 0x82,
     0x4, 0x4, OBJ_PALETTE_2 | 0xa1
 };
 
-static const u16 sOam_58e1f8_Frame0[] = {
+static const u16 sIceBeamOam_Vertical_Frame0[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf4, 0x1fc, OBJ_PALETTE_2 | 0x84,
     0x4, 0x1fc, OBJ_PALETTE_2 | 0x85
 };
 
-static const u16 sOam_58e208_Frame0[] = {
+static const u16 sChargedIceBeamOam_Horizontal_Frame0[] = {
     1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x86
 };
 
-static const u16 sOam_58e218_Frame0[] = {
+static const u16 sChargedIceBeamOam_Diagonal_Frame0[] = {
     1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x88
 };
 
-static const u16 sOam_58e228_Frame0[] = {
+static const u16 sChargedIceBeamOam_Vertical_Frame0[] = {
     1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_2 | 0x8a
 };
@@ -1424,49 +1424,49 @@ static const u16 sParticleOam_ChargedIceBeamTrail_Frame6[] = {
     0x0, 0x1fc, OBJ_PALETTE_2 | 0xb2
 };
 
-const struct FrameData sOam_58e1d8[2] = {
+const struct FrameData sIceBeamOam_Horizontal[2] = {
     [0] = {
-        .pFrame = sOam_58e1d8_Frame0,
+        .pFrame = sIceBeamOam_Horizontal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e1e8[2] = {
+const struct FrameData sIceBeamOam_Diagonal[2] = {
     [0] = {
-        .pFrame = sOam_58e1e8_Frame0,
+        .pFrame = sIceBeamOam_Diagonal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e1f8[2] = {
+const struct FrameData sIceBeamOam_Vertical[2] = {
     [0] = {
-        .pFrame = sOam_58e1f8_Frame0,
+        .pFrame = sIceBeamOam_Vertical_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e208[2] = {
+const struct FrameData sChargedIceBeamOam_Horizontal[2] = {
     [0] = {
-        .pFrame = sOam_58e208_Frame0,
+        .pFrame = sChargedIceBeamOam_Horizontal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e218[2] = {
+const struct FrameData sChargedIceBeamOam_Diagonal[2] = {
     [0] = {
-        .pFrame = sOam_58e218_Frame0,
+        .pFrame = sChargedIceBeamOam_Diagonal_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e228[2] = {
+const struct FrameData sChargedIceBeamOam_Vertical[2] = {
     [0] = {
-        .pFrame = sOam_58e228_Frame0,
+        .pFrame = sChargedIceBeamOam_Vertical_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
@@ -1616,38 +1616,38 @@ const struct FrameData sOam_58e308[10] = {
     [9] = FRAME_DATA_TERMINATOR
 };
 
-static const u16 sOam_58e7a8_Frame0[] = {
+static const u16 sNormalSuperMissileOam_Horizontal_Frame0[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_3 | 0x9c,
     0xfc, 0x4, OBJ_PALETTE_3 | 0xca
 };
 
-static const u16 sOam_58e7a8_Frame1[] = {
+static const u16 sNormalSuperMissileOam_Horizontal_Frame1[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_3 | 0x9c,
     0xfc, 0x7, OBJ_PALETTE_3 | 0x16d
 };
 
-static const u16 sOam_58e7c0_Frame0[] = {
+static const u16 sNormalSuperMissileOam_Diagonal_Frame0[] = {
     2,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e,
     0x1, 0x1, OBJ_PALETTE_3 | 0xca
 };
 
-static const u16 sOam_58e7c0_Frame1[] = {
+static const u16 sNormalSuperMissileOam_Diagonal_Frame1[] = {
     2,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e,
     0x3, 0x3, OBJ_PALETTE_3 | 0x147
 };
 
-static const u16 sOam_58e7d8_Frame0[] = {
+static const u16 sNormalSuperMissileOam_Vertical_Frame0[] = {
     3,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0xbc,
     0x0, 0x1fc, OBJ_PALETTE_3 | 0xbd,
     0x4, 0x1fc, OBJ_PALETTE_3 | 0xca
 };
 
-static const u16 sOam_58e7d8_Frame1[] = {
+static const u16 sNormalSuperMissileOam_Vertical_Frame1[] = {
     3,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0xbc,
     0x0, 0x1fc, OBJ_PALETTE_3 | 0xbd,
@@ -1711,7 +1711,7 @@ static const u16 sParticleOam_SuperMissileTrail_Frame8[] = {
     0xf8, 0x1fd, OBJ_PALETTE_3 | 0x15c
 };
 
-static const u16 sOam_58e840_Frame0[] = {
+static const u16 sIceMissileOam_Horizontal_Frame0[] = {
     5,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_3 | 0x9c,
     0xf8, 0x4, OBJ_PALETTE_4 | 0xe5,
@@ -1720,14 +1720,14 @@ static const u16 sOam_58e840_Frame0[] = {
     0x0, OBJ_Y_FLIP | 0x4, OBJ_PALETTE_4 | 0xe5
 };
 
-static const u16 sOam_58e840_Frame1[] = {
+static const u16 sIceMissileOam_Horizontal_Frame1[] = {
     3,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_3 | 0x9c,
     0xfc, 0xc, OBJ_PALETTE_4 | 0x16d,
     0xfc, 0x6, OBJ_PALETTE_4 | 0xcb
 };
 
-static const u16 sOam_58e858_Frame0[] = {
+static const u16 sIceMissileOam_Diagonal_Frame0[] = {
     5,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e,
     0x0, 0x1, OBJ_PALETTE_4 | 0xe5,
@@ -1736,14 +1736,14 @@ static const u16 sOam_58e858_Frame0[] = {
     0x7, OBJ_Y_FLIP | 0x0, OBJ_PALETTE_4 | 0xe5
 };
 
-static const u16 sOam_58e858_Frame1[] = {
+static const u16 sIceMissileOam_Diagonal_Frame1[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e,
     0x7, 0x7, OBJ_PALETTE_4 | 0x147,
     0x2, 0x2, OBJ_PALETTE_4 | 0xcb
 };
 
-static const u16 sOam_58e870_Frame0[] = {
+static const u16 sIceMissileOam_Vertical_Frame0[] = {
     6,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0xbc,
     0x0, 0x1fc, OBJ_PALETTE_3 | 0xbd,
@@ -1753,7 +1753,7 @@ static const u16 sOam_58e870_Frame0[] = {
     0xb, OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_4 | 0xe5
 };
 
-static const u16 sOam_58e870_Frame1[] = {
+static const u16 sIceMissileOam_Vertical_Frame1[] = {
     4,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0xbc,
     0x0, 0x1fc, OBJ_PALETTE_3 | 0xbd,
@@ -1813,7 +1813,7 @@ static const u16 sParticleOam_NormalMissileTrail_Frame3[] = {
     0xfc, 0x1fc, OBJ_PALETTE_3 | 0xcd
 };
 
-static const u16 sOam_58e980_Frame0[] = {
+static const u16 sDiffusionMissileOam_Horizontal_Frame0[] = {
     9,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_3 | 0x9c,
     0xf8, 0x4, OBJ_PALETTE_4 | 0xe5,
@@ -1826,7 +1826,7 @@ static const u16 sOam_58e980_Frame0[] = {
     0x0, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_4 | 0xd8
 };
 
-static const u16 sOam_58e980_Frame1[] = {
+static const u16 sDiffusionMissileOam_Horizontal_Frame1[] = {
     7,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_3 | 0x9c,
     0xf0, OBJ_SIZE_16x16 | 0x4, OBJ_PALETTE_4 | 0xda,
@@ -1837,7 +1837,7 @@ static const u16 sOam_58e980_Frame1[] = {
     0xfc, 0x6, OBJ_PALETTE_4 | 0xcb
 };
 
-static const u16 sOam_58e998_Frame0[] = {
+static const u16 sDiffusionMissileOam_Diagonal_Frame0[] = {
     9,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e,
     0x0, 0x1, OBJ_PALETTE_4 | 0xe5,
@@ -1850,7 +1850,7 @@ static const u16 sOam_58e998_Frame0[] = {
     0x8, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_4 | 0xd8
 };
 
-static const u16 sOam_58e998_Frame1[] = {
+static const u16 sDiffusionMissileOam_Diagonal_Frame1[] = {
     7,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e,
     0x7, 0x7, OBJ_PALETTE_4 | 0x147,
@@ -1861,7 +1861,7 @@ static const u16 sOam_58e998_Frame1[] = {
     0xe, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1fe, OBJ_PALETTE_4 | 0xda
 };
 
-static const u16 sOam_58e9b0_Frame0[] = {
+static const u16 sDiffusionMissileOam_Vertical_Frame0[] = {
     10,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0xbc,
     0x0, 0x1fc, OBJ_PALETTE_3 | 0xbd,
@@ -1875,7 +1875,7 @@ static const u16 sOam_58e9b0_Frame0[] = {
     0xc, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0xd8
 };
 
-static const u16 sOam_58e9b0_Frame1[] = {
+static const u16 sDiffusionMissileOam_Vertical_Frame1[] = {
     8,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0xbc,
     0x0, 0x1fc, OBJ_PALETTE_3 | 0xbd,
@@ -1974,79 +1974,79 @@ static const u16 sParticleOam_ChargedDiffusionMissileTrail_Frame5[] = {
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18a
 };
 
-static const u16 sOam_58ea20_Frame0[] = {
+static const u16 sMissileOam_Tumbling_Frame0[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, 0x1f8, OBJ_PALETTE_3 | 0x9c
 };
 
-static const u16 sOam_58ea20_Frame1[] = {
+static const u16 sMissileOam_Tumbling_Frame1[] = {
     1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e
 };
 
-static const u16 sOam_58ea20_Frame2[] = {
+static const u16 sMissileOam_Tumbling_Frame2[] = {
     2,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0xbc,
     0x0, 0x1fc, OBJ_PALETTE_3 | 0xbd
 };
 
-static const u16 sOam_58ea20_Frame3[] = {
+static const u16 sMissileOam_Tumbling_Frame3[] = {
     1,
     0xf8, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e
 };
 
-static const u16 sOam_58ea20_Frame4[] = {
+static const u16 sMissileOam_Tumbling_Frame4[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_X_FLIP | 0x1f8, OBJ_PALETTE_3 | 0x9c
 };
 
-static const u16 sOam_58ea20_Frame5[] = {
+static const u16 sMissileOam_Tumbling_Frame5[] = {
     1,
     0xf8, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e
 };
 
-static const u16 sOam_58ea20_Frame6[] = {
+static const u16 sMissileOam_Tumbling_Frame6[] = {
     2,
     0x0, OBJ_Y_FLIP | 0x1fc, OBJ_PALETTE_3 | 0xbc,
     0xf8, OBJ_Y_FLIP | 0x1fc, OBJ_PALETTE_3 | 0xbd
 };
 
-static const u16 sOam_58ea20_Frame7[] = {
+static const u16 sMissileOam_Tumbling_Frame7[] = {
     1,
     0xf8, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x9e
 };
 
-const struct FrameData sOam_58e7a8[3] = {
+const struct FrameData sNormalSuperMissileOam_Horizontal[3] = {
     [0] = {
-        .pFrame = sOam_58e7a8_Frame0,
+        .pFrame = sNormalSuperMissileOam_Horizontal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58e7a8_Frame1,
+        .pFrame = sNormalSuperMissileOam_Horizontal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e7c0[3] = {
+const struct FrameData sNormalSuperMissileOam_Diagonal[3] = {
     [0] = {
-        .pFrame = sOam_58e7c0_Frame0,
+        .pFrame = sNormalSuperMissileOam_Diagonal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58e7c0_Frame1,
+        .pFrame = sNormalSuperMissileOam_Diagonal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e7d8[3] = {
+const struct FrameData sNormalSuperMissileOam_Vertical[3] = {
     [0] = {
-        .pFrame = sOam_58e7d8_Frame0,
+        .pFrame = sNormalSuperMissileOam_Vertical_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58e7d8_Frame1,
+        .pFrame = sNormalSuperMissileOam_Vertical_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
@@ -2092,37 +2092,37 @@ const struct FrameData sParticleOam_SuperMissileTrail[10] = {
     [9] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e840[3] = {
+const struct FrameData sIceMissileOam_Horizontal[3] = {
     [0] = {
-        .pFrame = sOam_58e840_Frame0,
+        .pFrame = sIceMissileOam_Horizontal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58e840_Frame1,
+        .pFrame = sIceMissileOam_Horizontal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e858[3] = {
+const struct FrameData sIceMissileOam_Diagonal[3] = {
     [0] = {
-        .pFrame = sOam_58e858_Frame0,
+        .pFrame = sIceMissileOam_Diagonal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58e858_Frame1,
+        .pFrame = sIceMissileOam_Diagonal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e870[3] = {
+const struct FrameData sIceMissileOam_Vertical[3] = {
     [0] = {
-        .pFrame = sOam_58e870_Frame0,
+        .pFrame = sIceMissileOam_Vertical_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58e870_Frame1,
+        .pFrame = sIceMissileOam_Vertical_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
@@ -2252,37 +2252,37 @@ const struct FrameData sParticleOam_DiffusionMissileTrail[11] = {
     [10] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e980[3] = {
+const struct FrameData sDiffusionMissileOam_Horizontal[3] = {
     [0] = {
-        .pFrame = sOam_58e980_Frame0,
+        .pFrame = sDiffusionMissileOam_Horizontal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58e980_Frame1,
+        .pFrame = sDiffusionMissileOam_Horizontal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e998[3] = {
+const struct FrameData sDiffusionMissileOam_Diagonal[3] = {
     [0] = {
-        .pFrame = sOam_58e998_Frame0,
+        .pFrame = sDiffusionMissileOam_Diagonal_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58e998_Frame1,
+        .pFrame = sDiffusionMissileOam_Diagonal_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58e9b0[3] = {
+const struct FrameData sDiffusionMissileOam_Vertical[3] = {
     [0] = {
-        .pFrame = sOam_58e9b0_Frame0,
+        .pFrame = sDiffusionMissileOam_Vertical_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58e9b0_Frame1,
+        .pFrame = sDiffusionMissileOam_Vertical_Frame1,
         .timer = 2
     },
     [2] = FRAME_DATA_TERMINATOR
@@ -2332,37 +2332,37 @@ const struct FrameData sParticleOam_ChargedDiffusionMissileTrail[11] = {
     [10] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58ea20[9] = {
+const struct FrameData sMissileOam_Tumbling[9] = {
     [0] = {
-        .pFrame = sOam_58ea20_Frame0,
+        .pFrame = sMissileOam_Tumbling_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sOam_58ea20_Frame1,
+        .pFrame = sMissileOam_Tumbling_Frame1,
         .timer = 3
     },
     [2] = {
-        .pFrame = sOam_58ea20_Frame2,
+        .pFrame = sMissileOam_Tumbling_Frame2,
         .timer = 3
     },
     [3] = {
-        .pFrame = sOam_58ea20_Frame3,
+        .pFrame = sMissileOam_Tumbling_Frame3,
         .timer = 3
     },
     [4] = {
-        .pFrame = sOam_58ea20_Frame4,
+        .pFrame = sMissileOam_Tumbling_Frame4,
         .timer = 3
     },
     [5] = {
-        .pFrame = sOam_58ea20_Frame5,
+        .pFrame = sMissileOam_Tumbling_Frame5,
         .timer = 3
     },
     [6] = {
-        .pFrame = sOam_58ea20_Frame6,
+        .pFrame = sMissileOam_Tumbling_Frame6,
         .timer = 3
     },
     [7] = {
-        .pFrame = sOam_58ea20_Frame7,
+        .pFrame = sMissileOam_Tumbling_Frame7,
         .timer = 3
     },
     [8] = FRAME_DATA_TERMINATOR
@@ -2388,37 +2388,37 @@ static const u16 sOam_58eac0_Frame3[] = {
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_3 | 0x18a
 };
 
-static const u16 sOam_58eae8_Frame0[] = {
+static const u16 sBombOam_Frame0[] = {
     1,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x14e
 };
 
-static const u16 sOam_58eae8_Frame1[] = {
+static const u16 sBombOam_Frame1[] = {
     1,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x14f
 };
 
-static const u16 sOam_58eae8_Frame2[] = {
+static const u16 sBombOam_Frame2[] = {
     1,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x150
 };
 
-static const u16 sOam_58eae8_Frame3[] = {
+static const u16 sBombOam_Frame3[] = {
     1,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x151
 };
 
-static const u16 sOam_58eb38_Frame0[] = {
+static const u16 sPowerBombOam_Frame0[] = {
     1,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x14b
 };
 
-static const u16 sOam_58eb38_Frame1[] = {
+static const u16 sPowerBombOam_Frame1[] = {
     1,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x14c
 };
 
-static const u16 sOam_58eb38_Frame2[] = {
+static const u16 sPowerBombOam_Frame2[] = {
     1,
     0xf8, 0x1fc, OBJ_PALETTE_3 | 0x14d
 };
@@ -2443,73 +2443,73 @@ const struct FrameData sOam_58eac0[5] = {
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58eae8[5] = {
+const struct FrameData sBombOam_Slow[5] = {
     [0] = {
-        .pFrame = sOam_58eae8_Frame0,
+        .pFrame = sBombOam_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sOam_58eae8_Frame1,
+        .pFrame = sBombOam_Frame1,
         .timer = 8
     },
     [2] = {
-        .pFrame = sOam_58eae8_Frame2,
+        .pFrame = sBombOam_Frame2,
         .timer = 8
     },
     [3] = {
-        .pFrame = sOam_58eae8_Frame3,
+        .pFrame = sBombOam_Frame3,
         .timer = 8
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58eb10[5] = {
+const struct FrameData sBombOam_Fast[5] = {
     [0] = {
-        .pFrame = sOam_58eae8_Frame0,
+        .pFrame = sBombOam_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sOam_58eae8_Frame1,
+        .pFrame = sBombOam_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sOam_58eae8_Frame2,
+        .pFrame = sBombOam_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sOam_58eae8_Frame3,
+        .pFrame = sBombOam_Frame3,
         .timer = 2
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58eb38[4] = {
+const struct FrameData sPowerBombOam_Slow[4] = {
     [0] = {
-        .pFrame = sOam_58eb38_Frame0,
+        .pFrame = sPowerBombOam_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sOam_58eb38_Frame1,
+        .pFrame = sPowerBombOam_Frame1,
         .timer = 8
     },
     [2] = {
-        .pFrame = sOam_58eb38_Frame2,
+        .pFrame = sPowerBombOam_Frame2,
         .timer = 8
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sOam_58eb58[4] = {
+const struct FrameData sPowerBombOam_Fast[4] = {
     [0] = {
-        .pFrame = sOam_58eb38_Frame0,
+        .pFrame = sPowerBombOam_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sOam_58eb38_Frame1,
+        .pFrame = sPowerBombOam_Frame1,
         .timer = 3
     },
     [2] = {
-        .pFrame = sOam_58eb38_Frame2,
+        .pFrame = sPowerBombOam_Frame2,
         .timer = 3
     },
     [3] = FRAME_DATA_TERMINATOR

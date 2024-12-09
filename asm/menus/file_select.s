@@ -372,7 +372,7 @@ _0809E86A:
 	movs r0, #0
 	strh r0, [r4, #8]
 	ldr r1, _0809E9C8 @ =0x0879EC68
-	ldr r0, _0809E9CC @ =0x03000011
+	ldr r0, _0809E9CC @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -474,7 +474,7 @@ _0809E9BC: .4byte 0x06010000
 _0809E9C0: .4byte 0x08740D08
 _0809E9C4: .4byte 0x05000200
 _0809E9C8: .4byte 0x0879EC68
-_0809E9CC: .4byte 0x03000011
+_0809E9CC: .4byte gLanguage
 _0809E9D0: .4byte 0x03000B8D
 _0809E9D4: .4byte 0x00001F03
 _0809E9D8: .4byte 0x00001C0A
@@ -689,7 +689,7 @@ _0809EBB0:
 	bne _0809EBF4
 	strh r0, [r4, #8]
 	ldr r1, _0809EBEC @ =0x0879EC68
-	ldr r0, _0809EBF0 @ =0x03000011
+	ldr r0, _0809EBF0 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -707,7 +707,7 @@ _0809EBB0:
 	.align 2, 0
 _0809EBE8: .4byte gNonGameplayRam
 _0809EBEC: .4byte 0x0879EC68
-_0809EBF0: .4byte 0x03000011
+_0809EBF0: .4byte gLanguage
 _0809EBF4:
 	cmp r0, #0xc
 	beq _0809EBFC
@@ -971,7 +971,7 @@ _0809EDFE:
 	movs r0, #0x18
 	strh r0, [r4, #8]
 	ldr r1, _0809EE1C @ =0x0879EC68
-	ldr r0, _0809EE20 @ =0x03000011
+	ldr r0, _0809EE20 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -983,7 +983,7 @@ _0809EDFE:
 	b _0809F32C
 	.align 2, 0
 _0809EE1C: .4byte 0x0879EC68
-_0809EE20: .4byte 0x03000011
+_0809EE20: .4byte gLanguage
 _0809EE24:
 	cmp r0, #0xc
 	beq _0809EE2A
@@ -1169,7 +1169,7 @@ _0809EF7A:
 	movs r0, #2
 	strh r0, [r2, #8]
 	ldr r1, _0809EF98 @ =0x0879EC68
-	ldr r0, _0809EF9C @ =0x03000011
+	ldr r0, _0809EF9C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -1181,7 +1181,7 @@ _0809EF7A:
 	b _0809F32C
 	.align 2, 0
 _0809EF98: .4byte 0x0879EC68
-_0809EF9C: .4byte 0x03000011
+_0809EF9C: .4byte gLanguage
 _0809EFA0:
 	cmp r0, #0xc
 	beq _0809EFA6
@@ -1310,7 +1310,7 @@ _0809F088:
 	movs r0, #3
 	strh r0, [r2, #8]
 	ldr r1, _0809F0A8 @ =0x0879EC68
-	ldr r0, _0809F0AC @ =0x03000011
+	ldr r0, _0809F0AC @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -1322,7 +1322,7 @@ _0809F088:
 	b _0809F32C
 	.align 2, 0
 _0809F0A8: .4byte 0x0879EC68
-_0809F0AC: .4byte 0x03000011
+_0809F0AC: .4byte gLanguage
 _0809F0B0:
 	cmp r0, #4
 	beq _0809F0B6
@@ -1335,7 +1335,7 @@ _0809F0B6:
 	strh r0, [r2, #0xa]
 	strb r1, [r2, #0x10]
 	ldr r1, _0809F0DC @ =0x0873DBB0
-	ldr r0, _0809F0E0 @ =0x03000011
+	ldr r0, _0809F0E0 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -1348,7 +1348,7 @@ _0809F0B6:
 	b _0809F2FC
 	.align 2, 0
 _0809F0DC: .4byte 0x0873DBB0
-_0809F0E0: .4byte 0x03000011
+_0809F0E0: .4byte gLanguage
 _0809F0E4:
 	ldr r2, _0809F120 @ =gNonGameplayRam
 	ldrb r0, [r2, #0xc]
@@ -1479,7 +1479,7 @@ _0809F1C6:
 	movs r0, #2
 	strh r0, [r4, #8]
 	ldr r1, _0809F1E4 @ =0x0879EC68
-	ldr r0, _0809F1E8 @ =0x03000011
+	ldr r0, _0809F1E8 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -1491,7 +1491,7 @@ _0809F1C6:
 	b _0809F32C
 	.align 2, 0
 _0809F1E4: .4byte 0x0879EC68
-_0809F1E8: .4byte 0x03000011
+_0809F1E8: .4byte gLanguage
 _0809F1EC:
 	ldr r4, _0809F200 @ =gNonGameplayRam
 	ldrb r0, [r4, #0xc]
@@ -1517,7 +1517,7 @@ _0809F20E:
 	movs r0, #2
 	strh r0, [r4, #8]
 	ldr r1, _0809F22C @ =0x0879EC68
-	ldr r0, _0809F230 @ =0x03000011
+	ldr r0, _0809F230 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -1529,7 +1529,7 @@ _0809F20E:
 	b _0809F32C
 	.align 2, 0
 _0809F22C: .4byte 0x0879EC68
-_0809F230: .4byte 0x03000011
+_0809F230: .4byte gLanguage
 _0809F234:
 	cmp r0, #0xc
 	beq _0809F23A
@@ -1657,7 +1657,7 @@ _0809F310:
 	movs r0, #4
 	strh r0, [r5, #8]
 	ldr r1, _0809F334 @ =0x0879EC68
-	ldr r0, _0809F338 @ =0x03000011
+	ldr r0, _0809F338 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -1672,7 +1672,7 @@ _0809F32C:
 	b _0809F50A
 	.align 2, 0
 _0809F334: .4byte 0x0879EC68
-_0809F338: .4byte 0x03000011
+_0809F338: .4byte gLanguage
 _0809F33C:
 	cmp r0, #0xc
 	beq _0809F342
@@ -1681,7 +1681,7 @@ _0809F342:
 	movs r4, #1
 	strb r4, [r5, #0x10]
 	ldr r1, _0809F36C @ =0x0873DBBE
-	ldr r0, _0809F370 @ =0x03000011
+	ldr r0, _0809F370 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -1700,7 +1700,7 @@ _0809F342:
 	b _0809F50A
 	.align 2, 0
 _0809F36C: .4byte 0x0873DBBE
-_0809F370: .4byte 0x03000011
+_0809F370: .4byte gLanguage
 _0809F374:
 	ldr r0, _0809F388 @ =gChangedInput
 	ldrh r1, [r0]
@@ -3076,7 +3076,7 @@ unk_9fddc: @ 0x0809FDDC
 	movs r0, #1
 	strb r0, [r3, #0x10]
 	ldr r1, _0809FE24 @ =0x0873DBB0
-	ldr r0, _0809FE28 @ =0x03000011
+	ldr r0, _0809FE28 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3093,7 +3093,7 @@ unk_9fddc: @ 0x0809FDDC
 _0809FE1C: .4byte gNonGameplayRam
 _0809FE20: .4byte gChangedInput
 _0809FE24: .4byte 0x0873DBB0
-_0809FE28: .4byte 0x03000011
+_0809FE28: .4byte gLanguage
 _0809FE2C:
 	cmp r0, #1
 	bne _0809FE58
@@ -3105,7 +3105,7 @@ _0809FE2C:
 	beq _0809FE58
 	strb r2, [r3, #0x10]
 	ldr r1, _0809FE84 @ =0x0873DBB0
-	ldr r0, _0809FE88 @ =0x03000011
+	ldr r0, _0809FE88 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3140,7 +3140,7 @@ _0809FE58:
 	.align 2, 0
 _0809FE80: .4byte gChangedInput
 _0809FE84: .4byte 0x0873DBB0
-_0809FE88: .4byte 0x03000011
+_0809FE88: .4byte gLanguage
 _0809FE8C: .4byte gNonGameplayRam
 _0809FE90: .4byte 0x00000207
 _0809FE94:
@@ -3223,7 +3223,7 @@ unk_9ff00: @ 0x0809FF00
 	movs r0, #1
 	strb r0, [r3, #0x10]
 	ldr r1, _0809FF48 @ =0x0873DBBE
-	ldr r0, _0809FF4C @ =0x03000011
+	ldr r0, _0809FF4C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3240,7 +3240,7 @@ unk_9ff00: @ 0x0809FF00
 _0809FF40: .4byte gNonGameplayRam
 _0809FF44: .4byte gChangedInput
 _0809FF48: .4byte 0x0873DBBE
-_0809FF4C: .4byte 0x03000011
+_0809FF4C: .4byte gLanguage
 _0809FF50:
 	cmp r0, #1
 	bne _0809FF7C
@@ -3252,7 +3252,7 @@ _0809FF50:
 	beq _0809FF7C
 	strb r2, [r3, #0x10]
 	ldr r1, _0809FFAC @ =0x0873DBBE
-	ldr r0, _0809FFB0 @ =0x03000011
+	ldr r0, _0809FFB0 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -3288,7 +3288,7 @@ _0809FF7C:
 	.align 2, 0
 _0809FFA8: .4byte gChangedInput
 _0809FFAC: .4byte 0x0873DBBE
-_0809FFB0: .4byte 0x03000011
+_0809FFB0: .4byte gLanguage
 _0809FFB4: .4byte gNonGameplayRam
 _0809FFB8:
 	ldr r0, _0809FFC8 @ =0x000001FB
@@ -4120,7 +4120,7 @@ _080A05B0:
 	str r2, [r0, #8]
 	ldr r0, [r0, #8]
 	ldr r1, _080A0624 @ =0x0879EC84
-	ldr r0, _080A0628 @ =0x03000011
+	ldr r0, _080A0628 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -4150,7 +4150,7 @@ _080A060E:
 _080A061C: .4byte 0x040000D4
 _080A0620: .4byte 0x850000C0
 _080A0624: .4byte 0x0879EC84
-_080A0628: .4byte 0x03000011
+_080A0628: .4byte gLanguage
 _080A062C:
 	cmp r0, #0x40
 	bne _080A063A
@@ -4208,7 +4208,7 @@ _080A0686:
 	.align 2, 0
 _080A0690: .4byte gNonGameplayRam
 _080A0694:
-	ldr r0, _080A07F4 @ =0x03000011
+	ldr r0, _080A07F4 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -4379,7 +4379,7 @@ _080A07E2:
 	ldr r0, _080A0810 @ =0x0873DB04
 	b _080A0818
 	.align 2, 0
-_080A07F4: .4byte 0x03000011
+_080A07F4: .4byte gLanguage
 _080A07F8: .4byte 0x040000D4
 _080A07FC: .4byte 0x84000008
 _080A0800: .4byte 0x08682FAC
@@ -4679,7 +4679,7 @@ FileSelectDrawText: @ 0x080A0A3C
 	cmp r1, #0x18
 	bne _080A0A80
 	ldr r1, _080A0A78 @ =0x0879E928
-	ldr r0, _080A0A7C @ =0x03000011
+	ldr r0, _080A0A7C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -4691,10 +4691,10 @@ FileSelectDrawText: @ 0x080A0A3C
 	.align 2, 0
 _080A0A74: .4byte gNonGameplayRam
 _080A0A78: .4byte 0x0879E928
-_080A0A7C: .4byte 0x03000011
+_080A0A7C: .4byte gLanguage
 _080A0A80:
 	ldr r1, _080A0AA4 @ =0x0879E928
-	ldr r0, _080A0AA8 @ =0x03000011
+	ldr r0, _080A0AA8 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -4714,7 +4714,7 @@ _080A0A98:
 	b _080A0AC6
 	.align 2, 0
 _080A0AA4: .4byte 0x0879E928
-_080A0AA8: .4byte 0x03000011
+_080A0AA8: .4byte gLanguage
 _080A0AAC: .4byte 0x06008000
 _080A0AB0:
 	cmp r3, #2
@@ -5037,7 +5037,7 @@ _080A0D1C:
 _080A0D20:
 	strh r0, [r4, #8]
 	ldr r1, _080A0D58 @ =0x0879EC68
-	ldr r0, _080A0D5C @ =0x03000011
+	ldr r0, _080A0D5C @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -5063,7 +5063,7 @@ _080A0D20:
 	b _080A0DF0
 	.align 2, 0
 _080A0D58: .4byte 0x0879EC68
-_080A0D5C: .4byte 0x03000011
+_080A0D5C: .4byte gLanguage
 _080A0D60:
 	ldr r0, _080A0D98 @ =gChangedInput
 	ldrh r1, [r0]
@@ -5187,7 +5187,7 @@ _080A0E2E:
 	str r2, [r0, #8]
 	ldr r0, [r0, #8]
 	ldr r1, _080A0EA0 @ =0x0879EC84
-	ldr r0, _080A0EA4 @ =0x03000011
+	ldr r0, _080A0EA4 @ =gLanguage
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -5217,7 +5217,7 @@ _080A0E94: .4byte gNonGameplayRam
 _080A0E98: .4byte 0x040000D4
 _080A0E9C: .4byte 0x850000C0
 _080A0EA0: .4byte 0x0879EC84
-_080A0EA4: .4byte 0x03000011
+_080A0EA4: .4byte gLanguage
 _080A0EA8:
 	cmp r0, #0x40
 	bne _080A0EB4
@@ -5482,7 +5482,7 @@ _080A1090:
 	adds r0, #0x2c
 	adds r1, r1, r0
 	ldr r3, _080A10B4 @ =0x0879E944
-	ldr r0, _080A10B8 @ =0x03000011
+	ldr r0, _080A10B8 @ =gLanguage
 	movs r2, #0
 	ldrsb r2, [r0, r2]
 	lsls r0, r2, #3
@@ -5493,7 +5493,7 @@ _080A1090:
 	.align 2, 0
 _080A10B0: .4byte gNonGameplayRam
 _080A10B4: .4byte 0x0879E944
-_080A10B8: .4byte 0x03000011
+_080A10B8: .4byte gLanguage
 _080A10BC:
 	ldr r0, _080A10DC @ =gNonGameplayRam
 	lsls r1, r2, #3
@@ -5502,7 +5502,7 @@ _080A10BC:
 	adds r0, #0x2c
 	adds r1, r1, r0
 	ldr r3, _080A10E0 @ =0x0879E944
-	ldr r0, _080A10E4 @ =0x03000011
+	ldr r0, _080A10E4 @ =gLanguage
 	movs r2, #0
 	ldrsb r2, [r0, r2]
 	lsls r0, r2, #3
@@ -5513,7 +5513,7 @@ _080A10BC:
 	.align 2, 0
 _080A10DC: .4byte gNonGameplayRam
 _080A10E0: .4byte 0x0879E944
-_080A10E4: .4byte 0x03000011
+_080A10E4: .4byte gLanguage
 _080A10E8:
 	ldr r0, _080A1108 @ =gNonGameplayRam
 	lsls r1, r2, #3
@@ -5522,7 +5522,7 @@ _080A10E8:
 	adds r0, #0x2c
 	adds r1, r1, r0
 	ldr r3, _080A110C @ =0x0879E944
-	ldr r0, _080A1110 @ =0x03000011
+	ldr r0, _080A1110 @ =gLanguage
 	movs r2, #0
 	ldrsb r2, [r0, r2]
 	lsls r0, r2, #3
@@ -5533,7 +5533,7 @@ _080A10E8:
 	.align 2, 0
 _080A1108: .4byte gNonGameplayRam
 _080A110C: .4byte 0x0879E944
-_080A1110: .4byte 0x03000011
+_080A1110: .4byte gLanguage
 _080A1114:
 	ldr r0, _080A1134 @ =gNonGameplayRam
 	lsls r1, r2, #3
@@ -5542,7 +5542,7 @@ _080A1114:
 	adds r0, #0x2c
 	adds r1, r1, r0
 	ldr r3, _080A1138 @ =0x0879E944
-	ldr r0, _080A113C @ =0x03000011
+	ldr r0, _080A113C @ =gLanguage
 	movs r2, #0
 	ldrsb r2, [r0, r2]
 	lsls r0, r2, #3
@@ -5553,7 +5553,7 @@ _080A1114:
 	.align 2, 0
 _080A1134: .4byte gNonGameplayRam
 _080A1138: .4byte 0x0879E944
-_080A113C: .4byte 0x03000011
+_080A113C: .4byte gLanguage
 _080A1140:
 	ldr r0, _080A1160 @ =gNonGameplayRam
 	lsls r1, r2, #3
@@ -5562,7 +5562,7 @@ _080A1140:
 	adds r0, #0x2c
 	adds r1, r1, r0
 	ldr r3, _080A1164 @ =0x0879E944
-	ldr r0, _080A1168 @ =0x03000011
+	ldr r0, _080A1168 @ =gLanguage
 	movs r2, #0
 	ldrsb r2, [r0, r2]
 	lsls r0, r2, #3
@@ -5573,7 +5573,7 @@ _080A1140:
 	.align 2, 0
 _080A1160: .4byte gNonGameplayRam
 _080A1164: .4byte 0x0879E944
-_080A1168: .4byte 0x03000011
+_080A1168: .4byte gLanguage
 _080A116C:
 	ldr r0, _080A118C @ =gNonGameplayRam
 	lsls r1, r2, #3
@@ -5582,7 +5582,7 @@ _080A116C:
 	adds r0, #0x2c
 	adds r1, r1, r0
 	ldr r3, _080A1190 @ =0x0879E944
-	ldr r0, _080A1194 @ =0x03000011
+	ldr r0, _080A1194 @ =gLanguage
 	movs r2, #0
 	ldrsb r2, [r0, r2]
 	lsls r0, r2, #3
@@ -5593,7 +5593,7 @@ _080A116C:
 	.align 2, 0
 _080A118C: .4byte gNonGameplayRam
 _080A1190: .4byte 0x0879E944
-_080A1194: .4byte 0x03000011
+_080A1194: .4byte gLanguage
 _080A1198:
 	ldr r0, _080A11C0 @ =gNonGameplayRam
 	lsls r1, r2, #3
@@ -5602,7 +5602,7 @@ _080A1198:
 	adds r0, #0x2c
 	adds r1, r1, r0
 	ldr r3, _080A11C4 @ =0x0879E944
-	ldr r0, _080A11C8 @ =0x03000011
+	ldr r0, _080A11C8 @ =gLanguage
 	movs r2, #0
 	ldrsb r2, [r0, r2]
 	lsls r0, r2, #3
@@ -5618,7 +5618,7 @@ _080A11B2:
 	.align 2, 0
 _080A11C0: .4byte gNonGameplayRam
 _080A11C4: .4byte 0x0879E944
-_080A11C8: .4byte 0x03000011
+_080A11C8: .4byte gLanguage
 
 	thumb_func_start FileSelectProcessOam
 FileSelectProcessOam: @ 0x080A11CC
@@ -5886,13 +5886,13 @@ _080A13CC: .4byte gNextOamSlot
 
 	thumb_func_start SetLanguage
 SetLanguage: @ 0x080A13D0
-	ldr r1, _080A13DC @ =0x03000011
+	ldr r1, _080A13DC @ =gLanguage
 	movs r0, #2
 	strb r0, [r1]
 	movs r0, #1
 	bx lr
 	.align 2, 0
-_080A13DC: .4byte 0x03000011
+_080A13DC: .4byte gLanguage
 
 	thumb_func_start unk_a13e0
 unk_a13e0: @ 0x080A13E0

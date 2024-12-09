@@ -6,26 +6,26 @@ enum Sound {
     MUSIC_1, // 0x1 1
     MUSIC_2, // 0x2 2
     MUSIC_3, // 0x3 3
-    MUSIC_4, // 0x4 4
+    MUSIC_SECTOR_1, // 0x4 4
     MUSIC_5, // 0x5 5
-    MUSIC_6, // 0x6 6
-    MUSIC_7, // 0x7 7
-    MUSIC_8, // 0x8 8
-    MUSIC_9, // 0x9 9
-    MUSIC_A, // 0xa 10
-    MUSIC_B, // 0xb 11
+    MUSIC_SECTOR_2, // 0x6 6
+    MUSIC_SECTOR_3, // 0x7 7
+    MUSIC_SECTOR_5, // 0x8 8
+    MUSIC_SECTOR_4, // 0x9 9
+    MUSIC_SECTOR_6, // 0xa 10
+    MUSIC_NAVIGATION_ROOM, // 0xb 11
     MUSIC_C, // 0xc 12
     MUSIC_D, // 0xd 13
     MUSIC_E, // 0xe 14
     MUSIC_F, // 0xf 15
-    MUSIC_10, // 0x10 16
+    MUSIC_ITEM_FANFARE, // 0x10 16
     MUSIC_11, // 0x11 17
     MUSIC_12, // 0x12 18
     MUSIC_13, // 0x13 19
-    MUSIC_14, // 0x14 20
+    SOUND_MESSAGE_POPUP, // 0x14 20
     MUSIC_15, // 0x15 21
     MUSIC_16, // 0x16 22
-    MUSIC_17, // 0x17 23
+    MUSIC_SA_X_CHASE, // 0x17 23
     MUSIC_BOSS_TENSION, // 0x18 24
     MUSIC_ARACHNUS_BATTLE, // 0x19 25
     MUSIC_ZAZABI_BATTLE, // 0x1a 26
@@ -53,15 +53,15 @@ enum Sound {
     MUSIC_30, // 0x30 48
     MUSIC_31, // 0x31 49
     MUSIC_32, // 0x32 50
-    MUSIC_33, // 0x33 51
-    MUSIC_34, // 0x34 52
-    MUSIC_35, // 0x35 53
+    MUSIC_OPERATIONS_DECK_ELEVATOR_OFFLINE, // 0x33 51
+    MUSIC_OPERATIONS_DECK_ELEVATOR_OFFLINE_AMBIENCE, // 0x34 52
+    MUSIC_MAIN_BOILER_COOLDOWN_MISSION, // 0x35 53
     MUSIC_36, // 0x36 54
     MUSIC_37, // 0x37 55
-    MUSIC_38, // 0x38 56
+    MUSIC_ORBIT_CHANGE, // 0x38 56
     MUSIC_39, // 0x39 57
     MUSIC_3A, // 0x3a 58
-    MUSIC_3B, // 0x3b 59
+    MUSIC_OBJECTIVE_COMPLETE, // 0x3b 59
     MUSIC_3C, // 0x3c 60
     MUSIC_3D, // 0x3d 61
     MUSIC_3E, // 0x3e 62
@@ -70,7 +70,7 @@ enum Sound {
     MUSIC_NIGHTMARE_BATTLE, // 0x41 65
     MUSIC_NEO_RIDLEY_BATTLE, // 0x42 66
     MUSIC_CHOZO_STATUE_CORE_X_BATTLE, // 0x43 67
-    MUSIC_44, // 0x44 68
+    MUSIC_NETTORI_BATTLE, // 0x44 68
     MUSIC_45, // 0x45 69
     MUSIC_46, // 0x46 70
     MUSIC_47, // 0x47 71
@@ -83,7 +83,7 @@ enum Sound {
     MUSIC_4E, // 0x4e 78
     MUSIC_4F, // 0x4f 79
     MUSIC_50, // 0x50 80
-    MUSIC_51, // 0x51 81
+    MUSIC_SA_X_BATTLE, // 0x51 81
     MUSIC_52, // 0x52 82
     MUSIC_53, // 0x53 83
     MUSIC_54, // 0x54 84

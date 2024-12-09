@@ -19,6 +19,9 @@ SECTIONS {
         . = 0x0000000c; gWrittenToWinin_L = .;
         . = 0x0000000d; gWrittenToWinout_R = .;
         . = 0x0000000e; gBackdropColor = .;
+        . = 0x00000011; gLanguage = .;
+        . = 0x00000014; gGameCompletion = .;
+        . = 0x00000018; gMonochromeBgFading = .;
         . = 0x00000019; gWhichBgPositionIsWrittenToBg3Ofs = .;
         . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
         . = 0x0000001b; gAbilityCount = .;
@@ -277,8 +280,8 @@ SECTIONS {
         src/sprites_AI/geruda.o(.text);
         src/sprites_AI/misc_pad.o(.text);
         src/sprites_AI/operations_room_pad.o(.text);
+        src/sprites_AI/scientist.o(.text);
 
-        asm/sprites_AI/scientist.o(.text);
         asm/sprites_AI/skultera.o(.text);
         asm/sprites_AI/zeela.o(.text);
         asm/sprites_AI/sova.o(.text);
@@ -344,6 +347,8 @@ SECTIONS {
         src/power_bomb_explosion.o(.text);
 
         asm/disasm_0x080685b4.o(.text);
+        asm/sub_event_and_music.o(.text);
+        asm/disasm_0x080715ac.o(.text);
 
         src/demo.o(.text);
         src/hud.o(.text);

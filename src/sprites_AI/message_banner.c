@@ -5,6 +5,7 @@
 #include "data/sprites/message_box.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
@@ -100,14 +101,14 @@ void MessageBannerPopUp(void) {
         if (--gCurrentSprite.work1 == 0) {
             gCurrentSprite.status &= ~SS_NOT_DRAWN;
             if (roomSlot == 0)
-                unk_38a8(0x10, 0);
+                MusicPlay_38a8(MUSIC_ITEM_FANFARE, 0);
             else if (roomSlot == 5 || roomSlot == 6 || roomSlot == 7 || roomSlot == 8 || roomSlot == 9) {
                 if (roomSlot == 7)
-                    PlayMusic(3, 10);
-                unk_38a8(0x3b, 0);
+                    MusicPlay(MUSIC_3, 10);
+                MusicPlay_38a8(MUSIC_OBJECTIVE_COMPLETE, 0);
             } else if (!(roomSlot == 5 || roomSlot == 6 || roomSlot == 7 || roomSlot == 8
                 || roomSlot == 9 || roomSlot == 10 || roomSlot == 11 || roomSlot == 12))
-                SoundPlay_3b1c(0x14);
+                SoundPlay_3b1c(SOUND_MESSAGE_POPUP);
         }
         if (gCurrentSprite.work1 < 8) {
             if (roomSlot != 0)
@@ -147,9 +148,9 @@ void MessageBannerStatic(void) {
                 ProjectileLoadBeamGraphics();
                 ProjectileLoadMissileGraphics();
             } else if (roomSlot == 10)
-                PlayMusic(0x17,10);
+                MusicPlay(MUSIC_SA_X_CHASE, 10);
             else if (roomSlot == 11)
-                PlayMusic(0x38, 10);
+                MusicPlay(MUSIC_ORBIT_CHANGE, 10);
         } else if (roomSlot == 8 && gSamusData.pose == SPOSE_UNLOCKING_HABITATIONS_DECK) {
             gPreventMovementTimer = 0;
             gCurrentSprite.pose = 0x19;

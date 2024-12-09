@@ -112,7 +112,7 @@ void VariaSuitAbilityWaitingToSpawn(void) {
         gCurrentSprite.work3 = 0;
         gCurrentSprite.work4 = 0;
         gCurrentSprite.pose = 0x38;
-        PlayMusic(MUSIC_VARIA_CORE_X_BATTLE, 7);
+        MusicPlay(MUSIC_VARIA_CORE_X_BATTLE, 7);
     }
 }
 
@@ -563,9 +563,9 @@ void CoreXShellVaria(void) {
                     gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
                     gSpriteData[primaryRamSlot].work0 = 180;
                     if (gCurrentSprite.yPosition > gSamusData.yPosition - BLOCK_SIZE)
-                        gSpriteData[primaryRamSlot].status |= SS_SAMUS_DETECTED;
+                        gSpriteData[primaryRamSlot].status |= SS_FACING_DOWN;
                     else
-                        gSpriteData[primaryRamSlot].status &= ~SS_SAMUS_DETECTED;
+                        gSpriteData[primaryRamSlot].status &= ~SS_FACING_DOWN;
                     if (gCurrentSprite.xPosition > gSamusData.xPosition)
                         gSpriteData[primaryRamSlot].status |= SS_FACING_RIGHT;
                     else

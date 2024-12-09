@@ -450,7 +450,7 @@ _08030530:
 	strh r0, [r2, #0x16]
 	movs r0, #0x27
 	movs r1, #0xa
-	bl PlayMusic
+	bl MusicPlay
 	movs r0, #0x8e
 	lsls r0, r0, #2
 	bl SoundPlay

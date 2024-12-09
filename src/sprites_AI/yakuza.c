@@ -445,7 +445,7 @@ void YakuzaOpeningMouth(void) {
                         gCurrentSprite.yPosition + 0x9c, gCurrentSprite.xPosition, SS_X_FLIP);
                     if (gBossWork2) {
                         gBossWork2 = FALSE;
-                        PlayMusic(MUSIC_SERRIS_YAKUZA_BATTLE, 7);
+                        MusicPlay(MUSIC_SERRIS_YAKUZA_BATTLE, 7);
                         SoundPlay_3b1c(0x130);
                     } else
                         SoundPlay(0x139);

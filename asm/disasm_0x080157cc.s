@@ -5788,7 +5788,7 @@ _080184BA:
 	beq _080184D4
 	movs r0, #0x17
 	movs r1, #9
-	bl PlayMusic
+	bl MusicPlay
 _080184D4:
 	pop {r4}
 	pop {r0}
@@ -7073,7 +7073,7 @@ _08018F2E:
 	beq _08018F48
 	movs r0, #0x17
 	movs r1, #9
-	bl PlayMusic
+	bl MusicPlay
 _08018F48:
 	pop {r0}
 	bx r0
@@ -8666,7 +8666,7 @@ _08019C02:
 	beq _08019C1E
 	movs r0, #0x17
 	movs r1, #9
-	bl PlayMusic
+	bl MusicPlay
 _08019C1E:
 	pop {r0}
 	bx r0
@@ -10304,7 +10304,7 @@ _0801A8E0:
 	strh r0, [r2]
 	movs r0, #0x51
 	movs r1, #7
-	bl PlayMusic
+	bl MusicPlay
 _0801A908:
 	pop {r4, r5}
 	pop {r0}
@@ -14174,7 +14174,7 @@ _0801C8AE:
 	beq _0801C8CA
 	movs r0, #0x17
 	movs r1, #9
-	bl PlayMusic
+	bl MusicPlay
 _0801C8CA:
 	pop {r0}
 	bx r0

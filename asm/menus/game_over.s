@@ -42,7 +42,7 @@ _0809DEF4: .4byte gWrittenToBldy
 _0809DEF8:
 	movs r0, #3
 	movs r1, #0
-	bl PlayMusic
+	bl MusicPlay
 	b _0809DF10
 _0809DF02:
 	bl GameOverAfterOptionDelay
@@ -193,7 +193,7 @@ GameOverInit: @ 0x0809DF58
 	lsls r4, r4, #0x13
 	adds r1, r4, #0
 	bl LZ77UncompVram
-	ldr r1, _0809E0FC @ =0x03000011
+	ldr r1, _0809E0FC @ =gLanguage
 	movs r0, #0
 	ldrsb r0, [r1, r0]
 	cmp r0, #1
@@ -273,7 +273,7 @@ _0809E0EC: .4byte 0x0873C4E4
 _0809E0F0: .4byte 0x05000200
 _0809E0F4: .4byte 0x84000080
 _0809E0F8: .4byte 0x0873422C
-_0809E0FC: .4byte 0x03000011
+_0809E0FC: .4byte gLanguage
 _0809E100: .4byte 0x0879E874
 _0809E104: .4byte 0x0873C6E4
 _0809E108: .4byte 0x0600F800
