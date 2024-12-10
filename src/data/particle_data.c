@@ -358,7 +358,7 @@ static const u16 sParticleOam_3eabcc_Frame14[] = {
     0xfb, OBJ_X_FLIP | 0x1fd, OBJ_PALETTE_2 | 0xe0
 };
 
-static const u16 sParticleOam_3ea664_Frame1[] = {
+static const u16 sParticleOam_AbsorbHealthXAbsorbing_Frame1[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_3 | 0xfb
 };
@@ -501,7 +501,7 @@ static const u16 sParticleOam_3ea8f4_Frame14[] = {
     0xfb, OBJ_X_FLIP | 0x1fd, OBJ_PALETTE_3 | 0xe0
 };
 
-static const u16 sParticleOam_3ea664_Frame0[] = {
+static const u16 sParticleOam_AbsorbHealthXAbsorbing_Frame0[] = {
     6,
     0x0, 0x1fc, OBJ_PALETTE_4 | 0xc9,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x180,
@@ -511,7 +511,7 @@ static const u16 sParticleOam_3ea664_Frame0[] = {
     0xf4, 0x13, OBJ_PALETTE_4 | 0xc9
 };
 
-static const u16 sParticleOam_3ea664_Frame4[] = {
+static const u16 sParticleOam_AbsorbHealthXAbsorbing_Frame4[] = {
     6,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x182,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_4 | 0x182,
@@ -521,7 +521,7 @@ static const u16 sParticleOam_3ea664_Frame4[] = {
     0xe8, 0x1e8, OBJ_PALETTE_4 | 0xc9
 };
 
-static const u16 sParticleOam_3ea664_Frame8[] = {
+static const u16 sParticleOam_AbsorbHealthXAbsorbing_Frame8[] = {
     6,
     0xf8, 0xa, OBJ_PALETTE_4 | 0xc8,
     0xee, 0x1eb, OBJ_PALETTE_4 | 0xc7,
@@ -531,7 +531,7 @@ static const u16 sParticleOam_3ea664_Frame8[] = {
     0x0, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x184
 };
 
-static const u16 sParticleOam_3ea664_Frame12[] = {
+static const u16 sParticleOam_AbsorbHealthXAbsorbing_Frame12[] = {
     7,
     0xf9, 0x6, OBJ_PALETTE_4 | 0xc8,
     0xf2, 0x1ed, OBJ_PALETTE_4 | 0xc8,
@@ -542,7 +542,7 @@ static const u16 sParticleOam_3ea664_Frame12[] = {
     0x14, 0x1ec, OBJ_PALETTE_4 | 0xc9
 };
 
-static const u16 sParticleOam_3ea664_Frame16[] = {
+static const u16 sParticleOam_AbsorbHealthXAbsorbing_Frame16[] = {
     7,
     0xfb, 0x3, OBJ_PALETTE_4 | 0xc9,
     0xf5, 0x1f1, OBJ_PALETTE_4 | 0xc8,
@@ -553,7 +553,7 @@ static const u16 sParticleOam_3ea664_Frame16[] = {
     0x11, 0x1f1, OBJ_PALETTE_4 | 0xc7
 };
 
-static const u16 sParticleOam_3ea664_Frame20[] = {
+static const u16 sParticleOam_AbsorbHealthXAbsorbing_Frame20[] = {
     7,
     0xfc, 0x0, OBJ_PALETTE_4 | 0xc9,
     0xf8, 0x1f5, OBJ_PALETTE_4 | 0xc9,
@@ -564,7 +564,7 @@ static const u16 sParticleOam_3ea664_Frame20[] = {
     0x0, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x182
 };
 
-static const u16 sParticleOam_3ea664_Frame24[] = {
+static const u16 sParticleOam_AbsorbHealthXAbsorbing_Frame24[] = {
     6,
     0xfa, 0x1f8, OBJ_PALETTE_4 | 0xc9,
     0x6, 0x1f8, OBJ_PALETTE_4 | 0xc8,
@@ -574,7 +574,7 @@ static const u16 sParticleOam_3ea664_Frame24[] = {
     0x0, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x184
 };
 
-static const u16 sParticleOam_3ea664_Frame28[] = {
+static const u16 sParticleOam_AbsorbHealthXAbsorbing_Frame28[] = {
     5,
     0x2, 0x1fb, OBJ_PALETTE_4 | 0xc9,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x186,
@@ -583,7 +583,7 @@ static const u16 sParticleOam_3ea664_Frame28[] = {
     0x0, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x186
 };
 
-static const u16 sParticleOam_3ea76c_Frame0[] = {
+static const u16 sParticleOam_AbsorbHealthXEnding_Frame0[] = {
     4,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x180,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_4 | 0x180,
@@ -591,7 +591,7 @@ static const u16 sParticleOam_3ea76c_Frame0[] = {
     0x0, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x180
 };
 
-static const u16 sParticleOam_3ea76c_Frame2[] = {
+static const u16 sParticleOam_AbsorbHealthXEnding_Frame2[] = {
     4,
     0xf1, OBJ_SIZE_16x16 | 0x1f1, OBJ_PALETTE_4 | 0x182,
     0xf1, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1ff, OBJ_PALETTE_4 | 0x182,
@@ -599,7 +599,7 @@ static const u16 sParticleOam_3ea76c_Frame2[] = {
     0xff, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f1, OBJ_PALETTE_4 | 0x182
 };
 
-static const u16 sParticleOam_3ea76c_Frame4[] = {
+static const u16 sParticleOam_AbsorbHealthXEnding_Frame4[] = {
     4,
     0xfe, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1fe, OBJ_PALETTE_4 | 0x184,
     0xfe, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f2, OBJ_PALETTE_4 | 0x184,
@@ -607,7 +607,7 @@ static const u16 sParticleOam_3ea76c_Frame4[] = {
     0xf2, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1fe, OBJ_PALETTE_4 | 0x184
 };
 
-static const u16 sParticleOam_3ea76c_Frame6[] = {
+static const u16 sParticleOam_AbsorbHealthXEnding_Frame6[] = {
     4,
     0xf9, 0x1f8, OBJ_PALETTE_4 | 0xe6,
     0xf9, OBJ_X_FLIP | 0x0, OBJ_PALETTE_4 | 0xe6,
@@ -615,25 +615,25 @@ static const u16 sParticleOam_3ea76c_Frame6[] = {
     0xff, OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_4 | 0xe6
 };
 
-static const u16 sParticleOam_3ea76c_Frame8[] = {
+static const u16 sParticleOam_AbsorbHealthXEnding_Frame8[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_SIZE_32x8 | 0x1e0, OBJ_PALETTE_4 | 0xe0,
     OBJ_SHAPE_HORIZONTAL | 0xfc, OBJ_X_FLIP | OBJ_SIZE_32x8 | 0x0, OBJ_PALETTE_4 | 0xe0
 };
 
-static const u16 sParticleOam_3ea76c_Frame10[] = {
+static const u16 sParticleOam_AbsorbHealthXEnding_Frame10[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xfb, 0x1f0, OBJ_PALETTE_4 | 0xe0,
     OBJ_SHAPE_HORIZONTAL | 0xfb, OBJ_X_FLIP | 0x0, OBJ_PALETTE_4 | 0xe0
 };
 
-static const u16 sParticleOam_3ea76c_Frame12[] = {
+static const u16 sParticleOam_AbsorbHealthXEnding_Frame12[] = {
     2,
     0xfb, 0x1f8, OBJ_PALETTE_4 | 0xe0,
     0xfb, OBJ_X_FLIP | 0x0, OBJ_PALETTE_4 | 0xe0
 };
 
-static const u16 sParticleOam_3ea76c_Frame14[] = {
+static const u16 sParticleOam_AbsorbHealthXEnding_Frame14[] = {
     2,
     0xfb, 0x1fb, OBJ_PALETTE_4 | 0xe0,
     0xfb, OBJ_X_FLIP | 0x1fd, OBJ_PALETTE_4 | 0xe0
@@ -1097,197 +1097,197 @@ const struct FrameData sParticleOam_3ea63c[5] = {
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_3ea664[33] = {
+const struct FrameData sParticleOam_AbsorbHealthXAbsorbing[33] = {
     [0] = {
-        .pFrame = sParticleOam_3ea664_Frame0,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame0,
         .timer = 1
     },
     [1] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [2] = {
-        .pFrame = sParticleOam_3ea664_Frame0,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame0,
         .timer = 1
     },
     [3] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [4] = {
-        .pFrame = sParticleOam_3ea664_Frame4,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame4,
         .timer = 1
     },
     [5] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [6] = {
-        .pFrame = sParticleOam_3ea664_Frame4,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame4,
         .timer = 1
     },
     [7] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [8] = {
-        .pFrame = sParticleOam_3ea664_Frame8,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame8,
         .timer = 1
     },
     [9] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [10] = {
-        .pFrame = sParticleOam_3ea664_Frame8,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame8,
         .timer = 1
     },
     [11] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [12] = {
-        .pFrame = sParticleOam_3ea664_Frame12,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame12,
         .timer = 1
     },
     [13] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [14] = {
-        .pFrame = sParticleOam_3ea664_Frame12,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame12,
         .timer = 1
     },
     [15] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [16] = {
-        .pFrame = sParticleOam_3ea664_Frame16,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame16,
         .timer = 1
     },
     [17] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [18] = {
-        .pFrame = sParticleOam_3ea664_Frame16,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame16,
         .timer = 1
     },
     [19] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [20] = {
-        .pFrame = sParticleOam_3ea664_Frame20,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame20,
         .timer = 1
     },
     [21] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [22] = {
-        .pFrame = sParticleOam_3ea664_Frame20,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame20,
         .timer = 1
     },
     [23] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [24] = {
-        .pFrame = sParticleOam_3ea664_Frame24,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame24,
         .timer = 1
     },
     [25] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [26] = {
-        .pFrame = sParticleOam_3ea664_Frame24,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame24,
         .timer = 1
     },
     [27] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [28] = {
-        .pFrame = sParticleOam_3ea664_Frame28,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame28,
         .timer = 1
     },
     [29] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [30] = {
-        .pFrame = sParticleOam_3ea664_Frame28,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame28,
         .timer = 1
     },
     [31] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [32] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_3ea76c[16] = {
+const struct FrameData sParticleOam_AbsorbHealthXEnding[16] = {
     [0] = {
-        .pFrame = sParticleOam_3ea76c_Frame0,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame0,
         .timer = 1
     },
     [1] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [2] = {
-        .pFrame = sParticleOam_3ea76c_Frame2,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame2,
         .timer = 1
     },
     [3] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [4] = {
-        .pFrame = sParticleOam_3ea76c_Frame4,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame4,
         .timer = 1
     },
     [5] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [6] = {
-        .pFrame = sParticleOam_3ea76c_Frame6,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame6,
         .timer = 1
     },
     [7] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [8] = {
-        .pFrame = sParticleOam_3ea76c_Frame8,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame8,
         .timer = 1
     },
     [9] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [10] = {
-        .pFrame = sParticleOam_3ea76c_Frame10,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame10,
         .timer = 1
     },
     [11] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [12] = {
-        .pFrame = sParticleOam_3ea76c_Frame12,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame12,
         .timer = 1
     },
     [13] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [14] = {
-        .pFrame = sParticleOam_3ea76c_Frame14,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame14,
         .timer = 1
     },
     [15] = FRAME_DATA_TERMINATOR
@@ -1299,7 +1299,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [1] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [2] = {
@@ -1307,7 +1307,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [3] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [4] = {
@@ -1315,7 +1315,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [5] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [6] = {
@@ -1323,7 +1323,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [7] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [8] = {
@@ -1331,7 +1331,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [9] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [10] = {
@@ -1339,7 +1339,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [11] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [12] = {
@@ -1347,7 +1347,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [13] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [14] = {
@@ -1355,7 +1355,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [15] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [16] = {
@@ -1363,7 +1363,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [17] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [18] = {
@@ -1371,7 +1371,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [19] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [20] = {
@@ -1379,7 +1379,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [21] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [22] = {
@@ -1387,7 +1387,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [23] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [24] = {
@@ -1395,7 +1395,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [25] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [26] = {
@@ -1403,7 +1403,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [27] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [28] = {
@@ -1411,7 +1411,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [29] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [30] = {
@@ -1419,7 +1419,7 @@ const struct FrameData sParticleOam_3ea7ec[33] = {
         .timer = 1
     },
     [31] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [32] = FRAME_DATA_TERMINATOR
@@ -1431,7 +1431,7 @@ const struct FrameData sParticleOam_3ea8f4[16] = {
         .timer = 1
     },
     [1] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [2] = {
@@ -1439,7 +1439,7 @@ const struct FrameData sParticleOam_3ea8f4[16] = {
         .timer = 1
     },
     [3] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [4] = {
@@ -1447,7 +1447,7 @@ const struct FrameData sParticleOam_3ea8f4[16] = {
         .timer = 1
     },
     [5] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [6] = {
@@ -1455,7 +1455,7 @@ const struct FrameData sParticleOam_3ea8f4[16] = {
         .timer = 1
     },
     [7] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [8] = {
@@ -1463,7 +1463,7 @@ const struct FrameData sParticleOam_3ea8f4[16] = {
         .timer = 1
     },
     [9] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [10] = {
@@ -1471,7 +1471,7 @@ const struct FrameData sParticleOam_3ea8f4[16] = {
         .timer = 1
     },
     [11] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [12] = {
@@ -1479,7 +1479,7 @@ const struct FrameData sParticleOam_3ea8f4[16] = {
         .timer = 1
     },
     [13] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [14] = {
@@ -1663,7 +1663,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [1] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [2] = {
@@ -1671,7 +1671,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [3] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [4] = {
@@ -1679,7 +1679,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [5] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [6] = {
@@ -1687,7 +1687,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [7] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [8] = {
@@ -1695,7 +1695,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [9] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [10] = {
@@ -1703,7 +1703,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [11] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [12] = {
@@ -1711,7 +1711,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [13] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [14] = {
@@ -1719,7 +1719,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [15] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [16] = {
@@ -1727,7 +1727,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [17] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [18] = {
@@ -1735,7 +1735,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [19] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [20] = {
@@ -1743,7 +1743,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [21] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [22] = {
@@ -1751,7 +1751,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [23] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [24] = {
@@ -1759,7 +1759,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [25] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [26] = {
@@ -1767,7 +1767,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [27] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [28] = {
@@ -1775,7 +1775,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [29] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [30] = {
@@ -1783,7 +1783,7 @@ const struct FrameData sParticleOam_3eaac4[33] = {
         .timer = 1
     },
     [31] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [32] = FRAME_DATA_TERMINATOR
@@ -1795,7 +1795,7 @@ const struct FrameData sParticleOam_3eabcc[16] = {
         .timer = 1
     },
     [1] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [2] = {
@@ -1803,7 +1803,7 @@ const struct FrameData sParticleOam_3eabcc[16] = {
         .timer = 1
     },
     [3] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [4] = {
@@ -1811,7 +1811,7 @@ const struct FrameData sParticleOam_3eabcc[16] = {
         .timer = 1
     },
     [5] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [6] = {
@@ -1819,7 +1819,7 @@ const struct FrameData sParticleOam_3eabcc[16] = {
         .timer = 1
     },
     [7] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [8] = {
@@ -1827,7 +1827,7 @@ const struct FrameData sParticleOam_3eabcc[16] = {
         .timer = 1
     },
     [9] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [10] = {
@@ -1835,7 +1835,7 @@ const struct FrameData sParticleOam_3eabcc[16] = {
         .timer = 1
     },
     [11] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [12] = {
@@ -1843,7 +1843,7 @@ const struct FrameData sParticleOam_3eabcc[16] = {
         .timer = 1
     },
     [13] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [14] = {
@@ -2051,11 +2051,11 @@ const struct FrameData sParticleOam_AbsorbIceXPreVaria[24] = {
 
 const struct FrameData sParticleOam_3eadd4[33] = {
     [0] = {
-        .pFrame = sParticleOam_3ea664_Frame0,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame0,
         .timer = 1
     },
     [1] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [2] = {
@@ -2063,7 +2063,7 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [3] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [4] = {
@@ -2071,15 +2071,15 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [5] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [6] = {
-        .pFrame = sParticleOam_3ea664_Frame4,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame4,
         .timer = 1
     },
     [7] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [8] = {
@@ -2087,7 +2087,7 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [9] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [10] = {
@@ -2095,15 +2095,15 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [11] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [12] = {
-        .pFrame = sParticleOam_3ea664_Frame12,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame12,
         .timer = 1
     },
     [13] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [14] = {
@@ -2111,7 +2111,7 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [15] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [16] = {
@@ -2119,15 +2119,15 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [17] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [18] = {
-        .pFrame = sParticleOam_3ea664_Frame16,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame16,
         .timer = 1
     },
     [19] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [20] = {
@@ -2135,7 +2135,7 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [21] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [22] = {
@@ -2143,15 +2143,15 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [23] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [24] = {
-        .pFrame = sParticleOam_3ea664_Frame24,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame24,
         .timer = 1
     },
     [25] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [26] = {
@@ -2159,7 +2159,7 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [27] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [28] = {
@@ -2167,15 +2167,15 @@ const struct FrameData sParticleOam_3eadd4[33] = {
         .timer = 1
     },
     [29] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [30] = {
-        .pFrame = sParticleOam_3ea664_Frame28,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame28,
         .timer = 1
     },
     [31] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [32] = FRAME_DATA_TERMINATOR
@@ -2183,11 +2183,11 @@ const struct FrameData sParticleOam_3eadd4[33] = {
 
 const struct FrameData sParticleOam_3eaedc[16] = {
     [0] = {
-        .pFrame = sParticleOam_3ea76c_Frame0,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame0,
         .timer = 1
     },
     [1] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [2] = {
@@ -2195,7 +2195,7 @@ const struct FrameData sParticleOam_3eaedc[16] = {
         .timer = 1
     },
     [3] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [4] = {
@@ -2203,15 +2203,15 @@ const struct FrameData sParticleOam_3eaedc[16] = {
         .timer = 1
     },
     [5] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [6] = {
-        .pFrame = sParticleOam_3ea76c_Frame6,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame6,
         .timer = 1
     },
     [7] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [8] = {
@@ -2219,7 +2219,7 @@ const struct FrameData sParticleOam_3eaedc[16] = {
         .timer = 1
     },
     [9] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [10] = {
@@ -2227,15 +2227,15 @@ const struct FrameData sParticleOam_3eaedc[16] = {
         .timer = 1
     },
     [11] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [12] = {
-        .pFrame = sParticleOam_3ea76c_Frame12,
+        .pFrame = sParticleOam_AbsorbHealthXEnding_Frame12,
         .timer = 1
     },
     [13] = {
-        .pFrame = sParticleOam_3ea664_Frame1,
+        .pFrame = sParticleOam_AbsorbHealthXAbsorbing_Frame1,
         .timer = 1
     },
     [14] = {
@@ -7699,7 +7699,7 @@ static const u16 sParticleOam_ChargingBeamBegin_Frame11[] = {
     0x8, OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_2 | 0xef
 };
 
-static const u16 sParticleOam_ChargingMissileCharged_Frame4[] = {
+static const u16 sParticleOam_ChargingBeamSparksCharged_Frame4[] = {
     8,
     0xf0, OBJ_Y_FLIP | 0x8, OBJ_PALETTE_2 | 0x163,
     0x8, 0x8, OBJ_PALETTE_2 | 0x163,
@@ -7711,7 +7711,7 @@ static const u16 sParticleOam_ChargingMissileCharged_Frame4[] = {
     0xff, OBJ_Y_FLIP | 0x1f9, OBJ_PALETTE_2 | 0x164
 };
 
-static const u16 sParticleOam_ChargingMissileCharged_Frame0[] = {
+static const u16 sParticleOam_ChargingBeamSparksCharged_Frame0[] = {
     4,
     0xf2, 0x1f2, OBJ_PALETTE_2 | 0x164,
     0xf2, OBJ_X_FLIP | 0x6, OBJ_PALETTE_2 | 0x164,
@@ -7719,7 +7719,7 @@ static const u16 sParticleOam_ChargingMissileCharged_Frame0[] = {
     0x6, OBJ_Y_FLIP | 0x1f2, OBJ_PALETTE_2 | 0x164
 };
 
-static const u16 sParticleOam_ChargingMissileCharged_Frame1[] = {
+static const u16 sParticleOam_ChargingBeamSparksCharged_Frame1[] = {
     4,
     0xf3, 0x1f3, OBJ_PALETTE_2 | 0x165,
     0xf3, OBJ_X_FLIP | 0x5, OBJ_PALETTE_2 | 0x165,
@@ -7727,7 +7727,7 @@ static const u16 sParticleOam_ChargingMissileCharged_Frame1[] = {
     0x5, OBJ_Y_FLIP | 0x1f3, OBJ_PALETTE_2 | 0x165
 };
 
-static const u16 sParticleOam_ChargingMissileCharged_Frame2[] = {
+static const u16 sParticleOam_ChargingBeamSparksCharged_Frame2[] = {
     4,
     0xf3, 0x1f3, OBJ_PALETTE_2 | 0x166,
     0xf3, OBJ_X_FLIP | 0x5, OBJ_PALETTE_2 | 0x166,
@@ -7735,7 +7735,7 @@ static const u16 sParticleOam_ChargingMissileCharged_Frame2[] = {
     0x5, OBJ_Y_FLIP | 0x1f3, OBJ_PALETTE_2 | 0x166
 };
 
-static const u16 sParticleOam_ChargingMissileCharged_Frame3[] = {
+static const u16 sParticleOam_ChargingBeamSparksCharged_Frame3[] = {
     8,
     0xf6, 0x1f6, OBJ_PALETTE_2 | 0x168,
     0xf6, OBJ_X_FLIP | 0x2, OBJ_PALETTE_2 | 0x168,
@@ -7754,21 +7754,21 @@ static const u16 sOam_3ee966[] = {
     0x7, 0x1fc, OBJ_PALETTE_2 | 0x149
 };
 
-static const u16 sParticleOam_ChargingMissileBegin_Frame0[] = {
+static const u16 sParticleOam_ChargingBeamSparksBegin_Frame0[] = {
     3,
     0xf5, 0x1f5, OBJ_PALETTE_2 | 0x148,
     0xf7, 0x6, OBJ_PALETTE_2 | 0x148,
     0x4, 0x1fc, OBJ_PALETTE_2 | 0x148
 };
 
-static const u16 sParticleOam_ChargingMissileBegin_Frame1[] = {
+static const u16 sParticleOam_ChargingBeamSparksBegin_Frame1[] = {
     3,
     0xf7, 0x1f7, OBJ_PALETTE_2 | 0x148,
     0xf9, 0x4, OBJ_PALETTE_2 | 0x148,
     0x2, 0x1fc, OBJ_PALETTE_2 | 0x148
 };
 
-static const u16 sParticleOam_ChargingMissileBegin_Frame2[] = {
+static const u16 sParticleOam_ChargingBeamSparksBegin_Frame2[] = {
     6,
     0xee, 0x1f1, OBJ_PALETTE_2 | 0x149,
     0xf3, 0xc, OBJ_PALETTE_2 | 0x149,
@@ -7778,7 +7778,7 @@ static const u16 sParticleOam_ChargingMissileBegin_Frame2[] = {
     0x0, 0x1fc, OBJ_PALETTE_2 | 0x148
 };
 
-static const u16 sParticleOam_ChargingMissileBegin_Frame3[] = {
+static const u16 sParticleOam_ChargingBeamSparksBegin_Frame3[] = {
     6,
     0xf1, 0x1f3, OBJ_PALETTE_2 | 0x148,
     0xf4, 0x9, OBJ_PALETTE_2 | 0x148,
@@ -7825,22 +7825,22 @@ static const u16 sOam_3eea44[] = {
     0x0, OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_2 | 0x146
 };
 
-static const u16 sParticleOam_3eec40_Frame0[] = {
+static const u16 sParticleOam_ChargingMissileBegin_Frame0[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_4 | 0xe8
 };
 
-static const u16 sParticleOam_3eec40_Frame1[] = {
+static const u16 sParticleOam_ChargingMissileBegin_Frame1[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_4 | 0xe9
 };
 
-static const u16 sParticleOam_3eec40_Frame8[] = {
+static const u16 sParticleOam_ChargingMissileBegin_Frame8[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_4 | 0xea
 };
 
-static const u16 sParticleOam_3eec40_Frame15[] = {
+static const u16 sParticleOam_ChargingMissileBegin_Frame15[] = {
     4,
     0xf8, 0x1f8, OBJ_PALETTE_4 | 0xeb,
     0xf8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_4 | 0xeb,
@@ -7848,7 +7848,7 @@ static const u16 sParticleOam_3eec40_Frame15[] = {
     0x0, OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_4 | 0xeb
 };
 
-static const u16 sParticleOam_3eec40_Frame22[] = {
+static const u16 sParticleOam_ChargingMissileBegin_Frame22[] = {
     4,
     0xf8, 0x1f8, OBJ_PALETTE_4 | 0xee,
     0xf8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_4 | 0xee,
@@ -7856,7 +7856,7 @@ static const u16 sParticleOam_3eec40_Frame22[] = {
     0x0, OBJ_X_FLIP | OBJ_Y_FLIP | 0x0, OBJ_PALETTE_4 | 0xee
 };
 
-static const u16 sParticleOam_3eed58_Frame0[] = {
+static const u16 sParticleOam_ChargingMissileCharged_Frame0[] = {
     4,
     0xf8, 0x1f8, OBJ_PALETTE_4 | 0xec,
     0xf8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_4 | 0xec,
@@ -7864,7 +7864,7 @@ static const u16 sParticleOam_3eed58_Frame0[] = {
     0x0, OBJ_Y_FLIP | 0x1f8, OBJ_PALETTE_4 | 0xec
 };
 
-static const u16 sParticleOam_3eed58_Frame1[] = {
+static const u16 sParticleOam_ChargingMissileCharged_Frame1[] = {
     8,
     0xf8, 0x1f8, OBJ_PALETTE_4 | 0xeb,
     0xf8, OBJ_X_FLIP | 0x0, OBJ_PALETTE_4 | 0xeb,
@@ -7876,7 +7876,7 @@ static const u16 sParticleOam_3eed58_Frame1[] = {
     0x0, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x154
 };
 
-static const u16 sParticleOam_3eed58_Frame2[] = {
+static const u16 sParticleOam_ChargingMissileCharged_Frame2[] = {
     8,
     0xf0, OBJ_SIZE_16x16 | 0x1f0, OBJ_PALETTE_4 | 0x156,
     0xf0, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x0, OBJ_PALETTE_4 | 0x156,
@@ -7984,31 +7984,51 @@ const struct FrameData sParticleOam_ChargingBeamCharged[5] = {
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_ChargingMissileCharged[6] = {
+const struct FrameData sParticleOam_ChargingBeamSparksCharged[6] = {
     [0] = {
-        .pFrame = sParticleOam_ChargingMissileCharged_Frame0,
+        .pFrame = sParticleOam_ChargingBeamSparksCharged_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sParticleOam_ChargingMissileCharged_Frame1,
+        .pFrame = sParticleOam_ChargingBeamSparksCharged_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sParticleOam_ChargingMissileCharged_Frame2,
+        .pFrame = sParticleOam_ChargingBeamSparksCharged_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sParticleOam_ChargingMissileCharged_Frame3,
+        .pFrame = sParticleOam_ChargingBeamSparksCharged_Frame3,
         .timer = 2
     },
     [4] = {
-        .pFrame = sParticleOam_ChargingMissileCharged_Frame4,
+        .pFrame = sParticleOam_ChargingBeamSparksCharged_Frame4,
         .timer = 2
     },
     [5] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_ChargingMissileBegin[5] = {
+const struct FrameData sParticleOam_ChargingBeamSparksBegin[5] = {
+    [0] = {
+        .pFrame = sParticleOam_ChargingBeamSparksBegin_Frame0,
+        .timer = 4
+    },
+    [1] = {
+        .pFrame = sParticleOam_ChargingBeamSparksBegin_Frame1,
+        .timer = 4
+    },
+    [2] = {
+        .pFrame = sParticleOam_ChargingBeamSparksBegin_Frame2,
+        .timer = 4
+    },
+    [3] = {
+        .pFrame = sParticleOam_ChargingBeamSparksBegin_Frame3,
+        .timer = 4
+    },
+    [4] = FRAME_DATA_TERMINATOR
+};
+
+const struct FrameData sParticleOam_ChargingMissileBegin[35] = {
     [0] = {
         .pFrame = sParticleOam_ChargingMissileBegin_Frame0,
         .timer = 4
@@ -8018,167 +8038,147 @@ const struct FrameData sParticleOam_ChargingMissileBegin[5] = {
         .timer = 4
     },
     [2] = {
-        .pFrame = sParticleOam_ChargingMissileBegin_Frame2,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame0,
         .timer = 4
     },
     [3] = {
-        .pFrame = sParticleOam_ChargingMissileBegin_Frame3,
-        .timer = 4
-    },
-    [4] = FRAME_DATA_TERMINATOR
-};
-
-const struct FrameData sParticleOam_3eec40[35] = {
-    [0] = {
-        .pFrame = sParticleOam_3eec40_Frame0,
-        .timer = 4
-    },
-    [1] = {
-        .pFrame = sParticleOam_3eec40_Frame1,
-        .timer = 4
-    },
-    [2] = {
-        .pFrame = sParticleOam_3eec40_Frame0,
-        .timer = 4
-    },
-    [3] = {
-        .pFrame = sParticleOam_3eec40_Frame1,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame1,
         .timer = 4
     },
     [4] = {
-        .pFrame = sParticleOam_3eec40_Frame0,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame0,
         .timer = 4
     },
     [5] = {
-        .pFrame = sParticleOam_3eec40_Frame1,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame1,
         .timer = 4
     },
     [6] = {
-        .pFrame = sParticleOam_3eec40_Frame0,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame0,
         .timer = 4
     },
     [7] = {
-        .pFrame = sParticleOam_3eec40_Frame1,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame1,
         .timer = 4
     },
     [8] = {
-        .pFrame = sParticleOam_3eec40_Frame8,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame8,
         .timer = 4
     },
     [9] = {
-        .pFrame = sParticleOam_3eec40_Frame1,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame1,
         .timer = 4
     },
     [10] = {
-        .pFrame = sParticleOam_3eec40_Frame8,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame8,
         .timer = 4
     },
     [11] = {
-        .pFrame = sParticleOam_3eec40_Frame1,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame1,
         .timer = 4
     },
     [12] = {
-        .pFrame = sParticleOam_3eec40_Frame8,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame8,
         .timer = 4
     },
     [13] = {
-        .pFrame = sParticleOam_3eec40_Frame1,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame1,
         .timer = 4
     },
     [14] = {
-        .pFrame = sParticleOam_3eec40_Frame8,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame8,
         .timer = 4
     },
     [15] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [16] = {
-        .pFrame = sParticleOam_3eec40_Frame8,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame8,
         .timer = 4
     },
     [17] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [18] = {
-        .pFrame = sParticleOam_3eec40_Frame8,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame8,
         .timer = 4
     },
     [19] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [20] = {
-        .pFrame = sParticleOam_3eec40_Frame8,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame8,
         .timer = 4
     },
     [21] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [22] = {
-        .pFrame = sParticleOam_3eec40_Frame22,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame22,
         .timer = 4
     },
     [23] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [24] = {
-        .pFrame = sParticleOam_3eec40_Frame22,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame22,
         .timer = 4
     },
     [25] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [26] = {
-        .pFrame = sParticleOam_3eec40_Frame22,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame22,
         .timer = 4
     },
     [27] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [28] = {
-        .pFrame = sParticleOam_3eec40_Frame22,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame22,
         .timer = 4
     },
     [29] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [30] = {
-        .pFrame = sParticleOam_3eec40_Frame22,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame22,
         .timer = 4
     },
     [31] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [32] = {
-        .pFrame = sParticleOam_3eec40_Frame22,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame22,
         .timer = 4
     },
     [33] = {
-        .pFrame = sParticleOam_3eec40_Frame15,
+        .pFrame = sParticleOam_ChargingMissileBegin_Frame15,
         .timer = 4
     },
     [34] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_3eed58[4] = {
+const struct FrameData sParticleOam_ChargingMissileCharged[4] = {
     [0] = {
-        .pFrame = sParticleOam_3eed58_Frame0,
+        .pFrame = sParticleOam_ChargingMissileCharged_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sParticleOam_3eed58_Frame1,
+        .pFrame = sParticleOam_ChargingMissileCharged_Frame1,
         .timer = 3
     },
     [2] = {
-        .pFrame = sParticleOam_3eed58_Frame2,
+        .pFrame = sParticleOam_ChargingMissileCharged_Frame2,
         .timer = 3
     },
     [3] = FRAME_DATA_TERMINATOR

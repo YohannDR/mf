@@ -140,7 +140,7 @@ void BoxInit(void) {
         gCurrentSprite.roomSlot = BOX_PART_BRAIN;
         gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
         gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
-        gCurrentSprite.pOam = sBoxPartOam_Brain;
+        gCurrentSprite.pOam = sBoxPartOam_BrainIdle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gSubSpriteData1.yPosition = gCurrentSprite.yPosition;
@@ -646,7 +646,7 @@ void BoxDoneFiringBomb(void) {
 }
 
 void BoxDefeatedInit(void) {
-    gCurrentSprite.pOam = sBoxPartOam_Brain;
+    gCurrentSprite.pOam = sBoxPartOam_BrainIdle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 0;
@@ -678,7 +678,7 @@ void BoxDefeated(void) {
 void BoxMovingToFinalJumpInit(void) {
     u8 debrisRamSlot;
 
-    gCurrentSprite.pOam = sBoxPartOam_Brain;
+    gCurrentSprite.pOam = sBoxPartOam_BrainIdle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = BOX_POSE_MOVING_TO_FINAL_JUMP;
@@ -922,9 +922,9 @@ void BoxPartFrontLeftLeg(void) {
     }
     y = gCurrentSprite.yPosition;
     x = gCurrentSprite.xPosition;
-    if (gSpriteData[brainRamSlot].pose == BOX_POSE_DEFEATED && gCurrentSprite.pOam != sBoxPartOam_FrontLeftLegCoverDamaged) {
+    if (gSpriteData[brainRamSlot].pose == BOX_POSE_DEFEATED && gCurrentSprite.pOam != sBoxPartOam_FrontLeftLegCoverSlightlyDamaged) {
         ParticleSet(y+0x3c, x, PE_0x30);
-        gCurrentSprite.pOam = sBoxPartOam_FrontLeftLegCoverDamaged;
+        gCurrentSprite.pOam = sBoxPartOam_FrontLeftLegCoverSlightlyDamaged;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     }
@@ -952,9 +952,9 @@ void BoxPartFrontRightLeg(void) {
     }
     y = gCurrentSprite.yPosition;
     x = gCurrentSprite.xPosition;
-    if (gSpriteData[brainRamSlot].pose == BOX_POSE_DEFEATED && gCurrentSprite.pOam != sBoxPartOam_FrontRightLegCoverDamaged) {
+    if (gSpriteData[brainRamSlot].pose == BOX_POSE_DEFEATED && gCurrentSprite.pOam != sBoxPartOam_FrontRightLegCoverSlightlyDamaged) {
         ParticleSet(y+0x3c, x, PE_0x30);
-        gCurrentSprite.pOam = sBoxPartOam_FrontRightLegCoverDamaged;
+        gCurrentSprite.pOam = sBoxPartOam_FrontRightLegCoverSlightlyDamaged;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     }
@@ -1042,8 +1042,8 @@ void BoxPartCenterBottom(void) {
         case BOX_POSE_FINISHED_CRAWLING:
         case BOX_POSE_WAITING_TO_RUN:
         case BOX_POSE_JUMP_WARNING: {
-            if (gCurrentSprite.pOam != sFrameData_347ca8) {
-                gCurrentSprite.pOam = sFrameData_347ca8;
+            if (gCurrentSprite.pOam != sBoxPartOam_CenterBottomOpeningAndClosingRapidly) {
+                gCurrentSprite.pOam = sBoxPartOam_CenterBottomOpeningAndClosingRapidly;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
             }
@@ -1058,8 +1058,8 @@ void BoxPartCenterBottom(void) {
         case BOX_POSE_CROUCHING_FOR_FINAL_JUMP:
         case BOX_POSE_FINAL_JUMP_INIT:
         case BOX_POSE_FINAL_JUMP: {
-            if (gCurrentSprite.pOam != sFrameData_347ca8) {
-                gCurrentSprite.pOam = sFrameData_347ca8;
+            if (gCurrentSprite.pOam != sBoxPartOam_CenterBottomOpeningAndClosingRapidly) {
+                gCurrentSprite.pOam = sBoxPartOam_CenterBottomOpeningAndClosingRapidly;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
             }
@@ -1073,8 +1073,8 @@ void BoxPartCenterBottom(void) {
             break;
         }
         default: {
-            if (gCurrentSprite.pOam != sFrameData_347c98) {
-                gCurrentSprite.pOam = sFrameData_347c98;
+            if (gCurrentSprite.pOam != sBoxPartOam_CenterBottomIdle) {
+                gCurrentSprite.pOam = sBoxPartOam_CenterBottomIdle;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
             }
@@ -1212,7 +1212,7 @@ void BoxBombInit(void) {
     gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(7);
     gCurrentSprite.hitboxLeft = -PIXEL_TO_SUB_PIXEL(7);
     gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(7);
-    gCurrentSprite.pOam = sBoxBombOam_Moving;
+    gCurrentSprite.pOam = sBoxBombOam_Detonating;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.health = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);

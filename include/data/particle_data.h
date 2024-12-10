@@ -11,8 +11,8 @@ extern const struct FrameData sParticleOam_Explosion2[7];
 extern const struct FrameData sParticleOam_Explosion1[7];
 extern const struct FrameData sParticleOam_FireBeam[4];
 extern const struct FrameData sParticleOam_3ea63c[5];
-extern const struct FrameData sParticleOam_3ea664[33];
-extern const struct FrameData sParticleOam_3ea76c[16];
+extern const struct FrameData sParticleOam_AbsorbHealthXAbsorbing[33];
+extern const struct FrameData sParticleOam_AbsorbHealthXEnding[16];
 extern const struct FrameData sParticleOam_3ea7ec[33];
 extern const struct FrameData sParticleOam_3ea8f4[16];
 extern const struct FrameData sParticleOam_3ea974[5];
@@ -106,9 +106,9 @@ extern const struct FrameData sParticleOam_InvincibleHit[6];
 
 extern const struct FrameData sParticleOam_ChargingBeamBegin[19];
 extern const struct FrameData sParticleOam_ChargingBeamCharged[5];
-extern const struct FrameData sParticleOam_ChargingMissileCharged[6];
-extern const struct FrameData sParticleOam_ChargingMissileBegin[5];
-extern const struct FrameData sParticleOam_3eec40[35];
-extern const struct FrameData sParticleOam_3eed58[4];
+extern const struct FrameData sParticleOam_ChargingBeamSparksCharged[6];
+extern const struct FrameData sParticleOam_ChargingBeamSparksBegin[5];
+extern const struct FrameData sParticleOam_ChargingMissileBegin[35];
+extern const struct FrameData sParticleOam_ChargingMissileCharged[4];
 
 #endif /* PARTICLE_DATA_H */

@@ -55,5 +55,6 @@ extern u16 gSubEventCounter;
 extern u16 gPreviousSubEvent;
 
 extern s8 gDoorUnlockTimer;
+extern u8 gUnk_03000047;
 
 #endif /* EVENT_STRUCTS_H */

@@ -63,9 +63,9 @@ void ParticleCheckOnScreen(void)
 /**
  * @brief Draws a particle effect
  * 
- * @param _i unused
+ * @param particleSlot Particle slot (unused)
  */
-void ParticleDraw(s32 _i)
+void ParticleDraw(s32 particleSlot)
 {
     s32 prevSlot;
     s32 partCount;
@@ -222,7 +222,7 @@ void ParticleSet(u16 yPosition, u16 xPosition, u8 effect)
             }
             else
             {
-                // Includes PE_CHARGING_BEAM, PE_CHARGING_MISSILES and PE_ESCAPE, those 2 particles aren't included in the search
+                // Includes PE_CHARGING_BEAM, PE_CHARGING_BEAM_SPARKS and PE_ESCAPE, those 2 particles aren't included in the search
                 counterMax = 0;
             }
 
@@ -584,20 +584,20 @@ void ParticleAbsorbHealthX(void) {
     switch (gCurrentParticle.stage) {
         case 0:
             gCurrentParticle.stage = 1;
-            ParticleUpdateAnimation(sParticleOam_3ea664);
+            ParticleUpdateAnimation(sParticleOam_AbsorbHealthXAbsorbing);
             break;
         case 1:
             if (gCurrentParticle.frameCounter > 27) {
                 gCurrentParticle.stage = 2;
                 gCurrentParticle.currentAnimationFrame = 0;
                 gCurrentParticle.animationDurationCounter = 0;
-                ParticleUpdateAnimation(sParticleOam_3ea76c);
+                ParticleUpdateAnimation(sParticleOam_AbsorbHealthXEnding);
             } else {
-                ParticleUpdateAnimation(sParticleOam_3ea664);
+                ParticleUpdateAnimation(sParticleOam_AbsorbHealthXAbsorbing);
             }
             break;
         case 2:
-            ParticleUpdateAnimation(sParticleOam_3ea76c);
+            ParticleUpdateAnimation(sParticleOam_AbsorbHealthXEnding);
             if (gCurrentParticle.currentAnimationFrame == 0 && gCurrentParticle.animationDurationCounter == 0)
                 gCurrentParticle.status = 0;
             break;
@@ -1098,7 +1098,7 @@ void ParticleChargingBeam(void) {
     }
 }
 
-void ParticleChargingMissiles(void) {
+void ParticleChargingBeamSparks(void) {
     gCurrentParticle.yPosition = gArmCannonY;
     gCurrentParticle.xPosition = gArmCannonX;
 
@@ -1122,20 +1122,20 @@ void ParticleChargingMissiles(void) {
         case 0:
             gCurrentParticle.status |= PARTICLE_STATUS_LIVE_OFF_SCREEN | PARTICLE_STATUS_HIGH_OAM_PRIORITY;
             gCurrentParticle.stage++;
-            ParticleUpdateAnimation(sParticleOam_ChargingMissileBegin);
+            ParticleUpdateAnimation(sParticleOam_ChargingBeamSparksBegin);
             break;
         case 1:
             if (gSamusData.chargeBeamCounter >= 64) { // FIXME define
                 gCurrentParticle.stage++;
                 gCurrentParticle.currentAnimationFrame = 0;
                 gCurrentParticle.animationDurationCounter = 0;
-                ParticleUpdateAnimation(sParticleOam_ChargingMissileCharged);
+                ParticleUpdateAnimation(sParticleOam_ChargingBeamSparksCharged);
             } else {
-                ParticleUpdateAnimation(sParticleOam_ChargingMissileBegin);
+                ParticleUpdateAnimation(sParticleOam_ChargingBeamSparksBegin);
             }
             break;
         default:
-            ParticleUpdateAnimation(sParticleOam_ChargingMissileCharged);
+            ParticleUpdateAnimation(sParticleOam_ChargingBeamSparksCharged);
     }
 }
 
@@ -1150,7 +1150,7 @@ void ParticleAbsorbingSuit(void) {
         gCurrentParticle.stage++;
 }
 
-void unk_74560(void) {
+void ParticleChargingMissile(void) {
     gCurrentParticle.yPosition = gArmCannonY;
     gCurrentParticle.xPosition = gArmCannonX;
 
@@ -1176,7 +1176,7 @@ void unk_74560(void) {
         case 0:
             gCurrentParticle.status |= PARTICLE_STATUS_LIVE_OFF_SCREEN;
             gCurrentParticle.stage++;
-            ParticleUpdateAnimation(sParticleOam_3eec40);
+            ParticleUpdateAnimation(sParticleOam_ChargingMissileBegin);
             SoundPlay(0xeb);
             break;
         case 1:
@@ -1185,13 +1185,13 @@ void unk_74560(void) {
                 gCurrentParticle.currentAnimationFrame = 0;
                 gCurrentParticle.animationDurationCounter = 0;
                 gCurrentParticle.frameCounter = 0;
-                ParticleUpdateAnimation(sParticleOam_3eed58);
+                ParticleUpdateAnimation(sParticleOam_ChargingMissileCharged);
             } else {
-                ParticleUpdateAnimation(sParticleOam_3eec40);
+                ParticleUpdateAnimation(sParticleOam_ChargingMissileBegin);
             }
             break;
         default:
-            ParticleUpdateAnimation(sParticleOam_3eed58);
+            ParticleUpdateAnimation(sParticleOam_ChargingMissileCharged);
             if (MOD_AND(gCurrentParticle.frameCounter, 16) == 0)
                 SoundPlay(0xec);
             gCurrentParticle.frameCounter++;

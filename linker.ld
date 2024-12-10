@@ -40,6 +40,7 @@ SECTIONS {
         . = 0x00000030; gDisplayLocationName = .;
         . = 0x00000044; gEffectYPosition = .;
         . = 0x00000046; gDoorUnlockTimer = .;
+        . = 0x00000047; gUnk_03000047 = .;
         . = 0x00000048; gCurrentNavigationRoom = .;
         . = 0x00000049; gLastElevatorUsed = .;
         . = 0x0000004a; gCurrentEventBasedEffect = .;
@@ -325,13 +326,12 @@ SECTIONS {
         asm/sprites_AI/omega_metroid.o(.text);
         asm/sprites_AI/gunship_end.o(.text);
         asm/sprites_AI/electric_water_box_2.o(.text);
-        asm/sprites_AI/frozen_ridley.o(.text);
-        asm/sprites_AI/gold_enemy_door_lock.o(.text);
 
+        src/sprites_AI/frozen_ridley.o(.text);
+        src/sprites_AI/gold_enemy_door_lock.o(.text);
         src/sprites_AI/varia_core_x.o(.text);
         src/sprites_AI/omega_metroid_husk.o(.text);
-        asm/sprites_AI/ice_beam_x_omega.o(.text);
-
+        src/sprites_AI/ice_beam_x_omega.o(.text);
         src/sprites_AI/metroid_husk.o(.text);
         src/sprites_AI/neo_ridley.o(.text);
         src/sprites_AI/ridley_pre_spawn.o(.text);

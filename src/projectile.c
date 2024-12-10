@@ -176,10 +176,11 @@ void ProjectileUpdate(void)
         if (!checks)
         {
             ParticleSet(gArmCannonY, gArmCannonX, PE_CHARGING_BEAM);
-            ParticleSet(gArmCannonY, gArmCannonX, PE_CHARGING_MISSILES);
+            ParticleSet(gArmCannonY, gArmCannonX, PE_CHARGING_BEAM_SPARKS);
         }
     }
 
+    // Check spawn the charging missile particle effect
     if ((u32)gSamusEnvironmentalEffects[1].externalTimer == 0x10)
     {
         checks = FALSE;
@@ -187,7 +188,7 @@ void ProjectileUpdate(void)
         for (i = 0; i < MAX_AMOUNT_OF_PARTICLES; i++)
         {
             // Verify it doesn't already exist
-            if (gParticleEffects[i].status & PARTICLE_STATUS_EXISTS && gParticleEffects[i].effect == PE_0x45)
+            if (gParticleEffects[i].status & PARTICLE_STATUS_EXISTS && gParticleEffects[i].effect == PE_CHARGING_MISSILE)
             {
                 checks++;
                 break;
@@ -196,7 +197,7 @@ void ProjectileUpdate(void)
 
         if (!checks)
         {
-            ParticleSet(gArmCannonY, gArmCannonX, PE_0x45);
+            ParticleSet(gArmCannonY, gArmCannonX, PE_CHARGING_MISSILE);
         }
     }
 

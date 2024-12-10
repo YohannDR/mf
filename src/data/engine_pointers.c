@@ -71,8 +71,8 @@ const Func_T sProcessParticleFunctionPointers[PE_END] = {
     [PE_GETTING_SUIT_BEAMS] = ParticleGettingSuitBeams,
     [PE_GETTING_SUIT] = ParticleGettingSuit,
     [PE_CHARGING_BEAM] = ParticleChargingBeam,
-    [PE_CHARGING_MISSILES] = ParticleChargingMissiles,
-    [PE_0x45] = unk_74560,
+    [PE_CHARGING_BEAM_SPARKS] = ParticleChargingBeamSparks,
+    [PE_CHARGING_MISSILE] = ParticleChargingMissile,
     [PE_ESCAPE] = ParticleEscape,
 };
 
