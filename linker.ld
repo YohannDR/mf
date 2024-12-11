@@ -289,9 +289,9 @@ SECTIONS {
 
         asm/sprites_AI/yard.o(.text);
         asm/sprites_AI/evir.o(.text);
-        asm/sprites_AI/bull.o(.text);
-        asm/sprites_AI/memu.o(.text);
 
+        src/sprites_AI/bull.o(.text);
+        src/sprites_AI/memu.o(.text);
         src/sprites_AI/geruboss.o(.text);
         src/sprites_AI/choot.o(.text);
         src/sprites_AI/zebesian_ground.o(.text);

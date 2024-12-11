@@ -1,7 +1,7 @@
 #ifndef MEMU_DATA_H
 #define MEMU_DATA_H
 
-#include "types.h"
+#include "macros.h"
 #include "oam.h"
 
 extern const s16 sMemuIdleYSpeed[65];

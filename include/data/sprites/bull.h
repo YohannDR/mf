@@ -1,7 +1,7 @@
 #ifndef BULL_DATA_H
 #define BULL_DATA_H
 
-#include "types.h"
+#include "macros.h"
 #include "oam.h"
 
 extern const u32 sBullGfx[512 * 1];
