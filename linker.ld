@@ -285,8 +285,8 @@ SECTIONS {
         src/sprites_AI/scientist.o(.text);
         src/sprites_AI/skultera.o(.text);
         src/sprites_AI/zeela.o(.text);
+        src/sprites_AI/sova.o(.text);
 
-        asm/sprites_AI/sova.o(.text);
         asm/sprites_AI/yard.o(.text);
         asm/sprites_AI/evir.o(.text);
         asm/sprites_AI/bull.o(.text);

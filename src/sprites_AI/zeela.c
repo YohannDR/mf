@@ -164,7 +164,7 @@ void ZeelaInit(void) {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
         gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     } else {
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.pose = SPRITE_POSE_IDLE;
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
             gCurrentSprite.work0 = FALSE;
@@ -208,7 +208,7 @@ void ZeelaInit(void) {
 
 void ZeelaIdleInit(void) {
     ZeelaSetCrawlingOam();
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
 }
 
 void ZeelaIdle(void) {
@@ -217,7 +217,7 @@ void ZeelaIdle(void) {
     if (gCurrentSprite.status & SS_HIDDEN) return;
     ZeelaShootProjectiles();
     if (ZeelaCheckCollidingWithAir()) {
-        gCurrentSprite.pose = 0x15;
+        gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
         return;
     }
     turn = FALSE;
@@ -335,13 +335,13 @@ void ZeelaTurningAroundInit(void) {
 
 void ZeelaTurningAround(void) {
     if (ZeelaCheckCollidingWithAir())
-        gCurrentSprite.pose = 0x15;
+        gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
     else if (SpriteUtilCheckNearEndCurrentSpriteAnim())
         gCurrentSprite.pose = 1;
 }
 
 void ZeelaFallingInit(void) {
-    gCurrentSprite.pose = 0x16;
+    gCurrentSprite.pose = SPRITE_POSE_FALLING;
     gCurrentSprite.work4 = 0;
     ZeelaSetFallingOam();
 }
@@ -375,7 +375,7 @@ void ZeelaFalling(void) {
             onWall += 1;
         }
         gCurrentSprite.status &= ~SS_Y_FLIP;
-        gCurrentSprite.work0 = 0;
+        gCurrentSprite.work0 = FALSE;
         ZeelaUpdateHitbox();
         if (onWall) {
             if (gCurrentSprite.status & SS_X_FLIP)
