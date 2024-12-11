@@ -58,7 +58,7 @@ ElectricWaterDamageBox2Idle: @ 0x08056C84
 	adds r1, #0x26
 	movs r0, #1
 	strb r0, [r1]
-	ldr r0, _08056CAC @ =0x03001346
+	ldr r0, _08056CAC @ =gSamusUnderwaterFlag
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08056CA4
@@ -73,7 +73,7 @@ _08056CA4:
 	bx r0
 	.align 2, 0
 _08056CA8: .4byte gCurrentSprite
-_08056CAC: .4byte 0x03001346
+_08056CAC: .4byte gSamusUnderwaterFlag
 
 	thumb_func_start ElectricWaterDamageBox2DamagingSamus
 ElectricWaterDamageBox2DamagingSamus: @ 0x08056CB0
@@ -114,7 +114,7 @@ _08056CEE:
 	ldrb r0, [r1]
 	adds r0, #1
 	strb r0, [r1]
-	ldr r0, _08056D1C @ =0x03001346
+	ldr r0, _08056D1C @ =gSamusUnderwaterFlag
 	ldrb r3, [r0]
 	cmp r3, #0
 	bne _08056D18
@@ -133,7 +133,7 @@ _08056D18:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056D1C: .4byte 0x03001346
+_08056D1C: .4byte gSamusUnderwaterFlag
 _08056D20: .4byte sBox2ElectricWaterDamageOam_39f6c8
 
 	thumb_func_start ElectricWaterDamageBox2Stopping

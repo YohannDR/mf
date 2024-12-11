@@ -32,7 +32,7 @@ extern const struct FrameData sParticleOam_AbsorbIceXPreVaria[24];
 extern const struct FrameData sParticleOam_3eadd4[33];
 extern const struct FrameData sParticleOam_3eaedc[16];
 extern const struct FrameData sParticleOam_IceXTrail[7];
-extern const struct FrameData sParticleOam_Diffusion[8];
+extern const struct FrameData sParticleOam_DiffusionFlakeTrail[8];
 
 extern const struct FrameData sSpriteDebrisOam_Cloud2[12];
 extern const struct FrameData sSpriteDebrisOam_Cloud3[5];

@@ -163,6 +163,7 @@ SECTIONS {
         . = 0x00001330; gSamusPhysics = .;
         . = 0x00001342; gPreviousXPosition = .;
         . = 0x00001344; gPreviousYPosition = .;
+        . = 0x00001346; gSamusUnderwaterFlag = .;
         . = 0x00001348; gPreventMovementTimer = .;
         . = 0x0000134a; gDisableDrawingSamusAndScrollingFlag = .;
         . = 0x00001450; gButtonAssignments = .;
@@ -282,9 +283,9 @@ SECTIONS {
         src/sprites_AI/misc_pad.o(.text);
         src/sprites_AI/operations_room_pad.o(.text);
         src/sprites_AI/scientist.o(.text);
+        src/sprites_AI/skultera.o(.text);
+        src/sprites_AI/zeela.o(.text);
 
-        asm/sprites_AI/skultera.o(.text);
-        asm/sprites_AI/zeela.o(.text);
         asm/sprites_AI/sova.o(.text);
         asm/sprites_AI/yard.o(.text);
         asm/sprites_AI/evir.o(.text);

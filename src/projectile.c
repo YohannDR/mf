@@ -3599,7 +3599,7 @@ void ProjectileDiffusionFlakeSubroutine(void)
     }
 
     if ((gFrameCounter8Bit & 3) == 0)
-        ParticleSet(gCurrentProjectile.yPosition, gCurrentProjectile.xPosition, PE_DIFFUSION_PARTICLES);
+        ParticleSet(gCurrentProjectile.yPosition, gCurrentProjectile.xPosition, PE_DIFFUSION_FLAKE_TRAIL);
     gCurrentClipdataAffectingAction = CAA_MISSILE;
     ProjectileCheckHittingSolid();
 }

@@ -2273,7 +2273,7 @@ const struct FrameData sParticleOam_IceXTrail[7] = {
     [6] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sParticleOam_Diffusion[8] = {
+const struct FrameData sParticleOam_DiffusionFlakeTrail[8] = {
     [0] = {
         .pFrame = sParticleOam_AbsorbIceXPreVaria_Frame16,
         .timer = 8

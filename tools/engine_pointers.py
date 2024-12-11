@@ -33,7 +33,7 @@ particles = [
     "PE_ABSORB_CORE_X",
     "PE_ABSORB_ICE_X_PRE_VARIA",
     "PE_ICE_X_TRAIL",
-    "PE_DIFFUSION_PARTICLES",
+    "PE_DIFFUSION_FLAKE_TRAIL",
     "PE_0x21",
     "PE_0x22",
     "PE_0x23",

@@ -41,7 +41,7 @@ void ParticleAbsorbRedX(void);
 void ParticleAbsorbCoreX(void);
 void ParticleAbsorbIceXPreVaria(void);
 void ParticleIceXTrail(void);
-void ParticleDiffusion(void);
+void ParticleDiffusionFlakeTrail(void);
 void ParticleFireBeam(void);
 void ParticleExplosion1(void);
 void ParticleExplosion2(void);

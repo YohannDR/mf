@@ -140,6 +140,7 @@ extern u16 gSamusPaletteLength;
 extern u16 gPreviousXPosition;
 extern u16 gPreviousYPosition;
 extern u8 gPoseLock;
+extern u8 gSamusUnderwaterFlag;
 extern u16 gPreventMovementTimer;
 extern u8 gDisableDrawingSamusAndScrollingFlag;
 

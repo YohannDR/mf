@@ -11990,7 +11990,7 @@ _0806E164:
 	subs r1, #0x50
 	ldrh r0, [r2]
 	strh r0, [r1]
-	ldr r0, _0806E1A8 @ =0x03000047
+	ldr r0, _0806E1A8 @ =gUnk_03000047
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -12010,7 +12010,7 @@ _0806E198: .4byte 0x04000008
 _0806E19C: .4byte gIoRegisters
 _0806E1A0: .4byte gHazeInfo
 _0806E1A4: .4byte 0x04000050
-_0806E1A8: .4byte 0x03000047
+_0806E1A8: .4byte gUnk_03000047
 
 	thumb_func_start unk_6e1ac
 unk_6e1ac: @ 0x0806E1AC
@@ -13203,7 +13203,7 @@ _0806EB6E:
 	adds r0, r2, #0
 	subs r0, r0, r1
 	strh r0, [r3, #2]
-	ldr r0, _0806EBA0 @ =0x03000047
+	ldr r0, _0806EBA0 @ =gUnk_03000047
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -13216,7 +13216,7 @@ _0806EB92:
 	.align 2, 0
 _0806EB98: .4byte gDoorPositionStart
 _0806EB9C: .4byte gBg1YPosition
-_0806EBA0: .4byte 0x03000047
+_0806EBA0: .4byte gUnk_03000047
 _0806EBA4:
 	ldr r0, _0806EBB8 @ =gDoorPositionStart
 	ldr r3, _0806EBBC @ =gBackgroundPositions

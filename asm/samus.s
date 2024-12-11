@@ -149,7 +149,7 @@ _08004E60:
 	thumb_func_start SamusUpdatePhysics
 SamusUpdatePhysics: @ 0x08004E68
 	push {r4, r5, lr}
-	ldr r4, _08004E94 @ =0x03001346
+	ldr r4, _08004E94 @ =gSamusUnderwaterFlag
 	movs r1, #0
 	strb r1, [r4]
 	ldr r0, _08004E98 @ =0x03004810
@@ -170,7 +170,7 @@ SamusUpdatePhysics: @ 0x08004E68
 	bgt _08004EC0
 	b _08004EA6
 	.align 2, 0
-_08004E94: .4byte 0x03001346
+_08004E94: .4byte gSamusUnderwaterFlag
 _08004E98: .4byte 0x03004810
 _08004E9C: .4byte gSamusData
 _08004EA0:

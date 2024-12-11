@@ -714,9 +714,9 @@ void ParticleIceXTrail(void) {
         gCurrentParticle.stage++;
 }
 
-void ParticleDiffusion(void) {
+void ParticleDiffusionFlakeTrail(void) {
     gCurrentParticle.frameCounter++;
-    ParticleUpdateAnimation(sParticleOam_Diffusion);
+    ParticleUpdateAnimation(sParticleOam_DiffusionFlakeTrail);
     if (gCurrentParticle.currentAnimationFrame == 0 && gCurrentParticle.animationDurationCounter == 0)
         gCurrentParticle.status = 0;
     if (gCurrentParticle.stage == 0)

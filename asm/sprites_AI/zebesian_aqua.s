@@ -331,7 +331,7 @@ _0804C9A0:
 	adds r0, #2
 	strh r0, [r5, #2]
 _0804C9BE:
-	ldr r0, _0804CA08 @ =0x03001346
+	ldr r0, _0804CA08 @ =gSamusUnderwaterFlag
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804CA5C
@@ -365,7 +365,7 @@ _0804C9BE:
 	b _0804CA5A
 	.align 2, 0
 _0804CA04: .4byte gPreviousCollisionCheck
-_0804CA08: .4byte 0x03001346
+_0804CA08: .4byte gSamusUnderwaterFlag
 _0804CA0C: .4byte gCurrentSprite
 _0804CA10: .4byte gEquipment
 _0804CA14:
@@ -466,7 +466,7 @@ _0804CAB6:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0804CB0C
-	ldr r0, _0804CB04 @ =0x03001346
+	ldr r0, _0804CB04 @ =gSamusUnderwaterFlag
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0804CB14
@@ -495,7 +495,7 @@ _0804CAB6:
 _0804CAF8: .4byte gCurrentSprite
 _0804CAFC: .4byte 0x000001BD
 _0804CB00: .4byte gPreviousCollisionCheck
-_0804CB04: .4byte 0x03001346
+_0804CB04: .4byte gSamusUnderwaterFlag
 _0804CB08:
 	cmp r2, #8
 	bne _0804CB14

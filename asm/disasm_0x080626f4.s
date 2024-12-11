@@ -2896,13 +2896,13 @@ CheckLockHatchesWithTimer: @ 0x08063DE8
 	push {lr}
 	movs r0, #0x3f
 	bl LockHatchesWithTimer
-	ldr r1, _08063DFC @ =0x03000047
+	ldr r1, _08063DFC @ =gUnk_03000047
 	movs r0, #2
 	strb r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063DFC: .4byte 0x03000047
+_08063DFC: .4byte gUnk_03000047
 
 	thumb_func_start CheckUnlockProximityHatches
 CheckUnlockProximityHatches: @ 0x08063E00
@@ -4675,7 +4675,7 @@ _08064C46:
 	strb r1, [r0]
 	ldr r0, _08064DAC @ =gDoorUnlockTimer
 	strb r1, [r0]
-	ldr r0, _08064DB0 @ =0x03000047
+	ldr r0, _08064DB0 @ =gUnk_03000047
 	strb r1, [r0]
 	ldr r1, _08064DB4 @ =0x0879B894
 	ldr r0, _08064DB8 @ =gCurrentArea
@@ -4827,7 +4827,7 @@ _08064DA0: .4byte gCurrentEventBasedEffect
 _08064DA4: .4byte gEffectYPosition
 _08064DA8: .4byte 0x03004E3B
 _08064DAC: .4byte gDoorUnlockTimer
-_08064DB0: .4byte 0x03000047
+_08064DB0: .4byte gUnk_03000047
 _08064DB4: .4byte 0x0879B894
 _08064DB8: .4byte gCurrentArea
 _08064DBC: .4byte gLastDoorUsed
