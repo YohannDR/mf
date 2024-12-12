@@ -573,7 +573,7 @@ void NamiheLungingEnd(void) {
 
 void NamiheSpitInit(void) {
     u16 samusCenterY, spriteY;
-    s16 ySpeed;
+    u16 ySpeed;
 
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.properties |= SP_KILL_OFF_SCREEN;
@@ -706,12 +706,12 @@ void Namihe(void) {
         return;
     }
     switch (gCurrentSprite.pose) {
-        case 0:
+        case SPRITE_POSE_UNINITIALIZED:
             NamiheInit();
             break;
-        case 1:
+        case SPRITE_POSE_IDLE_INIT:
             NamiheIdleInit();
-        case 2:
+        case SPRITE_POSE_IDLE:
             NamiheIdle();
             break;
         case 0x29:
@@ -727,18 +727,18 @@ void Namihe(void) {
         case 0x2e:
             NamiheLungingEnd();
             break;
-        case 0x57:
+        case SPRITE_POSE_DYING_INIT:
             SpriteDyingInit();
-        case 0x58:
+        case SPRITE_POSE_DYING:
             NamiheDying();
             SpriteDying();
             break;
-        case 0x59:
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
             NamiheInit();
-        case 0x5a:
+        case SPRITE_POSE_SPAWNING_FROM_X:
             SpriteSpawningFromX();
             break;
-        case 0x5b:
+        case SPRITE_POSE_TURNING_INTO_X:
             NamiheTurningIntoX();
             XParasiteInit();
     }
