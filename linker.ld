@@ -276,8 +276,8 @@ SECTIONS {
         asm/sprites_AI/kihunter.o(.text);
         asm/sprites_AI/reo.o(.text);
         asm/sprites_AI/lava_plume.o(.text);
-        asm/sprites_AI/fune_namihe.o(.text);
 
+        src/sprites_AI/fune_namihe.o(.text);
         src/sprites_AI/box.o(.text);
         src/sprites_AI/geruda.o(.text);
         src/sprites_AI/misc_pad.o(.text);

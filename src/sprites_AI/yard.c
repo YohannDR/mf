@@ -839,7 +839,7 @@ void YardProjectile(void) {
     switch (gCurrentSprite.pose) {
         case SPRITE_POSE_UNINITIALIZED:
             YardProjectileInit();
-        case 2:
+        case SPRITE_POSE_IDLE:
             YardProjectileMoving();
             break;
         case 0x38:
