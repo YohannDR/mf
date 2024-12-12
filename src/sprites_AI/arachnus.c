@@ -65,7 +65,7 @@ void ArachnusDyingInit(void) {
     }
     gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
     gCurrentSprite.status |= SS_ENABLE_MOSAIC;
-    gCurrentSprite.samusCollision = 0;
+    gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.health = 1;
     gCurrentSprite.invincibilityStunFlashTimer = 0;
     gCurrentSprite.paletteRow = 0;

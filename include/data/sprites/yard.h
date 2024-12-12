@@ -1,7 +1,7 @@
 #ifndef YARD_DATA_H
 #define YARD_DATA_H
 
-#include "types.h"
+#include "macros.h"
 #include "oam.h"
 
 extern const u32 sYardGfx[512 * 3];

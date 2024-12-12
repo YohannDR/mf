@@ -232,11 +232,11 @@ void SkulteraTurningAroundInit(void) {
     if (gCurrentSprite.work0 == SKULTERA_SIZE_LARGE) {
         gCurrentSprite.pOam = sSkulteraOam_34f09c;
         if (!(gCurrentSprite.status & SS_HIDDEN) && gSamusUnderwaterFlag && gCurrentSprite.status & SS_ON_SCREEN)
-            SoundPlayNotAlreadyPlaying(SOUND_193);
+            SoundPlayNotAlreadyPlaying(SOUND_SKULTERA_LARGE_TURNING);
     } else {
         gCurrentSprite.pOam = sSkulteraOam_34f00c;
         if (!(gCurrentSprite.status & SS_HIDDEN) && gSamusUnderwaterFlag && gCurrentSprite.status & SS_ON_SCREEN)
-            SoundPlayNotAlreadyPlaying(SOUND_191);
+            SoundPlayNotAlreadyPlaying(SOUND_SKULTERA_SMALL_TURNING);
     }
 }
 
@@ -251,10 +251,10 @@ void SkulteraTurningAround(void) {
 void Skultera(void) {
     if (gCurrentSprite.work0 == SKULTERA_SIZE_LARGE) {
         if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-            SoundPlayNotAlreadyPlaying(SOUND_194);
+            SoundPlayNotAlreadyPlaying(SOUND_SKULTERA_LARGE_HURT);
     } else {
         if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-            SoundPlayNotAlreadyPlaying(SOUND_192);
+            SoundPlayNotAlreadyPlaying(SOUND_SKULTERA_SMALL_HURT);
     }
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();

@@ -1,7 +1,7 @@
 #ifndef EVIR_DATA_H
 #define EVIR_DATA_H
 
-#include "types.h"
+#include "macros.h"
 #include "oam.h"
 
 extern const u32 sEvirGfx[512 * 2];

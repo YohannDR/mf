@@ -199,7 +199,7 @@ void ChootSpitExplodingInit(void) {
         gCurrentSprite.pOam = sChootSpitOam_ExplodingMidair;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 8;
+    gCurrentSprite.pose = SPRITE_POSE_LANDED;
 }
 
 void ChootSpitExploding(void) {
@@ -267,10 +267,10 @@ void ChootSpit(void) {
         case 2:
             ChootSpitSpawning();
             break;
-        case 7:
+        case SPRITE_POSE_LANDED_INIT:
         case SPRITE_POSE_STOPPED:
             ChootSpitExplodingInit();
-        case 8:
+        case SPRITE_POSE_LANDED:
             ChootSpitExploding();
             break;
         case SPRITE_POSE_FALLING:

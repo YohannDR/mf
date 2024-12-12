@@ -80,17 +80,17 @@ void SovaUpdateHitbox(void) {
 
 void SovaSetCrawlingOam(void) {
     if (gCurrentSprite.work0)
-        gCurrentSprite.pOam = sSovaOam_35335c;
+        gCurrentSprite.pOam = sSovaOam_CrawlingOnWall;
     else if (gCurrentSprite.work2)
-        gCurrentSprite.pOam = sSovaOam_353384;
+        gCurrentSprite.pOam = sSovaOam_CrawlingOnCeiling;
     else
-        gCurrentSprite.pOam = sSovaOam_353334;
+        gCurrentSprite.pOam = sSovaOam_CrawlingOnFlatGround;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
 
 void SovaTurningIntoX(void) {
-    if (gCurrentSprite.work0 != 0) {
+    if (gCurrentSprite.work0) {
         if (gCurrentSprite.status & SS_X_FLIP)
             gCurrentSprite.xPosition -= 0x20;
         else
@@ -173,67 +173,76 @@ void SovaIdle(void) {
     gCurrentSprite.work3--;
     if (gCurrentSprite.work0) {
         if (SovaCheckCollidingWithAir()) {
+            // Fall if in midair
             gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
             return;
         }
         if (gCurrentSprite.status & SS_X_FLIP) {
+            // On right wall
             if (gCurrentSprite.work3 == 0) {
+                // Drop falling flames periodically
                 SpriteSpawnSecondary(SSPRITE_SOVA_FIRE, TRUE, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
                     gCurrentSprite.yPosition + 0x14, gCurrentSprite.xPosition - 0x14, 0);
                 gCurrentSprite.work3 = 160;
                 if (gCurrentSprite.status & SS_ON_SCREEN)
-                    SoundPlayNotAlreadyPlaying(SOUND_18E);
+                    SoundPlayNotAlreadyPlaying(SOUND_SOVA_DROPPING_FLAME);
             }
             if (gCurrentSprite.status & SS_FACING_RIGHT) {
+                // Moving down
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x28, gCurrentSprite.xPosition);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
-                    turn++;
+                    turn++; // Turn if it encountered a ledge
                 else {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x28, gCurrentSprite.xPosition - 4);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
-                        turn++;
+                        turn++; // Turn if it encountered a floor
                     else
                         gCurrentSprite.yPosition += speed;
                 }
             } else {
+                // Moving up
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x28, gCurrentSprite.xPosition);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
-                    turn++;
+                    turn++; // Turn if it encountered a ledge
                 else {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x28, gCurrentSprite.xPosition - 4);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
-                        turn++;
+                        turn++; // Turn if it encountered a ceiling
                     else
                         gCurrentSprite.yPosition -= speed;
                 }
             }
         } else {
+            // On left wall
             if (gCurrentSprite.work3 == 0) {
+                // Drop falling flames periodically
                 SpriteSpawnSecondary(SSPRITE_SOVA_FIRE, TRUE, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
                     gCurrentSprite.yPosition + 0x14, gCurrentSprite.xPosition + 0x14, 0);
                 gCurrentSprite.work3 = 160;
                 if (gCurrentSprite.status & SS_ON_SCREEN)
-                    SoundPlayNotAlreadyPlaying(SOUND_18E);
+                    SoundPlayNotAlreadyPlaying(SOUND_SOVA_DROPPING_FLAME);
             }
             if (gCurrentSprite.status & SS_FACING_RIGHT) {
+                // Moving down
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x28, gCurrentSprite.xPosition - 4);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
-                    turn++;
+                    turn++; // Turn if it encountered a ledge
                 else {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x28, gCurrentSprite.xPosition);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
-                        turn++;
+                        turn++; // Turn if it encountered a floor
                     else
                         gCurrentSprite.yPosition += speed;
                 }
             } else {
+                // Moving up
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x28, gCurrentSprite.xPosition - 4);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
-                    turn++;
+                    turn++; // Turn if it encountered a ledge
                 else {
                     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x28, gCurrentSprite.xPosition);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
-                        turn++;
+                        turn++; // Turn if it encountered a ceiling
                     else
                         gCurrentSprite.yPosition -= speed;
                 }
@@ -241,12 +250,14 @@ void SovaIdle(void) {
         }
     } else {
         if (gCurrentSprite.work2) {
+            // On ceiling
             if (gCurrentSprite.work3 == 0) {
+                // Drop falling flames periodically
                 SpriteSpawnSecondary(SSPRITE_SOVA_FIRE, TRUE, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
                     gCurrentSprite.yPosition + 0x14, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.work3 = 160;
                 if (gCurrentSprite.status & SS_ON_SCREEN)
-                    SoundPlayNotAlreadyPlaying(SOUND_18E);
+                    SoundPlayNotAlreadyPlaying(SOUND_SOVA_DROPPING_FLAME);
             }
             if (SovaCheckCollidingWithAir()) {
                 gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
@@ -276,20 +287,22 @@ void SovaIdle(void) {
                 }
             }
         } else {
+            // Drop trailing flames periodically
             if (gCurrentSprite.work3 == 64 || gCurrentSprite.work3 == 32) {
                 SpriteSpawnSecondary(SSPRITE_SOVA_FIRE, FALSE, gCurrentSprite.spritesetGfxSlot,
                     gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 if (gCurrentSprite.status & SS_ON_SCREEN)
-                    SoundPlayNotAlreadyPlaying(SOUND_18E);
+                    SoundPlayNotAlreadyPlaying(SOUND_SOVA_DROPPING_FLAME);
             } else if (gCurrentSprite.work3 == 0) {
                 SpriteSpawnSecondary(SSPRITE_SOVA_FIRE, FALSE, gCurrentSprite.spritesetGfxSlot,
                     gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 gCurrentSprite.work3 = 210;
                 if (gCurrentSprite.status & SS_ON_SCREEN)
-                    SoundPlayNotAlreadyPlaying(SOUND_18E);
+                    SoundPlayNotAlreadyPlaying(SOUND_SOVA_DROPPING_FLAME);
             }
             SpriteUtilAlignYPosOnSlope();
             if (gPreviousVerticalCollisionCheck == COLLISION_AIR) {
+                // About to fall off a ledge
                 if (gCurrentSprite.status & SS_X_FLIP) {
                     SpriteUtilCheckVerticalCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
                     if (gPreviousVerticalCollisionCheck == COLLISION_AIR) {
@@ -307,43 +320,47 @@ void SovaIdle(void) {
                 }
             } else {
                 if (gPreviousVerticalCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
-                    if (gCurrentSprite.pOam == sSovaOam_3533ac) {
-                        gCurrentSprite.pOam = sSovaOam_353334;
-                        if (gCurrentSprite.status & SS_X_FLIP) {
+                    // On flat ground
+                    if (gCurrentSprite.pOam == sSovaOam_CrawlingOnSlope) {
+                        // Set on flat ground OAM and remove X flip if previously on slope
+                        gCurrentSprite.pOam = sSovaOam_CrawlingOnFlatGround;
+                        if (gCurrentSprite.status & SS_X_FLIP)
                             gCurrentSprite.status &= ~SS_X_FLIP;
-                        }
                     }
                     if (gCurrentSprite.status & SS_FACING_RIGHT) {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x28);
                         if (gPreviousCollisionCheck == COLLISION_AIR)
-                            turn++;
+                            turn++; // Turn if it encountered a ledge
                         else {
                             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition + 0x28);
                             if (gPreviousCollisionCheck == COLLISION_SOLID)
-                                turn++;
+                                turn++; // Turn if it encountered a wall
                         }
                     } else {
                         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x28);
                         if (gPreviousCollisionCheck == COLLISION_AIR)
-                            turn++;
+                            turn++; // Turn if it encountered a ledge
                         else {
                             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition - 0x28);
                             if (gPreviousCollisionCheck == COLLISION_SOLID)
-                                turn++;
+                                turn++; // Turn if it encountered a wall
                         }
                     }
                 } else {
+                    // On slope, set on slope OAM and apply X flip on right slopes if previously on ground
+                    // Assumes that ledges and walls are not encountered
                     if ((gPreviousVerticalCollisionCheck == COLLISION_LEFT_SLIGHT_FLOOR_SLOPE
                         || gPreviousVerticalCollisionCheck == COLLISION_LEFT_STEEP_FLOOR_SLOPE)
-                        && gCurrentSprite.pOam == sSovaOam_353334)
-                        gCurrentSprite.pOam = sSovaOam_3533ac;
+                        && gCurrentSprite.pOam == sSovaOam_CrawlingOnFlatGround)
+                        gCurrentSprite.pOam = sSovaOam_CrawlingOnSlope;
                     if ((gPreviousVerticalCollisionCheck == COLLISION_RIGHT_SLIGHT_FLOOR_SLOPE
                         || gPreviousVerticalCollisionCheck == COLLISION_RIGHT_STEEP_FLOOR_SLOPE)
-                        && gCurrentSprite.pOam == sSovaOam_353334) {
-                        gCurrentSprite.pOam = sSovaOam_3533ac;
+                        && gCurrentSprite.pOam == sSovaOam_CrawlingOnFlatGround) {
+                        gCurrentSprite.pOam = sSovaOam_CrawlingOnSlope;
                         gCurrentSprite.status |= SS_X_FLIP;
                     }
                 }
+                // Move forward if not turning
                 if (!turn) {
                     if (gCurrentSprite.status & SS_FACING_RIGHT)
                         gCurrentSprite.xPosition += speed;
@@ -361,7 +378,7 @@ void SovaIdle(void) {
 
 void SovaTurningAroundInit(void) {
     gCurrentSprite.pose = 8;
-    gCurrentSprite.work1 = 30;
+    gCurrentSprite.work1 = 30; // Stop for half of a second
 }
 
 void SovaTurningAround(void) {
@@ -384,26 +401,23 @@ void SovaFalling(void) {
     u8 offset;
     s16 movement;
 
-    onWall = 0;
+    onWall = FALSE;
     yCollisionPoint = gCurrentSprite.yPosition;
     xCollisionPoint = gCurrentSprite.xPosition;
     if (gCurrentSprite.work0) {
-        if (gCurrentSprite.status & SS_X_FLIP) {
+        if (gCurrentSprite.status & SS_X_FLIP)
             xCollisionPoint -= PIXEL_SIZE;
-        }
         yCollisionPoint += gCurrentSprite.hitboxBottom;
     }
     else {
-        if (gCurrentSprite.status & SS_Y_FLIP) {
+        if (gCurrentSprite.status & SS_Y_FLIP)
             yCollisionPoint += gCurrentSprite.hitboxBottom;
-        }
     }
     blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(yCollisionPoint, xCollisionPoint);
     if (gPreviousVerticalCollisionCheck != COLLISION_AIR) {
         gCurrentSprite.yPosition = blockTop;
-        if (gCurrentSprite.work0) {
-            onWall += 1;
-        }
+        if (gCurrentSprite.work0)
+            onWall++;
         gCurrentSprite.pose = 7;
         gCurrentSprite.work0 = FALSE;
         gCurrentSprite.status &= ~SS_Y_FLIP;
@@ -445,11 +459,13 @@ void SovaFireInit(void) {
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
     gCurrentSprite.drawOrder = 5;
     if (gCurrentSprite.roomSlot) {
-        gCurrentSprite.pOam = sSovaOam_35346c;
-        gCurrentSprite.pose = 0x16;
+        // Falling flame
+        gCurrentSprite.pOam = sSovaFallingOam_Falling;
+        gCurrentSprite.pose = SPRITE_POSE_FALLING;
         gCurrentSprite.work4 = 0;
     } else {
-        gCurrentSprite.pOam = sSovaOam_3533d4;
+        // Flame on ground
+        gCurrentSprite.pOam = sSovaGroundFlameOam_Big;
         gCurrentSprite.pose = 2;
         gCurrentSprite.work1 = 50;
     }
@@ -458,7 +474,7 @@ void SovaFireInit(void) {
 void SovaFireBig(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.hitboxTop = -0x1c;
-        gCurrentSprite.pOam = sSovaOam_3533fc;
+        gCurrentSprite.pOam = sSovaGroundFlameOam_Small;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x18;
@@ -469,7 +485,7 @@ void SovaFireBig(void) {
 void SovaFireSmall(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.hitboxTop = -0x10;
-        gCurrentSprite.pOam = sSovaOam_353424;
+        gCurrentSprite.pOam = sSovaGroundFlameOam_Disappearing;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x1a;
@@ -486,12 +502,12 @@ void SovaFireDisappearing(void) {
 }
 
 void SovaFireExplodingInit(void) {
-    gCurrentSprite.pOam = sSovaOam_353494;
+    gCurrentSprite.pOam = sSovaFallingOam_Exploding;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 8;
+    gCurrentSprite.pose = SPRITE_POSE_LANDED;
     if (gCurrentSprite.status & SS_ON_SCREEN)
-        SoundPlayNotAlreadyPlaying(SOUND_18F);
+        SoundPlayNotAlreadyPlaying(SOUND_SOVA_FALLING_FLAME_EXPLODING);
 }
 
 void SovaFireExploding(void) {
@@ -502,7 +518,7 @@ void SovaFireExploding(void) {
 
 void Sova(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(SOUND_190);
+        SoundPlayNotAlreadyPlaying(SOUND_SOVA_HURT);
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();
         return;
@@ -556,12 +572,12 @@ void SovaFire(void) {
         case 0x1a:
             SovaFireDisappearing();
             break;
-        case 0x16:
+        case SPRITE_POSE_FALLING:
             SpriteUtilCurrentSpriteFalling();
             break;
-        case 7:
+        case SPRITE_POSE_LANDED_INIT:
             SovaFireExplodingInit();
-        case 8:
+        case SPRITE_POSE_LANDED:
             SovaFireExploding();
     }
 }

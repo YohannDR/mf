@@ -70,22 +70,20 @@ void WaverFlyingInit(void) {
 
 void WaverFlying(void) {
     u8 touchedFloorCeiling;
-    u32 yBoundary, x;
     s16 movement;
 
     if (gCurrentSprite.status & SS_HIDDEN) return;
 
     touchedFloorCeiling = FALSE;
     if (gCurrentSprite.status & SS_FACING_DOWN) {
-        yBoundary = gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom;
-        x = gCurrentSprite.xPosition;
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxBottom, gCurrentSprite.xPosition);
+        if (gPreviousCollisionCheck == COLLISION_SOLID)
+            touchedFloorCeiling = TRUE;
     } else {
-        yBoundary = gCurrentSprite.yPosition + gCurrentSprite.hitboxTop;
-        x = gCurrentSprite.xPosition;
+        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + gCurrentSprite.hitboxTop, gCurrentSprite.xPosition);
+        if (gPreviousCollisionCheck == COLLISION_SOLID)
+            touchedFloorCeiling = TRUE;
     }
-    SpriteUtilCheckCollisionAtPosition(yBoundary, x);
-    if (gPreviousCollisionCheck == COLLISION_SOLID)
-        touchedFloorCeiling = TRUE;
 
     if (WaverCheckSamusInRange()) {
         gCurrentSprite.pOam = sWaverOam_Charging;

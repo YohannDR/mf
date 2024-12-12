@@ -27,7 +27,7 @@ void MemuInit(void) {
     gCurrentSprite.hitboxBottom = 0x20;
     gCurrentSprite.hitboxLeft = -0x20;
     gCurrentSprite.hitboxRight = 0x20;
-    gCurrentSprite.pOam = sMemuOam_357f14;
+    gCurrentSprite.pOam = sMemuOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
@@ -87,10 +87,10 @@ void MemuChasingSamusInit(void) {
     gCurrentSprite.work3 = 1;
     gCurrentSprite.work1 = 0;
     gCurrentSprite.work4 = 1;
-    gCurrentSprite.unk_8 = gSpriteRandomNumber & 3;
+    gCurrentSprite.unk_8 = gSpriteRandomNumber & 3; // Unused
     gCurrentSprite.pose = 0x18;
     gCurrentSprite.scaling = 12;
-    gCurrentSprite.pOam = sMemuOam_357f3c;
+    gCurrentSprite.pOam = sMemuOam_ChasingTarget;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     SpriteUtilMakeSpriteFaceSamusDirection();
@@ -273,13 +273,13 @@ void MemuChasingSamus(void) {
     if (--gCurrentSprite.scaling == 0) {
         gCurrentSprite.scaling = 12;
         if (gCurrentSprite.status & SS_ON_SCREEN)
-            SoundPlayNotAlreadyPlaying(SOUND_19B);
+            SoundPlayNotAlreadyPlaying(SOUND_MEMU_CHASING);
     }
 }
 
 void Memu(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(SOUND_19C);
+        SoundPlayNotAlreadyPlaying(SOUND_MEMU_HURT);
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();
         return;

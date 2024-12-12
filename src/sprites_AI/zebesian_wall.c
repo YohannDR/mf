@@ -234,7 +234,7 @@ void ZebesianBeamInit(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 2;
-    gCurrentSprite.samusCollision = 2;
+    gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
     gCurrentSprite.drawOrder = 5;
     gCurrentSprite.bgPriority = 1;
     if (gCurrentSprite.status & SS_X_FLIP) {

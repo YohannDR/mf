@@ -80,18 +80,18 @@ void ZeelaUpdateHitbox(void) {
 
 void ZeelaSetCrawlingOam(void) {
     if (gCurrentSprite.work0)
-        gCurrentSprite.pOam = sZeelaOam_3505dc;
+        gCurrentSprite.pOam = sZeelaOam_CrawlingVertical;
     else
-        gCurrentSprite.pOam = sZeelaOam_350584;
+        gCurrentSprite.pOam = sZeelaOam_CrawlingHorizontal;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
 
 void ZeelaSetFallingOam(void) {
     if (gCurrentSprite.work0)
-        gCurrentSprite.pOam = sZeelaOam_35060c;
+        gCurrentSprite.pOam = sZeelaOam_FallingVertical;
     else
-        gCurrentSprite.pOam = sZeelaOam_3505b4;
+        gCurrentSprite.pOam = sZeelaOam_FallingHorizontal;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -104,7 +104,7 @@ void ZeelaShootProjectiles(void) {
     }
     if (gCurrentSprite.work2 > 0) return;
     if (gCurrentSprite.currentAnimationFrame == 0 && gCurrentSprite.animationDurationCounter == 1 && gCurrentSprite.status & SS_ON_SCREEN)
-        SoundPlayNotAlreadyPlaying(SOUND_1CB);
+        SoundPlayNotAlreadyPlaying(SOUND_ZEELA_SHOOTING);
     if (gCurrentSprite.currentAnimationFrame == 1 && gCurrentSprite.animationDurationCounter == 8) {
         if (gCurrentSprite.work0) {
             if (gCurrentSprite.status & SS_X_FLIP)
@@ -409,7 +409,7 @@ void ZeelaProjectileInit(void) {
     gCurrentSprite.hitboxBottom = 8;
     gCurrentSprite.hitboxLeft = -8;
     gCurrentSprite.hitboxRight = 8;
-    gCurrentSprite.pOam = sZeelaOam_350634;
+    gCurrentSprite.pOam = sZeelaProjectileOam_Moving;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work4 = 0;
@@ -459,14 +459,14 @@ void ZeelaProjectileMoving(void) {
 
 void ZeelaProjectileExplodingInit(void) {
     gCurrentSprite.pose = 0x38;
-    gCurrentSprite.samusCollision = 0;
+    gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.bgPriority = 1;
     if (MOD_AND(gSpriteRandomNumber, 2) != 0)
-        gCurrentSprite.pOam = sZeelaOam_35066c;
+        gCurrentSprite.pOam = sZeelaProjectileOam_Exploding1;
     else
-        gCurrentSprite.pOam = sZeelaOam_350694;
+        gCurrentSprite.pOam = sZeelaProjectileOam_Exploding2;
 }
 
 void ZeelaProjectileExploding(void) {
@@ -477,7 +477,7 @@ void ZeelaProjectileExploding(void) {
 
 void Zeela(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(SOUND_1CC);
+        SoundPlayNotAlreadyPlaying(SOUND_ZEELA_HURT);
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();
         return;

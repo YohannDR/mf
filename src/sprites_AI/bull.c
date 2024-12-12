@@ -27,7 +27,7 @@ void BullInit(void) {
     gCurrentSprite.hitboxBottom = 0x20;
     gCurrentSprite.hitboxLeft = -0x20;
     gCurrentSprite.hitboxRight = 0x20;
-    gCurrentSprite.pOam = sBullOam_357540;
+    gCurrentSprite.pOam = sBullOam;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work2 = FALSE; // Smoke active flag
@@ -47,7 +47,7 @@ void BullInit(void) {
 
 void BullIdleInit(void) {
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
-    gCurrentSprite.pOam = sBullOam_357540;
+    gCurrentSprite.pOam = sBullOam;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 3;
@@ -102,7 +102,7 @@ void Bull(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4 && gCurrentSprite.pose != SPRITE_POSE_UNINITIALIZED && !gCurrentSprite.work2) {
         SpriteSpawnSecondary(SSPRITE_BULL_SMOKE, 0, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
             gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
-        SoundPlayNotAlreadyPlaying(SOUND_19A);
+        SoundPlayNotAlreadyPlaying(SOUND_BULL_RELEASING_SMOKE);
     }
     switch (gCurrentSprite.pose) {
         case SPRITE_POSE_UNINITIALIZED:
@@ -136,7 +136,7 @@ void BullSmoke(void) {
         gCurrentSprite.bgPriority = 1;
         gCurrentSprite.drawOrder = 3;
         gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
-        gCurrentSprite.pOam = sBullOam_357568;
+        gCurrentSprite.pOam = sBullSmokeOam;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.drawDistanceTop = 0x28;

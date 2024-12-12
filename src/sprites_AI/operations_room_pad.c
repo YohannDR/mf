@@ -143,7 +143,7 @@ void OperationsRoomPadConsoleIdle(void) {}
 void OperationsRoomPadConsoleScreenInit(void) {
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;
-    gCurrentSprite.samusCollision = 0;
+    gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.drawDistanceTop = 0x28;
     gCurrentSprite.drawDistanceBottom = 0;
     gCurrentSprite.drawDistanceHorizontal = 0x28;
@@ -175,7 +175,7 @@ void OperationsRoomPadConsoleScreenIdle(void) {
 void OperationsRoomPadScreenInit(void) {
     gCurrentSprite.properties |= SP_ALWAYS_ACTIVE;
     gCurrentSprite.status &= ~SS_NOT_DRAWN;
-    gCurrentSprite.samusCollision = 0;
+    gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.drawDistanceTop = 0x28;
     gCurrentSprite.drawDistanceBottom = 0;
     gCurrentSprite.drawDistanceHorizontal = 0x28;

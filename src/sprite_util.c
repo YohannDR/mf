@@ -1272,7 +1272,7 @@ void SpriteUtilCurrentSpriteFalling(void)
     if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
     {
         gCurrentSprite.yPosition = blockTop;
-        gCurrentSprite.pose = 0x7;
+        gCurrentSprite.pose = SPRITE_POSE_LANDED_INIT;
         return;
     }
 

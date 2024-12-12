@@ -48,61 +48,61 @@ const s16 sMemuIdleXSpeed[81] = {
 const u32 sMemuGfx[512 * 1] = INCBIN_U32("data/sprites/memu.gfx");
 const u16 sMemuPal[16 * 1] = INCBIN_U16("data/sprites/memu.pal");
 
-static const u16 sMemuOam_357f14_Frame0[] = {
+static const u16 sMemuOam_Idle_Frame0[] = {
     1,
     0xf7, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sMemuOam_357f14_Frame1[] = {
+static const u16 sMemuOam_Idle_Frame1[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xf8, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_8 | 0x202
 };
 
-static const u16 sMemuOam_357f14_Frame2[] = {
+static const u16 sMemuOam_Idle_Frame2[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xf9, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_8 | 0x206
 };
 
-static const u16 sMemuOam_357f14_Frame3[] = {
+static const u16 sMemuOam_Idle_Frame3[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xf9, OBJ_SIZE_32x16 | 0x1f0, OBJ_PALETTE_8 | 0x20a
 };
 
-const struct FrameData sMemuOam_357f14[5] = {
+const struct FrameData sMemuOam_Idle[5] = {
     [0] = {
-        .pFrame = sMemuOam_357f14_Frame0,
+        .pFrame = sMemuOam_Idle_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sMemuOam_357f14_Frame1,
+        .pFrame = sMemuOam_Idle_Frame1,
         .timer = 5
     },
     [2] = {
-        .pFrame = sMemuOam_357f14_Frame2,
+        .pFrame = sMemuOam_Idle_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sMemuOam_357f14_Frame3,
+        .pFrame = sMemuOam_Idle_Frame3,
         .timer = 5
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sMemuOam_357f3c[5] = {
+const struct FrameData sMemuOam_ChasingTarget[5] = {
     [0] = {
-        .pFrame = sMemuOam_357f14_Frame0,
+        .pFrame = sMemuOam_Idle_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sMemuOam_357f14_Frame1,
+        .pFrame = sMemuOam_Idle_Frame1,
         .timer = 3
     },
     [2] = {
-        .pFrame = sMemuOam_357f14_Frame2,
+        .pFrame = sMemuOam_Idle_Frame2,
         .timer = 3
     },
     [3] = {
-        .pFrame = sMemuOam_357f14_Frame3,
+        .pFrame = sMemuOam_Idle_Frame3,
         .timer = 3
     },
     [4] = FRAME_DATA_TERMINATOR
