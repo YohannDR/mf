@@ -263,8 +263,8 @@ SECTIONS {
         src/sprites_AI/data_pad.o(.text);
         src/sprites_AI/zebesian_wall.o(.text);
         src/sprites_AI/recharge_pad.o(.text);
+        src/sprites_AI/atmospheric_stabilizer.o(.text);
 
-        asm/sprites_AI/atmospheric_stabilizer.o(.text);
         asm/sprites_AI/chozo_statue.o(.text);
         asm/sprites_AI/beam_core_x.o(.text);
         asm/sprites_AI/toxic_gas.o(.text);
