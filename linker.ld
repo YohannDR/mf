@@ -274,8 +274,8 @@ SECTIONS {
         asm/sprites_AI/electric_water.o(.text);
         asm/sprites_AI/zoro.o(.text);
         asm/sprites_AI/kihunter.o(.text);
-        asm/sprites_AI/reo.o(.text);
 
+        src/sprites_AI/reo.o(.text);
         src/sprites_AI/lava_plume.o(.text);
         src/sprites_AI/fune_namihe.o(.text);
         src/sprites_AI/box.o(.text);
