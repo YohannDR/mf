@@ -27,7 +27,7 @@ void RidleyPreSpawnInit(void) {
     gCurrentSprite.hitboxBottom = 0;
     gCurrentSprite.hitboxLeft = -0x60;
     gCurrentSprite.hitboxRight = 0x60;
-    gCurrentSprite.pOam = sRidleyPreSpawnOam_3b0a9c;
+    gCurrentSprite.pOam = sRidleyPreSpawnOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.samusCollision = SSC_NONE;
@@ -37,7 +37,7 @@ void RidleyPreSpawnInit(void) {
 void RidleyPreSpawnWaitingForSamus(void) {
     if (SpriteUtilCheckSamusNearSpriteLeftRight(0x140, 0x140) == NSLR_RIGHT) {
         gCurrentSprite.pose = 2;
-        gCurrentSprite.pOam = sRidleyPreSpawnOam_3b0aac;
+        gCurrentSprite.pOam = sRidleyPreSpawnOam_OpeningEye;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.work1 = 160;
@@ -48,7 +48,7 @@ void RidleyPreSpawnWaitingForSamus(void) {
 void RidleyPreSpawnOpeningEye(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.pose = 0x18;
-        gCurrentSprite.pOam = sRidleyPreSpawnOam_3b0ae4;
+        gCurrentSprite.pOam = sRidleyPreSpawnOam_ClosingEye;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     }
@@ -57,7 +57,7 @@ void RidleyPreSpawnOpeningEye(void) {
 void RidleyPreSpawnClosingEye(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.pose = 0x1a;
-        gCurrentSprite.pOam = sRidleyPreSpawnOam_3b0a9c;
+        gCurrentSprite.pOam = sRidleyPreSpawnOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.work1 = 60;

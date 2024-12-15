@@ -269,8 +269,10 @@ SECTIONS {
         asm/sprites_AI/beam_core_x.o(.text);
         asm/sprites_AI/toxic_gas.o(.text);
         asm/sprites_AI/kago.o(.text);
-        asm/sprites_AI/shake_trigger.o(.text);
-        asm/sprites_AI/gate.o(.text);
+
+        src/sprites_AI/shake_trigger.o(.text);
+        src/sprites_AI/gate.o(.text);
+
         asm/sprites_AI/electric_water.o(.text);
         asm/sprites_AI/zoro.o(.text);
         asm/sprites_AI/kihunter.o(.text);

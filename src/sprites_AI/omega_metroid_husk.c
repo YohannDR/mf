@@ -19,25 +19,25 @@ void OmegaMetroidHuskSetInvisibleWallCollision(u8 caa) {
     u16 x = gCurrentSprite.xPosition - BLOCK_TO_SUB_PIXEL(14);
 
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(0.5f), x);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(0.5), x);
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(1.5f), x);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(1.5), x);
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(2.5f), x);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(2.5), x);
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(3.5f), x);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(3.5), x);
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(4.5f), x);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(4.5), x);
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(5.5f), x);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(5.5), x);
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(6.5f), x);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(6.5), x);
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(7.5f), x);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(7.5), x);
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(8.5f), x);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(8.5), x);
     gCurrentClipdataAffectingAction = caa;
-    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(0.5f), x - BLOCK_SIZE);
+    ClipdataProcess(y - BLOCK_TO_SUB_PIXEL(0.5), x - BLOCK_SIZE);
 }
 
 void OmegaMetroidHuskInit(void) {

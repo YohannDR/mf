@@ -10,7 +10,7 @@ static const u16 sShakeTriggerOam_Frame1[] = {
     0xfc, 0x1fc, OBJ_PALETTE_3 | 0xc9
 };
 
-const struct FrameData sShakeTriggerOam_337df4[3] = {
+const struct FrameData sShakeTriggerOam_TriggeredNotRestrictedLab[3] = {
     [0] = {
         .pFrame = sShakeTriggerOam_Frame0,
         .timer = 30
@@ -22,7 +22,7 @@ const struct FrameData sShakeTriggerOam_337df4[3] = {
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sShakeTriggerOam_337e0c[2] = {
+const struct FrameData sShakeTriggerOam_Idle[2] = {
     [0] = {
         .pFrame = sShakeTriggerOam_Frame0,
         .timer = 255
@@ -30,7 +30,7 @@ const struct FrameData sShakeTriggerOam_337e0c[2] = {
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sShakeTriggerOam_337e1c[49] = {
+const struct FrameData sShakeTriggerOam_TriggeredRestrictedLab[49] = {
     [0] = {
         .pFrame = sShakeTriggerOam_Frame0,
         .timer = 2
@@ -226,7 +226,7 @@ const struct FrameData sShakeTriggerOam_337e1c[49] = {
     [48] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sShakeTriggerOam_337fa4[3] = {
+const struct FrameData sContinualXSpawnerGoldEnemyDoorLockOam[3] = {
     [0] = {
         .pFrame = sShakeTriggerOam_Frame0,
         .timer = 1

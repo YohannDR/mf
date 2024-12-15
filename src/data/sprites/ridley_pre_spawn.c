@@ -3,7 +3,7 @@
 const u32 sRidleyPreSpawnGfx[512 * 2] = INCBIN_U32("data/sprites/ridley_pre_spawn.gfx");
 const u16 sRidleyPreSpawnPal[16 * 2] = INCBIN_U16("data/sprites/ridley_pre_spawn.pal");
 
-static const u16 sRidleyPreSpawnOam_3b0a9c_Frame0[] = {
+static const u16 sRidleyPreSpawnOam_Idle_Frame0[] = {
     14,
     0xb9, OBJ_SIZE_32x32 | 0x1e0, OBJ_PALETTE_8 | 0x200,
     0xd9, OBJ_SIZE_32x32 | 0x1e0, OBJ_PALETTE_8 | 0x204,
@@ -21,7 +21,7 @@ static const u16 sRidleyPreSpawnOam_3b0a9c_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xa9, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sRidleyPreSpawnOam_3b0aac_Frame0[] = {
+static const u16 sRidleyPreSpawnOam_OpeningEye_Frame0[] = {
     15,
     0xbc, 0x1e8, OBJ_PALETTE_8 | 0x275,
     0xb9, OBJ_SIZE_32x32 | 0x1e0, OBJ_PALETTE_8 | 0x200,
@@ -40,7 +40,7 @@ static const u16 sRidleyPreSpawnOam_3b0aac_Frame0[] = {
     OBJ_SHAPE_HORIZONTAL | 0xa9, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sRidleyPreSpawnOam_3b0aac_Frame1[] = {
+static const u16 sRidleyPreSpawnOam_OpeningEye_Frame1[] = {
     15,
     0xbc, 0x1e8, OBJ_PALETTE_8 | 0x256,
     0xb9, OBJ_SIZE_32x32 | 0x1e0, OBJ_PALETTE_8 | 0x200,
@@ -59,7 +59,7 @@ static const u16 sRidleyPreSpawnOam_3b0aac_Frame1[] = {
     OBJ_SHAPE_HORIZONTAL | 0xa9, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sRidleyPreSpawnOam_3b0aac_Frame2[] = {
+static const u16 sRidleyPreSpawnOam_OpeningEye_Frame2[] = {
     15,
     0xbc, 0x1e8, OBJ_PALETTE_8 | 0x257,
     0xb9, OBJ_SIZE_32x32 | 0x1e0, OBJ_PALETTE_8 | 0x200,
@@ -78,7 +78,7 @@ static const u16 sRidleyPreSpawnOam_3b0aac_Frame2[] = {
     OBJ_SHAPE_HORIZONTAL | 0xa9, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sRidleyPreSpawnOam_3b0aac_Frame3[] = {
+static const u16 sRidleyPreSpawnOam_OpeningEye_Frame3[] = {
     15,
     0xbc, 0x1e8, OBJ_PALETTE_8 | 0x276,
     0xb9, OBJ_SIZE_32x32 | 0x1e0, OBJ_PALETTE_8 | 0x200,
@@ -97,7 +97,7 @@ static const u16 sRidleyPreSpawnOam_3b0aac_Frame3[] = {
     OBJ_SHAPE_HORIZONTAL | 0xa9, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sRidleyPreSpawnOam_3b0aac_Frame4[] = {
+static const u16 sRidleyPreSpawnOam_OpeningEye_Frame4[] = {
     15,
     0xbc, 0x1e8, OBJ_PALETTE_8 | 0x277,
     0xb9, OBJ_SIZE_32x32 | 0x1e0, OBJ_PALETTE_8 | 0x200,
@@ -116,53 +116,53 @@ static const u16 sRidleyPreSpawnOam_3b0aac_Frame4[] = {
     OBJ_SHAPE_HORIZONTAL | 0xa9, OBJ_SIZE_32x16 | 0x1e8, OBJ_PALETTE_8 | 0x214
 };
 
-const struct FrameData sRidleyPreSpawnOam_3b0a9c[2] = {
+const struct FrameData sRidleyPreSpawnOam_Idle[2] = {
     [0] = {
-        .pFrame = sRidleyPreSpawnOam_3b0a9c_Frame0,
+        .pFrame = sRidleyPreSpawnOam_Idle_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sRidleyPreSpawnOam_3b0aac[7] = {
+const struct FrameData sRidleyPreSpawnOam_OpeningEye[7] = {
     [0] = {
-        .pFrame = sRidleyPreSpawnOam_3b0aac_Frame0,
+        .pFrame = sRidleyPreSpawnOam_OpeningEye_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sRidleyPreSpawnOam_3b0aac_Frame1,
+        .pFrame = sRidleyPreSpawnOam_OpeningEye_Frame1,
         .timer = 8
     },
     [2] = {
-        .pFrame = sRidleyPreSpawnOam_3b0aac_Frame2,
+        .pFrame = sRidleyPreSpawnOam_OpeningEye_Frame2,
         .timer = 8
     },
     [3] = {
-        .pFrame = sRidleyPreSpawnOam_3b0aac_Frame3,
+        .pFrame = sRidleyPreSpawnOam_OpeningEye_Frame3,
         .timer = 4
     },
     [4] = {
-        .pFrame = sRidleyPreSpawnOam_3b0aac_Frame4,
+        .pFrame = sRidleyPreSpawnOam_OpeningEye_Frame4,
         .timer = 8
     },
     [5] = {
-        .pFrame = sRidleyPreSpawnOam_3b0aac_Frame3,
+        .pFrame = sRidleyPreSpawnOam_OpeningEye_Frame3,
         .timer = 255
     },
     [6] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sRidleyPreSpawnOam_3b0ae4[4] = {
+const struct FrameData sRidleyPreSpawnOam_ClosingEye[4] = {
     [0] = {
-        .pFrame = sRidleyPreSpawnOam_3b0aac_Frame2,
+        .pFrame = sRidleyPreSpawnOam_OpeningEye_Frame2,
         .timer = 4
     },
     [1] = {
-        .pFrame = sRidleyPreSpawnOam_3b0aac_Frame1,
+        .pFrame = sRidleyPreSpawnOam_OpeningEye_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sRidleyPreSpawnOam_3b0aac_Frame0,
+        .pFrame = sRidleyPreSpawnOam_OpeningEye_Frame0,
         .timer = 4
     },
     [3] = FRAME_DATA_TERMINATOR

@@ -175,7 +175,7 @@ void ReoIdle(void) {
         gCurrentSprite.work3 = 0;
     }
 
-    if (gCurrentSprite.work4 == 47) {
+    if (gCurrentSprite.work4 == ARRAY_SIZE(sReoIdleYMovement) - 2) {
         u16 targetY = gSamusData.yPosition;
         u16 spriteY = gCurrentSprite.yPosition - 0x60;
         u8 nslr = SpriteUtilCheckSamusNearSpriteLeftRight(0x280, 0x3c0);

@@ -31,7 +31,7 @@ void GoldSciserDoorLock(void) {
             gCurrentSprite.hitboxBottom = 4;
             gCurrentSprite.hitboxLeft = -4;
             gCurrentSprite.hitboxRight = 4;
-            gCurrentSprite.pOam = sShakeTriggerOam_337fa4;
+            gCurrentSprite.pOam = sContinualXSpawnerGoldEnemyDoorLockOam;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
@@ -64,7 +64,7 @@ void GoldZebesianDoorLock(void) {
             gCurrentSprite.hitboxBottom = 4;
             gCurrentSprite.hitboxLeft = -4;
             gCurrentSprite.hitboxRight = 4;
-            gCurrentSprite.pOam = sShakeTriggerOam_337fa4;
+            gCurrentSprite.pOam = sContinualXSpawnerGoldEnemyDoorLockOam;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;

@@ -143,33 +143,33 @@ void EvirIdleInit(void) {
 }
 
 void EvirIdle(void) {
-    u8 collided;
+    u8 turn;
 
     if (EvirCheckInShootingRange() != NSLR_OUT_OF_RANGE) {
         EvirShootingInit();
         return;
     }
 
-    collided = FALSE;
+    turn = FALSE;
     if (gCurrentSprite.status & SS_X_FLIP) {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition + 0x40);
         if (gPreviousCollisionCheck == COLLISION_SOLID)
-            collided = TRUE;
+            turn = TRUE;
         else {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x60, gCurrentSprite.xPosition + 0x40);
             if (gPreviousCollisionCheck == COLLISION_SOLID)
-                collided = TRUE;
+                turn = TRUE;
             else if (MOD_AND(gFrameCounter8Bit, 8) == 0)
                 gCurrentSprite.xPosition += 4;
         }
     } else {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition - 0x40);
         if (gPreviousCollisionCheck == COLLISION_SOLID)
-            collided = TRUE;
+            turn = TRUE;
         else {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x60, gCurrentSprite.xPosition - 0x40);
             if (gPreviousCollisionCheck == COLLISION_SOLID)
-                collided = TRUE;
+                turn = TRUE;
             else if (MOD_AND(gFrameCounter8Bit, 8) == 0)
                 gCurrentSprite.xPosition -= 4;
         }
@@ -187,7 +187,7 @@ void EvirIdle(void) {
         else
             gCurrentSprite.yPosition -= 2;
     }
-    if (collided)
+    if (turn)
         gCurrentSprite.pose = 3;
     else if (gCurrentSprite.currentAnimationFrame == 2 && gCurrentSprite.animationDurationCounter == 1 && gCurrentSprite.status & SS_ON_SCREEN)
         SoundPlayNotAlreadyPlaying(SOUND_EVIR_IDLE);
