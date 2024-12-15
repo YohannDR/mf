@@ -12,7 +12,6 @@
 
 #include "structs/clipdata.h"
 #include "structs/sprite.h"
-#include "structs/sprite_debris.h"
 #include "structs/samus.h"
 
 enum GateType {
