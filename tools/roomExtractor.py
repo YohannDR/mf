@@ -33,7 +33,7 @@ areaNamesLowercase = [
 
 xParasitePropertyNames = [
     "SSP_EMPTY",
-    "SSP_CAN_ABSORB_ADDITIONAL_X",
+    "SSP_UNINFECTED_OR_BOSS",
     "SSP_X_ABSORBABLE_BY_SAMUS",
     "SSP_X_UNABSORBABLE_BY_SAMUS",
     "SSP_40"

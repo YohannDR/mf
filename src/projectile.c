@@ -1802,9 +1802,9 @@ void ProjectilePowerBombHitSprite(u8 spriteSlot)
             if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
                 gSamusData.standingStatus = STANDING_MID_AIR;
 
-            props = gSpriteData[spriteSlot].spritesetSlotAndProperties - 0x20;
+            props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
 
-            if (props < 0x30)
+            if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
             {
                 gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
                 gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -1859,9 +1859,9 @@ void ProjectileContactDamageHitSprite(u8 spriteSlot, u16 yPosition, u16 xPositio
         if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
             gSamusData.standingStatus = STANDING_MID_AIR;
 
-        props = gSpriteData[spriteSlot].spritesetSlotAndProperties - 0x20;
+        props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
 
-        if (props < 0x30)
+        if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
         {
             gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
             gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -1941,9 +1941,9 @@ u8 ProjecileDealDamage(u8 spriteSlot, u16 damage)
         if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
             gSamusData.standingStatus = STANDING_MID_AIR;
 
-        props = gSpriteData[spriteSlot].spritesetSlotAndProperties - 0x20;
+        props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
 
-        if (props < 0x30)
+        if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
         {
             gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
             gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -2059,9 +2059,9 @@ u8 ProjectileIceMissileDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage)
                 if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
                     gSamusData.standingStatus = STANDING_MID_AIR;
 
-                props = gSpriteData[spriteSlot].spritesetSlotAndProperties - 0x20;
+                props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
 
-                if (props < 0x30)
+                if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
                 {
                     gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
                     gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -2142,9 +2142,9 @@ u8 ProjectileDiffusionFlakeDealDamage(u8 spriteSlot, u8 projectileSlot)
                 if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
                     gSamusData.standingStatus = STANDING_MID_AIR;
 
-                props = gSpriteData[spriteSlot].spritesetSlotAndProperties - 0x20;
+                props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
 
-                if (props < 0x30)
+                if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
                 {
                     gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
                     gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -2219,9 +2219,9 @@ u8 ProjectileIceBeamDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage)
             if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
                 gSamusData.standingStatus = STANDING_MID_AIR;
 
-            props = gSpriteData[spriteSlot].spritesetSlotAndProperties - 0x20;
+            props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
 
-            if (props < 0x30)
+            if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
             {
                 gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
                 gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;

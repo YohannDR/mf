@@ -26,7 +26,7 @@ u8 TrySpawnMessageBanner(u8 type) {
         }
     }
     if (gfxRow < 8)
-        i = SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, type, gfxRow, SSP_CAN_ABSORB_ADDITIONAL_X,
+        i = SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, type, gfxRow, SSP_UNINFECTED_OR_BOSS,
             gSamusData.yPosition, gSamusData.xPosition, 0);
     else
         i = MAX_AMOUNT_OF_SPRITES;

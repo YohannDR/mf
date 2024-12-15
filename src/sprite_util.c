@@ -47,7 +47,7 @@ void SpriteUtilInitLocationText(void)
         gSpriteData[0].ignoreSamusCollisionTimer = 1;
 
         gSpriteData[0].primarySpriteRamSlot = 0;
-        gSpriteData[0].spritesetSlotAndProperties = SSP_CAN_ABSORB_ADDITIONAL_X;
+        gSpriteData[0].spritesetSlotAndProperties = SSP_UNINFECTED_OR_BOSS;
 
         gSpriteData[0].freezeTimer = 0;
         gSpriteData[0].numberOfXToForm = 1;
@@ -2982,7 +2982,7 @@ void SpriteUtilTrySetAbsorbXFlag(void)
             return;
         }
 
-        if (properties >= SSP_CAN_ABSORB_ADDITIONAL_X && properties < SSP_CAN_ABSORB_ADDITIONAL_X + 0x10)
+        if (properties >= SSP_UNINFECTED_OR_BOSS && properties < SSP_UNINFECTED_OR_BOSS + 0x10)
         {
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
         }

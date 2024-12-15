@@ -193,7 +193,7 @@ void HornoadInit(void)
         gCurrentSprite.bgPriority = 3;
         gCurrentSprite.samusCollision = SSC_NONE;
 
-        if (gCurrentSprite.spritesetSlotAndProperties == SSP_CAN_ABSORB_ADDITIONAL_X)
+        if (gCurrentSprite.spritesetSlotAndProperties == SSP_UNINFECTED_OR_BOSS)
         {
             // Spawned by hornoad spawner
             gCurrentSprite.pOam = sHornoadOam_JumpingHidden;
@@ -1103,7 +1103,7 @@ void HornoadSpwanerSpawnHornoad(void)
     if (!SpriteUtilCheckEndCurrentSpriteAnim())
         return;
 
-    SpriteSpawnPrimary(PSPRITE_HORNOAD, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, SSP_CAN_ABSORB_ADDITIONAL_X,
+    SpriteSpawnPrimary(PSPRITE_HORNOAD, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, SSP_UNINFECTED_OR_BOSS,
         gCurrentSprite.yPosition - (BLOCK_SIZE - PIXEL_SIZE), gCurrentSprite.xPosition, gCurrentSprite.status & SS_X_FLIP);
 
     HornoadSpwanerIdleInit();

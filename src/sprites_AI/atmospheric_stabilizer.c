@@ -183,7 +183,7 @@ void AtmosphericStabilizerInit(void) {
         }
         SoundPlay(SOUND_FF);
     }
-    gCurrentSprite.spritesetSlotAndProperties = SSP_CAN_ABSORB_ADDITIONAL_X;
+    gCurrentSprite.spritesetSlotAndProperties = SSP_UNINFECTED_OR_BOSS;
 }
 
 void AtmosphericStabilizerBackOnlineInit(void) {

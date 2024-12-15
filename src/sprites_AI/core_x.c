@@ -504,7 +504,7 @@ void CoreXAbilityGettingAbsorbed(void) {
         gCurrentSprite.scaling -= Q_8_8(0.03125f);
     } else {
         gCurrentSprite.status = 0;
-        SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, 0, 6, SSP_CAN_ABSORB_ADDITIONAL_X, gAbilityRestingYPosition, gAbilityRestingXPosition, 0);
+        SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, 0, 6, SSP_UNINFECTED_OR_BOSS, gAbilityRestingYPosition, gAbilityRestingXPosition, 0);
     }
 }
 

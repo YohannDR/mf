@@ -35,7 +35,7 @@ void MiscPadInit(void) {
         case PSPRITE_BOILER_CONTROL_PAD:
             inactive = EventCheckOn_Meltdown();
             if (inactive == MELTDOWN_DURING) {
-                SpriteSpawnPrimary(PSPRITE_SCIENTIST, gCurrentSprite.roomSlot, 0, SSP_CAN_ABSORB_ADDITIONAL_X,
+                SpriteSpawnPrimary(PSPRITE_SCIENTIST, gCurrentSprite.roomSlot, 0, SSP_UNINFECTED_OR_BOSS,
                     gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
                 inactive = FALSE;
             }
@@ -178,7 +178,7 @@ void MiscPadSpawnMessageBanner(void) {
         }
         if (type != 0) {
             gPreventMovementTimer = 1000;
-            SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, type, 2, SSP_CAN_ABSORB_ADDITIONAL_X,
+            SpriteSpawnPrimary(PSPRITE_MESSAGE_BOX, type, 2, SSP_UNINFECTED_OR_BOSS,
                 gXParasiteTargetYPosition, gXParasiteTargetXPosition, 0);
         }
     }

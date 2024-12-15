@@ -52,19 +52,19 @@ void GateInit(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     switch (gCurrentSprite.spritesetSlotAndProperties) {
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_LEFT_THIN:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_LEFT_THIN:
             type = GATE_TYPE_LEFT_THIN;
             gCurrentSprite.pOam = sGateOam_ClosedThin;
             break;
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_RIGHT_THIN:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_RIGHT_THIN:
             type = GATE_TYPE_RIGHT_THIN;
             gCurrentSprite.pOam = sGateOam_ClosedThin;
             break;
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_LEFT_FAT:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_LEFT_FAT:
             type = GATE_TYPE_LEFT_FAT;
             gCurrentSprite.pOam = sGateOam_ClosedFat;
             break;
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_RIGHT_FAT:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_RIGHT_FAT:
             type = GATE_TYPE_RIGHT_FAT;
             gCurrentSprite.pOam = sGateOam_ClosedFat;
             break;
@@ -91,10 +91,10 @@ void GateInit(void) {
 
 void GateClosed(void) {
     switch (gCurrentSprite.spritesetSlotAndProperties) {
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_LEFT_THIN:
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_RIGHT_THIN:
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_LEFT_FAT:
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_RIGHT_FAT:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_LEFT_THIN:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_RIGHT_THIN:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_LEFT_FAT:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_RIGHT_FAT:
             break;
         default:
             if (EventCheckAfter_AnimalsReleased())
@@ -109,13 +109,13 @@ void GateOpeningInit(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     switch (gCurrentSprite.spritesetSlotAndProperties) {
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_LEFT_THIN:
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_RIGHT_THIN:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_LEFT_THIN:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_RIGHT_THIN:
             gCurrentSprite.pOam = sGateOam_OpeningThin;
             SoundPlay(SOUND_114);
             break;
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_LEFT_FAT:
-        case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_RIGHT_FAT:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_LEFT_FAT:
+        case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_RIGHT_FAT:
             gCurrentSprite.pOam = sGateOam_OpeningFat;
             SoundPlay(SOUND_115);
             break;
@@ -132,12 +132,12 @@ void GateOpening(void) {
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         switch (gCurrentSprite.spritesetSlotAndProperties) {
-            case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_LEFT_THIN:
-            case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_RIGHT_THIN:
+            case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_LEFT_THIN:
+            case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_RIGHT_THIN:
                 gCurrentSprite.pOam = sGateOam_OpenedThin;
                 break;
-            case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_LEFT_FAT:
-            case SSP_CAN_ABSORB_ADDITIONAL_X | GATE_TYPE_RIGHT_FAT:
+            case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_LEFT_FAT:
+            case SSP_UNINFECTED_OR_BOSS | GATE_TYPE_RIGHT_FAT:
                 gCurrentSprite.pOam = sGateOam_OpenedFat;
                 break;
             default:

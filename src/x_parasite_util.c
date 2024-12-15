@@ -760,8 +760,8 @@ u8 XParasiteFlyingMovement(void) {
                 // Touched sprite
                 if (--gSpriteData[i].numberOfXToForm == 0) {
                     // Enough X to form the sprite
-                    if (gSpriteData[i].spritesetSlotAndProperties >= SSP_CAN_ABSORB_ADDITIONAL_X
-                        && gSpriteData[i].spritesetSlotAndProperties < SSP_CAN_ABSORB_ADDITIONAL_X + 0x10)
+                    if (gSpriteData[i].spritesetSlotAndProperties >= SSP_UNINFECTED_OR_BOSS
+                        && gSpriteData[i].spritesetSlotAndProperties < SSP_UNINFECTED_OR_BOSS + 0x10)
                         gSpriteData[i].spritesetSlotAndProperties = SSP_X_ABSORBABLE_BY_SAMUS;
                     gSpriteData[i].pose = SPRITE_POSE_SPAWNING_FROM_X_INIT;
                     gSpriteData[i].status |= (SS_IGNORE_PROJECTILES | SS_ENABLE_MOSAIC);

@@ -1349,7 +1349,7 @@ void SaXBossTransformingIntoMonster(void)
 
         if (gCurrentSprite.work1 == 0)
         {
-            SpriteSpawnPrimary(PSPRITE_SA_X_MONSTER, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, SSP_CAN_ABSORB_ADDITIONAL_X,
+            SpriteSpawnPrimary(PSPRITE_SA_X_MONSTER, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, SSP_UNINFECTED_OR_BOSS,
                 gCurrentSprite.yPosition + PIXEL_SIZE, gCurrentSprite.xPosition, gCurrentSprite.status & SS_FACING_RIGHT);
 
             gCurrentSprite.pose = 0x55;
