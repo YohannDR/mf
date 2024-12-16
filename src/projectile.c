@@ -1774,7 +1774,6 @@ void ProjectileBringSpriteToPowerBombCenter(u8 spriteSlot)
  */
 void ProjectilePowerBombHitSprite(u8 spriteSlot)
 {
-    u8 props;
     u8 isft;
 
     if (gSpriteData[spriteSlot].properties & SP_IMMUNE_TO_PROJECTILES)
@@ -1802,9 +1801,7 @@ void ProjectilePowerBombHitSprite(u8 spriteSlot)
             if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
                 gSamusData.standingStatus = STANDING_MID_AIR;
 
-            props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
-
-            if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
+            if (SPRITE_IS_INFECTED(gSpriteData[spriteSlot]))
             {
                 gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
                 gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -1837,7 +1834,6 @@ void ProjectilePowerBombHitSprite(u8 spriteSlot)
  */
 void ProjectileContactDamageHitSprite(u8 spriteSlot, u16 yPosition, u16 xPosition)
 {
-    u8 props;
     u8 isft;
 
     if (gSpriteData[spriteSlot].properties & SP_SOLID_FOR_PROJECTILES)
@@ -1859,9 +1855,7 @@ void ProjectileContactDamageHitSprite(u8 spriteSlot, u16 yPosition, u16 xPositio
         if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
             gSamusData.standingStatus = STANDING_MID_AIR;
 
-        props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
-
-        if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
+        if (SPRITE_IS_INFECTED(gSpriteData[spriteSlot]))
         {
             gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
             gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -1915,7 +1909,6 @@ void ProjectileContactDamageHitSprite(u8 spriteSlot, u16 yPosition, u16 xPositio
 u8 ProjecileDealDamage(u8 spriteSlot, u16 damage)
 {
     u8 isft;
-    u8 props;
 
     if (gSpriteData[spriteSlot].health > damage)
     {
@@ -1941,9 +1934,7 @@ u8 ProjecileDealDamage(u8 spriteSlot, u16 damage)
         if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
             gSamusData.standingStatus = STANDING_MID_AIR;
 
-        props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
-
-        if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
+        if (SPRITE_IS_INFECTED(gSpriteData[spriteSlot]))
         {
             gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
             gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -2022,7 +2013,6 @@ u8 ProjectileIceMissileDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage)
 {
     u8 flashTimer;
     u8 freezeTimer;
-    u8 props;
     u16 weakness;
 
     flashTimer = 0;
@@ -2059,9 +2049,7 @@ u8 ProjectileIceMissileDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage)
                 if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
                     gSamusData.standingStatus = STANDING_MID_AIR;
 
-                props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
-
-                if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
+                if (SPRITE_IS_INFECTED(gSpriteData[spriteSlot]))
                 {
                     gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
                     gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -2105,7 +2093,6 @@ u8 ProjectileDiffusionFlakeDealDamage(u8 spriteSlot, u8 projectileSlot)
 {
     u8 flashTimer;
     u8 freezeTimer;
-    u8 props;
     u16 weakness;
 
     flashTimer = 0;
@@ -2142,9 +2129,7 @@ u8 ProjectileDiffusionFlakeDealDamage(u8 spriteSlot, u8 projectileSlot)
                 if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
                     gSamusData.standingStatus = STANDING_MID_AIR;
 
-                props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
-
-                if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
+                if (SPRITE_IS_INFECTED(gSpriteData[spriteSlot]))
                 {
                     gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
                     gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;
@@ -2189,7 +2174,6 @@ u8 ProjectileIceBeamDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage)
 {
     u8 flashTimer;
     u8 freezeTimer;
-    u8 props;
     u16 weakness;
 
     flashTimer = 0;
@@ -2219,9 +2203,7 @@ u8 ProjectileIceBeamDealDamage(u8 spriteSlot, u8 projectileSlot, u16 damage)
             if (gSpriteData[spriteSlot].standingOnSprite != 0 && gSamusData.standingStatus == STANDING_ENEMY)
                 gSamusData.standingStatus = STANDING_MID_AIR;
 
-            props = gSpriteData[spriteSlot].spritesetSlotAndProperties;
-
-            if (props >= SSP_X_ABSORBABLE_BY_SAMUS && props < SSP_40 + 0x10)
+            if (SPRITE_IS_INFECTED(gSpriteData[spriteSlot]))
             {
                 gSpriteData[spriteSlot].pose = SPRITE_POSE_DYING_INIT;
                 gSpriteData[spriteSlot].ignoreSamusCollisionTimer = 1;

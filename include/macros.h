@@ -169,6 +169,7 @@
 }
 
 #define SPRITE_SET_ABSOLUTE_PALETTE_ROW(sprite, row) ((sprite).paletteRow = (row) + 8 - ((sprite).spritesetGfxSlot + (sprite).frozenPaletteRowOffset))
+#define SPRITE_IS_INFECTED(sprite) ((sprite).spritesetSlotAndProperties >= SSP_X_ABSORBABLE_BY_SAMUS && (sprite).spritesetSlotAndProperties < SSP_40 + 0x10)
 
 #define SUB_PIXEL_TO_PIXEL(pixel) ((pixel) / SUB_PIXEL_RATIO)
 #define SUB_PIXEL_TO_PIXEL_(pixel) (DIV_SHIFT(pixel, SUB_PIXEL_RATIO))

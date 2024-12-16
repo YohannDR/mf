@@ -449,8 +449,7 @@ void YardRolling(void) {
         }
     }
     if (!notSlowingDown) {
-        gCurrentSprite.work1 -= 1;
-        if (gCurrentSprite.work1 == 0) {
+        if (--gCurrentSprite.work1 == 0) {
             gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
             return;
         }

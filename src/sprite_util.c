@@ -2328,12 +2328,9 @@ void SpriteUtilUnfreezeSecondarySprites(u8 spriteId, u8 ramSlot)
  */
 void unk_12008(u16 yPosition, u16 xPosition)
 {
-    u8 properties;
     u8 timer;
 
-    properties = gCurrentSprite.spritesetSlotAndProperties;
-
-    if (properties >= SSP_X_ABSORBABLE_BY_SAMUS && properties < SSP_40 + 0x10)
+    if (SPRITE_IS_INFECTED(gCurrentSprite))
         return;
 
     if (gCurrentSprite.health != 0)
@@ -2377,12 +2374,9 @@ void unk_12008(u16 yPosition, u16 xPosition)
  */
 void unk_120ac(u16 yPosition, u16 xPosition)
 {
-    u8 properties;
     u8 timer;
 
-    properties = gCurrentSprite.spritesetSlotAndProperties;
-
-    if (properties >= SSP_X_ABSORBABLE_BY_SAMUS && properties < SSP_40 + 0x10)
+    if (SPRITE_IS_INFECTED(gCurrentSprite))
         return;
 
     if (gCurrentSprite.health != 0)

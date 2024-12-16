@@ -19,10 +19,9 @@ u32 CheckSpritesThatCantAbsorbX(void) {
         if (gSpriteData[i].status & SS_EXISTS) {
             if (gSpriteData[i].pose >= SPRITE_POSE_TURNING_INTO_X && gSpriteData[i].pose <= X_PARASITE_POSE_FLYING)
                 return TRUE;
-            if (gSpriteData[i].pose <= SPRITE_POSE_SPAWNING_FROM_X)
-                if (gSpriteData[i].spritesetSlotAndProperties >= SSP_X_ABSORBABLE_BY_SAMUS && gSpriteData[i].spritesetSlotAndProperties < SSP_40 + 0x10)
-                    if (!(gSpriteData[i].properties & SP_CAN_ABSORB_X))
-                        return TRUE;
+            if (gSpriteData[i].pose <= SPRITE_POSE_SPAWNING_FROM_X && SPRITE_IS_INFECTED(gSpriteData[i])
+                && !(gSpriteData[i].properties & SP_CAN_ABSORB_X))
+                return TRUE;
         }
     }
     return FALSE;
@@ -35,10 +34,9 @@ u8 CountPrimarySpritesThatCantAbsorbX(void) {
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++) {
         if (gSpriteData[i].status & SS_EXISTS) {
             if (gSpriteData[i].pose < SPRITE_POSE_TURNING_INTO_X || gSpriteData[i].pose > X_PARASITE_POSE_FLYING) {
-                if (gSpriteData[i].pose <= SPRITE_POSE_SPAWNING_FROM_X)
-                    if (gSpriteData[i].spritesetSlotAndProperties >= SSP_X_ABSORBABLE_BY_SAMUS && gSpriteData[i].spritesetSlotAndProperties < SSP_40 + 0x10)
-                        if (!(gSpriteData[i].properties & (SP_SECONDARY_SPRITE | SP_CAN_ABSORB_X)))
-                            count++;
+                if (gSpriteData[i].pose <= SPRITE_POSE_SPAWNING_FROM_X && SPRITE_IS_INFECTED(gSpriteData[i])
+                    && !(gSpriteData[i].properties & (SP_SECONDARY_SPRITE | SP_CAN_ABSORB_X)))
+                    count++;
             } else {
                 count++;
             }
