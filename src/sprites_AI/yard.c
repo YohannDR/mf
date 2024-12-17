@@ -367,7 +367,7 @@ void YardCheckRoll(void) {
         } else {
             SpriteUtilMakeSpriteFaceAwayFromSamusDirection();
             gCurrentSprite.pose = 0x38;
-            gCurrentSprite.work1 = 60; // But there's a speed cap of half a pixel!
+            gCurrentSprite.work1 = 60; // But there's a speed cap of half a pixel per frame!
             if (!(gCurrentSprite.status & SS_ROTATE_SCALE_INDIVIDUAL)) {
                 gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
                 gCurrentSprite.rotation = 0;
@@ -682,22 +682,18 @@ void YardFalling(void) {
     yCollisionPoint = gCurrentSprite.yPosition;
     xCollisionPoint = gCurrentSprite.xPosition;
     if (gCurrentSprite.work0) {
-        if (gCurrentSprite.status & SS_X_FLIP) {
+        if (gCurrentSprite.status & SS_X_FLIP)
             xCollisionPoint -= PIXEL_SIZE;
-        }
         yCollisionPoint += gCurrentSprite.hitboxBottom;
-    }
-    else {
-        if (gCurrentSprite.status & SS_Y_FLIP) {
+    } else {
+        if (gCurrentSprite.status & SS_Y_FLIP)
             yCollisionPoint += gCurrentSprite.hitboxBottom;
-        }
     }
     blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(yCollisionPoint, xCollisionPoint);
     if (gPreviousVerticalCollisionCheck != COLLISION_AIR) {
         gCurrentSprite.yPosition = blockTop;
-        if (gCurrentSprite.work0) {
-            onWall += 1;
-        }
+        if (gCurrentSprite.work0)
+            onWall++;
         gCurrentSprite.status &= ~SS_Y_FLIP;
         gCurrentSprite.work0 = FALSE;
         gCurrentSprite.pose = SPRITE_POSE_IDLE;

@@ -63,7 +63,7 @@ void ReoInit(void) {
     gCurrentSprite.drawDistanceTop = 0x10;
     gCurrentSprite.drawDistanceBottom = 8;
     gCurrentSprite.drawDistanceHorizontal = 0x18;
-    gCurrentSprite.pOam = sReoOam_33f128;
+    gCurrentSprite.pOam = sReoOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 0;
@@ -89,7 +89,7 @@ void ReoFallInit(void) {
     gCurrentSprite.pose = 0x38;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sReoOam_33f178;
+    gCurrentSprite.pOam = sReoOam_Falling;
     gCurrentSprite.work4 = 0;
     gSpriteData[gCurrentSprite.work2].status |= SS_NOT_DRAWN;
 }
@@ -135,7 +135,7 @@ void ReoFalling(void) {
 void ReoLanding(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.pose = 0x2d;
-        gCurrentSprite.pOam = sReoOam_33f128;
+        gCurrentSprite.pOam = sReoOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gSpriteData[gCurrentSprite.work2].status &= ~SS_NOT_DRAWN;
@@ -146,7 +146,7 @@ void ReoIdleInit(void) {
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sReoOam_33f128;
+    gCurrentSprite.pOam = sReoOam_Idle;
     gCurrentSprite.work3 = 0;
     gCurrentSprite.work4 = 0;
 }
@@ -334,7 +334,7 @@ void ReoWingsInit(void) {
     gCurrentSprite.hitboxRight = 4;
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
     gCurrentSprite.drawOrder = 5;
-    gCurrentSprite.pOam = sReoOam_33f150;
+    gCurrentSprite.pOam = sReoWingsOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }

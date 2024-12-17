@@ -408,8 +408,7 @@ void SovaFalling(void) {
         if (gCurrentSprite.status & SS_X_FLIP)
             xCollisionPoint -= PIXEL_SIZE;
         yCollisionPoint += gCurrentSprite.hitboxBottom;
-    }
-    else {
+    } else {
         if (gCurrentSprite.status & SS_Y_FLIP)
             yCollisionPoint += gCurrentSprite.hitboxBottom;
     }

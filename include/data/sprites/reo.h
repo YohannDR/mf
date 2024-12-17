@@ -13,8 +13,8 @@ extern const s16 sReoGoingUpDeceleratingYSpeed[16];
 extern const u32 sReoGfx[1 * 512];
 extern const u16 sReoPal[1 * 16];
 
-extern const struct FrameData sReoOam_33f128[5];
-extern const struct FrameData sReoOam_33f150[5];
-extern const struct FrameData sReoOam_33f178[4];
+extern const struct FrameData sReoOam_Idle[5];
+extern const struct FrameData sReoWingsOam_Idle[5];
+extern const struct FrameData sReoOam_Falling[4];
 
 #endif /* REO_DATA_H */

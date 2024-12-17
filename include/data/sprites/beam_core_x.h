@@ -9,16 +9,16 @@ extern const s16 sIceBeamAbilityFloatingYMovement[65];
 extern const u32 sChargeBeamCoreXGfx[5 * 512];
 extern const u16 sChargeBeamCoreXPal[5 * 16];
 
-extern const struct FrameData sBeamCoreXOam_32af80[9];
-extern const struct FrameData sBeamCoreXOam_32afc8[3];
-extern const struct FrameData sBeamCoreXOam_32afe0[25];
-extern const struct FrameData sBeamCoreXOam_32b0a8[2];
-extern const struct FrameData sBeamCoreXOam_32b0b8[2];
-extern const struct FrameData sBeamCoreXOam_32b0c8[7];
-extern const struct FrameData sBeamCoreXOam_32b100[2];
-extern const struct FrameData sBeamCoreXOam_32b110[10];
-extern const struct FrameData sBeamCoreXOam_32b160[10];
-extern const struct FrameData sBeamCoreXOam_32b1b0[7];
+extern const struct FrameData sBeamCoreXAbilityOam_Idle[9];
+extern const struct FrameData sBeamCoreXAbilityOam_GettingAbsorbed[3];
+extern const struct FrameData sBeamCoreXGlowingOam[25];
+extern const struct FrameData sBeamCoreXShellOam[2];
+extern const struct FrameData sBeamCoreXEyeOam_Closed[2];
+extern const struct FrameData sBeamCoreXEyeOam_Opening[7];
+extern const struct FrameData sBeamCoreXEyeOam_Opened[2];
+extern const struct FrameData sBeamCoreXEyeOam_Charging1[10];
+extern const struct FrameData sBeamCoreXEyeOam_Charging2[10];
+extern const struct FrameData sBeamCoreXEyeOam_Closing[7];
 
 extern const u32 sWideBeamCoreXGfx[5 * 512];
 extern const u16 sWideBeamCoreXPal[5 * 16];

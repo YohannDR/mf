@@ -266,15 +266,13 @@ SECTIONS {
         src/sprites_AI/atmospheric_stabilizer.o(.text);
         src/sprites_AI/chozo_statue.o(.text);
         src/sprites_AI/beam_core_x.o(.text);
-
-        asm/sprites_AI/toxic_gas.o(.text);
-
+        src/sprites_AI/toxic_gas.o(.text);
         src/sprites_AI/kago.o(.text);
         src/sprites_AI/shake_trigger.o(.text);
         src/sprites_AI/gate.o(.text);
         src/sprites_AI/electric_water.o(.text);
+        src/sprites_AI/zoro.o(.text);
 
-        asm/sprites_AI/zoro.o(.text);
         asm/sprites_AI/kihunter.o(.text);
 
         src/sprites_AI/reo.o(.text);

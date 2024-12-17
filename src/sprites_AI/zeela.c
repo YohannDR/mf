@@ -358,22 +358,18 @@ void ZeelaFalling(void) {
     yCollisionPoint = gCurrentSprite.yPosition;
     xCollisionPoint = gCurrentSprite.xPosition;
     if (gCurrentSprite.work0) {
-        if (gCurrentSprite.status & SS_X_FLIP) {
+        if (gCurrentSprite.status & SS_X_FLIP)
             xCollisionPoint -= PIXEL_SIZE;
-        }
         yCollisionPoint += gCurrentSprite.hitboxBottom;
-    }
-    else {
-        if (gCurrentSprite.status & SS_Y_FLIP) {
+    } else {
+        if (gCurrentSprite.status & SS_Y_FLIP)
             yCollisionPoint += gCurrentSprite.hitboxBottom;
-        }
     }
     blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(yCollisionPoint, xCollisionPoint);
     if (gPreviousVerticalCollisionCheck != COLLISION_AIR) {
         gCurrentSprite.yPosition = blockTop;
-        if (gCurrentSprite.work0) {
-            onWall += 1;
-        }
+        if (gCurrentSprite.work0)
+            onWall++;
         gCurrentSprite.status &= ~SS_Y_FLIP;
         gCurrentSprite.work0 = FALSE;
         ZeelaUpdateHitbox();

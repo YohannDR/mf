@@ -52,32 +52,32 @@ void BeamCoreXTransformationInit(void) {
     gCurrentSprite.hitboxBottom = 0x20;
     gCurrentSprite.hitboxLeft = -0x20;
     gCurrentSprite.hitboxRight = 0x20;
-    gCurrentSprite.pOam = sBeamCoreXOam_32af80;
+    gCurrentSprite.pOam = sBeamCoreXAbilityOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work3 = 0;
     gCurrentSprite.work4 = 0;
-    gCurrentSprite.work0 = 0;
+    gCurrentSprite.work0 = FALSE;
     switch (gCurrentSprite.spriteId) {
         case PSPRITE_CHARGE_BEAM_CORE_X:
-            shell = SSPRTIE_28;
-            eye = SSPRTIE_29;
+            shell = SSPRITE_CHARGE_BEAM_CORE_X_SHELL;
+            eye = SSPRITE_CHARGE_BEAM_CORE_X_EYE;
             break;
         case PSPRITE_WIDE_BEAM_CORE_X:
-            shell = SSPRITE_54;
-            eye = SSPRITE_55;
+            shell = SSPRITE_WIDE_BEAM_CORE_X_SHELL;
+            eye = SSPRITE_WIDE_BEAM_CORE_X_EYE;
             break;
         case PSPRITE_PLASMA_BEAM_CORE_X:
-            shell = SSPRITE_56;
-            eye = SSPRITE_57;
+            shell = SSPRITE_PLASMA_BEAM_CORE_X_SHELL;
+            eye = SSPRITE_PLASMA_BEAM_CORE_X_EYE;
             break;
         case PSPRITE_WAVE_BEAM_CORE_X:
-            shell = SSPRITE_58;
-            eye = SSPRITE_59;
+            shell = SSPRITE_WAVE_BEAM_CORE_X_SHELL;
+            eye = SSPRITE_WAVE_BEAM_CORE_X_EYE;
             break;
         case PSPRITE_ICE_BEAM_CORE_X:
-            shell = SSPRITE_75;
-            eye = SSPRITE_76;
+            shell = SSPRITE_ICE_BEAM_CORE_X_SHELL;
+            eye = SSPRITE_ICE_BEAM_CORE_X_EYE;
             gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
             break;
         default:
@@ -109,7 +109,7 @@ void BeamCoreXMovingInit(void) {
 }
 
 void BeamCoreXMoving(void) {
-    if (gCurrentSprite.work0 == 0)
+    if (!gCurrentSprite.work0)
         SpriteUtilMoveBeamCoreX((u16)(gSamusData.yPosition - 0x48), gSamusData.xPosition, 0xa, 0x10, 2, 0xc0);
 }
 
@@ -185,7 +185,7 @@ void BeamCoreXRestingAtTarget(void) {
         gCurrentSprite.xParasiteTimer = 20;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.pOam = sBeamCoreXOam_32afc8;
+        gCurrentSprite.pOam = sBeamCoreXAbilityOam_GettingAbsorbed;
         ParticleSet(gSamusData.yPosition + gSamusData.drawDistanceTop / 2, gSamusData.xPosition, PE_ABSORB_CORE_X);
         switch (gCurrentSprite.spriteId) {
             case PSPRITE_CHARGE_BEAM_CORE_X:
@@ -284,7 +284,7 @@ void BeamCoreXShellInit(void) {
     gCurrentSprite.hitboxBottom = 0x40;
     gCurrentSprite.hitboxLeft = -0x40;
     gCurrentSprite.hitboxRight = 0x40;
-    gCurrentSprite.pOam = sBeamCoreXOam_32b0a8;
+    gCurrentSprite.pOam = sBeamCoreXShellOam;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
@@ -295,7 +295,7 @@ void BeamCoreXShellInit(void) {
         gCurrentSprite.rotation = Q_8_8(.5);
     else
         gCurrentSprite.rotation = 0;
-    if (gCurrentSprite.spriteId == SSPRITE_75)
+    if (gCurrentSprite.spriteId == SSPRITE_ICE_BEAM_CORE_X_SHELL)
         gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
 }
 
@@ -336,7 +336,7 @@ void BeamCoreXEyeInit(void) {
     gCurrentSprite.hitboxBottom = 0x28;
     gCurrentSprite.hitboxLeft = -0x28;
     gCurrentSprite.hitboxRight = 0x28;
-    gCurrentSprite.pOam = sBeamCoreXOam_32b0b8;
+    gCurrentSprite.pOam = sBeamCoreXEyeOam_Closed;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.samusCollision = SSC_NONE;
@@ -349,7 +349,7 @@ void BeamCoreXEyeInit(void) {
         gCurrentSprite.rotation = 0;
         gCurrentSprite.work1 = 0;
     }
-    if (gCurrentSprite.spriteId == SSPRITE_76)
+    if (gCurrentSprite.spriteId == SSPRITE_ICE_BEAM_CORE_X_EYE)
         gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
 }
 
@@ -529,7 +529,7 @@ void BeamCoreXEyeClosed(void) {
     BeamCoreXEyeHandleRotation();
     if (--gCurrentSprite.work2 == 0) {
         gCurrentSprite.status &= ~SS_NOT_DRAWN;
-        gCurrentSprite.pOam = sBeamCoreXOam_32b0c8;
+        gCurrentSprite.pOam = sBeamCoreXEyeOam_Opening;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x18;
@@ -540,7 +540,7 @@ void BeamCoreXEyeOpening(void) {
     BeamCoreXEyeHandleRotation();
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
-        gCurrentSprite.pOam = sBeamCoreXOam_32b100;
+        gCurrentSprite.pOam = sBeamCoreXEyeOam_Opened;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x1a;
@@ -559,11 +559,11 @@ void BeamCoreXEyeOpened(void) {
     }
     BeamCoreXEyeHandleRotation();
     if (gCurrentSprite.work2 == 110) {
-        gCurrentSprite.pOam = sBeamCoreXOam_32b110;
+        gCurrentSprite.pOam = sBeamCoreXEyeOam_Charging1;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     } else if (gCurrentSprite.work2 == 60) {
-        gCurrentSprite.pOam = sBeamCoreXOam_32b160;
+        gCurrentSprite.pOam = sBeamCoreXEyeOam_Charging2;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         SpriteSpawnSecondary(SSPRITE_4D, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
@@ -580,7 +580,7 @@ void BeamCoreXEyeOpened(void) {
         u16 xFlip;
         u8 direction;
 
-        gCurrentSprite.pOam = sBeamCoreXOam_32b100;
+        gCurrentSprite.pOam = sBeamCoreXEyeOam_Opened;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         if (SPRITE_HAS_ISFT(gCurrentSprite) == 5) {
@@ -663,11 +663,11 @@ void BeamCoreXEyeShooting(void) {
     }
     if (--gCurrentSprite.work2 == 0) {
         gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
-        gCurrentSprite.pOam = sBeamCoreXOam_32b1b0;
+        gCurrentSprite.pOam = sBeamCoreXEyeOam_Closing;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x1e;
-        gSpriteData[gCurrentSprite.primarySpriteRamSlot].work0 = 0;
+        gSpriteData[gCurrentSprite.primarySpriteRamSlot].work0 = FALSE;
     }
 }
 
@@ -676,7 +676,7 @@ void BeamCoreXEyeClosing(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.pose = 2;
         gCurrentSprite.work2 = 100;
-        gCurrentSprite.pOam = sBeamCoreXOam_32b0b8;
+        gCurrentSprite.pOam = sBeamCoreXEyeOam_Closed;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.status |= SS_NOT_DRAWN;
@@ -694,13 +694,13 @@ void BeamCoreXGlowingInit(void) {
     gCurrentSprite.hitboxBottom = 4;
     gCurrentSprite.hitboxLeft = -4;
     gCurrentSprite.hitboxRight = 4;
-    gCurrentSprite.pOam = sBeamCoreXOam_32afe0;
+    gCurrentSprite.pOam = sBeamCoreXGlowingOam;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 60;
     gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.pose = 2;
-    if (gSpriteData[gCurrentSprite.primarySpriteRamSlot].spriteId == SSPRITE_76)
+    if (gSpriteData[gCurrentSprite.primarySpriteRamSlot].spriteId == SSPRITE_ICE_BEAM_CORE_X_EYE)
         gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3;
 }
 

@@ -33,9 +33,8 @@ void MemuInit(void) {
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
     SpriteUtilChooseRandomXDirection();
-    if (gSpriteRandomNumber >= 9) {
+    if (gSpriteRandomNumber >= 9)
         gCurrentSprite.status |= SS_FACING_DOWN;
-    }
     if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
         gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;

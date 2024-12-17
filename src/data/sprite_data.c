@@ -2479,13 +2479,13 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB
     },
-    [SSPRTIE_28] = {
+    [SSPRITE_CHARGE_BEAM_CORE_X_SHELL] = {
         1,
         15,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRTIE_29] = {
+    [SSPRITE_CHARGE_BEAM_CORE_X_EYE] = {
         33,
         15,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
@@ -2743,37 +2743,37 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_90_80,
         WEAKNESS_NONE
     },
-    [SSPRITE_54] = {
+    [SSPRITE_WIDE_BEAM_CORE_X_SHELL] = {
         1,
         16,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_55] = {
+    [SSPRITE_WIDE_BEAM_CORE_X_EYE] = {
         150,
         16,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_MISSILES
     },
-    [SSPRITE_56] = {
+    [SSPRITE_PLASMA_BEAM_CORE_X_SHELL] = {
         1,
         24,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_57] = {
+    [SSPRITE_PLASMA_BEAM_CORE_X_EYE] = {
         200,
         24,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_MISSILES
     },
-    [SSPRITE_58] = {
+    [SSPRITE_WAVE_BEAM_CORE_X_SHELL] = {
         1,
         32,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_59] = {
+    [SSPRITE_WAVE_BEAM_CORE_X_EYE] = {
         170,
         32,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
@@ -2941,13 +2941,13 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_75] = {
+    [SSPRITE_ICE_BEAM_CORE_X_SHELL] = {
         1,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
         WEAKNESS_NONE
     },
-    [SSPRITE_76] = {
+    [SSPRITE_ICE_BEAM_CORE_X_EYE] = {
         240,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,

@@ -18,33 +18,33 @@ static const u16 sToxicGasOam_3364b8[] = {
     0xf8, 0x1f8, OBJ_PALETTE_8 | 0x274
 };
 
-static const u16 sToxicGasOam_336828_Frame0[] = {
+static const u16 sToxicGasOam_Frame0[] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_PALETTE_9 | 0x200
 };
 
-static const u16 sToxicGasOam_336828_Frame1[] = {
+static const u16 sToxicGasOam_Frame1[] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_PALETTE_9 | 0x204
 };
 
-static const u16 sToxicGasOam_336828_Frame2[] = {
+static const u16 sToxicGasOam_Frame2[] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_PALETTE_9 | 0x208
 };
 
-static const u16 sToxicGasOam_336828_Frame3[] = {
+static const u16 sToxicGasOam_Frame3[] = {
     1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_PALETTE_9 | 0x20c
 };
 
-static const u16 sToxicGasOam_3367d0_Frame0[] = {
+static const u16 sToxicGasExplosionOam_Frame0[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf5, OBJ_SIZE_16x32 | 0x1f5, OBJ_PALETTE_8 | 0x210,
     OBJ_SHAPE_VERTICAL | 0xf5, OBJ_SIZE_8x32 | 0x5, OBJ_PALETTE_8 | 0x212
 };
 
-static const u16 sToxicGasOam_3367d0_Frame1[] = {
+static const u16 sToxicGasExplosionOam_Frame1[] = {
     6,
     OBJ_SHAPE_VERTICAL | 0xec, OBJ_SIZE_16x32 | 0x1f3, OBJ_PALETTE_8 | 0x210,
     OBJ_SHAPE_VERTICAL | 0xec, OBJ_SIZE_8x32 | 0x3, OBJ_PALETTE_8 | 0x212,
@@ -54,7 +54,7 @@ static const u16 sToxicGasOam_3367d0_Frame1[] = {
     OBJ_SHAPE_VERTICAL | 0xf7, OBJ_SIZE_8x32 | 0xd, OBJ_PALETTE_8 | 0x212
 };
 
-static const u16 sToxicGasOam_3367d0_Frame2[] = {
+static const u16 sToxicGasExplosionOam_Frame2[] = {
     16,
     OBJ_SHAPE_VERTICAL | 0xea, OBJ_SIZE_16x32 | 0x1df, OBJ_PALETTE_8 | 0x210,
     OBJ_SHAPE_VERTICAL | 0xea, OBJ_SIZE_8x32 | 0x1ef, OBJ_PALETTE_8 | 0x212,
@@ -74,7 +74,7 @@ static const u16 sToxicGasOam_3367d0_Frame2[] = {
     OBJ_SHAPE_VERTICAL | 0x8, OBJ_SIZE_8x32 | 0xf, OBJ_PALETTE_8 | 0x212
 };
 
-static const u16 sToxicGasOam_3367d0_Frame3[] = {
+static const u16 sToxicGasExplosionOam_Frame3[] = {
     16,
     OBJ_SHAPE_VERTICAL | 0x1, OBJ_SIZE_16x32 | 0x1df, OBJ_PALETTE_8 | 0x210,
     OBJ_SHAPE_VERTICAL | 0x1, OBJ_SIZE_8x32 | 0x1ef, OBJ_PALETTE_8 | 0x212,
@@ -94,7 +94,7 @@ static const u16 sToxicGasOam_3367d0_Frame3[] = {
     OBJ_SHAPE_VERTICAL | 0xf5, OBJ_SIZE_8x32 | 0x1b, OBJ_PALETTE_8 | 0x215
 };
 
-static const u16 sToxicGasOam_3367d0_Frame4[] = {
+static const u16 sToxicGasExplosionOam_Frame4[] = {
     20,
     OBJ_SHAPE_VERTICAL | 0xd, OBJ_X_FLIP | OBJ_SIZE_16x32 | 0x1e9, OBJ_PALETTE_8 | 0x213,
     OBJ_SHAPE_VERTICAL | 0xd, OBJ_X_FLIP | OBJ_SIZE_8x32 | 0x1e1, OBJ_PALETTE_8 | 0x215,
@@ -118,7 +118,7 @@ static const u16 sToxicGasOam_3367d0_Frame4[] = {
     OBJ_SHAPE_VERTICAL | 0x13, OBJ_SIZE_8x32 | 0x5, OBJ_PALETTE_8 | 0x218
 };
 
-static const u16 sToxicGasOam_3367d0_Frame5[] = {
+static const u16 sToxicGasExplosionOam_Frame5[] = {
     24,
     OBJ_SHAPE_VERTICAL | 0xe9, OBJ_SIZE_16x32 | 0x1d6, OBJ_PALETTE_8 | 0x219,
     OBJ_SHAPE_VERTICAL | 0xe9, OBJ_SIZE_8x32 | 0x1e6, OBJ_PALETTE_8 | 0x21b,
@@ -146,7 +146,7 @@ static const u16 sToxicGasOam_3367d0_Frame5[] = {
     OBJ_SHAPE_VERTICAL | 0x15, OBJ_SIZE_8x32 | 0xd, OBJ_PALETTE_8 | 0x21b
 };
 
-static const u16 sToxicGasOam_3367d0_Frame6[] = {
+static const u16 sToxicGasExplosionOam_Frame6[] = {
     16,
     0xec, OBJ_SIZE_16x16 | 0x1d3, OBJ_PALETTE_8 | 0x25c,
     0xdc, OBJ_SIZE_16x16 | 0x1db, OBJ_PALETTE_8 | 0x25c,
@@ -166,7 +166,7 @@ static const u16 sToxicGasOam_3367d0_Frame6[] = {
     0xee, OBJ_SIZE_16x16 | 0x1f, OBJ_PALETTE_8 | 0x25e
 };
 
-static const u16 sToxicGasOam_3367d0_Frame7[] = {
+static const u16 sToxicGasExplosionOam_Frame7[] = {
     10,
     0x1e, OBJ_SIZE_16x16 | 0x1e7, OBJ_PALETTE_8 | 0x25e,
     0xed, OBJ_SIZE_16x16 | 0x23, OBJ_PALETTE_8 | 0x25c,
@@ -180,7 +180,7 @@ static const u16 sToxicGasOam_3367d0_Frame7[] = {
     0x1d, OBJ_SIZE_16x16 | 0x6, OBJ_PALETTE_8 | 0x23a
 };
 
-static const u16 sToxicGasOam_3367d0_Frame8[] = {
+static const u16 sToxicGasExplosionOam_Frame8[] = {
     6,
     0x1f, OBJ_SIZE_16x16 | 0x1e4, OBJ_PALETTE_8 | 0x25c,
     0xd5, 0x1da, OBJ_PALETTE_8 | 0x25c,
@@ -190,7 +190,7 @@ static const u16 sToxicGasOam_3367d0_Frame8[] = {
     0xfb, 0x2a, OBJ_PALETTE_8 | 0x27d
 };
 
-static const u16 sToxicGasOam_3367d0_Frame9[] = {
+static const u16 sToxicGasExplosionOam_Frame9[] = {
     6,
     0x1c, 0x1ef, OBJ_PALETTE_8 | 0x27c,
     0x2a, 0x1e7, OBJ_PALETTE_8 | 0x27d,
@@ -200,65 +200,65 @@ static const u16 sToxicGasOam_3367d0_Frame9[] = {
     0xfd, 0x2b, OBJ_PALETTE_8 | 0x27d
 };
 
-const struct FrameData sToxicGasOam_3367d0[11] = {
+const struct FrameData sToxicGasExplosionOam[11] = {
     [0] = {
-        .pFrame = sToxicGasOam_3367d0_Frame0,
+        .pFrame = sToxicGasExplosionOam_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sToxicGasOam_3367d0_Frame1,
+        .pFrame = sToxicGasExplosionOam_Frame1,
         .timer = 5
     },
     [2] = {
-        .pFrame = sToxicGasOam_3367d0_Frame2,
+        .pFrame = sToxicGasExplosionOam_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sToxicGasOam_3367d0_Frame3,
+        .pFrame = sToxicGasExplosionOam_Frame3,
         .timer = 5
     },
     [4] = {
-        .pFrame = sToxicGasOam_3367d0_Frame4,
+        .pFrame = sToxicGasExplosionOam_Frame4,
         .timer = 5
     },
     [5] = {
-        .pFrame = sToxicGasOam_3367d0_Frame5,
+        .pFrame = sToxicGasExplosionOam_Frame5,
         .timer = 5
     },
     [6] = {
-        .pFrame = sToxicGasOam_3367d0_Frame6,
+        .pFrame = sToxicGasExplosionOam_Frame6,
         .timer = 5
     },
     [7] = {
-        .pFrame = sToxicGasOam_3367d0_Frame7,
+        .pFrame = sToxicGasExplosionOam_Frame7,
         .timer = 5
     },
     [8] = {
-        .pFrame = sToxicGasOam_3367d0_Frame8,
+        .pFrame = sToxicGasExplosionOam_Frame8,
         .timer = 5
     },
     [9] = {
-        .pFrame = sToxicGasOam_3367d0_Frame9,
+        .pFrame = sToxicGasExplosionOam_Frame9,
         .timer = 5
     },
     [10] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sToxicGasOam_336828[5] = {
+const struct FrameData sToxicGasOam[5] = {
     [0] = {
-        .pFrame = sToxicGasOam_336828_Frame0,
+        .pFrame = sToxicGasOam_Frame0,
         .timer = 10
     },
     [1] = {
-        .pFrame = sToxicGasOam_336828_Frame1,
+        .pFrame = sToxicGasOam_Frame1,
         .timer = 10
     },
     [2] = {
-        .pFrame = sToxicGasOam_336828_Frame2,
+        .pFrame = sToxicGasOam_Frame2,
         .timer = 10
     },
     [3] = {
-        .pFrame = sToxicGasOam_336828_Frame3,
+        .pFrame = sToxicGasOam_Frame3,
         .timer = 10
     },
     [4] = FRAME_DATA_TERMINATOR

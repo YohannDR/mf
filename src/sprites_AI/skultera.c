@@ -96,7 +96,7 @@ void SkulteraInit(void) {
     gCurrentSprite.currentAnimationFrame = 0;
     if (gCurrentSprite.work0 == SKULTERA_SIZE_LARGE) {
         gCurrentSprite.properties &= ~SP_CAN_ABSORB_X;
-        gCurrentSprite.pOam = sSkulteraOam_34f074;
+        gCurrentSprite.pOam = sSkulteraOam_IdleLarge;
         gCurrentSprite.drawDistanceTop = 0x28;
         gCurrentSprite.drawDistanceBottom = 8;
         gCurrentSprite.drawDistanceHorizontal = 0x18;
@@ -105,7 +105,7 @@ void SkulteraInit(void) {
         gCurrentSprite.frozenPaletteRowOffset = 1;
         gCurrentSprite.spriteId = PSPRITE_SKULTERA_LARGE;
     } else {
-        gCurrentSprite.pOam = sSkulteraOam_34efec;
+        gCurrentSprite.pOam = sSkulteraOam_IdleSmall;
         if (gCurrentSprite.spriteId != PSPRITE_SKULTERA_SMALL_2)
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
         gCurrentSprite.drawDistanceTop = 0x18;
@@ -124,11 +124,11 @@ void SkulteraIdleInit(void) {
     gCurrentSprite.pose = 2;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    if (gCurrentSprite.work0 == 2) {
-        gCurrentSprite.pOam = sSkulteraOam_34f074;
+    if (gCurrentSprite.work0 == SKULTERA_SIZE_LARGE) {
+        gCurrentSprite.pOam = sSkulteraOam_IdleLarge;
         gCurrentSprite.work1 = 3;
     } else {
-        gCurrentSprite.pOam = sSkulteraOam_34efec;
+        gCurrentSprite.pOam = sSkulteraOam_IdleSmall;
         gCurrentSprite.work1 = 4;
     }
 }
@@ -173,9 +173,9 @@ void SkulteraChasingSamusInit(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     if (gCurrentSprite.work0 == SKULTERA_SIZE_LARGE)
-        gCurrentSprite.pOam = sSkulteraOam_34f0e4;
+        gCurrentSprite.pOam = sSkulteraOam_ChasingLarge;
     else
-        gCurrentSprite.pOam = sSkulteraOam_34f054;
+        gCurrentSprite.pOam = sSkulteraOam_ChasingSmall;
 }
 
 void SkulteraChasingSamus(void) {
@@ -230,11 +230,11 @@ void SkulteraTurningAroundInit(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     if (gCurrentSprite.work0 == SKULTERA_SIZE_LARGE) {
-        gCurrentSprite.pOam = sSkulteraOam_34f09c;
+        gCurrentSprite.pOam = sSkulteraOam_TurningAroundLarge;
         if (!(gCurrentSprite.status & SS_HIDDEN) && gSamusUnderwaterFlag && gCurrentSprite.status & SS_ON_SCREEN)
             SoundPlayNotAlreadyPlaying(SOUND_SKULTERA_LARGE_TURNING);
     } else {
-        gCurrentSprite.pOam = sSkulteraOam_34f00c;
+        gCurrentSprite.pOam = sSkulteraOam_TurningAroundSmall;
         if (!(gCurrentSprite.status & SS_HIDDEN) && gSamusUnderwaterFlag && gCurrentSprite.status & SS_ON_SCREEN)
             SoundPlayNotAlreadyPlaying(SOUND_SKULTERA_SMALL_TURNING);
     }

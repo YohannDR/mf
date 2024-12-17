@@ -91,7 +91,7 @@ void BullIdle(void) {
     }
 
     if (collided && gCurrentSprite.status & SS_ON_SCREEN)
-        SoundPlayNotAlreadyPlaying(SOUND_199);
+        SoundPlayNotAlreadyPlaying(SOUND_BULL_BOUNCING);
 }
 
 void Bull(void) {
