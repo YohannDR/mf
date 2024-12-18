@@ -9,7 +9,7 @@ PlayRoomMusicTrack: @ 0x080715AC
 	lsls r0, r0, #0x18
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
-	ldr r2, _080715E4 @ =0x03004DE8
+	ldr r2, _080715E4 @ =gMusicTrackInfo
 	ldr r1, _080715E8 @ =0x0879B8BC
 	lsrs r0, r0, #0x16
 	adds r0, r0, r1
@@ -30,7 +30,7 @@ PlayRoomMusicTrack: @ 0x080715AC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080715E4: .4byte 0x03004DE8
+_080715E4: .4byte gMusicTrackInfo
 _080715E8: .4byte 0x0879B8BC
 _080715EC: .4byte gDestinationDoor
 
@@ -57,7 +57,7 @@ _08071608:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _080716CA
-	ldr r1, _08071650 @ =0x03004DE8
+	ldr r1, _08071650 @ =gMusicTrackInfo
 	ldr r0, _08071654 @ =gCurrentRoomEntry
 	ldrh r0, [r0, #0x16]
 	strh r0, [r1]
@@ -79,7 +79,7 @@ _08071608:
 	.align 2, 0
 _08071648: .4byte gUnk_03000be3
 _0807164C: .4byte gDemoState
-_08071650: .4byte 0x03004DE8
+_08071650: .4byte gMusicTrackInfo
 _08071654: .4byte gCurrentRoomEntry
 _08071658: .4byte gIsLoadingFile
 _0807165C: .4byte gSamusData
@@ -139,22 +139,22 @@ _080716CA:
 LowerMusicVolume: @ 0x080716D0
 	push {lr}
 	bl DecreaseMusicVolume
-	ldr r1, _080716E0 @ =0x03004DE8
+	ldr r1, _080716E0 @ =gMusicTrackInfo
 	movs r0, #1
 	strb r0, [r1, #2]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080716E0: .4byte 0x03004DE8
+_080716E0: .4byte gMusicTrackInfo
 
 	thumb_func_start IncreaseMusicVolume
 IncreaseMusicVolume: @ 0x080716E4
 	push {lr}
 	bl unk_3c84
-	ldr r1, _080716F4 @ =0x03004DE8
+	ldr r1, _080716F4 @ =gMusicTrackInfo
 	movs r0, #0
 	strb r0, [r1, #2]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080716F4: .4byte 0x03004DE8
+_080716F4: .4byte gMusicTrackInfo

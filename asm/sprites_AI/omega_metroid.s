@@ -18,7 +18,7 @@ OmagaMetroidSyncSubSPrites: @ 0x08053D38
 	lsls r0, r0, #1
 	adds r0, r0, r3
 	ldrh r0, [r0]
-	ldr r1, _08053D9C @ =0x0879B634
+	ldr r1, _08053D9C @ =sOmegaMetroidFrameDataPointers
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r1, [r2, #0x18]
@@ -54,7 +54,7 @@ _08053D6A:
 	.align 2, 0
 _08053D94: .4byte gSubSpriteData1
 _08053D98: .4byte gCurrentSprite
-_08053D9C: .4byte 0x0879B634
+_08053D9C: .4byte sOmegaMetroidFrameDataPointers
 
 	thumb_func_start OmegaMetroidPartSetDrawOrder
 OmegaMetroidPartSetDrawOrder: @ 0x08053DA0
@@ -1021,7 +1021,7 @@ OmegaMetroidInit: @ 0x08054438
 	strh r0, [r4, #0xc]
 	ldr r0, _08054604 @ =gBossWork5
 	strh r5, [r0]
-	ldr r0, _08054608 @ =0x083966A0
+	ldr r0, _08054608 @ =sOmegaMetroidMultiSpriteData_3966a0
 	str r0, [r4]
 	strb r6, [r4, #6]
 	strh r5, [r4, #4]
@@ -1154,7 +1154,7 @@ _080545F8: .4byte gSubSpriteData1
 _080545FC: .4byte 0x0000FF90
 _08054600: .4byte sPrimarySpriteStats
 _08054604: .4byte gBossWork5
-_08054608: .4byte 0x083966A0
+_08054608: .4byte sOmegaMetroidMultiSpriteData_3966a0
 _0805460C: .4byte 0x0000FDFF
 
 	thumb_func_start OmegaMetroidWaitingToAppear
@@ -1203,7 +1203,7 @@ OmegaMetroidFirstJump: @ 0x08054650
 	adds r0, r0, r3
 	mov ip, r0
 	ldrb r4, [r0]
-	ldr r7, _08054690 @ =0x08395900
+	ldr r7, _08054690 @ =sOmegaMetroidFirstJumpVelocity
 	lsls r0, r4, #1
 	adds r0, r0, r7
 	ldrh r6, [r0]
@@ -1223,7 +1223,7 @@ OmegaMetroidFirstJump: @ 0x08054650
 	.align 2, 0
 _08054688: .4byte gSubSpriteData1
 _0805468C: .4byte gCurrentSprite
-_08054690: .4byte 0x08395900
+_08054690: .4byte sOmegaMetroidFirstJumpVelocity
 _08054694: .4byte 0x00007FFF
 _08054698:
 	adds r0, r4, #1
@@ -1244,7 +1244,7 @@ _080546A2:
 	adds r1, #0x24
 	movs r0, #0x3a
 	strb r0, [r1]
-	ldr r0, _080546D4 @ =0x083966B8
+	ldr r0, _080546D4 @ =sOmegaMetroidMultiSpriteData_3966b8
 	str r0, [r5]
 	strb r2, [r5, #6]
 	strh r3, [r5, #4]
@@ -1255,7 +1255,7 @@ _080546A2:
 	bl SoundPlay
 	b _0805470E
 	.align 2, 0
-_080546D4: .4byte 0x083966B8
+_080546D4: .4byte sOmegaMetroidMultiSpriteData_3966b8
 _080546D8: .4byte 0x0000021F
 _080546DC:
 	ldrh r1, [r5, #8]
@@ -1297,7 +1297,7 @@ OmegaMetroidLandingFromFirstJump: @ 0x08054718
 	cmp r0, #0
 	beq _08054736
 	ldr r1, _0805473C @ =gSubSpriteData1
-	ldr r0, _08054740 @ =0x08396858
+	ldr r0, _08054740 @ =sOmegaMetroidMultiSpriteData_396858
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1311,7 +1311,7 @@ _08054736:
 	bx r0
 	.align 2, 0
 _0805473C: .4byte gSubSpriteData1
-_08054740: .4byte 0x08396858
+_08054740: .4byte sOmegaMetroidMultiSpriteData_396858
 _08054744: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMetroidLandedAfterFirstJump
@@ -1321,7 +1321,7 @@ OmegaMetroidLandedAfterFirstJump: @ 0x08054748
 	cmp r0, #0
 	beq _08054774
 	ldr r1, _08054778 @ =gSubSpriteData1
-	ldr r0, _0805477C @ =0x08396870
+	ldr r0, _0805477C @ =sOmegaMetroidMultiSpriteData_396870
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1341,7 +1341,7 @@ _08054774:
 	bx r0
 	.align 2, 0
 _08054778: .4byte gSubSpriteData1
-_0805477C: .4byte 0x08396870
+_0805477C: .4byte sOmegaMetroidMultiSpriteData_396870
 _08054780: .4byte gCurrentSprite
 _08054784: .4byte 0x00000219
 
@@ -1359,7 +1359,7 @@ OmegaMetroidScreamingAfterFirstJump: @ 0x08054788
 	cmp r2, #0
 	bne _080547B0
 	ldr r0, _080547B8 @ =gSubSpriteData1
-	ldr r1, _080547BC @ =0x08396898
+	ldr r1, _080547BC @ =sOmegaMetroidMultiSpriteData_396898
 	str r1, [r0]
 	strb r2, [r0, #6]
 	strh r2, [r0, #4]
@@ -1373,7 +1373,7 @@ _080547B0:
 	.align 2, 0
 _080547B4: .4byte gCurrentSprite
 _080547B8: .4byte gSubSpriteData1
-_080547BC: .4byte 0x08396898
+_080547BC: .4byte sOmegaMetroidMultiSpriteData_396898
 
 	thumb_func_start OmegaMetroidFinishedScreamingAfterFirstJump
 OmegaMetroidFinishedScreamingAfterFirstJump: @ 0x080547C0
@@ -1413,7 +1413,7 @@ _080547FC:
 OmegaMetroidJumpWarningInit: @ 0x08054800
 	push {lr}
 	ldr r1, _08054820 @ =gSubSpriteData1
-	ldr r0, _08054824 @ =0x08396688
+	ldr r0, _08054824 @ =sOmegaMetroidMultiSpriteData_396688
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1428,7 +1428,7 @@ OmegaMetroidJumpWarningInit: @ 0x08054800
 	bx r0
 	.align 2, 0
 _08054820: .4byte gSubSpriteData1
-_08054824: .4byte 0x08396688
+_08054824: .4byte sOmegaMetroidMultiSpriteData_396688
 _08054828: .4byte gCurrentSprite
 _0805482C: .4byte 0x0000021E
 
@@ -1439,7 +1439,7 @@ OmegaMetroidJumpWarning: @ 0x08054830
 	cmp r0, #0
 	beq _08054856
 	ldr r1, _0805485C @ =gSubSpriteData1
-	ldr r0, _08054860 @ =0x083966A0
+	ldr r0, _08054860 @ =sOmegaMetroidMultiSpriteData_3966a0
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1457,7 +1457,7 @@ _08054856:
 	bx r0
 	.align 2, 0
 _0805485C: .4byte gSubSpriteData1
-_08054860: .4byte 0x083966A0
+_08054860: .4byte sOmegaMetroidMultiSpriteData_3966a0
 _08054864: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMetroidJumping
@@ -1467,7 +1467,7 @@ OmegaMetroidJumping: @ 0x08054868
 	adds r3, r5, #0
 	adds r3, #0x31
 	ldrb r2, [r3]
-	ldr r1, _08054898 @ =0x08395948
+	ldr r1, _08054898 @ =sOmegaMetroidJumpVelocity
 	lsls r0, r2, #1
 	adds r0, r0, r1
 	ldrh r4, [r0]
@@ -1485,7 +1485,7 @@ OmegaMetroidJumping: @ 0x08054868
 	b _080548B0
 	.align 2, 0
 _08054894: .4byte gCurrentSprite
-_08054898: .4byte 0x08395948
+_08054898: .4byte sOmegaMetroidJumpVelocity
 _0805489C: .4byte 0x00007FFF
 _080548A0:
 	adds r0, r2, #1
@@ -1509,7 +1509,7 @@ OmegaMEtroidFalling: @ 0x080548BC
 	adds r5, r0, #0
 	adds r5, #0x31
 	ldrb r2, [r5]
-	ldr r3, _080548F0 @ =0x08395978
+	ldr r3, _080548F0 @ =sOmegaMetroidFallVelocity
 	lsls r0, r2, #1
 	adds r0, r0, r3
 	ldrh r4, [r0]
@@ -1530,7 +1530,7 @@ OmegaMEtroidFalling: @ 0x080548BC
 	b _0805490A
 	.align 2, 0
 _080548EC: .4byte gCurrentSprite
-_080548F0: .4byte 0x08395978
+_080548F0: .4byte sOmegaMetroidFallVelocity
 _080548F4: .4byte 0x00007FFF
 _080548F8: .4byte gSubSpriteData1
 _080548FC:
@@ -1576,7 +1576,7 @@ _08054950: .4byte 0x0000021F
 	thumb_func_start OmegaMetroidLandingInit
 OmegaMetroidLandingInit: @ 0x08054954
 	ldr r1, _0805496C @ =gSubSpriteData1
-	ldr r0, _08054970 @ =0x083966B8
+	ldr r0, _08054970 @ =sOmegaMetroidMultiSpriteData_3966b8
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1588,7 +1588,7 @@ OmegaMetroidLandingInit: @ 0x08054954
 	bx lr
 	.align 2, 0
 _0805496C: .4byte gSubSpriteData1
-_08054970: .4byte 0x083966B8
+_08054970: .4byte sOmegaMetroidMultiSpriteData_3966b8
 _08054974: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMetroidLanding
@@ -1657,24 +1657,24 @@ OmegaMetroidIdleInit: @ 0x080549E4
 	cmp r2, #1
 	bne _08054A08
 	ldr r1, _08054A00 @ =gSubSpriteData1
-	ldr r0, _08054A04 @ =0x08396600
+	ldr r0, _08054A04 @ =sOmegaMetroidMultiSpriteData_396600
 	b _08054A20
 	.align 2, 0
 _080549FC: .4byte gCurrentSprite
 _08054A00: .4byte gSubSpriteData1
-_08054A04: .4byte 0x08396600
+_08054A04: .4byte sOmegaMetroidMultiSpriteData_396600
 _08054A08:
 	cmp r2, #2
 	bne _08054A1C
 	ldr r1, _08054A14 @ =gSubSpriteData1
-	ldr r0, _08054A18 @ =0x08396730
+	ldr r0, _08054A18 @ =sOmegaMetroidMultiSpriteData_396730
 	b _08054A20
 	.align 2, 0
 _08054A14: .4byte gSubSpriteData1
-_08054A18: .4byte 0x08396730
+_08054A18: .4byte sOmegaMetroidMultiSpriteData_396730
 _08054A1C:
 	ldr r1, _08054A34 @ =gSubSpriteData1
-	ldr r0, _08054A38 @ =0x083965D8
+	ldr r0, _08054A38 @ =sOmegaMetroidMultiSpriteData_3965d8
 _08054A20:
 	str r0, [r1]
 	movs r0, #0
@@ -1688,7 +1688,7 @@ _08054A20:
 	bx r0
 	.align 2, 0
 _08054A34: .4byte gSubSpriteData1
-_08054A38: .4byte 0x083965D8
+_08054A38: .4byte sOmegaMetroidMultiSpriteData_3965d8
 
 	thumb_func_start OmegaMetroidIdle
 OmegaMetroidIdle: @ 0x08054A3C
@@ -1787,7 +1787,7 @@ _08054AF2:
 	thumb_func_start OmegaMetroidWalkingBeforeSaXInit
 OmegaMetroidWalkingBeforeSaXInit: @ 0x08054AF8
 	ldr r1, _08054B14 @ =gSubSpriteData1
-	ldr r0, _08054B18 @ =0x08396758
+	ldr r0, _08054B18 @ =sOmegaMetroidMultiSpriteData_396758
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1802,7 +1802,7 @@ OmegaMetroidWalkingBeforeSaXInit: @ 0x08054AF8
 	bx lr
 	.align 2, 0
 _08054B14: .4byte gSubSpriteData1
-_08054B18: .4byte 0x08396758
+_08054B18: .4byte sOmegaMetroidMultiSpriteData_396758
 _08054B1C: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMetroidWalkingBeforeSaX
@@ -1826,7 +1826,7 @@ OmegaMetroidWalkingBeforeSaX: @ 0x08054B20
 	cmp r0, #0
 	beq _08054BAC
 	ldr r0, _08054B5C @ =gSubSpriteData1
-	ldr r1, _08054B60 @ =0x083967C8
+	ldr r1, _08054B60 @ =sOmegaMetroidMultiSpriteData_3967c8
 	str r1, [r0]
 	strb r6, [r0, #6]
 	strh r6, [r0, #4]
@@ -1836,7 +1836,7 @@ OmegaMetroidWalkingBeforeSaX: @ 0x08054B20
 	.align 2, 0
 _08054B58: .4byte gCurrentSprite
 _08054B5C: .4byte gSubSpriteData1
-_08054B60: .4byte 0x083967C8
+_08054B60: .4byte sOmegaMetroidMultiSpriteData_3967c8
 _08054B64:
 	bl OmegaMetroidStandingMovement
 	lsls r0, r0, #0x18
@@ -1885,7 +1885,7 @@ _08054BAC:
 	thumb_func_start OmegaMetroidSlowWalkInit
 OmegaMetroidSlowWalkInit: @ 0x08054BB8
 	ldr r1, _08054BD8 @ =gSubSpriteData1
-	ldr r0, _08054BDC @ =0x08396758
+	ldr r0, _08054BDC @ =sOmegaMetroidMultiSpriteData_396758
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -1901,7 +1901,7 @@ OmegaMetroidSlowWalkInit: @ 0x08054BB8
 	bx lr
 	.align 2, 0
 _08054BD8: .4byte gSubSpriteData1
-_08054BDC: .4byte 0x08396758
+_08054BDC: .4byte sOmegaMetroidMultiSpriteData_396758
 _08054BE0: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMetroidSlowWalk
@@ -1941,7 +1941,7 @@ _08054C1A:
 	cmp r0, #0
 	beq _08054CFC
 	ldr r0, _08054C40 @ =gSubSpriteData1
-	ldr r1, _08054C44 @ =0x08396758
+	ldr r1, _08054C44 @ =sOmegaMetroidMultiSpriteData_396758
 	str r1, [r0]
 	strb r6, [r0, #6]
 	strh r6, [r0, #4]
@@ -1952,7 +1952,7 @@ _08054C1A:
 	b _08054CFC
 	.align 2, 0
 _08054C40: .4byte gSubSpriteData1
-_08054C44: .4byte 0x08396758
+_08054C44: .4byte sOmegaMetroidMultiSpriteData_396758
 _08054C48:
 	movs r0, #1
 	strb r0, [r7]
@@ -1967,7 +1967,7 @@ _08054C4E:
 	cmp r5, #0
 	beq _08054C78
 	ldr r0, _08054C70 @ =gSubSpriteData1
-	ldr r1, _08054C74 @ =0x083967C8
+	ldr r1, _08054C74 @ =sOmegaMetroidMultiSpriteData_3967c8
 	str r1, [r0]
 	movs r1, #3
 	strb r1, [r7]
@@ -1975,10 +1975,10 @@ _08054C4E:
 	b _08054C80
 	.align 2, 0
 _08054C70: .4byte gSubSpriteData1
-_08054C74: .4byte 0x083967C8
+_08054C74: .4byte sOmegaMetroidMultiSpriteData_3967c8
 _08054C78:
 	ldr r1, _08054C88 @ =gSubSpriteData1
-	ldr r0, _08054C8C @ =0x083967B0
+	ldr r0, _08054C8C @ =sOmegaMetroidMultiSpriteData_3967b0
 	str r0, [r1]
 	strb r6, [r7]
 _08054C80:
@@ -1988,14 +1988,14 @@ _08054C80:
 	b _08054CFC
 	.align 2, 0
 _08054C88: .4byte gSubSpriteData1
-_08054C8C: .4byte 0x083967B0
+_08054C8C: .4byte sOmegaMetroidMultiSpriteData_3967b0
 _08054C90:
 	bl OmegaMetroidForwardMovement
 	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054CFC
 	ldr r0, _08054CAC @ =gSubSpriteData1
-	ldr r1, _08054CB0 @ =0x083967C8
+	ldr r1, _08054CB0 @ =sOmegaMetroidMultiSpriteData_3967c8
 	str r1, [r0]
 	strb r6, [r0, #6]
 	strh r6, [r0, #4]
@@ -2004,7 +2004,7 @@ _08054C90:
 	b _08054CFC
 	.align 2, 0
 _08054CAC: .4byte gSubSpriteData1
-_08054CB0: .4byte 0x083967C8
+_08054CB0: .4byte sOmegaMetroidMultiSpriteData_3967c8
 _08054CB4:
 	bl OmegaMetroidStandingMovement
 	lsls r0, r0, #0x18
@@ -2053,7 +2053,7 @@ _08054CFC:
 	thumb_func_start OmegaMetroidWalkInit
 OmegaMetroidWalkInit: @ 0x08054D08
 	ldr r1, _08054D28 @ =gSubSpriteData1
-	ldr r0, _08054D2C @ =0x083967D8
+	ldr r0, _08054D2C @ =sOmegaMetroidMultiSpriteData_3967d8
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2069,7 +2069,7 @@ OmegaMetroidWalkInit: @ 0x08054D08
 	bx lr
 	.align 2, 0
 _08054D28: .4byte gSubSpriteData1
-_08054D2C: .4byte 0x083967D8
+_08054D2C: .4byte sOmegaMetroidMultiSpriteData_3967d8
 _08054D30: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMetroidWalk
@@ -2109,7 +2109,7 @@ _08054D6A:
 	cmp r0, #0
 	beq _08054E4C
 	ldr r0, _08054D90 @ =gSubSpriteData1
-	ldr r1, _08054D94 @ =0x083967D8
+	ldr r1, _08054D94 @ =sOmegaMetroidMultiSpriteData_3967d8
 	str r1, [r0]
 	strb r6, [r0, #6]
 	strh r6, [r0, #4]
@@ -2120,7 +2120,7 @@ _08054D6A:
 	b _08054E4C
 	.align 2, 0
 _08054D90: .4byte gSubSpriteData1
-_08054D94: .4byte 0x083967D8
+_08054D94: .4byte sOmegaMetroidMultiSpriteData_3967d8
 _08054D98:
 	movs r0, #1
 	strb r0, [r7]
@@ -2135,7 +2135,7 @@ _08054D9E:
 	cmp r5, #0
 	beq _08054DC8
 	ldr r0, _08054DC0 @ =gSubSpriteData1
-	ldr r1, _08054DC4 @ =0x08396848
+	ldr r1, _08054DC4 @ =sOmegaMetroidMultiSpriteData_396848
 	str r1, [r0]
 	movs r1, #3
 	strb r1, [r7]
@@ -2143,10 +2143,10 @@ _08054D9E:
 	b _08054DD0
 	.align 2, 0
 _08054DC0: .4byte gSubSpriteData1
-_08054DC4: .4byte 0x08396848
+_08054DC4: .4byte sOmegaMetroidMultiSpriteData_396848
 _08054DC8:
 	ldr r1, _08054DD8 @ =gSubSpriteData1
-	ldr r0, _08054DDC @ =0x08396830
+	ldr r0, _08054DDC @ =sOmegaMetroidMultiSpriteData_396830
 	str r0, [r1]
 	strb r6, [r7]
 _08054DD0:
@@ -2156,14 +2156,14 @@ _08054DD0:
 	b _08054E4C
 	.align 2, 0
 _08054DD8: .4byte gSubSpriteData1
-_08054DDC: .4byte 0x08396830
+_08054DDC: .4byte sOmegaMetroidMultiSpriteData_396830
 _08054DE0:
 	bl OmegaMetroidForwardMovement
 	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _08054E4C
 	ldr r0, _08054DFC @ =gSubSpriteData1
-	ldr r1, _08054E00 @ =0x08396848
+	ldr r1, _08054E00 @ =sOmegaMetroidMultiSpriteData_396848
 	str r1, [r0]
 	strb r6, [r0, #6]
 	strh r6, [r0, #4]
@@ -2172,7 +2172,7 @@ _08054DE0:
 	b _08054E4C
 	.align 2, 0
 _08054DFC: .4byte gSubSpriteData1
-_08054E00: .4byte 0x08396848
+_08054E00: .4byte sOmegaMetroidMultiSpriteData_396848
 _08054E04:
 	bl OmegaMetroidStandingMovement
 	lsls r0, r0, #0x18
@@ -2222,7 +2222,7 @@ _08054E4C:
 OmegaMetroidSwipingInit: @ 0x08054E58
 	push {r4, lr}
 	ldr r1, _08054E8C @ =gSubSpriteData1
-	ldr r0, _08054E90 @ =0x08396918
+	ldr r0, _08054E90 @ =sOmegaMetroidMultiSpriteData_396918
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2248,7 +2248,7 @@ _08054E84:
 	b _08054EA4
 	.align 2, 0
 _08054E8C: .4byte gSubSpriteData1
-_08054E90: .4byte 0x08396918
+_08054E90: .4byte sOmegaMetroidMultiSpriteData_396918
 _08054E94: .4byte gCurrentSprite
 _08054E98: .4byte gSpriteRandomNumber
 _08054E9C:
@@ -2291,10 +2291,10 @@ OmegaMetroidSwiping: @ 0x08054EDC
 	beq _08054FA4
 	ldr r2, _08054F78 @ =gSubSpriteData1
 	ldr r1, [r2]
-	ldr r0, _08054F7C @ =0x08396918
+	ldr r0, _08054F7C @ =sOmegaMetroidMultiSpriteData_396918
 	cmp r1, r0
 	bne _08054EF4
-	ldr r0, _08054F80 @ =0x083966D8
+	ldr r0, _08054F80 @ =sOmegaMetroidMultiSpriteData_3966d8
 	str r0, [r2]
 _08054EF4:
 	bl EventCheckAfter_SaXKilledByOmega
@@ -2364,8 +2364,8 @@ _08054F26:
 	b _08054FD8
 	.align 2, 0
 _08054F78: .4byte gSubSpriteData1
-_08054F7C: .4byte 0x08396918
-_08054F80: .4byte 0x083966D8
+_08054F7C: .4byte sOmegaMetroidMultiSpriteData_396918
+_08054F80: .4byte sOmegaMetroidMultiSpriteData_3966d8
 _08054F84: .4byte gEquipment
 _08054F88: .4byte gPoseLock
 _08054F8C: .4byte gCurrentSprite
@@ -2415,7 +2415,7 @@ _08054FE4: .4byte 0x00000221
 	thumb_func_start OmegaMetroidVerticalJumpInit
 OmegaMetroidVerticalJumpInit: @ 0x08054FE8
 	ldr r1, _08055010 @ =gSubSpriteData1
-	ldr r0, _08055014 @ =0x083966B8
+	ldr r0, _08055014 @ =sOmegaMetroidMultiSpriteData_3966b8
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2435,7 +2435,7 @@ OmegaMetroidVerticalJumpInit: @ 0x08054FE8
 	bx lr
 	.align 2, 0
 _08055010: .4byte gSubSpriteData1
-_08055014: .4byte 0x083966B8
+_08055014: .4byte sOmegaMetroidMultiSpriteData_3966b8
 _08055018: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMetroidVerticalJump
@@ -2445,7 +2445,7 @@ OmegaMetroidVerticalJump: @ 0x0805501C
 	adds r5, r0, #0
 	adds r5, #0x31
 	ldrb r2, [r5]
-	ldr r3, _08055050 @ =0x08395990
+	ldr r3, _08055050 @ =sOmegaMetroidVerticalJumpVelocity
 	lsls r0, r2, #1
 	adds r0, r0, r3
 	ldrh r4, [r0]
@@ -2466,7 +2466,7 @@ OmegaMetroidVerticalJump: @ 0x0805501C
 	b _0805506A
 	.align 2, 0
 _0805504C: .4byte gCurrentSprite
-_08055050: .4byte 0x08395990
+_08055050: .4byte sOmegaMetroidVerticalJumpVelocity
 _08055054: .4byte 0x00007FFF
 _08055058: .4byte gSubSpriteData1
 _0805505C:
@@ -2569,7 +2569,7 @@ _0805511C: .4byte 0xFFFFFC80
 	thumb_func_start OmegaMetroidWaitingForSaXInit
 OmegaMetroidWaitingForSaXInit: @ 0x08055120
 	ldr r1, _08055148 @ =gSubSpriteData1
-	ldr r0, _0805514C @ =0x083965D8
+	ldr r0, _0805514C @ =sOmegaMetroidMultiSpriteData_3965d8
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2589,7 +2589,7 @@ OmegaMetroidWaitingForSaXInit: @ 0x08055120
 	bx lr
 	.align 2, 0
 _08055148: .4byte gSubSpriteData1
-_0805514C: .4byte 0x083965D8
+_0805514C: .4byte sOmegaMetroidMultiSpriteData_3965d8
 _08055150: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMetroidWaitingForSaX
@@ -2698,7 +2698,7 @@ _08055224:
 	b _0805534A
 _0805522E:
 	ldr r0, _08055240 @ =gSubSpriteData1
-	ldr r1, _08055244 @ =0x08396858
+	ldr r1, _08055244 @ =sOmegaMetroidMultiSpriteData_396858
 	str r1, [r0]
 	strb r4, [r0, #6]
 	strh r4, [r0, #4]
@@ -2708,7 +2708,7 @@ _0805522E:
 	b _08055348
 	.align 2, 0
 _08055240: .4byte gSubSpriteData1
-_08055244: .4byte 0x08396858
+_08055244: .4byte sOmegaMetroidMultiSpriteData_396858
 _08055248:
 	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
@@ -2716,7 +2716,7 @@ _08055248:
 	b _0805534A
 _08055252:
 	ldr r1, _08055278 @ =gSubSpriteData1
-	ldr r0, _0805527C @ =0x08396870
+	ldr r0, _0805527C @ =sOmegaMetroidMultiSpriteData_396870
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2734,7 +2734,7 @@ _08055252:
 	b _0805534A
 	.align 2, 0
 _08055278: .4byte gSubSpriteData1
-_0805527C: .4byte 0x08396870
+_0805527C: .4byte sOmegaMetroidMultiSpriteData_396870
 _08055280: .4byte gCurrentSprite
 _08055284: .4byte 0x00000219
 _08055288:
@@ -2751,7 +2751,7 @@ _08055298:
 	cmp r0, #0
 	beq _0805534A
 	ldr r0, _080552C0 @ =gSubSpriteData1
-	ldr r1, _080552C4 @ =0x08396898
+	ldr r1, _080552C4 @ =sOmegaMetroidMultiSpriteData_396898
 	str r1, [r0]
 	strb r4, [r0, #6]
 	strh r4, [r0, #4]
@@ -2766,13 +2766,13 @@ _08055298:
 	b _0805534A
 	.align 2, 0
 _080552C0: .4byte gSubSpriteData1
-_080552C4: .4byte 0x08396898
+_080552C4: .4byte sOmegaMetroidMultiSpriteData_396898
 _080552C8:
 	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _0805534A
 	ldr r1, _080552E8 @ =gSubSpriteData1
-	ldr r0, _080552EC @ =0x08396758
+	ldr r0, _080552EC @ =sOmegaMetroidMultiSpriteData_396758
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2784,7 +2784,7 @@ _080552C8:
 	b _0805534A
 	.align 2, 0
 _080552E8: .4byte gSubSpriteData1
-_080552EC: .4byte 0x08396758
+_080552EC: .4byte sOmegaMetroidMultiSpriteData_396758
 _080552F0: .4byte gCurrentSprite
 _080552F4:
 	adds r0, r5, #0
@@ -2796,7 +2796,7 @@ _080552F4:
 	cmp r0, #0
 	beq _0805534A
 	ldr r0, _0805531C @ =gSubSpriteData1
-	ldr r1, _08055320 @ =0x083967C8
+	ldr r1, _08055320 @ =sOmegaMetroidMultiSpriteData_3967c8
 	str r1, [r0]
 	strb r4, [r0, #6]
 	strh r4, [r0, #4]
@@ -2806,7 +2806,7 @@ _080552F4:
 	b _08055348
 	.align 2, 0
 _0805531C: .4byte gSubSpriteData1
-_08055320: .4byte 0x083967C8
+_08055320: .4byte sOmegaMetroidMultiSpriteData_3967c8
 _08055324:
 	adds r0, r5, #0
 	adds r0, #0x30
@@ -2817,7 +2817,7 @@ _08055324:
 	cmp r0, #0
 	beq _0805534A
 	ldr r0, _08055350 @ =gSubSpriteData1
-	ldr r1, _08055354 @ =0x08396600
+	ldr r1, _08055354 @ =sOmegaMetroidMultiSpriteData_396600
 	str r1, [r0]
 	strb r4, [r0, #6]
 	strh r4, [r0, #4]
@@ -2832,7 +2832,7 @@ _0805534A:
 	bx r0
 	.align 2, 0
 _08055350: .4byte gSubSpriteData1
-_08055354: .4byte 0x08396600
+_08055354: .4byte sOmegaMetroidMultiSpriteData_396600
 
 	thumb_func_start OmegaMetroidWatchingSaX
 OmegaMetroidWatchingSaX: @ 0x08055358
@@ -2857,7 +2857,7 @@ OmegaMetroidWatchingSaX: @ 0x08055358
 	movs r0, #0xc
 	strb r0, [r1]
 	ldr r1, _080553A8 @ =gSubSpriteData1
-	ldr r0, _080553AC @ =0x08396628
+	ldr r0, _080553AC @ =sOmegaMetroidMultiSpriteData_396628
 	str r0, [r1]
 	strb r3, [r1, #6]
 	movs r2, #0
@@ -2874,7 +2874,7 @@ _0805539A:
 _080553A0: .4byte gSpriteData
 _080553A4: .4byte gCurrentSprite
 _080553A8: .4byte gSubSpriteData1
-_080553AC: .4byte 0x08396628
+_080553AC: .4byte sOmegaMetroidMultiSpriteData_396628
 _080553B0: .4byte 0x0000021A
 
 	thumb_func_start OmegaMetroidDamagedBySaX
@@ -2886,7 +2886,7 @@ OmegaMetroidDamagedBySaX: @ 0x080553B4
 	cmp r0, #0
 	beq _080553EE
 	ldr r1, _080553F4 @ =gSubSpriteData1
-	ldr r0, _080553F8 @ =0x083968B0
+	ldr r0, _080553F8 @ =sOmegaMetroidMultiSpriteData_3968b0
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2911,7 +2911,7 @@ _080553EE:
 	bx r0
 	.align 2, 0
 _080553F4: .4byte gSubSpriteData1
-_080553F8: .4byte 0x083968B0
+_080553F8: .4byte sOmegaMetroidMultiSpriteData_3968b0
 _080553FC: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMetroidWalkingBackwardsFromSaX
@@ -2939,7 +2939,7 @@ _08055420:
 	cmp r0, #0
 	beq _08055490
 	ldr r0, _08055460 @ =gSubSpriteData1
-	ldr r1, _08055464 @ =0x08396908
+	ldr r1, _08055464 @ =sOmegaMetroidMultiSpriteData_396908
 	str r1, [r0]
 	strb r4, [r0, #6]
 	strh r4, [r0, #4]
@@ -2963,7 +2963,7 @@ _08055420:
 	b _08055490
 	.align 2, 0
 _08055460: .4byte gSubSpriteData1
-_08055464: .4byte 0x08396908
+_08055464: .4byte sOmegaMetroidMultiSpriteData_396908
 _08055468: .4byte 0x0000FDFF
 _0805546C: .4byte gSpriteData
 _08055470:
@@ -2971,7 +2971,7 @@ _08055470:
 	cmp r0, #0
 	beq _08055490
 	ldr r1, _08055498 @ =gSubSpriteData1
-	ldr r0, _0805549C @ =0x08396628
+	ldr r0, _0805549C @ =sOmegaMetroidMultiSpriteData_396628
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -2988,7 +2988,7 @@ _08055490:
 	bx r0
 	.align 2, 0
 _08055498: .4byte gSubSpriteData1
-_0805549C: .4byte 0x08396628
+_0805549C: .4byte sOmegaMetroidMultiSpriteData_396628
 
 	thumb_func_start OmegaMetroidDamagedBySaX2
 OmegaMetroidDamagedBySaX2: @ 0x080554A0
@@ -3024,7 +3024,7 @@ _080554E4:
 	bl SpriteUtilCheckEndSubSprite1Anim
 	cmp r0, #0
 	beq _080554FC
-	ldr r0, _08055504 @ =0x083965D8
+	ldr r0, _08055504 @ =sOmegaMetroidMultiSpriteData_3965d8
 	str r0, [r5]
 	strb r4, [r5, #6]
 	strh r4, [r5, #4]
@@ -3038,7 +3038,7 @@ _080554FC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08055504: .4byte 0x083965D8
+_08055504: .4byte sOmegaMetroidMultiSpriteData_3965d8
 
 	thumb_func_start OmegaMetroidWaitingToSwipeSaX
 OmegaMetroidWaitingToSwipeSaX: @ 0x08055508
@@ -3049,7 +3049,7 @@ OmegaMetroidWaitingToSwipeSaX: @ 0x08055508
 	cmp r0, #0
 	beq _08055536
 	ldr r1, _0805553C @ =gSubSpriteData1
-	ldr r0, _08055540 @ =0x08396918
+	ldr r0, _08055540 @ =sOmegaMetroidMultiSpriteData_396918
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -3066,7 +3066,7 @@ _08055536:
 	bx r0
 	.align 2, 0
 _0805553C: .4byte gSubSpriteData1
-_08055540: .4byte 0x08396918
+_08055540: .4byte sOmegaMetroidMultiSpriteData_396918
 _08055544: .4byte gCurrentSprite
 
 	thumb_func_start OmegaMEtroidSwipingSaX
@@ -3078,7 +3078,7 @@ OmegaMEtroidSwipingSaX: @ 0x08055548
 	cmp r0, #0
 	beq _0805558C
 	ldr r1, _08055580 @ =gSubSpriteData1
-	ldr r0, _08055584 @ =0x08396660
+	ldr r0, _08055584 @ =sOmegaMetroidMultiSpriteData_396660
 	str r0, [r1]
 	movs r0, #0
 	strb r0, [r1, #6]
@@ -3098,7 +3098,7 @@ OmegaMEtroidSwipingSaX: @ 0x08055548
 	b _080555DA
 	.align 2, 0
 _08055580: .4byte gSubSpriteData1
-_08055584: .4byte 0x08396660
+_08055584: .4byte sOmegaMetroidMultiSpriteData_396660
 _08055588: .4byte gCurrentSprite
 _0805558C:
 	ldr r1, _080555A4 @ =gSubSpriteData1
@@ -3175,7 +3175,7 @@ _08055606:
 	adds r1, #0x24
 	movs r0, #0x10
 	strb r0, [r1]
-	ldr r0, _08055654 @ =0x08396858
+	ldr r0, _08055654 @ =sOmegaMetroidMultiSpriteData_396858
 	str r0, [r4]
 	strb r3, [r4, #6]
 	movs r1, #0
@@ -3194,7 +3194,7 @@ _08055640:
 _08055648: .4byte gSubSpriteData1
 _0805564C: .4byte 0x00FFFFFF
 _08055650: .4byte gCurrentSprite
-_08055654: .4byte 0x08396858
+_08055654: .4byte sOmegaMetroidMultiSpriteData_396858
 
 	thumb_func_start OmegaMetroidScreamingAfterIceBeamObtained
 OmegaMetroidScreamingAfterIceBeamObtained: @ 0x08055658
@@ -3224,7 +3224,7 @@ _08055678:
 	cmp r0, #0
 	beq _080556F8
 	ldr r0, _080556A8 @ =gSubSpriteData1
-	ldr r1, _080556AC @ =0x08396870
+	ldr r1, _080556AC @ =sOmegaMetroidMultiSpriteData_396870
 	str r1, [r0]
 	strb r4, [r0, #6]
 	strh r4, [r0, #4]
@@ -3239,7 +3239,7 @@ _08055678:
 	b _080556F8
 	.align 2, 0
 _080556A8: .4byte gSubSpriteData1
-_080556AC: .4byte 0x08396870
+_080556AC: .4byte sOmegaMetroidMultiSpriteData_396870
 _080556B0: .4byte 0x00000219
 _080556B4:
 	cmp r4, #1
@@ -3254,7 +3254,7 @@ _080556B4:
 	cmp r2, #0
 	bne _080556F8
 	ldr r0, _080556DC @ =gSubSpriteData1
-	ldr r1, _080556E0 @ =0x08396898
+	ldr r1, _080556E0 @ =sOmegaMetroidMultiSpriteData_396898
 	str r1, [r0]
 	strb r2, [r0, #6]
 	strh r2, [r0, #4]
@@ -3263,7 +3263,7 @@ _080556B4:
 	b _080556F8
 	.align 2, 0
 _080556DC: .4byte gSubSpriteData1
-_080556E0: .4byte 0x08396898
+_080556E0: .4byte sOmegaMetroidMultiSpriteData_396898
 _080556E4:
 	bl SpriteUtilCheckNearEndSubSprite1Anim
 	cmp r0, #0
@@ -3284,7 +3284,7 @@ _080556F8:
 OmegaMetroidWalkingBackwardsInit: @ 0x08055700
 	push {r4, lr}
 	ldr r3, _08055748 @ =gSubSpriteData1
-	ldr r0, _0805574C @ =0x083968B0
+	ldr r0, _0805574C @ =sOmegaMetroidMultiSpriteData_3968b0
 	str r0, [r3]
 	movs r0, #0
 	strb r0, [r3, #6]
@@ -3319,7 +3319,7 @@ OmegaMetroidWalkingBackwardsInit: @ 0x08055700
 	b _0805575E
 	.align 2, 0
 _08055748: .4byte gSubSpriteData1
-_0805574C: .4byte 0x083968B0
+_0805574C: .4byte sOmegaMetroidMultiSpriteData_3968b0
 _08055750: .4byte gCurrentSprite
 _08055754: .4byte gBg1XPosition
 _08055758:
@@ -3379,7 +3379,7 @@ OmegaMetroidWalkingBackwards: @ 0x08055790
 	cmp r2, #0
 	bne _0805583C
 	ldr r0, _080557D8 @ =gSubSpriteData1
-	ldr r1, _080557DC @ =0x08396908
+	ldr r1, _080557DC @ =sOmegaMetroidMultiSpriteData_396908
 	str r1, [r0]
 	strb r2, [r0, #6]
 	strh r2, [r0, #4]
@@ -3391,7 +3391,7 @@ OmegaMetroidWalkingBackwards: @ 0x08055790
 	.align 2, 0
 _080557D4: .4byte gCurrentSprite
 _080557D8: .4byte gSubSpriteData1
-_080557DC: .4byte 0x08396908
+_080557DC: .4byte sOmegaMetroidMultiSpriteData_396908
 _080557E0: .4byte 0x0000FDFF
 _080557E4:
 	bl SpriteUtilCheckNearEndSubSprite1Anim
@@ -3401,7 +3401,7 @@ _080557E4:
 	ldrh r1, [r2, #0xc]
 	cmp r1, #0
 	bne _08055814
-	ldr r0, _08055810 @ =0x08396858
+	ldr r0, _08055810 @ =sOmegaMetroidMultiSpriteData_396858
 	str r0, [r2]
 	strb r1, [r2, #6]
 	movs r0, #0
@@ -3414,7 +3414,7 @@ _080557E4:
 	b _0805583A
 	.align 2, 0
 _0805580C: .4byte gSubSpriteData1
-_08055810: .4byte 0x08396858
+_08055810: .4byte sOmegaMetroidMultiSpriteData_396858
 _08055814:
 	ldr r0, _08055830 @ =gSamusData
 	ldrb r0, [r0, #0xc]
@@ -3456,7 +3456,7 @@ OmegaMetroidDyingInit: @ 0x08055844
 	cmp r0, #0
 	beq _0805587C
 	ldr r0, _08055888 @ =gSubSpriteData1
-	ldr r1, _0805588C @ =0x08396870
+	ldr r1, _0805588C @ =sOmegaMetroidMultiSpriteData_396870
 	str r1, [r0]
 	strb r5, [r0, #6]
 	strh r5, [r0, #4]
@@ -3476,7 +3476,7 @@ _0805587C:
 	.align 2, 0
 _08055884: .4byte gCurrentSprite
 _08055888: .4byte gSubSpriteData1
-_0805588C: .4byte 0x08396870
+_0805588C: .4byte sOmegaMetroidMultiSpriteData_396870
 _08055890: .4byte 0x00000219
 
 	thumb_func_start OmegaMetroidDying1
@@ -3498,7 +3498,7 @@ OmegaMetroidDying1: @ 0x08055894
 	cmp r2, #0
 	bne _080558D2
 	ldr r0, _080558DC @ =gSubSpriteData1
-	ldr r1, _080558E0 @ =0x08396628
+	ldr r1, _080558E0 @ =sOmegaMetroidMultiSpriteData_396628
 	str r1, [r0]
 	strb r2, [r0, #6]
 	strh r2, [r0, #4]
@@ -3517,7 +3517,7 @@ _080558D2:
 	.align 2, 0
 _080558D8: .4byte gCurrentSprite
 _080558DC: .4byte gSubSpriteData1
-_080558E0: .4byte 0x08396628
+_080558E0: .4byte sOmegaMetroidMultiSpriteData_396628
 
 	thumb_func_start OmegaMetroidDying2
 OmegaMetroidDying2: @ 0x080558E4

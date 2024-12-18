@@ -189,6 +189,7 @@ SECTIONS {
         . = 0x00004dd8; gWrittenToBldcnt_Special = .;
         . = 0x00004dda; gElevatorDirection = .;
         . = 0x00004ddc; gTilemapAndClipPointers = .;
+        . = 0x00004de8; gMusicTrackInfo = .;
         . = 0x00004dec; gHatchData = .;
         . = 0x00004e0c; gDoorPositionStart = .;
         . = 0x00004e38; gSamusDoorPositionOffset = .;
@@ -347,7 +348,7 @@ SECTIONS {
 
         asm/disasm_0x080685b4.o(.text);
         asm/sub_event_and_music.o(.text);
-        asm/disasm_0x080715ac.o(.text);
+        asm/room_music.o(.text);
 
         src/demo.o(.text);
         src/hud.o(.text);
@@ -472,7 +473,7 @@ SECTIONS {
         src/data/sprites/zozoro.o(.rodata);
         src/data/sprites/sa_x_monster.o(.rodata);
         src/data/sprites/box_2.o(.rodata);
-
+        src/data/sprites/omega_metroid.o(.rodata);
         src/data/sprites/starship_end.o(.rodata);
         src/data/sprites/electric_water_box_2.o(.rodata);
         src/data/sprites/frozen_ridley.o(.rodata);

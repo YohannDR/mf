@@ -5,20 +5,16 @@ def toPixels(value):
     return value//4
 
 partNames = [
-    "BOX_2_PART_FRONT_LEFT_LEG_COVER",
-    "BOX_2_PART_FRONT_LEFT_LEG",
-    "BOX_2_PART_FRONT_RIGHT_LEG_COVER",
-    "BOX_2_PART_FRONT_RIGHT_LEG",
-    "BOX_2_PART_MIDDLE_LEFT_LEG",
-    "BOX_2_PART_MIDDLE_RIGHT_LEG",
-    "BOX_2_PART_CENTER",
-    "BOX_2_PART_BRAIN",
-    "BOX_2_PART_CENTER_BOTTOM",
-    "BOX_2_PART_LAUNCHER",
-    "BOX_2_PART_BACK_LEFT_LEG",
-    "BOX_2_PART_BACK_RIGHT_LEG",
+    "OMEGA_METROID_PART_0",
+    "OMEGA_METROID_PART_1",
+    "OMEGA_METROID_PART_2",
+    "OMEGA_METROID_PART_3",
+    "OMEGA_METROID_PART_4",
+    "OMEGA_METROID_PART_5",
+    "OMEGA_METROID_PART_6",
+    "OMEGA_METROID_PART_7",
 
-    "BOX_2_PART_END"
+    "OMEGA_METROID_PART_END"
 ]
 
 def ParseMultiSpriteFrame():
@@ -33,7 +29,7 @@ def ParseMultiSpriteFrame():
 
     result = f"static const s16 sMultiSpriteFrame_{startAddr:x}[{partNames[len(partNames)-1]}][MULTI_SPRITE_DATA_ELEMENT_END] = " + "{\n"
     for i in range(len(partNames)-1):
-        result += f"    [{partNames[i]}] = MULTI_SPRITE_DATA_INFO(Box2Oam_{animations[multiSpriteData[i][0]]:x}, {toPixels(multiSpriteData[i][1])}, {toPixels(multiSpriteData[i][2])})"
+        result += f"    [{partNames[i]}] = MULTI_SPRITE_DATA_INFO(OmegaMetroidPartOam_{animations[multiSpriteData[i][0]]:x}, {toPixels(multiSpriteData[i][1])}, {toPixels(multiSpriteData[i][2])})"
         if i < len(partNames)-2:
             result += ",\n"
     result += "\n};\n"
@@ -50,7 +46,7 @@ def ParseMultiSpriteData():
             break
         frameData.append((pFrame, timer))
 
-    result = f"const struct MultiSpriteData sBox2MultiSpriteData_{startAddr:x}[{(len(frameData)+1)}] = " + "{\n"
+    result = f"const struct MultiSpriteData sOmegaMetroidMultiSpriteData_{startAddr:x}[{(len(frameData)+1)}] = " + "{\n"
 
     index = 0
     for (pFrame, timer) in frameData:
@@ -61,20 +57,20 @@ def ParseMultiSpriteData():
     return (result, frameData)
 
 file = open("../mf_us_baserom.gba", "rb")
-file.seek(0x79b560)
-animations = [int.from_bytes(file.read(4), 'little') & 0x1ffffff for i in range(46)]
+file.seek(0x79b634)
+animations = [int.from_bytes(file.read(4), 'little') & 0x1ffffff for i in range(53)]
 
-print("const struct FrameData* const sBox2FrameDataPointers[BOX_2_OAM_END] = {")
+print("const struct FrameData* const sOmegaMetroidFrameDataPointers[OMEGA_METROID_OAM_END] = {")
 for addr in animations:
-    print(f"    [Box2Oam_{addr:x}] = sBox2Oam_{addr:x},")
+    print(f"    [OmegaMetroidPartOam_{addr:x}] = sOmegaMetroidPartOam_{addr:x},")
 print("};\n")
 
-print("enum Box2Oam {")
+print("enum OmegaMetroidOam {")
 for addr in animations:
-    print(f"    Box2Oam_{addr:x},")
-print("\n    BOX_2_OAM_END\n};\n")
+    print(f"    OmegaMetroidPartOam_{addr:x},")
+print("\n    OMEGA_METROID_OAM_END\n};\n")
 
-file.seek(0x3905fa)
+file.seek(0x395a08)
 frames = set()
 output = ""
 while True:
@@ -103,14 +99,14 @@ while True:
     animations.append((currentAddr, len(frameData)+1))
     for i in range(len(frameData)):
         if frameData[i][0] not in namedFrames:
-            namedFrames[frameData[i][0]] = f"sBox2MultiSpriteData_{currentAddr:x}_Frame{i}"
+            namedFrames[frameData[i][0]] = f"sOmegaMetroidMultiSpriteData_{currentAddr:x}_Frame{i}"
 
 for (addr, name) in namedFrames.items():
     output = output.replace(f"sMultiSpriteFrame_{addr:x}", name)
 print(output)
 
 for (addr, count) in animations:
-    print(f"extern const struct MultiSpriteData sBox2MultiSpriteData_{addr:x}[{count}];")
+    print(f"extern const struct MultiSpriteData sOmegaMetroidMultiSpriteData_{addr:x}[{count}];")
 
 print(f"\nEnd: {file.tell():x}\n")
 

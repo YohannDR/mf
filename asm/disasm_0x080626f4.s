@@ -4542,7 +4542,7 @@ _08064B1C:
 	bne _08064BB2
 	movs r0, #2
 	strb r0, [r3]
-	ldr r0, _08064BE4 @ =0x03004DE8
+	ldr r0, _08064BE4 @ =gMusicTrackInfo
 	strh r1, [r0]
 	strb r2, [r0, #2]
 	ldr r0, _08064BE8 @ =gCurrentClipdataAffectingAction
@@ -4619,7 +4619,7 @@ _08064BD4: .4byte 0x083C88B4
 _08064BD8: .4byte gWrittenToBldcnt
 _08064BDC: .4byte 0x03004FCC
 _08064BE0: .4byte gUnk_03000be3
-_08064BE4: .4byte 0x03004DE8
+_08064BE4: .4byte gMusicTrackInfo
 _08064BE8: .4byte gCurrentClipdataAffectingAction
 _08064BEC: .4byte gPreviousArea
 _08064BF0: .4byte gDisableDoorsAndTanks

@@ -13,6 +13,8 @@
 /nonmatchings/*
 permuter_settings.toml
 
+objdiff.json
+
 *.gba
 *.sav
 *.elf

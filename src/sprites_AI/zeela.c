@@ -354,7 +354,7 @@ void ZeelaFalling(void) {
     u8 offset;
     s16 movement;
 
-    onWall = 0;
+    onWall = FALSE;
     yCollisionPoint = gCurrentSprite.yPosition;
     xCollisionPoint = gCurrentSprite.xPosition;
     if (gCurrentSprite.work0) {

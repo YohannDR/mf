@@ -12354,7 +12354,7 @@ _0806E474:
 	.align 2, 0
 _0806E490: .4byte gColorFading
 _0806E494:
-	ldr r0, _0806E4B4 @ =0x03004DE8
+	ldr r0, _0806E4B4 @ =gMusicTrackInfo
 	ldrb r0, [r0, #2]
 	cmp r0, #0
 	beq _0806E4A0
@@ -12371,7 +12371,7 @@ _0806E4AC:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0806E4B4: .4byte 0x03004DE8
+_0806E4B4: .4byte gMusicTrackInfo
 _0806E4B8: .4byte gColorFading
 
 	thumb_func_start unk_6e4bc

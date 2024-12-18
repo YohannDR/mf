@@ -1,6 +1,8 @@
 #ifndef SPRITES_AI_POINTERS_H
 #define SPRITES_AI_POINTERS_H
 
+// Primary sprites
+
 void TargetCircles(void);
 void TargetDiagonal(void);
 void TargetSideways(void);
@@ -208,6 +210,8 @@ void Ridley(void);
 void RidleyPreSpawn(void);
 void SaXTro2(void);
 void Nightmare(void);
+
+// Secondary sprites
 
 void SaXBeam(void);
 void SaXMissile(void);

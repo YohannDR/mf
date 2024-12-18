@@ -3,6 +3,11 @@
 
 #include "types.h"
 
+struct MusicTrackInfo {
+    u16 currentRoomTrack;
+    u8 pauseScreenFlag;
+};
+
 struct TrackGroupROMData {
     u32 pTrack;
     u32 pVariables;
@@ -55,6 +60,8 @@ struct MusicInfo {
     u8 unk_23;
     u8 unk_24;
 };
+
+extern struct MusicTrackInfo gMusicTrackInfo;
 
 extern struct MusicInfo gMusicInfo;
 

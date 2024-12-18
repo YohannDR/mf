@@ -354,7 +354,18 @@ for i in range(len(primarySpriteNames)):
     print(f"    [{primarySpriteNames[i]}] = {labels[pointer-1]},")
 print("};\n")
 
-file.seek(0x79abd0)
+print("const u32* const sSpritesGraphicsPointers[PSPRITE_END - 0x10] = {")
+for i in range(0x10, len(primarySpriteNames)):
+    pointer = int.from_bytes(file.read(4), "little")
+    print(f"    [{primarySpriteNames[i]} - 0x10] = {labels[pointer] if pointer in labels else f"(const u32*)0x{pointer:x}"},")
+print("};\n")
+
+print("const u16* const sSpritesPalettePointers[PSPRITE_END - 0x10] = {")
+for i in range(0x10, len(primarySpriteNames)):
+    pointer = int.from_bytes(file.read(4), "little")
+    print(f"    [{primarySpriteNames[i]} - 0x10] = {labels[pointer] if pointer in labels else f"(const u16*)0x{pointer:x}"},")
+print("};\n")
+
 print("const Func_T sSecondarySpritesAiPointers[SSPRITE_END] = {")
 for i in range(len(secondarySpriteNames)):
     pointer = int.from_bytes(file.read(4), "little")

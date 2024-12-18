@@ -36,14 +36,14 @@ void YakuzaUpdatePalette(void) {
     switch (gBossWork1) {
         case 0:
             if (health <= maxHealth * 2 / 3) {
-                pPal = (u16*)sYakuzaPal[2];
+                pPal = (u16*)sYakuzaPal + 2 * 16;
                 gBossWork1 = 1;
                 update = TRUE;
             }
             break;
         case 1:
             if (health <= maxHealth / 4) {
-                pPal = (u16*)sYakuzaPal[3];
+                pPal = (u16*)sYakuzaPal + 3 * 16;
                 gBossWork1 = 2;
                 update = TRUE;
             }
