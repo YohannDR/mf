@@ -162,7 +162,7 @@ ReadAllGamePakSRAM: @ 0x08000D60
 	ldr r1, _08000D78 @ =0x02038200
 	movs r2, #0xfc
 	lsls r2, r2, #7
-	bl SramWriteUnckecked
+	bl SramWriteUnchecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -183,7 +183,7 @@ ReadMostRecentFileFromGamePak: @ 0x08000D7C
 	ldr r1, [r1]
 	movs r2, #0x90
 	lsls r2, r2, #5
-	bl SramWriteUnckecked
+	bl SramWriteUnchecked
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -199,11 +199,11 @@ unk_da8: @ 0x08000DA8
 	ldr r1, _08000DC8 @ =0x02038000
 	movs r2, #0x80
 	lsls r2, r2, #1
-	bl SramWriteUnckecked
+	bl SramWriteUnchecked
 	ldr r0, _08000DCC @ =0x0E007100
 	ldr r1, _08000DD0 @ =0x0203F100
 	movs r2, #0x80
-	bl SramWriteUnckecked
+	bl SramWriteUnchecked
 	pop {r0}
 	bx r0
 	.align 2, 0

@@ -2968,7 +2968,6 @@ sa_x_close_up/second.tt.lz;0x733d58
 Blob_a5258_a5710.bin;a5258;a5710
 
 # Samus data
-Blob_289970_28998c.bin;289970;28998c
 Blob_289994_28fd04.bin;289994;28fd04
 Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
 

@@ -220,7 +220,7 @@ SECTIONS {
 
         asm/disasm_0x08000c28.o(.text);
         asm/syscalls.o(.text);
-        asm/disasm_0x08004bcc.o(.text);
+        src/sram/sram.o(.text);
         asm/samus.o(.text);
 
         src/demo_input.o(.text);
@@ -385,6 +385,7 @@ SECTIONS {
         audio/null_track.o(.rodata);
         audio/samples.o(.rodata);
         audio/tracks.o(.rodata);
+        src/sram/sram.o(.rodata);
         src/data/samus_data.o(.rodata);
         src/data/sa_x.o(.rodata);
         src/data/samus/samus_graphics.o(.rodata);

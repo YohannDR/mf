@@ -19805,7 +19805,7 @@ SramTestFlash: @ 0x0807FAE0
 	adds r0, r4, #0
 	mov r1, sp
 	movs r2, #0x10
-	bl SramWriteUnckecked
+	bl SramWriteUnchecked
 	movs r2, #0
 _0807FB08:
 	mov r0, sp
