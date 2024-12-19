@@ -334,7 +334,6 @@ void KagoInsectFalling(void) {
     u8 offset;
     s16 movement;
     u32 blockTop;
-    u32 trueCond;
 
     if (gCurrentSprite.health == 0) {
         gCurrentSprite.pose = SPRITE_POSE_STOPPED;
@@ -342,17 +341,16 @@ void KagoInsectFalling(void) {
     }
     collision = FALSE;
     blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
-    trueCond = TRUE; // Needed to produce matching ASM.
     if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
-        collision = trueCond;
+        collision++;
     else {
         blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
         if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
-            collision = trueCond;
+            collision++;
         else {
             blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
             if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
-                collision = trueCond;
+                collision++;
         }
     }
     if (collision) {

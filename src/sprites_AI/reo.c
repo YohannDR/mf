@@ -98,20 +98,18 @@ void ReoFalling(void) {
     u8 collision = FALSE;
     u8 offset;
     s16 movement;
-    u32 trueCond;
 
     u32 blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
-    trueCond = TRUE; // Needed to produce matching ASM.
     if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
-        collision = trueCond;
+        collision++;
     else {
         blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight);
         if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
-            collision = trueCond;
+            collision++;
         else {
             blockTop = SpriteUtilCheckVerticalCollisionAtPositionSlopes(gCurrentSprite.yPosition, gCurrentSprite.xPosition + gCurrentSprite.hitboxLeft);
             if (gPreviousVerticalCollisionCheck != COLLISION_AIR)
-                collision = trueCond;
+                collision++;
         }
     }
     if (collision) {

@@ -254,10 +254,8 @@ SECTIONS {
         src/sprites_AI/core_x_downloading_varia.o(.text);
         src/sprites_AI/waver.o(.text);
         src/sprites_AI/sciser.o(.text);
-
-        asm/sprites_AI/sidehopper.o(.text);
-        asm/sprites_AI/dessgeega.o(.text);
-
+        src/sprites_AI/sidehopper.o(.text);
+        src/sprites_AI/dessgeega.o(.text);
         src/sprites_AI/missile_barrier.o(.text);
         src/sprites_AI/navigation_pad.o(.text);
         src/sprites_AI/message_banner.o(.text);
