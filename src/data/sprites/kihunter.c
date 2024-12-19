@@ -91,7 +91,7 @@ const s16 sKihunterFlyingSwoopingAcrossYSpeed[8] = {
     3, 3, 2, SHORT_MAX
 };
 
-const s16 sKihunterFlyingAfterSwoopingAccceleratingYSpeed[12] = {
+const s16 sKihunterFlyingAfterSwoopingAcceleratingYSpeed[12] = {
     -1, -1, -2, -2,
     -3, -3, -4, -5,
     -6, -7, -8, SHORT_MAX

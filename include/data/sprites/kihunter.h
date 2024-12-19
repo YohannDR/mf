@@ -12,7 +12,7 @@ extern const s16 sKihunterGroundLowJumpSpeed[10];
 extern const s16 sKihunterFlyingIdleYMovement[49];
 extern const s16 sKihunterFlyingSwoopingDownYSpeed[16];
 extern const s16 sKihunterFlyingSwoopingAcrossYSpeed[8];
-extern const s16 sKihunterFlyingAfterSwoopingAccceleratingYSpeed[12];
+extern const s16 sKihunterFlyingAfterSwoopingAcceleratingYSpeed[12];
 extern const s16 sKihunterFlyingAfterSwoopingDeceleratingYSpeed[12];
 
 extern const u32 sKihunterGfx[3 * 512];

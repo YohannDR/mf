@@ -271,11 +271,11 @@ void SpriteUtilTakeConstantDamageFromYakuza(void)
     {
         // Play hurt sounds
         if (MOD_AND(gEquipment.currentEnergy, 16) == 0)
-            unk_2894(0x88);
+            SoundPlay_2894(0x88);
         else if (MOD_AND(gEquipment.currentEnergy, 16) == 7)
-            unk_2894(0x88);
+            SoundPlay_2894(0x88);
 
-        unk_2894(0x89);
+        SoundPlay_2894(0x89);
     }
 }
 
@@ -728,14 +728,14 @@ void SpriteUtilSamusAndSpriteCollision(void)
                             gSamusData.invincibilityTimer = 8;
 
                             if (MOD_AND(gEquipment.currentEnergy, 16) == 0)
-                                unk_2894(0x88);
+                                SoundPlay_2894(0x88);
                             else if (MOD_AND(gEquipment.currentEnergy, 16) == 7)
-                                unk_2894(0x88);
+                                SoundPlay_2894(0x88);
 
                             if (gSpriteData[i].spriteId == PSPRITE_ELECTRIC_WATER_DAMAGE || gSpriteData[i].spriteId == PSPRITE_ELECTRIC_WATER_DAMAGE_BOX_2)
-                                unk_2894(0x8A);
+                                SoundPlay_2894(0x8A);
                             else
-                                unk_2894(0x89);
+                                SoundPlay_2894(0x89);
                         }
                     }
 
@@ -950,11 +950,11 @@ void SpriteUtilSamusAndSpriteCollision(void)
                             gSamusData.invincibilityTimer = 30;
 
                             if (MOD_AND(gEquipment.currentEnergy, 16) == 0)
-                                unk_2894(0x88);
+                                SoundPlay_2894(0x88);
                             else if (MOD_AND(gEquipment.currentEnergy, 16) == 7)
-                                unk_2894(0x88);
+                                SoundPlay_2894(0x88);
 
-                            unk_2894(0x89);
+                            SoundPlay_2894(0x89);
                         }
                     }
 
