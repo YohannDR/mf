@@ -65,9 +65,9 @@ void GeemerSetHitbox(void) {
 
 void GeemerSetCrawlingGFX(void) {
     if (gCurrentSprite.work0) {
-        gCurrentSprite.pOam = sFrameData_2fcf90;
+        gCurrentSprite.pOam = sGeemerOam_2fcf90;
     } else {
-        gCurrentSprite.pOam = sFrameData_2fce00;
+        gCurrentSprite.pOam = sGeemerOam_2fce00;
     }
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -75,9 +75,9 @@ void GeemerSetCrawlingGFX(void) {
 
 void GeemerSetIdleGFX(void) {
     if (gCurrentSprite.work0) {
-        gCurrentSprite.pOam = sFrameData_2fcf28;
+        gCurrentSprite.pOam = sGeemerOam_2fcf28;
     } else {
-        gCurrentSprite.pOam = sFrameData_2fcd98;
+        gCurrentSprite.pOam = sGeemerOam_2fcd98;
     }
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -92,11 +92,11 @@ void GeemerCheckShouldHide(void) {
             if (SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_TO_SUB_PIXEL(5), BLOCK_TO_SUB_PIXEL(5)) != NSLR_OUT_OF_RANGE) {
                 gCurrentSprite.pose = 0x42;
                 if (gCurrentSprite.work0) {
-                    gCurrentSprite.pOam = sFrameData_2fd058;
+                    gCurrentSprite.pOam = sGeemerOam_2fd058;
                     gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-10);
                     gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(10);
                 } else {
-                    gCurrentSprite.pOam = sFrameData_2fcec8;
+                    gCurrentSprite.pOam = sGeemerOam_2fcec8;
                     gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-10);
                     gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(10);
                 }
@@ -128,9 +128,9 @@ void GeemerHiding(void) {
         if (gCurrentSprite.work1 > 120) {
             gCurrentSprite.pose = 0x46;
             if (gCurrentSprite.work0) {
-                gCurrentSprite.pOam = sFrameData_2fd098;
+                gCurrentSprite.pOam = sGeemerOam_2fd098;
             } else {
-                gCurrentSprite.pOam = sFrameData_2fcf08;
+                gCurrentSprite.pOam = sGeemerOam_2fcf08;
             }
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
@@ -546,7 +546,7 @@ void GeemerFlashingLight(void) {
         gCurrentSprite.drawDistanceTop = 3;
         gCurrentSprite.drawDistanceBottom = 3;
         gCurrentSprite.drawDistanceHorizontal = 3;
-        gCurrentSprite.pOam = sFrameData_2fcd78;
+        gCurrentSprite.pOam = sGeemerOam_2fcd78;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_NONE;

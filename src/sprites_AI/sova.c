@@ -459,7 +459,7 @@ void SovaFireInit(void) {
     gCurrentSprite.drawOrder = 5;
     if (gCurrentSprite.roomSlot) {
         // Falling flame
-        gCurrentSprite.pOam = sSovaFallingOam_Falling;
+        gCurrentSprite.pOam = sSovaFallingFlameOam_Falling;
         gCurrentSprite.pose = SPRITE_POSE_FALLING;
         gCurrentSprite.work4 = 0;
     } else {
@@ -501,7 +501,7 @@ void SovaFireDisappearing(void) {
 }
 
 void SovaFireExplodingInit(void) {
-    gCurrentSprite.pOam = sSovaFallingOam_Exploding;
+    gCurrentSprite.pOam = sSovaFallingFlameOam_Exploding;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = SPRITE_POSE_LANDED;

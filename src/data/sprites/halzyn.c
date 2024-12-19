@@ -616,7 +616,7 @@ const struct FrameData sHalzynWingOam_Lunging[8] = {
     [7] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed010[7] = {
+const struct FrameData sHalzynOam_2ed010[7] = {
     [0] = {
         .pFrame = sOam_2ec964,
         .timer = 4,
@@ -644,7 +644,7 @@ const struct FrameData sFrameData_2ed010[7] = {
     [6] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed048[7] = {
+const struct FrameData sHalzynOam_2ed048[7] = {
     [0] = {
         .pFrame = sOam_2ec978,
         .timer = 4,
@@ -704,7 +704,7 @@ const struct FrameData sHalzynWingOam_Landing[4] = {
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed0c0[4] = {
+const struct FrameData sHalzynOam_2ed0c0[4] = {
     [0] = {
         .pFrame = sOam_2ecad6,
         .timer = 7,
@@ -720,7 +720,7 @@ const struct FrameData sFrameData_2ed0c0[4] = {
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed0e0[4] = {
+const struct FrameData sHalzynOam_2ed0e0[4] = {
     [0] = {
         .pFrame = sOam_2ecad6,
         .timer = 4,
@@ -736,7 +736,7 @@ const struct FrameData sFrameData_2ed0e0[4] = {
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed100[4] = {
+const struct FrameData sHalzynOam_2ed100[4] = {
     [0] = {
         .pFrame = sOam_2ecb24,
         .timer = 7,
@@ -752,7 +752,7 @@ const struct FrameData sFrameData_2ed100[4] = {
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed120[10] = {
+const struct FrameData sHalzynOam_2ed120[10] = {
     [0] = {
         .pFrame = sOam_2ecb72,
         .timer = 12,
@@ -792,7 +792,7 @@ const struct FrameData sFrameData_2ed120[10] = {
     [9] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed170[4] = {
+const struct FrameData sHalzynOam_2ed170[4] = {
     [0] = {
         .pFrame = sOam_2ecbc0,
         .timer = 8,
@@ -808,7 +808,7 @@ const struct FrameData sFrameData_2ed170[4] = {
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed190[7] = {
+const struct FrameData sHalzynOam_2ed190[7] = {
     [0] = {
         .pFrame = sOam_2ecc14,
         .timer = 9,
@@ -836,7 +836,7 @@ const struct FrameData sFrameData_2ed190[7] = {
     [6] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed1c8[4] = {
+const struct FrameData sHalzynOam_2ed1c8[4] = {
     [0] = {
         .pFrame = sOam_2eccb0,
         .timer = 3,
@@ -852,7 +852,7 @@ const struct FrameData sFrameData_2ed1c8[4] = {
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed1e8[4] = {
+const struct FrameData sHalzynOam_2ed1e8[4] = {
     [0] = {
         .pFrame = sOam_2ecd10,
         .timer = 3,
@@ -868,7 +868,7 @@ const struct FrameData sFrameData_2ed1e8[4] = {
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed208[3] = {
+const struct FrameData sHalzynOam_2ed208[3] = {
     [0] = {
         .pFrame = sOam_2ecd70,
         .timer = 4,
@@ -880,7 +880,7 @@ const struct FrameData sFrameData_2ed208[3] = {
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed220[3] = {
+const struct FrameData sHalzynOam_2ed220[3] = {
     [0] = {
         .pFrame = sOam_2ecdc8,
         .timer = 4,
@@ -892,7 +892,7 @@ const struct FrameData sFrameData_2ed220[3] = {
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed238[10] = {
+const struct FrameData sHalzynOam_2ed238[10] = {
     [0] = {
         .pFrame = sOam_2ec964,
         .timer = 20,
@@ -932,7 +932,7 @@ const struct FrameData sFrameData_2ed238[10] = {
     [9] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed288[6] = {
+const struct FrameData sHalzynOam_2ed288[6] = {
     [0] = {
         .pFrame = sOam_2ece78,
         .timer = 2,
@@ -956,7 +956,7 @@ const struct FrameData sFrameData_2ed288[6] = {
     [5] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed2b8[2] = {
+const struct FrameData sHalzynOam_2ed2b8[2] = {
     [0] = {
         .pFrame = sOam_2ec964,
         .timer = 255,
@@ -972,7 +972,7 @@ const struct FrameData sHalzynWingOam_Falling[2] = {
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_2ed2d8[2] = {
+const struct FrameData sHalzynOam_2ed2d8[2] = {
     [0] = {
         .pFrame = sOam_2eca04,
         .timer = 255,

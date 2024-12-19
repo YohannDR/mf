@@ -213,7 +213,7 @@ void GerudaIdle(void) {
         // Distance between Samus and geruda
         target = gSamusData.xPosition;
         tmp = gCurrentSprite.xPosition;
-        SET_ABS_SUB(tmp, tmp, target)
+        SET_ABS_SUB(tmp, tmp, target);
 
         // Set lunging speed when lunging diagonally depending on how far Samus is
         if (tmp > PIXEL_TO_SUB_PIXEL(0x4b)) gCurrentSprite.work3 = PIXEL_TO_SUB_PIXEL(2);

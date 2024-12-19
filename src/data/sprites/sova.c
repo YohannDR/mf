@@ -225,37 +225,37 @@ static const u16 sSovaGroundFlameOam_Disappearing_Frame6[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, 0x1fc, OBJ_PALETTE_8 | 0x259
 };
 
-static const u16 sSovaFallingOam_Falling_Frame0[] = {
+static const u16 sSovaFallingFlameOam_Falling_Frame0[] = {
     2,
     0xee, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_8 | 0x297,
     0xfe, 0x1fb, OBJ_PALETTE_8 | 0x27e
 };
 
-static const u16 sSovaFallingOam_Falling_Frame1[] = {
+static const u16 sSovaFallingFlameOam_Falling_Frame1[] = {
     2,
     0xee, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_8 | 0x299,
     0xfe, 0x1fb, OBJ_PALETTE_8 | 0x27f
 };
 
-static const u16 sSovaFallingOam_Falling_Frame2[] = {
+static const u16 sSovaFallingFlameOam_Falling_Frame2[] = {
     2,
     0xee, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_8 | 0x29b,
     0xfe, 0x1fc, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sSovaFallingOam_Falling_Frame3[] = {
+static const u16 sSovaFallingFlameOam_Falling_Frame3[] = {
     3,
     0xee, OBJ_SIZE_16x16 | 0x1fb, OBJ_PALETTE_8 | 0x29d,
     0xe6, 0x1fb, OBJ_PALETTE_8 | 0x27d,
     0xfe, 0x1fc, OBJ_PALETTE_8 | 0x2bf
 };
 
-static const u16 sSovaFallingOam_Exploding_Frame0[] = {
+static const u16 sSovaFallingFlameOam_Exploding_Frame0[] = {
     1,
     0xf2, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x216
 };
 
-static const u16 sSovaFallingOam_Exploding_Frame1[] = {
+static const u16 sSovaFallingFlameOam_Exploding_Frame1[] = {
     7,
     0xec, 0x1f6, OBJ_PALETTE_8 | 0x292,
     0xee, 0x1ff, OBJ_PALETTE_8 | 0x257,
@@ -266,7 +266,7 @@ static const u16 sSovaFallingOam_Exploding_Frame1[] = {
     0xfd, 0x1, OBJ_PALETTE_8 | 0x275
 };
 
-static const u16 sSovaFallingOam_Exploding_Frame2[] = {
+static const u16 sSovaFallingFlameOam_Exploding_Frame2[] = {
     8,
     OBJ_SHAPE_HORIZONTAL | 0xf5, OBJ_Y_FLIP | 0x1f5, OBJ_PALETTE_8 | 0x208,
     0xef, 0x1f4, OBJ_PALETTE_8 | 0x292,
@@ -278,7 +278,7 @@ static const u16 sSovaFallingOam_Exploding_Frame2[] = {
     OBJ_SHAPE_VERTICAL | 0xe5, 0x1f9, OBJ_PALETTE_8 | 0x256
 };
 
-static const u16 sSovaFallingOam_Exploding_Frame3[] = {
+static const u16 sSovaFallingFlameOam_Exploding_Frame3[] = {
     10,
     0xed, 0x1f2, OBJ_PALETTE_8 | 0x2a9,
     0xea, 0x1f1, OBJ_PALETTE_8 | 0x295,
@@ -292,7 +292,7 @@ static const u16 sSovaFallingOam_Exploding_Frame3[] = {
     0xdf, 0x1fb, OBJ_PALETTE_8 | 0x215
 };
 
-static const u16 sSovaFallingOam_Exploding_Frame4[] = {
+static const u16 sSovaFallingFlameOam_Exploding_Frame4[] = {
     7,
     0xdf, OBJ_X_FLIP | 0x1, OBJ_PALETTE_8 | 0x259,
     0xec, 0x1f7, OBJ_PALETTE_8 | 0x295,
@@ -464,45 +464,45 @@ const struct FrameData sSovaGroundFlameOam_Disappearing[9] = {
     [8] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sSovaFallingOam_Falling[5] = {
+const struct FrameData sSovaFallingFlameOam_Falling[5] = {
     [0] = {
-        .pFrame = sSovaFallingOam_Falling_Frame0,
+        .pFrame = sSovaFallingFlameOam_Falling_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sSovaFallingOam_Falling_Frame1,
+        .pFrame = sSovaFallingFlameOam_Falling_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sSovaFallingOam_Falling_Frame2,
+        .pFrame = sSovaFallingFlameOam_Falling_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sSovaFallingOam_Falling_Frame3,
+        .pFrame = sSovaFallingFlameOam_Falling_Frame3,
         .timer = 2
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sSovaFallingOam_Exploding[6] = {
+const struct FrameData sSovaFallingFlameOam_Exploding[6] = {
     [0] = {
-        .pFrame = sSovaFallingOam_Exploding_Frame0,
+        .pFrame = sSovaFallingFlameOam_Exploding_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sSovaFallingOam_Exploding_Frame1,
+        .pFrame = sSovaFallingFlameOam_Exploding_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sSovaFallingOam_Exploding_Frame2,
+        .pFrame = sSovaFallingFlameOam_Exploding_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sSovaFallingOam_Exploding_Frame3,
+        .pFrame = sSovaFallingFlameOam_Exploding_Frame3,
         .timer = 3
     },
     [4] = {
-        .pFrame = sSovaFallingOam_Exploding_Frame4,
+        .pFrame = sSovaFallingFlameOam_Exploding_Frame4,
         .timer = 4
     },
     [5] = FRAME_DATA_TERMINATOR

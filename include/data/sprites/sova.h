@@ -16,7 +16,7 @@ extern const struct FrameData sSovaOam_CrawlingOnSlope[5];
 extern const struct FrameData sSovaGroundFlameOam_Big[5];
 extern const struct FrameData sSovaGroundFlameOam_Small[5];
 extern const struct FrameData sSovaGroundFlameOam_Disappearing[9];
-extern const struct FrameData sSovaFallingOam_Falling[5];
-extern const struct FrameData sSovaFallingOam_Exploding[6];
+extern const struct FrameData sSovaFallingFlameOam_Falling[5];
+extern const struct FrameData sSovaFallingFlameOam_Exploding[6];
 
 #endif /* SOVA_DATA_H */

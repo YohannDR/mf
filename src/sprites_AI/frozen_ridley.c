@@ -42,17 +42,17 @@ void FrozenRidleyInit(void) {
     state = EventCheckOn_PowerOutage();
     if (state == POWER_OUTAGE_DURING) {
         gCurrentSprite.health = 1;
-        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_3a123c;
+        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_Idle;
         gCurrentSprite.pose = 1;
         gCurrentSprite.samusCollision = SSC_SOLID;
         FrozenRidleySetCollision(CAA_MAKE_SOLID);
     } else if (state == POWER_OUTAGE_AFTER) {
-        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_3a12f4;
+        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_Crumbled;
         gCurrentSprite.pose = 8;
         gCurrentSprite.samusCollision = SSC_NONE;
     } else {
         gCurrentSprite.health = 1;
-        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_3a123c;
+        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_Idle;
         gCurrentSprite.pose = 8;
         gCurrentSprite.samusCollision = SSC_SOLID;
         FrozenRidleySetCollision(CAA_MAKE_SOLID);
@@ -62,7 +62,7 @@ void FrozenRidleyInit(void) {
 void FrozenRidleyWaitForSamus(void) {
     if (SpriteUtilCheckSamusNearSpriteLeftRight(0x140, 0x140) == NSLR_LEFT) {
         gCurrentSprite.pose = 2;
-        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_3a124c;
+        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_OpeningEye;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.work1 = 160;
@@ -73,7 +73,7 @@ void FrozenRidleyWaitForSamus(void) {
 void FrozenRidleySpawningX(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.pose = 0x18;
-        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_3a1284;
+        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_ClosingEye;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         SpriteSpawnSecondary(SSPRITE_FROZEN_RIDLEY_X, 0, 0, gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition - 0xa0, gCurrentSprite.xPosition - 0x20, 0);
@@ -83,7 +83,7 @@ void FrozenRidleySpawningX(void) {
 void FrozenRidleyClosingEye(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.pose = 0x1a;
-        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_3a123c;
+        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.work1 = 60;
@@ -93,7 +93,7 @@ void FrozenRidleyClosingEye(void) {
 void FrozenRidleyXSpawning(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.pose = 0x1c;
-        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_3a12a4;
+        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_Crumbling;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_NONE;
@@ -105,7 +105,7 @@ void FrozenRidleyXSpawning(void) {
 void FrozenRidleyCrumbling(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
         gCurrentSprite.pose = 8;
-        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_3a12f4;
+        gCurrentSprite.pOam = sFrozenRidleyCorpseOam_Crumbled;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         FrozenRidleySetCollision(CAA_REMOVE_SOLID);
@@ -140,7 +140,7 @@ void FrozenRidleyXRidleySpawning(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.pose = 0x18;
         gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
-        gCurrentSprite.work2 = 0x1e;
+        gCurrentSprite.work2 = 30;
         gCurrentSprite.work3 = 0;
         gCurrentSprite.work4 = 0;
     }

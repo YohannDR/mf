@@ -747,8 +747,8 @@ u8 XParasiteFlyingMovement(void) {
             targetX = gSpriteData[i].xPosition;
 
             // Calculate and store taxicab distance from X parasite to other sprite
-            SET_ABS_SUB(distY, y, targetY)
-            SET_ABS_SUB(distX, x, targetX)
+            SET_ABS_SUB(distY, y, targetY);
+            SET_ABS_SUB(distX, x, targetX);
             gUnk_030007c0[i] = distY + distX;
             stage = X_PARASITE_FLYING_STAGE_FLYING_TO_SPRITE;
             if (gCurrentSprite.pose == X_PARASITE_POSE_FLYING)
@@ -1061,7 +1061,7 @@ void XParasiteStickToSamus(void) {
 
     currentPosition = gCurrentSprite.xPosition + 0x200;
     targetPosition = gSamusData.xPosition + 0x200;
-    SET_ABS_SUB(distance, currentPosition, targetPosition)
+    SET_ABS_SUB(distance, currentPosition, targetPosition);
     if (distance <= EIGHTH_BLOCK_SIZE)
         movement = 0;
     else
@@ -1076,7 +1076,7 @@ void XParasiteStickToSamus(void) {
         targetPosition = gSamusData.yPosition + 0x200 - PIXEL_TO_SUB_PIXEL(0xc);
     else
         targetPosition = gSamusData.yPosition + 0x200 - PIXEL_TO_SUB_PIXEL(19.5f);
-    SET_ABS_SUB(distance, currentPosition, targetPosition)
+    SET_ABS_SUB(distance, currentPosition, targetPosition);
     if (distance <= EIGHTH_BLOCK_SIZE)
         movement = 0;
     else

@@ -27,7 +27,7 @@ void ZombieCheckSamusInRange(void) {
             return;
         }
         gCurrentSprite.pose = ZOMBIE_POSE_LUNGING_INIT;
-        gCurrentSprite.pOam = sFrameData_2fb4c0;
+        gCurrentSprite.pOam = sZombieOam_2fb4c0;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.hitboxTop = -0x40;
@@ -54,25 +54,24 @@ void ZombieSetStandingHitbox(void) {
 }
 
 void ZombieDyingInit(void) {
-    gCurrentSprite.pOam = sFrameData_2fb420;
+    gCurrentSprite.pOam = sZombieOam_Dying;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.hitboxTop = -0x20;
-    gCurrentSprite.work1 = 0xb4;
+    gCurrentSprite.work1 = 180;
     gCurrentSprite.pose = SPRITE_POSE_DYING;
     return;
 }
 
 void ZombieDying(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
-    if (gCurrentSprite.work1 == 0x8c) {
-        SpriteSpawnNewXParasite(0x38, gCurrentSprite.spriteId, 0, gCurrentSprite.primarySpriteRamSlot,
-            gCurrentSprite.spritesetSlotAndProperties, gCurrentSprite.yPosition - 0x20,
-            gCurrentSprite.xPosition, 0);
+    if (gCurrentSprite.work1 == 140) {
+        SpriteSpawnNewXParasite(PSPRITE_X_PARASITE, gCurrentSprite.spriteId, 0, gCurrentSprite.primarySpriteRamSlot,
+            gCurrentSprite.spritesetSlotAndProperties, gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition, 0);
     }
     if (--gCurrentSprite.work1 == 0) {
-        gCurrentSprite.pOam = sFrameData_2fb5d0;
+        gCurrentSprite.pOam = sZombieOam_TurningIntoBlob;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
@@ -84,20 +83,20 @@ void ZombieDying(void) {
 
 void ZombieInit(void) {
     if (gCurrentSprite.pose == 0) {
-        if ((u8)(gCurrentSprite.spritesetSlotAndProperties - 0x20) < 0x30) {
-            gCurrentSprite.pOam = sFrameData_2fb300;
+        if (SPRITE_IS_INFECTED(gCurrentSprite)) {
+            gCurrentSprite.pOam = sZombieOam_Idle;
             gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
             gCurrentSprite.pose = ZOMBIE_POSE_IDLE;
             ZombieSetStandingHitbox();
             gCurrentSprite.work1 = 0;
         } else {
-            gCurrentSprite.pOam = sFrameData_2fb528;
+            gCurrentSprite.pOam = sZombieOam_Blob;
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
             ZombieSetWaitingToForm();
         }
         SpriteUtilChooseRandomXFlip();
     } else {
-        gCurrentSprite.pOam = sFrameData_2fb258;
+        gCurrentSprite.pOam = sZombieOam_FormingFromBlob;
         gCurrentSprite.samusCollision = SSC_NONE;
         gCurrentSprite.pose = ZOMBIE_POSE_FORMING;
         gCurrentSprite.hitboxTop = -0x20;
@@ -116,9 +115,9 @@ void ZombieInit(void) {
 }
 
 void ZombieWaitingToForm(void) {
-    if (gCurrentSprite.pOam == sFrameData_2fb5d0) {
+    if (gCurrentSprite.pOam == sZombieOam_TurningIntoBlob) {
         if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-            gCurrentSprite.pOam = sFrameData_2fb528;
+            gCurrentSprite.pOam = sZombieOam_Blob;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
@@ -178,7 +177,7 @@ void ZombieForming(void) {
 }
 
 void ZombieIdleInit(void) {
-    gCurrentSprite.pOam = sFrameData_2fb300;
+    gCurrentSprite.pOam = sZombieOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = ZOMBIE_POSE_IDLE;
@@ -198,7 +197,7 @@ void ZombieIdle(void) {
 }
 
 void ZombieMovingInit(void) {
-    gCurrentSprite.pOam = sFrameData_2fb328;
+    gCurrentSprite.pOam = sZombieOam_Moving;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = ZOMBIE_POSE_MOVING;
@@ -250,7 +249,7 @@ void ZombieMoving(void) {
 }
 
 void ZombieTurningInit(void) {
-    gCurrentSprite.pOam = sFrameData_2fb410;
+    gCurrentSprite.pOam = sZombieOam_Turning;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = ZOMBIE_POSE_TURNING;
@@ -273,7 +272,7 @@ void ZombieTurningEnd(void) {
 
 void ZombieLungingInit(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-        gCurrentSprite.pOam = sFrameData_2fb460;
+        gCurrentSprite.pOam = sZombieOam_Lunging;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = ZOMBIE_POSE_LUNGING;
@@ -321,7 +320,7 @@ void ZombieLunging(void) {
         }
     }
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-        gCurrentSprite.pOam = sFrameData_2fb488;
+        gCurrentSprite.pOam = sZombieOam_EndLunging;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = ZOMBIE_POSE_CHECK_LUNGING_ANIM_ENDED;
@@ -338,7 +337,7 @@ void ZombieFallingInit(void) {
     gCurrentSprite.pose = SPRITE_POSE_FALLING;
     gCurrentSprite.work4 = 0;
     if (!(gCurrentSprite.properties & SP_CAN_ABSORB_X)) {
-        gCurrentSprite.pOam = sFrameData_2fb300;
+        gCurrentSprite.pOam = sZombieOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         ZombieSetStandingHitbox();
