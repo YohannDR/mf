@@ -8703,8 +8703,8 @@ _08008F9A:
 	pop {r1}
 	bx r1
 
-	thumb_func_start SetSamusPose
-SetSamusPose: @ 0x08008FA0
+	thumb_func_start SamusSetPose
+SamusSetPose: @ 0x08008FA0
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
@@ -11159,7 +11159,7 @@ _0800A4AC:
 	cmp r1, #0xff
 	beq _0800A4BE
 	mov r0, sb
-	bl SetSamusPose
+	bl SamusSetPose
 _0800A4BE:
 	mov r2, sb
 	cmp r2, #0xfe

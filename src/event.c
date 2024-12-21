@@ -143,10 +143,10 @@ void EventSet(u8 event)
     }
 }
 
-u8 EventCheckPlayCutsceneDuringTransition(u8 dstRoom)
+/*u8 EventCheckPlayCutsceneDuringTransition(u8 dstRoom)
 {
 
-}
+}*/
 
 /**
  * @brief 74cf4 | 60 | Checks to update the event/sub event after a cutscene

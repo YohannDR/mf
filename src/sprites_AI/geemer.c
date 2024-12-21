@@ -6,9 +6,9 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/particle.h"
-#include "constants/sprite.h"
 #include "constants/samus.h"
 
 #include "structs/sprite.h"
@@ -65,9 +65,9 @@ void GeemerSetHitbox(void) {
 
 void GeemerSetCrawlingGFX(void) {
     if (gCurrentSprite.work0) {
-        gCurrentSprite.pOam = sGeemerOam_2fcf90;
+        gCurrentSprite.pOam = sGeemerOam_CrawlingVertical;
     } else {
-        gCurrentSprite.pOam = sGeemerOam_2fce00;
+        gCurrentSprite.pOam = sGeemerOam_CrawlingHorizontal;
     }
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -75,9 +75,9 @@ void GeemerSetCrawlingGFX(void) {
 
 void GeemerSetIdleGFX(void) {
     if (gCurrentSprite.work0) {
-        gCurrentSprite.pOam = sGeemerOam_2fcf28;
+        gCurrentSprite.pOam = sGeemerOam_IdleVertical;
     } else {
-        gCurrentSprite.pOam = sGeemerOam_2fcd98;
+        gCurrentSprite.pOam = sGeemerOam_IdleHorizontal;
     }
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -92,18 +92,18 @@ void GeemerCheckShouldHide(void) {
             if (SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_TO_SUB_PIXEL(5), BLOCK_TO_SUB_PIXEL(5)) != NSLR_OUT_OF_RANGE) {
                 gCurrentSprite.pose = 0x42;
                 if (gCurrentSprite.work0) {
-                    gCurrentSprite.pOam = sGeemerOam_2fd058;
+                    gCurrentSprite.pOam = sGeemerOam_HidingVertical;
                     gCurrentSprite.hitboxTop = PIXEL_TO_SUB_PIXEL(-10);
                     gCurrentSprite.hitboxBottom = PIXEL_TO_SUB_PIXEL(10);
                 } else {
-                    gCurrentSprite.pOam = sGeemerOam_2fcec8;
+                    gCurrentSprite.pOam = sGeemerOam_HidingHorizontal;
                     gCurrentSprite.hitboxLeft = PIXEL_TO_SUB_PIXEL(-10);
                     gCurrentSprite.hitboxRight = PIXEL_TO_SUB_PIXEL(10);
                 }
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.work1 = 10;
-                SoundPlayNotAlreadyPlaying(0x165);
+                SoundPlayNotAlreadyPlaying(SOUND_GEEMER_HIDE);
             }
         }
     }
@@ -123,18 +123,18 @@ void GeemerHiding(void) {
         if (gChangedInput != KEY_NONE) {
             gCurrentSprite.work1 = 0;
         } else {
-            gCurrentSprite.work1 += 1;
+            gCurrentSprite.work1++;
         }
         if (gCurrentSprite.work1 > 120) {
             gCurrentSprite.pose = 0x46;
             if (gCurrentSprite.work0) {
-                gCurrentSprite.pOam = sGeemerOam_2fd098;
+                gCurrentSprite.pOam = sGeemerOam_UncoveringVertical;
             } else {
-                gCurrentSprite.pOam = sGeemerOam_2fcf08;
+                gCurrentSprite.pOam = sGeemerOam_UncoveringHorizontal;
             }
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
-            SoundPlayNotAlreadyPlaying(0x166);
+            SoundPlayNotAlreadyPlaying(SOUND_GEEMER_UNCOVER);
         }
     }
 }
@@ -176,7 +176,7 @@ void GeemerInit(void) {
             gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
             gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
         } else {
-            gCurrentSprite.pose = 2;
+            gCurrentSprite.pose = SPRITE_POSE_IDLE;
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
             if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
                 // on floor
@@ -246,7 +246,7 @@ void GeemerInit(void) {
 
 void GeemerCrawlingInit(void) {
     GeemerSetCrawlingGFX();
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = SPRITE_POSE_IDLE;
 }
 
 void GeemerCrawling(void) {
@@ -255,7 +255,7 @@ void GeemerCrawling(void) {
     turnAround = FALSE;
     GeemerCheckCollisions();
     if (gPreviousCollisionCheck == 0) {
-        gCurrentSprite.pose = 0x15;
+        gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
     } else {
         if (gCurrentSprite.work0) {
             if (gCurrentSprite.status & SS_X_FLIP) {
@@ -390,7 +390,7 @@ void GeemerIdleInit(void) {
 void GeemerIdle(void) {
     GeemerCheckCollisions();
     if (gPreviousCollisionCheck == 0) {
-        gCurrentSprite.pose = 0x15;
+        gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
     } else {
         if (SpriteUtilCheckNearEndCurrentSpriteAnim()) {
             gCurrentSprite.pose = 1;
@@ -400,7 +400,7 @@ void GeemerIdle(void) {
 }
 
 void GeemerFallingInit(void) {
-    gCurrentSprite.pose = 0x16;
+    gCurrentSprite.pose = SPRITE_POSE_FALLING;
     gCurrentSprite.work4 = 0;
     GeemerSetHitbox();
     GeemerSetIdleGFX();
@@ -447,7 +447,7 @@ void GeemerFalling(void) {
         }
         if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
         {
-            gCurrentSprite.pose = 2;
+            gCurrentSprite.pose = SPRITE_POSE_IDLE;
             GeemerSetCrawlingGFX();
         }
         else
@@ -478,7 +478,7 @@ void GeemerFalling(void) {
 
 void Geemer(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4) {
-        SoundPlayNotAlreadyPlaying(0x164);
+        SoundPlayNotAlreadyPlaying(SOUND_GEEMER_HURT);
     }
     if (gCurrentSprite.freezeTimer != 0) {
         SpriteUtilUpdateFreezeTimer();
@@ -486,12 +486,12 @@ void Geemer(void) {
         return;
     }
     switch(gCurrentSprite.pose) {
-        case 0:
+        case SPRITE_POSE_UNINITIALIZED:
             GeemerInit();
             break;
-        case 1:
+        case SPRITE_POSE_IDLE_INIT:
             GeemerCrawlingInit();
-        case 2:
+        case SPRITE_POSE_IDLE:
             GeemerCrawling();
             break;
         case 7:
@@ -499,9 +499,9 @@ void Geemer(void) {
         case 8:
             GeemerIdle();
             break;
-        case 0x15:
+        case SPRITE_POSE_FALLING_INIT:
             GeemerFallingInit();
-        case 0x16:
+        case SPRITE_POSE_FALLING:
             GeemerFalling();
             break;
         case 0x42:
@@ -513,18 +513,18 @@ void Geemer(void) {
         case 0x46:
             GeemerUncovering();
             break;
-        case 0x57:
+        case SPRITE_POSE_DYING_INIT:
             SpriteUtilUnfreezeSecondarySprites(SSPRITE_GEEMER_FLASHING_LIGHT, gCurrentSprite.primarySpriteRamSlot);
             SpriteDyingInit();
-        case 0x58:
+        case SPRITE_POSE_DYING:
             SpriteDying();
             break;
-        case 0x59:
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
             GeemerInit();
-        case 0x5a:
+        case SPRITE_POSE_SPAWNING_FROM_X:
             SpriteSpawningFromX();
             break;
-        case 0x5b:
+        case SPRITE_POSE_TURNING_INTO_X:
             GeemerTurningIntoX();
             XParasiteInit();
     }
@@ -546,7 +546,7 @@ void GeemerFlashingLight(void) {
         gCurrentSprite.drawDistanceTop = 3;
         gCurrentSprite.drawDistanceBottom = 3;
         gCurrentSprite.drawDistanceHorizontal = 3;
-        gCurrentSprite.pOam = sGeemerOam_2fcd78;
+        gCurrentSprite.pOam = sGeemerFlashingLightOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_NONE;
@@ -581,8 +581,8 @@ void GeemerFlashingLight(void) {
         gCurrentSprite.status |= SS_HIDDEN;
     } else {
         gCurrentSprite.status &= ~SS_HIDDEN;
-        if (gCurrentSprite.health == 0 && gSpriteData[geemerSlot].pose < 0x57) {
-            gSpriteData[geemerSlot].pose = 0x57;
+        if (gCurrentSprite.health == 0 && gSpriteData[geemerSlot].pose < SPRITE_POSE_DYING_INIT) {
+            gSpriteData[geemerSlot].pose = SPRITE_POSE_DYING_INIT;
             gSpriteData[geemerSlot].ignoreSamusCollisionTimer = 1;
             gSpriteData[geemerSlot].health = 0;
             gSpriteData[geemerSlot].properties |= SP_DESTROYED;
@@ -597,8 +597,8 @@ void GeemerFlashingLight(void) {
                 default:
                     gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
                     break;
-                case 0x57:
-                case 0x58:
+                case SPRITE_POSE_DYING_INIT:
+                case SPRITE_POSE_DYING:
                     gCurrentSprite.status = 0;
             }
         }

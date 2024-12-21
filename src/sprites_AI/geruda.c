@@ -5,6 +5,7 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/samus.h"
 
@@ -83,13 +84,13 @@ void GerudaUpdateLungingAnimation(void) {
         } else {
             // Play swiping sound on a specific frame
             if (gCurrentSprite.currentAnimationFrame == 0 && gCurrentSprite.animationDurationCounter == 4)
-                SoundPlayNotAlreadyPlaying(0x18c);
+                SoundPlayNotAlreadyPlaying(SOUND_GERUDA_SWIPING);
         }
     } else if (gCurrentSprite.pOam == sGerudaOam_Swiping) {
         // Samus is not near
         // Play swiping sound on a specific frame
         if (gCurrentSprite.currentAnimationFrame == 0 && gCurrentSprite.animationDurationCounter == 4)
-            SoundPlayNotAlreadyPlaying(0x18c);
+            SoundPlayNotAlreadyPlaying(SOUND_GERUDA_SWIPING);
         // Wait for swiping animation to end and set lunging animation
         if (SpriteUtilCheckEndCurrentSpriteAnim()) {
             gCurrentSprite.pOam = sGerudaOam_Lunging;
@@ -307,7 +308,7 @@ void GerudaAttacking(void) {
 
 void Geruda(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(0x18d);
+        SoundPlayNotAlreadyPlaying(SOUND_GERUDA_HURT);
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();
         return;
