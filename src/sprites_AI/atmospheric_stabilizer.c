@@ -529,8 +529,7 @@ void AtmosphericStabilizerCoverExploding(void) {
         else
             return;
         if (count > 0) {
-            count = messageType;
-            TrySpawnMessageBanner(count);
+            TrySpawnMessageBanner(messageType);
             gPreventMovementTimer = 1000;
         }
     }
