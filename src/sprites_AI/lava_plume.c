@@ -31,13 +31,13 @@ void LavaPlumeInit(void) {
     gCurrentSprite.pose = 0x1a;
     gCurrentSprite.status |= SS_IGNORE_PROJECTILES | SS_NOT_DRAWN;
     gCurrentSprite.work2 = 120 + gSpriteRandomNumber * 4;
-    gCurrentSprite.pOam = sLavaPlumeOam_33feb8;
+    gCurrentSprite.pOam = sLavaPlumeOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
 
 void LavaPlumeGoUpInit(void) {
-    gCurrentSprite.pOam = sLavaPlumeOam_33fe38;
+    gCurrentSprite.pOam = sLavaPlumeOam_GoingUp;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 30;
@@ -53,7 +53,7 @@ void LavaPlumeGoUp(void) {
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.status &= ~(SS_IGNORE_PROJECTILES | SS_NOT_DRAWN);
             if (gCurrentSprite.status & SS_ON_SCREEN)
-                SoundPlay(SOUND_184);
+                SoundPlay(SOUND_LAVA_PLUME_GOING_UP);
         }
     } else {
         if (gCurrentSprite.xParasiteTimer - 0x40 > gCurrentSprite.yPosition) {
@@ -70,17 +70,17 @@ void LavaPlumeGoUp(void) {
 }
 
 void LavaPlumeStopFromSamusContact(void) {
-    SoundStop(SOUND_184);
+    SoundStop(SOUND_LAVA_PLUME_GOING_UP);
 }
 
 void LavaPlumeStopInit(void) {
-    gCurrentSprite.pOam = sLavaPlumeOam_33fec8;
+    gCurrentSprite.pOam = sLavaPlumeOam_Stopping;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x18;
     gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
     if (gCurrentSprite.status & SS_ON_SCREEN)
-        SoundPlay(SOUND_185);
+        SoundPlay(SOUND_LAVA_PLUME_STOPPING);
 }
 
 void LavaPlumeStop(void) {
@@ -89,7 +89,7 @@ void LavaPlumeStop(void) {
         gCurrentSprite.pose = 0x1a;
         gCurrentSprite.status |= SS_NOT_DRAWN;
         gCurrentSprite.work2 = 120 + gSpriteRandomNumber * 4;
-        gCurrentSprite.pOam = sLavaPlumeOam_33feb8;
+        gCurrentSprite.pOam = sLavaPlumeOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     }
@@ -116,7 +116,7 @@ void LavaPlumeWarningInit(void) {
     gCurrentSprite.hitboxLeft = -4;
     gCurrentSprite.hitboxRight = 4;
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
-    gCurrentSprite.pOam = sLavaPlumeOam_33fde0;
+    gCurrentSprite.pOam = sLavaPlumeWarningOam_Idle0;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -126,14 +126,14 @@ void LavaPlumeWarningIdle(void) {
         gCurrentSprite.status = 0;
     } else if (MOD_AND(gFrameCounter8Bit, 16) == 0) {
         if (gSpriteRandomNumber >= 8) {
-            if (gCurrentSprite.pOam != sLavaPlumeOam_33fe08) {
-                gCurrentSprite.pOam = sLavaPlumeOam_33fe08;
+            if (gCurrentSprite.pOam != sLavaPlumeWarningOam_Idle1) {
+                gCurrentSprite.pOam = sLavaPlumeWarningOam_Idle1;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
             }
         } else {
-            if (gCurrentSprite.pOam != sLavaPlumeOam_33fde0) {
-                gCurrentSprite.pOam = sLavaPlumeOam_33fde0;
+            if (gCurrentSprite.pOam != sLavaPlumeWarningOam_Idle0) {
+                gCurrentSprite.pOam = sLavaPlumeWarningOam_Idle0;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
             }

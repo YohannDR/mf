@@ -303,7 +303,6 @@ void AtmosphericStabilizerCoverIdle(void) {
 }
 
 void AtmosphericStabilizerCoverExploding(void) {
-    // https://decomp.me/scratch/kUtO7
     u16 y = gCurrentSprite.yPosition, x = gCurrentSprite.xPosition;
 
     gCurrentSprite.status ^= SS_NOT_DRAWN;
@@ -504,15 +503,19 @@ void AtmosphericStabilizerCoverExploding(void) {
     } else
         gCurrentSprite.status = 0;
     if (gCurrentSprite.work1 == 25) {
-        register u32 count asm("r0"); // FIXME fakematch
-        u32 messageType;
-        u16 stabilizersOnline;
-        stabilizersOnline = gAtmosphericStabilizersOnline;
-        count = stabilizersOnline & 1;
-        if (stabilizersOnline & 2) count++;
-        if (stabilizersOnline & 4) count++, count <<= 0x18, count >>= 0x18;
-        if (stabilizersOnline & 8) count++, count <<= 0x18, count >>= 0x18;
-        if (stabilizersOnline & 0x10) count++, count <<= 0x18, count >>= 0x18;
+        u8 messageType;
+        u16 stabilizersOnline = gAtmosphericStabilizersOnline;
+        u8 count = 0;
+        u8 check = 1 << 0;
+        if (stabilizersOnline & check) count++;
+        check = 1 << 1;
+        if (stabilizersOnline & check) count++;
+        check = 1 << 2;
+        if (stabilizersOnline & check) count++;
+        check = 1 << 3;
+        if (stabilizersOnline & check) count++;
+        check = 1 << 4;
+        if (stabilizersOnline & check) count++;
         if (count == 1)
             messageType = 1;
         else if (count == 2)
@@ -526,7 +529,8 @@ void AtmosphericStabilizerCoverExploding(void) {
         else
             return;
         if (count > 0) {
-            TrySpawnMessageBanner(messageType);
+            count = messageType;
+            TrySpawnMessageBanner(count);
             gPreventMovementTimer = 1000;
         }
     }
@@ -683,7 +687,7 @@ void AtmosphericStabilizerCover(void) {
 
 void AtmosphericStabilizerParasite(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(SOUND_160);
+        SoundPlayNotAlreadyPlaying(SOUND_GERON_HURT);
     switch (gCurrentSprite.pose) {
         case SPRITE_POSE_UNINITIALIZED:
             AtmosphericStabilizerParasiteInit();

@@ -7,6 +7,7 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
@@ -116,7 +117,7 @@ void PowerBombBarrierIdleInit(void)
 void PowerBombBarrierIdle(void)
 {
     if (gCurrentSprite.currentAnimationFrame == 36 && gCurrentSprite.animationDurationCounter == 1)
-        SoundPlayNotAlreadyPlaying(0x1B0);
+        SoundPlayNotAlreadyPlaying(SOUND_POWER_BOMB_GERON_IDLE);
 }
 
 /**
@@ -147,7 +148,7 @@ void PowerBombBarrierDying(void)
 void PowerBombBarrier(void)
 {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(0x160);
+        SoundPlayNotAlreadyPlaying(SOUND_GERON_HURT);
 
     if (gCurrentSprite.freezeTimer != 0)
     {

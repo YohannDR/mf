@@ -5,7 +5,9 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
+#include "constants/particle.h"
 #include "constants/samus.h"
 
 #include "structs/sprite.h"
@@ -92,7 +94,7 @@ void WaverFlying(void) {
         gCurrentSprite.pose = WAVER_POSE_CHARGING;
         gCurrentSprite.work3 = 0;
         gCurrentSprite.work1 = 20;
-        SoundPlayNotAlreadyPlaying(0x1a6);
+        SoundPlayNotAlreadyPlaying(SOUND_WAVER_CHARGING);
         return;
     }
 
@@ -148,7 +150,7 @@ void WaverCharging(void) {
             SpriteSpawnSecondary(SSPRITE_WAVER_DEBRIS, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
                 gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0);
             if (gCurrentSprite.status & SS_ON_SCREEN)
-                SoundPlayNotAlreadyPlaying(0x1a7);
+                SoundPlayNotAlreadyPlaying(SOUND_WAVER_CRASHING);
             return;
         } else {
             gCurrentSprite.xPosition += movement;
@@ -160,7 +162,7 @@ void WaverCharging(void) {
             SpriteSpawnSecondary(SSPRITE_WAVER_DEBRIS, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
                 gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition, SS_X_FLIP);
             if (gCurrentSprite.status & SS_ON_SCREEN)
-                SoundPlayNotAlreadyPlaying(0x1a7);
+                SoundPlayNotAlreadyPlaying(SOUND_WAVER_CRASHING);
             return;
         } else {
             gCurrentSprite.xPosition -= movement;
@@ -169,7 +171,7 @@ void WaverCharging(void) {
     if (--gCurrentSprite.work1 == 0) {
         gCurrentSprite.work1 = 20;
         if (gCurrentSprite.status & SS_ON_SCREEN)
-            SoundPlayNotAlreadyPlaying(0x1a6);
+            SoundPlayNotAlreadyPlaying(SOUND_WAVER_CHARGING);
     }
 }
 
@@ -267,13 +269,13 @@ void WaverDebrisFalling(void) {
 }
 
 void WaverDebrisExploding(void) {
-    ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, 0x25);
+    ParticleSet(gCurrentSprite.yPosition, gCurrentSprite.xPosition, PE_0x25);
     gCurrentSprite.status = 0;
 }
 
 void Waver(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(0x1a8);
+        SoundPlayNotAlreadyPlaying(SOUND_WAVER_HURT);
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();
         return;

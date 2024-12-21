@@ -5,6 +5,7 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/samus.h"
 #include "gba/keys.h"
@@ -246,9 +247,9 @@ void ZebesianGroundIdle(void) {
     }
     if (gCurrentSprite.status & SS_ON_SCREEN) {
         if (gCurrentSprite.currentAnimationFrame == 2 && gCurrentSprite.animationDurationCounter == 1)
-            SoundPlay(0x1af);
+            SoundPlay(SOUND_ZEBESIAN_GROUND_FOOTSTEPS);
         else if (gCurrentSprite.currentAnimationFrame == 6 && gCurrentSprite.animationDurationCounter == 1)
-            SoundPlay(0x1af);
+            SoundPlay(SOUND_ZEBESIAN_GROUND_FOOTSTEPS);
     }
     if (!ZebesianGroundCheckInShootingRange()) {
         if (action == 1) {
@@ -311,7 +312,7 @@ void ZebesianGroundJumpWarning(void) {
         gCurrentSprite.work4 = 0;
         gCurrentSprite.hitboxTop = -0xa0;
         if (gCurrentSprite.status & SS_ON_SCREEN)
-            SoundPlayNotAlreadyPlaying(0x1ad);
+            SoundPlayNotAlreadyPlaying(SOUND_ZEBESIAN_GROUND_JUMP);
     }
 }
 
@@ -395,7 +396,7 @@ void ZebesianGroundLandingInit(void) {
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x1c;
     if (gCurrentSprite.status & SS_ON_SCREEN)
-        SoundPlayNotAlreadyPlaying(0x1ae);
+        SoundPlayNotAlreadyPlaying(SOUND_ZEBESIAN_GROUND_LANDING);
 }
 
 void ZebesianGroundLanding(void) {
@@ -563,7 +564,7 @@ void ZebesianGroundBeamInit(void) {
         gCurrentSprite.hitboxRight = -0x10;
     }
     if (gCurrentSprite.status & SS_ON_SCREEN)
-        SoundPlayNotAlreadyPlaying(0x15d);
+        SoundPlayNotAlreadyPlaying(SOUND_ZEBESIAN_BEAM);
 }
 
 void ZebesianGroundBeamSpawning(void) {
@@ -608,7 +609,7 @@ u8 ZebesianGroundCheckSkipMovement(void) {
 
 void ZebesianGround(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(0x15e);
+        SoundPlayNotAlreadyPlaying(SOUND_ZEBESIAN_HURT);
     gCurrentSprite.properties &= ~SP_IMMUNE_TO_PROJECTILES;
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();

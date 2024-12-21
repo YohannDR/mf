@@ -36,9 +36,9 @@ extern const struct FrameData sHornoadOam_Landing[3];
 extern const struct FrameData sHornoadOam_Spitting[7];
 
 extern const struct FrameData sHornoadSpitOam_Idle[3];
-extern const struct FrameData sHornoadSpitOam_2eb784[4];
-extern const struct FrameData sHornoadSpitOam_2eb7a4[4];
-extern const struct FrameData sHornoadSpitOam_Exploding[4];
+extern const struct FrameData sHornoadSpitOam_ExplodingOnGroundOrCeiling[4];
+extern const struct FrameData sHornoadSpitOam_ExplodingOnWall[4];
+extern const struct FrameData sHornoadSpitOam_ExplodingMidair[4];
 
 extern const struct FrameData sHornoadSpawnerOam_2eb7e4[2];
 extern const struct FrameData sHornoadSpawnerOam_Spawning[4];

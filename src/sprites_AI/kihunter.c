@@ -14,11 +14,13 @@
 #include "structs/sprite.h"
 #include "structs/samus.h"
 
-enum KihunterGroundDetection {
+enum KihunterGroundRange {
     KIHUNTER_GROUND_OUT_OF_RANGE,
     KIHUNTER_GROUND_SAMUS_IN_FRONT,
     KIHUNTER_GROUND_SAMUS_BEHIND
 };
+
+#define KIHUNTER_LOSE_WINGS_HEALTH_THRESHOLD 6 // Lose wings if less than or equal to this threshold
 
 u8 KihunterGroundCheckInSpittingrange(void) {
     u8 inRange = FALSE;
@@ -107,7 +109,7 @@ void KihunterGroundInit(void) {
     gCurrentSprite.hitboxBottom = 0;
     gCurrentSprite.hitboxLeft = -0x28;
     gCurrentSprite.hitboxRight = 0x28;
-    gCurrentSprite.pOam = sKihunterOam_33e5b4;
+    gCurrentSprite.pOam = sKihunterGroundOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     if (gCurrentSprite.health == 0)
@@ -128,10 +130,10 @@ void KihunterGroundJumpWarningInit(void) {
     gCurrentSprite.work2++;
     if (gSpriteRandomNumber & 1) {
         gCurrentSprite.work3 = FALSE;
-        gCurrentSprite.pOam = sKihunterOam_33e554;
+        gCurrentSprite.pOam = sKihunterGroundOam_StartLowJump;
     } else {
         gCurrentSprite.work3 = TRUE;
-        gCurrentSprite.pOam = sKihunterOam_33e57c;
+        gCurrentSprite.pOam = sKihunterGroundOam_StartHighJump;
     }
 }
 
@@ -142,26 +144,26 @@ void KihhunterGroundJumpInit(void) {
     gCurrentSprite.work4 = 0;
     if (gCurrentSprite.work3) {
         gCurrentSprite.yPosition -= 0x30;
-        gCurrentSprite.pOam = sKihunterOam_33e70c;
+        gCurrentSprite.pOam = sKihunterGroundOam_JumpingHighOrFalling;
     } else {
         gCurrentSprite.yPosition -= 0x20;
-        gCurrentSprite.pOam = sKihunterOam_33e6fc;
+        gCurrentSprite.pOam = sKihunterGroundOam_JumpingLow;
     }
-    SoundPlayNotAlreadyPlaying(SOUND_175);
+    SoundPlayNotAlreadyPlaying(SOUND_KIHUNTER_JUMPING);
 }
 
 void KihunterGroundLandingInit(void) {
     gCurrentSprite.pose = 0x1a;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sKihunterOam_33e5a4;
+    gCurrentSprite.pOam = sKihunterGroundOam_Landing;
 }
 
 void KihunterIdleInit(void) {
     gCurrentSprite.pose = 8;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sKihunterOam_33e5b4;
+    gCurrentSprite.pOam = sKihunterGroundOam_Idle;
 }
 
 void KihunterFallingInit(void) {
@@ -169,7 +171,7 @@ void KihunterFallingInit(void) {
     gCurrentSprite.work4 = 0;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sKihunterOam_33e70c;
+    gCurrentSprite.pOam = sKihunterGroundOam_JumpingHighOrFalling;
 }
 
 void KihunterGroundTurningAroundInit(void) {
@@ -177,12 +179,12 @@ void KihunterGroundTurningAroundInit(void) {
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work2 = 0;
-    gCurrentSprite.pOam = sKihunterOam_33e5ec;
+    gCurrentSprite.pOam = sKihunterFlyingOam_TurningAround1;
 }
 
 void KihunterGroundSpittingInit(void) {
     gCurrentSprite.pose = 0x2a;
-    gCurrentSprite.pOam = sKihunterOam_33e684;
+    gCurrentSprite.pOam = sKihunterGroundOam_Barfing;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     if (gSpriteRandomNumber & 1)
@@ -395,7 +397,7 @@ void KihunterGroundTurningAround(void) {
         gCurrentSprite.pose = 5;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.pOam = sKihunterOam_33e604;
+        gCurrentSprite.pOam = sKihunterFlyingOam_TurningAround2;
     }
 }
 
@@ -423,7 +425,7 @@ void KihunterGroundSpitting(void) {
         else
             SpriteSpawnSecondary(SSPRITE_KIHUNTER_SPIT, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
                 gCurrentSprite.yPosition - 0x58, gCurrentSprite.xPosition - 0x60, 0);
-        SoundPlayNotAlreadyPlaying(SOUND_178);
+        SoundPlayNotAlreadyPlaying(SOUND_KIHUNTER_BARFING);
     }
     if (SpriteUtilCheckEndCurrentSpriteAnim())
         if (--gCurrentSprite.work3 == 0)
@@ -458,7 +460,7 @@ void KihunterFlyingInit(void) {
     gCurrentSprite.hitboxBottom = 0;
     gCurrentSprite.hitboxLeft = -0x28;
     gCurrentSprite.hitboxRight = 0x28;
-    gCurrentSprite.pOam = sKihunterOam_33e454;
+    gCurrentSprite.pOam = sKihunterFlyingOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 0;
@@ -483,7 +485,7 @@ void KihunterFlyingIdleInit(void) {
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sKihunterOam_33e454;
+    gCurrentSprite.pOam = sKihunterFlyingOam_Idle;
     gCurrentSprite.work1 = 0;
     gCurrentSprite.work4 = 0;
 }
@@ -492,7 +494,7 @@ void KihunterFlyingTurningAroundInit(void) {
     gCurrentSprite.pose = 4;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pOam = sKihunterOam_33e5ec;
+    gCurrentSprite.pOam = sKihunterFlyingOam_TurningAround1;
 }
 
 void KihunterFlyingIdle(void) {
@@ -551,7 +553,7 @@ void KihunterTurningAround(void) {
         gCurrentSprite.pose = 5;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.pOam = sKihunterOam_33e604;
+        gCurrentSprite.pOam = sKihunterFlyingOam_TurningAround2;
     }
 }
 
@@ -561,21 +563,21 @@ void KihunterFlyingTurningAroundSecondPart(void) {
 }
 
 void KihunterFlyingUpdateSwipeAnimation(void) {
-    if (gCurrentSprite.samusCollision == SSC_3) return;
+    if (gCurrentSprite.samusCollision == SSC_HURTS_SAMUS_DOUBLE_DAMAGE) return;
 
     if ((u8)SpriteUtilCheckSamusNearSpriteLeftRight(0xa0, 0x80) != NSLR_OUT_OF_RANGE) {
-        if (gCurrentSprite.pOam != sKihunterOam_33e50c) {
-            gCurrentSprite.pOam = sKihunterOam_33e50c;
+        if (gCurrentSprite.pOam != sKihunterFlyingOam_Swiping) {
+            gCurrentSprite.pOam = sKihunterFlyingOam_Swiping;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         } else if (gCurrentSprite.currentAnimationFrame == 2 && gCurrentSprite.animationDurationCounter == 4)
-            SoundPlayNotAlreadyPlaying(SOUND_176);
+            SoundPlayNotAlreadyPlaying(SOUND_KIHUNTER_SWIPING);
     } else {
-        if (gCurrentSprite.pOam == sKihunterOam_33e50c) {
+        if (gCurrentSprite.pOam == sKihunterFlyingOam_Swiping) {
             if (gCurrentSprite.currentAnimationFrame == 2 && gCurrentSprite.animationDurationCounter == 4)
-                SoundPlayNotAlreadyPlaying(SOUND_176);
+                SoundPlayNotAlreadyPlaying(SOUND_KIHUNTER_SWIPING);
             if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-                gCurrentSprite.pOam = sKihunterOam_33e454;
+                gCurrentSprite.pOam = sKihunterFlyingOam_Idle;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
             }
@@ -591,13 +593,13 @@ void KihunterFlyingSwoopingDownInit(void) {
     gCurrentSprite.pose = 0x2a;
     targetY = gSamusData.yPosition + gSamusData.drawDistanceTop / 2;
     if (targetY - gCurrentSprite.yPosition > 0x168 || gSpriteRandomNumber >= 11) {
-        gCurrentSprite.pOam = sKihunterOam_33e4a4;
+        gCurrentSprite.pOam = sKihunterFlyingOam_LungingWithStinger;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
-        gCurrentSprite.samusCollision = SSC_3;
-        SoundPlayNotAlreadyPlaying(SOUND_177);
+        gCurrentSprite.samusCollision = SSC_HURTS_SAMUS_DOUBLE_DAMAGE;
+        SoundPlayNotAlreadyPlaying(SOUND_KIHUNTER_LUNGING_WITH_STINGER);
     } else
-        SoundPlayNotAlreadyPlaying(SOUND_179);
+        SoundPlayNotAlreadyPlaying(SOUND_KIHUNTER_SWOOPING);
 }
 
 void KihunterFlyingSwoopingDown(void) {
@@ -616,7 +618,7 @@ void KihunterFlyingSwoopingDown(void) {
         return;
     }
 
-    if (gCurrentSprite.samusCollision == SSC_3) {
+    if (gCurrentSprite.samusCollision == SSC_HURTS_SAMUS_DOUBLE_DAMAGE) {
         xMovement = gCurrentSprite.work4 / 4;
         if (xMovement > 4)
             xMovement = 8;
@@ -690,8 +692,8 @@ void KihunterFlyingAfterSwoopingInit(void) {
     gCurrentSprite.work1 = FALSE;
     gCurrentSprite.work4 = 0;
     gCurrentSprite.pose = 0x2e;
-    if (gCurrentSprite.samusCollision == SSC_3) {
-        gCurrentSprite.pOam = sKihunterOam_33e454;
+    if (gCurrentSprite.samusCollision == SSC_HURTS_SAMUS_DOUBLE_DAMAGE) {
+        gCurrentSprite.pOam = sKihunterFlyingOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = 2;
@@ -701,8 +703,8 @@ void KihunterFlyingAfterSwoopingInit(void) {
 void KihunterFlyingAfterSwooping(void) {
     u8 finished = FALSE;
 
-    if (SpriteUtilCheckEndCurrentSpriteAnim() && gCurrentSprite.pOam == sKihunterOam_33e50c) {
-        gCurrentSprite.pOam = sKihunterOam_33e454;
+    if (SpriteUtilCheckEndCurrentSpriteAnim() && gCurrentSprite.pOam == sKihunterFlyingOam_Swiping) {
+        gCurrentSprite.pOam = sKihunterFlyingOam_Idle;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
     }
@@ -776,7 +778,7 @@ void KihunterWingsInit(void) {
     gCurrentSprite.hitboxRight = 4;
     gCurrentSprite.pose = 2;
     gCurrentSprite.drawOrder = 3;
-    gCurrentSprite.pOam = sKihunterOam_33e474;
+    gCurrentSprite.pOam = sKihunterWingsOam_Flapping;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -798,9 +800,9 @@ void KihunterWingsIdle(void) {
         gCurrentSprite.status |= SS_X_FLIP;
     else
         gCurrentSprite.status &= ~ SS_X_FLIP;
-    if (gSpriteData[primary].health <= 6) {
+    if (gSpriteData[primary].health <= KIHUNTER_LOSE_WINGS_HEALTH_THRESHOLD) {
         gCurrentSprite.pose = 0x38;
-        gCurrentSprite.pOam = sKihunterOam_33e4c4;
+        gCurrentSprite.pOam = sKihunterWingsOam_Falling;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.paletteRow = 0;
@@ -819,7 +821,7 @@ void KihunterWingsFalling(void) {
     if (gPreviousVerticalCollisionCheck != COLLISION_AIR) {
         gCurrentSprite.yPosition = blockTop;
         gCurrentSprite.pose = 0x3a;
-        gCurrentSprite.work1 = 0x28;
+        gCurrentSprite.work1 = 40;
     } else
         gCurrentSprite.yPosition += PIXEL_SIZE / 2;
 }
@@ -837,11 +839,11 @@ void KihunterSpitInit(void) {
     gCurrentSprite.drawDistanceTop = 8;
     gCurrentSprite.drawDistanceBottom = 8;
     gCurrentSprite.drawDistanceHorizontal = 8;
-    gCurrentSprite.hitboxTop = -8;
-    gCurrentSprite.hitboxBottom = 8;
-    gCurrentSprite.hitboxLeft = -8;
-    gCurrentSprite.hitboxRight = 8;
-    gCurrentSprite.pOam = sKihunterOam_33e64c;
+    gCurrentSprite.hitboxTop = -2 * PIXEL_SIZE;
+    gCurrentSprite.hitboxBottom = 2 * PIXEL_SIZE;
+    gCurrentSprite.hitboxLeft = -2 * PIXEL_SIZE;
+    gCurrentSprite.hitboxRight = 2 * PIXEL_SIZE;
+    gCurrentSprite.pOam = sKihunterBarfOam_Moving;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work4 = 0;
@@ -877,7 +879,7 @@ void KihunterSpitMoving(void) {
 void KihunterSpitExplodingInit(void) {
     gCurrentSprite.pose = 0x38;
     gCurrentSprite.samusCollision = SSC_NONE;
-    gCurrentSprite.pOam = sKihunterOam_33e664;
+    gCurrentSprite.pOam = sKihunterBarfOam_Exploding;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -901,10 +903,10 @@ void KihunterHiveInit(void) {
     gCurrentSprite.hitboxBottom = 0x30;
     gCurrentSprite.hitboxLeft = -0x30;
     gCurrentSprite.hitboxRight = 0x30;
-    gCurrentSprite.samusCollision = 1;
+    gCurrentSprite.samusCollision = SSC_SOLID;
     gCurrentSprite.frozenPaletteRowOffset = 1;
     gCurrentSprite.drawOrder = 13;
-    gCurrentSprite.pOam = sKihunterOam_33e61c;
+    gCurrentSprite.pOam = sKihunterHiveOam;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
@@ -913,7 +915,7 @@ void KihunterHiveInit(void) {
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition + 0x60, gCurrentSprite.xPosition - 0x20, 0);
     SpriteSpawnSecondary(SSPRITE_KIHUNTER_BUG, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot,
         gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition + 0x60, gCurrentSprite.xPosition + 0x20, 0);
-    SoundPlay_2894(SOUND_118);
+    SoundPlay_2894(SOUND_KIHUNTER_HIVE_BUZZING);
 }
 
 void KihunterHiveSpawnKihunter(void) {
@@ -950,11 +952,11 @@ void KihunterBugInit(void) {
     gCurrentSprite.drawDistanceTop = 8;
     gCurrentSprite.drawDistanceBottom = 8;
     gCurrentSprite.drawDistanceHorizontal = 8;
-    gCurrentSprite.hitboxTop = -4;
-    gCurrentSprite.hitboxBottom = 4;
-    gCurrentSprite.hitboxLeft = -4;
-    gCurrentSprite.hitboxRight = 4;
-    gCurrentSprite.pOam = sKihunterOam_33e62c;
+    gCurrentSprite.hitboxTop = -PIXEL_SIZE;
+    gCurrentSprite.hitboxBottom = PIXEL_SIZE;
+    gCurrentSprite.hitboxLeft = -PIXEL_SIZE;
+    gCurrentSprite.hitboxRight = PIXEL_SIZE;
+    gCurrentSprite.pOam = sKihunterBugOam;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work4 = 0; // remove me!
@@ -990,7 +992,7 @@ void KihunterBugIdle(void) {
     gCurrentSprite.xPosition += movement;
 
     if (gSpriteData[gCurrentSprite.primarySpriteRamSlot].health == 0) {
-        // It's hive is destroyed
+        // Its hive is destroyed
         gCurrentSprite.pose = 0x17;
         gCurrentSprite.drawOrder = 4;
     }
@@ -1011,12 +1013,10 @@ void KihunterBugChasingSamusInit(void) {
 }
 
 void KihunterBugChasingSamus(void) {
-    u16 targetY, targetX, ySpeedCap, xSpeedCap;
-
-    targetY = gSamusData.yPosition + gSamusData.drawDistanceTop;
-    targetX = gSamusData.xPosition;
-    ySpeedCap = 0x1e;
-    xSpeedCap = 0x28;
+    u16 targetY = gSamusData.yPosition + gSamusData.drawDistanceTop;
+    u16 targetX = gSamusData.xPosition;
+    u8 ySpeedCap = 0x1e;
+    u8 xSpeedCap = 0x28;
 
     switch (gCurrentSprite.unk_8) {
         case 1:
@@ -1156,7 +1156,7 @@ void KihunterBugChasingSamus(void) {
 
 void KihunterGround(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(SOUND_174);
+        SoundPlayNotAlreadyPlaying(SOUND_KIHUNTER_HURT);
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();
         return;
@@ -1191,7 +1191,7 @@ void KihunterGround(void) {
         case 0x2a:
             KihunterGroundSpitting();
             break;
-        case 0x16:
+        case SPRITE_POSE_FALLING:
             KihunterGroundFalling();
             break;
         case SPRITE_POSE_DYING_INIT:
@@ -1212,7 +1212,7 @@ void KihunterGround(void) {
 
 void KihunterFlying(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(SOUND_174);
+        SoundPlayNotAlreadyPlaying(SOUND_KIHUNTER_HURT);
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();
         SpriteUtilUpdateSecondarySpritesFreezeTimer(SSPRITE_KIHUNTER_WINGS, gCurrentSprite.primarySpriteRamSlot);
@@ -1265,7 +1265,7 @@ void KihunterFlying(void) {
             KihunterTurningIntoX();
             XParasiteInit();
     }
-    if (gCurrentSprite.pose < SPRITE_POSE_DYING_INIT && gCurrentSprite.health <= 6) {
+    if (gCurrentSprite.pose < SPRITE_POSE_DYING_INIT && gCurrentSprite.health <= KIHUNTER_LOSE_WINGS_HEALTH_THRESHOLD) {
         gCurrentSprite.spriteId = PSPRITE_KIHUNTER_GROUND;
         gCurrentSprite.pose = SPRITE_POSE_UNINITIALIZED;
     }
@@ -1278,7 +1278,7 @@ void KihunterWings(void) {
         return;
     }
     switch (gCurrentSprite.pose) {
-        case 0x58:
+        case SPRITE_POSE_DYING:
             SpriteDying();
             break;
         case 0x38:
@@ -1301,7 +1301,7 @@ void KihunterSpit(void) {
         case SPRITE_POSE_IDLE:
             KihunterSpitMoving();
             break;
-        case 0x38:
+        case SPRITE_POSE_EXPLODING:
             KihunterSpitExploding();
             break;
         default:

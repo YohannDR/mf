@@ -92,7 +92,7 @@ void NightmareMoveToPosition(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 
     {
         gCurrentSprite.status ^= SS_FACING_RIGHT;
         gCurrentSprite.work3 = 1;
-        SoundPlayNotAlreadyPlaying(0x2a6);
+        SoundPlayNotAlreadyPlaying(SOUND_NIGHTMARE_CHANGING_DIRECTION);
     }
 
     flip = FALSE;
@@ -167,7 +167,7 @@ void NightmareMoveToPosition(u16 dstY, u16 dstX, u8 ySpeedCap, u8 xSpeedCap, u8 
     {
         gCurrentSprite.status ^= SS_FACING_DOWN;
         gCurrentSprite.work4 = 1;
-        SoundPlayNotAlreadyPlaying(0x2a6);
+        SoundPlayNotAlreadyPlaying(SOUND_NIGHTMARE_CHANGING_DIRECTION);
     }
 }
 
@@ -192,7 +192,7 @@ void NightmareSyncSubSprites(void) {
 
 void NightmarePlaySound(void) {
     if (gCurrentSprite.samusCollision != SSC_NONE && gSubSpriteData1.currentAnimationFrame == 0 && gSubSpriteData1.animationDurationCounter == 12) {
-        SoundPlay(0x2a1);
+        SoundPlay(SOUND_NIGHTMARE_IDLE);
     }
 }
 
@@ -251,7 +251,7 @@ void NightmareInit(void) {
         gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
         gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
         gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
-        gSubSpriteData1.pMultiOam = sNightmareMultiOam_Used; // this is the only multi OAM used
+        gSubSpriteData1.pMultiOam = sNightmareMultiSpriteData_Used; // this is the only multi OAM used
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_NONE;
@@ -285,7 +285,7 @@ void NightmareWaitingToAppear(void) {
         ScreenShakeStartHorizontal(60, 0x81);
         ScreenShakeStartVertical(60, 0x81);
         gCurrentSprite.work1 = 60;
-        SoundPlay_3b1c(0x2a0);
+        SoundPlay_3b1c(SOUND_NIGHTMARE_APPEARING);
     }
 }
 
@@ -295,7 +295,7 @@ void NightmareAppearing(void) {
         ScreenShakeStartHorizontal(60, 0x81);
         ScreenShakeStartVertical(60, 0x81);
         gCurrentSprite.work1 = 60;
-        SoundPlay_3b1c(0x2a0);
+        SoundPlay_3b1c(SOUND_NIGHTMARE_APPEARING);
     }
     if (gSubSpriteData1.yPosition > BLOCK_TO_SUB_PIXEL(0x10))
         gSubSpriteData1.yPosition -= PIXEL_SIZE / 4;
@@ -521,7 +521,7 @@ void NightmareMovingToDeathPosition(void) {
         if (--gCurrentSprite.work1 == 0) {
             gCurrentSprite.pose = 0x22;
             gCurrentSprite.work1 = 60;
-            SoundPlay_3b1c(0x2a4);
+            SoundPlay_3b1c(SOUND_NIGHTMARE_DYING);
         }
     }
 }
@@ -823,7 +823,7 @@ void NightmarePartRightTurret1(void) {
         }
         case 0x18: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd874;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd874;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
@@ -831,11 +831,11 @@ void NightmarePartRightTurret1(void) {
             } else {
                 if (--gCurrentSprite.work1 == 0) {
                     if (gSpriteData[primaryRamSlot].pose == 2)
-                        gCurrentSprite.pOam = sFrameData_3bdbec;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bdbec;
                     else if (gSpriteData[primaryRamSlot].pose == 0x1c)
-                        gCurrentSprite.pOam = sFrameData_3bdbec;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bdbec;
                     else
-                        gCurrentSprite.pOam = sFrameData_3bd8e4;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bd8e4;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.pose = 0x1a;
@@ -845,16 +845,16 @@ void NightmarePartRightTurret1(void) {
         }
         case 0x1a: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd874;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd874;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
                 NightmarePartDying(primaryRamSlot);
             } else {
-                if (gCurrentSprite.pOam == sFrameData_3bd8e4)
+                if (gCurrentSprite.pOam == sNightmarePartOam_3bd8e4)
                     NightmarePartSpawnBeam();
                 if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-                    gCurrentSprite.pOam = sFrameData_3bd874;
+                    gCurrentSprite.pOam = sNightmarePartOam_3bd874;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.work1 = gBossWork2;
@@ -894,7 +894,7 @@ void NightmarePartRightTurret2(void) {
         }
         case 0x18: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd884;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd884;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
@@ -902,11 +902,11 @@ void NightmarePartRightTurret2(void) {
             } else {
                 if (--gCurrentSprite.work1 == 0) {
                     if (gSpriteData[primaryRamSlot].pose == 2)
-                        gCurrentSprite.pOam = sFrameData_3bdc64;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bdc64;
                     else if (gSpriteData[primaryRamSlot].pose == 0x1c)
-                        gCurrentSprite.pOam = sFrameData_3bdc64;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bdc64;
                     else
-                        gCurrentSprite.pOam = sFrameData_3bd95c;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bd95c;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.pose = 0x1a;
@@ -916,16 +916,16 @@ void NightmarePartRightTurret2(void) {
         }
         case 0x1a: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd884;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd884;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
                 NightmarePartDying(primaryRamSlot);
             } else {
-                if (gCurrentSprite.pOam == sFrameData_3bd95c)
+                if (gCurrentSprite.pOam == sNightmarePartOam_3bd95c)
                     NightmarePartSpawnBeam();
                 if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-                    gCurrentSprite.pOam = sFrameData_3bd884;
+                    gCurrentSprite.pOam = sNightmarePartOam_3bd884;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.work1 = gBossWork2;
@@ -965,7 +965,7 @@ void NightmarePartRightTurret3(void) {
         }
         case 0x18: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd894;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd894;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
@@ -973,9 +973,9 @@ void NightmarePartRightTurret3(void) {
             } else {
                 if (--gCurrentSprite.work1 == 0) {
                     if (gSpriteData[primaryRamSlot].pose == 0x1c)
-                        gCurrentSprite.pOam = sFrameData_3bdcdc;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bdcdc;
                     else
-                        gCurrentSprite.pOam = sFrameData_3bd9d4;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bd9d4;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.pose = 0x1a;
@@ -985,16 +985,16 @@ void NightmarePartRightTurret3(void) {
         }
         case 0x1a: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd894;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd894;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
                 NightmarePartDying(primaryRamSlot);
             } else {
-                if (gCurrentSprite.pOam == sFrameData_3bd9d4)
+                if (gCurrentSprite.pOam == sNightmarePartOam_3bd9d4)
                     NightmarePartSpawnBeam();
                 if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-                    gCurrentSprite.pOam = sFrameData_3bd894;
+                    gCurrentSprite.pOam = sNightmarePartOam_3bd894;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gBossWork2 = gBossWork3;
@@ -1035,7 +1035,7 @@ void NightmarePartLeftTurret1(void) {
         }
         case 0x18: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd8b4;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd8b4;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
@@ -1043,11 +1043,11 @@ void NightmarePartLeftTurret1(void) {
             } else {
                 if (--gCurrentSprite.work1 == 0) {
                     if (gSpriteData[primaryRamSlot].pose == 2)
-                        gCurrentSprite.pOam = sFrameData_3bdd54;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bdd54;
                     else if (gSpriteData[primaryRamSlot].pose == 0x1c)
-                        gCurrentSprite.pOam = sFrameData_3bdd54;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bdd54;
                     else
-                        gCurrentSprite.pOam = sFrameData_3bda4c;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bda4c;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.pose = 0x1a;
@@ -1057,16 +1057,16 @@ void NightmarePartLeftTurret1(void) {
         }
         case 0x1a: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd8b4;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd8b4;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
                 NightmarePartDying(primaryRamSlot);
             } else {
-                if (gCurrentSprite.pOam == sFrameData_3bda4c)
+                if (gCurrentSprite.pOam == sNightmarePartOam_3bda4c)
                     NightmarePartSpawnBeam();
                 if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-                    gCurrentSprite.pOam = sFrameData_3bd8b4;
+                    gCurrentSprite.pOam = sNightmarePartOam_3bd8b4;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.work1 = gBossWork2;
@@ -1106,7 +1106,7 @@ void NightmarePartLeftTurret2(void) {
         }
         case 0x18: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd8c4;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd8c4;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
@@ -1114,11 +1114,11 @@ void NightmarePartLeftTurret2(void) {
             } else {
                 if (--gCurrentSprite.work1 == 0) {
                     if (gSpriteData[primaryRamSlot].pose == 2)
-                        gCurrentSprite.pOam = sFrameData_3bddcc;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bddcc;
                     else if (gSpriteData[primaryRamSlot].pose == 0x1c)
-                        gCurrentSprite.pOam = sFrameData_3bddcc;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bddcc;
                     else
-                        gCurrentSprite.pOam = sFrameData_3bdac4;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bdac4;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.pose = 0x1a;
@@ -1128,16 +1128,16 @@ void NightmarePartLeftTurret2(void) {
         }
         case 0x1a: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd8c4;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd8c4;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
                 NightmarePartDying(primaryRamSlot);
             } else {
-                if (gCurrentSprite.pOam == sFrameData_3bdac4)
+                if (gCurrentSprite.pOam == sNightmarePartOam_3bdac4)
                     NightmarePartSpawnBeam();
                 if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-                    gCurrentSprite.pOam = sFrameData_3bd8c4;
+                    gCurrentSprite.pOam = sNightmarePartOam_3bd8c4;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.work1 = gBossWork2;
@@ -1177,7 +1177,7 @@ void NightmarePartLeftTurret3(void) {
         }
         case 0x18: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd8d4;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd8d4;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
@@ -1185,9 +1185,9 @@ void NightmarePartLeftTurret3(void) {
             } else {
                 if (--gCurrentSprite.work1 == 0) {
                     if (gSpriteData[primaryRamSlot].pose == 0x1c)
-                        gCurrentSprite.pOam = sFrameData_3bde44;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bde44;
                     else
-                        gCurrentSprite.pOam = sFrameData_3bdb3c;
+                        gCurrentSprite.pOam = sNightmarePartOam_3bdb3c;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.pose = 0x1a;
@@ -1197,16 +1197,16 @@ void NightmarePartLeftTurret3(void) {
         }
         case 0x1a: {
             if (gSpriteData[primaryRamSlot].pose == 0x20) {
-                gCurrentSprite.pOam = sFrameData_3bd8d4;
+                gCurrentSprite.pOam = sNightmarePartOam_3bd8d4;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x1c;
                 NightmarePartDying(primaryRamSlot);
             } else {
-                if (gCurrentSprite.pOam == sFrameData_3bdb3c)
+                if (gCurrentSprite.pOam == sNightmarePartOam_3bdb3c)
                     NightmarePartSpawnBeam();
                 if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-                    gCurrentSprite.pOam = sFrameData_3bd8d4;
+                    gCurrentSprite.pOam = sNightmarePartOam_3bd8d4;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.work1 = gBossWork2;
@@ -1236,9 +1236,9 @@ void NightmarePartEye(void) {
     u8 mouthRamSlot = gCurrentSprite.numberOfXToForm;
     u16 maxHealth = gSpriteData[primaryRamSlot].health;
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 16)
-        SoundPlayNotAlreadyPlaying(0x2a7);
+        SoundPlayNotAlreadyPlaying(SOUND_NIGHTMARE_HIT_EXPLOSION);
     else if (SPRITE_HAS_ISFT(gCurrentSprite) == 5)
-        SoundPlayNotAlreadyPlaying(0x2aa);
+        SoundPlayNotAlreadyPlaying(SOUND_NIGHTMARE_HURT);
     switch (gCurrentSprite.pose) {
         case 2: {
             if (gSpriteData[primaryRamSlot].pose == 0x1a) {
@@ -1250,7 +1250,7 @@ void NightmarePartEye(void) {
                 gCurrentSprite.health = maxHealth;
                 gSubSpriteData1.health = maxHealth;
                 ParticleSet(gCurrentSprite.yPosition - 0x80, gCurrentSprite.xPosition - 0x50, PE_0x3A);
-                SoundPlay_3b1c(0x2a9);
+                SoundPlay_3b1c(SOUND_NIGHTMARE_MASK_DESTROYED);
             }
             break;
         }
@@ -1263,7 +1263,7 @@ void NightmarePartEye(void) {
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gSpriteData[mouthRamSlot].status |= SS_NOT_DRAWN;
-                SoundPlay(0x2ad);
+                SoundPlay(SOUND_NIGHTMARE_FACE_SAGGING);
             }
             break;
         }
@@ -1294,7 +1294,7 @@ void NightmarePartEye(void) {
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gSpriteData[mouthRamSlot].status |= SS_NOT_DRAWN;
-                SoundPlay(0x2ad);
+                SoundPlay(SOUND_NIGHTMARE_FACE_SAGGING);
             }
             break;
         }
@@ -1375,7 +1375,7 @@ void NightmarePartMouth(void) {
         }
         case 0x18: {
             if (gCurrentSprite.currentAnimationFrame == 0 && gCurrentSprite.animationDurationCounter == 1) {
-                SoundPlay(0x2ac);
+                SoundPlay(SOUND_NIGHTMARE_GROAN);
             }
             if (gSpriteData[primaryRamSlot].status & SS_ENABLE_MOSAIC) {
                 gCurrentSprite.paletteRow = 0;
@@ -1398,7 +1398,7 @@ void NightmarePartEyeSludge(void) {
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.pose = 0x18;
-                SoundPlay(0x2ab);
+                SoundPlay(SOUND_NIGHTMARE_EYE_SLUDGE);
             }
             break;
         }
@@ -1409,7 +1409,7 @@ void NightmarePartEyeSludge(void) {
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.work1 = 120;
                 gCurrentSprite.pose = 0x1a;
-                SoundPlay(0x2ab);
+                SoundPlay(SOUND_NIGHTMARE_EYE_SLUDGE);
             }
             break;
         }
@@ -1419,13 +1419,13 @@ void NightmarePartEyeSludge(void) {
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.work1 = 80;
                 gCurrentSprite.pose = 0x1c;
-                SoundPlay(0x2ab);
+                SoundPlay(SOUND_NIGHTMARE_EYE_SLUDGE);
             } else {
                 if (--gCurrentSprite.work1 == 0) {
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.work1 = 120;
-                    SoundPlay(0x2ab);
+                    SoundPlay(SOUND_NIGHTMARE_EYE_SLUDGE);
                 }
             }
             break;
@@ -1435,7 +1435,7 @@ void NightmarePartEyeSludge(void) {
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.work1 = 80;
-                SoundPlay(0x2ab);
+                SoundPlay(SOUND_NIGHTMARE_EYE_SLUDGE);
             }
             if (gSpriteData[primaryRamSlot].pose == 0x19) {
                 gCurrentSprite.pose = 0x1e;
@@ -1529,9 +1529,9 @@ void NightmarePartGeneratorUpdateDyingPalette(void) {
 void NightmarePartGenerator(void) {
     u8 primaryRamSlot = gCurrentSprite.primarySpriteRamSlot;
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 16)
-        SoundPlayNotAlreadyPlaying(0x2a7);
+        SoundPlayNotAlreadyPlaying(SOUND_NIGHTMARE_HIT_EXPLOSION);
     else if (SPRITE_HAS_ISFT(gCurrentSprite) == 5)
-        SoundPlayNotAlreadyPlaying(0x2aa);
+        SoundPlayNotAlreadyPlaying(SOUND_NIGHTMARE_HURT);
     switch (gCurrentSprite.pose) {
         case 1: {
             gCurrentSprite.status ^= SS_NOT_DRAWN;
@@ -1557,7 +1557,7 @@ void NightmarePartGenerator(void) {
                 gSamusPhysics.slowed = 0x80;
                 gSpriteData[primaryRamSlot].pose = 0x3b;
                 gBossWork3 = 60;
-                SoundPlay(0x2a5);
+                SoundPlay(SOUND_NIGHTMARE_GENERATOR_ON);
             }
             break;
         }
@@ -1595,7 +1595,7 @@ void NightmarePartGenerator(void) {
                 gCurrentSprite.pOam = sNightmarePartGeneratorOam_SpinningFast;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
-                ApplyMusicSoundFading(sMusicTrackDataRom[sSoundDataEntries[0x2a5].trackGroundNumber].pTrack, 120);
+                ApplyMusicSoundFading(sMusicTrackDataRom[sSoundDataEntries[SOUND_NIGHTMARE_GENERATOR_ON].trackGroundNumber].pTrack, 120);
             }
             break;
         }
@@ -1644,7 +1644,7 @@ void NightmarePartGenerator(void) {
             } else if (gCurrentSprite.work0 == 30) {
                 ParticleSet(gCurrentSprite.yPosition + 0x40, gCurrentSprite.xPosition + 0x40, PE_0x3A);
                 gCurrentSprite.paletteRow = 0;
-                SoundPlay_3b1c(0x2a8);
+                SoundPlay_3b1c(SOUND_NIGHTMARE_GENERATOR_DESTROYED);
             } else
                 NightmarePartGeneratorUpdateDyingPalette();
             break;
@@ -1677,7 +1677,7 @@ void NightmareBeamInit(void) {
     gCurrentSprite.drawOrder = 3;
     gCurrentSprite.samusCollision = SSC_RIDLEY_TAIL_SERRIS_SEGMENT;
     gCurrentSprite.frozenPaletteRowOffset = 2;
-    SoundPlay(0x2a2);
+    SoundPlay(SOUND_NIGHTMARE_BEAM);
 }
 
 void NightmareBeamMoving(void) {
@@ -1701,7 +1701,7 @@ void NightmareFallingArmInit(void) {
     gCurrentSprite.health = 0;
     switch (gCurrentSprite.roomSlot) {
         case NIGHTMARE_FALLING_PART_RIGHT_ARM_TOP:
-            gCurrentSprite.pOam = sFrameData_3bd864;
+            gCurrentSprite.pOam = sNightmarePartOam_3bd864;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 0x10;
             gCurrentSprite.drawDistanceHorizontal = 0x10;
@@ -1709,7 +1709,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work1 = 10;
             break;
         case NIGHTMARE_FALLING_PART_RIGHT_TURRET_1:
-            gCurrentSprite.pOam = sFrameData_3bd874;
+            gCurrentSprite.pOam = sNightmarePartOam_3bd874;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 8;
             gCurrentSprite.drawDistanceHorizontal = 0x18;
@@ -1717,7 +1717,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work1 = 8;
             break;
         case NIGHTMARE_FALLING_PART_RIGHT_TURRET_2:
-            gCurrentSprite.pOam = sFrameData_3bd884;
+            gCurrentSprite.pOam = sNightmarePartOam_3bd884;
             gCurrentSprite.drawDistanceTop = 0x20;
             gCurrentSprite.drawDistanceBottom = 0x10;
             gCurrentSprite.drawDistanceHorizontal = 0x18;
@@ -1725,7 +1725,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work1 = 6;
             break;
         case NIGHTMARE_FALLING_PART_RIGHT_TURRET_3:
-            gCurrentSprite.pOam = sFrameData_3bd894;
+            gCurrentSprite.pOam = sNightmarePartOam_3bd894;
             gCurrentSprite.drawDistanceTop = 0x1c;
             gCurrentSprite.drawDistanceBottom = 8;
             gCurrentSprite.drawDistanceHorizontal = 0x20;
@@ -1733,7 +1733,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work1 = 4;
             break;
         case NIGHTMARE_FALLING_PART_RIGHT_ARM_BOTTOM:
-            gCurrentSprite.pOam = sFrameData_3bd8a4;
+            gCurrentSprite.pOam = sNightmarePartOam_3bd8a4;
             gCurrentSprite.drawDistanceTop = 0x10;
             gCurrentSprite.drawDistanceBottom = 0x10;
             gCurrentSprite.drawDistanceHorizontal = 0x18;
@@ -1741,7 +1741,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work1 = 2;
             break;
         case NIGHTMARE_FALLING_PART_LEFT_TURRET_1:
-            gCurrentSprite.pOam = sFrameData_3bd8b4;
+            gCurrentSprite.pOam = sNightmarePartOam_3bd8b4;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 8;
             gCurrentSprite.drawDistanceHorizontal = 0x18;
@@ -1749,7 +1749,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work1 = 8;
             break;
         case NIGHTMARE_FALLING_PART_LEFT_TURRET_2:
-            gCurrentSprite.pOam = sFrameData_3bd8c4;
+            gCurrentSprite.pOam = sNightmarePartOam_3bd8c4;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 8;
             gCurrentSprite.drawDistanceHorizontal = 0x18;
@@ -1757,7 +1757,7 @@ void NightmareFallingArmInit(void) {
             gCurrentSprite.work1 = 6;
             break;
         case NIGHTMARE_FALLING_PART_LEFT_TURRET_3:
-            gCurrentSprite.pOam = sFrameData_3bd8d4;
+            gCurrentSprite.pOam = sNightmarePartOam_3bd8d4;
             gCurrentSprite.drawDistanceTop = 0x18;
             gCurrentSprite.drawDistanceBottom = 10;
             gCurrentSprite.drawDistanceHorizontal = 0x18;

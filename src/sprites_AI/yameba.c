@@ -8,6 +8,7 @@
 #include "data/samus_data.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/samus.h"
 #include "constants/sprite.h"
 #include "constants/clipdata.h"
@@ -474,7 +475,7 @@ void YamebaChasingSamus(void)
 void Yameba(void)
 {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 0x4)
-        SoundPlayNotAlreadyPlaying(0x15F);
+        SoundPlayNotAlreadyPlaying(SOUND_YAMEBA_HURT);
 
     if (gCurrentSprite.freezeTimer != 0)
     {

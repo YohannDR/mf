@@ -128,7 +128,7 @@ u8 YakuzaYMovement(u16 movement) {
 }
 
 void YakuzaGrabbedSamusInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b0f98;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b0f98;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x28;
@@ -145,7 +145,7 @@ void YakuzaGrabbedSamus(void) {
     }
     if (gCurrentSprite.work2 == 0) {
         if (SpriteUtilCheckEndSubSprite1Anim()) {
-            gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1178;
+            gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1178;
             gSubSpriteData1.animationDurationCounter = 0;
             gSubSpriteData1.currentAnimationFrame = 0;
             gCurrentSprite.work2 += 1;
@@ -153,7 +153,7 @@ void YakuzaGrabbedSamus(void) {
     } else {
         if (SpriteUtilCheckEndSubSprite1Anim()) {
             gCurrentSprite.pose = 0x2a;
-            gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1188;
+            gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1188;
             gSubSpriteData1.animationDurationCounter = 0;
             gSubSpriteData1.currentAnimationFrame = 0;
             gCurrentSprite.work2 = 0;
@@ -171,7 +171,7 @@ void YakuzaPullingSamus(void) {
             SoundPlay(0x136);
         }
         if (YakuzaYMovement(4)) {
-            gSubSpriteData1.pMultiOam = sMultiSpriteData_3b11b0;
+            gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b11b0;
             gSubSpriteData1.animationDurationCounter = 0;
             gSubSpriteData1.currentAnimationFrame = 0;
             gCurrentSprite.work2 += 1;
@@ -179,7 +179,7 @@ void YakuzaPullingSamus(void) {
     } else {
         if (SpriteUtilCheckEndSubSprite1Anim()) {
             gCurrentSprite.pose = 0x2c;
-            gSubSpriteData1.pMultiOam = sMultiSpriteData_3b11c0;
+            gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b11c0;
             gSubSpriteData1.animationDurationCounter = 0;
             gSubSpriteData1.currentAnimationFrame = 0;
             gCurrentSprite.work1 = 60;
@@ -231,7 +231,7 @@ void YakuzaSlammingSamus(void) {
 }
 
 void YakuzaReleasingSamusInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b0fc0;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b0fc0;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x30;
@@ -243,7 +243,7 @@ void YakuzaReleasingSamus(void) {
 }
 
 void YakuzaAfterReleasingSamusInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b0f28;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b0f28;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0xa;
@@ -277,7 +277,7 @@ void YakuzaInit(void) {
         gCurrentSprite.roomSlot = YAKUZA_PART_BODY;
         gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
         gSubSpriteData1.health = 1;
-        gSubSpriteData1.pMultiOam = sMultiSpriteData_3b0f28;
+        gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b0f28;
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
         gCurrentSprite.samusCollision = SSC_YAKUZA_CAN_GRAB;
@@ -308,7 +308,7 @@ void YakuzaAboutToAppear(void) {
 }
 
 void YakuzaIdleBeforeNewRoundInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b0f28;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b0f28;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 8;
@@ -327,7 +327,7 @@ void YakuzaIdleBeforeNewRound(void) {
 }
 
 void YakuzaBeginSweepInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b0f50;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b0f50;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 2;
@@ -335,7 +335,7 @@ void YakuzaBeginSweepInit(void) {
 
 void YakuzaBeginSweep(void) {
     if (SpriteUtilCheckEndSubSprite1Anim()) {
-        gSubSpriteData1.pMultiOam = sMultiSpriteData_3b0f60;
+        gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b0f60;
         gSubSpriteData1.animationDurationCounter = 0;
         gSubSpriteData1.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x18;
@@ -348,7 +348,7 @@ void YakuzaSweeping(void) {
     if (YakuzaYMovement(3)) {
         if (SpriteUtilCheckEndSubSprite1Anim()) {
             gCurrentSprite.status |= SS_FACING_DOWN;
-            gSubSpriteData1.pMultiOam = sMultiSpriteData_3b0f88;
+            gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b0f88;
             gSubSpriteData1.animationDurationCounter = 0;
             gSubSpriteData1.currentAnimationFrame = 0;
             gCurrentSprite.pose = 0x1a;
@@ -365,7 +365,7 @@ void YakuzaSweepingEnd(void) {
 }
 
 void YakuzaOpeningMouthInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b0fe8;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b0fe8;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 0;
@@ -384,7 +384,7 @@ void YakuzaOpeningMouth(void) {
     switch (gCurrentSprite.work2) {
         case 0: {
             if (SpriteUtilCheckEndSubSprite1Anim()) {
-                gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1040;
+                gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1040;
                 gSubSpriteData1.animationDurationCounter = 0;
                 gSubSpriteData1.currentAnimationFrame = 0;
                 gCurrentSprite.work2++;
@@ -394,7 +394,7 @@ void YakuzaOpeningMouth(void) {
         }
         case 1: {
             if (SpriteUtilCheckEndSubSprite1Anim()) {
-                gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1050;
+                gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1050;
                 gSubSpriteData1.animationDurationCounter = 0;
                 gSubSpriteData1.currentAnimationFrame = 0;
                 gCurrentSprite.work2++;
@@ -413,7 +413,7 @@ void YakuzaOpeningMouth(void) {
                     offset = sYakuzaMouthStartGlowingPalOffset[gCurrentSprite.work3] - 8;
                     DMA_SET(3, sYakuzaMouthGlowingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
                 } else {
-                    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1060;
+                    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1060;
                     gSubSpriteData1.animationDurationCounter = 0;
                     gSubSpriteData1.currentAnimationFrame = 0;
                     gCurrentSprite.work2++;
@@ -433,7 +433,7 @@ void YakuzaOpeningMouth(void) {
                     offset = sYakuzaMouthGlowingPalOffset[gCurrentSprite.work3] - 8;
                     DMA_SET(3, sYakuzaMouthGlowingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
                 } else {
-                    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1078;
+                    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1078;
                     gSubSpriteData1.animationDurationCounter = 0;
                     gSubSpriteData1.currentAnimationFrame = 0;
                     gCurrentSprite.work2++;
@@ -455,7 +455,7 @@ void YakuzaOpeningMouth(void) {
         }
         case 4: {
             if (SpriteUtilCheckEndSubSprite1Anim()) {
-                gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1050;
+                gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1050;
                 gSubSpriteData1.animationDurationCounter = 0;
                 gSubSpriteData1.currentAnimationFrame = 0;
                 gCurrentSprite.work2++;
@@ -474,7 +474,7 @@ void YakuzaOpeningMouth(void) {
                     offset = sYakuzaMouthEndGlowingPalOffset[gCurrentSprite.work3] - 8;
                     DMA_SET(3, sYakuzaMouthGlowingPal[offset], PALRAM_OBJ + 9 * 32, C_32_2_16(DMA_ENABLE, 1 * 16));
                 } else {
-                    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b10a0;
+                    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b10a0;
                     gSubSpriteData1.animationDurationCounter = 0;
                     gSubSpriteData1.currentAnimationFrame = 0;
                     gCurrentSprite.work2++;
@@ -499,7 +499,7 @@ void YakuzaOpeningMouth(void) {
 }
 
 void YakuzaMouthOpenedInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1000;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1000;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x1c;
@@ -512,7 +512,7 @@ void YakuzaMouthOpened(void) {
 }
 
 void YakuzaClosingMouthInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1028;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1028;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x1e;
@@ -531,7 +531,7 @@ void YakuzaClosingMouth(void) {
 }
 
 void YakuzaPhase1DyingInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b10b0;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b10b0;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x20;
@@ -576,7 +576,7 @@ void YakuzaUpdateHitboxAndImmunity(void) {
 void YakuzaLosingLegsInit(void) {
     u16 y, x;
     u8 primaryRamSlot;
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1128;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1128;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x22;
@@ -647,7 +647,7 @@ void YakuzaPhase2(void) {
             gCurrentSprite.rotation += Q_8_8(1.f/8);
         } else {
             if (gCurrentSprite.status & SS_ROTATE_SCALE_WHOLE) {
-                gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1128;
+                gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1128;
                 gSubSpriteData1.animationDurationCounter = 0;
                 gSubSpriteData1.currentAnimationFrame = 0;
                 gCurrentSprite.status &= ~SS_ROTATE_SCALE_WHOLE;
@@ -705,7 +705,7 @@ void YakuzaPhase2(void) {
 }
 
 void YakuzaPhase2DyingInit(void) {
-    gSubSpriteData1.pMultiOam = sMultiSpriteData_3b1160;
+    gSubSpriteData1.pMultiOam = sYakuzaMultiSpriteData_3b1160;
     gSubSpriteData1.animationDurationCounter = 0;
     gSubSpriteData1.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x48;
@@ -863,7 +863,7 @@ void YakuzaPartEyeIdle(void) {
             if (SPRITE_HAS_ISFT(gSpriteData[primaryRamSlot]) == 16) {
                 gCurrentSprite.work1 = 2;
                 gCurrentSprite.work2++;
-                gCurrentSprite.pOam = sFrameData_3b7240;
+                gCurrentSprite.pOam = sYakuzaPartOam_3b7240;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.status &= ~SS_NOT_DRAWN;
@@ -871,7 +871,7 @@ void YakuzaPartEyeIdle(void) {
                 if ((gSpriteRandomNumber & 3) < 3) {
                     gCurrentSprite.work1 = gSpriteRandomNumber & 1;
                     gCurrentSprite.work2 += 1;
-                    gCurrentSprite.pOam = sFrameData_3b7240;
+                    gCurrentSprite.pOam = sYakuzaPartOam_3b7240;
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
                     gCurrentSprite.status &= ~SS_NOT_DRAWN;
@@ -1064,7 +1064,7 @@ void YakuzaFallingLegInit(void) {
     gCurrentSprite.health = 0;
     switch (gCurrentSprite.roomSlot) {
         case 0:
-            gCurrentSprite.pOam = sFrameData_3b7320;
+            gCurrentSprite.pOam = sYakuzaPartOam_3b7320;
             gCurrentSprite.drawDistanceTop = 8;
             gCurrentSprite.drawDistanceBottom = 0x20;
             gCurrentSprite.drawDistanceHorizontal = 0x18;
@@ -1074,7 +1074,7 @@ void YakuzaFallingLegInit(void) {
             SoundPlay_3b1c(0x133);
             break;
         case 1:
-            gCurrentSprite.pOam = sFrameData_3b7330;
+            gCurrentSprite.pOam = sYakuzaPartOam_3b7330;
             gCurrentSprite.drawDistanceTop = 8;
             gCurrentSprite.drawDistanceBottom = 0x20;
             gCurrentSprite.drawDistanceHorizontal = 0x20;
@@ -1082,7 +1082,7 @@ void YakuzaFallingLegInit(void) {
             gCurrentSprite.work1 = 8;
             break;
         case 2:
-            gCurrentSprite.pOam = sFrameData_3b7340;
+            gCurrentSprite.pOam = sYakuzaPartOam_3b7340;
             gCurrentSprite.drawDistanceTop = 0x10;
             gCurrentSprite.drawDistanceBottom = 8;
             gCurrentSprite.drawDistanceHorizontal = 0x28;
@@ -1090,7 +1090,7 @@ void YakuzaFallingLegInit(void) {
             gCurrentSprite.work1 = 6;
             break;
         case 3:
-            gCurrentSprite.pOam = sFrameData_3b7350;
+            gCurrentSprite.pOam = sYakuzaPartOam_3b7350;
             gCurrentSprite.drawDistanceTop = 8;
             gCurrentSprite.drawDistanceBottom = 0x20;
             gCurrentSprite.drawDistanceHorizontal = 0x18;
@@ -1098,7 +1098,7 @@ void YakuzaFallingLegInit(void) {
             gCurrentSprite.work1 = 10;
             break;
         case 4:
-            gCurrentSprite.pOam = sFrameData_3b7360;
+            gCurrentSprite.pOam = sYakuzaPartOam_3b7360;
             gCurrentSprite.drawDistanceTop = 8;
             gCurrentSprite.drawDistanceBottom = 0x20;
             gCurrentSprite.drawDistanceHorizontal = 0x20;
@@ -1106,7 +1106,7 @@ void YakuzaFallingLegInit(void) {
             gCurrentSprite.work1 = 2;
             break;
         case 5:
-            gCurrentSprite.pOam = sFrameData_3b7370;
+            gCurrentSprite.pOam = sYakuzaPartOam_3b7370;
             gCurrentSprite.drawDistanceTop = 0x10;
             gCurrentSprite.drawDistanceBottom = 8;
             gCurrentSprite.drawDistanceHorizontal = 0x28;

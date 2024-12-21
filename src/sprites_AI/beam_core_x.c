@@ -1086,5 +1086,5 @@ void CoreXWaveIceBeam(void) {
             // Developers be like: TODO ice beam trail
             break;
     }
-    gCurrentSprite.work1++;
+    gCurrentSprite.work1++; // Possibly a leftover when converting Samus's wave beam subroutine to core-X
 }

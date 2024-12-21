@@ -494,53 +494,53 @@ static const u16 sHornoadSpitOam_Idle_Frame1[] = {
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_10 | 0x280
 };
 
-static const u16 sHornoadSpitOam_2eb784_Frame0[] = {
+static const u16 sHornoadSpitOam_ExplodingOnGroundOrCeiling_Frame0[] = {
     1,
     OBJ_SHAPE_HORIZONTAL | 0xf8, 0x1f8, OBJ_PALETTE_10 | 0x274
 };
 
-static const u16 sHornoadSpitOam_2eb784_Frame1[] = {
+static const u16 sHornoadSpitOam_ExplodingOnGroundOrCeiling_Frame1[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xf8, 0x1f4, OBJ_PALETTE_10 | 0x254,
     0xf8, 0x4, OBJ_PALETTE_10 | 0x256
 };
 
-static const u16 sHornoadSpitOam_2eb784_Frame2[] = {
+static const u16 sHornoadSpitOam_ExplodingOnGroundOrCeiling_Frame2[] = {
     2,
     OBJ_SHAPE_HORIZONTAL | 0xf8, 0x1f4, OBJ_PALETTE_10 | 0x276,
     0xf8, 0x4, OBJ_PALETTE_10 | 0x278
 };
 
-static const u16 sHornoadSpitOam_2eb7a4_Frame0[] = {
+static const u16 sHornoadSpitOam_ExplodingOnWall_Frame0[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x0, OBJ_PALETTE_10 | 0x219
 };
 
-static const u16 sHornoadSpitOam_2eb7a4_Frame1[] = {
+static const u16 sHornoadSpitOam_ExplodingOnWall_Frame1[] = {
     2,
     0xf4, 0x0, OBJ_PALETTE_10 | 0x27e,
     OBJ_SHAPE_VERTICAL | 0xfc, 0x0, OBJ_PALETTE_10 | 0x25f
 };
 
-static const u16 sHornoadSpitOam_2eb7a4_Frame2[] = {
+static const u16 sHornoadSpitOam_ExplodingOnWall_Frame2[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xf4, 0x0, OBJ_PALETTE_10 | 0x282,
     0x4, 0x0, OBJ_PALETTE_10 | 0x283
 };
 
-static const u16 sHornoadSpitOam_Exploding_Frame0[] = {
+static const u16 sHornoadSpitOam_ExplodingMidair_Frame0[] = {
     1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_10 | 0x284
 };
 
-static const u16 sHornoadSpitOam_Exploding_Frame1[] = {
+static const u16 sHornoadSpitOam_ExplodingMidair_Frame1[] = {
     3,
     0xf4, OBJ_SIZE_16x16 | 0x1f4, OBJ_PALETTE_10 | 0x286,
     OBJ_SHAPE_VERTICAL | 0xf4, 0x4, OBJ_PALETTE_10 | 0x288,
     OBJ_SHAPE_HORIZONTAL | 0x4, 0x1f7, OBJ_PALETTE_10 | 0x289
 };
 
-static const u16 sHornoadSpitOam_Exploding_Frame2[] = {
+static const u16 sHornoadSpitOam_ExplodingMidair_Frame2[] = {
     4,
     0xf4, OBJ_SIZE_16x16 | 0x1f4, OBJ_PALETTE_10 | 0x28b,
     OBJ_SHAPE_VERTICAL | 0xf4, 0x4, OBJ_PALETTE_10 | 0x28d,
@@ -1150,49 +1150,49 @@ const struct FrameData sHornoadSpitOam_Idle[3] = {
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sHornoadSpitOam_2eb784[4] = {
+const struct FrameData sHornoadSpitOam_ExplodingOnGroundOrCeiling[4] = {
     [0] = {
-        .pFrame = sHornoadSpitOam_2eb784_Frame0,
+        .pFrame = sHornoadSpitOam_ExplodingOnGroundOrCeiling_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sHornoadSpitOam_2eb784_Frame1,
+        .pFrame = sHornoadSpitOam_ExplodingOnGroundOrCeiling_Frame1,
         .timer = 7
     },
     [2] = {
-        .pFrame = sHornoadSpitOam_2eb784_Frame2,
+        .pFrame = sHornoadSpitOam_ExplodingOnGroundOrCeiling_Frame2,
         .timer = 7
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sHornoadSpitOam_2eb7a4[4] = {
+const struct FrameData sHornoadSpitOam_ExplodingOnWall[4] = {
     [0] = {
-        .pFrame = sHornoadSpitOam_2eb7a4_Frame0,
+        .pFrame = sHornoadSpitOam_ExplodingOnWall_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sHornoadSpitOam_2eb7a4_Frame1,
+        .pFrame = sHornoadSpitOam_ExplodingOnWall_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sHornoadSpitOam_2eb7a4_Frame2,
+        .pFrame = sHornoadSpitOam_ExplodingOnWall_Frame2,
         .timer = 4
     },
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sHornoadSpitOam_Exploding[4] = {
+const struct FrameData sHornoadSpitOam_ExplodingMidair[4] = {
     [0] = {
-        .pFrame = sHornoadSpitOam_Exploding_Frame0,
+        .pFrame = sHornoadSpitOam_ExplodingMidair_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sHornoadSpitOam_Exploding_Frame1,
+        .pFrame = sHornoadSpitOam_ExplodingMidair_Frame1,
         .timer = 3
     },
     [2] = {
-        .pFrame = sHornoadSpitOam_Exploding_Frame2,
+        .pFrame = sHornoadSpitOam_ExplodingMidair_Frame2,
         .timer = 3
     },
     [3] = FRAME_DATA_TERMINATOR

@@ -23,7 +23,7 @@ const u8 sNightmareGeneratorGlowingPaletteRow[8] = {
     0, 1, 2, 3, 4, 3, 2, 1
 };
 
-static const s16 sMultiSpriteData_3b82fc_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b82fc_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -40,7 +40,7 @@ static const s16 sMultiSpriteData_3b82fc_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 51, -37)
 };
 
-static const s16 sMultiSpriteData_3b82fc_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b82fc_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -57,7 +57,7 @@ static const s16 sMultiSpriteData_3b82fc_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 49, -36)
 };
 
-static const s16 sMultiSpriteData_3b82fc_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b82fc_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -74,7 +74,7 @@ static const s16 sMultiSpriteData_3b82fc_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 44, -36)
 };
 
-static const s16 sMultiSpriteData_3b82fc_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b82fc_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -91,7 +91,7 @@ static const s16 sMultiSpriteData_3b82fc_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 41, -36)
 };
 
-static const s16 sMultiSpriteData_3b82fc_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b82fc_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -108,7 +108,7 @@ static const s16 sMultiSpriteData_3b82fc_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 39, -37)
 };
 
-static const s16 sMultiSpriteData_3b8344_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b8344_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -125,7 +125,7 @@ static const s16 sMultiSpriteData_3b8344_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 50, -38)
 };
 
-static const s16 sMultiSpriteData_3b835c_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b835c_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD4EC, 2, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -142,7 +142,7 @@ static const s16 sMultiSpriteData_3b835c_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 51, -37)
 };
 
-static const s16 sMultiSpriteData_3b835c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b835c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD4EC, 1, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -159,7 +159,7 @@ static const s16 sMultiSpriteData_3b835c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 49, -36)
 };
 
-static const s16 sMultiSpriteData_3b835c_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b835c_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD4EC, 0, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -176,7 +176,7 @@ static const s16 sMultiSpriteData_3b835c_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 44, -36)
 };
 
-static const s16 sMultiSpriteData_3b835c_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b835c_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD4EC, 0, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -193,7 +193,7 @@ static const s16 sMultiSpriteData_3b835c_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 41, -36)
 };
 
-static const s16 sMultiSpriteData_3b835c_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b835c_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD4EC, 0, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -210,7 +210,7 @@ static const s16 sMultiSpriteData_3b835c_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 39, -37)
 };
 
-static const s16 sMultiSpriteData_3b83a4_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b83a4_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD4EC, 1, -1),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -28, -20),
@@ -227,7 +227,7 @@ static const s16 sMultiSpriteData_3b83a4_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 50, -38)
 };
 
-static const s16 sNightmareMultiOam_Used_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_Used_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD574, 2, 0),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD51C, 2, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, 2, 0),
@@ -244,7 +244,7 @@ static const s16 sNightmareMultiOam_Used_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 51, -37)
 };
 
-static const s16 sNightmareMultiOam_Used_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_Used_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD574, 1, 0),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD51C, 1, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, 1, 0),
@@ -261,7 +261,7 @@ static const s16 sNightmareMultiOam_Used_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 49, -36)
 };
 
-static const s16 sNightmareMultiOam_Used_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_Used_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD574, 0, 0),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD51C, 0, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, 0, 0),
@@ -278,7 +278,7 @@ static const s16 sNightmareMultiOam_Used_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 44, -36)
 };
 
-static const s16 sNightmareMultiOam_Used_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_Used_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD574, 0, 0),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD51C, 0, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, 0, 0),
@@ -295,7 +295,7 @@ static const s16 sNightmareMultiOam_Used_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 41, -36)
 };
 
-static const s16 sNightmareMultiOam_Used_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_Used_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD574, 0, 0),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD51C, 0, 0),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, 0, 0),
@@ -312,7 +312,7 @@ static const s16 sNightmareMultiOam_Used_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 39, -37)
 };
 
-static const s16 sMultiSpriteData_3b8404_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b8404_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD574, 1, -1),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD51C, 1, -1),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, 1, -1),
@@ -329,7 +329,7 @@ static const s16 sMultiSpriteData_3b8404_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 50, -38)
 };
 
-static const s16 sMultiSpriteData_3b841c_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b841c_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD5D4, 2, 0),
@@ -346,7 +346,7 @@ static const s16 sMultiSpriteData_3b841c_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 51, -37)
 };
 
-static const s16 sMultiSpriteData_3b841c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b841c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD5D4, 1, 0),
@@ -363,7 +363,7 @@ static const s16 sMultiSpriteData_3b841c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 49, -36)
 };
 
-static const s16 sMultiSpriteData_3b841c_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b841c_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD5D4, 0, 0),
@@ -380,7 +380,7 @@ static const s16 sMultiSpriteData_3b841c_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 44, -36)
 };
 
-static const s16 sMultiSpriteData_3b841c_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b841c_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD5D4, 0, 0),
@@ -397,7 +397,7 @@ static const s16 sMultiSpriteData_3b841c_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 41, -36)
 };
 
-static const s16 sMultiSpriteData_3b841c_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b841c_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD5D4, 0, 0),
@@ -414,7 +414,7 @@ static const s16 sMultiSpriteData_3b841c_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 39, -37)
 };
 
-static const s16 sMultiSpriteData_3b8584_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b8584_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD5D4, 1, -1),
@@ -431,7 +431,7 @@ static const s16 sMultiSpriteData_3b8584_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 50, -38)
 };
 
-static const s16 sMultiSpriteData_3b8464_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b8464_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD754, 2, 0),
@@ -448,7 +448,7 @@ static const s16 sMultiSpriteData_3b8464_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 51, -37)
 };
 
-static const s16 sMultiSpriteData_3b8464_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b8464_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD754, 1, 0),
@@ -465,7 +465,7 @@ static const s16 sMultiSpriteData_3b8464_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 49, -36)
 };
 
-static const s16 sMultiSpriteData_3b8464_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b8464_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD754, 0, 0),
@@ -482,7 +482,7 @@ static const s16 sMultiSpriteData_3b8464_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 44, -36)
 };
 
-static const s16 sMultiSpriteData_3b8464_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b8464_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD754, 0, 0),
@@ -499,7 +499,7 @@ static const s16 sMultiSpriteData_3b8464_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 41, -36)
 };
 
-static const s16 sMultiSpriteData_3b8464_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b8464_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD754, 0, 0),
@@ -516,7 +516,7 @@ static const s16 sMultiSpriteData_3b8464_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 39, -37)
 };
 
-static const s16 sMultiSpriteData_3b84ac_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84ac_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD654, 2, 0),
@@ -533,7 +533,7 @@ static const s16 sMultiSpriteData_3b84ac_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 51, -37)
 };
 
-static const s16 sMultiSpriteData_3b84ac_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84ac_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD654, 1, 0),
@@ -550,7 +550,7 @@ static const s16 sMultiSpriteData_3b84ac_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 49, -36)
 };
 
-static const s16 sMultiSpriteData_3b84ac_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84ac_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD654, 0, 0),
@@ -567,7 +567,7 @@ static const s16 sMultiSpriteData_3b84ac_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 44, -36)
 };
 
-static const s16 sMultiSpriteData_3b84ac_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84ac_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD654, 0, 0),
@@ -584,7 +584,7 @@ static const s16 sMultiSpriteData_3b84ac_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 41, -36)
 };
 
-static const s16 sMultiSpriteData_3b84ac_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84ac_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD654, 0, 0),
@@ -601,7 +601,7 @@ static const s16 sMultiSpriteData_3b84ac_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 39, -37)
 };
 
-static const s16 sMultiSpriteData_3b859c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b859c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD654, 1, -1),
@@ -618,7 +618,7 @@ static const s16 sMultiSpriteData_3b859c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 50, -38)
 };
 
-static const s16 sMultiSpriteData_3b84f4_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84f4_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD76C, 2, 0),
@@ -635,7 +635,7 @@ static const s16 sMultiSpriteData_3b84f4_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 51, -37)
 };
 
-static const s16 sMultiSpriteData_3b84f4_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84f4_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD76C, 1, 0),
@@ -652,7 +652,7 @@ static const s16 sMultiSpriteData_3b84f4_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 49, -36)
 };
 
-static const s16 sMultiSpriteData_3b84f4_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84f4_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD76C, 0, 0),
@@ -669,7 +669,7 @@ static const s16 sMultiSpriteData_3b84f4_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 44, -36)
 };
 
-static const s16 sMultiSpriteData_3b84f4_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84f4_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD76C, 0, 0),
@@ -686,7 +686,7 @@ static const s16 sMultiSpriteData_3b84f4_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 41, -36)
 };
 
-static const s16 sMultiSpriteData_3b84f4_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b84f4_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD76C, 0, 0),
@@ -703,7 +703,7 @@ static const s16 sMultiSpriteData_3b84f4_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 39, -37)
 };
 
-static const s16 sMultiSpriteData_3b853c_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b853c_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD6D4, 2, 0),
@@ -720,7 +720,7 @@ static const s16 sMultiSpriteData_3b853c_Frame0[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 51, -37)
 };
 
-static const s16 sMultiSpriteData_3b853c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b853c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD6D4, 1, 0),
@@ -737,7 +737,7 @@ static const s16 sMultiSpriteData_3b853c_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 49, -36)
 };
 
-static const s16 sMultiSpriteData_3b853c_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b853c_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD6D4, 0, 0),
@@ -754,7 +754,7 @@ static const s16 sMultiSpriteData_3b853c_Frame2[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 44, -36)
 };
 
-static const s16 sMultiSpriteData_3b853c_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b853c_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD6D4, 0, 0),
@@ -771,7 +771,7 @@ static const s16 sMultiSpriteData_3b853c_Frame3[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 41, -36)
 };
 
-static const s16 sMultiSpriteData_3b853c_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b853c_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD6D4, 0, 0),
@@ -788,7 +788,7 @@ static const s16 sMultiSpriteData_3b853c_Frame4[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 39, -37)
 };
 
-static const s16 sMultiSpriteData_3b85b4_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
+static const s16 sNightmareMultiSpriteData_3b85b4_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE_DATA_ELEMENT_END] = {
     [NIGHTMARE_PART_CHIN_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -28),
     [NIGHTMARE_PART_EYE_SLUDGE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD784, -36, -44),
     [NIGHTMARE_PART_EYE] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD6D4, 1, -1),
@@ -805,361 +805,361 @@ static const s16 sMultiSpriteData_3b85b4_Frame1[NIGHTMARE_PART_END][MULTI_SPRITE
     [NIGHTMARE_PART_LEFT_TURRET_3] = MULTI_SPRITE_DATA_INFO(FRAMEDATA_3BD8D4, 50, -38)
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b82fc[9] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b82fc[9] = {
     [0] = {
-        .pData = sMultiSpriteData_3b82fc_Frame0,
+        .pData = sNightmareMultiSpriteData_3b82fc_Frame0,
         .timer = 12
     },
     [1] = {
-        .pData = sMultiSpriteData_3b82fc_Frame1,
+        .pData = sNightmareMultiSpriteData_3b82fc_Frame1,
         .timer = 8
     },
     [2] = {
-        .pData = sMultiSpriteData_3b82fc_Frame2,
+        .pData = sNightmareMultiSpriteData_3b82fc_Frame2,
         .timer = 8
     },
     [3] = {
-        .pData = sMultiSpriteData_3b82fc_Frame3,
+        .pData = sNightmareMultiSpriteData_3b82fc_Frame3,
         .timer = 8
     },
     [4] = {
-        .pData = sMultiSpriteData_3b82fc_Frame4,
+        .pData = sNightmareMultiSpriteData_3b82fc_Frame4,
         .timer = 12
     },
     [5] = {
-        .pData = sMultiSpriteData_3b82fc_Frame3,
+        .pData = sNightmareMultiSpriteData_3b82fc_Frame3,
         .timer = 8
     },
     [6] = {
-        .pData = sMultiSpriteData_3b82fc_Frame2,
+        .pData = sNightmareMultiSpriteData_3b82fc_Frame2,
         .timer = 8
     },
     [7] = {
-        .pData = sMultiSpriteData_3b82fc_Frame1,
+        .pData = sNightmareMultiSpriteData_3b82fc_Frame1,
         .timer = 8
     },
     [8] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b8344[3] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b8344[3] = {
     [0] = {
-        .pData = sMultiSpriteData_3b82fc_Frame0,
+        .pData = sNightmareMultiSpriteData_3b82fc_Frame0,
         .timer = 4
     },
     [1] = {
-        .pData = sMultiSpriteData_3b8344_Frame1,
+        .pData = sNightmareMultiSpriteData_3b8344_Frame1,
         .timer = 4
     },
     [2] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b835c[9] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b835c[9] = {
     [0] = {
-        .pData = sMultiSpriteData_3b835c_Frame0,
+        .pData = sNightmareMultiSpriteData_3b835c_Frame0,
         .timer = 12
     },
     [1] = {
-        .pData = sMultiSpriteData_3b835c_Frame1,
+        .pData = sNightmareMultiSpriteData_3b835c_Frame1,
         .timer = 8
     },
     [2] = {
-        .pData = sMultiSpriteData_3b835c_Frame2,
+        .pData = sNightmareMultiSpriteData_3b835c_Frame2,
         .timer = 8
     },
     [3] = {
-        .pData = sMultiSpriteData_3b835c_Frame3,
+        .pData = sNightmareMultiSpriteData_3b835c_Frame3,
         .timer = 8
     },
     [4] = {
-        .pData = sMultiSpriteData_3b835c_Frame4,
+        .pData = sNightmareMultiSpriteData_3b835c_Frame4,
         .timer = 12
     },
     [5] = {
-        .pData = sMultiSpriteData_3b835c_Frame3,
+        .pData = sNightmareMultiSpriteData_3b835c_Frame3,
         .timer = 8
     },
     [6] = {
-        .pData = sMultiSpriteData_3b835c_Frame2,
+        .pData = sNightmareMultiSpriteData_3b835c_Frame2,
         .timer = 8
     },
     [7] = {
-        .pData = sMultiSpriteData_3b835c_Frame1,
+        .pData = sNightmareMultiSpriteData_3b835c_Frame1,
         .timer = 8
     },
     [8] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b83a4[3] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b83a4[3] = {
     [0] = {
-        .pData = sMultiSpriteData_3b835c_Frame0,
+        .pData = sNightmareMultiSpriteData_3b835c_Frame0,
         .timer = 4
     },
     [1] = {
-        .pData = sMultiSpriteData_3b83a4_Frame1,
+        .pData = sNightmareMultiSpriteData_3b83a4_Frame1,
         .timer = 4
     },
     [2] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sNightmareMultiOam_Used[9] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_Used[9] = {
     [0] = {
-        .pData = sNightmareMultiOam_Used_Frame0,
+        .pData = sNightmareMultiSpriteData_Used_Frame0,
         .timer = 12
     },
     [1] = {
-        .pData = sNightmareMultiOam_Used_Frame1,
+        .pData = sNightmareMultiSpriteData_Used_Frame1,
         .timer = 8
     },
     [2] = {
-        .pData = sNightmareMultiOam_Used_Frame2,
+        .pData = sNightmareMultiSpriteData_Used_Frame2,
         .timer = 8
     },
     [3] = {
-        .pData = sNightmareMultiOam_Used_Frame3,
+        .pData = sNightmareMultiSpriteData_Used_Frame3,
         .timer = 8
     },
     [4] = {
-        .pData = sNightmareMultiOam_Used_Frame4,
+        .pData = sNightmareMultiSpriteData_Used_Frame4,
         .timer = 12
     },
     [5] = {
-        .pData = sNightmareMultiOam_Used_Frame3,
+        .pData = sNightmareMultiSpriteData_Used_Frame3,
         .timer = 8
     },
     [6] = {
-        .pData = sNightmareMultiOam_Used_Frame2,
+        .pData = sNightmareMultiSpriteData_Used_Frame2,
         .timer = 8
     },
     [7] = {
-        .pData = sNightmareMultiOam_Used_Frame1,
+        .pData = sNightmareMultiSpriteData_Used_Frame1,
         .timer = 8
     },
     [8] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b8404[3] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b8404[3] = {
     [0] = {
-        .pData = sNightmareMultiOam_Used_Frame0,
+        .pData = sNightmareMultiSpriteData_Used_Frame0,
         .timer = 4
     },
     [1] = {
-        .pData = sMultiSpriteData_3b8404_Frame1,
+        .pData = sNightmareMultiSpriteData_3b8404_Frame1,
         .timer = 4
     },
     [2] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b841c[9] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b841c[9] = {
     [0] = {
-        .pData = sMultiSpriteData_3b841c_Frame0,
+        .pData = sNightmareMultiSpriteData_3b841c_Frame0,
         .timer = 12
     },
     [1] = {
-        .pData = sMultiSpriteData_3b841c_Frame1,
+        .pData = sNightmareMultiSpriteData_3b841c_Frame1,
         .timer = 8
     },
     [2] = {
-        .pData = sMultiSpriteData_3b841c_Frame2,
+        .pData = sNightmareMultiSpriteData_3b841c_Frame2,
         .timer = 8
     },
     [3] = {
-        .pData = sMultiSpriteData_3b841c_Frame3,
+        .pData = sNightmareMultiSpriteData_3b841c_Frame3,
         .timer = 8
     },
     [4] = {
-        .pData = sMultiSpriteData_3b841c_Frame4,
+        .pData = sNightmareMultiSpriteData_3b841c_Frame4,
         .timer = 12
     },
     [5] = {
-        .pData = sMultiSpriteData_3b841c_Frame3,
+        .pData = sNightmareMultiSpriteData_3b841c_Frame3,
         .timer = 8
     },
     [6] = {
-        .pData = sMultiSpriteData_3b841c_Frame2,
+        .pData = sNightmareMultiSpriteData_3b841c_Frame2,
         .timer = 8
     },
     [7] = {
-        .pData = sMultiSpriteData_3b841c_Frame1,
+        .pData = sNightmareMultiSpriteData_3b841c_Frame1,
         .timer = 8
     },
     [8] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b8464[9] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b8464[9] = {
     [0] = {
-        .pData = sMultiSpriteData_3b8464_Frame0,
+        .pData = sNightmareMultiSpriteData_3b8464_Frame0,
         .timer = 12
     },
     [1] = {
-        .pData = sMultiSpriteData_3b8464_Frame1,
+        .pData = sNightmareMultiSpriteData_3b8464_Frame1,
         .timer = 8
     },
     [2] = {
-        .pData = sMultiSpriteData_3b8464_Frame2,
+        .pData = sNightmareMultiSpriteData_3b8464_Frame2,
         .timer = 8
     },
     [3] = {
-        .pData = sMultiSpriteData_3b8464_Frame3,
+        .pData = sNightmareMultiSpriteData_3b8464_Frame3,
         .timer = 8
     },
     [4] = {
-        .pData = sMultiSpriteData_3b8464_Frame4,
+        .pData = sNightmareMultiSpriteData_3b8464_Frame4,
         .timer = 12
     },
     [5] = {
-        .pData = sMultiSpriteData_3b8464_Frame3,
+        .pData = sNightmareMultiSpriteData_3b8464_Frame3,
         .timer = 8
     },
     [6] = {
-        .pData = sMultiSpriteData_3b8464_Frame2,
+        .pData = sNightmareMultiSpriteData_3b8464_Frame2,
         .timer = 8
     },
     [7] = {
-        .pData = sMultiSpriteData_3b8464_Frame1,
+        .pData = sNightmareMultiSpriteData_3b8464_Frame1,
         .timer = 8
     },
     [8] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b84ac[9] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b84ac[9] = {
     [0] = {
-        .pData = sMultiSpriteData_3b84ac_Frame0,
+        .pData = sNightmareMultiSpriteData_3b84ac_Frame0,
         .timer = 12
     },
     [1] = {
-        .pData = sMultiSpriteData_3b84ac_Frame1,
+        .pData = sNightmareMultiSpriteData_3b84ac_Frame1,
         .timer = 8
     },
     [2] = {
-        .pData = sMultiSpriteData_3b84ac_Frame2,
+        .pData = sNightmareMultiSpriteData_3b84ac_Frame2,
         .timer = 8
     },
     [3] = {
-        .pData = sMultiSpriteData_3b84ac_Frame3,
+        .pData = sNightmareMultiSpriteData_3b84ac_Frame3,
         .timer = 8
     },
     [4] = {
-        .pData = sMultiSpriteData_3b84ac_Frame4,
+        .pData = sNightmareMultiSpriteData_3b84ac_Frame4,
         .timer = 12
     },
     [5] = {
-        .pData = sMultiSpriteData_3b84ac_Frame3,
+        .pData = sNightmareMultiSpriteData_3b84ac_Frame3,
         .timer = 8
     },
     [6] = {
-        .pData = sMultiSpriteData_3b84ac_Frame2,
+        .pData = sNightmareMultiSpriteData_3b84ac_Frame2,
         .timer = 8
     },
     [7] = {
-        .pData = sMultiSpriteData_3b84ac_Frame1,
+        .pData = sNightmareMultiSpriteData_3b84ac_Frame1,
         .timer = 8
     },
     [8] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b84f4[9] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b84f4[9] = {
     [0] = {
-        .pData = sMultiSpriteData_3b84f4_Frame0,
+        .pData = sNightmareMultiSpriteData_3b84f4_Frame0,
         .timer = 12
     },
     [1] = {
-        .pData = sMultiSpriteData_3b84f4_Frame1,
+        .pData = sNightmareMultiSpriteData_3b84f4_Frame1,
         .timer = 8
     },
     [2] = {
-        .pData = sMultiSpriteData_3b84f4_Frame2,
+        .pData = sNightmareMultiSpriteData_3b84f4_Frame2,
         .timer = 8
     },
     [3] = {
-        .pData = sMultiSpriteData_3b84f4_Frame3,
+        .pData = sNightmareMultiSpriteData_3b84f4_Frame3,
         .timer = 8
     },
     [4] = {
-        .pData = sMultiSpriteData_3b84f4_Frame4,
+        .pData = sNightmareMultiSpriteData_3b84f4_Frame4,
         .timer = 12
     },
     [5] = {
-        .pData = sMultiSpriteData_3b84f4_Frame3,
+        .pData = sNightmareMultiSpriteData_3b84f4_Frame3,
         .timer = 8
     },
     [6] = {
-        .pData = sMultiSpriteData_3b84f4_Frame2,
+        .pData = sNightmareMultiSpriteData_3b84f4_Frame2,
         .timer = 8
     },
     [7] = {
-        .pData = sMultiSpriteData_3b84f4_Frame1,
+        .pData = sNightmareMultiSpriteData_3b84f4_Frame1,
         .timer = 8
     },
     [8] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b853c[9] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b853c[9] = {
     [0] = {
-        .pData = sMultiSpriteData_3b853c_Frame0,
+        .pData = sNightmareMultiSpriteData_3b853c_Frame0,
         .timer = 12
     },
     [1] = {
-        .pData = sMultiSpriteData_3b853c_Frame1,
+        .pData = sNightmareMultiSpriteData_3b853c_Frame1,
         .timer = 8
     },
     [2] = {
-        .pData = sMultiSpriteData_3b853c_Frame2,
+        .pData = sNightmareMultiSpriteData_3b853c_Frame2,
         .timer = 8
     },
     [3] = {
-        .pData = sMultiSpriteData_3b853c_Frame3,
+        .pData = sNightmareMultiSpriteData_3b853c_Frame3,
         .timer = 8
     },
     [4] = {
-        .pData = sMultiSpriteData_3b853c_Frame4,
+        .pData = sNightmareMultiSpriteData_3b853c_Frame4,
         .timer = 12
     },
     [5] = {
-        .pData = sMultiSpriteData_3b853c_Frame3,
+        .pData = sNightmareMultiSpriteData_3b853c_Frame3,
         .timer = 8
     },
     [6] = {
-        .pData = sMultiSpriteData_3b853c_Frame2,
+        .pData = sNightmareMultiSpriteData_3b853c_Frame2,
         .timer = 8
     },
     [7] = {
-        .pData = sMultiSpriteData_3b853c_Frame1,
+        .pData = sNightmareMultiSpriteData_3b853c_Frame1,
         .timer = 8
     },
     [8] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b8584[3] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b8584[3] = {
     [0] = {
-        .pData = sMultiSpriteData_3b841c_Frame0,
+        .pData = sNightmareMultiSpriteData_3b841c_Frame0,
         .timer = 4
     },
     [1] = {
-        .pData = sMultiSpriteData_3b8584_Frame1,
-        .timer = 4
-    },
-    [2] = MULTI_SPRITE_DATA_TERMINATOR
-};
-
-const struct MultiSpriteData sMultiSpriteData_3b859c[3] = {
-    [0] = {
-        .pData = sMultiSpriteData_3b84ac_Frame0,
-        .timer = 4
-    },
-    [1] = {
-        .pData = sMultiSpriteData_3b859c_Frame1,
+        .pData = sNightmareMultiSpriteData_3b8584_Frame1,
         .timer = 4
     },
     [2] = MULTI_SPRITE_DATA_TERMINATOR
 };
 
-const struct MultiSpriteData sMultiSpriteData_3b85b4[3] = {
+const struct MultiSpriteData sNightmareMultiSpriteData_3b859c[3] = {
     [0] = {
-        .pData = sMultiSpriteData_3b853c_Frame0,
+        .pData = sNightmareMultiSpriteData_3b84ac_Frame0,
         .timer = 4
     },
     [1] = {
-        .pData = sMultiSpriteData_3b85b4_Frame1,
+        .pData = sNightmareMultiSpriteData_3b859c_Frame1,
+        .timer = 4
+    },
+    [2] = MULTI_SPRITE_DATA_TERMINATOR
+};
+
+const struct MultiSpriteData sNightmareMultiSpriteData_3b85b4[3] = {
+    [0] = {
+        .pData = sNightmareMultiSpriteData_3b853c_Frame0,
+        .timer = 4
+    },
+    [1] = {
+        .pData = sNightmareMultiSpriteData_3b85b4_Frame1,
         .timer = 4
     },
     [2] = MULTI_SPRITE_DATA_TERMINATOR
@@ -1717,141 +1717,141 @@ static const u16 sNightmarePartGeneratorOam_SpinningReallyFast_Frame2[] = {
     OBJ_SHAPE_VERTICAL | 0xfd, OBJ_SIZE_8x32 | 0x1f, OBJ_PALETTE_11 | 0x304
 };
 
-static const u16 sFrameData_3bd784_Frame0[] = {
+static const u16 sNightmarePartOam_3bd784_Frame0[] = {
     1,
     0xfc, 0x1fc, OBJ_PALETTE_8 | 0x2f6
 };
 
-static const u16 sFrameData_3bd864_Frame0[] = {
+static const u16 sNightmarePartOam_3bd864_Frame0[] = {
     3,
     OBJ_SHAPE_HORIZONTAL | 0xe9, 0x1f4, OBJ_PALETTE_8 | 0x24f,
     OBJ_SHAPE_VERTICAL | 0xf1, 0x1f4, OBJ_PALETTE_8 | 0x26f,
     OBJ_SHAPE_VERTICAL | 0xf1, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x270
 };
 
-static const u16 sFrameData_3bd874_Frame0[] = {
+static const u16 sNightmarePartOam_3bd874_Frame0[] = {
     1,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame0[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame0[] = {
     2,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x318,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame2[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame2[] = {
     2,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x31a,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame4[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame4[] = {
     2,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x358,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame6[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame6[] = {
     2,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x35a,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame8[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame8[] = {
     2,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x351,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame9[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame9[] = {
     2,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x311,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame10[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame10[] = {
     2,
     0xfc, 0x1fc, OBJ_PALETTE_8 | 0x310,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame11[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame11[] = {
     3,
     OBJ_SHAPE_HORIZONTAL | 0xfb, 0x1ea, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fa, OBJ_PALETTE_8 | 0x30e,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame12[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame12[] = {
     3,
     0xfb, 0x1f6, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x30e,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd8e4_Frame13[] = {
+static const u16 sNightmarePartOam_3bd8e4_Frame13[] = {
     2,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x2ff,
     0xe7, OBJ_SIZE_32x32 | 0x1f8, OBJ_PALETTE_8 | 0x292
 };
 
-static const u16 sFrameData_3bd884_Frame0[] = {
+static const u16 sNightmarePartOam_3bd884_Frame0[] = {
     2,
     0xe2, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x277,
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame0[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame0[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x318,
     0xe2, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x277,
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame2[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame2[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x31a,
     0xe2, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x277,
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame4[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame4[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x358,
     0xe2, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x277,
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame6[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame6[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x35a,
     0xe2, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x277,
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame8[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame8[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x351,
     0xe2, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x277,
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame9[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame9[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x311,
     0xe2, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x277,
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame10[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame10[] = {
     3,
     0xfc, 0x1fc, OBJ_PALETTE_8 | 0x310,
     0xe2, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x277,
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame11[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame11[] = {
     4,
     OBJ_SHAPE_HORIZONTAL | 0xfb, 0x1ea, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fa, OBJ_PALETTE_8 | 0x30e,
@@ -1859,7 +1859,7 @@ static const u16 sFrameData_3bd95c_Frame11[] = {
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame12[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame12[] = {
     4,
     0xfb, 0x1f6, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x30e,
@@ -1867,69 +1867,69 @@ static const u16 sFrameData_3bd95c_Frame12[] = {
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd95c_Frame13[] = {
+static const u16 sNightmarePartOam_3bd95c_Frame13[] = {
     3,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x2ff,
     0xe2, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x277,
     OBJ_SHAPE_HORIZONTAL | 0x2, OBJ_SIZE_32x8 | 0x1f9, OBJ_PALETTE_8 | 0x2f7
 };
 
-static const u16 sFrameData_3bd894_Frame0[] = {
+static const u16 sNightmarePartOam_3bd894_Frame0[] = {
     2,
     0xe6, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x29b,
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame0[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame0[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x318,
     0xe6, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x29b,
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame2[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame2[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x31a,
     0xe6, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x29b,
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame4[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame4[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x358,
     0xe6, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x29b,
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame6[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame6[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x35a,
     0xe6, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x29b,
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame8[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame8[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x351,
     0xe6, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x29b,
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame9[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame9[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x311,
     0xe6, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x29b,
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame10[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame10[] = {
     3,
     0xfc, 0x1fc, OBJ_PALETTE_8 | 0x310,
     0xe6, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x29b,
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame11[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame11[] = {
     4,
     OBJ_SHAPE_HORIZONTAL | 0xfb, 0x1ea, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fa, OBJ_PALETTE_8 | 0x30e,
@@ -1937,7 +1937,7 @@ static const u16 sFrameData_3bd9d4_Frame11[] = {
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame12[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame12[] = {
     4,
     0xfb, 0x1f6, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x30e,
@@ -1945,75 +1945,75 @@ static const u16 sFrameData_3bd9d4_Frame12[] = {
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd9d4_Frame13[] = {
+static const u16 sNightmarePartOam_3bd9d4_Frame13[] = {
     3,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x2ff,
     0xe6, OBJ_SIZE_32x32 | 0x1f9, OBJ_PALETTE_8 | 0x29b,
     OBJ_SHAPE_VERTICAL | 0xea, 0x19, OBJ_PALETTE_8 | 0x29f
 };
 
-static const u16 sFrameData_3bd8a4_Frame0[] = {
+static const u16 sNightmarePartOam_3bd8a4_Frame0[] = {
     2,
     0xf0, OBJ_SIZE_32x32 | 0x1e8, OBJ_PALETTE_8 | 0x305,
     OBJ_SHAPE_VERTICAL | 0xf0, OBJ_SIZE_16x32 | 0x8, OBJ_PALETTE_8 | 0x309
 };
 
-static const u16 sFrameData_3bd8b4_Frame0[] = {
+static const u16 sNightmarePartOam_3bd8b4_Frame0[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame0[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame0[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x318,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame2[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame2[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x31a,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame4[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame4[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x358,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame6[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame6[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x35a,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame8[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame8[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x351,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame9[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame9[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x311,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame10[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame10[] = {
     3,
     0xfc, 0x1fc, OBJ_PALETTE_8 | 0x310,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame11[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame11[] = {
     4,
     OBJ_SHAPE_HORIZONTAL | 0xfb, 0x1ea, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fa, OBJ_PALETTE_8 | 0x30e,
@@ -2021,7 +2021,7 @@ static const u16 sFrameData_3bda4c_Frame11[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame12[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame12[] = {
     4,
     0xfb, 0x1f6, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x30e,
@@ -2029,69 +2029,69 @@ static const u16 sFrameData_3bda4c_Frame12[] = {
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bda4c_Frame13[] = {
+static const u16 sNightmarePartOam_3bda4c_Frame13[] = {
     3,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x2ff,
     OBJ_SHAPE_VERTICAL | 0xe8, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x212,
     OBJ_SHAPE_VERTICAL | 0xf0, 0xc, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sFrameData_3bd8c4_Frame0[] = {
+static const u16 sNightmarePartOam_3bd8c4_Frame0[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xe7, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x215,
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame0[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame0[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x318,
     OBJ_SHAPE_VERTICAL | 0xe7, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x215,
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame2[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame2[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x31a,
     OBJ_SHAPE_VERTICAL | 0xe7, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x215,
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame4[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame4[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x358,
     OBJ_SHAPE_VERTICAL | 0xe7, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x215,
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame6[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame6[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x35a,
     OBJ_SHAPE_VERTICAL | 0xe7, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x215,
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame8[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame8[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x351,
     OBJ_SHAPE_VERTICAL | 0xe7, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x215,
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame9[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame9[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x311,
     OBJ_SHAPE_VERTICAL | 0xe7, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x215,
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame10[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame10[] = {
     3,
     0xfc, 0x1fc, OBJ_PALETTE_8 | 0x310,
     OBJ_SHAPE_VERTICAL | 0xe7, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x215,
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame11[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame11[] = {
     4,
     OBJ_SHAPE_HORIZONTAL | 0xfb, 0x1ea, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fa, OBJ_PALETTE_8 | 0x30e,
@@ -2099,7 +2099,7 @@ static const u16 sFrameData_3bdac4_Frame11[] = {
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame12[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame12[] = {
     4,
     0xfb, 0x1f6, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x30e,
@@ -2107,69 +2107,69 @@ static const u16 sFrameData_3bdac4_Frame12[] = {
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bdac4_Frame13[] = {
+static const u16 sNightmarePartOam_3bdac4_Frame13[] = {
     3,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x2ff,
     OBJ_SHAPE_VERTICAL | 0xe7, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x215,
     OBJ_SHAPE_VERTICAL | 0xef, 0xc, OBJ_PALETTE_8 | 0x254
 };
 
-static const u16 sFrameData_3bd8d4_Frame0[] = {
+static const u16 sNightmarePartOam_3bd8d4_Frame0[] = {
     2,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x21b,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame0[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame0[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x318,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x21b,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame2[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame2[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x31a,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x21b,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame4[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame4[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x358,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x21b,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame6[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame6[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x35a,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x21b,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame8[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame8[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x351,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x21b,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame9[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame9[] = {
     3,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x311,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x21b,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame10[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame10[] = {
     3,
     0xfc, 0x1fc, OBJ_PALETTE_8 | 0x310,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x21b,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame11[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame11[] = {
     4,
     OBJ_SHAPE_HORIZONTAL | 0xfb, 0x1ea, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fa, OBJ_PALETTE_8 | 0x30e,
@@ -2177,7 +2177,7 @@ static const u16 sFrameData_3bdb3c_Frame11[] = {
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame12[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame12[] = {
     4,
     0xfb, 0x1f6, OBJ_PALETTE_8 | 0x30b,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x30e,
@@ -2185,24 +2185,24 @@ static const u16 sFrameData_3bdb3c_Frame12[] = {
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdb3c_Frame13[] = {
+static const u16 sNightmarePartOam_3bdb3c_Frame13[] = {
     3,
     0xfb, 0x1fb, OBJ_PALETTE_8 | 0x2ff,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_16x32 | 0x1fc, OBJ_PALETTE_8 | 0x21b,
     OBJ_SHAPE_VERTICAL | 0xeb, OBJ_SIZE_8x32 | 0xc, OBJ_PALETTE_8 | 0x21d
 };
 
-static const u16 sFrameData_3bdbb4_Frame0[] = {
+static const u16 sNightmarePartOam_3bdbb4_Frame0[] = {
     1,
     OBJ_SHAPE_VERTICAL | 0xf8, 0x1fc, OBJ_PALETTE_8 | 0x3d7
 };
 
-static const u16 sFrameData_3bdbc4_Frame0[] = {
+static const u16 sNightmarePartOam_3bdbc4_Frame0[] = {
     1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x355
 };
 
-static const u16 sFrameData_3bdbc4_Frame1[] = {
+static const u16 sNightmarePartOam_3bdbc4_Frame1[] = {
     4,
     0xf6, 0x1f6, OBJ_PALETTE_8 | 0x317,
     0xf6, 0x2, OBJ_PALETTE_8 | 0x357,
@@ -2210,7 +2210,7 @@ static const u16 sFrameData_3bdbc4_Frame1[] = {
     0x2, 0x2, OBJ_PALETTE_8 | 0x377
 };
 
-static const u16 sFrameData_3bdbc4_Frame2[] = {
+static const u16 sNightmarePartOam_3bdbc4_Frame2[] = {
     4,
     0xf4, 0x1f4, OBJ_PALETTE_8 | 0x395,
     0xf4, 0x4, OBJ_PALETTE_8 | 0x396,
@@ -2218,7 +2218,7 @@ static const u16 sFrameData_3bdbc4_Frame2[] = {
     0x4, 0x4, OBJ_PALETTE_8 | 0x3b7
 };
 
-static const u16 sFrameData_3bdbc4_Frame3[] = {
+static const u16 sNightmarePartOam_3bdbc4_Frame3[] = {
     4,
     0xf2, 0x1f2, OBJ_PALETTE_8 | 0x2df,
     0xf2, 0x6, OBJ_PALETTE_8 | 0x2df,
@@ -2566,9 +2566,9 @@ const struct FrameData sNightmarePartEyeAndMouthOam_DroopMore[3] = {
     [2] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd784[2] = {
+const struct FrameData sNightmarePartOam_3bd784[2] = {
     [0] = {
-        .pFrame = sFrameData_3bd784_Frame0,
+        .pFrame = sNightmarePartOam_3bd784_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
@@ -2678,813 +2678,813 @@ const struct FrameData sNightmarePartGeneratorOam_SpinningReallySlow[4] = {
     [3] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd864[2] = {
+const struct FrameData sNightmarePartOam_3bd864[2] = {
     [0] = {
-        .pFrame = sFrameData_3bd864_Frame0,
+        .pFrame = sNightmarePartOam_3bd864_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd874[2] = {
+const struct FrameData sNightmarePartOam_3bd874[2] = {
     [0] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd884[2] = {
+const struct FrameData sNightmarePartOam_3bd884[2] = {
     [0] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd894[2] = {
+const struct FrameData sNightmarePartOam_3bd894[2] = {
     [0] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd8a4[2] = {
+const struct FrameData sNightmarePartOam_3bd8a4[2] = {
     [0] = {
-        .pFrame = sFrameData_3bd8a4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8a4_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd8b4[2] = {
+const struct FrameData sNightmarePartOam_3bd8b4[2] = {
     [0] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd8c4[2] = {
+const struct FrameData sNightmarePartOam_3bd8c4[2] = {
     [0] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd8d4[2] = {
+const struct FrameData sNightmarePartOam_3bd8d4[2] = {
     [0] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd8e4[15] = {
+const struct FrameData sNightmarePartOam_3bd8e4[15] = {
     [0] = {
-        .pFrame = sFrameData_3bd8e4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bd8e4_Frame2,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bd8e4_Frame4,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame4,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bd8e4_Frame6,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame6,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bd8e4_Frame8,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame8,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bd8e4_Frame9,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame9,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bd8e4_Frame10,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame10,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bd8e4_Frame11,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame11,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bd8e4_Frame12,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame12,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bd8e4_Frame13,
+        .pFrame = sNightmarePartOam_3bd8e4_Frame13,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd95c[15] = {
+const struct FrameData sNightmarePartOam_3bd95c[15] = {
     [0] = {
-        .pFrame = sFrameData_3bd95c_Frame0,
+        .pFrame = sNightmarePartOam_3bd95c_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bd95c_Frame2,
+        .pFrame = sNightmarePartOam_3bd95c_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bd95c_Frame4,
+        .pFrame = sNightmarePartOam_3bd95c_Frame4,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bd95c_Frame6,
+        .pFrame = sNightmarePartOam_3bd95c_Frame6,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bd95c_Frame8,
+        .pFrame = sNightmarePartOam_3bd95c_Frame8,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bd95c_Frame9,
+        .pFrame = sNightmarePartOam_3bd95c_Frame9,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bd95c_Frame10,
+        .pFrame = sNightmarePartOam_3bd95c_Frame10,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bd95c_Frame11,
+        .pFrame = sNightmarePartOam_3bd95c_Frame11,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bd95c_Frame12,
+        .pFrame = sNightmarePartOam_3bd95c_Frame12,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bd95c_Frame13,
+        .pFrame = sNightmarePartOam_3bd95c_Frame13,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bd9d4[15] = {
+const struct FrameData sNightmarePartOam_3bd9d4[15] = {
     [0] = {
-        .pFrame = sFrameData_3bd9d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bd9d4_Frame2,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bd9d4_Frame4,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame4,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bd9d4_Frame6,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame6,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bd9d4_Frame8,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame8,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bd9d4_Frame9,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame9,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bd9d4_Frame10,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame10,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bd9d4_Frame11,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame11,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bd9d4_Frame12,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame12,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bd9d4_Frame13,
+        .pFrame = sNightmarePartOam_3bd9d4_Frame13,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bda4c[15] = {
+const struct FrameData sNightmarePartOam_3bda4c[15] = {
     [0] = {
-        .pFrame = sFrameData_3bda4c_Frame0,
+        .pFrame = sNightmarePartOam_3bda4c_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bda4c_Frame2,
+        .pFrame = sNightmarePartOam_3bda4c_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bda4c_Frame4,
+        .pFrame = sNightmarePartOam_3bda4c_Frame4,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bda4c_Frame6,
+        .pFrame = sNightmarePartOam_3bda4c_Frame6,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bda4c_Frame8,
+        .pFrame = sNightmarePartOam_3bda4c_Frame8,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bda4c_Frame9,
+        .pFrame = sNightmarePartOam_3bda4c_Frame9,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bda4c_Frame10,
+        .pFrame = sNightmarePartOam_3bda4c_Frame10,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bda4c_Frame11,
+        .pFrame = sNightmarePartOam_3bda4c_Frame11,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bda4c_Frame12,
+        .pFrame = sNightmarePartOam_3bda4c_Frame12,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bda4c_Frame13,
+        .pFrame = sNightmarePartOam_3bda4c_Frame13,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bdac4[15] = {
+const struct FrameData sNightmarePartOam_3bdac4[15] = {
     [0] = {
-        .pFrame = sFrameData_3bdac4_Frame0,
+        .pFrame = sNightmarePartOam_3bdac4_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bdac4_Frame2,
+        .pFrame = sNightmarePartOam_3bdac4_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bdac4_Frame4,
+        .pFrame = sNightmarePartOam_3bdac4_Frame4,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bdac4_Frame6,
+        .pFrame = sNightmarePartOam_3bdac4_Frame6,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bdac4_Frame8,
+        .pFrame = sNightmarePartOam_3bdac4_Frame8,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bdac4_Frame9,
+        .pFrame = sNightmarePartOam_3bdac4_Frame9,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bdac4_Frame10,
+        .pFrame = sNightmarePartOam_3bdac4_Frame10,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bdac4_Frame11,
+        .pFrame = sNightmarePartOam_3bdac4_Frame11,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bdac4_Frame12,
+        .pFrame = sNightmarePartOam_3bdac4_Frame12,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bdac4_Frame13,
+        .pFrame = sNightmarePartOam_3bdac4_Frame13,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bdb3c[15] = {
+const struct FrameData sNightmarePartOam_3bdb3c[15] = {
     [0] = {
-        .pFrame = sFrameData_3bdb3c_Frame0,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bdb3c_Frame2,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame2,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bdb3c_Frame4,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame4,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bdb3c_Frame6,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame6,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bdb3c_Frame8,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame8,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bdb3c_Frame9,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame9,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bdb3c_Frame10,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame10,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bdb3c_Frame11,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame11,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bdb3c_Frame12,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame12,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bdb3c_Frame13,
+        .pFrame = sNightmarePartOam_3bdb3c_Frame13,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bdbb4[2] = {
+const struct FrameData sNightmarePartOam_3bdbb4[2] = {
     [0] = {
-        .pFrame = sFrameData_3bdbb4_Frame0,
+        .pFrame = sNightmarePartOam_3bdbb4_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bdbc4[5] = {
+const struct FrameData sNightmarePartOam_3bdbc4[5] = {
     [0] = {
-        .pFrame = sFrameData_3bdbc4_Frame0,
+        .pFrame = sNightmarePartOam_3bdbc4_Frame0,
         .timer = 3
     },
     [1] = {
-        .pFrame = sFrameData_3bdbc4_Frame1,
+        .pFrame = sNightmarePartOam_3bdbc4_Frame1,
         .timer = 3
     },
     [2] = {
-        .pFrame = sFrameData_3bdbc4_Frame2,
+        .pFrame = sNightmarePartOam_3bdbc4_Frame2,
         .timer = 3
     },
     [3] = {
-        .pFrame = sFrameData_3bdbc4_Frame3,
+        .pFrame = sNightmarePartOam_3bdbc4_Frame3,
         .timer = 3
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bdbec[15] = {
+const struct FrameData sNightmarePartOam_3bdbec[15] = {
     [0] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bd874_Frame0,
+        .pFrame = sNightmarePartOam_3bd874_Frame0,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bdc64[15] = {
+const struct FrameData sNightmarePartOam_3bdc64[15] = {
     [0] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bd884_Frame0,
+        .pFrame = sNightmarePartOam_3bd884_Frame0,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bdcdc[15] = {
+const struct FrameData sNightmarePartOam_3bdcdc[15] = {
     [0] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bd894_Frame0,
+        .pFrame = sNightmarePartOam_3bd894_Frame0,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bdd54[15] = {
+const struct FrameData sNightmarePartOam_3bdd54[15] = {
     [0] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bd8b4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8b4_Frame0,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bddcc[15] = {
+const struct FrameData sNightmarePartOam_3bddcc[15] = {
     [0] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bd8c4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8c4_Frame0,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sFrameData_3bde44[15] = {
+const struct FrameData sNightmarePartOam_3bde44[15] = {
     [0] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 5
     },
     [1] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 2
     },
     [2] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 5
     },
     [3] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 2
     },
     [4] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 5
     },
     [5] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 2
     },
     [6] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 5
     },
     [7] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 2
     },
     [8] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 8
     },
     [9] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 3
     },
     [10] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 3
     },
     [11] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 3
     },
     [12] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 4
     },
     [13] = {
-        .pFrame = sFrameData_3bd8d4_Frame0,
+        .pFrame = sNightmarePartOam_3bd8d4_Frame0,
         .timer = 4
     },
     [14] = FRAME_DATA_TERMINATOR

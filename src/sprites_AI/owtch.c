@@ -108,9 +108,9 @@ void OwtchUpdateHitbox(void)
 void OwtchSetCrawlingOam(void)
 {
     if (gCurrentSprite.work0)
-        gCurrentSprite.pOam = sFrameData_379154;
+        gCurrentSprite.pOam = sOwtchOam_379154;
     else
-        gCurrentSprite.pOam = sFrameData_3790d4;
+        gCurrentSprite.pOam = sOwtchOam_3790d4;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -118,9 +118,9 @@ void OwtchSetCrawlingOam(void)
 void OwtchSetFallingOam(void)
 {
     if (gCurrentSprite.work0)
-        gCurrentSprite.pOam = sFrameData_379154;
+        gCurrentSprite.pOam = sOwtchOam_379154;
     else
-        gCurrentSprite.pOam = sFrameData_3790d4;
+        gCurrentSprite.pOam = sOwtchOam_3790d4;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -439,65 +439,65 @@ void OwtchTurningAroundInit(void)
     {
         case 0:
             if (gCurrentSprite.status & SS_FACING_RIGHT)
-                gCurrentSprite.pOam = sFrameData_379114;
+                gCurrentSprite.pOam = sOwtchOam_379114;
             else
-                gCurrentSprite.pOam = sFrameData_379194;
+                gCurrentSprite.pOam = sOwtchOam_379194;
             gCurrentSprite.status &= ~SS_X_FLIP;
             gCurrentSprite.status &= ~SS_Y_FLIP;
             break;
         case 1:
             if (gCurrentSprite.status & SS_FACING_RIGHT)
-                gCurrentSprite.pOam = sFrameData_379114;
+                gCurrentSprite.pOam = sOwtchOam_379114;
             else
-                gCurrentSprite.pOam = sFrameData_379194;
+                gCurrentSprite.pOam = sOwtchOam_379194;
             gCurrentSprite.status |= SS_X_FLIP;
             gCurrentSprite.status &= ~SS_Y_FLIP;
             break;
         case 2:
             if (gCurrentSprite.status & SS_FACING_RIGHT)
-                gCurrentSprite.pOam = sFrameData_379194;
+                gCurrentSprite.pOam = sOwtchOam_379194;
             else
-                gCurrentSprite.pOam = sFrameData_379114;
+                gCurrentSprite.pOam = sOwtchOam_379114;
             gCurrentSprite.status &= ~SS_X_FLIP;
             gCurrentSprite.status |= SS_Y_FLIP;
             break;
         case 3:
             if (gCurrentSprite.status & SS_FACING_RIGHT)
-                gCurrentSprite.pOam = sFrameData_379194;
+                gCurrentSprite.pOam = sOwtchOam_379194;
             else
-                gCurrentSprite.pOam = sFrameData_379114;
+                gCurrentSprite.pOam = sOwtchOam_379114;
             gCurrentSprite.status |= SS_X_FLIP;
             gCurrentSprite.status |= SS_Y_FLIP;
             break;
         case 4:
             if (gCurrentSprite.status & SS_FACING_RIGHT)
-                gCurrentSprite.pOam = sFrameData_3791b4;
+                gCurrentSprite.pOam = sOwtchOam_3791b4;
             else
-                gCurrentSprite.pOam = sFrameData_379134;
+                gCurrentSprite.pOam = sOwtchOam_379134;
             gCurrentSprite.status &= ~SS_X_FLIP;
             gCurrentSprite.status &= ~SS_Y_FLIP;
             break;
         case 5:
             if (gCurrentSprite.status & SS_FACING_RIGHT)
-                gCurrentSprite.pOam = sFrameData_379134;
+                gCurrentSprite.pOam = sOwtchOam_379134;
             else
-                gCurrentSprite.pOam = sFrameData_3791b4;
+                gCurrentSprite.pOam = sOwtchOam_3791b4;
             gCurrentSprite.status |= SS_X_FLIP;
             gCurrentSprite.status &= ~SS_Y_FLIP;
             break;
         case 6:
             if (gCurrentSprite.status & SS_FACING_RIGHT)
-                gCurrentSprite.pOam = sFrameData_3791b4;
+                gCurrentSprite.pOam = sOwtchOam_3791b4;
             else
-                gCurrentSprite.pOam = sFrameData_379134;
+                gCurrentSprite.pOam = sOwtchOam_379134;
             gCurrentSprite.status &= ~SS_X_FLIP;
             gCurrentSprite.status |= SS_Y_FLIP;
             break;
         case 7:
             if (gCurrentSprite.status & SS_FACING_RIGHT)
-                gCurrentSprite.pOam = sFrameData_379134;
+                gCurrentSprite.pOam = sOwtchOam_379134;
             else
-                gCurrentSprite.pOam = sFrameData_3791b4;
+                gCurrentSprite.pOam = sOwtchOam_3791b4;
             gCurrentSprite.status |= SS_X_FLIP;
             gCurrentSprite.status |= SS_Y_FLIP;
             break;

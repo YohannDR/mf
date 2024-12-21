@@ -953,7 +953,7 @@ void HornoadSpitExplodingInit(void)
     gCurrentSprite.pose = 0x38;
     gCurrentSprite.samusCollision = SSC_NONE;
 
-    gCurrentSprite.pOam = sHornoadSpitOam_Exploding;
+    gCurrentSprite.pOam = sHornoadSpitOam_ExplodingMidair;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }

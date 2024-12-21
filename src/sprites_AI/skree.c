@@ -29,7 +29,7 @@ void SkreeInit(void) {
         gCurrentSprite.hitboxRight = 0x18;
         gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
         if (gCurrentSprite.pose == 0x59) {
-            gCurrentSprite.pOam = sFrameData_2f9220;
+            gCurrentSprite.pOam = sSkreeOam_2f9220;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.pose = 0x5a;
@@ -41,7 +41,7 @@ void SkreeInit(void) {
 }
 
 void SkreeIdleInit(void) {
-    gCurrentSprite.pOam = sFrameData_2f9248;
+    gCurrentSprite.pOam = sSkreeOam_2f9248;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 2;
@@ -65,7 +65,7 @@ void SkreeWarning(void) {
 }
 
 void SkreeGoingDownInit(void) {
-    gCurrentSprite.pOam = sFrameData_2f9260;
+    gCurrentSprite.pOam = sSkreeOam_2f9260;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 0;
@@ -126,7 +126,7 @@ void SkreeGoingDown(void) {
 }
 
 void SkreeCrashingInit(void) {
-    gCurrentSprite.pOam = sFrameData_2f92c8;
+    gCurrentSprite.pOam = sSkreeOam_2f92c8;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 60;
@@ -143,7 +143,7 @@ void SkreeCrashing(void) {
 }
 
 void SkreeGoingUpWarningInit(void) {
-    gCurrentSprite.pOam = sFrameData_2f92c8;
+    gCurrentSprite.pOam = sSkreeOam_2f92c8;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 31;

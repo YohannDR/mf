@@ -3,55 +3,55 @@
 const u32 sLavaPlumeGfx[1 * 512] = INCBIN_U32("data/sprites/lava_plume.gfx");
 const u16 sLavaPlumePal[1 * 16] = INCBIN_U16("data/sprites/lava_plume.pal");
 
-static const u16 sLavaPlumeOam_33fde0_Frame0[] = {
+static const u16 sLavaPlumeWarningOam_Idle0_Frame0[] = {
     2,
     0xf9, 0x5, OBJ_PALETTE_8 | 0x234,
     0xf9, OBJ_X_FLIP | 0x1f4, OBJ_PALETTE_8 | 0x234
 };
 
-static const u16 sLavaPlumeOam_33fde0_Frame1[] = {
+static const u16 sLavaPlumeWarningOam_Idle0_Frame1[] = {
     2,
     0xf8, 0x5, OBJ_PALETTE_8 | 0x214,
     0xf8, OBJ_X_FLIP | 0x1f4, OBJ_PALETTE_8 | 0x214
 };
 
-static const u16 sLavaPlumeOam_33fde0_Frame2[] = {
+static const u16 sLavaPlumeWarningOam_Idle0_Frame2[] = {
     2,
     0xf1, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1ec, OBJ_PALETTE_8 | 0x218,
     0xf1, OBJ_SIZE_16x16 | 0x5, OBJ_PALETTE_8 | 0x218
 };
 
-static const u16 sLavaPlumeOam_33fe08_Frame3[] = {
+static const u16 sLavaPlumeWarningOam_Idle1_Frame3[] = {
     2,
     0xf1, OBJ_SIZE_16x16 | 0x5, OBJ_PALETTE_8 | 0x21c,
     0xf1, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1ec, OBJ_PALETTE_8 | 0x21c
 };
 
-static const u16 sLavaPlumeOam_33fde0_Frame3[] = {
+static const u16 sLavaPlumeWarningOam_Idle0_Frame3[] = {
     2,
     0xef, OBJ_X_FLIP | OBJ_SIZE_16x16 | 0x1ec, OBJ_PALETTE_8 | 0x21a,
     0xef, OBJ_SIZE_16x16 | 0x5, OBJ_PALETTE_8 | 0x21a
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame0[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame0[] = {
     1,
     0xf9, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x20e
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame1[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame1[] = {
     2,
     0x0, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x202,
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame2[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame2[] = {
     3,
     0x6, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x210,
     0x0, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x202,
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame3[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame3[] = {
     4,
     0xe, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x204,
     0x6, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x210,
@@ -59,7 +59,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame3[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame4[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame4[] = {
     5,
     0x14, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x206,
     0xe, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x204,
@@ -68,7 +68,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame4[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame5[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame5[] = {
     5,
     0x16, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x212,
     0xe, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x204,
@@ -77,7 +77,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame5[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame6[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame6[] = {
     5,
     0x18, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x206,
     0xe, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x204,
@@ -86,7 +86,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame6[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame7[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame7[] = {
     5,
     0x1a, OBJ_X_FLIP | OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x212,
     0xe, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x204,
@@ -95,7 +95,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame7[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame8[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame8[] = {
     6,
     0x22, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x20c,
     0x1a, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x206,
@@ -105,7 +105,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame8[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame9[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame9[] = {
     6,
     0x28, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x20c,
     0x1a, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x212,
@@ -115,7 +115,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame9[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame10[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame10[] = {
     7,
     0x32, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x216,
     0x26, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x20c,
@@ -126,7 +126,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame10[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame11[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame11[] = {
     11,
     0x43, 0x2, OBJ_PALETTE_8 | 0x237,
     0x43, 0x1f8, OBJ_PALETTE_8 | 0x236,
@@ -141,7 +141,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame11[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame12[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame12[] = {
     12,
     0x42, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0x47, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -157,7 +157,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame12[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame13[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame13[] = {
     12,
     0x4a, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0x4b, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -173,7 +173,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame13[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fe38_Frame14[] = {
+static const u16 sLavaPlumeOam_GoingUp_Frame14[] = {
     12,
     0x4e, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0x4b, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -189,7 +189,7 @@ static const u16 sLavaPlumeOam_33fe38_Frame14[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33feb8_Frame0[] = {
+static const u16 sLavaPlumeOam_Idle_Frame0[] = {
     12,
     0x52, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0x4b, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -205,7 +205,7 @@ static const u16 sLavaPlumeOam_33feb8_Frame0[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fec8_Frame0[] = {
+static const u16 sLavaPlumeOam_Stopping_Frame0[] = {
     11,
     0x42, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0x3b, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -220,7 +220,7 @@ static const u16 sLavaPlumeOam_33fec8_Frame0[] = {
     0xfa, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fec8_Frame1[] = {
+static const u16 sLavaPlumeOam_Stopping_Frame1[] = {
     10,
     0x2d, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0x2a, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -234,7 +234,7 @@ static const u16 sLavaPlumeOam_33fec8_Frame1[] = {
     0xfb, OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fec8_Frame2[] = {
+static const u16 sLavaPlumeOam_Stopping_Frame2[] = {
     9,
     0x23, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0x20, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -247,7 +247,7 @@ static const u16 sLavaPlumeOam_33fec8_Frame2[] = {
     0xfb, OBJ_Y_FLIP | OBJ_SIZE_16x16 | 0x1f8, OBJ_PALETTE_8 | 0x200
 };
 
-static const u16 sLavaPlumeOam_33fec8_Frame3[] = {
+static const u16 sLavaPlumeOam_Stopping_Frame3[] = {
     8,
     0x15, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0x14, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -259,7 +259,7 @@ static const u16 sLavaPlumeOam_33fec8_Frame3[] = {
     0xfb, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x20e
 };
 
-static const u16 sLavaPlumeOam_33fec8_Frame4[] = {
+static const u16 sLavaPlumeOam_Stopping_Frame4[] = {
     6,
     0x9, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0xc, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -269,7 +269,7 @@ static const u16 sLavaPlumeOam_33fec8_Frame4[] = {
     0xf9, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x216
 };
 
-static const u16 sLavaPlumeOam_33fec8_Frame5[] = {
+static const u16 sLavaPlumeOam_Stopping_Frame5[] = {
     5,
     0x2, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e,
     0x3, 0x2, OBJ_PALETTE_8 | 0x237,
@@ -278,154 +278,154 @@ static const u16 sLavaPlumeOam_33fec8_Frame5[] = {
     0xf9, 0x1f8, OBJ_PALETTE_8 | 0x216
 };
 
-static const u16 sLavaPlumeOam_33fec8_Frame6[] = {
+static const u16 sLavaPlumeOam_Stopping_Frame6[] = {
     1,
     0xf9, OBJ_SIZE_16x16 | 0x1f9, OBJ_PALETTE_8 | 0x21e
 };
 
-const struct FrameData sLavaPlumeOam_33fde0[5] = {
+const struct FrameData sLavaPlumeWarningOam_Idle0[5] = {
     [0] = {
-        .pFrame = sLavaPlumeOam_33fde0_Frame0,
+        .pFrame = sLavaPlumeWarningOam_Idle0_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sLavaPlumeOam_33fde0_Frame1,
+        .pFrame = sLavaPlumeWarningOam_Idle0_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sLavaPlumeOam_33fde0_Frame2,
+        .pFrame = sLavaPlumeWarningOam_Idle0_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sLavaPlumeOam_33fde0_Frame3,
+        .pFrame = sLavaPlumeWarningOam_Idle0_Frame3,
         .timer = 2
     },
     [4] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sLavaPlumeOam_33fe08[6] = {
+const struct FrameData sLavaPlumeWarningOam_Idle1[6] = {
     [0] = {
-        .pFrame = sLavaPlumeOam_33fde0_Frame0,
+        .pFrame = sLavaPlumeWarningOam_Idle0_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sLavaPlumeOam_33fde0_Frame1,
+        .pFrame = sLavaPlumeWarningOam_Idle0_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sLavaPlumeOam_33fde0_Frame2,
+        .pFrame = sLavaPlumeWarningOam_Idle0_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sLavaPlumeOam_33fe08_Frame3,
+        .pFrame = sLavaPlumeWarningOam_Idle1_Frame3,
         .timer = 2
     },
     [4] = {
-        .pFrame = sLavaPlumeOam_33fde0_Frame3,
+        .pFrame = sLavaPlumeWarningOam_Idle0_Frame3,
         .timer = 2
     },
     [5] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sLavaPlumeOam_33fe38[16] = {
+const struct FrameData sLavaPlumeOam_GoingUp[16] = {
     [0] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame0,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame0,
         .timer = 2
     },
     [1] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame1,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame1,
         .timer = 2
     },
     [2] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame2,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame2,
         .timer = 2
     },
     [3] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame3,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame3,
         .timer = 2
     },
     [4] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame4,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame4,
         .timer = 1
     },
     [5] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame5,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame5,
         .timer = 1
     },
     [6] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame6,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame6,
         .timer = 1
     },
     [7] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame7,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame7,
         .timer = 1
     },
     [8] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame8,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame8,
         .timer = 2
     },
     [9] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame9,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame9,
         .timer = 2
     },
     [10] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame10,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame10,
         .timer = 2
     },
     [11] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame11,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame11,
         .timer = 2
     },
     [12] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame12,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame12,
         .timer = 2
     },
     [13] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame13,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame13,
         .timer = 2
     },
     [14] = {
-        .pFrame = sLavaPlumeOam_33fe38_Frame14,
+        .pFrame = sLavaPlumeOam_GoingUp_Frame14,
         .timer = 2
     },
     [15] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sLavaPlumeOam_33feb8[2] = {
+const struct FrameData sLavaPlumeOam_Idle[2] = {
     [0] = {
-        .pFrame = sLavaPlumeOam_33feb8_Frame0,
+        .pFrame = sLavaPlumeOam_Idle_Frame0,
         .timer = 255
     },
     [1] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sLavaPlumeOam_33fec8[8] = {
+const struct FrameData sLavaPlumeOam_Stopping[8] = {
     [0] = {
-        .pFrame = sLavaPlumeOam_33fec8_Frame0,
+        .pFrame = sLavaPlumeOam_Stopping_Frame0,
         .timer = 4
     },
     [1] = {
-        .pFrame = sLavaPlumeOam_33fec8_Frame1,
+        .pFrame = sLavaPlumeOam_Stopping_Frame1,
         .timer = 4
     },
     [2] = {
-        .pFrame = sLavaPlumeOam_33fec8_Frame2,
+        .pFrame = sLavaPlumeOam_Stopping_Frame2,
         .timer = 4
     },
     [3] = {
-        .pFrame = sLavaPlumeOam_33fec8_Frame3,
+        .pFrame = sLavaPlumeOam_Stopping_Frame3,
         .timer = 4
     },
     [4] = {
-        .pFrame = sLavaPlumeOam_33fec8_Frame4,
+        .pFrame = sLavaPlumeOam_Stopping_Frame4,
         .timer = 4
     },
     [5] = {
-        .pFrame = sLavaPlumeOam_33fec8_Frame5,
+        .pFrame = sLavaPlumeOam_Stopping_Frame5,
         .timer = 4
     },
     [6] = {
-        .pFrame = sLavaPlumeOam_33fec8_Frame6,
+        .pFrame = sLavaPlumeOam_Stopping_Frame6,
         .timer = 4
     },
     [7] = FRAME_DATA_TERMINATOR

@@ -36,7 +36,7 @@ void FuneInit(void) {
     gCurrentSprite.drawDistanceHorizontal = 0x60;
     gCurrentSprite.hitboxTop = -0x28;
     gCurrentSprite.hitboxBottom = 0x28;
-    gCurrentSprite.pOam = sFuneOam_341568;
+    gCurrentSprite.pOam = sFuneOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.drawOrder = 3;
@@ -62,9 +62,9 @@ void FuneTurningIntoX(void) {
 
     gCurrentSprite.yPosition -= 0x14;
     if (gCurrentSprite.unk_8 > gCurrentSprite.xPosition)
-        x = (DIV_SHIFT(gCurrentSprite.unk_8 - gCurrentSprite.xPosition, 2)) + gCurrentSprite.xPosition;
+        x = DIV_SHIFT(gCurrentSprite.unk_8 - gCurrentSprite.xPosition, 2) + gCurrentSprite.xPosition;
     else
-        x = (DIV_SHIFT(gCurrentSprite.xPosition - gCurrentSprite.unk_8, 2)) + gCurrentSprite.unk_8;
+        x = DIV_SHIFT(gCurrentSprite.xPosition - gCurrentSprite.unk_8, 2) + gCurrentSprite.unk_8;
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE, gCurrentSprite.spriteId, 0, gCurrentSprite.primarySpriteRamSlot,
         gCurrentSprite.spritesetSlotAndProperties, gCurrentSprite.yPosition + 0x14, x, SS_X_FLIP);
 }
@@ -79,7 +79,7 @@ u8 FuneCheckSamusInFront(void) {
 }
 
 void FuneIdleInit(void) {
-    gCurrentSprite.pOam = sFuneOam_341568;
+    gCurrentSprite.pOam = sFuneOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
@@ -135,7 +135,7 @@ void FuneIdle(void) {
 }
 
 void FuneSpittingInit(void) {
-    gCurrentSprite.pOam = sFuneOam_3415b0;
+    gCurrentSprite.pOam = sFuneOam_Spitting;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x2a;
@@ -196,7 +196,7 @@ void FuneSpitting(void) {
 }
 
 void FuneLungingInit(void) {
-    gCurrentSprite.pOam = sFuneOam_3415f8;
+    gCurrentSprite.pOam = sFuneOam_Lunging;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x2c;
@@ -263,7 +263,7 @@ void FuneLunging(void) {
 }
 
 void FuneLungingEnd(void) {
-    gCurrentSprite.animationDurationCounter -= 1;
+    gCurrentSprite.animationDurationCounter--; // Freeze animation
     if (gCurrentSprite.xPosition < gCurrentSprite.unk_8)
         gCurrentSprite.xPosition += 1;
     else if (gCurrentSprite.xPosition > gCurrentSprite.unk_8)
@@ -282,7 +282,7 @@ void FuneSpitInit(void) {
     gCurrentSprite.hitboxBottom = 0x10;
     gCurrentSprite.hitboxLeft = -0x10;
     gCurrentSprite.hitboxRight = 0x10;
-    gCurrentSprite.pOam = sFuneOam_3416d0;
+    gCurrentSprite.pOam = sFuneSpitOam_Moving;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
@@ -304,9 +304,9 @@ void FuneSpitMoving(void) {
 }
 
 void FuneSpitExplodingInit(void) {
-    gCurrentSprite.pose = 0x38;
+    gCurrentSprite.pose = SPRITE_POSE_EXPLODING;
     gCurrentSprite.samusCollision = SSC_NONE;
-    gCurrentSprite.pOam = sFuneOam_3416f0;
+    gCurrentSprite.pOam = sFuneSpitOam_Exploding;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -338,7 +338,7 @@ void NamiheInit(void) {
     gCurrentSprite.drawDistanceHorizontal = 0x60;
     gCurrentSprite.hitboxTop = -0x28;
     gCurrentSprite.hitboxBottom = 0x28;
-    gCurrentSprite.pOam = sNamiheOam_341e6c;
+    gCurrentSprite.pOam = sNamiheOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.drawOrder = 3;
@@ -380,7 +380,7 @@ u8 NamiheCheckSamusInFront(void) {
 }
 
 void NamiheIdleInit(void) {
-    gCurrentSprite.pOam = sNamiheOam_341e6c;
+    gCurrentSprite.pOam = sNamiheOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
@@ -436,7 +436,7 @@ void NamiheIdle(void) {
 }
 
 void NamiheSpittingInit(void) {
-    gCurrentSprite.pOam = sNamiheOam_341eb4;
+    gCurrentSprite.pOam = sNamiheOam_Spitting;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x2a;
@@ -495,7 +495,7 @@ void NamiheSpitting(void) {
 }
 
 void NamiheLungingInit(void) {
-    gCurrentSprite.pOam = sNamiheOam_341f3c;
+    gCurrentSprite.pOam = sNamiheOam_Lunging;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x2c;
@@ -584,7 +584,7 @@ void NamiheSpitInit(void) {
     gCurrentSprite.hitboxBottom = 0x10;
     gCurrentSprite.hitboxLeft = -0x10;
     gCurrentSprite.hitboxRight = 0x10;
-    gCurrentSprite.pOam = sNamiheOam_342074;
+    gCurrentSprite.pOam = sNamiheSpitOam_Moving;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
@@ -624,9 +624,9 @@ void NamiheSpitMoving(void) {
 }
 
 void NamiheSpitExplodingInit(void) {
-    gCurrentSprite.pose = 0x38;
+    gCurrentSprite.pose = SPRITE_POSE_EXPLODING;
     gCurrentSprite.samusCollision = SSC_NONE;
-    gCurrentSprite.pOam = sNamiheOam_342094;
+    gCurrentSprite.pOam = sNamiheSpitOam_Exploding;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
@@ -690,7 +690,7 @@ void FuneSpit(void) {
         case SPRITE_POSE_IDLE:
             FuneSpitMoving();
             break;
-        case 0x38:
+        case SPRITE_POSE_EXPLODING:
             FuneSpitExploding();
             break;
         default:
@@ -751,7 +751,7 @@ void NamiheSpit(void) {
         case SPRITE_POSE_IDLE:
             NamiheSpitMoving();
             break;
-        case 0x38:
+        case SPRITE_POSE_EXPLODING:
             NamiheSpitExploding();
             break;
         default:

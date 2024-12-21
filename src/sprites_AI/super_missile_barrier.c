@@ -7,6 +7,7 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
@@ -143,7 +144,7 @@ void SuperMissileBarrierDying(void)
 void SuperMissileBarrier(void)
 {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 0x4)
-        SoundPlayNotAlreadyPlaying(0x160);
+        SoundPlayNotAlreadyPlaying(SOUND_GERON_HURT);
 
     if (gCurrentSprite.freezeTimer != 0)
     {

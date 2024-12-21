@@ -5,6 +5,7 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
@@ -13,7 +14,17 @@
 #include "structs/sprite.h"
 #include "structs/samus.h"
 
-void ZebesianWallSetSideHitboxs(void) {
+#define ZEBESIAN_WALL_CRAWLING_INIT 1
+#define ZEBESIAN_WALL_CRAWLING 2
+#define ZEBESIAN_WALL_TURNING_AROUND_INIT 0x19
+#define ZEBESIAN_WALL_TURNING_AROUND 0x1a
+#define ZEBESIAN_WALL_JUMPING 0x1c
+#define ZEBESIAN_WALL_IDLE_INIT 7
+#define ZEBESIAN_WALL_IDLE 8
+#define ZEBESIAN_WALL_SHOOTING_INIT 0x29
+#define ZEBESIAN_WALL_SHOOTING 0x2a
+
+void ZebesianWallSetSideHitboxes(void) {
     if (gCurrentSprite.status & SS_X_FLIP) {
         gCurrentSprite.hitboxLeft = -0x50;
         gCurrentSprite.hitboxRight = 4;
@@ -23,33 +34,33 @@ void ZebesianWallSetSideHitboxs(void) {
     }
 }
 
-void unk_2b690(void) {
+void ZebesianWallDecideRandomAction(void) {
     switch (gSpriteRandomNumber) {
         case 0:
         case 1:
         case 2:
         case 3:
             gCurrentSprite.status &= ~SS_FACING_RIGHT;
-            gCurrentSprite.pose = 1;
+            gCurrentSprite.pose = ZEBESIAN_WALL_CRAWLING_INIT;
             break;
         case 4:
         case 5:
         case 6:
         case 7:
             gCurrentSprite.status |= SS_FACING_RIGHT;
-            gCurrentSprite.pose = 1;
+            gCurrentSprite.pose = ZEBESIAN_WALL_CRAWLING_INIT;
             break;
         case 8:
         case 9:
-            gCurrentSprite.pose = 0x19;
+            gCurrentSprite.pose = ZEBESIAN_WALL_TURNING_AROUND_INIT;
             break;
         case 10:
         case 11:
         case 12:
-            gCurrentSprite.pose = 0x29;
+            gCurrentSprite.pose = ZEBESIAN_WALL_SHOOTING_INIT;
             break;
         default:
-            gCurrentSprite.pose = 7;
+            gCurrentSprite.pose = ZEBESIAN_WALL_IDLE_INIT;
     }
 }
 
@@ -60,15 +71,15 @@ void ZebesianWallInit(void) {
     gCurrentSprite.drawDistanceTop = 0x28;
     gCurrentSprite.drawDistanceBottom = 0x28;
     gCurrentSprite.drawDistanceHorizontal = 0x20;
-    gCurrentSprite.pOam = sZebesianWallOam_3236e0;
+    gCurrentSprite.pOam = sZebesianWallOam_Crawling;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    if (gCurrentSprite.pose == 0x59) {
-        gCurrentSprite.pose = 0x5a;
+    if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
+        gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
         gCurrentSprite.unk_8 = X_PARASITE_MOSAIC_MAX_INDEX;
     } else {
         gCurrentSprite.bgPriority = 1;
-        gCurrentSprite.pose = 2;
+        gCurrentSprite.pose = ZEBESIAN_WALL_CRAWLING;
         gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + BLOCK_SIZE);
         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
@@ -90,7 +101,7 @@ void ZebesianWallInit(void) {
         gCurrentSprite.hitboxTop = -0x60;
     }
     gCurrentSprite.hitboxBottom = 0x50;
-    ZebesianWallSetSideHitboxs();
+    ZebesianWallSetSideHitboxes();
 }
 
 void ZebesianWallFormingFromX(void) {
@@ -115,11 +126,11 @@ void ZebesianWallDeath(void) {
 }
 
 void ZebesianWallMovingVerticallyInit(void) {
-    gCurrentSprite.pOam = sZebesianWallOam_3236e0;
+    gCurrentSprite.pOam = sZebesianWallOam_Crawling;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work1 = 64;
-    gCurrentSprite.pose = 2;
+    gCurrentSprite.pose = ZEBESIAN_WALL_CRAWLING;
 }
 
 void ZebesianWallMoveVertically(void) {
@@ -146,20 +157,20 @@ void ZebesianWallMoveVertically(void) {
             gCurrentSprite.status ^= SS_FACING_RIGHT;
     } else {
         if (action)
-            unk_2b690();
+            ZebesianWallDecideRandomAction();
     }
 }
 
 void ZebesianWallTurningAroundInit(void) {
-    gCurrentSprite.pOam = sZebesianWallOam_3237d0;
+    gCurrentSprite.pOam = sZebesianWallOam_TurningAround;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x1a;
+    gCurrentSprite.pose = ZEBESIAN_WALL_TURNING_AROUND;
 }
 
 void ZebesianWallTurningAround(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-        gCurrentSprite.pOam = sZebesianWallOam_323850;
+        gCurrentSprite.pOam = sZebesianWallOam_Jumping;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x1c;
@@ -170,8 +181,8 @@ void ZebesianWallTurningAround(void) {
             gCurrentSprite.xPosition += 0x80;
         else
             gCurrentSprite.xPosition -= 0x80;
-        ZebesianWallSetSideHitboxs();
-        SoundPlayNotAlreadyPlaying(0x15b);
+        ZebesianWallSetSideHitboxes();
+        SoundPlayNotAlreadyPlaying(SOUND_ZEBESIAN_WALL_JUMP);
     }
 }
 
@@ -187,11 +198,11 @@ void ZebesianWallJumping(void) {
     offset++;
     gCurrentSprite.work4 = offset;
     if (sZebesianWallJumpYVelocity[offset] == SHORT_MAX)
-        unk_2b690();
+        ZebesianWallDecideRandomAction();
 }
 
 void ZebesianWallIdleInit(void) {
-    gCurrentSprite.pOam = sZebesianWallOam_323728;
+    gCurrentSprite.pOam = sZebesianWallOam_Idle;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 8;
@@ -199,11 +210,11 @@ void ZebesianWallIdleInit(void) {
 
 void ZebesianWallIdle(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim())
-        unk_2b690();
+        ZebesianWallDecideRandomAction();
 }
 
 void ZebesianWallShootingInit(void) {
-    gCurrentSprite.pOam = sZebesianWallOam_323890;
+    gCurrentSprite.pOam = sZebesianWallOam_Shooting;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 0x2a;
@@ -219,7 +230,7 @@ void ZebesianWallShooting(void) {
                 gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x88, 0);
     }
     if (SpriteUtilCheckEndCurrentSpriteAnim())
-        unk_2b690();
+        ZebesianWallDecideRandomAction();
 }
 
 void ZebesianBeamInit(void) {
@@ -230,7 +241,7 @@ void ZebesianBeamInit(void) {
     gCurrentSprite.drawDistanceHorizontal = 0x30;
     gCurrentSprite.hitboxTop = -8;
     gCurrentSprite.hitboxBottom = 8;
-    gCurrentSprite.pOam = sZebesianWallOam_323998;
+    gCurrentSprite.pOam = sZebesianWallBeamOam_Spawning;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.pose = 2;
@@ -244,12 +255,12 @@ void ZebesianBeamInit(void) {
         gCurrentSprite.hitboxLeft = 0x10;
         gCurrentSprite.hitboxRight = 0x30;
     }
-    SoundPlayNotAlreadyPlaying(0x15d);
+    SoundPlayNotAlreadyPlaying(SOUND_ZEBESIAN_BEAM);
 }
 
 void ZebesianBeamSpawning(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-        gCurrentSprite.pOam = sZebesianWallOam_3239c0;
+        gCurrentSprite.pOam = sZebesianWallBeamOam_Extending;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x18;
@@ -265,7 +276,7 @@ void ZebesianBeamSpawning(void) {
 
 void ZebesianBeamExtending(void) {
     if (SpriteUtilCheckEndCurrentSpriteAnim()) {
-        gCurrentSprite.pOam = sZebesianWallOam_323968;
+        gCurrentSprite.pOam = sZebesianWallBeamOam_Extended;
         gCurrentSprite.animationDurationCounter = 0;
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x1a;
@@ -281,49 +292,49 @@ void ZebesianBeamExtending(void) {
 
 void ZebesianWall(void) {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 4)
-        SoundPlayNotAlreadyPlaying(0x15e);
+        SoundPlayNotAlreadyPlaying(SOUND_ZEBESIAN_HURT);
     if (gCurrentSprite.freezeTimer > 0) {
         SpriteUtilUpdateFreezeTimer();
         return;
     }
     switch (gCurrentSprite.pose) {
-        case 0:
+        case SPRITE_POSE_UNINITIALIZED:
             ZebesianWallInit();
             break;
-        case 1:
+        case ZEBESIAN_WALL_CRAWLING_INIT:
             ZebesianWallMovingVerticallyInit();
-        case 2:
+        case ZEBESIAN_WALL_CRAWLING:
             ZebesianWallMoveVertically();
             break;
-        case 0x19:
+        case ZEBESIAN_WALL_TURNING_AROUND_INIT:
             ZebesianWallTurningAroundInit();
-        case 0x1a:
+        case ZEBESIAN_WALL_TURNING_AROUND:
             ZebesianWallTurningAround();
             break;
-        case 0x1c:
+        case ZEBESIAN_WALL_JUMPING:
             ZebesianWallJumping();
             break;
-        case 7:
+        case ZEBESIAN_WALL_IDLE_INIT:
             ZebesianWallIdleInit();
-        case 8:
+        case ZEBESIAN_WALL_IDLE:
             ZebesianWallIdle();
             break;
-        case 0x29:
+        case ZEBESIAN_WALL_SHOOTING_INIT:
             ZebesianWallShootingInit();
-        case 0x2a:
+        case ZEBESIAN_WALL_SHOOTING:
             ZebesianWallShooting();
             break;
-        case 0x57:
+        case SPRITE_POSE_DYING_INIT:
             SpriteDyingInit();
-        case 0x58:
+        case SPRITE_POSE_DYING:
             SpriteDying();
             break;
-        case 0x59:
+        case SPRITE_POSE_SPAWNING_FROM_X_INIT:
             ZebesianWallInit();
-        case 0x5a:
+        case SPRITE_POSE_SPAWNING_FROM_X:
             ZebesianWallFormingFromX();
             break;
-        case 0x5b:
+        case SPRITE_POSE_TURNING_INTO_X:
             ZebesianWallDeath();
             XParasiteInit();
     }
@@ -331,7 +342,7 @@ void ZebesianWall(void) {
 
 void ZebesianBeam(void) {
     switch (gCurrentSprite.pose) {
-        case 0:
+        case SPRITE_POSE_UNINITIALIZED:
             ZebesianBeamInit();
             break;
         case 2:

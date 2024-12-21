@@ -15,6 +15,12 @@
 #include "structs/sprite.h"
 #include "structs/samus.h"
 
+#define KAGO_POSE_IDLE_SHORT 2
+#define KAGO_POSE_IDLE_TALL 0x18
+
+#define KAGO_INSECT_POSE_JUMP_WARNING 2
+#define KAGO_INSECT_POSE_JUMPING 0x18
+
 void KagoSetCollision(u8 caa) {
     u16 y = gCurrentSprite.yPosition;
     u16 x = gCurrentSprite.xPosition;
@@ -32,22 +38,22 @@ void KagoSetCollision(u8 caa) {
 
 void KagoPlaySound(void) {
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X) {
-        SoundPlayNotAlreadyPlaying(SOUND_16B);
+        SoundPlayNotAlreadyPlaying(SOUND_KAGO_IDLE_SHORT);
         gCurrentSprite.work2 = 40;
     } else if (gCurrentSprite.work1 == 4) {
-        SoundPlayNotAlreadyPlaying(SOUND_16D);
+        SoundPlayNotAlreadyPlaying(SOUND_KAGO_IDLE_TALL_4);
         gCurrentSprite.work2 = 72;
     } else if (gCurrentSprite.work1 == 3) {
-        SoundPlayNotAlreadyPlaying(SOUND_16E);
+        SoundPlayNotAlreadyPlaying(SOUND_KAGO_IDLE_TALL_3);
         gCurrentSprite.work2 = 56;
     } else if (gCurrentSprite.work1 == 2) {
-        SoundPlayNotAlreadyPlaying(SOUND_16F);
+        SoundPlayNotAlreadyPlaying(SOUND_KAGO_IDLE_TALL_2);
         gCurrentSprite.work2 = 30;
     } else if (gCurrentSprite.work1 == 1) {
-        SoundPlayNotAlreadyPlaying(SOUND_170);
+        SoundPlayNotAlreadyPlaying(SOUND_KAGO_IDLE_TALL_1);
         gCurrentSprite.work2 = 18;
     } else {
-        SoundPlayNotAlreadyPlaying(SOUND_171);
+        SoundPlayNotAlreadyPlaying(SOUND_KAGO_IDLE_TALL_0);
         gCurrentSprite.work2 = 12;
     }
 }
@@ -66,14 +72,14 @@ void KagoInit(void) {
         gCurrentSprite.samusCollision = SSC_SOLID;
         gCurrentSprite.drawDistanceBottom = 0;
         gCurrentSprite.hitboxBottom = 0x10;
-        gCurrentSprite.pOam = sKagoOam_337b24;
+        gCurrentSprite.pOam = sKagoOam_IdleShort;
     } else {
         gCurrentSprite.properties &= ~SP_SOLID_FOR_PROJECTILES;
         gCurrentSprite.samusCollision = SSC_HURTS_SAMUS_SOLID;
         gCurrentSprite.frozenPaletteRowOffset = 1;
         gCurrentSprite.drawDistanceBottom = 0x38;
         gCurrentSprite.hitboxBottom = 0xc0;
-        gCurrentSprite.pOam = sKagoOam_337b4c;
+        gCurrentSprite.pOam = sKagoOam_IdleTallVerySlow;
     }
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
     gCurrentSprite.work1 = 4;
@@ -92,13 +98,13 @@ void KagoInit(void) {
     if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT) {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
         gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
-        SoundPlayNotAlreadyPlaying(SOUND_16C);
+        SoundPlayNotAlreadyPlaying(SOUND_KAGO_MUTATING);
     } else {
         gCurrentSprite.xPosition += 0x20;
         if (gCurrentSprite.properties & SP_CAN_ABSORB_X) {
-            gCurrentSprite.pose = 2;
+            gCurrentSprite.pose = KAGO_POSE_IDLE_SHORT;
         } else {
-            gCurrentSprite.pose = 0x18;
+            gCurrentSprite.pose = KAGO_POSE_IDLE_TALL;
             gCurrentSprite.yPosition -= 0xc0;
         }
     }
@@ -106,14 +112,14 @@ void KagoInit(void) {
 
 void KagoSpawningFromX(void) {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
-    if (--gCurrentSprite.xParasiteTimer != 0) {
+    if (--gCurrentSprite.xParasiteTimer > 0) {
         gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
         if (gCurrentSprite.xParasiteTimer < 24)
             gCurrentSprite.yPosition -= 8;
     } else {
         gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
         gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
-        gCurrentSprite.pose = 0x18;
+        gCurrentSprite.pose = KAGO_POSE_IDLE_TALL;
     }
 }
 
@@ -131,19 +137,19 @@ void KagoDyingInit(void) {
     if (gCurrentSprite.work3)
         KagoSetCollision(CAA_REMOVE_SOLID);
     gCurrentSprite.status |= SS_ENABLE_MOSAIC;
-    gCurrentSprite.pose = 0x58;
+    gCurrentSprite.pose = SPRITE_POSE_DYING;
     gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
     SoundPlayNotAlreadyPlaying(SOUND_142);
     SpriteDying();
 }
 
 void KagoInsectExplodingInit(void) {
-    gCurrentSprite.pOam = sKagoOam_337dc4;
+    gCurrentSprite.pOam = sKagoInsectOam_Exploding;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
-    gCurrentSprite.pose = 0x38;
+    gCurrentSprite.pose = SPRITE_POSE_EXPLODING;
     gCurrentSprite.samusCollision = SSC_NONE;
-    SoundPlayNotAlreadyPlaying(SOUND_172);
+    SoundPlayNotAlreadyPlaying(SOUND_KAGO_INSECT_EXPLODING);
 }
 
 void KagoInsectExploding(void) {
@@ -157,7 +163,7 @@ void KagoInsectInit(void) {
     gCurrentSprite.health = GET_SSPRITE_HEALTH(gCurrentSprite.spriteId);
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS_DIES_WHEN_HIT;
     gCurrentSprite.frozenPaletteRowOffset = 1;
-    gCurrentSprite.pOam = sKagoOam_337da4;
+    gCurrentSprite.pOam = sKagoInsectOam_Midair;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.drawDistanceTop = 0x10;
@@ -180,15 +186,15 @@ void KagoInsectInit(void) {
 }
 
 void KagoInsectJumpWarningInit(void) {
-    gCurrentSprite.pose = 2;
-    gCurrentSprite.pOam = sKagoOam_337d84;
+    gCurrentSprite.pose = KAGO_INSECT_POSE_JUMP_WARNING;
+    gCurrentSprite.pOam = sKagoInsectOam_JumpWarning;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 }
 
 void KagoInsectJumpingInit(void) {
-    gCurrentSprite.pose = 0x18;
-    gCurrentSprite.pOam = sKagoOam_337da4;
+    gCurrentSprite.pose = KAGO_INSECT_POSE_JUMPING;
+    gCurrentSprite.pOam = sKagoInsectOam_Midair;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work3 = 5;
@@ -204,12 +210,12 @@ void KagoInsectJumpingInit(void) {
         if (!(gCurrentSprite.status & SS_X_FLIP))
             gCurrentSprite.work3 = 0;
     }
-    SoundPlayNotAlreadyPlaying(SOUND_173);
+    SoundPlayNotAlreadyPlaying(SOUND_KAGO_INSECT_JUMPING);
 }
 
 void KagoInsectFallingInit(void) {
-    gCurrentSprite.pose = 0x16;
-    gCurrentSprite.pOam = sKagoOam_337da4;
+    gCurrentSprite.pose = SPRITE_POSE_FALLING;
+    gCurrentSprite.pOam = sKagoInsectOam_Midair;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
     gCurrentSprite.work4 = 0;
@@ -246,23 +252,23 @@ void KagoInsectJumping(void) {
     if (xMovement == 0) {
         if (gCurrentSprite.work4 == 16) {
             gCurrentSprite.status ^= SS_X_FLIP;
-            gCurrentSprite.pOam = sKagoOam_337db4;
+            gCurrentSprite.pOam = sKagoInsectOam_TurningAround;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         } else if (gCurrentSprite.work4 == 22) {
-            gCurrentSprite.pOam = sKagoOam_337da4;
+            gCurrentSprite.pOam = sKagoInsectOam_Midair;
             gCurrentSprite.animationDurationCounter = 0;
             gCurrentSprite.currentAnimationFrame = 0;
         }
-        yMovement = sKagoInsectLowJumpVelocity[DIV_SHIFT(gCurrentSprite.work4, 4)];
+        yMovement = sKagoInsectLowJumpVelocity[gCurrentSprite.work4 / 4];
     } else {
-        yMovement = sKagoInsectMediumJumpVelocity[DIV_SHIFT(gCurrentSprite.work4, 4)];
+        yMovement = sKagoInsectMediumJumpVelocity[gCurrentSprite.work4 / 4];
         if (gCurrentSprite.status & SS_X_FLIP) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x10, gCurrentSprite.xPosition + gCurrentSprite.hitboxRight + 4);
             if (gPreviousCollisionCheck == COLLISION_SOLID) {
                 gCurrentSprite.xPosition -= 4;
                 gCurrentSprite.status &= ~SS_X_FLIP;
-                gCurrentSprite.pOam = sKagoOam_337db4;
+                gCurrentSprite.pOam = sKagoInsectOam_TurningAround;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
             } else {
@@ -276,7 +282,7 @@ void KagoInsectJumping(void) {
             if (gPreviousCollisionCheck == COLLISION_SOLID) {
                 gCurrentSprite.xPosition += 4;
                 gCurrentSprite.status |= SS_X_FLIP;
-                gCurrentSprite.pOam = sKagoOam_337db4;
+                gCurrentSprite.pOam = sKagoInsectOam_TurningAround;
                 gCurrentSprite.animationDurationCounter = 0;
                 gCurrentSprite.currentAnimationFrame = 0;
             } else {
@@ -373,27 +379,26 @@ void KagoInsectFalling(void) {
 void Kago(void) {
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X) {
         gCurrentSprite.hitboxTop = -0x78;
-        if (SPRITE_HAS_ISFT(gCurrentSprite) == 1) {
-            SoundPlayNotAlreadyPlaying(SOUND_16A);
-        }
+        if (SPRITE_HAS_ISFT(gCurrentSprite) == 1)
+            SoundPlayNotAlreadyPlaying(SOUND_KAGO_HIT_SHORT);
     } else {
         gCurrentSprite.hitboxTop = -0x88;
         if (gCurrentSprite.work4 > 0) {
             if (--gCurrentSprite.work4 == 0)
-                gCurrentSprite.pOam = sKagoOam_337b4c;
-        } else if (SPRITE_HAS_ISFT(gCurrentSprite) == 1 && gCurrentSprite.pOam == sKagoOam_337b4c) {
-            gCurrentSprite.pOam = sKagoOam_337ca4;
+                gCurrentSprite.pOam = sKagoOam_IdleTallVerySlow;
+        } else if (SPRITE_HAS_ISFT(gCurrentSprite) == 1 && gCurrentSprite.pOam == sKagoOam_IdleTallVerySlow) {
+            gCurrentSprite.pOam = sKagoOam_IdleTallFast;
             gCurrentSprite.work4 = 60;
         }
     }
     if (gCurrentSprite.freezeTimer > 0) {
         gCurrentSprite.hitboxTop = -0x78;
-        if (!gCurrentSprite.work3 && gCurrentSprite.pose == 0x18) {
+        if (!gCurrentSprite.work3 && gCurrentSprite.pose == KAGO_POSE_IDLE_TALL) {
             gCurrentSprite.work3 = TRUE;
             KagoSetCollision(CAA_MAKE_SOLID);
         }
         SpriteUtilUpdateFreezeTimer();
-        if (gCurrentSprite.freezeTimer == 0 && gCurrentSprite.work3 && gCurrentSprite.pose == 0x18) {
+        if (gCurrentSprite.freezeTimer == 0 && gCurrentSprite.work3 && gCurrentSprite.pose == KAGO_POSE_IDLE_TALL) {
             gCurrentSprite.work3 = FALSE;
             KagoSetCollision(CAA_REMOVE_SOLID);
         }
@@ -403,10 +408,10 @@ void Kago(void) {
         case SPRITE_POSE_UNINITIALIZED:
             KagoInit();
             break;
-        case 2:
+        case KAGO_POSE_IDLE_SHORT:
             KagoIdleShort();
             break;
-        case 0x18:
+        case KAGO_POSE_IDLE_TALL:
             KagoIdleTall();
             break;
         case SPRITE_POSE_DYING_INIT:
@@ -433,18 +438,18 @@ void KagoInsect(void) {
         case 0:
             KagoInsectInit();
             break;
-        case 2:
+        case KAGO_INSECT_POSE_JUMP_WARNING:
             KagoInsectJumpWarning();
             break;
-        case 0x18:
+        case KAGO_INSECT_POSE_JUMPING:
             KagoInsectJumping();
             break;
-        case 0x16:
+        case SPRITE_POSE_FALLING:
             KagoInsectFalling();
             break;
-        case 0x37:
+        case SPRITE_POSE_STOPPED:
             KagoInsectExplodingInit();
-        case 0x38:
+        case SPRITE_POSE_EXPLODING:
             KagoInsectExploding();
     }
     if (gCurrentSprite.status & SS_IGNORE_PROJECTILES && gCurrentSprite.xParasiteTimer > 0) {

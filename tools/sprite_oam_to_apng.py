@@ -183,11 +183,14 @@ while line != '':
     if line.startswith("                0x08"):
         split = line.split()
         if len(split) == 2:
-            if int(split[0], 16) < 0x082e926c:
+            if int(split[0], 16) < 0x082e926c: # sHornoadGfx
                 line = labelsFile.readline()
                 continue
-            if int(split[0], 16) >= 0x083bdebc:
+            if int(split[0], 16) >= 0x083bdebc: # sXParasite_3bdebc
                 break
+            if split[1] == "sYakuzaMouthGlowingPal" or split[1] == "sBlueZoroGfx" or split[1] == "sBlueZoroPal":
+                line = labelsFile.readline()
+                continue
             if ("Oam" in split[1] or "FrameData" in split[1]) and "MultiOam" not in split[1]:
                 if (lastpGfx, lastpPal) in allAnimations:
                     allAnimations[(lastpGfx, lastpPal)].append((int(split[0], 16), split[1]))
@@ -208,6 +211,9 @@ if not os.access("tools/animations", os.W_OK):
 
 for ((pGfx, pPal), pAnims) in allAnimations.items():
     for (pAnim, name) in pAnims:
+        if os.access(f'tools/animations/{name}.png', os.F_OK):
+            continue
+
         romSeek(pPal)
         palette555 = [romRead(2) for i in range(8*16)]
 

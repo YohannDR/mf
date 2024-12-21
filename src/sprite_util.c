@@ -554,7 +554,7 @@ void SpriteUtilSamusAndSpriteCollision(void)
                     gIgnoreSamusAndSpriteCollision = TRUE;
                     break;
 
-                case SSC_3:
+                case SSC_HURTS_SAMUS_DOUBLE_DAMAGE:
                     if (gSamusData.invincibilityTimer == 0 && !SpriteUtilCheckSamusDamagingPose() && !SpriteUtilCheckSamusSudoScrew(i))
                     {
                         if (collisionFlags & SPRITE_COLLISION_FLAG_ON_LEFT)
