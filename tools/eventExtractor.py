@@ -283,6 +283,40 @@ areaNames = [
     "NORMAL_END"
 ]
 
+subAreas = [
+    "SUB_AREA_NONE",
+    "SUB_AREA_OPERATIONS_DECK",
+    "SUB_AREA_DOCKING_BAYS",
+    "SUB_AREA_HABITATION_DECK",
+    "SUB_AREA_MAIN_DECK",
+    "SUB_AREA_REACTOR_SILO",
+    "SUB_AREA_RESTRICTED_ZONE",
+    "SUB_AREA_SECTOR_1",
+    "SUB_AREA_SECTOR_2",
+    "SUB_AREA_SECTOR_3",
+    "SUB_AREA_SECTOR_4",
+    "SUB_AREA_SECTOR_5",
+    "SUB_AREA_SECTOR_6",
+
+    "SUB_AREA_END"
+]
+
+areaNamesWithDebug = [
+    "MAIN_DECK",
+    "SECTOR_1",
+    "SECTOR_2",
+    "SECTOR_3",
+    "SECTOR_4",
+    "SECTOR_5",
+    "SECTOR_6",
+
+    "DEBUG_1",
+    "DEBUG_2",
+    "DEBUG_3",
+
+    "END"
+]
+
 navRooms = [
     "NAV_ROOM_MAIN_DECK_ROOM_0",
     "NAV_ROOM_MAIN_DECK_ROOM_16",
@@ -378,7 +412,7 @@ subEventTriggerTypes = {
 file = open("./mf_us_baserom.gba", "rb")
 
 # event_data.c
-'''file.seek(0x575a60)
+file.seek(0x575a60)
 print("const struct EventLocationAndNavigationInfo sEventLocationAndNavigationInfo[EVENT_END] = {")
 for i in range(len(eventNames)):
     print(f"    [{len(eventNames) if i == len(eventNames) else eventNames[i]}] = {{")
@@ -431,10 +465,72 @@ for i in range(len(abilityCount)):
     subEvent = int.from_bytes(file.read(2), "little")
     print(f"        .subEvent = {"SUB_EVENT_NONE" if subEvent == 0 else f"{subEvents[subEvent + 1]} - 1"}")
     print("    },")
-print("};\n")'''
+print("};\n")
+
+print("const u8 sAreaNavigationRoomPairs[NAV_ROOM_END + 1][2] = {")
+for i in range(len(navRooms) - 1):
+    area = int.from_bytes(file.read(1), "little")
+    room = int.from_bytes(file.read(1), "little")
+    print(f"    [{navRooms[i]}] = {{")
+    print(f"        AREA_{areaNames[area]},")
+    print(f"        {areaNames[area]}_{room-1} + 1")
+    print("    },")
+file.read(2)
+print(f"    [{navRooms[len(navRooms) - 1]}] = {{ // Terminator")
+print(f"        UCHAR_MAX,")
+print(f"        UCHAR_MAX")
+print("    }")
+print("};\n")
+
+print("const u8 sAreasOfSubAreas[SUB_AREA_END] = {")
+for i in range(len(subAreas) - 1):
+    print(f"    [{subAreas[i]}] = AREA_{areaNames[int.from_bytes(file.read(1), "little")]},")
+print("};\n")
+
+print("const u8 sSubAreasOfSectors[AREA_END] = {")
+for i in range(len(areaNamesWithDebug) - 1):
+    print(f"    [AREA_{areaNamesWithDebug[i]}] = {subAreas[int.from_bytes(file.read(1), "little")]},")
+print("};\n")
+
+print("const u8 sUnk_57607d[SUB_AREA_END] = {")
+for i in range(len(subAreas) - 1):
+    val = int.from_bytes(file.read(1), "little")
+    print(f"    [{subAreas[i]}] = {"UCHAR_MAX" if val == 0xff else val},")
+print("};\n")
+
+print("const u8 sUnk_57608a[SUB_AREA_END] = {")
+for i in range(len(subAreas) - 1):
+    val = int.from_bytes(file.read(1), "little")
+    print(f"    [{subAreas[i]}] = {"UCHAR_MAX" if val == 0xff else val},")
+print("};\n")
+
+file.read(1) # align
+
+# print("const struct MonologueEvent sMonologueEvents[MONOLOGUE_EVENT_END] = {")
+
+file.seek(0x5760c8)
+print("const struct SecurityUnlockEvent sSecurityUnlockEvents[SECURITY_LEVEL_END - 1] = {")
+for i in range(4):
+    print(f"    [SECURITY_LEVEL_{i + 1} - 1] = {{")
+    print(f"        .securityLevel = SECURITY_LEVEL_{int.from_bytes(file.read(1), "little")},")
+    print(f"        .area = AREA_{areaNames[int.from_bytes(file.read(1), "little")]},")
+    print(f"        .previousEvent = {eventNames[int.from_bytes(file.read(1), "little")]},")
+    print(f"        .nextEvent = {eventNames[int.from_bytes(file.read(1), "little")]},")
+    print(f"        .subEvent = {subEvents[int.from_bytes(file.read(2), "little") + 1]} - 1")
+    file.read(2)
+    print("    },")
+print("};\n")
+
+print("const u8 sSubAreasOfMainDeckRooms[] = {")
+print(f"    [0] = {subAreas[int.from_bytes(file.read(1), "little")]},")
+for i in range(87):
+    print(f"    [MAIN_DECK_{i} + 1] = {subAreas[int.from_bytes(file.read(1), "little")]},")
+for i in range(87, 89):
+    print(f"    [{i} + 1] = {subAreas[int.from_bytes(file.read(1), "little")]},")
+print("};\n")
 
 # sub_event_data.c
-file.seek(0x79bbcc)
+'''file.seek(0x79bbcc)
 print("const u16 sSubEventNavConversations[22][2] = {")
 for i in range(22):
     print(f"    [{i}] = {{")
@@ -445,7 +541,7 @@ print("};\n")
 print("const u8 sSubEventTriggerTypes[SUB_EVENT_END] = {")
 for subEvent in subEvents:
     print(f"    [{subEvent}] = {subEventTriggerTypes[int.from_bytes(file.read(1), "little")]},")
-print("};\n")
+print("};\n")'''
 '''print("enum NavigationConversation {\n    NAV_CONVERSATION_NONE,")
 for i in range(1, 58):
     print(f"    NAV_CONVERSATION_{i},")

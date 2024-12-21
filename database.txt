@@ -2982,7 +2982,8 @@ Blob_3eed78_413afc.bin;3eed78;413afc
 
 # Animated graphics, pause screen, events, computer conservation, SRAM
 Blob_5594a8_575a60.bin;5594a8;575a60
-Blob_57604c_58b3cc.bin;57604c;58b3cc
+Blob_576097_5760c8.bin;576097;5760c8
+Blob_576142_58b3cc.bin;576142;58b3cc
 
 # Cutscenes
 Blob_597708_72eee0.bin;597708;72eee0
