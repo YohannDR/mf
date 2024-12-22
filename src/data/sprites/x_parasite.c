@@ -376,4 +376,4 @@ const struct FrameData sXParasiteOam_Red_Slow[7] = {
     [6] = FRAME_DATA_TERMINATOR
 };
 
-static const u8 sBlob_3be3a0_3e392c[] = INCBIN_U8("data/Blob_3be3a0_3e392c.bin");
+static const u8 sBlob_3be3a0_3c0030[] = INCBIN_U8("data/Blob_3be3a0_3c0030.bin");

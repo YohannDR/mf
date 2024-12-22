@@ -1367,7 +1367,7 @@ SetCurrentNavigationRoom: @ 0x080631D0
 	ldr r2, _080631EC @ =gCurrentNavigationRoom
 	movs r3, #0
 	strb r3, [r2]
-	ldr r0, _080631F0 @ =0x0857604C
+	ldr r0, _080631F0 @ =sAreaNavigationRoomPairs
 	ldrb r1, [r0]
 	adds r5, r2, #0
 	adds r6, r0, #0
@@ -1377,7 +1377,7 @@ SetCurrentNavigationRoom: @ 0x080631D0
 	b _08063226
 	.align 2, 0
 _080631EC: .4byte gCurrentNavigationRoom
-_080631F0: .4byte 0x0857604C
+_080631F0: .4byte sAreaNavigationRoomPairs
 _080631F4:
 	ldr r0, _0806322C @ =gCurrentArea
 	adds r4, r6, #0

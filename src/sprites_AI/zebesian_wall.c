@@ -26,11 +26,11 @@
 
 void ZebesianWallSetSideHitboxes(void) {
     if (gCurrentSprite.status & SS_X_FLIP) {
-        gCurrentSprite.hitboxLeft = -0x50;
-        gCurrentSprite.hitboxRight = 4;
+        gCurrentSprite.hitboxLeft = -PIXEL_SIZE * 0x14;
+        gCurrentSprite.hitboxRight = PIXEL_SIZE;
     } else {
-        gCurrentSprite.hitboxLeft = -4;
-        gCurrentSprite.hitboxRight = 0x50;
+        gCurrentSprite.hitboxLeft = -PIXEL_SIZE;
+        gCurrentSprite.hitboxRight = PIXEL_SIZE * 0x14;
     }
 }
 
@@ -40,6 +40,7 @@ void ZebesianWallDecideRandomAction(void) {
         case 1:
         case 2:
         case 3:
+            // 1/4 chance to crawl up
             gCurrentSprite.status &= ~SS_FACING_RIGHT;
             gCurrentSprite.pose = ZEBESIAN_WALL_CRAWLING_INIT;
             break;
@@ -47,19 +48,23 @@ void ZebesianWallDecideRandomAction(void) {
         case 5:
         case 6:
         case 7:
+            // 1/4 chance to crawl down
             gCurrentSprite.status |= SS_FACING_RIGHT;
             gCurrentSprite.pose = ZEBESIAN_WALL_CRAWLING_INIT;
             break;
         case 8:
         case 9:
+            // 1/8 chance to turn around and jump
             gCurrentSprite.pose = ZEBESIAN_WALL_TURNING_AROUND_INIT;
             break;
         case 10:
         case 11:
         case 12:
+            // 3/16 chance to shoot
             gCurrentSprite.pose = ZEBESIAN_WALL_SHOOTING_INIT;
             break;
         default:
+            // 3/16 chance to idle
             gCurrentSprite.pose = ZEBESIAN_WALL_IDLE_INIT;
     }
 }
@@ -83,10 +88,12 @@ void ZebesianWallInit(void) {
         gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + BLOCK_SIZE);
         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
+            // Place zebesian on right wall
             gCurrentSprite.status |= SS_X_FLIP;
-            gCurrentSprite.xPosition += 0x20;
+            gCurrentSprite.xPosition += HALF_BLOCK_SIZE;
         } else {
-            gCurrentSprite.xPosition -= 0x20;
+            // Place zebesian on left wall
+            gCurrentSprite.xPosition -= HALF_BLOCK_SIZE;
         }
         SpriteUtilChooseRandomXDirection();
     }
@@ -96,11 +103,11 @@ void ZebesianWallInit(void) {
             return;
         }
         gCurrentSprite.numberOfXToForm = 2;
-        gCurrentSprite.hitboxTop = -0x70;
+        gCurrentSprite.hitboxTop = -PIXEL_SIZE * 0x1c;
     } else {
-        gCurrentSprite.hitboxTop = -0x60;
+        gCurrentSprite.hitboxTop = -PIXEL_SIZE * 0x18;
     }
-    gCurrentSprite.hitboxBottom = 0x50;
+    gCurrentSprite.hitboxBottom = PIXEL_SIZE * 0x14;
     ZebesianWallSetSideHitboxes();
 }
 
@@ -116,13 +123,13 @@ void ZebesianWallFormingFromX(void) {
 }
 
 void ZebesianWallDeath(void) {
-    gCurrentSprite.yPosition += 8;
+    gCurrentSprite.yPosition += PIXEL_SIZE * 2;
     if (gCurrentSprite.status & SS_X_FLIP)
-        gCurrentSprite.xPosition -= 0x28;
+        gCurrentSprite.xPosition -= PIXEL_SIZE * 0xa;
     else
-        gCurrentSprite.xPosition += 0x28;
+        gCurrentSprite.xPosition += PIXEL_SIZE * 0xa;
     SpriteSpawnNewXParasite(PSPRITE_X_PARASITE, gCurrentSprite.spriteId, 0, gCurrentSprite.primarySpriteRamSlot,
-        gCurrentSprite.spritesetSlotAndProperties, gCurrentSprite.yPosition - 0x38, gCurrentSprite.xPosition, SS_X_FLIP);
+        gCurrentSprite.spritesetSlotAndProperties, gCurrentSprite.yPosition - PIXEL_SIZE * 0xe, gCurrentSprite.xPosition, SS_X_FLIP);
 }
 
 void ZebesianWallMovingVerticallyInit(void) {
@@ -136,17 +143,17 @@ void ZebesianWallMovingVerticallyInit(void) {
 void ZebesianWallMoveVertically(void) {
     u32 action = FALSE;
     if (gCurrentSprite.status & SS_FACING_RIGHT) {
-        if (gCurrentSprite.xParasiteTimer + 0x80 > gCurrentSprite.yPosition) {
+        if (gCurrentSprite.xParasiteTimer + BLOCK_SIZE * 2 > gCurrentSprite.yPosition) {
             if (--gCurrentSprite.work1 > 0)
-                gCurrentSprite.yPosition += 1;
+                gCurrentSprite.yPosition += PIXEL_SIZE / 4;
             else
                 action = TRUE;
         } else
             action = TRUE;
     } else {
-        if (gCurrentSprite.xParasiteTimer - 0xc0 < gCurrentSprite.yPosition) {
+        if (gCurrentSprite.xParasiteTimer - BLOCK_SIZE * 3 < gCurrentSprite.yPosition) {
             if (--gCurrentSprite.work1 > 0)
-                gCurrentSprite.yPosition -= 1;
+                gCurrentSprite.yPosition -= PIXEL_SIZE / 4;
             else
                 action = TRUE;
         } else
@@ -178,9 +185,9 @@ void ZebesianWallTurningAround(void) {
         gCurrentSprite.work4 = 0;
         gCurrentSprite.status ^= SS_X_FLIP;
         if (gCurrentSprite.status & SS_X_FLIP)
-            gCurrentSprite.xPosition += 0x80;
+            gCurrentSprite.xPosition += BLOCK_SIZE * 2;
         else
-            gCurrentSprite.xPosition -= 0x80;
+            gCurrentSprite.xPosition -= BLOCK_SIZE * 2;
         ZebesianWallSetSideHitboxes();
         SoundPlayNotAlreadyPlaying(SOUND_ZEBESIAN_WALL_JUMP);
     }
@@ -221,13 +228,13 @@ void ZebesianWallShootingInit(void) {
 }
 
 void ZebesianWallShooting(void) {
-    if (gCurrentSprite.currentAnimationFrame == 0x13 && gCurrentSprite.animationDurationCounter == 1) {
+    if (gCurrentSprite.currentAnimationFrame == 19 && gCurrentSprite.animationDurationCounter == 1) {
         if (gCurrentSprite.status & SS_X_FLIP)
             SpriteSpawnSecondary(SSPRITE_ZEBESIAN_BEAM, 0, gCurrentSprite.spritesetGfxSlot,
-                gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x88, SS_X_FLIP);
+                gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition - PIXEL_SIZE * 0x22, SS_X_FLIP);
         else
             SpriteSpawnSecondary(SSPRITE_ZEBESIAN_BEAM, 0, gCurrentSprite.spritesetGfxSlot,
-                gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x88, 0);
+                gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition, gCurrentSprite.xPosition + PIXEL_SIZE * 0x22, 0);
     }
     if (SpriteUtilCheckEndCurrentSpriteAnim())
         ZebesianWallDecideRandomAction();
@@ -239,8 +246,8 @@ void ZebesianBeamInit(void) {
     gCurrentSprite.drawDistanceTop = 8;
     gCurrentSprite.drawDistanceBottom = 8;
     gCurrentSprite.drawDistanceHorizontal = 0x30;
-    gCurrentSprite.hitboxTop = -8;
-    gCurrentSprite.hitboxBottom = 8;
+    gCurrentSprite.hitboxTop = -PIXEL_SIZE * 2;
+    gCurrentSprite.hitboxBottom = PIXEL_SIZE * 2;
     gCurrentSprite.pOam = sZebesianWallBeamOam_Spawning;
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
@@ -249,11 +256,11 @@ void ZebesianBeamInit(void) {
     gCurrentSprite.drawOrder = 5;
     gCurrentSprite.bgPriority = 1;
     if (gCurrentSprite.status & SS_X_FLIP) {
-        gCurrentSprite.hitboxLeft = -0x30;
-        gCurrentSprite.hitboxRight = -0x10;
+        gCurrentSprite.hitboxLeft = -PIXEL_SIZE * 0xc;
+        gCurrentSprite.hitboxRight = -PIXEL_SIZE * 4;
     } else {
-        gCurrentSprite.hitboxLeft = 0x10;
-        gCurrentSprite.hitboxRight = 0x30;
+        gCurrentSprite.hitboxLeft = PIXEL_SIZE * 4;
+        gCurrentSprite.hitboxRight = PIXEL_SIZE * 0xc;
     }
     SoundPlayNotAlreadyPlaying(SOUND_ZEBESIAN_BEAM);
 }
@@ -265,11 +272,11 @@ void ZebesianBeamSpawning(void) {
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x18;
         if (gCurrentSprite.status & SS_X_FLIP) {
-            gCurrentSprite.hitboxLeft = -0x60;
-            gCurrentSprite.hitboxRight = -0x20;
+            gCurrentSprite.hitboxLeft = -PIXEL_SIZE * 0x18;
+            gCurrentSprite.hitboxRight = -PIXEL_SIZE * 8;
         } else {
-            gCurrentSprite.hitboxLeft = 0x20;
-            gCurrentSprite.hitboxRight = 0x60;
+            gCurrentSprite.hitboxLeft = PIXEL_SIZE * 8;
+            gCurrentSprite.hitboxRight = PIXEL_SIZE * 0x18;
         }
     }
 }
@@ -281,11 +288,11 @@ void ZebesianBeamExtending(void) {
         gCurrentSprite.currentAnimationFrame = 0;
         gCurrentSprite.pose = 0x1a;
         if (gCurrentSprite.status & SS_X_FLIP) {
-            gCurrentSprite.hitboxLeft = -0xa0;
-            gCurrentSprite.hitboxRight = -0x20;
+            gCurrentSprite.hitboxLeft = -PIXEL_SIZE * 0x28;
+            gCurrentSprite.hitboxRight = -PIXEL_SIZE * 8;
         } else {
-            gCurrentSprite.hitboxLeft = 0x20;
-            gCurrentSprite.hitboxRight = 0xa0;
+            gCurrentSprite.hitboxLeft = PIXEL_SIZE * 8;
+            gCurrentSprite.hitboxRight = PIXEL_SIZE * 0x28;
         }
     }
 }
@@ -353,7 +360,7 @@ void ZebesianBeam(void) {
             break;
     }
     if (gCurrentSprite.status & SS_X_FLIP)
-        gCurrentSprite.xPosition -= 10;
+        gCurrentSprite.xPosition -= PIXEL_TO_SUB_PIXEL(2.5);
     else
-        gCurrentSprite.xPosition += 10;
+        gCurrentSprite.xPosition += PIXEL_TO_SUB_PIXEL(2.5);
 }

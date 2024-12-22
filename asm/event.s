@@ -175,37 +175,37 @@ _08074A80:
 _08074A88: .4byte gEquipment
 _08074A8C:
 	ldr r2, _08074A98 @ =gEquipment
-	ldr r1, _08074A9C @ =0x085760C8
+	ldr r1, _08074A9C @ =sSecurityUnlockEvents
 	ldrb r0, [r1]
 	strb r0, [r2, #0xd]
 	ldrb r0, [r1, #4]
 	b _08074AD2
 	.align 2, 0
 _08074A98: .4byte gEquipment
-_08074A9C: .4byte 0x085760C8
+_08074A9C: .4byte sSecurityUnlockEvents
 _08074AA0:
 	ldr r2, _08074AAC @ =gEquipment
-	ldr r1, _08074AB0 @ =0x085760C8
+	ldr r1, _08074AB0 @ =sSecurityUnlockEvents
 	ldrb r0, [r1, #8]
 	strb r0, [r2, #0xd]
 	ldrb r0, [r1, #0xc]
 	b _08074AD2
 	.align 2, 0
 _08074AAC: .4byte gEquipment
-_08074AB0: .4byte 0x085760C8
+_08074AB0: .4byte sSecurityUnlockEvents
 _08074AB4:
 	ldr r2, _08074AC0 @ =gEquipment
-	ldr r1, _08074AC4 @ =0x085760C8
+	ldr r1, _08074AC4 @ =sSecurityUnlockEvents
 	ldrb r0, [r1, #0x10]
 	strb r0, [r2, #0xd]
 	ldrb r0, [r1, #0x14]
 	b _08074AD2
 	.align 2, 0
 _08074AC0: .4byte gEquipment
-_08074AC4: .4byte 0x085760C8
+_08074AC4: .4byte sSecurityUnlockEvents
 _08074AC8:
 	ldr r2, _08074ADC @ =gEquipment
-	ldr r1, _08074AE0 @ =0x085760C8
+	ldr r1, _08074AE0 @ =sSecurityUnlockEvents
 	ldrb r0, [r1, #0x18]
 	strb r0, [r2, #0xd]
 	ldrb r0, [r1, #0x1c]
@@ -215,7 +215,7 @@ _08074AD2:
 	b _08074B3A
 	.align 2, 0
 _08074ADC: .4byte gEquipment
-_08074AE0: .4byte 0x085760C8
+_08074AE0: .4byte sSecurityUnlockEvents
 _08074AE4:
 	movs r0, #0x71
 	movs r1, #0xb
@@ -718,7 +718,7 @@ EventCheckSetNavigationRoomEvent: @ 0x08074EAC
 	ldrb r0, [r1, #7]
 	cmp r0, #0
 	beq _08074EF6
-	ldr r4, _08074F20 @ =0x0857604C
+	ldr r4, _08074F20 @ =sAreaNavigationRoomPairs
 	lsls r2, r0, #1
 	adds r0, r2, r4
 	ldr r1, _08074F24 @ =gCurrentArea
@@ -765,7 +765,7 @@ _08074F10:
 	.align 2, 0
 _08074F18: .4byte sEventLocationAndNavigationInfo
 _08074F1C: .4byte gEventCounter
-_08074F20: .4byte 0x0857604C
+_08074F20: .4byte sAreaNavigationRoomPairs
 _08074F24: .4byte gCurrentArea
 _08074F28: .4byte gCurrentRoom
 _08074F2C: .4byte gEquipment
@@ -819,7 +819,7 @@ _08074F82:
 	movs r5, #0
 	movs r3, #0
 	ldr r0, _08074F9C @ =gCurrentArea
-	ldr r1, _08074FA0 @ =0x085760C8
+	ldr r1, _08074FA0 @ =sSecurityUnlockEvents
 	ldrb r2, [r0]
 	adds r6, r0, #0
 	ldrb r0, [r1, #1]
@@ -830,7 +830,7 @@ _08074F82:
 	.align 2, 0
 _08074F98: .4byte gEquipment
 _08074F9C: .4byte gCurrentArea
-_08074FA0: .4byte 0x085760C8
+_08074FA0: .4byte sSecurityUnlockEvents
 _08074FA4:
 	adds r3, #1
 	cmp r3, #3

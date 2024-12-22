@@ -10470,7 +10470,7 @@ _0807B086:
 	adds r2, r0, r6
 	ldrb r0, [r2, #1]
 	strb r0, [r7]
-	ldr r1, _0807B0C0 @ =0x08576066
+	ldr r1, _0807B0C0 @ =sAreasOfSubAreas
 	ldrb r0, [r7]
 	adds r0, r0, r1
 	ldrb r0, [r0]
@@ -10492,7 +10492,7 @@ _0807B086:
 	.align 2, 0
 _0807B0B8: .4byte 0x0300004C
 _0807B0BC: .4byte 0x085766E4
-_0807B0C0: .4byte 0x08576066
+_0807B0C0: .4byte sAreasOfSubAreas
 _0807B0C4: .4byte 0x0000020E
 _0807B0C8: .4byte 0x00000212
 _0807B0CC: .4byte 0x0000020F
@@ -11996,7 +11996,7 @@ _0807BC68:
 	lsls r0, r2, #3
 	adds r0, r0, r5
 	ldrb r2, [r0, #1]
-	ldr r0, _0807BC94 @ =0x08576066
+	ldr r0, _0807BC94 @ =sAreasOfSubAreas
 	adds r0, r2, r0
 	ldrb r0, [r0]
 	strb r0, [r6]
@@ -12011,7 +12011,7 @@ _0807BC84: .4byte gEventCounter
 _0807BC88: .4byte sEventLocationAndNavigationInfo
 _0807BC8C: .4byte gPreviousNavigationConversation
 _0807BC90: .4byte 0x085766E4
-_0807BC94: .4byte 0x08576066
+_0807BC94: .4byte sAreasOfSubAreas
 
 	thumb_func_start NavigationConversationLoadPopUpGraphics
 NavigationConversationLoadPopUpGraphics: @ 0x0807BC98
@@ -14154,8 +14154,8 @@ _0807CE7A:
 	ldrb r0, [r3]
 	cmp r0, #0
 	beq _0807CED4
-	ldr r2, _0807CECC @ =0x0857607D
-	ldr r1, _0807CED0 @ =0x08576073
+	ldr r2, _0807CECC @ =sUnk_57607d
+	ldr r1, _0807CED0 @ =sSubAreasOfSectors
 	adds r0, r0, r1
 	ldrb r0, [r0]
 	adds r0, r0, r2
@@ -14169,10 +14169,10 @@ _0807CEBC: .4byte gCurrentArea
 _0807CEC0: .4byte gNonGameplayRam
 _0807CEC4: .4byte 0x08581500
 _0807CEC8: .4byte gPauseScreenFlag
-_0807CECC: .4byte 0x0857607D
-_0807CED0: .4byte 0x08576073
+_0807CECC: .4byte sUnk_57607d
+_0807CED0: .4byte sSubAreasOfSectors
 _0807CED4:
-	ldr r0, _0807CF48 @ =0x0857607D
+	ldr r0, _0807CF48 @ =sUnk_57607d
 	ldrb r1, [r0, #7]
 	movs r4, #0x91
 	lsls r4, r4, #2
@@ -14223,20 +14223,20 @@ _0807CEDE:
 	ldrb r0, [r2]
 	cmp r0, #0
 	beq _0807CF5C
-	ldr r1, _0807CF54 @ =0x08576073
+	ldr r1, _0807CF54 @ =sSubAreasOfSectors
 	adds r0, r0, r1
 	ldrb r1, [r0]
 	ldr r2, _0807CF58 @ =0x00000249
 	adds r0, r6, r2
 	b _0807CF6C
 	.align 2, 0
-_0807CF48: .4byte 0x0857607D
+_0807CF48: .4byte sUnk_57607d
 _0807CF4C: .4byte 0x0879C180
 _0807CF50: .4byte gCurrentArea
-_0807CF54: .4byte 0x08576073
+_0807CF54: .4byte sSubAreasOfSectors
 _0807CF58: .4byte 0x00000249
 _0807CF5C:
-	ldr r1, _0807CF94 @ =0x085760E8
+	ldr r1, _0807CF94 @ =sSubAreasOfMainDeckRooms
 	ldr r0, _0807CF98 @ =gCurrentRoom
 	ldrb r0, [r0]
 	adds r0, #1
@@ -14265,7 +14265,7 @@ _0807CF8A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807CF94: .4byte 0x085760E8
+_0807CF94: .4byte sSubAreasOfMainDeckRooms
 _0807CF98: .4byte gCurrentRoom
 _0807CF9C: .4byte 0x00000249
 _0807CFA0: .4byte 0x00007A73
@@ -14355,7 +14355,7 @@ _0807D04C: .4byte 0x0000024A
 _0807D050:
 	cmp r0, #3
 	bne _0807D0DA
-	ldr r0, _0807D090 @ =0x0857608A
+	ldr r0, _0807D090 @ =sUnk_57608a
 	ldr r1, _0807D094 @ =0x0300004C
 	ldrb r1, [r1]
 	adds r0, r1, r0
@@ -14387,7 +14387,7 @@ _0807D078:
 	adds r0, r0, r1
 	b _0807D0B2
 	.align 2, 0
-_0807D090: .4byte 0x0857608A
+_0807D090: .4byte sUnk_57608a
 _0807D094: .4byte 0x0300004C
 _0807D098: .4byte 0x0879C1A4
 _0807D09C:
@@ -14682,7 +14682,7 @@ _0807D2D0:
 	adds r0, r3, r1
 	strb r4, [r0]
 _0807D2D6:
-	ldr r1, _0807D328 @ =0x0857607D
+	ldr r1, _0807D328 @ =sUnk_57607d
 	ldrb r0, [r5]
 	adds r0, r0, r1
 	ldrb r1, [r0]
@@ -14723,7 +14723,7 @@ _0807D316:
 	b _0807D338
 	.align 2, 0
 _0807D324: .4byte 0x0000024A
-_0807D328: .4byte 0x0857607D
+_0807D328: .4byte sUnk_57607d
 _0807D32C: .4byte 0x00000245
 _0807D330:
 	cmp r1, #0x12

@@ -406,4 +406,25 @@ enum Sector6Rooms {
     SECTOR_6_40,
 };
 
+enum Debug1Rooms {
+    DEBUG_1_0,
+    DEBUG_1_1,
+    DEBUG_1_2,
+    DEBUG_1_3,
+};
+
+enum Debug2Rooms {
+    DEBUG_2_0,
+    DEBUG_2_1,
+    DEBUG_2_2,
+    DEBUG_2_3,
+};
+
+enum Debug3Rooms {
+    DEBUG_3_0,
+    DEBUG_3_1,
+    DEBUG_3_2,
+    DEBUG_3_3,
+};
+
 #endif /* ROOM_CONSTANTS_H */

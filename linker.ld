@@ -483,6 +483,8 @@ SECTIONS {
         src/data/sprites/yakuza.o(.rodata);
         src/data/sprites/nightmare.o(.rodata);
         src/data/sprites/x_parasite.o(.rodata);
+
+        src/data/rooms_data.o(.rodata);
         src/data/demo_data.o(.rodata);
         src/data/hud_data.o(.rodata);
         src/data/particle_data.o(.rodata);

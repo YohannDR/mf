@@ -4,6 +4,7 @@ def romRead(n):
     return int.from_bytes(rom.read(n), "little")
 
 fmtByte = lambda b: "UCHAR_MAX" if b == 0xff else b
+sByte = lambda b: b - 0x100 if b >= 0x80 else b
 
 areaNames = [
     "MainDeck",
@@ -29,6 +30,19 @@ areaNamesLowercase = [
     "debug_1",
     "debug_2",
     "debug_3"
+]
+
+areaOrder = [
+    0,
+    1,
+    2,
+    3,
+    5,
+    4,
+    6,
+    7,
+    8,
+    9
 ]
 
 xParasitePropertyNames = [
@@ -354,9 +368,106 @@ def extractRooms(pointers):
 
     return out
 
-rom = open("../mf_us_baserom.gba", "rb")
-out = open("out.txt", "w")
+def extractDoors():
+    out = ""
+    enums = ""
+    extern = ""
+
+    rom.seek(0x79B894)
+    pDoors = []
+    for areaIdx in range(len(areaNames)):
+        pDoors.append(romRead(4) & 0x1ffffff)
+    pDoors.append(0x3c2c10) # terminator for debug 3 doors
+
+    for areaIdx in areaOrder:
+        rom.seek(pDoors[areaIdx])
+        out += f"const struct Door s{areaNames[areaIdx]}Doors[] = {{\n"
+        enums += f"enum {areaNames[areaIdx]}Doors {{\n"
+        extern += f"extern const struct Door s{areaNames[areaIdx]}Doors[];\n"
+        i = 0
+        while True:
+            t = romRead(1)
+            if t == 0:
+                out += "    DOOR_TERMINATOR\n"
+                out += "};\n\n"
+                enums += "};\n\n"
+                break
+            out += f"    [{areaNamesLowercase[areaIdx].upper()}_DOOR_{i}] = {{\n"
+            enums += f"    {areaNamesLowercase[areaIdx].upper()}_DOOR_{i},\n"
+            tt = "DOOR_TYPE_NONE"
+            if t & 0xf == 1:
+                tt = "DOOR_TYPE_AREA_CONNECTION"
+            elif t & 0xf == 2:
+                tt = "DOOR_TYPE_NO_HATCH"
+            elif t & 0xf == 3:
+                tt = "DOOR_TYPE_OPEN_HATCH"
+            elif t & 0xf == 4:
+                tt = "DOOR_TYPE_HATCH_CAN_LOCK"
+            if t & 0x10:
+                tt += " | DOOR_TYPE_EXISTS"
+            if t & 0x20:
+                tt += " | DOOR_TYPE_LOAD_EVENT_BASED_ROOM"
+            if t & 0x40:
+                tt += " | DOOR_TYPE_DISPLAY_LOCATION_NAME"
+            out += f"        .type = {tt},\n"
+            out += f"        .srcRoom = {areaNamesLowercase[areaIdx].upper()}_{romRead(1)},\n"
+            out += f"        .xStart = {romRead(1)},\n"
+            out += f"        .xEnd = {romRead(1)},\n"
+            out += f"        .yStart = {romRead(1)},\n"
+            out += f"        .yEnd = {romRead(1)},\n"
+            if t & 0xf == 1:
+                currAddr = rom.tell()
+                rom.seek(0x3c8b90) # sAreaConnections
+                while True:
+                    srcArea = romRead(1)
+                    srcDoor = romRead(1)
+                    dstArea = romRead(1)
+                    if srcArea == 0xff:
+                        rom.seek(currAddr)
+                        out += f"        .dstDoor = {romRead(1)},\n"
+                        break
+                    if srcArea == areaIdx and srcDoor == i:
+                        rom.seek(currAddr)
+                        out += f"        .dstDoor = {areaNamesLowercase[dstArea].upper()}_DOOR_{romRead(1)},\n"
+                        break
+            else:
+                out += f"        .dstDoor = {areaNamesLowercase[areaIdx].upper()}_DOOR_{romRead(1)},\n"
+            out += f"        .xExit = {sByte(romRead(1))},\n"
+            out += f"        .yExit = {sByte(romRead(1))}\n"
+            romRead(3)
+            out += "    },\n"
+            i += 1
+
+    rom.seek(0x3c8b90)
+    out += "const u8 sAreaConnections[][AREA_CONNECTION_FIELD_COUNT] = {\n"
+    while True:
+        srcArea = romRead(1)
+        srcDoor = romRead(1)
+        dstArea = romRead(1)
+        if srcArea == 0xff:
+            out += f"    {{\n"
+            out += f"        [AREA_CONNECTION_FIELD_SOURCE_AREA] = UCHAR_MAX,\n"
+            out += f"        [AREA_CONNECTION_FIELD_SOURCE_DOOR] = UCHAR_MAX,\n"
+            out += f"        [AREA_CONNECTION_FIELD_DESTINATION_AREA] = UCHAR_MAX\n"
+            out += f"    }},\n"
+            break
+        out += f"    {{\n"
+        out += f"        [AREA_CONNECTION_FIELD_SOURCE_AREA] = AREA_{areaNamesLowercase[srcArea].upper()},\n"
+        out += f"        [AREA_CONNECTION_FIELD_SOURCE_DOOR] = {areaNamesLowercase[srcArea].upper()}_DOOR_{srcDoor},\n"
+        out += f"        [AREA_CONNECTION_FIELD_DESTINATION_AREA] = AREA_{areaNamesLowercase[dstArea].upper()}\n"
+        out += f"    }},\n"
+    out += "};\n\n"
+    return out + enums + extern
+
+rom = open("./mf_us_baserom.gba", "rb")
+
+out = open("tools/out.txt", "w")
 pointers = getRoomPointers()
 out.write(extractRooms(pointers))
-rom.close()
 out.close()
+
+doors = open("tools/doors.txt", "w")
+doors.write(extractDoors())
+doors.close()
+
+rom.close()

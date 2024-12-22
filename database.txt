@@ -2975,7 +2975,8 @@ Blob_28fd08_28ff60.bin;0x28fd08;0x28ff60
 Blob_2de9b0_2e4904.bin;2de9b0;2e4904
 
 # Clipdata and room entries
-Blob_3be3a0_3e392c.bin;3be3a0;3e392c
+Blob_3be3a0_3c0030.bin;3be3a0;3c0030
+Blob_3c2bf8_3e392c.bin;3c2bf8;3e392c
 
 # Room data
 Blob_3eed78_413afc.bin;3eed78;413afc
