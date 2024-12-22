@@ -6,12 +6,12 @@
 #define DOOR_TERMINATOR         \
 {                               \
     .type = DOOR_TYPE_NONE,     \
-    .srcRoom = SECTOR_3_0,      \
+    .srcRoom = 0,               \
     .xStart = 0,                \
     .xEnd = 0,                  \
     .yStart = 0,                \
     .yEnd = 0,                  \
-    .dstDoor = SECTOR_3_DOOR_0, \
+    .dstDoor = 0,               \
     .xExit = 0,                 \
     .yExit = 0                  \
 }
