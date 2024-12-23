@@ -453,7 +453,7 @@ enum Sound {
     SOUND_1BF, // 0x1bf 447
     SOUND_1C0, // 0x1c0 448
     SOUND_1C1, // 0x1c1 449
-    SOUND_1C2, // 0x1c2 450
+    SOUND_PILLAR_EXTENDING, // 0x1c2 450
     SOUND_1C3, // 0x1c3 451
     SOUND_1C4, // 0x1c4 452
     SOUND_1C5, // 0x1c5 453

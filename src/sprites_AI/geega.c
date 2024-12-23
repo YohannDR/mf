@@ -7,7 +7,6 @@
 
 #include "constants/audio.h"
 #include "constants/clipdata.h"
-#include "constants/sprite.h"
 #include "constants/samus.h"
 
 #include "structs/clipdata.h"
