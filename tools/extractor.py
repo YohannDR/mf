@@ -2,36 +2,17 @@ from array import array
 from io import BufferedReader
 import shutil
 import os
+import pathlib
 
 from decompressor import decomp_rle, decomp_lz77
 
 DATA_PATH = "data/"
-subDirs: array = [
-    "sa_x",
-    "samus",
-    "samus/gfx",
-    "sprites",
-    "hud",
-    "escape",
-    "rooms",
-    "tilesets",
-    "tilesets/animated_palettes",
-    "projectiles",
-    "menus",
-    "menus/title_screen",
-    "sa_x_close_up"
-]
 
 if __name__ == "__main__":
     try:
         shutil.rmtree(DATA_PATH, ignore_errors=False, onerror=None)
     except:
         pass
-
-    # Create directories
-    os.mkdir(DATA_PATH)
-    for dir in subDirs:
-        os.mkdir(DATA_PATH.__add__(dir))
 
     rom: BufferedReader = open("mf_us_baserom.gba", "rb")
     db: BufferedReader = open("database.txt", "r")
@@ -46,6 +27,10 @@ if __name__ == "__main__":
 
             name: str = info[0]
             print("Extracting", name)
+
+            # Create directory if it doesn't exist
+            os.makedirs(pathlib.Path(DATA_PATH.__add__(name)).parent, exist_ok=True)
+
             if name.endswith(".rle"):
                 (decompressed, size) = decomp_rle(rom, int(info[1], 16))
 

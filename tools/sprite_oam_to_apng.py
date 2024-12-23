@@ -109,9 +109,6 @@ def to_image(canvas, left, top, right, bottom):
         for (i, j), value in canvas.items():
             pixels[(i-left, j-top)] = value
 
-    else:  # the canvas is empty
-        image = Image.new("P", (2, 2), 0)
-
     return image
 
 

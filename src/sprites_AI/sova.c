@@ -14,34 +14,36 @@
 #include "structs/sprite.h"
 #include "structs/samus.h"
 
+#define SOVA_CRAWLING_HITBOX_SIZE (PIXEL_SIZE * 0xa)
+
 u8 SovaCheckCollidingWithAir(void) {
     u8 midair = FALSE;
 
     if (gCurrentSprite.work0) {
         if (gCurrentSprite.status & SS_X_FLIP) {
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition);
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition);
             if (gPreviousCollisionCheck == COLLISION_AIR) {
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + HALF_BLOCK_SIZE, gCurrentSprite.xPosition);
                 if (gPreviousCollisionCheck == COLLISION_AIR) midair = TRUE;
             }
         } else {
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition - 4);
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition - PIXEL_SIZE);
             if (gPreviousCollisionCheck == COLLISION_AIR) {
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x20, gCurrentSprite.xPosition - 4);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + HALF_BLOCK_SIZE, gCurrentSprite.xPosition - PIXEL_SIZE);
                 if (gPreviousCollisionCheck == COLLISION_AIR) midair = TRUE;
             }
         }
     } else {
         if (gCurrentSprite.work2) {
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition - 0x20);
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition - HALF_BLOCK_SIZE);
             if (gPreviousCollisionCheck == COLLISION_AIR) {
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition + 0x20);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
                 if (gPreviousCollisionCheck == COLLISION_AIR) midair = TRUE;
             }
         } else {
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - HALF_BLOCK_SIZE);
             if (gPreviousCollisionCheck == COLLISION_AIR) {
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
                 if (gPreviousCollisionCheck == COLLISION_AIR) midair = TRUE;
             }
         }
@@ -120,26 +122,26 @@ void SovaInit(void) {
             gCurrentSprite.work0 = FALSE;
             gCurrentSprite.work3 = gSpriteRandomNumber * 4 + 70;
         } else {
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x44, gCurrentSprite.xPosition);
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - (BLOCK_SIZE + PIXEL_SIZE), gCurrentSprite.xPosition);
             if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
                 gCurrentSprite.work0 = FALSE;
-                gCurrentSprite.yPosition -= 0x40;
+                gCurrentSprite.yPosition -= BLOCK_SIZE;
                 gCurrentSprite.work2 = TRUE;
                 gCurrentSprite.work3 = gSpriteRandomNumber * 4 + 30;
             } else {
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition - 0x24);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition - (HALF_BLOCK_SIZE + PIXEL_SIZE));
                 if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
                     gCurrentSprite.work0 = TRUE;
-                    gCurrentSprite.yPosition -= 0x20;
-                    gCurrentSprite.xPosition -= 0x20;
+                    gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
+                    gCurrentSprite.xPosition -= HALF_BLOCK_SIZE;
                     gCurrentSprite.work3 = gSpriteRandomNumber * 4 + 30;
                 } else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x20, gCurrentSprite.xPosition + 0x20);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
                         gCurrentSprite.work0 = TRUE;
                         gCurrentSprite.status |= SS_X_FLIP;
-                        gCurrentSprite.yPosition -= 0x20;
-                        gCurrentSprite.xPosition += 0x20;
+                        gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
+                        gCurrentSprite.xPosition += HALF_BLOCK_SIZE;
                         gCurrentSprite.work3 = gSpriteRandomNumber * 4 + 30;
                     } else {
                         gCurrentSprite.status = 0;
@@ -189,11 +191,11 @@ void SovaIdle(void) {
             }
             if (gCurrentSprite.status & SS_FACING_RIGHT) {
                 // Moving down
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x28, gCurrentSprite.xPosition);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + SOVA_CRAWLING_HITBOX_SIZE, gCurrentSprite.xPosition);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     turn++; // Turn if it encountered a ledge
                 else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x28, gCurrentSprite.xPosition - 4);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + SOVA_CRAWLING_HITBOX_SIZE, gCurrentSprite.xPosition - PIXEL_SIZE);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
                         turn++; // Turn if it encountered a floor
                     else
@@ -201,11 +203,11 @@ void SovaIdle(void) {
                 }
             } else {
                 // Moving up
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x28, gCurrentSprite.xPosition);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - SOVA_CRAWLING_HITBOX_SIZE, gCurrentSprite.xPosition);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     turn++; // Turn if it encountered a ledge
                 else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x28, gCurrentSprite.xPosition - 4);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - SOVA_CRAWLING_HITBOX_SIZE, gCurrentSprite.xPosition - PIXEL_SIZE);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
                         turn++; // Turn if it encountered a ceiling
                     else
@@ -224,11 +226,11 @@ void SovaIdle(void) {
             }
             if (gCurrentSprite.status & SS_FACING_RIGHT) {
                 // Moving down
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x28, gCurrentSprite.xPosition - 4);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + SOVA_CRAWLING_HITBOX_SIZE, gCurrentSprite.xPosition - PIXEL_SIZE);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     turn++; // Turn if it encountered a ledge
                 else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + 0x28, gCurrentSprite.xPosition);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + SOVA_CRAWLING_HITBOX_SIZE, gCurrentSprite.xPosition);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
                         turn++; // Turn if it encountered a floor
                     else
@@ -236,11 +238,11 @@ void SovaIdle(void) {
                 }
             } else {
                 // Moving up
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x28, gCurrentSprite.xPosition - 4);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - SOVA_CRAWLING_HITBOX_SIZE, gCurrentSprite.xPosition - PIXEL_SIZE);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
                     turn++; // Turn if it encountered a ledge
                 else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 0x28, gCurrentSprite.xPosition);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - SOVA_CRAWLING_HITBOX_SIZE, gCurrentSprite.xPosition);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
                         turn++; // Turn if it encountered a ceiling
                     else
@@ -264,22 +266,22 @@ void SovaIdle(void) {
                 return;
             }
             if (gCurrentSprite.status & SS_FACING_RIGHT) {
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition + 0x28);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition + SOVA_CRAWLING_HITBOX_SIZE);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F))
                     turn++;
                 else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x28);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + SOVA_CRAWLING_HITBOX_SIZE);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
                         turn++;
                     else
                         gCurrentSprite.xPosition += speed;
                 }
             } else {
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition - 0x28);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition - SOVA_CRAWLING_HITBOX_SIZE);
                 if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F))
                     turn++;
                 else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x28);
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - SOVA_CRAWLING_HITBOX_SIZE);
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F)
                         turn++;
                     else
@@ -304,14 +306,14 @@ void SovaIdle(void) {
             if (gPreviousVerticalCollisionCheck == COLLISION_AIR) {
                 // About to fall off a ledge
                 if (gCurrentSprite.status & SS_X_FLIP) {
-                    SpriteUtilCheckVerticalCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x20);
+                    SpriteUtilCheckVerticalCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - HALF_BLOCK_SIZE);
                     if (gPreviousVerticalCollisionCheck == COLLISION_AIR) {
                         gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
                         return;
                     } else
                         gCurrentSprite.xPosition += speed;
                 } else {
-                    SpriteUtilCheckVerticalCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x20);
+                    SpriteUtilCheckVerticalCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
                     if (gPreviousVerticalCollisionCheck == COLLISION_AIR) {
                         gCurrentSprite.pose = SPRITE_POSE_FALLING_INIT;
                         return;
@@ -328,20 +330,20 @@ void SovaIdle(void) {
                             gCurrentSprite.status &= ~SS_X_FLIP;
                     }
                     if (gCurrentSprite.status & SS_FACING_RIGHT) {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + 0x28);
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition + SOVA_CRAWLING_HITBOX_SIZE);
                         if (gPreviousCollisionCheck == COLLISION_AIR)
                             turn++; // Turn if it encountered a ledge
                         else {
-                            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition + 0x28);
+                            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition + SOVA_CRAWLING_HITBOX_SIZE);
                             if (gPreviousCollisionCheck == COLLISION_SOLID)
                                 turn++; // Turn if it encountered a wall
                         }
                     } else {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 0x28);
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - SOVA_CRAWLING_HITBOX_SIZE);
                         if (gPreviousCollisionCheck == COLLISION_AIR)
                             turn++; // Turn if it encountered a ledge
                         else {
-                            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition - 0x28);
+                            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition - SOVA_CRAWLING_HITBOX_SIZE);
                             if (gPreviousCollisionCheck == COLLISION_SOLID)
                                 turn++; // Turn if it encountered a wall
                         }

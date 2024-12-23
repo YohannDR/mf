@@ -2962,6 +2962,14 @@ sa_x_close_up/graphics.gfx.lz;0x72f2e0
 sa_x_close_up/first.tt.lz;0x7338c0
 sa_x_close_up/second.tt.lz;0x733d58
 
+# Samus face close-up
+menus/pause_screen/navigation/SamusFaceCloseUp.pal;16;0x57bec4;32
+menus/pause_screen/navigation/SamusFaceCloseUp.gfx.lz;0x57c0c4
+menus/pause_screen/navigation/SamusFaceCloseUp_Frame0.tt.lz;0x57fca0
+menus/pause_screen/navigation/SamusFaceCloseUp_Frame1.tt.lz;0x580238
+menus/pause_screen/navigation/SamusFaceCloseUp_Frame2.tt.lz;0x5807d0
+menus/pause_screen/navigation/SamusFaceCloseUp_Frame3.tt.lz;0x580d68
+
 # Blobs
 
 # Sound stuff

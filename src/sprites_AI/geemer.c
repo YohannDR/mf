@@ -21,11 +21,11 @@ void GeemerCheckCollisions(void) {
         if (gCurrentSprite.status & SS_X_FLIP) {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
         } else {
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - 4);
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - PIXEL_SIZE);
         }
     } else {
         if (gCurrentSprite.status & SS_Y_FLIP) {
-            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - 4, gCurrentSprite.xPosition);
+            SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_SIZE, gCurrentSprite.xPosition);
         } else {
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
         }
@@ -182,21 +182,21 @@ void GeemerInit(void) {
                 // on floor
                 gCurrentSprite.work0 = FALSE;
             } else {
-                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_TO_SUB_PIXEL(17), gCurrentSprite.xPosition);
+                SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - (BLOCK_SIZE + PIXEL_SIZE), gCurrentSprite.xPosition);
                 if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
                     // on ceiling
                     gCurrentSprite.work0 = FALSE;
                     gCurrentSprite.status |= SS_Y_FLIP;
                     gCurrentSprite.yPosition -= BLOCK_SIZE;
                 } else {
-                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_TO_SUB_PIXEL(8), gCurrentSprite.xPosition - PIXEL_TO_SUB_PIXEL(9));
+                    SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition - (HALF_BLOCK_SIZE + PIXEL_SIZE));
                     if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
                         // on left wall
                         gCurrentSprite.work0 = TRUE;
                         gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
                         gCurrentSprite.xPosition -= HALF_BLOCK_SIZE;
                     } else {
-                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - PIXEL_TO_SUB_PIXEL(8), gCurrentSprite.xPosition + PIXEL_TO_SUB_PIXEL(8));
+                        SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
                         if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0) {
                             // on right wall
                             gCurrentSprite.work0 = TRUE;
@@ -433,7 +433,7 @@ void GeemerFalling(void) {
     if (gPreviousVerticalCollisionCheck != COLLISION_AIR) {
         gCurrentSprite.yPosition = blockTop;
         if (gCurrentSprite.work0) {
-            onWall += 1;
+            onWall++;
         }
         gCurrentSprite.status &= ~SS_Y_FLIP;
         gCurrentSprite.work0 = 0;
