@@ -97,13 +97,6 @@ def to_image(canvas, left, top, right, bottom):
     # Returns an image cropped by a bounding box
     image = Image.new("P", (right-left, bottom-top), 0)
     if canvas.keys():
-        x_min = min([x for (x, y) in canvas.keys()])
-        y_min = min([y for (x, y) in canvas.keys()])
-        x_max = max([x for (x, y) in canvas.keys()]) + 1
-        y_max = max([y for (x, y) in canvas.keys()]) + 1
-
-        image = Image.new("P", (right-left, bottom-top), 0)
-
         pixels = image.load()
 
         for (i, j), value in canvas.items():
