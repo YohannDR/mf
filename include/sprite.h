@@ -6,9 +6,9 @@
 void SpriteUpdateRandomNumber(u8 slot);
 void SpriteUpdate(void);
 void SpriteUpdateAnimation(void);
-void unk_eb04(void);
-void SpriteDrawAll(void);
-void unk_ec38(void);
+void SpriteDrawAll_HighPriority(void);
+void SpriteDrawAll_MediumPriority(void);
+void SpriteDrawAll_LowPriority(void);
 void SpriteDraw(s32 slot);
 void SpriteCheckOnScreen(void);
 void SpriteLoadAllData(void);

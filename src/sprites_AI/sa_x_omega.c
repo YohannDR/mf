@@ -33,7 +33,7 @@ void SaXOmegaInit(void)
     gCurrentSprite.work0 = 0;
 
     gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-    gCurrentSprite.work1 = ARRAY_SIZE(sXParasiteMosaicValues);
+    gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
     gCurrentSprite.yPosition += (BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2);
 
     SaXSetPose(SA_X_POSE_FALLING);
@@ -65,7 +65,7 @@ void SaXOmegaForming(void)
  */
 void SaXOmegaFalling(void)
 {
-    u32 blockTop;
+    u16 blockTop;
     u8 offset;
     s16 movement;
 
@@ -143,7 +143,7 @@ void SaXOmegaRunningInit(void)
  */
 void SaXOmegaRunning(void)
 {
-    unk_11604(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
+    SpriteUtilMoveXPosForwardOnSlopeDirection(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
 
     if (gCurrentSprite.work3 < ARRAY_SIZE(sSaXRunningSpeed) * 8 - 1)
         gCurrentSprite.work3++;
@@ -185,8 +185,8 @@ void SaXOmegaShootingOmegaInit(void)
 {
     gCurrentSprite.pose = 0x44;
 
-    SpriteSapwnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-        gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SPRITE_STATUS_X_FLIP);
+    SpriteSpawnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+        gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SS_X_FLIP);
 
     gSaXData.missilesArmed = FALSE;
     SaXSetPose(SA_X_POSE_SHOOTING);
@@ -236,7 +236,7 @@ void SaXOmegaAfterShootingOmega(void)
             break;
 
         default:
-            unk_11604(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
+            SpriteUtilMoveXPosForwardOnSlopeDirection(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
 
             if (gCurrentSprite.work3 < ARRAY_SIZE(sSaXRunningSpeed) * 8 - 1)
                 gCurrentSprite.work3++;
@@ -256,8 +256,8 @@ void SaXOmegaAfterShootingOmega(void)
             {
                 gCurrentSprite.work1 = 40;
 
-                SpriteSapwnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-                    gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SPRITE_STATUS_X_FLIP);
+                SpriteSpawnSecondary(SSPRITE_SA_X_ICE_BEAM, DIAG_AIM_UP, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
+                    gCurrentSprite.yPosition - (BLOCK_SIZE * 2 + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + (BLOCK_SIZE + PIXEL_SIZE), SS_X_FLIP);
 
                 gSaXData.missilesArmed = FALSE;
                 SaXSetPose(SA_X_POSE_SHOOTING);
@@ -311,7 +311,7 @@ void SaXOmegaHitByOmega(void)
 void SaXOmegaRevertingToXInit(void)
 {
     gCurrentSprite.pose = 0x4A;
-    gCurrentSprite.work1 = ARRAY_SIZE(sXParasiteMosaicValues);
+    gCurrentSprite.work1 = X_PARASITE_MOSAIC_MAX_INDEX;
     gSaXData.mosaic = TRUE;
 
     EventCheckAdvance(EVENT_SA_X_KILLED_BY_OMEGA_METROID);

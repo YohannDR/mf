@@ -22,7 +22,7 @@ LD = $(TOOLCHAIN)ld
 OBJCOPY = $(TOOLCHAIN)objcopy
 OBJDUMP = $(TOOLCHAIN)objdump
 
-CC = agbcc
+CC = tools/agbcc
 
 DIFF = diff -u
 HOSTCC = cc
@@ -39,14 +39,18 @@ PREPROC = tools/preproc/preproc
 
 # Flags
 ASFLAGS = -mcpu=arm7tdmi
-CFLAGS = -Werror -O2 -mthumb-interwork -fhex-asm
+CFLAGS = -O2 -mthumb-interwork -fhex-asm
 CPPFLAGS = -nostdinc -Iinclude/
+NOMORENOPS = '.text\n\t.align 2, 0 @ dont insert nops\n'
 
 # Objects
 CSRC = $(wildcard src/**.c) $(wildcard src/**/**.c) $(wildcard src/**/**/**.c)
-.PRECIOUS: $(CSRC:.c=.s)
-ASMSRC = $(CSRC:.c=.s) $(wildcard asm/*.s)
-OBJ = $(ASMSRC:.s=.o) 
+.PRECIOUS: $(CSRC:%.c=build/%.s)
+ASMSRC = $(wildcard asm/**.s) $(wildcard asm/**/*.s) $(wildcard audio/*.s) $(wildcard audio/**/*.s) $(wildcard audio/**/**/*.s)
+OBJ = $(CSRC:%.c=build/%.o)  $(ASMSRC:%.s=build/%.o) 
+
+# Build subdirectories in build/
+$(shell mkdir -p  $(sort $(dir $(OBJ))))
 
 # Enable verbose output
 ifeq ($(V),1)
@@ -79,12 +83,8 @@ clean:
 	$Q$(RM) $(TARGET) $(ELF) $(MAP)
 	$(MSG) RM \*.dump
 	$Q$(RM) $(DUMPS)
-	$(MSG) RM \*.o
-	$Q$(RM) $(OBJ)
-	$(MSG) RM data/*.s
-	$Q$(RM) $(DATA)
-	$(MSG) RM src/\*\*/\*.s
-	$Q$(RM) $(CSRC:.c=.s)
+	$(MSG) RM build/
+	$Q$(RM) -r build
 	$(MSG) RM $(GBAFIX)
 	$Q$(RM) $(GBAFIX)
 	$(MSG) RM data/
@@ -105,34 +105,36 @@ help:
 
 $(TARGET): $(ELF) $(GBAFIX)
 	$(MSG) OBJCOPY $@
-	$Q$(OBJCOPY) -O binary --gap-fill 0xff --pad-to 0x08800000 $< $@
+	$Q$(OBJCOPY) --strip-debug -O binary --gap-fill 0xff --pad-to 0x08800000 $< $@
 	$(MSG) GBAFIX $@
 	$Q$(GBAFIX) $@ -t$(GAME_TITLE) -c$(GAME_CODE) -m$(MAKER_CODE) -r$(GAME_REVISION)
 
 $(ELF) $(MAP): $(OBJ) linker.ld
 	$(MSG) LD $@
-	$Q$(LD) $(LDFLAGS) -n -T linker.ld -Map=$(MAP) -o $@
+	$Qcd build && $(LD) $(LDFLAGS) -n -T ../linker.ld -Map=../$(MAP) -o ../$@
 
 %.dump: %.gba
 	$(MSG) OBJDUMP $@
 	$Q$(OBJDUMP) -D -bbinary -marm7tdmi -Mforce-thumb  $< | $(TAIL) -n+3 >$@
 #--stop-address 0x8c71c
-%.o: %.s
+build/%.o: %.s
 	$(MSG) AS $@
 	$Q$(AS) $(ASFLAGS) $< -o $@
 
-%.s: %.c
-	$(MSG) CC $@
-	$Q$(PREPROC) $< | $(CPP) $(CPPFLAGS) | $(CC) -o $@ $(CFLAGS) && printf '\t.align 2, 0 @ dont insert nops\n' >> $@
+build/%.o: %.c
+	$(MSG) CC build/$*.s
+	$Q$(PREPROC) $< | $(CPP) $(CPPFLAGS) | $(CC) -o build/$*.s $(CFLAGS) && printf $(NOMORENOPS) >> build/$*.s
+	$(MSG) AS $@
+	$Q$(AS) $(ASFLAGS) build/$*.s -o $@
 
-src/sram/%.s: CFLAGS = -O1 -mthumb-interwork -fhex-asm
-src/sram/%.s: src/sram/%.c
+build/src/sram/%.o: CFLAGS = -O1 -mthumb-interwork -fhex-asm
+build/src/sram/%.o: src/sram/%.c
 
-src/libgcc/%.s: CFLAGS = -O2 -fhex-asm
-src/libgcc/%.s: src/libgcc/%.c
+build/src/libgcc/%.o: CFLAGS = -O2 -fhex-asm
+build/src/libgcc/%.o: src/libgcc/%.c
 
-src/sprites_AI/%.s: CFLAGS = -O2 -mthumb-interwork -fhex-asm
-src/sprites_AI/%.s: src/sram/%.c
+build/src/data/%.o: NOMORENOPS = '\n\t.align 2, 0 @ dont insert nops\n'
+build/src/data/%.o: CFLAGS =
 
 tools/%: tools/%.c
 	$(MSG) HOSTCC $@

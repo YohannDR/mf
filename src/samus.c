@@ -8,8 +8,9 @@
 #include "constants/samus.h"
 
 #include "structs/samus.h"
+#include "structs/scroll.h"
 
-void SamusCopyData(void)
+/*void SamusCopyData(void)
 {
 
 }
@@ -47,7 +48,7 @@ void SamusCallCheckPlayLowHealthSound(void)
 void SamusCheckUpdateArmCannonOffset(void)
 {
 
-}
+}*/
 
 /**
  * @brief 5138 | 7c | Makes Samus bounce on a bomb
@@ -92,7 +93,7 @@ void SamusBombBounce(u8 direction)
     }
 }
 
-void SamusCheckSetNewEnvironmentEffect(u32 offset, u32 request)
+/*void SamusCheckSetNewEnvironmentEffect(u32 offset, u32 request)
 {
 
 }
@@ -100,7 +101,7 @@ void SamusCheckSetNewEnvironmentEffect(u32 offset, u32 request)
 void SamusUpdateEnvironmentEffect(void)
 {
 
-}
+}*/
 
 /**
  * @brief 5a74 | 6c | Aims the arm cannon when samus is standing
@@ -291,10 +292,10 @@ void SamusAimCannonHorizontalLadder(void)
     gSamusData.diagonalAim = DIAG_AIM_NONE;
 }
 
-u8 SamusCheckShooting(void)
+/*u8 SamusCheckShooting(void)
 {
 
-}
+}*/
 
 /**
  * @brief 5d44 | 1a8 | Checks if samus should have a new projectile
@@ -388,7 +389,7 @@ void SamusCheckNewProjectile(void)
     }
 }
 
-u32 SamusCheckStandingOnDropThroughClipdata(void)
+/*u32 SamusCheckStandingOnDropThroughClipdata(void)
 {
 
 }
@@ -401,7 +402,7 @@ u32 SamusSetForcedMovementForJumpingOrDropping(void)
 void SamusUpdateHighlightedWeaponsAndCharge(void)
 {
 
-}
+}*/
 
 /**
  * @brief 6170 | d0 | Sets the spinnin pose for samus
@@ -497,7 +498,7 @@ void SamusApplyXAcceleration(s16 acceleration, s16 maxVelocity)
     }
 }
 
-u32 SamusHazardDamage(void)
+/*u32 SamusHazardDamage(void)
 {
 
 }
@@ -505,7 +506,7 @@ u32 SamusHazardDamage(void)
 u32 SamusUpdate(void)
 {
 
-}
+}*/
 
 /**
  * @brief 658c | 4 | Samus inactivity subroutine
@@ -517,7 +518,7 @@ u8 SamusInactivity(void)
     return SPOSE_NONE;
 }
 
-u8 SamusStanding(void)
+/*u8 SamusStanding(void)
 {
 
 }
@@ -540,7 +541,7 @@ u8 SamusTurningAroundGfx(void)
 u8 SamusShootingGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 6880 | 108 | Samus running pose subroutine
@@ -617,7 +618,7 @@ u8 SamusRunning(void)
     return SPOSE_TURNING_AROUND;
 }
 
-u8 SamusRunningGfx(void)
+/*u8 SamusRunningGfx(void)
 {
 
 }
@@ -630,7 +631,7 @@ u8 SamusMidAir(void)
 u8 SamusMidAirGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 6be4 | 90 | Samus turning around mid air pose subroutine
@@ -669,7 +670,7 @@ u8 SamusTurningAroundMidAir(void)
     return SPOSE_NONE;
 }
 
-u8 SamusTurningAroundMidAirGfx(void)
+/*u8 SamusTurningAroundMidAirGfx(void)
 {
 
 }
@@ -717,7 +718,7 @@ u8 SamusSpinning(void)
 u8 SamusSpinningGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 73fc | 24 | Samus morphing pose subroutine
@@ -732,7 +733,7 @@ u8 SamusMorphing(void)
     return SPOSE_NONE;
 }
 
-u8 SamusMorphingGfx(void)
+/*u8 SamusMorphingGfx(void)
 {
 
 }
@@ -750,7 +751,7 @@ u8 SamusMorphBallGfx(void)
 u8 SamusRolling(void)
 {
 
-}
+}*/
 
 /**
  * @brief 7658 | 38 | Samus unmorphing pose subroutine
@@ -771,7 +772,7 @@ u8 SamusUnmorphing(void)
     return SPOSE_NONE;
 }
 
-u8 SamusUnmorphingGfx(void)
+/*u8 SamusUnmorphingGfx(void)
 {
 
 }
@@ -794,7 +795,7 @@ u8 SamusGettingKnockedBackGfx(void)
 u8 SamusStartingWallJumpGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 7888 | ec | Samus wall jumping pose subroutine
@@ -860,7 +861,7 @@ u8 SamusWallJumping(void)
     return SPOSE_NONE;
 }
 
-u8 SamusUsingAnElevator(void)
+/*u8 SamusUsingAnElevator(void)
 {
 
 }
@@ -878,7 +879,7 @@ u8 SamusHangingOnLedge(void)
 u8 SamusHangingOnLedgeGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 7c68 | 10 | Samus pulling yourself up from hanging pose subroutine
@@ -892,10 +893,10 @@ u8 SamusPullingYourselfUpFromHanging(void)
     return SPOSE_NONE;
 }
 
-u8 SamusPullingYourselfUpFromHangingGfx(void)
+/*u8 SamusPullingYourselfUpFromHangingGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 7d08 | 30 | Samus pulling yourself forward from hanging pose subroutine
@@ -919,10 +920,10 @@ u8 SamusPullingYourselfForwardFromHanging(void)
     return SPOSE_NONE;
 }
 
-u8 SamusPullingYourselfForwardFromHangingGfx(void)
+/*u8 SamusPullingYourselfForwardFromHangingGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 7d94 | 24 | Samus pulling yourself into morph ball tunnel pose subroutine
@@ -939,10 +940,10 @@ u8 SamusPullingYourselfIntoMorphballTunnel(void)
     return SPOSE_NONE;
 }
 
-u8 SamusPullingYourselfIntoMorphballTunnelGfx(void)
+/*u8 SamusPullingYourselfIntoMorphballTunnelGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 7dfc | 30 | Samus pulling yourself down to start hanging pose subroutine
@@ -961,7 +962,7 @@ u8 SamusPullingYourselfDownToStartHanging_Unused(void)
     return SPOSE_NONE;
 }
 
-u8 SamusPullingYourselfDownToStartHanging_UnusedGfx(void)
+/*u8 SamusPullingYourselfDownToStartHanging_UnusedGfx(void)
 {
 
 }
@@ -974,7 +975,7 @@ u8 SamusSpaceJumpingGfx(void)
 u8 SamusScrewAttackingGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 7fcc | 80 | Samus skidding pose subroutine
@@ -1020,7 +1021,7 @@ u8 SamusSkidding(void)
     return SPOSE_NONE;
 }
 
-u8 SamusOnSavePadGfx(void)
+/*u8 SamusOnSavePadGfx(void)
 {
 
 }
@@ -1033,7 +1034,7 @@ u8 SamusTurningAroundToRechargeOrUnlockSecurityGfx(void)
 u8 SamusDelayBeforeShinesparkingGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 8148 | 50 | Samus shinesparking pose subroutine
@@ -1073,7 +1074,7 @@ u8 SamusShinesparking(void)
     return SPOSE_NONE;
 }
 
-u8 SamusShinesparkingGfx(void)
+/*u8 SamusShinesparkingGfx(void)
 {
 
 }
@@ -1091,7 +1092,7 @@ u8 SamusHangingFromVerticalLadder(void)
 u8 SamusHangingFromVerticalLadderGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 8478 | 38 | Samus starting to hold your arm cannon out on a vertical ladder pose subroutine
@@ -1115,10 +1116,10 @@ u8 SamusStartingToHoldYourArmCannonOutOnAVerticalLadder(void)
     return SPOSE_NONE;
 }
 
-u8 SamusStartingToHoldYourArmCannonOutOnAVerticalLadderGfx(void)
+/*u8 SamusStartingToHoldYourArmCannonOutOnAVerticalLadderGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 8504 | 88 | Samus holding your arm cannon out on a vertical ladder pose subroutine
@@ -1164,10 +1165,10 @@ u8 SamusHoldingYourArmCannonOutOnAVerticalLadder(void)
     return SPOSE_NONE;
 }
 
-u8 SamusShootingOnVerticalLadderGfx(void)
+/*u8 SamusShootingOnVerticalLadderGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 85e0 | 38 | Samus starting to put away your arm cannon on vertical ladder pose subroutine
@@ -1191,7 +1192,7 @@ u8 SamusStartingToPutAwayYourArmCannonOnVerticalLadder(void)
     return SPOSE_NONE;
 }
 
-u8 SamusStartingToPutAwayYourArmCannonOnVerticalLadderGfx(void)
+/*u8 SamusStartingToPutAwayYourArmCannonOnVerticalLadderGfx(void)
 {
 
 }
@@ -1199,7 +1200,7 @@ u8 SamusStartingToPutAwayYourArmCannonOnVerticalLadderGfx(void)
 u8 SamusHangingOnHorizontalLadder(void)
 {
 
-}
+}*/
 
 /**
  * @brief 8718 | 9c | Samus moving on horizontal ladder pose subroutine
@@ -1248,10 +1249,10 @@ u8 SamusMovingOnHorizontalLadder(void)
     return SPOSE_NONE;
 }
 
-u8 SamusMovingOnHorizontalLadderGfx(void)
+/*u8 SamusMovingOnHorizontalLadderGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 8830 | 34 | Samus turning around on horizontal ladder pose subroutine
@@ -1274,10 +1275,10 @@ u8 SamusTurningAroundOnHorizontalLadder(void)
     return SPOSE_NONE;
 }
 
-u8 SamusTurningAroundOnHorizontalLadderGfx(void)
+/*u8 SamusTurningAroundOnHorizontalLadderGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 88d4 | 78 | Samus delay after shooting on horizontal ladder pose subroutine
@@ -1311,10 +1312,10 @@ u8 SamusDelayAfterShootingOnHorizontalLadder(void)
     return SPOSE_NONE;
 }
 
-u8 SamusShootingOnHorizontalLadderGfx(void)
+/*u8 SamusShootingOnHorizontalLadderGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 89a0 | 20 | Samus frozen pose gfx subroutine
@@ -1352,7 +1353,7 @@ u8 SamusFrozenInMorphBallGfx(void)
     return SPOSE_NONE;
 }
 
-u8 SamusUnlockingSecurityGfx(void)
+/*u8 SamusUnlockingSecurityGfx(void)
 {
 
 }
@@ -1375,7 +1376,7 @@ u8 SamusDownloadingAbilityGfx(void)
 u8 SamusBeingRechargedGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 8b78 | 50 | Samus facing the foreground pose subroutine
@@ -1410,7 +1411,7 @@ u8 SamusFacingForeground(void)
     return SPOSE_NONE;
 }
 
-u8 SamusFacingForegroundGfx(void)
+/*u8 SamusFacingForegroundGfx(void)
 {
 
 }
@@ -1418,7 +1419,7 @@ u8 SamusFacingForegroundGfx(void)
 u8 SamusUnlockingHabitationsDeckGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 8c78 | 18 | Samus loading save pose subroutine
@@ -1433,7 +1434,7 @@ u8 SamusLoadingSave(void)
     return SPOSE_NONE;
 }
 
-u8 SamusLoadingSaveGfx(void)
+/*u8 SamusLoadingSaveGfx(void)
 {
 
 }
@@ -1446,7 +1447,7 @@ u8 SamusDying(void)
 u8 SamusDyingGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 8eb0 | 68 | Samus hit by omega metroid pose subroutine
@@ -1484,10 +1485,10 @@ u8 SamusHitByOmagaMetroid(void)
     return SPOSE_NONE;
 }
 
-u8 SamusHitByOmegaMetroidGfx(void)
+/*u8 SamusHitByOmegaMetroidGfx(void)
 {
 
-}
+}*/
 
 /**
  * @brief 8f5c | 44 | Samus grabbed by yakuza pose subroutine
@@ -1597,7 +1598,7 @@ void SamusSetPose(u8 pose)
     }
 }
 
-void SamusSetMidAirPose(void)
+/*void SamusSetMidAirPose(void)
 {
 
 }
@@ -1605,7 +1606,7 @@ void SamusSetMidAirPose(void)
 void SamusSetLandingPose(void)
 {
 
-}
+}*/
 
 /**
  * @brief 9714 | 7c | Sets the frozen pose for Samus
@@ -1632,10 +1633,10 @@ void SamusSetFreezedPose(void)
     }
 }
 
-void SamusSetHurtPose(void)
+/*void SamusSetHurtPose(void)
 {
 
-}
+}*/
 
 /**
  * @brief 98e0 | c0 | Sets the knockback pose for Samus
@@ -1686,7 +1687,7 @@ void SamusSetKnockbackPose(void)
     gSamusData.newProjectile = 0;
 }
 
-void unk_99a0(void)
+/*void unk_99a0(void)
 {
 
 }
@@ -1764,7 +1765,7 @@ u8 unk_b3c8(void)
 void SamusUpdateGraphics(u8 facingLeft)
 {
 
-}
+}*/
 
 /**
  * @brief c134 | 40 | Checks if the low health sound should play
@@ -1788,7 +1789,7 @@ void SamusCheckPlayLowHealthSound(void)
         SoundPlay(0x8D);
 }
 
-void SamusUpdateDrawDistanceAndStandingStatus(void)
+/*void SamusUpdateDrawDistanceAndStandingStatus(void)
 {
 
 }
@@ -1806,4 +1807,4 @@ void SamusInit(void)
 void SamusDraw(void)
 {
 
-}
+}*/

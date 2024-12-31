@@ -83,4 +83,5 @@ const s16 sTargetCirclesXMovement[81] = {
     SHORT_MAX
 };
 
-const u8 sBlob_2e6382_2ed2e8[28518] = INCBIN_U8("data/Blob_2e6382_2ed2e8.bin");
+const u32 sSpritePlaceholderGfx[1 * 512] = INCBIN_U32("data/sprites/placeholder.gfx");
+const u16 sSpritePlaceholderPal[1 * 16] = INCBIN_U16("data/sprites/placeholder.pal");

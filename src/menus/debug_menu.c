@@ -780,8 +780,6 @@ void SetAbilityCount(u8 abilityCount)
 
 u32 DebugMenuModifiyAbilityCount(u8 cursorX)
 {
-    // https://decomp.me/scratch/HMmb3
-
     s32 increment;
     s32 modified;
     s32 i;
@@ -796,7 +794,7 @@ u32 DebugMenuModifiyAbilityCount(u8 cursorX)
             gAbilityCount = ABILITY_COUNT_END - 1;
         else
             gAbilityCount += increment;
-
+        modified:
         modified = TRUE;
     }
     else if (gChangedInput & KEY_UP)
@@ -805,7 +803,7 @@ u32 DebugMenuModifiyAbilityCount(u8 cursorX)
             gAbilityCount = 0;
         else
             gAbilityCount -= increment;
-
+        goto modified; // Needed to produce matching ASM.
     }
     else if (gChangedInput & KEY_RIGHT)
     {
@@ -897,24 +895,24 @@ void DebugMenuDrawMenuAndDoor(void)
 
 void DebugMenuDrawIgt(void)
 {
-    // https://decomp.me/scratch/YsRkH
-
     u32 position;
     u16* dst;
     s32 power;
     s32 value;
+    unsigned long long baseTile; // Needed to produce matching ASM.
 
     dst = VRAM_BASE + 0xC800;
     position = DEBUG_SECTION_INFO_TOP(DEBUG_SECTION_IN_GAME_TIME) * HALF_BLOCK_SIZE + DEBUG_SECTION_INFO_LEFT(DEBUG_SECTION_IN_GAME_TIME);
 
     for (power = 100; power > 0; power /= 10, position++)
     {
+        baseTile = 0x3080;
         value = gInGameTimer.hours / power % 10;
 
         if (power == 100 && value == 0)
             dst[position] = 0x3080 + 12;
         else
-            dst[position] = 0x3080 + value;
+            do { dst[position] = value + baseTile; } while (0);
     }
 
     position++;

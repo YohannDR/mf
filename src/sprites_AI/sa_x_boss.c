@@ -8,6 +8,7 @@
 #include "data/sprite_data.h"
 #include "data/engine_pointers.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
@@ -30,11 +31,11 @@ void SaXBossCheckCollisionRunning(void)
     var_1 = FALSE;
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    unk_1129c();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             SpriteUtilCheckVerticalCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - QUARTER_BLOCK_SIZE);
 
@@ -68,7 +69,7 @@ void SaXBossCheckCollisionRunning(void)
         return;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (!(gPreviousVerticalCollisionCheck & 0xF0))
             return;
@@ -326,7 +327,7 @@ u8 SaXBossTrackSamus(void)
     {
         gCurrentSprite.xParasiteTimer = 0;
 
-        if (SpriteUtilCheckHangingOnLedge())
+        if (SpriteUtilCheckSamusHangingOnLedge())
         {
             nslr = SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 11 + HALF_BLOCK_SIZE,
                 BLOCK_SIZE * 9 + QUARTER_BLOCK_SIZE + PIXEL_SIZE);
@@ -337,7 +338,7 @@ u8 SaXBossTrackSamus(void)
                 BLOCK_SIZE * 5 + QUARTER_BLOCK_SIZE + PIXEL_SIZE);
         }
 
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             if (nslr == NSLR_RIGHT)
             {
@@ -358,7 +359,7 @@ u8 SaXBossTrackSamus(void)
 
         nslr = SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 4, BLOCK_SIZE * 10);
 
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             if (nslr == NSLR_LEFT)
             {
@@ -384,7 +385,7 @@ u8 SaXBossTrackSamus(void)
     {
         gCurrentSprite.xParasiteTimer++;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             if (gSaXVision.samusOnRight == FALSE && gSaXVision.inXRange != FALSE)
             {
@@ -404,7 +405,7 @@ u8 SaXBossTrackSamus(void)
         return FALSE;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (gSamusData.yPosition < gCurrentSprite.yPosition - (BLOCK_SIZE * 11))
         {
@@ -498,14 +499,14 @@ u8 SaXBossTrackSamus(void)
         }
     }
 
-    if (SpriteUtilCheckHangingOnLedge())
+    if (SpriteUtilCheckSamusHangingOnLedge())
     {
         if (gSamusData.yPosition < gCurrentSprite.yPosition)
             gSaXVision.unk_0 = 1;
         else
             gSaXVision.unk_0 = 2;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
             gSaXVision.unk_1 = TRUE;
         else
             gSaXVision.unk_1 = FALSE;
@@ -549,7 +550,7 @@ void SaXBossRunning(void)
     if (gCurrentSprite.pose != 0x18)
         return;
 
-    unk_11604(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
+    SpriteUtilMoveXPosForwardOnSlopeDirection(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
 
     if (gCurrentSprite.work3 < ARRAY_SIZE(sSaXRunningSpeed) * 8 - 1)
         gCurrentSprite.work3++;
@@ -593,10 +594,10 @@ void SaXBossSpinJumping(void)
         if (gSaXData.pose != SA_X_POSE_STANDING)
             return;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+        if (gCurrentSprite.status & SS_SAMUS_DETECTED)
         {
             gCurrentSprite.pose = 0x17;
-            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+            if (gCurrentSprite.status & SS_FACING_RIGHT)
             {
                 if (gCurrentSprite.xParasiteTimer < 60 * 3 && gSaXVision.samusOnRight == FALSE)
                     gCurrentSprite.pose = 0x39;
@@ -615,7 +616,7 @@ void SaXBossSpinJumping(void)
         return;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
     {
         movement = sSaXRunningSpeed[gCurrentSprite.work3 / 8];
     }
@@ -624,7 +625,7 @@ void SaXBossSpinJumping(void)
         movement = PIXEL_SIZE;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - (BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2), gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
         if (gPreviousCollisionCheck != COLLISION_SOLID)
@@ -720,7 +721,7 @@ void SaXBossSpinJumping(void)
  */
 void SaXBossWaitingToAppearInit(void)
 {
-    gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+    gCurrentSprite.status |= SS_HIDDEN;
     gCurrentSprite.pose = 0x42;
 
     SaXSetPose(SA_X_POSE_FALLING);
@@ -744,8 +745,8 @@ void SaXBossWaitingToAppear(void)
             {
                 ScreenShakeStartHorizontal(60, 0x80 | 1);
                 gCurrentSprite.work1 = 80;
-                FadeMusic(0);
-                unk_3b1c(0x9B);
+                MusicFade(0);
+                SoundPlay_3b1c(0x9B);
             }
         }
     }
@@ -756,8 +757,8 @@ void SaXBossWaitingToAppear(void)
         {
             gCurrentSprite.pose = 0x45;
             gCurrentSprite.work3 = 8;
-            gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
-            MusicPlay(0x51, 7);
+            gCurrentSprite.status &= ~SS_HIDDEN;
+            MusicPlay(MUSIC_SA_X_BATTLE, 7);
         }
     }
 }
@@ -776,12 +777,12 @@ void SaXBossInit(void)
 
     SaXInit();
 
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
     gCurrentSprite.xParasiteTimer = 0;
     
-    gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+    gCurrentSprite.status &= ~SS_FACING_RIGHT;
     SaXSetDirection();
 
     gCurrentSprite.work3 = 8;
@@ -825,7 +826,7 @@ void SaXBossFalling(void)
 
         gCurrentSprite.pose = 0x17;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             if (gSaXVision.samusOnRight == FALSE)
                 gCurrentSprite.pose = 0x39;
@@ -885,7 +886,7 @@ void SaXBossTurningAroundChase(void)
     if (gSaXData.pose != SA_X_POSE_STANDING)
         return;
 
-    gCurrentSprite.status ^= SPRITE_STATUS_FACING_RIGHT;
+    gCurrentSprite.status ^= SS_FACING_RIGHT;
     SaXSetDirection();
 
     if (gSamusData.pose == SPOSE_SCREW_ATTACKING)
@@ -935,7 +936,7 @@ void SaxBossFallingFromKnockback(void)
             return;
         }
 
-        gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
+        gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
         gCurrentSprite.properties |= SP_IMMUNE_TO_PROJECTILES;
 
         if (MOD_AND(gSpriteRandomNumber, 2))
@@ -998,12 +999,12 @@ void SaXBossVariableJumpHeightInit(void)
 
     if (gSamusData.xPosition < gCurrentSprite.xPosition)
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+        gCurrentSprite.status &= ~SS_FACING_RIGHT;
         gSaXData.direction = KEY_LEFT;
     }
     else
     {
-        gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+        gCurrentSprite.status |= SS_FACING_RIGHT;
         gSaXData.direction = KEY_RIGHT;
     }
 
@@ -1025,7 +1026,7 @@ void SaXBossVariableJumpHeight(void)
         if (gSaXData.pose == SA_X_POSE_STANDING)
         {
             gCurrentSprite.pose = 0x17;
-            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+            if (gCurrentSprite.status & SS_FACING_RIGHT)
             {
                 if (gCurrentSprite.xParasiteTimer < 60 * 3 && gSaXVision.samusOnRight == FALSE)
                     gCurrentSprite.pose = 0x39;
@@ -1042,7 +1043,7 @@ void SaXBossVariableJumpHeight(void)
 
     xMovement = sSaXRunningSpeed[gCurrentSprite.work3 / 8] + MOD_AND(gSpriteRandomNumber, 4);
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - (BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2),
             gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
@@ -1113,11 +1114,11 @@ void SaXBossVariableJumpHeight(void)
                 gCurrentSprite.work4 = 0;
             }
 
-            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+            if (gCurrentSprite.status & SS_FACING_RIGHT)
             {
                 if (gSamusData.xPosition + (BLOCK_SIZE + HALF_BLOCK_SIZE + PIXEL_SIZE) < gCurrentSprite.xPosition)
                 {
-                    gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+                    gCurrentSprite.status &= ~SS_FACING_RIGHT;
                     gSaXData.direction = KEY_LEFT;
                 }
             }
@@ -1125,7 +1126,7 @@ void SaXBossVariableJumpHeight(void)
             {
                 if (gSamusData.xPosition - (BLOCK_SIZE + HALF_BLOCK_SIZE + PIXEL_SIZE) > gCurrentSprite.xPosition)
                 {
-                    gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+                    gCurrentSprite.status |= SS_FACING_RIGHT;
                     gSaXData.direction = KEY_RIGHT;
                 }
             }
@@ -1140,7 +1141,7 @@ void SaXBossVariableJumpHeight(void)
         {
             gCurrentSprite.yPosition -= xMovement;
 
-            if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+            if (gCurrentSprite.status & SS_FACING_RIGHT)
             {
                 SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition + QUARTER_BLOCK_SIZE,
                     gCurrentSprite.xPosition + HALF_BLOCK_SIZE);
@@ -1203,18 +1204,18 @@ void SaXBossKnockbackInit(void)
     gCurrentSprite.pose = 0x50;
     gCurrentSprite.hitboxTop = -(BLOCK_SIZE * 2 - QUARTER_BLOCK_SIZE / 2);
     gCurrentSprite.work4 = 0;
-    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+    gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
 
     SaXSetPose(SA_X_POSE_GETTING_HURT);
 
     if (gSamusData.xPosition > gCurrentSprite.xPosition)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+        gCurrentSprite.status |= SS_FACING_RIGHT;
         gSaXData.direction = KEY_RIGHT;
     }
     else
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+        gCurrentSprite.status &= ~SS_FACING_RIGHT;
         gSaXData.direction = KEY_LEFT;
     }
 
@@ -1262,7 +1263,7 @@ void SaXBossKnockback(void)
         gCurrentSprite.yPosition += movement;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - (BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2), 
             gCurrentSprite.xPosition - HALF_BLOCK_SIZE);
@@ -1291,7 +1292,7 @@ void SaXBossKneelingInit(void)
     gCurrentSprite.pose = 0x52;
     gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.hitboxTop = -(BLOCK_SIZE * 2 - QUARTER_BLOCK_SIZE / 2);
-    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+    gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
 
     SaXSetPose(SA_X_POSE_KNEELING);
 
@@ -1348,8 +1349,8 @@ void SaXBossTransformingIntoMonster(void)
 
         if (gCurrentSprite.work1 == 0)
         {
-            SpriteSpawnPrimary(PSPRITE_SA_X_MONSTER, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, 0x10,
-                gCurrentSprite.yPosition + PIXEL_SIZE, gCurrentSprite.xPosition, gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT);
+            SpriteSpawnPrimary(PSPRITE_SA_X_MONSTER, gCurrentSprite.roomSlot, gCurrentSprite.spritesetGfxSlot, SSP_UNINFECTED_OR_BOSS,
+                gCurrentSprite.yPosition + PIXEL_SIZE, gCurrentSprite.xPosition, gCurrentSprite.status & SS_FACING_RIGHT);
 
             gCurrentSprite.pose = 0x55;
         }

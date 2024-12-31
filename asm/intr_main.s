@@ -63,7 +63,7 @@ _080001C4:
 	bic r3, r3, #0xdf
 	orr r3, r3, #0x1f
 	msr cpsr_fc, r3
-	ldr r1, _0800022C @ =0x080A5224
+	ldr r1, _0800022C @ =sIntrTable
 	add r1, r1, ip
 	ldr r0, [r1]
 	stmdb sp!, {lr}
@@ -81,4 +81,4 @@ _080001C4:
 	bx lr
 	.align 2, 0
 _08000228: .4byte 0x00002400
-_0800022C: .4byte 0x080A5224
+_0800022C: .4byte sIntrTable

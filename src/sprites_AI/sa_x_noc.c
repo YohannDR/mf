@@ -4,6 +4,7 @@
 
 #include "data/sprites/sa_x.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/event.h"
 #include "constants/sprite.h"
@@ -21,11 +22,11 @@ void SaXNocCheckCollisionWalking(void)
 {
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    unk_1129c();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             SpriteUtilCheckVerticalCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - QUARTER_BLOCK_SIZE);
 
@@ -59,7 +60,7 @@ void SaXNocCheckCollisionWalking(void)
         return;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (!(gPreviousVerticalCollisionCheck & 0xF0))
             return;
@@ -126,11 +127,11 @@ void SaXNocCheckCollisionRunning(void)
 {
     gCurrentSprite.work2 = DIAG_AIM_NONE;
 
-    unk_1129c();
+    SpriteUtilAlignYPosOnSlope();
 
     if (gPreviousVerticalCollisionCheck == COLLISION_AIR)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+        if (gCurrentSprite.status & SS_FACING_RIGHT)
         {
             SpriteUtilCheckVerticalCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition - QUARTER_BLOCK_SIZE);
 
@@ -164,7 +165,7 @@ void SaXNocCheckCollisionRunning(void)
         return;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (!(gPreviousVerticalCollisionCheck & 0xF0))
             return;
@@ -305,7 +306,7 @@ void SaXNocCheckCollisionRunning(void)
  */
 void SaXNocCheckCollisionWalkingToLayPowerBomb(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - QUARTER_BLOCK_SIZE,
             gCurrentSprite.xPosition + (BLOCK_SIZE * 5));
@@ -334,7 +335,7 @@ void SaXNocInit(void)
 
     SaXInit();
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
         gCurrentSprite.xPosition -= (BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2);
     else
         gCurrentSprite.xPosition += (BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2);
@@ -343,13 +344,13 @@ void SaXNocInit(void)
 
     if (EventCheckOn_NavigationRoomEnteringNoc())
     {
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status |= SS_HIDDEN;
         gCurrentSprite.pose = 0x19;
         SaXSetPose(SA_X_POSE_WALKING);
     }
     else if (EventCheckOn_NocSaXEncounter())
     {
-        gCurrentSprite.status |= SPRITE_STATUS_UNKNOWN_2000;
+        gCurrentSprite.status |= SS_HIDDEN;
         gCurrentSprite.pose = 0x1B;
         gCurrentSprite.work1 = 60;
         SaXSetPose(SA_X_POSE_RUNNING);
@@ -373,10 +374,10 @@ void SaXNocWaitingInDoorDuringChase(void)
     gCurrentSprite.pose = 0x1C;
     gCurrentSprite.work1 = 30;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         SpriteSpawnSecondary(SSPRITE_SA_X_ICE_BEAM, 0x80, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-            gCurrentSprite.yPosition - (BLOCK_SIZE + QUARTER_BLOCK_SIZE), gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
+            gCurrentSprite.yPosition - (BLOCK_SIZE + QUARTER_BLOCK_SIZE), gCurrentSprite.xPosition, SS_X_FLIP);
     }
     else
     {
@@ -398,8 +399,8 @@ void SaXNocOpeningDoorDuringChase(void)
     SaXRunningInit();
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
-    gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+    gCurrentSprite.status &= ~SS_HIDDEN;
+    gCurrentSprite.status |= SS_SAMUS_DETECTED;
 }
 
 /**
@@ -415,12 +416,12 @@ void SaXNocWaitingInDoorToLayPowerBomb(void)
 
     gCurrentSprite.pose = 0x1A;
     gCurrentSprite.samusCollision = SSC_HURTS_SAMUS;
-    gCurrentSprite.status &= ~SPRITE_STATUS_UNKNOWN_2000;
+    gCurrentSprite.status &= ~SS_HIDDEN;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         SpriteSpawnSecondary(SSPRITE_SA_X_ICE_BEAM, 0x80, gCurrentSprite.spritesetGfxSlot, gCurrentSprite.primarySpriteRamSlot,
-            gCurrentSprite.yPosition - (BLOCK_SIZE + QUARTER_BLOCK_SIZE), gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
+            gCurrentSprite.yPosition - (BLOCK_SIZE + QUARTER_BLOCK_SIZE), gCurrentSprite.xPosition, SS_X_FLIP);
     }
     else
     {
@@ -452,7 +453,7 @@ void SaXNocWalkingToLayPowerBomb(void)
     SaXNocCheckCollisionWalkingToLayPowerBomb();
     if (gCurrentSprite.pose == 0x1A)
     {
-        unk_11604(sSaXWalkingSpeed[gCurrentSprite.work3 / 8]);
+        SpriteUtilMoveXPosForwardOnSlopeDirection(sSaXWalkingSpeed[gCurrentSprite.work3 / 8]);
 
         if (gCurrentSprite.work3 < ARRAY_SIZE(sSaXWalkingSpeed) * 8 - 1)
             gCurrentSprite.work3++;
@@ -552,7 +553,7 @@ void SaXNocWalking(void)
     if (gCurrentSprite.pose != 0x2)
         return;
 
-    unk_11604(sSaXWalkingSpeed[gCurrentSprite.work3 / 8]);
+    SpriteUtilMoveXPosForwardOnSlopeDirection(sSaXWalkingSpeed[gCurrentSprite.work3 / 8]);
 
     if (gCurrentSprite.work3 < ARRAY_SIZE(sSaXWalkingSpeed) * 8 - 1)
         gCurrentSprite.work3++;
@@ -572,7 +573,7 @@ void SaXNocRunning(void)
     if (gCurrentSprite.pose != 0x18)
         return;
 
-    unk_11604(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
+    SpriteUtilMoveXPosForwardOnSlopeDirection(sSaXRunningSpeed[gCurrentSprite.work3 / 8]);
 
     if (gCurrentSprite.work3 < ARRAY_SIZE(sSaXRunningSpeed) * 8 - 1)
         gCurrentSprite.work3++;
@@ -582,7 +583,7 @@ void SaXNocTurningAroundChase(void)
 {
     if (gSaXData.pose == SA_X_POSE_STANDING)
     {
-        gCurrentSprite.status ^= SPRITE_STATUS_FACING_RIGHT;
+        gCurrentSprite.status ^= SS_FACING_RIGHT;
         SaXSetDirection();
         gCurrentSprite.pose = 0x17;
     }
@@ -784,6 +785,6 @@ void SaXNoc(void)
 
     SaXUpdateGraphics();
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
-        MusicPlay(0x17, 0x9);
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
+        MusicPlay(MUSIC_SA_X_CHASE, 0x9);
 }

@@ -7,6 +7,7 @@
 #include "data/sprites/x_parasite.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/clipdata.h"
 #include "constants/sprite.h"
 #include "constants/samus.h"
@@ -28,7 +29,7 @@ void SuperMissileBarrierInit(void)
     if (gCurrentSprite.pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
     {
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-        gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+        gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     }
     else
     {
@@ -63,7 +64,7 @@ void SuperMissileBarrierInit(void)
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
     {
-        if (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_2000))
+        if (!(gCurrentSprite.status & SS_HIDDEN))
         {
             gCurrentSprite.status = 0;
             return;
@@ -143,7 +144,7 @@ void SuperMissileBarrierDying(void)
 void SuperMissileBarrier(void)
 {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 0x4)
-        SoundPlayNotAlreadyPlaying(0x160);
+        SoundPlayNotAlreadyPlaying(SOUND_GERON_HURT);
 
     if (gCurrentSprite.freezeTimer != 0)
     {
@@ -206,7 +207,7 @@ void SuperMissileBarrierStem(void)
     switch (gCurrentSprite.pose)
     {
         case SPRITE_POSE_UNINITIALIZED:
-            gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
             gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
@@ -246,20 +247,20 @@ void SuperMissileBarrierStem(void)
         case 0x18:
             gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 gCurrentSprite.status = 0;
             }
             break;
     }
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_ENABLE_MOSAIC)
+    if (gSpriteData[ramSlot].status & SS_ENABLE_MOSAIC)
     {
         gCurrentSprite.ignoreSamusCollisionTimer = 1;
-        gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
+        gCurrentSprite.status |= SS_ENABLE_MOSAIC;
     }
     else
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
+        gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
     }
 }

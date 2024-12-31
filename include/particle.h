@@ -1,0 +1,87 @@
+#ifndef PARTICLE_H
+#define PARTICLE_H
+
+#include "types.h"
+#include "oam.h"
+
+void ParticleCheckOnScreen(void);
+void ParticleDraw(s32 _i);
+void ParticleUpdate(void);
+void ParticleSet(u16 yPosition, u16 xPosition, u8 effect);
+void ParticleUpdateAnimation(const struct FrameData* pOam);
+void ParticleNone(void);
+void ParticleBomb(void);
+void ParticleFlareHit(void);
+void ParticleNormalBeamHit(void);
+void ParticleChargeBeamHit(void);
+void ParticleWideBeamHit(void);
+void ParticlePlasmaBeamHit(void);
+void ParticleInvincibleHit(void);
+void ParticleNormalMissileExplosion(void);
+void ParticleSuperMissileExplosion(void);
+void ParticleIceMissileExplosion(void);
+void ParticleDiffusionMissileExplosion(void);
+void ParticleChargedDiffusionMissileExplosion(void);
+void ParticleSuperMissileExplosionNoScreenShake(void);
+void ParticleIceBeamTrail(void);
+void ParticleChargedNormalBeamTrail(void);
+void ParticleChargedChargeBeamTrail(void);
+void ParticleChargedWideBeamTrail(void);
+void ParticleChargedPlasmaBeamTrail(void);
+void ParticleChargedWaveBeamTrail(void);
+void ParticleChargedIceBeamTrail(void);
+void ParticleNormalMissileTrail(void);
+void ParticleSuperMissileTrail(void);
+void ParticleIceMissileTrail(void);
+void ParticleDiffusionMissileTrail(void);
+void ParticleChargedDiffusionMissileTrail(void);
+void ParticleAbsorbHealthX(void);
+void ParticleAbsorbMissileX(void);
+void ParticleAbsorbRedX(void);
+void ParticleAbsorbCoreX(void);
+void ParticleAbsorbIceXPreVaria(void);
+void ParticleIceXTrail(void);
+void ParticleDiffusionFlakeTrail(void);
+void ParticleFireBeam(void);
+void ParticleExplosion1(void);
+void ParticleExplosion2(void);
+void ParticleExplosion3(void);
+void ParticleExplosion4(void);
+void ParticleExplosion5(void);
+void ParticleExplosion6(void);
+void ParticleHeavyDust1(void);
+void ParticleHeavyDust2(void);
+void ParticleEnterOrExitWater(void);
+void ParticleEnterOrExitWaterBig(void);
+void ParticleSpriteEnterOrExitWater(void);
+void unk_73e90(void);
+void ParticleExplosionSmoke(void);
+void ParticleTailExplosionSmoke(void);
+void ParticleExplosion7(void);
+void ParticleExplosion10(void);
+void ParticleExplosion8(void);
+void ParticleSmoke(void);
+void ParticleExplosion9(void);
+void ParticleTailSmoke1(void);
+void ParticleTailExplosion(void);
+void ParticleTailSmoke2(void);
+void ParticleOutwardIceExplosion(void);
+void ParticleOutwardSmoke(void);
+void ParticleScrewAttackKilled(void);
+void ParticleSpeedboosterKilled(void);
+void ParticleShinesparkKilled(void);
+void ParticleSudoScrewKilled(void);
+void PlayBeamChargingSound(void);
+void StopBeamChargingSound(void);
+void PlayBeamChargedSound(void);
+void ParticleChargingBeam(void);
+void ParticleChargingBeamSparks(void);
+void ParticleAbsorbingSuit(void);
+void ParticleChargingMissile(void);
+void ParticleDust1(void);
+void ParticleDust2(void);
+void ParticleEscape(void);
+void ParticleGettingSuit(void);
+void ParticleGettingSuitBeams(void);
+
+#endif /* PARTICLE_H */

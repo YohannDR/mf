@@ -2,9 +2,9 @@
 
 This is a work in progress decompilation of Metroid - Fusion.
 
-1011/3607 functions decompiled (28.03%, 2596 left)
+2200/3607 functions decompiled (63.82%, 1407 left)
 
-0x31dba/0x6f9d24 bytes of data not in blobs (2.79%, 0x6c7f6a left)
+0x473873/0x6f9d24 bytes of data not in blobs (63.8%, 0x2864b1 left)
 
 Progress can be seen here : https://docs.google.com/spreadsheets/d/19pUPm1dp-7IY9iCeJJA412dwgD2f1M6A1QafzlRV8ic/edit#gid=0
 
@@ -17,6 +17,8 @@ This produces the following ROMs:
 **Discords**: 
 - https://discord.gg/2MGB9Xbr9y MAGret
 - https://discord.gg/WtekHKb MAGConst
+
+**biospark's GBATroid Data Maps:** https://labk.org/maps/
 
 ## Dependencies
 
@@ -31,11 +33,11 @@ This produces the following ROMs:
 - **WINDOWS ONLY** : Install and setup [WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
 - Install the dependencies (an `apt update` might be necessary for binutils)
 - Build agbcc (run `./build.sh`)
-- Add agbcc to your path (export PATH="agbcc path:$PATH")
+- Copy agbcc to `tools/`
 - Build preproc (run `make` in tools/preproc)
 
 ## Build
 
 - Run `make clean` if necessary
-- Run the `extractor.py` script in tools (`python3 tools/extractor.py`) if necessary
+- Run the `extractor.py` and `soundExtractor.py` scripts in tools (`python3 tools/extractor.py && python3 tools/soundExtractor.py`) if necessary
 - Run `make` (using the -j option is recommended to speed up the process)

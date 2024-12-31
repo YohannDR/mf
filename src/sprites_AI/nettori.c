@@ -7,6 +7,7 @@
 #include "data/sprites/nettori.h"
 #include "data/sprites/x_parasite.h"
 
+#include "constants/audio.h"
 #include "constants/particle.h"
 #include "constants/samus.h"
 #include "constants/sprite.h"
@@ -75,7 +76,7 @@ void NettoriDestroySamusEaterAndSpores(void)
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
-        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+        if (!(gSpriteData[i].status & SS_EXISTS))
             continue;
 
         if (!(gSpriteData[i].properties & SP_SECONDARY_SPRITE))
@@ -104,7 +105,7 @@ u8 SamusEaterCheckNettoriHealthThreshold(void)
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
-        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+        if (!(gSpriteData[i].status & SS_EXISTS))
             continue;
 
         if (gSpriteData[i].properties & SP_SECONDARY_SPRITE)
@@ -321,7 +322,7 @@ void NettoriIdle(void)
         // Destroy or set dying all the sub sprites of the boss
         for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
         {
-            if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+            if (!(gSpriteData[i].status & SS_EXISTS))
                 continue;
 
             if (!(gSpriteData[i].properties & SP_SECONDARY_SPRITE))
@@ -346,12 +347,12 @@ void NettoriDyingInit(void)
 {
     gCurrentSprite.pose = NETTORI_POSE_DYING;
 
-    gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC | SPRITE_STATUS_IGNORE_PROJECTILES;
+    gCurrentSprite.status |= SS_ENABLE_MOSAIC | SS_IGNORE_PROJECTILES;
     gCurrentSprite.samusCollision = SSC_NONE;
-    gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+    gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
 
     NettoriRemoveCollision();
-    PlayMusic(0x43, 7);
+    MusicPlay(MUSIC_CHOZO_STATUE_CORE_X_BATTLE, 7);
 }
 
 /**
@@ -375,7 +376,7 @@ void NettoriTransformingIntoCoreX(void)
             gCurrentSprite.yPosition -= BLOCK_SIZE * 3;
             gCurrentSprite.xPosition -= BLOCK_SIZE - QUARTER_BLOCK_SIZE;
 
-            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status |= SS_NOT_DRAWN;
         }
     }
     else if (gCurrentSprite.xParasiteTimer == 20)
@@ -390,7 +391,7 @@ void NettoriTransformingIntoCoreX(void)
  */
 void NettoriPartInit(void)
 {
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
     gCurrentSprite.hitboxTop = -PIXEL_SIZE;
     gCurrentSprite.hitboxBottom = PIXEL_SIZE;
@@ -467,7 +468,7 @@ void NettoriPartInit(void)
             gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE * 2);
 
             gCurrentSprite.frozenPaletteRowOffset = 3,
-            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status |= SS_NOT_DRAWN;
             gCurrentSprite.work1 = 0;
             break;
 
@@ -612,7 +613,7 @@ void NettoriPartIdle(void)
                 {
                     gCurrentSprite.animationDurationCounter = 0;
                     gCurrentSprite.currentAnimationFrame = 0;
-                    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+                    gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
                     // Set shooting position
                     if (gCurrentSprite.pOam == sNettoriPartOam_PlasmaShootingHigh)
@@ -655,13 +656,13 @@ void NettoriPartIdle(void)
 
                     if (gCurrentSprite.work1 == 90)
                     {
-                        gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+                        gCurrentSprite.status |= SS_NOT_DRAWN;
                         gSpriteData[ramSlot].work0 = NETTORI_SHOOTING_POSITION_NONE;
                         gCurrentSprite.work1 = 0;
 
                         // Choose shooting position, always low if crouched/morphed, otherwise leave to rng
                         // Rng has 2/3 of being low, and 1/3 of being high
-                        if (SpriteUtilSamusCheckCrouchingOrMorphed())
+                        if (SpriteUtilCheckSamusCrouchingOrMorphed())
                             gCurrentSprite.pOam = sNettoriPartOam_PlasmaShootingLow;
                         else if (gSpriteRandomNumber >= 10)
                             gCurrentSprite.pOam = sNettoriPartOam_PlasmaShootingLow;
@@ -675,7 +676,7 @@ void NettoriPartIdle(void)
             else
             {
                 // Choose shooting position, doesn't matter because in this health threshold nettori doesn't shoot
-                if (SpriteUtilSamusCheckCrouchingOrMorphed())
+                if (SpriteUtilCheckSamusCrouchingOrMorphed())
                     gCurrentSprite.pOam = sNettoriPartOam_PlasmaShootingLow;
                 else if (gSamusData.yPosition < gCurrentSprite.yPosition - (BLOCK_SIZE * 3 + HALF_BLOCK_SIZE))
                     gCurrentSprite.pOam = sNettoriPartOam_PlasmaShootingHigh;
@@ -794,7 +795,7 @@ void NettoriPartFalling(void)
 void NettoriPartExploding(void)
 {
     if (MOD_AND(gCurrentSprite.work1, 2) == 0)
-        gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+        gCurrentSprite.status ^= SS_NOT_DRAWN;
 
     gCurrentSprite.work1--;
     if (gCurrentSprite.work1 == 0)
@@ -807,7 +808,7 @@ void NettoriPartExploding(void)
  */
 void NettoriPlasmaBeamInit(void)
 {
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.properties |= SP_KILL_OFF_SCREEN;
 
     gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
@@ -839,7 +840,7 @@ void NettoriPlasmaBeamInit(void)
  */
 void NettoriPlasmaBeamEmerging(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
         gCurrentSprite.pOam = sNettoriPlasmaBeamOam_Charging;
         gCurrentSprite.animationDurationCounter = 0;
@@ -945,7 +946,7 @@ void SamusEaterIdleInit(void)
  */
 void SamusEaterIdle(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
+    if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
     {
         // Set eating samus
         gCurrentSprite.pose = SAMUS_EATER_POSE_EATING_SAMUS;
@@ -966,7 +967,7 @@ void SamusEaterIdle(void)
             gCurrentSprite.work1 = 90 + gSpriteRandomNumber * 4;
 
             SpriteSpawnSecondary(SSPRITE_SAMUS_EATER_SPORE, SAMUS_EATER_SPORE_PART_MOVING, gCurrentSprite.spritesetGfxSlot,
-                gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition - (BLOCK_SIZE + HALF_BLOCK_SIZE), gCurrentSprite.xPosition, SPRITE_STATUS_X_FLIP);
+                gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition - (BLOCK_SIZE + HALF_BLOCK_SIZE), gCurrentSprite.xPosition, SS_X_FLIP);
 
             SpriteSpawnSecondary(SSPRITE_SAMUS_EATER_SPORE, SAMUS_EATER_SPORE_PART_MOVING, gCurrentSprite.spritesetGfxSlot,
                 gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition - (BLOCK_SIZE + HALF_BLOCK_SIZE), gCurrentSprite.xPosition, 0);
@@ -995,7 +996,7 @@ void SamusEaterEatingSamus(void)
 
     nslr = SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 2 + HALF_BLOCK_SIZE, BLOCK_SIZE * 2);
 
-    if (!(gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING) && nslr == NSLR_OUT_OF_RANGE)
+    if (!(gCurrentSprite.status & SS_SAMUS_COLLIDING) && nslr == NSLR_OUT_OF_RANGE)
     {
         // Not colliding anymore and outside of the range, set idle
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
@@ -1012,7 +1013,7 @@ void SamusEaterDyingInit(void)
     gCurrentSprite.pose = SAMUS_EATER_POSE_DYING;
     gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.work1 = 16;
-    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+    gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
 }
 
 /**
@@ -1024,7 +1025,7 @@ void SamusEaterDying(void)
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
     if (MOD_AND(gCurrentSprite.work1, 2) == 0)
-        gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+        gCurrentSprite.status ^= SS_NOT_DRAWN;
 
     gCurrentSprite.work1--;
 
@@ -1043,7 +1044,7 @@ void SamusEaterDying(void)
  */
 void SamusEaterBudSetSidesHitboxes(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
     {
         gCurrentSprite.hitboxLeft = -QUARTER_BLOCK_SIZE;
         gCurrentSprite.hitboxRight = BLOCK_SIZE - EIGHTH_BLOCK_SIZE;
@@ -1119,7 +1120,7 @@ void SamusEaterBudIdle(void)
     nslr = SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 10, BLOCK_SIZE * 8);
 
     // Check turn around or shoot
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
     {
         if (nslr != NSLR_OUT_OF_RANGE)
         {
@@ -1140,7 +1141,7 @@ void SamusEaterBudIdle(void)
         }
     }
 
-    if (canShoot && SpriteUtilCountSecondarySpriteWithRamSlot(SSPRITE_SAMUS_EATER_SPORE, gCurrentSprite.primarySpriteRamSlot) < 2)
+    if (canShoot && SpriteUtilCountSecondarySpritesWithRamSlot(SSPRITE_SAMUS_EATER_SPORE, gCurrentSprite.primarySpriteRamSlot) < 2)
     {
         // Set shooting
         gCurrentSprite.pose = SAMUS_EATER_BUD_POSE_SHOOTING;
@@ -1175,9 +1176,9 @@ void SamusEaterBudTurningAroundInit(void)
  */
 void SamusEaterBudTurningAround(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
     {
-        gCurrentSprite.status ^= SPRITE_STATUS_X_FLIP;
+        gCurrentSprite.status ^= SS_X_FLIP;
         gCurrentSprite.pose = SAMUS_EATER_BUD_POSE_TURNING_AROUND_SECOND_PART;
     }
 }
@@ -1188,7 +1189,7 @@ void SamusEaterBudTurningAround(void)
  */
 void SamusEaterBudTurningAroundSecondPart(void)
 {
-    if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckNearEndCurrentSpriteAnim())
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
 }
 
@@ -1200,11 +1201,11 @@ void SamusEaterBudShooting(void)
 {
     if (gCurrentSprite.currentAnimationFrame == 3 && gCurrentSprite.animationDurationCounter == 4)
     {
-        if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+        if (gCurrentSprite.status & SS_X_FLIP)
         {
             SpriteSpawnSecondary(SSPRITE_SAMUS_EATER_SPORE, SAMUS_EATER_SPORE_PART_FLOATING, gCurrentSprite.spritesetGfxSlot,
                 gCurrentSprite.primarySpriteRamSlot, gCurrentSprite.yPosition + HALF_BLOCK_SIZE,
-                gCurrentSprite.xPosition + (HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE - PIXEL_SIZE), SPRITE_STATUS_X_FLIP);
+                gCurrentSprite.xPosition + (HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE - PIXEL_SIZE), SS_X_FLIP);
         }
         else
         {
@@ -1214,7 +1215,7 @@ void SamusEaterBudShooting(void)
         }
     }
 
-    if (SpriteUtilCheckNearEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckNearEndCurrentSpriteAnim())
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
 }
 
@@ -1227,7 +1228,7 @@ void SamusEaterBudDyingInit(void)
     gCurrentSprite.pose = 0x46;
     gCurrentSprite.samusCollision = SSC_NONE;
     gCurrentSprite.work1 = 8;
-    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+    gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
 }
 
 /**
@@ -1239,7 +1240,7 @@ void SamusEaterBudDying(void)
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
     if (MOD_AND(gCurrentSprite.work1, 2) == 0)
-        gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+        gCurrentSprite.status ^= SS_NOT_DRAWN;
 
     gCurrentSprite.work1--;
 
@@ -1258,7 +1259,7 @@ void SamusEaterBudDying(void)
  */
 void SamusEaterSporeInit(void)
 {
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
     gCurrentSprite.properties |= SP_KILL_OFF_SCREEN;
 
     gCurrentSprite.drawDistanceTop = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
@@ -1318,7 +1319,7 @@ void SamusEaterSporeFloating(void)
     else
         gCurrentSprite.yPosition += ONE_SUB_PIXEL * 1;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
     {
         offset = gCurrentSprite.work3;
         xMovement = sNettoriEaterSporeFloatingSmallXVelocity[offset];
@@ -1337,7 +1338,7 @@ void SamusEaterSporeFloating(void)
     
         if (gPreviousCollisionCheck != COLLISION_AIR)
         {
-            gCurrentSprite.status ^= SPRITE_STATUS_X_FLIP;
+            gCurrentSprite.status ^= SS_X_FLIP;
             gCurrentSprite.work3 = 0;
             gCurrentSprite.work2 = TRUE;
         }
@@ -1361,7 +1362,7 @@ void SamusEaterSporeFloating(void)
     
         if (gPreviousCollisionCheck != COLLISION_AIR)
         {
-            gCurrentSprite.status ^= SPRITE_STATUS_X_FLIP;
+            gCurrentSprite.status ^= SS_X_FLIP;
             gCurrentSprite.work3 = 0;
             gCurrentSprite.work2 = TRUE;
         }
@@ -1396,7 +1397,7 @@ void SamusEaterSporeMoving(void)
         gCurrentSprite.yPosition += movement;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_X_FLIP)
+    if (gCurrentSprite.status & SS_X_FLIP)
         gCurrentSprite.xPosition += PIXEL_SIZE;
     else
         gCurrentSprite.xPosition -= PIXEL_SIZE;
@@ -1415,7 +1416,7 @@ void SamusEaterSporeExplodingInit(void)
 {
     gCurrentSprite.pose = 0x38;
     gCurrentSprite.samusCollision = SSC_NONE;
-    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+    gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
 
     gCurrentSprite.pOam = sSamusEaterSporeOam_Exploding;
     gCurrentSprite.animationDurationCounter = 0;
@@ -1430,7 +1431,7 @@ void SamusEaterSporeExploding(void)
 {
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
 
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
         gCurrentSprite.status = 0;
 }
 
@@ -1557,7 +1558,7 @@ void SamusEater(void)
             SamusEaterDying();
     }
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_COLLIDING;
+    gCurrentSprite.status &= ~SS_SAMUS_COLLIDING;
 }
 
 /**

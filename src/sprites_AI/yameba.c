@@ -8,6 +8,7 @@
 #include "data/samus_data.h"
 #include "data/sprite_data.h"
 
+#include "constants/audio.h"
 #include "constants/samus.h"
 #include "constants/sprite.h"
 #include "constants/clipdata.h"
@@ -15,23 +16,33 @@
 #include "structs/samus.h"
 #include "structs/sprite.h"
 
+#define YAMEBA_POSE_CHASING_INIT 0x17
+#define YAMEBA_POSE_CHASING 0x18
+
+enum YamebaStage {
+    YAMEBA_STAGE_UNINFECTED,
+    YAMEBA_STAGE_SMALL,
+    YAMEBA_STAGE_MEDIUM,
+    YAMEBA_STAGE_LARGE
+};
+
 /**
  * @brief 20578 | a4 | Handles a yameba turning into an X
  * 
  */
 void YamebaTurningIntoX(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_ROTATION_SCALING)
-        gCurrentSprite.status &= ~SPRITE_STATUS_ROTATION_SCALING;
+    if (gCurrentSprite.status & SS_ROTATE_SCALE_INDIVIDUAL)
+        gCurrentSprite.status &= ~SS_ROTATE_SCALE_INDIVIDUAL;
 
     switch (gCurrentSprite.work0)
     {
-        case 2:
+        case YAMEBA_STAGE_MEDIUM:
             SpriteSpawnNewXParasite(PSPRITE_X_PARASITE, gCurrentSprite.spriteId, 0, gCurrentSprite.primarySpriteRamSlot,
                 gCurrentSprite.spritesetSlotAndProperties, gCurrentSprite.yPosition + BLOCK_SIZE, gCurrentSprite.xPosition, 0);
             break;
 
-        case 3:
+        case YAMEBA_STAGE_LARGE:
             SpriteSpawnNewXParasite(PSPRITE_X_PARASITE, gCurrentSprite.spriteId, 0, gCurrentSprite.primarySpriteRamSlot,
                 gCurrentSprite.spritesetSlotAndProperties, gCurrentSprite.yPosition + BLOCK_SIZE, gCurrentSprite.xPosition + BLOCK_SIZE, 0);
 
@@ -50,11 +61,10 @@ void YamebaInit(void)
 
     if (gCurrentSprite.pose == SPRITE_POSE_UNINITIALIZED)
     {
-        properties = gCurrentSprite.spritesetSlotAndProperties - 0x20;
-        if (properties < 0x30)
-            gCurrentSprite.work0 = 1;
+        if (SPRITE_IS_INFECTED(gCurrentSprite))
+            gCurrentSprite.work0 = YAMEBA_STAGE_SMALL;
         else
-            gCurrentSprite.work0 = 0;
+            gCurrentSprite.work0 = YAMEBA_STAGE_UNINFECTED;
 
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
         gCurrentSprite.yPosition -= HALF_BLOCK_SIZE;
@@ -63,21 +73,21 @@ void YamebaInit(void)
     {
         gCurrentSprite.work0++;
         gCurrentSprite.pose = SPRITE_POSE_SPAWNING_FROM_X;
-        gCurrentSprite.xParasiteTimer = ARRAY_SIZE(sXParasiteMosaicValues);
+        gCurrentSprite.xParasiteTimer = X_PARASITE_MOSAIC_MAX_INDEX;
     }
 
-    if (gCurrentSprite.work0 == 0)
+    if (gCurrentSprite.work0 == YAMEBA_STAGE_UNINFECTED)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+        gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
         gCurrentSprite.drawOrder = 12;
         gCurrentSprite.samusCollision = SSC_NONE;
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f5b18;
+        gCurrentSprite.pOam = sYamebaOam_IdleHidden;
     }
     else
     {
         gCurrentSprite.drawOrder = 4;
         gCurrentSprite.samusCollision = SSC_YAMEBA;
-        gCurrentSprite.pOam = (const struct FrameData*)0x82f5b60;
+        gCurrentSprite.pOam = sYamebaOam_Idle;
     }
 
     gCurrentSprite.health = GET_PSPRITE_HEALTH(gCurrentSprite.spriteId);
@@ -85,9 +95,9 @@ void YamebaInit(void)
 
     switch (gCurrentSprite.work0)
     {
-        case 0:
+        case YAMEBA_STAGE_UNINFECTED:
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
-            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+            gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
 
             gCurrentSprite.scaling = Q_8_8(.625f);
 
@@ -101,9 +111,9 @@ void YamebaInit(void)
             gCurrentSprite.hitboxRight = (QUARTER_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
             break;
 
-        case 1:
+        case YAMEBA_STAGE_SMALL:
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
-            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+            gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
 
             gCurrentSprite.scaling = Q_8_8(.5f);
 
@@ -117,9 +127,9 @@ void YamebaInit(void)
             gCurrentSprite.hitboxRight = (QUARTER_BLOCK_SIZE + EIGHTH_BLOCK_SIZE);
             break;
 
-        case 2:
+        case YAMEBA_STAGE_MEDIUM:
             gCurrentSprite.properties |= SP_CAN_ABSORB_X;
-            gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+            gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
 
             gCurrentSprite.scaling = Q_8_8(1.f);
 
@@ -137,7 +147,7 @@ void YamebaInit(void)
 
         default:
             gCurrentSprite.properties &= ~SP_CAN_ABSORB_X;
-            gCurrentSprite.status |= (SPRITE_STATUS_ROTATION_SCALING | SPRITE_STATUS_DOUBLE_SIZE);
+            gCurrentSprite.status |= (SS_ROTATE_SCALE_INDIVIDUAL | SS_DOUBLE_SIZE);
 
             gCurrentSprite.scaling = Q_8_8(1.999f);
 
@@ -156,10 +166,10 @@ void YamebaInit(void)
     gCurrentSprite.animationDurationCounter = 0;
     gCurrentSprite.currentAnimationFrame = 0;
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
     if (gCurrentSprite.properties & SP_CAN_ABSORB_X)
-        gCurrentSprite.work5 = TRUE;
+        gCurrentSprite.numberOfXToForm = 1;
 }
 
 /**
@@ -172,7 +182,7 @@ void YamebaIdleInit(void)
 
     gCurrentSprite.pose = SPRITE_POSE_IDLE;
 
-    if (gCurrentSprite.work0 == 0)
+    if (gCurrentSprite.work0 == YAMEBA_STAGE_UNINFECTED)
     {
         rng = gSpriteRandomNumber * 4;
 
@@ -195,14 +205,14 @@ void YamebaIdle(void)
     s16 yMovement;
     s16 xMovement;
 
-    if (gCurrentSprite.work0 == 0)
+    if (gCurrentSprite.work0 == YAMEBA_STAGE_UNINFECTED)
     {
         offset = gCurrentSprite.work4;
-        yMovement = sYamebaIdleYMovement[offset];
+        yMovement = sYamebaIdleHiddenYMovement[offset];
 
         if (yMovement == SHORT_MAX)
         {
-            yMovement = sYamebaIdleYMovement[0];
+            yMovement = sYamebaIdleHiddenYMovement[0];
             offset = 0;
         }
 
@@ -211,11 +221,11 @@ void YamebaIdle(void)
         gCurrentSprite.yPosition += yMovement;
 
         offset = gCurrentSprite.work3;
-        xMovement = sYamebaIdleXMovement[offset];
+        xMovement = sYamebaIdleHiddenXMovement[offset];
 
         if (xMovement == SHORT_MAX)
         {
-            xMovement = sYamebaIdleXMovement[0];
+            xMovement = sYamebaIdleHiddenXMovement[0];
             offset = 0;
         }
 
@@ -226,7 +236,7 @@ void YamebaIdle(void)
     else
     {
         if (SpriteUtilCheckSamusNearSpriteLeftRight(BLOCK_SIZE * 10, BLOCK_SIZE * 10))
-            gCurrentSprite.pose = 0x17;
+            gCurrentSprite.pose = YAMEBA_POSE_CHASING_INIT;
     }
 }
 
@@ -242,14 +252,14 @@ void YamebaChasingSamusInit(void)
     gCurrentSprite.work4 = 1;
 
     gCurrentSprite.unk_8 = 0;
-    gCurrentSprite.pose = 0x18;
+    gCurrentSprite.pose = YAMEBA_POSE_CHASING;
 
     SpriteUtilMakeSpriteFaceSamusDirection();
 
     if (gCurrentSprite.yPosition > gSamusData.yPosition + gSamusData.drawDistanceTop)
-        gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status &= ~SS_FACING_DOWN;
     else
-        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status |= SS_FACING_DOWN;
 }
 
 /**
@@ -272,7 +282,7 @@ void YamebaChasingSamus(void)
 
     for (i = gCurrentSprite.primarySpriteRamSlot + 1; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
-        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+        if (!(gSpriteData[i].status & SS_EXISTS))
             continue;
 
         if (gSpriteData[i].properties & SP_SECONDARY_SPRITE)
@@ -281,7 +291,7 @@ void YamebaChasingSamus(void)
         if (gSpriteData[i].spriteId != PSPRITE_YAMEBA)
             continue;
 
-        if (gSpriteData[i].work0 == 0)
+        if (gSpriteData[i].work0 == YAMEBA_STAGE_UNINFECTED)
             continue;
 
         otherY = gSpriteData[i].yPosition;
@@ -311,14 +321,14 @@ void YamebaChasingSamus(void)
             else
                 gSpriteData[i].xPosition += PIXEL_SIZE;
 
-            gSpriteData[i].status ^= SPRITE_STATUS_FACING_RIGHT;
-            gSpriteData[i].status ^= SPRITE_STATUS_SAMUS_DETECTED;
+            gSpriteData[i].status ^= SS_FACING_RIGHT;
+            gSpriteData[i].status ^= SS_FACING_DOWN;
         }
 
         break;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
+    if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
     {
         gCurrentSprite.work2 = 0;
         gCurrentSprite.work3 = 1;
@@ -327,7 +337,7 @@ void YamebaChasingSamus(void)
         return;
     }
 
-    if (gCurrentSprite.work0 == 3)
+    if (gCurrentSprite.work0 == YAMEBA_STAGE_LARGE)
     {
         otherY = gSamusData.yPosition - (BLOCK_SIZE * 2 + EIGHTH_BLOCK_SIZE);
         otherX = gSamusData.xPosition - BLOCK_SIZE;
@@ -340,7 +350,7 @@ void YamebaChasingSamus(void)
 
     velocityCap = HALF_BLOCK_SIZE - PIXEL_SIZE / 2;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (gCurrentSprite.work2 == 0)
         {
@@ -364,7 +374,7 @@ void YamebaChasingSamus(void)
             }
             else
             {
-                gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status &= ~SS_FACING_RIGHT;
                 gCurrentSprite.work3 = 1;
                 gCurrentSprite.unk_8++;
 
@@ -397,7 +407,7 @@ void YamebaChasingSamus(void)
             }
             else
             {
-                gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status |= SS_FACING_RIGHT;
                 gCurrentSprite.work3 = 1;
                 gCurrentSprite.unk_8++;
 
@@ -407,7 +417,7 @@ void YamebaChasingSamus(void)
         }
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_FACING_DOWN)
     {
         if (gCurrentSprite.work1 == 0)
         {
@@ -431,7 +441,7 @@ void YamebaChasingSamus(void)
             }
             else
             {
-                gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+                gCurrentSprite.status &= ~SS_FACING_DOWN;
                 gCurrentSprite.work4 = 1;
             }
         }
@@ -460,7 +470,7 @@ void YamebaChasingSamus(void)
             }
             else
             {
-                gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+                gCurrentSprite.status |= SS_FACING_DOWN;
                 gCurrentSprite.work4 = 1;
             }
         }
@@ -474,7 +484,7 @@ void YamebaChasingSamus(void)
 void Yameba(void)
 {
     if (SPRITE_HAS_ISFT(gCurrentSprite) == 0x4)
-        SoundPlayNotAlreadyPlaying(0x15F);
+        SoundPlayNotAlreadyPlaying(SOUND_YAMEBA_HURT);
 
     if (gCurrentSprite.freezeTimer != 0)
     {
@@ -496,10 +506,10 @@ void Yameba(void)
             YamebaIdle();
             break;
 
-        case 0x17:
+        case YAMEBA_POSE_CHASING_INIT:
             YamebaChasingSamusInit();
 
-        case 0x18:
+        case YAMEBA_POSE_CHASING:
             YamebaChasingSamus();
             break;
 
@@ -522,6 +532,6 @@ void Yameba(void)
             XParasiteInit();
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
-        gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_COLLIDING;
+    if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
+        gCurrentSprite.status &= ~SS_SAMUS_COLLIDING;
 }

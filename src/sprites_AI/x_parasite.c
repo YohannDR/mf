@@ -20,7 +20,7 @@ u8 CheckAnySpriteCanAbsorbX(void)
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
-        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+        if (!(gSpriteData[i].status & SS_EXISTS))
             continue;
 
         if (gSpriteData[i].properties & SP_CAN_ABSORB_X && gSpriteData[i].health != 0)
@@ -66,8 +66,8 @@ void XParasiteBossFormationGrowingStart(void)
 {
     gCurrentSprite.pose = 0x5D;
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
-    gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
+    gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
 
     gCurrentSprite.scaling = Q_8_8(.06f);
 }
@@ -78,7 +78,7 @@ void XParasiteBossFormationGrowingStart(void)
  */
 void XParasiteBossFormationGrowing(void)
 {
-    gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status ^= SS_NOT_DRAWN;
     gCurrentSprite.scaling += Q_8_8(.065f);
 
     if (gCurrentSprite.scaling > Q_8_8(.98f))
@@ -94,7 +94,7 @@ void XParasiteBossFormationGrowing(void)
  */
 void XParasiteBossFormationFloating(void)
 {
-    gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status ^= SS_NOT_DRAWN;
 
     XParasiteMoveWithSound(gXParasiteTargetYPosition, gXParasiteTargetXPosition, HALF_BLOCK_SIZE + QUARTER_BLOCK_SIZE / 2,
         BLOCK_SIZE - PIXEL_SIZE, 0, 0x141);
@@ -116,14 +116,14 @@ void XParasiteBossFormationTransforming(void)
     u16 targetY;
     u16 targetX;
 
-    gCurrentSprite.status ^= SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status ^= SS_NOT_DRAWN;
 
     ramSlot =gCurrentSprite.primarySpriteRamSlot;
 
-    if (gSpriteData[ramSlot].status & SPRITE_STATUS_ENABLE_MOSAIC)
-        gCurrentSprite.status |= SPRITE_STATUS_ENABLE_MOSAIC;
+    if (gSpriteData[ramSlot].status & SS_ENABLE_MOSAIC)
+        gCurrentSprite.status |= SS_ENABLE_MOSAIC;
     else
-        gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
+        gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
 
     if (gSpriteData[ramSlot].pose == SPRITE_POSE_SPAWNING_FROM_X_INIT)
     {
@@ -167,7 +167,7 @@ void XParasiteBossFormationTransforming(void)
             break;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (gCurrentSprite.work2 == 0)
         {
@@ -191,7 +191,7 @@ void XParasiteBossFormationTransforming(void)
             }
             else
             {
-                gCurrentSprite.status &= ~SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status &= ~SS_FACING_RIGHT;
                 gCurrentSprite.work3 = 1;
             }
         }
@@ -220,13 +220,13 @@ void XParasiteBossFormationTransforming(void)
             }
             else
             {
-                gCurrentSprite.status |= SPRITE_STATUS_FACING_RIGHT;
+                gCurrentSprite.status |= SS_FACING_RIGHT;
                 gCurrentSprite.work3 = 1;
             }
         }
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
     {
         if (gCurrentSprite.work1 == 0)
         {
@@ -250,7 +250,7 @@ void XParasiteBossFormationTransforming(void)
             }
             else
             {
-                gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+                gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
                 gCurrentSprite.work4 = 1;
             }
         }
@@ -279,7 +279,7 @@ void XParasiteBossFormationTransforming(void)
             }
             else
             {
-                gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+                gCurrentSprite.status |= SS_SAMUS_DETECTED;
                 gCurrentSprite.work4 = 1;
             }
         }
@@ -301,8 +301,8 @@ void XParasiteCoreXOrStabilizerForming(void)
     }
     else
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
-        gCurrentSprite.pose = 0x5D;
+        gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
+        gCurrentSprite.pose = X_PARASITE_POSE_FLYING;
         gCurrentSprite.xParasiteTimer = 300;
     }
 
@@ -321,14 +321,14 @@ void XParasiteAquaZebesianMoveToTarget(void)
     targetY = gXParasiteTargetYPosition;
     targetX = gXParasiteTargetXPosition;
 
-    if (gCurrentSprite.pose == 0x5D)
+    if (gCurrentSprite.pose == X_PARASITE_POSE_FLYING)
     {
         switch (gCurrentSprite.unk_8)
         {
             case 1:
                 targetY -= BLOCK_SIZE;
 
-                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+                if (gCurrentSprite.status & SS_FACING_RIGHT)
                     targetX += BLOCK_SIZE;
                 else
                     targetX -= BLOCK_SIZE;
@@ -337,7 +337,7 @@ void XParasiteAquaZebesianMoveToTarget(void)
             case 3:
                 targetY += BLOCK_SIZE;
 
-                if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+                if (gCurrentSprite.status & SS_FACING_RIGHT)
                     targetX -= BLOCK_SIZE;
                 else
                     targetX += BLOCK_SIZE;
@@ -384,25 +384,25 @@ void XParasiteAquaZebesianWaitingToMove(void)
         gCurrentSprite.xPosition += movement;
     }
 
-    if (gCurrentSprite.status & SPRITE_STATUS_ENABLE_MOSAIC)
+    if (gCurrentSprite.status & SS_ENABLE_MOSAIC)
     {
         if (--gCurrentSprite.xParasiteTimer != 0)
         {
             gWrittenToMosaic_H = sXParasiteMosaicValues[gCurrentSprite.xParasiteTimer];
 
-            if (gCurrentSprite.xParasiteTimer > 22)
+            if (gCurrentSprite.xParasiteTimer > X_PARASITE_MOSAIC_MAX_INDEX / 2)
             {
                 gCurrentSprite.ignoreSamusCollisionTimer = 1;
             }
             else
             {
-                if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
+                if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
                     XParasiteGettingAbsorbedInit();
             }
         }
         else
         {
-            gCurrentSprite.status &= ~SPRITE_STATUS_ENABLE_MOSAIC;
+            gCurrentSprite.status &= ~SS_ENABLE_MOSAIC;
             gCurrentSprite.xParasiteTimer = 60;
         }
     }
@@ -412,7 +412,7 @@ void XParasiteAquaZebesianWaitingToMove(void)
 
         if (gCurrentSprite.xParasiteTimer == 0)
         {
-            gCurrentSprite.pose = 0x5D;
+            gCurrentSprite.pose = X_PARASITE_POSE_FLYING;
             gCurrentSprite.xParasiteTimer = 300;
             gCurrentSprite.unk_8 = 0;
             
@@ -422,7 +422,7 @@ void XParasiteAquaZebesianWaitingToMove(void)
             gCurrentSprite.work4 = 1;
         }
 
-        if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
+        if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
             XParasiteGettingAbsorbedInit();
     }
 }
@@ -433,7 +433,7 @@ void XParasiteAquaZebesianWaitingToMove(void)
  */
 void XParasiteAquaZebesianFloating(void)
 {
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
+    if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
     {
         XParasiteGettingAbsorbedInit();
         return;
@@ -449,7 +449,7 @@ void XParasiteAquaZebesianFloating(void)
 
     if (gCurrentSprite.xParasiteTimer == 0)
     {
-        gCurrentSprite.pose = 0x61;
+        gCurrentSprite.pose = X_PARASITE_POSE_FLYING_AWAY;
     }
     else
     {
@@ -470,34 +470,34 @@ void XParasite(void)
             XParasiteInit();
             break;
 
-        case 0x5C:
+        case X_PARASITE_POSE_IDLE:
             XParasiteIdleFloating();
             break;
 
-        case 0x5D:
+        case X_PARASITE_POSE_FLYING:
             XParasiteFlying();
             break;
 
-        case 0x5E:
+        case X_PARASITE_POSE_GETTING_ABSORBED:
             XParasiteGettingAbsorbed();
             break;
 
-        case 0x61:
+        case X_PARASITE_POSE_FLYING_AWAY:
             XParasiteFlyingAway();
             break;
 
-        case 0x63:
-            unk_6224c();
+        case X_PARASITE_POSE_FORMING_INIT:
+            XParasiteFormingInit();
 
-        case 0x64:
-            unk_62288();
+        case X_PARASITE_POSE_FORMING:
+            XParasiteForming();
             break;
 
-        case 0x65:
-            unk_620ec();
+        case X_PARASITE_POSE_WAITING_FOR_ENOUGH_X_TO_FORM_INIT:
+            XParasiteWaitingForEnoughXToFormInit();
 
-        case 0x66:
-            unk_6212c();
+        case X_PARASITE_POSE_WAITING_FOR_ENOUGH_X_TO_FORM:
+            XParasiteWaitingForEnoughXToForm();
     }
 }
 
@@ -513,7 +513,7 @@ void XParasiteInRoom(void)
             XParasiteInit();
             break;
 
-        case 0x5C:
+        case X_PARASITE_POSE_IDLE:
             XParasiteInRoomWaitingToMove();
     }
 }
@@ -532,7 +532,7 @@ void XParasiteBossFormation(void)
             XParasiteInit();
             break;
 
-        case 0x5C:
+        case X_PARASITE_POSE_IDLE:
             XParasiteBossFormationGrowingStart();
             break;
 
@@ -561,34 +561,34 @@ void XParasiteCoreXOrStabilizer(void)
             XParasiteInit();
             break;
 
-        case 0x5C:
+        case X_PARASITE_POSE_IDLE:
             XParasiteCoreXOrStabilizerForming();
             break;
 
-        case 0x5D:
+        case X_PARASITE_POSE_FLYING:
             XParasiteFlying();
             break;
 
-        case 0x5E:
+        case X_PARASITE_POSE_GETTING_ABSORBED:
             XParasiteGettingAbsorbed();
             break;
 
-        case 0x61:
+        case X_PARASITE_POSE_FLYING_AWAY:
             XParasiteFlyingAway();
             break;
 
-        case 0x63:
-            unk_6224c();
+        case X_PARASITE_POSE_FORMING_INIT:
+            XParasiteFormingInit();
 
-        case 0x64:
-            unk_62288();
+        case X_PARASITE_POSE_FORMING:
+            XParasiteForming();
             break;
 
-        case 0x65:
-            unk_620ec();
+        case X_PARASITE_POSE_WAITING_FOR_ENOUGH_X_TO_FORM_INIT:
+            XParasiteWaitingForEnoughXToFormInit();
 
-        case 0x66:
-            unk_6212c();
+        case X_PARASITE_POSE_WAITING_FOR_ENOUGH_X_TO_FORM:
+            XParasiteWaitingForEnoughXToForm();
     }
 }
 
@@ -604,19 +604,19 @@ void XParasiteAquaZebesian(void)
             XParasiteInit();
             break;
 
-        case 0x5C:
+        case X_PARASITE_POSE_IDLE:
             XParasiteAquaZebesianWaitingToMove();
             break;
 
-        case 0x5D:
+        case X_PARASITE_POSE_FLYING:
             XParasiteAquaZebesianFloating();
             break;
 
-        case 0x5E:
+        case X_PARASITE_POSE_GETTING_ABSORBED:
             XParasiteGettingAbsorbed();
             break;
 
-        case 0x61:
+        case X_PARASITE_POSE_FLYING_AWAY:
             XParasiteFlyingAway();
     }
 }

@@ -33,7 +33,7 @@ struct EventLocationAndNavigationInfo {
     u8 area;
     u8 room;
     u8 xStart;
-    u8 ySart;
+    u8 yStart;
     u8 xEnd;
     u8 yEnd;
     s8 navConversation;
@@ -55,5 +55,6 @@ extern u16 gSubEventCounter;
 extern u16 gPreviousSubEvent;
 
 extern s8 gDoorUnlockTimer;
+extern u8 gUnk_03000047;
 
 #endif /* EVENT_STRUCTS_H */

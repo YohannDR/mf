@@ -145,9 +145,9 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
     [PSPRITE_SAMUS_EATER_BUD - 0x10] = SPRITE_GFX_SIZE(8),
     [PSPRITE_SAMUS_EATER - 0x10] = SPRITE_GFX_SIZE(8),
 
-    [PSPRITE_RECHARGE_PAD_1 - 0x10] = SPRITE_GFX_SIZE(3),
-    [PSPRITE_RECHARGE_PAD_2 - 0x10] = SPRITE_GFX_SIZE(3),
-    [PSPRITE_RECHARGE_PAD_3 - 0x10] = SPRITE_GFX_SIZE(3),
+    [PSPRITE_ENERGY_RECHARGE_PAD - 0x10] = SPRITE_GFX_SIZE(3),
+    [PSPRITE_AMMO_RECHARGE_PAD - 0x10] = SPRITE_GFX_SIZE(3),
+    [PSPRITE_ENERGY_AMMO_RECHARGE_PAD - 0x10] = SPRITE_GFX_SIZE(3),
     [PSPRITE_ATMOSPHERIC_STABILIZER_PARASITE - 0x10] = SPRITE_GFX_SIZE(3),
 
     [PSPRITE_ATMOSPHERIC_STABILIZER_2 - 0x10] = SPRITE_GFX_SIZE(3),
@@ -208,7 +208,7 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
     [PSPRITE_PLASMA_BEAM_CORE_X - 0x10] = SPRITE_GFX_SIZE(5),
     [PSPRITE_WAVE_BEAM_CORE_X - 0x10] = SPRITE_GFX_SIZE(5),
     [PSPRITE_ZORO - 0x10] = SPRITE_GFX_SIZE(1),
-    [PSPRITE_KIHUNER_FLYING - 0x10] = SPRITE_GFX_SIZE(3),
+    [PSPRITE_KIHUNTER_FLYING - 0x10] = SPRITE_GFX_SIZE(3),
 
     [PSPRITE_KIHUNTER_GROUND - 0x10] = SPRITE_GFX_SIZE(3),
     [PSPRITE_KIHUNTER_HIVE - 0x10] = SPRITE_GFX_SIZE(3),
@@ -268,7 +268,7 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
     [PSPRITE_RIPPER - 0x10] = SPRITE_GFX_SIZE(1),
     [PSPRITE_ZORO_COCOON - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_ZORO_HUSK - 0x10] = SPRITE_GFX_SIZE(1),
-    [PSPRITE_GOLD_SCICER - 0x10] = SPRITE_GFX_SIZE(2),
+    [PSPRITE_GOLD_SCISER - 0x10] = SPRITE_GFX_SIZE(2),
 
     [PSPRITE_SA_X_TRO_1 - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_SA_X_NOC - 0x10] = SPRITE_GFX_SIZE(2),
@@ -337,7 +337,7 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
 
     [PSPRITE_SA_X_BOSS - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_SA_X_MONSTER - 0x10] = SPRITE_GFX_SIZE(8),
-    [PSPRITE_ICE_BEAM_COE_X - 0x10] = SPRITE_GFX_SIZE(5),
+    [PSPRITE_ICE_BEAM_CORE_X - 0x10] = SPRITE_GFX_SIZE(5),
     [PSPRITE_OMEGA_METROID - 0x10] = SPRITE_GFX_SIZE(5),
 
     [PSPRITE_GUNSHIP_END - 0x10] = SPRITE_GFX_SIZE(7),
@@ -350,7 +350,7 @@ const u32 sSpritesGraphicsLength[PSPRITE_END - 0x10] = {
     [PSPRITE_METROID_HUSK - 0x10] = SPRITE_GFX_SIZE(1),
     [PSPRITE_RIDLEY - 0x10] = SPRITE_GFX_SIZE(8),
 
-    [PSPRITE_PRE_SPAWN - 0x10] = SPRITE_GFX_SIZE(2),
+    [PSPRITE_RIDLEY_PRE_SPAWN - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_SA_X_TRO_2 - 0x10] = SPRITE_GFX_SIZE(2),
     [PSPRITE_NIGHTMARE - 0x10] = SPRITE_GFX_SIZE(8)
 };
@@ -370,7 +370,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -379,7 +379,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -388,7 +388,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -397,7 +397,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -406,7 +406,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -415,7 +415,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -424,7 +424,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -433,7 +433,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -442,7 +442,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -451,7 +451,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -460,7 +460,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -469,7 +469,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -478,7 +478,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -487,7 +487,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -496,7 +496,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -505,7 +505,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -514,7 +514,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         0
@@ -523,7 +523,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         64000,
         500,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CAN_BE_FROZEN,
         1024,
         0,
         0
@@ -532,7 +532,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         4,
         15,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -541,7 +541,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         4,
         42,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         723,
         300,
         1
@@ -550,7 +550,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         6,
         42,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         714,
         300,
         10
@@ -559,7 +559,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -568,7 +568,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -577,7 +577,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -586,7 +586,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         6,
         20,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         723,
         300,
         1
@@ -595,7 +595,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -604,7 +604,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -613,7 +613,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         2,
         4,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -622,7 +622,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -631,7 +631,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -640,7 +640,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -649,7 +649,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -658,7 +658,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -667,7 +667,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -676,7 +676,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         5,
         34,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         424,
         300,
         300
@@ -685,7 +685,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         3,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -694,7 +694,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -703,7 +703,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         75,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -712,7 +712,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         20,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -721,34 +721,34 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         8,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
     },
-    [PSPRITE_RECHARGE_PAD_1] = {
+    [PSPRITE_ENERGY_RECHARGE_PAD] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
     },
-    [PSPRITE_RECHARGE_PAD_2] = {
+    [PSPRITE_AMMO_RECHARGE_PAD] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
     },
-    [PSPRITE_RECHARGE_PAD_3] = {
+    [PSPRITE_ENERGY_AMMO_RECHARGE_PAD] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -757,7 +757,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         21,
         32,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -766,7 +766,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         30,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -775,7 +775,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         30,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -784,7 +784,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         30,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -793,7 +793,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         30,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -802,7 +802,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         30,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -811,7 +811,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         8,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -820,7 +820,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -829,7 +829,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         4,
         38,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -838,7 +838,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -847,7 +847,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -856,7 +856,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -865,7 +865,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         2,
         16,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         523,
         500,
         1
@@ -874,7 +874,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -883,7 +883,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         4,
         45,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         1012,
         10,
         2
@@ -892,7 +892,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         150,
         32,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         1024,
         0,
         0
@@ -901,7 +901,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         12,
         44,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         773,
         250,
         1
@@ -910,7 +910,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         8,
         42,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -919,7 +919,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         24,
         52,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         523,
         500,
         1
@@ -928,7 +928,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         14,
         42,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         802,
         220,
         2
@@ -937,7 +937,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -946,7 +946,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -955,7 +955,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         30,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -964,7 +964,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         30,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -973,7 +973,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         30,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -982,7 +982,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -991,7 +991,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1000,7 +1000,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1009,7 +1009,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1018,7 +1018,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1027,7 +1027,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1036,7 +1036,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1045,7 +1045,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         100,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1054,7 +1054,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1063,7 +1063,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1072,7 +1072,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1081,7 +1081,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1090,7 +1090,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1099,7 +1099,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1000,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES,
         1024,
         0,
         0
@@ -1108,7 +1108,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1117,7 +1117,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         8,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB,
         1024,
         0,
         0
@@ -1126,7 +1126,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         2000,
         20,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB,
         1024,
         0,
         0
@@ -1135,7 +1135,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         0,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1144,7 +1144,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1153,7 +1153,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1162,7 +1162,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1171,7 +1171,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1180,16 +1180,16 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         16,
         45,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         773,
         250,
         1
     },
-    [PSPRITE_KIHUNER_FLYING] = {
+    [PSPRITE_KIHUNTER_FLYING] = {
         40,
         86,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -1198,7 +1198,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         40,
         86,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -1207,7 +1207,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         16,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_MISSILES | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         1024,
         0,
         0
@@ -1216,7 +1216,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         10,
         44,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         873,
         150,
         1
@@ -1225,7 +1225,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         62,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1234,7 +1234,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         82,
         78,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         721,
         300,
         3
@@ -1243,7 +1243,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         32,
         48,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         723,
         300,
         1
@@ -1252,7 +1252,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         0,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1261,7 +1261,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         120,
         85,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         100,
         124,
         800
@@ -1270,7 +1270,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         12,
         28,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -1279,7 +1279,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1288,7 +1288,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1297,7 +1297,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1306,7 +1306,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1315,7 +1315,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1324,7 +1324,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         28,
         85,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         500,
         500,
         24
@@ -1333,7 +1333,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         12,
         42,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -1342,7 +1342,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         10,
         30,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         923,
         100,
         1
@@ -1351,7 +1351,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         60,
         64,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         622,
         400,
         2
@@ -1360,7 +1360,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         80,
         10,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         521,
         500,
         3
@@ -1369,7 +1369,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         18,
         60,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -1378,7 +1378,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         6,
         60,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         923,
         100,
         1
@@ -1387,7 +1387,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         45,
         100,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_MISSILES | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         674,
         300,
         50
@@ -1396,7 +1396,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         16,
         42,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -1405,7 +1405,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         94,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         714,
         300,
         10
@@ -1414,7 +1414,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         3,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1423,7 +1423,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES,
+        WEAKNESS_MISSILES,
         1024,
         0,
         0
@@ -1432,7 +1432,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         4,
         15,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -1441,7 +1441,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1450,7 +1450,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_SUPER_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -1459,7 +1459,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_SUPER_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -1468,7 +1468,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_SUPER_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -1477,7 +1477,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_SUPER_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -1486,7 +1486,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_SUPER_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -1495,7 +1495,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_SUPER_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -1504,7 +1504,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_SUPER_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -1513,7 +1513,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SUPER_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_SUPER_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         1024,
         0
@@ -1522,7 +1522,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         17,
         96,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         200,
         300,
         524
@@ -1531,7 +1531,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         17,
         96,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         200,
         300,
         524
@@ -1540,7 +1540,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         17,
         96,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         200,
         300,
         524
@@ -1549,7 +1549,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         17,
         96,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         200,
         300,
         524
@@ -1558,7 +1558,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         17,
         96,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         200,
         300,
         524
@@ -1567,7 +1567,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         17,
         96,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         200,
         300,
         524
@@ -1576,7 +1576,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         17,
         96,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         200,
         300,
         524
@@ -1585,7 +1585,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         17,
         96,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         200,
         300,
         524
@@ -1594,7 +1594,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         794,
         200,
         30
@@ -1603,7 +1603,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         1024,
         0,
         0
@@ -1612,16 +1612,16 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
     },
-    [PSPRITE_GOLD_SCICER] = {
+    [PSPRITE_GOLD_SCISER] = {
         16,
         40,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         373,
         650,
         1
@@ -1630,7 +1630,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         64000,
         500,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CAN_BE_FROZEN,
         1024,
         0,
         0
@@ -1639,7 +1639,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         64000,
         500,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CAN_BE_FROZEN,
         1024,
         0,
         0
@@ -1648,7 +1648,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1657,7 +1657,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1666,7 +1666,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1675,7 +1675,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1684,7 +1684,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1693,7 +1693,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1702,7 +1702,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1711,7 +1711,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1720,7 +1720,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1729,7 +1729,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1738,7 +1738,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1747,7 +1747,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1756,7 +1756,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1765,7 +1765,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1774,7 +1774,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1783,7 +1783,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1792,7 +1792,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         50,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         0,
         0,
         1024
@@ -1801,7 +1801,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1810,7 +1810,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         64000,
         500,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CAN_BE_FROZEN,
         1024,
         0,
         0
@@ -1819,7 +1819,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1828,7 +1828,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         135,
         94,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         500,
         500,
         24
@@ -1837,7 +1837,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         82,
         80,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         0,
         0,
         1024
@@ -1846,7 +1846,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         10,
         45,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         873,
         150,
         1
@@ -1855,7 +1855,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         6,
         18,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         874,
         150,
         0
@@ -1864,7 +1864,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         50,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES,
         1024,
         0,
         0
@@ -1873,7 +1873,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1882,7 +1882,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         60,
         80,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         714,
         300,
         10
@@ -1891,7 +1891,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         4,
         32,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         923,
         100,
         1
@@ -1900,7 +1900,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1909,7 +1909,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1918,7 +1918,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1927,7 +1927,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         7,
         SDRT_30_10,
-        SPRITE_WEAKNESS_MISSILES,
+        WEAKNESS_MISSILES,
         1000,
         0,
         24
@@ -1936,7 +1936,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         7,
         SDRT_30_10,
-        SPRITE_WEAKNESS_MISSILES,
+        WEAKNESS_MISSILES,
         0,
         1000,
         24
@@ -1945,7 +1945,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1954,7 +1954,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1963,7 +1963,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1972,7 +1972,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -1981,7 +1981,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         120,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         714,
         300,
         10
@@ -1990,7 +1990,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         90,
         94,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK,
         714,
         300,
         10
@@ -1999,7 +1999,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         12,
         42,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         823,
         200,
         1
@@ -2008,7 +2008,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2017,7 +2017,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2026,7 +2026,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2035,7 +2035,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2044,7 +2044,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2053,7 +2053,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2062,7 +2062,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         64000,
         500,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CAN_BE_FROZEN,
         1024,
         0,
         0
@@ -2071,7 +2071,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1,
         48,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         814,
         200,
         10
@@ -2080,7 +2080,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         8,
         48,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN,
         723,
         300,
         1
@@ -2089,7 +2089,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2098,7 +2098,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         350,
         99,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CAN_BE_FROZEN,
         1024,
         0,
         0
@@ -2107,16 +2107,16 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         600,
         50,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM,
+        WEAKNESS_CHARGE_BEAM,
         1024,
         0,
         0
     },
-    [PSPRITE_ICE_BEAM_COE_X] = {
+    [PSPRITE_ICE_BEAM_CORE_X] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2125,7 +2125,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1200,
         80,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS,
+        WEAKNESS_BEAM_BOMBS,
         1024,
         0,
         0
@@ -2134,7 +2134,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2143,7 +2143,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         4,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2152,7 +2152,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2161,7 +2161,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2170,7 +2170,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2179,7 +2179,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2188,7 +2188,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2197,16 +2197,16 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         4500,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES,
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES,
         1024,
         0,
         0
     },
-    [PSPRITE_PRE_SPAWN] = {
+    [PSPRITE_RIDLEY_PRE_SPAWN] = {
         0,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2215,7 +2215,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         64000,
         500,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CAN_BE_FROZEN,
+        WEAKNESS_CAN_BE_FROZEN,
         1024,
         0,
         0
@@ -2224,7 +2224,7 @@ const u16 sPrimarySpriteStats[PSPRITE_END][7] = {
         1200,
         70,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE,
+        WEAKNESS_NONE,
         1024,
         0,
         0
@@ -2243,782 +2243,780 @@ const u16 sSecondarySpriteStats[SSPRITE_END][4] = {
         0,
         200,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SA_X_SUPER_MISSILE] = {
         0,
         100,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_HORNOAD_SPIT] = {
         0,
         10,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_HALZYN_WING] = {
         15,
         42,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN
     },
-    [SSPRITE_SCISR_PROJECTILE] = {
+    [SSPRITE_SCISER_PROJECTILE] = {
         0,
         20,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ZEBESIAN_BEAM] = {
         0,
         18,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_GUNSHIP_PART] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_NAVIGATION_CONSOLE] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_NAVIGATION_CONSOLE_SCREEN] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_NAVIGATION_SCREEN] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SAVE_PLATFORM] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_MOTO_FRONT] = {
         6,
         35,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN
     },
     [SSPRITE_GEEMER_FLASHING_LIGHT] = {
         1,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK | SPRITE_WEAKNESS_CAN_BE_FROZEN
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK | WEAKNESS_CAN_BE_FROZEN
     },
     [SSPRITE_GUNSHIP_BEAM] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_E] = {
         1,
         9,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK
     },
     [SSPRITE_GATE_SWITCH] = {
         1,
         0,
         SDRT_30_10,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS
+        WEAKNESS_BEAM_BOMBS
     },
     [SSPRITE_KIHUNTER_WINGS] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_KIHUNTER_SPIT] = {
         0,
         33,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_12] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ATMOSPHERIC_STABILIZER_COVER_DOWN] = {
         1,
         32,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_15] = {
+    [SSPRITE_14] = {
         1,
         10,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK
     },
     [SSPRITE_ARACHNUS_SHELL] = {
         1,
         32,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ARACHNUS_BEAM] = {
         0,
         24,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ARACHNUS_HEAD] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ARACHNUS_LEFT_ARM] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ARACHNUS_RIGHT_ARM] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ARACHNUS_FIRE_BALL] = {
         0,
         10,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_1B] = {
+    [SSPRITE_CORE_X_SHELL_MORPH_BALL] = {
         30,
         10,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
     [SSPRITE_ABILITY_AURA] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_X_BARRIER_STEM] = {
         1,
         18,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_DATA_PAD_CENTER] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_DATA_PAD_SIDES] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_20] = {
+    [SSPRITE_ARACHNUS_BEAM_TRAIL] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_RECHARGE_PAD_MONITOR] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_RECHARGE_PAD_SCREEN] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_23] = {
         1,
         32,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_24] = {
         1,
         32,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SECURITY_PAD_MONITOR] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SAVE_YES_NO_CURSOR] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_FAKE_CHOZO_BALL] = {
         1,
         1,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB
     },
-    [SSPRTIE_28] = {
+    [SSPRITE_CHARGE_BEAM_CORE_X_SHELL] = {
         1,
         15,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRTIE_29] = {
+    [SSPRITE_CHARGE_BEAM_CORE_X_EYE] = {
         33,
         15,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
     [SSPRITE_TOXIC_GAS_EXPLOSION] = {
         0,
         40,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_KIHUNTER_BUG] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_REO_WING] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_LAVA_PLUME_WARNING] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_NAMIHE_SPIT] = {
         0,
         54,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_FUNE_SPIT] = {
         0,
         34,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SAVE_PAD_HOLOGRAM] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BOX_PART] = {
         300,
         45,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES
     },
     [SSPRITE_DESSGEEGA_SPIKE] = {
         0,
         12,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_33] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_OPERATIONS_ROOM_PAD_CONSOLE] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_OPERATIONS_ROOM_PAD_CONSOLE_SCREEN] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_OPERATIONS_ROOM_PAD_SCREEN] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_WAVER_DEBRIS] = {
         0,
         8,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ZEELA_PROJECTILE] = {
         0,
         36,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SOVA_FIRE] = {
         0,
         36,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_YARD_PROJECTILE] = {
         0,
         42,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_EVIR_COLLISION] = {
         20,
         94,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK
+        WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK
     },
     [SSPRITE_EVIR_PROJECTILE] = {
         1,
         56,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK
     },
     [SSPRITE_BULL_SMOKE] = {
         0,
         22,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_CHOOT_SPIT] = {
         0,
         40,
         SDRT_80_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ZEBESIAN_GROUND_BEAM] = {
         0,
         64,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BLUE_X_ABSORPTION] = {
         0,
         90,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_41] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_X_BARRIER_CORE_SUPER_STEM] = {
         1,
         56,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_X_BARRIER_CORE_POWER_BOMB_STEM] = {
         1,
         30,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SA_X_POWER_BOMB] = {
         0,
         20,
         SDRT_60_30 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_GADORA_ROOTS] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_GADORA_BEAM] = {
         0,
         10,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_GADORA_EYE] = {
         24,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES
     },
     [SSPRITE_48] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_49] = {
+    [SSPRITE_NIGHTMARE_FALLING_ARM] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_MEGA_X_SHIELD] = {
         1,
         20,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM
+        WEAKNESS_CHARGE_BEAM
     },
     [SSPRITE_BOX_FALLING_DEBRIS] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_NETTORI_PART] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_4D] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BEAM_CORE_X_CHARGE_BEAM] = {
         0,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BEAM_CORE_X_WIDE_BEAM] = {
         0,
         50,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BEAM_CORE_X_PLASMA_BEAM] = {
         0,
         70,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BEAM_CORE_X_WAVE_BEAM] = {
         0,
         100,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SAMUS_EATER_SPORE] = {
         1,
         25,
         SDRT_90_80,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB
     },
     [SSPRITE_NETTORI_PLASMA_BEAM] = {
         1,
         70,
         SDRT_90_80,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_54] = {
+    [SSPRITE_WIDE_BEAM_CORE_X_SHELL] = {
         1,
         16,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_55] = {
+    [SSPRITE_WIDE_BEAM_CORE_X_EYE] = {
         150,
         16,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
-    [SSPRITE_56] = {
+    [SSPRITE_PLASMA_BEAM_CORE_X_SHELL] = {
         1,
         24,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_57] = {
+    [SSPRITE_PLASMA_BEAM_CORE_X_EYE] = {
         200,
         24,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
-    [SSPRITE_58] = {
+    [SSPRITE_WAVE_BEAM_CORE_X_SHELL] = {
         1,
         32,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_59] = {
+    [SSPRITE_WAVE_BEAM_CORE_X_EYE] = {
         170,
         32,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
     [SSPRITE_ZAZABI_PART] = {
         1,
         35,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SERRIS_PART] = {
         1,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_5C] = {
+    [SSPRITE_CORE_X_STATIC_BEFORE_VARIA_CORE] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_CORE_X_BEFORE_VARIA_CORE] = {
+    [SSPRITE_CORE_X_SHELL_BEFORE_VARIA_CORE] = {
         180,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
-    [SSPRITE_CORE_X_STATIC_BEFORE_VARIA_CORE] = {
+    [SSPRITE_CORE_X_SHELL_HIGH_JUMP] = {
         40,
         20,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
-    [SSPRITE_5F] = {
+    [SSPRITE_CORE_X_SHELL_SPEEDBOOSTER] = {
         50,
         30,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
     [SSPRITE_CORE_X_SHELL_VARIA] = {
         180,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
-    [SSPRITE_61] = {
+    [SSPRITE_CORE_X_SHELL_SPACE_JUMP] = {
         240,
         45,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
-    [SSPRITE_62] = {
+    [SSPRITE_CORE_X_SHELL_GRAVITY] = {
         240,
         50,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
-    [SSPRITE_63] = {
+    [SSPRITE_CORE_X_SHELL_SCREW_ATTACK] = {
         270,
         55,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
-    [SSPRITE_64] = {
+    [SSPRITE_YAKUZA_PART] = {
         1,
         65,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_GENESIS_SPIT] = {
         0,
         90,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_ZEBESIAN_AQUA_PROJECTILE] = {
         0,
         55,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_67] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_68] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BABY_DACHORA] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SA_X_SHOOTING_AT_LAB_EXPLOSION] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_SA_X_MONSTER_PART] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BOX_2_PART] = {
         500,
         90,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES
     },
     [SSPRITE_BOX_2_MISSILE] = {
         5,
         50,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK
     },
     [SSPRITE_BOX_2_BRAIN_TOP] = {
         1,
         10,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BOX_2_BRAIN_BOTTOM] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_OMEGA_METROID_PART] = {
         1,
         50,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BOX_BOMB] = {
         1,
         25,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES
     },
     [SSPRITE_BOX_FIRE] = {
         1,
         20,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_FROZEN_RIDLEY_X] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_BEAM_CORE_X_ICE_BEAM] = {
         0,
         135,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_75] = {
+    [SSPRITE_ICE_BEAM_CORE_X_SHELL] = {
         1,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_76] = {
+    [SSPRITE_ICE_BEAM_CORE_X_EYE] = {
         240,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_MISSILES
     },
     [SSPRITE_SERRIS_BLOCK] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_GUNSHIP_END_BOTTOM] = {
+    [SSPRITE_MEGA_X] = {
         100,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM
+        WEAKNESS_CHARGE_BEAM
     },
     [SSPRITE_GUNSHIP_END_BEAM] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_7A] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_7B] = {
+    [SSPRITE_RIDLEY_PART] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_7C] = {
+    [SSPRITE_RIDLEY_TAIL_PART] = {
         100,
         40,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_RIDLEY_FIRE] = {
         0,
         25,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
     [SSPRITE_YAKUZA_PROJECTILE] = {
         1,
         45,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_BEAM_AND_BOMBS | SPRITE_WEAKNESS_MISSILES | SPRITE_WEAKNESS_POWER_BOMBS | SPRITE_WEAKNESS_SPEED_BOOSTER_SCREW_ATTACK
+        WEAKNESS_BEAM_BOMBS | WEAKNESS_MISSILES | WEAKNESS_POWER_BOMB | WEAKNESS_SPEEDBOOSTER_SCREW_ATTACK
     },
-    [SSPRITE_7F] = {
+    [SSPRITE_YAKUZA_FALLING_LEG] = {
         0,
         0,
         SDRT_30_10 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     },
-    [SSPRITE_80] = {
+    [SSPRITE_NIGHTMARE_PART] = {
         600,
         50,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_CHARGE_BEAM | SPRITE_WEAKNESS_MISSILES
+        WEAKNESS_CHARGE_BEAM | WEAKNESS_MISSILES
     },
     [SSPRITE_NIGHTMARE_BEAM] = {
         1,
         42,
         SDRT_90_80 | SDRT_CAN_CREATE_DEBRIS,
-        SPRITE_WEAKNESS_NONE
+        WEAKNESS_NONE
     }
 };
-
-static const u8 sBlob_2e5cae_2e6160[1202] = INCBIN_U8("data/Blob_2e5cae_2e6160.bin");

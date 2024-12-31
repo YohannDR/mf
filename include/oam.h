@@ -35,7 +35,24 @@
 
 // Attribute 2
 
-#define OBJ_SPRITE_OAM 0x8000 // Not sure what this is, sprite OAM doesn't work without it
+#define OBJ_PALETTE_0 (0 << 12)
+#define OBJ_PALETTE_1 (1 << 12)
+#define OBJ_PALETTE_2 (2 << 12)
+#define OBJ_PALETTE_3 (3 << 12)
+#define OBJ_PALETTE_4 (4 << 12)
+#define OBJ_PALETTE_5 (5 << 12)
+#define OBJ_PALETTE_6 (6 << 12)
+#define OBJ_PALETTE_7 (7 << 12)
+#define OBJ_PALETTE_8 (8 << 12)
+#define OBJ_PALETTE_9 (9 << 12)
+#define OBJ_PALETTE_10 (10 << 12)
+#define OBJ_PALETTE_11 (11 << 12)
+#define OBJ_PALETTE_12 (12 << 12)
+#define OBJ_PALETTE_13 (13 << 12)
+#define OBJ_PALETTE_14 (14 << 12)
+#define OBJ_PALETTE_15 (15 << 12)
+#define OBJ_PALETTE_MASK (15 << 12)
+#define OBJ_SPRITE_OAM 0x8000 // sprite OAM usually uses palettes 8..15
 
 struct FrameData {
     const u16* pFrame;

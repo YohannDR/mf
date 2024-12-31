@@ -2,6 +2,7 @@
 #include "macros.h"
 #include "globals.h"
 
+#include "data/particle_data.h"
 #include "data/sprite_data.h"
 
 #include "constants/clipdata.h"
@@ -9,8 +10,6 @@
 
 #include "structs/clipdata.h"
 #include "structs/sprite.h"
-
-// FIXME oam undefined
 
 /**
  * @brief 14bf8 | 2c | Initializes a bubbles/water drop sprite
@@ -50,20 +49,19 @@ void Bubbles1(void)
 
             gCurrentSprite.currentAnimationFrame = 0;
 
-            // gCurrentSprite.pOam = sBubbles1Oam_Idle;
-            gCurrentSprite.pOam = (const struct FrameData*)0x83ec2b0;
+            gCurrentSprite.pOam = sBubbles1Oam_Idle;
 
             gCurrentSprite.pose = 2;
 
-            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status |= SS_NOT_DRAWN;
             gCurrentSprite.work1 = gSpriteRandomNumber * 8;
             break;
 
         case 1:
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 gCurrentSprite.pose++;
-                gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status |= SS_NOT_DRAWN;
                 gCurrentSprite.work1 = gSpriteRandomNumber * 8;
             }
             break;
@@ -74,7 +72,7 @@ void Bubbles1(void)
             {
                 gCurrentSprite.pose--;
 
-                gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status &= ~SS_NOT_DRAWN;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.animationDurationCounter = 0;
             }
@@ -101,24 +99,23 @@ void Bubbles2(void)
             gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(BLOCK_SIZE);
 
             gCurrentSprite.currentAnimationFrame = gSpriteRandomNumber / 2;
-            // gCurrentSprite.pOam = sBubbles2Oam_Idle;
-            gCurrentSprite.pOam = (const struct FrameData*)0x83ec2f8;
+            gCurrentSprite.pOam = sBubbles2Oam_Idle;
 
             SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition - HALF_BLOCK_SIZE, gCurrentSprite.xPosition + BLOCK_SIZE);
             if (gPreviousCollisionCheck == COLLISION_SOLID)
-                gCurrentSprite.status |= SPRITE_STATUS_X_FLIP;
+                gCurrentSprite.status |= SS_X_FLIP;
 
             gCurrentSprite.pose = 2;
 
-            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status |= SS_NOT_DRAWN;
             gCurrentSprite.work1 = gSpriteRandomNumber * 4;
             break;
 
         case 1:
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
                 gCurrentSprite.pose++;
-                gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status |= SS_NOT_DRAWN;
                 gCurrentSprite.work1 = gSpriteRandomNumber * 4;
             }
             break;
@@ -129,7 +126,7 @@ void Bubbles2(void)
             {
                 gCurrentSprite.pose--;
 
-                gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status &= ~SS_NOT_DRAWN;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.animationDurationCounter = 0;
             }
@@ -160,23 +157,21 @@ void WaterDrop(void)
             gCurrentSprite.drawDistanceHorizontal = SUB_PIXEL_TO_PIXEL(HALF_BLOCK_SIZE);
 
             gCurrentSprite.currentAnimationFrame = 0;
-            // gCurrentSprite.pOam = sWaterDropOam_Spawning;
-            gCurrentSprite.pOam = (const struct FrameData*)0x83ec240;
+            gCurrentSprite.pOam = sWaterDropOam_Spawning;
 
             gCurrentSprite.xParasiteTimer = gCurrentSprite.yPosition;
             gCurrentSprite.unk_8 = gCurrentSprite.xPosition;
 
-            gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+            gCurrentSprite.status |= SS_NOT_DRAWN;
             gCurrentSprite.pose = 10;
 
             gCurrentSprite.work1 = gSpriteRandomNumber * 8;
             break;
 
         case 2:
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
-                // gCurrentSprite.pOam = sWaterDropOam_Falling;
-                gCurrentSprite.pOam = (const struct FrameData*)0x83ec270;
+                gCurrentSprite.pOam = sWaterDropOam_Falling;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.animationDurationCounter = 0;
 
@@ -228,8 +223,7 @@ void WaterDrop(void)
             break;
 
         case 7:
-            // gCurrentSprite.pOam = sWaterDropOam_Splashing;
-            gCurrentSprite.pOam = (const struct FrameData*)0x83ec280;
+            gCurrentSprite.pOam = sWaterDropOam_Splashing;
             gCurrentSprite.currentAnimationFrame = 0;
             gCurrentSprite.animationDurationCounter = 0;
 
@@ -239,9 +233,9 @@ void WaterDrop(void)
             if (gCurrentSprite.work2)
                 gCurrentSprite.yPosition = gEffectYPosition;
 
-            if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+            if (SpriteUtilCheckEndCurrentSpriteAnim())
             {
-                gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status |= SS_NOT_DRAWN;
                 gCurrentSprite.pose = 10;
                 gCurrentSprite.work1 = 100 + gSpriteRandomNumber * 8;
             }
@@ -252,14 +246,13 @@ void WaterDrop(void)
 
             if (gCurrentSprite.work1 == 0)
             {
-                // gCurrentSprite.pOam = sWaterDropOam_Spawning;
-                gCurrentSprite.pOam = (const struct FrameData*)0x83ec240;
+                gCurrentSprite.pOam = sWaterDropOam_Spawning;
                 gCurrentSprite.currentAnimationFrame = 0;
                 gCurrentSprite.animationDurationCounter = 0;
 
                 gCurrentSprite.pose = 2;
 
-                gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+                gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
                 gCurrentSprite.yPosition = gCurrentSprite.xParasiteTimer;
                 gCurrentSprite.xPosition = gCurrentSprite.unk_8;

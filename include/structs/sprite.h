@@ -8,6 +8,34 @@
 #define MAX_AMOUNT_OF_SPRITE_TYPES 15
 #define ENEMY_ROOM_DATA_SIZE 3
 
+enum MultiSpriteDataElements {
+    MULTI_SPRITE_DATA_ELEMENT_OAM_INDEX,
+    MULTI_SPRITE_DATA_ELEMENT_Y_OFFSET,
+    MULTI_SPRITE_DATA_ELEMENT_X_OFFSET,
+
+    MULTI_SPRITE_DATA_ELEMENT_END
+};
+
+typedef const s16 (*MultiSpriteDataInfo_T)[MULTI_SPRITE_DATA_ELEMENT_END];
+
+struct MultiSpriteData {
+    MultiSpriteDataInfo_T pData;
+    u8 timer;
+};
+
+#define MULTI_SPRITE_DATA_INFO(index, y, x) \
+{\
+    [MULTI_SPRITE_DATA_ELEMENT_OAM_INDEX] = (index),\
+    [MULTI_SPRITE_DATA_ELEMENT_Y_OFFSET]  = PIXEL_TO_SUB_PIXEL(y),\
+    [MULTI_SPRITE_DATA_ELEMENT_X_OFFSET]  = PIXEL_TO_SUB_PIXEL(x)\
+}
+
+#define MULTI_SPRITE_DATA_TERMINATOR \
+{\
+    .pData = NULL,\
+    .timer = 0\
+}
+
 struct SpriteData {
     u16 status;
     u16 yPosition;
@@ -48,11 +76,11 @@ struct SpriteData {
     u8 standingOnSprite;
     u8 properties;
     u8 frozenPaletteRowOffset;
-    u8 work5;
+    u8 numberOfXToForm;
 };
 
 struct SubSpriteData {
-    const struct FrameData* pMultiOam;
+    const struct MultiSpriteData* pMultiOam;
     u16 currentAnimationFrame;
     u8 animationDurationCounter;
     u16 yPosition;
@@ -76,7 +104,7 @@ extern u8 gIgnoreSamusAndSpriteCollision;
 extern u8 gPreviousCollisionCheck;
 extern u8 gPreviousVerticalCollisionCheck;
 
-extern u16 gUnk_030007c0[24];
+extern u16 gUnk_030007c0[MAX_AMOUNT_OF_SPRITES];
 
 extern u8 gSpriteRandomNumber;
 

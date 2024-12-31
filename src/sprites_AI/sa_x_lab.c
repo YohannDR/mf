@@ -103,7 +103,7 @@ void SaXLabCoveredByMetroidsAfterDetachment(void)
     {
         gCurrentSprite.work1 = 60;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+        if (gCurrentSprite.status & SS_ON_SCREEN)
             SoundPlay(0x23C);
     }
 }
@@ -143,5 +143,5 @@ void SaXLab(void)
     SaXUpdateGraphics();
 
     gCurrentSprite.ignoreSamusCollisionTimer = 1;
-    gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+    gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
 }

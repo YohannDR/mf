@@ -1590,5 +1590,3 @@ const struct FrameData sSerrisBlockOam_Falling0[2] = {
 
 const u16 sSerrisSecondPhasePal[16 * 2] = INCBIN_U16("data/sprites/serris_phase_two.pal");
 const u16 sSerrisThirdPhasePal[16 * 2] = INCBIN_U16("data/sprites/serris_phase_three.pal");
-
-static const u8 sBlob_3787d0_3bdebc[] = INCBIN_U8("data/Blob_3787d0_3bdebc.bin");

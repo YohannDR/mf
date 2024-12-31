@@ -1159,5 +1159,3 @@ const u8 sDemo_3e40c8[5 * 4] = {
     0x0, 0x0, 0x0, 0x0,
     0x0, 0x0, 0x0, 0x0
 };
-
-static const u8 sBlob_3e40dc_3e7a9c[14784] = INCBIN_U8("data/Blob_3e40dc_3e7a9c.bin");

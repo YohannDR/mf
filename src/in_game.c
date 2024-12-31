@@ -4,6 +4,8 @@
 #include "macros.h"
 #include "callbacks.h"
 
+#include "data/hud_data.h"
+
 #include "constants/demo.h"
 #include "constants/sa_x.h"
 
@@ -11,6 +13,7 @@
 #include "structs/demo.h"
 #include "structs/samus.h"
 #include "structs/sa_x.h"
+#include "structs/scroll.h"
 
 /**
  * @brief dd24 | 234 | In game mode subroutine
@@ -138,16 +141,16 @@ u32 InGameSubroutine(void)
 
         ProjectileUpdate();
         HudDraw();
-        unk_eb04();
+        SpriteDrawAll_HighPriority();
         ParticleUpdate();
         ProjectileDrawAll_False();
 
-        SpriteDrawAll();
+        SpriteDrawAll_MediumPriority();
 
         if (!gDisableDrawingSamusAndScrollingFlag)
             SamusDraw();
 
-        unk_ec38();
+        SpriteDrawAll_LowPriority();
         ProjectileDrawAll_True();
         
         ResetFreeOam();
@@ -410,7 +413,7 @@ void InitAndLoadGenerics(void)
     if (gUnk_03000be3 == 0)
     {
         ClearGfxRam();
-        LoadCommonGraphics();
+        HudGenericLoadCommonSpriteGfx();
     }
 
     gWrittenToBldy = BLDY_MAX_VALUE;
@@ -435,11 +438,11 @@ void InitAndLoadGenerics(void)
     }
 
     if (gPauseScreenFlag != 0 || gCurrentCutscene != 0)
-        DmaTransfer(3, EWRAM_BASE + 0x1C000, VRAM_OBJ, 0x4000, 16);
+        DmaTransfer(3, gSpriteTilesBackup, VRAM_OBJ, 0x4000, 16);
 
     gDebugFlag = FALSE;
 
-    DMA_SET(3, 0x83e40dc, PALRAM_OBJ + 0x40, C_32_2_16(DMA_ENABLE, 16 * 6));
+    DMA_SET(3, sCommonOamPal, PALRAM_OBJ + 0x40, C_32_2_16(DMA_ENABLE, 16 * 6));
 
     SamusInit();
 
@@ -481,13 +484,13 @@ void InitAndLoadGenerics(void)
             break;
     }
 
-    CheckResetHudAndParticles();
+    HudGenericResetHUDData();
     SpriteLoadAllData();
     ProjectileCallLoadGraphicsAndClearProjectiles();
 
     if (gPauseScreenFlag != 0)
     {
-        DmaTransfer(3, EWRAM_BASE + 0x20000, VRAM_OBJ + 0x4000, 0x4000, 16);
+        DmaTransfer(3, gSpriteTilesBackup + 0x4000, VRAM_OBJ + 0x4000, 0x4000, 16);
 
         DMA_SET(3, EWRAM_BASE + 0x35700, PALRAM_OBJ + 0x100, C_32_2_16(DMA_ENABLE, 16 * 8));
     }

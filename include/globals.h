@@ -4,7 +4,9 @@
 #include "types.h"
 #include "structs/menus/pause_screen.h"
 #include "structs/menus/title_screen.h"
+#include "structs/sa_x_close_up.h"
 
+// FIXME size of ClipdataConvertToCollision
 struct InGameData {
     u8 clipdataCode[640];
 };
@@ -13,6 +15,7 @@ union NonGameplayRam {
     struct PauseScreenData pauseScreen;
     struct InGameData inGame;
     struct TitleScreenData titleScreen;
+    struct SaXCloseUpData saXCloseUp;
     u8 size[1344];
 };
 
@@ -21,6 +24,9 @@ extern union NonGameplayRam gNonGameplayRam;
 #define PAUSE_SCREEN_DATA gNonGameplayRam.pauseScreen
 #define IN_GAME_DATA gNonGameplayRam.inGame
 #define TITLE_SCREEN_DATA gNonGameplayRam.titleScreen
+#define SA_X_CLOSE_UP_DATA gNonGameplayRam.saXCloseUp
+
+extern u8 gSpriteTilesBackup[0x8000];
 
 extern u8 gRebootGame;
 extern u8 gClearedEveryFrame;
@@ -32,6 +38,7 @@ extern s8 gSubGameMode2;
 extern u8 gFrameCounter8Bit;
 extern u16 gFrameCounter16Bit;
 extern s8 gPauseScreenFlag;
+extern u8 gUnk_03000b85;
 extern u8 gCurrentCutscene;
 extern s8 gIsLoadingFile;
 extern s8 gUnk_03000be3;
@@ -69,7 +76,6 @@ extern u16 gWrittenToBldy;
 extern u16 gWrittenToWin1H;
 extern u16 gWrittenToWin1V;
 extern u16 gWrittenToBldcnt_Special;
-extern u8 gDisableScrolling;
 
 struct WindowBorder {
     u8 left;
@@ -136,7 +142,7 @@ struct IoRegisters {
     u8 bldalpha_eva;
     u8 bldalpha_evb;
     u8 winin_L;
-    u8 winin_R;
+    u8 winout_R;
     u16 bg0Cnt;
     u16 bg1Cnt;
     u16 bg2Cnt;

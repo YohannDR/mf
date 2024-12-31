@@ -1,7 +1,7 @@
 #include "data/sprites/yameba.h"
 #include "macros.h"
 
-const s16 sYamebaIdleYMovement[65] = {
+const s16 sYamebaIdleHiddenYMovement[65] = {
      0,  0,  0,  0,
      1,  0,  1,  0,
      1,  0,  1,  0,
@@ -21,7 +21,7 @@ const s16 sYamebaIdleYMovement[65] = {
     SHORT_MAX
 };
 
-const s16 sYamebaIdleXMovement[81] = {
+const s16 sYamebaIdleHiddenXMovement[81] = {
      0,  0,  0,  0,
      1,  0,  1,  0,
      1,  0,  1,  0,
@@ -93,52 +93,52 @@ const u32 sYamebaGfx[2 * 512] = INCBIN_U32("data/sprites/yameba.gfx");
 const u16 sYamebaPal[2 * 16] = INCBIN_U16("data/sprites/yameba.pal");
 
 
-static const u16 sYamebaOam_Small_Frame0[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_IdleHidden_Frame0[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_SPRITE_OAM | 0x200
 };
 
-static const u16 sYamebaOam_Small_Frame1[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_IdleHidden_Frame1[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_SPRITE_OAM | 0x202
 };
 
-static const u16 sYamebaOam_Small_Frame2[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_IdleHidden_Frame2[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_SPRITE_OAM | 0x204
 };
 
-static const u16 sYamebaOam_Small_Frame3[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_IdleHidden_Frame3[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_SPRITE_OAM | 0x206
 };
 
-static const u16 sYamebaOam_Small_Frame4[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_IdleHidden_Frame4[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf8, OBJ_SIZE_16x16 | 0x1f8, OBJ_SPRITE_OAM | 0x208
 };
 
-static const u16 sYamebaOam_Big_Frame0[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_Idle_Frame0[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_SPRITE_OAM | 0x20a
 };
 
-static const u16 sYamebaOam_Big_Frame1[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_Idle_Frame1[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_SPRITE_OAM | 0x20e
 };
 
-static const u16 sYamebaOam_Big_Frame2[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_Idle_Frame2[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_SPRITE_OAM | 0x212
 };
 
-static const u16 sYamebaOam_Big_Frame3[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_Idle_Frame3[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_SPRITE_OAM | 0x216
 };
 
-static const u16 sYamebaOam_Big_Frame4[OAM_DATA_SIZE(1)] = {
+static const u16 sYamebaOam_Idle_Frame4[OAM_DATA_SIZE(1)] = {
     0x1,
     0xf0, OBJ_SIZE_32x32 | 0x1f0, OBJ_SPRITE_OAM | 0x21a
 };
@@ -169,73 +169,73 @@ static const u16 sYamebaOam_Small_Unused_Frame4[OAM_DATA_SIZE(1)] = {
 };
 
 
-const struct FrameData sYamebaOam_Small[9] = {
+const struct FrameData sYamebaOam_IdleHidden[9] = {
     [0] = {
-        .pFrame = sYamebaOam_Small_Frame0,
+        .pFrame = sYamebaOam_IdleHidden_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sYamebaOam_Small_Frame1,
+        .pFrame = sYamebaOam_IdleHidden_Frame1,
         .timer = 8
     },
     [2] = {
-        .pFrame = sYamebaOam_Small_Frame2,
+        .pFrame = sYamebaOam_IdleHidden_Frame2,
         .timer = 8
     },
     [3] = {
-        .pFrame = sYamebaOam_Small_Frame3,
+        .pFrame = sYamebaOam_IdleHidden_Frame3,
         .timer = 8
     },
     [4] = {
-        .pFrame = sYamebaOam_Small_Frame4,
+        .pFrame = sYamebaOam_IdleHidden_Frame4,
         .timer = 8
     },
     [5] = {
-        .pFrame = sYamebaOam_Small_Frame3,
+        .pFrame = sYamebaOam_IdleHidden_Frame3,
         .timer = 8
     },
     [6] = {
-        .pFrame = sYamebaOam_Small_Frame2,
+        .pFrame = sYamebaOam_IdleHidden_Frame2,
         .timer = 8
     },
     [7] = {
-        .pFrame = sYamebaOam_Small_Frame1,
+        .pFrame = sYamebaOam_IdleHidden_Frame1,
         .timer = 8
     },
     [8] = FRAME_DATA_TERMINATOR
 };
 
-const struct FrameData sYamebaOam_Big[9] = {
+const struct FrameData sYamebaOam_Idle[9] = {
     [0] = {
-        .pFrame = sYamebaOam_Big_Frame0,
+        .pFrame = sYamebaOam_Idle_Frame0,
         .timer = 8
     },
     [1] = {
-        .pFrame = sYamebaOam_Big_Frame1,
+        .pFrame = sYamebaOam_Idle_Frame1,
         .timer = 8
     },
     [2] = {
-        .pFrame = sYamebaOam_Big_Frame2,
+        .pFrame = sYamebaOam_Idle_Frame2,
         .timer = 8
     },
     [3] = {
-        .pFrame = sYamebaOam_Big_Frame3,
+        .pFrame = sYamebaOam_Idle_Frame3,
         .timer = 8
     },
     [4] = {
-        .pFrame = sYamebaOam_Big_Frame4,
+        .pFrame = sYamebaOam_Idle_Frame4,
         .timer = 8
     },
     [5] = {
-        .pFrame = sYamebaOam_Big_Frame3,
+        .pFrame = sYamebaOam_Idle_Frame3,
         .timer = 8
     },
     [6] = {
-        .pFrame = sYamebaOam_Big_Frame2,
+        .pFrame = sYamebaOam_Idle_Frame2,
         .timer = 8
     },
     [7] = {
-        .pFrame = sYamebaOam_Big_Frame1,
+        .pFrame = sYamebaOam_Idle_Frame1,
         .timer = 8
     },
     [8] = FRAME_DATA_TERMINATOR

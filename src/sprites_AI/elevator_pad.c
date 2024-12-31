@@ -42,7 +42,7 @@ void ElevatorPad(void)
     }
 
     if (gSamusData.pose == SPOSE_USING_AN_ELEVATOR)
-        gCurrentSprite.status |= SPRITE_STATUS_NOT_DRAWN;
+        gCurrentSprite.status |= SS_NOT_DRAWN;
     else
-        gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+        gCurrentSprite.status &= ~SS_NOT_DRAWN;
 }

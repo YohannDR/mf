@@ -7,6 +7,7 @@ MEMORY {
 
 SECTIONS {
     ewram (NOLOAD) : ALIGN(4) {
+        . = 0x0001c000; gSpriteTilesBackup = .;
     } >ewram
 
     iwram (NOLOAD) : ALIGN(4) {
@@ -18,6 +19,9 @@ SECTIONS {
         . = 0x0000000c; gWrittenToWinin_L = .;
         . = 0x0000000d; gWrittenToWinout_R = .;
         . = 0x0000000e; gBackdropColor = .;
+        . = 0x00000011; gLanguage = .;
+        . = 0x00000014; gGameCompletion = .;
+        . = 0x00000018; gMonochromeBgFading = .;
         . = 0x00000019; gWhichBgPositionIsWrittenToBg3Ofs = .;
         . = 0x0000001a; gSamusOnTopOfBackgrounds = .;
         . = 0x0000001b; gAbilityCount = .;
@@ -36,10 +40,13 @@ SECTIONS {
         . = 0x00000030; gDisplayLocationName = .;
         . = 0x00000044; gEffectYPosition = .;
         . = 0x00000046; gDoorUnlockTimer = .;
+        . = 0x00000047; gUnk_03000047 = .;
         . = 0x00000048; gCurrentNavigationRoom = .;
         . = 0x00000049; gLastElevatorUsed = .;
         . = 0x0000004a; gCurrentEventBasedEffect = .;
         . = 0x0000004b; gCurrentEventBasedEffectCopy = .;
+        . = 0x0000004e; gScreenShakeXOffset = .;
+        . = 0x0000004f; gScreenShakeYOffset = .;
         . = 0x00000052; gSpritesetNumber = .;
         . = 0x00000053; gCurrentClipdataAffectingAction = .;
         . = 0x00000060; gSubEventCounter = .;
@@ -53,6 +60,8 @@ SECTIONS {
         . = 0x000000c8; gBackgroundPositions = .;
         . = 0x000000dc; gSaXSpawnPosition = .;
         . = 0x000000e8; gWindow1Border = .;
+        . = 0x000000f0; gScreenShakeY = .;
+        . = 0x000000f4; gScreenShakeX = .;
         . = 0x00000110; gCurrentPowerBomb = .;
         . = 0x00000138; gInGameTimer = .;
         . = 0x0000013c; gMaxInGameTimeFlag = .;
@@ -92,6 +101,8 @@ SECTIONS {
         . = 0x000007f4; gBossWork3 = .;
         . = 0x000007f5; gBossWork4 = .;
         . = 0x000007f6; gBossWork5 = .;
+        . = 0x000007f8; gParticleEffects = .;
+        . = 0x000008b8; gCurrentParticle = .;
         . = 0x000008c4; gMissileHighlightStatus = .;
         . = 0x000008c5; gPowerBombHighlightStatus = .;
         . = 0x000008c6; gMinimapUpdateFlag = .;
@@ -104,11 +115,13 @@ SECTIONS {
         . = 0x000008d9; gEscapeTimerDigits = .;
         . = 0x000008e0; gEscapeDigitsOam = .;
         . = 0x00000912; gAmmoDigitsGfx = .;
+        . = 0x00000954; gCurrentParticleEffectOamFramePointer = .;
         . = 0x00000960; gProjectileData = .;
         . = 0x00000b60; gCurrentProjectile = .;
         . = 0x00000b80; gArmCannonY = .;
         . = 0x00000b82; gArmCannonX = .;
         . = 0x00000b84; gPauseScreenFlag = .;
+        . = 0x00000b85; gUnk_03000b85 = .;
         . = 0x00000b86; gPreviousArea = .;
         . = 0x00000b87; gEventCounter = .;
         . = 0x00000b88; gPreviousNavigationConversation = .;
@@ -150,6 +163,7 @@ SECTIONS {
         . = 0x00001330; gSamusPhysics = .;
         . = 0x00001342; gPreviousXPosition = .;
         . = 0x00001344; gPreviousYPosition = .;
+        . = 0x00001346; gSamusUnderwaterFlag = .;
         . = 0x00001348; gPreventMovementTimer = .;
         . = 0x0000134a; gDisableDrawingSamusAndScrollingFlag = .;
         . = 0x00001450; gButtonAssignments = .;
@@ -175,6 +189,7 @@ SECTIONS {
         . = 0x00004dd8; gWrittenToBldcnt_Special = .;
         . = 0x00004dda; gElevatorDirection = .;
         . = 0x00004ddc; gTilemapAndClipPointers = .;
+        . = 0x00004de8; gMusicTrackInfo = .;
         . = 0x00004dec; gHatchData = .;
         . = 0x00004e0c; gDoorPositionStart = .;
         . = 0x00004e38; gSamusDoorPositionOffset = .;
@@ -205,25 +220,25 @@ SECTIONS {
 
         asm/disasm_0x08000c28.o(.text);
         asm/syscalls.o(.text);
-        asm/disasm_0x08004bcc.o(.text);
+        src/sram/sram.o(.text);
+        asm/samus.o(.text);
 
         src/demo_input.o(.text);
-
-        asm/disasm_0x0800cbb8.o(.text);
-
+        src/sa_x.o(.text);
         src/in_game.o(.text);
         src/sprite.o(.text);
-
-        asm/disasm_0x0800fd90.o(.text);
-
+        src/sprite_util.o(.text);
         src/sprite_debris.o(.text);
         src/location_text.o(.text);
         src/sprites_AI/target.o(.text);
         src/sprites_AI/unused_sprites.o(.text);
         src/sprites_AI/bubbles.o(.text);
+        src/sprites_AI/x_parasite.o(.text);
 
-        asm/disasm_0x0801503C.o(.text);
+        asm/disasm_0x080157cc.o(.text);
 
+        src/sprites_AI/hornoad.o(.text);
+        src/sprites_AI/halzyn.o(.text);
         src/sprites_AI/movable_platform.o(.text);
         src/sprites_AI/moto.o(.text);
         src/sprites_AI/save_pad.o(.text);
@@ -231,9 +246,50 @@ SECTIONS {
         src/sprites_AI/yameba.o(.text);
         src/sprites_AI/security_pad.o(.text);
         src/sprites_AI/area_banner.o(.text);
-
-        asm/disasm_0x08021980.o(.text);
-
+        src/sprites_AI/skree.o(.text);
+        src/sprites_AI/zombie_researcher.o(.text);
+        src/sprites_AI/geemer.o(.text);
+        src/sprites_AI/arachnus.o(.text);
+        src/sprites_AI/core_x.o(.text);
+        src/sprites_AI/core_x_downloading_varia.o(.text);
+        src/sprites_AI/waver.o(.text);
+        src/sprites_AI/sciser.o(.text);
+        src/sprites_AI/sidehopper.o(.text);
+        src/sprites_AI/dessgeega.o(.text);
+        src/sprites_AI/missile_barrier.o(.text);
+        src/sprites_AI/navigation_pad.o(.text);
+        src/sprites_AI/message_banner.o(.text);
+        src/sprites_AI/data_pad.o(.text);
+        src/sprites_AI/zebesian_wall.o(.text);
+        src/sprites_AI/recharge_pad.o(.text);
+        src/sprites_AI/atmospheric_stabilizer.o(.text);
+        src/sprites_AI/chozo_statue.o(.text);
+        src/sprites_AI/beam_core_x.o(.text);
+        src/sprites_AI/toxic_gas.o(.text);
+        src/sprites_AI/kago.o(.text);
+        src/sprites_AI/shake_trigger.o(.text);
+        src/sprites_AI/gate.o(.text);
+        src/sprites_AI/electric_water.o(.text);
+        src/sprites_AI/zoro.o(.text);
+        src/sprites_AI/kihunter.o(.text);
+        src/sprites_AI/reo.o(.text);
+        src/sprites_AI/lava_plume.o(.text);
+        src/sprites_AI/fune_namihe.o(.text);
+        src/sprites_AI/box.o(.text);
+        src/sprites_AI/geruda.o(.text);
+        src/sprites_AI/misc_pad.o(.text);
+        src/sprites_AI/operations_room_pad.o(.text);
+        src/sprites_AI/scientist.o(.text);
+        src/sprites_AI/skultera.o(.text);
+        src/sprites_AI/zeela.o(.text);
+        src/sprites_AI/sova.o(.text);
+        src/sprites_AI/yard.o(.text);
+        src/sprites_AI/evir.o(.text);
+        src/sprites_AI/bull.o(.text);
+        src/sprites_AI/memu.o(.text);
+        src/sprites_AI/geruboss.o(.text);
+        src/sprites_AI/choot.o(.text);
+        src/sprites_AI/zebesian_ground.o(.text);
         src/sprites_AI/blue_x.o(.text);
         src/sprites_AI/missile_hatch.o(.text);
         src/sprites_AI/super_missile_barrier.o(.text);
@@ -246,40 +302,96 @@ SECTIONS {
         src/sprites_AI/zazabi.o(.text);
         src/sprites_AI/elevator_pad.o(.text);
         src/sprites_AI/serris.o(.text);
+        src/sprites_AI/owtch.o(.text);
+        src/sprites_AI/geega.o(.text);
+        src/sprites_AI/pillar.o(.text);
 
-        asm/disasm_0x08049888.o(.text);
+        asm/sprites_AI/genesis.o(.text);
+        asm/sprites_AI/puyo.o(.text);
+        asm/sprites_AI/fake_tank.o(.text);
+        asm/sprites_AI/flashing_number.o(.text);
+        asm/sprites_AI/zebesian_aqua.o(.text);
+        asm/sprites_AI/animals.o(.text);
+        asm/sprites_AI/infant_metroid.o(.text);
+        asm/sprites_AI/lab_debris.o(.text);
+        asm/sprites_AI/powamp.o(.text);
+        asm/sprites_AI/zozoro.o(.text);
+        asm/sprites_AI/sa_x_monster.o(.text);
+        asm/sprites_AI/continual_x_spawner.o(.text);
+        asm/sprites_AI/box_2.o(.text);
+        asm/sprites_AI/omega_metroid.o(.text);
+        asm/sprites_AI/gunship_end.o(.text);
+        asm/sprites_AI/electric_water_box_2.o(.text);
+
+        src/sprites_AI/frozen_ridley.o(.text);
+        src/sprites_AI/gold_enemy_door_lock.o(.text);
+        src/sprites_AI/varia_core_x.o(.text);
+        src/sprites_AI/omega_metroid_husk.o(.text);
+        src/sprites_AI/ice_beam_x_omega.o(.text);
+        src/sprites_AI/metroid_husk.o(.text);
+        src/sprites_AI/neo_ridley.o(.text);
+        src/sprites_AI/ridley_pre_spawn.o(.text);
+        src/sprites_AI/yakuza.o(.text);
+        src/sprites_AI/nightmare.o(.text);
 
         src/event_checks.o(.text);
+        src/x_parasite_util.o(.text);
+        src/screen_shake.o(.text);
 
-        asm/disasm_0x08061004.o(.text);
+        asm/disasm_0x080626f4.o(.text);
 
         src/power_bomb_explosion.o(.text);
 
         asm/disasm_0x080685b4.o(.text);
+        asm/sub_event_and_music.o(.text);
+        asm/room_music.o(.text);
 
         src/demo.o(.text);
         src/hud.o(.text);
         src/escape.o(.text);
-
-        asm/disasm_0x08072d50.o(.text);
+        src/hud_generic.o(.text);
+        src/particle.o(.text);
+        asm/event.o(.text);
+        asm/minimap.o(.text);
+        asm/disasm_0x08074ffc.o(.text);
+        src/projectile.o(.text);
 
         src/menus/title_screen.o(.text);
 
         asm/disasm_0x08087610.o(.text);
+
+        src/sa_x_close_up.o(.text);
+
+        asm/menus/game_over.o(.text);
+        asm/menus/file_select.o(.text);
+        asm/ending.o(.text);
 
         asm/libgcc.o(.text);
         asm/disasm_0x080a374c.o(.text);
         src/libgcc/fp-bit-base.o(.text);
         src/libgcc/float.o(.text);
         src/libgcc/libgcc.o(.text);
-    } >rom
 
-    .rodata : ALIGN(2) {
         src/data/generic_data.o(.rodata);
+        audio/voice_groups.o(.rodata);
+        audio/key_split_tbl_0.o(.rodata);
+        audio/prog_waveforms.o(.rodata);
+        src/data/music_track_data.o(.rodata);
+        audio/sound_entries.o(.rodata);
+        audio/null_track.o(.rodata);
+        audio/samples.o(.rodata);
+        audio/tracks.o(.rodata);
+        src/sram/sram.o(.rodata);
         src/data/samus_data.o(.rodata);
+        src/data/sa_x.o(.rodata);
+        src/data/samus/samus_graphics.o(.rodata);
         src/data/sprite_data.o(.rodata);
+        src/data/spriteset.o(.rodata);
         src/data/sprite_debris_data.o(.rodata);
         src/data/sprites/target.o(.rodata);
+        src/data/sprites/sa_x.o(.rodata);
+        src/data/sprites/hornoad.o(.rodata);
+        src/data/sprites/halzyn.o(.rodata);
         src/data/sprites/movable_platform.o(.rodata);
         src/data/sprites/moto.o(.rodata);
         src/data/sprites/save_pad.o(.rodata);
@@ -287,6 +399,50 @@ SECTIONS {
         src/data/sprites/yameba.o(.rodata);
         src/data/sprites/security_pad.o(.rodata);
         src/data/sprites/area_banner.o(.rodata);
+        src/data/sprites/skree.o(.rodata);
+        src/data/sprites/zombie_researcher.o(.rodata);
+        src/data/sprites/geemer.o(.rodata);
+        src/data/sprites/arachnus.o(.rodata);
+        src/data/sprites/core_x.o(.rodata);
+        src/data/sprites/core_x_downloading_varia.o(.rodata);
+        src/data/sprites/waver.o(.rodata);
+        src/data/sprites/sciser.o(.rodata);
+        src/data/sprites/sidehopper.o(.rodata);
+        src/data/sprites/dessgeega.o(.rodata);
+        src/data/sprites/missile_barrier.o(.rodata);
+        src/data/sprites/navigation_pad.o(.rodata);
+        src/data/sprites/message_box.o(.rodata);
+        src/data/sprites/data_pad.o(.rodata);
+        src/data/sprites/zebesian_wall.o(.rodata);
+        src/data/sprites/recharge_pad.o(.rodata);
+        src/data/sprites/atmospheric_stabilizer.o(.rodata);
+        src/data/sprites/chozo_statue.o(.rodata);
+        src/data/sprites/beam_core_x.o(.rodata);
+        src/data/sprites/toxic_gas.o(.rodata);
+        src/data/sprites/kago.o(.rodata);
+        src/data/sprites/shake_trigger.o(.rodata);
+        src/data/sprites/gate.o(.rodata);
+        src/data/sprites/electric_water.o(.rodata);
+        src/data/sprites/zoro.o(.rodata);
+        src/data/sprites/kihunter.o(.rodata);
+        src/data/sprites/reo.o(.rodata);
+        src/data/sprites/lava_plume.o(.rodata);
+        src/data/sprites/fune_namihe.o(.rodata);
+        src/data/sprites/box.o(.rodata);
+        src/data/sprites/geruda.o(.rodata);
+        src/data/sprites/misc_pad.o(.rodata);
+        src/data/sprites/operations_room_pad.o(.rodata);
+        src/data/sprites/scientist.o(.rodata);
+        src/data/sprites/skultera.o(.rodata);
+        src/data/sprites/zeela.o(.rodata);
+        src/data/sprites/sova.o(.rodata);
+        src/data/sprites/yard.o(.rodata);
+        src/data/sprites/evir.o(.rodata);
+        src/data/sprites/bull.o(.rodata);
+        src/data/sprites/memu.o(.rodata);
+        src/data/sprites/geruboss.o(.rodata);
+        src/data/sprites/choot.o(.rodata);
+        src/data/sprites/zebesian_ground.o(.rodata);
         src/data/sprites/blue_x.o(.rodata);
         src/data/sprites/missile_hatch.o(.rodata);
         src/data/sprites/super_missile_barrier.o(.rodata);
@@ -299,12 +455,55 @@ SECTIONS {
         src/data/sprites/zazabi.o(.rodata);
         src/data/sprites/elevator_pad.o(.rodata);
         src/data/sprites/serris.o(.rodata);
+        src/data/sprites/owtch.o(.rodata);
+        src/data/sprites/geega.o(.rodata);
+        src/data/sprites/pillar.o(.rodata);
+        src/data/sprites/genesis.o(.rodata);
+        src/data/sprites/puyo.o(.rodata);
+        src/data/sprites/fake_tank.o(.rodata);
+        src/data/sprites/flashing_number.o(.rodata);
+        src/data/sprites/zebesian_aqua.o(.rodata);
+        src/data/sprites/animals.o(.rodata);
+        src/data/sprites/infant_metroid.o(.rodata);
+        src/data/sprites/lab_debris.o(.rodata);
+        src/data/sprites/powamp.o(.rodata);
+        src/data/sprites/zozoro.o(.rodata);
+        src/data/sprites/sa_x_monster.o(.rodata);
+        src/data/sprites/box_2.o(.rodata);
+        src/data/sprites/omega_metroid.o(.rodata);
+        src/data/sprites/starship_end.o(.rodata);
+        src/data/sprites/electric_water_box_2.o(.rodata);
+        src/data/sprites/frozen_ridley.o(.rodata);
+        src/data/sprites/varia_core_x.o(.rodata);
+        src/data/sprites/omega_metroid_husk.o(.rodata);
+        src/data/sprites/ice_beam_x_omega.o(.rodata);
+        src/data/sprites/metroid_husk.o(.rodata);
+        src/data/sprites/neo_ridley.o(.rodata);
+        src/data/sprites/ridley_pre_spawn.o(.rodata);
+        src/data/sprites/yakuza.o(.rodata);
+        src/data/sprites/nightmare.o(.rodata);
         src/data/sprites/x_parasite.o(.rodata);
+
+        src/data/rooms_data.o(.rodata);
         src/data/demo_data.o(.rodata);
         src/data/hud_data.o(.rodata);
-        src/data/escape_data.o(.rodata);
         src/data/particle_data.o(.rodata);
+
+        src/data/rooms/main_deck.o(.rodata);
+        src/data/rooms/sector_1.o(.rodata);
+        src/data/rooms/sector_2.o(.rodata);
+        src/data/rooms/sector_3.o(.rodata);
+        src/data/rooms/sector_5.o(.rodata);
+        src/data/rooms/sector_4.o(.rodata);
+        src/data/rooms/sector_6.o(.rodata);
+
+        src/data/event_data.o(.rodata);
+
+        src/data/projectile_data.o(.rodata);
         src/data/menus/title_screen.o(.rodata);
+        src/data/sa_x_close_up.o(.rodata);
+        src/data/sprite_pointers.o(.rodata);
+        src/data/frame_data_pointers.o(.rodata);
         src/data/engine_pointers.o(.rodata);
     } >rom
 }

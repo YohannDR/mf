@@ -97,7 +97,7 @@ void BlueXAbsorbedInit(void)
     gCurrentSprite.work1 = 0;
     gCurrentSprite.work4 = 1;
 
-    gCurrentSprite.status |= SPRITE_STATUS_ROTATION_SCALING;
+    gCurrentSprite.status |= SS_ROTATE_SCALE_INDIVIDUAL;
 
     gCurrentSprite.rotation = 0;
     gCurrentSprite.scaling = Q_8_8(1.f);
@@ -117,11 +117,11 @@ void BlueXInit(void)
 
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
-    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN)
+    if (gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0)
     {
         gCurrentSprite.bgPriority++;
         gCurrentSprite.pose = BLUE_X_POSE_HIDING;
-        gCurrentSprite.status |= SPRITE_STATUS_IGNORE_PROJECTILES;
+        gCurrentSprite.status |= SS_IGNORE_PROJECTILES;
         gCurrentSprite.drawOrder = 12;
     }
     else
@@ -150,7 +150,7 @@ void BlueXInit(void)
     SpriteUtilChooseRandomXDirection();
 
     if (gSpriteRandomNumber > 8)
-        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status |= SS_SAMUS_DETECTED;
 }
 
 /**
@@ -161,9 +161,9 @@ void BlueXHiding(void)
 {
     SpriteUtilCheckCollisionAtPosition(gCurrentSprite.yPosition, gCurrentSprite.xPosition);
 
-    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN))
+    if (!(gPreviousCollisionCheck & COLLISION_FLAGS_UNKNOWN_F0))
     {
-        gCurrentSprite.status &= ~SPRITE_STATUS_IGNORE_PROJECTILES;
+        gCurrentSprite.status &= ~SS_IGNORE_PROJECTILES;
         gCurrentSprite.pose = SPRITE_POSE_IDLE_INIT;
         gCurrentSprite.bgPriority = gIoRegisters.bg1Cnt & 3; // TODO macro
         gCurrentSprite.drawOrder = 4;
@@ -249,9 +249,9 @@ void BlueXMovingInit(void)
     SpriteUtilMakeSpriteFaceSamusDirection();
 
     if (gCurrentSprite.yPosition > gSamusData.yPosition + gSamusData.drawDistanceTop)
-        gCurrentSprite.status &= ~SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status &= ~SS_SAMUS_DETECTED;
     else
-        gCurrentSprite.status |= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status |= SS_SAMUS_DETECTED;
 }
 
 /**
@@ -268,7 +268,7 @@ void BlueXMoving(void)
     if (BlueXCheckStun())
         return;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
+    if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
     {
         BlueXAbsorbedInit();
         return;
@@ -298,7 +298,7 @@ void BlueXMoving(void)
     speedCap = HALF_BLOCK_SIZE - PIXEL_SIZE / 2;
     flip = FALSE;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
     {
         if (gCurrentSprite.work2 == 0)
         {
@@ -349,10 +349,10 @@ void BlueXMoving(void)
 
     if (flip)
     {
-        gCurrentSprite.status ^= SPRITE_STATUS_FACING_RIGHT;
+        gCurrentSprite.status ^= SS_FACING_RIGHT;
         gCurrentSprite.work3 = 1;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+        if (gCurrentSprite.status & SS_ON_SCREEN)
         {
             SoundPlayNotAlreadyPlaying(0x1B9);
         }
@@ -360,7 +360,7 @@ void BlueXMoving(void)
 
     flip = FALSE;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
     {
         if (gCurrentSprite.work1 == 0)
         {
@@ -411,10 +411,10 @@ void BlueXMoving(void)
 
     if (flip)
     {
-        gCurrentSprite.status ^= SPRITE_STATUS_SAMUS_DETECTED;
+        gCurrentSprite.status ^= SS_SAMUS_DETECTED;
         gCurrentSprite.work4 = 1;
 
-        if (gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN)
+        if (gCurrentSprite.status & SS_ON_SCREEN)
         {
             SoundPlayNotAlreadyPlaying(0x1B9);
         }
@@ -469,7 +469,7 @@ void BlueXStunned(void)
     if (BlueXCheckStun())
         return;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
+    if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
     {
         BlueXAbsorbedInit();
         return;
@@ -492,7 +492,7 @@ void BlueXFleeing(void)
     if (BlueXCheckStun())
         return;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_COLLIDING)
+    if (gCurrentSprite.status & SS_SAMUS_COLLIDING)
     {
         BlueXAbsorbedInit();
         return;
@@ -505,7 +505,7 @@ void BlueXFleeing(void)
 
     speed = gCurrentSprite.work3 / 8;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_FACING_RIGHT)
+    if (gCurrentSprite.status & SS_FACING_RIGHT)
         gCurrentSprite.xPosition += speed;
     else
         gCurrentSprite.xPosition -= speed;
@@ -515,12 +515,12 @@ void BlueXFleeing(void)
 
     speed = gCurrentSprite.work4 / 8;
 
-    if (gCurrentSprite.status & SPRITE_STATUS_SAMUS_DETECTED)
+    if (gCurrentSprite.status & SS_SAMUS_DETECTED)
         gCurrentSprite.yPosition += speed;
     else
         gCurrentSprite.yPosition -= speed;
 
-    if (!(gCurrentSprite.status & SPRITE_STATUS_ON_SCREEN))
+    if (!(gCurrentSprite.status & SS_ON_SCREEN))
         gCurrentSprite.status = 0;
 }
 
@@ -530,7 +530,7 @@ void BlueXFleeing(void)
  */
 void BlueXAbsorbtionInit(void)
 {
-    gCurrentSprite.status &= ~SPRITE_STATUS_NOT_DRAWN;
+    gCurrentSprite.status &= ~SS_NOT_DRAWN;
 
     gCurrentSprite.hitboxTop = -PIXEL_SIZE;
     gCurrentSprite.hitboxBottom = PIXEL_SIZE;
@@ -578,7 +578,7 @@ void BlueXAbsorbtionAbsorbing(void)
  */
 void BlueXAbsorbtionFadingAway(void)
 {
-    if (SpriteUtilCheckEndOfCurrentSpriteAnimation())
+    if (SpriteUtilCheckEndCurrentSpriteAnim())
         gCurrentSprite.status = 0;
 }
 

@@ -40,7 +40,7 @@ void SpriteUpdate(void)
         // Update the debris
         SpriteDebrisUpdateAll();
 
-        if (!SpriteUtilCheckStopSpritesPose())
+        if (!SpriteUtilCheckSamusStopSpritesPose())
         {
             // Handle collision
             SpriteUtilSamusAndSpriteCollision();
@@ -48,7 +48,7 @@ void SpriteUpdate(void)
             // Update every sprite
             for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
             {
-                if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+                if (!(gSpriteData[i].status & SS_EXISTS))
                     continue;
 
                 // Copy to current sprite
@@ -64,7 +64,7 @@ void SpriteUpdate(void)
                 else
                     sPrimarySpritesAiPointers[gCurrentSprite.spriteId]();
 
-                if (gCurrentSprite.status & SPRITE_STATUS_EXISTS)
+                if (gCurrentSprite.status & SS_EXISTS)
                 {
                     // If sprite still exists, update standing, animation and on screen flag
                     SpriteUtilSamusStandingOnSprite();
@@ -81,7 +81,7 @@ void SpriteUpdate(void)
             // Samus is in a state where gameplay is pause
             for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
             {
-                if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+                if (!(gSpriteData[i].status & SS_EXISTS))
                     continue;
 
                 // Only update sprites that are either on pose 0 or have the always active flag
@@ -101,7 +101,7 @@ void SpriteUpdate(void)
                 else
                     sPrimarySpritesAiPointers[gCurrentSprite.spriteId]();
 
-                if (gCurrentSprite.status & SPRITE_STATUS_EXISTS)
+                if (gCurrentSprite.status & SS_EXISTS)
                 {
                     // If sprite still exists, update standing, animation and on screen flag
                     SpriteUtilSamusStandingOnSprite();
@@ -122,7 +122,7 @@ void SpriteUpdate(void)
         // In free movement, update all sprites without checking for collision
         for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
         {
-            if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+            if (!(gSpriteData[i].status & SS_EXISTS))
                 continue;
 
             // Copy to current sprite
@@ -138,7 +138,7 @@ void SpriteUpdate(void)
             else
                 sPrimarySpritesAiPointers[gCurrentSprite.spriteId]();
 
-            if (gCurrentSprite.status & SPRITE_STATUS_EXISTS)
+            if (gCurrentSprite.status & SS_EXISTS)
             {
                 // If sprite still exists, update standing, animation and on screen flag
                 SpriteUtilSamusStandingOnSprite();
@@ -156,7 +156,7 @@ void SpriteUpdate(void)
     // In any other sub game mode
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
-        if (!(gSpriteData[i].status & SPRITE_STATUS_EXISTS))
+        if (!(gSpriteData[i].status & SS_EXISTS))
             continue;
 
         // Copy to current sprite
@@ -174,7 +174,7 @@ void SpriteUpdate(void)
                 sPrimarySpritesAiPointers[gCurrentSprite.spriteId]();
         }
 
-        if (gCurrentSprite.status & SPRITE_STATUS_EXISTS)
+        if (gCurrentSprite.status & SS_EXISTS)
         {
             // If sprite still exists, update on screen flag
             SpriteCheckOnScreen();
@@ -215,10 +215,10 @@ void SpriteUpdateAnimation(void)
 }
 
 /**
- * @brief eb04 | 9c | To document
+ * @brief eb04 | 9c | Draws all high-priority sprites (draw order between 1 and 8 with the high-priority status flag)
  * 
  */
-void unk_eb04(void)
+void SpriteDrawAll_HighPriority(void)
 {
     s32 i;
     s32 drawOrder;
@@ -228,8 +228,8 @@ void unk_eb04(void)
     if (gSubGameMode1 != SUB_GAME_MODE_PLAYING)
         return;
 
-    checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_UNKNOWN_10 | SPRITE_STATUS_UNKNOWN_2000;
-    drawStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_UNKNOWN_10;
+    checkStatus = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN | SS_HIGH_PRIORITY | SS_HIDDEN;
+    drawStatus = SS_EXISTS | SS_ON_SCREEN | SS_HIGH_PRIORITY;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
@@ -259,21 +259,21 @@ void unk_eb04(void)
 }
 
 /**
- * @brief eba0 | 98 | Draws all the sprites
+ * @brief eba0 | 98 | Draws all medium-priority sprites (draw order between 1 and 8 without the upper status flag)
  * 
  */
-void SpriteDrawAll(void)
+void SpriteDrawAll_MediumPriority(void)
 {
     s32 i;
     s32 drawOrder;
     u16 drawStatus;
     u16 checkStatus;
 
-    checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_UNKNOWN_10 | SPRITE_STATUS_UNKNOWN_2000;
-    drawStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN;
+    checkStatus = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN | SS_HIGH_PRIORITY | SS_HIDDEN;
+    drawStatus = SS_EXISTS | SS_ON_SCREEN;
 
     SpriteDebrisDrawAll();
-    SA_XUpdateGFXAndDraw();
+    SaXUpdateGraphicsAndDraw();
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
@@ -303,18 +303,18 @@ void SpriteDrawAll(void)
 }
 
 /**
- * @brief ec38 | 90 | To document
+ * @brief ec38 | 90 | Draws all low-priority sprites (draw order between 9 and 16, high-priority status flag hides the sprite)
  * 
  */
-void unk_ec38(void)
+void SpriteDrawAll_LowPriority(void)
 {
     s32 i;
     s32 drawOrder;
     u16 drawStatus;
     u16 checkStatus;
 
-    checkStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN | SPRITE_STATUS_UNKNOWN_10 | SPRITE_STATUS_UNKNOWN_2000;
-    drawStatus = SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN;
+    checkStatus = SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN | SS_HIGH_PRIORITY | SS_HIDDEN;
+    drawStatus = SS_EXISTS | SS_ON_SCREEN;
 
     for (i = 0; i < MAX_AMOUNT_OF_SPRITES; i++)
     {
@@ -375,7 +375,7 @@ void SpriteDraw(s32 slot)
     s16 scaledX;
     s16 scaledY;
 
-    u16 status_unk3;
+    u16 rotateScaleIndividual;
     s32 i;
     u16 partCount;
     
@@ -408,11 +408,11 @@ void SpriteDraw(s32 slot)
     xPosition = SUB_PIXEL_TO_PIXEL_(gCurrentSprite.xPosition) - SUB_PIXEL_TO_PIXEL(gBg1XPosition);
 
     // Shortcuts for status
-    xFlip = gCurrentSprite.status & SPRITE_STATUS_X_FLIP;
-    status_unk3 = gCurrentSprite.status & SPRITE_STATUS_ROTATION_SCALING;
-    doubleSize = gCurrentSprite.status & SPRITE_STATUS_DOUBLE_SIZE;
-    mosaic = gCurrentSprite.status & SPRITE_STATUS_ENABLE_MOSAIC;
-    yFlip = gCurrentSprite.status & SPRITE_STATUS_Y_FLIP;
+    xFlip = gCurrentSprite.status & SS_X_FLIP;
+    rotateScaleIndividual = gCurrentSprite.status & SS_ROTATE_SCALE_INDIVIDUAL;
+    doubleSize = gCurrentSprite.status & SS_DOUBLE_SIZE;
+    mosaic = gCurrentSprite.status & SS_ENABLE_MOSAIC;
+    yFlip = gCurrentSprite.status & SS_Y_FLIP;
 
     // Get graphical data
     // Palette offset by spriteset slot
@@ -430,7 +430,7 @@ void SpriteDraw(s32 slot)
         xPosition = gCurrentSprite.xPosition;
     }
 
-    if (!(gCurrentSprite.status & SPRITE_STATUS_UNKNOWN_8))
+    if (!(gCurrentSprite.status & SS_ROTATE_SCALE_WHOLE))
     {
         for (i = 0; i < partCount; i++)
         {
@@ -476,7 +476,9 @@ void SpriteDraw(s32 slot)
                 gOamData[prevSlot + i].split.y = yPosition - (part1 + offset * 8);
             }
 
-            if (status_unk3)
+            // Rotates and scales objects at their centers independently if SS_ROTATE_SCALE_INDIVIDUAL is set
+            // Breaks if any of the objects are flipped (not the sprite status)
+            if (rotateScaleIndividual)
             {
                 if (doubleSize)
                 {
@@ -507,7 +509,7 @@ void SpriteDraw(s32 slot)
         // Update next oam slot
         gNextOamSlot = partCount + prevSlot;
 
-        if (status_unk3)
+        if (rotateScaleIndividual)
         {
             rotation = gCurrentSprite.rotation;
             scaling = gCurrentSprite.scaling;
@@ -556,19 +558,21 @@ void SpriteDraw(s32 slot)
             gOamData[prevSlot + i].split.paletteNum += paletteRow;
             gOamData[prevSlot + i].split.tileNum += gfxOffset;
 
-            // Don't really know what maths are used here, but it seems to be directly applying rotation and scaling to the position
+            // Rotates and scales the whole sprite, ignores flip
             shape = gOamData[prevSlot + i].split.shape;
             size = gOamData[prevSlot + i].split.size;
         
+            // Get center relative to top-left corner of object
             yOffset = sOamYFlipOffsets[shape][size];
-            yOffset = PIXEL_TO_SUBPIXEL(yOffset);
+            yOffset *= 4;
             xOffset = sOamXFlipOffsets[shape][size];
-            xOffset = PIXEL_TO_SUBPIXEL(xOffset);
+            xOffset *= 4;
         
             // Get current positions
             y = MOD_AND(part1 + yPosition, 256);
             x = MOD_AND(part2 + xPosition, 512);
         
+            // Get center of object relative to the sprite's position
             tmpY = y - yPosition + yOffset;
             tmpX = x - xPosition + xOffset;
 
@@ -579,7 +583,7 @@ void SpriteDraw(s32 slot)
             x += tmpX;
             y += tmpY;
         
-            // Offset to 0;0 temporarly to apply the rotation
+            // Offset to 0;0 temporally to apply the rotation
             unk_2 = x - xPosition + xOffset;
             unk_3 = y - yPosition + yOffset;
         
@@ -587,6 +591,7 @@ void SpriteDraw(s32 slot)
             x = Q_8_8_TO_INT(unk_2 * COS(rotation) - unk_3 * SIN(rotation));
             y = Q_8_8_TO_INT(unk_2 * SIN(rotation) + unk_3 * COS(rotation));
         
+            // Offset it back to top-left corner
             if (doubleSize)
             {
                 x -= xOffset * 2;
@@ -613,21 +618,21 @@ void SpriteDraw(s32 slot)
                 gOamData[prevSlot + i].split.affineMode = 1;
             }
 
-            // Select proper matrix depending on mosaic and flipping?
+            // Select proper matrix: mosaic flag doesn't enable mosaic and instead chooses between one of the two matrix slots
             if (mosaic)
             {
                 if (gOamData[prevSlot + i].split.xFlip)
                 {
                     gOamData[prevSlot + i].split.x--;
-                    gOamData[prevSlot + i].split.yFlip = TRUE;
-                    gOamData[prevSlot + i].split.xFlip = TRUE;
-                    gOamData[prevSlot + i].split.matrixNum = 5;
+                    gOamData[prevSlot + i].split.yFlip = 29 >> 4;
+                    gOamData[prevSlot + i].split.xFlip = 29 >> 3;
+                    gOamData[prevSlot + i].split.matrixNum = 29;
                 }
                 else
                 {
-                    gOamData[prevSlot + i].split.yFlip = TRUE;
-                    gOamData[prevSlot + i].split.xFlip = TRUE;
-                    gOamData[prevSlot + i].split.matrixNum = 4;
+                    gOamData[prevSlot + i].split.yFlip = 28 >> 4;
+                    gOamData[prevSlot + i].split.xFlip = 28 >> 3;
+                    gOamData[prevSlot + i].split.matrixNum = 28;
                 }
             }
             else
@@ -635,15 +640,15 @@ void SpriteDraw(s32 slot)
                 if (gOamData[prevSlot + i].split.xFlip)
                 {
                     gOamData[prevSlot + i].split.x--;
-                    gOamData[prevSlot + i].split.yFlip = TRUE;
-                    gOamData[prevSlot + i].split.xFlip = TRUE;
-                    gOamData[prevSlot + i].split.matrixNum = 7;
+                    gOamData[prevSlot + i].split.yFlip = 31 >> 4;
+                    gOamData[prevSlot + i].split.xFlip = 31 >> 3;
+                    gOamData[prevSlot + i].split.matrixNum = 31;
                 }
                 else
                 {
-                    gOamData[prevSlot + i].split.yFlip = TRUE;
-                    gOamData[prevSlot + i].split.xFlip = TRUE;
-                    gOamData[prevSlot + i].split.matrixNum = 6;
+                    gOamData[prevSlot + i].split.yFlip = 30 >> 4;
+                    gOamData[prevSlot + i].split.xFlip = 30 >> 3;
+                    gOamData[prevSlot + i].split.matrixNum = 30;
                 }
             }
 
@@ -733,37 +738,37 @@ void SpriteCheckOnScreen(void)
 
     bgYRange = bgBaseY + BLOCK_TO_SUB_PIXEL(CEIL(SCREEN_SIZE_X_BLOCKS / 2));
     spriteYRange = spriteY + BLOCK_TO_SUB_PIXEL(CEIL(SCREEN_SIZE_X_BLOCKS / 2));
-    spriteBottom = bgYRange - PIXEL_TO_SUBPIXEL(gCurrentSprite.drawDistanceBottom);
-    drawOffsetY = PIXEL_TO_SUBPIXEL(gCurrentSprite.drawDistanceTop) + SCREEN_SIZE_Y_SUB_PIXEL;
+    spriteBottom = bgYRange - PIXEL_TO_SUB_PIXEL(gCurrentSprite.drawDistanceBottom);
+    drawOffsetY = PIXEL_TO_SUB_PIXEL(gCurrentSprite.drawDistanceTop) + SCREEN_SIZE_Y_SUB_PIXEL;
     spriteTop = bgYRange + drawOffsetY;
 
     bgXRange = bgBaseX + BLOCK_TO_SUB_PIXEL(CEIL(SCREEN_SIZE_X_BLOCKS / 2));
     spriteXRange = spriteX + BLOCK_TO_SUB_PIXEL(CEIL(SCREEN_SIZE_X_BLOCKS / 2));
-    spriteLeft = bgXRange - PIXEL_TO_SUBPIXEL(gCurrentSprite.drawDistanceHorizontal);
-    drawOffsetX = PIXEL_TO_SUBPIXEL(gCurrentSprite.drawDistanceHorizontal) + SCREEN_SIZE_X_SUB_PIXEL;
+    spriteLeft = bgXRange - PIXEL_TO_SUB_PIXEL(gCurrentSprite.drawDistanceHorizontal);
+    drawOffsetX = PIXEL_TO_SUB_PIXEL(gCurrentSprite.drawDistanceHorizontal) + SCREEN_SIZE_X_SUB_PIXEL;
     spriteRight = bgXRange + drawOffsetX;
 
     if (spriteLeft < spriteXRange && spriteXRange < spriteRight && spriteBottom < spriteYRange && spriteYRange < spriteTop)
     {
-        gCurrentSprite.status |= SPRITE_STATUS_ON_SCREEN;
+        gCurrentSprite.status |= SS_ON_SCREEN;
         return;
     }
 
-    gCurrentSprite.status &= ~SPRITE_STATUS_ON_SCREEN;
+    gCurrentSprite.status &= ~SS_ON_SCREEN;
 
     if (gCurrentSprite.properties & SP_KILL_OFF_SCREEN)
     {
         bgYOffScreenRange = bgBaseY + BLOCK_SIZE * 10;
         spriteOffScreenYRange = spriteY + BLOCK_SIZE * 10;
-        spriteOffScreenBottom = bgYOffScreenRange - BLOCK_SIZE * 9;
-        spriteOffScreenTop = bgYOffScreenRange + BLOCK_SIZE * 19;
+        spriteOffScreenTop = bgYOffScreenRange - BLOCK_SIZE * 9;
+        spriteOffScreenBottom = bgYOffScreenRange + SCREEN_SIZE_Y_SUB_PIXEL + BLOCK_SIZE * 9;
 
         bgXOffScreenRange = bgBaseX + BLOCK_SIZE * 10;
         spriteOffScreenXRange = spriteX + BLOCK_SIZE * 10;
         spriteOffScreenLeft = bgXOffScreenRange - BLOCK_SIZE * 9;
-        spriteOffScreenRight = bgXOffScreenRange + BLOCK_SIZE * 24;
+        spriteOffScreenRight = bgXOffScreenRange + SCREEN_SIZE_X_SUB_PIXEL + BLOCK_SIZE * 9;
 
-        if (spriteOffScreenLeft >= spriteOffScreenXRange || spriteOffScreenXRange >= spriteOffScreenRight || spriteOffScreenBottom >= spriteOffScreenYRange || spriteOffScreenYRange >= spriteOffScreenTop)
+        if (spriteOffScreenLeft >= spriteOffScreenXRange || spriteOffScreenXRange >= spriteOffScreenRight || spriteOffScreenTop >= spriteOffScreenYRange || spriteOffScreenYRange >= spriteOffScreenBottom)
             gCurrentSprite.status = 0;
     }
 }
@@ -987,30 +992,32 @@ void SpriteInitPrimary(u8 spritesetSlot, u16 yPosition, u16 xPosition, u8 roomSl
     {
         // Try to find an empty slot
 
-        if (gSpriteData[i].status & SPRITE_STATUS_EXISTS)
+        if (gSpriteData[i].status & SS_EXISTS)
             continue;
 
         // Found a free slot, initialize data
 
         // Set initial status
-        if (spritesetSlot & 0x80)
-            gSpriteData[i].status = SPRITE_STATUS_EXISTS | SPRITE_STATUS_UNKNOWN_2000;
+        if (spritesetSlot & SSP_HIDDEN_ON_ROOM_LOAD)
+            gSpriteData[i].status = SS_EXISTS | SS_HIDDEN;
         else
-            gSpriteData[i].status = SPRITE_STATUS_EXISTS;
+            gSpriteData[i].status = SS_EXISTS;
 
-        spritesetSlot = MOD_AND(spritesetSlot, 0x80);
+        spritesetSlot &= ~SSP_HIDDEN_ON_ROOM_LOAD;
         gSpriteData[i].spritesetSlotAndProperties = spritesetSlot;
 
-        if (spritesetSlot > 0x10)
+        if (spritesetSlot > PSPRITE_UNUSED_15 + 1)
         {
+            // Non-targets
             spritesetSlot--;
-            spritesetSlot %= 16;
+            spritesetSlot &= SPRITESET_SLOT_MASK;
 
             gSpriteData[i].spritesetGfxSlot = gSpritesetSpriteGfxSlots[spritesetSlot];
             gSpriteData[i].spriteId = gSpritesetSpriteIds[spritesetSlot];
         }
         else
         {
+            // Targets
             gSpriteData[i].spritesetGfxSlot = 0;
             gSpriteData[i].spriteId = spritesetSlot - 1;
         }
@@ -1038,7 +1045,7 @@ void SpriteInitPrimary(u8 spritesetSlot, u16 yPosition, u16 xPosition, u8 roomSl
         gSpriteData[i].primarySpriteRamSlot = i;
 
         gSpriteData[i].freezeTimer = 0;
-        gSpriteData[i].work5 = 1;
+        gSpriteData[i].numberOfXToForm = 1;
         break;
     }
 }
@@ -1066,13 +1073,16 @@ u8 SpriteSpawnSecondary(u8 spriteId, u8 partNumber, u8 gfxRow, u8 ramSlot, u16 y
     {
         // Try to find an empty slot
 
-        if (gSpriteData[i].status & SPRITE_STATUS_EXISTS)
+        if (gSpriteData[i].status & SS_EXISTS)
             continue;
 
         // Found a free slot, initialize data
 
         // Set initial status
-        gSpriteData[i].status = (SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN) | statusToAdd;
+        // The not drawn flag is set because if the spawned sprite slot is lower than the current sprite slot,
+        // the sprite is uninitialized this frame, and if the not drawn flag is not set,
+        // the sprite will look glitched for one frame before being initialized next frame.
+        gSpriteData[i].status = (SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN) | statusToAdd;
 
         // Flag as secondary sprite
         gSpriteData[i].properties = SP_SECONDARY_SPRITE;
@@ -1101,7 +1111,7 @@ u8 SpriteSpawnSecondary(u8 spriteId, u8 partNumber, u8 gfxRow, u8 ramSlot, u16 y
         // Clear slot and properties
         gSpriteData[i].spritesetSlotAndProperties = UCHAR_MAX;
         gSpriteData[i].freezeTimer = 0;
-        gSpriteData[i].work5 = 1;
+        gSpriteData[i].numberOfXToForm = 1;
 
         slot = i;
         break;
@@ -1133,13 +1143,13 @@ u8 SpriteSpawnPrimary(u8 spriteId, u8 partNumber, u8 gfxRow, u8 spritesetSlot, u
     {
         // Try to find an empty slot
 
-        if (gSpriteData[i].status & SPRITE_STATUS_EXISTS)
+        if (gSpriteData[i].status & SS_EXISTS)
             continue;
 
         // Found a free slot, initialize data
 
         // Set initial status
-        gSpriteData[i].status = (SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN) | statusToAdd;
+        gSpriteData[i].status = (SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN) | statusToAdd;
 
         // No properties
         gSpriteData[i].properties = 0;
@@ -1168,7 +1178,7 @@ u8 SpriteSpawnPrimary(u8 spriteId, u8 partNumber, u8 gfxRow, u8 spritesetSlot, u
         // Set slot and properties
         gSpriteData[i].spritesetSlotAndProperties = spritesetSlot;
         gSpriteData[i].freezeTimer = 0;
-        gSpriteData[i].work5 = 1;
+        gSpriteData[i].numberOfXToForm = 1;
 
         slot = i;
         break;
@@ -1201,13 +1211,13 @@ u8 SpriteSpawnNewXParasite(u8 spriteId, u8 partNumber, u8 gfxRow, u8 ramSlot, u8
     {
         // Try to find an empty slot
 
-        if (gSpriteData[i].status & SPRITE_STATUS_EXISTS)
+        if (gSpriteData[i].status & SS_EXISTS)
             continue;
 
         // Found a free slot, initialize data
 
         // Set initial status
-        gSpriteData[i].status = (SPRITE_STATUS_EXISTS | SPRITE_STATUS_ON_SCREEN | SPRITE_STATUS_NOT_DRAWN) | statusToAdd;
+        gSpriteData[i].status = (SS_EXISTS | SS_ON_SCREEN | SS_NOT_DRAWN) | statusToAdd;
 
         // No properties
         gSpriteData[i].properties = 0;
@@ -1236,7 +1246,7 @@ u8 SpriteSpawnNewXParasite(u8 spriteId, u8 partNumber, u8 gfxRow, u8 ramSlot, u8
         // Set slot and properties
         gSpriteData[i].spritesetSlotAndProperties = spritesetSlot;
         gSpriteData[i].freezeTimer = 0;
-        gSpriteData[i].work5 = 1;
+        gSpriteData[i].numberOfXToForm = 1;
 
         slot = i;
         break;

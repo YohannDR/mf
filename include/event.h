@@ -3,6 +3,7 @@
 
 #include "types.h"
 
+void UpdateMenuOamDataID(u8 index, u8 oamId);
 void EventSet(u8 event);
 u8 EventCheckPlayCutsceneDuringTransition(u8 dstRoom);
 void EventCheckUpdateAfterCutscene(void);

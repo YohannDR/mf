@@ -12,6 +12,12 @@
 #include "structs/connection.h"
 #include "structs/samus.h"
 
+void UpdateMenuOamDataID(u8 index, u8 oamId) {
+    PAUSE_SCREEN_DATA.oam[index].oamId = oamId;
+    PAUSE_SCREEN_DATA.oam[index].animationDurationCounter = 0;
+    PAUSE_SCREEN_DATA.oam[index].currentAnimationFrame = 0;
+}
+
 /**
  * @brief 74890 | 318 | Sets the current event
  * 
@@ -137,10 +143,10 @@ void EventSet(u8 event)
     }
 }
 
-u8 EventCheckPlayCutsceneDuringTransition(u8 dstRoom)
+/*u8 EventCheckPlayCutsceneDuringTransition(u8 dstRoom)
 {
 
-}
+}*/
 
 /**
  * @brief 74cf4 | 60 | Checks to update the event/sub event after a cutscene
@@ -248,7 +254,7 @@ void EventCheckRoomEventTrigger(void)
     // Check in range
     if (BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].xStart) <= gSamusData.xPosition &&
         BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].xEnd) >= gSamusData.xPosition &&
-        BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].ySart) <= gSamusData.yPosition &&
+        BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].yStart) <= gSamusData.yPosition &&
         BLOCK_TO_SUB_PIXEL(sEventLocationAndNavigationInfo[gRoomEventTrigger].yEnd) >= gSamusData.yPosition)
     {
         // Set room trigger event

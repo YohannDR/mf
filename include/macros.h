@@ -33,6 +33,23 @@
         value = (max);         \
 }
 
+#define SET_ABS_SUB(var, v1, v2)\
+{                               \
+    if ((v1) > (v2))            \
+        var = (v1) - (v2);      \
+    else                        \
+        var = (v2) - (v1);      \
+}
+#define SET_ABS_SUB_2(var, v1, v2)\
+{                                 \
+    if ((v1) < (v2))              \
+        var = (v2) - (v1);        \
+    else                          \
+        var = (v1) - (v2);        \
+}
+#define ABS_SUB(v1, v2) ((v1) > (v2) ? (v1) - (v2) : (v2) - (v1))
+#define ABS_SUB_2(v1, v2) ((v1) < (v2) ? (v2) - (v1) : (v1) - (v2))
+
 /**
  * @brief Performs a modulo (value % mod) operation on a value using the and operation (WARNING only use a value for mod that is a power of 2)
  * 
@@ -42,12 +59,19 @@
 #define MOD_AND(value, mod) ((value) & ((mod) - 1))
 
 /**
+ * @brief Gets the binary logarithm of a value (WARNING only use a value that is a power of 2 and <= 1024)
+ *
+ * @param value Value
+ */
+#define LOG2(value) ((value) == 2 ? 1 : ((value) == 4 ? 2 : ((value) == 8 ? 3 : ((value) == 16 ? 4 : ((value) == 32 ? 5 : ((value) == 64 ? 6 : ((value) == 128 ? 7 : ((value) == 256 ? 8 : ((value) == 512 ? 9 : ((value) == 1024 ? 10 : 0))))))))))
+
+/**
  * @brief Performs a division (value / div) operation on a value using the right shift operation (WARNING only use a value for div that is a power of 2 and <= 1024)
  * 
  * @param value Value
  * @param div Divisor
  */
-#define DIV_SHIFT(value, div) ((value) >> ((div) == 2 ? 1 : ((div) == 4 ? 2 : ((div) == 8 ? 3 : ((div) == 16 ? 4 : ((div) == 32 ? 5 : ((div) == 64 ? 6 : ((div) == 128 ? 7 : ((div) == 256 ? 8 : ((div) == 512 ? 9 : ((div) == 1024 ? 10 : 0)))))))))))
+#define DIV_SHIFT(value, div) ((value) >> LOG2(div))
 
 /**
  * @brief Multiplies a number by a fraction (num/den)
@@ -144,16 +168,20 @@
     SPRITE_SET_ISFT(sprite, value);             \
 }
 
+#define SPRITE_SET_ABSOLUTE_PALETTE_ROW(sprite, row) ((sprite).paletteRow = (row) + 8 - ((sprite).spritesetGfxSlot + (sprite).frozenPaletteRowOffset))
+#define SPRITE_IS_INFECTED(sprite) ((sprite).spritesetSlotAndProperties >= SSP_X_ABSORBABLE_BY_SAMUS && (sprite).spritesetSlotAndProperties < SSP_40 + 0x10)
+
 #define SUB_PIXEL_TO_PIXEL(pixel) ((pixel) / SUB_PIXEL_RATIO)
 #define SUB_PIXEL_TO_PIXEL_(pixel) (DIV_SHIFT(pixel, SUB_PIXEL_RATIO))
-#define PIXEL_TO_SUBPIXEL(pixel) ((pixel) * SUB_PIXEL_RATIO)
+#define PIXEL_TO_SUB_PIXEL(pixel) ((s32)((pixel) * SUB_PIXEL_RATIO))
 #define SUB_PIXEL_TO_BLOCK(pixel) ((pixel) / BLOCK_SIZE)
-#define BLOCK_TO_SUB_PIXEL(block) ((block) * BLOCK_SIZE)
+#define BLOCK_TO_SUB_PIXEL(block) ((s32)((block) * BLOCK_SIZE))
 #define VELOCITY_TO_SUB_PIXEL(velocity) (DIV_SHIFT((velocity), 8))
 #define SUB_PIXEL_TO_VELOCITY(velocity) ((s32)((velocity) * 8))
+#define PIXEL_TO_VELOCITY(velocity) ((s32)((velocity) * SUB_PIXEL_RATIO * 8))
 
-#define SCREEN_SIZE_X_SUB_PIXEL (PIXEL_TO_SUBPIXEL(SCREEN_SIZE_X))
-#define SCREEN_SIZE_Y_SUB_PIXEL (PIXEL_TO_SUBPIXEL(SCREEN_SIZE_Y))
+#define SCREEN_SIZE_X_SUB_PIXEL (PIXEL_TO_SUB_PIXEL(SCREEN_SIZE_X))
+#define SCREEN_SIZE_Y_SUB_PIXEL (PIXEL_TO_SUB_PIXEL(SCREEN_SIZE_Y))
 
 #define SCREEN_SIZE_X_BLOCKS (SUB_PIXEL_TO_BLOCK(SCREEN_SIZE_X_SUB_PIXEL))
 #define SCREEN_SIZE_Y_BLOCKS (SUB_PIXEL_TO_BLOCK(SCREEN_SIZE_Y_SUB_PIXEL))
@@ -174,3 +202,7 @@
 
 #define FORCE_RODATA __attribute__((section(".rodata")))
 #define NAKED_FUNCTION __attribute__((naked))
+
+#define ALIGN1() asm(".align 1, 0")
+#define ALIGN2() asm(".align 2, 0")
+#define ALIGN4() asm(".align 4, 0")

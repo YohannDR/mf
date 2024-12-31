@@ -4,6 +4,8 @@
 #include "types.h"
 #include "oam.h"
 
+extern const s16 sBlueXUnusedYMovement[65];
+extern const s16 sBlueXUnusedXMovement[81];
 extern const s16 sBlueXIdleYMovement[65];
 extern const s16 sBlueXIdleXMovement[81];
 

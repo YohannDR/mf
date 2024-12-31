@@ -3,8 +3,11 @@
 #include "gba.h"
 
 #include "data/engine_pointers.h"
+#include "data/sprites/area_banner.h"
+#include "data/spriteset.h"
 
 #include "constants/connection.h"
+#include "constants/room.h"
 #include "constants/sprite.h"
 
 #include "structs/connection.h"
@@ -23,115 +26,115 @@ u8 LocationTextGetMainDeck(void)
 
     switch (gCurrentRoom)
     {
-        case 7:
+        case MAIN_DECK_7:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 10:
+        case MAIN_DECK_10:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 25:
+        case MAIN_DECK_25:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 26:
+        case MAIN_DECK_26:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 27:
+        case MAIN_DECK_27:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 28:
+        case MAIN_DECK_28:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 29:
+        case MAIN_DECK_29:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 30:
+        case MAIN_DECK_30:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 61:
+        case MAIN_DECK_61:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 75:
+        case MAIN_DECK_75:
             locationText = LT_MAIN_DECK;
             break;
 
-        case 48:
+        case MAIN_DECK_48:
             locationText = LT_REACTOR_SILO;
             break;
 
-        case 55:
+        case MAIN_DECK_55:
             locationText = LT_REACTOR_SILO;
             break;
 
-        case 68:
+        case MAIN_DECK_68:
             locationText = LT_REACTOR_SILO;
             break;
 
-        case 83:
+        case MAIN_DECK_83:
             locationText = LT_REACTOR_SILO;
             break;
 
-        case 62:
+        case MAIN_DECK_62:
             locationText = LT_RESTRICTED_ZONE;
             break;
 
-        case 67:
+        case MAIN_DECK_67:
             locationText = LT_RESTRICTED_ZONE;
             break;
 
-        case 60:
+        case MAIN_DECK_60:
             locationText = LT_OPERATIONS_DECK;
             break;
 
-        case 76:
+        case MAIN_DECK_76:
             locationText = LT_HABITATIONS_DECK;
             break;
 
-        case 6:
+        case MAIN_DECK_6:
             locationText = LT_DOCKING_BAY;
             break;
 
-        case 74:
+        case MAIN_DECK_74:
             locationText = LT_OPERATIONS_ROOM;
             break;
 
-        case 82:
+        case MAIN_DECK_82:
             locationText = LT_OPERATIONS_ROOM;
             break;
 
-        case 71:
+        case MAIN_DECK_71:
             locationText = LT_QUARANTINE_BAY;
             break;
 
-        case 46:
+        case MAIN_DECK_46:
             locationText = LT_SUB_ZERO_CONTAINMENT;
             break;
 
-        case 49:
+        case MAIN_DECK_49:
             locationText = LT_CENTRAL_REACTOR_CORE;
             break;
 
-        case 59:
+        case MAIN_DECK_59:
             locationText = LT_CENTRAL_REACTOR_CORE;
             break;
 
-        case 54:
+        case MAIN_DECK_54:
             locationText = LT_AUXILARY_POWER_STATION;
             break;
 
-        case 78:
+        case MAIN_DECK_78:
             locationText = LT_RESTRICTED_LABORATORY;
             break;
 
-        case 79:
+        case MAIN_DECK_79:
             locationText = LT_RESTRICTED_LABORATORY;
             break;
     }
@@ -152,19 +155,19 @@ u8 LocationTextGetSector1(void)
 
     switch (gCurrentRoom + 1)
     {
-        case 32:
+        case SECTOR_1_31 + 1:
             locationText = LT_SECTOR_1;
             break;
 
-        case 42:
+        case SECTOR_1_41 + 1:
             locationText = LT_SECTOR_1;
             break;
 
-        case 49:
+        case SECTOR_1_48 + 1:
             locationText = LT_SECTOR_1;
             break;
 
-        case 50:
+        case SECTOR_1_49 + 1:
             locationText = LT_SECTOR_1;
             break;
     }
@@ -185,23 +188,23 @@ u8 LocationTextGetSector2(void)
 
     switch (gCurrentRoom)
     {
-        case 24:
+        case SECTOR_2_24:
             locationText = LT_SECTOR_2;
             break;
 
-        case 29:
+        case SECTOR_2_29:
             locationText = LT_SECTOR_2;
             break;
 
-        case 36:
+        case SECTOR_2_36:
             locationText = LT_SECTOR_2;
             break;
 
-        case 52:
+        case SECTOR_2_52:
             locationText = LT_SECTOR_2;
             break;
 
-        case 53:
+        case SECTOR_2_53:
             locationText = LT_SECTOR_2;
             break;
     }
@@ -222,27 +225,27 @@ u8 LocationTextGetSector3(void)
 
     switch (gCurrentRoom)
     {
-        case 20:
+        case SECTOR_3_20:
             locationText = LT_SECTOR_3;
             break;
 
-        case 37:
+        case SECTOR_3_37:
             locationText = LT_SECTOR_3;
             break;
 
-        case 38:
+        case SECTOR_3_38:
             locationText = LT_SECTOR_3;
             break;
 
-        case 17:
+        case SECTOR_3_17:
             locationText = LT_MAIN_BOILER;
             break;
 
-        case 29:
+        case SECTOR_3_29:
             locationText = LT_MAIN_BOILER;
             break;
 
-        case 25:
+        case SECTOR_3_25:
             locationText = LT_MAIN_BOILER_CONTROL_ROOM;
             break;
     }
@@ -263,19 +266,19 @@ u8 LocationTextGetSector5(void)
 
     switch (gCurrentRoom + 1)
     {
-        case 25 + 1:
+        case SECTOR_5_25 + 1:
             locationText = LT_SECTOR_5;
             break;
 
-        case 31 + 1:
+        case SECTOR_5_31 + 1:
             locationText = LT_SECTOR_5;
             break;
 
-        case 37 + 1:
+        case SECTOR_5_37 + 1:
             locationText = LT_SECTOR_5;
             break;
 
-        case 50 + 1:
+        case SECTOR_5_50 + 1:
             locationText = LT_SECTOR_5;
     }
 
@@ -295,23 +298,23 @@ u8 LocationTextGetSector4(void)
 
     switch (gCurrentRoom)
     {
-        case 23:
+        case SECTOR_4_23:
             locationText = LT_SECTOR_4;
             break;
 
-        case 27:
+        case SECTOR_4_27:
             locationText = LT_SECTOR_4;
             break;
 
-        case 43:
+        case SECTOR_4_43:
             locationText = LT_SECTOR_4;
             break;
 
-        case 44:
+        case SECTOR_4_44:
             locationText = LT_SECTOR_4;
             break;
 
-        case 33:
+        case SECTOR_4_33:
             locationText = LT_PUMP_CONTROL_UNIT;
     }
 
@@ -331,19 +334,19 @@ u8 LocationTextGetSector6(void)
 
     switch (gCurrentRoom + 1)
     {
-        case 17 + 1:
+        case SECTOR_6_17 + 1:
             locationText = LT_SECTOR_6;
             break;
 
-        case 22 + 1:
+        case SECTOR_6_22 + 1:
             locationText = LT_SECTOR_6;
             break;
 
-        case 36 + 1:
+        case SECTOR_6_36 + 1:
             locationText = LT_SECTOR_6;
             break;
 
-        case 37 + 1:
+        case SECTOR_6_37 + 1:
             locationText = LT_SECTOR_6;
     }
 
@@ -397,23 +400,23 @@ u8 LocationTextCheckLoad(void)
 
     switch (gSpritesetNumber)
     {
-        case 6:
+        case SPRITESET_6:
             locationText = LT_NAVIGATION_ROOM;
             break;
 
-        case 10:
+        case SPRITESET_10:
             locationText = LT_RECHARGE_ROOM;
             break;
 
-        case 11:
+        case SPRITESET_11:
             locationText = LT_SAVE_ROOM;
             break;
 
-        case 12:
+        case SPRITESET_12:
             locationText = LT_DATA_ROOM;
             break;
 
-        case 13:
+        case SPRITESET_13:
             locationText = LT_SECURITY_ROOM;
     }
 
@@ -468,7 +471,7 @@ u8 LocationTextCheckLoad(void)
             
             if (locationText < LT_NAVIGATION_ROOM)
             {
-                DMA_SET(3, 0x82f82ec, PALRAM_OBJ + 0x100 + gfxSlot * 16 * sizeof(u16), C_32_2_16(DMA_ENABLE, 16));
+                DMA_SET(3, sAreaBannerLocationPal, PALRAM_OBJ + 0x100 + gfxSlot * 16 * sizeof(u16), C_32_2_16(DMA_ENABLE, sizeof(sAreaBannerLocationPal) / sizeof(u16)));
             }
         }
     }

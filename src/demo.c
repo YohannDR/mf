@@ -188,6 +188,6 @@ void DemoEnd(void)
     if (gDemoState == DEMO_STATE_NONE)
     {
         unk_27e8(0);
-        FadeMusic(20);
+        MusicFade(20);
     }
 }

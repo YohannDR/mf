@@ -1,7 +1,22 @@
 /src/**/*.s
 /data/*
+/audio/samples/*
+/audio/tracks/*
+/audio/voice_groups/*
+/audio/sound_entries.s
+/audio/samples.s
+/audio/voice_groups.s
+/audio/tracks.s
+/build/*
+
+/expected/*
+/nonmatchings/*
+permuter_settings.toml
+
+objdiff.json
 
 *.gba
+*.sav
 *.elf
 *.dump
 *.o
@@ -11,5 +26,10 @@
 *.exe
 
 include/**/*.s
-tools/*.txt
+tools/**/*.txt
+tools/**/*.png
+tools/agbcc
+tools/agbcc.exe
 .vscode
+
+*.pyc
