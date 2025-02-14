@@ -41,6 +41,11 @@ sprites/area_banner.gfx;512;0x2f7acc;4
 sprites/area_banner.pal;16;0x2f82cc;2
 sprites/area_banner_location.pal;16;0x2f82ec;2
 
+# Skree
+
+sprites/skree.gfx;512;0x2f8894;4
+sprites/skree.pal;16;0x2f9094;2
+
 # Blue X
 
 sprites/blue_x.gfx;1024;0x35de98;4
@@ -145,7 +150,7 @@ Blob_a5224_28fd04.bin;2009824;0xa5224;1
 Blob_28fd08_2e4904.bin;347132;0x28fd08;1
 Blob_2e5cae_2e6160.bin;1202;0x2e5cae;1
 Blob_2e6382_2ed2e8.bin;28518;0x2e6382;1
-Blob_2f887c_35dd74.bin;414968;0x2f887c;1
+Blob_2f93d0_35dd74.bin;412068;0x2f93d0;1
 Blob_3787d0_3bdebc.bin;284396;0x3787d0;1
 Blob_3be1be_3e392c.bin;153454;0x3be1be;1
 Blob_3e40dc_3e7a9c.bin;14784;0x3e40dc;1
@@ -153,3 +158,4 @@ Blob_3e9940_3ec038.bin;9976;0x3e9940;1
 Blob_3ec1a8_590998.bin;1722352;0x3ec1a8;1
 Blob_597708_79a29c.bin;2108308;0x597708;1
 Blob_79afe0_79ecc8.bin;15592;0x79afe0;1
+
